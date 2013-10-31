@@ -1,0 +1,17 @@
+<%= form_for(@constructed) do |f| %>
+  <% if @constructed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this constructed from being saved:</h2>
+
+      <ul>
+      <% @constructed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

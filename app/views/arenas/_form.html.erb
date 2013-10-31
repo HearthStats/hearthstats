@@ -1,0 +1,32 @@
+<%= form_for(@arena) do |f| %>
+  <% if @arena.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
+
+      <ul>
+      <% @arena.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div> -->
+  <div class="field">
+    <%= f.label :userclass %><br />
+    <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+  </div>
+  <div class="field">
+    <%= f.label :oppclass %><br />
+    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+  </div>
+  <div class="field">
+    <%= f.label :win %><br />
+    <%= f.check_box :win %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
