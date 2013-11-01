@@ -3,9 +3,12 @@ h1 Recent Arena Matches
 = link_to 'New Arena', new_arena_path
 p
 - @arenas.each do |match|
-  | Your Class: #{match.userclass} | Opponent's Class: #{match.oppclass} 
-  / = link_to 'Show', match
-  = link_to 'Edit', edit_arena_path(match)
-  = link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }
+  p
+    | Your Class:
+    = link_to match.userclass, race_dashboards_path(:race => match.userclass)
+    |  Opponent's Class: #{match.oppclass} 
+    / = link_to 'Show', match
+    = link_to 'Edit', edit_arena_path(match)
+    = link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }
 p
 

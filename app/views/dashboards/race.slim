@@ -1,0 +1,8 @@
+h1 = params[:race]
+  / - for match in @matches do
+  /   = match.win
+p Total # of Win(s)
+= @matches.where(win:true).count
+
+p Total # of Lose(s)
+= @matches.where(win:false).count

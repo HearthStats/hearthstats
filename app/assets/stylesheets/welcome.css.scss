@@ -1,3 +1,84 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home {
+	a{
+		-webkit-transition: all linear .2s,box-shadow linear .2s;
+		-moz-transition: all linear .2s,box-shadow linear .2s;
+		-o-transition: all linear .2s,box-shadow linear .2s;
+		transition: all linear .2s,box-shadow linear .2s;
+	}
+	height: 100%;
+	background-image: image-url('hearthstonebg.jpg');
+	background-size: cover;
+	.sitename{
+		font-size: 80px;
+		padding: 40px;
+		padding-top: 100px;
+		width: 700px;
+		margin: auto;
+		color: white;
+		font-weight: 300;
+		font-family: 'Lato', sans-serif;
+		text-align: center;
+		letter-spacing: 10px;
+	}
+	.login{
+		margin-top: 20px;
+		color: white;
+		input{
+			margin: 0px auto 5px auto;
+			width: 200px;
+			display: block;
+			height: 40px;
+			background: transparent image-url('trans.png');
+			color: white;
+			border-radius: 0;
+		}
+		.rmbme{
+			width: 200px;
+			margin: auto;
+			input{
+				height: 12px;
+				display: inline;
+				width: 20px;
+			}
+		}
+		::-webkit-input-placeholder {
+			padding-left: 10px;
+		    color: #ebe5da;
+		    font-weight: bold;
+		}
+
+		:-moz-placeholder { /* Firefox 18- */
+			padding-left: 10px;
+		   color: #ebe5da;  
+		}
+
+		::-moz-placeholder {  /* Firefox 19+ */
+			padding-left: 10px;
+		   color: #ebe5da;  
+		}
+
+		:-ms-input-placeholder {  
+			padding-left: 10px;
+		   color: #ebe5da;  
+		}
+	}
+	.loginadd{
+		width: 300px;
+		margin: auto;
+		text-align: center;
+		a {
+			display: block;
+			color: white;
+			text-decoration: none;
+		}
+		a:hover{
+			color: white;
+			font-size: 18px;
+			background-color: transparent;
+		}
+	}
+}

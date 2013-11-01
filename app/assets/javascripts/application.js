@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+	$('.notifications').delay(500).slideDown('normal', function() {
+      $(this).delay(2500).slideUp();
+    });
+});

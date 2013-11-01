@@ -16,11 +16,11 @@
   </div> -->
   <div class="field">
     <%= f.label :userclass %><br />
-    <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+    <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.userclass ) %>
   </div>
   <div class="field">
     <%= f.label :oppclass %><br />
-    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.oppclass) %>
   </div>
   <div class="field">
     <%= f.label :win %><br />

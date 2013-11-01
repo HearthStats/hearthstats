@@ -1,8 +1,9 @@
 class ConstructedsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /constructeds
   # GET /constructeds.json
   def index
-    @constructeds = Constructed.all
+    @constructeds = Constructed.where(user_id: current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +42,8 @@ class ConstructedsController < ApplicationController
   # POST /constructeds.json
   def create
     @constructed = Constructed.new(params[:constructed])
-
+    @constructed.user_id = current_user.id
+    
     respond_to do |format|
       if @constructed.save
         format.html { redirect_to @constructed, notice: 'Constructed was successfully created.' }

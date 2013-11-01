@@ -1,8 +1,9 @@
 class ArenasController < ApplicationController
+  before_filter :authenticate_user!
   # GET /arenas
   # GET /arenas.json
   def index
-    @arenas = Arena.all
+    @arenas = Arena.where(user_id: current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +42,10 @@ class ArenasController < ApplicationController
   # POST /arenas.json
   def create
     @arena = Arena.new(params[:arena])
-
+    @arena.user_id = current_user.id
     respond_to do |format|
       if @arena.save
-        format.html { redirect_to @arena, notice: 'Arena was successfully created.' }
+        format.html { redirect_to arenas_url, notice: 'Arena was successfully created.' }
         format.json { render json: @arena, status: :created, location: @arena }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class ArenasController < ApplicationController
 
     respond_to do |format|
       if @arena.update_attributes(params[:arena])
-        format.html { redirect_to @arena, notice: 'Arena was successfully updated.' }
+        format.html { redirect_to arenas_url, notice: 'Arena was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

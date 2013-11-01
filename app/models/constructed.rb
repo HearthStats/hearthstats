@@ -1,3 +1,3 @@
 class Constructed < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :deckname, :oppclass, :win
 end

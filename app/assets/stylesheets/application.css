@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+.notifications{
+	float: left;
+	color: white;
+	padding-top:20px;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+}
