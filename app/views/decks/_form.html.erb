@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    Class <br>
+    <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+  </div>
+  <div class="field">
     <%= f.label :wins %><br />
     <%= f.number_field :wins %>
   </div>
