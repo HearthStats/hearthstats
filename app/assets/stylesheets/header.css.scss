@@ -1,0 +1,37 @@
+.headcontainer{
+	background-color: #2c3e50;
+	.header{
+		a{
+			text-decoration: none;
+			color: white;
+			background-color: transparent;
+		}
+		margin-left: 200px;
+		width: 1038px;
+		height: 40px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		background-color: #2c3e50;
+		.lefttitle{
+			float: left;
+			color: white;
+			font-weight: 300;
+			font-family: 'Lato', sans-serif;
+			font-size: 40px;
+		}
+		.rightnav{
+			float: right;
+			font-weight: 300;
+			font-family: 'Lato', sans-serif;
+			font-size: 18px;
+			color: white;
+			display: inline-block;
+			padding-top: 11px;
+			a{
+				color: white;
+				text-decoration: none;
+				background-color: transparent;
+			}
+		}
+	}
+}

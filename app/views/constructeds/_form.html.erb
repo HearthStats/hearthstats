@@ -16,7 +16,7 @@
   </div> -->
   <div class="field">
     <%= f.label "Deck Name" %><br />
-    <%= collection_select(:deckname, 0, Deck.all, :id, :name) %>
+    <%= collection_select(:deckname, 0, Deck.all, :name, :name) %>
   </div>
   <div class="field">
     <%= f.label "Opponent's Class" %><br />

@@ -42,8 +42,15 @@ class ConstructedsController < ApplicationController
   # POST /constructeds.json
   def create
     @constructed = Constructed.new(params[:constructed])
+    @constructed.deckname = params[:deckname]["0"]
     @constructed.user_id = current_user.id
-    
+    @deck = Deck.where(:name => @constructed.deckname)[0]
+    if @constructed.win
+      @deck.wins = @deck.wins + 1
+    else
+      @deck.loses = @deck.loses + 1
+    end
+    @deck.save
     respond_to do |format|
       if @constructed.save
         format.html { redirect_to @constructed, notice: 'Constructed was successfully created.' }
