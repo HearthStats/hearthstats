@@ -1,9 +1,19 @@
-h1 Recent Constructed Games
-= link_to 'New Constructed', new_constructed_path
-- @constructeds.each do |match|
-  p
-    | Deck: #{match.deckname} | Opponent's Class: #{match.oppclass} 
-    = link_to 'Show', match
-    = link_to 'Edit', edit_arena_path(match)
-    = link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }
-p
+div.arenaheader
+  div.arenatitle Recent Constructed Matches
+  = link_to 'New Constructed', new_constructed_path, class: "pure-button pure-button-primary newarena"
+table
+  tr.heading
+    th Your Deck
+    th Opponent Class
+    th Win?
+    th Time
+    th Options
+  - @constructeds.each do |match|
+    tr.matches
+      td.cl-effect-3 = match.deckname
+      td = match.oppclass
+      td = match.win  
+      td.time = match.created_at.strftime("%H%P on %B %d, %Y")  
+      td.cl-effect-3
+        span.edit = link_to 'Edit', edit_constructed_path(match)
+        span.delete= link_to 'Delete', match, method: :delete, data: { confirm: 'Are you sure?' }

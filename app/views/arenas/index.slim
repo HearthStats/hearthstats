@@ -1,14 +1,19 @@
-h1 Recent Arena Matches
-
-= link_to 'New Arena', new_arena_path
-p
-- @arenas.each do |match|
-  p
-    | Your Class:
-    = link_to match.userclass, race_dashboards_path(:race => match.userclass)
-    |  Opponent's Class: #{match.oppclass} 
-    / = link_to 'Show', match
-    = link_to 'Edit', edit_arena_path(match)
-    = link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }
-p
-
+div.arenaheader
+  div.arenatitle Recent Arena Matches
+  = link_to 'New Arena', new_arena_path, class: "pure-button pure-button-primary newarena"
+table
+  tr.heading
+    th Your Class
+    th Opponent Class
+    th Win?
+    th Time
+    th Options
+  - @arenas.each do |match|
+    tr.matches
+      td.cl-effect-3 = link_to match.userclass, race_dashboards_path(:race => match.userclass)
+      td = match.oppclass
+      td = match.win  
+      td.time = match.created_at.strftime("%H%P on %B %d, %Y")  
+      td.cl-effect-3
+        span.edit = link_to 'Edit', edit_arena_path(match)
+        span.delete= link_to 'Delete', match, method: :delete, data: { confirm: 'Are you sure?' }
