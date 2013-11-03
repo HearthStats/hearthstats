@@ -12,7 +12,11 @@ table
     tr.matches
       td.cl-effect-3 = link_to match.userclass, race_dashboards_path(:race => match.userclass)
       td = match.oppclass
-      td = match.win  
+      td 
+        -if match.win  
+          span.victory Victory
+        -else
+          span.defeat Defeat
       td.time = match.created_at.strftime("%H%P on %B %d, %Y")  
       td.cl-effect-3
         span.edit = link_to 'Edit', edit_arena_path(match)

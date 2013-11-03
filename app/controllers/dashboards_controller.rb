@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
   end
 
   def index
-  	
+  	@arena = Arena.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 5).reverse
+  	@constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 5).reverse
   end
 end
