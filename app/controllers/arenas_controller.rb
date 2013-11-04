@@ -26,7 +26,7 @@ class ArenasController < ApplicationController
   # GET /arenas/new.json
   def new
     @arena = Arena.new
-
+    @lastentry = Arena.where(user_id: current_user.id).last
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @arena }

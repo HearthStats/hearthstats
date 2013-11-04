@@ -1,0 +1,52 @@
+<%= form_for(@constructed) do |f| %>
+  <% if @constructed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
+
+      <ul>
+      <% @constructed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div> -->
+  <% if !@lastentry.nil? %>
+    <div class="field">
+      <%= f.label "Deck Name" %><br />
+        <%= collection_select(:deckname, 0, Deck.all, :name, :name, {:selected => @lastentry.deckname}) %>
+    </div>
+    <div class="field">
+      <%= f.label "Opponent's Class" %><br />
+      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+    </div>
+    <div class="field">
+      <%= f.label :win %><br />
+      <%= f.check_box :win %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% else %>
+    <div class="field">
+        <%= f.label "Deck Name" %><br />
+          <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
+          <br>
+          Please make sure you have created a deck. If not, create a new deck <%= link_to "here", new_deck_path %>.
+      </div>
+      <div class="field">
+        <%= f.label "Opponent's Class" %><br />
+        <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+      </div>
+      <div class="field">
+        <%= f.label :win %><br />
+        <%= f.check_box :win %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+<% end %>

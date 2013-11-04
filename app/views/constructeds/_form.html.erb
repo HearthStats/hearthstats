@@ -14,19 +14,19 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
-  <div class="field">
-    <%= f.label "Deck Name" %><br />
-    <%= collection_select(:deckname, 0, Deck.all, :name, :name) %>
-  </div>
-  <div class="field">
-    <%= f.label "Opponent's Class" %><br />
-    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-  </div>
-  <div class="field">
-    <%= f.label :win %><br />
-    <%= f.check_box :win %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label "Deck Name" %><br />
+        <%= collection_select(:deckname, 0, Deck.all, :name, :name, {selected: @lastentry.deckname}) %>
+    </div>
+    <div class="field">
+      <%= f.label "Opponent's Class" %><br />
+      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
+    </div>
+    <div class="field">
+      <%= f.label :win %><br />
+      <%= f.check_box :win %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

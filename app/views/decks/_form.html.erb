@@ -19,14 +19,6 @@
     Class <br>
     <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
   </div>
-  <div class="field">
-    <%= f.label :wins %><br />
-    <%= f.number_field :wins %>
-  </div>
-  <div class="field">
-    <%= f.label :loses %><br />
-    <%= f.number_field :loses %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

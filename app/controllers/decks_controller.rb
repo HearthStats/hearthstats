@@ -2,7 +2,7 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.all
+    @decks = Deck.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,7 @@ class DecksController < ApplicationController
   # GET /decks/new.json
   def new
     @deck = Deck.new
-
+    # Edit so that only this user's decks appear
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @deck }
@@ -41,7 +41,7 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @deck = Deck.new(params[:deck])
-
+    @deck.user_id = current_user.id
     respond_to do |format|
       if @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }

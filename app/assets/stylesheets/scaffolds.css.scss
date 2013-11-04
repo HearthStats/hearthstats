@@ -3,6 +3,12 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  a:visited {
+    color: #3498db;
+  }
+  a:link{
+    color: #3498db;
+  }
 }
 
 p, ol, ul, td {

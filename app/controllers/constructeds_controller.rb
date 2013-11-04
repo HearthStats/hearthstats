@@ -26,7 +26,7 @@ class ConstructedsController < ApplicationController
   # GET /constructeds/new.json
   def new
     @constructed = Constructed.new
-
+    @lastentry = Constructed.where(user_id: current_user.id).last
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @constructed }
