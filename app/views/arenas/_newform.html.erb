@@ -28,10 +28,10 @@
   </div>
   <div class="cf"></div>
   <div class="winfield">
-    <%= f.label "Win?" %><br />
-    <%= f.check_box :win %>
+    <div class="pure-button pure-button-success winbutton"> Victory </div><br />
+    <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Arena Entry", class: "pure-button pure-button-primary" %>
   </div>
 <% end %>
