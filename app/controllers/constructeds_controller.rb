@@ -46,14 +46,22 @@ class ConstructedsController < ApplicationController
     @constructed.user_id = current_user.id
     @deck = Deck.where(:name => @constructed.deckname)[0]
     if @constructed.win
-      @deck.wins = @deck.wins + 1
+      if @deck.wins.nil?
+        @deck.wins = 1
+      else
+        @deck.wins = @deck.wins + 1
+      end
     else
-      @deck.loses = @deck.loses + 1
+      if @deck.loses.nil?
+        @deck.loses = 1
+      else
+        @deck.loses = @deck.loses + 1
+      end
     end
     @deck.save
     respond_to do |format|
       if @constructed.save
-        format.html { redirect_to @constructed, notice: 'Constructed was successfully created.' }
+        format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
       else
         format.html { render action: "new" }
@@ -83,7 +91,13 @@ class ConstructedsController < ApplicationController
   def destroy
     @constructed = Constructed.find(params[:id])
     @constructed.destroy
-
+    @deck = Deck.where(:name => @constructed.deckname)[0]
+    if @constructed.win
+      @deck.wins = @deck.wins - 1
+    else
+      @deck.loses = @deck.loses - 1
+    end
+    @deck.save
     respond_to do |format|
       format.html { redirect_to constructeds_url }
       format.json { head :no_content }

@@ -9,6 +9,7 @@ group :development do
   gem "better_errors", ">= 0.3.2"
   gem "binding_of_caller", ">= 0.6.8"
   gem 'sqlite3'
+  gem "bullet"
 end
 
 # Gems used only for assets and not required
