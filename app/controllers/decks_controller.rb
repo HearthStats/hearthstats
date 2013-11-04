@@ -25,7 +25,6 @@ class DecksController < ApplicationController
   # GET /decks/new.json
   def new
     @deck = Deck.new
-    # Edit so that only this user's decks appear
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @deck }

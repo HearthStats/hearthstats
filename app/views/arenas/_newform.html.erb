@@ -14,8 +14,7 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
-
-  <div class="field">
+  <div class="yourfield">
     <%= f.label "Your Class" %><br />
     <% if @lastentry.nil? %>
       <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
@@ -23,11 +22,12 @@
       <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @lastentry.userclass) %>
     <% end %>  
   </div>
-  <div class="field">
+  <div class="oppfield">
     <%= f.label "Opponent's Class" %><br />
     <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
   </div>
-  <div class="field">
+  <div class="cf"></div>
+  <div class="winfield">
     <%= f.label "Win?" %><br />
     <%= f.check_box :win %>
   </div>
