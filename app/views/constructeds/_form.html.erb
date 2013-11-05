@@ -14,6 +14,14 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
+  <div class="gofirstfield">
+    <% if @constructed.gofirst %>
+      <div class="pure-button pure-button-success gofirst"> First </div><br />
+    <% else %>
+      <div class="pure-button pure-button-secondary gofirst"> Second </div><br />
+    <% end %>
+    <%= f.check_box :gofirst, class: "firstcheckbox hidden" %>
+  </div>
     <div class="yourfield">
       <%= f.label "Deck Name" %><br />
         <%= collection_select(:deckname, 0, Deck.all, :name, :name, {selected: @constructed.deckname}) %>

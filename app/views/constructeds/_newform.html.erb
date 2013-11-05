@@ -19,7 +19,6 @@
       <div class="pure-button pure-button-success gofirst"> First </div><br />
       <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
     </div>
-
     <div class="yourfield">
       <%= f.label "Deck Name" %><br />
         <%= collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname}) %>
@@ -37,11 +36,11 @@
       <%= f.submit "Create Entry", class: "pure-button pure-button-primary" %>
     </div>
   <% else %>
+    <div class="gofirstfield">
+      <div class="pure-button pure-button-success gofirst"> First </div><br />
+      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+    </div>
     <div class="yourfield">
-      <div class="gofirstfield">
-        <div class="pure-button pure-button-success gofirst"> First </div><br />
-        <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
-      </div>
       <%= f.label "Deck Name" %><br />
         <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
         <br>
