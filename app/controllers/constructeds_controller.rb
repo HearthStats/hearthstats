@@ -3,7 +3,7 @@ class ConstructedsController < ApplicationController
   # GET /constructeds
   # GET /constructeds.json
   def index
-    @constructeds = Constructed.where(user_id: current_user.id)
+    @constructeds = Constructed.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
