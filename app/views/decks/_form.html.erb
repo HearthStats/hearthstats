@@ -11,15 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="deckfield">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    Class <br>
+  <div class="oppfield">
+    <%= f.label "Class" %> <br>
     <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
   </div>
+  <div class="cf"></div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Deck", class: "pure-button pure-button-primary" %>
   </div>
 <% end %>

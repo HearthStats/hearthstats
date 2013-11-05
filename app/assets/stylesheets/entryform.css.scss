@@ -42,7 +42,7 @@ form{
 		border-radius: 0 !important;  /*Removes border*/
 		-webkit-appearance: none;  /*Removes default chrome and safari style*/
 		-moz-appearance: none; /* Removes Default Firefox style*/
-		background: url('dropdown_arrow.png') no-repeat;  /*Adds background-image*/
+		background: no-repeat;  /*Adds background-image*/
 		background-position: 82px 7px;  /*Position of the background-image*/
 		width: 100px; /*Width of select dropdown to give space for arrow image*/
 		text-indent: 0.01px; /* Removes default arrow from firefox*/
@@ -57,10 +57,19 @@ form{
 	.hidden{
 		display: none;
 	}
+	.deckfield{
+		input[type="text"]{ 
+			padding: 20px 10px; line-height: 28px; 
+			font-size: 25px;
+		}
+		float: left;
+
+	}
 }
 .backbutton{
 	margin: auto;
-	width: 83px;
+	width: 77px;
+	margin-left: 2px;
 	background: rgb(223, 117, 20);
 	color: white !important;
 	display: inline-block;
