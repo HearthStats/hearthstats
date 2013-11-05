@@ -1,0 +1,6 @@
+h2 Class Win Rates
+table.rankingtable
+  - @classwinrate.each do |c|
+    tr
+      td #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+      td #{number_to_percentage(c[1], precision: 2)}

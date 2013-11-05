@@ -10,8 +10,10 @@ Hearthstats::Application.routes.draw do
   resources :dashboards do
     collection do
       get 'race'
+      get 'fullstats'
     end
   end
+
   devise_for :users
   resources :constructeds
 

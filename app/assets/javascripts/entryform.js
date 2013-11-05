@@ -22,14 +22,14 @@ $(document).ready(function(){
     {
       $('.gofirst').css("background", "rgb(66, 184, 221)" );
       $('.firstcheckbox').prop('checked', false);
-      $('.gofirst').text("Second");
+      $('.gofirst').text("Second Turn");
       var checked = false;
     }
     else
     {
       $('.gofirst').css("background", "rgb(28, 184, 65)" );
       $('.firstcheckbox').prop('checked', true);
-      $('.gofirst').text("First");
+      $('.gofirst').text("First Turn");
       var checked = true;
     }
   });
