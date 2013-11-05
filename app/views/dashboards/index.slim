@@ -30,7 +30,7 @@ div.pure-g-r
     - while q < 5
       p 
         - begin
-          div.rssdate = @feed.entries[q].published.strftime("%I %P on %B %d, %Y")  
+          = @feed.entries[q].published.strftime("%I %P on %B %d, %Y")  
         - rescue
           |Currenly there are no feeds.
         - else
