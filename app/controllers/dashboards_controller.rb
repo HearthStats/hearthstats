@@ -16,7 +16,10 @@ class DashboardsController < ApplicationController
   		if deckcount.blank? || deckcount[0].wins.nil?
   			temp2 = 0
   		else
-  			temp2 = deckcount[0].wins
+        temp2 = 0
+        deckcount.each do |d|
+          temp2 = temp2 + d.wins
+        end
   		end
   		@classwins[c] = arenacount + temp2
   		# instance_variable_set("@#{c}", temp)
