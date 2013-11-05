@@ -18,5 +18,22 @@
 	<div class="container">
 		<%= yield %>
 	</div>
+
+	<script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
+	<style type="text/css" media="screen, projection">
+	  @import url(//assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
+	</style>
+	<script type="text/javascript">
+	  if (typeof(Zenbox) !== "undefined") {
+	    Zenbox.init({
+	      dropboxID:   "20251633",
+	      url:         "https://hearthstats.zendesk.com",
+	      tabTooltip:  "Support",
+	      tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_support_right.png",
+	      tabColor:    "black",
+	      tabPosition: "Right"
+	    });
+	  }
+	</script>
 </body>
 </html>

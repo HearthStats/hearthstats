@@ -14,6 +14,11 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
+  <div class="gofirstfield">
+    <div class="pure-button pure-button-success gofirst"> First </div><br />
+    <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+  </div>
+
   <div class="yourfield">
     <%= f.label "Your Class" %><br />
     <% if @lastentry.nil? %>

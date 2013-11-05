@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131104062949) do
+ActiveRecord::Schema.define(:version => 20131105042116) do
 
   create_table "arenas", :force => true do |t|
     t.datetime "created_at",                    :null => false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20131104062949) do
     t.string   "userclass",  :default => "N/A"
     t.string   "oppclass",   :default => "N/A"
     t.boolean  "win",        :default => false
+    t.boolean  "gofirst",    :default => true
   end
 
   create_table "constructeds", :force => true do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20131104062949) do
     t.string   "deckname"
     t.string   "oppclass",   :default => "N/A"
     t.boolean  "win",        :default => false
+    t.boolean  "gofirst",    :default => true
   end
 
   create_table "decks", :force => true do |t|

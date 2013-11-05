@@ -6,6 +6,13 @@
 form{
 	padding-top: 80px;
 	font-family: 'Lato', sans-serif;
+	.gofirstfield{
+		width: 139px;
+		margin: auto;
+		.gofirst{
+			width: 100px;
+		}
+	}
 	.yourfield{
 		float: left;
 		margin-left: 100px;

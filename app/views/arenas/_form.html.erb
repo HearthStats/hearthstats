@@ -14,6 +14,15 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
+  <div class="gofirstfield">
+    <% if @arena.gofirst %>
+      <div class="pure-button pure-button-success gofirst"> First </div><br />
+    <% else %>
+      <div class="pure-button pure-button-secondary gofirst"> Second </div><br />
+    <% end %>
+    <%= f.check_box :gofirst, class: "firstcheckbox hidden" %>
+  </div>
+
   <div class="yourfield">
     <%= f.label :userclass %><br />
     <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.userclass ) %>
