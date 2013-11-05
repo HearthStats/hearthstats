@@ -22,4 +22,5 @@ production:
   adapter: postgresql
   database: hearthstats
   pool: 5
-  timeout: 5000
+  password: spirallife
+  timeout: 5432

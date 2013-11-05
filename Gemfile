@@ -26,10 +26,12 @@ end
 group :production do
 	gem 'pg'
 end
-
+gem 'newrelic_rpm'
 gem 'slim'
 gem 'devise'
 gem 'jquery-rails'
+gem 'feedzirra'
+gem 'announcements'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

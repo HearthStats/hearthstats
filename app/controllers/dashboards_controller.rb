@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
   	@constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 5)
   	classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
   	@classwins = Hash.new
-
+    @feed = Feedzirra::Feed.fetch_and_parse("http://mix.chimpfeedr.com/a87bd-Hearthstats")
   	classes.each do |c|
   		arenacount = Arena.where(:userclass => c, :win => true).count
   		deckcount = Deck.where(:race => c)

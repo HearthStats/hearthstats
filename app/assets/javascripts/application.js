@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require announcements
 //= require_tree .
 
 $(document).ready(function(){

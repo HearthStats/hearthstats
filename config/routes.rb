@@ -1,4 +1,6 @@
 Hearthstats::Application.routes.draw do
+  get "admin/index"
+
   resources :decks
   resources :dashboards do
     collection do
