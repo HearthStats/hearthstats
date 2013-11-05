@@ -27,10 +27,10 @@ div.pure-g-r
               span.defeat Defeat
     h2 News
     - q = 0
-    - while q < 5
+    - while q < 4
       p 
         - begin
-          = @feed.entries[q].published.strftime("%I %P on %B %d, %Y")  
+          br = @feed.entries[q].published.strftime("%I %P on %B %d, %Y")  
         - rescue
           |Currenly there are no feeds.
         - else
@@ -38,12 +38,13 @@ div.pure-g-r
 
       - q += 1
   div.pure-u-1-3
-    h2 Global Rankings
-    h3 Most Number of Wins 
-    - counter = 1
-    table.rankingtable
-      - @classwins.each do |c|
-        tr
-          td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-          td #{c[1]}
-        -counter = counter + 1
+    div.global
+      h2 Global Rankings
+      h3 Most Number of Wins 
+      - counter = 1
+      table.rankingtable
+        - @classwins.each do |c|
+          tr
+            td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+            td #{c[1]}
+          -counter = counter + 1

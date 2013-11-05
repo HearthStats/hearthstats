@@ -1,4 +1,9 @@
 Hearthstats::Application.routes.draw do
+  get "additional/contactus"
+  get "additional/aboutus"
+  get "additional/help"
+  get "additional/changelog"
+
   get "admin/index"
 
   resources :decks
