@@ -19,10 +19,10 @@
 			font-weight: 300;
 			font-family: 'Lato', sans-serif;
 			.headtitle{
-				position: fixed;
+				float: right;
 				font-size: 30px;
-				top: 14px;
 				padding-left: 15px;
+				padding-top: 10px;
 			}
 		}
 		.rightnav{

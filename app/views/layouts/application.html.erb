@@ -15,7 +15,7 @@
 		</div>
 	<% end %>
 	<%= render 'layouts/header' %>
-	<%= announce Announcement.newest %>
+	<%= announce Announcement.newest, :hide_message => "Hide Message" %>
 	<div class="container">
 		<%= yield %>
 	</div>
