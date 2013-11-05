@@ -22,7 +22,7 @@ html
         = f.password_field :password 
         div.rmbme 
           = f.check_box :remember_me 
-          = f.label :remember_me 
+          |Remember Me
         = f.submit 'Sign in'
       div.loginadd.cl-effect-1
         = link_to "Register", new_user_registration_path
