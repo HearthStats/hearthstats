@@ -36,6 +36,7 @@ class ArenasController < ApplicationController
   # GET /arenas/1/edit
   def edit
     @arena = Arena.find(params[:id])
+    canedit(@arena)
   end
 
   # POST /arenas
@@ -81,4 +82,5 @@ class ArenasController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

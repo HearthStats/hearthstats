@@ -36,12 +36,16 @@ class ConstructedsController < ApplicationController
   # GET /constructeds/1/edit
   def edit
     @constructed = Constructed.find(params[:id])
+    canedit(@constructed)
   end
 
   # POST /constructeds
   # POST /constructeds.json
   def create
     @constructed = Constructed.new(params[:constructed])
+    if params[:deckname].nil?
+      redirect_to new_constructed_path, notice: 'Please create a deck first.' and return
+    end
     @constructed.deckname = params[:deckname]["0"]
     @constructed.user_id = current_user.id
     @deck = Deck.where(user_id: current_user.id, :name => @constructed.deckname)[0]
