@@ -49,6 +49,7 @@ class ConstructedsController < ApplicationController
     @constructed.deckname = params[:deckname]["0"]
     @constructed.user_id = current_user.id
     @deck = Deck.where(user_id: current_user.id, :name => @constructed.deckname)[0]
+    @constructed.deck_id = @deck.id
     if @constructed.win
       if @deck.wins.nil?
         @deck.wins = 1
