@@ -24,7 +24,7 @@
   </div>
     <div class="yourfield">
       <%= f.label "Deck Name" %><br />
-        <%= collection_select(:deckname, 0, Deck.all, :name, :name, {selected: @constructed.deckname}) %>
+        <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname}) %>
     </div>
     <div class="oppfield">
       <%= f.label "Opponent's Class" %><br />
