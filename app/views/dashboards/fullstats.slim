@@ -5,7 +5,7 @@ table.rankingtable
       td #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
       td #{number_to_percentage(c[1], precision: 2)}
 
-h2 Personal Arena Win Rates
+h2 Arena Win Rates
 - @userarenarate.each_with_index do |c, i|
     p
       |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs . #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}
