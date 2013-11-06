@@ -10,23 +10,36 @@ class DashboardsController < ApplicationController
   	@constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 5)
   	
     # Fetch total wins for each class
+   #  classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+  	# @classwins = Hash.new
+  	# classes.each do |c|
+  	# 	arenacount = Arena.where(:userclass => c, :win => true).count
+  	# 	deckcount = Deck.where(:race => c)
+  	# 	if deckcount.blank? || deckcount[0].wins.nil?
+  	# 		temp2 = 0
+  	# 	else
+   #      temp2 = 0
+   #      deckcount.each do |d|
+   #        temp2 = temp2 + d.wins
+   #      end
+  	# 	end
+  	# 	@classwins[c] = arenacount + temp2
+  	# 	# instance_variable_set("@#{c}", temp)
+  	# end
+  	# @classwins = @classwins.sort_by { |name, wins| wins }.reverse
+
+    # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-  	@classwins = Hash.new
-  	classes.each do |c|
-  		arenacount = Arena.where(:userclass => c, :win => true).count
-  		deckcount = Deck.where(:race => c)
-  		if deckcount.blank? || deckcount[0].wins.nil?
-  			temp2 = 0
-  		else
-        temp2 = 0
-        deckcount.each do |d|
-          temp2 = temp2 + d.wins
-        end
-  		end
-  		@classwins[c] = arenacount + temp2
-  		# instance_variable_set("@#{c}", temp)
-  	end
-  	@classwins = @classwins.sort_by { |name, wins| wins }.reverse
+    @classwinrate = Hash.new
+    classes.each do |c|
+      totalwins = 0
+      totalgames = 0
+      totalwins = Arena.where(:userclass => c, :win => true).count + Arena.where(:oppclass => c, :win => false).count
+      totalgames = Arena.where(:userclass => c).count + Arena.where(:oppclass => c).count
+      @classwinrate[c] = (totalwins.to_f / totalgames)
+
+    end
+    @classwinrate = @classwinrate.sort_by { |name, winsrate| winsrate }.reverse
 
     # News feed for Heathstone news
     @feed = Feedzirra::Feed.fetch_and_parse("http://mix.chimpfeedr.com/a87bd-Hearthstats")
@@ -45,6 +58,7 @@ class DashboardsController < ApplicationController
       @classwinrate[c] = (totalwins.to_f / totalgames)
 
     end
+    @classwinrate = @classwinrate.sort_by { |name, winsrate| winsrate }.reverse
 
     # Determine Personal Arena Class Win Rates
     classcombos = classes.combination(2).to_a
@@ -56,7 +70,7 @@ class DashboardsController < ApplicationController
       totalgames = Arena.where(userclass: combo[0], oppclass: combo[1]).count + Arena.where(userclass: combo[1], oppclass: combo[0]).count
       @userarenarate["#{combo[0]} #{combo[1]}"] = (totalwins.to_f / totalgames)
     end
-    
+
   end
 
 
