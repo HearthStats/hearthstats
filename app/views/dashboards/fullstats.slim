@@ -4,11 +4,18 @@ table.rankingtable
     tr
       td #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
       td #{number_to_percentage(c[1], precision: 2)}
-
-h2 Arena Win Rates
-- @userarenarate.each_with_index do |c, i|
-    p
-      |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs . #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}
-      | : #{number_to_percentage(c[1], precision: 2)}
+div.pure-g-r
+  div.pure-u-1-2
+    h2 Arena Win Rates
+    - @userarenarate.each_with_index do |c, i|
+        p
+          |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs . #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}
+          | : #{number_to_percentage(c[1], precision: 2)}
+  div.pure-u-1-2
+    h2 Constructed Win Rates
+    - @conrate.each_with_index do |c, i|
+        p
+          |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs . #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}
+          | : #{number_to_percentage(c[1], precision: 2)}
 
       
