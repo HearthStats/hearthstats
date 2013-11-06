@@ -75,7 +75,7 @@ Hearthstats::Application.configure do
   config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
       :port      => 587,
-      :user_name => "trigun0x2@gmail.com"
+      :user_name => "trigun0x2@gmail.com",
       :password  => "2EHw5V8KxBxqfHRvkdZhIg"
     }
 
