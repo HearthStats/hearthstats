@@ -5,6 +5,7 @@ Hearthstats::Application.routes.draw do
   get "additional/changelog"
 
   get "admin/index"
+  get "admin/addid"
 
   resources :decks
   resources :dashboards do

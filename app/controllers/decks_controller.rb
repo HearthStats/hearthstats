@@ -74,7 +74,6 @@ class DecksController < ApplicationController
   def destroy
     @deck = Deck.find(params[:id])
     @deck.destroy
-
     respond_to do |format|
       format.html { redirect_to decks_url }
       format.json { head :no_content }
