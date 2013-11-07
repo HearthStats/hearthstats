@@ -17,8 +17,9 @@
           - @userdeckrates.each do |c|
             tr
               td #{counter}. #{image_tag("Icons/Classes/#{c[1][0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-              td #{c[1][1].round(2)}
+              td #{number_to_percentage(c[1][1], precision: 2)}
             -counter = counter + 1
     div.pure-u-1-3
-      h2 What else to add here?
-      |Email me all suggestions
+      h2 Overall Win Rates
+      h3 Arena: #{number_to_percentage(@overallarena, precision: 2)}
+      h3 Constructed: #{number_to_percentage(@overallcon, precision: 2)}

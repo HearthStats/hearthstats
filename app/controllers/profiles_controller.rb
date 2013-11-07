@@ -17,8 +17,8 @@ class ProfilesController < ApplicationController
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = Arena.where(:userclass => c, :win => true, :user_id => @user.id ).count + Arena.where(:oppclass => c, :win => false, :user_id => @user.id ).count
-      totalgames = Arena.where(:userclass => c, :user_id => @user.id ).count + Arena.where(:oppclass => c, :user_id => @user.id ).count
+      totalwins = Arena.where(:userclass => c, :win => true, :user_id => @user.id ).count
+      totalgames = Arena.where(:userclass => c, :user_id => @user.id ).count
       if totalgames == 0
       	@classarenarate[c] = -1
       else
@@ -35,8 +35,7 @@ class ProfilesController < ApplicationController
       totalwins = 0
       totalgames = 0
       totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c, :user_id => @user.id ).count
-      totalwins = totalwins + Constructed.joins(:deck).where(oppclass: c, win: false, :user_id => @user.id ).count
-      totalgames = Constructed.joins(:deck).where('decks.race' => c, :user_id => @user.id ).count + Constructed.joins(:deck).where(oppclass: c, :user_id => @user.id ).count
+      totalgames = Constructed.joins(:deck).where('decks.race' => c, :user_id => @user.id ).count
       if totalgames == 0
       	@classconrate[c] = -1
       else
@@ -50,9 +49,13 @@ class ProfilesController < ApplicationController
     decks = Deck.where(user_id: @user.id)
     @userdeckrates = Hash.new
     decks.each do |d|
-    	@userdeckrates[d.name] = [d.race, d.wins.to_f / d.loses]
+    	@userdeckrates[d.name] = [d.race, d.wins.to_f / (d.loses + d.wins)]
     end
     @userdeckrates = @userdeckrates.sort_by { |name, winsrate| winsrate }.reverse
+
+    # Overall win rates
+    @overallarena = Arena.where(user_id: @user.id, win: true).count.to_f / Arena.where(user_id: @user.id).count
+    @overallcon = Constructed.where(user_id: @user.id, win: true).count.to_f / Constructed.where(user_id: @user.id).count
 
   	respond_to do |format|
       format.html # show.html.erb

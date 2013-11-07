@@ -58,6 +58,7 @@ class DecksController < ApplicationController
   # PUT /decks/1.json
   def update
     @deck = Deck.find(params[:id])
+    contructed = Constructed.where(:deck_id => @deck.id).update_all(:deckname => params[:deck]['name'])
 
     respond_to do |format|
       if @deck.update_attributes(params[:deck])

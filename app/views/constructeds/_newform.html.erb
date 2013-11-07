@@ -16,6 +16,7 @@
   </div> -->
   <% if !@lastentry.nil? %>
     <div class="gofirstfield">
+      <div class="gofirsttitle">You played on the: </div>
       <div class="pure-button pure-button-success gofirst"> First Turn </div><br />
       <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
     </div>
