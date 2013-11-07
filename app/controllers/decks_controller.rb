@@ -1,4 +1,5 @@
 class DecksController < ApplicationController
+  before_filter :authenticate_user!
   # GET /decks
   # GET /decks.json
   def index

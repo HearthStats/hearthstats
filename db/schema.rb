@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131106165431) do
+ActiveRecord::Schema.define(:version => 20131107062558) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -29,6 +29,42 @@ ActiveRecord::Schema.define(:version => 20131106165431) do
     t.boolean   "win",        :default => false
     t.boolean   "gofirst",    :default => true
   end
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "format",      :default => "default"
+    t.text     "post"
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  create_table "blog_comments", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "email",      :null => false
+    t.string   "website"
+    t.text     "body",       :null => false
+    t.integer  "post_id",    :null => false
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "blog_comments", ["post_id"], :name => "index_blog_comments_on_post_id"
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title",                         :null => false
+    t.text     "body",                          :null => false
+    t.integer  "blogger_id"
+    t.string   "blogger_type"
+    t.integer  "comments_count", :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "blog_posts", ["blogger_type", "blogger_id"], :name => "index_blog_posts_on_blogger_type_and_blogger_id"
 
   create_table "constructeds", :force => true do |t|
     t.timestamp "created_at",                    :null => false
@@ -49,6 +85,31 @@ ActiveRecord::Schema.define(:version => 20131106165431) do
     t.timestamp "updated_at",                :null => false
     t.string    "race"
     t.integer   "user_id"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.string   "bnetid"
+    t.boolean  "private",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|

@@ -1,4 +1,8 @@
 Hearthstats::Application.routes.draw do
+  # get "profile/index"
+
+  # get "profile/edit"
+
   get "additional/contactus"
   get "additional/aboutus"
   get "additional/help"
@@ -6,7 +10,8 @@ Hearthstats::Application.routes.draw do
 
   get "admin/index"
   get "admin/addid"
-
+  
+  resources :profiles
   resources :decks
   resources :dashboards do
     collection do
