@@ -5,5 +5,5 @@ footer
     = link_to "Help", additional_help_path
     = link_to "Contact Us", additional_contactus_path
     = link_to "Beta Stats", fullstats_dashboards_path
-    - if current_user.id = 1
+    - if current_user.id == 1
       =link_to "Admin", admin_index_path
