@@ -1,17 +1,14 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.global, .userdeckrates{
-	width: 360px;
+.global, .userdeckrates, .overwin{
 	h2{
 		margin-bottom: 0px;
 	}
 	.rankingtable{
-		width: 180px;
 		background-color: #f0f0f0;
 		td{
 			padding-left: 0;
-			padding-right: 20px;
 		}
 	}
 	.arena{
@@ -19,6 +16,15 @@
 	}
 	.con{
 		float: right;
+	}
+}
+.global{
+	width: 360px;
+	.rankingtable{
+		width: 180px;
+		td{
+			padding-right: 20px;
+		}
 	}
 }
 .userdeckrates{

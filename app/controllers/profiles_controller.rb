@@ -1,9 +1,27 @@
 class ProfilesController < ApplicationController
   def index
-  	@user = current_user
+  	redirect_to "/profiles/#{current_user.id}"
   end
 
   def edit
+    @profile = Profile.find(params[:id])
+    if current_user.id != @profile.id
+      redirect_to root_url, notice: 'You are not authorized to edit that.'
+    end 
+  end
+
+  def update
+    @profile = Profile.find(params[:id])
+
+    respond_to do |format|
+      if @profile.update_attributes(params[:profile])
+        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
@@ -54,8 +72,8 @@ class ProfilesController < ApplicationController
     @userdeckrates = @userdeckrates.sort_by { |name, winsrate| winsrate }.reverse
 
     # Overall win rates
-    @overallarena = Arena.where(user_id: @user.id, win: true).count.to_f / Arena.where(user_id: @user.id).count
-    @overallcon = Constructed.where(user_id: @user.id, win: true).count.to_f / Constructed.where(user_id: @user.id).count
+    @overallarena = [Arena.where(user_id: @user.id, win: true).count, Arena.where(user_id: @user.id).count]
+    @overallcon = [Constructed.where(user_id: @user.id, win: true).count, Constructed.where(user_id: @user.id).count]
 
   	respond_to do |format|
       format.html # show.html.erb

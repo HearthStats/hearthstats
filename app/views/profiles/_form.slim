@@ -1,0 +1,16 @@
+= form_for(@profile) do |f|
+  - if @profile.errors.any?
+    div#error_explanation
+      h2 #{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:
+      ul
+        - @profile.errors.full_messages.each do |msg|
+          li = msg 
+
+  = f.label :name
+  = f.text_field :name
+
+  = f.label "Battnet ID" 
+  = f.text_field :bnetid
+
+  div.cf
+  = f.submit "Update Profile", class: "pure-button pure-button-primary"
