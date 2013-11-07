@@ -1,14 +1,14 @@
 div.profileheader
   - if @profile.name
     h1 #{@profile.name}'s Profile
-    - if params[:id] = current_user.id
+    - if current_user && params[:id] = current_user.id
       span.editprofile = link_to 'Edit Profile', edit_profile_path
   - else
-    h1 Your Profile
-    - if params[:id] = current_user.id
+    h1 User Profile
+    - if current_user && params[:id] = current_user.id
       span.editprofile = link_to 'Edit Profile', edit_profile_path
   - if @profile.bnetid
-    h4 Battlenet ID: #{@profile.bnetid}#
+    h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
 
 div.graphtitle Recent Match Wins
 = render 'dashboards/userchart', width: 1000, height: 200

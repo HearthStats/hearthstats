@@ -10,7 +10,12 @@
   = f.text_field :name
 
   = f.label "Battnet ID" 
-  | #{f.text_field :bnetid} # #{f.number_field :bnetnum}
-
+  div.bnetid #{f.text_field :bnetid} # #{f.number_field :bnetnum}
+  = f.label "Make Profile Private?"
+  div.coolcheckbox
+    = f.check_box :private, id: "checkboxTwoInput"
+    label for="checkboxTwoInput"
   div.cf
-  = f.submit "Update Profile", class: "pure-button pure-button-primary"
+  = link_to 'Back', "/profiles/#{current_user.id}", class: "pure-button pure-button-secondary"
+  = f.submit "Update Profile", class: "pure-button pure-button-success", style: "padding-top: 8px;"
+  

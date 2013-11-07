@@ -4,18 +4,19 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
-    if current_user.id != @profile.id
+    authenticate_user!
+    @profile = User.find(params[:id]).profile
+    if current_user.id != @profile.user_id
       redirect_to root_url, notice: 'You are not authorized to edit that.'
     end 
   end
 
   def update
     @profile = Profile.find(params[:id])
-
+    
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to "/profiles/#{current_user.id}", notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -25,7 +26,13 @@ class ProfilesController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    if !current_user || !(current_user.id == @user.id)
+      if @user.profile.private
+        redirect_to root_url, notice: "User's Profile is Private"
+      end
+    end
+  	
   	@profile = @user.profile
   	recentgames(@user.id, 60)
 
@@ -79,8 +86,5 @@ class ProfilesController < ApplicationController
     @overallarena = [Arena.where(user_id: @user.id, win: true).count, Arena.where(user_id: @user.id).count]
     @overallcon = [Constructed.where(user_id: @user.id, win: true).count, Constructed.where(user_id: @user.id).count]
 
-  	respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 end
