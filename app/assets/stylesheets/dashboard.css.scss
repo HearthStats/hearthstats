@@ -25,3 +25,24 @@
 .rssdate{
 	font-size: 13px;
 }
+
+.hsnews{
+	padding-right: 40px;
+}
+.chartlegend{
+	position: relative;
+	.arena{
+		color: rgba(52, 152, 219,1.0);
+		font-size: 40px;
+		padding-left: 90px;
+	}
+	.con{
+		color: rgba(155, 89, 182,1.0);
+		font-size: 40px;
+		padding-left: 34px;
+	}
+	.chartlabel{
+		position: absolute;
+		top: 4px;
+	}
+}

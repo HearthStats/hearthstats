@@ -6,8 +6,22 @@ class DashboardsController < ApplicationController
 
   def index
     # Find recent games
-  	@arena = Arena.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 5)
-  	@constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 5)
+    @arenawins = Array.new(12, 0)
+  	arena = Arena.where(user_id: current_user.id, win: true).where('created_at > ?', 12.hours.ago)
+    arena.each do |a|
+      timebefore = ((Time.now - a.created_at)/1.hour).round
+      @arenawins[timebefore] += 1
+    end
+
+    @conwins = Array.new(12, 0)
+    constructed = Constructed.where(user_id: current_user.id, win: true).where('created_at > ?', 12.hours.ago)
+    constructed.each do |a|
+      timebefore = ((Time.now - a.created_at)/1.hour).round
+      @conwins[timebefore] += 1
+    end
+      # raise
+
+  	# @constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 100)
   	
     # Fetch total wins for each class
    #  classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
@@ -54,10 +68,8 @@ class DashboardsController < ApplicationController
       @classconrate[c] = (totalwins.to_f / totalgames)
     end
     @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
-    
-    # News feed for Heathstone news
-    @feed = Feedzirra::Feed.fetch_and_parse("http://mix.chimpfeedr.com/a87bd-Hearthstats")
 
+    # 
   end
 
   def fullstats

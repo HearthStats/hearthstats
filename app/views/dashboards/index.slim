@@ -1,60 +1,12 @@
 h1 Dashboard
 div.pure-g-r
   div.pure-u-2-3
-    div.pure-u-1-2
-      h2 Recent Arena Matches
-      - @arena.each do |a|
-        p
-          = a.userclass
-          |  vs. 
-          = a.oppclass
-          br
-            -if a.win  
-              span.victory Victory
-            -else
-              span.defeat Defeat
-    div.pure-u-1-2
-      h2 Recent Constructed Matches
-      - @constructed.each do |a|
-        p
-          = a.deckname
-          |  vs. 
-          = a.oppclass
-          br
-            -if a.win  
-              span.victory Victory
-            -else
-              span.defeat Defeat
-    h2 News
-    - q = 0
-    - while q < 3
-      p 
-        - begin
-          br = @feed.entries[q].published.strftime("%I %P on %B %d, %Y")  
-        - rescue
-          |Currenly there are no feeds.
-        - else
-          = link_to @feed.entries[q].title, @feed.entries[q].url
-
-      - q += 1
+    = render 'userchart'
+    div.cf
+    div.hsnews
+      h2 HearthStats Update
+      p HearthStats has grown a lot since it's initial launch but there's still much more to do!
+      p I am working hard to pump out more stats with all the information we have but there's much more we want to do, thus we need <b> YOU! </b>
+      p If you would be interested in helping out with HearthStats in fields marketing, idea generation and management, please let me know! Send me an email at <a href="mailto:trigun0x2@gmail.com">trigun0x2@gmail.com</a>.
   div.pure-u-1-3
-    div.global
-      h2 Global Rankings
-      div.arena
-        h3 Arena Win Rates
-        - counter = 1
-        table.rankingtable
-          - @classarenarate.each do |c|
-            tr
-              td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-              td #{number_to_percentage(c[1], precision: 2)}
-            -counter = counter + 1
-      div.con
-        h3 Constructed Win Rates
-        - counter = 1
-        table.rankingtable
-          - @classconrate.each do |c|
-            tr
-              td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-              td #{number_to_percentage(c[1], precision: 2)}
-            -counter = counter + 1
+    = render 'globalstats'

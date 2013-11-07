@@ -1,0 +1,28 @@
+canvas id="myChart" width="600px" height="200"
+p.chartlegend
+  span.con &#9632;
+  span.chartlabel Constructed
+  span.arena &#9632;
+  span.chartlabel Arena
+javascript:
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var data = {
+    labels : ["12","11","10","9","8","7","6","5","4","3","2","1"],
+    datasets : [
+      {
+        fillColor : "rgba(52, 152, 219,1.0)",
+        strokeColor : "rgba(41, 128, 185,1.0)",
+        pointColor : "rgba(41, 128, 185,1.0)",
+        pointStrokeColor : "#fff",
+        data : #{@conwins.reverse.to_json}
+      },
+      {
+        fillColor : "rgba(155, 89, 182,1.0)",
+        strokeColor : "rgba(142, 68, 173,1.0)",
+        pointColor : "rgba(142, 68, 173,1.0)",
+        pointStrokeColor : "#fff",
+        data : #{@arenawins.reverse.to_json}
+      }
+    ]
+  }
+  var myNewChart = new Chart(ctx).Line(data);  
