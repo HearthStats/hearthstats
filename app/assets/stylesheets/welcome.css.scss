@@ -10,7 +10,10 @@
 		transition: all linear .2s,box-shadow linear .2s;
 	}
 	height: 100%;
-	background-image: image-url('hearthstonebg.jpg');
+	background: image-url('hearthstonebg.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
 	.sitename{
 		font-size: 80px;
@@ -72,7 +75,7 @@
 			text-align: center;
 			padding-bottom: 5px;
 		}
-		.backbutton{
+		.backbuttonreg{
 			margin: 0px auto 5px auto;
 			width: 200px;
 			display: block;
