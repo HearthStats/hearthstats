@@ -8,9 +8,10 @@ class ProfilesController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+  	@profile = @user.profile
+  	recentgames(@user.id, 60)
   	respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
     end
   end
 end

@@ -5,21 +5,7 @@ class DashboardsController < ApplicationController
   end
 
   def index
-    # Find recent games
-    @arenawins = Array.new(12, 0)
-  	arena = Arena.where(user_id: current_user.id, win: true).where('created_at > ?', 12.hours.ago)
-    arena.each do |a|
-      timebefore = ((Time.now - a.created_at)/1.hour).round
-      @arenawins[timebefore] += 1
-    end
-
-    @conwins = Array.new(12, 0)
-    constructed = Constructed.where(user_id: current_user.id, win: true).where('created_at > ?', 12.hours.ago)
-    constructed.each do |a|
-      timebefore = ((Time.now - a.created_at)/1.hour).round
-      @conwins[timebefore] += 1
-    end
-      # raise
+    recentgames(current_user.id, 12)
 
   	# @constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 100)
   	

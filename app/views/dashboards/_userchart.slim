@@ -1,13 +1,14 @@
-canvas id="myChart" width="600px" height="200"
+canvas id="myChart" width="#{width}" height="#{height}"
 p.chartlegend
   span.con &#9632;
   span.chartlabel Arena
   span.arena &#9632;
   span.chartlabel Constructed
+
 javascript:
   var ctx = document.getElementById("myChart").getContext("2d");
   var data = {
-    labels : ["12","11","10","9","8","7","6","5","4","3","2","1"],
+    labels : #{@timearray.reverse.to_json},
     datasets : [
       {
         fillColor : "rgba(52, 152, 219,0.6)",
@@ -25,4 +26,5 @@ javascript:
       }
     ]
   }
+  
   var myNewChart = new Chart(ctx).Line(data);  

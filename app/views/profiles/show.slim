@@ -1,1 +1,5 @@
-= @user.email
+- if @profile.name
+  h1 #{profile.name} Profile
+- else
+  h1 Your Profile
+  = render 'dashboards/userchart', width: 1000, height: 200

@@ -16,4 +16,15 @@ class AdminController < ApplicationController
   	end
   	redirect_to root_url, notice: 'SUCCESSSS'
   end
+
+  def addprofileuserid
+    users = User.all
+    users.each do |c|
+      p = Profile.new
+      p.user_id = c.id
+      p.save
+    end
+    redirect_to root_url, notice: 'SUCCESSSS PROFILE'
+  end
+
 end
