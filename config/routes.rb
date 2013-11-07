@@ -9,7 +9,6 @@ Hearthstats::Application.routes.draw do
   get "additional/changelog"
 
   get "admin/index"
-  get "admin/addprofileuserid"
   
   resources :profiles
   resources :decks
