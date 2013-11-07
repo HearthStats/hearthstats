@@ -9,6 +9,7 @@ Hearthstats::Application.routes.draw do
   get "additional/changelog"
 
   get "admin/index"
+  get "admin/addprofileuserid"
   
   resources :profiles
   resources :decks
@@ -19,7 +20,8 @@ Hearthstats::Application.routes.draw do
     end
   end
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :constructeds
 
 

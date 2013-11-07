@@ -10,7 +10,7 @@
   = f.text_field :name
 
   = f.label "Battnet ID" 
-  = f.text_field :bnetid
+  | #{f.text_field :bnetid} # #{f.number_field :bnetnum}
 
   div.cf
   = f.submit "Update Profile", class: "pure-button pure-button-primary"
