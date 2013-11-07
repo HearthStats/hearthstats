@@ -5,8 +5,12 @@ div.headcontainer
         = image_tag("hearthstatslogo.png", height: '40', width: '40')
         span.headtitle HearthStats
     nav.rightnav.cl-effect-1
-      = link_to 'Dashboard', '/'
-      = link_to 'Arena', arenas_path
-      = link_to 'Constructed', constructeds_path
-      = link_to 'Decks', decks_path
-      = link_to('Logout', destroy_user_session_path)
+      -if !current_user.nil?
+        = link_to 'Dashboard', '/'
+        = link_to 'Arena', arenas_path
+        = link_to 'Constructed', constructeds_path
+        = link_to 'Decks', decks_path
+        = link_to('Logout', destroy_user_session_path)
+      -else
+        = link_to 'Home', '/'
+        = link_to 'Register', new_user_registration_path

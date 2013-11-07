@@ -1,7 +1,7 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.global{
+.global, .userdeckrates{
 	width: 360px;
 	h2{
 		margin-bottom: 0px;
@@ -21,7 +21,15 @@
 		float: right;
 	}
 }
-
+.userdeckrates{
+	padding-left: 50px;
+	h2{
+		padding-bottom: 45px;
+	}
+	.rankingtable{
+		width: 80%;
+	}
+}
 .rssdate{
 	font-size: 13px;
 }

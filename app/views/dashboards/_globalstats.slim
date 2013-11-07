@@ -1,20 +1,25 @@
-div.global
-      h2 Global Rankings
-      div.arena
-        h3 Arena Win Rates
-        - counter = 1
-        table.rankingtable
-          - @classarenarate.each do |c|
-            tr
-              td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-              td #{number_to_percentage(c[1], precision: 2)}
-            -counter = counter + 1
-      div.con
-        h3 Constructed Win Rates
-        - counter = 1
-        table.rankingtable
-          - @classconrate.each do |c|
-            tr
-              td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-              td #{number_to_percentage(c[1], precision: 2)}
-            -counter = counter + 1
+div.arena
+  h3 Arena Win Rates
+  - counter = 1
+  table.rankingtable
+    - @classarenarate.each do |c|
+      tr
+        td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+        -if c[1] == -1
+          td N/A
+        -else
+          td #{number_to_percentage(c[1], precision: 2)}
+
+      -counter = counter + 1
+div.con
+  h3 Constructed Win Rates
+  - counter = 1
+  table.rankingtable
+    - @classconrate.each do |c|
+      tr
+        td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+        -if c[1] == -1
+          td N/A
+        -else
+          td #{number_to_percentage(c[1], precision: 2)}
+      -counter = counter + 1

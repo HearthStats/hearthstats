@@ -55,7 +55,6 @@ class DashboardsController < ApplicationController
     end
     @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
 
-    # 
   end
 
   def fullstats
