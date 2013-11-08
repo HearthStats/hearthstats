@@ -10,8 +10,8 @@ group :development do
   gem "better_errors", ">= 0.3.2"
   gem "binding_of_caller", ">= 0.6.8"
   gem 'sqlite3'
-  gem 'capistrano', "~> 2.14.2"
-  gem 'rvm-capistrano'
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano-rvm', '~> 0.0.3'
 end
 
 # Gems used only for assets and not required
