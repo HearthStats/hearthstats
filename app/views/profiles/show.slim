@@ -1,12 +1,11 @@
+- set_meta_tags :title => 'Profile',
+  :description => 'HearthStats User Dashboard',
+  :keywords => 'Dashboard, global stats, news' 
+
 div.profileheader
-  - if @profile.name
-    h1 #{@profile.name}'s Profile
-    - if current_user && params[:id] = current_user.id
-      span.editprofile = link_to 'Edit Profile', edit_profile_path
-  - else
-    h1 User Profile
-    - if current_user && params[:id] = current_user.id
-      span.editprofile = link_to 'Edit Profile', edit_profile_path
+  h1 = @profiletitle
+  - if current_user && params[:id] = current_user.id
+    span.editprofile = link_to 'Edit Profile', edit_profile_path
   - if @profile.bnetid
     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
 

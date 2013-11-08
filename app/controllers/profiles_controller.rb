@@ -34,6 +34,11 @@ class ProfilesController < ApplicationController
     end
   	
   	@profile = @user.profile
+    if (!@profile.name.nil? && !@profile.name.blank?)
+      @profiletitle = "#{@profile.name}'s Profile"
+    else
+      @profiletitle = "User's Profile"
+    end
   	recentgames(@user.id, 60)
 
   	# Determine Arena Class Win Rates

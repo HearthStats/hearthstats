@@ -36,6 +36,8 @@ gem 'jquery-rails'
 gem 'announcements'
 gem 'will_paginate', '~> 3.0'
 gem 'taps'
+
+gem 'meta-tags', :require => 'meta_tags'
 # gem 'activerecord-mysql2-adapter'
 
 
