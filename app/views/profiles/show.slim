@@ -41,7 +41,7 @@ div.pure-g-r
         tr.center
           td.victory #{@overallarena[0]}
           td.defeat #{@overallarena[1]} 
-          td #{number_to_percentage((@overallarena[0].to_f / @overallarena[1]), precision: 2)}
+          td #{number_to_percentage((@overallarena[0].to_f / @overallarena[2]), precision: 2)}
       h3.center Constructed
       table.rankingtable
         tr
@@ -51,4 +51,4 @@ div.pure-g-r
         tr.center
           td.victory #{@overallcon[0]}
           td.defeat #{@overallcon[1]} 
-          td #{number_to_percentage((@overallcon[0].to_f / @overallcon[1]), precision: 2)}
+          td #{number_to_percentage((@overallcon[0].to_f / @overallcon[2]), precision: 2)}

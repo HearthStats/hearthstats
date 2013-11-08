@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    
+
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to "/profiles/#{current_user.id}", notice: 'Profile was successfully updated.' }
@@ -83,8 +83,8 @@ class ProfilesController < ApplicationController
     end
     @userdeckrates = @userdeckrates.sort_by { |name, winsrate| winsrate[1] }.reverse
     # Overall win rates
-    @overallarena = [Arena.where(user_id: @user.id, win: true).count, Arena.where(user_id: @user.id).count]
-    @overallcon = [Constructed.where(user_id: @user.id, win: true).count, Constructed.where(user_id: @user.id).count]
+    @overallarena = [Arena.where(user_id: @user.id, win: true).count, Arena.where(user_id: @user.id, win: false).count, Arena.where(user_id: @user.id).count]
+    @overallcon = [Constructed.where(user_id: @user.id, win: true).count, Constructed.where(user_id: @user.id, win: false).count, Constructed.where(user_id: @user.id).count]
 
   end
 end
