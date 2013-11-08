@@ -3,6 +3,24 @@ class AdminController < ApplicationController
   def index
   end
 
+  def announcement
+    @ann = Announcement.new
+    @annrec = Announcement.last(5).reverse
+  end
+
+  def anncreate
+    @ann = Announcement.new(params[:announcement]) 
+    respond_to do |format|
+      if @ann.save
+        format.html { redirect_to admin_index_path, notice: 'Announcement was successfully created.' }
+        format.json { render json: @ann, status: :created, location: @ann }
+      else
+        format.html { render action: "announcement" }
+        format.json { render json: @ann.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def addid
   	constructed = Constructed.all
   	constructed.each do |c|

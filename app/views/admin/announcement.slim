@@ -1,0 +1,19 @@
+h1 New Announcement
+
+= form_for @ann, :url => admin_anncreate_path do |f|
+  - if @ann.errors.any?
+    div#error_explanation
+      h2 #{pluralize(@ann.errors.count, "error")} prohibited this ann from being saved:
+      ul
+        - @ann.errors.full_messages.each do |msg|
+          li = msg 
+
+  = f.label :body
+  = f.text_field :body
+
+  = f.submit "Update Profile", class: "pure-button pure-button-success", style: "padding-top: 8px;"
+
+h2 Recent Annoucements
+- @annrec.each do |a|
+  p = a.body
+  

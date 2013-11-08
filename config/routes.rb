@@ -10,6 +10,9 @@ Hearthstats::Application.routes.draw do
 
   get "admin/index"
   get "admin/addprofileuserid"
+  get "admin/announcement"
+  post "admin/anncreate"
+
   
   resources :profiles
   resources :decks
