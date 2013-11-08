@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def smart_add_url_protocol(url)
+    unless url[/^http:\/\//] || url[/^https:\/\//]
+      url = "http://#{url}"
+    end
+  end
+
   def layout
     # only turn it off for login pages:
     is_a?(Devise::SessionsController) ? false : "application"
