@@ -36,7 +36,9 @@ gem 'jquery-rails'
 gem 'announcements'
 gem 'will_paginate', '~> 3.0'
 gem 'taps'
-gem 'activerecord-mysql2-adapter'
+# gem 'activerecord-mysql2-adapter'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

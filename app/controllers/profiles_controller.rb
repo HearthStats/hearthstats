@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    @profile = User.find(current_user.id).profile
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
