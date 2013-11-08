@@ -42,6 +42,7 @@
     <%= f.check_box :win, class: "wincheckbox hidden" %>
   </div>
   <div class="actions">
-    <%= f.submit "Update Arena Entry", class: "pure-button pure-button-primary" %>
+    <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
+    <%= f.submit "Update Entry", class: "pure-button pure-button-success" %>
   </div>
 <% end %>

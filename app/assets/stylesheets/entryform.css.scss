@@ -79,16 +79,29 @@ form{
 
 	}
 	.actions{
-		float: right;
-		font-size: 18px;
+		margin: auto;
+		width: 500px;
+		text-align: center;
+		padding-top: 30px;
+		a{
+			color: white !important;
+			margin-right: 10px;
+			font-size: 20px !important; 
+		}
+		input[type="submit"]{
+			font-size: 21px;
+			padding-top: 11px;
+			padding-bottom: 9px;
+		}
 	}
+	
 }
-.backbutton{
-	float: left;
-	margin: auto;
-	width: 77px;
-	margin-left: 2px;
-	background: rgb(223, 117, 20);
-	color: white !important;
-	display: inline-block;
-}
+// .backbutton{
+// 	float: left;
+// 	margin: auto;
+// 	width: 77px;
+// 	margin-left: 2px;
+// 	background: rgb(223, 117, 20);
+// 	color: white !important;
+// 	display: inline-block;
+// }

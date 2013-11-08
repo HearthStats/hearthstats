@@ -20,7 +20,6 @@
     <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
   </div>
   <div class="cf"></div>
-  <div class="actions">
-    <%= f.submit "Create Deck", class: "pure-button pure-button-primary" %>
-  </div>
+  <%= link_to 'Back', decks_path, class: "pure-button pure-button-secondary" %>
+  <%= f.submit "Create Deck", class: "pure-button pure-button-success" %>
 <% end %>

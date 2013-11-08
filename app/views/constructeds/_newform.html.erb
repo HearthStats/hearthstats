@@ -34,7 +34,8 @@
       <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
     </div>
     <div class="actions">
-      <%= f.submit "Create Entry", class: "pure-button pure-button-primary" %>
+      <%= link_to 'Back', constructeds_path, class: "pure-button pure-button-secondary" %>
+      <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
     </div>
   <% else %>
     <div class="gofirstfield">
@@ -57,7 +58,8 @@
       <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
     </div>
     <div class="actions">
-      <%= f.submit "Create Entry", class: "pure-button pure-button-primary" %>
+      <%= link_to 'Back', constructeds_path, class: "pure-button pure-button-secondary" %>
+      <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
     </div>
   <% end %>
 <% end %>

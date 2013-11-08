@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107180716) do
+ActiveRecord::Schema.define(:version => 20131108210924) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -85,16 +85,17 @@ ActiveRecord::Schema.define(:version => 20131107180716) do
     t.timestamp "updated_at",                :null => false
     t.string    "race"
     t.integer   "user_id"
+    t.string    "decklink"
   end
 
   create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.string   "bnetid"
-    t.boolean  "private",    :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "user_id"
-    t.integer  "bnetnum",    :default => 0
+    t.string    "name"
+    t.string    "bnetid"
+    t.boolean   "private",    :default => false
+    t.timestamp "created_at",                    :null => false
+    t.timestamp "updated_at",                    :null => false
+    t.integer   "user_id"
+    t.integer   "bnetnum",    :default => 0
   end
 
   create_table "taggings", :force => true do |t|
