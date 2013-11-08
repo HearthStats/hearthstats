@@ -3,5 +3,31 @@
   :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss' %>
 
 <div class="entrytitle">New deck</div>
-
+<div class="decklink">
+	<div class="linkie">Deck Link (I.e. "www.hearthpwn.com/decks/7112-low-cost-warlock-rush")</div>
+	<input id="decklink" size="30" type="text">
+</div>
 <%= render 'form' %>
+
+<!-- Javascript to render Hearthpwn Link etc -->
+<script>
+$(document).ready(function(){
+	$('#decklink').bind('blur keyup', function(e){
+		if(e.type === 'keyup' && e.keyCode !== 10 && e.keyCode !== 13) return;
+		var link = $('#decklink').val();
+		var linkarray = link.split('/');
+		var linkvalue = linkarray[linkarray.length-1].split('-');
+		var linkid = linkvalue.shift();
+		$('#deck_name').val(linkvalue.join(" "));
+		$('#deck_race').css("border", "3px solid red")
+		linkarray.pop();
+		linkarray[linkarray.length]=linkid;
+		linkarray[linkarray.length]="export/4";
+		console.log(linkarray);
+		finaldecklink = linkarray.join('/');
+		$('#deck_decklink').val(finaldecklink);
+	});
+});
+	
+
+</script>

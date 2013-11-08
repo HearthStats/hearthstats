@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="deckfield">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -19,7 +19,14 @@
     <%= f.label "Class" %> <br>
     <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
   </div>
+
+  <div class="hidden">
+    <%= f.text_field :decklink %>
+  </div>  
+
   <div class="cf"></div>
-  <%= link_to 'Back', decks_path, class: "pure-button pure-button-secondary" %>
-  <%= f.submit "Create Deck", class: "pure-button pure-button-success" %>
+  <div class="actions">
+    <%= link_to 'Back', constructeds_path, class: "pure-button pure-button-secondary" %>
+    <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
+  </div>
 <% end %>
