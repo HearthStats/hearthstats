@@ -1,6 +1,6 @@
-- set_meta_tags :title => 'Profile',
-  :description => 'HearthStats User Dashboard',
-  :keywords => 'Dashboard, global stats, news' 
+- set_meta_tags :title => @profiletitle,
+  :description => @profiletitle,
+  :keywords => "user, profile, personal, statistics, hearthstats, hst, #{@profile.name}"
 
 div.profileheader
   h1 = @profiletitle
