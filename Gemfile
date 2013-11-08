@@ -10,8 +10,8 @@ group :development do
   gem "better_errors", ">= 0.3.2"
   gem "binding_of_caller", ">= 0.6.8"
   gem 'sqlite3'
-  gem 'capistrano', '~> 3.0'
-  gem 'capistrano-rvm', '~> 0.0.3'
+  gem 'capistrano', "~> 2.14.2"
+  gem 'rvm-capistrano'
 end
 
 # Gems used only for assets and not required
@@ -36,6 +36,7 @@ gem 'jquery-rails'
 gem 'announcements'
 gem 'will_paginate', '~> 3.0'
 gem 'taps'
+gem 'activerecord-mysql2-adapter'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
