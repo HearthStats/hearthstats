@@ -19,5 +19,6 @@ table
       td = deck.wins
       td = deck.loses
       td.cl-effect-3
-        span.edit = link_to 'Show', deck
+        span.edit = link_to 'Edit', edit_deck_path(deck)
+        span.delete = link_to 'Show', deck
         span.delete= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,10 +1,16 @@
 // Place all the styles related to the Decks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-form{
-	.decklink{
-		.linkie{
-			font-size: 18px;
-		}
+.decklink{
+	padding-top: 30px;
+	margin: auto;
+	width: 500px;
+	.linkie{
+		font-size: 15px;
+		padding-bottom: 10px;
+	}
+	input{
+		width: 500px;
+		padding: 10px 10px;
 	}
 }
