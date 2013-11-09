@@ -17,13 +17,25 @@ class DecksController < ApplicationController
     require 'rubygems'
     require 'nokogiri' 
     require 'open-uri'        
-    
     @deck = Deck.find(params[:id])
+
+    
     if @deck.decklink.nil? || @deck.decklink.blank?
       @page = "No deck link attatched to this deck yet <p>"
     else
-      link = smart_add_url_protocol(@deck.decklink)
-      @page = Nokogiri::HTML(open(link)).text
+      _link = @deck.decklink
+      u=URI.parse(_link)
+      if (!u.scheme)
+          link = "http://" + _link
+      else
+          link = _link
+      end
+      @page = Nokogiri::HTML(open(link))
+      if !@page.css('header').text.blank?
+        @page = "<a href='#{link}'>Link To Deck</a><p>"
+      else
+        @page =  @page.text
+      end
     end
      
 
