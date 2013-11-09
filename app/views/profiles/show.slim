@@ -8,7 +8,8 @@ div.profileheader
     span.editprofile = link_to 'Edit Profile', edit_profile_path
   - if @profile.bnetid
     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
-
+  div.share
+    = social_share_button_tag(@profiletitle)
 div.graphtitle Recent Match Wins
 = render 'dashboards/userchart', width: 1000, height: 200
 div.pure-g-r

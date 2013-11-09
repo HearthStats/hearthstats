@@ -19,8 +19,13 @@ class DecksController < ApplicationController
     require 'open-uri'        
     
     @deck = Deck.find(params[:id])
-    link = smart_add_url_protocol(@deck.decklink)
-    @page = Nokogiri::HTML(open(link)) 
+    if @deck.decklink.nil? || @deck.decklink.blank?
+      @page = "No deck link attatched to this deck yet <p>"
+    else
+      link = smart_add_url_protocol(@deck.decklink)
+      @page = Nokogiri::HTML(open(link)).text
+    end
+     
 
     respond_to do |format|
       format.html # show.html.erb
