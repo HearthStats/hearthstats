@@ -24,17 +24,22 @@ class DecksController < ApplicationController
       @page = "No deck link attatched to this deck yet <p>"
     else
       _link = @deck.decklink
-      u=URI.parse(_link)
-      if (!u.scheme)
-          link = "http://" + _link
+      begin
+        u=URI.parse(_link)
+      rescue
+        @page = "Deck Link Error"
       else
-          link = _link
-      end
-      @page = Nokogiri::HTML(open(link))
-      if !@page.css('header').text.blank?
+        if (!u.scheme)
+            link = "http://" + _link
+        else
+            link = _link
+        end
+        @page = Nokogiri::HTML(open(link))
+        if !@page.css('header').text.blank?
         @page = "<a href='#{link}'>Link To Deck</a><p>"
-      else
-        @page =  @page.text
+        else
+          @page =  @page.text
+        end
       end
     end
      
