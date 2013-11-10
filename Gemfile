@@ -11,7 +11,6 @@ group :development do
   gem "binding_of_caller", ">= 0.6.8"
   gem 'sqlite3'
   gem 'capistrano', "~> 2.14.2"
-  gem 'rvm-capistrano'
 end
 
 # Gems used only for assets and not required

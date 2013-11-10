@@ -119,8 +119,6 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rvm-capistrano (1.4.1)
-      capistrano (>= 2.0.0)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -153,7 +151,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.3.0)
+    uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -177,7 +175,6 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   rake
-  rvm-capistrano
   sass-rails (~> 3.2.3)
   slim
   social-share-button
