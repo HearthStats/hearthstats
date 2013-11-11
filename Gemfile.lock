@@ -54,6 +54,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dalli (2.6.4)
     debug_inspector (0.0.2)
     devise (3.2.0)
       bcrypt-ruby (~> 3.0)
@@ -79,6 +80,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.1.0)
+      railties (>= 3.1.0)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -177,10 +180,12 @@ DEPENDENCIES
   binding_of_caller (>= 0.6.8)
   capistrano (~> 2.14.2)
   coffee-rails (~> 3.2.1)
+  dalli
   devise
   figaro
   gibbon (~> 1.0.4)
   jquery-rails
+  jquery-ui-rails
   meta-tags
   mysql2
   newrelic_rpm

@@ -5,9 +5,10 @@ div.arena
     - @classarenarate.each do |c|
       -if c[1] == -1 
       -else
-        tr
+        tr 
           td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-          td #{number_to_percentage(c[1], precision: 2)}
+          td 
+            abbr title="#{@arenatot[c[0]]} Games Recorded" rel="tooltip" #{number_to_percentage(c[1], precision: 2)}
 
       -counter = counter + 1
 div.con
@@ -17,7 +18,8 @@ div.con
     - @classconrate.each do |c|
       -if c[1] == -1 
       -else
-        tr
+        tr 
           td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-          td #{number_to_percentage(c[1], precision: 2)}
+          td 
+            abbr title="#{@contot[c[0]]} Games Recorded" rel="tooltip" #{number_to_percentage(c[1], precision: 2)}
       -counter = counter + 1

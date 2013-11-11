@@ -9,6 +9,10 @@
 		background-color: #f0f0f0;
 		td{
 			padding-left: 0;
+			abbr{
+				border-bottom: 1px dotted #111;
+				cursor: help;
+			}
 		}
 	}
 	.arena{
@@ -20,6 +24,12 @@
 }
 .global{
 	width: 360px;
+	h2{
+		display: inline-block;
+	}
+	small{
+		padding-left: 30px;
+	}
 	.rankingtable{
 		width: 180px;
 		td{

@@ -41,6 +41,8 @@ gem 'social-share-button'
 gem 'meta-tags', :require => 'meta_tags'
 gem "gibbon", "~> 1.0.4"
 gem "figaro"
+gem 'jquery-ui-rails'
+gem 'dalli'
 # gem 'activerecord-mysql2-adapter'
 
 

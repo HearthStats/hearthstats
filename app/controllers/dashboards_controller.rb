@@ -31,12 +31,14 @@ class DashboardsController < ApplicationController
     # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Hash.new
+    @arenatot = Hash.new
     classes.each do |c|
       totalwins = 0
       totalgames = 0
       totalwins = Arena.where(:userclass => c, :win => true).count + Arena.where(:oppclass => c, :win => false).count
       totalgames = Arena.where(:userclass => c).count + Arena.where(:oppclass => c).count
       @classarenarate[c] = (totalwins.to_f / totalgames)
+      @arenatot[c] = totalgames
 
     end
     @classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
@@ -44,6 +46,7 @@ class DashboardsController < ApplicationController
     # Determine Constructed Class Win Rates
 
     @classconrate = Hash.new
+    @contot = Hash.new
     classes.each do |c|
       totalwins = 0
       totalgames = 0
@@ -52,6 +55,7 @@ class DashboardsController < ApplicationController
       totalgames = Constructed.joins(:deck).where('decks.race' => c).count + Constructed.joins(:deck).where(oppclass: c).count
       
       @classconrate[c] = (totalwins.to_f / totalgames)
+      @contot[c] = totalgames
     end
     @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
 
