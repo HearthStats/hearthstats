@@ -4,8 +4,11 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2
+  host: localhost
+  database: hearthstats
+  username: root
+  password: spirallife
   pool: 5
   timeout: 5000
 
