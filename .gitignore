@@ -36,3 +36,6 @@ config/initializers/secret_token.rb
 
 # Deployment
 /config/deploy.rb
+
+# Ignore application configuration
+/config/application.yml
