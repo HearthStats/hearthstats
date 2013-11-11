@@ -18,6 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
       q.save 
 
       gb = Gibbon::API.new("33bdb1440a0a40ab222881cb695ddcfb-us3")
+      gb.throws_exceptions = false
       gb.lists.subscribe({:id => "60f67fd447" , :email => {:email => resource.email}, :double_optin => "false" })
     end
   end
