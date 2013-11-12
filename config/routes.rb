@@ -7,6 +7,7 @@ Hearthstats::Application.routes.draw do
   get "additional/aboutus"
   get "additional/help"
   get "additional/changelog"
+  match "/nov", to: "welcome#novreport"
 
   get "admin/index"
   get "admin/addprofileuserid"

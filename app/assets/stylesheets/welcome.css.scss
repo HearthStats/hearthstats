@@ -122,3 +122,127 @@
 	bottom: 0;
 	right: 0;
 }
+
+// Nov Report
+.novreport{
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	background-color: #1E243C;
+	padding-bottom: 100px;
+	h2{
+		padding-top: 40px;
+		padding-bottom: 10px;
+		color: white;
+		font-size: 40px;
+	}
+	.splashpic{
+	height: 700px;
+	background: image-url('novbg.jpg') no-repeat center top fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+	}
+	.scrolldowncont{
+		background-color: #2ecc71;
+		width: 100%;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		.scrolldown{
+			font-size: 25px;
+			width: 400px;
+			text-align: center;
+			margin: auto;
+			color: white;
+		}
+	}
+	.novcontent{
+		.tableheader{
+			width: 100%;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			height: 20px;
+			text-align: center;
+			font-size: 20px;
+			color: white;
+			background-color: #E64C65;
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 5px 5px 0px 0px;
+			border-radius: 5px 5px 0px 0px; 
+		}
+		.rankingtable{
+			border-collapse: separate !important;
+			border-spacing: 0;
+			background-color: #394264;
+			color: white;
+		    -moz-border-radius: 0px 0px 5px 5px;
+		    -webkit-border-radius: 0px 0px 5px 5px;
+		    border-radius: 0px 0px 5px 5px;
+			td{
+				padding-left: 20px;
+				font-size: 20px;
+				font-weight: 300;
+			}
+		}
+		.mptable{
+			background-color: transparent;
+			color: white;
+			td{
+				font-family: 'Lato', sans-serif;
+				font-weight: 300;
+			}
+			
+		}
+		.overallcont{
+			padding-bottom: 70px;
+			.arena{
+				float: left;
+				width: 48.5%;
+			}
+			.con{
+				float: right;
+				width: 48.5%;
+			}
+			.mptitle{
+				color: #11A8AB;
+				font-size: 30px;
+				font-weight: 400;
+				text-align: center;
+				padding-bottom: 30px;
+				border-bottom: 1px solid white;
+			}
+			.mpfirst{
+				font-size: 70px;
+				padding-top: 30px;
+				padding-left: 0px;
+				color: #27ae60;
+			}
+			.mpsec{
+				font-size: 50px;
+				padding-top: 30px;
+				padding-left: 0px;
+				color: #bdc3c7;
+			}
+			.mpthird{
+				font-size: 30px;
+				padding-left: 0px;	
+				padding-top: 10px;
+				color: #bdc3c7;
+			}
+		}
+		.arenacont{
+			padding-bottom: 40px;
+			background-color: #3468AF;
+			.arateentry{
+				font-size: 18px;
+				padding: 8px;
+			}
+		}
+		.addpadding{
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
+	
+	
+}
