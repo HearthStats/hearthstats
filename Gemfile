@@ -43,6 +43,8 @@ gem "gibbon", "~> 1.0.4"
 gem "figaro"
 gem 'jquery-ui-rails'
 gem 'dalli'
+gem "select2-rails"
+
 # gem 'activerecord-mysql2-adapter'
 
 

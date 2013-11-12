@@ -1,3 +1,26 @@
+<script>
+  $(document).ready(function() {
+
+    function format(state) {
+      var originalOption = state.element;
+   
+      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
+    }
+    $("#arena_userclass").select2({
+      width: '300px',
+      formatResult: format,
+      formatSelection: format,
+      escapeMarkup: function(m) { return m; }
+    });
+    $("#arena_oppclass").select2({
+      width: '300px',
+      formatResult: format,
+      formatSelection: format,
+      escapeMarkup: function(m) { return m; }
+    });
+  });
+</script>
+
 <%= form_for(@arena) do |f| %>
   <% if @arena.errors.any? %>
     <div id="error_explanation">

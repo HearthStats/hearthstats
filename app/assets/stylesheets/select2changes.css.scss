@@ -1,0 +1,9 @@
+.select2-container .select2-choice{
+  padding-top: 5px;
+  height: 50px;
+  overflow-y: auto;
+  font-size: 40px;
+  .select2-chosen{
+  	height: 50px;
+  }
+}

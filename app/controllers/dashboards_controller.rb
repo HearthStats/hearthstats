@@ -62,6 +62,7 @@ class DashboardsController < ApplicationController
   end
 
   def fullstats
+
     # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classwinrate = Hash.new
@@ -100,6 +101,7 @@ class DashboardsController < ApplicationController
       @conrate["#{combo[0]} #{combo[1]}"] = (totalwins.to_f / totalgames)
     end
 
+    expires_in 1.hour, public: true
   end
 
 

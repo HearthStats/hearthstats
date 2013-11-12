@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.tooltip
 //= require announcements
+//= require select2
 //= require social-share-button
 //= require_tree .
 
