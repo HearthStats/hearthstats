@@ -44,6 +44,7 @@ class ProfilesController < ApplicationController
   	# Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Hash.new
+    @arenatot = Hash.new
     classes.each do |c|
       totalwins = 0
       totalgames = 0
@@ -53,6 +54,7 @@ class ProfilesController < ApplicationController
       	@classarenarate[c] = -1
       else
 	    @classarenarate[c] = (totalwins.to_f / totalgames)
+      @arenatot[c] = totalgames
 	  end
 
     end
@@ -61,6 +63,7 @@ class ProfilesController < ApplicationController
     # Determine Constructed Class Win Rates
 
     @classconrate = Hash.new
+    @contot = Hash.new
     classes.each do |c|
       totalwins = 0
       totalgames = 0
@@ -70,6 +73,7 @@ class ProfilesController < ApplicationController
       	@classconrate[c] = -1
       else
 	    @classconrate[c] = (totalwins.to_f / totalgames)
+      @contot[c] = totalgames
 	  end
       
     end
