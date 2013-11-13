@@ -96,7 +96,12 @@ div.novreport
               |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
               abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
                 | #{number_to_percentage(c[1]*100, precision: 2)} 
-      = render 'chart', width: 600, height: 200, timearray: @timearray1, wins: @wins1
+      h2 Arena Class Win Rates Over Time
+      small x-axis represents days ago from today
+      div.cf
+      / Epic Arena Graphs
+      -(0..8).each do |i|
+        = render 'chart', width: 600, height: 200, timearray: @timearray, wins: @winsarena.values[i].reverse, race: @winsarena.keys[i]
     div.concont.addpadding
       h2 Constructed Win Rates
       div.pure-g-r
@@ -127,3 +132,9 @@ div.novreport
               |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
               abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
                 | #{number_to_percentage(c[1]*100, precision: 2)} 
+      h2 Constructed Class Win Rates Over Time
+      small x-axis represents days ago from today
+      div.cf
+      / Epic Constructed Graphs
+      -(0..8).each do |i|
+        = render 'chartcon', width: 600, height: 200, timearray: @timearray, wins: @winscon.values[i].reverse, race: @winscon.keys[i]

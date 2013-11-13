@@ -135,6 +135,7 @@
 		color: white;
 		font-size: 40px;
 		line-height: 1;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 	}
 	.splashpic{
 	height: 700px;
@@ -231,11 +232,36 @@
 		.arenacont{
 			padding-bottom: 40px;
 			background-color: #3468AF;
+			color: #E6E6E6;
+			h2{
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+			small{
+				display: inline-block;
+				padding-left: 20px;
+				font-size: 20px;
+				padding-bottom: 20px;
+				color: #E6E6E6;
+			}
 			.arateentry{
 				font-size: 18px;
 				padding: 8px;
 			}
 		}
+		.graphcont{
+				display: inline-block;
+				color: #E6E6E6;
+				.arenagraph{
+					padding: 20px;
+					margin: auto;
+				}
+				.graphtitle{
+					font-size: 30px;
+					text-align: center;
+					
+				}
+			}
 		.concont{
 			padding-bottom: 40px;
 			background-color: #F1F1F1;

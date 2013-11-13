@@ -1,17 +1,17 @@
 div.graphcont
   div.graphtitle = race
-  canvas id="arena#{race}" height="#{height}" class="arenagraph"
+  canvas id="con#{race}" height="#{height}" class="congraph"
 
 javascript:
 
-  var ctx = document.getElementById("arena#{race}").getContext("2d");
+  var ctx = document.getElementById("con#{race}").getContext("2d");
   var data = {
     labels : #{timearray.reverse.to_json},
     datasets : [
       {
-        fillColor : "rgba(230,76,101,1)",
-        strokeColor : "rgb(204,50,75)",
-        pointColor : "rgb(204,50,75)",
+        fillColor : "rgb(0,206,155)",
+        strokeColor : "rgb(0,173,130)",
+        pointColor : "rgb(0,173,130",
         pointStrokeColor : "#fff",
         data : #{wins.reverse.to_json}
       }
@@ -19,7 +19,7 @@ javascript:
   }
   
   var myNewChart = new Chart(ctx).Line(data,{
-    scaleFontColor : "white",
+    scaleFontColor : "#2c3e50",
     scaleGridLineColor : "rgba(255,255,255,.1)",
     scaleLineColor : "rgba(255,255,255,.1)",
   });

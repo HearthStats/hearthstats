@@ -77,11 +77,14 @@ class WelcomeController < ApplicationController
 		(1..9).each do |i|
 			@timearray[i-1] = i
 		end
-		wins = Hash.new
+		@winscon = Hash.new
+		@winsarena = Hash.new
 		classes.each do |c|
-			wins[c] = cularenagames(c, 9)
+			@winsarena[c] = cularenagames(c, 9)
+			@winscon[c] = culcongames(c, 9)
 		end
-		raise
+
+
 	render :layout=> 'fullpage'
 	end
 
@@ -91,9 +94,17 @@ class WelcomeController < ApplicationController
 			wins = Array.new(days1, 0)
 			wins[0] = 0
 			(1..days1).each do |i|
-				wins[i] = Arena.where(userclass: race, win: true).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + Arena.where(oppclass: race, win: false).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + wins[i-1]
+				wins[i] = Arena.where(userclass: race, win: true).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + Arena.where(oppclass: race, win: false).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
 			end
 			return wins
 		end
 
+		def culcongames(race, days1)
+			wins = Array.new(days1, 0)
+			wins[0] = 0
+			(1..days1).each do |i|
+				wins[i] = Constructed.joins(:deck).where(win: true, 'decks.race' => race).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + Constructed.where(oppclass: race, win: false).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+			end
+			return wins
+		end
 end
