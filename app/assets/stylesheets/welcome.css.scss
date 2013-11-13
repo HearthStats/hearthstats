@@ -134,6 +134,7 @@
 		padding-bottom: 10px;
 		color: white;
 		font-size: 40px;
+		line-height: 1;
 	}
 	.splashpic{
 	height: 700px;
@@ -158,7 +159,8 @@
 	}
 	.novcontent{
 		.tableheader{
-			width: 100%;
+			width: 90%;
+			margin: auto;
 			padding-top: 10px;
 			padding-bottom: 10px;
 			height: 20px;
@@ -171,6 +173,9 @@
 			border-radius: 5px 5px 0px 0px; 
 		}
 		.rankingtable{
+			width: 90%;
+			margin: auto;
+			margin-bottom: 20px;
 			border-collapse: separate !important;
 			border-spacing: 0;
 			background-color: #394264;
@@ -195,15 +200,8 @@
 		}
 		.overallcont{
 			padding-bottom: 70px;
-			.arena{
-				float: left;
-				width: 48.5%;
-			}
-			.con{
-				float: right;
-				width: 48.5%;
-			}
 			.mptitle{
+				margin-top: 10px;
 				color: #11A8AB;
 				font-size: 30px;
 				font-weight: 400;
@@ -212,7 +210,7 @@
 				border-bottom: 1px solid white;
 			}
 			.mpfirst{
-				font-size: 70px;
+				font-size: 65px;
 				padding-top: 30px;
 				padding-left: 0px;
 				color: #27ae60;
@@ -238,6 +236,18 @@
 				padding: 8px;
 			}
 		}
+		.concont{
+			padding-bottom: 40px;
+			background-color: #F1F1F1;
+			padding-top: 3em;
+			h2{
+				color: #2c3e50;				
+			}
+			.arateentry{
+				font-size: 18px;
+				padding: 8px;
+			}
+		}
 		.addpadding{
 			padding-left: 20px;
 			padding-right: 20px;
@@ -245,4 +255,8 @@
 	}
 	
 	
+}
+abbr{
+	border-bottom: 1px dotted #111;
+	cursor: help;
 }
