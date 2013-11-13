@@ -28,8 +28,8 @@ class WelcomeController < ApplicationController
 			totalwins = 0
 			totalgames = 0
 			totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c).count
-			totalwins = totalwins + Constructed.joins(:deck).where(oppclass: c, win: false).count
-			totalgames = Constructed.joins(:deck).where('decks.race' => c).count + Constructed.joins(:deck).where(oppclass: c).count
+			totalwins = totalwins + Constructed.where(oppclass: c, win: false).count
+			totalgames = Constructed.joins(:deck).where('decks.race' => c).count + Constructed.where(oppclass: c).count
 			
 			@classconrate[c] = (totalwins.to_f / totalgames)
 			@contot[c] = totalgames
@@ -63,8 +63,8 @@ class WelcomeController < ApplicationController
 			totalwins = 0
 			totalgames = 0
 
-			totalwins = Constructed.joins(:deck).where(oppclass: combo[0], win: true, 'decks.race' => combo[1]).count
-			totalwins = totalwins + Constructed.joins(:deck).where(oppclass: combo[1], win: false, 'decks.race' => combo[0]).count
+			totalwins = Constructed.joins(:deck).where(oppclass: combo[1], win: true, 'decks.race' => combo[0]).count
+			totalwins = totalwins + Constructed.joins(:deck).where(oppclass: combo[0], win: false, 'decks.race' => combo[1]).count
 
 			totalgames = Constructed.joins(:deck).where(oppclass: combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where(oppclass: combo[1], 'decks.race' => combo[0]).count
 
