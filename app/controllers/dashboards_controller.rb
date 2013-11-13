@@ -58,7 +58,6 @@ class DashboardsController < ApplicationController
       @contot[c] = totalgames
     end
     @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
-
   end
 
   def fullstats
@@ -101,7 +100,7 @@ class DashboardsController < ApplicationController
       @conrate["#{combo[0]} #{combo[1]}"] = (totalwins.to_f / totalgames)
     end
 
-    expires_in 1.hour, public: true
+    expires_in 4.hour, public: true
   end
 
 
