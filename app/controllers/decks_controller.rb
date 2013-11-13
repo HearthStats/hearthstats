@@ -39,7 +39,7 @@ class DecksController < ApplicationController
         end
       rescue
         if _link == "/export/4"
-          @page = "No deck link attatched to this deck yet 11<p>"
+          @page = "No deck link attatched to this deck yet <p>"
         else
           link = link[0..-10]
           @page = "<a href='#{link}'>Link To Deck</a><p>"
