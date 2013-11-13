@@ -19,6 +19,35 @@ class ApplicationController < ActionController::Base
   end
 
   def recentgames(userid, durlen)
+    @timearray = Array.new(durlen, 0)
+    (0..durlen+1).each do |i|
+      @timearray[i-1] = i
+    end
+    @winscon = Hash.new
+    @winsarena = Hash.new
+    @arenawins = cularenagames(userid, durlen)
+    @conwins = culcongames(userid, durlen)
+  end
+
+  def cularenagames(userid, days1)
+    wins = Array.new(days1, 0)
+    wins[0] = 0
+    (0..days1).each do |i|
+      wins[i] = Arena.where(user_id: userid, win: true).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+    end
+    return wins
+  end
+
+  def culcongames(userid, days1)
+    wins = Array.new(days1, 0)
+    wins[0] = 0
+    (0..days1).each do |i|
+      wins[i] = Constructed.where(win: true, user_id: userid).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+    end
+    return wins
+  end
+    
+  def recentgamesbyhr(userid, durlen)
     # Find games from 12 hours and before
     @timearray = Array.new(durlen, 0)
     (1..durlen).each do |i|

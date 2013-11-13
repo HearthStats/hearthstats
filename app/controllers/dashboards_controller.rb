@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
   end
 
   def index
-    recentgames(current_user.id, 12)
+    recentgamesbyhr(current_user.id, 12)
 
   	# @constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 100)
   	
