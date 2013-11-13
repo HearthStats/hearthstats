@@ -131,6 +131,7 @@
 	padding-bottom: 100px;
 	h2{
 		padding-top: 40px;
+		margin-top: 0;
 		padding-bottom: 10px;
 		color: white;
 		font-size: 40px;
@@ -259,7 +260,6 @@
 				.graphtitle{
 					font-size: 30px;
 					text-align: center;
-					
 				}
 			}
 		.concont{
@@ -267,7 +267,20 @@
 			background-color: #F1F1F1;
 			padding-top: 3em;
 			h2{
-				color: #2c3e50;				
+				color: #2c3e50;	
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+			small{
+				display: inline-block;
+				padding-left: 20px;
+				font-size: 20px;
+				padding-bottom: 20px;
+			}
+			.graphcont{
+				.graphtitle{
+					color: #2c3e50;	
+				}
 			}
 			.arateentry{
 				font-size: 18px;
@@ -275,14 +288,39 @@
 			}
 		}
 		.addpadding{
-			padding-left: 20px;
-			padding-right: 20px;
+			padding-left: 30px;
+			padding-right: 30px;
 		}
-	}
-	
-	
+		.hsusers{
+			background-color: #e67e22;	
+			.hscont{
+				display: inline-block;
+				text-align: center;
+			}
+			.hscontfirst{
+				display: inline-block;
+			}
+			.hssimage{
+				display: inline-block;
+			}
+			.hsscount{
+				display: inline-block;
+				font-size: 90px;
+				margin-bottom: 42.5px;
+				.iconlabel{
+					padding-top: 10px;
+					font-size: 45px;
+					padding-bottom: 50px;
+					text-align: center;
+				}
+			}
+		}
+	}	
 }
 abbr{
 	border-bottom: 1px dotted #111;
 	cursor: help;
+}
+.center{
+	display: inline;
 }
