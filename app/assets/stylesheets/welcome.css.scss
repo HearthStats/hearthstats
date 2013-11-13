@@ -128,7 +128,7 @@
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
 	background-color: #1E243C;
-	padding-bottom: 100px;
+	padding-bottom: 50px;
 	h2{
 		padding-top: 40px;
 		margin-top: 0;
@@ -315,12 +315,46 @@
 				}
 			}
 		}
+		.joinus{
+			border-top: 1px solid black;
+			padding-top: 60px;
+			padding-bottom: 50px;
+			font-size: 70px;
+			color: white;
+			font-weight: 400;
+		}
+		.joinsubtext{
+			font-size: 25px;
+			text-align: center;
+		}
+		.regcont{
+			text-align: center;
+			margin-top: 20px;
+			padding-bottom: 100px;
+			.regbutton{
+				font-size: 30px;
+				text-align: center;
+			}
+		}
 	}	
+	.novfootercont{
+		text-align: center;
+		padding-top: 50px;
+		color: white;
+		.novfooter{
+			display: inline-block;
+			a{
+				color: white;
+				text-decoration: none;
+				font-size: 20px;
+			}
+		}
+	}
 }
 abbr{
 	border-bottom: 1px dotted #111;
 	cursor: help;
 }
 .center{
-	display: inline;
+	text-align: center;
 }

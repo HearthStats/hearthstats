@@ -160,3 +160,14 @@ div.novreport
             div.hsscount 
               div.iconlabel Decks
               = Deck.all.count
+      div.joinus.center We Would Love For You To Join Us
+      div.joinsubtext More Users = Better Stats!
+      div.regcont
+        a class="pure-button pure-button-primary regbutton" href="/" Register Now
+    div.novfootercont
+      div.novfooter.cl-effect-1
+        = link_to "Change Log", additional_changelog_path
+        = link_to "About Us", additional_aboutus_path
+        = link_to "Help", additional_help_path
+        = link_to "Contact Us", additional_contactus_path
+      p HearthStats &copy; 2013
