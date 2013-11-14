@@ -3,7 +3,7 @@
   :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss' 
 div.arenaheader
   h1.arenatitle Recent Arena Matches
-  = link_to 'New Arena', new_arena_path, class: "pure-button pure-button-primary newarena"
+  = link_to 'New Arena', new_arena_run_path, class: "pure-button pure-button-primary newarena"
   = will_paginate @arenas
 table
   tr.heading

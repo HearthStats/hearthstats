@@ -1,0 +1,8 @@
+<% if @runwins > 8 || @runloses > 2 %>
+	$('.arenasubmit').fadeOut(function(){
+		$('.arenaendrun').fadeIn();
+	});
+	
+<% else %>
+	$('#arenagames > tbody:last').append('<tr><td><%= @arena.oppclass %></td><td><%= @arena.win %></td></tr>');
+<% end %>

@@ -26,7 +26,8 @@ class ArenasController < ApplicationController
   # GET /arenas/new.json
   def new
     @arena = Arena.new
-    @lastentry = Arena.where(user_id: current_user.id).last
+    @arenarun = ArenaRun.find(session[:arenarunid])
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @arena }
@@ -44,13 +45,21 @@ class ArenasController < ApplicationController
   def create
     @arena = Arena.new(params[:arena])
     @arena.user_id = current_user.id
-    respond_to do |format|
-      if @arena.save
-        format.html { redirect_to arenas_url, notice: 'Arena was successfully created.' }
-        format.json { render json: @arena, status: :created, location: @arena }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @arena.errors, status: :unprocessable_entity }
+    @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
+    @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count    
+    if @runwins > 8 || @runloses > 2
+      respond_to do |format|
+        format.js 
+      end
+    else
+      respond_to do |format|
+        if @arena.save
+          format.html { redirect_to new_arena_url, notice: 'Arena was successfully created.' }
+          format.js     
+        else
+          format.html { render action: "new" }
+          format.js
+        end
       end
     end
   end

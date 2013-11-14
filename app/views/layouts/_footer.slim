@@ -4,6 +4,7 @@ footer
     = link_to "About Us", additional_aboutus_path
     = link_to "Help", additional_help_path
     = link_to "Contact Us", additional_contactus_path
+    = link_to "November Report", "/nov"
     -if !current_user.nil?
       - if current_user.id == 1
         =link_to "Admin", admin_index_path

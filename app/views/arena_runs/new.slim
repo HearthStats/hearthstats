@@ -1,0 +1,29 @@
+javascript:
+  $(document).ready(function() {
+
+    function format(state) {
+      var originalOption = state.element;
+   
+      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
+    }
+    $("#arena_run_userclass").select2({
+      width: '300px',
+      formatResult: format,
+      formatSelection: format,
+      escapeMarkup: function(m) { return m; }
+    });
+  });
+
+= form_for @arenarun do |f|
+  - if @arenarun.errors.any?
+    div#error_explanation
+      h2 = pluralize(@arenarun.errors.count, "error")
+        | prohibited this arenarun from being saved:
+      ul
+        - @arenarun.errors.full_messages.each do |msg| 
+          li = msg 
+  .control-group.inputleft
+    = f.label :userclass, :class => 'control-label'
+    .controls
+      = f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
+  = f.submit nil, :class => 'btn btn-primary'

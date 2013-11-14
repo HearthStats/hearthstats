@@ -11,123 +11,81 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108210924) do
+ActiveRecord::Schema.define(:version => 20131114001244) do
 
   create_table "announcements", :force => true do |t|
-    t.text      "body"
-    t.string    "type"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
-  end
-
-  create_table "arenas", :force => true do |t|
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.integer   "user_id"
-    t.string    "userclass",  :default => "N/A"
-    t.string    "oppclass",   :default => "N/A"
-    t.boolean   "win",        :default => false
-    t.boolean   "gofirst",    :default => true
-  end
-
-  create_table "articles", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "format",      :default => "default"
-    t.text     "post"
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-  end
-
-  create_table "blog_comments", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "email",      :null => false
-    t.string   "website"
-    t.text     "body",       :null => false
-    t.integer  "post_id",    :null => false
-    t.string   "state"
+    t.text     "body"
+    t.string   "type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "blog_comments", ["post_id"], :name => "index_blog_comments_on_post_id"
-
-  create_table "blog_posts", :force => true do |t|
-    t.string   "title",                         :null => false
-    t.text     "body",                          :null => false
-    t.integer  "blogger_id"
-    t.string   "blogger_type"
-    t.integer  "comments_count", :default => 0, :null => false
+  create_table "arena_runs", :force => true do |t|
+    t.string   "user_id"
+    t.string   "userclass"
+    t.integer  "gold",       :default => 0
+    t.integer  "dust",       :default => 0
+    t.boolean  "complete",   :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
 
-  add_index "blog_posts", ["blogger_type", "blogger_id"], :name => "index_blog_posts_on_blogger_type_and_blogger_id"
+  create_table "arenas", :force => true do |t|
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "user_id"
+    t.string   "userclass",    :default => "N/A"
+    t.string   "oppclass",     :default => "N/A"
+    t.boolean  "win",          :default => false
+    t.boolean  "gofirst",      :default => true
+    t.integer  "arena_run_id"
+  end
 
   create_table "constructeds", :force => true do |t|
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.integer   "user_id"
-    t.string    "deckname"
-    t.string    "oppclass",   :default => "N/A"
-    t.boolean   "win",        :default => false
-    t.boolean   "gofirst",    :default => true
-    t.integer   "deck_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.string   "deckname"
+    t.string   "oppclass",   :default => "N/A"
+    t.boolean  "win",        :default => false
+    t.boolean  "gofirst",    :default => true
+    t.integer  "deck_id"
   end
 
   create_table "decks", :force => true do |t|
-    t.string    "name"
-    t.integer   "wins",       :default => 0
-    t.integer   "loses",      :default => 0
-    t.timestamp "created_at",                :null => false
-    t.timestamp "updated_at",                :null => false
-    t.string    "race"
-    t.integer   "user_id"
-    t.string    "decklink"
+    t.string   "name"
+    t.integer  "wins",       :default => 0
+    t.integer  "loses",      :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "race"
+    t.integer  "user_id"
+    t.string   "decklink"
   end
 
   create_table "profiles", :force => true do |t|
-    t.string    "name"
-    t.string    "bnetid"
-    t.boolean   "private",    :default => false
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.integer   "user_id"
-    t.integer   "bnetnum",    :default => 0
-  end
-
-  create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context"
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
-
-  create_table "tags", :force => true do |t|
-    t.string "name"
+    t.string   "name"
+    t.string   "bnetid"
+    t.boolean  "private",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.integer  "bnetnum",    :default => 0
   end
 
   create_table "users", :force => true do |t|
-    t.string    "email",                  :default => "", :null => false
-    t.string    "encrypted_password",     :default => "", :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",          :default => 0,  :null => false
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.timestamp "created_at",                             :null => false
-    t.timestamp "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

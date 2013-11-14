@@ -6,12 +6,6 @@
    
       return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
     }
-    $("#arena_userclass").select2({
-      width: '300px',
-      formatResult: format,
-      formatSelection: format,
-      escapeMarkup: function(m) { return m; }
-    });
     $("#arena_oppclass").select2({
       width: '300px',
       formatResult: format,
@@ -20,47 +14,64 @@
     });
   });
 </script>
-<%= form_for(@arena) do |f| %>
-  <% if @arena.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
 
-      <ul>
-      <% @arena.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="pure-g-r">
+  <div class="pure-u-1-2">
+    <table id="arenagames">
+      <tr><th>OppClass</th><th>Win/</th></tr>
+        <% @arenarun.arenas.each do |a| %>
+            <tr>
+              <td><%=a.oppclass%></td>
+              <td><%=a.win%></td>
+            </tr>
+        <% end %>
+    </table>
+  </div>
+  <!-- Left Past Arena Games -->
+  <div class="pure-u-1-2">
+
+    <!-- Right Arena Entry -->
+    <%= form_for(@arena, :remote => true ) do |f| %>
+      <% if @arena.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
+
+          <ul>
+          <% @arena.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <!-- <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div> -->
-  <div class="gofirstfield">
-    <div class="gofirsttitle">You played on the: </div>
-    <div class="pure-button pure-button-success gofirst"> First Turn</div><br />
-    <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
-  </div>
+      <!-- <div class="field">
+        <%= f.label :user_id %><br />
+        <%= f.number_field :user_id %>
+      </div> -->
+      <div class="gofirstfield">
+        <div class="gofirsttitle">You played on the: </div>
+        <div class="pure-button pure-button-success gofirst"> First Turn</div><br />
+        <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+      </div>
 
-  <div class="yourfield">
-    <%= f.label "Your Class" %><br />
-    <% if @lastentry.nil? %>
-      <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-    <% else %>
-      <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @lastentry.userclass) %>
-    <% end %>  
+      <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
+
+      <div class="oppfield">
+        <%= f.label "Opponent's Class" %><br />
+        <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+      </div>
+      <div class="cf"></div>
+      <div class="winfield">
+        <div class="pure-button pure-button-success winbutton"> Victory </div><br />
+        <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
+      </div>
+      
+      <%= f.number_field :arena_run_id , :value => @arenarun.id, class: "hidden" %>
+
+      <div class="actions">
+        <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
+        <%= f.submit "Create Entry", class: "pure-button pure-button-success arenasubmit" %>
+        <%= link_to "End Run", arenas_path, class: "pure-button pure-button-warning arenaendrun" %>
+      </div>
+    <% end %>
   </div>
-  <div class="oppfield">
-    <%= f.label "Opponent's Class" %><br />
-    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-  </div>
-  <div class="cf"></div>
-  <div class="winfield">
-    <div class="pure-button pure-button-success winbutton"> Victory </div><br />
-    <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
-  </div>
-  <div class="actions">
-    <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
-    <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
-  </div>
-<% end %>
+</div>

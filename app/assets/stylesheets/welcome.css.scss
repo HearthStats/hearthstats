@@ -197,8 +197,24 @@
 			td{
 				font-family: 'Lato', sans-serif;
 				font-weight: 300;
+				font-size: 18px;
+				padding-left: 0;
+				width: 449px;
 			}
 			
+		}
+		.conmore, .arenamore {
+			display: none;
+		}
+		.showcon, .showarena{
+			margin: 10px 30px 0 30px;
+			padding-top: 10px;
+			border-top: 1px solid #E64C65;
+			color: white;
+			font-size: 20px;
+			text-align: center;
+			font-family: 'Lato', sans-serif;
+			font-weight: 300;
 		}
 		.overallcont{
 			padding-bottom: 70px;

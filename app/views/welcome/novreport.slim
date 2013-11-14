@@ -1,6 +1,32 @@
 - set_meta_tags :title => 'November Report',
   :description => 'November Report on statistics from hearthstats',
   :keywords => 'stats, november, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss' 
+javascript:
+  $(document).ready(function() {
+    var q = false;
+    $('.showarena').click(function(){
+      $('.arenamore').slideToggle();
+      if (q == false){
+        $('.showarena').text("Less");
+        q = true;
+      }else{
+        $('.showarena').text("More");
+        q = false;
+      }
+    });
+    var p = false;
+    $('.showcon').click(function(){
+      $('.conmore').slideToggle();
+      if (p == false){
+        $('.showcon').text("Less");
+        p = true;
+      }else{
+        $('.showcon').text("More");
+        p = false;
+      }
+    });
+
+  });
 div.novreport
   div.splashpic
   div.scrolldowncont
@@ -24,6 +50,13 @@ div.novreport
               tr
                 td.mpthird 3. #{@arenamp.third[0]} 
                 td.mpthird =@arenamp.third[1]
+            div.arenamore
+              table.mptable
+                -(3..8).each do |mp|
+                  tr
+                    td #{mp+1}. #{@arenamp[mp][0]}
+                    td #{@arenamp[mp][1]}
+            div.showarena More
           div.pure-u-1-2
             div.mptitle Constructed
             - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
@@ -37,6 +70,13 @@ div.novreport
               tr
                 td.mpthird 3. #{@conmp.third[0]} 
                 td.mpthird =@conmp.third[1]
+            div.conmore
+              table.mptable
+                -(3..8).each do |mp|
+                  tr
+                    td #{mp+1}. #{@conmp[mp][0]}
+                    td #{@conmp[mp][1]}
+            div.showcon More
         div.cf
         h2 Global Win Rates
         div.pure-g-r

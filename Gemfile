@@ -30,7 +30,7 @@ group :production do
 end
 
 gem 'newrelic_rpm'
-gem 'slim'
+gem 'slim-rails'
 gem 'devise'
 gem 'jquery-rails'
 gem 'announcements'

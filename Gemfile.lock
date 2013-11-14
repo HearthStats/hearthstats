@@ -145,6 +145,11 @@ GEM
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
+    slim-rails (2.0.1)
+      actionpack (>= 3.0, < 4.1)
+      activesupport (>= 3.0, < 4.1)
+      railties (>= 3.0, < 4.1)
+      slim (~> 2.0)
     social-share-button (0.1.5)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -196,7 +201,7 @@ DEPENDENCIES
   rake
   sass-rails (~> 3.2.3)
   select2-rails
-  slim
+  slim-rails
   social-share-button
   sqlite3
   taps
