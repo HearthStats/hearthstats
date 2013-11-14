@@ -1,6 +1,7 @@
 class ArenaRunsController < ApplicationController
 	def new
 		@arenarun = ArenaRun.new
+		@gamestoday = ArenaRun.where(user_id: current_user.id).where("created_at >= ?", Time.zone.now.beginning_of_day).count
 	end
 
 	def create
@@ -20,4 +21,18 @@ class ArenaRunsController < ApplicationController
 			format.json { render json: @arenarun.errors, status: :unprocessable_entity }
 		end
 	end
+
+	def edit
+		@arenarun = ArenaRun.find(session[:arenarunid])
+	end
+
+	def update
+    @arenarun = ArenaRun.find(session[:arenarunid])
+		@arenarun.complete= true
+		session[:arenarunid] = nil
+    respond_to do |format|
+      format.html { redirect_to arenas_url, notice: 'Arena Run Completed.'  }
+      format.json { head :no_content }
+    end
+  end
 end

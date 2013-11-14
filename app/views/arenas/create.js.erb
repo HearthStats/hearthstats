@@ -1,8 +1,12 @@
+<% if @arena.win %>
+	var html = '<tr><td><%= image_tag("Icons/Classes/#{@arena.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=@arena.oppclass%></td><td class="center"><span class="victory">Victory</span></td></tr>'
+	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
+<% else %>
+	var html = '<tr><td><%= image_tag("Icons/Classes/#{@arena.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=@arena.oppclass%></td><td class="center"><span class="defeat">Defeat</span></td></tr>'
+	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
+<% end %>
 <% if @runwins > 8 || @runloses > 2 %>
 	$('.arenasubmit').fadeOut(function(){
 		$('.arenaendrun').fadeIn();
 	});
-	
-<% else %>
-	$('#arenagames > tbody:last').append('<tr><td><%= @arena.oppclass %></td><td><%= @arena.win %></td></tr>');
 <% end %>

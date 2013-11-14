@@ -18,11 +18,17 @@
 <div class="pure-g-r">
   <div class="pure-u-1-2">
     <table id="arenagames">
-      <tr><th>OppClass</th><th>Win/</th></tr>
+      <tr><th>Opponent Class</th><th>Result</th></tr>
         <% @arenarun.arenas.each do |a| %>
             <tr>
-              <td><%=a.oppclass%></td>
-              <td><%=a.win%></td>
+              <td><%= image_tag("Icons/Classes/#{a.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=a.oppclass%></td>
+              <td class="center">
+                <% if a.win %>
+                  <span class="victory">Victory</span>
+                <% else %>
+                  <span class="defeat">Defeat</span>
+                <% end %>
+              </td>
             </tr>
         <% end %>
     </table>
@@ -55,7 +61,7 @@
 
       <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
 
-      <div class="oppfield">
+      <div class="oppfield arenaopp">
         <%= f.label "Opponent's Class" %><br />
         <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
       </div>
@@ -70,7 +76,7 @@
       <div class="actions">
         <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
         <%= f.submit "Create Entry", class: "pure-button pure-button-success arenasubmit" %>
-        <%= link_to "End Run", arenas_path, class: "pure-button pure-button-warning arenaendrun" %>
+        <%= link_to "End Run", edit_arena_run_path, class: "pure-button pure-button-warning arenaendrun" %>
       </div>
     <% end %>
   </div>

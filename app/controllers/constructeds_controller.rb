@@ -96,16 +96,18 @@ class ConstructedsController < ApplicationController
   def destroy
     @constructed = Constructed.find(params[:id])
     @constructed.destroy
-    @deck = Deck.where(:name => @constructed.deckname)[0]
-    if @constructed.win
-      @deck.wins = @deck.wins - 1
+    if @deck = Deck.where(:name => @constructed.deckname)[0]
+      if @constructed.win
+        @deck.wins = @deck.wins - 1
+      else
+        @deck.loses = @deck.loses - 1
+      end
+      @deck.save
     else
-      @deck.loses = @deck.loses - 1
-    end
-    @deck.save
-    respond_to do |format|
-      format.html { redirect_to constructeds_url }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to constructeds_url }
+        format.json { head :no_content }
+      end
     end
   end
 end

@@ -14,6 +14,13 @@ javascript:
     });
   });
 
+div.teasertext
+  -if @gamestoday == 0
+    |First Arena of the day? Let's get started!
+  -elsif @gamestoday < 2
+    |Only #{pluralize(@gamestoday, 'run')}? Keep it going!
+  -else
+    |Wow, going hardcore today? Well good luck!
 = form_for @arenarun do |f|
   - if @arenarun.errors.any?
     div#error_explanation
@@ -22,8 +29,8 @@ javascript:
       ul
         - @arenarun.errors.full_messages.each do |msg| 
           li = msg 
-  .control-group.inputleft
-    = f.label :userclass, :class => 'control-label'
-    .controls
+  .newarenarun
+    = f.label "Your Class", :class => 'control-label'
+    .submit
       = f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
-  = f.submit nil, :class => 'btn btn-primary'
+    = f.submit nil, :class => 'pure-button pure-button-success runit'
