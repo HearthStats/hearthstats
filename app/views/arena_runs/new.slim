@@ -20,7 +20,7 @@ div.teasertext
   -elsif @gamestoday < 2
     |Only #{pluralize(@gamestoday, 'run')}? Keep it going!
   -else
-    |Wow, going hardcore today? Well good luck!
+    |Wow, going hardcore today? #{pluralize(@gamestoday, 'run')} already, well good luck!
 = form_for @arenarun do |f|
   - if @arenarun.errors.any?
     div#error_explanation

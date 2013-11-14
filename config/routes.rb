@@ -14,7 +14,13 @@ Hearthstats::Application.routes.draw do
   get "admin/announcement"
   post "admin/anncreate"
 
-  resources :arena_runs 
+  resources :arena_runs do
+    collection do
+      get 'end'
+      post 'endrun'
+    end
+  end
+
   
   resources :profiles
   resources :decks

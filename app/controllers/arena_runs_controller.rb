@@ -22,7 +22,7 @@ class ArenaRunsController < ApplicationController
 		end
 	end
 
-	def edit
+	def end
 		@arenarun = ArenaRun.find(session[:arenarunid])
 	end
 
@@ -31,8 +31,13 @@ class ArenaRunsController < ApplicationController
 		@arenarun.complete= true
 		session[:arenarunid] = nil
     respond_to do |format|
-      format.html { redirect_to arenas_url, notice: 'Arena Run Completed.'  }
-      format.json { head :no_content }
+      if @arenarun.update_attributes(params[:arena_run])
+        format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @arena.errors, status: :unprocessable_entity }
+      end
     end
   end
 end

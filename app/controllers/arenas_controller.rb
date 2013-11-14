@@ -45,15 +45,23 @@ class ArenasController < ApplicationController
   def create
     @arena = Arena.new(params[:arena])
     @arena.user_id = current_user.id
-    respond_to do |format|
-      if @arena.save
-        @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
-        @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count    
-        format.html { redirect_to new_arena_url, notice: 'Arena was successfully created.' }
-        format.js     
-      else
-        format.html { render action: "new" }
-        format.js
+    @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
+    @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count    
+    if @runwins > 8 || @runloses > 2
+      respond_to do |format|
+        format.js 
+      end
+    else
+      respond_to do |format|
+        if @arena.save
+          @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
+          @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count    
+          format.html { redirect_to new_arena_url, notice: 'Arena was successfully created.' }
+          format.js     
+        else
+          format.html { render action: "new" }
+          format.js
+        end
       end
     end
   end
