@@ -26,9 +26,16 @@ class ArenaRunsController < ApplicationController
 		@arenarun = ArenaRun.find(session[:arenarunid])
 	end
 
+	def edit
+		@arenarun = ArenaRun.find(params[:id])
+    if current_user.id != @arenarun.user_id
+      redirect_to root_url, notice: 'You are not authorized to edit that.'
+    end  	
+	end
+
 	def update
-    @arenarun = ArenaRun.find(session[:arenarunid])
-		@arenarun.complete= true
+		@arenarun = ArenaRun.find(params[:id])
+		@arenarun.complete = true
 		session[:arenarunid] = nil
     respond_to do |format|
       if @arenarun.update_attributes(params[:arena_run])

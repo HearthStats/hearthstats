@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114001244) do
+ActiveRecord::Schema.define(:version => 20131114224851) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20131114001244) do
   end
 
   create_table "arena_runs", :force => true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "userclass"
     t.integer  "gold",       :default => 0
     t.integer  "dust",       :default => 0
