@@ -82,7 +82,7 @@ class ConstructedsController < ApplicationController
 
     respond_to do |format|
       if @constructed.update_attributes(params[:constructed])
-        format.html { redirect_to @constructed, notice: 'Constructed was successfully updated.' }
+        format.html { redirect_to constructeds_url, notice: 'Constructed was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -96,13 +96,17 @@ class ConstructedsController < ApplicationController
   def destroy
     @constructed = Constructed.find(params[:id])
     @constructed.destroy
-    if @deck = Deck.where(:name => @constructed.deckname)[0]
+    if @deck = Deck.where(:name => @constructed.deckname, user_id: current_user.id)[0]
       if @constructed.win
         @deck.wins = @deck.wins - 1
       else
         @deck.loses = @deck.loses - 1
       end
       @deck.save
+      respond_to do |format|
+        format.html { redirect_to constructeds_url }
+        format.json { head :no_content }
+      end
     else
       respond_to do |format|
         format.html { redirect_to constructeds_url }

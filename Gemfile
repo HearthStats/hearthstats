@@ -14,7 +14,7 @@ group :development do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
-  gem 'meta_request'
+
 end
 
 # Gems used only for assets and not required
@@ -48,6 +48,7 @@ gem "figaro"
 gem 'jquery-ui-rails'
 gem 'dalli'
 gem "select2-rails"
+gem 'turbolinks'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do

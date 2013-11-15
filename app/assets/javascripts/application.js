@@ -16,6 +16,7 @@
 //= require announcements
 //= require select2
 //= require social-share-button
+//= require turbolinks
 //= require_tree .
 
 $(document).ready(function(){

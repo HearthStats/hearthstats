@@ -19,6 +19,8 @@
       escapeMarkup: function(m) { return m; }
     });
   });
+  $(document).ready(ready)
+  $(document).on('page:load', ready)
 </script>
 
 <%= form_for(@arena) do |f| %>
