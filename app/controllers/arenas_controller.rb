@@ -26,8 +26,12 @@ class ArenasController < ApplicationController
   # GET /arenas/new.json
   def new
     @arena = Arena.new
-    @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
-
+    if session[:arenarunid]
+    	@arenarun=ArenaRun.find(session[:arenarunid])
+    else
+	    @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
+	    session[:arenarunid]=@arenarun.id
+	  end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @arena }
