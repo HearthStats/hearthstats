@@ -1,0 +1,19 @@
+div.arenamodal
+  table
+    tr.heading
+      th Your Class
+      th Opponent Class
+      th Win?
+      th Options
+    - arenas.each do |match|
+      tr.matches
+        td.cl-effect-3 = link_to match.userclass, race_dashboards_path(:race => match.userclass)
+        td = match.oppclass
+        td 
+          -if match.win  
+            span.victory Victory
+          -else
+            span.defeat Defeat
+        td.cl-effect-3
+          span.edit = link_to 'Edit', edit_arena_path(match)
+          span.delete= link_to 'Delete', match, method: :delete, data: { confirm: 'Are you sure?' }
