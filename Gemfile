@@ -49,6 +49,7 @@ gem 'jquery-ui-rails'
 gem 'dalli'
 gem "select2-rails"
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do

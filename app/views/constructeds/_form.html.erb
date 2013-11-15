@@ -1,5 +1,5 @@
 <script>
-  ready(function() {
+  $(document).ready(function() {
 
     function format(state) {
       var originalOption = state.element;
@@ -16,8 +16,6 @@
       width: '300px'
     });
   });
-  $(document).ready(ready)
-  $(document).on('page:load', ready)
 </script>
 
 <%= form_for(@constructed) do |f| %>

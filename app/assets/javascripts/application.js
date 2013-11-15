@@ -11,13 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.tooltip
 //= require announcements
 //= require select2
 //= require social-share-button
-//= require turbolinks
 //= require_tree .
+//= require turbolinks
 
 $(document).ready(function(){
 	$('.notifications').delay(500).slideDown('normal', function() {
