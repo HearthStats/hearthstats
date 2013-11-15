@@ -11,6 +11,10 @@ group :development do
   gem "binding_of_caller", ">= 0.6.8"
   gem 'sqlite3'
   gem 'capistrano', "~> 2.14.2"
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+  gem 'meta_request'
 end
 
 # Gems used only for assets and not required
@@ -44,6 +48,13 @@ gem "figaro"
 gem 'jquery-ui-rails'
 gem 'dalli'
 gem "select2-rails"
+
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+end
 
 # gem 'activerecord-mysql2-adapter'
 
