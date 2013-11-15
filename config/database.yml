@@ -20,10 +20,3 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
-
-production:
-  adapter: postgresql
-  database: hearthstats
-  pool: 5
-  password: spirallife
-  timeout: 5432

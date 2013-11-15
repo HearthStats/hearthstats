@@ -52,10 +52,13 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 gem "rspec-rails", :group => [:test, :development]
+gem "factory_girl_rails", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
+  gem "email_spec"
+  gem "database_cleaner", '~> 1.0.1'
+  gem "cucumber-rails", :require => false
 end
 
 # gem 'activerecord-mysql2-adapter'
