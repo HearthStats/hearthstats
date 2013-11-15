@@ -36,7 +36,11 @@ Hearthstats::Application.routes.draw do
   resources :constructeds
 
 
-  resources :arenas
+  resources :arenas do
+    collection do
+      get :archives
+    end
+  end
   authenticated :user do
     root :to => 'dashboards#index'
   end
