@@ -35,16 +35,4 @@ table
         span.edit = link_to 'Edit', edit_arena_run_path(arena)
         span.delete = link_to 'Delete', arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }
         a.showmore href="#run#{arena.id}" rel="modal:open"  Show Played Games
-    / - arena.arenas.each do |match|
-    /   tr.matches
-    /     td.cl-effect-3 = link_to match.userclass, race_dashboards_path(:race => match.userclass)
-    /     td = match.oppclass
-    /     td 
-    /       -if match.win  
-    /         span.victory Victory
-    /       -else
-    /         span.defeat Defeat
-    /     td.time = match.created_at.strftime("%I %P on %B %d, %Y")  
-    /     td.cl-effect-3
-    /       span.edit = link_to 'Edit', edit_arena_path(match)
-    /       span.delete= link_to 'Delete', match, method: :delete, data: { confirm: 'Are you sure?' }
+=link_to "Archived Games", "/arenas/archives"
