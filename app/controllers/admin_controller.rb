@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :adminboss
   def index
   end
 
@@ -44,5 +45,12 @@ class AdminController < ApplicationController
     end
     redirect_to root_url, notice: 'SUCCESSSS PROFILE'
   end
+  
+  private
 
+  def adminboss
+    if current_user.id != 1
+      redirect_to '/'
+    end
+  end
 end
