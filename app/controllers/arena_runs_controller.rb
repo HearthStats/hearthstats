@@ -35,7 +35,6 @@ class ArenaRunsController < ApplicationController
 
 	def update
 		@arenarun = ArenaRun.find(params[:id])
-		@arenarun.complete = true
 		session[:arenarunid] = nil
 			respond_to do |format|
 				if @arenarun.update_attributes(params[:arena_run])

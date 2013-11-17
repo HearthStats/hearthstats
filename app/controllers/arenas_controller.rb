@@ -60,6 +60,9 @@ class ArenasController < ApplicationController
         if @arena.save
           @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
           @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count    
+          if @runwins > 8 || @runloses > 2
+	          @arenarun.complete = true
+		      end
           format.html { redirect_to new_arena_url, notice: 'Arena was successfully created.' }
           format.js     
         else
