@@ -5,7 +5,7 @@ class ConstructedsController < ApplicationController
   def index
     @constructeds = Constructed.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
     @constructed = Constructed.new
-    @lastentry = Constructed.where(user_id: current_user.id).last || 0
+    @lastentry = Constructed.where(user_id: current_user.id).last
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }

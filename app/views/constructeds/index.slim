@@ -28,7 +28,7 @@ div.arenaheader
 div.newentry
   div.quicktitle Quick Entry
   = form_for(@constructed, :html => {:class => 'quickform'}) do |f|
-    = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
+    = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
     div.oppclass
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
     div class="pure-button pure-button-success gofirstquick" No Coin
