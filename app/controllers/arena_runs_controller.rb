@@ -36,6 +36,7 @@ class ArenaRunsController < ApplicationController
 	def update
 		@arenarun = ArenaRun.find(params[:id])
 		session[:arenarunid] = nil
+		@arenarun.complete = true
 			respond_to do |format|
 				if @arenarun.update_attributes(params[:arena_run])
 					format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }
