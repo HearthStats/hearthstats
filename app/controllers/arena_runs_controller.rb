@@ -29,7 +29,7 @@ class ArenaRunsController < ApplicationController
 	def edit
 		@arenarun = ArenaRun.find(params[:id])
 		if current_user.id != @arenarun.user_id
-			redirect_to root_url, notice: 'You are not authorized to edit that.'
+			redirect_to root_url, alert: 'You are not authorized to edit that.'
 		end  	
 	end
 
@@ -51,7 +51,7 @@ class ArenaRunsController < ApplicationController
 		@arena.destroy
 
 		respond_to do |format|
-			format.html { redirect_to arenas_url }
+			format.html { redirect_to arenas_url, notice: 'Arena Run deleted.' }
 			format.json { head :no_content }
 		end
 	end

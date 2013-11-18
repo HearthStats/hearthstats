@@ -9,8 +9,10 @@ html
   body
     - if notice || alert
       div.notifications
-        p.notice = notice
-        p.alert = alert
+        -if notice
+          p.notice = notice
+        -elsif alert
+          p.alert = alert
     div.home
       div.sitename 
         p = image_tag("hearthstatslogo.png", height: '100', width: '100')

@@ -33,4 +33,24 @@ $(document).ready(function(){
       var checked = true;
     }
   });
+  $('.gofirstquick').click(function(){
+    var checked = $('.firstcheckbox').prop('checked');
+    if ( checked == true )
+    {
+      $('.gofirstquick').css("background", "rgb(66, 184, 221)" );
+      $('.firstcheckbox').prop('checked', false);
+      $('.gofirstquick').text("Coin");
+      var checked = false;
+    }
+    else
+    {
+      $('.gofirstquick').css("background", "rgb(28, 184, 65)" );
+      $('.firstcheckbox').prop('checked', true);
+      $('.gofirstquick').text("No Coin");
+      var checked = true;
+    }
+  });
+  // $('.quickentry').click(function() {
+  // 	$('.newentry').slideToggle(400);
+  // });
 });

@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     authenticate_user!
     @profile = User.find(params[:id]).profile
     if current_user.id != @profile.user_id
-      redirect_to root_url, notice: 'You are not authorized to edit that.'
+      redirect_to root_url, alert: 'You are not authorized to edit that.'
     end 
   end
 
@@ -85,9 +85,9 @@ class ProfilesController < ApplicationController
     decks.each do |d|
       totalgames = d.loses + d.wins
       if totalgames == 0
-        @userdeckrates[d.name] = [d.race, -1]
+        @userdeckrates[d.name] = [d.race, -1, d.id]
       else
-      	@userdeckrates[d.name] = [d.race, d.wins.to_f / totalgames]
+      	@userdeckrates[d.name] = [d.race, d.wins.to_f / totalgames, d.id]
       end
     end
     @userdeckrates = @userdeckrates.sort_by { |name, winsrate| winsrate[1] }.reverse

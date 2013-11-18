@@ -1,10 +1,41 @@
+javascript:
+  $(document).ready(function() {
+
+    function format(state) {
+      var originalOption = state.element;
+   
+      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' width='20px' />" + state.text;
+    }
+    $("#constructed_oppclass").select2({
+      width: '150px',
+      formatResult: format,
+      formatSelection: format,
+      escapeMarkup: function(m) { return m; }
+    });
+    $("#deckname_0").select2({
+      width: '150px'
+    });
+  });
+
 - set_meta_tags :title => 'Constructed Matches',
   :description => 'Constructed Matches',
   :keywords => 'Constructed, games, hearthstats, hearthstone, match, tracking, win, loss' 
 div.arenaheader
   h1.arenatitle Recent Constructed Matches
-  = link_to 'New Constructed', new_constructed_path, class: "pure-button pure-button-primary newarena"
+  span.arenabuttons
+    = link_to 'New Constructed', new_constructed_path, class: "pure-button pure-button-primary newarena"
   = will_paginate @constructeds
+div.newentry
+  div.quicktitle Quick Entry
+  = form_for(@constructed, :html => {:class => 'quickform'}) do |f|
+    = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
+    div.oppclass
+      = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
+    div class="pure-button pure-button-success gofirstquick" No Coin
+    = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
+    div class="pure-button pure-button-success winbutton" Victory
+    = f.check_box :win , :checked => true, class: "wincheckbox hidden"
+    = f.submit "Create Entry", class: "pure-button pure-button-success"
 table
   tr.heading
     th Your Deck

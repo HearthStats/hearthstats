@@ -17,9 +17,32 @@ pre {
   font-size: 11px;
 }
 
-#notice {
-  color: green;
+.notifications{
+	width: 100%;
+	color: white;
+	position: fixed;
+	top: 50px;
+	vertical-align: middle;
+	text-align: center;
+	display: none;
+	.notice{
+		width: 60%;
+		margin: auto;
+		background-color: #2ecc71;
+		border-bottom-right-radius: 7px;
+		border-bottom-left-radius: 7px;
+		padding: 5px;
+	}
+	.alert{
+		width: 60%;
+		margin: auto;
+		background-color: #e74c3c;
+		border-bottom-right-radius: 7px;
+		border-bottom-left-radius: 7px;
+		padding: 5px;
+	}
 }
+
 
 .field_with_errors {
   padding: 2px;

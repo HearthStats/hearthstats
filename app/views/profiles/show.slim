@@ -26,7 +26,7 @@ div.pure-g-r
           -if c[1][1] == -1
           -else
             tr
-              td #{counter}. #{image_tag("Icons/Classes/#{c[1][0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+              td #{counter}. #{image_tag("Icons/Classes/#{c[1][0]}_Icon.gif", height: "24", width: "24")} #{link_to c[0], deck_path(c[1][2]) }
               td #{number_to_percentage(c[1][1]*100, precision: 2)}
           -counter = counter + 1
   div.pure-u-1-3

@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
   # GET /decks
   # GET /decks.json
   def index

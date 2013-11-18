@@ -4,7 +4,8 @@ class ConstructedsController < ApplicationController
   # GET /constructeds.json
   def index
     @constructeds = Constructed.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
-
+    @constructed = Constructed.new
+    @lastentry = Constructed.where(user_id: current_user.id).last || 0
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
@@ -44,7 +45,7 @@ class ConstructedsController < ApplicationController
   def create
     @constructed = Constructed.new(params[:constructed])
     if params[:deckname].nil?
-      redirect_to new_constructed_path, notice: 'Please create a deck first.' and return
+      redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
     end
     @constructed.deckname = params[:deckname]["0"]
     @constructed.user_id = current_user.id
