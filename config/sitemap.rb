@@ -33,5 +33,3 @@ SitemapGenerator::Sitemap.create do
       add deck_path(deck), :lastmod => deck.updated_at
     end
 end
-
-SitemapGenerator::Sitemap.ping_search_engines
