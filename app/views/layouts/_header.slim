@@ -10,7 +10,7 @@ div.headcontainer
         = link_to 'Arena', arenas_path
         = link_to 'Constructed', constructeds_path
         = link_to 'Decks', decks_path
-        = link_to "Profile", "/profiles/#{current_user.id}"
+        = link_to "Profile", profile_path(current_user.id)
         = link_to('Logout', destroy_user_session_path)
       -else
         = link_to 'Home', '/'

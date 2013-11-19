@@ -50,6 +50,8 @@ gem 'dalli'
 gem "select2-rails"
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'nprogress-rails'
+gem 'sitemap_generator'
 
 gem "rspec-rails", :group => [:test, :development]
 gem "factory_girl_rails", :group => [:test, :development]

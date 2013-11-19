@@ -3,10 +3,10 @@ Hearthstats::Application.routes.draw do
 
   # get "profile/edit"
 
-  get "additional/contactus"
-  get "additional/aboutus"
-  get "additional/help"
-  get "additional/changelog"
+  match "/contactus", to: "additional#contactus"
+  match "/aboutus", to: "additional#aboutus"
+  match "/help", to: "additional#help"
+  match "/changelog", to: "additional#changelog"
   match "/nov", to: "welcome#novreport"
 
   get "admin/index"

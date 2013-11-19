@@ -17,6 +17,8 @@
 //= require announcements
 //= require select2
 //= require social-share-button
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
 //= require turbolinks
 
