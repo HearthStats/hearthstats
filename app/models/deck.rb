@@ -4,6 +4,9 @@ class Deck < ActiveRecord::Base
 
   after_destroy :delete_all_constructed
 
+  extend FriendlyId
+  friendly_id :name
+
   def delete_all_constructed
   	Constructed.destroy_all(:deck_id => self.id)	
   end

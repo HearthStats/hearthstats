@@ -19,12 +19,18 @@ SitemapGenerator::Sitemap.create do
   Add '/contactus'
   Add '/changelog'
   Add '/help'
+  Add '/nov'
 
   #
   # Add all articles:
   #
     Profile.find_each do |profile|
       add profile_path(profile), :lastmod => profile.updated_at
+    end
+
+  # Add all Decks:
+	  Deck.find_each do |deck|
+      add deck_path(deck), :lastmod => deck.updated_at
     end
 end
 
