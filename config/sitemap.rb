@@ -15,11 +15,11 @@ SitemapGenerator::Sitemap.create do
   #
   # Examples:
   #
-  Add '/aboutus'
-  Add '/contactus'
-  Add '/changelog'
-  Add '/help'
-  Add '/nov'
+  add '/aboutus'
+  add '/contactus'
+  add '/changelog'
+  add '/help'
+  add '/nov'
 
   #
   # Add all articles:

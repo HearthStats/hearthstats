@@ -8,7 +8,7 @@ class AddSlugToDecks < ActiveRecord::Migration
     add_index :arenas, :arena_run_id
     add_index :constructeds, :deck_id
     add_index :constructeds, :user_id
-    add_index :decks, :user_i
+    add_index :decks, :user_id
     add_index :profiles, :user_id
   end
 end
