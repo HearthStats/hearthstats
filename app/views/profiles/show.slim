@@ -12,7 +12,7 @@ div.profileheader
     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
   div.share
     = social_share_button_tag("#{@profiletitle} from HearthStats")
-div.graphtitle Recent Match Wins By Days Passed
+div.graphtitle Win Rate vs Days
 = render 'dashboards/userchart', width: 1000, height: 200
 div.pure-g-r
   div.pure-u-1-2
