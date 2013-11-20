@@ -1,67 +1,97 @@
-div id="winratecont" style="min-width: 310px; height: 400px; margin: 0 auto"
+canvas id="myChart" width="#{width}" height="#{height}"
+p.chartlegend
+  span.con &#9632;
+  span.chartlabel Arena
+  span.arena &#9632;
+  span.chartlabel Constructed
+
 javascript:
-  $(function () {
-      d = new Date()
-      d.setDate(d.getDate()-30);
-      $('#winratecont').highcharts({
-          chart: {
-              zoomType: 'x',
-              spacingRight: 20
-          },
-          title: {
-              text: 'Win Rates Over Time'
-          },
-          subtitle: {
-              text: document.ontouchstart === undefined ?
-                  'Click and drag in the plot area to zoom in' :
-                  'Pinch the chart to zoom in'
-          },
-          xAxis: {
-              type: 'datetime',
-              maxZoom: 5 * 24 * 3600000, // fourteen days
-              title: {
-                  text: null
-              }
-          },
-          yAxis: {
-              title: {
-                  text: 'Win Rate'
-              },
-              max: 100
-          },
-          tooltip: {
-              shared: true
-          },
-          legend: {
-              enabled: true
-          },
-          plotOptions: {
-            colors: [
-              '#5C4B51',
-              '#27ae60',
-              '#3498db',
-              '#f1c40f',
-              '#bdc3c7',
-              '#2c3e50',
-              '#3D3E94',
-              '#8e44ad',
-              '#c0392b'
-            ]
-          },
-          credits: {
-            enabled: false
-          },
-          series: [{
-              name: 'Constructed',
-              pointInterval: 24 * 3600 * 1000,
-              pointStart: Date.now(),
-              data: #{@conwins.reverse.to_json}
-          },{
-              name: 'Arena',
-              pointInterval: 24 * 3600 * 1000,
-              pointStart: Date.now(),
-              data: #{@arenawins.reverse.to_json}
-          }
-          ]
-      });
-  });
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var data = {
+    labels : #{raw @timearray.reverse},
+    datasets : [
+      {
+        fillColor : "rgba(52, 152, 219,0.6)",
+        strokeColor : "rgba(41, 128, 185,1.0)",
+        pointColor : "rgba(41, 128, 185,1.0)",
+        pointStrokeColor : "#fff",
+        data : #{@conwins.reverse.to_json}
+      },
+      {
+        fillColor : "rgba(155, 89, 182,0.6)",
+        strokeColor : "rgba(142, 68, 173,1.0)",
+        pointColor : "rgba(142, 68, 173,1.0)",
+        pointStrokeColor : "#fff",
+        data : #{@arenawins.reverse.to_json}
+      }
+    ]
+  }
+  
+  var myNewChart = new Chart(ctx).Line(data);
+
+/ javascript:
+/   $(function () {
+/       d = new Date()
+/       d.setDate(d.getDate()-30);
+/       $('#container').highcharts({
+/           chart: {
+/               zoomType: 'x',
+/               spacingRight: 20
+/           },
+/           title: {
+/               text: 'Win Rates Over Time'
+/           },
+/           subtitle: {
+/               text: document.ontouchstart === undefined ?
+/                   'Click and drag in the plot area to zoom in' :
+/                   'Pinch the chart to zoom in'
+/           },
+/           xAxis: {
+/               type: 'datetime',
+/               maxZoom: 5 * 24 * 3600000, // fourteen days
+/               title: {
+/                   text: null
+/               }
+/           },
+/           yAxis: {
+/               title: {
+/                   text: 'Win Rate'
+/               },
+/               max: 100
+/           },
+/           tooltip: {
+/               shared: true
+/           },
+/           legend: {
+/               enabled: true
+/           },
+/           plotOptions: {
+/             colors: [
+/               '#5C4B51',
+/               '#27ae60',
+/               '#3498db',
+/               '#f1c40f',
+/               '#bdc3c7',
+/               '#2c3e50',
+/               '#3D3E94',
+/               '#8e44ad',
+/               '#c0392b'
+/             ]
+/           },
+/           credits: {
+/             enabled: false
+/           },
+/           series: [{
+/               name: 'Constructed',
+/               pointInterval: 24 * 3600 * 1000,
+/               pointStart: Date.now(),
+/               data: #{@conwins.reverse.to_json}
+/           },{
+/               name: 'Arena',
+/               pointInterval: 24 * 3600 * 1000,
+/               pointStart: Date.now(),
+/               data: #{@arenawins.reverse.to_json}
+/           }
+/           ]
+/       });
+/   });
