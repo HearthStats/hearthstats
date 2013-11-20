@@ -1,0 +1,65 @@
+div id="#{chartname}" width="#{width}" height="#{height}"
+javascript:
+  $('##{chartname}').highcharts({
+      chart: {
+          type: 'column',
+          backgroundColor: '#f0f0f0'
+      },
+      title: {
+          text: '#{chartname} Win Rates'
+      },
+      subtitle: {
+          text: 'Source: HearthStats.net'
+      },
+      xAxis: {
+          categories: ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'],
+          title: {
+              text: null
+          }
+      },
+      yAxis: {
+          min: 0,
+          max: 100,
+          title: {
+              text: 'Win %',
+              align: 'high'
+          },
+          labels: {
+              overflow: 'justify'
+          }
+      },
+      tooltip: {
+          valueSuffix: '%'
+      },
+      plotOptions: {
+          column: {
+                colorByPoint: true
+              },
+          bar: {
+              dataLabels: {
+                  enabled: true
+              }
+          }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+          name: '#{chartname}',
+          data: #{railsdata.to_json},
+      }],
+      colors: [
+        '#5C4B51',
+        '#27ae60',
+        '#3498db',
+        '#f1c40f',
+        '#bdc3c7',
+        '#2c3e50',
+        '#3D3E94',
+        '#8e44ad',
+        '#c0392b'
+      ]
+  });

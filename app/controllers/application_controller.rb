@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   def recentgames(userid, durlen)
     @timearray = Array.new(durlen, 0)
     (0..durlen+1).each do |i|
-      @timearray[i-1] = i
+      @timearray[i-1] = i.days.ago.strftime('%D')
     end
     @winscon = Hash.new
     @winsarena = Hash.new
@@ -30,21 +30,25 @@ class ApplicationController < ActionController::Base
   end
 
   def cularenagames(userid, days1)
-    wins = Array.new(days1, 0)
-    wins[0] = 0
+    winrate = Array.new(days1, 0)
+    winrate[0] = 0
     (0..days1).each do |i|
-      wins[i] = Arena.where(user_id: userid, win: true).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+      win = Arena.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
+      tot = Arena.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
+      winrate[i] = (win.to_f / tot).round(4)*100
     end
-    return wins
+    return winrate
   end
 
   def culcongames(userid, days1)
-    wins = Array.new(days1, 0)
-    wins[0] = 0
+    winrate = Array.new(days1, 0)
+    winrate[0] = 0
     (0..days1).each do |i|
-      wins[i] = Constructed.where(win: true, user_id: userid).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+      win = Constructed.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
+      tot = Constructed.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
+      winrate[i] = (win.to_f / tot).round(4)*100
     end
-    return wins
+    return winrate
   end
     
   def recentgamesbyhr(userid, durlen)

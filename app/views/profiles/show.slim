@@ -1,6 +1,8 @@
 - set_meta_tags :title => @profiletitle,
   :description => @profiletitle,
   :keywords => "user, profile, personal, statistics, hearthstats, hst, #{@profile.name}"
+script src="http://code.highcharts.com/highcharts.js"
+script src="http://code.highcharts.com/modules/exporting.js"
 
 div.profileheader
   h1 = @profiletitle
@@ -13,10 +15,10 @@ div.profileheader
 div.graphtitle Recent Match Wins By Days Passed
 = render 'dashboards/userchart', width: 1000, height: 200
 div.pure-g-r
-  div.pure-u-1-3
-    div.global
-      h2 User Class Win Rates
-      = render 'dashboards/globalstats'
+  div.pure-u-1-2
+    = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate, chartname: "Arena"
+  div.pure-u-1-2
+    = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate, chartname: "Constructed"
   div.pure-u-1-3
     div.userdeckrates
       h2 Top Decks from User
