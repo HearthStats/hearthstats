@@ -4,6 +4,8 @@ class Deck < ActiveRecord::Base
 
   after_destroy :delete_all_constructed
 
+  is_impressionable
+  
   extend FriendlyId
   friendly_id :name, use: :slugged
 

@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
       @profiletitle = "User's Profile"
     end
   	recentgames(@user.id, 30)
-  	impressionist(@profile,message:"wtf is a widget?") #message is optional
+  	impressionist(@profile)
   	# Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Array.new

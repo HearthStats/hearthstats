@@ -18,7 +18,7 @@ class DecksController < ApplicationController
     require 'nokogiri' 
     require 'open-uri'        
     @deck = Deck.find(params[:id])
-
+    impressionist(@deck)
     
     if @deck.decklink.blank?
       @message = "No deck link attatched to this deck yet <p>"
