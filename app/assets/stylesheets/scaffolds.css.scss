@@ -3,6 +3,12 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  a{
+  	-webkit-transition: color 400ms ease-out;
+    -moz-transition: color 400ms ease-out;
+    -o-transition: color 400ms ease-out;
+    transition: color 400ms ease-out;
+  }
   a:visited {
     color: #3498db;
   }

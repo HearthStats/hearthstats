@@ -4,14 +4,20 @@ div.headcontainer
       = link_to "/"
         = image_tag("hearthstatslogo.png", height: '40', width: '40', alt: "HearthStats Logo")
         span.headtitle HearthStats
-    nav.rightnav.cl-effect-1
-      -if !current_user.nil?
-        = link_to 'Dashboard', '/'
-        = link_to 'Arena', arenas_path
-        = link_to 'Constructed', constructeds_path
-        = link_to 'Decks', decks_path
-        = link_to "Profile", profile_path(current_user.id)
-        = link_to('Logout', destroy_user_session_path)
-      -else
+    -if !current_user.nil?
+      nav.rightnav
+        span.cl-effect-1
+          = link_to 'Arena', arenas_path
+          = link_to 'Constructed', constructeds_path
+          = link_to 'Decks', decks_path
+        span.iconlinks
+          = link_to '/' do
+            span class="icon-home"
+          = link_to profile_path(current_user.id) do
+            span class="icon-user"
+          = link_to destroy_user_session_path do
+            span class="icon-switch"
+    -else
+      nav.rightnav.cl-effect-1
         = link_to 'Home', '/'
         = link_to 'Register', new_user_registration_path

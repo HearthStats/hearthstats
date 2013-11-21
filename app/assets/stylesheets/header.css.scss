@@ -1,3 +1,38 @@
+@font-face {
+  font-family: 'Icomoon';
+  src:font-url('icomoon.eot');
+  src:font-url('icomoon.eot?#iefix') format('embedded-opentype'),
+    font-url('icomoon.svg#icomoon') format('svg'),
+    font-url('icomoon.woff') format('woff'),
+    font-url('icomoon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+	content: "\e600";
+}
+.icon-switch:before {
+	content: "\e601";
+}
+.icon-home:before {
+	content: "\e602";
+}
+
 .headcontainer{
 	background-color: rgba(47,47,47,1);
 	.header{
@@ -27,16 +62,35 @@
 		}
 		.rightnav{
 			float: right;
+			padding-top: 11px;
 			font-weight: 300;
 			font-family: 'Lato', sans-serif;
 			font-size: 18px;
 			color: #999;
 			display: inline-block;
-			padding-top: 11px;
+			
 			a{
 				color: white;
 				text-decoration: none;
 				background-color: transparent;
+			}
+			.iconlinks{
+				font-family: 'Icomoon';
+				color: white;
+				font-size: 20px;
+				span{
+					padding-right: 10px;
+					padding-left: 10px;
+				}
+				a:hover:first-child{
+					color: #3498db;
+				}
+				a:hover:nth-child(2){
+					color: #2ecc71;
+				}
+				a:hover:nth-child(3){
+					color: #e74c3c;
+				}
 			}
 		}
 	}

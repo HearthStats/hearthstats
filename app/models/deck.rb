@@ -5,7 +5,7 @@ class Deck < ActiveRecord::Base
   after_destroy :delete_all_constructed
 
   is_impressionable
-  
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -23,7 +23,7 @@ class Deck < ActiveRecord::Base
     begin
       link = prepend_http(decklink)
       page = Nokogiri::HTML(open(link))
-      if page.css('header').text.present?
+      if !page.css('header').text.nil?
         message = "<a href='#{link}'>Link To Deck</a><p>"
       else
         message = page.text

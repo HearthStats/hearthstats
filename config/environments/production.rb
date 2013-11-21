@@ -80,4 +80,6 @@ Hearthstats::Application.configure do
       :password  => "2EHw5V8KxBxqfHRvkdZhIg"
     }
 
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+  
 end
