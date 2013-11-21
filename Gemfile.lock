@@ -120,7 +120,11 @@ GEM
     httparty (0.12.0)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    httpclient (2.3.4.1)
     i18n (0.6.1)
+    impressionist (1.4.11)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.6.0)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -288,6 +292,7 @@ DEPENDENCIES
   friendly_id
   gibbon (~> 1.0.4)
   guard-rspec
+  impressionist
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails

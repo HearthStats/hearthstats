@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+	  
     if !current_user || !(current_user.id == @user.id)
       if @user.profile.private
         redirect_to root_url, notice: "User's Profile is Private"
@@ -40,7 +41,7 @@ class ProfilesController < ApplicationController
       @profiletitle = "User's Profile"
     end
   	recentgames(@user.id, 30)
-
+  	impressionist(@profile,message:"wtf is a widget?") #message is optional
   	# Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Array.new

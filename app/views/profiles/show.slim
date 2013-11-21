@@ -11,6 +11,8 @@ div.profileheader
   - if @profile.bnetid
     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
   div.share
+    |Profile Views 
+    = @profile.impressionist_count
     = social_share_button_tag("#{@profiletitle} from HearthStats")
 div.graphtitle Win Rate vs Days
 = render 'dashboards/userchart', width: 1000, height: 200
