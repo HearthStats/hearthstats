@@ -70,7 +70,7 @@ class DecksController < ApplicationController
   def update
     @deck = Deck.find(params[:id])
     @deck.constructeds.update_all(:deckname => params[:deck]['name'])
-    
+    expire_fragment(@deck)
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }

@@ -20,18 +20,18 @@ class Deck < ActiveRecord::Base
     # Else return list of cards in deck
     # If Nokogiri fails to parse, return No deck link if blank
     # Else return link
-    begin
-      link = prepend_http(decklink)
-      page = Nokogiri::HTML(open(link))
-      if !page.css('header').text.nil?
-        message = "<a href='#{link}'>Link To Deck</a><p>"
-      else
-        message = page.text
-      end
-    rescue
-      if decklink == "/export/4"
-        message = "No deck link attatched to this deck yet <p>"
-      else
+    if !decklink.present?
+      message = "No deck link attatched to this deck yet <p>"
+    else
+    	link = prepend_http(decklink)
+	    begin
+	      page = Nokogiri::HTML(open(link))
+	      if !page.css('header').text.blank?
+	        message = "<a href='#{link}'>Link To Deck</a><p>"
+	      else
+	        message = page.text
+	      end
+	    rescue
         link = link[0..-10]
         message = "<a href='#{link}'>Link To Deck</a><p>"
       end     

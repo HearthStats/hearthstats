@@ -15,8 +15,8 @@
   <%= @deck.loses %>
 </p>
 <p><b>Deck Views:</b> <%= @deck.impressionist_count%> </p>
-
-<%= raw @message %>
-
+<% cache(@deck, expires_in: 1.day)  do %>
+	<%= raw @message %>
+<% end %>
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
 <%= link_to 'Back', decks_path %>
