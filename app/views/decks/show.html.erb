@@ -7,12 +7,12 @@
 
 <p>
   <b>Wins:</b>
-  <%= @deck.wins %>
+  <%= @deck.constructeds.where(win: true).count %>
 </p>
 
 <p>
   <b>Loses:</b>
-  <%= @deck.loses %>
+  <%= @deck.constructeds.where(win: false).count %>
 </p>
 <p><b>Deck Views:</b> <%= @deck.impressionist_count%> </p>
 <% cache(@deck, expires_in: 1.day)  do %>

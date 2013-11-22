@@ -16,8 +16,8 @@ table
     tr.matches
       td = link_to deck.name ,deck
       td = deck.race
-      td = deck.wins
-      td = deck.loses
+      td = deck.constructeds.where(win: true).count
+      td = deck.constructeds.where(win: false).count
       td.cl-effect-3
         span.edit = link_to 'Edit', edit_deck_path(deck)
         span.delete= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure? This will delete all Constructed games with the deck as well.' }
