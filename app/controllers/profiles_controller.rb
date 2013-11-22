@@ -85,11 +85,11 @@ class ProfilesController < ApplicationController
     decks = Deck.where(user_id: @user.id)
     @userdeckrates = Hash.new
     decks.each do |d|
-      totalgames = d.loses + d.wins
+      totalgames = d.constructeds.count
       if totalgames == 0
         @userdeckrates[d.name] = [d.race, -1, d.id]
       else
-      	@userdeckrates[d.name] = [d.race, d.wins.to_f / totalgames, d.id]
+      	@userdeckrates[d.name] = [d.race, d.constructeds.where(win:true).count.to_f / totalgames, d.id]
       end
     end
     @userdeckrates = @userdeckrates.sort_by { |name, winsrate| winsrate[1] }.reverse
