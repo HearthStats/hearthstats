@@ -49,6 +49,7 @@ class ConstructedsController < ApplicationController
     end
     @constructed.deckname = params[:deckname]["0"]
     @constructed.user_id = current_user.id
+    @deck = Deck.where(user_id: current_user.id, :name => @constructed.deckname)[0]
     @constructed.deck_id = @deck.id
     respond_to do |format|
       if @constructed.save
