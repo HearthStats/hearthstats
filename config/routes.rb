@@ -1,4 +1,13 @@
 Hearthstats::Application.routes.draw do
+
+  get "tournys/index"
+
+  get "tournys/signup"
+
+  get "tournys/past"
+
+  post "tournys/regtourny"
+
   # get "profile/index"
 
   # get "profile/edit"
