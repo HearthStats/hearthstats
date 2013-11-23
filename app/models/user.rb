@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   has_many :decks
   has_many :constructeds
   has_many :arena_runs
+  belongs_to :tourny
 end
