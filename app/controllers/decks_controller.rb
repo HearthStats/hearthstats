@@ -15,17 +15,16 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def show
     require 'rubygems'
-    require 'nokogiri' 
-    require 'open-uri'        
+    require 'nokogiri'
+    require 'open-uri'
     @deck = Deck.find(params[:id])
     impressionist(@deck)
-    
+
     if @deck.decklink.blank?
       @message = "No deck link attatched to this deck yet <p>"
     else
       @message = @deck.decklink_message
     end
-     
 
     respond_to do |format|
       format.html # show.html.erb

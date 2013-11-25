@@ -39,7 +39,7 @@ Hearthstats::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # config.after_initialize do
@@ -56,5 +56,4 @@ Hearthstats::Application.configure do
   #   Bullet.airbrake = true
   #   Bullet.add_footer = true
   # end
-
 end
