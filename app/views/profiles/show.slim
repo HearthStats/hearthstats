@@ -1,8 +1,6 @@
 - set_meta_tags :title => @profiletitle,
   :description => @profiletitle,
-  :keywords => "user, profile, personal, statistics, hearthstats, hst, #{@profile.name}"
-script src="http://code.highcharts.com/highcharts.js"
-script src="http://code.highcharts.com/modules/exporting.js"
+  :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
 
 div.profileheader
   h1 = @profiletitle
@@ -11,7 +9,7 @@ div.profileheader
   - if @profile.bnetid
     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
   div.share
-    |Profile Views 
+    |Profile Views
     = @profile.impressionist_count
     = social_share_button_tag("#{@profiletitle} from HearthStats")
 div.graphtitle Win Rate vs Days

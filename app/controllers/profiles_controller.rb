@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id]).profile
     if current_user.id != @profile.user_id
       redirect_to root_url, alert: 'You are not authorized to edit that.'
-    end 
+    end
   end
 
   def update
@@ -73,11 +73,10 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classconrate[i] = 0
       else
-	    @classconrate[i] = (totalwins.to_f / totalgames).round(4)*100
+		    @classconrate[i] = (totalwins.to_f / totalgames).round(4)*100
 
-      @contot[i] = totalgames
-	  end
-      
+	      @contot[i] = totalgames
+		  end
     end
     # @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
 

@@ -14,3 +14,20 @@
 		padding: 10px 10px;
 	}
 }
+
+.turnrates{
+	width: 100%;
+	color: white;
+	.winrates{
+		// width: ;
+		padding: 10%;
+		// border-radius: 100%;
+		display: inline-block;
+	}
+	.firstrate{
+		background-color: #3498db;
+	}
+	.secrate{
+		background-color: #9b59b6;
+	}
+}

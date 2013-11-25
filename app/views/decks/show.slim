@@ -1,0 +1,30 @@
+- set_meta_tags :title => @deck.name,
+  :description => @deck.name,
+  :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
+
+div.notice = notice
+h1 #{@deck.name}
+small Deck Views: #{ @deck.impressionist_count }
+div.pure-g-r
+  div.pure-u-1-3
+    p
+      b Wins:
+      = @deck.constructeds.where(win: true).count
+    p
+      b Loses:
+      = @deck.constructeds.where(win: false).count
+    div.turnrates
+      div.winrates.firstrate
+        br No Coin
+        | #{@firstrate}%
+      div.winrates.secrate
+        br Coin
+        | #{@secrate}%
+    div.cf
+    - cache(@deck, expires_in: 1.day)  do
+    	= raw @message
+  div.pure-u-2-3
+    = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate, chartname: "#{@deck.name}"
+
+= link_to 'Edit', edit_deck_path(@deck)
+= link_to 'Back', decks_path

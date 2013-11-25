@@ -15,17 +15,33 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def show
     require 'rubygems'
-    require 'nokogiri' 
-    require 'open-uri'        
+    require 'nokogiri'
+    require 'open-uri'
     @deck = Deck.find(params[:id])
     impressionist(@deck)
-    
+
     if @deck.decklink.blank?
       @message = "No deck link attatched to this deck yet <p>"
     else
       @message = @deck.decklink_message
     end
-     
+    # Win rates vs each class
+		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    @deckrate = Array.new
+    classes.each_with_index do |c,i|
+	    wins = @deck.constructeds.where(oppclass: c, win: true).count
+	    totgames = @deck.constructeds.where(oppclass: c).count
+	    if totgames == 0
+	    	@deckrate[i] = 0
+	    else
+		    @deckrate[i] = (wins.to_f / totgames).round(4)*100
+		  end
+	  end
+
+	  # Going first vs 2nd
+	  @totgames = @deck.constructeds.count
+	  @firstrate = (@deck.constructeds.where(gofirst: true, win: true).count.to_f / @totgames).round(4)*100
+	  @secrate = (@deck.constructeds.where(gofirst: false, win: true).count.to_f / @totgames).round(4)*100
 
     respond_to do |format|
       format.html # show.html.erb
