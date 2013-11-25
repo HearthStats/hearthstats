@@ -1,0 +1,18 @@
+- flash.each do |f|
+ p class="#{f[0]}" = f[1]
+
+= form_tag "/tournies/createtourny" do
+
+  = label_tag "Tournament Name"
+  = text_field_tag :name
+  
+  = label_tag "URL"
+  = text_field_tag :url
+  
+  = label_tag "Tournament Status"
+  = select_tag :type, options_for_select([["Closed",0],["Invite", 1],["Open",2]])
+
+  = label_tag "Tournament Type"
+  = select_tag :status, options_for_select(["single elimination", "double elimination", "round robin", "swiss"])
+
+  = submit_tag "Let it rip!"

@@ -5,7 +5,7 @@ footer
     = link_to "Help", help_path
     = link_to "Contact Us", contactus_path
     = link_to "November Report", "/nov"
-    = link_to "Tournaments", tournys_index_path
+    = link_to "Tournaments", tournies_path
     -if !current_user.nil?
       - if current_user.id == 1
         =link_to "Admin", admin_index_path

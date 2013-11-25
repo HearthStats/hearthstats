@@ -10,11 +10,10 @@ class Deck < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   def delete_all_constructed
-  	Constructed.destroy_all(:deck_id => self.id)	
+  	Constructed.destroy_all(:deck_id => self.id)
   end
 
-  def decklink_message 
-    
+  def decklink_message
     # Add http:// to link if not present
     # If page is not a valid link then return link
     # Else return list of cards in deck

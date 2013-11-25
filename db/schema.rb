@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131123024903) do
+ActiveRecord::Schema.define(:version => 20131125034240) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -167,11 +167,12 @@ ActiveRecord::Schema.define(:version => 20131123024903) do
 
   create_table "tournies", :force => true do |t|
     t.integer  "challonge_id"
-    t.integer  "status"
+    t.integer  "status",       :default => 0
     t.integer  "winner_id"
     t.string   "prize"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "complete",     :default => false
   end
 
   create_table "users", :force => true do |t|
