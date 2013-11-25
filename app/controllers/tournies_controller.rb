@@ -17,10 +17,10 @@ class TourniesController < ApplicationController
     user.tourny_id = cid
     challonge = Challonge::Tournament.find(cid)
     ct = Challonge::Participant.create(:name => user.profile.bnetid, :tournament => challonge)
-    if user.save && !ct.errors.full_messages.blank?
+    if user.save and ct.errors.full_messages.blank?
 			redirect_to root_path, notice: 'You entered the tournament!'
     else
-    	redirect_to root_path, error: 'You were not added to the tournament'
+    	redirect_to root_path, alert: "You were not added to the tournament. #{ct.errors.full_messages}"
     end
   end
   
@@ -78,7 +78,7 @@ class TourniesController < ApplicationController
     tourny.save
     if tourny.save
     else
-      format.html { redirect_to root_path, error: 'Local Tourny not saved!' }
+      format.html { redirect_to root_path, alert: 'Local Tourny not saved!' }
     end
   end
 end
