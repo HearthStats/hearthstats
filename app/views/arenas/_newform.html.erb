@@ -3,7 +3,7 @@
 
     function format(state) {
       var originalOption = state.element;
-   
+
       return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
     }
     $("#arena_oppclass").select2({
@@ -16,13 +16,13 @@
 </script>
 
 <div class="pure-g-r">
-  <div class="pure-u-1-2">
+  <div class="pure-u-1-2 center">
     <table id="arenagames">
       <tr><th>Opponent Class</th><th>Result</th></tr>
         <% @arenarun.arenas.each do |a| %>
             <tr>
               <td><%= image_tag("Icons/Classes/#{a.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=a.oppclass%></td>
-              <td class="center">
+              <td>
                 <% if a.win %>
                   <span class="victory">Victory</span>
                 <% else %>
@@ -32,6 +32,7 @@
             </tr>
         <% end %>
     </table>
+    <%= link_to "Retire", end_arena_runs_path, class: "pure-button pure-button-error retirebut", :confirm => ("Are you sure you want to retire early from this Arena Run?") %>
   </div>
   <!-- Left Past Arena Games -->
   <div class="pure-u-1-2">
@@ -70,7 +71,7 @@
         <div class="pure-button pure-button-success winbutton"> Victory </div><br />
         <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
       </div>
-      
+
       <%= f.number_field :arena_run_id , :value => @arenarun.id, class: "hidden" %>
 
       <div class="actions">

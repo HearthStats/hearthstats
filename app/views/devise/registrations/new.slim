@@ -14,17 +14,17 @@ html
         -elsif alert
           p.alert = alert
     div.home
-      div.sitename 
+      div.sitename
         p = image_tag("hearthstatslogo.png", height: '100', width: '100')
         br
         |Sign Up
-      
+
       div.login = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       	= devise_error_messages!
         div.reglabel Email
         = f.email_field :email, :autofocus => true
         div.reglabel Password
-        = f.password_field :password 
+        = f.password_field :password
         div.reglabel Password Confirmation
         = f.password_field :password_confirmation
         = f.submit "Sign up"
