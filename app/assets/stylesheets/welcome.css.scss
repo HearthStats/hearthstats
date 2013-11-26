@@ -2,127 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.home {
-	a{
-		-webkit-transition: all linear .2s,box-shadow linear .2s;
-		-moz-transition: all linear .2s,box-shadow linear .2s;
-		-o-transition: all linear .2s,box-shadow linear .2s;
-		transition: all linear .2s,box-shadow linear .2s;
-	}
-	height: 100%;
-	background: image-url('hearthstonebg.jpg') no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	.sitename{
-		font-size: 80px;
-		padding: 40px;
-		padding-top: 100px;
-		width: 700px;
-		margin: auto;
-		color: white;
-		font-weight: 300;
-		font-family: 'Lato', sans-serif;
-		text-align: center;
-		letter-spacing: 10px;
-	}
-	.login{
-		margin-top: 20px;
-		color: white;
-		input{
-			margin: 5px auto 0px auto;
-			width: 200px;
-			display: block;
-			height: 40px;
-			background: transparent image-url('trans.png');
-			color: white;
-			border-radius: 0;
-			font-size: 14px;
-		}
-		.rmbme{
-			width: 200px;
-			margin: auto;
-			input{
-				height: 12px;
-				display: inline;
-				width: 20px;
-			}
-		}
-		::-webkit-input-placeholder {
-			padding-left: 10px;
-		    color: #ebe5da;
-		    font-weight: bold;
-		}
-
-		:-moz-placeholder { /* Firefox 18- */
-			padding-left: 10px;
-		   color: #ebe5da;  
-		}
-
-		::-moz-placeholder {  /* Firefox 19+ */
-			padding-left: 10px;
-		   color: #ebe5da;  
-		}
-
-		:-ms-input-placeholder {  
-			padding-left: 10px;
-		   color: #ebe5da;  
-		}
-
-		// Registration Page
-		.reglabel{
-			text-align: center;
-			padding-bottom: 5px;
-		}
-		.backbuttonreg{
-			margin: 0px auto 5px auto;
-			width: 200px;
-			display: block;
-			height: 40px;
-			align-items: flex-start;
-			vertical-align: middle;
-			text-align: center;
-			cursor: default;
-			color: buttontext;
-			padding: 7px 6px 3px;
-			border: 2px outset buttonface;
-			border-image-source: initial;
-			border-image-slice: initial;
-			border-image-width: initial;
-			border-image-outset: initial;
-			border-image-repeat: initial;
-			background: transparent url(/assets/trans.png);
-			box-sizing: border-box;
-			font-family: 'Lucida Grande';
-			font-size: 11px;
-			color: white;
-			border-radius: 0;
-			text-decoration: none;
-		}
-	}
-	.loginadd{
-		width: 300px;
-		margin: auto;
-		text-align: center;
-		a {
-			display: block;
-			color: white;
-			text-decoration: none;
-		}
-		a:hover{
-			color: white;
-			background-color: transparent;
-		}
-	}
-}
-
-.welcomeright{
-	position: fixed;
-	bottom: 0;
-	right: 0;
-}
-
 // Nov Report
 .novreport{
 	font-family: 'Lato', sans-serif;
@@ -140,11 +19,11 @@
 	}
 	.splashpic{
 	height: 700px;
-	background: image-url('novbg.jpg') no-repeat center top fixed; 
+	background: image-url('novbg.jpg') no-repeat center top fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;	
+	background-size: cover;
 	}
 	.scrolldowncont{
 		background-color: #2ecc71;
@@ -172,7 +51,7 @@
 			background-color: #E64C65;
 			-moz-border-radius: 0px;
 			-webkit-border-radius: 5px 5px 0px 0px;
-			border-radius: 5px 5px 0px 0px; 
+			border-radius: 5px 5px 0px 0px;
 		}
 		.rankingtable{
 			width: 90%;
@@ -201,7 +80,7 @@
 				padding-left: 0;
 				width: 449px;
 			}
-			
+
 		}
 		.conmore, .arenamore {
 			display: none;
@@ -215,7 +94,7 @@
 			text-align: center;
 			font-family: 'Lato', sans-serif;
 			font-weight: 300;
-			cursor: pointer;	
+			cursor: pointer;
 		}
 		.overallcont{
 			padding-bottom: 70px;
@@ -242,7 +121,7 @@
 			}
 			.mpthird{
 				font-size: 30px;
-				padding-left: 0px;	
+				padding-left: 0px;
 				padding-top: 10px;
 				color: #bdc3c7;
 			}
@@ -284,7 +163,7 @@
 			background-color: #F1F1F1;
 			padding-top: 3em;
 			h2{
-				color: #2c3e50;	
+				color: #2c3e50;
 				display: inline-block;
 				margin-bottom: 10px;
 			}
@@ -296,7 +175,7 @@
 			}
 			.graphcont{
 				.graphtitle{
-					color: #2c3e50;	
+					color: #2c3e50;
 				}
 			}
 			.arateentry{
@@ -309,7 +188,7 @@
 			padding-right: 30px;
 		}
 		.hsusers{
-			background-color: #e67e22;	
+			background-color: #e67e22;
 			.hscont{
 				display: inline-block;
 				text-align: center;
@@ -339,6 +218,7 @@
 			font-size: 70px;
 			color: white;
 			font-weight: 400;
+			line-height: 1;
 		}
 		.joinsubtext{
 			font-size: 25px;
@@ -353,7 +233,7 @@
 				text-align: center;
 			}
 		}
-	}	
+	}
 	.novfootercont{
 		text-align: center;
 		padding-top: 50px;

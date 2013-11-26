@@ -16,16 +16,16 @@ html
         -elsif alert
           p.alert = alert
     div.home
-      div.sitename 
+      div.sitename
         p = image_tag("hearthstatslogo.png", height: '100', width: '100')
         br
         |HearthStats
-      
+
       div.login = form_for("user", :url => user_session_path) do |f|
-        = f.text_field :email 
-        = f.password_field :password 
-        div.rmbme 
-          = f.check_box :remember_me 
+        = f.text_field :email
+        = f.password_field :password
+        div.rmbme
+          = f.check_box :remember_me
           |Remember Me
         = f.submit 'Sign in'
       div.loginadd.cl-effect-1
