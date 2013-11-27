@@ -113,7 +113,7 @@ Profile Page
   top:0;
   right:0;
   color:#fff;
-  font-size:16px; 
+  font-size:16px;
   padding:7px 13px;
   position:absolute;
   background:#169ef4;
@@ -190,11 +190,11 @@ Profile Page
 }
 
 .sale-summary li i.icon-img-up {
-  background:url(../../img/icon-img-up.png) no-repeat !important;
+  background:url(icon-img-up.png) no-repeat !important;
 }
 
 .sale-summary li i.icon-img-down {
-  background:url(../../img/icon-img-down.png) no-repeat !important;
+  background:url(icon-img-down.png) no-repeat !important;
 }
 
 .sale-summary .caption h4 {
@@ -211,18 +211,18 @@ Profile Page
   background:#f0f6fa;
 }
 
-.profile .table-bordered th, 
+.profile .table-bordered th,
 .profile .table-bordered td,
 .profile .table-bordered {
   border-color:#e5eff6;
 }
 
-.profile .table-striped tbody > tr:nth-child(2n+1) > td, 
+.profile .table-striped tbody > tr:nth-child(2n+1) > td,
 .profile .table-striped tbody > tr:nth-child(2n+1) > th {
   background:#fcfcfc;
 }
 
-.profile .table-hover tbody tr:hover td, 
+.profile .table-hover tbody tr:hover td,
 .profile .table-hover tbody tr:hover th {
   background:#f5fafd;
 }
@@ -284,7 +284,7 @@ Profile Page
 .portfolio-btn span {
   color:#fff;
   font-size:22px;
-  font-weight:200;  
+  font-weight:200;
 }
 
 /*portfolio info*/
@@ -319,7 +319,7 @@ Profile Page
   margin-bottom:3px;
 }
 
-.profile-settings .controls > .radio, 
+.profile-settings .controls > .radio,
 .profile-settings .controls > .checkbox {
   font-size:12px;
   margin-top:2px !important;

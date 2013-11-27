@@ -19,7 +19,7 @@ body {
 
 .coming-soon-countdown {
 	padding: 20px;
-}  
+}
 
 .coming-soon-content h1,
 .coming-soon-content p {
@@ -29,7 +29,7 @@ body {
 .coming-soon-content h1 {
 	font-size: 42px;
 	line-height: 50px;
-	margin-bottom: 15px;	
+	margin-bottom: 15px;
 	font-weight: 300;
 }
 
@@ -50,9 +50,9 @@ body {
 }
 
 /*Countdown*/
-#defaultCountdown { 
+#defaultCountdown {
 	width: 100%;
-	margin: 10px 0; 
+	margin: 10px 0;
 	overflow: hidden;
 }
 
@@ -60,7 +60,7 @@ body {
 	overflow: hidden;
 }
 
-#defaultCountdown span.countdown_row span { 
+#defaultCountdown span.countdown_row span {
 	font-size: 16px;
 	font-weight: 300;
 	line-height: 20px;
@@ -76,7 +76,7 @@ body {
 	padding: 7px 15px !important;
 	margin-bottom: 2px;
 	font-weight: 300;
-	background: url(../../img/bg-white.png) repeat;
+	background: url(bg-white.png) repeat;
 	text-align: center;
 }
 
@@ -97,12 +97,12 @@ body {
 @media (max-width: 767px) {
 
 	.coming-soon-header,
-	.coming-soon-countdown, 
+	.coming-soon-countdown,
 	.coming-soon-content,
 	.coming-soon-footer {
 		margin-top: 0px;
 		padding: 10px;
-	}  
+	}
 }
 
 @media (max-width: 320px) {

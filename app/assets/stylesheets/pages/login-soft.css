@@ -8,21 +8,21 @@ Login page
 }
 
 .login .logo {
-  margin: 0 auto;   
+  margin: 0 auto;
   margin-top:60px;
   padding: 15px;
   text-align: center;
-}  
+}
 
 
 .login .content {
-  background: url(../../img/bg-white-lock.png) repeat;
+  background: url(bg-white-lock.png) repeat;
   width: 360px;
-  margin: 0 auto; 
+  margin: 0 auto;
   margin-bottom: 0px;
-  padding: 30px;  
-  padding-top: 20px;  
-  padding-bottom: 15px;  
+  padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
 }
 
 .login .content h3 {
@@ -78,7 +78,7 @@ Login page
   border: 0;
   margin-bottom: 0;
   padding-bottom: 20px;
-}  
+}
 
 .login .content .register-form .form-actions {
   border: 0;
@@ -117,11 +117,11 @@ Login page
   color: #ccc;
   z-index: 1;
   top:1px;
-  margin: 4px 4px 0px 3px; 
+  margin: 4px 4px 0px 3px;
   width: 16px;
   height: 16px;
   font-size: 16px;
-  text-align: center; 
+  text-align: center;
 }
 
 .login .content .has-error .select2-container i {
@@ -139,7 +139,7 @@ Login page
 /* footer copyright */
 .login .copyright {
   text-align: center;
-  margin: 0 auto; 
+  margin: 0 auto;
   padding: 10px;
   color: #eee;
   font-size: 12px;
@@ -154,7 +154,7 @@ Login page
   }
 
   .login .content {
-    padding: 30px; 
+    padding: 30px;
     width: 222px;
   }
 

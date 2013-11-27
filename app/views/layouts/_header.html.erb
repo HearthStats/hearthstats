@@ -3,9 +3,9 @@
   <!-- BEGIN TOP NAVIGATION BAR -->
   <div class="header-inner">
     <!-- BEGIN LOGO -->
-    <a class="navbar-brand" href="index.html">
-    <%= image_tag("hearthstatslogo.svg", width: '20px', height: '20px') %>
-    </a>
+    <%= link_to root_path, class: "navbar-brand" do %>
+	    <%= image_tag("logo.png", alt: "logo", class: "img-responsive") %>
+    <% end %>
     <!-- END LOGO -->
     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
     <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,7 +18,7 @@
       <li class="dropdown" id="header_notification_bar">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
           data-close-others="true">
-        <i class="icon-warning-sign"></i>
+        <i class="fa fa-warning"></i>
         <span class="badge">6</span>
         </a>
         <ul class="dropdown-menu extended notification">
@@ -102,7 +102,7 @@
       <li class="dropdown" id="header_inbox_bar">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
           data-close-others="true">
-        <i class="icon-envelope"></i>
+        <i class="fa fa-envelope"></i>
         <span class="badge">5</span>
         </a>
         <ul class="dropdown-menu extended inbox">
@@ -113,7 +113,7 @@
             <ul class="dropdown-menu-list scroller" style="height: 250px;">
               <li>
                 <a href="inbox.html?a=view">
-                <span class="photo"><img src="./assets/img/avatar2.jpg" alt=""/></span>
+                <span class="photo"><%= image_tag("avatar2.jpg") %></span>
                 <span class="subject">
                 <span class="from">Lisa Wong</span>
                 <span class="time">Just Now</span>
@@ -186,7 +186,7 @@
       <!-- BEGIN TODO DROPDOWN -->
       <li class="dropdown" id="header_task_bar">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <i class="icon-tasks"></i>
+        <i class="fa fa-tasks"></i>
         <span class="badge">5</span>
         </a>
         <ul class="dropdown-menu extended tasks">
@@ -298,7 +298,7 @@
       <li class="dropdown user">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <%= image_tag("avatar1_small.jpg") %>
-        <span class="username">Bob Nilson</span>
+        <span class="username"><%= current_user.email %></span>
         <i class="icon-angle-down"></i>
         </a>
         <ul class="dropdown-menu">

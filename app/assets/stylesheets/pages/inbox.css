@@ -56,7 +56,7 @@ Inbox Page
   height: 35px;
   position: absolute;
   display: inline-block;
-  background: url(../../img/inbox-nav-arrow-blue.png) no-repeat;
+  background: url(inbox-nav-arrow-blue.png) no-repeat;
 }
 
 .inbox .inbox-nav li:hover a {
@@ -131,7 +131,7 @@ Inbox Page
 
 .inbox tr i.icon-star,
 .inbox tr i.icon-trash {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .inbox tr i.icon-star {
@@ -143,15 +143,15 @@ Inbox Page
 }
 
 .inbox tr i.inbox-started {
-  color: #fd7b12;  
+  color: #fd7b12;
 }
 
-.inbox .table th, 
+.inbox .table th,
 .inbox .table td {
   border: none;
 }
 
-.inbox .table th {  
+.inbox .table th {
   background: #eef4f7;
   border-bottom: solid 5px #fff;
 }
@@ -184,7 +184,7 @@ Inbox Page
   color: #fff;
   padding: 1px 0;
   font-size: 15px;
-  cursor: pointer; 
+  cursor: pointer;
   background: #d0dde4 !important;
 }
 
@@ -201,15 +201,15 @@ Inbox Page
   width: 10px;
 }
 
-.inbox .table-hover tbody tr:hover>td, 
-.inbox .table-hover tbody tr:hover>th, 
-.inbox .table-striped tbody>tr:nth-child(odd)>td, 
+.inbox .table-hover tbody tr:hover>td,
+.inbox .table-hover tbody tr:hover>th,
+.inbox .table-striped tbody>tr:nth-child(odd)>td,
 .inbox .table-striped tbody>tr:nth-child(odd)>th {
-  background: #f8fbfd;  
+  background: #f8fbfd;
   cursor: pointer;
 }
 
-.inbox .table-hover tbody tr:hover>td, 
+.inbox .table-hover tbody tr:hover>td,
 .inbox .table-hover tbody tr:hover>th {
   background: #eef4f7;
 }
@@ -265,7 +265,7 @@ Inbox Page
 }
 
 .inbox-view-info {
-  color: #666;  
+  color: #666;
   padding: 5px 0;
   margin-bottom: 10px;
   border-top: solid 1px #eee;
@@ -289,7 +289,7 @@ Inbox Page
   top: 2px;
   color: #94a4ab;
   font-size: 13px;
-  margin-left: 4px; 
+  margin-left: 4px;
   padding: 3px 10px;
   position: relative;
   background: #edf1f4;
@@ -453,7 +453,7 @@ Inbox Page
   border-color: #eee;
 }
 
-.inbox-compose .wysihtml5-toolbar {  
+.inbox-compose .wysihtml5-toolbar {
   border: 0;
   border-bottom: 1px solid #eee;
 }

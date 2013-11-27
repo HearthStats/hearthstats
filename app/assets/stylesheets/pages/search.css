@@ -1,4 +1,4 @@
-/* 
+/*
 Search Page
 ***/
 
@@ -35,7 +35,7 @@ Search Page
   color: #fff;
   padding: 15px;
   position: absolute;
-  background: url(../../img/bg-opacity.png);
+  background: url(bg-opacity.png);
 }
 
 .booking-offer .booking-offer-in em {
@@ -64,7 +64,7 @@ Search Page
   padding: 15px;
   display: block;
   overflow: hidden;
-  background: #78ccf8;  
+  background: #78ccf8;
 }
 
 .booking-app a:hover {

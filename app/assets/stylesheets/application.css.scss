@@ -10,11 +10,11 @@
  *
  *= require_self
  *= require social-share-button
- *= require jquery.ui.tooltip
+ *= require jquery.ui.all
  *= require select2
  *= require nprogress
  *= require nprogress-bootstrap
- *= require font-awesome
  *= require bootstrap
+ *= require 'style.css'
  *= require_tree .
  */
