@@ -1,35 +1,3 @@
 // Place all the styles related to the ArenaRuns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.teasertext{
-	text-align: center;
-	font-size: 20px;
-	margin-top: 30px;
-}
-.newarenarun{
-	text-align: center;
-	label{
-		font-size: 50px;
-		margin-bottom: 40px;
-	}
-	.runit{
-		margin-top: 30px;
-		font-size: 20px;
-	}
-}
-.arenarunend{
-	text-align: center;
-	input[type="number"]{ 
-		height: 55px;
-		padding-left: 5px;
-		line-height: 28px; 
-		font-size: 25px;
-	}	
-	label{
-		display: inline-block;
-		padding-left: 10px;
-	}
-}
-.showmore{
-	margin-left: 20px;
-}

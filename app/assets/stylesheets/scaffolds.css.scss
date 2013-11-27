@@ -1,124 +1,124 @@
-body {
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-  a{
-  	-webkit-transition: color 400ms ease-out;
-    -moz-transition: color 400ms ease-out;
-    -o-transition: color 400ms ease-out;
-    transition: color 400ms ease-out;
-  }
-  a:visited {
-    color: #3498db;
-  }
-  a:link{
-    color: #3498db;
-  }
-}
+// body {
+//   color: #333;
+//   font-family: verdana, arial, helvetica, sans-serif;
+//   font-size: 13px;
+//   line-height: 18px;
+//   a{
+//   	-webkit-transition: color 400ms ease-out;
+//     -moz-transition: color 400ms ease-out;
+//     -o-transition: color 400ms ease-out;
+//     transition: color 400ms ease-out;
+//   }
+//   a:visited {
+//     color: #3498db;
+//   }
+//   a:link{
+//     color: #3498db;
+//   }
+// }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
+// pre {
+//   background-color: #eee;
+//   padding: 10px;
+//   font-size: 11px;
+// }
 
-.notifications{
-	width: 100%;
-	color: white;
-	position: fixed;
-	top: 50px;
-	vertical-align: middle;
-	text-align: center;
-	display: none;
-	.notice{
-		width: 60%;
-		margin: auto;
-		background-color: #2ecc71;
-		border-bottom-right-radius: 7px;
-		border-bottom-left-radius: 7px;
-		padding: 5px;
-	}
-	.alert{
-		width: 60%;
-		margin: auto;
-		background-color: #e74c3c;
-		border-bottom-right-radius: 7px;
-		border-bottom-left-radius: 7px;
-		padding: 5px;
-	}
-}
+// .notifications{
+// 	width: 100%;
+// 	color: white;
+// 	position: fixed;
+// 	top: 50px;
+// 	vertical-align: middle;
+// 	text-align: center;
+// 	display: none;
+// 	.notice{
+// 		width: 60%;
+// 		margin: auto;
+// 		background-color: #2ecc71;
+// 		border-bottom-right-radius: 7px;
+// 		border-bottom-left-radius: 7px;
+// 		padding: 5px;
+// 	}
+// 	.alert{
+// 		width: 60%;
+// 		margin: auto;
+// 		background-color: #e74c3c;
+// 		border-bottom-right-radius: 7px;
+// 		border-bottom-left-radius: 7px;
+// 		padding: 5px;
+// 	}
+// }
 
 
-.field_with_errors {
-  padding: 2px;
-  display: table;
-  margin: auto;
-  border: 3px #d35400 solid;
-}
+// .field_with_errors {
+//   padding: 2px;
+//   display: table;
+//   margin: auto;
+//   border: 3px #d35400 solid;
+// }
 
-#error_explanation {
-  margin: auto;
-  width: 450px;
-  border: 2px solid #e74c3c;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #7f8c8d;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #95a5a6;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
-}
-.victory{
-  color: #2ecc71;
-}
-.defeat{
-  color: #e74c3c;
-}
-.pagination{
-  span{
-    padding-left: 20px;  
-  }
-}
+// #error_explanation {
+//   margin: auto;
+//   width: 450px;
+//   border: 2px solid #e74c3c;
+//   padding: 7px;
+//   padding-bottom: 0;
+//   margin-bottom: 20px;
+//   background-color: #7f8c8d;
+//   h2 {
+//     text-align: left;
+//     font-weight: bold;
+//     padding: 5px 5px 5px 15px;
+//     font-size: 12px;
+//     margin: -7px;
+//     margin-bottom: 0px;
+//     background-color: #95a5a6;
+//     color: #fff;
+//   }
+//   ul li {
+//     font-size: 12px;
+//     list-style: square;
+//   }
+// }
+// .victory{
+//   color: #2ecc71;
+// }
+// .defeat{
+//   color: #e74c3c;
+// }
+// .pagination{
+//   span{
+//     padding-left: 20px;
+//   }
+// }
 
-.center{
-  text-align: center;
-}
+// .center{
+//   text-align: center;
+// }
 
-/**
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    contenteditable attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that are clearfixed.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-.cf:before,
-.cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
+// /**
+//  * For modern browsers
+//  * 1. The space content is one way to avoid an Opera bug when the
+//  *    contenteditable attribute is included anywhere else in the document.
+//  *    Otherwise it causes space to appear at the top and bottom of elements
+//  *    that are clearfixed.
+//  * 2. The use of `table` rather than `block` is only necessary if using
+//  *    `:before` to contain the top-margins of child elements.
+//  */
+// .cf:before,
+// .cf:after {
+//     content: " "; /* 1 */
+//     display: table; /* 2 */
+// }
 
-.cf:after {
-    clear: both;
-}
+// .cf:after {
+//     clear: both;
+// }
 
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.cf {
-    *zoom: 1;
-}
+// /**
+//  * For IE 6/7 only
+//  * Include this rule to trigger hasLayout and contain floats.
+//  */
+// .cf {
+//     *zoom: 1;
+// }

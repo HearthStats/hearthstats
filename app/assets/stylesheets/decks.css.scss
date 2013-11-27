@@ -1,33 +1,3 @@
 // Place all the styles related to the Decks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.decklink{
-	padding-top: 30px;
-	margin: auto;
-	width: 500px;
-	.linkie{
-		font-size: 15px;
-		padding-bottom: 10px;
-	}
-	input{
-		width: 500px;
-		padding: 10px 10px;
-	}
-}
-
-.turnrates{
-	width: 100%;
-	color: white;
-	.winrates{
-		// width: ;
-		padding: 10%;
-		// border-radius: 100%;
-		display: inline-block;
-	}
-	.firstrate{
-		background-color: #3498db;
-	}
-	.secrate{
-		background-color: #9b59b6;
-	}
-}

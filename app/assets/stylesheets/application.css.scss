@@ -14,45 +14,7 @@
  *= require select2
  *= require nprogress
  *= require nprogress-bootstrap
+ *= require font-awesome
+ *= require bootstrap
  *= require_tree .
  */
-
-html {
-	height: 100%;
-	width: 100%;
-}
-
-body {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	background-color: white;
-}
-
-#push,
-footer {
-  height: 60px;
-}
-
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  /* Negative indent footer by it's height */
-  margin: 0 auto -60px;
-}
-
-.container{
-	font-family: 'Lato', sans-serif;
-	background-color: white;
-	padding-top: 30px;
-	max-width: 1038px;
-	margin-right: auto;
-	margin-left: auto;
-	padding-bottom: 40px;
-	a{
-		text-decoration: none;
-		color: black;
-	}
-}
