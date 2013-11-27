@@ -14,39 +14,40 @@
 ActiveRecord::Schema.define(:version => 20131206210915) do
 
   create_table "announcements", :force => true do |t|
-    t.text      "body"
-    t.string    "type"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
+    t.text     "body"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "arena_runs", :force => true do |t|
-    t.integer   "user_id"
-    t.string    "userclass"
-    t.integer   "gold",       :default => 0
-    t.integer   "dust",       :default => 0
-    t.boolean   "complete",   :default => false
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
+    t.integer  "user_id",    :limit => 255
+    t.string   "userclass"
+    t.integer  "gold",                      :default => 0
+    t.integer  "dust",                      :default => 0
+    t.boolean  "complete",                  :default => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   add_index "arena_runs", ["user_id"], :name => "index_arena_runs_on_user_id"
 
   create_table "arenas", :force => true do |t|
-    t.timestamp "created_at",                      :null => false
-    t.timestamp "updated_at",                      :null => false
-    t.integer   "user_id"
-    t.string    "userclass",    :default => "N/A"
-    t.string    "oppclass",     :default => "N/A"
-    t.boolean   "win",          :default => false
-    t.boolean   "gofirst",      :default => true
-    t.integer   "arena_run_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "user_id"
+    t.string   "userclass",    :default => "N/A"
+    t.string   "oppclass",     :default => "N/A"
+    t.boolean  "win",          :default => false
+    t.boolean  "gofirst",      :default => true
+    t.integer  "arena_run_id"
   end
 
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
   create_table "constructeds", :force => true do |t|
+<<<<<<< HEAD
     t.timestamp "created_at",                    :null => false
     t.timestamp "updated_at",                    :null => false
     t.integer   "user_id"
@@ -55,21 +56,31 @@ ActiveRecord::Schema.define(:version => 20131206210915) do
     t.boolean   "win",        :default => false
     t.boolean   "gofirst",    :default => true
     t.integer   "deck_id"
+=======
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.string   "deckname"
+    t.string   "oppclass",   :default => "N/A"
+    t.boolean  "win",        :default => false
+    t.boolean  "gofirst",    :default => true
+    t.integer  "deck_id"
+>>>>>>> dasda
   end
 
   add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"
   add_index "constructeds", ["user_id"], :name => "index_constructeds_on_user_id"
 
   create_table "decks", :force => true do |t|
-    t.string    "name"
-    t.integer   "wins",       :default => 0
-    t.integer   "loses",      :default => 0
-    t.timestamp "created_at",                :null => false
-    t.timestamp "updated_at",                :null => false
-    t.string    "race"
-    t.integer   "user_id"
-    t.string    "decklink"
-    t.string    "slug"
+    t.string   "name"
+    t.integer  "wins",       :default => 0
+    t.integer  "loses",      :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "race"
+    t.integer  "user_id"
+    t.string   "decklink"
+    t.string   "slug"
   end
 
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
@@ -100,13 +111,13 @@ ActiveRecord::Schema.define(:version => 20131206210915) do
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "profiles", :force => true do |t|
-    t.string    "name"
-    t.string    "bnetid"
-    t.boolean   "private",    :default => false
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.integer   "user_id"
-    t.integer   "bnetnum",    :default => 0
+    t.string   "name"
+    t.string   "bnetid"
+    t.boolean  "private",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.integer  "bnetnum",    :default => 0
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
