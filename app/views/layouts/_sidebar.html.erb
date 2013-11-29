@@ -1,131 +1,131 @@
 <div class="page-sidebar navbar-collapse collapse">
-      <!-- BEGIN SIDEBAR MENU -->
-      <ul class="page-sidebar-menu">
-        <li>
-          <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-          <div class="sidebar-toggler hidden-phone"></div>
-          <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+  <!-- BEGIN SIDEBAR MENU -->
+  <ul class="page-sidebar-menu">
+    <li>
+      <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+      <div class="sidebar-toggler hidden-phone"></div>
+      <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    </li>
+    <li>
+      <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+      <form class="sidebar-search" action="extra_search.html" method="POST">
+        <div class="form-container">
+          <div class="input-box">
+            <a href="javascript:;" class="remove"></a>
+            <input type="text" placeholder="Search..."/>
+            <input type="button" class="submit" value=" "/>
+          </div>
+        </div>
+      </form>
+      <!-- END RESPONSIVE QUICK SEARCH FORM -->
+    </li>
+    <li class="start dashboards">
+      <a href="/">
+      <i class="fa fa-home"></i>
+      <span class="title">Dashboard</span>
+      </a>
+    </li>
+    <li class="arenas arena_runs">
+      <a href="javascript:;">
+      <i class="fa fa-cogs"></i>
+      <span class="title">Arena</span>
+      <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+      	<li class= "index">
+					<%= link_to "Recent Games", arenas_path %>
         </li>
-        <li>
-          <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-          <form class="sidebar-search" action="extra_search.html" method="POST">
-            <div class="form-container">
-              <div class="input-box">
-                <a href="javascript:;" class="remove"></a>
-                <input type="text" placeholder="Search..."/>
-                <input type="button" class="submit" value=" "/>
-              </div>
-            </div>
-          </form>
-          <!-- END RESPONSIVE QUICK SEARCH FORM -->
-        </li>
-        <li class="start dashboards">
-          <a href="/">
-          <i class="fa fa-home"></i>
-          <span class="title">Dashboard</span>
-          </a>
-        </li>
-        <li class="arenas arena_runs">
-          <a href="javascript:;">
-          <i class="fa fa-cogs"></i>
-          <span class="title">Arena</span>
-          <span class="arrow "></span>
-          </a>
-          <ul class="sub-menu">
-          	<li class= "index">
-							<%= link_to "Recent Games", arenas_path %>
-            </li>
-            <li class= "new">
-            	<% if ArenaRun.where(user_id: current_user.id).last.nil? || ArenaRun.where(user_id: current_user.id).last.complete %>
-						    <%= link_to 'New Arena Run', new_arena_run_path %>
-						  <% else %>
-						    <%= link_to 'Continue Arena Run', new_arena_path%>
-	            <% end %>
-            </li>
-            <li class= "stats">
-              <%= link_to "Statistics", stats_arenas_path %>
-            </li>
-          </ul>
-        </li>
-        <li class="constructeds">
-          <a href="javascript:;">
-          <i class="fa fa-bookmark-o"></i>
-          <span class="title">Constructed</span>
-          <span class="arrow "></span>
-          </a>
-          <ul class="sub-menu">
-            <li class= "index">
-              <%= link_to "Recent Games", constructeds_path %>
-            </li>
-            <li class="new">
-              <%= link_to "New Game", new_constructed_path %>
-            </li>
-            <li class="stats" >
-              <%= link_to "Statistics", new_constructed_path %>
-            </li>
-          </ul>
-        </li>
-        <li class="tournies">
-          <a href="javascript:;">
-          <i class="fa fa-sitemap"></i>
-          <span class="title">Tournaments</span>
-          <span class="arrow "></span>
-          </a>
-          <ul class="sub-menu">
-            <li >
-              <a href="#">
-              <span class="badge badge-warning badge-roundless">TBA</span>Register</a>
-            </li>
-            <li >
-              <a href="#">
-              <span class="badge badge-warning badge-roundless">TBA</span>Calender</a>
-            </li>
-            <li >
-              <a href="#">
-              <span class="badge badge-warning badge-roundless">TBA</span>Past Winners</a>
-            </li>
-          </ul>
-        </li>
-        <li class="streams">
-          <a href="javascript:;">
-          <i class="fa fa-th"></i>
-          <span class="title">Streams</span>
-          <span class="arrow "></span>
-          </a>
-        </li>
-        <li class="additional">
-          <a href="javascript:;">
-          <i class="fa fa-gift"></i>
-          <span class="title">Extra</span>
-          <span class="arrow "></span>
-          </a>
-          <ul class="sub-menu">
-          	<li class="changelog">
-              <%= link_to changelog_path do %>
-								Change Log
-			        <% end %>
-            </li>
-            <li class="aboutus">
-              <%= link_to aboutus_path do %>
-								About Us
-			        <% end %>
-            </li>
-            <li class="contactus">
-              <%= link_to contactus_path do %>
-								Contact Us
-			        <% end %>
-            </li>
-          </ul>
-        </li>
-        <li class="last " id="help">
-          <%= link_to help_path do %>
-	          <i class="fa fa-bar-chart-o"></i>
-	          <span class="title">Help</span>
+        <li class= "new">
+        	<% if ArenaRun.where(user_id: current_user.id).last.nil? || ArenaRun.where(user_id: current_user.id).last.complete %>
+				    <%= link_to 'New Arena Run', new_arena_run_path %>
+				  <% else %>
+				    <%= link_to 'Continue Arena Run', new_arena_path%>
           <% end %>
         </li>
+        <li class= "stats">
+          <%= link_to "Statistics", stats_arenas_path %>
+        </li>
       </ul>
-      <!-- END SIDEBAR MENU -->
-    </div>
+    </li>
+    <li class="constructeds">
+      <a href="javascript:;">
+      <i class="fa fa-bookmark-o"></i>
+      <span class="title">Constructed</span>
+      <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+        <li class= "index">
+          <%= link_to "Recent Games", constructeds_path %>
+        </li>
+        <li class="new">
+          <%= link_to "New Game", new_constructed_path %>
+        </li>
+        <li class="stats" >
+          <%= link_to "Statistics", new_constructed_path %>
+        </li>
+      </ul>
+    </li>
+    <li class="tournies">
+      <a href="javascript:;">
+      <i class="fa fa-sitemap"></i>
+      <span class="title">Tournaments</span>
+      <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+        <li >
+          <a href="#">
+          <span class="badge badge-warning badge-roundless">TBA</span>Register</a>
+        </li>
+        <li >
+          <a href="#">
+          <span class="badge badge-warning badge-roundless">TBA</span>Calender</a>
+        </li>
+        <li >
+          <a href="#">
+          <span class="badge badge-warning badge-roundless">TBA</span>Past Winners</a>
+        </li>
+      </ul>
+    </li>
+    <li class="streams">
+      <a href="javascript:;">
+      <i class="fa fa-th"></i>
+      <span class="title">Streams</span>
+      <span class="arrow "></span>
+      </a>
+    </li>
+    <li class="additional">
+      <a href="javascript:;">
+      <i class="fa fa-gift"></i>
+      <span class="title">Extra</span>
+      <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+      	<li class="changelog">
+          <%= link_to changelog_path do %>
+						Change Log
+	        <% end %>
+        </li>
+        <li class="aboutus">
+          <%= link_to aboutus_path do %>
+						About Us
+	        <% end %>
+        </li>
+        <li class="contactus">
+          <%= link_to contactus_path do %>
+						Contact Us
+	        <% end %>
+        </li>
+      </ul>
+    </li>
+    <li class="last " id="help">
+      <%= link_to help_path do %>
+        <i class="fa fa-bar-chart-o"></i>
+        <span class="title">Help</span>
+      <% end %>
+    </li>
+  </ul>
+  <!-- END SIDEBAR MENU -->
+</div>
 <script>
 	<% if params[:controller] == "additional" && params[:action] == "help"%>
 		$("#help").addClass('active');

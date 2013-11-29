@@ -19,19 +19,19 @@ $(document).ready(function () {
             'background-color': '#fff',
         }).appendTo("body").fadeIn(200);
     }
+    var constructed = <%= @conwins %>;
 
-    var pageviews = <%= @conwins %>;
-
-    var visitors = <%= @arenawins %>;
+    var arena = <%= @arenawins %>;
+    console.log(arena);
 
         $('#site_statistics_loading').hide();
         $('#site_statistics_content').show();
 
         var plot_statistics = $.plot($("#site_statistics"), [{
-                data: pageviews,
+                data: constructed,
                 label: "Constructed"
             }, {
-                data: visitors,
+                data: arena,
                 label: "Arena"
             }
         ], {
@@ -62,8 +62,8 @@ $(document).ready(function () {
             },
             colors: ["#d12610", "#37b7f3", "#52e136"],
             xaxis: {
-                ticks: 11,
-                tickDecimals: 0
+                mode: "time",
+                timeformat: "%b-%d"
             },
             yaxis: {
                 ticks: 11,
