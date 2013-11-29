@@ -97,7 +97,6 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
-    formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     gherkin (2.12.2)
@@ -240,6 +239,8 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.5)
+    will_paginate-bootstrap (1.0.0)
+      will_paginate (>= 3.0.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -287,3 +288,4 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)
+  will_paginate-bootstrap

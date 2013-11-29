@@ -21,42 +21,38 @@ javascript:
   :keywords => 'Constructed, games, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, 'Recent Games')
 - provide(:subtitle, ' recent constructed games');
--provide(:section, 'Constructed')
+- provide(:section, 'Constructed')
+- content_for :actions do
+  = link_to 'New Constructed', new_constructed_path, class: "btn blue"
 div.arenaheader
-  span.arenabuttons
-    = link_to 'New Constructed', new_constructed_path, class: "pure-button pure-button-primary newarena"
-  = will_paginate @constructeds
-div.newentry
-  div.quicktitle Quick Entry
-  = form_for(@constructed, :html => {:class => 'quickform'}) do |f|
-    -if !@lastentry.nil?
-      = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
-    -else
-      = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
-    div.oppclass
-      = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
-    div class="pure-button pure-button-success gofirstquick" No Coin
-    = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
-    div class="pure-button pure-button-success winbutton" Victory
-    = f.check_box :win , :checked => true, class: "wincheckbox hidden"
-    = f.submit "Create Entry", class: "pure-button pure-button-success"
-table
-  tr.heading
-    th Your Deck
-    th Opponent Class
-    th Win?
-    th Time
-    th Options
-  - @constructeds.each do |match|
-    tr.matches
-      td.cl-effect-3 = link_to match.deckname, deck_path(Deck.find(match.deck_id).friendly_id)
-      td = match.oppclass
-      td
-        -if match.win
-          span.victory Victory
-        -else
-          span.defeat Defeat
-      td.time = match.created_at.strftime("%I %P on %B %d, %Y")
-      td.cl-effect-3
-        span.edit = link_to 'Edit', edit_constructed_path(match)
-        span.delete= link_to 'Delete', match, method: :delete, data: { confirm: 'Are you sure?' }
+  = will_paginate @constructeds, renderer: BootstrapPagination::Rails
+= render "quickentry"
+div class="portlet box blue"
+  div class="portlet-title"
+    div class="caption"
+      | Recent Arena Games
+  div class="portlet-body flip-scroll"
+    table class="table table-bordered table-striped table-condensed flip-content"
+      thead class="flip-content"
+        tr
+          th Your Deck
+          th Opponent Class
+          th Win?
+          th Time
+          th Options
+      tbody
+      - @constructeds.each do |match|
+        tr
+          td.cl-effect-3 = link_to match.deckname, deck_path(Deck.find(match.deck_id).friendly_id)
+          td = match.oppclass
+          td
+            -if match.win
+              span.victory Victory
+            -else
+              span.defeat Defeat
+          td = match.created_at.strftime("%I %P on %B %d, %Y")
+          td.cl-effect-3
+            = link_to edit_constructed_path(match), class: 'btn default btn-xs purple' do
+              i class="fa fa-pencil-square-o" Edit
+            = link_to match, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
+              i class="fa fa-trash-o" Delete

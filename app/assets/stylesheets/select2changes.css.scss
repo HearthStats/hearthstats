@@ -7,3 +7,14 @@
   	height: 50px;
   }
 }
+#new_constructed{
+	.select2-container .select2-choice{
+	  padding-top: 0px;
+	  height: 34px;
+		overflow: hidden;
+	  font-size: 14px;
+	  .select2-chosen{
+	  	height: 50px;
+	  }
+	}
+}

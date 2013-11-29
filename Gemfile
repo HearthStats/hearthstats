@@ -33,6 +33,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'announcements'
 gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 gem 'taps'
 gem "nokogiri", "~> 1.6.0"
 gem 'social-share-button'

@@ -15,4 +15,6 @@ div class="row"
           i class="fa fa-angle-right"
       li
         a href="#{request.fullpath}" = yield(:title)
+      li class="btn-group"
+        = yield :actions
     / END PAGE TITLE & BREADCRUMB
