@@ -10,7 +10,7 @@ $(document).ready(function(){
     }
     else
     {
-      $('.winbutton').css("background", "rgb(28, 184, 65)" );
+      $('.winbutton').css("background", "rgb(53, 170, 71)" );
       $('.wincheckbox').prop('checked', true);
       $('.winbutton').text("Victory");
       var checked = true;
@@ -27,7 +27,7 @@ $(document).ready(function(){
     }
     else
     {
-      $('.gofirst').css("background", "rgb(28, 184, 65)" );
+      $('.gofirst').css("background", "rgb(53, 170, 71)" );
       $('.firstcheckbox').prop('checked', true);
       $('.gofirst').text("First Turn");
       var checked = true;
@@ -44,7 +44,7 @@ $(document).ready(function(){
     }
     else
     {
-      $('.gofirstquick').css("background", "rgb(28, 184, 65)" );
+      $('.gofirstquick').css("background", "rgb(53, 170, 71)" );
       $('.firstcheckbox').prop('checked', true);
       $('.gofirstquick').text("No Coin");
       var checked = true;

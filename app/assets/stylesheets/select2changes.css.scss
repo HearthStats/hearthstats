@@ -1,13 +1,14 @@
 .select2-container .select2-choice{
-  padding-top: 5px;
-  height: 50px;
-  overflow-y: auto;
+  padding-top: 10px;
+  height: 60px;
+  overflow: hidden;
   font-size: 40px;
   .select2-chosen{
-  	height: 50px;
+  	height: 60px;
+  	padding-top: 5px;
   }
 }
-#new_constructed{
+.quickentry {
 	.select2-container .select2-choice{
 	  padding-top: 0px;
 	  height: 34px;

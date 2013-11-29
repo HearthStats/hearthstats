@@ -1,9 +1,11 @@
-div class="portlet box yellow"
+div class="portlet"
   div class="portlet-title"
     div class="caption"
-      | Recent Arena Games
+      | Quick Entry
+    div class="tools"
+      a href="javascript:;" class="collapse"
   div class="portlet-body"
-    = form_for(@constructed, :html => {:class => 'form-inline'}) do |f|
+    = form_for(@constructed, :html => {:class => 'form-inline quickentry'}) do |f|
       -if !@lastentry.nil?
         = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
       -else

@@ -1,3 +1,29 @@
 .btn.blue{
 	color: white !important;
 }
+.center{
+	margin: auto;
+}
+.profile-info{
+	.bnetprofile{
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px !important;
+		padding-right: 5px;
+	}
+	.profile_title{
+		display: inline-block;
+		color: #383839;
+		font-size: 24px;
+		font-weight: 400;
+		margin: 0 0 10px 0;
+	}
+
+	.profile_addinfo{
+		padding-left: 10px;
+		display: inline-block;
+	}
+	.profile_winrate{
+		padding-bottom: 30px;
+	}
+}

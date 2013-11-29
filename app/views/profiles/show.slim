@@ -1,56 +1,181 @@
-- set_meta_tags :title => @profiletitle,
-  :description => @profiletitle,
+- set_meta_tags :title => "#{@profiletitle}'s Profile",
+  :description => "#{@profiletitle}'s Profile",
   :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
-- provide(:title, @profiletitle)
+- provide(:title, "#{@profiletitle}'s Profile")
 - provide(:subtitle, ' personal statistics')
-div.profileheader
-  - if current_user && params[:id] = current_user.id
-    span.editprofile = link_to 'Edit Profile', edit_profile_path
-  - if @profile.bnetid
-    h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
-  div.share
-    |Profile Views
-    = @profile.impressionist_count
-    = social_share_button_tag("#{@profiletitle} from HearthStats")
-div.graphtitle Win Rate vs Days
-= render 'dashboards/userchart', width: 1000, height: 200
-div.pure-g-r
-  div.pure-u-1-2
-    = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate.transpose, chartname: "Arena"
-  div.pure-u-1-2
-    = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate.transpose, chartname: "Constructed"
-  div.pure-u-1-3
-    div.userdeckrates
-      h2 Top Decks from User
-      - counter = 1
-      table.rankingtable
-        - @userdeckrates.each do |c|
-          -if c[1][1] == -1
-          -else
-            tr
-              td #{counter}. #{image_tag("Icons/Classes/#{c[1][0]}_Icon.gif", height: "24", width: "24")} #{link_to c[0], deck_path(Deck.find(c[1][2]).friendly_id) }
-              td #{number_to_percentage(c[1][1]*100, precision: 2)}
-          -counter = counter + 1
-  div.pure-u-1-3
-    div.overwin
-      h2 Overall Win Rates
-      h3.center Arena
-      table.rankingtable
-        tr
-          th Wins
-          th Losses
-          th Win Rate
-        tr.center
-          td.victory #{@overallarena[0]}
-          td.defeat #{@overallarena[1]}
-          td #{number_to_percentage((@overallarena[0].to_f / @overallarena[2])*100, precision: 2)}
-      h3.center Constructed
-      table.rankingtable
-        tr
-          th Wins
-          th Loses
-          th Win Rate
-        tr.center
-          td.victory #{@overallcon[0]}
-          td.defeat #{@overallcon[1]}
-          td #{number_to_percentage((@overallcon[0].to_f / @overallcon[2])*100, precision: 2)}
+div class="row profile"
+  div class="col-md-12"
+    div class="tabbable tabbable-custom tabbable-full-width"
+      ul class="nav nav-tabs"
+        li class="active"
+          a href="#tab_1_1" data-toggle="tab" Overview
+        li class=""
+          a href="#tab_1_3" data-toggle="tab" Achievements
+      div class="tab-content"
+        div class="tab-pane active" id="tab_1_1"
+          div class="row"
+            div class="col-md-3"
+              ul class="list-unstyled profile-nav"
+                li
+                  =image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
+                  / a href="#" class="profile-edit" edit
+                li
+                  a href="#" Projects
+                li
+                  a href="#" Messages
+                li
+                  a href="#" Friends
+                li
+                  a href="#" Settings
+
+            div class="col-md-9"
+              div class="row"
+                div class="col-md-8 profile-info"
+                  span.profile_title = @profiletitle
+                  ul class="list-inline profile_addinfo"
+                    li
+                      i class="fa fa-map-marker"
+                      | Canada
+                    li
+                      i.bnetprofile BNet
+                      | #{@profile.bnetid}##{@profile.bnetnum}
+                  div.profile_winrate = render 'dashboards/chart', height: 200
+                div class="col-md-4"
+                  div class="portlet sale-summary"
+                    div class="portlet-title"
+                      div class="caption" Profile Summary
+                    div class="portlet-body"
+                      ul class="list-unstyled"
+                        li
+                          span class="sale-info"
+                            |Arena Win Rate
+                          span class="sale-num" #{number_to_percentage(Arena.overall_win_rate(current_user.id)*100, precision: 2)}
+
+                        li
+                          span class="sale-info"
+                            |Constructed Win Rate
+                          span class="sale-num" #{number_to_percentage(Constructed.overall_win_rate(current_user.id)*100, precision: 2)}
+
+                        li
+                          span class="sale-info" Top Deck
+                          span class="sale-num"
+                            = link_to @userdeckrates.first[0], deck_path(Deck.find(@userdeckrates.first[1][2]).friendly_id)
+
+              div class="tabbable tabbable-custom tabbable-custom-profile"
+                ul class="nav nav-tabs"
+                  li class="active"
+                    a href="#tab_1_11" data-toggle="tab" User Stats
+                  li
+                    a href="#tab_1_22" data-toggle="tab" Recent Games
+
+                div class="tab-content"
+                  div class="tab-pane active" id="tab_1_11"
+                    div class="portlet-body"
+                      table class="table table-striped table-bordered table-advance table-hover"
+                        thead
+                          tr
+                            th
+                              i class="fa fa-briefcase" Company
+                            th class="hidden-xs"
+                              i class="fa fa-question" Descrition
+                            th
+                              i class="fa fa-bookmark" Amount
+                            th
+                        tbody
+                          tr
+                            td
+                              a href="#" Pixel Ltd
+                            td class="hidden-xs"Server hardware purchase
+                            td
+                              |52560.10$
+                              span class="label label-success label-sm"
+                            td
+                              a class="btn default btn-xs green-stripe" href="#" View
+                  div class="tab-pane" id="tab_1_22"
+                    div class="tab-pane active" id="tab_1_1_1"
+                        ul class="feeds"
+                          li
+                            div class="col1"
+                              div class="cont"
+                                div class="cont-col1"
+                                  div class="label label-success"
+                                    i class="fa fa-bell-o"
+                                div class="cont-col2"
+                                  div class="desc"
+                                    |You have 4 pending tasks.
+                                    span class="label label-danger label-sm"
+                                      |Take action
+                                      i class="fa fa-share"
+                            div class="col2"
+                              div class="date"
+                                |Just now
+                          li
+                            a href="#"
+                              div class="col1"
+                                div class="cont"
+                                  div class="cont-col1"
+                                    div class="label label-success"
+                                      i class="fa fa-bell-o"
+                                  div class="cont-col2"
+                                    div class="desc"
+                                      |New version v1.4 just lunched!
+                              div class="col2"
+                                div class="date"
+                                  |20 mins
+        div class="tab-pane" id="tab_1_3"
+          div class="row profile-achievements"
+            div class="col-md-12"
+              h2 Coming soon...
+
+/ div.profileheader
+/   - if current_user && params[:id] = current_user.id
+/     span.editprofile = link_to 'Edit Profile', edit_profile_path
+/   - if @profile.bnetid
+/     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
+/   div.share
+/     |Profile Views
+/     = @profile.impressionist_count
+/     = social_share_button_tag("#{@profiletitle} from HearthStats")
+/ div.graphtitle Win Rate vs Days
+/ = render 'dashboards/userchart', width: 1000, height: 200
+/ div.pure-g-r
+/   div.pure-u-1-2
+/     = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate, chartname: "Arena"
+/   div.pure-u-1-2
+/     = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate, chartname: "Constructed"
+/   div.pure-u-1-3
+/     div.userdeckrates
+/       h2 Top Decks from User
+/       - counter = 1
+/       table.rankingtable
+/         - @userdeckrates.each do |c|
+/           -if c[1][1] == -1
+/           -else
+/             tr
+/               td #{counter}. #{image_tag("Icons/Classes/#{c[1][0]}_Icon.gif", height: "24", width: "24")} #{link_to c[0], deck_path(Deck.find(c[1][2]).friendly_id) }
+/               td #{number_to_percentage(c[1][1]*100, precision: 2)}
+/           -counter = counter + 1
+/   div.pure-u-1-3
+/     div.overwin
+/       h2 Overall Win Rates
+/       h3.center Arena
+/       table.rankingtable
+/         tr
+/           th Wins
+/           th Losses
+/           th Win Rate
+/         tr.center
+/           td.victory #{@overallarena[0]}
+/           td.defeat #{@overallarena[1]}
+/           td #{number_to_percentage((@overallarena[0].to_f / @overallarena[2])*100, precision: 2)}
+/       h3.center Constructed
+/       table.rankingtable
+/         tr
+/           th Wins
+/           th Loses
+/           th Win Rate
+/         tr.center
+/           td.victory #{@overallcon[0]}
+/           td.defeat #{@overallcon[1]}
+/           td #{number_to_percentage((@overallcon[0].to_f / @overallcon[2])*100, precision: 2)}
+>>>>>>> profile page

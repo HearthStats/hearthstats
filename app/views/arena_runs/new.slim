@@ -3,7 +3,7 @@ javascript:
 
     function format(state) {
       var originalOption = state.element;
-   
+
       return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
     }
     $("#arena_run_userclass").select2({
@@ -27,8 +27,8 @@ div.teasertext
       h2 = pluralize(@arenarun.errors.count, "error")
         | prohibited this arenarun from being saved:
       ul
-        - @arenarun.errors.full_messages.each do |msg| 
-          li = msg 
+        - @arenarun.errors.full_messages.each do |msg|
+          li = msg
   .newarenarun
     = f.label "Your Class", :class => 'control-label'
     .submit

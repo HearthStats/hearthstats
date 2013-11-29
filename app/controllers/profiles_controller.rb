@@ -37,9 +37,9 @@ class ProfilesController < ApplicationController
 
   	@profile = @user.profile
     if (!@profile.name.nil? && !@profile.name.blank?)
-      @profiletitle = "#{@profile.name}'s Profile"
+      @profiletitle = @profile.name
     else
-      @profiletitle = "User's Profile"
+      @profiletitle = "User"
     end
   	recentgames(@user.id, 10)
   	impressionist(@profile)
