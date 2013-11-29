@@ -52,15 +52,15 @@ var App = function () {
         if (isIE10) {
             jQuery('html').addClass('ie10'); // detect IE10 version
         }
-        
+
         if (isIE10 || isIE9 || isIE8) {
             jQuery('html').addClass('ie'); // detect IE10 version
         }
 
         /*
           Virtual keyboards:
-          Also, note that if you're using inputs in your modal – iOS has a rendering bug which doesn't 
-          update the position of fixed elements when the virtual keyboard is triggered  
+          Also, note that if you're using inputs in your modal – iOS has a rendering bug which doesn't
+          update the position of fixed elements when the virtual keyboard is triggered
         */
         var deviceAgent = navigator.userAgent.toLowerCase();
         if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
@@ -120,7 +120,7 @@ var App = function () {
                 }
                 resize = setTimeout(function () {
                     handleResponsive();
-                }, 50); // wait 50ms until window resize finishes.                
+                }, 50); // wait 50ms until window resize finishes.
                 currheight = document.documentElement.clientHeight; // store last body client height
             });
         } else {
@@ -512,15 +512,15 @@ var App = function () {
             var tabid = location.hash.substr(1);
             $('a[href="#' + tabid + '"]').parents('.tab-pane:hidden').each(function(){
                 var tabid = $(this).attr("id");
-                $('a[href="#' + tabid + '"]').click();    
-            });            
+                $('a[href="#' + tabid + '"]').click();
+            });
             $('a[href="#' + tabid + '"]').click();
         }
     }
 
     // Handles Bootstrap Modals.
     var handleModals = function () {
-        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
+        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class.
         $('body').on('hide.bs.modal', function () {
            if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') == false) {
               $('html').addClass('modal-open');
@@ -528,11 +528,11 @@ var App = function () {
               $('html').removeClass('modal-open');
            }
         });
-            
+
         $('body').on('show.bs.modal', '.modal', function () {
             if ($(this).hasClass("modal-scroll")) {
                 $('body').addClass("modal-open-noscroll");
-            } 
+            }
         });
 
         $('body').on('hide.bs.modal', '.modal', function () {
@@ -548,8 +548,8 @@ var App = function () {
     // Handles Bootstrap Dropdowns
     var handleDropdowns = function () {
         /*
-          For touch supported devices disable the 
-          hoverable dropdowns - data-hover="dropdown"  
+          For touch supported devices disable the
+          hoverable dropdowns - data-hover="dropdown"
         */
         if (App.isTouchDevice()) {
             $('[data-hover="dropdown"]').each(function(){
@@ -558,7 +558,7 @@ var App = function () {
             });
         }
         /*
-          Hold dropdown on click  
+          Hold dropdown on click
         */
         $('body').on('click', '.dropdown-menu.hold-on-click', function (e) {
             e.stopPropagation();
@@ -668,7 +668,7 @@ var App = function () {
     // Handle full screen mode toggle
     var handleFullScreenMode = function() {
         // mozfullscreenerror event handler
-       
+
         // toggle full screen
         function toggleFullScreen() {
           if (!document.fullscreenElement &&    // alternative standard method
@@ -801,14 +801,14 @@ var App = function () {
                 $("body").removeClass("page-sidebar-fixed");
             }
 
-            //footer 
+            //footer
             if (footerOption === 'fixed') {
                 $("body").addClass("page-footer-fixed");
             } else {
                 $("body").removeClass("page-footer-fixed");
             }
 
-            handleSidebarAndContentHeight(); // fix content height            
+            handleSidebarAndContentHeight(); // fix content height
             handleFixedSidebar(); // reinitialize fixed sidebar
             handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
         }
@@ -856,17 +856,17 @@ var App = function () {
 
             //core handlers
             handleInit(); // initialize core variables
-            handleResponsiveOnResize(); // set and handle responsive    
+            handleResponsiveOnResize(); // set and handle responsive
             handleUniform(); // hanfle custom radio & checkboxes
-            handleScrollers(); // handles slim scrolling contents 
+            handleScrollers(); // handles slim scrolling contents
             handleResponsiveOnInit(); // handler responsive elements on page load
 
             //layout handlers
             handleFixedSidebar(); // handles fixed sidebar menu
-            handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect 
+            handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect
             handleSidebarMenu(); // handles main menu
             handleHorizontalMenu(); // handles horizontal menu
-            handleSidebarToggler(); // handles sidebar hide/show            
+            handleSidebarToggler(); // handles sidebar hide/show
             handleFixInputPlaceholderForIE(); // fixes/enables html5 placeholder attribute for IE9, IE8
             handleGoTop(); //handles scroll to top functionality in the footer
             handleTheme(); // handles style customer tool
@@ -880,7 +880,7 @@ var App = function () {
             handleTabs(); // handle tabs
             handleTooltips(); // handle bootstrap tooltips
             handlePopovers(); // handles bootstrap popovers
-            handleAccordions(); //handles accordions 
+            handleAccordions(); //handles accordions
             handleModals(); // handle modals
             handleFullScreenMode(); // handles full screen
         },
@@ -891,9 +891,9 @@ var App = function () {
             handleDropdowns(); // handle dropdowns
             handleTooltips(); // handle bootstrap tooltips
             handlePopovers(); // handles bootstrap popovers
-            handleAccordions(); //handles accordions 
-            handleUniform(); // hanfle custom radio & checkboxes     
-            handleDropdownHover() // handles dropdown hover       
+            handleAccordions(); //handles accordions
+            handleUniform(); // hanfle custom radio & checkboxes
+            handleDropdownHover() // handles dropdown hover
         },
 
         //public function to fix the sidebar and content height accordingly
@@ -944,7 +944,7 @@ var App = function () {
                 centerY = true;
             }
             el.block({
-                message: '<img src="./assets/img/ajax-loading.gif" align="">',
+                message: '<img src="./assets/ajax-loading.gif" align="">',
                 centerY: centerY != undefined ? centerY : true,
                 css: {
                     top: '10%',

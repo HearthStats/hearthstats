@@ -54,9 +54,8 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
-	    @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
-	  end
-
+		    @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
+		  end
     end
     # @classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
 

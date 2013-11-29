@@ -5,29 +5,13 @@ class DashboardsController < ApplicationController
   end
 
   def index
-    recentgamesbyhr(current_user.id, 12)
+    # recentgamesbyhr(current_user.id, 12)
+    recentgames(current_user.id, 10)
 
-  	# @constructed = Constructed.where(user_id: current_user.id).find(:all, :order => "id desc", :limit => 100)
-  	
-    # Fetch total wins for each class
-   #  classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-  	# @classwins = Hash.new
-  	# classes.each do |c|
-  	# 	arenacount = Arena.where(:userclass => c, :win => true).count
-  	# 	deckcount = Deck.where(:race => c)
-  	# 	if deckcount.blank? || deckcount[0].wins.nil?
-  	# 		temp2 = 0
-  	# 	else
-   #      temp2 = 0
-   #      deckcount.each do |d|
-   #        temp2 = temp2 + d.wins
-   #      end
-  	# 	end
-  	# 	@classwins[c] = arenacount + temp2
-  	# 	# instance_variable_set("@#{c}", temp)
-  	# end
-  	# @classwins = @classwins.sort_by { |name, wins| wins }.reverse
-
+ 		@globarena = ((Arena.where(win: true).count.to_f / Arena.count)*100).round
+ 		@globcon = ((Constructed.where(win: true).count.to_f / Constructed.count)*100).round
+ 		@topdeck = Deck.bestuserdeck(current_user.id)
+ 		@toparena = Arena.bestuserarena(current_user.id)
     # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Hash.new
@@ -53,7 +37,6 @@ class DashboardsController < ApplicationController
       totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c).count
       totalwins = totalwins + Constructed.joins(:deck).where(oppclass: c, win: false).count
       totalgames = Constructed.joins(:deck).where('decks.race' => c).count + Constructed.joins(:deck).where(oppclass: c).count
-      
       @classconrate[c] = (totalwins.to_f / totalgames)
       @contot[c] = totalgames
     end

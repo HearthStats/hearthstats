@@ -1,9 +1,9 @@
 - set_meta_tags :title => @profiletitle,
   :description => @profiletitle,
   :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
-
+- provide(:title, @profiletitle)
+- provide(:subtitle, ' personal statistics')
 div.profileheader
-  h1 = @profiletitle
   - if current_user && params[:id] = current_user.id
     span.editprofile = link_to 'Edit Profile', edit_profile_path
   - if @profile.bnetid

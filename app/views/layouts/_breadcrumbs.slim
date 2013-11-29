@@ -1,13 +1,18 @@
 div class="row"
   div class="col-md-12"
     / BEGIN PAGE TITLE & BREADCRUMB
-    h3 class="page-title"
-      |Dashboard <small>statistics and more</small>
+    h1 class="page-title"
+      = yield(:title)
+      small = yield(:subtitle)
     ul class="page-breadcrumb breadcrumb"
       li
         i class="fa fa-home"
         =link_to "Home", root_path
         i class="fa fa-angle-right"
+      - if !yield(:section).blank?
+        li
+          a href="#"  =yield(:section)
+          i class="fa fa-angle-right"
       li
-        a href="#" Dashboard
+        a href="#{request.fullpath}" = yield(:title)
     / END PAGE TITLE & BREADCRUMB

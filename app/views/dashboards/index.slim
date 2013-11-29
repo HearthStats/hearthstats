@@ -1,7 +1,6 @@
 - set_meta_tags :title => 'Dashboard',
   :description => 'HearthStats User Dashboard',
   :keywords => 'Dashboard, global, stats, news, hst'
-/ <!-- BEGIN DASHBOARD STATS -->
 div class="row"
   div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
     div class="dashboard-stat blue"
@@ -9,13 +8,12 @@ div class="row"
         i class="fa fa-comments"
 
       div class="details"
-        div class="number" 1349
+        div class="number" #{number_to_percentage(Arena.overall_win_rate(current_user.id)*100, precision: 2)}
 
-        div class="desc"
-          |New Feedbacks
+        div class="desc" Arena Win Rate
 
 
-      a class="more" href="#"
+      =link_to arenas_path, class: "more" do
         |View more
         i class="m-icon-swapright m-icon-white"
 
@@ -26,10 +24,10 @@ div class="row"
         i class="fa fa-shopping-cart"
 
       div class="details"
-        div class="number" 549
-        div class="desc" New Orders
+        div class="number" #{number_to_percentage(Constructed.overall_win_rate(current_user.id)*100, precision: 2)}
+        div class="desc" Constructed Win Rate
 
-      a class="more" href="#"
+      =link_to constructeds_path, class: "more" do
         |View more
         i class="m-icon-swapright m-icon-white"
 
@@ -40,10 +38,10 @@ div class="row"
         i class="fa fa-globe"
 
       div class="details"
-        div class="number" +89%
-        div class="desc" Brand Popularity
+        div class="number" = truncate(@topdeck[0], :length => 12)
+        div class="desc" Best Deck
 
-      a class="more" href="#"
+      = link_to deck_path(@topdeck[1][1]), class: "more" do
         |View more
         i class="m-icon-swapright m-icon-white"
 
@@ -54,17 +52,16 @@ div class="row"
         i class="fa fa-bar-chart-o"
 
       div class="details"
-        div class="number" 12,5M$
-        div class="desc" Total Profit
+        div class="number" = truncate(@toparena[0], :length => 12)
+        div class="desc" Best Arena Class
 
-      a class="more" href="#"
+      = link_to race_dashboards_path(:race => @toparena[0]), class: "more" do
         |View more
         i class="m-icon-swapright m-icon-white"
-
-
-
 / <!-- END DASHBOARD STATS --
 div class="clearfix"
+= render 'charts'
+
 / div.arenaheader
 /   h1.arenatitle = title 'Dashboard'
 / div.pure-g-r

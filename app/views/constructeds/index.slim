@@ -19,8 +19,10 @@ javascript:
 - set_meta_tags :title => 'Constructed Matches',
   :description => 'Constructed Matches',
   :keywords => 'Constructed, games, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Recent Games')
+- provide(:subtitle, ' recent constructed games');
+-provide(:section, 'Constructed')
 div.arenaheader
-  h1.arenatitle Recent Constructed Matches
   span.arenabuttons
     = link_to 'New Constructed', new_constructed_path, class: "pure-button pure-button-primary newarena"
   = will_paginate @constructeds

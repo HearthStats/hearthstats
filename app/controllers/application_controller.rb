@@ -55,6 +55,7 @@ class ApplicationController < ActionController::Base
     (0..days1).each do |i|
       win = Constructed.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
       tot = Constructed.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
+<<<<<<< HEAD
       winrate[i] = ((win.to_f / tot)*100).round(2)
 	  end
 	  return winrate
@@ -88,6 +89,11 @@ class ApplicationController < ActionController::Base
         @conwins[timebefore] += 1
       end
     end
+=======
+      winrate[i] = [i,(win.to_f / tot).round(4)*100]
+    end
+    return winrate
+>>>>>>> more design
   end
 
   def public_url(file)

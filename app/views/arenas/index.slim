@@ -1,38 +1,65 @@
 - set_meta_tags :title => 'Arena Matches',
   :description => 'Arena Matches',
-  :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss' 
+  :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Recent Games')
+- provide(:subtitle, ' recent arena games');
+-provide(:section, 'Arena')
 
-
-/ Arena Games
 - @arenaruns.each do |arena|
-  div id="run#{arena.id}" class="modal" 
+  div id="run#{arena.id}" class="modal"
     =render 'arenagames', arenas: arena.arenas
     a href="#close-modal" rel="modal:close" class="close-modal" Close
 div.arenaheader
-  h1.arenatitle Recent Arena Runs
-  - if ArenaRun.where(user_id: current_user.id).last.nil? || ArenaRun.where(user_id: current_user.id).last.complete 
+  - if ArenaRun.where(user_id: current_user.id).last.nil? || ArenaRun.where(user_id: current_user.id).last.complete
     = link_to 'New Arena Run', new_arena_run_path, class: "pure-button pure-button-primary newarena"
   - else
     = link_to 'Continue Arena Run', new_arena_path, class: "pure-button pure-button-primary newarena"
   = will_paginate @arenaruns
-table
-  tr.heading
-    th Your Class
-    th Win/Loss
-    th Prizes
-    th Time Played
-    th Options
-  - @arenaruns.each do |arena|
-    tr.matches
-      td.cl-effect-3 = link_to arena.userclass, race_dashboards_path(:race => arena.userclass)
-      td 
-        span.victory = arena.arenas.where(win: true).count
-        |/
-        span.defeat = arena.arenas.where(win: false).count
-      td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
-      td = arena.created_at.strftime("%I %P on %B %d, %Y")  
-      td.cl-effect-3
-        span.edit = link_to 'Edit', edit_arena_run_path(arena)
-        span.delete = link_to 'Delete', arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }
-        a.showmore href="#run#{arena.id}" rel="modal:open"  Show Played Games
+/ table
+/   tr.heading
+/     th Your Class
+/     th Win/Loss
+/     th Prizes
+/     th Time Played
+/     th Options
+/   - @arenaruns.each do |arena|
+/     tr.matches
+/       td.cl-effect-3 = link_to arena.userclass, race_dashboards_path(:race => arena.userclass)
+/       td
+/         span.victory = arena.arenas.where(win: true).count
+/         |/
+/         span.defeat = arena.arenas.where(win: false).count
+/       td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
+/       td = arena.created_at.strftime("%I %P on %B %d, %Y")
+/       td.cl-effect-3
+/         span.edit = link_to 'Edit', edit_arena_run_path(arena)
+/         span.delete = link_to 'Delete', arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }
+/         a.showmore href="#run#{arena.id}" rel="modal:open"  Show Played Games
+div class="portlet box green"
+  div class="portlet-title"
+    div class="caption"
+      | Recent Arena Games
+  div class="portlet-body flip-scroll"
+    table class="table table-bordered table-striped table-condensed flip-content"
+      thead class="flip-content"
+        tr
+          th Your Class
+          th Win/Loss
+          th Prizes
+          th Time Played
+          th Options
+      tbody
+      - @arenaruns.each do |arena|
+        tr
+          td.cl-effect-3 = link_to arena.userclass, race_dashboards_path(:race => arena.userclass)
+          td
+            span.victory = arena.arenas.where(win: true).count
+            |/
+            span.defeat = arena.arenas.where(win: false).count
+          td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
+          td = arena.created_at.strftime("%I %P on %B %d, %Y")
+          td.cl-effect-3
+            span.edit = link_to 'Edit', edit_arena_run_path(arena)
+            span.delete = link_to 'Delete', arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }
+            a.showmore href="#run#{arena.id}" rel="modal:open"  Show Played Games
 =link_to "Archived Games", "/arenas/archives"

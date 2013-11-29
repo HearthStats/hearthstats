@@ -15,14 +15,14 @@ javascript:
         strokeColor : "#669900",
         pointColor : "#669900",
         pointStrokeColor : "#fff",
-        data : #{@conwins.reverse.to_json}
+        data : #{@conwins.transpose[1].reverse.to_json}
       },
       {
         fillColor : "rgba(255,0,51,0.6)",
         strokeColor : "#FF0033",
         pointColor : "#FF0033",
         pointStrokeColor : "#fff",
-        data : #{@arenawins.reverse.to_json}
+        data : #{@arenawins.transpose[1].reverse.to_json}
       }
     ]
   }

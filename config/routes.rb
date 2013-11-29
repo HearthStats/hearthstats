@@ -56,6 +56,7 @@ Hearthstats::Application.routes.draw do
   resources :arenas do
     collection do
       get :archives
+      get :stats
     end
   end
   authenticated :user do

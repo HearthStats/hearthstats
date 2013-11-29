@@ -14,6 +14,7 @@ class Deck < ActiveRecord::Base
   end
 
   def decklink_message
+
     # Add http:// to link if not present
     # If page is not a valid link then return link
     # Else return list of cards in deck
@@ -33,10 +34,23 @@ class Deck < ActiveRecord::Base
 	    rescue
         link = link[0..-10]
         message = "<a href='#{link}'>Link To Deck</a><p>"
-      end     
+      end
     end
 
     message
+  end
+
+  def self.bestuserdeck(userid)
+		decks = Deck.where(user_id: userid)
+		winrates = Hash.new
+		decks.each do |d|
+			if d.constructeds.count == 0
+			else
+				winrates[d.name] = [((d.constructeds.where(win:true).count.to_f / d.constructeds.count)*100).round, d.id]
+			end
+		end
+		deck = winrates.max_by { |x,y| y}
+		deck
   end
 
   def self.race_count
