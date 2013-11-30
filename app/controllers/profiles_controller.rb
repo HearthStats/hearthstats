@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
       @profiletitle = "User"
     end
   	recentgames(@user.id, 10)
-  	Profile.get_recent_games(@user.id)
+  	@recent_entries = Profile.get_recent_games(@user.id)
   	impressionist(@profile)
   	# Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
