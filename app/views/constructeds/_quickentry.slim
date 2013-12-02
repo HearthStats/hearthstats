@@ -1,4 +1,4 @@
-div class="portlet"
+div class="portlet quick_con_entry"
   div class="portlet-title"
     div class="caption"
       | Quick Entry
@@ -10,12 +10,12 @@ div class="portlet"
         = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
       -else
         = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
-      = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
-      div class="btn green gofirstquick" No Coin
+      = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
+      div class="btn green quick_input gofirstquick" No Coin
       = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
-      div class="btn green winbutton" Victory
+      div class="btn green quick_input winbutton" Victory
       = f.check_box :win , :checked => true, class: "wincheckbox hidden"
-      = f.submit "Create Entry", class: "btn green"
+      = f.submit "Create Entry", class: "btn green quick_input"
 
 / div.newentry
 /   div.quicktitle Quick Entry

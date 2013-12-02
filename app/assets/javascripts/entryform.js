@@ -3,14 +3,16 @@ $(document).ready(function(){
     var checked = $('.wincheckbox').prop('checked');
     if ( checked == true )
     {
-      $('.winbutton').css("background", "rgb(202, 60, 60)" );
+      $('.winbutton').removeClass('green');
+      $('.winbutton').addClass('red');
       $('.wincheckbox').prop('checked', false);
       $('.winbutton').text("Defeat");
       var checked = false;
     }
     else
     {
-      $('.winbutton').css("background", "rgb(53, 170, 71)" );
+      $('.winbutton').addClass('green');
+      $('.winbutton').removeClass('red');
       $('.wincheckbox').prop('checked', true);
       $('.winbutton').text("Victory");
       var checked = true;
@@ -20,14 +22,16 @@ $(document).ready(function(){
     var checked = $('.firstcheckbox').prop('checked');
     if ( checked == true )
     {
-      $('.gofirst').css("background", "rgb(66, 184, 221)" );
+      $('.gofirst').removeClass('green');
+      $('.gofirst').addClass('blue');
       $('.firstcheckbox').prop('checked', false);
       $('.gofirst').text("Second Turn");
       var checked = false;
     }
     else
     {
-      $('.gofirst').css("background", "rgb(53, 170, 71)" );
+      $('.gofirst').addClass('green');
+      $('.gofirst').removeClass('blue');
       $('.firstcheckbox').prop('checked', true);
       $('.gofirst').text("First Turn");
       var checked = true;
@@ -37,14 +41,16 @@ $(document).ready(function(){
     var checked = $('.firstcheckbox').prop('checked');
     if ( checked == true )
     {
-      $('.gofirstquick').css("background", "rgb(66, 184, 221)" );
+      $('.gofirstquick').removeClass('green');
+      $('.gofirstquick').addClass('blue');
       $('.firstcheckbox').prop('checked', false);
       $('.gofirstquick').text("Coin");
       var checked = false;
     }
     else
     {
-      $('.gofirstquick').css("background", "rgb(53, 170, 71)" );
+      $('.gofirstquick').addClass('green');
+      $('.gofirstquick').removeClass('blue');
       $('.firstcheckbox').prop('checked', true);
       $('.gofirstquick').text("No Coin");
       var checked = true;

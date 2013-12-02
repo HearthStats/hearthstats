@@ -1,11 +1,16 @@
+- set_meta_tags :title => 'End Arena Run',
+  :description => 'End Arena Match Entry',
+  :keywords => 'end, arena, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'End Arena Match')
+- provide(:section, 'Arena')
 = form_for @arenarun do |f|
   - if @arenarun.errors.any?
     div#error_explanation
       h2 = pluralize(@arenarun.errors.count, "error")
         | prohibited this arenarun from being saved:
       ul
-        - @arenarun.errors.full_messages.each do |msg| 
-          li = msg 
+        - @arenarun.errors.full_messages.each do |msg|
+          li = msg
   .arenarunend
     .yourfield
       = image_tag('Icons/gold.png', height: 40, alt: 'Gold Icon')

@@ -1,3 +1,9 @@
+- set_meta_tags :title => 'New Arena Run',
+  :description => 'New Arena Run',
+  :keywords => 'arena, games, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'New Arena Run')
+- provide(:section, 'Arena')
+
 javascript:
   $(document).ready(function() {
 
@@ -13,24 +19,32 @@ javascript:
       escapeMarkup: function(m) { return m; }
     });
   });
+div.row
+  div.col-md-12
+    div.teasertext
+      div class="portlet box blue"
+        div.portlet-title
+          div.caption
+            -if @gamestoday == 0
+              |First Arena of the day? Let's get started!
+            -elsif @gamestoday < 2
+              |Only #{pluralize(@gamestoday, 'run')}? Keep it going!
+            -else
+              |Wow, going hardcore today? #{pluralize(@gamestoday, 'run')} already, well good luck!
+        div.portlet-body.form.center
+          = form_for @arenarun do |f|
+            - if @arenarun.errors.any?
+              div#error_explanation
+                h2 = pluralize(@arenarun.errors.count, "error")
+                  | prohibited this arenarun from being saved:
+                ul
+                  - @arenarun.errors.full_messages.each do |msg|
+                    li = msg
+            h3.arenaruntitle Your Class
+            = f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
+            div.form-actions.fluid
+              div.row
+                div.col-md-12
+                  button type="submit" class='btn green'
+                    |Continue <i class='m-icon-swapright m-icon-white'></i>
 
-div.teasertext
-  -if @gamestoday == 0
-    |First Arena of the day? Let's get started!
-  -elsif @gamestoday < 2
-    |Only #{pluralize(@gamestoday, 'run')}? Keep it going!
-  -else
-    |Wow, going hardcore today? #{pluralize(@gamestoday, 'run')} already, well good luck!
-= form_for @arenarun do |f|
-  - if @arenarun.errors.any?
-    div#error_explanation
-      h2 = pluralize(@arenarun.errors.count, "error")
-        | prohibited this arenarun from being saved:
-      ul
-        - @arenarun.errors.full_messages.each do |msg|
-          li = msg
-  .newarenarun
-    = f.label "Your Class", :class => 'control-label'
-    .submit
-      = f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
-    = f.submit nil, :class => 'pure-button pure-button-success runit'
