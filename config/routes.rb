@@ -50,7 +50,11 @@ Hearthstats::Application.routes.draw do
 
   # devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :constructeds
+  resources :constructeds do
+    collection do
+      get :stats
+    end
+  end
 
 
   resources :arenas do

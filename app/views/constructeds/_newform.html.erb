@@ -35,31 +35,39 @@
     <%= f.number_field :user_id %>
   </div> -->
 
-    <div class="gofirstfield">
-      <div class="gofirsttitle">You played on the: </div>
-      <div class="pure-button pure-button-success gofirst"> First Turn </div><br />
+    <div class="gofirstfield center">
+      <h3>You played on the: </h3>
+      <div class="btn btn-lg green gofirst"> First Turn </div><br />
       <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
     </div>
-    <div class="yourfield">
-      <%= f.label "Deck Name" %><br />
-      <% if !@lastentry.nil? %>
-      	<%= collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname}) %>
-    	<% else %>
-      	<%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
-    	<% end %>
-    </div>
-    <div class="oppfield">
-      <%= f.label "Opponent's Class" %><br />
-      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+    <div class="row center">
+      <div class="col-md-6">
+        <div class="yourfield">
+          <%= f.label "Deck Name" %><br />
+          <% if !@lastentry.nil? %>
+            <%= collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname}) %>
+          <% else %>
+            <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="oppfield">
+          <%= f.label "Opponent's Class" %><br />
+          <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+        </div>
+      </div>
     </div>
     <div class="cf"></div>
-    <div class="winfield">
-      <div class="pure-button pure-button-success winbutton"> Victory </div><br />
+    <div class="winfield center">
+      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
       <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
     </div>
-    <div class="actions">
-      <%= link_to 'Back', constructeds_path, class: "pure-button pure-button-secondary" %>
-      <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
+    <div class="actions center">
+      <%= link_to constructeds_path do %>
+        <button class="btn btn-lg">Back</button>
+      <% end %>
+      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
     </div>
 
 <% end %>
