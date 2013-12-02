@@ -1,5 +1,5 @@
 Hearthstats::Application.routes.draw do
-
+	match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
     collection do
       get 'signup'
@@ -30,7 +30,7 @@ Hearthstats::Application.routes.draw do
     end
   end
 
-  
+
   resources :profiles
   resources :decks
   resources :dashboards do

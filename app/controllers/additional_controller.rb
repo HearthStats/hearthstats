@@ -7,4 +7,8 @@ class AdditionalController < ApplicationController
 
   def help
   end
+
+  def serverupgrade
+  	render :layout=>false
+  end
 end
