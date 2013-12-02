@@ -17,3 +17,22 @@
 .retirebut{
 	color: white !important;
 }
+.arenarunend{
+  input[type=number]{
+    height: 50px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 20px;
+  }
+  label{
+    font-size: 38px;
+    margin-bottom: 20px;
+  } 
+}
+.runit{
+  margin-top: 30px;
+  font-size: 35px !important;
+  i{
+    font-size: 30px !important;
+  }
+}

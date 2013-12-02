@@ -11,17 +11,18 @@
       ul
         - @arenarun.errors.full_messages.each do |msg|
           li = msg
-  .arenarunend
-    .yourfield
+  div.row.arenarunend
+    div.col-md-6.center
       = image_tag('Icons/gold.png', height: 40, alt: 'Gold Icon')
       = f.label "Gold Earned"
       .submit
         = f.number_field :gold
-    .oppfield
+    div.col-md-6.center
       = image_tag('Icons/dusticon.png', height: 40, alt: 'Dust Icon')
       = f.label "Dust Earned"
       .submit
         = f.number_field :dust
-    .cf
-    .actions
-      = f.submit nil, :class => 'pure-button pure-button-success runit'
+    div.col-md-12.center
+      button type="submit" class = 'btn btn-success runit'
+        |Finish <i class='fa fa-check'></i>
+
