@@ -1,23 +1,33 @@
 - set_meta_tags :title => 'Decks',
   :description => 'User Made Decks',
-  :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss' 
-div.arenaheader
-  h1.arenatitle Decks
-  = link_to 'New Deck', new_deck_path, class: "pure-button pure-button-primary newarena"
+  :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Deck List')
+- provide(:subtitle, ' all constructed decks');
+- content_for :actions do
+  = link_to 'New Deck', new_deck_path, class: "btn blue"
 
-table
-  tr.heading
-    th Deck Name
-    th Class
-    th Wins
-    th Loses
-    th Options
-  - @decks.each do |deck|
-    tr.matches
-      td = link_to deck.name ,deck
-      td = deck.race
-      td = deck.constructeds.where(win: true).count
-      td = deck.constructeds.where(win: false).count
-      td.cl-effect-3
-        span.edit = link_to 'Edit', edit_deck_path(deck)
-        span.delete= link_to 'Delete', deck, method: :delete, data: { confirm: 'Are you sure? This will delete all Constructed games with the deck as well.' }
+div class="portlet box green"
+  div class="portlet-title"
+    div class="caption"
+      | Recent Arena Games
+  div class="portlet-body flip-scroll"
+    table class="table table-bordered table-striped table-condensed flip-content"
+      thead class="flip-content"
+        tr
+          th Deck Name
+          th Class
+          th Wins
+          th Loses
+          th Options
+      tbody
+      - @decks.each do |deck|
+        tr.matches
+          td = link_to deck.name ,deck
+          td = deck.race
+          td = deck.constructeds.where(win: true).count
+          td = deck.constructeds.where(win: false).count
+          td.cl-effect-3
+            =link_to edit_deck_path(deck), class: 'btn default btn-xs purple' do
+              i class="fa fa-pencil-square-o" Edit
+            = link_to deck, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
+              i class="fa fa-trash-o" Delete
