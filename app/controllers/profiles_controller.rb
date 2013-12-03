@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+
   def index
   	redirect_to "/profiles/#{current_user.id}"
   end
