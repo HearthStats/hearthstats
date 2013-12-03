@@ -81,15 +81,19 @@ class ApplicationController < ActionController::Base
         @conwins[timebefore] += 1
       end
     end
-	    winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
-    end
-
+    winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
     return winrate
->>>>>>> more design
   end
 
   def public_url(file)
     root_url + file
   end
 
+  def newuser?(userid)
+  	user = User.find(userid)
+  	games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
+  	return true if games_count == 0
+
+  	false
+  end
 end

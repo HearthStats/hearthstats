@@ -27,4 +27,9 @@ $(document).ready(function(){
 	$('.notifications').delay(500).slideDown('normal', function() {
     $(this).delay(2500).slideUp();
   });
+  NProgress.configure({
+	  showSpinner: false,
+	  ease: 'ease',
+	  speed: 500
+	});
 });
