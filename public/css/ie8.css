@@ -1,0 +1,12 @@
+/*
+ */
+
+.top-content form {background:#000;}
+
+.placeholder { color: #999 !important;padding:10px !important;}
+
+.top-content .placeholder { color: #999 !important;padding:15px 0 !important;}
+
+.portfolio-inner {background:#00a8ec url(../images/overlay-ico.png) no-repeat center center;}
+
+.button-contact {display:block;}

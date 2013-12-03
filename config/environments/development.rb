@@ -12,7 +12,7 @@ Hearthstats::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-  config.serve_static_assets = false
+  config.serve_static_assets = true
   # Caching testing:
   # config.consider_all_requests_local       = false
   # config.action_controller.perform_caching = true
@@ -56,4 +56,5 @@ Hearthstats::Application.configure do
   #   Bullet.airbrake = true
   #   Bullet.add_footer = true
   # end
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 end

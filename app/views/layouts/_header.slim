@@ -1,8 +1,9 @@
 div.headcontainer
   div.header
-    div.lefttitle 
+    div.lefttitle
       = link_to "/"
-        = image_tag("hearthstatslogo.png", height: '40', width: '40', alt: "HearthStats Logo")
+        div.header_logo
+        /= image_tag("santa.png", height: '40', width: '40', alt: "HearthStats Logo")
         span.headtitle HearthStats
     -if !current_user.nil?
       nav.rightnav

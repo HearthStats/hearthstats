@@ -36,6 +36,20 @@
 .headcontainer{
 	background-color: #339900;
 	.header{
+		.header_logo{
+			height: 40px;
+			width: 40px;
+			background-image: url('santa.png');
+			background-size: 100% 100%;
+			display: inline-block;
+		}
+		.header_logo:hover{
+			height: 40px;
+			width: 40px;
+			background-image: url('hearthstatslogo.png');
+			background-size: 100% 100%;
+			display: inline-block;
+		}
 		a{
 			text-decoration: none;
 			color: white;
