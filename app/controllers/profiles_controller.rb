@@ -27,13 +27,13 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-	  
+
     if !current_user || !(current_user.id == @user.id)
       if @user.profile.private
         redirect_to root_url, notice: "User's Profile is Private"
       end
     end
-  	
+
   	@profile = @user.profile
     if (!@profile.name.nil? && !@profile.name.blank?)
       @profiletitle = "#{@profile.name}'s Profile"
@@ -54,7 +54,7 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classarenarate[i] = 0
       else
-	    @classarenarate[i] = (totalwins.to_f / totalgames).round(4)*100
+	    @classarenarate[i] = (totalwins.to_f / totalgames)*100.round(2)
       @arenatot[i] = totalgames
 	  end
 
@@ -73,7 +73,7 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classconrate[i] = 0
       else
-		    @classconrate[i] = (totalwins.to_f / totalgames).round(4)*100
+		    @classconrate[i] = (totalwins.to_f / totalgames)*100.round(2)
 
 	      @contot[i] = totalgames
 		  end

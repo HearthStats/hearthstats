@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def canedit(entry)
   	if current_user.id != entry.user_id
       redirect_to root_url, alert: 'You are not authorized to edit that.'
-    end  	
+    end
   end
 
   def recentgames(userid, durlen)
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     (0..days1).each do |i|
       win = Arena.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
       tot = Arena.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
-      winrate[i] = (win.to_f / tot).round(4)*100
+      winrate[i] = (win.to_f / tot)*100.round(2)
     end
     return winrate
   end
@@ -46,11 +46,10 @@ class ApplicationController < ActionController::Base
     (0..days1).each do |i|
       win = Constructed.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
       tot = Constructed.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
-      winrate[i] = (win.to_f / tot).round(4)*100
-    end
+      winrate[i] = (win.to_f / tot)*100.round(2)
     return winrate
   end
-    
+
   def recentgamesbyhr(userid, durlen)
     # Find games from 12 hours and before
     @timearray = Array.new(durlen, 0)
