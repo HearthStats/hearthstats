@@ -11,22 +11,22 @@ javascript:
     labels : #{raw @timearray.reverse},
     datasets : [
       {
-        fillColor : "rgba(52, 152, 219,0.6)",
-        strokeColor : "rgba(41, 128, 185,1.0)",
-        pointColor : "rgba(41, 128, 185,1.0)",
+        fillColor : "rgba(102,153,0,0.6)",
+        strokeColor : "#669900",
+        pointColor : "#669900",
         pointStrokeColor : "#fff",
         data : #{@conwins.reverse.to_json}
       },
       {
-        fillColor : "rgba(155, 89, 182,0.6)",
-        strokeColor : "rgba(142, 68, 173,1.0)",
-        pointColor : "rgba(142, 68, 173,1.0)",
+        fillColor : "rgba(255,0,51,0.6)",
+        strokeColor : "#FF0033",
+        pointColor : "#FF0033",
         pointStrokeColor : "#fff",
         data : #{@arenawins.reverse.to_json}
       }
     ]
   }
-  
+
   var myNewChart = new Chart(ctx).Line(data);
 
 / javascript:
