@@ -21,318 +21,40 @@
 			<div class="portlet-body">
 				<div class="scroller" style="height: 108px;" data-always-visible="1" data-rail-visible="0">
 					<ul class="feeds">
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-info">
-											<i class="fa fa-check"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											You have 4 pending tasks.
-											<span class="label label-sm label-warning ">
-											Take action
-											<i class="fa fa-share"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									Just now
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#">
+						<% @recent_entries.each do |entry| %>
+							<% timepassed = Time.diff(Time.now, entry[4], '%h hr %m min') %>
+							<li>
 								<div class="col1">
 									<div class="cont">
 										<div class="cont-col1">
-											<div class="label label-sm label-success">
-												<i class="fa fa-bar-chart-o"></i>
-											</div>
+											<% if entry[0] == "Arena" %>
+												<div class="label label-sm label-info">
+													<%=image_tag("swords.svg", height: 17, width: 17) %>
+												</div>
+											<% else %>
+												<div class="label label-sm label-success">
+													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
+												</div>
+											<% end %>
 										</div>
 										<div class="cont-col2">
 											<div class="desc">
-												Finance Report for year 2013 has been released.
+												<% if entry[3] %>
+													Nice! You won against <%= entry[2] %> with <%= entry[1] %>
+												<% else %>
+													Opps. You lost against <%= entry[2] %> with <%= entry[1] %>
+												<% end %>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col2">
 									<div class="date">
-										20 mins
+										<%= timepassed[:diff] %> ago
 									</div>
 								</div>
-							</a>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-danger">
-											<i class="fa fa-user"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											You have 5 pending membership that requires a quick review.
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									24 mins
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-info">
-											<i class="fa fa-shopping-cart"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											New order received with <span class="label label-sm label-success">Reference Number: DR23923</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									30 mins
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-success">
-											<i class="fa fa-user"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											You have 5 pending membership that requires a quick review.
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									24 mins
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-default">
-											<i class="fa fa-bell-o"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											Web server hardware needs to be upgraded.
-											<span class="label label-sm label-default ">Overdue</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									2 hours
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#">
-								<div class="col1">
-									<div class="cont">
-										<div class="cont-col1">
-											<div class="label label-sm label-default">
-												<i class="fa fa-briefcase"></i>
-											</div>
-										</div>
-										<div class="cont-col2">
-											<div class="desc">
-												IPO Report for year 2013 has been released.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col2">
-									<div class="date">
-										20 mins
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-info">
-											<i class="fa fa-check"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											You have 4 pending tasks.
-											<span class="label label-sm label-warning ">
-											Take action
-											<i class="fa fa-share"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									Just now
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#">
-								<div class="col1">
-									<div class="cont">
-										<div class="cont-col1">
-											<div class="label label-sm label-danger">
-												<i class="fa fa-bar-chart-o"></i>
-											</div>
-										</div>
-										<div class="cont-col2">
-											<div class="desc">
-												Finance Report for year 2013 has been released.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col2">
-									<div class="date">
-										20 mins
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-default">
-											<i class="fa fa-user"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											You have 5 pending membership that requires a quick review.
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									24 mins
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-info">
-											<i class="fa fa-shopping-cart"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											New order received with <span class="label label-sm label-success">Reference Number: DR23923</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									30 mins
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-success">
-											<i class="fa fa-user"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											You have 5 pending membership that requires a quick review.
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									24 mins
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="col1">
-								<div class="cont">
-									<div class="cont-col1">
-										<div class="label label-sm label-warning">
-											<i class="fa fa-bell-o"></i>
-										</div>
-									</div>
-									<div class="cont-col2">
-										<div class="desc">
-											Web server hardware needs to be upgraded.
-											<span class="label label-sm label-default ">Overdue</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col2">
-								<div class="date">
-									2 hours
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#">
-								<div class="col1">
-									<div class="cont">
-										<div class="cont-col1">
-											<div class="label label-sm label-info">
-												<i class="fa fa-briefcase"></i>
-											</div>
-										</div>
-										<div class="cont-col2">
-											<div class="desc">
-												IPO Report for year 2013 has been released.
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col2">
-									<div class="date">
-										20 mins
-									</div>
-								</div>
-							</a>
-						</li>
+							</li>
+						<% end %>
 					</ul>
 				</div>
 				<div class="scroller-footer">

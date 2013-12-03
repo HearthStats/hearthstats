@@ -7,6 +7,7 @@ class DashboardsController < ApplicationController
   def index
     # recentgamesbyhr(current_user.id, 12)
     recentgames(current_user.id, 10)
+    @recent_entries = Profile.get_recent_games(current_user.id)
 
  		@globarena = ((Arena.where(win: true).count.to_f / Arena.count)*100).round
  		@globcon = ((Constructed.where(win: true).count.to_f / Constructed.count)*100).round
