@@ -66,9 +66,24 @@
         </li>
       </ul>
     </li>
+    <li class="decks">
+      <a href="javascript:;">
+      <i class="fa fa-list"></i>
+      <span class="title">Decks</span>
+      <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+      	<li class="index">
+          <%= link_to "All Decks", decks_path %>
+        </li>
+        <li class="new">
+          <%= link_to "New", new_deck_path %>
+        </li>
+      </ul>
+    </li>
     <li class="tournies">
       <a href="javascript:;">
-      <i class="fa fa-sitemap"></i>
+      <i class="fa fa-trophy"></i>
       <span class="title">Tournaments</span>
       <span class="arrow "></span>
       </a>

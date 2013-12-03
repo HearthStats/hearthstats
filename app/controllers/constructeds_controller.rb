@@ -26,12 +26,12 @@ class ConstructedsController < ApplicationController
   # GET /constructeds/new
   # GET /constructeds/new.json
   def new
+  	if Deck.where(user_id: current_user.id).count == 0
+  		redirect_to new_deck_path, notice: "Please create a deck first."
+  	end
     @constructed = Constructed.new
     @lastentry = Constructed.where(user_id: current_user.id).last
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @constructed }
-    end
+
   end
 
   # GET /constructeds/1/edit
@@ -90,6 +90,6 @@ class ConstructedsController < ApplicationController
   end
 
   def stats
-    
+
   end
 end
