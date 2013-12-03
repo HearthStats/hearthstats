@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	if ($('.active').attr("data-activeimg") === "arena"){
-		$('.active').find('.sidebaricon').attr('src', "/assets/swords.png");
-	}else{
-		$('.active').find('.sidebaricon').attr('src', "/assets/hammerwrench.png");
-	}
+	var image = $('.active').attr("data-activeimg")
+	$('.active').find('.sidebaricon').attr('src', "/assets/"+ image+".png");
 });
