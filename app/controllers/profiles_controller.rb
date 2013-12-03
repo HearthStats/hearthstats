@@ -55,7 +55,7 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classarenarate[i] = 0
       else
-	    @classarenarate[i] = (totalwins.to_f / totalgames)*100.round(2)
+	    @classarenarate[i] = ((totalwins.to_f / totalgames)*100).round(2)
       @arenatot[i] = totalgames
 	  end
 
@@ -74,7 +74,7 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classconrate[i] = 0
       else
-		    @classconrate[i] = (totalwins.to_f / totalgames)*100.round(2)
+		    @classconrate[i] = ((totalwins.to_f / totalgames)*100).round(2)
 
 	      @contot[i] = totalgames
 		  end

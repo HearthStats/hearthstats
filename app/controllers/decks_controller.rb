@@ -34,14 +34,15 @@ class DecksController < ApplicationController
 	    if totgames == 0
 	    	@deckrate[i] = 0
 	    else
-		    @deckrate[i] = (wins.to_f / totgames)*100.round(2)
+		    @deckrate[i] = ((wins.to_f / totgames)*100).round(2)
 		  end
 	  end
 
 	  # Going first vs 2nd
-	  @totgames = @deck.constructeds.count
-	  @firstrate = (@deck.constructeds.where(gofirst: true, win: true).count.to_f / @totgames)*100.round(2)
-	  @secrate = (@deck.constructeds.where(gofirst: false, win: true).count.to_f / @totgames)*100.round(2)
+	  totgamesfirst = @deck.constructeds.where(gofirst: true).count
+	  totgamessec = @deck.constructeds.where(gofirst: false).count
+	  @firstrate = ((@deck.constructeds.where(gofirst: true, win: true).count.to_f / totgamesfirst)*100).round(2)
+	  @secrate = ((@deck.constructeds.where(gofirst: false, win: true).count.to_f / totgamessec)*100).round(2)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     (0..days1).each do |i|
       win = Arena.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
       tot = Arena.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
-      winrate[i] = (win.to_f / tot)*100.round(2)
+      winrate[i] = ((win.to_f / tot)*100).round(2)
     end
     return winrate
   end
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     (0..days1).each do |i|
       win = Constructed.where(user_id: userid, win: true).where("created_at <= ?", i.days.ago.end_of_day).count
       tot = Constructed.where(user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
-      winrate[i] = (win.to_f / tot)*100.round(2)
+      winrate[i] = ((win.to_f / tot)*100).round(2)
 	    return winrate
 	  end
 	end
