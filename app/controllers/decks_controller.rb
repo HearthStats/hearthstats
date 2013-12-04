@@ -32,9 +32,9 @@ class DecksController < ApplicationController
 	    wins = @deck.constructeds.where(oppclass: c, win: true).count
 	    totgames = @deck.constructeds.where(oppclass: c).count
 	    if totgames == 0
-	    	@deckrate[i] = 0
+	    	@deckrate[i] = [0,"#{classes[i]}<br/>0 Games"]
 	    else
-		    @deckrate[i] = ((wins.to_f / totgames)*100).round(2)
+		    @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{classes[i]}<br/>#{totgames} Games"]
 		  end
 	  end
 

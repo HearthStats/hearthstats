@@ -24,7 +24,7 @@ div.pure-g-r
     - cache(@deck, expires_in: 1.day)  do
     	= raw @message
   div.pure-u-2-3
-    = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate, chartname: "Deck"
+    = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
 
 = link_to 'Edit', edit_deck_path(@deck)
 = link_to 'Back', decks_path

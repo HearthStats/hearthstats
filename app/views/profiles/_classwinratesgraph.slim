@@ -3,7 +3,7 @@ javascript:
   $('##{chartname}').highcharts({
       chart: {
           type: 'column',
-          backgroundColor: '#f0f0f0'
+          backgroundColor: '#ffffff'
       },
       title: {
           text: '#{chartname} Win Rates'
@@ -12,7 +12,7 @@ javascript:
           text: 'Source: HearthStats.net'
       },
       xAxis: {
-          categories: ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'],
+        categories: #{raw railsdata[1]}, 
           title: {
               text: null
           }
@@ -22,7 +22,6 @@ javascript:
           max: 100,
           title: {
               text: 'Win %',
-              align: 'high'
           },
           labels: {
               overflow: 'justify'
@@ -49,7 +48,7 @@ javascript:
       },
       series: [{
           name: '#{chartname}',
-          data: #{railsdata.to_json},
+          data: #{railsdata[0].to_json},
       }],
       colors: [
         '#5C4B51',
