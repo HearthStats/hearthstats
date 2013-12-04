@@ -46,17 +46,15 @@ class ProfilesController < ApplicationController
   	# Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Array.new
-    @arenatot = Array.new
     classes.each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
       totalwins = Arena.where(:userclass => c, :win => true, :user_id => @user.id ).count
       totalgames = Arena.where(:userclass => c, :user_id => @user.id ).count
       if totalgames == 0
-      	@classarenarate[i] = 0
+      	@classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
-	    @classarenarate[i] = ((totalwins.to_f / totalgames)*100).round(2)
-      @arenatot[i] = totalgames
+	    @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
 	  end
 
     end
@@ -65,18 +63,15 @@ class ProfilesController < ApplicationController
     # Determine Constructed Class Win Rates
 
     @classconrate = Array.new
-    @contot = Array.new
     classes.each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
       totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c, :user_id => @user.id ).count
       totalgames = Constructed.joins(:deck).where('decks.race' => c, :user_id => @user.id ).count
       if totalgames == 0
-      	@classconrate[i] = 0
+      	@classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
-		    @classconrate[i] = ((totalwins.to_f / totalgames)*100).round(2)
-
-	      @contot[i] = totalgames
+        @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
 		  end
     end
     # @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
