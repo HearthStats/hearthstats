@@ -27,23 +27,30 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="deckfield">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="oppfield">
-    <%= f.label "Class" %> <br>
-    <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-  </div>
-
-  <div class="hidden">
-    <%= f.text_field :decklink %>
-  </div>
-
-  <div class="cf"></div>
-  <div class="actions">
-    <%= link_to 'Back', decks_path, class: "pure-button pure-button-secondary" %>
-    <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
+  <div class="deckform">
+		<div class="row">
+			<div class="col-md-6 center">
+			  <div class="deckfield">
+			    <%= f.label :name %><br />
+			    <%= f.text_field :name, class: "deckname" %>
+			  </div>
+			</div>
+			<div class="col-md-6 center">
+			  <div class="oppfield">
+			    <%= f.label "Class" %> <br>
+			    <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+			  </div>
+			</div>
+		  <div class="hidden">
+		    <%= f.text_field :decklink %>
+		  </div>
+		</div>
+	  <div class="cf"></div>
+	  <div class="actions center">
+	    <%= link_to constructeds_path do %>
+	      <button class="btn btn-lg">Back</button>
+	    <% end %>
+	    <%= f.submit "Create Deck", class: "btn btn-lg btn-success arenasubmit" %>
+	  </div>
   </div>
 <% end %>

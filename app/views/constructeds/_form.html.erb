@@ -1,20 +1,17 @@
 <script>
-  $(document).ready(function() {
+  function format(state) {
+    var originalOption = state.element;
 
-    function format(state) {
-      var originalOption = state.element;
-   
-      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-    }
-    $("#constructed_oppclass").select2({
-      width: '300px',
-      formatResult: format,
-      formatSelection: format,
-      escapeMarkup: function(m) { return m; }
-    });
-    $("#deckname_0").select2({
-      width: '300px'
-    });
+    return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
+  }
+  $("#constructed_oppclass").select2({
+    width: '300px',
+    formatResult: format,
+    formatSelection: format,
+    escapeMarkup: function(m) { return m; }
+  });
+  $("#deckname_0").select2({
+    width: '300px'
   });
 </script>
 
@@ -34,34 +31,38 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
-  <div class="gofirstfield">
-    <div class="gofirsttitle">You played on the: </div>
-    <% if @constructed.gofirst %>
-      <div class="pure-button pure-button-success gofirst"> First Turn </div><br />
-    <% else %>
-      <div class="pure-button pure-button-secondary gofirst"> Second Turn </div><br />
-    <% end %>
-    <%= f.check_box :gofirst, class: "firstcheckbox hidden" %>
-  </div>
-    <div class="yourfield">
-      <%= f.label "Deck Name" %><br />
-        <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname}) %>
-    </div>
-    <div class="oppfield">
-      <%= f.label "Opponent's Class" %><br />
-      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
+	  <div class="gofirstfield center">
+	    <h3>You played on the: </h3>
+	    <% if @constructed.gofirst %>
+		    <div class="btn btn-lg green gofirst"> First Turn </div><br />
+	    <% else %>
+		    <div class="btn btn-lg blue gofirst"> Second Turn </div><br />
+	    <% end %>
+	    <%= f.check_box :gofirst , class: "firstcheckbox hidden" %>
+	  </div>
+	  <div class="row center">
+      <div class="col-md-6">
+        <div class="yourfield">
+          <%= f.label "Deck Name" %><br />
+          <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname}) %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="oppfield">
+          <%= f.label "Opponent's Class" %><br />
+          <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+        </div>
+      </div>
     </div>
     <div class="cf"></div>
-    <div class="winfield">
-      <% if @constructed.win %>
-        <div class="pure-button pure-button-success winbutton"> Victory </div><br /><br />
-      <% else %>
-        <div class="pure-button pure-button-error winbutton"> Defeated </div><br /><br />
-      <% end %>
-      <%= f.check_box :win, class: "wincheckbox hidden" %>
+    <div class="winfield center">
+      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
+      <%= f.check_box :win , class: "wincheckbox hidden" %>
     </div>
-    <div class="actions">
-      <%= link_to 'Back', constructeds_path, class: "pure-button pure-button-secondary" %>
-      <%= f.submit "Create Entry", class: "pure-button pure-button-success" %>
+    <div class="actions center">
+      <%= link_to constructeds_path do %>
+        <button class="btn btn-lg">Back</button>
+      <% end %>
+      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
     </div>
 <% end %>
