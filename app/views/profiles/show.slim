@@ -72,10 +72,10 @@ div class="row profile"
                 div class="tab-content"
                   div class="tab-pane active" id="tab_1_11"
                     div class="portlet-body"
-                      = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate, chartname: "Constructed"
+                      = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate.transpose, chartname: "Constructed"
                   div class="tab-pane" id="tab_1_22"
                     div class="tab-pane active" id="tab_1_1_1"
-                      = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate, chartname: "Arena"
+                      = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate.transpose, chartname: "Arena"
                   div class="tab-pane" id="tab_1_33"
                     div class="portlet-body"
                       table class="table table-striped table-bordered table-advance table-hover"
@@ -148,4 +148,3 @@ div class="row profile"
 /           td.victory #{@overallcon[0]}
 /           td.defeat #{@overallcon[1]}
 /           td #{number_to_percentage((@overallcon[0].to_f / @overallcon[2])*100, precision: 2)}
->>>>>>> profile page

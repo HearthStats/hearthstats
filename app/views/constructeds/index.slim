@@ -1,6 +1,7 @@
 javascript:
   function format(state) {
     var originalOption = state.element;
+
     return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' width='20px' />" + state.text;
   }
   $("#constructed_oppclass").select2({

@@ -79,13 +79,7 @@ class ProfilesController < ApplicationController
       if totalgames == 0
       	@classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
-<<<<<<< HEAD
         @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
-=======
-		    @classconrate[i] = (totalwins.to_f / totalgames)*100.round(2)
-
-	      @contot[i] = totalgames
->>>>>>> profile percent fix
 		  end
     end
     # @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
