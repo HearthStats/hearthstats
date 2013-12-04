@@ -80,4 +80,9 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def public_url(file)
+    root_url + file
+  end
+
 end
