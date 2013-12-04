@@ -32,7 +32,7 @@ Portfolio
 /*Portfolio Hover*/
 .mix-grid .mix {
 	position: relative;
-	overflow: hidden;	
+	overflow: hidden;
 	margin-bottom: 15px;
 }
 
@@ -57,11 +57,11 @@ Portfolio
 	-o-transition: all 0.5s ease;
 	-ms-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
-	-webkit-transition: all 0.5s ease;	
+	-webkit-transition: all 0.5s ease;
 }
 
 .mix-grid .mix .mix-details h4 {
-	color: #fff;	
+	color: #fff;
 	margin-top: 30px;
 }
 
@@ -74,12 +74,12 @@ Portfolio
 	font-size: 14px;
 }
 
-.mix-grid .mix a.mix-link, 
+.mix-grid .mix a.mix-link,
 .mix-grid .mix a.mix-preview {
 	color: #555;
 	display: block;
 	cursor: pointer;
-	margin-top: 10px; 
+	margin-top: 10px;
 	position: absolute;
 	padding: 10px 15px;
 	background: #16b2f4;
@@ -104,7 +104,7 @@ Portfolio
 }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
 
 	.mix-grid .mix.col-md-6.col-sm-6 .mix-details {
 		height: 50%;
@@ -112,8 +112,8 @@ Portfolio
 
 }
 
-@media (min-width: 768px) and (max-width: 991px) { 
-	
+@media (min-width: 768px) and (max-width: 991px) {
+
 	.mix-grid .mix a.mix-link,
 	.mix-grid .mix a.mix-preview {
 		margin-top: 5px;

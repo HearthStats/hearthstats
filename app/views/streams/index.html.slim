@@ -1,0 +1,23 @@
+- set_meta_tags :title => 'Streams',
+  :description => 'All Hearthstone streams',
+  :keywords => 'stream, all, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Streams')
+- provide(:subtitle, ' find all your favourite streams in one place')
+= will_paginate @streams, renderer: BootstrapPagination::Rails
+div class="row"
+  div class="col-md-12"
+    div class="margin-top-10"
+      div.row
+      - @streams.each do |s|
+        div class="mix-grid"
+          div class="col-md-3 col-sm-4 mix"
+            div class="mix-inner"
+              img src="#{s['preview']['medium']}" class="img-responsive"
+              div class="mix-details"
+                h4 =s['channel']["display_name"]
+                a class="mix-link" href="#{s['channel']['url']}"
+                  i class="fa fa-link"
+                a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"
+                  i class="fa fa-search"
+javascript:
+  Portfolio.init();
