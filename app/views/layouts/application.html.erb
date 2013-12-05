@@ -15,9 +15,12 @@
   <%= favicon_link_tag '/hearthstatslogo.png', rel: 'apple-touch-icon', type: 'image/png' %>
   <script src="http://code.highcharts.com/highcharts.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<% if signed_in? %>
+	<body class="page-header-fixed">
+<% else %>
+	<body class="page-header-fixed page-full-width">
+<% end %>
 	<% if notice || alert %>
 		<div class="notifications">
 			<% if notice %>
@@ -28,14 +31,23 @@
 		</div>
 	<% end %>
 
-	<div id="wrap">
-		<%= render 'layouts/header' %>
-		<%= announce Announcement.newest, :hide_message => "Hide Message" %>
-		<div class="container">
+	<%= render 'layouts/header' %>
+	<!-- <%= announce Announcement.newest, :hide_message => "Hide Message" %> -->
+	<div class="clearfix"></div>
+	<div class="page-container">
+		<% if signed_in? %>
+			<%= render 'layouts/sidebar' %>
+		<% end %>
+		<div class="page-content">
+			<!-- BEGIN PAGE HEADER -->
+			<%= render 'layouts/breadcrumbs' %>
+			<!-- END PAGE HEADER -->
 			<%= yield %>
 		</div>
-		<div id="push"></div>
 	</div>
 	<%= render 'layouts/footer' %>
+	<script>
+		App.init(); // initlayout and core plugins
+	</script>
 </body>
 </html>
