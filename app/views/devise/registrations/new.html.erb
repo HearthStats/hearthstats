@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="MobileOptimized" content="320">
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= display_meta_tags :site => 'HearthStats' %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= favicon_link_tag '/hearthstatslogo.png', rel: 'apple-touch-icon', type: 'image/png' %>
+	<!-- END GLOBAL MANDATORY STYLES -->
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login">
+	<!-- BEGIN LOGO -->
+	<div class="logo">
+		<%= image_tag('hearthstatslogo.svg', height: 100) %>
+	</div>
+	<!-- END LOGO -->
+	<!-- BEGIN LOGIN -->
+	<div class="content">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:autocomplete => "off"} ) do |f| %>
+		<%= devise_error_messages! %>
+			<h3 >Sign Up</h3>
+			<p>Enter your account details below:</p>
+			<div class="form-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<label class="control-label visible-ie8 visible-ie9">Email</label>
+				<div class="input-icon">
+					<i class="fa fa-envelope"></i>
+					<%= f.email_field :email, :placeholder => "Email", class: "form-control placeholder-no-fix" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">Password</label>
+				<div class="input-icon">
+					<i class="fa fa-lock"></i>
+					<%= f.password_field :password, :placeholder => "Password", id: "register_password", class: "form-control placeholder-no-fix" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+				<div class="controls">
+					<div class="input-icon">
+						<i class="fa fa-check"></i>
+						<%= f.password_field :password_confirmation, :placeholder => "Re-type Your Password", class: "form-control placeholder-no-fix" %>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>
+				<input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+				</label>
+				<div id="register_tnc_error"></div>
+			</div>
+			<div class="form-actions">
+				<button id="register-back-btn" type="button" class="btn">
+				<i class="m-icon-swapleft"></i>  Back
+				</button>
+				<button type="submit" id="register-submit-btn" class="btn blue pull-right">
+				Sign Up <i class="m-icon-swapright m-icon-white"></i>
+				</button>
+			</div>
+		<% end %>
+	</div>
+	<!-- END LOGIN -->
+	<!-- BEGIN COPYRIGHT -->
+	<div class="copyright">
+		2013 &copy; HearthStats - Hearthstone win/loss tracking.
+	</div>
+	<!-- END COPYRIGHT -->
+
+	<script>
+	  App.init();
+	  Login.init();
+	</script>
+	<% if notice || alert %>
+		<% if notice %>
+			<script>
+				jQuery(document).ready(function() {
+					toastr.success("<%= raw notice %>");
+				});
+			</script>
+		<% elsif alert %>
+			<script>
+				jQuery(document).ready(function() {
+					toastr.error("<%= raw alert %>");
+				});
+			</script>
+		<% end %>
+	<% end %>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

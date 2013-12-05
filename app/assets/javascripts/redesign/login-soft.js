@@ -26,7 +26,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 	                $('.alert-danger', $('.login-form')).show();
 	            },
 
@@ -78,7 +78,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 
 	            },
 
@@ -153,7 +153,7 @@ var Login = function () {
 	            focusInvalid: false, // do not focus the last invalid input
 	            ignore: "",
 	            rules: {
-	                
+
 	                fullname: {
 	                    required: true
 	                },
@@ -192,7 +192,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 
 	            },
 
@@ -207,7 +207,7 @@ var Login = function () {
 	            },
 
 	            errorPlacement: function (error, element) {
-	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
+	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container
 	                    error.insertAfter($('#register_tnc_error'));
 	                } else if (element.closest('.input-icon').size() === 1) {
 	                    error.insertAfter(element.closest('.input-icon'));
@@ -240,20 +240,20 @@ var Login = function () {
 	            jQuery('.register-form').hide();
 	        });
 	}
-    
+
     return {
         //main function to initiate the module
         init: function () {
-        	
+
             handleLogin();
             handleForgetPassword();
-            handleRegister();        
-	       
+            handleRegister();
+
 	       	$.backstretch([
-		        "assets/img/bg/1.jpg",
-		        "assets/img/bg/2.jpg",
-		        "assets/img/bg/3.jpg",
-		        "assets/img/bg/4.jpg"
+		        "/assets/bg/1.jpg",
+		        "/assets/bg/2.jpg",
+		        "/assets/bg/3.jpg",
+		        "/assets/bg/4.jpg"
 		        ], {
 		          fade: 1000,
 		          duration: 8000
