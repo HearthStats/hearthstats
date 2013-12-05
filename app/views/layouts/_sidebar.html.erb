@@ -81,6 +81,18 @@
         </li>
       </ul>
     </li>
+   <li class="news">
+      <a href="#">
+      <i class="fa fa-rss"></i>
+      <span class="title">News</span>
+			</a>
+    </li>
+    <li class="streams">
+      <%= link_to streams_index_path do %>
+      <i class="fa fa-th"></i>
+      <span class="title">Streams</span>
+      <% end %>
+    </li>
     <li class="tournies">
       <a href="javascript:;">
       <i class="fa fa-trophy"></i>
@@ -102,12 +114,6 @@
         </li>
       </ul>
     </li>
-    <li class="streams">
-      <%= link_to streams_index_path do %>
-      <i class="fa fa-th"></i>
-      <span class="title">Streams</span>
-      <% end %>
-    </li>
     <li class="additional">
       <a href="javascript:;">
       <i class="fa fa-gift"></i>
@@ -127,14 +133,14 @@
         </li>
         <li class="contactus">
           <%= link_to contactus_path do %>
-						Contact Us
+						Contact Info
 	        <% end %>
         </li>
       </ul>
     </li>
     <li class="last " id="help">
       <%= link_to help_path do %>
-        <i class="fa fa-bar-chart-o"></i>
+        <i class="fa fa-question"></i>
         <span class="title">Help</span>
       <% end %>
     </li>
