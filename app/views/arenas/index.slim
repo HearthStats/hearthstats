@@ -10,9 +10,15 @@
   - else
     = link_to 'Continue Arena Run', new_arena_path, class: "btn blue"
 - @arenaruns.each do |arena|
-  div id="run#{arena.id}" class="modal"
-    =render 'arenagames', arenas: arena.arenas
-    a href="#close-modal" rel="modal:close" class="close-modal" Close
+  div id="run#{arena.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="run#{arena.id}" aria-hidden="true"
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+          h4 class="modal-title" Modal Title
+        div.modal-body
+          =render 'arenagames', arenas: arena.arenas
+        button type="button" class="btn default" data-dismiss="modal" Close
 div.arenaheader
   = will_paginate @arenaruns, renderer: BootstrapPagination::Rails
 div class="portlet box green"
@@ -43,5 +49,5 @@ div class="portlet box green"
               i class="fa fa-pencil-square-o" Edit
             = link_to arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
               i class="fa fa-trash-o" Delete
-            a.showmore href="#run#{arena.id}" rel="modal:open" class="btn default btn-xs blue" <i class="fa fa-external-link"></i>Show
+            a.showmore data-target="#run#{arena.id}" data-toggle="modal" class="btn default btn-xs blue" <i class="fa fa-external-link"></i>Show
 =link_to "Archived Games", "/arenas/archives"
