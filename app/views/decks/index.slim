@@ -26,7 +26,7 @@ div class="portlet box green"
           td = deck.race
           td = deck.constructeds.where(win: true).count
           td = deck.constructeds.where(win: false).count
-          td.cl-effect-3
+          td
             =link_to edit_deck_path(deck), class: 'btn default btn-xs purple' do
               i class="fa fa-pencil-square-o" Edit
             = link_to deck, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do

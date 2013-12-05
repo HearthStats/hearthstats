@@ -15,7 +15,7 @@
       div.modal-content
         div.modal-header
           button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-          h4 class="modal-title" Modal Title
+          h4 class="modal-title" Arena run with #{arena.userclass} on #{arena.created_at}
         div.modal-body
           =render 'arenagames', arenas: arena.arenas
         button type="button" class="btn default" data-dismiss="modal" Close
