@@ -15,9 +15,9 @@ div class="row"
               img src="#{s['preview']['medium']}" class="img-responsive"
               div class="mix-details"
                 h4 =s['channel']["display_name"]
-                a class="mix-link" href="#{s['channel']['url']}"
+                a class="mix-link" href="#{s['channel']['url']}" target="_none"
                   i class="fa fa-link"
-                a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"
-                  i class="fa fa-search"
+                a class="mix-preview viewers"
+                  =s['viewers']
 javascript:
   Portfolio.init();
