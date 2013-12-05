@@ -22,16 +22,6 @@
 <% else %>
 	<body class="page-header-fixed page-full-width">
 <% end %>
-	<% if notice || alert %>
-		<div class="notifications">
-			<% if notice %>
-			<p class="notice"><%= notice %></p>
-			<% elsif alert %>
-			<p class="alert"><%= alert %></p>
-			<% end %>
-		</div>
-	<% end %>
-
 	<%= render 'layouts/header' %>
 	<!-- <%= announce Announcement.newest, :hide_message => "Hide Message" %> -->
 	<div class="clearfix"></div>
@@ -50,5 +40,23 @@
 	<script>
 		App.init(); // initlayout and core plugins
 	</script>
+	<% if notice || alert %>
+	<script>
+		console.log("something");
+	</script>
+		<% if notice %>
+			<script>
+				jQuery(document).ready(function() {
+					toastr.success("<%= raw notice %>");
+				});
+			</script>
+		<% elsif alert %>
+			<script>
+				jQuery(document).ready(function() {
+					toastr.error("<%= raw alert %>");
+				});
+			</script>
+		<% end %>
+	<% end %>
 </body>
 </html>

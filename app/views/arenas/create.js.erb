@@ -5,6 +5,7 @@
 	var html = '<tr><td><%= image_tag("Icons/Classes/#{@arena.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=@arena.oppclass%></td><td class="center"><span class="defeat">Defeat</span></td></tr>'
 	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
 <% end %>
+toastr.success('Arena Game Added');
 <% if @runwins > 8 || @runloses > 2 %>
 	$('.arenasubmit').fadeOut(function(){
 		$('.arenaendrun').fadeIn();
