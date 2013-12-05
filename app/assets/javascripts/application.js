@@ -24,7 +24,6 @@
 //= require turbolinks
 
 $(document).ready(function(){
-	App.init(); // initlayout and core plugins
 	$('.notifications').delay(500).slideDown('normal', function() {
     $(this).delay(2500).slideUp();
   });
