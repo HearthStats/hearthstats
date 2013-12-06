@@ -56,7 +56,7 @@
 				<!-- Nav menu -->
 				<ul class="top-nav">
 					<li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
-					<li><a href="#">Demo</a></li>
+					<li><%= button_to "Demo", welcome_demo_user_path, :method => :post %></li>
 					<li><%= link_to new_user_session_path do %>Sign In<% end %></li>
 				</ul>
 			</div>

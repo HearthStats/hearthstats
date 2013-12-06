@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
 
   layout :layout
 
+  def destroy_guest
+  	if session[:guest_user_id]
+			User.find(session[:guest_user_id]).destroy
+			session[:guest_user_id] = nil
+		end
+  end
+
+  helper_method :destory_guest
+
   private
 
   def layout

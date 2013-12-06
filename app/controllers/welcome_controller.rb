@@ -3,6 +3,11 @@ class WelcomeController < ApplicationController
 		render :layout=>false
 	end
 
+	def demo_user
+		sign_in(:user, create_guest_user)
+		redirect_to root_path
+	end
+
 	def novreport
 
 	# Determine Arena Class Win Rates
@@ -30,12 +35,12 @@ class WelcomeController < ApplicationController
 			totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c).count
 			totalwins = totalwins + Constructed.where(oppclass: c, win: false).count
 			totalgames = Constructed.joins(:deck).where('decks.race' => c).count + Constructed.where(oppclass: c).count
-			
+
 			@classconrate[c] = (totalwins.to_f / totalgames)
 			@contot[c] = totalgames
 		end
 		@classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
-	
+
 		# Most Played
 
 		@conclassnum = Hash.new
@@ -106,5 +111,13 @@ class WelcomeController < ApplicationController
 				wins[i] = Constructed.joins(:deck).where(win: true, 'decks.race' => race).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + Constructed.where(oppclass: race, win: false).where(:created_at => i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
 			end
 			return wins
+		end
+
+		def create_guest_user
+			u = User.create(:email => "guest_#{Time.now.to_i}#{rand(99)}@example.com", :password => "demouser", :guest => true)
+			u.save!(:validate => false)
+			session[:guest_user_id] = u.id
+
+			u
 		end
 end

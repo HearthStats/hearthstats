@@ -4,6 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+  	destory_guest
     super
     # gb = Gibbon::API.new("33bdb1440a0a40ab222881cb695ddcfb-us3")
     # Gibbon::API.throws_exceptions = false
@@ -15,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.save
       q = Profile.new
       q.user_id = resource.id
-      q.save 
+      q.save
 
       gb = Gibbon::API.new("33bdb1440a0a40ab222881cb695ddcfb-us3")
       gb.throws_exceptions = false
@@ -26,4 +27,4 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     super
   end
-end 
+end

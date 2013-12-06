@@ -23,6 +23,14 @@ Hearthstats::Application.routes.draw do
   get "admin/announcement"
   post "admin/anncreate"
 
+  get "welcome/index"
+  post "welcome/demo_user"
+  # resources :welcome do
+  #   collection do
+  #     get 'index'
+  #     post 'demo_user'
+  #   end
+  # end
   resources :arena_runs do
     collection do
       get 'end'
