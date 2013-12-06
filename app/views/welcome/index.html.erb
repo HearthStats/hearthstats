@@ -14,11 +14,11 @@
 	    <script src= "http://html5shiv.googlecode.com/svn/trunk/html5.js")></script>
 	<![endif]-->
 	<!-- CSS Files -->
-  <link rel="stylesheet" type="text/css" href=<%= public_url("/css/reset.css")%>/>
-  <link rel="stylesheet" type="text/css" href=<%= public_url("foundation.css") %>/>
-	<link rel="stylesheet" type="text/css" href=<%= public_url("css/style.css")%>/>
-	<link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%>/>
-	<link rel="stylesheet" type="text/css" href=<%= public_url("/css/flexslider.css")%> />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/reset.css")%> />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("foundation.css") %> />
+	<link rel="stylesheet" type="text/css" href=<%= public_url("css/style.css")%> />
+	<link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> />
+	<link rel="stylesheet" type="text/css" href=<%= public_url("css/flexslider.css")%> />
 	<link rel="stylesheet" type="text/css" href=<%= public_url("css/prettyphoto.css")%> />
 
 	<!--[if IE 8]>
@@ -51,15 +51,12 @@
 				<ul class="top-social">
 					<li class="top-tweet"><a href="#1"><div class="icon-twitter"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
 					<li class="top-fb"><a href="#2"><div class="icon-facebook"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
-					<li class="top-dribble"><a href="#3"><div class="icon-dribble"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
-					<li class="top-skype"><a href="#4"><div class="icon-skype"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
 				</ul>
 
 				<!-- Nav menu -->
 				<ul class="top-nav">
 					<li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
 					<li><a href="#">Demo</a></li>
-					<li><a href="#contact">Contact</a></li>
 					<li><%= link_to new_user_session_path do %>Sign In<% end %></li>
 				</ul>
 			</div>
