@@ -92,7 +92,7 @@ p {
 }
 
 .logo h1 a span {
-	color:#00a8ec;
+	color:#e02222;
 }
 
 /* 2b. Navmenu
@@ -397,7 +397,6 @@ p {
 .portfolio_thumb {
 	position:relative;
 	overflow:hidden;
-	border-radius:5px;
 }
 
 .gallery li div {

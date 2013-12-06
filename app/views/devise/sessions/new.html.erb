@@ -42,7 +42,7 @@
 
 			<!-- Logo content -->
 			<div class="four columns logo">
-				<h1><a href="/">HearthStats<span>.</span></a></h1>
+				<h1><a href="/">Hearth<span>Stats</span></a></h1>
 			</div>
 
 			<div class="eight columns">
@@ -57,9 +57,10 @@
 
 				<!-- Nav menu -->
 				<ul class="top-nav">
-					<li><a href="./index.html">Home</a></li>
-					<li><a href="./page.html">Demo Account</a></li>
+					<li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
+					<li><a href="#">Demo</a></li>
 					<li><a href="#contact">Contact</a></li>
+					<li><%= link_to new_user_session_path do %>Sign In<% end %></li>
 				</ul>
 			</div>
 
@@ -79,12 +80,6 @@
 				Welcome HearthStats</h3>
 			<p>HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strength and weaknesses with an full suite of statistics.</p>
 
-			<!-- Subscribe section -->
-			<form>
-				<input type="email" placeholder="email@example.com" />
-				<a class="icon-envelope" href="#"><span>Login</span></a>
-			</form>
-			<!-- Subscribe section -->
 		</div>
 
 		<div class="twelve columns">
@@ -179,11 +174,6 @@
 
 		<div class="twelve columns no-padding">
 			<div class="slidewrap">
-				<ul class="slidecontrol">
-					<li><a href="#sliderName" class="next">Next</a></li>
-					<li><a href="#sliderName" class="prev">Prev</a></li>
-				</ul>
-
 				<ul class="slider gallery" id="sliderName">
 					<li class="slide">
 						<div class="three columns">
@@ -191,8 +181,8 @@
 								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/1.jpg" ) %> alt="" />
 									<span class="portfolio-inner" >
 										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 1</span>
-											<span class="overlay-tag">Front</span>
+											<span class="overlay title">Quick Match Entry</span>
+											<span class="overlay-tag">Arena</span>
 										</span>
 									</span>
 								</div>
@@ -204,8 +194,8 @@
 								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/2.jpg" ) %> alt="" />
 									<span class="portfolio-inner" >
 										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 2</span>
-											<span class="overlay-tag">Right</span>
+											<span class="overlay title">Arena Run Entry</span>
+											<span class="overlay-tag">Arena</span>
 										</span>
 									</span>
 								</div>
@@ -217,8 +207,8 @@
 								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/3.jpg" ) %> alt="" />
 									<span class="portfolio-inner" >
 										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 3</span>
-											<span class="overlay-tag">Left</span>
+											<span class="overlay title">Profile Win Rate Graph</span>
+											<span class="overlay-tag">Profile</span>
 										</span>
 									</span>
 								</div>
@@ -230,62 +220,8 @@
 								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/4.jpg" ) %> alt="" />
 									<span class="portfolio-inner">
 										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 4</span>
-											<span class="overlay-tag">Back</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
-					</li>
-
-					<li class="slide">
-						<div class="three columns">
-							<a href="demo/works/5.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/5.jpg" ) %> alt="" />
-									<span class="portfolio-inner" >
-										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 1</span>
-											<span class="overlay-tag">Front</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
-
-						<div class="three columns">
-							<a href="demo/works/6.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/6.jpg" ) %> alt="" />
-									<span class="portfolio-inner" >
-										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 2</span>
-											<span class="overlay-tag">Right</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
-
-						<div class="three columns">
-							<a href="demo/works/7.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/7.jpg" ) %> alt="" />
-									<span class="portfolio-inner" >
-										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 3</span>
-											<span class="overlay-tag">Left</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
-
-						<div class="three columns">
-							<a href="demo/works/3.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/3.jpg" ) %> alt="" />
-									<span class="portfolio-inner">
-										<span class="zoom-inner">
-											<span class="overlay title">Screenshot 4</span>
-											<span class="overlay-tag">Back</span>
+											<span class="overlay title">Global Statistics</span>
+											<span class="overlay-tag">Dashboard</span>
 										</span>
 									</span>
 								</div>
@@ -386,7 +322,7 @@
 						<blockquote>HeartStats improves gaming through unrivaled up to the minute statistical analysis. <cite>Anya Kylie, icegirlak</cite></blockquote>
 					</li>
 					<li>
-						<blockquote>This is one of the best theme i have ever bought, great work overall lorem ipsum dolor amet sirus <cite>John Doe, Company name</cite></blockquote>
+						<blockquote>Hearthstats gives me that 30,000ft view of my game that I wouldn't trade for anything else. <cite>Neil Murphy, Cecil</cite></blockquote>
 					</li>
 					<li>
 						<blockquote>This is one of the best theme i have ever bought, great work overall lorem ipsum dolor amet sirus <cite>John Doe, Company name</cite></blockquote>
