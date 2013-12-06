@@ -46,14 +46,8 @@
 				</div>
 			</div>
 			<div class="form-actions">
-				<label class="checkbox">
-					<div class="checker">
-						<span>
-							<% if devise_mapping.rememberable? -%>
-						    <%= f.check_box :remember_me, :name => "remember" %>
-						  <% end -%>
-					  </span>
-				  </div>
+				<label>
+			    <%= f.check_box :remember_me, :name => "remember" %>
 				  Remember me
 				</label>
 				<%= f.submit "Login", class: "btn blue pull-right" %>
@@ -119,7 +113,7 @@
 		<!-- END THAT LOGIN SHITTTT -->
 		<!-- FORGOT FORM -->
 		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, class: "forget-form"}) do |f| %>
-	  <%= devise_error_messages! %>
+		  <%= devise_error_messages! %>
 			<h3 >Forget Password ?</h3>
 			<p>Enter your e-mail address below to reset your password.</p>
 			<div class="form-group">

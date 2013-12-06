@@ -27,16 +27,8 @@
         <ul class="dropdown-menu">
           <li><%= link_to profile_path(current_user.id) do %><i class="fa fa-user"></i> My Profile<% end %>
           </li>
-          <!-- <li><a href="page_calendar.html"><i class="fa fa-calendar"></i> My Calendar</a>
-          </li>
-          <li><a href="inbox.html"><i class="fa fa-envelope"></i> My Inbox <span class="badge badge-danger">3</span></a>
-          </li>
-          <li><a href="#"><i class="fa fa-tasks"></i> My Tasks <span class="badge badge-success">7</span></a>
-          </li> -->
           <li class="divider"></li>
           <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> Full Screen</a>
-          </li>
-          <li><a href="extra_lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
           </li>
           <li><%= link_to destroy_user_session_path do %><i class="fa fa-key"></i> Log Out<% end %>
           </li>

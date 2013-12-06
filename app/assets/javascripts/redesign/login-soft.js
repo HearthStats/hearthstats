@@ -111,13 +111,15 @@ var Login = function () {
 	        });
 
 	        jQuery('#forget-password').click(function () {
-	            jQuery('.login-form').hide();
-	            jQuery('.forget-form').show();
+	            jQuery('.login-form').fadeOut(function(){
+		            jQuery('.forget-form').fadeIn();
+	            });
 	        });
 
 	        jQuery('#back-btn').click(function () {
-	            jQuery('.login-form').show();
 	            jQuery('.forget-form').hide();
+	            jQuery('.login-form').fadeIn();
+
 	        });
 
 	}
@@ -231,13 +233,14 @@ var Login = function () {
 	        });
 
 	        jQuery('#register-btn').click(function () {
-	            jQuery('.login-form').hide();
-	            jQuery('.register-form').show();
+	            jQuery('.login-form').fadeOut(function(){
+		            jQuery('.register-form').fadeIn();
+	            });
 	        });
 
 	        jQuery('#register-back-btn').click(function () {
-	            jQuery('.login-form').show();
 	            jQuery('.register-form').hide();
+	            jQuery('.login-form').fadeIn();
 	        });
 	}
 
