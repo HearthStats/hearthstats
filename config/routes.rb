@@ -55,7 +55,7 @@ Hearthstats::Application.routes.draw do
   end
 
   devise_scope :user do
-    root to: "devise/sessions#new"
+    root to: "welcome#index"
   end
 
   # See how all your routes lay out with "rake routes"
