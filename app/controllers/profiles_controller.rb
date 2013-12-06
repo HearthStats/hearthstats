@@ -29,17 +29,21 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    if @user.guest
+    	return redirect_to root_url, alert: "Guests cannot access profiles"
+    end
+
     if !current_user || !(current_user.id == @user.id)
       if @user.profile.private
-        redirect_to root_url, notice: "User's Profile is Private"
+        return redirect_to root_url, notice: "User's Profile is Private"
       end
     end
 
     if newuser?(@user.id)
 	    if current_user.id == @user.id
-	    	redirect_to root_url, alert: "You must enter at least one game before your profile is active."
+	    	return redirect_to root_url, alert: "You must enter at least one game before your profile is active."
 	    else
-	    	redirect_to root_url, alert: "User profile is not active."
+	    	return redirect_to root_url, alert: "User profile is not active."
 	    end
 	  end
 
