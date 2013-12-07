@@ -20,6 +20,8 @@
 	<link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> />
 	<link rel="stylesheet" type="text/css" href=<%= public_url("css/flexslider.css")%> />
 	<link rel="stylesheet" type="text/css" href=<%= public_url("css/prettyphoto.css")%> />
+	<%= javascript_include_tag "jquery" %>
+	<%= javascript_include_tag "jquery_ujs" %>
 
 	<!--[if IE 8]>
 		<link rel="stylesheet" type="text/css" href=<%= public_url("css/ie8.css")%> media="screen" />
@@ -56,7 +58,7 @@
 				<!-- Nav menu -->
 				<ul class="top-nav">
 					<li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
-					<li><%= button_to "Demo", welcome_demo_user_path, :method => :post %></li>
+					<li><%= link_to "Demo", welcome_demo_user_path, 	method: :post %></li>
 					<li><%= link_to new_user_session_path do %>Sign In<% end %></li>
 				</ul>
 			</div>
@@ -74,7 +76,7 @@
 			</div>
 			<h3>
 			<%= image_tag('hearthstatslogo.svg', class: "home_logo")%>
-				Welcome HearthStats</h3>
+				Welcome to HearthStats</h3>
 			<p>HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strength and weaknesses with an full suite of statistics.</p>
 
 		</div>
@@ -347,7 +349,6 @@
 <!-- Back to top button Section -->
 
 <!-- jQuery Files -->
-<script type="text/javascript" src= <%= public_url("js/jquery.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.localscroll-1.2.7-min.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.mobilemenu.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.scrollTo.js") %> ></script>

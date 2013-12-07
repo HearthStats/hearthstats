@@ -5,7 +5,10 @@ class WelcomeController < ApplicationController
 
 	def demo_user
 		sign_in(:user, create_guest_user)
-		redirect_to root_path
+		respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
+    end
 	end
 
 	def novreport
