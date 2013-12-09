@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-  	destory_guest
+  	destroy_guest
     super
     # gb = Gibbon::API.new("33bdb1440a0a40ab222881cb695ddcfb-us3")
     # Gibbon::API.throws_exceptions = false

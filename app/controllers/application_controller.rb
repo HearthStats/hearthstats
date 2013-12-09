@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 		end
   end
 
-  helper_method :destory_guest
+  helper_method :destroy_guest
 
   private
 
