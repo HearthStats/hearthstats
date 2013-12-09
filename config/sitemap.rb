@@ -20,6 +20,8 @@ SitemapGenerator::Sitemap.create do
   add '/changelog'
   add '/help'
   add '/nov'
+  add '/news'
+  add '/streams/index'
 
   #
   # Add all articles:

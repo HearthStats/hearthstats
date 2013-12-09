@@ -25,13 +25,13 @@ class AdditionalController < ApplicationController
 
       feed.entries.each do |entry|
         @items[x] = [entry.title, entry.url, entry.summary, entry.published]
-        raise
         x = x + 1
       end
 
     end
 
     @items.sort_by! { |a| a[3] }
+    @items.reverse!
 
   end
 

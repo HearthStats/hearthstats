@@ -1,191 +1,25 @@
-
-<!-- entry order: title, url, summary, published -->
-
-
+<% set_meta_tags :title => 'Hearthstone News',
+  :description => 'Latest Hearthstone News',
+  :keywords => 'latest hearthstone, hearthstats, hearthstone, match, tracking, win, loss' %>
+<% provide(:title, 'Hearthstone News') %>
 <div class="row">
-	<div class="col-md-12 news-page">
-		<h1>Recent News</h1>
-		<div class="row">
-			<div class="col-md-5">
-
-				<div class="top-news">
-					<a href="#" class="btn blue">
-					<span>Featured News</span>
-					<em>
-					<i class="fa fa-tags"></i>
-					USA, Business, Apple
-					</em>
-					<i class="fa fa- icon-bullhorn top-news-icon"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Google Glass Technology..</a></h3>
-					<div class="news-block-tags">
-						<strong>CA, USA</strong>
-						<em>3 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image1.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Sint occaecati cupiditat</a></h3>
-					<div class="news-block-tags">
-						<strong>London, UK</strong>
-						<em>7 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image4.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Accusamus et iusto odio</a></h3>
-					<div class="news-block-tags">
-						<strong>CA, USA</strong>
-						<em>3 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image5.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
+	<div class="col-md-12 news-page js-masonry" data-masonry-options='{ "columnWidth": ".gridsizer", "itemSelector": ".rssentry" }'>
+		<!-- entry array: title, url, summary, published -->
+		<div class="gridsizer"></div>
+		<% @items.each do |entry| %>
+		<div class="news-blocks rssentry">
+			<h3><a href=<%=entry[1]%> target="_blank" > <%= entry[0] %></a></h3>
+			<div class="news-block-tags">
+				<strong>Posted:</strong>
+				<em><%= entry[3].strftime("%b-%d-%Y") %></em>
 			</div>
-			<!--end col-md-5-->
-			<div class="col-md-4">
-				<div class="top-news">
-					<a href="#" class="btn red">
-					<span>World News</span>
-					<em>
-					<i class="fa fa-tags"></i>
-					UK, Canada, Asia
-					</em>
-					<i class="fa fa-globe top-news-icon"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Odio dignissimos ducimus</a></h3>
-					<div class="news-block-tags">
-						<strong>Berlin, Germany</strong>
-						<em>2 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image3.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Sanditiis praesentium vo</a></h3>
-					<div class="news-block-tags">
-						<strong>Ankara, Turkey</strong>
-						<em>5 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image5.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint praesentium voluptatum delenitioccaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="top-news">
-					<a href="#" class="btn green">
-					<span>Finance</span>
-					<em>
-					<i class="fa fa-tags"></i>
-					Money, Business, Google
-					</em>
-					<i class="fa fa-briefcase top-news-icon"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Odio dignissimos ducimus</a></h3>
-					<div class="news-block-tags">
-						<strong>Berlin, Germany</strong>
-						<em>2 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image3.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Sanditiis praesentium vo</a></h3>
-					<div class="news-block-tags">
-						<strong>Ankara, Turkey</strong>
-						<em>5 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image5.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint praesentium voluptatum delenitioccaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-			</div>
-			<!--end col-md-4-->
-			<div class="col-md-3">
-				<div class="top-news">
-					<a href="#" class="btn purple">
-					<span>Science</span>
-					<em>
-					<i class="fa fa-tags"></i>
-					Hi-Tech, Medicine, Space
-					</em>
-					<i class="fa fa-beaker top-news-icon"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Vero eos et accusam</a></h3>
-					<div class="news-block-tags">
-						<strong>CA, USA</strong>
-						<em>3 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image2.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Sias excepturi sint occae</a></h3>
-					<div class="news-block-tags">
-						<strong>Vancouver, Canada</strong>
-						<em>3 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image4.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-				<div class="top-news">
-					<a href="#" class="btn yellow">
-					<span>Sport</span>
-					<em>
-					<i class="fa fa-tags"></i>
-					Football, Swimming, Tennis
-					</em>
-					<i class="fa fa-trophy top-news-icon"></i>
-					</a>
-				</div>
-				<div class="news-blocks">
-					<h3><a href="page_news_item.html">Vero eos et accusam</a></h3>
-					<div class="news-block-tags">
-						<strong>CA, USA</strong>
-						<em>3 hours ago</em>
-					</div>
-					<p><img class="news-block-img pull-right" src="assets/img/gallery/image2.jpg" alt="">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-					<a href="page_news_item.html" class="news-block-btn">
-					Read more
-					<i class="m-icon-swapright m-icon-black"></i>
-					</a>
-				</div>
-			</div>
-			<!--end col-md-3-->
+			<div class="rss_divider"></div>
+			<p><%= raw truncate(entry[2], :length => 500)  %></p>
+			<a href=<%=entry[1]%> class="news-block-btn" target="_blank" >
+			Read more
+			<i class="m-icon-swapright m-icon-black"></i>
+			</a>
 		</div>
+		<% end %>
 	</div>
 </div>

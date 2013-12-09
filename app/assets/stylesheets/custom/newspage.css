@@ -1,0 +1,11 @@
+.rssentry{
+	width: 400px;
+	margin: auto;
+}
+.gridsizer{
+	width: 110px;
+}
+.rss_divider{
+	border-bottom: 1px black solid;
+	margin-bottom: 10px;
+}
