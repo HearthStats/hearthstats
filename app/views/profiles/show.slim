@@ -91,7 +91,11 @@ div class="row profile"
                             td =game[0]
                             td =game[1]
                             td =game[2]
-                            td =game[3]
+                            td
+                              - if game[3]
+                                span.victory Victory
+                              - else
+                                span.defeat Defeat
         div class="tab-pane" id="tab_1_3"
           div class="row profile-achievements"
             div class="col-md-12"
