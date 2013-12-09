@@ -1,9 +1,9 @@
 - set_meta_tags :title => @deck.name,
   :description => @deck.name,
   :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
+- provide(:title, @deck.name)
+- provide(:section, 'Deck')
 
-div.notice = notice
-h1 #{@deck.name}
 small Deck Views: #{ @deck.impressionist_count }
 div.pure-g-r
   div.pure-u-1-3

@@ -13,6 +13,7 @@ class DashboardsController < ApplicationController
  		@globcon = ((Constructed.where(win: true).count.to_f / Constructed.count)*100).round
  		@topdeck = Deck.bestuserdeck(current_user.id)
  		@toparena = Arena.bestuserarena(current_user.id)
+
     # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Hash.new
