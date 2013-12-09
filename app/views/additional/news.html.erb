@@ -1,9 +1,11 @@
+<!-- <script src="http://masonry.desandro.com/js/masonry-docs.min.js"></script> -->
 <% set_meta_tags :title => 'Hearthstone News',
   :description => 'Latest Hearthstone News',
   :keywords => 'latest hearthstone, hearthstats, hearthstone, match, tracking, win, loss' %>
 <% provide(:title, 'Hearthstone News') %>
+<% provide(:subtitle, ' the lastest in Hearthstone news') %>
 <div class="row">
-	<div class="col-md-12 news-page js-masonry" data-masonry-options='{ "columnWidth": ".gridsizer", "itemSelector": ".rssentry" }'>
+	<div class="col-md-12 news-page">
 		<!-- entry array: title, url, summary, published -->
 		<div class="gridsizer"></div>
 		<% @items.each do |entry| %>
@@ -23,3 +25,11 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+	$('.news-page').isotope({
+	  // options
+	  itemSelector : '.rssentry',
+	  layoutMode : 'fitRows'
+	});
+</script>

@@ -150,6 +150,8 @@
 <script>
 	<% if params[:controller] == "additional" && params[:action] == "help"%>
 		$("#help").addClass('active');
+	<% elsif params[:controller] == "additional" && params[:action] == "news"%>
+		$(".news").addClass('active');
 	<% else %>
 		$(".<%= params[:controller] %>").addClass('active');
 		$(".<%= params[:controller] %>").find(".<%= params[:action] %>").addClass('active');
