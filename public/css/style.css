@@ -197,13 +197,15 @@ p {
 	color:#fff;
 }
 
-.top-content form a {
-    float: right;
+.top-content a {
+    text-align: center;
+    display: block;
     border: 0px none;
     line-height: 38px;
     height: 38px;
     width: 118px;
-    margin: 6px 6px 0px 0px;
+		margin: auto;
+		margin-top: 20px;
 	padding:0 5px;
     border-radius: 25px 25px 25px 25px;
     color: #fff;
@@ -221,7 +223,7 @@ p {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5bba0e', endColorstr='#299a0b',GradientType=0 ); /* IE6-9 */
 }
 
-.top-content form a span {
+.top-content a span {
 	font-family:Open Sans;
 	font-size:13px;
 	font-weight:700;
@@ -229,7 +231,7 @@ p {
 	margin-left:6px;
 }
 
-.top-content form a:hover {
+.top-content a:hover {
 	background: #299a0b; /* Old browsers */
 	background: -moz-linear-gradient(top,  #299a0b 0%, #5bba0e 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#299a0b), color-stop(100%,#5bba0e)); /* Chrome,Safari4+ */

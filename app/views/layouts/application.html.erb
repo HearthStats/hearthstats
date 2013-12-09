@@ -43,17 +43,18 @@
 	<% if notice || alert %>
 		<% if notice %>
 			<script>
-				jQuery(document).ready(function() {
 					toastr.success("<%= raw notice %>");
-				});
 			</script>
 		<% elsif alert %>
 			<script>
-				jQuery(document).ready(function() {
 					toastr.error("<%= raw alert %>");
-				});
 			</script>
 		<% end %>
+	<% end %>
+	<% if current_user.guest %>
+		<script>
+			toastr.info("Guest data will be delete, please register to save your records.");
+		</script>
 	<% end %>
 </body>
 </html>
