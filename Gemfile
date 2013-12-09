@@ -29,7 +29,6 @@ group :production do
 	gem 'mysql2'
 end
 
-gem 'newrelic_rpm'
 gem 'slim-rails'
 gem 'devise'
 gem 'jquery-rails'
