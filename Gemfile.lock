@@ -151,7 +151,6 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.6.9.171)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     nprogress-rails (0.1.2.3)
@@ -291,7 +290,6 @@ DEPENDENCIES
   launchy (>= 2.1.2)
   meta-tags
   mysql2
-  newrelic_rpm
   nokogiri (~> 1.6.0)
   nprogress-rails
   quiet_assets (>= 1.0.1)
