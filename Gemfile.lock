@@ -138,6 +138,7 @@ GEM
       treetop (~> 1.4.8)
     meta-tags (1.5.0)
       actionpack
+    method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.2)
     multi_json (1.8.2)
@@ -156,6 +157,10 @@ GEM
     nprogress-rails (0.1.2.3)
     orm_adapter (0.5.0)
     polyglot (0.3.3)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -218,6 +223,7 @@ GEM
       activesupport (>= 3.0, < 4.1)
       railties (>= 3.0, < 4.1)
       slim (~> 2.0)
+    slop (3.4.7)
     social-share-button (0.1.5)
     spring (1.0.0)
     sprockets (2.2.2)
@@ -292,6 +298,7 @@ DEPENDENCIES
   mysql2
   nokogiri (~> 1.6.0)
   nprogress-rails
+  pry
   quiet_assets (>= 1.0.1)
   rails (= 3.2.13)
   rake

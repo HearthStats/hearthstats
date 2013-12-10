@@ -11,6 +11,7 @@ group :development do
   gem "quiet_assets", ">= 1.0.1"
   gem "spring"
   gem 'thin'
+  gem 'pry'
 end
 
 group :assets do
