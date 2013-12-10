@@ -21,8 +21,6 @@ div.pure-g-r
         br Coin
         | #{@secrate}%
     div.cf
-    - cache(@deck, expires_in: 1.day)  do
-    	= raw @message
   div.pure-u-2-3
     = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
 

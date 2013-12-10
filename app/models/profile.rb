@@ -9,12 +9,16 @@ class Profile < ActiveRecord::Base
 		i = 0
 		recent_games = Array.new
 		con.each do |d|
-			recent_games[i] = ["Constructed", d.deck.race, d.oppclass, d.win, d.created_at]
-			i += 1
+			if !d.nil?
+				recent_games[i] = ["Constructed", d.deck.race, d.oppclass, d.win, d.created_at]
+				i += 1
+			end
 		end
 		arena.each do |d|
-			recent_games[i] = ["Arena", d.userclass, d.oppclass, d.win, d.created_at]
-			i += 1
+			if !d.nil?
+				recent_games[i] = ["Arena", d.userclass, d.oppclass, d.win, d.created_at]
+				i += 1
+			end
 		end
 		recent_games.sort_by! { |a| a[4] }
 		recent_games.reverse!

@@ -9,7 +9,7 @@
 div class="portlet box green"
   div class="portlet-title"
     div class="caption"
-      | Recent Arena Games
+      | All Decks
   div class="portlet-body flip-scroll"
     table class="table table-bordered table-striped table-condensed flip-content"
       thead class="flip-content"
@@ -29,5 +29,5 @@ div class="portlet box green"
           td
             =link_to edit_deck_path(deck), class: 'btn default btn-xs purple' do
               i class="fa fa-pencil-square-o" Edit
-            = link_to deck, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
+            = link_to deck, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }, class: 'btn default btn-xs red' do
               i class="fa fa-trash-o" Delete

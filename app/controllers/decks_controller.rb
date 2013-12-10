@@ -20,11 +20,13 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     impressionist(@deck)
 
-    if @deck.decklink.blank?
-      @message = "No deck link attatched to this deck yet <p>"
-    else
-      @message = @deck.decklink_message
-    end
+    # Deck parsing too hard
+    # if @deck.decklink.blank?
+    #   @message = "No deck link attatched to this deck yet <p>"
+    # else
+    #   @message = @deck.decklink_message
+    # end
+
     # Win rates vs each class
 		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @deckrate = Array.new
