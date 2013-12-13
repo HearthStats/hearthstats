@@ -1,4 +1,5 @@
 class ArenaRunsController < ApplicationController
+  before_filter :authenticate_user!
 	def new
 		@arenarun = ArenaRun.new
 		@gamestoday = ArenaRun.where(user_id: current_user.id).where("created_at >= ?", Time.zone.now.beginning_of_day).count
