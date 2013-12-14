@@ -51,7 +51,7 @@ class ArenasController < ApplicationController
     @arena.user_id = current_user.id
     @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
     @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count
-    if @runwins > 8 || @runloses > 2
+    if @runwins > 11 || @runloses > 2
       respond_to do |format|
         format.js
       end

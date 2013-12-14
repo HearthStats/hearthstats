@@ -6,7 +6,7 @@
 	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
 <% end %>
 toastr.success('Arena Game Added');
-<% if @runwins > 8 || @runloses > 2 %>
+<% if @runwins > 11 || @runloses > 2 %>
 	$('.arenasubmit').fadeOut(function(){
 		$('.arenaendrun').fadeIn();
 	});

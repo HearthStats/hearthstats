@@ -15,7 +15,7 @@ class Profile < ActiveRecord::Base
 			end
 		end
 		arena.each do |d|
-			if !d.deck.nil?
+			if !d.nil?
 				recent_games[i] = ["Arena", d.userclass, d.oppclass, d.win, d.created_at]
 				i += 1
 			end

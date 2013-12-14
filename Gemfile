@@ -54,6 +54,8 @@ gem 'challonge-api'
 gem 'time_diff'
 gem 'feedzirra'
 gem 'twitch'
+gem "lograge"
+
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
