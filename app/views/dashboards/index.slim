@@ -82,7 +82,7 @@ div class="clearfix"
 
 div.row
   div.col-md-6.col-sm-6
-    div.portlet.box.blue
+    div.portlet.box.green
       div.portlet-title
         div.caption Global Win Rates
       div.portlet-body
@@ -112,6 +112,33 @@ div.row
                     td
                       abbr title="#{@contot[c[0]]} Games Recorded" rel="tooltip" #{number_to_percentage(c[1]*100, precision: 2)}
                 -counter = counter + 1
+  div.col-md-6.col-sm-6
+    div.portlet.box.blue
+      div.portlet-title
+        div.caption HearthStats News
+      div.portlet-body
+        div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0"
+          ul.feeds
+            li
+              div.col1
+                div.cont
+                  div.cont-col1
+                    div.label.label-sm.label-info
+                      i.fa.fa-bullhorn
+                  div.cont-col2
+                    div.desc Hearthstone v1.0.0.4217 Patch. <a href="http://www.hearthstats.net/changelog"> Read more </a>
+              div.col2
+                div.date Sat, 14 Dec 2013 21:52:50
+            li
+              div.col1
+                div.cont
+                  div.cont-col1
+                    div.label.label-sm.label-info
+                      i.fa.fa-bullhorn
+                  div.cont-col2
+                    div.desc HearthStats v2 Released. <a href="http://www.hearthstats.net/changelog"> Read more </a>
+              div.col2
+                div.date Tue, 10 Dec 2013 20:48:46
 div class="clearfix"
 
 javascript:
