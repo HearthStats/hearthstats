@@ -3,11 +3,11 @@ div.arena
   - counter = 1
   table.rankingtable
     - @classarenarate.each do |c|
-      -if c[1] == -1 
+      -if c[1] == -1
       -else
-        tr 
+        tr
           td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-          td 
+          td
             abbr title="#{@arenatot[c[0]]} Games Recorded" rel="tooltip" #{number_to_percentage(c[1]*100, precision: 2)}
 
       -counter = counter + 1
@@ -16,10 +16,10 @@ div.con
   - counter = 1
   table.rankingtable
     - @classconrate.each do |c|
-      -if c[1] == -1 
+      -if c[1] == -1
       -else
-        tr 
+        tr
           td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-          td 
+          td
             abbr title="#{@contot[c[0]]} Games Recorded" rel="tooltip" #{number_to_percentage(c[1]*100, precision: 2)}
       -counter = counter + 1
