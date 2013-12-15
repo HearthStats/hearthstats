@@ -5,7 +5,7 @@
 <% provide(:title, 'Hearthstone News') %>
 <% provide(:subtitle, ' the latest in Hearthstone news') %>
 
-<% cache do %>
+<% cache("news", :expires_in => 1.day) do %>
 	<div class="row">
 		<div class="col-md-12 news-page">
 			<!-- entry array: title, url, summary, published -->
