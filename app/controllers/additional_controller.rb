@@ -1,5 +1,4 @@
 class AdditionalController < ApplicationController
-  caches_action :news, :expires_in => 1.day
 
   def contactus
   end

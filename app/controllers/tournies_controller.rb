@@ -1,7 +1,7 @@
 class TourniesController < ApplicationController
-  layout false
-  before_filter :authenticate_user!
+
   before_filter :challongesignin
+
   def index
   end
 
@@ -23,7 +23,7 @@ class TourniesController < ApplicationController
     	redirect_to root_path, alert: "You were not added to the tournament. #{ct.errors.full_messages}"
     end
   end
-  
+
   def new
     @tourny = Tourny.new
     @challonge = Challonge::Tournament.new
@@ -32,7 +32,7 @@ class TourniesController < ApplicationController
       format.json { render json: @tourny}
     end
   end
-  
+
   def create
     @tourny = Tourny.new(params[:tourny])
 

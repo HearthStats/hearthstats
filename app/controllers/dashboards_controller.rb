@@ -25,7 +25,6 @@ class DashboardsController < ApplicationController
       totalgames = Arena.where(:userclass => c).count + Arena.where(:oppclass => c).count
       @classarenarate[c] = (totalwins.to_f / totalgames)
       @arenatot[c] = totalgames
-
     end
     @classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
 
