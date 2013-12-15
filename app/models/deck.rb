@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :race, :decklink
+  attr_accessible :loses, :name, :wins, :race, :decklink, :notes
   has_many :constructeds
 
   after_destroy :delete_all_constructed

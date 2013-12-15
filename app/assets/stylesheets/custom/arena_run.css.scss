@@ -4,7 +4,7 @@
 	}
 }
 .new_arena{
-	width: 300px;
+	width: 100%;
 	margin: auto;
 }
 .arenaruntitle{
@@ -35,4 +35,11 @@
   i{
     font-size: 30px !important;
   }
+}
+
+.arena_notes{
+	margin-bottom: 20px;
+	h3{
+		margin-top: 0;
+	}
 }

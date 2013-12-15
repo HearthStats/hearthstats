@@ -2,11 +2,12 @@
   :description => @deck.name,
   :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
 - provide(:title, @deck.name)
+- provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Deck')
 
-small Deck Views: #{ @deck.impressionist_count }
-div.pure-g-r
-  div.pure-u-1-3
+div.row
+  div.col-md-6
+    h3 Stats
     p
       b Wins:
       = @deck.constructeds.where(win: true).count
@@ -20,7 +21,9 @@ div.pure-g-r
       div.winrates.secrate
         br Coin
         | #{@secrate}%
-    div.cf
+  div.col-md-6
+    h3 Notes
+    p = raw @deck.notes
   div.pure-u-2-3
     = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
 

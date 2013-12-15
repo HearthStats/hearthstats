@@ -45,6 +45,14 @@
 		    <%= f.text_field :decklink %>
 		  </div>
 		</div>
+		<div class="row">
+			<div class="col-md-12 center">
+				<div class="notesfield center">
+					<label for="deck_notes">Notes</label><small>  Decklist, etc.</small><br />
+			    <%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
+		    </div>
+			</div>
+		</div>
 	  <div class="cf"></div>
 	  <div class="actions center">
 	    <%= link_to constructeds_path do %>

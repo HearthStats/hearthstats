@@ -1,4 +1,6 @@
 Hearthstats::Application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
+
   get "streams/index"
 
 	# match '(*foo)' => 'additional#serverupgrade'

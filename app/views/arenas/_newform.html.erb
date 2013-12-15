@@ -15,79 +15,81 @@
     });
   });
 </script>
+<%= form_for(@arena, remote: true) do |f| %>
+	<div class="row">
+		<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
+		<div class="col-md-6 center">
+	    <% if @arena.errors.any? %>
+	      <div id="error_explanation">
+	        <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
 
-<div class="row">
-	<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
-	<div class="col-md-6 center">
-    <%= form_for(@arena, :remote => true ) do |f| %>
-      <% if @arena.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
+	        <ul>
+	        <% @arena.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	        </ul>
+	      </div>
+	    <% end %>
+	    <div class="gofirstfield">
+	      <h3>You played on the:</h3>
+	      <div class="btn btn-lg green gofirst"> First Turn</div><br />
+	      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+	    </div>
 
-          <ul>
-          <% @arena.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div class="gofirstfield">
-        <h3>You played on the:</h3>
-        <div class="btn btn-lg green gofirst"> First Turn</div><br />
-        <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
-      </div>
+	    <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
 
-      <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
-
-      <div class="oppfield arenaopp">
-        <h2>Opponent's Class</h2>
-        <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-      </div>
-      <div class="cf"></div>
-      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
-      <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
-      <%= f.number_field :arena_run_id , :value => @arenarun.id, class: "hidden" %>
-      <div class="actions">
-        <%= link_to arenas_path do %>
-        <button class="btn btn-lg">Back</button>
-        <% end %>
-        <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
-        <%= link_to end_arena_runs_path do %>
-        	<button class="btn btn-lg btn-warning arenaendrun">End Run</button>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-  	<div class="portlet box green">
-  		<div class="portlet-title">
-  			<div class="caption">Arena Run Results</div>
-  		</div>
-  		<div class="portlet-body">
-		  	<div class="table-reponsive">
-			    <table id="arenagames" class="table table-striped">
-			      <thead>
-			      	<tr><th>Opponent Class</th><th>Result</th></tr>
-			      </thead>
-			        <tbody>
-			        	<% @arenarun.arenas.each do |a| %>
-			        	    <tr>
-			        	      <td><%= image_tag("Icons/Classes/#{a.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=a.oppclass%></td>
-			        	      <td>
-			        	        <% if a.win %>
-			        	          <span class="victory">Victory</span>
-			        	        <% else %>
-			        	          <span class="defeat">Defeat</span>
-			        	        <% end %>
-			        	      </td>
-			        	    </tr>
-			        	<% end %>
-			        </tbody>
-			    </table>
-		    </div>
-		  </div>
-    </div>
-  </div>
-  <!-- Left Past Arena Games -->
-
-</div>
+	    <div class="oppfield arenaopp">
+	      <h2>Opponent's Class</h2>
+	      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+	    </div>
+	    <div class="cf"></div>
+	    <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
+	    <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
+	    <%= f.number_field :arena_run_id , :value => @arenarun.id, class: "hidden" %>
+	    <div class="actions">
+	      <%= link_to arenas_path do %>
+	      <button class="btn btn-lg">Back</button>
+	      <% end %>
+	      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+	      <%= link_to end_arena_runs_path do %>
+	      	<button class="btn btn-lg btn-warning arenaendrun">End Run</button>
+	      <% end %>
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+			<div class="arena_notes">
+				<h3>Notes</h3>
+		  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
+			</div>
+	  	<div class="portlet box green">
+	  		<div class="portlet-title">
+	  			<div class="caption">Arena Run Results</div>
+	  		</div>
+	  		<div class="portlet-body">
+			  	<div class="table-reponsive">
+				    <table id="arenagames" class="table table-striped">
+				      <thead>
+				      	<tr><th>Opponent Class</th><th>Result</th></tr>
+				      </thead>
+				        <tbody>
+				        	<% @arenarun.arenas.each do |a| %>
+				        	    <tr>
+				        	      <td><%= image_tag("Icons/Classes/#{a.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=a.oppclass%></td>
+				        	      <td>
+				        	        <% if a.win %>
+				        	          <span class="victory">Victory</span>
+				        	        <% else %>
+				        	          <span class="defeat">Defeat</span>
+				        	        <% end %>
+				        	      </td>
+				        	    </tr>
+				        	<% end %>
+				        </tbody>
+				    </table>
+			    </div>
+			  </div>
+	    </div>
+	  </div>
+	  <!-- Left Past Arena Games -->
+	</div>
+<% end %>

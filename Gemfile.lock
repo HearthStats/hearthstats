@@ -192,6 +192,10 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redactor-rails (0.4.3)
+      devise
+      mime-types
+      orm_adapter
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.14.7)
@@ -307,6 +311,7 @@ DEPENDENCIES
   quiet_assets (>= 1.0.1)
   rails (= 3.2.13)
   rake
+  redactor-rails
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
   select2-rails

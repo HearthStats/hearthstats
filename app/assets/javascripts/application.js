@@ -18,6 +18,7 @@
 //= require social-share-button
 //= require nprogress
 //= require nprogress-turbolinks
+//= require redactor-rails
 //= require_tree .
 //= require turbolinks
 

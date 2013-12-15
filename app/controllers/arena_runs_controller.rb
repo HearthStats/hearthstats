@@ -11,9 +11,9 @@ class ArenaRunsController < ApplicationController
 
 		if @arenarun.save
 			respond_to do |format|
-				format.html { 
+				format.html {
 					session[:arenarunid] = @arenarun.id
-					redirect_to new_arena_url 
+					redirect_to new_arena_url
 				}
 				format.json { head :no_content }
 			end
@@ -31,7 +31,7 @@ class ArenaRunsController < ApplicationController
 		@arenarun = ArenaRun.find(params[:id])
 		if current_user.id != @arenarun.user_id
 			redirect_to root_url, alert: 'You are not authorized to edit that.'
-		end  	
+		end
 	end
 
 	def update

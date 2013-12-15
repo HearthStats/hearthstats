@@ -47,6 +47,7 @@ class ArenasController < ApplicationController
   # POST /arenas
   # POST /arenas.json
   def create
+
     @arena = Arena.new(params[:arena])
     @arena.user_id = current_user.id
     @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
