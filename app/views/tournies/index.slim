@@ -1,3 +1,8 @@
-h1 Tournys#index.slim
-p Find me in app/views/tournys/index.slim.html.slim
-= link_to "come", signup_tournies_path
+- set_meta_tags :title => 'Tournament Sign Up',
+  :description => 'Sign up for new Hearthstats tournaments',
+  :keywords => 'register, tournament, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Sign Up')
+- provide(:subtitle, ' Register for our newest tournaments/leagues')
+- provide(:section, 'Tournaments')
+
+h2 TBA
