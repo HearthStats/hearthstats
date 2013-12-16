@@ -56,6 +56,9 @@ gem 'feedzirra'
 gem 'twitch'
 gem "lograge"
 gem 'redactor-rails'
+gem 'rmagick'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
