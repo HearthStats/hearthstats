@@ -8,7 +8,6 @@ class ArenaRunsController < ApplicationController
 	def create
 		@arenarun = ArenaRun.new(params[:arena_run])
 		@arenarun.user_id = current_user.id
-
 		if @arenarun.save
 			respond_to do |format|
 				format.html {
@@ -36,17 +35,18 @@ class ArenaRunsController < ApplicationController
 
 	def update
 		@arenarun = ArenaRun.find(params[:id])
+		@arenarun.notes = Arena.where(user_id: current_user.id, arena_run_id: @arenarun.id).last.notes
 		session[:arenarunid] = nil
 		@arenarun.complete = true
-			respond_to do |format|
-				if @arenarun.update_attributes(params[:arena_run])
-					format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }
-					format.json { head :no_content }
-				else
-					format.html { render action: "edit" }
-					format.json { render json: @arena.errors, status: :unprocessable_entity }
-				end
+		respond_to do |format|
+			if @arenarun.update_attributes(params[:arena_run])
+				format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }
+				format.json { head :no_content }
+			else
+				format.html { render action: "edit" }
+				format.json { render json: @arena.errors, status: :unprocessable_entity }
 			end
+		end
 	end
 	def destroy
 		@arena = ArenaRun.find(params[:id])

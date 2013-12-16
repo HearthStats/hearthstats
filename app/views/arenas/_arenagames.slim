@@ -1,25 +1,22 @@
-div class="portlet box red"
-  div class="portlet-title"
-  div class="portlet-body"
-    table class="table table-bordered table-striped table-condensed flip-content"
-      thead
-        tr
-          th Your Class
-          th Opponent Class
-          th Win?
-          th Options
-        tbody
-        - arenas.each do |match|
-          tr.matches
-            td = link_to match.userclass, race_dashboards_path(:race => match.userclass)
-            td = match.oppclass
-            td
-              -if match.win
-                span.victory Victory
-              -else
-                span.defeat Defeat
-            td
-              = link_to edit_arena_path(match), class: 'btn default btn-xs purple' do
-                i class="fa fa-pencil-square-o" Edit
-              = link_to match, method: :delete, data: { confirm: 'Are you sure? This will delete this one arena match.' }, class: 'btn default btn-xs red' do
-                  i class="fa fa-trash-o" Delete
+table class="table table-bordered table-striped table-condensed flip-content"
+  thead
+    tr
+      th Your Class
+      th Opponent Class
+      th Win?
+      th Options
+    tbody
+    - arenas.each do |match|
+      tr.matches
+        td = link_to match.userclass, race_dashboards_path(:race => match.userclass)
+        td = match.oppclass
+        td
+          -if match.win
+            span.victory Victory
+          -else
+            span.defeat Defeat
+        td
+          = link_to edit_arena_path(match), class: 'btn default btn-xs purple' do
+            i class="fa fa-pencil-square-o" Edit
+          = link_to match, method: :delete, data: { confirm: 'Are you sure? This will delete this one arena match.' }, class: 'btn default btn-xs red' do
+              i class="fa fa-trash-o" Delete

@@ -54,3 +54,6 @@ div class="portlet box blue"
               i class="fa fa-pencil-square-o" Edit
             = link_to match, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
               i class="fa fa-trash-o" Delete
+            - if match.notes
+              span class= 'btn default btn-xs blue' title="#{match.notes}" rel="tooltip"
+                i class="fa fa-file-text-o"  Notes

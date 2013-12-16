@@ -18,6 +18,11 @@
           h4 class="modal-title" Arena run with #{arena.userclass} on #{arena.created_at}
         div.modal-body
           =render 'arenagames', arenas: arena.arenas
+          div class="portlet box red"
+            div class="portlet-title"
+              div.caption Notes
+            div class="portlet-body"
+              =raw arena.notes
         button type="button" class="btn default" data-dismiss="modal" Close
 div.arenaheader
   = will_paginate @arenaruns, renderer: BootstrapPagination::Rails
