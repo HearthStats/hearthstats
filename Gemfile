@@ -42,23 +42,25 @@ gem 'meta-tags', :require => 'meta_tags'
 gem "gibbon", "~> 1.0.4"
 gem "figaro"
 gem 'jquery-ui-rails'
-gem 'dalli'
+gem 'dalli' # Memcache store
 gem "select2-rails"
 gem 'turbolinks'
-gem 'jquery-turbolinks'
-gem 'nprogress-rails'
+gem 'jquery-turbolinks' # Fixes JS for turbolinks
+gem 'nprogress-rails' # Progress bar for turbolinks
 gem 'sitemap_generator'
-gem 'friendly_id'
-gem 'impressionist'
+gem 'friendly_id' # Better urls for deck
+gem 'impressionist' # Track number of times profiles/decks are viewed
 gem 'challonge-api'
 gem 'time_diff'
-gem 'feedzirra'
-gem 'twitch'
-gem "lograge"
-gem 'redactor-rails'
-gem 'rmagick'
-gem 'carrierwave'
-gem 'mini_magick'
+gem 'feedzirra' # Parse rss feeds
+gem 'twitch' # Get Twitch streamers
+gem "lograge" # Minify log outputs
+gem 'redactor-rails' # WYSIWYG editor
+gem 'rmagick' # Upload images needed for redactor
+gem 'carrierwave' # Upload files needed for redactor
+gem 'mini_magick' # Upload images needed for redactor
+gem 'cindy' # Sendy API
+
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

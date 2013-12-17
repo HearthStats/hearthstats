@@ -6,21 +6,9 @@ class RegistrationsController < Devise::RegistrationsController
   def create
   	destroy_guest
     super
-    # gb = Gibbon::API.new("33bdb1440a0a40ab222881cb695ddcfb-us3")
-    # Gibbon::API.throws_exceptions = false
-
-    # gb.lists.subscribe({:id => "60f67fd447" , :email => {:email => params[:user][:email]} })
-    # qwq = Gibbon::API.lists.list
-    # raise
-
+    c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
     if resource.save
-      q = Profile.new
-      q.user_id = resource.id
-      q.save
-
-      gb = Gibbon::API.new("33bdb1440a0a40ab222881cb695ddcfb-us3")
-      gb.throws_exceptions = false
-      gb.lists.subscribe({:id => "60f67fd447" , :email => {:email => resource.email}, :double_optin => "false" })
+    	c.subscribe "aQOe0RrtTXddPhL9p28929MA", resource.email
     end
   end
 
