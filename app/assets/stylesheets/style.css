@@ -28,7 +28,7 @@ Import fonts
 */
 
 /* load Open Sans Font from local */
-/*@import url(../fonts/font.css);*/
+/*@import url(/font.css);*/
 
 /***
 Reset and overrides

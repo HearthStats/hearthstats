@@ -35,7 +35,8 @@ class ArenaRunsController < ApplicationController
 
 	def update
 		@arenarun = ArenaRun.find(params[:id])
-		@arenarun.notes = Arena.where(user_id: current_user.id, arena_run_id: @arenarun.id).last.notes
+		lastarena = Arena.where(user_id: current_user.id, arena_run_id: @arenarun.id).last
+		@arenarun.notes = lastarena.notes unless lastarena.nil?
 		session[:arenarunid] = nil
 		@arenarun.complete = true
 		respond_to do |format|
