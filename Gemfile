@@ -39,7 +39,6 @@ gem 'taps'
 gem "nokogiri", "~> 1.6.0"
 gem 'social-share-button'
 gem 'meta-tags', :require => 'meta_tags'
-gem "gibbon", "~> 1.0.4"
 gem "figaro"
 gem 'jquery-ui-rails'
 gem 'dalli' # Memcache store
