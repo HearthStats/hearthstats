@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   before_filter :authenticate_user!
   before_filter :adminboss
+
   def index
   end
 
@@ -10,7 +11,7 @@ class AdminController < ApplicationController
   end
 
   def anncreate
-    @ann = Announcement.new(params[:announcement]) 
+    @ann = Announcement.new(params[:announcement])
     respond_to do |format|
       if @ann.save
         format.html { redirect_to admin_index_path, notice: 'Announcement was successfully created.' }
@@ -45,7 +46,7 @@ class AdminController < ApplicationController
     end
     redirect_to root_url, notice: 'SUCCESSSS PROFILE'
   end
-  
+
   private
 
   def adminboss
