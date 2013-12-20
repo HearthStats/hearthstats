@@ -59,6 +59,7 @@ gem 'rmagick' # Upload images needed for redactor
 gem 'carrierwave' # Upload files needed for redactor
 gem 'mini_magick' # Upload images needed for redactor
 gem 'cindy' # Sendy API
+gem 'httparty' # Make them http requests easily
 
 
 group :test do
