@@ -3,23 +3,26 @@
   :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
 - provide(:title, @deck.name)
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
-- provide(:section, 'Deck')
+- provide(:section, 'Decks')
 
 div.row
   div.col-md-6
-    h3 Stats
+    h3.deck_title Stats
+    = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
     p
-      b Wins:
+      b.victory Wins:
       = @deck.constructeds.where(win: true).count
     p
-      b Loses:
+      b.defeat Loses:
       = @deck.constructeds.where(win: false).count
     div.turnrates
       div.winrates.firstrate
-        br No Coin
+        |No Coin
+        br
         | #{@firstrate}%
       div.winrates.secrate
-        br Coin
+        |Coin
+        br
         | #{@secrate}%
   div.col-md-6
     h3 Notes

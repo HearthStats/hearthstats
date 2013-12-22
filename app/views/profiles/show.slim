@@ -2,7 +2,7 @@
   :description => "#{@profiletitle}'s Profile",
   :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
 - provide(:title, "#{@profiletitle}'s Profile")
-- provide(:subtitle, ' personal statistics')
+- provide(:subtitle, social_share_button_tag("#{@profiletitle}'s Hearthstone Profile from HearthStats"))
 - if current_user && params[:id] = current_user.id
   - content_for :actions do
     = link_to 'Edit Profile', edit_profile_path, class: "btn blue"
@@ -30,8 +30,8 @@ div class="row profile"
                   span.profile_title = @profiletitle
                   ul class="list-inline profile_addinfo"
                     li
-                      i class="fa fa-map-marker"
-                      | N/A
+                      i.bnetprofile Visitors
+                      = @profile.impressionist_count
                     li
                       i.bnetprofile BNet
                       | #{@profile.bnetid}##{@profile.bnetnum}
