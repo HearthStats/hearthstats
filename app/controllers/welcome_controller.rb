@@ -22,7 +22,11 @@ class WelcomeController < ApplicationController
 			totalgames = 0
 			totalwins = Arena.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(:userclass => c, :win => true).count + Arena.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(:oppclass => c, :win => false).count
 			totalgames = Arena.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(:userclass => c).count + Arena.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(:oppclass => c).count
-			@classarenarate[c] = (totalwins.to_f / totalgames)
+			if totalgames == 0
+				@classarenarate[c] = 0
+			else
+				@classarenarate[c] = (totalwins.to_f / totalgames)
+			end
 			@arenatot[c] = totalgames
 
 		end
@@ -35,11 +39,15 @@ class WelcomeController < ApplicationController
 		classes.each do |c|
 			totalwins = 0
 			totalgames = 0
-			totalwins = Constructed.joins(:deck).where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(win: true, 'decks.race' => c).count
+			totalwins = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(win: true, 'decks.race' => c).count
 			totalwins = totalwins + Constructed.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: c, win: false).count
-			totalgames = Constructed.joins(:deck).where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where('decks.race' => c).count + Constructed.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: c).count
+			totalgames = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where('decks.race' => c).count + Constructed.where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: c).count
+			if totalgames == 0
+				@classconrate[c] = 0
+			else
+				@classconrate[c] = (totalwins.to_f / totalgames)
+			end
 
-			@classconrate[c] = (totalwins.to_f / totalgames)
 			@contot[c] = totalgames
 		end
 		@classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
@@ -71,10 +79,10 @@ class WelcomeController < ApplicationController
 			totalwins = 0
 			totalgames = 0
 
-			totalwins = Constructed.joins(:deck).where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[1], win: true, 'decks.race' => combo[0]).count
-			totalwins = totalwins + Constructed.joins(:deck).where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[0], win: false, 'decks.race' => combo[1]).count
+			totalwins = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[1], win: true, 'decks.race' => combo[0]).count
+			totalwins = totalwins + Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[0], win: false, 'decks.race' => combo[1]).count
 
-			totalgames = Constructed.joins(:deck).where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[1], 'decks.race' => combo[0]).count
+			totalgames = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current).where(oppclass: combo[1], 'decks.race' => combo[0]).count
 
 			@conrate[i] = [ "#{combo[0]} #{combo[1]}", (totalwins.to_f / totalgames)]
 			@totcongames["#{combo[0]} #{combo[1]}"] = totalgames
