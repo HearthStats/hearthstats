@@ -20,6 +20,7 @@ Hearthstats::Application.routes.draw do
   match "/aboutus", to: "additional#aboutus"
   match "/help", to: "additional#help"
   match "/changelog", to: "additional#changelog"
+  match "/dec", to: "welcome#decreport"
   match "/nov", to: "welcome#novreport"
   match "/news", to: "additional#news"
 

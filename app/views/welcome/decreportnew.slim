@@ -1,0 +1,216 @@
+- set_meta_tags :title => 'November Report',
+  :description => 'November Report on statistics from Hearthstats',
+  :keywords => 'stats, november, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
+javascript:
+  $(document).ready(function() {
+    var q = false;
+    $('.showarena').click(function(){
+      $('.arenamore').slideToggle();
+      if (q == false){
+        $('.showarena').text("Less");
+        q = true;
+      }else{
+        $('.showarena').text("More");
+        q = false;
+      }
+    });
+    var p = false;
+    $('.showcon').click(function(){
+      $('.conmore').slideToggle();
+      if (p == false){
+        $('.showcon').text("Less");
+        p = true;
+      }else{
+        $('.showcon').text("More");
+        p = false;
+      }
+    });
+
+  });
+div.novreport
+  div.splashpic
+  div.scrolldowncont
+      div.scrolldown Scroll Down for Stats
+  div.novcontent
+    - cache "novstats", expires_in: 1.day do
+      div.overallcont.addpadding
+        div.mostplayed
+        h2 Most Played
+        div.pure-g-r
+          div.pure-u-1-2
+            div.mptitle Arena
+            - @arenamp = @arenatot.sort_by { |name, winsrate| winsrate }.reverse
+            table.mptable
+              tr
+                td.mpfirst 1. #{@arenamp.first[0]}
+                td.mpfirst =@arenamp.first[1]
+              tr
+                td.mpsec 2. #{@arenamp.second[0]}
+                td.mpsec =@arenamp.second[1]
+              tr
+                td.mpthird 3. #{@arenamp.third[0]}
+                td.mpthird =@arenamp.third[1]
+            div.arenamore
+              table.mptable
+                -(3..8).each do |mp|
+                  tr
+                    td #{mp+1}. #{@arenamp[mp][0]}
+                    td #{@arenamp[mp][1]}
+            div.showarena More
+          div.pure-u-1-2
+            div.mptitle Constructed
+            - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
+            table.mptable
+              tr
+                td.mpfirst 1. #{@conmp.first[0]}
+                td.mpfirst =@conmp.first[1]
+              tr
+                td.mpsec 2. #{@conmp.second[0]}
+                td.mpsec =@conmp.second[1]
+              tr
+                td.mpthird 3. #{@conmp.third[0]}
+                td.mpthird =@conmp.third[1]
+            div.conmore
+              table.mptable
+                -(3..8).each do |mp|
+                  tr
+                    td #{mp+1}. #{@conmp[mp][0]}
+                    td #{@conmp[mp][1]}
+            div.showcon More
+        div.cf
+        h2 Global Win Rates
+        div.pure-g-r
+          div.pure-u-1-2.arena
+            div.tableheader Arena Win Rates
+            - counter = 1
+            table.rankingtable
+              - @classarenarate.each do |c|
+                -if c[1] == -1
+                -else
+                  tr
+                    td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+                    td
+                      #{number_to_percentage(c[1]*100, precision: 2)}
+                    td
+                      #{@arenatot[c[0]]} Games
+
+                -counter = counter + 1
+          div.pure-u-1-2.con
+            div.tableheader Constructed Win Rates
+            - counter = 1
+            table.rankingtable
+              - @classconrate.each do |c|
+                -if c[1] == -1
+                -else
+                  tr
+                    td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+                    td
+                      #{number_to_percentage(c[1]*100, precision: 2)}
+                    td
+                      #{@contot[c[0]]} Games
+                -counter = counter + 1
+        div.cf
+      div.arenacont.addpadding
+        h2 Arena Win Rates
+        div.pure-g-r
+          div.pure-u-1-3
+            -(0..12).each do |i|
+              -c = Array.new
+              -c[0] = @userarenarate.keys[i]
+              -c[1] = @userarenarate.values[i]
+              div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
+          div.pure-u-1-3
+            -(13..25).each do |i|
+              -c = Array.new
+              -c[0] = @userarenarate.keys[i]
+              -c[1] = @userarenarate.values[i]
+              div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
+          div.pure-u-1-3
+            -(25..35).each do |i|
+              -c = Array.new
+              -c[0] = @userarenarate.keys[i]
+              -c[1] = @userarenarate.values[i]
+              div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
+        h2 Arena Class Game Wins Per Day
+        small x-axis represents days ago from today
+        div.cf
+        / Epic Arena Graphs
+        -(0..8).each do |i|
+          = render 'chart', width: 600, height: 200, timearray: @timearray, wins: @winsarena.values[i].reverse, race: @winsarena.keys[i]
+      div.concont.addpadding
+        h2 Constructed Win Rates
+        div.pure-g-r
+          div.pure-u-1-3
+            -(0..12).each do |i|
+              -c = Array.new
+              -c[0] = @conrate.keys[i]
+              -c[1] = @conrate.values[i]
+              div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
+          div.pure-u-1-3
+            -(13..25).each do |i|
+              -c = Array.new
+              -c[0] = @conrate.keys[i]
+              -c[1] = @conrate.values[i]
+              div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
+          div.pure-u-1-3
+            -(25..35).each do |i|
+              -c = Array.new
+              -c[0] = @conrate.keys[i]
+              -c[1] = @conrate.values[i]
+              div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
+        h2 Constructed Class Game Wins Per Day
+        small x-axis represents days ago from today
+        div.cf
+        / Epic Constructed Graphs
+        -(0..8).each do |i|
+          = render 'chartcon', width: 600, height: 200, timearray: @timearray, wins: @winscon.values[i].reverse, race: @winscon.keys[i]
+    div.hsusers.addpadding
+      h2 HearthStats ... Stats
+      div.pure-g-r
+        div.pure-u-1-3.center
+          div.hscont
+            div.hssimage = image_tag('Icons/ninjauser.png', width: 150, height: 150)
+            div.hsscount
+              div.iconlabel Users
+              = User.all.count
+        div.pure-u-1-3.center
+          div.hscont
+            div.hssimage = image_tag('Icons/matches.png', width: 150, height: 150)
+            div.hsscount
+              div.iconlabel Matches
+              = Arena.all.count + Constructed.all.count
+        div.pure-u-1-3.center
+          div.hscont
+            div.hssimage = image_tag('hearthstatslogobg.png', width: 150, height: 150)
+            div.hsscount
+              div.iconlabel Decks
+              = Deck.all.count
+      div.joinus.center We Would Love For You To Join Us
+      div.joinsubtext More Users = Better Stats!
+      div.regcont
+        a class="pure-button pure-button-primary regbutton" href="/users/sign_up" Register Now
+    div.novfootercont
+      div.novfooter.cl-effect-1
+        = link_to "Change Log", changelog_path
+        = link_to "About Us", aboutus_path
+        = link_to "Help", help_path
+        = link_to "Contact Us", contactus_path
+      p HearthStats &copy; 2013
