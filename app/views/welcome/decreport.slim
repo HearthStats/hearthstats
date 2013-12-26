@@ -17,7 +17,7 @@ div.main
   - cache "decreport", expires_in: 1.day do
     section.most-played.splash
     section.most-played.page1
-      div.page_container
+      div.page_container.global
         h2 Most Played Races
         div.row
           div.col-md-6
@@ -165,6 +165,7 @@ div.main
               td
               td
               td = number_to_percentage(@userarenarate[35][1]*100, precision: 2)
+          small how to read: vertical vs horizontal
     section.page3
       div.page_container
         h2 Global Win Rates
@@ -239,6 +240,7 @@ div.main
               td
               td
               td = number_to_percentage(@conrate[35][1]*100, precision: 2)
+          small how to read: vertical vs horizontal
   section.page4.hsstats
     div.page_container
       h2 HearthStats

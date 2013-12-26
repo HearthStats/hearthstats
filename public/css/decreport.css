@@ -7,6 +7,10 @@
 	-o-background-size: cover;
 	background-size: cover;
 }
+.page1 .global{
+	margin-left: 40px;
+	margin-right: 40px;
+}
 .hsstats .usercount{
 	font-size: 100px;
 }
@@ -26,6 +30,7 @@
 	padding: 20px;
 }
 .hsstats .fa-globe{
+	padding-top: 30px;
 	font-size: 300px;
 	margin-bottom: 117px;
 }
