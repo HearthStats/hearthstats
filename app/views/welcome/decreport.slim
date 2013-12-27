@@ -96,7 +96,7 @@ div.main
         h2 Global Win Rates
         div.global-arena
           h3 ARENA
-          table.arena-win-rates
+          table.arena-win-rates.report-table
             th
               td.hunter Hunter
               td.mage Mage
@@ -171,7 +171,7 @@ div.main
         h2 Global Win Rates
         div.global-arena
           h3 CONSTRUCTED
-          table.arena-win-rates
+          table.arena-win-rates.report-table
             th
               td.hunter Hunter
               td.mage Mage
@@ -263,58 +263,32 @@ div.main
             i.fa.fa-globe
           div.regcont
             a class="btn btn-success btn-lg regbutton " href="/users/sign_up" Register Now
-      / div.row
-      /   div.col-md-4.center
-      /     div.hscont
-      /       div.hssimage = image_tag('Icons/ninjauser.png', width: 150, height: 150)
-      /       div.hsscount
-      /         div.iconlabel Users
-      /         = User.all.count
-      /   div.col-md-4.center
-      /     div.hscont
-      /       div.hssimage = image_tag('Icons/matches.png', width: 150, height: 150)
-      /       div.hsscount
-      /         div.iconlabel Matches
-      /         = Arena.all.count + Constructed.all.count
-      /   div.col-md-4.center
-      /     div.hscont
-      /       div.hssimage = image_tag('hearthstatslogobg.png', width: 150, height: 150)
-      /       div.hsscount
-      /         div.iconlabel Decks
-      /         = Deck.all.count
-      / div.joinus Join Us Now
+
 javascript:
     var addthis_config = {"data_track_addressbar":true};
 script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51b7f4835a9fac8a"
 javascript:
   $(document).ready(function() {
-    $(".main").onepage_scroll({
-       sectionContainer: "section",
-       easing: "ease",
-       animationTime: 1000,
-       pagination: true,
-       updateURL: false
+    var isShownArena = false;
+    $('.showarena').click(function(){
+      $('.arenamore').slideToggle();
+      if (isShownArena == false){
+        $('.showarena').text("Less");
+        isShownArena = true;
+      }else{
+        $('.showarena').text("More");
+        isShownArena = false;
+      }
     });
-  });
-  var isShownArena = false;
-  $('.showarena').click(function(){
-    $('.arenamore').slideToggle();
-    if (isShownArena == false){
-      $('.showarena').text("Less");
-      isShownArena = true;
-    }else{
-      $('.showarena').text("More");
-      isShownArena = false;
-    }
-  });
-  var isShownCon = false;
-  $('.showcon').click(function(){
-    $('.conmore').slideToggle();
-    if (isShownCon == false){
-      $('.showcon').text("Less");
-      isShownCon = true;
-    }else{
-      $('.showcon').text("More");
-      isShownCon = false;
-    }
+    var isShownCon = false;
+    $('.showcon').click(function(){
+      $('.conmore').slideToggle();
+      if (isShownCon == false){
+        $('.showcon').text("Less");
+        isShownCon = true;
+      }else{
+        $('.showcon').text("More");
+        isShownCon = false;
+      }
+    });
   });
