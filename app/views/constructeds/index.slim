@@ -36,6 +36,7 @@ div class="portlet box blue"
           th Your Deck
           th Opponent Class
           th Win?
+          th Coin?
           th Time
           th Options
       tbody
@@ -48,6 +49,11 @@ div class="portlet box blue"
               span.victory Victory
             -else
               span.defeat Defeat
+          td
+            -if match.gofirst
+              span No Coin
+            -else
+              span Coin
           td = match.created_at.strftime("%I %P on %B %d, %Y")
           td.cl-effect-3
             = link_to edit_constructed_path(match), class: 'btn default btn-xs purple' do
