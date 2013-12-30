@@ -15,4 +15,12 @@ class ArenaRun < ActiveRecord::Base
 
   	average_win
   end
+
+  def self.total_dust(userid)
+  	arena_games = ArenaRun.where(user_id: userid)
+  	goldamount = arena_games.map { |e| e.gold }
+  	total_dust = goldamount.inject{ |sum, el| sum + el }
+
+  	total_dust
+  end
 end
