@@ -2,7 +2,11 @@
   :description => 'Arena Game Statistics',
   :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, 'Statistics')
-- provide(:subtitle, ' arena game stats');
+- provide(:subtitle, ' detailed arena game stats');
 - provide(:section, 'Arena')
 
-h2 TBA
+h3 Average Class Wins
+- @classes.each do |c|
+  p
+    |#{c}:
+    =ArenaRun.averageWins(c, current_user.id)

@@ -104,6 +104,7 @@ class ArenasController < ApplicationController
   end
 
   def stats
-
+    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+  	@matches = Arena.where(user_id: current_user.id)
   end
 end

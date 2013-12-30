@@ -28,4 +28,5 @@ class Arena < ActiveRecord::Base
 
     arenaclass
   end
+
 end
