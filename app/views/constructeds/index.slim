@@ -37,6 +37,7 @@ div class="portlet box blue"
           th Opponent Class
           th Win?
           th Coin?
+          th Ranked?
           th Time
           th Options
       tbody
@@ -54,6 +55,7 @@ div class="portlet box blue"
               span No Coin
             -else
               span Coin
+          td = match.rank
           td = match.created_at.strftime("%I %P on %B %d, %Y")
           td.cl-effect-3
             = link_to edit_constructed_path(match), class: 'btn default btn-xs purple' do

@@ -33,9 +33,16 @@
   </div> -->
 
     <div class="gofirstfield center">
-      <h3>You played on the: </h3>
-      <div class="btn btn-lg green gofirst"> First Turn </div><br />
-      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+    	<span class="coin">
+    		<h3>You played on the: </h3>
+	      <div class="btn btn-lg green gofirst"> First Turn </div>
+	      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+    	</span>
+      <span class="ranked">
+      	<h3>This match is: </h3>
+	      <div class="btn btn-lg green ranked-btn"> Ranked </div>
+	      <%= f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden" %>
+      </span>
     </div>
     <div class="row center">
       <div class="col-md-6">

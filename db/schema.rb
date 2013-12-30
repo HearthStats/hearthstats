@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215194932) do
+ActiveRecord::Schema.define(:version => 20131230141611) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -49,15 +49,16 @@ ActiveRecord::Schema.define(:version => 20131215194932) do
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
   create_table "constructeds", :force => true do |t|
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.integer   "user_id"
-    t.string    "deckname"
-    t.string    "oppclass",   :default => "N/A"
-    t.boolean   "win",        :default => false
-    t.boolean   "gofirst",    :default => true
-    t.integer   "deck_id"
-    t.text      "notes"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "user_id"
+    t.string   "deckname"
+    t.string   "oppclass",   :default => "N/A"
+    t.boolean  "win",        :default => false
+    t.boolean  "gofirst",    :default => true
+    t.integer  "deck_id"
+    t.text     "notes"
+    t.string   "rank",       :default => "Casual"
   end
 
   add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"

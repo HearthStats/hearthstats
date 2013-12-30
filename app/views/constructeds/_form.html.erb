@@ -32,13 +32,24 @@
     <%= f.number_field :user_id %>
   </div> -->
 	  <div class="gofirstfield center">
-	    <h3>You played on the: </h3>
-	    <% if @constructed.gofirst %>
-		    <div class="btn btn-lg green gofirst"> First Turn </div><br />
-	    <% else %>
-		    <div class="btn btn-lg blue gofirst"> Second Turn </div><br />
-	    <% end %>
-	    <%= f.check_box :gofirst , class: "firstcheckbox hidden" %>
+	  	<span class="coin">
+		    <h3>You played on the: </h3>
+		    <% if @constructed.gofirst %>
+			    <div class="btn btn-lg green gofirst"> First Turn </div><br />
+		    <% else %>
+			    <div class="btn btn-lg blue gofirst"> Second Turn </div><br />
+		    <% end %>
+		    <%= f.check_box :gofirst , class: "firstcheckbox hidden" %>
+		  </span>
+	    <span class="ranked">
+      	<h3>This match is: </h3>
+      	<% if @constructed.rank == "Ranked" %>
+		      <div class="btn btn-lg green ranked-btn"> Ranked </div>
+	      <% else %>
+		      <div class="btn btn-lg blue ranked-btn"> Casual </div>
+	      <% end %>
+	      <%= f.text_field :rank ,  class: "rank-field hidden" %>
+      </span>
 	  </div>
 	  <div class="row center">
       <div class="col-md-6">

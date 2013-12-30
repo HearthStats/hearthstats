@@ -18,6 +18,7 @@ $(document).ready(function(){
       var checked = true;
     }
   });
+
   $('.gofirst').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
     if ( checked == true )
@@ -37,6 +38,34 @@ $(document).ready(function(){
       var checked = true;
     }
   });
+  $('.ranked-btn').click(function(){
+  	var rankText = $('.rank-field').val();
+  	console.log(rankText)
+  	if (rankText == "Ranked") {
+  		checkedRank = true;
+  	}else{
+  		checkedRank = false;
+  	}
+      console.log(checkedRank);
+    if ( checkedRank == true )
+    {
+      $('.ranked-btn').removeClass('green');
+      $('.ranked-btn').addClass('blue');
+      $('.rank-field').val("Casual");
+      $('.ranked-btn').text("Casual");
+      var checkedRank = false;
+      console.log(checkedRank);
+    }
+    else
+    {
+      $('.ranked-btn').addClass('green');
+      $('.ranked-btn').removeClass('blue');
+      $('.rank-field').val("Ranked");
+      $('.ranked-btn').text("Ranked");
+      var checkedRank = true;
+    }
+  });
+
   $('.gofirstquick').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
     if ( checked == true )
