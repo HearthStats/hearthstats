@@ -13,6 +13,8 @@ div class="portlet quick_con_entry"
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
       div class="btn green quick_input gofirstquick" No Coin
       = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
+      div class="btn green quick_input ranked-btn" Ranked
+      = f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden"
       div class="btn green quick_input winbutton" Victory
       = f.check_box :win , :checked => true, class: "wincheckbox hidden"
       = f.submit "Create Entry", class: "btn green quick_input"
