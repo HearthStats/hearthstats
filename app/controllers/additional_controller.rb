@@ -15,7 +15,7 @@ class AdditionalController < ApplicationController
 
   def news
 
-  	feeds_urls = ["http://us.battle.net/hearthstone/en/feed/news", "http://ihearthu.com/feed/", "http://hearthstone.blizzpro.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
+  	feeds_urls = ["http://us.battle.net/hearthstone/en/feed/news", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
 
   	feeds = Feedzirra::Feed.fetch_and_parse(feeds_urls)
 
