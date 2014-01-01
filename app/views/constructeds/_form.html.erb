@@ -73,12 +73,12 @@
     </div>
     <div class="con_notes">
 			<h3>Notes</h3>
-	  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
+	  	<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
 		</div>
     <div class="actions center">
       <%= link_to constructeds_path do %>
         <button class="btn btn-lg">Back</button>
       <% end %>
-      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+      <%= f.submit "Update Entry", class: "btn btn-lg btn-primary arenasubmit" %>
     </div>
 <% end %>

@@ -18,6 +18,7 @@ div class="portlet box green"
           th Class
           th Wins
           th Losses
+          th Win Rate
           th Options
       tbody
       - @decks.each do |deck|
@@ -26,6 +27,7 @@ div class="portlet box green"
           td = deck.race
           td = deck.constructeds.where(win: true).count
           td = deck.constructeds.where(win: false).count
+          td = number_to_percentage((deck.constructeds.where(win: true).count.to_f / deck.constructeds.count)*100, precision: 2)
           td
             =link_to edit_deck_path(deck), class: 'btn default btn-xs purple' do
               i class="fa fa-pencil-square-o" Edit
