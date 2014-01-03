@@ -12,4 +12,16 @@ h3 Average Class Wins
     = ArenaRun.averageWins(c, current_user.id)
 p
   b Total Gold Amount:
-= ArenaRun.total_dust(current_user.id)
+  = ArenaRun.totalGold(current_user.id)
+p
+  b Total Dust Amount:
+  = ArenaRun.totalDust(current_user.id)
+p
+  b Arena Runs Played:
+  = ArenaRun.where(user_id: current_user.id).count
+p
+  b Arena Games Played:
+  = Arena.where(user_id: current_user.id).count
+h3 Overall Arena Stats
+p Overall Win Rate
+= number_to_percentage((Arena.where(user_id: current_user.id,win: true).count.to_f/ Arena.where(user_id: current_user.id).count)*100, precision: 2)
