@@ -48,5 +48,7 @@ class ArenaRun < ActiveRecord::Base
   											["Win rate with coin", class_coinrate],
   											["Win rate without coin", class_nocoinrate]]
   	end
+
+  	class_array
   end
 end

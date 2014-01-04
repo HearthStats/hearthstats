@@ -25,3 +25,10 @@ p
 h3 Overall Arena Stats
 p Overall Win Rate
 = number_to_percentage((Arena.where(user_id: current_user.id,win: true).count.to_f/ Arena.where(user_id: current_user.id).count)*100, precision: 2)
+h3 Detailed Class Stats
+- @arena_array.each do |aa|
+  div.arena-class
+    div.class-name = aa[0]
+    - aa[1].each do |arena_detail|
+      div.arena-detail-title = arena_detail[0]
+      div.arena-detail-value = arena_detail[1]
