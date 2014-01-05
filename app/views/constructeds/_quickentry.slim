@@ -18,18 +18,3 @@ div class="portlet quick_con_entry"
       div class="btn green quick_input winbutton" Victory
       = f.check_box :win , :checked => true, class: "wincheckbox hidden"
       = f.submit "Create Entry", class: "btn green quick_input"
-
-/ div.newentry
-/   div.quicktitle Quick Entry
-/   = form_for(@constructed, :html => {:class => 'form-inline'}) do |f|
-/     -if !@lastentry.nil?
-/       = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
-/     -else
-/       = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
-/     div.oppclass
-/       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
-/     div class="pure-button pure-button-success gofirstquick" No Coin
-/     = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
-/     div class="pure-button pure-button-success winbutton" Victory
-/     = f.check_box :win , :checked => true, class: "wincheckbox hidden"
-/     = f.submit "Create Entry", class: "pure-button pure-button-success"
