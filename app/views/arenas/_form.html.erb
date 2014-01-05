@@ -3,7 +3,7 @@
 
     function format(state) {
       var originalOption = state.element;
-   
+
       return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
     }
     $("#arena_userclass").select2({
@@ -37,34 +37,33 @@
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
-  <div class="gofirstfield">
-    <div class="gofirsttitle">You played on the: </div>
-    <% if @arena.gofirst %>
-      <div class="pure-button pure-button-success gofirst"> First Turn </div><br />
-    <% else %>
-      <div class="pure-button pure-button-secondary gofirst"> Second Turn </div><br />
-    <% end %>
-    <%= f.check_box :gofirst, class: "firstcheckbox hidden" %>
-  </div>
-
-  <div class="yourfield">
-    <%= f.label :userclass %><br />
-    <%= f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.userclass ) %>
-  </div>
-  <div class="oppfield">
-    <%= f.label :oppclass %><br />
-    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.oppclass) %>
+  <div class="row">
+	  <div class="gofirstfield center">
+	    <h3>You played on the: </h3>
+	    <% if @arena.gofirst %>
+		    <div class="btn btn-lg green gofirst"> First Turn </div><br />
+	    <% else %>
+		    <div class="btn btn-lg blue gofirst"> Second Turn </div><br />
+	    <% end %>
+	    <%= f.check_box :gofirst , class: "firstcheckbox hidden" %>
+	  </div>
+	</div>
+	<div class="row center">
+  	<div class="oppfield">
+	    <%= f.label :oppclass %><br />
+	    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.oppclass) %>
+	  </div>
   </div>
   <div class="cf"></div>
-  <div class="winfield">
+  <div class="winfield center">
     <% if @arena.win %>
-      <div class="pure-button pure-button-success winbutton"> Victory </div><br /><br />
+      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br /><br />
     <% else %>
-      <div class="pure-button pure-button-error winbutton"> Defeated </div><br /><br />
+      <div class="btn btn-success winbutt_style winbutton red"> Defeated </div><br /><br />
     <% end %>
     <%= f.check_box :win, class: "wincheckbox hidden" %>
   </div>
-  <div class="actions">
+  <div class="actions center">
     <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
     <%= f.submit "Update Entry", class: "pure-button pure-button-success" %>
   </div>

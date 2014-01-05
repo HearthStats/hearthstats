@@ -10,7 +10,7 @@
     formatSelection: format,
     escapeMarkup: function(m) { return m; }
   });
-  $("#deckname_0").select2({
+  $("#constructed_deckname").select2({
     width: '300px'
   });
 </script>
@@ -56,7 +56,10 @@
       <div class="col-md-6">
         <div class="yourfield">
           <%= f.label "Deck Name" %><br />
-          <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname}) %>
+          <%= f.select(
+	          :deckname,
+	          options_from_collection_for_select(Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname})
+	          )  %>
         </div>
       </div>
       <div class="col-md-6">
@@ -68,7 +71,11 @@
     </div>
     <div class="cf"></div>
     <div class="winfield center">
-      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
+      <% if @constructed.win %>
+	      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br /><br />
+	    <% else %>
+	      <div class="btn btn-success winbutt_style winbutton red"> Defeated </div><br /><br />
+	    <% end %>
       <%= f.check_box :win , class: "wincheckbox hidden" %>
     </div>
     <div class="con_notes">
