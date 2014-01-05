@@ -16,11 +16,39 @@ class ArenaRun < ActiveRecord::Base
   	average_win
   end
 
-  def self.total_dust(userid)
+  def self.totalGold(userid)
   	arena_games = ArenaRun.where(user_id: userid)
   	goldamount = arena_games.map { |e| e.gold }
+  	total_gold = goldamount.inject{ |sum, el| sum + el }
+
+  	total_gold
+  end
+
+  def self.totalDust(userid)
+  	arena_games = ArenaRun.where(user_id: userid)
+  	goldamount = arena_games.map { |e| e.dust }
   	total_dust = goldamount.inject{ |sum, el| sum + el }
 
   	total_dust
+  end
+
+  def self.classArray(userid)
+    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    class_array = Hash.new
+  	classes.each do |c|
+  		class_avgwins = ArenaRun.averageWins(c, userid)
+  		class_runs = ArenaRun.where( userclass: c, user_id: userid ).count
+  		class_winrate = Arena.where( userclass: c, user_id: userid, win: true ).count.to_f / Arena.where( userclass: c, user_id: userid ).count
+  		class_coinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: true ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: true ).count
+  		class_nocoinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: false ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: false ).count
+
+  		class_array[c] = [["Average wins", class_avgwins],
+  											["Total runs with class", class_runs],
+  											["Class winrate", class_winrate],
+  											["Win rate with coin", class_coinrate],
+  											["Win rate without coin", class_nocoinrate]]
+  	end
+
+  	class_array
   end
 end
