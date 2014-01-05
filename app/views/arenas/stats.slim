@@ -9,21 +9,21 @@ div.well
   span.bold Page is still being designed
 h3.detail-title Overall Arena Stats
 div.overall
-p
-  div Overall Win Rate
-  = number_to_percentage((Arena.where(user_id: current_user.id,win: true).count.to_f/ Arena.where(user_id: current_user.id).count)*100, precision: 2)
-p
-  div Total Gold Amount:
-  = ArenaRun.totalGold(current_user.id)
-p
-  div Total Dust Amount:
-  = ArenaRun.totalDust(current_user.id)
-p
-  div Arena Runs Played:
-  = ArenaRun.where(user_id: current_user.id).count
-p
-  div Arena Games Played:
-  = Arena.where(user_id: current_user.id).count
+  div.arena-overall
+    div.arena-overall-title Overall Win Rate
+    = number_to_percentage((Arena.where(user_id: current_user.id,win: true).count.to_f/ Arena.where(user_id: current_user.id).count)*100, precision: 2)
+  div.arena-overall
+    div.arena-overall-title Total Gold Amount
+    = ArenaRun.totalGold(current_user.id)
+  div.arena-overall
+    div.arena-overall-title Total Dust Amount
+    = ArenaRun.totalDust(current_user.id)
+  div.arena-overall
+    div.arena-overall-title Arena Runs Played
+    = ArenaRun.where(user_id: current_user.id).count
+  div.arena-overall
+    div.arena-overall-title Arena Games Played
+    = Arena.where(user_id: current_user.id).count
 
 h3.detail-title Detailed Class Stats
 div.row
