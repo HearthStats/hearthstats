@@ -24,11 +24,10 @@ div.row
         |Coin
         br
         | #{@secrate}%
-  div.col-md-6
+  div.col-md-6.deck-notes
     h3 Notes
-    p = raw @deck.notes
-  div.pure-u-2-3
-    = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
+    = raw @deck.notes
+  = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
 
 = link_to 'Edit', edit_deck_path(@deck)
 = link_to 'Back', decks_path
