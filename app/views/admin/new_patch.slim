@@ -1,0 +1,10 @@
+- set_meta_tags :title => 'Upate HS Stats Version'
+- provide(:title, 'Version Stats')
+- provide(:section, 'Admin Panel')
+
+= form_tag('/admin/update_patch')
+  h4 HearthStone Patch Number
+  p This will update all Arena Run and Constructed entries with "current" as the patch column to the set patch name. DON"T FUCK AROUND!!!
+  p = text_field_tag 'patch'
+  p = submit_tag 'Update ArenaRun and Constructed'
+

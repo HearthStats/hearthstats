@@ -1,5 +1,5 @@
-h1 Admin Page
-h3 Add Id to Constructed
-h3 New Announcement:
-p =link_to "New", admin_announcement_path
+- set_meta_tags :title => 'Admin Panel'
+- provide(:title, 'Admin Panel')
+
+p =link_to "Version Stats", admin_new_patch_path
 p =link_to "New Tourny", new_tourny_path

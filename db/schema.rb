@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131230141611) do
+ActiveRecord::Schema.define(:version => 20140105060302) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -21,14 +21,15 @@ ActiveRecord::Schema.define(:version => 20131230141611) do
   end
 
   create_table "arena_runs", :force => true do |t|
-    t.integer   "user_id"
-    t.string    "userclass"
-    t.integer   "gold",       :default => 0
-    t.integer   "dust",       :default => 0
-    t.boolean   "complete",   :default => false
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.text      "notes"
+    t.integer  "user_id"
+    t.string   "userclass"
+    t.integer  "gold",       :default => 0
+    t.integer  "dust",       :default => 0
+    t.boolean  "complete",   :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.text     "notes"
+    t.string   "patch",      :default => "current"
   end
 
   add_index "arena_runs", ["user_id"], :name => "index_arena_runs_on_user_id"
@@ -49,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20131230141611) do
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
   create_table "constructeds", :force => true do |t|
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "user_id"
     t.string   "deckname"
     t.string   "oppclass",   :default => "N/A"
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20131230141611) do
     t.integer  "deck_id"
     t.text     "notes"
     t.string   "rank",       :default => "Casual"
+    t.string   "patch",      :default => "current"
   end
 
   add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"
