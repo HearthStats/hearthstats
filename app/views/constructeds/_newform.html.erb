@@ -32,51 +32,54 @@
     <%= f.number_field :user_id %>
   </div> -->
 
-    <div class="gofirstfield center">
-    	<span class="coin">
-    		<h3>You played on the: </h3>
-	      <div class="btn btn-lg green gofirst"> First Turn </div>
-	      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
-    	</span>
-      <span class="ranked">
-      	<h3>This match is: </h3>
-	      <div class="btn btn-lg green ranked-btn"> Ranked </div>
-	      <%= f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden" %>
-      </span>
-    </div>
-    <div class="row center">
-      <div class="col-md-6">
-        <div class="yourfield">
-          <%= f.label "Deck Name" %><br />
-          <% if !@lastentry.nil? %>
-            <%= collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname}) %>
-          <% else %>
-            <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="oppfield">
-          <%= f.label "Opponent's Class" %><br />
-          <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-        </div>
-      </div>
-    </div>
-    <div class="cf"></div>
-    <div class="winfield center">
-      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
-      <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
-    </div>
-    <div class="con_notes">
-			<h3>Notes</h3>
-	  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
-		</div>
+	<div class="left_col">
+	    <div class="gofirstfield center">
+	    	<span class="coin">
+	    		<h3>You played on the: </h3>
+		      <div class="btn btn-lg green gofirst"> First Turn </div>
+		      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+	    	</span>
+	      <span class="ranked">
+	      	<h3>This match is: </h3>
+		      <div class="btn btn-lg green ranked-btn"> Ranked </div>
+		      <%= f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden" %>
+	      </span>
+	    </div>
+	    <div class="row center">
+	      <div class="col-md-6">
+	        <div class="yourfield">
+	          <%= f.label "Deck Name" %><br />
+	          <% if !@lastentry.nil? %>
+	            <%= collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname}) %>
+	          <% else %>
+	            <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
+	          <% end %>
+	        </div>
+	      </div>
+	      <div class="col-md-6">
+	        <div class="oppfield">
+	          <%= f.label "Opponent's Class" %><br />
+	          <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="cf"></div>
+	    <div class="winfield center">
+	      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
+	      <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
+	    </div>
+	</div>
+	<div class="right_col">
+	    <div class="con_notes">
+				<h3>Notes</h3>
+		  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
+			</div>
 
-    <div class="actions center">
-      <%= link_to constructeds_path do %>
-        <button class="btn btn-lg">Back</button>
-      <% end %>
-      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
-    </div>
-
+	    <div class="actions center">
+	      <%= link_to constructeds_path do %>
+	        <button class="btn btn-lg">Back</button>
+	      <% end %>
+	      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+	    </div>
+	</div>
 <% end %>

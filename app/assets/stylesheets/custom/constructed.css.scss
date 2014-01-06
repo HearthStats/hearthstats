@@ -4,18 +4,40 @@
     margin-bottom: 20px;
   }
 }
+.new_constructed {
+  width:100%;
+  float:left;
+  background-color:#fff;
+  padding-bottom:20px;
+}
+.new_constructed .left_col,
+.new_constructed .right_col {
+  width:50%; 
+  float:left;
+  min-width:400px;
+  
+}
 .con_notes{
-	width: 70%;
-	margin: auto;
+  width:90%;
 	margin-bottom: 30px;
 	min-width: 300px;
+	padding-left:20px;
 }
 .gofirstfield{
 	width: 400px;
 }
-.coin{
-	float: left;
+.con_notes h3,
+.gofirstfield h3{
+  margin-top: 0;
 }
-.ranked{
-	float: right;
+.gofirstfield .coin,
+.gofirstfield .ranked{
+	display:inline-block;
+	padding-bottom:2em;
+}
+.gofirstfield .coin{
+  margin-right:2em;
+}
+.gofirstfield .ranked{
+  margin-left:2em;
 }
