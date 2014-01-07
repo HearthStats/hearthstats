@@ -42,3 +42,20 @@ config/initializers/secret_token.rb
 
 # Ignore ganalytics.js for custom ga
 /assets/javascripts/ganalytics.js
+
+# eclipse specific git ignore
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.buildpath

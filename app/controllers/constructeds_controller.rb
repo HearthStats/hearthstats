@@ -90,6 +90,25 @@ class ConstructedsController < ApplicationController
   end
 
   def stats
-
+    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    @matches = Constructed.joins(:deck).where(user_id: current_user.id)
+    
+    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    
+    # build win rates while playing each class
+    @classrate = Array.new
+    classes.each_with_index do |c,i|
+      classgames = @matches.where(decks: { race: c})
+      classgames = @matches.where(oppclass: c)
+      wins = classgames.where(win: true).count
+      totgames = classgames.count
+      
+      if totgames == 0
+        @classrate[i] = "#{classes[i]}: 0 Games"
+      else
+        @classrate[i] = "#{classes[i]}: #{((wins.to_f / totgames)*100).round(2)}% (#{totgames} Games)"
+      end
+    end
+    
   end
 end
