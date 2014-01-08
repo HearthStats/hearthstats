@@ -33,6 +33,7 @@ div class="portlet box blue"
     table class="table table-bordered table-striped table-condensed flip-content"
       thead class="flip-content"
         tr
+          th Your Class
           th Your Deck
           th Opponent Class
           th Win?
@@ -43,6 +44,7 @@ div class="portlet box blue"
       tbody
       - @constructeds.each do |match|
         tr
+          td.cl-effect-3 = match.deck.race
           td.cl-effect-3 = link_to match.deckname, deck_path(Deck.find(match.deck_id).friendly_id)
           td = match.oppclass
           td
