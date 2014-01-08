@@ -10,6 +10,7 @@ div class="portlet quick_con_entry"
         = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
       -else
         = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
+      | &nbsp; vs. &nbsp;
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
       div class="btn green quick_input gofirstquick" No Coin
       = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
