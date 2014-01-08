@@ -90,25 +90,43 @@ class ConstructedsController < ApplicationController
   end
 
   def stats
-    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-    @matches = Constructed.joins(:deck).where(user_id: current_user.id)
     
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    # get all matches
+    matches = Constructed.joins(:deck)
     
-    # build win rates while playing each class
-    @classrate = Array.new
-    classes.each_with_index do |c,i|
-      classgames = @matches.where(decks: { race: c})
-      classgames = @matches.where(oppclass: c)
-      wins = classgames.where(win: true).count
-      totgames = classgames.count
-      
-      if totgames == 0
-        @classrate[i] = "#{classes[i]}: 0 Games"
-      else
-        @classrate[i] = "#{classes[i]}: #{((wins.to_f / totgames)*100).round(2)}% (#{totgames} Games)"
-      end
+    # filter by number of days to show
+    daysQuery = CGI.parse(request.query_string)['days'].first
+    @daysFilter = daysQuery == "all" ? false : true
+    if @daysFilter
+     @daysFilter = daysQuery.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? daysQuery.to_f : 30
+     matches = matches.where('constructeds.created_at >= ?', @daysFilter.days.ago)
+    else 
+      @daysFilter = "all"
     end
     
+    # build win rates while playing each class
+    personalMatches = matches.where(user_id: current_user.id)
+    @personalWinRates = getClassWinRatesForMatches(personalMatches);
+    @globalWinRates = getClassWinRatesForMatches(matches);
+    
   end
+  
+  protected 
+  def getClassWinRatesForMatches(matches)
+    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    winrates = Array.new
+    @classes.each_with_index do |c,i|
+      classgames = matches.where(decks: { race: c})
+      classgames = matches.where(oppclass: c)
+      wins = classgames.where(win: true).count
+      totgames = classgames.count
+      if totgames == 0
+        winrates[i] = 0
+      else
+        winrates[i] = ((wins.to_f / totgames)*100).round(2)
+      end
+    end
+    return winrates
+  end
+  
 end

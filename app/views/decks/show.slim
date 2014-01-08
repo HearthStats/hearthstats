@@ -16,14 +16,18 @@ div.row
       b.defeat Loses:
       = @deck.constructeds.where(win: false).count
     div.turnrates
+      div.winrates.total
+        |Win Rate
+        br
+        | #{@winrate}
       div.winrates.firstrate
         |No Coin
         br
-        | #{@firstrate}%
+        | #{@firstrate}
       div.winrates.secrate
         |Coin
         br
-        | #{@secrate}%
+        | #{@secrate}
   div.col-md-6.deck-notes
     h3 Notes
     = raw @deck.notes
