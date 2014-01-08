@@ -117,7 +117,6 @@ class ConstructedsController < ApplicationController
     winrates = Array.new
     @classes.each_with_index do |c,i|
       classgames = matches.where(decks: { race: c})
-      classgames = matches.where(oppclass: c)
       wins = classgames.where(win: true).count
       totgames = classgames.count
       if totgames == 0
