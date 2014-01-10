@@ -20,7 +20,7 @@ form id="statRangeForm" method="get"
 			option[value="all" selected=("selected" if @daysFilter =="all")] all time
 		| &nbsp;
 		input type="submit" value="Submit" id="statRangeDaysSubmit"
-		
+
 javascript:
 	$('#statRangeForm select[name="days"]').change(function() {
 		$('#statRangeForm').submit();
@@ -29,5 +29,5 @@ javascript:
 
 = render 'winratechart'
 
-	   
+
 

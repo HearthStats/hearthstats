@@ -3,10 +3,6 @@
   :keywords => 'stats, december, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
 
 div class="nav-top clearfix"
-  div.nav-social.nav-icon
-    div class="addthis_toolbox addthis_default_style "
-    a class="addthis_button_preferred_1"
-    a class="addthis_button_preferred_2"
   span class="right"
     a class="nav-icon" href="http://hss.io/"
       span HearthStats
@@ -16,246 +12,15 @@ div class="nav-top clearfix"
 div.main
   - cache "decreport", expires_in: 1.day do
     section.most-played.splash
-    section.most-played.page1
-      div.page_container.global
-        h2 Most Played Races
-        div.row
-          div.col-md-6
-            div.mptitle ARENA
-            - @arenamp = @arenatot.sort_by { |name, winsrate| winsrate }.reverse
-            table.mptable
-              tr
-                td.mpfirst 1. #{@arenamp.first[0]}
-                td.mpfirst =@arenamp.first[1]
-              tr
-                td.mpsec 2. #{@arenamp.second[0]}
-                td.mpsec =@arenamp.second[1]
-              tr
-                td.mpthird 3. #{@arenamp.third[0]}
-                td.mpthird =@arenamp.third[1]
-            div.arenamore
-              table.mptable
-                -(3..8).each do |mp|
-                  tr
-                    td #{mp+1}. #{@arenamp[mp][0]}
-                    td #{@arenamp[mp][1]}
-            div.showarena More
-          div.col-md-6
-            div.mptitle CONSTRUCTED
-            - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
-            table.mptable
-              tr
-                td.mpfirst 1. #{@conmp.first[0]}
-                td.mpfirst =@conmp.first[1]
-              tr
-                td.mpsec 2. #{@conmp.second[0]}
-                td.mpsec =@conmp.second[1]
-              tr
-                td.mpthird 3. #{@conmp.third[0]}
-                td.mpthird =@conmp.third[1]
-            div.conmore
-              table.mptable
-                -(3..8).each do |mp|
-                  tr
-                    td #{mp+1}. #{@conmp[mp][0]}
-                    td #{@conmp[mp][1]}
-            div.showcon More
-        h2 Global Win Rates
-        div.row
-          div.col-md-6.arena
-            div.tableheader ARENA
-            - counter = 1
-            table.rankingtable
-              - @classarenarate.each do |c|
-                -if c[1] == -1
-                -else
-                  tr
-                    td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                    td
-                      #{number_to_percentage(c[1]*100, precision: 2)}
-                    td
-                      #{@arenatot[c[0]]} Games
-
-                -counter = counter + 1
-          div.col-md-6.con
-            div.tableheader CONSTRUCTED
-            - counter = 1
-            table.rankingtable
-              - @classconrate.each do |c|
-                -if c[1] == -1
-                -else
-                  tr
-                    td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                    td
-                      #{number_to_percentage(c[1]*100, precision: 2)}
-                    td
-                      #{@contot[c[0]]} Games
-                -counter = counter + 1
-    section.page2.global-rates
-      div.page_container
-        h2 Global Win Rates
-        div.global-arena
-          h3 ARENA
-          table.arena-win-rates.report-table
-            th
-              td.hunter Hunter
-              td.mage Mage
-              td.paladin Paladin
-              td.priest Priest
-              td.rogue Rogue
-              td.shaman Shaman
-              td.warlock Warlock
-              td.warrior Warrior
-            tr
-              td.druid Druid
-              -(0..7).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.hunter Hunter
-              td
-              -(8..14).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.mage Mage
-              td
-              td
-              -(15..20).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.paladin Paladin
-              td
-              td
-              td
-              -(21..25).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.priest Priest
-              td
-              td
-              td
-              td
-              -(26..29).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.rogue Rogue
-              td
-              td
-              td
-              td
-              td
-              -(30..32).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.shaman Shaman
-              td
-              td
-              td
-              td
-              td
-              td
-              -(33..34).each do |i|
-                td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-            tr
-              td.warlock Warlock
-              td
-              td
-              td
-              td
-              td
-              td
-              td
-              td = number_to_percentage(@userarenarate[35][1]*100, precision: 2)
-          small how to read: vertical vs horizontal
-    section.page3
-      div.page_container
-        h2 Global Win Rates
-        div.global-arena
-          h3 CONSTRUCTED
-          table.arena-win-rates.report-table
-            th
-              td.hunter Hunter
-              td.mage Mage
-              td.paladin Paladin
-              td.priest Priest
-              td.rogue Rogue
-              td.shaman Shaman
-              td.warlock Warlock
-              td.warrior Warrior
-            tr
-              td.druid Druid
-              -(0..7).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.hunter Hunter
-              td
-              -(8..14).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.mage Mage
-              td
-              td
-              -(15..20).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.paladin Paladin
-              td
-              td
-              td
-              -(21..25).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.priest Priest
-              td
-              td
-              td
-              td
-              -(26..29).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.rogue Rogue
-              td
-              td
-              td
-              td
-              td
-              -(30..32).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.shaman Shaman
-              td
-              td
-              td
-              td
-              td
-              td
-              -(33..34).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.warlock Warlock
-              td
-              td
-              td
-              td
-              td
-              td
-              td
-              td = number_to_percentage(@conrate[35][1]*100, precision: 2)
-          small how to read: vertical vs horizontal
   section.page4.hsstats
     div.page_container
       h2 HearthStats
       div.row
         div.col-md-6
           div.users
-            span.usercount = User.all.count
-            | users contributed to this data
-          div.contribute HearthStats was made by suggestions from the community and made for the community. If there's something you would like to see, just ask <a href="mailto:jeff@hearthstats.net">me</a>!
-          div.donate If you like what I'm doing, toss me a few coins.
-          form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
-            input type="hidden" name="cmd" value="_s-xclick"
-            input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----"
-            input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"
-            img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"
+            span.usercount Hey!
+            | December is over.
+          div.contribute Stay tuned for the newest report and help contribute to the data by registering.
           div.smile
             |:)
         div.col-md-6
@@ -264,9 +29,6 @@ div.main
           div.regcont
             a class="btn btn-success btn-lg regbutton " href="/users/sign_up" Register Now
 
-javascript:
-    var addthis_config = {"data_track_addressbar":true};
-script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51b7f4835a9fac8a"
 javascript:
   $(document).ready(function() {
     var isShownArena = false;

@@ -2,72 +2,70 @@
 <div id="winrate_container" style="min-width: 310px; height: 400px; margin: 0 auto; margin-right:20px;"></div>
 
 <script type="text/javascript">
-	$(function () {
-		var classes = <%= raw @classes.to_json %>
-        $('#winrate_container').highcharts({
-    
-            chart: {
-                type: 'column'
-            },
-    
-            title: {
-                text: 'Constructed Win Rates Per Class (Personal vs. Global)'
-            },
-		    subtitle: {
-		    	text: 'Source: HearthStats.net'
-		    },
-			credits: {
-				enabled: false
-			},
-            xAxis: {
-                categories: classes
-            },
-    
-            yAxis: {
-                allowDecimals: false,
-                min: 0,
-                title: {
-                    text: 'Win Rate'
-                }
-            },
-            tooltip: {
-		    	valueSuffix: '%'
-		    },
-		    legend:{
-		    	enabled:false
-		    },
-		    plotOptions: {
-		    	column: {
-		        	colorByPoint: true
-				},
-		        bar: {
-					dataLabels: {
-		            	enabled: true
-		            }
-				}
-		    },
-    
-            series: [{
-                name: 'Personal',
-                data: <%= raw @personalWinRates.to_json %>,
-                stack: 'Druid'
-            }, {
-                name: 'Global',
-                data: <%= raw @globalWinRates.to_json %>,
-                stack: 'male'
-            }],
-		      colors: [
-		        '#5C4B51',
-		        '#27ae60',
-		        '#3498db',
-		        '#f1c40f',
-		        '#bdc3c7',
-		        '#2c3e50',
-		        '#3D3E94',
-		        '#8e44ad',
-		        '#c0392b'
-		      ]
-        });
-    });
+	var classes = <%= raw @classes.to_json %>
+  $('#winrate_container').highcharts({
+
+      chart: {
+          type: 'column'
+      },
+
+      title: {
+          text: 'Constructed Win Rates Per Class (Personal vs. Global)'
+      },
+  subtitle: {
+  	text: 'Source: HearthStats.net'
+  },
+credits: {
+	enabled: false
+},
+      xAxis: {
+          categories: classes
+      },
+
+      yAxis: {
+          allowDecimals: false,
+          min: 0,
+          title: {
+              text: 'Win Rate'
+          }
+      },
+      tooltip: {
+  	valueSuffix: '%'
+  },
+  legend:{
+  	enabled:false
+  },
+  plotOptions: {
+  	column: {
+      	colorByPoint: true
+	},
+      bar: {
+		dataLabels: {
+          	enabled: true
+          }
+	}
+  },
+
+      series: [{
+          name: 'Personal',
+          data: <%= raw @personalWinRates.to_json %>,
+          stack: 'Druid'
+      }, {
+          name: 'Global',
+          data: <%= raw @globalWinRates.to_json %>,
+          stack: 'male'
+      }],
+    colors: [
+      '#5C4B51',
+      '#27ae60',
+      '#3498db',
+      '#f1c40f',
+      '#bdc3c7',
+      '#2c3e50',
+      '#3D3E94',
+      '#8e44ad',
+      '#c0392b'
+    ]
+  });
 
 </script>

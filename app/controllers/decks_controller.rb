@@ -14,9 +14,6 @@ class DecksController < ApplicationController
   # GET /decks/1
   # GET /decks/1.json
   def show
-    require 'rubygems'
-    require 'nokogiri'
-    require 'open-uri'
     @deck = Deck.find(params[:id])
     impressionist(@deck)
 
