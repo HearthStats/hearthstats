@@ -16,6 +16,12 @@
   <script src="http://code.highcharts.com/highcharts.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" data-turbolinks-eval=false>
+  		// UserVoice JavaScript SDK (only needed once on a page) 
+		var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Kk0pKUYPigy8io1njnDA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)
+		UserVoice = window.UserVoice || [];
+  </script>
+  
 </head>
 <% if signed_in? %>
 	<body class="page-header-fixed">
@@ -29,6 +35,20 @@
 			<%= render 'layouts/sidebar' %>
 		<% end %>
 		<div class="page-content">
+			<script type="text/javascript">
+				// A tab to launch the Classic Widget
+				UserVoice.push(['showTab', 'classic_widget', {
+				  mode: 'full',
+				  primary_color: '#cc6d00',
+				  link_color: '#007dbf',
+				  default_mode: 'support',
+				  forum_id: 236878,
+				  tab_label: 'Feedback',
+				  tab_color: '#3d3d3d',
+				  tab_position: 'middle-right',
+				  tab_inverted: false
+				}]);
+		  </script>
 			<!-- BEGIN PAGE HEADER -->
 			<%= render 'layouts/breadcrumbs' %>
 			<!-- END PAGE HEADER -->
