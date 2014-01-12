@@ -1,43 +1,27 @@
-.new_constructed{
-  label{
-    font-size: 38px;
-    margin-bottom: 20px;
-  }
+.new_constructed .field {
+  display:inline-block; 
+  whitespace:no-wrap; 
+  margin-right:1em;
+  margin-bottom:1em;
+  font-size:28px;
 }
-.new_constructed {
-  width:100%;
-  float:left;
-  background-color:#fff;
-  padding-bottom:20px;
+.new_constructed .field select {
+  font-size:28px;
 }
-.new_constructed .left_col,
-.new_constructed .right_col {
-  width:50%; 
-  float:left;
-  min-width:400px;
-  
+.new_constructed .field label {
+  font-size:1em;
 }
-.con_notes{
-  width:90%;
-	margin-bottom: 30px;
-	min-width: 300px;
-	padding-left:20px;
-}
-.gofirstfield{
-	width: 400px;
-}
-.con_notes h3,
-.gofirstfield h3{
-  margin-top: 0;
+.new_constructed .btn.green {
+  position: relative;
+  top: -.2em;
 }
 .gofirstfield .coin,
-.gofirstfield .ranked{
+.gofirstfield .ranked,
+.gofirstfield .winbutton {
 	display:inline-block;
 	padding-bottom:2em;
 }
-.gofirstfield .coin{
-  margin-right:2em;
-}
-.gofirstfield .ranked{
-  margin-left:2em;
+.con_notes{
+	margin-bottom: 30px;
+	margin-right:20px;
 }
