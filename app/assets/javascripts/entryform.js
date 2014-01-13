@@ -19,6 +19,7 @@ $(document).ready(function(){
     }
   });
 
+  var goFirstButtonText = $('#goFirstButton').text();
   $('.gofirst').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
     if ( checked == true )
@@ -26,7 +27,7 @@ $(document).ready(function(){
       $('.gofirst').removeClass('green');
       $('.gofirst').addClass('blue');
       $('.firstcheckbox').prop('checked', false);
-      $('.gofirst').text("Second Turn");
+      $('.gofirst').text("Went Second");
       var checked = false;
     }
     else
@@ -34,7 +35,7 @@ $(document).ready(function(){
       $('.gofirst').addClass('green');
       $('.gofirst').removeClass('blue');
       $('.firstcheckbox').prop('checked', true);
-      $('.gofirst').text("First Turn");
+      $('.gofirst').text(goFirstButtonText);
       var checked = true;
     }
   });
@@ -52,7 +53,7 @@ $(document).ready(function(){
       $('.ranked-btn').removeClass('green');
       $('.ranked-btn').addClass('blue');
       $('.rank-field').val("Casual");
-      $('.ranked-btn').text("Casual");
+      $('.ranked-btn').text("Casual Game");
       var checkedRank = false;
       console.log(checkedRank);
     }
@@ -61,7 +62,7 @@ $(document).ready(function(){
       $('.ranked-btn').addClass('green');
       $('.ranked-btn').removeClass('blue');
       $('.rank-field').val("Ranked");
-      $('.ranked-btn').text("Ranked");
+      $('.ranked-btn').text("Ranked Game");
       var checkedRank = true;
     }
   });

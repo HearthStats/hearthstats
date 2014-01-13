@@ -1,18 +1,4 @@
 <script>
-  function format(state) {
-    var originalOption = state.element;
-
-    return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-  }
-  $("#constructed_oppclass").select2({
-    width: '300px',
-    formatResult: format,
-    formatSelection: format,
-    escapeMarkup: function(m) { return m; }
-  });
-  $("#deckname_0").select2({
-    width: '300px'
-  });
 </script>
 
 <%= form_for(@constructed) do |f| %>
@@ -27,59 +13,44 @@
       </ul>
     </div>
   <% end %>
-  <!-- <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div> -->
-
-	<div class="left_col">
-	    <div class="gofirstfield center">
-	    	<span class="coin">
-	    		<h3>You played on the: </h3>
-		      <div class="btn btn-lg green gofirst"> First Turn </div>
-		      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
-	    	</span>
-	      <span class="ranked">
-	      	<h3>This match is: </h3>
-		      <div class="btn btn-lg green ranked-btn"> Ranked </div>
-		      <%= f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden" %>
-	      </span>
-	    </div>
-	    <div class="row center">
-	      <div class="col-md-6">
-	        <div class="yourfield">
-	          <%= f.label "Deck Name" %><br />
-	          <% if !@lastentry.nil? %>
-	            <%= collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname}) %>
-	          <% else %>
-	            <%= collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name) %>
-	          <% end %>
-	        </div>
-	      </div>
-	      <div class="col-md-6">
-	        <div class="oppfield">
-	          <%= f.label "Opponent's Class" %><br />
-	          <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="cf"></div>
-	    <div class="winfield center">
-	      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />
-	      <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
-	    </div>
+    <div class="field">
+      <span class="ranked">
+	      <div class="btn btn-lg green ranked-btn">Ranked Game</div>
+	      <%= f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden" %>
+      </span>
+    </div>
+	<div class="field">
+        <% if !@lastentry.nil? %>
+        	<%= collection_select(:deckname, 0, @myDecks, :name, :name, {:selected => @lastentry.deckname}) %>
+    	<% else %>
+			<%= collection_select(:deckname, 0, @myDecks, :name, :name) %>
+        <% end %>
 	</div>
-	<div class="right_col">
-	    <div class="con_notes">
-				<h3>Notes</h3>
-		  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
-			</div>
-
-	    <div class="actions center">
-	      <%= link_to constructeds_path do %>
-	        <button class="btn btn-lg">Back</button>
-	      <% end %>
-	      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
-	    </div>
+	<div class="field">
+		vs.
 	</div>
+	<div class="field">
+		<%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+	</div>
+    <div class="field">
+    	<span class="coin">
+	      <div class="btn btn-lg green gofirst" id="goFirstButton">Went First</div>
+	      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
+    	</span>
+    </div>
+    <div class="winfield field">
+      <div class="btn green btn-lg winbutton">Victory</div>
+      <%= f.check_box :win , :checked => true, class: "wincheckbox hidden" %>
+    </div>
+    <div class="con_notes">
+		<h3>Notes</h3>
+	  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
+		</div>
+
+    <div class="actions center">
+      <%= link_to constructeds_path do %>
+        <button class="btn btn-lg">Cancel</button>
+      <% end %>
+      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+    </div>
 <% end %>

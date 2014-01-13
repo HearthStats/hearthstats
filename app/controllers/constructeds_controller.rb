@@ -31,7 +31,7 @@ class ConstructedsController < ApplicationController
   	end
     @constructed = Constructed.new
     @lastentry = Constructed.where(user_id: current_user.id).last
-
+    @myDecks = Deck.where(:user_id => current_user.id).order(:name).all
   end
 
   # GET /constructeds/1/edit
