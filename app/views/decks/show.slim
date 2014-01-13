@@ -19,7 +19,7 @@ div.row
       div.winrates.total title="Overall win rate with this deck"
         |Win Rate
         br
-        | #{@winrate}
+        | #{number_to_percentage(@winrate, precision: 2)}
       div.winrates.firstrate title="Percentage of games won playing first"
         |No Coin
         br

@@ -46,9 +46,9 @@ class DecksController < ApplicationController
 	  @secrate = @secrate.nan? ? '0 games' : @secrate.to_s() + '%'
 
     #calculate deck winrate
-    @winrate = '0 games'
+    @winrate = 0
     if @deck.constructeds.count > 0 
-      @winrate = (@deck.constructeds.where(win: true).count.to_f / @deck.constructeds.count.to_f * 100).to_s() + '%'
+      @winrate = (@deck.constructeds.where(win: true).count.to_f / @deck.constructeds.count * 100)
     end
 
     respond_to do |format|
