@@ -19,7 +19,6 @@ $(document).ready(function(){
     }
   });
 
-  var goFirstButtonText = $('#goFirstButton').text();
   $('.gofirst').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
     if ( checked == true )
@@ -35,7 +34,7 @@ $(document).ready(function(){
       $('.gofirst').addClass('green');
       $('.gofirst').removeClass('blue');
       $('.firstcheckbox').prop('checked', true);
-      $('.gofirst').text(goFirstButtonText);
+      $('.gofirst').text("Went First");
       var checked = true;
     }
   });

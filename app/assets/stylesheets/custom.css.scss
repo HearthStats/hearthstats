@@ -35,7 +35,8 @@
 .btn{
 	transition: all 0.5s ease;
 }
-.winbutt_style{
+.winbutt_style,
+.arenas .gofirst {
 	margin-top: 30px;
 	font-size: 30px !important;
 	width: 300px;
@@ -43,6 +44,9 @@
 	padding: 20px 0 60px 0 !important;
 	margin-bottom: 30px;
 	// padding-bottom: 40px !important;
+}
+.arenas .gofirst {
+ margin-bottom:0; 
 }
 .victory{
   color: #5cb85c;
