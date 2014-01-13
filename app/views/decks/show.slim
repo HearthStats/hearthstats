@@ -19,7 +19,7 @@ div.row
       div.winrates.total
         |Win Rate
         br
-        | #{@winrate}
+        | #{number_to_percentage(@global_winrate*100, precision: 2)}
       div.winrates.firstrate
         |No Coin
         br

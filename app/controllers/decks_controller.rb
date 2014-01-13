@@ -27,6 +27,7 @@ class DecksController < ApplicationController
     # Win rates vs each class
 		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @deckrate = Array.new
+    @global_winrate = @deck.constructeds.where(win:true).count.to_f/@deck.constructeds.count
     @winrate = '0 games';
     classes.each_with_index do |c,i|
 	    wins = @deck.constructeds.where(oppclass: c, win: true).count
