@@ -11,7 +11,7 @@
 .new_constructed .field label {
   font-size:1em;
 }
-.new_constructed .btn.green {
+.new_constructed .btn {
   position: relative;
   top: -.2em;
 }
@@ -24,4 +24,7 @@
 .con_notes{
 	margin-bottom: 30px;
 	margin-right:20px;
+}
+.con_notes h3 {
+  margin-top:0;
 }
