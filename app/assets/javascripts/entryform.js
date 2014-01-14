@@ -1,12 +1,10 @@
 function toggleRankedButton() {
   	var rankText = $('.rank-field').val();
-  	console.log(rankText)
   	if (rankText == "Ranked") {
   		checkedRank = true;
   	}else{
   		checkedRank = false;
   	}
-      console.log(checkedRank);
     if ( checkedRank == true )
     {
       $('.ranked-btn').removeClass('green');
@@ -14,7 +12,6 @@ function toggleRankedButton() {
       $('.rank-field').val("Casual");
       $('.ranked-btn').text("Casual");
       var checkedRank = false;
-      console.log(checkedRank);
     }
     else
     {
@@ -67,7 +64,7 @@ $(document).ready(function(){
       var checked = true;
     }
   });
-  
+
   $('.ranked-btn').click(toggleRankedButton);
 
   $('.gofirstquick').click(function(){
