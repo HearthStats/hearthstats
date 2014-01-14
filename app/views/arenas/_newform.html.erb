@@ -2,17 +2,10 @@
 <script>
   $(document).ready(function() {
 
-    function format(state) {
-      var originalOption = state.element;
-
-      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-    }
-    $("#arena_oppclass").select2({
-      width: '300px',
-      formatResult: format,
-      formatSelection: format,
-      escapeMarkup: function(m) { return m; }
-    });
+	$('#arena_oppclass option').each(function() {
+		$(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
+	});
+    $("#arena_oppclass").selectBoxIt();
   });
 </script>
 <%= form_for(@arena, remote: true) do |f| %>
