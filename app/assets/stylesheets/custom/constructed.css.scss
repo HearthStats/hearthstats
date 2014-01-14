@@ -1,7 +1,5 @@
 .new_constructed .field {
-  display:inline-block; 
   whitespace:no-wrap; 
-  margin-right:1em;
   margin-bottom:1em;
   font-size:28px;
 }
@@ -10,17 +8,14 @@
 }
 .new_constructed .field label {
   font-size:1em;
+  display:block;
 }
 .gofirstfield .coin,
 .gofirstfield .ranked,
 .gofirstfield .winbutton {
-	display:inline-block;
-	padding-bottom:2em;
+	padding-bottom:1em;
 }
 .con_notes{
 	margin-bottom: 30px;
 	margin-right:20px;
-}
-.con_notes h3 {
-  margin-top:0;
 }
