@@ -2,21 +2,14 @@
 <script>
   $(document).ready(function() {
 
-    function format(state) {
-      var originalOption = state.element;
-
-      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-    }
-    $("#arena_oppclass").select2({
-      width: '300px',
-      formatResult: format,
-      formatSelection: format,
-      escapeMarkup: function(m) { return m; }
-    });
+	$('#arena_oppclass option').each(function() {
+		$(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
+	});
+    $("#arena_oppclass").selectBoxIt();
   });
 </script>
 <%= form_for(@arena, remote: true) do |f| %>
-	<div class="row">
+	<div class="row arenas">
 		<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
 		<div class="col-md-6 center">
 	    <% if @arena.errors.any? %>
@@ -30,17 +23,16 @@
 	        </ul>
 	      </div>
 	    <% end %>
-	    <div>
-	      <h3>You played on the:</h3>
-	      <div class="btn btn-lg green gofirst"> First Turn</div><br />
-	      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
-	    </div>
 
 	    <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
 
 	    <div class="oppfield arenaopp">
-	      <h2>Opponent's Class</h2>
+	      <h2 style="margin-top:0;">Opponent's Class</h2>
 	      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+	    </div>
+	    <div>
+	      <div class="btn btn-lg green gofirst">Went First</div><br />
+	      <%= f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden" %>
 	    </div>
 	    <div class="cf"></div>
 	    <div class="btn btn-success winbutt_style winbutton"> Victory </div><br />

@@ -5,16 +5,11 @@
 - provide(:section, 'Arena')
 
 javascript:
-  function format(state) {
-    var originalOption = state.element;
-
-    return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-  }
-  $("#arena_run_userclass").select2({
-    width: '300px',
-    formatResult: format,
-    formatSelection: format,
-    escapeMarkup: function(m) { return m; }
+  $(document).ready(function() {
+    $('#arena_run_userclass option').each(function() {
+  	  $(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
+    });
+    $("#arena_run_userclass").selectBoxIt();
   });
 div.row
   div.col-md-12

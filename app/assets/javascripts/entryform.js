@@ -1,45 +1,4 @@
-$(document).ready(function(){
-  $('.winbutton').click(function(){
-    var checked = $('.wincheckbox').prop('checked');
-    if ( checked == true )
-    {
-      $('.winbutton').removeClass('green');
-      $('.winbutton').addClass('red');
-      $('.wincheckbox').prop('checked', false);
-      $('.winbutton').text("Defeat");
-      var checked = false;
-    }
-    else
-    {
-      $('.winbutton').addClass('green');
-      $('.winbutton').removeClass('red');
-      $('.wincheckbox').prop('checked', true);
-      $('.winbutton').text("Victory");
-      var checked = true;
-    }
-  });
-
-  var goFirstButtonText = $('#goFirstButton').text();
-  $('.gofirst').click(function(){
-    var checked = $('.firstcheckbox').prop('checked');
-    if ( checked == true )
-    {
-      $('.gofirst').removeClass('green');
-      $('.gofirst').addClass('blue');
-      $('.firstcheckbox').prop('checked', false);
-      $('.gofirst').text("Went Second");
-      var checked = false;
-    }
-    else
-    {
-      $('.gofirst').addClass('green');
-      $('.gofirst').removeClass('blue');
-      $('.firstcheckbox').prop('checked', true);
-      $('.gofirst').text(goFirstButtonText);
-      var checked = true;
-    }
-  });
-  $('.ranked-btn').click(function(){
+function toggleRankedButton() {
   	var rankText = $('.rank-field').val();
   	console.log(rankText)
   	if (rankText == "Ranked") {
@@ -65,7 +24,50 @@ $(document).ready(function(){
       $('.ranked-btn').text("Ranked Game");
       var checkedRank = true;
     }
+  }
+
+$(document).ready(function(){
+  $('.winbutton').click(function(){
+    var checked = $('.wincheckbox').prop('checked');
+    if ( checked == true )
+    {
+      $('.winbutton').removeClass('green');
+      $('.winbutton').addClass('red');
+      $('.wincheckbox').prop('checked', false);
+      $('.winbutton').text("Defeat");
+      var checked = false;
+    }
+    else
+    {
+      $('.winbutton').addClass('green');
+      $('.winbutton').removeClass('red');
+      $('.wincheckbox').prop('checked', true);
+      $('.winbutton').text("Victory");
+      var checked = true;
+    }
   });
+
+  $('.gofirst').click(function(){
+    var checked = $('.firstcheckbox').prop('checked');
+    if ( checked == true )
+    {
+      $('.gofirst').removeClass('green');
+      $('.gofirst').addClass('blue');
+      $('.firstcheckbox').prop('checked', false);
+      $('.gofirst').text("Went Second");
+      var checked = false;
+    }
+    else
+    {
+      $('.gofirst').addClass('green');
+      $('.gofirst').removeClass('blue');
+      $('.firstcheckbox').prop('checked', true);
+      $('.gofirst').text("Went First");
+      var checked = true;
+    }
+  });
+  
+  $('.ranked-btn').click(toggleRankedButton);
 
   $('.gofirstquick').click(function(){
     var checked = $('.firstcheckbox').prop('checked');

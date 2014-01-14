@@ -27,8 +27,6 @@ class DecksController < ApplicationController
     # Win rates vs each class
 		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @deckrate = Array.new
-    @global_winrate = @deck.constructeds.where(win:true).count.to_f/@deck.constructeds.count
-    @winrate = '0 games';
     classes.each_with_index do |c,i|
 	    wins = @deck.constructeds.where(oppclass: c, win: true).count
 	    totgames = @deck.constructeds.where(oppclass: c).count
@@ -36,7 +34,6 @@ class DecksController < ApplicationController
 	    	@deckrate[i] = [0,"#{classes[i]}<br/>0 Games"]
 	    else
 		    @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{classes[i]}<br/>#{totgames} Games"]
-		    @winrate =  (wins / totgames * 100).to_f.to_s() + '%';
 		  end
 	  end
 
@@ -47,6 +44,12 @@ class DecksController < ApplicationController
 	  @firstrate = @firstrate.nan? ? '0 games' : @firstrate.to_s() + '%'
 	  @secrate = ((@deck.constructeds.where(gofirst: false, win: true).count.to_f / totgamessec)*100).round(2)
 	  @secrate = @secrate.nan? ? '0 games' : @secrate.to_s() + '%'
+
+    #calculate deck winrate
+    @winrate = 0
+    if @deck.constructeds.count > 0 
+      @winrate = (@deck.constructeds.where(win: true).count.to_f / @deck.constructeds.count * 100)
+    end
 
     respond_to do |format|
       format.html # show.html.erb

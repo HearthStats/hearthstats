@@ -16,15 +16,15 @@ div.row
       b.defeat Loses:
       = @deck.constructeds.where(win: false).count
     div.turnrates
-      div.winrates.total
+      div.winrates.total title="Overall win rate with this deck"
         |Win Rate
         br
-        | #{number_to_percentage(@global_winrate*100, precision: 2)}
-      div.winrates.firstrate
+        | #{number_to_percentage(@winrate, precision: 2)}
+      div.winrates.firstrate title="Percentage of games won when playing first"
         |No Coin
         br
         | #{@firstrate}
-      div.winrates.secrate
+      div.winrates.secrate title="Percentage of games won when playing second"
         |Coin
         br
         | #{@secrate}

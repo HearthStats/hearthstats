@@ -2,7 +2,8 @@
 <div id="winrate_container" style="min-width: 310px; height: 400px; margin: 0 auto; margin-right:20px;"></div>
 
 <script type="text/javascript">
-	var classes = <%= raw @classes.to_json %>
+	var numMatchesPerClassGlobal = <%= raw @numMatchesGlobal.to_json %>;
+	var numMatchesPerClassPersonal = <%= raw @numMatchesPersonal.to_json %>;
   $('#winrate_container').highcharts({
 
       chart: {
@@ -12,14 +13,14 @@
       title: {
           text: 'Constructed Win Rates Per Class (Personal vs. Global)'
       },
-  subtitle: {
-  	text: 'Source: HearthStats.net'
-  },
-credits: {
-	enabled: false
-},
+	  subtitle: {
+	  	text: 'Source: HearthStats.net'
+	  },
+	credits: {
+		enabled: false
+	},
       xAxis: {
-          categories: classes
+          categories: <%= raw @classes.to_json %>
       },
 
       yAxis: {
@@ -31,15 +32,21 @@ credits: {
           }
       },
       tooltip: {
-  	valueSuffix: '%'
-  },
-  legend:{
-  	enabled:false
-  },
-  plotOptions: {
-  	column: {
-      	colorByPoint: true
-	},
+	  	valueSuffix: '%',
+	  	formatter: function() {
+	  		var numGames = this.series.name.match(/personal/i) ? numMatchesPerClassPersonal[this.x] : numMatchesPerClassGlobal[this.x]; 
+            return '<b>'+ this.x +'</b><br/>'+
+                this.series.name +': '+ this.y + '%<br/>' +
+                numGames.toLocaleString() + ' games'
+        }
+	  },
+	  legend:{
+	  	enabled:false
+	  },
+	  plotOptions: {
+	  	column: {
+	      	colorByPoint: true
+		},
       bar: {
 		dataLabels: {
           	enabled: true

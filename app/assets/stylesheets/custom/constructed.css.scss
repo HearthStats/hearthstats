@@ -5,15 +5,11 @@
   margin-bottom:1em;
   font-size:28px;
 }
-.new_constructed .field select {
-  font-size:28px;
+.new_constructed .field .ddlabel {
+  font-size:21px !important;
 }
 .new_constructed .field label {
   font-size:1em;
-}
-.new_constructed .btn.green {
-  position: relative;
-  top: -.2em;
 }
 .gofirstfield .coin,
 .gofirstfield .ranked,
@@ -24,4 +20,7 @@
 .con_notes{
 	margin-bottom: 30px;
 	margin-right:20px;
+}
+.con_notes h3 {
+  margin-top:0;
 }
