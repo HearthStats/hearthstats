@@ -53,4 +53,9 @@
       <% end %>
       <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
     </div>
+    <script type="text/javascript">
+    	if('<%= @lastentry.rank %>' == 'Casual') {
+    		toggleRankedButton();
+    	}
+    </script>
 <% end %>

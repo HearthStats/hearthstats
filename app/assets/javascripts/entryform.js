@@ -1,3 +1,31 @@
+function toggleRankedButton() {
+  	var rankText = $('.rank-field').val();
+  	console.log(rankText)
+  	if (rankText == "Ranked") {
+  		checkedRank = true;
+  	}else{
+  		checkedRank = false;
+  	}
+      console.log(checkedRank);
+    if ( checkedRank == true )
+    {
+      $('.ranked-btn').removeClass('green');
+      $('.ranked-btn').addClass('blue');
+      $('.rank-field').val("Casual");
+      $('.ranked-btn').text("Casual Game");
+      var checkedRank = false;
+      console.log(checkedRank);
+    }
+    else
+    {
+      $('.ranked-btn').addClass('green');
+      $('.ranked-btn').removeClass('blue');
+      $('.rank-field').val("Ranked");
+      $('.ranked-btn').text("Ranked Game");
+      var checkedRank = true;
+    }
+  }
+
 $(document).ready(function(){
   $('.winbutton').click(function(){
     var checked = $('.wincheckbox').prop('checked');
@@ -38,33 +66,8 @@ $(document).ready(function(){
       var checked = true;
     }
   });
-  $('.ranked-btn').click(function(){
-  	var rankText = $('.rank-field').val();
-  	console.log(rankText)
-  	if (rankText == "Ranked") {
-  		checkedRank = true;
-  	}else{
-  		checkedRank = false;
-  	}
-      console.log(checkedRank);
-    if ( checkedRank == true )
-    {
-      $('.ranked-btn').removeClass('green');
-      $('.ranked-btn').addClass('blue');
-      $('.rank-field').val("Casual");
-      $('.ranked-btn').text("Casual Game");
-      var checkedRank = false;
-      console.log(checkedRank);
-    }
-    else
-    {
-      $('.ranked-btn').addClass('green');
-      $('.ranked-btn').removeClass('blue');
-      $('.rank-field').val("Ranked");
-      $('.ranked-btn').text("Ranked Game");
-      var checkedRank = true;
-    }
-  });
+  
+  $('.ranked-btn').click(toggleRankedButton);
 
   $('.gofirstquick').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
