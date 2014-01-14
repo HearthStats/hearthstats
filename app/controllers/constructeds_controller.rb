@@ -109,6 +109,15 @@ class ConstructedsController < ApplicationController
     @personalWinRates = getClassWinRatesForMatches(personalMatches);
     @globalWinRates = getClassWinRatesForMatches(matches);
     
+    # calculate number of games per class
+    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    @numMatchesPersonal = Hash.new
+    @numMatchesGlobal = Hash.new
+    @classes.each_with_index do |c,i|
+      @numMatchesGlobal.store(c, matches.where(decks: { race: c}).count)
+      @numMatchesPersonal.store(c, personalMatches.where(decks: { race: c}).count)
+    end
+    
   end
   
   protected 
