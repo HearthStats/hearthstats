@@ -12,7 +12,7 @@ function toggleRankedButton() {
       $('.ranked-btn').removeClass('green');
       $('.ranked-btn').addClass('blue');
       $('.rank-field').val("Casual");
-      $('.ranked-btn').text("Casual Game");
+      $('.ranked-btn').text("Casual");
       var checkedRank = false;
       console.log(checkedRank);
     }
@@ -21,7 +21,7 @@ function toggleRankedButton() {
       $('.ranked-btn').addClass('green');
       $('.ranked-btn').removeClass('blue');
       $('.rank-field').val("Ranked");
-      $('.ranked-btn').text("Ranked Game");
+      $('.ranked-btn').text("Ranked");
       var checkedRank = true;
     }
   }
@@ -49,12 +49,13 @@ $(document).ready(function(){
 
   $('.gofirst').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
+    var prefix = document.location.toString().match(/arenas/) ? 'Played ' : '';
     if ( checked == true )
     {
       $('.gofirst').removeClass('green');
       $('.gofirst').addClass('blue');
       $('.firstcheckbox').prop('checked', false);
-      $('.gofirst').text("Went Second");
+      $('.gofirst').text(prefix + "Second");
       var checked = false;
     }
     else
@@ -62,7 +63,7 @@ $(document).ready(function(){
       $('.gofirst').addClass('green');
       $('.gofirst').removeClass('blue');
       $('.firstcheckbox').prop('checked', true);
-      $('.gofirst').text("Went First");
+      $('.gofirst').text(prefix + "First");
       var checked = true;
     }
   });
