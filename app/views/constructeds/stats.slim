@@ -5,27 +5,32 @@
 - provide(:subtitle, ' constructed game stats');
 - provide(:section, 'Constructed')
 
-div.well
-  span.label.label-danger NOTE!
-  span.bold Page is still being designed
-
-form id="statRangeForm" method="get"
+form id="statsFilter" method="get" class="data-turboform"
 	p
-		| Show win rates for &nbsp;
+		| Filter by: &nbsp;
 		select name="days"
 			option[value="1" selected=("selected" if @daysFilter == 24)] last 24 hours
 			option[value="7" selected=("selected" if @daysFilter == 7)] last 7 days
 			option[value="30" selected=("selected" if @daysFilter == 30)] last 30 days
 			option[value="90" selected=("selected" if @daysFilter == 90)] last 90 days
 			option[value="all" selected=("selected" if @daysFilter =="all")] all time
-		| &nbsp;
-		input type="submit" value="Submit" id="statRangeDaysSubmit"
+		| &nbsp; 
+		select name="first"
+			option[value=""] - first or second -
+			option[value="yes" selected=("selected" if @firstFilter == 'yes')] going first
+			option[value="no" selected=("selected" if @firstFilter == 'no')] going second
+		| &nbsp; 
+		select name="mode"
+			option[value=""] - any mode -
+			option[value="casual" selected=("selected" if @modeFilter == 'casual')] casual
+			option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] ranked
+		input type="submit" value="Submit" id="statsFilterSubmit"
 
 javascript:
-	$('#statRangeForm select[name="days"]').change(function() {
-		$('#statRangeForm').submit();
+	$('#statsFilter select').change(function() {
+		$('#statsFilter').submit();
 	});
-	$('#statRangeDaysSubmit').hide();
+	$('#statsFilterSubmit').hide();
 
 = render 'winratechart'
 

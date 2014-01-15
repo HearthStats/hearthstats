@@ -18,7 +18,7 @@
 
 /* Styles that apply to all SelectBoxIt elements */
 .selectboxit-container * {
-  font: 24px Helvetica, Arial;
+  font-size: 24px;
   /* Prevents text selection */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -103,6 +103,9 @@
 /* Individual options */
  .selectboxit-option .selectboxit-option-anchor{
   padding: 0 2px;
+}
+.selectboxit-option .selectboxit-option-icon-container .selectboxit-option-icon {
+	margin-left:4px; 	
 }
 
 /* Individual Option Hover Action */
@@ -276,4 +279,16 @@
 
 .selectboxit-list > .selectboxit-disabled > .selectboxit-option-anchor {
   color: #999999;
+}
+
+.selectboxit-container .selectboxit-options {
+
+    /* Set's the drop down options width to the same width as the drop down button */
+
+    /* Set's the max-height property to only show a subset of the drop down items.
+       If you do not set a max-height property, SelectBoxIt will dynamically
+       position the dropdown (when opened) to make sure the drop down items are not
+       displayed outside of the current window viewport.
+    */
+	max-height:250px;
 }

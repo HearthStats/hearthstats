@@ -1,3 +1,8 @@
 #arena_oppclassSelectBoxIt {
 	width:300px !important;
 }
+#new_arena .selectboxit-container > span, 
+#new_arena .selectboxit-container > span > span { 
+  height: 60px; /* Height of the drop down */
+  line-height: 60px; /* Vertically positions the drop down text */
+}
