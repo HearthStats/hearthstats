@@ -46,13 +46,12 @@ $(document).ready(function(){
 
   $('.gofirst').click(function(){
     var checked = $('.firstcheckbox').prop('checked');
-    var prefix = document.location.toString().match(/arenas/) ? 'Played ' : '';
     if ( checked == true )
     {
       $('.gofirst').removeClass('green');
       $('.gofirst').addClass('blue');
       $('.firstcheckbox').prop('checked', false);
-      $('.gofirst').text(prefix + "Second");
+      $('.gofirst').text("Second Turn");
       var checked = false;
     }
     else
@@ -60,7 +59,7 @@ $(document).ready(function(){
       $('.gofirst').addClass('green');
       $('.gofirst').removeClass('blue');
       $('.firstcheckbox').prop('checked', true);
-      $('.gofirst').text(prefix + "First");
+      $('.gofirst').text("First Turn");
       var checked = true;
     }
   });

@@ -1,120 +1,114 @@
-<script>
-	function format(state) {
-		var originalOption = state.element;
-
-		return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-	}
-
-
-	$("#constructed_oppclass").select2({
-		width : '300px',
-		formatResult : format,
-		formatSelection : format,
-		minimumResultsForSearch : -1,
-		escapeMarkup : function(m) {
-			return m;
-		}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#constructed_oppclass option').each(function() {
+        	$(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
+		});
+    	$("#constructed_oppclass").selectBoxIt();
+    	$("#deckname_0").selectBoxIt();
 	});
-	$("#deckname_0").select2({
-		width : '300px',
-	}); 
 </script>
 
 <%= form_for(@constructed) do |f| %>
-<% if @constructed.errors.any? %>
-<div id="error_explanation">
-	<h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
-
-	<ul>
-		<% @constructed.errors.full_messages.each do |msg| %>
-		<li>
-			<%= msg %>
-		</li>
-		<% end %>
-	</ul>
-</div>
-<% end %>
-<!-- <div class="field">
-<%= f.label :user_id %><br />
-<%= f.number_field :user_id %>
-</div> -->
-<div class="row">
-	<div class="col-md-6">
-		<div class="gofirstfield center row">
-			<span class="coin col-md-6"> <h3>You played on the: </h3> <% if @constructed.gofirst %>
-				<div class="btn btn-lg green gofirst">
-					First Turn
+	<% if @constructed.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
+		
+			<ul>
+				<% @constructed.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<!-- <div class="field">
+	<%= f.label :user_id %><br />
+	<%= f.number_field :user_id %>
+	</div> -->
+	<div class="row">
+		<div class="col-md-6">
+			<div class="gofirstfield center row">
+				<span class="coin col-md-6"> 
+					<h3>You played on the: </h3> 
+					<% if @constructed.gofirst %>
+						<div class="btn btn-lg green gofirst">
+							First Turn
+						</div>
+					<% else %>
+						<div class="btn btn-lg blue gofirst">
+							Second Turn
+						</div>
+					<% end %>
+					<br />
+					<%= f.check_box :gofirst , class: "firstcheckbox hidden" %> 
+				</span>
+				<span class="ranked col-md-6"> <h3>This match is: </h3> 
+					<% if @constructed.rank == "Ranked" %>
+						<div class="btn btn-lg green ranked-btn">
+							Ranked
+						</div> 
+						<%= f.text_field :rank , :value => "Ranked",  class: "rank-field hidden" %>
+					<% else %>
+						<div class="btn btn-lg blue ranked-btn">
+							Casual
+						</div> 
+						<%= f.text_field :rank , :value => "Casual", class: "rank-field hidden" %>
+					<% end %> 
+				</span>
+			</div>
+			<div class="row center">
+				<div class="col-md-6">
+					<div class="yourfield">
+						<%= f.label "Deck Name" %>
+						<br />
+						<% if !@lastentry.nil? %>
+							<%= collection_select(:deckname, 0, @myDecks, :name, :name, {:selected => @lastentry.deckname}) %>
+						<% else %>
+							<%= collection_select(:deckname, 0, @myDecks, :name, :name) %>
+						<% end %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="oppfield">
+						<%= f.label "Opponent's Class" %>
+						<br />
+						<%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
+					</div>
+				</div>
+			</div>
+			<div class="cf"></div>
+			<div class="winfield center">
+				<% if @constructed.win %>
+				<div class="btn btn-success winbutt_style winbutton">
+					Victory
 				</div>
 				<br />
+				<br />
 				<% else %>
-				<div class="btn btn-lg blue gofirst">
-					Second Turn
+				<div class="btn btn-success winbutt_style winbutton red">
+					Defeated
 				</div>
+				<br />
 				<br />
 				<% end %>
-				<%= f.check_box :gofirst , class: "firstcheckbox hidden" %> </span>
-			<span class="ranked col-md-6"> <h3>This match is: </h3> <% if @constructed.rank == "Ranked" %>
-				<div class="btn btn-lg green ranked-btn">
-					Ranked
-				</div> <%= f.text_field :rank , :value => "Ranked",  class: "rank-field hidden" %>
-				<% else %>
-				<div class="btn btn-lg blue ranked-btn">
-					Casual
-				</div> <%= f.text_field :rank , :value => "Casual", class: "rank-field hidden" %>
-				<% end %> </span>
-		</div>
-		<div class="row center">
-			<div class="col-md-6">
-				<div class="yourfield">
-					<%= f.label "Deck Name" %>
-					<br />
-					<% if !@lastentry.nil? %>
-					<%= collection_select(:deckname, 0, @myDecks, :name, :name, {:selected => @lastentry.deckname}) %>
-					<% else %>
-					<%= collection_select(:deckname, 0, @myDecks, :name, :name) %>
-					<% end %>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="oppfield">
-					<%= f.label "Opponent's Class" %>
-					<br />
-					<%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
-				</div>
+				<%= f.check_box :win , class: "wincheckbox hidden" %>
 			</div>
 		</div>
-		<div class="cf"></div>
-		<div class="winfield center">
-			<% if @constructed.win %>
-			<div class="btn btn-success winbutt_style winbutton">
-				Victory
+		<div class="col-md-6">
+			<div class="con_notes">
+				<h3>Notes</h3>
+				<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
 			</div>
-			<br />
-			<br />
-			<% else %>
-			<div class="btn btn-success winbutt_style winbutton red">
-				Defeated
-			</div>
-			<br />
-			<br />
-			<% end %>
-			<%= f.check_box :win , class: "wincheckbox hidden" %>
 		</div>
+	
 	</div>
-	<div class="col-md-6">
-		<div class="con_notes">
-			<h3>Notes</h3>
-			<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
-		</div>
+	<div class="actions center">
+		<%= link_to constructeds_path do %>
+		<button class="btn btn-lg">
+			Back
+		</button>
+		<% end %>
+		<%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
 	</div>
-
-</div>
-<div class="actions center">
-	<%= link_to constructeds_path do %>
-	<button class="btn btn-lg">
-		Back
-	</button>
-	<% end %>
-	<%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
-</div>
 <% end %>

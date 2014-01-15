@@ -19,3 +19,15 @@
 	margin-bottom: 30px;
 	margin-right:20px;
 }
+
+/* Height and Vertical Alignment of Text */
+#deckname_0SelectBoxItContainer .selectboxit-options {
+
+    /* Set's the drop down options width to the same width as the drop down button */
+    width: 210px;
+}
+#new_constructed .selectboxit-container > span, 
+#new_constructed .selectboxit-container > span > span { 
+  height: 60px; /* Height of the drop down */
+  line-height: 60px; /* Vertically positions the drop down text */
+}
