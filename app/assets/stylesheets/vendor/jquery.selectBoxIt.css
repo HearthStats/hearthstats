@@ -104,8 +104,8 @@
  .selectboxit-option .selectboxit-option-anchor{
   padding: 0 2px;
 }
-.selectboxit-option .selectboxit-option-icon-container {
-	padding-left:4px; 	
+.selectboxit-option .selectboxit-option-icon-container .selectboxit-option-icon {
+	margin-left:4px; 	
 }
 
 /* Individual Option Hover Action */

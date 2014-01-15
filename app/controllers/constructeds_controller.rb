@@ -104,6 +104,30 @@ class ConstructedsController < ApplicationController
       @daysFilter = "all"
     end
     
+    # filter by first/second
+    @firstFilter = CGI.parse(request.query_string)['first'].first
+    if @firstFilter == "yes"
+      matches = matches.where(gofirst: true)
+    else 
+      if @firstFilter == "no"
+        matches = matches.where(gofirst: false)
+      else  
+        @firstFilter = ""
+      end
+    end
+    
+    # filter by mode
+    @modeFilter = CGI.parse(request.query_string)['mode'].first
+    if @modeFilter == "casual"
+      matches = matches.where(rank: "casual")
+    else 
+      if @modeFilter == "ranked"
+        matches = matches.where(rank: "ranked")
+      else  
+        @modeFilter = ""
+      end
+    end
+    
     # build win rates while playing each class
     personalMatches = matches.where(user_id: current_user.id)
     @personalWinRates = getClassWinRatesForMatches(personalMatches);
