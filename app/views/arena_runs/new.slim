@@ -4,13 +4,6 @@
 - provide(:title, 'New Arena Run')
 - provide(:section, 'Arena')
 
-javascript:
-  $(document).ready(function() {
-    $('#arena_run_userclass option').each(function() {
-  	  $(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
-    });
-    $("#arena_run_userclass").selectBoxIt();
-  });
 div.row
   div.col-md-12
     div.teasertext
@@ -40,3 +33,5 @@ div.row
                   button type="submit" class='btn green'
                     |Continue <i class='m-icon-swapright m-icon-white'></i>
 
+javascript:
+  app.UI.initClassSelector('#arena_run_userclass');
