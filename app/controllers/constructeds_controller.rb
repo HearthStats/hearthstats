@@ -6,6 +6,7 @@ class ConstructedsController < ApplicationController
     @constructeds = Constructed.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
     @constructed = Constructed.new
     @lastentry = Constructed.where(user_id: current_user.id).last
+    @myDecks = getMyDecks()
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
@@ -31,7 +32,7 @@ class ConstructedsController < ApplicationController
   	end
     @constructed = Constructed.new
     @lastentry = Constructed.where(user_id: current_user.id).last
-    @myDecks = Deck.where(:user_id => current_user.id).order(:name).all
+    @myDecks = getMyDecks()
   end
 
   # GET /constructeds/1/edit
@@ -159,6 +160,10 @@ class ConstructedsController < ApplicationController
       end
     end
     return winrates
+  end
+
+  def getMyDecks() 
+    return Deck.where(:user_id => current_user.id).order(:name).all    
   end
   
 end

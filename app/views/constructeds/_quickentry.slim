@@ -7,9 +7,9 @@ div class="portlet quick_con_entry"
   div class="portlet-body"
     = form_for(@constructed, :html => {:class => 'form-inline quickentry'}) do |f|
       -if !@lastentry.nil?
-        = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
+        = collection_select(:deckname, 0, @myDecks, :name, :name, {:selected => @lastentry.deckname})
       -else
-        = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
+        = collection_select(:deckname, 0, @myDecks, :name, :name)
       | vs.
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
       div class="btn green quick_input gofirstquick" No Coin
