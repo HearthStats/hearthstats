@@ -7,15 +7,16 @@ div class="portlet quick_con_entry"
   div class="portlet-body"
     = form_for(@constructed, :html => {:class => 'form-inline quickentry'}) do |f|
       -if !@lastentry.nil?
-        = collection_select(:deckname, 0, Deck.where(:user_id => current_user.id).all, :name, :name, {:selected => @lastentry.deckname})
+        = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deckname))
       -else
-        = collection_select(:deckname, 0, Deck.where(user_id: current_user.id).all, :name, :name)
-      | &nbsp; vs. &nbsp;
+        = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}))
+      | vs.
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
-      div class="btn green quick_input gofirstquick" No Coin
-      = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
-      div class="btn green quick_input ranked-btn" Ranked
-      = f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden"
-      div class="btn green quick_input winbutton" Victory
-      = f.check_box :win , :checked => true, class: "wincheckbox hidden"
+      input name="constructed[rank]" rel="toggle-btn" on="Ranked" off="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
+      input name="constructed[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin" 
+      input name="constructed[win]" rel="toggle-btn" type="checkbox" on="Victory" off="Defeat" offClass="red"
       = f.submit "Add Game", class: "btn green quick_input"
+      
+javascript:
+  app.UI.initClassSelector('#constructed_oppclass');
+  app.UI.initDeckSelector("#deckname_0");

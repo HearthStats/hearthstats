@@ -20,14 +20,21 @@
 	margin-right:20px;
 }
 
-/* Height and Vertical Alignment of Text */
-#deckname_0SelectBoxItContainer .selectboxit-options,
-#constructed_oppclassSelectBoxItContainer .selectboxit-options {
+.yourfield #deckname_0SelectBoxItContainer,
+.yourfield #deckname_0SelectBoxIt,
+.yourfield #deckname_0SelectBoxItContainer .selectboxit-options,
+.oppfield #constructed_oppclassSelectBoxIt,
+.oppfield #constructed_oppclassSelectBoxItContainer,
+.oppfield #constructed_oppclassSelectBoxItContainer .selectboxit-options {
     /* Set's the drop down options width to the same width as the drop down button */
-    width: 210px;
+    width: 210px !important;
 }
-#new_constructed .selectboxit-container > span, 
-#new_constructed .selectboxit-container > span > span { 
+
+
+.yourfield .selectboxit-container > span, 
+.yourfield .selectboxit-container > span > span, 
+.oppfield .selectboxit-container > span, 
+.oppfield .selectboxit-container > span > span { 
   height: 60px; /* Height of the drop down */
   line-height: 60px; /* Vertically positions the drop down text */
 }
@@ -35,9 +42,29 @@
 #statsFilter .selectboxit-container * {
   font-size: 13px;
 }
+.quickentry #deckname_0SelectBoxIt {
+  max-width:210px !important; 
+}
+ 
 /* Height and Vertical Alignment of Text */
-#statsFilter .selectboxit-container span, 
-#statsFilter .selectboxit-container .selectboxit-options a {
-  height: 22px; /* Height of the drop down */
-  line-height: 22px; /* Vertically positions the drop down text */
+.quickentry .selectboxit-container span, 
+.quickentry .selectboxit-container .selectboxit-options a {
+  height: 34px; /* Height of the drop down */
+  line-height: 34px; /* Vertically positions the drop down text */
+}
+
+/* Height and Vertical Alignment of Text */
+.quickentry #deckname_0SelectBoxItContainer .selectboxit-options,
+.quickentry #constructed_oppclassSelectBoxItContainer .selectboxit-options {
+    /* Set's the drop down options width to the same width as the drop down button */
+    width: 100px !important;
+}
+
+.quick_con_entry #deckname_0SelectBoxItContainer {
+  margin-right:10px; 
+}
+
+.quickentry .btn,
+.quick_con_entry #constructed_oppclassSelectBoxItContainer {
+  margin: 0 5px;
 }
