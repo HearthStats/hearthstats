@@ -13,10 +13,10 @@ div class="portlet quick_con_entry"
       | vs.
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
       input name="constructed[rank]" rel="toggle-btn" on="Ranked" off="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
-      input name="constructed[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin" 
+      input name="constructed[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
       input name="constructed[win]" rel="toggle-btn" type="checkbox" on="Victory" off="Defeat" offClass="red"
       = f.submit "Add Game", class: "btn green quick_input"
-      
+
 javascript:
   app.UI.initClassSelector('#constructed_oppclass');
   app.UI.initDeckSelector("#deckname_0");

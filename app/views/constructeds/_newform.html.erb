@@ -2,7 +2,7 @@
 	<% if @constructed.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
-		
+
 			<ul>
 				<% @constructed.errors.full_messages.each do |msg| %>
 				<li>
@@ -19,23 +19,23 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="gofirstfield center row">
-				<span class="coin col-md-6"> 
-					<h3>You played on the: </h3> 
-					<input type="checkbox" 
-						name="constructed[gofirst]" 
-						rel="toggle-btn" 
-						class="btn-lg" 
-						on="First Turn" 
-						off="Second Turn" 
+				<span class="coin col-md-6">
+					<h3>You played on the: </h3>
+					<input type="checkbox"
+						name="constructed[gofirst]"
+						rel="toggle-btn"
+						class="btn-lg"
+						on="First Turn"
+						off="Second Turn"
 					/>
 				</span>
-				<span class="ranked col-md-6"> <h3>This match is: </h3> 
-					<input type="text" 
-						name="constructed[rank]" 
-						rel="toggle-btn" 
-						class="btn-lg" 
-						on="Ranked" 
-						off="Casual" 
+				<span class="ranked col-md-6"> <h3>This match is: </h3>
+					<input type="text"
+						name="constructed[rank]"
+						rel="toggle-btn"
+						class="btn-lg"
+						on="Ranked"
+						off="Casual"
 						<% if !@lastentry.nil? && @lastentry.rank == "Casual" %>state="off"<%end%>
 					/>
 				</span>
@@ -62,14 +62,23 @@
 			</div>
 			<div class="cf"></div>
 			<div class="winfield center">
-				<input type="checkbox" 
-					name="constructed[win]" 
-					rel="toggle-btn" 
-					class="btn-success winbutt_style winbutton" 
+<<<<<<< HEAD
+				<input type="checkbox"
+					name="constructed[win]"
+					rel="toggle-btn"
+					class="btn-success winbutt_style winbutton"
 					on="Victory"
-					off="Defeat" 
-					offClass="red" 
+					off="Defeat"
+					offClass="red"
 				/>
+=======
+				<div class="btn btn-success winbutt_style winbutton">
+					Victory
+				</div>
+				<br />
+				<br />
+				<%= f.check_box :win , class: "wincheckbox hidden" %>
+>>>>>>> changed all t/f buttons to btn-info color instead of green
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -78,7 +87,7 @@
 				<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
 			</div>
 		</div>
-	
+
 	</div>
 	<div class="actions center">
 		<%= link_to constructeds_path do %>

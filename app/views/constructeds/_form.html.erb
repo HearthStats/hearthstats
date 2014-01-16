@@ -37,7 +37,7 @@
 		  	<span class="coin col-md-6">
 			    <h3>You played on the: </h3>
 			    <% if @constructed.gofirst %>
-				    <div class="btn btn-lg green gofirst"> First Turn </div><br />
+				    <div class="btn btn-lg btn-info gofirst"> First Turn </div><br />
 			    <% else %>
 				    <div class="btn btn-lg blue gofirst"> Second Turn </div><br />
 			    <% end %>
@@ -46,7 +46,7 @@
 		    <span class="ranked col-md-6">
 	      	<h3>This match is: </h3>
 	      	<% if @constructed.rank == "Ranked" %>
-			      <div class="btn btn-lg green ranked-btn"> Ranked </div>
+			      <div class="btn btn-lg btn-info ranked-btn"> Ranked </div>
 			      <%= f.text_field :rank , :value => "Ranked",  class: "rank-field hidden" %>
 		      <% else %>
 			      <div class="btn btn-lg blue ranked-btn"> Casual </div>
