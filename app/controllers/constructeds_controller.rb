@@ -163,7 +163,7 @@ class ConstructedsController < ApplicationController
   end
 
   def getMyDecks() 
-    return Deck.where(:user_id => current_user.id).order(:name).all    
+    return Deck.where(:user_id => current_user.id).order(:race, :name).all    
   end
   
 end

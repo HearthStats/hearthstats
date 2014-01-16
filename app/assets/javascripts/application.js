@@ -37,3 +37,35 @@ $(document).ready(function(){
     return false;
   });
 });
+
+// define a global app object to store easily accessible common methods
+var app = app || {};
+
+// define UI namespace/object
+app.UI = app.UI || {};
+
+/**
+ * Initialize a select element of Hearthstone classes 
+ * 
+ * @param {string} jquerySelectorText The string you  
+ * would pass to jQuery to select a DOM element
+ */
+app.UI.initClassSelector = function(jquerySelectorString) {
+	$(jquerySelectorString + ' option').each(function() {
+		$(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
+	});
+	$(jquerySelectorString).selectBoxIt();
+};
+
+/**
+ * Initialize a select element of Hearthstone decks 
+ * 
+ * @param {string} jquerySelectorText The string you  
+ * would pass to jQuery to select a DOM element
+ */
+app.UI.initDeckSelector = function(jquerySelectorString) {
+	$(jquerySelectorString + ' option').each(function() {
+		$(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).attr('class') + "_Icon.gif");
+	});
+	$(jquerySelectorString).selectBoxIt();
+};

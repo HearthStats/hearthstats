@@ -7,9 +7,9 @@ div class="portlet quick_con_entry"
   div class="portlet-body"
     = form_for(@constructed, :html => {:class => 'form-inline quickentry'}) do |f|
       -if !@lastentry.nil?
-        = collection_select(:deckname, 0, @myDecks, :name, :name, {:selected => @lastentry.deckname})
+        = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deckname))
       -else
-        = collection_select(:deckname, 0, @myDecks, :name, :name)
+        = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}))
       | vs.
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
       div class="btn green quick_input gofirstquick" No Coin
@@ -21,8 +21,5 @@ div class="portlet quick_con_entry"
       = f.submit "Add Game", class: "btn green quick_input"
       
 javascript:
-  $('#constructed_oppclass option').each(function() {
-   	$(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).text() + "_Icon.gif");
-  });
-  $("#constructed_oppclass").selectBoxIt();
-  $("#deckname_0").selectBoxIt();
+  app.UI.initClassSelector('#constructed_oppclass');
+  app.UI.initDeckSelector("#deckname_0");
