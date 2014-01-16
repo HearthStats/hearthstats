@@ -12,16 +12,9 @@ div class="portlet quick_con_entry"
         = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}))
       | vs.
       = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
-      div class="btn green quick_input gofirstquick" No Coin
-      = f.check_box :gofirst , :checked => true, class: "firstcheckbox hidden"
-      -if !@lastentry.nil? && @lastentry.rank == "Casual"
-      	div class="btn blue quick_input ranked-btn" Casual
-      	= f.text_field :rank , :value => "Casual" ,  class: "rank-field hidden"
-      -else
-      	div class="btn green quick_input ranked-btn" Ranked
-      	= f.text_field :rank , :value => "Ranked" ,  class: "rank-field hidden"
-      div class="btn green quick_input winbutton" Victory
-      = f.check_box :win , :checked => true, class: "wincheckbox hidden"
+      input name="constructed[rank]" rel="toggle-btn" on="Ranked" off="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
+      input name="constructed[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin" 
+      input name="constructed[win]" rel="toggle-btn" type="checkbox" on="Victory" off="Defeat" offClass="red"
       = f.submit "Add Game", class: "btn green quick_input"
       
 javascript:
