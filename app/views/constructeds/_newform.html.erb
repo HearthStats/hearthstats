@@ -34,16 +34,16 @@
 					<%= f.check_box :gofirst , class: "firstcheckbox hidden" %> 
 				</span>
 				<span class="ranked col-md-6"> <h3>This match is: </h3> 
-					<% if @constructed.rank == "Ranked" %>
-						<div class="btn btn-lg green ranked-btn">
-							Ranked
-						</div> 
-						<%= f.text_field :rank , :value => "Ranked",  class: "rank-field hidden" %>
-					<% else %>
+					<% if !@lastentry.nil? && @lastentry.rank == "Casual" %>
 						<div class="btn btn-lg blue ranked-btn">
 							Casual
 						</div> 
 						<%= f.text_field :rank , :value => "Casual", class: "rank-field hidden" %>
+					<% else %>
+						<div class="btn btn-lg green ranked-btn">
+							Ranked
+						</div> 
+						<%= f.text_field :rank , :value => "Ranked",  class: "rank-field hidden" %>
 					<% end %> 
 				</span>
 			</div>
