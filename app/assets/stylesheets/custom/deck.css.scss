@@ -39,3 +39,9 @@
 		word-wrap: break-word;
 	}
 }
+.oppfield #deck_raceSelectBoxIt,
+.oppfield #deck_raceSelectBoxItContainer,
+.oppfield #deck_raceSelectBoxItContainer .selectboxit-options {
+    /* Set's the drop down options width to the same width as the drop down button */
+    width: 210px !important;
+}

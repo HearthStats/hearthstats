@@ -1,20 +1,3 @@
-<script>
-  function format(state) {
-    var originalOption = state.element;
-
-    return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-  }
-  $("#deck_race").select2({
-    width: '300px',
-    formatResult: format,
-    formatSelection: format,
-    escapeMarkup: function(m) { return m; }
-  });
-  $("#deckname_0").select2({
-    width: '300px'
-  });
-</script>
-
 <%= form_for(@deck) do |f| %>
   <% if @deck.errors.any? %>
     <div id="error_explanation">
@@ -62,3 +45,6 @@
 	  </div>
   </div>
 <% end %>
+<script type="text/javascript">
+	app.UI.initClassSelector('#deck_race');
+</script>
