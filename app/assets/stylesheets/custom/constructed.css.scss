@@ -20,14 +20,17 @@
 	margin-right:20px;
 }
 
-.yourfield #deckname_0SelectBoxItContainer,
 .yourfield #deckname_0SelectBoxIt,
+.yourfield #deckname_0SelectBoxItContainer,
 .yourfield #deckname_0SelectBoxItContainer .selectboxit-options,
+.yourfield #deckname_0SelectBoxItContainer .selectboxit-options .selectboxit-option,
 .oppfield #constructed_oppclassSelectBoxIt,
 .oppfield #constructed_oppclassSelectBoxItContainer,
-.oppfield #constructed_oppclassSelectBoxItContainer .selectboxit-options {
+.oppfield #constructed_oppclassSelectBoxItContainer .selectboxit-options,
+.oppfield #constructed_oppclassSelectBoxItContainer .selectboxit-options .selectboxit-option {
     /* Set's the drop down options width to the same width as the drop down button */
     width: 210px !important;
+    min-width:210px !important;
 }
 
 
