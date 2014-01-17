@@ -15,13 +15,12 @@
 	    <% end %>
 
 	    <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
-
+			<div class="gofirst-cont">
+	      <input type="checkbox" name="arena[gofirst]" rel="toggle-btn" class="btn btn-lg green" on="Played First" off="Played Second"/>
+	    </div>
 	    <div class="oppfield arenaopp">
 	      <h2 style="margin-top:0;">Opponent's Class</h2>
 	      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
-	    </div>
-	    <div>
-	      <input type="checkbox" name="arena[gofirst]" rel="toggle-btn" class="winbutt_style" on="Played First" off="Played Second"/>
 	    </div>
 	    <div class="cf"></div>
 	    <input type="checkbox" name="arena[win]" rel="toggle-btn" class="winbutt_style" on="Victory" off="Defeat" offclass="red"/>
