@@ -1,98 +1,97 @@
-<script>
-  function format(state) {
-    var originalOption = state.element;
-
-    return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-  }
-  $("#constructed_oppclass").select2({
-    width: '300px',
-    formatResult: format,
-    formatSelection: format,
-    escapeMarkup: function(m) { return m; }
-  });
-  $("#constructed_deckname").select2({
-    width: '300px'
-  });
-</script>
 
 <%= form_for(@constructed) do |f| %>
-  <% if @constructed.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
+	<% if @constructed.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
 
-      <ul>
-      <% @constructed.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <!-- <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div> -->
-  <div class="row">
-  	<div class="col-md-6">
-		  <div class="gofirstfield center row">
-		  	<span class="coin col-md-6">
-			    <h3>You played on the: </h3>
-			    <% if @constructed.gofirst %>
-				    <div class="btn btn-lg btn-info gofirst"> First Turn </div><br />
-			    <% else %>
-				    <div class="btn btn-lg blue gofirst"> Second Turn </div><br />
-			    <% end %>
-			    <%= f.check_box :gofirst , class: "firstcheckbox hidden" %>
-			  </span>
-		    <span class="ranked col-md-6">
-	      	<h3>This match is: </h3>
-	      	<% if @constructed.rank == "Ranked" %>
-			      <div class="btn btn-lg btn-info ranked-btn"> Ranked </div>
-			      <%= f.text_field :rank , :value => "Ranked",  class: "rank-field hidden" %>
-		      <% else %>
-			      <div class="btn btn-lg blue ranked-btn"> Casual </div>
-			      <%= f.text_field :rank , :value => "Casual", class: "rank-field hidden" %>
-		      <% end %>
-	      </span>
-		  </div>
-		  <div class="row center">
-	      <div class="col-md-6">
-	        <div class="yourfield">
-	          <%= f.label "Deck Name" %><br />
-	          <%= f.select(
+			<ul>
+				<% @constructed.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="gofirstfield center row">
+				<span class="coin col-md-6">
+					<h3>You played on the: </h3>
+					<input type="checkbox"
+						name="constructed[gofirst]"
+						rel="toggle-btn"
+						class="btn-lg"
+						on="First Turn"
+						off="Second Turn"
+						<% if !@constructed.gofirst %>
+						state="off"
+						<% end %>
+					/>
+				</span>
+				<span class="ranked col-md-6"> <h3>This match is: </h3>
+					<input type="text"
+						name="constructed[rank]"
+						rel="toggle-btn"
+						class="btn-lg"
+						on="Ranked"
+						off="Casual"
+						<% if @constructed.rank == "Casual" %>state="off"<%end%>
+					/>
+				</span>
+			</div>
+			<div class="row center">
+				<div class="col-md-6">
+					<div class="yourfield">
+						<%= f.label "Deck Name" %>
+						<br />
+						<%= f.select(
 		          :deckname,
 		          options_from_collection_for_select(Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname})
 		          )  %>
-	        </div>
-	      </div>
-	      <div class="col-md-6">
-	        <div class="oppfield">
-	          <%= f.label "Opponent's Class" %><br />
-	          <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="cf"></div>
-	    <div class="winfield center">
-	      <% if @constructed.win %>
-		      <div class="btn btn-success winbutt_style winbutton"> Victory </div><br /><br />
-		    <% else %>
-		      <div class="btn btn-success winbutt_style winbutton red"> Defeated </div><br /><br />
-		    <% end %>
-	      <%= f.check_box :win , class: "wincheckbox hidden" %>
-	    </div>
-	  </div>
-   	<div class="col-md-6">
-   		<div class="con_notes">
-				<h3>Notes</h3>
-		  	<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="oppfield">
+						<%= f.label "Opponent's Class" %>
+						<br />
+						<%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
+					</div>
+				</div>
 			</div>
-   	</div>
+			<div class="cf"></div>
+			<div class="winfield center">
+				<input type="checkbox"
+					name="constructed[win]"
+					rel="toggle-btn"
+					class="btn-success winbutt_style winbutton"
+					on="Victory"
+					off="Defeat"
+					<% if !@constructed.win %>
+					state="off"
+					<% end %>
+					offClass="red"
+				/>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="con_notes">
+				<h3>Notes</h3>
+				<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
+			</div>
+		</div>
 
-  </div>
-  <div class="actions center">
-    <%= link_to constructeds_path do %>
-      <button class="btn btn-lg">Back</button>
-    <% end %>
-    <%= f.submit "Update Entry", class: "btn btn-lg btn-primary arenasubmit" %>
-  </div>
+	</div>
+	<div class="actions center">
+		<%= link_to constructeds_path do %>
+		<button class="btn btn-lg">
+			Back
+		</button>
+		<% end %>
+		<%= f.submit "Update Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+	</div>
 <% end %>
+<script type="text/javascript">
+	app.UI.initClassSelector('#constructed_oppclass');
+	app.UI.initDeckSelector("#constructed_deckname")
+</script>
