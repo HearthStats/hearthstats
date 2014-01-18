@@ -54,5 +54,8 @@ div class="portlet box green"
               i class="fa fa-pencil-square-o" Edit
             = link_to arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
               i class="fa fa-trash-o" Delete
-            a.showmore data-target="#run#{arena.id}" data-toggle="modal" class="btn default btn-xs blue" <i class="fa fa-external-link"></i>Show
+            a.showmore data-target="#run#{arena.id}" data-toggle="modal" class="btn default btn-xs green" <i class="fa fa-external-link"></i>Show
+            - unless arena.notes.blank?
+              span class= 'btn default btn-xs blue' title="#{arena.notes}" rel="tooltip"
+                i class="fa fa-file-text-o"  Notes
 =link_to "Archived Games", "/arenas/archives"
