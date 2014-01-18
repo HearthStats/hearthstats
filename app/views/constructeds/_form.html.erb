@@ -1,4 +1,3 @@
-
 <%= form_for(@constructed) do |f| %>
 	<% if @constructed.errors.any? %>
 		<div id="error_explanation">
@@ -45,10 +44,7 @@
 					<div class="yourfield">
 						<%= f.label "Deck Name" %>
 						<br />
-						<%= f.select(
-		          :deckname,
-		          options_from_collection_for_select(Deck.where(user_id: current_user.id).all, :name, :name, {selected: @constructed.deckname})
-		          )  %>
+						<%= select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]})) %>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -93,5 +89,5 @@
 <% end %>
 <script type="text/javascript">
 	app.UI.initClassSelector('#constructed_oppclass');
-	app.UI.initDeckSelector("#constructed_deckname")
+	app.UI.initDeckSelector("#deckname_0")
 </script>
