@@ -43,10 +43,12 @@ div class="portlet box blue"
           td = match.created_at.strftime("%I %P on %B %d, %Y")
           td.cl-effect-3
             = link_to edit_constructed_path(match), class: 'btn default btn-xs purple' do
-              i class="fa fa-pencil-square-o" Edit
+              i class="fa fa-pencil-square-o"
+              |Edit
             = link_to match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red' do
-              i class="fa fa-trash-o" Delete
+              i class="fa fa-trash-o"
+              |Delete
             - unless match.notes.blank?
               span class= 'btn default btn-xs blue' title="#{match.notes}" rel="tooltip"
-                i class="fa fa-file-text-o"  Notes
-
+                i class="fa fa-file-text-o"
+                |Notes
