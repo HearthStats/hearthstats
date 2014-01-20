@@ -68,7 +68,8 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Constructed.find(params[:id])
-
+    deck_id = Deck.where(:user_id => current_user.id, :name => params[:constructed][:deckname])[0].id
+    params[:constructed][:deck_id] = deck_id
     respond_to do |format|
       if @constructed.update_attributes(params[:constructed])
         format.html { redirect_to constructeds_url, notice: 'Constructed was successfully updated.' }

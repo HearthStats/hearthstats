@@ -44,7 +44,7 @@
 					<div class="yourfield">
 						<%= f.label "Deck Name" %>
 						<br />
-						<%= select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]})) %>
+						<%= f.select(:deckname, @myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}) %>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -89,5 +89,5 @@
 <% end %>
 <script type="text/javascript">
 	app.UI.initClassSelector('#constructed_oppclass');
-	app.UI.initDeckSelector("#deckname_0")
+	app.UI.initDeckSelector("#constructed_deckname")
 </script>
