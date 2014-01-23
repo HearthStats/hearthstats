@@ -39,6 +39,7 @@ class ArenaRunsController < ApplicationController
 		@arenarun.notes = lastarena.notes unless lastarena.nil?
 		session[:arenarunid] = nil
 		@arenarun.complete = true
+
 		respond_to do |format|
 			if @arenarun.update_attributes(params[:arena_run])
 				format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }

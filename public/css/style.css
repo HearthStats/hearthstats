@@ -134,6 +134,7 @@ p {
 
 .top-tweet:hover {background:#3fbcef;}
 .top-fb:hover {background:#314396;}
+.top-gplus:hover {background:#314396;}
 .top-dribble:hover {background:#ed6c9e;}
 .top-skype:hover {background:#00a8ec;}
 
@@ -196,33 +197,34 @@ p {
 	background:none;
 	color:#fff;
 }
-
+.top-content .actions{
+	display: block;
+	margin: auto;
+	text-align: center;
+}
 .top-content a {
     text-align: center;
-    display: block;
+    display: inline-block;
     border: 0px none;
     line-height: 38px;
     height: 38px;
     width: 118px;
 		margin: auto;
 		margin-top: 20px;
-	padding:0 5px;
+		padding:0 5px;
     border-radius: 25px 25px 25px 25px;
     color: #fff;
     font-size: 1.2em;
     text-align: center;
     cursor: pointer;
     text-decoration: none;
-	background: #5bba0e; /* Old browsers */
-	background: -moz-linear-gradient(top,  #5bba0e 0%, #299a0b 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5bba0e), color-stop(100%,#299a0b)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #5bba0e 0%,#299a0b 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #5bba0e 0%,#299a0b 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #5bba0e 0%,#299a0b 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #5bba0e 0%,#299a0b 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5bba0e', endColorstr='#299a0b',GradientType=0 ); /* IE6-9 */
 }
-
+.top-content .signup{
+	background-color: #2ecc71
+}
+.top-content .demo{
+	background-color: #3498db
+}
 .top-content a span {
 	font-family:Open Sans;
 	font-size:13px;
@@ -231,15 +233,12 @@ p {
 	margin-left:6px;
 }
 
-.top-content a:hover {
-	background: #299a0b; /* Old browsers */
-	background: -moz-linear-gradient(top,  #299a0b 0%, #5bba0e 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#299a0b), color-stop(100%,#5bba0e)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #299a0b 0%,#5bba0e 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #299a0b 0%,#5bba0e 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #299a0b 0%,#5bba0e 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #299a0b 0%,#5bba0e 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#299a0b', endColorstr='#5bba0e',GradientType=0 ); /* IE6-9 */
+.top-content .signup:hover {
+	background: #27ae60; /* Old browsers */
+}
+
+.top-content .demo:hover {
+	background: #2980b9; /* Old browsers */
 }
 
 /*-----------------------------------------------------------------------------------*/

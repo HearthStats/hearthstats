@@ -27,7 +27,7 @@ class ArenasController < ApplicationController
   def new
     @arena = Arena.new
     if session[:arenarunid]
-    	@arenarun=ArenaRun.find(session[:arenarunid])
+    	@arenarun = ArenaRun.find(session[:arenarunid])
     else
 	    @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
 	    session[:arenarunid]=@arenarun.id

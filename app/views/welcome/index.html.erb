@@ -52,6 +52,8 @@
 				<!-- Social icons -->
 				<ul class="top-social">
 					<li class="top-tweet"><a href="https://twitter.com/HearthStats"><div class="icon-twitter"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
+					<li class="top-fb"><a href="https://www.facebook.com/HearthStats.net"><div class="icon-facebook"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
+					<li class="top-gplus"><a href="https://plus.google.com/108193002230555494327"><div class="icon-google-plus"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
 				</ul>
 
 				<!-- Nav menu -->
@@ -77,7 +79,10 @@
 			<%= image_tag('hearthstatslogo.svg', class: "home_logo")%>
 				Welcome to HearthStats</h3>
 			<p>HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.</p>
-			<%= link_to new_user_registration_path, class: "icon-share" do %><span>Sign Up</span><% end %>
+			<div class="actions">
+				<%= link_to new_user_registration_path, class: "icon-share demo" do %><span>Demo</span><% end %>
+				<%= link_to new_user_registration_path, class: "icon-signin signup" do %><span>Sign Up</span><% end %>
+			</div>
 		</div>
 
 		<div class="twelve columns">
