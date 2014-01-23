@@ -42,7 +42,7 @@
 												<% if entry[3] %>
 													Nice! You won against <%= entry[2] %> with <%= entry[1] %>
 												<% else %>
-													Opps. You lost against <%= entry[2] %> with <%= entry[1] %>
+													Oops. You lost against <%= entry[2] %> with <%= entry[1] %>
 												<% end %>
 											</div>
 										</div>
@@ -69,22 +69,22 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="easy-pie-chart">
-							<div class="number transactions" data-percent=<%= @globarena %>><span><%= @globarena %></span>%</div>
+							<div class="number transactions" data-percent=<%= @global[:arena] %>><span><%= @global[:arena] %></span>%</div>
 							<span class="title" href="#">Arena Win Rate</span>
 						</div>
 					</div>
 					<div class="margin-bottom-10 visible-sm"></div>
 					<div class="col-md-4">
 						<div class="easy-pie-chart">
-							<div class="number visits" data-percent=<%= @globcon %>><span><%= @globcon %></span>%</div>
+							<div class="number visits" data-percent=<%= @global[:con] %>><span><%= @global[:con] %></span>%</div>
 							<span class="title">Constructed Win Rate</span>
 						</div>
 					</div>
 					<div class="margin-bottom-10 visible-sm"></div>
 					<div class="col-md-4">
 						<div class="easy-pie-chart">
-							<div class="number bounce" data-percent="46"><span>46</span>%</div>
-							<span class="title" href="#">Random</span>
+							<div class="number bounce" data-percent=<%= @global[:coin] %>><span><%= @global[:coin] %></span>%</div>
+							<span class="title" href="#">Constructed Coin Win Rate</span>
 						</div>
 					</div>
 				</div>
