@@ -19,8 +19,9 @@ class ArenaRun < ActiveRecord::Base
   def self.totalGold(userid)
   	arena_games = ArenaRun.where(user_id: userid)
   	goldamount = arena_games.map { |e| e.gold }
-  	total_gold = goldamount.inject do |sum, el|
-  		sum + el unless el
+  	total_gold = 0
+  	goldamount.each do |g|
+  		total_gold += g
   	end
 
   	total_gold
@@ -28,9 +29,10 @@ class ArenaRun < ActiveRecord::Base
 
   def self.totalDust(userid)
   	arena_games = ArenaRun.where(user_id: userid)
-  	goldamount = arena_games.map { |e| e.dust }
-  	total_dust = goldamount.inject do |sum, el|
-  		sum + el unless el.nil?
+  	dustamount = arena_games.map { |e| e.dust }
+  	total_dust = 0
+  	dustamount.each do |g|
+  		total_dust += g
   	end
 
   	total_dust
