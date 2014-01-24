@@ -84,7 +84,15 @@ Hearthstats::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   # HearthStats API
-  post "api/new"
-  get "api/show"
+  namespace :api do
+  	namespace :v1 do
+  		post "arenas/show"
+	    post "arenas/new"
+
+	    post "constructeds/show"
+	    post "constructeds/new"
+		end
+  end
+
 
 end

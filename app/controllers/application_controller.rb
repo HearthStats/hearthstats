@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  private
+
+  def restrict_access_api
+    if params[:key] != "CAAH2FcC5bM0BAOuRMdK5qxb03KjTJwuqf5ZCPlUBKR3fEZAijyavVrgRbXLjPBCOXOnMuTThdsF8TZC5h7zLc5aie3E2iXBhYyuLnISxz5ZCmUlapS29Xyu1P4VCcpCyYF3fGXZAx4u7PSFZC6ojpjqubeHD2LXxpi9aQR4ZCqOsSRxzpH3hJSf3wgFDVFiYH0ZD"
+      head :unauthorized
+    end
+  end
+
   def layout
     # only turn it off for login pages:
     is_a?(Devise::SessionsController) ? false : "application"
