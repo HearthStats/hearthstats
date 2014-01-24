@@ -30,7 +30,7 @@ class ArenaRun < ActiveRecord::Base
   	arena_games = ArenaRun.where(user_id: userid)
   	goldamount = arena_games.map { |e| e.dust }
   	total_dust = goldamount.inject do |sum, el|
-  		sum + el unless el
+  		sum + el unless el.nil?
   	end
 
   	total_dust
