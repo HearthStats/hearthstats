@@ -86,10 +86,10 @@ Hearthstats::Application.routes.draw do
   # HearthStats API
   namespace :api do
   	namespace :v1 do
-  		post "arenas/show"
+  		get "arenas/show"
 	    post "arenas/new"
 
-	    post "constructeds/show"
+	    get "constructeds/show"
 	    post "constructeds/new"
 		end
   end

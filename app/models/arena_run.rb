@@ -1,5 +1,5 @@
 class ArenaRun < ActiveRecord::Base
-  attr_accessible :class, :gold, :dust, :completed, :user_id, :userclass, :notes
+  attr_accessible :class, :gold, :dust, :completed, :user_id, :userclass, :notes, :complete
   has_many :arenas
 
   after_destroy :delete_all_arena

@@ -10,7 +10,9 @@ module Api
 
 			def new
 				req = ActiveSupport::JSON.decode(request.body).symbolize_keys
+				arena_run_id = ArenaRun.where(user_id: req[:user_id], complete: false).last.id
 				@arena = Arena.new(req)
+				@arena.arena_run_id = arena_run_id
 				if @arena.save
 	        render json: "Success\n"
 	      else
