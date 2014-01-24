@@ -23,6 +23,11 @@ div class="row profile"
                   =image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
                   - if current_user && params[:id] = current_user.id
                     = link_to 'Edit Profile', edit_profile_path, class: "profile-edit"
+                li
+                  a.api-key
+                    |ApiKey:
+                    div.api-button Show
+                    div.show = @apikey
 
             div class="col-md-9"
               div class="row"
