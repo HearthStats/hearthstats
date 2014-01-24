@@ -3,7 +3,7 @@
   :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
 - provide(:title, "#{@profiletitle}'s Profile")
 - provide(:subtitle, social_share_button_tag("#{@profiletitle}'s Hearthstone Profile from HearthStats"))
-- if current_user && params[:id] = current_user.id
+- if current_user && params[:id] == current_user.id
   - content_for :actions do
     = link_to 'Edit Profile', edit_profile_path, class: "btn blue"
 div class="row profile"
@@ -21,13 +21,14 @@ div class="row profile"
               ul class="list-unstyled profile-nav"
                 li
                   =image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
-                  - if current_user && params[:id] = current_user.id
+                  - if current_user && params[:id] == current_user.id
                     = link_to 'Edit Profile', edit_profile_path, class: "profile-edit"
-                li
-                  a.api-key
-                    |ApiKey:
-                    div.api-button Show
-                    div.show = @apikey
+                - if current_user && params[:id] == current_user.id
+                  li
+                    a.api-key
+                      div.api-button App Key
+                      div.key
+                        div.well = @apikey
 
             div class="col-md-9"
               div class="row"
@@ -105,55 +106,3 @@ div class="row profile"
           div class="row profile-achievements"
             div class="col-md-12"
               h2 Coming soon...
-
-/ div.profileheader
-/   - if current_user && params[:id] = current_user.id
-/     span.editprofile = link_to 'Edit Profile', edit_profile_path
-/   - if @profile.bnetid
-/     h4 Battlenet ID: #{@profile.bnetid}##{@profile.bnetnum}
-/   div.share
-/     |Profile Views
-/     = @profile.impressionist_count
-/     = social_share_button_tag("#{@profiletitle} from HearthStats")
-/ div.graphtitle Win Rate vs Days
-/ = render 'dashboards/userchart', width: 1000, height: 200
-/ div.pure-g-r
-/   div.pure-u-1-2
-/     = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate, chartname: "Arena"
-/   div.pure-u-1-2
-/     = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate, chartname: "Constructed"
-/   div.pure-u-1-3
-/     div.userdeckrates
-/       h2 Top Decks from User
-/       - counter = 1
-/       table.rankingtable
-/         - @userdeckrates.each do |c|
-/           -if c[1][1] == -1
-/           -else
-/             tr
-/               td #{counter}. #{image_tag("Icons/Classes/#{c[1][0]}_Icon.gif", height: "24", width: "24")} #{link_to c[0], deck_path(Deck.find(c[1][2]).friendly_id) }
-/               td #{number_to_percentage(c[1][1]*100, precision: 2)}
-/           -counter = counter + 1
-/   div.pure-u-1-3
-/     div.overwin
-/       h2 Overall Win Rates
-/       h3.center Arena
-/       table.rankingtable
-/         tr
-/           th Wins
-/           th Losses
-/           th Win Rate
-/         tr.center
-/           td.victory #{@overallarena[0]}
-/           td.defeat #{@overallarena[1]}
-/           td #{number_to_percentage((@overallarena[0].to_f / @overallarena[2])*100, precision: 2)}
-/       h3.center Constructed
-/       table.rankingtable
-/         tr
-/           th Wins
-/           th Loses
-/           th Win Rate
-/         tr.center
-/           td.victory #{@overallcon[0]}
-/           td.defeat #{@overallcon[1]}
-/           td #{number_to_percentage((@overallcon[0].to_f / @overallcon[2])*100, precision: 2)}

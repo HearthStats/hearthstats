@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   	if self.apikey.nil?
   		self.apikey = SecureRandom.hex
   		self.save!
+
+  		self.apikey
   	else
   		self.apikey
   	end
