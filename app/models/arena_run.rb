@@ -10,7 +10,7 @@ class ArenaRun < ActiveRecord::Base
 
   def self.averageWins(race, userid)
   	arena_games = ArenaRun.where(user_id: userid, :userclass => race)
-  	wins = arena_games.compact.map { |e| e.arenas.where(win:true).count }
+  	wins = arena_games.map { |e| e.arenas.where(win:true).count }
   	average_win = wins.compact.inject{ |sum, el| sum + el }.to_f / wins.size
 
   	average_win
@@ -18,16 +18,20 @@ class ArenaRun < ActiveRecord::Base
 
   def self.totalGold(userid)
   	arena_games = ArenaRun.where(user_id: userid)
-  	goldamount = arena_games.compact.map { |e| e.gold }
-  	total_gold = goldamount.compact.inject{ |sum, el| sum + el }
+  	goldamount = arena_games.map { |e| e.gold }
+  	total_gold = goldamount.inject do |sum, el|
+  		sum + el unless el
+  	end
 
   	total_gold
   end
 
   def self.totalDust(userid)
   	arena_games = ArenaRun.where(user_id: userid)
-  	goldamount = arena_games.compact.map { |e| e.dust }
-  	total_dust = goldamount.compact.inject{ |sum, el| sum + el }
+  	goldamount = arena_games.map { |e| e.dust }
+  	total_dust = goldamount.inject do |sum, el|
+  		sum + el unless el
+  	end
 
   	total_dust
   end
