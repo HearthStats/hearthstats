@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140202184503) do
+=======
+ActiveRecord::Schema.define(:version => 20140124210304) do
+>>>>>>> api db changes
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -82,7 +86,10 @@ ActiveRecord::Schema.define(:version => 20140202184503) do
     t.string    "slug"
     t.text      "notes"
     t.integer   "slot"
+<<<<<<< HEAD
     t.boolean   "active"
+=======
+>>>>>>> api db changes
   end
 
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
