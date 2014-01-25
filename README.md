@@ -7,7 +7,14 @@ Detailed Hearthstone match statistics and tracking.
 Sample API call:
 ----------------
 
+The HearthStats API
+
 ### Arena
+
+*Last Arena Run*
+<pre>
+http://localhost:3000/api/v1/arena_runs/show?key=0e7f8484496dd312c589ef21a507c393
+</pre>
 
 *Start Arena Run*
 <pre>
