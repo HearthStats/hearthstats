@@ -27,7 +27,9 @@ class ArenaRun < ActiveRecord::Base
   	if total_gold.nil?
   		total_gold = 0
   	end
-
+  	if total_gold.nil?
+  		total_gold = 0
+  	end
   	total_gold
   end
 
@@ -41,7 +43,9 @@ class ArenaRun < ActiveRecord::Base
   	if total_dust.nil?
   		total_dust = 0
   	end
-
+  	if total_dust.nil?
+  		total_dust = 0
+  	end
   	total_dust
   end
 
