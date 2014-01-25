@@ -2,6 +2,7 @@ module Api
 	module V1
 		class ArenaRunsController < ApplicationController
 			before_filter :restrict_access_api, :get_user_api
+			skip_before_filter :get_user_api, :only => [:end]
 			respond_to :json
 
 			def show
@@ -28,6 +29,9 @@ module Api
 				# None, just app key
 				# Optional params:
 				# :notes
+
+		    @user = User.where(apikey: params[:key])
+
 				arena_run = ArenaRun.where(user_id: @user[0].id, complete: false).last
 				if arena_run.nil?
 					render json: "No Active Arena Run \n" and return
