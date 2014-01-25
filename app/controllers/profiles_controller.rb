@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @apikey = @user.get_apikey
+    @userkey = @user.get_userkey
     if @user.guest
     	return redirect_to root_url, alert: "Guests cannot access profiles"
     end

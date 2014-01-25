@@ -1,14 +1,15 @@
 module Api
 	module V1
 		class ArenasController < ApplicationController
-			before_filter :restrict_access_api, :get_user_api
+			before_filter :get_app_key, :get_user_api
 			skip_before_filter :get_user_api, :only => :show
 			respond_to :json
 
 			def show
-		    user = User.where(apikey: params[:key])
-				arena_stats = ArenaRun.classArray(user[0].id)
-				render :json => arena_stats
+		    user = User.where(userkey: params[:userkey])
+				api_response = {status: "success", data: ArenaRun.classArray(user[0].id) }
+
+				render :json => api_response
 			end
 
 			def new
@@ -22,9 +23,9 @@ module Api
 				arena.arena_run_id = arena_run.id
 				arena.userclass = arena_run.userclass
 				if arena.save
-	        render json: "Success\n"
+	        render json: {status: "success", data: arena}
 	      else
-	        render json: @arena.errors
+	        render json: {status: "fail", message: arena.errors.full_messages}
 	      end
 			end
 		end

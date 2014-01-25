@@ -26,9 +26,9 @@ div class="row profile"
                 - if current_user && params[:id].to_i == current_user.id
                   li
                     a.api-key
-                      div.api-button App Key
+                      div.api-button User Key
                       div.key
-                        div.well = @apikey
+                        div.well = @userkey
 
             div class="col-md-9"
               div class="row"

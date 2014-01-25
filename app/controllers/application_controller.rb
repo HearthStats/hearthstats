@@ -15,15 +15,16 @@ class ApplicationController < ActionController::Base
   private
 
   # API Methods
-  def restrict_access_api
-    apikey = User.where(apikey: params[:key])
-    unless apikey.exists? && !params[:key].nil?
-    	head :unauthorized
+  def get_app_key
+    userkey = User.where(userkey: params[:userkey])
+    unless userkey.exists? && !params[:userkey].nil?
+    	api_response = {status: "error", message: "User Key Error"}
+    	render :json => api_response and return
     end
   end
 
   def get_user_api
-    @user = User.where(apikey: params[:key])
+    @user = User.where(userkey: params[:userkey])
 		@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 

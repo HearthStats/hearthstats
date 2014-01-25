@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :apikey
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey
   # attr_accessible :title, :body
   has_one :profile
   has_many :arenas
@@ -14,16 +14,16 @@ class User < ActiveRecord::Base
   has_many :arena_runs
   belongs_to :tourny
 
-  validates_uniqueness_of :apikey
+  validates_uniqueness_of :userkey
 
-  def get_apikey
-  	if self.apikey.nil?
-  		self.apikey = SecureRandom.hex
+  def get_userkey
+  	if self.userkey.nil?
+  		self.userkey = SecureRandom.hex
   		self.save!
 
-  		self.apikey
+  		self.userkey
   	else
-  		self.apikey
+  		self.userkey
   	end
   end
 end

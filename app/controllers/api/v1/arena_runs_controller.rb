@@ -1,7 +1,7 @@
 module Api
 	module V1
 		class ArenaRunsController < ApplicationController
-			before_filter :restrict_access_api, :get_user_api
+			before_filter :get_app_key, :get_user_api
 			skip_before_filter :get_user_api, :only => :end
 			skip_before_filter :get_user_api, :only => :show
 			respond_to :json
@@ -9,18 +9,22 @@ module Api
 			def show
 				# Required params:
 				# None, just app key
+				begin
+			    last_arena_run = Hash.new
+			    games = Hash.new
 
-		    last_arena_run = Hash.new
-		    games = Hash.new
-
-		    user = User.where(apikey: params[:key])
-		    last_run = ArenaRun.where(user_id: user[0].id).last
-		    last_run.arenas.each_with_index do |game, i|
-		    	games[i+1] = {:oppclass => game.oppclass, :win => game.win, :coin => !game.gofirst }
-		    end
-		    last_arena_run = {:userclass => last_run.userclass, :matches => games}
-
-				render :json => last_arena_run
+			    user = User.where(userkey: params[:userkey])
+			    last_run = ArenaRun.where(user_id: user[0].id).last
+			    last_run.arenas.each_with_index do |game, i|
+			    	games[i+1] = {:oppclass => game.oppclass, :win => game.win, :coin => !game.gofirst }
+			    end
+			    last_arena_run = {:userclass => last_run.userclass, :matches => games}
+			  rescue
+			  	api_response = {status: "error", message: "Error getting last arena run games"}
+			  else
+			    api_response = {status: "success", data: last_arena_run}
+			  end
+				render :json => api_response
 			end
 
 			def new
@@ -32,9 +36,9 @@ module Api
 				arenarun.userclass = @req[:userclass]
 
 				if arenarun.save
-	        render json: "Arena Run Created\n"
+	        render json: {status: "success", data: arenarun}
 	      else
-	        render json: arenarun.errors
+	        render json: {status: "fail", message: arenarun.errors.full_messages}
 	      end
 			end
 
@@ -44,17 +48,17 @@ module Api
 				# Optional params:
 				# :notes, :gold, :dust
 
-		    user = User.where(apikey: params[:key])
+		    user = User.where(userkey: params[:userkey])
 
 				arena_run = ArenaRun.where(user_id: user[0].id, complete: false).last
 				if arena_run.nil?
-					render json: "No Active Arena Run \n" and return
+					render json: {status: "error", message: "No Active Arena Run"} and return
 				end
 				arena_run.complete = true
 				if arena_run.save
-	        render json: "Arena Run Ended\n"
+	        render json: {status: "success", data: arena_run}
 	      else
-	        render json: arenarun.errors
+	        render json: {status: "fail", message: arenarun.errors.full_messages}
 	      end
 			end
 
