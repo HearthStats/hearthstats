@@ -1,10 +1,27 @@
 HearthStats
 ===========
 
-Details Hearthstone match statistics.
+Detailed Hearthstone match statistics and tracking.
 
 
 Sample API call:
+----------------
+
+*Arena Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"user_id":"1","deckname":"Rogue123","oppclass":"Shaman","win":"false","gofirst":"true","deck_id":"1635", "notes":"jeffrey is the best"}' localhost:3000/api/v1/constructeds/new?key=CAAH2FcC5bM0BAOuRMdK5qxb03KjTJwuqf5ZCPlUBKR3fEZAijyavVrgRbXLjPBCOXOnMuTThdsF8TZC5h7zLc5aie3E2iXBhYyuLnISxz5ZCmUlapS29Xyu1P4VCcpCyYF3fGXZAx4u7PSFZC6ojpjqubeHD2LXxpi9aQR4ZCqOsSRxzpH3hJSf3wgFDVFiYH0ZD
+curl -X POST -H "Content-Type: application/json" -d '{"oppclass":"Shaman","win":"false","gofirst":"true"}' localhost:3000/api/v1/arenas/new?key=0e7f8484496dd312c589ef21a507c393
+</pre>
+
+<pre>
+	curl -X POST -H "Content-Type: application/json" -d '{"deckslot":1,"oppclass":"Shaman","win":"false","gofirst":"true", "notes":"supernotes hoho"}' localhost:3000/api/v1/constructeds/new?key=0e7f8484496dd312c589ef21a507c393
+</pre>
+
+*Start Arena Run*
+<pre>
+	curl -X POST -H "Content-Type: application/json" -d '{ "userclass":"Rogue" }' localhost:3000/api/v1/arena_runs/new?key=0e7f8484496dd312c589ef21a507c393
+</pre>
+
+*End Arena Run*
+<pre>
+	curl -X POST -H "Content-Type: application/json" -d '{ "userclass":"Rogue" }' localhost:3000/api/v1/arena_runs/end?key=0e7f8484496dd312c589ef21a507c393
 </pre>

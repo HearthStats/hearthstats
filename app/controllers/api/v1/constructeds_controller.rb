@@ -12,7 +12,7 @@ module Api
 				req = ActiveSupport::JSON.decode(request.body).symbolize_keys
 				@constructed = Constructed.new(req)
 				if @constructed.save
-	        render json: "Success\n"
+	        render json: @user
 	      else
 	        render json: @constructed.errors
 	      end

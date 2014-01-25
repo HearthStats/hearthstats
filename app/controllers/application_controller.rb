@@ -14,12 +14,17 @@ class ApplicationController < ActionController::Base
 
   private
 
-  private
-
+  # API Methods
   def restrict_access_api
-    if params[:key] != "CAAH2FcC5bM0BAOuRMdK5q"
-      head :unauthorized
+    apikey = User.where(apikey: params[:key])
+    unless apikey.exists? && !params[:key].nil?
+    	head :unauthorized
     end
+  end
+
+  def get_user_api
+    @user = User.where(apikey: params[:key])
+		@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 
   def layout

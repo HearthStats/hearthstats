@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :arena_runs
   belongs_to :tourny
 
+  validates_uniqueness_of :apikey
+
   def get_apikey
   	if self.apikey.nil?
   		self.apikey = SecureRandom.hex
