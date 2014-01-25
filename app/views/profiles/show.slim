@@ -3,7 +3,7 @@
   :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
 - provide(:title, "#{@profiletitle}'s Profile")
 - provide(:subtitle, social_share_button_tag("#{@profiletitle}'s Hearthstone Profile from HearthStats"))
-- if current_user && params[:id] == current_user.id
+- if current_user && params[:id].to_i == current_user.id
   - content_for :actions do
     = link_to 'Edit Profile', edit_profile_path, class: "btn blue"
 div class="row profile"
@@ -21,9 +21,9 @@ div class="row profile"
               ul class="list-unstyled profile-nav"
                 li
                   =image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
-                  - if current_user && params[:id] == current_user.id
+                  - if current_user && params[:id].to_i == current_user.id
                     = link_to 'Edit Profile', edit_profile_path, class: "profile-edit"
-                - if current_user && params[:id] == current_user.id
+                - if current_user && params[:id].to_i == current_user.id
                   li
                     a.api-key
                       div.api-button App Key
