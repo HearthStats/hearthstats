@@ -117,4 +117,20 @@ class DecksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def active_decks
+    @decks = Deck.where(:user_id => current_user.id)
+    @myDecks = getMyDecks()
+
+  end
+
+  def submit_active_decks
+
+  end
+
+  private
+
+  def getMyDecks()
+    return Deck.where(:user_id => current_user.id).order(:race, :name).all
+  end
 end

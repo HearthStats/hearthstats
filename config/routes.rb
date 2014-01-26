@@ -46,7 +46,12 @@ Hearthstats::Application.routes.draw do
 
 
   resources :profiles
-  resources :decks
+  resources :decks do
+  	collection do
+      get 'active_decks'
+      post 'submit_active_decks'
+  	end
+  end
   resources :dashboards do
     collection do
       get 'race'

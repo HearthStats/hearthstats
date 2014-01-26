@@ -42,9 +42,9 @@
 						<%= f.label "Deck Name" %>
 						<br />
 						<% if !@lastentry.nil? %>
-							<%= select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deckname)) %>
+							<%= f.select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deckname)) %>
 						<% else %>
-							<%= select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]})) %>
+							<%= f.select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]})) %>
 						<% end %>
 					</div>
 				</div>

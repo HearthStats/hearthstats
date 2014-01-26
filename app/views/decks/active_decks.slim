@@ -1,0 +1,32 @@
+- set_meta_tags :title => 'Active Decks',
+  :description => 'Active User Decks',
+  :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Active Deck')
+- provide(:subtitle, ' all active constructed decks')
+= form_tag('/decks/submit_active_decks') do
+  div.deck-slot
+    div.row.slot-row
+      div.col-xs-4
+        = select_tag( "deck-1", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}), class: "slot-decks")
+        p test
+      div.col-xs-4
+        p test
+      div.col-xs-4
+        p test
+    div.row.slot-row
+      div.col-xs-4
+        p test
+      div.col-xs-4
+        p test
+      div.col-xs-4
+        p test
+    div.row.slot-row
+      div.col-xs-4
+        p test
+      div.col-xs-4
+        p test
+      div.col-xs-4
+        p test
+javascript:
+  app.UI.initClassSelector('#deck-1');
+  app.UI.initDeckSelector("#deckname_0")
