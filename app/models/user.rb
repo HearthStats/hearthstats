@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
   has_many :arena_runs
   belongs_to :tourny
 
-  validates_uniqueness_of :userkey
-
   def get_userkey
   	if self.userkey.nil?
   		self.userkey = SecureRandom.hex
