@@ -124,6 +124,7 @@ class DecksController < ApplicationController
 
   def submit_active_decks
   	saves = 0
+		Deck.where(:user_id => current_user.id).update_all(:active => nil)
   	(1..9).each do |i|
   		deck = Deck.where(:user_id => current_user.id, :name => params[i.to_s])[0]
   		deck.slot = i
