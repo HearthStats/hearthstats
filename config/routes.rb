@@ -32,7 +32,7 @@ Hearthstats::Application.routes.draw do
   post "admin/update_patch"
 
   get "welcome/index"
-  post "welcome/demo_user"
+  get "welcome/demo_user"
 
   resources :arena_runs do
     collection do
