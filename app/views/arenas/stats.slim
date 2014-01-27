@@ -59,6 +59,9 @@ div.row
             div.arena-detail
               div.arena-detail-title = arena_detail[0]
               -if i == 0 || i == 1
-                div.arena-detail-value = arena_detail[1].round(2)
+                - if arena_detail[1].round(2) == -1
+                  div.arena-detail-value No games
+                - else
+                  div.arena-detail-value = arena_detail[1].round(2)
               -else
                 div.arena-detail-value = number_to_percentage(arena_detail[1]*100, precision: 2)
