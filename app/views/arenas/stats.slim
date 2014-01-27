@@ -24,6 +24,26 @@ div.overall
   div.arena-overall
     div.arena-overall-title Arena Games Played
     = Arena.where(user_id: current_user.id).count
+  div.stats-table.row
+    div.most-played.col-md-6
+      h4 Most played
+      table.rankingtable
+        - winRate = @arena_array.sort_by{ |array| array[1][1][1]}.reverse
+        - winRate.each do |klass|
+          tr
+            td = klass[0]
+            td = klass[1][1][1]
+    div.most-played.col-md-6
+      h4 Longest average runs
+      table.rankingtable
+        - winRate = @arena_array.sort_by{ |array| array[1][0][1]}.reverse
+        - winRate.each do |klass|
+          tr
+            td = klass[0]
+            - if klass[1][0][1].round(2) == -1
+              td No games
+            - else
+              td = klass[1][0][1].round(2)
 
 h3.detail-title Detailed Class Stats
 div.row
@@ -31,12 +51,14 @@ div.row
     div.col-sm-12.col-md-6.col-lg-4
       div.portlet.box.blue
         div.portlet-title.arena-class
-          div.caption.class-name = aa[0]
+          div.caption.class-name
+            = image_tag("Icons/Classes/#{aa[0]}_Icon.gif", height: "24", width: "24")
+            = aa[0]
         div.portlet-body
           - aa[1].each_with_index do |arena_detail, i|
             div.arena-detail
               div.arena-detail-title = arena_detail[0]
               -if i == 0 || i == 1
-                div.arena-detail-value = arena_detail[1]
+                div.arena-detail-value = arena_detail[1].round(2)
               -else
                 div.arena-detail-value = number_to_percentage(arena_detail[1]*100, precision: 2)

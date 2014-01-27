@@ -12,6 +12,7 @@ class ArenaRun < ActiveRecord::Base
   	arena_games = ArenaRun.where(user_id: userid, :userclass => race)
   	wins = arena_games.map { |e| e.arenas.where(win:true).count }
   	average_win = wins.compact.inject{ |sum, el| sum + el }.to_f / wins.size
+  	average_win = -1 if average_win.nan?
 
   	average_win
   end
