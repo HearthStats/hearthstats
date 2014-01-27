@@ -14,7 +14,7 @@ module Api
 			    games = Hash.new
 
 			    user = User.where(userkey: params[:userkey])
-			    last_run = ArenaRun.where(user_id: user[0].id).last
+			    last_run = ArenaRun.where(user_id: user.id).last
 			    last_run.arenas.each_with_index do |game, i|
 			    	games[i+1] = {:oppclass => game.oppclass, :win => game.win, :coin => !game.gofirst }
 			    end
@@ -32,7 +32,7 @@ module Api
 				# params[:userclass]
 
 				arenarun = ArenaRun.new
-				arenarun.user_id = @user[0].id
+				arenarun.user_id = @user.id
 				arenarun.userclass = @req[:userclass]
 
 				if arenarun.save
@@ -48,13 +48,14 @@ module Api
 				# Optional params:
 				# :notes, :gold, :dust
 
-		    user = User.where(userkey: params[:userkey])
+		    user = User.where(userkey: params[:userkey])[0]
 
-				arena_run = ArenaRun.where(user_id: user[0].id, complete: false).last
+				arena_run = ArenaRun.where(user_id: user.id, complete: false).last
 				if arena_run.nil?
 					render json: {status: "error", message: "No Active Arena Run"} and return
 				end
 				arena_run.complete = true
+
 				if arena_run.save
 	        render json: {status: "success", data: arena_run}
 	      else

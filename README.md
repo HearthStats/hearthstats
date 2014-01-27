@@ -22,7 +22,7 @@ http://localhost:3000/api/v1/arena_runs/show?userkey=secret
 
 *Start Arena Run*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{ "userclass":"Rogue" }' localhost:3000/api/v1/arena_runs/new?userkey=secret
+curl -X POST -H "Content-Type: application/json" -d '{ "userclass":"Rogue" }' localhost:3000/api/v1/arena_runs/new?userkey=0e7f8484496dd312c589ef21a507c393
 </pre>
 
 *End Arena Run*
@@ -39,6 +39,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"oppclass":"Shaman","win":
 
 *Constructed Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"deckslot":1,"oppclass":"Shaman","win":"false","gofirst":"true", "notes":"supernotes hoho"}' localhost:3000/api/v1/constructeds/new?userkey=secret
+curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"userclass":"Priest", "oppclass":"Shaman","win":"false","gofirst":"true", "rank":"Casual"}' localhost:3000/api/v1/constructeds/new?userkey=0e7f8484496dd312c589ef21a507c393
 </pre>
 

@@ -6,27 +6,12 @@
 = form_tag('/decks/submit_active_decks') do
   div.deck-slot
     div.row.slot-row
-      div.col-xs-4
-        = select_tag( "deck-1", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}), class: "slot-decks")
-        p test
-      div.col-xs-4
-        p test
-      div.col-xs-4
-        p test
-    div.row.slot-row
-      div.col-xs-4
-        p test
-      div.col-xs-4
-        p test
-      div.col-xs-4
-        p test
-    div.row.slot-row
-      div.col-xs-4
-        p test
-      div.col-xs-4
-        p test
-      div.col-xs-4
-        p test
-javascript:
-  app.UI.initClassSelector('#deck-1');
-  app.UI.initDeckSelector("#deckname_0")
+      -(1..9).each do |i|
+        div.col-xs-4
+          div.slot-id Slot ##{i}
+          - deckName = @activeDecks.where(slot: i)[0].name unless @activeDecks.where(slot: i)[0].nil?
+          = select_tag( "#{i}", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, deckName), class: "slot-decks")
+    = submit_tag "submit"
+/ javascript:
+/   app.UI.initClassSelector('#deck-1');
+/   app.UI.initDeckSelector("#deckname_0")

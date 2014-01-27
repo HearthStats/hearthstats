@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_user_api
-    @user = User.where(userkey: params[:userkey])
+    @user = User.where(userkey: params[:userkey])[0]
 		@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 

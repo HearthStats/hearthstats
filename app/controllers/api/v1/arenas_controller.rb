@@ -6,8 +6,8 @@ module Api
 			respond_to :json
 
 			def show
-		    user = User.where(userkey: params[:userkey])
-				api_response = {status: "success", data: ArenaRun.classArray(user[0].id) }
+		    user = User.where(userkey: params[:userkey])[0]
+				api_response = {status: "success", data: ArenaRun.classArray(user.id) }
 
 				render :json => api_response
 			end
@@ -18,7 +18,7 @@ module Api
 				# Optional params:
 				# :notes
 
-				arena_run = ArenaRun.where(user_id: @user[0].id, complete: false).last
+				arena_run = ArenaRun.where(user_id: @user.id, complete: false).last
 				arena = Arena.new(@req)
 				arena.arena_run_id = arena_run.id
 				arena.userclass = arena_run.userclass

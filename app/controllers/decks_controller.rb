@@ -99,10 +99,8 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -119,13 +117,27 @@ class DecksController < ApplicationController
   end
 
   def active_decks
-    @decks = Deck.where(:user_id => current_user.id)
+    @activeDecks = Deck.where(:user_id => current_user.id, active: true)
     @myDecks = getMyDecks()
 
   end
 
   def submit_active_decks
+  	saves = 0
+  	(1..9).each do |i|
+  		deck = Deck.where(:user_id => current_user.id, :name => params[i.to_s])[0]
+  		deck.slot = i
+  		deck.active = true
 
+  		if deck.save
+				saves += 1
+  		end
+  	end
+  	if saves == 9
+			redirect_to active_decks_decks_path, notice: 'Active decks successfully updated.'
+		else
+			redirect_to active_decks_decks_path, notice: 'Cannot Update Active Decks'
+		end
   end
 
   private
