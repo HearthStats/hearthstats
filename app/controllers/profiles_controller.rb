@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   def index
+    authenticate_user!
   	redirect_to "/profiles/#{current_user.id}"
   end
 
