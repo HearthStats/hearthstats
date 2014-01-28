@@ -28,7 +28,7 @@
 	<!-- BEGIN LOGIN -->
 	<div class="content">
 		<!-- BEGIN LOGIN FORM -->
-		<%= form_for("user", :url => user_session_path,  :html => {class: "login-form"}) do |f| %>
+		<%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
 			<h3 class="form-title">Login to your account</h3>
 			<div class="form-group">
 				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
@@ -47,7 +47,7 @@
 			</div>
 			<div class="form-actions">
 				<label>
-			    <%= f.check_box :remember_me, :name => "remember" %>
+			    <%= f.check_box :remember_me %>
 				  Remember me
 				</label>
 				<%= f.submit "Login", class: "btn blue pull-right" %>
