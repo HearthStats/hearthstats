@@ -22,7 +22,7 @@ class ArenaRun < ActiveRecord::Base
   	goldamount = arena_games.map { |e| e.gold }
   	total_gold = 0
   	goldamount.each do |g|
-  		total_gold += g
+  		total_gold += g unless g.nil?
   	end
 
   	total_gold
@@ -33,7 +33,7 @@ class ArenaRun < ActiveRecord::Base
   	dustamount = arena_games.map { |e| e.dust }
   	total_dust = 0
   	dustamount.each do |g|
-  		total_dust += g
+  		total_dust += g unless g.nil?
   	end
 
   	total_dust
