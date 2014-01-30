@@ -32,13 +32,13 @@ curl localhost:3000/api/v1/arena_runs/end?userkey=0e7f8484496dd312c589ef21a507c3
 
 *Arena Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"oppclass":"Shaman","win":"false","gofirst":"true"}' localhost:3000/api/v1/arenas/new?userkey=0e7f8484496dd312c589ef21a507c393
+curl -X POST -H "Content-Type: application/json" -d '{"oppclass":"Shaman","win":"false","gofirst":"true",  "oppname":"MubaMuba"}' localhost:3000/api/v1/arenas/new?userkey=0e7f8484496dd312c589ef21a507c393
 </pre>
 
 ### Constructed
 
 *Constructed Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"userclass":"Priest", "oppclass":"Shaman","win":"false","gofirst":"true", "rank":"Casual"}' localhost:3000/api/v1/constructeds/new?userkey=0e7f8484496dd312c589ef21a507c393
+curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"userclass":"Priest", "oppclass":"Shaman","win":"false","gofirst":"true", "rank":"Ranked", "ranklvl":"3", "oppname":"MubaMuba"}' localhost:3000/api/v1/constructeds/new?userkey=0e7f8484496dd312c589ef21a507c393
 </pre>
 

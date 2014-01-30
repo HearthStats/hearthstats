@@ -1,5 +1,6 @@
 class Constructed < ActiveRecord::Base
-  attr_accessible :deckname, :oppclass, :win, :gofirst, :notes, :rank, :deck_id, :user_id
+  attr_accessible :deckname, :oppclass, :win, :gofirst,
+  								:notes, :rank, :deck_id, :user_id, :oppname, :ranklvl, :legendary
   belongs_to :deck
 
   def self.overall_win_rate(userid)

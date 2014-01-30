@@ -39,6 +39,9 @@ module Api
 				constructed.win = @req[:win]
 				constructed.gofirst = @req[:gofirst]
 				constructed.rank = @req[:rank]
+				constructed.oppname = @req[:oppname]
+				constructed.ranklvl = @req[:ranklvl]
+				constructed.legendary = @req[:legendary]
 
 				if constructed.save
 	        render json: {status: "success", data: constructed}

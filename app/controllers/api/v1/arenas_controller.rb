@@ -19,6 +19,10 @@ module Api
 				# :notes
 
 				arena_run = ArenaRun.where(user_id: @user.id, complete: false).last
+				if arena_run.nil?
+					arena_run = ArenaRun.new(user_id: @user.id, userclass: @req[:userclass])
+					arena_run.save
+				end
 				arena = Arena.new(@req)
 				arena.arena_run_id = arena_run.id
 				arena.userclass = arena_run.userclass
