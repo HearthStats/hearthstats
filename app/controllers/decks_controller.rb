@@ -126,6 +126,10 @@ class DecksController < ApplicationController
   	saves = 0
 		Deck.where(:user_id => current_user.id).update_all(:active => nil)
   	(1..9).each do |i|
+  		if params[i.to_s].blank?
+  			next
+				saves += 1
+  		end
   		deck = Deck.where(:user_id => current_user.id, :name => params[i.to_s])[0]
   		deck.slot = i
   		deck.active = true
@@ -137,7 +141,7 @@ class DecksController < ApplicationController
   	if saves == 9
 			redirect_to active_decks_decks_path, notice: 'Active decks successfully updated.'
 		else
-			redirect_to active_decks_decks_path, notice: 'Cannot Update Active Decks'
+			redirect_to active_decks_decks_path, error: 'Cannot Update Active Decks'
 		end
   end
 

@@ -42,7 +42,10 @@ div class="portlet box blue"
               span Coin
           td
             - if match.rank == "Ranked"
-              = match.ranklvl
+              - if match.ranklvl.nil?
+                |Ranked
+              - else
+                = match.ranklvl
             - else
               = match.rank
           td = match.oppname
