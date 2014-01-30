@@ -27,12 +27,24 @@
 								<div class="col1">
 									<div class="cont">
 										<div class="cont-col1">
-											<% if entry[0] == "Arena" %>
+											<% if entry[0] == "Arena" and entry[3] == true %>
 												<div class="label label-sm label-info">
 													<%=image_tag("swords.svg", height: 17, width: 17) %>
 												</div>
-											<% else %>
+											<% elsif entry[0] == "Arena" and entry[3] == false %>
+												<div class="label label-sm label-warning">
+													<%=image_tag("swords.svg", height: 17, width: 17) %>
+												</div>
+											<% elsif entry[0] == "Constructed" and entry[3] == true %>
 												<div class="label label-sm label-success">
+													<%=image_tag("swords.svg", height: 17, width: 17) %>
+												</div>
+											<% elsif entry[0] = "Constructed" and entry[3] == false %>
+												<div class="label label-sm label-danger">
+													<%=image_tag("swords.svg", height: 17, width: 17) %>
+												</div>
+											<% else %>
+												<div class="label label-sm label-info">
 													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
 												</div>
 											<% end %>
