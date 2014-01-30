@@ -21,7 +21,7 @@
 			<div class="col-md-6 center">
 			  <div class="oppfield">
 			    <%= f.label "Class" %> <br>
-			    <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+			    <%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @deck.race) %>
 			  </div>
 			</div>
 		  <div class="hidden">
