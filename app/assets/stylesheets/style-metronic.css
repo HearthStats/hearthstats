@@ -994,71 +994,74 @@ h7 .label {
 /**
 class specific label colors
 DK and Monk are included for future use
-priest is altered from white to grey for support of white text
+Priest is altered from white to grey for support of white text
+Rogue is altered to a more golden for text readability
 **/
 
-.label-deathknight,
-.badge-deathknight {
+.label-Deathknight,
+.badge-Deathknight {
   background-color: #C41F3B;
   background-image: none !important;
 }
 
-.label-druid,
-.badge-druid {
+.label-Druid,
+.badge-Druid {
   background-color: #FF7D0A;
   background-image: none !important;
 }
 
-.label-hunter,
-.badge-hunter {
+.label-Hunter,
+.badge-Hunter {
   background-color: #ABD473;
   background-image: none !important;
 }
 
-.label-mage,
-.badge-mage {
+.label-Mage,
+.badge-Mage {
   background-color: #69CCF0;
   background-image: none !important;
 }
 
-.label-monk,
-.badge-monk {
+.label-Monk,
+.badge-Monk {
   background-color: #00FF96;
   background-image: none !important;
 }
 
-.label-paladin,
-.badge-paladin {
+.label-Paladin,
+.badge-Paladin {
   background-color: #F58CBA;
   background-image: none !important;
 }
 
-.label-priest,
-.badge-priest {
+.label-Priest,
+.badge-Priest {
   background-color: #999999;
   background-image: none !important;
 }
 
-.label-rogue,
-.badge-rogue {
-  background-color: #FFF569;
+/
+
+.label-Rogue,
+.badge-Rogue {
+  background-color: #E5E500;
   background-image: none !important;
 }
 
-.label-shaman,
-.badge-shaman {
+.label-Shaman,
+.badge-Shaman {
   background-color: #0070DE;
   background-image: none !important;
 }
 
-.label-warlock,
-.badge-warlock {
+.label-Warlock,
+.badge-Warlock {
   background-color: #9482C9;
   background-image: none !important;
 }
 
-.label-warrior,
-.badge-warrior {
+.label-Warrior,
+.badge-Warrior {
   background-color: #C79C6E;
   background-image: none !important;
 }
