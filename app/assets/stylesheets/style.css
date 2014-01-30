@@ -2841,6 +2841,100 @@ Dashboard stats
   background-color: #6e1881;
 }
 
+/***
+Dashboard boxes color matched to WoW classes
+DK and Monk are included for future use
+Priest is altered from white to grey for support of white text
+Rogue is altered to a golden for text readability
+***/
+
+.dashboard-stat.DeathKnight {
+  background-color: #C41F3B;
+}
+
+.dashboard-stat.DeathKnight .more {
+  background-color: #A20D19
+}
+
+.dashboard-stat.Druid {
+  background-color: #FF7D0A;
+}
+
+.dashboard-stat.Druid .more {
+  background-color: #DD5B08
+}
+
+.dashboard-stat.Hunter {
+  background-color: #ABD473;
+}
+
+.dashboard-stat.Hunter .more {
+  background-color: #89B251
+}
+
+.dashboard-stat.Mage {
+  background-color: #69CCF0;
+}
+
+.dashboard-stat.Mage .more {
+  background-color: #47AAD0
+}
+
+.dashboard-stat.Monk {
+  background-color: #00FF96;
+}
+
+.dashboard-stat.Monk .more {
+  background-color: #00DD74
+}
+
+.dashboard-stat.Paladin {
+  background-color: #F58CBA;
+}
+
+.dashboard-stat.Paladin .more {
+  background-color: #D36A98
+}
+
+.dashboard-stat.Priest {
+  background-color: #999999;
+}
+
+.dashboard-stat.Priest .more {
+  background-color: #777777
+}
+
+.dashboard-stat.Rogue {
+  background-color: #f1c40f;
+}
+
+.dashboard-stat.Rogue .more {
+  background-color: #d0A20D
+}
+
+.dashboard-stat.Shaman {
+  background-color: #0070DE;
+}
+
+.dashboard-stat.Shaman .more {
+  background-color: #0050BC
+}
+
+.dashboard-stat.Warlock {
+  background-color: #9482C9;
+}
+
+.dashboard-stat.Warlock .more {
+  background-color: #7260A7
+}
+
+.dashboard-stat.Warrior {
+  background-color: #C79C6E;
+}
+
+.dashboard-stat.Warrior .more {
+  background-color: #A57A4D
+}
 
 /***
 Tiles(new in v1.1.1)
