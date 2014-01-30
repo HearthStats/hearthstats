@@ -4,6 +4,7 @@ table class="table table-bordered table-striped table-condensed flip-content"
       th Your Class
       th Opponent Class
       th Win?
+      th Opponent Name
       th Options
     tbody
     - arenas.each do |match|
@@ -15,6 +16,7 @@ table class="table table-bordered table-striped table-condensed flip-content"
             span.victory Victory
           -else
             span.defeat Defeat
+        td = match.oppname
         td
           = link_to edit_arena_path(match), class: 'btn default btn-xs purple' do
             i class="fa fa-pencil-square-o"
