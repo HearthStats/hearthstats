@@ -10,6 +10,9 @@ div.row
     h3.deck_title Stats
     = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
     p
+      b Class:
+      = @deck.race
+    p
       b.victory Wins:
       = @deck.constructeds.where(win: true).count
     p

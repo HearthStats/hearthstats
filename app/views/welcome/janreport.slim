@@ -98,82 +98,16 @@ div.main
           h3 ARENA
           table.arena-win-rates.report-table
             th
-              -(1..9).each do |c|
-                td = @classesArray[c]
-              / td.druid Druid
-              / td.hunter Hunter
-              / td.mage Mage
-              / td.paladin Paladin
-              / td.priest Priest
-              / td.rogue Rogue
-              / td.shaman Shaman
-              / td.warlock Warlock
-              / td.warrior Warrior
-            -(1..9).each do |c|
+              -@classesArray.each do |c|
+                td class="#{c}" = c
+            -@classesArray.each do |c|
               tr
-                td = @classesArray[c]
-                -(1..9).each do |i|
-                  td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.druid Druid
-              /   -(0..7).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.hunter Hunter
-              /   td
-              /   -(8..14).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.mage Mage
-              /   td
-              /   td
-              /   -(15..20).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.paladin Paladin
-              /   td
-              /   td
-              /   td
-              /   -(21..25).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.priest Priest
-              /   td
-              /   td
-              /   td
-              /   td
-              /   -(26..29).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.rogue Rogue
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td
-              /   -(30..32).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.shaman Shaman
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td
-              /   -(33..34).each do |i|
-              /     td = number_to_percentage(@userarenarate[i][1]*100, precision: 2)
-              / tr
-              /   td.warlock Warlock
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td
-              /   td = number_to_percentage(@userarenarate[35][1]*100, precision: 2)
-          small how to read: vertical vs horizontal
+                td class="#{c}" = c
+                -currentClass = @userarenarate.select {|a| a[0] == c}
+                -currentClass.each do |rate|
+                  td
+                    = number_to_percentage(rate[1][1]*100, precision: 2)
+          small how to read: horizontal vs vertical
     section.page3
       div.page_container
         h2 Global Win Rates
@@ -181,74 +115,16 @@ div.main
           h3 CONSTRUCTED
           table.arena-win-rates.report-table
             th
-              td.hunter Hunter
-              td.mage Mage
-              td.paladin Paladin
-              td.priest Priest
-              td.rogue Rogue
-              td.shaman Shaman
-              td.warlock Warlock
-              td.warrior Warrior
-            tr
-              td.druid Druid
-              -(0..7).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.hunter Hunter
-              td
-              -(8..14).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.mage Mage
-              td
-              td
-              -(15..20).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.paladin Paladin
-              td
-              td
-              td
-              -(21..25).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.priest Priest
-              td
-              td
-              td
-              td
-              -(26..29).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.rogue Rogue
-              td
-              td
-              td
-              td
-              td
-              -(30..32).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.shaman Shaman
-              td
-              td
-              td
-              td
-              td
-              td
-              -(33..34).each do |i|
-                td = number_to_percentage(@conrate[i][1]*100, precision: 2)
-            tr
-              td.warlock Warlock
-              td
-              td
-              td
-              td
-              td
-              td
-              td
-              td = number_to_percentage(@conrate[35][1]*100, precision: 2)
-          small how to read: vertical vs horizontal
+              -@classesArray.each do |c|
+                td class="#{c}" = c
+            -@classesArray.each do |c|
+              tr
+                td class="#{c}" = c
+                -currentClass = @conrate.select {|a| a[0] == c}
+                -currentClass.each do |rate|
+                  td
+                    = number_to_percentage(rate[1][1]*100, precision: 2)
+          small how to read: horizontal vs vertical
   section.page4.hsstats
     div.page_container
       h2 HearthStats
@@ -272,10 +148,6 @@ div.main
           div.regcont
             a class="btn btn-success btn-lg regbutton " href="/users/sign_up" Register Now
 
-javascript:
-    var addthis_config = {"data_track_addressbar":true};
-
-script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51b7f4835a9fac8a"
 javascript:
   $(document).ready(function() {
     var isShownArena = false;
