@@ -1633,6 +1633,86 @@ Box portlet
    border-top: 0;
 }
 
+.portlet.box.Druid > .portlet-title {
+  background-color: #FF7D0A;
+}
+
+.portlet.box.Druid {
+   border: 1px solid #FF7D0A;
+   border-top: 0;
+}
+.portlet.box.Hunter > .portlet-title {
+  background-color: #ABD473;
+}
+
+.portlet.box.Hunter {
+   border: 1px solid #ABD473;
+   border-top: 0;
+}
+
+.portlet.box.Mage > .portlet-title {
+  background-color: #69CCF0;
+}
+
+.portlet.box.Mage {
+   border: 1px solid #69CCF0;
+   border-top: 0;
+}
+
+.portlet.box.Paladin > .portlet-title {
+  background-color: #F58CBA;
+}
+
+.portlet.box.Paladin {
+   border: 1px solid #F58CBA;
+   border-top: 0;
+}
+
+.portlet.box.Priest > .portlet-title {
+  background-color: #999999;
+}
+
+.portlet.box.Priest {
+   border: 1px solid #999999;
+   border-top: 0;
+}
+
+.portlet.box.Rogue > .portlet-title {
+  background-color: #f1c40f;
+}
+
+.portlet.box.Rogue {
+   border: 1px solid #f1c40f;
+   border-top: 0;
+}
+
+.portlet.box.Shaman > .portlet-title {
+  background-color: #0070DE;
+}
+
+.portlet.box.Shaman {
+   border: 1px solid #0070DE;
+   border-top: 0;
+}
+
+.portlet.box.Warlock > .portlet-title {
+  background-color: #9482C9;
+}
+
+.portlet.box.Warlock {
+   border: 1px solid #9482C9;
+   border-top: 0;
+}
+
+.portlet.box.Warrior > .portlet-title {
+  background-color: #A57A4D;
+}
+
+.portlet.box.Warrior {
+   border: 1px solid #A57A4D;
+   border-top: 0;
+}
+
 /***
 Charts and statistics
 ***/

@@ -49,7 +49,7 @@ h3.detail-title Detailed Class Stats
 div.row
   - @arena_array.each do |arena_run|
     div.col-sm-12.col-md-6.col-lg-4
-      div.portlet.box.blue
+      div class="portlet box #{arena_run[0]}"
         div.portlet-title.arena-class
           div.caption.class-name
             = image_tag("Icons/Classes/#{arena_run[0]}_Icon.gif", height: "24", width: "24")
