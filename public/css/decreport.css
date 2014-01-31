@@ -439,3 +439,34 @@ body, .onepage-wrapper, html {
 .hsinfo{
 	padding-right: 40px;
 }
+
+/* Go To Top */
+
+.go-top {
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	text-decoration: none;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.3);
+	font-size: 12px;
+	padding: 1em;
+	display: none;
+}
+
+.go-top:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+/*Patch number*/
+#splash{
+	position: relative;
+}
+
+#splash .patch{
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+}

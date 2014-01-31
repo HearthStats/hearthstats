@@ -19,6 +19,7 @@ div class="nav-top clearfix"
       span Sign Up
 div.main
   section.most-played#splash
+    div.patch All stats are post 1.0.0.4458
   section.most-played.page1
     div.page_container.global
       h2 Most Played Classes
@@ -171,7 +172,8 @@ div.main
             p.disclaimer Please note that the HearthStats uploader app uses screen capture technology so it is perfectly legal. You can find the source code <a href="https://github.com/JeromeDane/HearthStats.net-Uploader"> here</a> if you are curious. You can also check out the related <a href="http://redd.it/1wa4rc">Reddit Thread</a>.
           div.regcont
             a class="btn btn-success btn-lg regbutton " href="/users/sign_up" Register Now
-
+footer
+  a href="#" class="go-top" Go Top
 javascript:
   $(document).ready(function() {
     var isShownArena = false;
@@ -196,4 +198,20 @@ javascript:
         isShownCon = false;
       }
     });
+
+    // Show or hide the sticky footer button
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $('.go-top').fadeIn(200);
+      } else {
+        $('.go-top').fadeOut(200);
+      }
+    });
+
+    // Animate the scroll to top
+    $('.go-top').click(function(event) {
+      event.preventDefault();
+
+      $('html, body').animate({scrollTop: 0}, 300);
+    })
   });

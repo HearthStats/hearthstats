@@ -98,8 +98,8 @@ class WelcomeController < ApplicationController
 		@arenaRuns = Array.new
 		classes.each do |c|
 			runCount = Array.new(13,0)
-			totGames = ArenaRun.where(userclass: c).count
-			ArenaRun.where(userclass: c).each do |ar|
+			totGames = ArenaRun.where(userclass: c).where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).count
+			ArenaRun.where(userclass: c).where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).each do |ar|
 				runCount[ar.arenas.count] += 1 unless ar.arenas.count > 12
 			end
 			runPercent = runCount.map { |e| e.to_f/totGames }
