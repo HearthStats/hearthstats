@@ -457,7 +457,10 @@ body, .onepage-wrapper, html {
 .go-top:hover {
 	background-color: rgba(0, 0, 0, 0.6);
 }
-
+.hsstats{
+	margin-right: 20px;
+	margin-left: 20px;
+}
 /*Patch number*/
 #splash{
 	position: relative;
