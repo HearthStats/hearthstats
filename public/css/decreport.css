@@ -420,12 +420,14 @@ body, .onepage-wrapper, html {
 	font-size: 30px;
 }
 
-.tracking .download{
-	font-size: 60px;
+.tracking a{
 	color: #f1c40f;
 }
+.tracking .download{
+	font-size: 60px;
+}
 
-.tracking .download:hover {
+.tracking a:hover {
 	color: #f39c12;
 }
 
