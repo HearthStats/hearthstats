@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+	caches_action :janreport ,expires_in: 1.day
 	def index
 		render :layout=>false
 	end

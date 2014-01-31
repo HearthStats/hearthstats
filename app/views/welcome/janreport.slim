@@ -18,133 +18,132 @@ div class="nav-top clearfix"
     a class="nav-icon" href="http://hss.io/users/sign_up"
       span Sign Up
 div.main
-  - cache "janreport", expires_in: 1.day do
-    section.most-played#splash
-    section.most-played.page1
-      div.page_container.global
-        h2 Most Played Classes
-        div.row
-          div.col-md-6
-            div.mptitle ARENA
-            - @arenamp = @arenatot.sort_by { |name, winsrate| winsrate }.reverse
+  section.most-played#splash
+  section.most-played.page1
+    div.page_container.global
+      h2 Most Played Classes
+      div.row
+        div.col-md-6
+          div.mptitle ARENA
+          - @arenamp = @arenatot.sort_by { |name, winsrate| winsrate }.reverse
+          table.mptable
+            tr
+              td.mpfirst 1. #{@arenamp.first[0]}
+              td.mpfirst =@arenamp.first[1]
+            tr
+              td.mpsec 2. #{@arenamp.second[0]}
+              td.mpsec =@arenamp.second[1]
+            tr
+              td.mpthird 3. #{@arenamp.third[0]}
+              td.mpthird =@arenamp.third[1]
+          div.arenamore
             table.mptable
-              tr
-                td.mpfirst 1. #{@arenamp.first[0]}
-                td.mpfirst =@arenamp.first[1]
-              tr
-                td.mpsec 2. #{@arenamp.second[0]}
-                td.mpsec =@arenamp.second[1]
-              tr
-                td.mpthird 3. #{@arenamp.third[0]}
-                td.mpthird =@arenamp.third[1]
-            div.arenamore
-              table.mptable
-                -(3..8).each do |mp|
-                  tr
-                    td #{mp+1}. #{@arenamp[mp][0]}
-                    td #{@arenamp[mp][1]}
-            div.showarena More
-          div.col-md-6
-            div.mptitle CONSTRUCTED
-            - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
+              -(3..8).each do |mp|
+                tr
+                  td #{mp+1}. #{@arenamp[mp][0]}
+                  td #{@arenamp[mp][1]}
+          div.showarena More
+        div.col-md-6
+          div.mptitle CONSTRUCTED
+          - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
+          table.mptable
+            tr
+              td.mpfirst 1. #{@conmp.first[0]}
+              td.mpfirst =@conmp.first[1]
+            tr
+              td.mpsec 2. #{@conmp.second[0]}
+              td.mpsec =@conmp.second[1]
+            tr
+              td.mpthird 3. #{@conmp.third[0]}
+              td.mpthird =@conmp.third[1]
+          div.conmore
             table.mptable
-              tr
-                td.mpfirst 1. #{@conmp.first[0]}
-                td.mpfirst =@conmp.first[1]
-              tr
-                td.mpsec 2. #{@conmp.second[0]}
-                td.mpsec =@conmp.second[1]
-              tr
-                td.mpthird 3. #{@conmp.third[0]}
-                td.mpthird =@conmp.third[1]
-            div.conmore
-              table.mptable
-                -(3..8).each do |mp|
-                  tr
-                    td #{mp+1}. #{@conmp[mp][0]}
-                    td #{@conmp[mp][1]}
-            div.showcon More
-        h2 Global Win Rates
-        div.row
-          div.col-md-6.arena
-            div.tableheader ARENA
-            - counter = 1
-            table.rankingtable
-              - @classarenarate.each do |c|
-                -if c[1] == -1
-                -else
-                  tr
-                    td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                    td
-                      #{number_to_percentage(c[1]*100, precision: 2)}
-                    td
-                      #{@arenatot[c[0]]} Games
+              -(3..8).each do |mp|
+                tr
+                  td #{mp+1}. #{@conmp[mp][0]}
+                  td #{@conmp[mp][1]}
+          div.showcon More
+      h2 Global Win Rates
+      div.row
+        div.col-md-6.arena
+          div.tableheader ARENA
+          - counter = 1
+          table.rankingtable
+            - @classarenarate.each do |c|
+              -if c[1] == -1
+              -else
+                tr
+                  td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+                  td
+                    #{number_to_percentage(c[1]*100, precision: 2)}
+                  td
+                    #{@arenatot[c[0]]} Games
 
-                -counter = counter + 1
-          div.col-md-6.con
-            div.tableheader CONSTRUCTED
-            - counter = 1
-            table.rankingtable
-              - @classconrate.each do |c|
-                -if c[1] == -1
-                -else
-                  tr
-                    td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                    td
-                      #{number_to_percentage(c[1]*100, precision: 2)}
-                    td
-                      #{@contot[c[0]]} Games
-                -counter = counter + 1
-    section.page2.global-rates
-      div.page_container
-        h2 Global Win Rates
-        div.global-arena
-          h3 ARENA
-          table.arena-win-rates.report-table
-            th
-              -@classesArray.each do |c|
-                td class="#{c}" = c
-            -@classesArray.each do |c|
-              tr
-                td class="#{c}" = c
-                -currentClass = @userarenarate.select {|a| a[0] == c}
-                -currentClass.each do |rate|
+              -counter = counter + 1
+        div.col-md-6.con
+          div.tableheader CONSTRUCTED
+          - counter = 1
+          table.rankingtable
+            - @classconrate.each do |c|
+              -if c[1] == -1
+              -else
+                tr
+                  td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
                   td
-                    = number_to_percentage(rate[1][1]*100, precision: 2)
-          small how to read: horizontal vs vertical
-    section.page3
-      div.page_container
-        h2 Arena Win Counts
-        div.global-arena
-          table.arena-win-rates.report-table
-            th
-              -(0..12).each do |i|
-                td.game-count = i
-            -@classesArray.each do |c|
-              tr
-                td class="#{c}" = c
-                -currentClass = @arenaRuns.select {|a| a[0] == c}
-                -currentClass[0][1].each_with_index do |runs, i|
+                    #{number_to_percentage(c[1]*100, precision: 2)}
                   td
-                    div.run-count = runs
-                    div.run-percent = number_to_percentage(currentClass[0][2][i]*100, precision: 2)
-    section.page4
-      div.page_container
-        h2 Global Win Rates
-        div.global-arena
-          h3 CONSTRUCTED
-          table.arena-win-rates.report-table
-            th
-              -@classesArray.each do |c|
-                td class="#{c}" = c
+                    #{@contot[c[0]]} Games
+              -counter = counter + 1
+  section.page2.global-rates
+    div.page_container
+      h2 Global Win Rates
+      div.global-arena
+        h3 ARENA
+        table.arena-win-rates.report-table
+          th
             -@classesArray.each do |c|
-              tr
-                td class="#{c}" = c
-                -currentClass = @conrate.select {|a| a[0] == c}
-                -currentClass.each do |rate|
-                  td
-                    = number_to_percentage(rate[1][1]*100, precision: 2)
-          small how to read: horizontal vs vertical
+              td class="#{c}" = c
+          -@classesArray.each do |c|
+            tr
+              td class="#{c}" = c
+              -currentClass = @userarenarate.select {|a| a[0] == c}
+              -currentClass.each do |rate|
+                td
+                  = number_to_percentage(rate[1][1]*100, precision: 2)
+        small how to read: horizontal vs vertical
+  section.page3
+    div.page_container
+      h2 Arena Win Counts
+      div.global-arena
+        table.arena-win-rates.report-table
+          th
+            -(0..12).each do |i|
+              td.game-count = i
+          -@classesArray.each do |c|
+            tr
+              td class="#{c}" = c
+              -currentClass = @arenaRuns.select {|a| a[0] == c}
+              -currentClass[0][1].each_with_index do |runs, i|
+                td
+                  div.run-count = runs
+                  div.run-percent = number_to_percentage(currentClass[0][2][i]*100, precision: 2)
+  section.page4
+    div.page_container
+      h2 Global Win Rates
+      div.global-arena
+        h3 CONSTRUCTED
+        table.arena-win-rates.report-table
+          th
+            -@classesArray.each do |c|
+              td class="#{c}" = c
+          -@classesArray.each do |c|
+            tr
+              td class="#{c}" = c
+              -currentClass = @conrate.select {|a| a[0] == c}
+              -currentClass.each do |rate|
+                td
+                  = number_to_percentage(rate[1][1]*100, precision: 2)
+        small how to read: horizontal vs vertical
   section.page5.hsstats
     div.page_container
       h2 HearthStats
