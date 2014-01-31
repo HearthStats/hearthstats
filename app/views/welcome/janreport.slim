@@ -1,12 +1,15 @@
-- set_meta_tags :title => 'December Report',
-  :description => 'December Report on statistics from Hearthstats',
-  :keywords => 'stats, december, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
+- set_meta_tags :title => 'January Report',
+  :description => 'January Report on statistics from Hearthstats',
+  :keywords => 'stats, january, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
 
 div class="nav-top clearfix"
-  div.nav-social.nav-icon
-    a href="https://twitter.com/HearthStats" data-original-title="twitter" class="twitter"
-    a href="https://www.facebook.com/HearthStats.net" data-original-title="facebook" class="facebook"
-    a href="https://plus.google.com/108193002230555494327" data-original-title="Goole Plus" class="googleplus"
+  div.nav-social
+    a href="https://twitter.com/HearthStats"
+      =image_tag("social/simple/32-twitter.png", width: 20, height: 20)
+    a href="https://www.facebook.com/HearthStats.net"
+      =image_tag("social/simple/32-facebook.png", width: 20, height: 20)
+    a href="https://plus.google.com/+HearthstatsNet"
+      =image_tag("social/simple/32-googleplus.png", width: 20, height: 20)
 
   span class="right"
     a class="nav-icon" href="http://hss.io/"
@@ -15,11 +18,11 @@ div class="nav-top clearfix"
     a class="nav-icon" href="http://hss.io/users/sign_up"
       span Sign Up
 div.main
-  - cache "decreport", expires_in: 1.day do
+  - cache "janreport", expires_in: 2.days do
     section.most-played#splash
     section.most-played.page1
       div.page_container.global
-        h2 Most Played Races
+        h2 Most Played Classes
         div.row
           div.col-md-6
             div.mptitle ARENA

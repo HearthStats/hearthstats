@@ -163,7 +163,7 @@ h3 {
 }
 
 .nav-top a {
-	padding: 0.41em 1em;
+	padding: 0 0.4em 0 0.4em;
 	letter-spacing: 0.1em;
 	color: #444;
 	display: inline-block;
@@ -176,7 +176,7 @@ h3 {
 
 .nav-social {
 	float: left;
-	padding: 0.6em 0.6em 0 0.6em;
+	padding: 5px 0.6em 0 0.6em;
 }
 
 .nav-social span {
