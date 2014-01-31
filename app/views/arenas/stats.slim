@@ -47,15 +47,15 @@ div.overall
 
 h3.detail-title Detailed Class Stats
 div.row
-  - @arena_array.each do |aa|
+  - @arena_array.each do |arena_run|
     div.col-sm-12.col-md-6.col-lg-4
-      div.portlet.box.blue
+      div class="portlet box #{arena_run[0]}"
         div.portlet-title.arena-class
           div.caption.class-name
-            = image_tag("Icons/Classes/#{aa[0]}_Icon.gif", height: "24", width: "24")
-            = aa[0]
+            = image_tag("Icons/Classes/#{arena_run[0]}_Icon.gif", height: "24", width: "24")
+            = arena_run[0]
         div.portlet-body
-          - aa[1].each_with_index do |arena_detail, i|
+          - arena_run[1].each_with_index do |arena_detail, i|
             div.arena-detail
               div.arena-detail-title = arena_detail[0]
               -if i == 0 || i == 1
