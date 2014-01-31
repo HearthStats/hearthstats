@@ -1,27 +1,32 @@
-.Druid{
+.selectboxit-options .Druid{
 	background-color: #5C4B51;
 }
-.Hunter{
+.selectboxit-options .Hunter{
 	background-color: #27ae60;
 }
-.Mage{
+.selectboxit-options .Mage{
 	background-color: #3498db;
 }
-.Paladin{
+.selectboxit-options .Paladin{
 	background-color: #f1c40f;
 }
-.Priest{
+.selectboxit-options .Priest{
 	background-color: #bdc3c7;
 }
-.Rogue{
+.selectboxit-options .Rogue{
 	background-color: #2c3e50;
 }
-.Shaman{
+.selectboxit-options .Shaman{
 	background-color: #3D3E94;
 }
-.Warlock{
+.selectboxit-options .Warlock{
 	background-color: #8e44ad;
 }
-.Warrior{
+.selectboxit-options .Warrior{
 	background-color: #c0392b;
+}
+.selectboxit-options .Druid .selectboxit-option-anchor,
+.selectboxit-options .Rogue .selectboxit-option-anchor,
+.selectboxit-options .Warlock .selectboxit-option-anchor{
+	color:#fff;
 }
