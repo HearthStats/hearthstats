@@ -4,9 +4,10 @@
 
 div class="nav-top clearfix"
   div.nav-social.nav-icon
-    div class="addthis_toolbox addthis_default_style "
-    a class="addthis_button_preferred_1"
-    a class="addthis_button_preferred_2"
+    a href="https://twitter.com/HearthStats" data-original-title="twitter" class="twitter"
+    a href="https://www.facebook.com/HearthStats.net" data-original-title="facebook" class="facebook"
+    a href="https://plus.google.com/108193002230555494327" data-original-title="Goole Plus" class="googleplus"
+
   span class="right"
     a class="nav-icon" href="http://hss.io/"
       span HearthStats
@@ -110,6 +111,22 @@ div.main
           small how to read: horizontal vs vertical
     section.page3
       div.page_container
+        h2 Arena Win Counts
+        div.global-arena
+          table.arena-win-rates.report-table
+            th
+              -(0..12).each do |i|
+                td.game-count = i
+            -@classesArray.each do |c|
+              tr
+                td class="#{c}" = c
+                -currentClass = @arenaRuns.select {|a| a[0] == c}
+                -currentClass[0][1].each_with_index do |runs, i|
+                  td
+                    div.run-count = runs
+                    div.run-percent = number_to_percentage(currentClass[0][2][i]*100, precision: 2)
+    section.page4
+      div.page_container
         h2 Global Win Rates
         div.global-arena
           h3 CONSTRUCTED
@@ -125,7 +142,7 @@ div.main
                   td
                     = number_to_percentage(rate[1][1]*100, precision: 2)
           small how to read: horizontal vs vertical
-  section.page4.hsstats
+  section.page5.hsstats
     div.page_container
       h2 HearthStats
       div.row
@@ -133,7 +150,7 @@ div.main
           div.users
             span.usercount = User.all.count
             | users contributed to this data
-          div.contribute HearthStats was made by suggestions from the community and made for the community. If there's something you would like to see, just ask <a href="mailto:jeff@hearthstats.net">me</a>!
+          div.contribute HearthStats was made by suggestions from the community and made for the community. If there's something you would like to see, just ask <a href="http://hearthstats.uservoice.com">here</a>!
           div.donate If you like what I'm doing, toss me a few coins.
           form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
             input type="hidden" name="cmd" value="_s-xclick"

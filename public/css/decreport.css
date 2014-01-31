@@ -1,4 +1,4 @@
-/*// Custom css*/
+/* Custom css*/
 /*Splash required css*/
 .main{
 	height: 100%;
@@ -60,10 +60,12 @@
 }
 .arena-win-rates{
 	margin: auto;
+	border-collapse: collapse;
+	border-style: hidden;
 }
-.arena-win-rates td{
+.arena-win-rates td, .arena-win-rate th {
 	padding: 20px;
-	/*border: 1px solid #7f8c8d;*/
+	border: 1px solid white;
 }
 
 /* HTML from Bootstrap */
@@ -90,6 +92,11 @@ body, html {
     -ms-text-size-adjust: 100%;
 }
 
+
+/* Arena Win Count */
+	.run-percent{
+		font-size: 12px;
+	}
 
 /* Main Style */
 body {

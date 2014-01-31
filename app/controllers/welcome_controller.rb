@@ -93,11 +93,25 @@ class WelcomeController < ApplicationController
 			@conrate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
 		end
 
+		# Arena Runs Data
+		@arenaRuns = Array.new
+		classes.each do |c|
+			runCount = Array.new(13,0)
+			totGames = ArenaRun.where(userclass: c).count
+			ArenaRun.where(userclass: c).each do |ar|
+				runCount[ar.arenas.count] += 1 unless ar.arenas.count > 12
+			end
+			runPercent = runCount.map { |e| e.to_f/totGames }
+			@arenaRuns << [c, runCount, runPercent]
+		end
+
 		render :layout=> 'fullpage'
 	end
+
 	def decreport
 		render :layout=> 'fullpage'
 	end
+
 	def novreport
 
 		# # Determine Arena Class Win Rates

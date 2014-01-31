@@ -1,6 +1,8 @@
 class Arena < ActiveRecord::Base
   attr_accessible :userclass, :oppclass, :win, :gofirst, :user_id, :arena_run_id, :notes
   belongs_to :user
+  belongs_to :arena_run
+
 
   def self.overall_win_rate(userid)
   	wins = self.where(user_id: userid, win: true).count
