@@ -25,6 +25,8 @@ class ArenasController < ApplicationController
   # GET /arenas/new
   # GET /arenas/new.json
   def new
+  	@runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
+    @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count
     @arena = Arena.new
     if session[:arenarunid]
     	@arenarun = ArenaRun.find(session[:arenarunid])
