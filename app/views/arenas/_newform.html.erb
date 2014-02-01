@@ -29,9 +29,15 @@
 	      <%= link_to arenas_path do %>
 	      <button class="btn btn-lg">Back</button>
 	      <% end %>
-	      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
-	      <%= link_to end_arena_runs_path do %>
-	      	<button class="btn btn-lg btn-warning arenaendrun">End Run</button>
+	      <% if @runwins > 11 || @runloses > 2 %>
+					<%= link_to end_arena_runs_path do %>
+		      	<button class="btn btn-lg btn-warning">End Run</button>
+		      <% end %>
+				<% else %>
+		      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+		      <%= link_to end_arena_runs_path do %>
+		      	<button class="btn btn-lg btn-warning arenaendrun">End Run</button>
+		      <% end %>
 	      <% end %>
 	    </div>
 	  </div>
