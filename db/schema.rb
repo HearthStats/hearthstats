@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140105060302) do
+ActiveRecord::Schema.define(:version => 20140202054247) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20140105060302) do
     t.boolean   "gofirst",      :default => true
     t.integer   "arena_run_id"
     t.text      "notes"
+    t.string    "oppname"
   end
 
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
@@ -61,6 +62,9 @@ ActiveRecord::Schema.define(:version => 20140105060302) do
     t.text     "notes"
     t.string   "rank",       :default => "Casual"
     t.string   "patch",      :default => "current"
+    t.string   "oppname"
+    t.integer  "ranklvl"
+    t.integer  "legendary"
   end
 
   add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"
@@ -77,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20140105060302) do
     t.string    "decklink"
     t.string    "slug"
     t.text      "notes"
+    t.integer   "slot"
+    t.boolean   "active"
   end
 
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
@@ -114,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20140105060302) do
     t.timestamp "updated_at",                    :null => false
     t.integer   "user_id"
     t.integer   "bnetnum",    :default => 0
+    t.string    "time_zone",  :default => "UTC"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
@@ -146,20 +153,21 @@ ActiveRecord::Schema.define(:version => 20140105060302) do
   end
 
   create_table "users", :force => true do |t|
-    t.string    "email",                                 :null => false
-    t.string    "encrypted_password",                    :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",          :default => 0, :null => false
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.timestamp "created_at",                            :null => false
-    t.timestamp "updated_at",                            :null => false
-    t.integer   "tourny_id"
-    t.boolean   "guest"
+    t.string   "email",                                 :null => false
+    t.string   "encrypted_password",                    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0, :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.integer  "tourny_id"
+    t.boolean  "guest"
+    t.string   "userkey"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

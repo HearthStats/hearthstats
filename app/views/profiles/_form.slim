@@ -4,13 +4,17 @@
       h2 #{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:
       ul
         - @profile.errors.full_messages.each do |msg|
-          li = msg 
+          li = msg
 
-  = f.label :name
-  = f.text_field :name
-
-  = f.label "Battnet ID" 
-  div.bnetid #{f.text_field :bnetid} # #{f.number_field :bnetnum}
+  p
+    = f.label :name
+    = f.text_field :name
+  p
+    = f.label :time_zone
+    = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s
+  p
+    = f.label "Battnet ID"
+    div.bnetid #{f.text_field :bnetid} # #{f.number_field :bnetnum}
   / = f.label "Make Profile Private?"
   / div.coolcheckbox
   /   = f.check_box :private, id: "checkboxTwoInput"
@@ -18,4 +22,4 @@
   div.cf
   = link_to 'Back', "/profiles/#{current_user.id}", class: "pure-button pure-button-secondary"
   = f.submit "Update Profile", class: "pure-button pure-button-success", style: "padding-top: 8px;"
-  
+

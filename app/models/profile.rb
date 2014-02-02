@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :bnetid, :name, :private, :bnetnum
+  attr_accessible :bnetid, :name, :private, :bnetnum, :time_zone
   belongs_to :users
   is_impressionable
 
