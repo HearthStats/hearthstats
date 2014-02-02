@@ -30,7 +30,8 @@ module Api
 			def new
 				# Required params:
 				# params[:userclass]
-
+				existing_runs = ArenaRun.where(user_id: 1, complete: false)
+				existing_runs.update_all(:complete => true)
 				arenarun = ArenaRun.new
 				arenarun.user_id = @user.id
 				arenarun.userclass = @req[:userclass]
