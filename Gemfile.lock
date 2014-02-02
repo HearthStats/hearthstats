@@ -118,6 +118,8 @@ GEM
       activerecord (>= 3.0, < 4.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    google-search (1.0.3)
+      json
     hashie (1.2.0)
     highline (1.6.20)
     hike (1.2.3)
@@ -313,6 +315,7 @@ DEPENDENCIES
   feedzirra
   figaro
   friendly_id
+  google-search
   httparty
   impressionist
   jquery-rails

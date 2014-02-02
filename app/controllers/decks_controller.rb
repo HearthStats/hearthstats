@@ -16,6 +16,7 @@ class DecksController < ApplicationController
   def show
     @deck = Deck.find(params[:id])
     impressionist(@deck)
+		@gResults = Google::Search::Web.new(:query => "hearthstone deck #{@deck.name}")
 
     # Deck parsing too hard
     # if @deck.decklink.blank?
@@ -47,7 +48,7 @@ class DecksController < ApplicationController
 
     #calculate deck winrate
     @winrate = 0
-    if @deck.constructeds.count > 0 
+    if @deck.constructeds.count > 0
       @winrate = (@deck.constructeds.where(win: true).count.to_f / @deck.constructeds.count * 100)
     end
 

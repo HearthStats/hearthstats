@@ -1,4 +1,4 @@
-hearthstats
+HearthStats
 ===========
 
 Details Hearthstone match statistics.
