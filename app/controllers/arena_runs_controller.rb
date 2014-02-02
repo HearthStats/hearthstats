@@ -50,6 +50,7 @@ class ArenaRunsController < ApplicationController
 			end
 		end
 	end
+
 	def destroy
 		@arena = ArenaRun.find(params[:id])
 		@arena.destroy
