@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140202070935) do
+ActiveRecord::Schema.define(:version => 20140202184503) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -116,11 +116,11 @@ ActiveRecord::Schema.define(:version => 20140202070935) do
     t.string   "name"
     t.string   "bnetid"
     t.boolean  "private",    :default => false
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "user_id"
     t.integer  "bnetnum",    :default => 0
-    t.string   "time_zone",  :default => "(GMT-05:00) Eastern Time (US & Canada)"
+    t.string   "time_zone",  :default => "EST"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
