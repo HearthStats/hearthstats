@@ -27,9 +27,15 @@ class ArenasController < ApplicationController
   def new
     @arena = Arena.new
 
+		# Get last arena run
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
-    session[:arenarunid] = @arenarun.id
 
+  	# Redirect back to page is no current arena run
+  	if @arenarun.nil?
+  		redirect_to arenas_url, alert: 'No active arena run.' and return
+  	end
+
+    session[:arenarunid] = @arenarun.id
 	  @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
     @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count
     respond_to do |format|
