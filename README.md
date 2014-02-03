@@ -3,7 +3,6 @@ HearthStats
 
 Detailed Hearthstone match statistics and tracking.
 
-
 Sample API call:
 ----------------
 
@@ -42,3 +41,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"userclass":"Priest","oppc
 curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"userclass":"Priest", "oppclass":"Shaman","win":"false","gofirst":"true", "rank":"Ranked", "ranklvl":"3", "oppname":"MubaMuba"}' localhost:3000/api/v1/constructeds/new?userkey=0e7f8484496dd312c589ef21a507c393
 </pre>
 
+Contact
+-------
+
+Email: jeff@hearthstats.net
