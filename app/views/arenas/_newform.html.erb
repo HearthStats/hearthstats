@@ -52,7 +52,7 @@
 			  	<div class="table-reponsive">
 				    <table id="arenagames" class="table table-striped">
 				      <thead>
-				      	<tr><th>Opponent Class</th><th>Result</th></tr>
+				      	<tr><th>Opponent Class</th><th>Result</th><th>Opponent</t</tr>
 				      </thead>
 				        <tbody>
 				        	<% @arenarun.arenas.each do |a| %>
@@ -64,6 +64,11 @@
 				        	        <% else %>
 				        	          <span class="defeat">Defeat</span>
 				        	        <% end %>
+				        	      	<% if a.oppname == nil %>
+				        	      		<td> Unknown </td>
+				        	      	<% else %>
+				        	      		<td><%= a.oppname%> </td>
+				        	      	<% end %>
 				        	      </td>
 				        	    </tr>
 				        	<% end %>
