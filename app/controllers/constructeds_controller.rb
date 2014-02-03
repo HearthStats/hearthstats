@@ -54,6 +54,11 @@ class ConstructedsController < ApplicationController
     @deck = Deck.where(user_id: current_user.id, :name => @constructed.deckname)[0]
     @constructed.deck_id = @deck.id
     respond_to do |format|
+      if params[:commit] == "Add Win"
+        @constructed[:win] = true
+      else
+        @constructed[:win] = false
+      end
       if @constructed.save
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
