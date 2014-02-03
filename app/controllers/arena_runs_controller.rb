@@ -11,7 +11,6 @@ class ArenaRunsController < ApplicationController
 		if @arenarun.save
 			respond_to do |format|
 				format.html {
-					session[:arenarunid] = @arenarun.id
 					redirect_to new_arena_url
 				}
 				format.json { head :no_content }
@@ -35,10 +34,13 @@ class ArenaRunsController < ApplicationController
 
 	def update
 		@arenarun = ArenaRun.find(params[:id])
-		lastarena = Arena.where(user_id: current_user.id, arena_run_id: @arenarun.id).last
-		@arenarun.notes = lastarena.notes unless lastarena.nil?
-		session[:arenarunid] = nil
-		@arenarun.complete = true
+
+		if request.referer == end_arena_runs_url
+			lastarena = Arena.where(user_id: current_user.id, arena_run_id: @arenarun.id).last
+			@arenarun.notes = lastarena.notes unless lastarena.nil?
+			session[:arenarunid] = nil
+			@arenarun.complete = true
+		end
 
 		respond_to do |format|
 			if @arenarun.update_attributes(params[:arena_run])
