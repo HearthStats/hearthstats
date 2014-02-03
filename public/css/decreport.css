@@ -473,3 +473,41 @@ body, .onepage-wrapper, html {
 	right: 0;
 	background-color: rgba(0, 0, 0, 0.6);
 }
+
+/*Class Colors*/
+
+.Druid {
+  background-color: #FF7D0A;
+}
+
+.Hunter {
+  background-color: #ABD473;
+}
+
+.Mage {
+  background-color: #69CCF0;
+}
+
+.Paladin {
+  background-color: #F58CBA;
+}
+
+.Priest {
+  background-color: #999999;
+}
+
+.Rogue {
+  background-color: #f1c40f;
+}
+
+.Shaman {
+  background-color: #0070DE;
+}
+
+.Warlock {
+  background-color: #9482C9;
+}
+
+.Warrior {
+  background-color: #C79C6E;
+}
