@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140129224640) do
+ActiveRecord::Schema.define(:version => 20140204031036) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -112,6 +112,58 @@ ActiveRecord::Schema.define(:version => 20140129224640) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "klasses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "matchdecks", :force => true do |t|
+    t.integer  "deck_id"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "matches", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "class_id"
+    t.integer  "oppclass_id"
+    t.string   "oppname"
+    t.integer  "mode_id"
+    t.integer  "result_id"
+    t.text     "notes"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "matchranks", :force => true do |t|
+    t.integer  "rank_id"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "matchresults", :force => true do |t|
+    t.integer  "match_id"
+    t.string   "result"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "matchruns", :force => true do |t|
+    t.integer  "arenarun_id"
+    t.integer  "match_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "modes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "profiles", :force => true do |t|
     t.string   "name"
     t.string   "bnetid"
@@ -124,6 +176,13 @@ ActiveRecord::Schema.define(:version => 20140129224640) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "ranks", :force => true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "redactor_assets", :force => true do |t|
     t.integer  "user_id"
