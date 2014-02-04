@@ -1,7 +1,7 @@
 module Api
 	module V1
 		class ConstructedsController < ApplicationController
-			before_filter :get_app_key, :get_user_api
+			before_filter :validate_userkey, :get_user_api
 			skip_before_filter :get_user_api, :only => :show
 			respond_to :json
 

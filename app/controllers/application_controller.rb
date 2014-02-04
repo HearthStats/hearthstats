@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   # API Methods
-  def get_app_key
+  def validate_userkey
     userkey = User.where(userkey: params[:userkey])
     unless userkey.exists? && !params[:userkey].nil?
     	api_response = {status: "error", message: "User Key Error"}
