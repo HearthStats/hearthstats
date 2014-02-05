@@ -205,6 +205,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.1.0)
+    rb-fsevent (0.9.3)
     rdoc (3.12.2)
       json (~> 1.4)
     redactor-rails (0.4.3)
@@ -249,7 +250,6 @@ GEM
       slim (~> 2.0)
     slop (3.4.7)
     social-share-button (0.1.5)
-    spring (1.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -332,6 +332,7 @@ DEPENDENCIES
   quiet_assets (>= 1.0.1)
   rails (= 3.2.13)
   rake
+  rb-fsevent
   redactor-rails
   rmagick
   rspec-rails (>= 2.12.2)
@@ -340,7 +341,6 @@ DEPENDENCIES
   sitemap_generator
   slim-rails
   social-share-button
-  spring
   sqlite3
   taps
   thin

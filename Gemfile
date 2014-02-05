@@ -9,7 +9,7 @@ group :development do
   gem 'sqlite3'
   gem 'capistrano', "~> 2.14.2"
   gem "quiet_assets", ">= 1.0.1"
-  gem "spring"
+  gem 'rb-fsevent', :require => false
   gem 'thin'
   gem 'pry'
 end
