@@ -24,6 +24,7 @@ module Api
 					arena_run.save
 				end
 				arena = Arena.new(@req)
+        arena.user_id = @user.id
 				arena.arena_run_id = arena_run.id
 				arena.userclass = arena_run.userclass
 				if arena.save
