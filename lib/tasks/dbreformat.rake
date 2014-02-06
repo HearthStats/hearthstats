@@ -12,7 +12,7 @@ namespace :dbf do
     desc "Import RESULTS"
     RESULTS = ["Win", "Loss","Draw"]
     RESULTS.each do |m|
-      MatchResult.new(result: m).save  
+      MatchResult.new(result: m).save
       p m + " result added."
     end
 
@@ -20,7 +20,7 @@ namespace :dbf do
     KLASSES = ["Druid","Hunter","Mage","Paladin",
                "Priest","Rogue","Shaman","Warlock","Warrior"]
     KLASSES.each do |m|
-      Klass.new(name: m).save  
+      Klass.new(name: m).save
       p m + " class added."
     end
 
@@ -35,8 +35,46 @@ namespace :dbf do
              "Leper Gnome","Angry Chicken"]
 
     RANKS.each do |m|
-      Rank.new(name: m).save  
+      Rank.new(name: m).save
       p m + " rank added."
+    end
+	end
+
+	task :constructed => :environment do
+    con_matches = Constructed.all
+    con_matches.each do |m|
+      klass = Klass.where(name: m.deck.race).first
+      oppklass = Klass.where(name: m.oppclass).first
+      # Determine if win or loss
+      if m.win
+        result = 1
+      else
+        result = 2
+      end
+      # Determine if ranked or casual
+      if m.rank == "Casual"
+        mode = 2
+      else
+        mode = 3
+      end
+      match = Match.new(
+        :created_at => m.created_at,
+        :updated_at => m.updated_at,
+        :user_id => m.user_id,
+        :class_id => klass.id,
+        :oppclass_id => oppklass.id,
+        :oppname => m.oppname,
+        :mode_id => mode,
+        :result_id => result,
+        :notes => m.notes
+
+      ).save
+      
+      MatchDeck.new(
+        :deck_id => m.deck_id,
+        :match_id => match.id
+      ).save
+
     end
 	end
 
