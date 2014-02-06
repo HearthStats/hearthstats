@@ -31,11 +31,7 @@ curl localhost:3000/api/v1/arena_runs/end?userkey=0e7f8484496dd312c589ef21a507c3
 
 *Arena Entry*
 <pre>
-<<<<<<< HEAD
-curl -X POST -H "Content-Type: application/json" -d '{"userclass":"Priest","oppclass":"Shaman","win":"false","gofirst":"true",  "oppname":"MubaMuba"}' localhost:3000/api/v1/arenas/new?userkey=0e7f8484496dd312c589ef21a507c393
-=======
-curl -X POST -H "Content-Type: application/json" -d '{"oppclass":"Shaman","win":"false","gofirst":"true",  "oppname":"MubaMuba"}' localhost:3000/api/v1/arenas/new?userkey=0e7f8484496dd312c589ef21a507c393
->>>>>>> new arena game with no arena run auto creates new arena_run, constructed oppname and rank also added
+curl -X POST -H "Content-Type: application/json" -d '{"userclass":"Priest","oppclass":"Shaman","win":"false","gofirst":"true",  "oppname":"MubaMuba"}' localhost:3000/api/v1/arenas/new?userkey=7d58fa431951c92ceb9b9cb44d481108
 </pre>
 
 ### Constructed
