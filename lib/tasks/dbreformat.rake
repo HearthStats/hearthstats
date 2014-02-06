@@ -49,15 +49,15 @@ namespace :dbf do
       oppklass = Klass.where(name: m.oppclass).first
       # Determine if win or loss
       if m.win
-        result = 1
+        result = 0
       else
-        result = 2
+        result = 1
       end
       # Determine if ranked or casual
       if m.rank == "Casual"
-        mode = 2
+        mode = 1
       else
-        mode = 3
+        mode = 2
       end
 
       match = Match.new()
@@ -68,6 +68,7 @@ namespace :dbf do
       match.oppclass_id = oppklass.id
       match.oppname = m.oppname
       match.mode_id = mode
+      match.coin = !m.gofirst
       match.result_id = result
       match.notes = m.notes
 
@@ -85,9 +86,30 @@ namespace :dbf do
 
 	task :arena => :environment do
 		arena_matches = Arena.all
+    i = 0
 		arena_matches.each do |am|
-			puts u.email
+      klass = Klass.where(name: am.userclass).first
+      oppklass = Klass.where(name: am.oppclass).first
+      # Determine if win or loss
+      if am.win
+        result = 0
+      else
+        result = 1
+      end
+      m = Match.new()
+      m.created_at = am.created_at
+      m.updated_at = am.updated_at
+      m.user_id = am.user_id
+      m.class_id = klass.id
+      m.oppclass_id = oppklass.id
+      m.oppname = am.oppname
+      m.coin = !am.gofirst
+      m.mode_id = 1
+      m.result_id = result
+      m.notes = am.notes
+      i += 1
 		end
+    p i.to_s + " arena matches migrated."
 	end
 
 
