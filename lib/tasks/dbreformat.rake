@@ -42,7 +42,9 @@ namespace :dbf do
 
 	task :constructed => :environment do
     con_matches = Constructed.all
+    i = 0
     con_matches.each do |m|
+      next if m.deck.nil?
       klass = Klass.where(name: m.deck.race).first
       oppklass = Klass.where(name: m.oppclass).first
       # Determine if win or loss
@@ -57,25 +59,28 @@ namespace :dbf do
       else
         mode = 3
       end
-      match = Match.new(
-        :created_at => m.created_at,
-        :updated_at => m.updated_at,
-        :user_id => m.user_id,
-        :class_id => klass.id,
-        :oppclass_id => oppklass.id,
-        :oppname => m.oppname,
-        :mode_id => mode,
-        :result_id => result,
-        :notes => m.notes
 
-      ).save
+      match = Match.new()
+      match.created_at = m.created_at
+      match.updated_at = m.updated_at
+      match.user_id = m.user_id
+      match.class_id = klass.id
+      match.oppclass_id = oppklass.id
+      match.oppname = m.oppname
+      match.mode_id = mode
+      match.result_id = result
+      match.notes = m.notes
+
+      match.save!
       
       MatchDeck.new(
         :deck_id => m.deck_id,
         :match_id => match.id
-      ).save
+      ).save!
 
+      i += 1
     end
+    p i.to_s + " constructed matches migrated."
 	end
 
 	task :arena => :environment do

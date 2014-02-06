@@ -1,6 +1,8 @@
 class ArenaRun < ActiveRecord::Base
   attr_accessible :class, :gold, :dust, :completed, :user_id, :userclass, :notes, :complete
   has_many :arenas
+  
+  has_many :matches, :through => :match_run
 
   after_destroy :delete_all_arena
 
