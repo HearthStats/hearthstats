@@ -2,6 +2,9 @@ class Deck < ActiveRecord::Base
   attr_accessible :loses, :name, :wins, :race, :decklink, :notes
   has_many :constructeds
 
+  belongs_to :klass
+  has_many :matches, :through => :match_deck
+
   after_destroy :delete_all_constructed
 
   is_impressionable

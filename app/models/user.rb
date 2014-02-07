@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :constructeds
   has_many :arena_runs
   belongs_to :tourny
+  has_many :matches
 
   def get_userkey
   	if self.userkey.nil?

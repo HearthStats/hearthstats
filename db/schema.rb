@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204230548) do
+ActiveRecord::Schema.define(:version => 20140207033005) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -83,8 +83,10 @@ ActiveRecord::Schema.define(:version => 20140204230548) do
     t.text      "notes"
     t.integer   "slot"
     t.boolean   "active"
+    t.integer   "klass_id"
   end
 
+  add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
   add_index "decks", ["user_id"], :name => "index_decks_on_user_id"
 
@@ -125,12 +127,18 @@ ActiveRecord::Schema.define(:version => 20140204230548) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "match_decks", ["deck_id"], :name => "index_match_decks_on_deck_id"
+  add_index "match_decks", ["match_id"], :name => "index_match_decks_on_match_id"
+
   create_table "match_ranks", :force => true do |t|
     t.integer  "rank_id"
     t.integer  "match_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "match_ranks", ["match_id"], :name => "index_match_ranks_on_match_id"
+  add_index "match_ranks", ["rank_id"], :name => "index_match_ranks_on_rank_id"
 
   create_table "match_results", :force => true do |t|
     t.integer  "match_id"
@@ -139,16 +147,21 @@ ActiveRecord::Schema.define(:version => 20140204230548) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "match_results", ["match_id"], :name => "index_match_results_on_match_id"
+
   create_table "match_runs", :force => true do |t|
-    t.integer  "arenarun_id"
+    t.integer  "arena_run_id"
     t.integer  "match_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "match_runs", ["arena_run_id"], :name => "index_match_runs_on_arena_run_id"
+  add_index "match_runs", ["match_id"], :name => "index_match_runs_on_match_id"
 
   create_table "matches", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "class_id"
+    t.integer  "klass_id"
     t.integer  "oppclass_id"
     t.string   "oppname"
     t.integer  "mode_id"
@@ -156,7 +169,16 @@ ActiveRecord::Schema.define(:version => 20140204230548) do
     t.text     "notes"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.boolean  "coin"
+    t.integer  "numturns"
+    t.integer  "duration"
   end
+
+  add_index "matches", ["klass_id"], :name => "index_matches_on_klass_id"
+  add_index "matches", ["mode_id"], :name => "index_matches_on_mode_id"
+  add_index "matches", ["oppclass_id"], :name => "index_matches_on_oppclass_id"
+  add_index "matches", ["result_id"], :name => "index_matches_on_result_id"
+  add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
 
   create_table "modes", :force => true do |t|
     t.string   "name"

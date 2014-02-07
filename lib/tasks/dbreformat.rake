@@ -87,9 +87,22 @@ namespace :dbf do
 	task :arena => :environment do
 		arena_matches = Arena.all
     i = 0
+    error_array = Array.new
+
 		arena_matches.each do |am|
       klass = Klass.where(name: am.userclass).first
       oppklass = Klass.where(name: am.oppclass).first
+
+      if klass.nil?
+        error_array << "user" + am.userclass.to_s
+        next
+      end
+ 
+      if oppklass.nil?
+        error_array << "opp" + am.userclass.to_s
+        next
+      end
+
       # Determine if win or loss
       if am.win
         result = 0
@@ -107,10 +120,37 @@ namespace :dbf do
       m.mode_id = 1
       m.result_id = result
       m.notes = am.notes
+      m.save!
+      
+      mr = MatchRun.new()
+      mr.match_id = m.id
+      mr.arenarun_id = am.arena_run_id
+      mr.save!
+
       i += 1
 		end
     p i.to_s + " arena matches migrated."
+    p error_array
 	end
 
+  task :deck => :environment do
+    decks = Deck.all
+    error_array = Array.new
+    i = 0
+    decks.each do |d|
+      klass = Klass.where(name: d.race).first
+
+      if klass.nil?
+        error_array << d.race.to_s
+        next
+      end
+
+      d.klass_id = klass.id
+
+      d.save!
+      i += 1
+    end
+    p i.to_s + " decks changed"
+  end
 
 end
