@@ -52,8 +52,8 @@ class ArenaRun < ActiveRecord::Base
   		class_avgwins = ArenaRun.averageWins(c, userid)
   		class_runs = ArenaRun.where( userclass: c, user_id: userid ).count
   		class_winrate = Arena.where( userclass: c, user_id: userid, win: true ).count.to_f / Arena.where( userclass: c, user_id: userid ).count
-  		class_coinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: true ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: true ).count
-  		class_nocoinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: false ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: false ).count
+  		class_coinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: false ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: true ).count
+  		class_nocoinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: true ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: false ).count
 
   		class_array[c] = [["Average wins", class_avgwins],
   											["Total runs with class", class_runs],
