@@ -15,4 +15,12 @@ class Match < ActiveRecord::Base
   belongs_to :oppclass, :class_name => 'Klass', :foreign_key => 'oppclass_id'
 
   belongs_to :match_result, :class_name => 'MatchResult', :foreign_key => 'result_id'
+
+  def self.get_win_rate(matches)
+    wins = matches.where(result_id: 1).count.to_f
+    tot_games = matches.count
+    win_rate = wins / tot_games
+
+    win_rate
+  end
 end

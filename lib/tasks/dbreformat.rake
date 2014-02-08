@@ -49,22 +49,22 @@ namespace :dbf do
       oppklass = Klass.where(name: m.oppclass).first
       # Determine if win or loss
       if m.win
-        result = 0
-      else
         result = 1
+      else
+        result = 2
       end
       # Determine if ranked or casual
       if m.rank == "Casual"
-        mode = 1
-      else
         mode = 2
+      else
+        mode = 3
       end
 
       match = Match.new()
       match.created_at = m.created_at
       match.updated_at = m.updated_at
       match.user_id = m.user_id
-      match.class_id = klass.id
+      match.klass_id = klass.id
       match.oppclass_id = oppklass.id
       match.oppname = m.oppname
       match.mode_id = mode
@@ -105,15 +105,15 @@ namespace :dbf do
 
       # Determine if win or loss
       if am.win
-        result = 0
-      else
         result = 1
+      else
+        result = 2
       end
       m = Match.new()
       m.created_at = am.created_at
       m.updated_at = am.updated_at
       m.user_id = am.user_id
-      m.class_id = klass.id
+      m.klass_id = klass.id
       m.oppclass_id = oppklass.id
       m.oppname = am.oppname
       m.coin = !am.gofirst
@@ -124,7 +124,7 @@ namespace :dbf do
       
       mr = MatchRun.new()
       mr.match_id = m.id
-      mr.arenarun_id = am.arena_run_id
+      mr.arena_run_id = am.arena_run_id
       mr.save!
 
       i += 1

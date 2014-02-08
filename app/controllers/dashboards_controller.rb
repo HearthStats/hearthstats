@@ -7,6 +7,8 @@ class DashboardsController < ApplicationController
   def index
     # recentgamesbyhr(current_user.id, 12)
     recentgames(current_user.id, 10)
+    arena_matches = Match.where(mode_id: 1, user_id: current_user.id)
+    @arena_wr = Match.get_win_rate(arena_matches)
     @recent_entries = Profile.get_recent_games(current_user.id)
     @global = Hash.new
  		@global[:arena] = ((Arena.where(win: true).count.to_f / Arena.count)*100).round

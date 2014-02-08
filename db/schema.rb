@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140207074833) do
+ActiveRecord::Schema.define(:version => 20140207170213) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(:version => 20140207074833) do
 
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
+
+  create_table "card", :force => true do |t|
+    t.string  "name"
+    t.string  "description"
+    t.integer "attack"
+    t.integer "health"
+    t.integer "set_id"
+    t.integer "rarity_id"
+    t.integer "type_id"
+    t.integer "class_id"
+    t.integer "race_id"
+    t.integer "mana"
+    t.boolean "collectible"
+    t.string  "image_link"
+  end
 
   create_table "constructeds", :force => true do |t|
     t.datetime "created_at",                        :null => false
@@ -216,6 +231,13 @@ ActiveRecord::Schema.define(:version => 20140207074833) do
   create_table "ranks", :force => true do |t|
     t.string   "name"
     t.integer  "order"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rarity", :force => true do |t|
+    t.integer  "card_id"
+    t.string   "rarity"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
