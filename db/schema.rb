@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20140209195851) do
     t.boolean "collectible"
     t.string  "image_link"
     t.integer "patch_id"
+    t.integer "hearthhead_id"
   end
 
   create_table "constructeds", :force => true do |t|

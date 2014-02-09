@@ -1,2 +1,9 @@
-h1 Cards#index
-p Find me in app/views/cards/index.html.slim
+- set_meta_tags :title => 'Card Database',
+  :description => 'Card Database',
+  :keywords => 'cards, card, database, games, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Card Database')
+- provide(:subtitle, '');
+- provide(:section, '')
+
+- @cards.each do |card|
+	p = card.name + " " + card.mana.to_s + " mana (" + card.attack.to_s + "/" + card.health.to_s + ") - " + (card.description == nil ? "" : card.description)
