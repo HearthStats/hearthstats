@@ -4,4 +4,9 @@ class Card < ActiveRecord::Base
     :collectible, :race_id
     
   belongs_to :klass
+  
+  def getImageUrl
+    return "https://s3-us-west-2.amazonaws.com/hearthstats/cards/" + name.parameterize + ".png" 
+    
+  end
 end
