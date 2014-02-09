@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209031847) do
+ActiveRecord::Schema.define(:version => 20140209195851) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20140209031847) do
 
   create_table "arena_runs", :force => true do |t|
     t.integer  "user_id"
-    t.string   "userclass"
+    t.string   "klass_id"
     t.integer  "gold",       :default => 0
     t.integer  "dust",       :default => 0
     t.boolean  "complete",   :default => false
@@ -145,9 +145,7 @@ ActiveRecord::Schema.define(:version => 20140209031847) do
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "klasses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
   end
 
   create_table "match_decks", :force => true do |t|
@@ -213,9 +211,7 @@ ActiveRecord::Schema.define(:version => 20140209031847) do
   add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
 
   create_table "modes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
   end
 
   create_table "patches", :force => true do |t|

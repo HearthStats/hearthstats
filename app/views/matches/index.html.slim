@@ -1,0 +1,17 @@
+h1 Listing matches
+
+table
+  tr
+    th
+    th
+    th
+
+  - @matches.each do |match|
+    tr
+      td = link_to 'Show', match
+      td = link_to 'Edit', edit_match_path(match)
+      td = link_to 'Destroy', match, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Match', new_match_path

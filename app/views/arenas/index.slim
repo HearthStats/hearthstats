@@ -19,9 +19,9 @@
       div.modal-content
         div.modal-header
           button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-          h4 class="modal-title" Arena run with #{arena.userclass} on #{arena.created_at}
+          h4 class="modal-title" Arena run with #{get_name(arena, "Klass")} on #{arena.created_at}
         div.modal-body
-          =render 'arenagames', arenas: arena.arenas
+          =render 'arenagames', arenas: arena.matches
           div class="portlet box red"
             div class="portlet-title"
               div.caption Notes
@@ -46,11 +46,13 @@ div class="portlet box green"
       tbody
       - @arenaruns.each do |arena|
         tr
-          td = link_to arena.userclass, race_dashboards_path(:race => arena.userclass)
+          td = link_to get_name(arena, "Klass"), race_dashboards_path(:race => Klass.find(arena.klass_id))
           td
-            span.victory = arena.arenas.where(win: true).count
+            span.Victory = arena.matches.where(result_id: 1).count
             |/
-            span.defeat = arena.arenas.where(win: false).count
+            span.Defeat = arena.matches.where(result_id: 2).count
+            |- 
+            span.Draw = arena.matches.where(result_id: 3).count
           td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
           -if current_user.guest
             td = arena.created_at.strftime("%I:%M %P on %B %d, %Y")

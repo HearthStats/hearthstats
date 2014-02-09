@@ -26,7 +26,7 @@ div.row
                   - @arenarun.errors.full_messages.each do |msg|
                     li = msg
             h3.arenaruntitle Your Class
-            = f.select :userclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior])
+            = f.select :klass_id, options_for_select(klasses_hash.map { |k| [k.name, k.id] })
             div.form-actions.fluid
               div.row
                 div.col-md-12

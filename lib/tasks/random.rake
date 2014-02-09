@@ -43,3 +43,11 @@ task :AddSeason => :environment do
     m.save!
   end
 end
+
+task :ArenaKlassToId => :environment do
+  ArenaRun.all.each do |ar|
+    ar.klass_id = Klass.where(name: ar.klass_id).last.id
+    ar.save!
+  end
+  p "Arena Run Klass ID fix complete"
+end
