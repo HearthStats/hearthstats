@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20140209195851) do
     t.integer "set_id"
     t.integer "rarity_id"
     t.integer "type_id"
-    t.integer "class_id"
+    t.integer "klass_id"
     t.integer "race_id"
     t.integer "mana"
     t.boolean "collectible"
