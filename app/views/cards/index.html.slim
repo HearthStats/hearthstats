@@ -15,15 +15,17 @@ form id="cardsFilter" method="get" class="data-turboform"
 				option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)]  = c.name
 		| &nbsp; Sort by: &nbsp;
 		select name="sort"
-			option[value="name"] Name
+			option[value="attack" selected=("selected" if @sortField == "attack")] Attack
+			option[value="health" selected=("selected" if @sortField == "health")] Health/Dur.
+			option[value="mana" selected=("selected" if @sortField == "mana")] Mana Cost
+			option[value="name" selected=("selected" if @sortField == "name")] Name
 		| &nbsp; 
 		select name="order"
 			option[value="asc"] Ascending
-			option[value="desc"] Descenting
+			option[value="desc" selected=("selected" if @orderFilter == "desc")] Descenting
 		| &nbsp; 
 		input type="submit" value="Submit" id="cardsFilterSubmit"
 		
-
 javascript:
 	$('#cardsFilter select').change(function() {
 		$('#cardsFilter').submit();

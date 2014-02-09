@@ -3,13 +3,34 @@ class CardsController < ApplicationController
     #update()
     @classes = Klass.order('name ASC');
     
-    @cards = Card.order('name ASC')
+    @cards = Card
     
     # filter by number of days to show
     @classFilter = CGI.parse(request.query_string)['class'].first
     if !@classFilter.nil? && (Float(@classFilter) rescue false)
      @cards = @cards.where('klass_id = ?', @classFilter)
     end
+    
+    #sort field
+    @sortField = "name"
+    sortRequest = CGI.parse(request.query_string)['sort'].first
+    if sortRequest.match("attack|health|mana")
+      @sortField = sortRequest
+    end
+    
+    # don't show spells if sort by attack or health
+    if @sortField == "attack" || @sortField == "health"
+      @cards = @cards.where("type_id != ?", 2)
+    end
+    
+    # sort order
+    @orderFilter = CGI.parse(request.query_string)['order'].first
+    if @orderFilter.nil? || (@orderFilter != "desc" && @orderFilter != "asc")
+     @orderFilter = "asc"
+    end
+    @cards = @cards.order(@sortField + ' ' + @orderFilter.upcase + ", name ASC")
+    
+    
     
   end
   
@@ -43,8 +64,4 @@ class CardsController < ApplicationController
     end
     
   end
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> bd13da7b34473416d5445528c9ce9ccb2ef5bc16
