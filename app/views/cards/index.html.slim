@@ -6,4 +6,5 @@
 - provide(:section, '')
 
 - @cards.each do |card|
-	p = (card.klass == nil ? "" : "[" + card.klass.name + "]") + " " + card.name + " " + card.mana.to_s + " mana (" + card.attack.to_s + "/" + card.health.to_s + ") - " + (card.description == nil ? "" : card.description)
+	div.cardWrapper
+		span = raw '<img src="' + card.getImageUrl() + '" title="' + card.name + '"/> '
