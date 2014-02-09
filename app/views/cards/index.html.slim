@@ -1,0 +1,10 @@
+- set_meta_tags :title => 'Card Database',
+  :description => 'Card Database',
+  :keywords => 'cards, card, database, games, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Card Database')
+- provide(:subtitle, '');
+- provide(:section, '')
+
+- @cards.each do |card|
+	div.cardWrapper
+		span = raw '<img src="' + card.getImageUrl() + '" title="' + card.name + '"/> '
