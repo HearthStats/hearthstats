@@ -1,4 +1,6 @@
 Hearthstats::Application.routes.draw do
+  get "cards/index"
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   get "streams/index"
@@ -64,6 +66,13 @@ Hearthstats::Application.routes.draw do
   resources :constructeds do
     collection do
       get :stats
+    end
+  end
+  
+  # devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  resources :cards do
+    collection do
     end
   end
 
