@@ -5,6 +5,31 @@
 - provide(:subtitle, '');
 - provide(:section, '')
 
+form id="cardsFilter" method="get" class="data-turboform"
+	p
+		| Filter by: &nbsp; 
+		select name="class"
+			option[value=""] - any class -
+			option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
+			- @classes.each do |c|
+				option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)]  = c.name
+		| &nbsp; Sort by: &nbsp;
+		select name="sort"
+			option[value="name"] Name
+		| &nbsp; 
+		select name="order"
+			option[value="asc"] Ascending
+			option[value="desc"] Descenting
+		| &nbsp; 
+		input type="submit" value="Submit" id="cardsFilterSubmit"
+		
+
+javascript:
+	$('#cardsFilter select').change(function() {
+		$('#cardsFilter').submit();
+	});
+	$('#cardsFilterSubmit').hide();
+
 - @cards.each do |card|
 	div.cardWrapper
 		span = raw '<img src="' + card.getImageUrl() + '" title="' + card.name + '"/> '
