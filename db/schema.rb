@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209180449) do
+ActiveRecord::Schema.define(:version => 20140209185302) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20140209180449) do
     t.integer "set_id"
     t.integer "rarity_id"
     t.integer "type_id"
-    t.integer "class_id"
+    t.integer "klass_id"
     t.integer "race_id"
     t.integer "mana"
     t.boolean "collectible"

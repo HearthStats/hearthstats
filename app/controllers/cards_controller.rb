@@ -24,7 +24,7 @@ class CardsController < ApplicationController
       card.set_id = cardData["set_id"];
       card.rarity_id = cardData["rarity_id"];
       card.type_id = cardData["type_id"];
-      card.class_id = cardData["class_id"];
+      card.klass_id = cardData["class_id"];
       card.race_id = cardData["race_id"];
       card.mana = cardData["mana"];
       card.health = cardData["health"];
