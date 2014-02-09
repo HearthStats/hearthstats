@@ -7,7 +7,9 @@
 
 form id="cardsFilter" method="get" class="data-turboform"
 	p
-		| Filter by: &nbsp; 
+		| Text Contains: &nbsp; 
+		input[name="text" value="#{@textFilter}"]
+		| &nbsp; Filter by: &nbsp; 
 		select name="class"
 			option[value=""] - any class -
 			option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
@@ -31,6 +33,9 @@ javascript:
 		$('#cardsFilter').submit();
 	});
 	$('#cardsFilterSubmit').hide();
+
+- if @cards.count == 0
+	div[class="ui-state-error" style="padding:1em"] No cards were found matching your criteria
 
 - @cards.each do |card|
 	div.cardWrapper

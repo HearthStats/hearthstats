@@ -5,6 +5,17 @@ class CardsController < ApplicationController
     
     @cards = Card
     
+    #filter by card text
+    @textFilter = CGI.parse(request.query_string)['text'].first
+    if !@textFilter.nil?
+      t = Card.arel_table
+      @cards = @cards.where(
+        t[:name].matches("%" + @textFilter + "%").
+        or(t[:description].matches("%" + @textFilter + "%"))
+      )
+    end
+    
+    
     # filter by number of days to show
     @classFilter = CGI.parse(request.query_string)['class'].first
     if !@classFilter.nil? && (Float(@classFilter) rescue false)
