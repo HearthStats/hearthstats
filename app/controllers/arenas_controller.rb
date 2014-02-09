@@ -25,7 +25,7 @@ class ArenasController < ApplicationController
   # GET /arenas/new
   # GET /arenas/new.json
   def new
-    @arena = Arena.new
+    @arena = Match.new
 
 		# Get last arena run
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
@@ -36,11 +36,14 @@ class ArenasController < ApplicationController
   	end
 
     session[:arenarunid] = @arenarun.id
-	  @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
-    @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count
-    respond_to do |format|
+    runwins = @arenarun.matches.where(result_id: 1).count
+    runloses = @arenarun.matches.where(result_id: 2).count
+    if runwins > 11 || runloses > 2
+      @arenarun.complete = true 
+      @arenarun.save!
+    end
+	  respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @arena }
     end
   end
 

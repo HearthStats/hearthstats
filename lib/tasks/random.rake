@@ -35,3 +35,11 @@ task :FixPatchGames => :environment do
 
 	puts "Games Fixed"
 end
+
+task :AddSeason => :environment do
+  matches = Match.where("created_at between ? and ?", Time.at(1391558399).to_datetime, Date.current.end_of_day)
+  matches.each do |m|
+    m.season_id = 3
+    m.save!
+  end
+end

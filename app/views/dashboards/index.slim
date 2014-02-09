@@ -10,8 +10,8 @@ div class="row"
         =image_tag("swords.svg", height: 65, width: 65)
 
       div class="details"
-        div class="number" #{number_to_percentage(@arena_wr*100, precision: 2)}
-
+        div class="number"
+          = @arena_wr
         div class="desc" Arena Win Rate
 
 
@@ -26,8 +26,9 @@ div class="row"
         = image_tag("hammerwrench.svg", height: 65, width: 65)
 
       div class="details"
-        div class="number" #{number_to_percentage(Constructed.overall_win_rate(current_user.id)*100, precision: 2)}
-        div class="desc" Constructed Win Rate
+        div class="number" 
+          = @con_wr
+        div class="desc" Ranked Win Rate
 
       = link_to constructeds_path, class: "more" do
         |View more

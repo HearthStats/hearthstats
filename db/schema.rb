@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140207170213) do
+ActiveRecord::Schema.define(:version => 20140209031847) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
-  create_table "card", :force => true do |t|
+  create_table "cards", :force => true do |t|
     t.string  "name"
     t.string  "description"
     t.integer "attack"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
     t.integer "mana"
     t.boolean "collectible"
     t.string  "image_link"
+    t.integer "patch_id"
   end
 
   create_table "constructeds", :force => true do |t|
@@ -105,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
   add_index "decks", ["user_id"], :name => "index_decks_on_user_id"
 
-  create_table "deckversion", :force => true do |t|
+  create_table "deckversions", :force => true do |t|
     t.integer  "deck_id"
     t.string   "cardstring"
     t.text     "notes"
@@ -201,6 +202,8 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
     t.boolean  "coin"
     t.integer  "numturns"
     t.integer  "duration"
+    t.integer  "patch_id"
+    t.integer  "season_id"
   end
 
   add_index "matches", ["klass_id"], :name => "index_matches_on_klass_id"
@@ -211,6 +214,13 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
 
   create_table "modes", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "patches", :force => true do |t|
+    t.integer  "num"
+    t.text     "changelog"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -235,7 +245,7 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "rarity", :force => true do |t|
+  create_table "rarities", :force => true do |t|
     t.integer  "card_id"
     t.string   "rarity"
     t.datetime "created_at", :null => false
@@ -258,6 +268,12 @@ ActiveRecord::Schema.define(:version => 20140207170213) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
+
+  create_table "seasons", :force => true do |t|
+    t.integer  "num"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tournies", :force => true do |t|
     t.integer  "challonge_id"

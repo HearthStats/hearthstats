@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include ApplicationHelper
 
   layout :layout
 
-  def destroy_guest
-  	if session[:guest_user_id]
-			User.find(session[:guest_user_id]).destroy
-			session[:guest_user_id] = nil
-		end
-  end
+  def get_win_rate(matches)
+    wins = matches.where(result_id: 1).count.to_f
+    tot_games = matches.count
+    win_rate = wins / tot_games
+    win_rate = "N/A" and return win_rate if win_rate.nan?
+    win_rate = (win_rate*100).round(2)
 
-  helper_method :destroy_guest
+    win_rate
+  end  
 
+  helper_method :klasses_hash
   private
 
   # API Methods

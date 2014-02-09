@@ -20,4 +20,15 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     super
   end
+  
+  private
+  
+  def destroy_guest
+  	if session[:guest_user_id]
+			User.find(session[:guest_user_id]).destroy
+			session[:guest_user_id] = nil
+		end
+  end
+
+
 end

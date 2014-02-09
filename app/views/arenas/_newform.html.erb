@@ -1,4 +1,4 @@
-<%= form_for(@arena, remote: true) do |f| %>
+<%= form_for @arena, url: {controller: "arenas", action: "create"}, remote: true do |f| %>
 	<div class="row arenas">
 		<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
 		<div class="col-md-6 center">
@@ -20,7 +20,7 @@
 	    </div>
 	    <div class="oppfield arenaopp">
 	      <h2 style="margin-top:0;">Opponent's Class</h2>
-	      <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]) %>
+	      <%= f.select :oppclass, options_for_select(klasses_hash.map(&:name)) %>
 	    </div>
 	    <div class="cf"></div>
 	    <input type="checkbox" name="arena[win]" rel="toggle-btn" class="winbutt_style" on="Victory" off="Defeat" offclass="red"/>
@@ -29,7 +29,7 @@
 	      <%= link_to arenas_path do %>
 	      <button class="btn btn-lg">Back</button>
 	      <% end %>
-	      <% if @runwins > 11 || @runloses > 2 %>
+	      <% if @arenarun.complete %>
 					<%= link_to end_arena_runs_path do %>
 		      	<button class="btn btn-lg btn-warning">End Run</button>
 		      <% end %>

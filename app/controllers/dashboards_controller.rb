@@ -7,12 +7,15 @@ class DashboardsController < ApplicationController
   def index
     # recentgamesbyhr(current_user.id, 12)
     recentgames(current_user.id, 10)
-    arena_matches = Match.where(mode_id: 1, user_id: current_user.id)
-    @arena_wr = Match.get_win_rate(arena_matches)
+    arena_matches = Match.where(mode_id: 1, user_id: current_user.id, season_id: current_season)
+    @arena_wr = get_win_rate(arena_matches).to_s + "%"
+    con_matches = Match.where(mode_id: 3, user_id: current_user.id)
+    @con_wr = get_win_rate(con_matches).to_s + "%"
+
     @recent_entries = Profile.get_recent_games(current_user.id)
     @global = Hash.new
- 		@global[:arena] = ((Arena.where(win: true).count.to_f / Arena.count)*100).round
- 		@global[:con] = ((Constructed.where(win: true).count.to_f / Constructed.count)*100).round
+    @global[:arena] = (get_win_rate(Match.where(mode_id: 1))).round
+    @global[:con] = (get_win_rate(Match.where(mode_id: 3))).round
  		@global[:coin] = ((Constructed.where(win: true, gofirst: true).count.to_f / Constructed.where(gofirst: true).count)*100).round
  		@topdeck = Deck.bestuserdeck(current_user.id)
  		@toparena = Arena.bestuserarena(current_user.id)
