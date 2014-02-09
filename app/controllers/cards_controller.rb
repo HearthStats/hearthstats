@@ -43,4 +43,8 @@ class CardsController < ApplicationController
     end
     
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> bd13da7b34473416d5445528c9ce9ccb2ef5bc16

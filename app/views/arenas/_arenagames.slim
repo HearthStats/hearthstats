@@ -9,13 +9,10 @@ table class="table table-bordered table-striped table-condensed flip-content"
     tbody
     - arenas.each do |match|
       tr.matches
-        td = link_to match.userclass, race_dashboards_path(:race => match.userclass)
+        td = link_to get_name(match, "Klass"), race_dashboards_path(:race => get_name(match, "Klass"))
         td = match.oppclass
         td
-          -if match.win
-            span.victory Victory
-          -else
-            span.defeat Defeat
+          span. Victory
         td = match.oppname
         td
           = link_to edit_arena_path(match), class: 'btn default btn-xs purple' do

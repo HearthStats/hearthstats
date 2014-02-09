@@ -1,4 +1,4 @@
-<%= form_for @arena, url: {controller: "arenas", action: "create"}, remote: true do |f| %>
+<%= form_for @arena, url: {controller: "arenas", action: "create"} do |f| %>
 	<div class="row arenas">
 		<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
 		<div class="col-md-6 center">
@@ -14,16 +14,16 @@
 	      </div>
 	    <% end %>
 
-	    <%= f.text_field :userclass, :value => @arenarun.userclass, class: "hidden" %>
+	    <%= f.text_field :klass_id, :value => @arenarun.klass_id, class: "hidden" %>
 			<div class="gofirst-cont">
-	      <input type="checkbox" name="arena[gofirst]" rel="toggle-btn" class="btn btn-lg green" on="Played First" off="Played Second"/>
+	      <input type="checkbox" name="match[coin]" rel="toggle-btn" class="btn btn-lg green" on="Played First" off="Played Second"/>
 	    </div>
 	    <div class="oppfield arenaopp">
 	      <h2 style="margin-top:0;">Opponent's Class</h2>
-	      <%= f.select :oppclass, options_for_select(klasses_hash.map(&:name)) %>
+        <%= f.select :oppclass_id, options_for_select(klasses_hash.map { |k| [k.name, k.id] }) %>
 	    </div>
 	    <div class="cf"></div>
-	    <input type="checkbox" name="arena[win]" rel="toggle-btn" class="winbutt_style" on="Victory" off="Defeat" offclass="red"/>
+	    <input type="checkbox" name="match[result_id]" rel="toggle-btn" class="winbutt_style" on="Victory" off="Defeat" offclass="red"/>
 	    <%= f.number_field :arena_run_id , :value => @arenarun.id, class: "hidden" %>
 	    <div class="actions">
 	      <%= link_to arenas_path do %>
