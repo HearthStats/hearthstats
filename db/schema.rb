@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209195851) do
+ActiveRecord::Schema.define(:version => 20140209230218) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -272,6 +272,11 @@ ActiveRecord::Schema.define(:version => 20140209195851) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "sets", :force => true do |t|
+    t.string "name"
+    t.text   "notes"
+  end
+
   create_table "tournies", :force => true do |t|
     t.integer  "challonge_id"
     t.integer  "status",       :default => 0
@@ -280,6 +285,10 @@ ActiveRecord::Schema.define(:version => 20140209195851) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "complete",     :default => false
+  end
+
+  create_table "types", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|
