@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209031847) do
+ActiveRecord::Schema.define(:version => 20140209180449) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20140209031847) do
     t.boolean "collectible"
     t.string  "image_link"
     t.integer "patch_id"
+    t.integer "hearthhead_id"
   end
 
   create_table "constructeds", :force => true do |t|
