@@ -26,12 +26,16 @@ class CardsController < ApplicationController
     @classFilter = CGI.parse(request.query_string)['class'].first
     if !@classFilter.nil? && (Float(@classFilter) rescue false)
      @cards = @cards.where('klass_id = ?', @classFilter)
+    else 
+      if @classFilter == "neutral"
+        @cards = @cards.where('klass_id  IS NULL')
+      end
     end
     
     #sort field
-    @sortField = "name"
+    @sortField = "mana"
     sortRequest = CGI.parse(request.query_string)['sort'].first
-    if sortRequest.match("attack|health|mana")
+    if !sortRequest.nil? && sortRequest.match("attack|name|health|mana")
       @sortField = sortRequest
     end
     
