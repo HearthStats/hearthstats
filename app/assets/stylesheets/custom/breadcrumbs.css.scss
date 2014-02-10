@@ -1,0 +1,11 @@
+.title-container{
+  float: left;
+  position: relative;
+  height: 94px;
+  width: 430px;
+  display: inline-block;
+  .page-title{
+    position: absolute;
+    bottom: 0;
+  }
+}
