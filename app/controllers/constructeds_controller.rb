@@ -1,11 +1,11 @@
-class ConstructedsController < ApplicationController
+class MatchsController < ApplicationController
   before_filter :authenticate_user!
   # GET /constructeds
   # GET /constructeds.json
   def index
-    @constructeds = Constructed.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
-    @constructed = Constructed.new
-    @lastentry = Constructed.where(user_id: current_user.id).last
+    @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @constructed = Match.new
+    @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
     @myDecks = getMyDecks()
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class ConstructedsController < ApplicationController
   # GET /constructeds/1
   # GET /constructeds/1.json
   def show
-    @constructed = Constructed.find(params[:id])
+    @constructed = Match.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,14 +30,14 @@ class ConstructedsController < ApplicationController
   	if Deck.where(user_id: current_user.id).count == 0
   		redirect_to new_deck_path, notice: "Please create a deck first."
   	end
-    @constructed = Constructed.new
-    @lastentry = Constructed.where(user_id: current_user.id).last
+    @constructed = Match.new
+    @lastentry = Match.where(user_id: current_user.id).last
     @myDecks = getMyDecks()
   end
 
   # GET /constructeds/1/edit
   def edit
-    @constructed = Constructed.find(params[:id])
+    @constructed = Match.find(params[:id])
     canedit(@constructed)
     @myDecks = getMyDecks()
   end
@@ -45,7 +45,7 @@ class ConstructedsController < ApplicationController
   # POST /constructeds
   # POST /constructeds.json
   def create
-    @constructed = Constructed.new(params[:constructed])
+    @constructed = Match.new(params[:constructed])
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
     end
@@ -72,7 +72,7 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1
   # PUT /constructeds/1.json
   def update
-    @constructed = Constructed.find(params[:id])
+    @constructed = Match.find(params[:id])
     deck_id = Deck.where(:user_id => current_user.id, :name => params[:constructed][:deckname])[0].id
     params[:constructed][:deck_id] = deck_id
     respond_to do |format|
@@ -89,7 +89,7 @@ class ConstructedsController < ApplicationController
   # DELETE /constructeds/1
   # DELETE /constructeds/1.json
   def destroy
-    @constructed = Constructed.find(params[:id])
+    @constructed = Match.find(params[:id])
     @constructed.destroy
     respond_to do |format|
       format.html { redirect_to constructeds_url }

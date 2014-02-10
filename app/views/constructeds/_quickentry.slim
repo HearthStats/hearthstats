@@ -7,13 +7,13 @@ div class="portlet quick_con_entry"
   div class="portlet-body"
     = form_for(@constructed, :html => {:class => 'form-inline quickentry'}) do |f|
       -if !@lastentry.nil?
-        = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deckname))
+        = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deck.name))
       -else
-        = select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}))
+        = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}))
       | vs.
-      = f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior]), class: 'quick_input'
-      input name="constructed[rank]" rel="toggle-btn" on="Ranked" off="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
-      input name="constructed[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
+      = f.select :oppclass, options_for_select(klasses_hash.to_a), class: 'quick_input'
+      input name="match[rank]" rel="toggle-btn" on="Ranked" off="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
+      input name="match[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
       = f.submit "Add Win", class: "btn btn-primary"
       = f.submit "Add Defeat", class: "btn btn-primary red"
 

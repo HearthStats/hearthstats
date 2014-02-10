@@ -55,7 +55,7 @@ div class="portlet box green"
             span.Draw = arena.matches.where(result_id: 3).count
           td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
           -if current_user.guest
-            td = arena.created_at.strftime("%H:%M %P on %Y-%m-%d")
+            td = arena.created_at.strftime("%H:%M on %Y-%m-%d")
           -else
             td = arena.created_at.in_time_zone(@current_user.profile.time_zone).strftime("%H:%M on %Y-%m-%d")
           td

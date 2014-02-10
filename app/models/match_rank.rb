@@ -1,4 +1,4 @@
 class MatchRank < ActiveRecord::Base
-  has_many :ranks
+  belongs_to :rank
   belongs_to :match
 end
