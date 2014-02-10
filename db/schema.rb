@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209230218) do
+ActiveRecord::Schema.define(:version => 20140210003011) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -111,12 +111,6 @@ ActiveRecord::Schema.define(:version => 20140209230218) do
     t.integer  "deck_id"
     t.string   "cardstring"
     t.text     "notes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "factions", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -235,6 +229,12 @@ ActiveRecord::Schema.define(:version => 20140209230218) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "races", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "ranks", :force => true do |t|
     t.string   "name"

@@ -3,6 +3,7 @@ class CardsController < ApplicationController
     #update()
     @classes = Klass.order('name ASC');
     @types = Type.order('name ASC');
+    @races = Race.order('name ASC');
     
     @cards = Card
     
@@ -20,6 +21,16 @@ class CardsController < ApplicationController
     @typeFilter = CGI.parse(request.query_string)['type'].first
     if !@typeFilter.nil? && (Float(@typeFilter) rescue false)
      @cards = @cards.where('type_id = ?', @typeFilter)
+    end
+    
+    # filter by card race
+    @raceFilter = CGI.parse(request.query_string)['race'].first
+    if !@raceFilter.nil? && (Float(@raceFilter) rescue false)
+     @cards = @cards.where('race_id = ?', @raceFilter)
+    else 
+      if @raceFilter == "none"
+        @cards = @cards.where('race_id  IS NULL')
+      end
     end
     
     # filter by card class
