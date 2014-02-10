@@ -50,14 +50,14 @@ div class="portlet box green"
           td
             span.Victory = arena.matches.where(result_id: 1).count
             |/
-            span.Defeat = arena.matches.where(result_id: 2).count
+            span.Defeat= arena.matches.where(result_id: 2).count
             |- 
             span.Draw = arena.matches.where(result_id: 3).count
           td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
           -if current_user.guest
-            td = arena.created_at.strftime("%I:%M %P on %B %d, %Y")
+            td = arena.created_at.strftime("%H:%M %P on %Y-%m-%d")
           -else
-            td = arena.created_at.in_time_zone(@current_user.profile.time_zone).strftime("%I:%M %P on %B %d, %Y")
+            td = arena.created_at.in_time_zone(@current_user.profile.time_zone).strftime("%H:%M on %Y-%m-%d")
           td
             = link_to edit_arena_run_path(arena), class: 'btn default btn-xs purple' do
               i class="fa fa-pencil-square-o"

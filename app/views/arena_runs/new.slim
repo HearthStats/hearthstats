@@ -26,7 +26,7 @@ div.row
                   - @arenarun.errors.full_messages.each do |msg|
                     li = msg
             h3.arenaruntitle Your Class
-            = f.select :klass_id, options_for_select(klasses_hash.map { |k| [k.name, k.id] })
+            = f.select :klass_id, options_for_select(klasses_hash.to_a)
             div.form-actions.fluid
               div.row
                 div.col-md-12
@@ -34,4 +34,4 @@ div.row
                     |Continue <i class='m-icon-swapright m-icon-white'></i>
 
 javascript:
-  app.UI.initClassSelector('#arena_run_userclass');
+  app.UI.initClassSelector('#arena_run_klass_id');

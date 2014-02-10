@@ -1,4 +1,4 @@
-<%= form_for @arena, url: {controller: "arenas", action: "create"} do |f| %>
+<%= form_for @arena, url: {controller: "arenas", action: "create"}, remote: true do |f| %>
 	<div class="row arenas">
 		<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
 		<div class="col-md-6 center">
@@ -20,11 +20,11 @@
 	    </div>
 	    <div class="oppfield arenaopp">
 	      <h2 style="margin-top:0;">Opponent's Class</h2>
-        <%= f.select :oppclass_id, options_for_select(klasses_hash.map { |k| [k.name, k.id] }) %>
+        <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
 	    </div>
 	    <div class="cf"></div>
 	    <input type="checkbox" name="match[result_id]" rel="toggle-btn" class="winbutt_style" on="Victory" off="Defeat" offclass="red"/>
-	    <%= f.number_field :arena_run_id , :value => @arenarun.id, class: "hidden" %>
+      <%= number_field_tag :arena_run_id , @arenarun.id , :class => "hidden" %>
 	    <div class="actions">
 	      <%= link_to arenas_path do %>
 	      <button class="btn btn-lg">Back</button>
@@ -61,17 +61,15 @@
 				      	<tr><th>Opponent Class</th><th>Result</th></tr>
 				      </thead>
 				        <tbody>
-				        	<% @arenarun.arenas.each do |a| %>
-				        	    <tr>
-				        	      <td><%= image_tag("Icons/Classes/#{a.oppclass}_Icon.gif", height: "24", width: "24")%>   <%=a.oppclass%></td>
-				        	      <td>
-				        	        <% if a.win %>
-				        	          <span class="victory">Victory</span>
-				        	        <% else %>
-				        	          <span class="defeat">Defeat</span>
-				        	        <% end %>
-				        	      </td>
-				        	    </tr>
+				        	<% @arenarun.matches.each do |a| %>
+                    <tr>
+                      <td>
+                        <%= image_tag("Icons/Classes/#{get_name(a,"Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(a,"Oppclass")%>
+                      </td>
+                      <td>
+                        <span class=<%= get_name(a,'Result') %>><%= get_name(a, "Result") %></span>
+                      </td>
+                    </tr>
 				        	<% end %>
 				        </tbody>
 				    </table>
@@ -83,5 +81,5 @@
 	</div>
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#arena_oppclass');
+	app.UI.initClassSelector('#match_oppclass_id');
 </script>

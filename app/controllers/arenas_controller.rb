@@ -57,11 +57,14 @@ class ArenasController < ApplicationController
   # POST /arenas.json
   def create
 
-    raise
-    @arena = Arena.new(params[:arena])
+    @arena = Match.new(params[:match])
+    @arena.result_id = 2 if params[:match][:result_id].to_i == 0
     @arena.user_id = current_user.id
-    @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
-    @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count
+    @arena.mode_id = 1
+    @arena.coin = params[:match][:coin].to_i.zero?
+    @arena.season_id = current_season 
+    @runwins = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 1).count
+    @runloses = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 2).count
     if @runwins > 11 || @runloses > 2
       respond_to do |format|
         format.js
@@ -69,8 +72,9 @@ class ArenasController < ApplicationController
     else
       respond_to do |format|
         if @arena.save
-          @runwins = Arena.where(arena_run_id: session[:arenarunid], win: true).count
-          @runloses = Arena.where(arena_run_id: session[:arenarunid], win: false).count
+          MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
+          @runwins = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 1).count
+          @runloses = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 2).count
           format.html { redirect_to new_arena_url, notice: 'Arena was successfully created.' }
           format.js
         else
