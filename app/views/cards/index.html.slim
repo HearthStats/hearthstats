@@ -10,11 +10,16 @@ form id="cardsFilter" method="get" class="data-turboform"
 		| Text Contains: &nbsp; 
 		input[name="text" value="#{@textFilter}"]
 		| &nbsp; Filter by: &nbsp; 
+		select name="type"
+			option[value=""] - any type -
+			- @types.each do |type|
+				option[value="#{type.id}" selected=("selected" if @typeFilter.to_f == type.id.to_f)] = type.name
+		| &nbsp; 
 		select name="class"
 			option[value=""] - any class -
 			option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
 			- @classes.each do |c|
-				option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)]  = c.name
+				option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)] = c.name
 		| &nbsp; Sort by: &nbsp;
 		select name="sort"
 			option[value="attack" selected=("selected" if @sortField == "attack")] Attack

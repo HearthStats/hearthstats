@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   def index
     #update()
     @classes = Klass.order('name ASC');
+    @types = Type.order('name ASC');
     
     @cards = Card
     
@@ -15,8 +16,13 @@ class CardsController < ApplicationController
       )
     end
     
+    # filter by card type
+    @typeFilter = CGI.parse(request.query_string)['type'].first
+    if !@typeFilter.nil? && (Float(@typeFilter) rescue false)
+     @cards = @cards.where('type_id = ?', @typeFilter)
+    end
     
-    # filter by number of days to show
+    # filter by card class
     @classFilter = CGI.parse(request.query_string)['class'].first
     if !@classFilter.nil? && (Float(@classFilter) rescue false)
      @cards = @cards.where('klass_id = ?', @classFilter)
