@@ -1,5 +1,5 @@
 class ArenaRun < ActiveRecord::Base
-  attr_accessible :class, :gold, :dust, :completed, :user_id, :userclass, :notes, :complete
+  attr_accessible :class, :gold, :dust, :completed, :user_id, :klass_id, :notes, :complete
   
   has_many :arenas
   has_many :match_run

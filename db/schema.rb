@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140209230218) do
+ActiveRecord::Schema.define(:version => 20140210011654) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20140209230218) do
 
   create_table "arena_runs", :force => true do |t|
     t.integer  "user_id"
-    t.string   "klass_id"
     t.integer  "gold",       :default => 0
     t.integer  "dust",       :default => 0
     t.boolean  "complete",   :default => false
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20140209230218) do
     t.datetime "updated_at",                        :null => false
     t.text     "notes"
     t.string   "patch",      :default => "current"
+    t.integer  "klass_id"
   end
 
   add_index "arena_runs", ["user_id"], :name => "index_arena_runs_on_user_id"
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(:version => 20140209230218) do
 
   create_table "match_results", :force => true do |t|
     t.integer  "match_id"
-    t.string   "result"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

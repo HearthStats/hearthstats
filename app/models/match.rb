@@ -1,5 +1,5 @@
 class Match < ActiveRecord::Base
-  attr_accessible :created_at, :updated_at, :user_id, :class_id, :oppclass_id, :oppname, :mode_id, :result_id, :notes
+  attr_accessible :created_at, :updated_at, :user_id, :klass_id, :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
 
   has_one :match_run
   has_one :arena_run, :through => :match_run
