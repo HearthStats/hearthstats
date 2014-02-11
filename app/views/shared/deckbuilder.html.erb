@@ -26,4 +26,9 @@
     	console.log($(this).val());
     	addCardSelect2.select2('val', "");
     })
+    
+    $.get('/api/v1/decks/show?userkey=<%= current_user.userkey %>', function(result) {
+    	console.log(result);
+    });
+    
 </script>
