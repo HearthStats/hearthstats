@@ -262,11 +262,6 @@
 				
 				$('.deckbuilderWrapper').addClass('enabled');
 				
-				// get all decks ... and todo
-			    $.get('/api/v1/decks/show?userkey=<%= current_user.userkey %>', function(result) {
-			    	console.log(result);
-			    });
-			    
 			    // no context builder in deckbuilder
 				$('.deckbuilderWrapper').bind("contextmenu",function(){
 			       return false;

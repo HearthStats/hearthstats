@@ -44,8 +44,12 @@ div.row
 	  = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
   div.col-md-4.center
     = render :template => 'shared/deckbuilder'
-= link_to 'Edit', edit_deck_path(@deck)
-= link_to 'Back', decks_path
+
+- if (!current_user.nil? && current_user.id == @deck.user_id) 
+  = link_to 'Edit', edit_deck_path(@deck), :class=>"btn btn-lg btn-primary"
+  = " "
+  
+= link_to 'Back', decks_path, :class=>"btn btn-lg dark"
 
 javascript:
   if(DeckBuilder) {
