@@ -27,6 +27,7 @@
 		var _enabled = false;
 		var _deckBuilderAddCardField = $('select[name="deckBuilderAddCardField"]');
 		var _deckBuilderAddCardFieldSelect2;
+		var _classId;
 		
 		/**
 		 * All the cards in the game 
@@ -170,7 +171,7 @@
 				var card = _cards[i];
 				if(card.id == id) {
 					if(card.qty == 1)
-						_cards.splice(i, 1)
+						_cards.splice(i, 1);
 					else 
 						_cards[i].qty--;
 				};
@@ -252,7 +253,19 @@
 			
 		}
 		
+		function _purgeNonClassCards(classId) {
+			for(var i = 0; i < _cards.length; i++) {
+				var card = _cards[i];
+				if(card.klass_id && parseInt(card.klass_id) != _classId)
+					_cards.splice(i, 1);
+			}
+		}
 		
+		function _setClassId(classId) {
+			_classId = parseInt(classId);
+			_purgeNonClassCards();
+			_render();
+		}
 	    
 		return {
 			enable:function() {
@@ -281,6 +294,9 @@
 			},
 			setCardString:function(str) {
 				_setCardString(str);
+			},
+			setClassId:function(classId) {
+				_setClassId(classId);
 			}
 		};
 	}());

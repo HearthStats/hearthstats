@@ -59,6 +59,9 @@
 	app.UI.initClassSelector('#deck_race');
 	if(DeckBuilder) {
 		DeckBuilder.enable();
+		<% if !@deck.klass.nil? %>
+			DeckBuilder.setClassId(<%= @deck.klass.id %>);
+		<% end %>
 		DeckBuilder.addChangeHandler(function() {
 			$('#deck_cardstring').val(DeckBuilder.getCardString());
 		});
