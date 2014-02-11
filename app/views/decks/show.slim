@@ -13,7 +13,10 @@ div.row
 	    = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
 	    p
 	      b Class:
-	      = @deck.race
+	      - if @deck.klass.nil?
+	      	= @deck.race
+	      - else
+	      	= @deck.klass.name
 	    p
 	      b.victory Wins:
 	      = @deck.constructeds.where(win: true).count

@@ -25,7 +25,7 @@
 				<div class="oppfield col-md-6 center">
 					<%= f.label "Class" %>
 					<br>
-					<%= f.select :race, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @deck.race) %>
+					<%= collection_select(:deck, :klass_id, Klass.order("name ASC"), :id, :name) %>
 				</div>
 			</div>
 			<div class="row center">
@@ -56,7 +56,7 @@
 	
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#deck_race');
+	app.UI.initClassSelector('#deck_klass_id');
 	if(DeckBuilder) {
 		DeckBuilder.enable();
 		<% if !@deck.klass.nil? %>
