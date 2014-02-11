@@ -1,4 +1,4 @@
-<%= form_for(@constructed) do |f| %>
+<%= form_for @constructed, url: {controller: "constructeds", action: "create"} do |f| %>
 	<% if @constructed.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
@@ -18,7 +18,7 @@
 				<span class="coin col-md-6">
 					<h3>You played on the: </h3>
 					<input type="checkbox"
-						name="constructed[gofirst]"
+						name="other[gofirst]"
 						rel="toggle-btn"
 						class="btn-lg"
 						on="First Turn"
@@ -27,7 +27,7 @@
 				</span>
 				<span class="ranked col-md-6"> <h3>This match is: </h3>
 					<input type="text"
-						name="constructed[rank]"
+						name="other[rank]"
 						rel="toggle-btn"
 						class="btn-lg"
 						on="Ranked"
@@ -42,9 +42,9 @@
 						<%= f.label "Deck Name" %>
 						<br />
 						<% if !@lastentry.nil? %>
-							<%= f.select(:deckname, @myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, default: @lastentry.deckname) %>
+              <%= select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @lastentry.deck.name)) %>
 						<% else %>
-							<%= f.select(:deckname, 0, options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]})) %>
+              <%= select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]})) %>
 						<% end %>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 					<div class="oppfield">
 						<%= f.label "Opponent's Class" %>
 						<br />
-						<%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
+						<%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
 					</div>
 				</div>
 			</div>
@@ -78,9 +78,9 @@
 	</div>
 	<div class="actions center">
 		<%= link_to constructeds_path do %>
-		<button class="btn btn-lg">
-			Back
-		</button>
+      <button class="btn btn-lg">
+        Back
+      </button>
 		<% end %>
 		<%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
 	</div>

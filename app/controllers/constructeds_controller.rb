@@ -1,4 +1,4 @@
-class MatchsController < ApplicationController
+class ConstructedsController < ApplicationController
   before_filter :authenticate_user!
   # GET /constructeds
   # GET /constructeds.json
@@ -45,21 +45,36 @@ class MatchsController < ApplicationController
   # POST /constructeds
   # POST /constructeds.json
   def create
-    @constructed = Match.new(params[:constructed])
+    raise
+    @constructed = Match.new(params[:match])
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
     end
-    @constructed.deckname = params[:deckname]["0"]
+
+    # Find ranked_id
+    if params[:other][:rank] == "Ranked"
+      mode_id = 3
+    elsif params[:other][:rank] == "Casual"
+      mode_id = 2
+    else
+      redirect_to constructeds_path, alert: 'Mode Error' and return
+    end
+    
+    @constructed.coin = params[:other][:coin].to_i.zero?
+    @constructed.mode_id = mode_id
+    deck = Deck.where( name: params[:deckname], user_id: current_user.id ).first
+    @constructed.klass_id = deck.klass_id
     @constructed.user_id = current_user.id
-    @deck = Deck.where(user_id: current_user.id, :name => @constructed.deckname)[0]
-    @constructed.deck_id = @deck.id
+    if params[:commit] == "Add Win"
+      @constructed.result_id = 1
+    elsif params[:commit] == "Add Defeat"
+      @constructed.result_id = 2
+    else
+      @constructed.result_id = 3
+    end
     respond_to do |format|
-      if params[:commit] == "Add Win"
-        @constructed[:win] = true
-      else
-        @constructed[:win] = false
-      end
       if @constructed.save
+        MatchDeck.new( deck_id: deck.id, match_id: @constructed.id ).save!
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
       else
