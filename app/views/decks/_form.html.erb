@@ -56,4 +56,8 @@
 <% end %>
 <script type="text/javascript">
 	app.UI.initClassSelector('#deck_race');
+	if(DeckBuilder)
+		DeckBuilder.addChangeHandler(function() {
+			console.log(DeckBuilder.getCardString());
+		});
 </script>
