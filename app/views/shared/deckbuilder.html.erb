@@ -194,8 +194,12 @@
 		}
 		
 		function _render() {
+			
+			_drawCards();
+			
 			if(_enabled) {
 				_generateCardSelector();
+				
 				// left click on card to add
 				$('.deckbuilderWrapper .cardWrapper').click(function() {
 					_addCardById($(this).attr('cardid'));
@@ -218,7 +222,7 @@
 				}
 			}
 			
-			_drawCards();
+			
 			$('.deckBuilderNumCards').html(_getNumCards());
 		}
 		
