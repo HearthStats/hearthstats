@@ -78,7 +78,6 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @deck = Deck.new(params[:deck])
-    @deck.active = true
     @deck.user_id = current_user.id
     respond_to do |format|
       if @deck.save
