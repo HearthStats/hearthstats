@@ -45,6 +45,9 @@
 .deckbuilderWrapper.enabled .cardListHeader {
   display:none;
 }
+.deckbuilderWrapper .deckBuilderCardsWrapper {
+  margin-bottom:1em; 
+}
 .deckbuilderWrapper .cardWrapper {
   width:218px;
   overflow:hidden;
@@ -105,4 +108,9 @@
   margin:1em auto;
   width:300px;
   padding:1em;
+}
+.deckbuilderWrapper #manaCurveChart {
+  width:230px;
+  height:100px;
+  margin:auto;
 }

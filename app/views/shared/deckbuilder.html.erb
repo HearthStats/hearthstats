@@ -19,6 +19,8 @@
 		</div>
 	</div>
 	<div class="deckBuilderCardsWrapper"></div>
+	<div>Mana Curve:</div>
+	<div id="manaCurveChart"></div>
 </div>
 
 <script type="text/javascript">
@@ -228,6 +230,7 @@
 			
 			
 			$('.deckBuilderNumCards').html(_getNumCards());
+			_drawManaCurveChart();
 		}
 		
 		function _deckBuilderAddCardChange() {
@@ -270,6 +273,71 @@
 			_render();
 		}
 	    
+	    function _drawManaCurveChart() {
+	    	
+	    	var manaGroups = {
+	    		"0":0,
+	    		"1":0,
+	    		"2":0,
+	    		"3":0,
+	    		"4":0,
+	    		"5":0,
+	    		"6":0,
+	    		"7+":0,
+	    	};
+	    	
+	    	for(var i = 0; i < _cards.length; i++) {
+	    		var card = _cards[i];
+	    		var manaCost = parseInt(card.mana);
+	    		if(manaCost < 7)
+	    			manaGroups[manaCost + ""] += parseInt(card.qty);
+	    		else
+	    			manaGroups["7+"] += parseInt(card.qty);
+	    	}
+	    	
+	    	var d1 = [
+	    		[0, manaGroups["0"]],
+	    		[1, manaGroups["1"]],
+	    		[2, manaGroups["2"]],
+	    		[3, manaGroups["3"]],
+	    		[4, manaGroups["4"]],
+	    		[5, manaGroups["5"]],
+	    		[6, manaGroups["6"]],
+	    		[7, manaGroups["7+"]]
+	    	];
+	    	var graphData = [
+	    		{
+	    			color: "blue",
+			        data: d1
+			    }
+			]; 
+			var graphOptions = {
+		        legend: {
+		            show: false
+		        },
+		        series: {
+		            bars: {
+		                align: 'left',
+		                fill: 0.7,
+		                barWidth: 0.9,
+		                show: true,
+		                lineWidth: 0
+		            }
+		        },
+		        xaxis: {
+		            ticks: [[0.5,"0"],[1.5,"1"],[2.5,"2"],[3.5,"3"],[4.5,"4"],[5.5,"5"],[6.5,"6"],[7.5,"7+"]],
+			        tickLength: 0 // disable tick
+		        },
+		        yaxis: {
+			        tickLength: 0, // disable tick
+			        tickFormatter:function() {
+			        	return "";
+			        }
+			    }
+			    
+		    };
+	    	$.plot($("#manaCurveChart"), graphData, graphOptions);
+	    }
 		return {
 			enable:function() {
 				_enabled = true;
