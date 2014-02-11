@@ -325,19 +325,56 @@
 		                lineWidth: 0
 		            }
 		        },
+		        grid: { 
+				  borderWidth: 0,
+				  hoverable: true
+				},
 		        xaxis: {
 		            ticks: [[0.5,"0"],[1.5,"1"],[2.5,"2"],[3.5,"3"],[4.5,"4"],[5.5,"5"],[6.5,"6"],[7.5,"7+"]],
 			        tickLength: 0 // disable tick
 		        },
 		        yaxis: {
-			        tickLength: 0, // disable tick
-			        tickFormatter:function() {
-			        	return "";
-			        }
+		        	show:false
 			    }
 			    
 		    };
 	    	$.plot($("#manaCurveChart"), graphData, graphOptions);
+	    	function showTooltip(x, y, contents) {
+		        $('<div id="flotTtooltip">' + contents + '</div>').css({
+		            position: 'absolute',
+		            display: 'none',
+		            top: y - 30,
+		            left: x - 10,
+		            border: '1px solid #333',
+		            padding: '2px',
+		            'background-color': '#fee',
+		            color:'#000',
+		            opacity: 0.90
+		        }).appendTo("body").fadeIn(200);
+		    }
+	    	$("#manaCurveChart").bind("plothover", function (event, pos, item) {
+		        $("#x").text(pos.x.toFixed(2));
+		        $("#y").text(pos.y.toFixed(2));
+		
+	            if (item) {
+	                if (previousPoint != item.dataIndex) {
+	                    previousPoint = item.dataIndex;
+	                    
+	                    $("#tooltip").remove();
+	                    var x = item.datapoint[0].toFixed(2),
+	                        y = item.datapoint[1].toFixed(2);
+	                    
+	                    var text = item.datapoint[1] + " card";
+	                    if(item.datapoint[1] != 1)
+	                    	text += "s";
+	                    showTooltip(item.pageX, item.pageY, text);
+	                }
+	            }
+	            else {
+	                $("#flotTtooltip").remove();
+	                previousPoint = null;            
+	            }
+		    });
 	    }
 		return {
 			enable:function() {
