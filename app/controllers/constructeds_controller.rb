@@ -45,7 +45,6 @@ class ConstructedsController < ApplicationController
   # POST /constructeds
   # POST /constructeds.json
   def create
-    raise
     @constructed = Match.new(params[:match])
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
@@ -60,7 +59,7 @@ class ConstructedsController < ApplicationController
       redirect_to constructeds_path, alert: 'Mode Error' and return
     end
     
-    @constructed.coin = params[:other][:coin].to_i.zero?
+    @constructed.coin = params[:other][:gofirst].to_i.zero?
     @constructed.mode_id = mode_id
     deck = Deck.where( name: params[:deckname], user_id: current_user.id ).first
     @constructed.klass_id = deck.klass_id
