@@ -59,13 +59,16 @@
 	app.UI.initClassSelector('#deck_klass_id');
 	if(DeckBuilder) {
 		DeckBuilder.enable();
-		<% if !@deck.klass.nil? %>
-			DeckBuilder.setClassId(<%= @deck.klass.id %>);
-		<% end %>
 		DeckBuilder.addChangeHandler(function() {
 			$('#deck_cardstring').val(DeckBuilder.getCardString());
 		});
 		DeckBuilder.setCardString('<%= @deck.cardstring %>');
+		<% if !@deck.klass.nil? %>
+			DeckBuilder.setClassId(<%= @deck.klass.id %>);
+		<% end %>
 		DeckBuilder.render();
+		$('#deck_klass_id').change(function() {
+			DeckBuilder.setClassId($(this).val());	
+		});
 	}
 </script>

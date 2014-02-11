@@ -62,7 +62,8 @@
 			_deckBuilderAddCardField.html('<option value="">Add a card ...</option>');
 			for(var i = 0; i < _allCards.length; i++) {
 				var card = _allCards[i];
-				_deckBuilderAddCardField.append('<option value="' + card.id + '" image="' + card.image + '">' + card.name + '</option>');
+				if(!card.klass_id || parseInt(card.klass_id) == _classId)
+					_deckBuilderAddCardField.append('<option value="' + card.id + '" image="' + card.image + '">' + card.name + '</option>');
 			}
 			
 			 _deckBuilderAddCardFieldSelect2 = _deckBuilderAddCardField.select2({
@@ -253,12 +254,14 @@
 			
 		}
 		
-		function _purgeNonClassCards(classId) {
+		function _purgeNonClassCards() {
 			for(var i = 0; i < _cards.length; i++) {
 				var card = _cards[i];
+				console.log(card.klass_id + " == " + _classId);
 				if(card.klass_id && parseInt(card.klass_id) != _classId)
 					_cards.splice(i, 1);
 			}
+			_fireChange();
 		}
 		
 		function _setClassId(classId) {
