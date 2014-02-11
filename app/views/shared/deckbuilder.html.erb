@@ -1,0 +1,29 @@
+<div class="deckbuilderWrapper">
+	<h2>Deck Builder</h2>
+	<p>
+		<select name="addCard">
+			<option value="">Add a card ...</option>
+			<% Card.order("name ASC").each do |card| %>
+				<option value="<%= card.id %>" icon	="<%= card.getImageUrl() %>"><%= card.name %></option>
+			<% end %>
+		</select>
+	</p>
+</div>
+<script type="text/javascript">
+	function formatAddCardSelector(o) {
+		if(o.text == "Add a card ...")
+			return null;
+		return '<img src="' + $(o.element[0]).attr('icon') + '" style="width:50px;"/> ' + o.text
+	}
+	var deckCards = [];
+	var addCardSelect2 = $('select[name="addCard"]').select2({
+		placeholder: "Add a card ...",
+		allowClear: true,
+    	formatResult: formatAddCardSelector,
+    	width:'300px'
+    });
+    $('select[name="addCard"]').change(function() {
+    	console.log($(this).val());
+    	addCardSelect2.select2('val', "");
+    })
+</script>
