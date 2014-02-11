@@ -58,14 +58,11 @@
 			</div>
 			<div class="cf"></div>
 			<div class="winfield center">
-				<input type="checkbox"
-					name="constructed[win]"
-					rel="toggle-btn"
-					class="btn-success winbutt_style winbutton"
-					on="Victory"
-					off="Defeat"
-					offClass="red"
-				/>
+				<div class="winfield center">
+					<%= f.submit "Add Win", class: "btn btn-primary green winbutt_style winbutton" %>
+			    <%= f.submit "Add Defeat", class: "btn btn-primary red winbutt_style winbutton" %>
+			    <%= f.submit "Add Draw", class: "btn btn-primary yellow winbutt_style winbutton" %>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -82,10 +79,9 @@
         Back
       </button>
 		<% end %>
-		<%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
 	</div>
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#constructed_oppclass');
-	app.UI.initDeckSelector("#constructed_deckname")
+	app.UI.initClassSelector('#match_oppclass_id');
+	app.UI.initDeckSelector("#deckname")
 </script>
