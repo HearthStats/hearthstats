@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :race, :decklink, :notes
+  attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id
   has_many :constructeds
 
   belongs_to :klass

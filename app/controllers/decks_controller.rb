@@ -71,6 +71,7 @@ class DecksController < ApplicationController
   # GET /decks/1/edit
   def edit
     @deck = Deck.find(params[:id])
+    @classes = Klass.all
     canedit(@deck)
   end
 

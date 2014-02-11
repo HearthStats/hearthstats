@@ -6,40 +6,56 @@
 - provide(:section, 'Decks')
 
 div.row
-  div.col-md-6
-    h3.deck_title Stats
-    = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
-    p
-      b Class:
-      = @deck.race
-    p
-      b.victory Wins:
-      = @deck.constructeds.where(win: true).count
-    p
-      b.defeat Loses:
-      = @deck.constructeds.where(win: false).count
-    div.turnrates
-      div.winrates.total title="Overall win rate with this deck"
-        |Win Rate
-        br
-        | #{number_to_percentage(@winrate, precision: 2)}
-      div.winrates.firstrate title="Percentage of games won when playing first"
-        |No Coin
-        br
-        | #{@firstrate}
-      div.winrates.secrate title="Percentage of games won when playing second"
-        |Coin
-        br
-        | #{@secrate}
-  div.col-md-6.deck-notes
-    h3 Notes
-    = raw @deck.notes
-    - cache do
-      h3 Possible Deck Lists
-      - @gResults.first(5).each do |result|
-        div.decklist = link_to result.uri do
-          = result.title
-  = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
+  div.col-md-8
+    div.row
+	  div.col-md-6
+	    h3.deck_title Stats
+	    = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
+	    p
+	      b Class:
+	      - if @deck.klass.nil?
+	      	= @deck.race
+	      - else
+	      	= @deck.klass.name
+	    p
+	      b.victory Wins:
+	      = @deck.constructeds.where(win: true).count
+	    p
+	      b.defeat Loses:
+	      = @deck.constructeds.where(win: false).count
+	    div.turnrates
+	      div.winrates.total title="Overall win rate with this deck"
+	        |Win Rate
+	        br
+	        | #{number_to_percentage(@winrate, precision: 2)}
+	      div.winrates.firstrate title="Percentage of games won when playing first"
+	        |No Coin
+	        br
+	        | #{@firstrate}
+	      div.winrates.secrate title="Percentage of games won when playing second"
+	        |Coin
+	        br
+	        | #{@secrate}
+	  div.col-md-6.deck-notes
+	    h3 Notes
+	    = raw @deck.notes
+	    - cache do
+	      h3 Possible Deck Lists
+	      - @gResults.first(5).each do |result|
+	        div.decklist = link_to result.uri do
+	          = result.title
+	  = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
+  div.col-md-4.center
+    = render :template => 'shared/deckbuilder'
 
-= link_to 'Edit', edit_deck_path(@deck)
-= link_to 'Back', decks_path
+- if (!current_user.nil? && current_user.id == @deck.user_id) 
+  = link_to 'Edit', edit_deck_path(@deck), :class=>"btn btn-lg btn-primary"
+  = " "
+  
+= link_to 'Back', decks_path, :class=>"btn btn-lg dark"
+
+javascript:
+  if(DeckBuilder) {
+	DeckBuilder.setCardString('#{@deck.cardstring}');
+	DeckBuilder.render();
+  }

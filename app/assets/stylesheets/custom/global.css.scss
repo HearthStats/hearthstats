@@ -31,3 +31,78 @@
 .selectboxit-options .Warrior .selectboxit-option-anchor{
 	color:#fff;
 }
+
+/* deck builder */
+.deckbuilderWrapper {
+ min-height:700px; 
+}
+.deckbuilderWrapper .cardListHeader,
+.deckbuilderWrapper.enabled .deckBuilderTools {
+  display:block;
+}
+.deckbuilderWrapper .deckBuilderTools,
+.deckbuilderWrapper .deckBuilderMissingCards,
+.deckbuilderWrapper.enabled .cardListHeader {
+  display:none;
+}
+.deckbuilderWrapper .cardWrapper {
+  width:218px;
+  overflow:hidden;
+  position:relative;
+  height:35px;
+  line-height:28px;
+  padding:2px;
+  display:block;
+  margin:0 auto;
+  font-size:12px;
+  color:#fff;
+  font-weight:bold; 
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  line-height:38px;
+}
+.deckbuilderWrapper.enabled .cardWrapper {
+  cursor:pointer;
+}
+.deckbuilderWrapper .cardWrapper .mana {
+  font-size:16px;
+  width:24px;
+  text-align:center;
+  position:absolute;
+  top:0;
+  left:2px;
+  z-index:5;
+  height:100%;
+}
+.deckbuilderWrapper .cardWrapper .name {
+  position:absolute;
+  top:0;
+  left:38px;
+  z-index:5; 
+}
+.deckbuilderWrapper .cardWrapper .bg {
+  background-image:url(/assets/deckbuilder_card.png);
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:3;
+  width:100%; 
+  height:100%; 
+}
+.deckbuilderWrapper .cardWrapper.two .bg {
+  background-image:url(/assets/deckbuilder_card_2.png);
+}
+.deckbuilderWrapper .cardWrapper.legendary .bg {
+  background-image:url(/assets/deckbuilder_card_legendary.png);
+}
+.deckbuilderWrapper .cardWrapper .image {
+  width:250px;
+  position:absolute;
+  top:-38px;
+  left:30px;
+  z-index:1;
+}
+.deckbuilderWrapper .deckBuilderMissingCards {
+  margin:1em auto;
+  width:300px;
+  padding:1em;
+}

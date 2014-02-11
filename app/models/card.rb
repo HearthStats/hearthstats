@@ -6,9 +6,12 @@ class Card < ActiveRecord::Base
   belongs_to :klass
   belongs_to :set
   belongs_to :type
-  
+
+  def toJSONWithImage
+     return to_json[0..-2] + ',"image":"' + getImageUrl + '"}'
+  end
+
   def getImageUrl
     return "https://s3-us-west-2.amazonaws.com/hearthstats/cards/" + name.parameterize + ".png" 
-    
   end
 end
