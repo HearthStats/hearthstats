@@ -1,20 +1,30 @@
 <div class="deckbuilderWrapper">
-	<h2>Deck Builder</h2>
-	<p>
-		<select name="deckBuilderAddCardField">
-			<option value="">Add a card ...</option>
-			<% Card.order("name ASC").each do |card| %>
-				<option value="<%= card.id %>" icon	="<%= card.getImageUrl() %>"><%= card.name %></option>
-			<% end %>
-		</select>
-	</p>
-	<p><span class="deckBuilderNumCards"></span> of 30 cards</p>
+	<div class="deckBuilderTools">
+		<h2>Deck Builder</h2>
+		<p>
+			<select name="deckBuilderAddCardField">
+				<option value="">Add a card ...</option>
+				<% Card.order("name ASC").each do |card| %>
+					<option value="<%= card.id %>" icon	="<%= card.getImageUrl() %>"><%= card.name %></option>
+				<% end %>
+			</select>
+		</p>
+		<p><span class="deckBuilderNumCards"></span> of 30 cards</p>
+	</div>
+	<div class="cardListHeader">
+		<h2>Card List</h2>
+		<div class="deckBuilderMissingCards ui-state-error">
+			<p>This deck is incomplete.</p>
+			<p>It only has <span class="deckBuilderNumCards"></span> of 30 cards.</p>
+		</div>
+	</div>
 	<div class="deckBuilderCardsWrapper"></div>
 </div>
 
 <script type="text/javascript">
 	var DeckBuilder = (new function() {
 		
+		var _enabled = false;
 		var _deckBuilderAddCardField = $('select[name="deckBuilderAddCardField"]');
 		var _deckBuilderAddCardFieldSelect2;
 		
@@ -56,7 +66,7 @@
 			
 			 _deckBuilderAddCardFieldSelect2 = _deckBuilderAddCardField.select2({
 		    	formatResult: _formatdeckBuilderAddCardFieldSelector,
-		    	width:'300px'
+		    	width:'220px'
 		    });
 			
 		}
@@ -113,6 +123,8 @@
 				var title = "Right-click to remove";
 				if(_getNumCards() < 30 && card.qty < 2 && card.rarity_id != 5)
 					title = "Left-click to add. " + title;
+				if(!_enabled)
+					title = "";
 				cardsWrapper.append(
 					'<div class="cardWrapper ' + wrapperClass + '" title="' + title + '" cardid="' + card.id + '">' +
 						'<div class="mana">' + card.mana + '</div>' +
@@ -168,27 +180,46 @@
 			_fireChange();
 		}
 		
+		function _setCardString(str) {
+			_cards = [];
+			var groups = str.split(',');
+			for(var i = 0; i < groups.length; i++) {
+				var card = groups[i].split('_');
+				var id = card[0];
+				var qty = parseInt(card[1]);
+				for(var num = 0; num < qty; num++) {
+					_addCardById(id);
+				}
+			}			
+		}
+		
 		function _render() {
-			_generateCardSelector();
-			$('.deckBuilderNumCards').html(_getNumCards());
+			if(_enabled) {
+				_generateCardSelector();
+				// left click on card to add
+				$('.deckbuilderWrapper .cardWrapper').click(function() {
+					_addCardById($(this).attr('cardid'));
+				});
+				
+				// right click on card to remove
+				$('.deckbuilderWrapper .cardWrapper').mousedown(function(e){ 
+					if( e.button == 2 ) { 
+						_removeCardById($(this).attr('cardid')); 
+						return false; 
+					} 
+					return true; 
+				}); 
+				$('.deckbuilderWrapper .cardWrapper').bind("contextmenu",function(){
+			       return false;
+			    }); 
+			} else {
+				if(_getNumCards() < 30) {
+					$('.deckBuilderMissingCards').show();
+				}
+			}
+			
 			_drawCards();
-			
-			// left click on card to add
-			$('.deckbuilderWrapper .cardWrapper').click(function() {
-				_addCardById($(this).attr('cardid'));
-			});
-			
-			// right click on card to remove
-			$('.deckbuilderWrapper .cardWrapper').mousedown(function(e){ 
-				if( e.button == 2 ) { 
-					_removeCardById($(this).attr('cardid')); 
-					return false; 
-				} 
-				return true; 
-			}); 
-			$('.deckbuilderWrapper .cardWrapper').bind("contextmenu",function(){
-		       return false;
-		    }); 
+			$('.deckBuilderNumCards').html(_getNumCards());
 		}
 		
 		function _deckBuilderAddCardChange() {
@@ -215,9 +246,15 @@
 			
 		}
 		
+		
+	    
 		return {
-			init:function() {
+			enable:function() {
+				_enabled = true;
+				
 				_deckBuilderAddCardField.change(_deckBuilderAddCardChange);
+				
+				$('.deckbuilderWrapper').addClass('enabled');
 				
 				// get all decks ... and todo
 			    $.get('/api/v1/decks/show?userkey=<%= current_user.userkey %>', function(result) {
@@ -240,12 +277,11 @@
 			},
 			addChangeHandler:function(callback) {
 				_changeHandlers.push(callback);	
+			},
+			setCardString:function(str) {
+				_setCardString(str);
 			}
 		};
 	}());
-	
-	DeckBuilder.init();
-	DeckBuilder.render();
-	
     
 </script>

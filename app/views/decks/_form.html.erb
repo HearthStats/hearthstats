@@ -57,8 +57,12 @@
 <% end %>
 <script type="text/javascript">
 	app.UI.initClassSelector('#deck_race');
-	if(DeckBuilder)
+	if(DeckBuilder) {
+		DeckBuilder.enable();
 		DeckBuilder.addChangeHandler(function() {
 			$('#deck_cardstring').val(DeckBuilder.getCardString());
 		});
+		DeckBuilder.setCardString('<%= @deck.cardstring %>');
+		DeckBuilder.render();
+	}
 </script>
