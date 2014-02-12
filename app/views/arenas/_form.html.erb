@@ -1,27 +1,4 @@
-<script>
-  $(document).ready(function() {
-
-    function format(state) {
-      var originalOption = state.element;
-
-      return "<img src='/assets/Icons/Classes/" + state.text + "_Icon.gif' alt='" + $(originalOption).data('foo') + "' />" + state.text;
-    }
-    $("#arena_userclass").select2({
-      width: '300px',
-      formatResult: format,
-      formatSelection: format,
-      escapeMarkup: function(m) { return m; }
-    });
-    $("#arena_oppclass").select2({
-      width: '300px',
-      formatResult: format,
-      formatSelection: format,
-      escapeMarkup: function(m) { return m; }
-    });
-  });
-</script>
-
-<%= form_for(@arena) do |f| %>
+<%= form_for @arena, url: {controller: "arenas", action: "update"} do |f| %>
   <% if @arena.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
@@ -41,12 +18,12 @@
 	  <div class="gofirstfield center">
 	    <h3>You played on the: </h3>
 	    <input type="checkbox"
-				name="arena[gofirst]"
+				name="other[gofirst]"
 				rel="toggle-btn"
 				class="btn btn-lg gofirst"
 				on="First Turn"
 				off="Second Turn"
-				<% if !@arena.gofirst %>
+				<% if @arena.coin %>
 				state="off"
 				<% end %>
 			/>
@@ -54,26 +31,29 @@
 	</div>
 	<div class="row center">
   	<div class="oppfield">
-	    <%= f.label :oppclass %><br />
-	    <%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @arena.oppclass) %>
+	    <%= f.label "Opponent Class" %><br />
+	    <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a, @arena.oppclass_id) %>
 	  </div>
   </div>
   <div class="cf"></div>
   <div class="winfield center">
-  	<input type="checkbox"
-			name="arena[win]"
-			rel="toggle-btn"
-			class="btn-success winbutt_style winbutton"
-			on="Victory"
-			off="Defeat"
-			<% if !@arena.win %>
-			state="off"
-			<% end %>
-			offClass="red"
-		/>
+  	<div id="1" class= "btn btn-primary green winbutt_style winbutton not-selected">Add Win</div>
+		<div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Add Defeat</div>
+		<div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Add Draw</div>
+		<%= number_field_tag 'win',@arena.result_id, class: "hidden wininput" %>
   </div>
   <div class="actions center">
     <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
     <%= f.submit "Update Entry", class: "pure-button pure-button-success" %>
   </div>
 <% end %>
+<script type="text/javascript">
+	app.UI.initClassSelector('#match_oppclass_id');
+	$("#<%=@arena.result_id%>").removeClass('not-selected');
+	$(".winbutton").click(function(){
+		$(".winbutton").addClass('not-selected');
+		$(this).removeClass('not-selected');
+		result_id = $(this).attr("id");
+		$(".wininput").val(result_id)
+	});
+</script>

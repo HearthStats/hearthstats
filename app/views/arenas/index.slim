@@ -51,7 +51,7 @@ div class="portlet box green"
             span.Victory = arena.matches.where(result_id: 1).count
             |/
             span.Defeat= arena.matches.where(result_id: 2).count
-            |- 
+            |-
             span.Draw = arena.matches.where(result_id: 3).count
           td #{image_tag('Icons/gold.png', height: 20, width: 20, alt: "Gold Icon")} #{arena.gold} / #{image_tag('Icons/dusticon.png', height: "20", alt: "Dust Icon")} #{arena.dust}
           -if current_user.guest
