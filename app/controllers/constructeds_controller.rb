@@ -58,9 +58,9 @@ class ConstructedsController < ApplicationController
     else
       redirect_to constructeds_path, alert: 'Mode Error' and return
     end
-    
-    @constructed.coin = params[:other][:gofirst].to_i.zero?
     @constructed.mode_id = mode_id
+    @constructed.coin = params[:other][:gofirst].to_i.zero?
+
     deck = Deck.where( name: params[:deckname], user_id: current_user.id ).first
     @constructed.klass_id = deck.klass_id
     @constructed.user_id = current_user.id
@@ -87,8 +87,23 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Match.find(params[:id])
-    deck_id = Deck.where(:user_id => current_user.id, :name => params[:constructed][:deckname])[0].id
-    params[:constructed][:deck_id] = deck_id
+    deck = Deck.where(:user_id => current_user.id, :name => params[:deckname])[0]
+    matchdeck = @constructed.match_deck
+    matchdeck.deck_id = deck.id
+    matchdeck.save!
+    @constructed.klass_id = deck.klass_id
+    @constructed.result_id = params[:win].to_i
+
+    # Find ranked_id
+    if params[:other][:rank] == "Ranked"
+      mode_id = 3
+    elsif params[:other][:rank] == "Casual"
+      mode_id = 2
+    else
+      redirect_to constructeds_path, alert: 'Mode Error' and return
+    end
+    @constructed.mode_id = mode_id
+    @constructed.coin = params[:other][:gofirst].to_i.zero?
     respond_to do |format|
       if @constructed.update_attributes(params[:constructed])
         format.html { redirect_to constructeds_url, notice: 'Constructed was successfully updated.' }
