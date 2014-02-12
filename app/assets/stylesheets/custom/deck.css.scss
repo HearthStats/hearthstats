@@ -29,7 +29,7 @@
 	display: inline-block;
 }
 .winrates{
-	display: inline-block;
+	display: inline-block; 
 	margin-right: 10px;
 	border: 1px #eee solid;
 	padding: 5px;
@@ -43,9 +43,10 @@
 		margin-bottom: 5px;
 	}
 }
-.oppfield #deck_raceSelectBoxIt,
-.oppfield #deck_raceSelectBoxItContainer,
-.oppfield #deck_raceSelectBoxItContainer .selectboxit-options {
-    /* Set's the drop down options width to the same width as the drop down button */
-    width: 210px !important;
+.selectboxit-container .selectboxit {
+  width: 250px !important;
+}
+.slot-row .col-xs-4 {
+  margin-bottom:1em;
+  
 }

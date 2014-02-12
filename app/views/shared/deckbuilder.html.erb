@@ -278,7 +278,6 @@
 		function _purgeNonClassCards() {
 			for(var i = 0; i < _cards.length; i++) {
 				var card = _cards[i];
-				console.log(card.klass_id + " == " + _classId);
 				if(card.klass_id && parseInt(card.klass_id) != _classId)
 					_cards.splice(i, 1);
 			}
@@ -318,7 +317,6 @@
 		    
 	    };
 	    function _showBarchartTooltip(x, y, contents) {
-	    	console.log(contents);
 	        $('<div id="flotTooltip">' + contents + '</div>').css({
 	            top: y - 30,
 	            left: x - 10
