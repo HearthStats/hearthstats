@@ -1,4 +1,4 @@
-<%= form_for(@constructed) do |f| %>
+<%= form_for @constructed, url: {controller: "constructeds", action: "update"} do |f| %>
 	<% if @constructed.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@constructed.errors.count, "error") %> prohibited this arena from being saved:</h2>
@@ -18,24 +18,24 @@
 				<span class="coin col-md-6">
 					<h3>You played on the: </h3>
 					<input type="checkbox"
-						name="constructed[gofirst]"
+						name="other[gofirst]"
 						rel="toggle-btn"
 						class="btn-lg"
 						on="First Turn"
 						off="Second Turn"
-						<% if !@constructed.gofirst %>
+						<% if @constructed.coin %>
 						state="off"
 						<% end %>
 					/>
 				</span>
 				<span class="ranked col-md-6"> <h3>This match is: </h3>
 					<input type="text"
-						name="constructed[rank]"
+						name="other[rank]"
 						rel="toggle-btn"
 						class="btn-lg"
 						on="Ranked"
 						off="Casual"
-						<% if @constructed.rank == "Casual" %>state="off"<%end%>
+						<% if @constructed.mode_id == 2 %>state="off"<%end%>
 					/>
 				</span>
 			</div>
@@ -44,30 +44,23 @@
 					<div class="yourfield">
 						<%= f.label "Deck Name" %>
 						<br />
-						<%= f.select(:deckname, @myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}) %>
+              <%= select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, @constructed.deck.name)) %>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="oppfield">
 						<%= f.label "Opponent's Class" %>
 						<br />
-						<%= f.select :oppclass, options_for_select(%w[Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior], @constructed.oppclass) %>
+						<%= f.select :oppclass_id, options_for_select(klasses_hash.to_a, @constructed.oppclass_id) %>
 					</div>
 				</div>
 			</div>
 			<div class="cf"></div>
 			<div class="winfield center">
-				<input type="checkbox"
-					name="constructed[win]"
-					rel="toggle-btn"
-					class="btn-success winbutt_style winbutton"
-					on="Victory"
-					off="Defeat"
-					<% if !@constructed.win %>
-					state="off"
-					<% end %>
-					offClass="red"
-				/>
+				<div id="1" class= "btn btn-primary green winbutt_style winbutton not-selected">Add Win</div>
+				<div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Add Defeat</div>
+				<div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Add Draw</div>
+				<%= number_field_tag 'win',@constructed.result_id, class: "hidden wininput" %>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -88,6 +81,13 @@
 	</div>
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#constructed_oppclass');
-	app.UI.initDeckSelector("#constructed_deckname")
+	app.UI.initClassSelector('#match_oppclass_id');
+	app.UI.initDeckSelector("#deckname");
+	$("#<%=@constructed.result_id%>").removeClass('not-selected');
+	$(".winbutton").click(function(){
+		$(".winbutton").addClass('not-selected');
+		$(this).removeClass('not-selected');
+		result_id = $(this).attr("id");
+		$(".wininput").val(result_id)
+	});
 </script>

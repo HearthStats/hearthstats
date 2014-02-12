@@ -27,6 +27,8 @@
     div.col-md-12
       h3.center Notes
       = f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20
+  div.row.arenaedit_notes
+    =render '/arenas/arenagames', arenas: @arenarun.matches
   div.row
     div.col-md-12.center
       button type="submit" class = 'btn btn-success runit'

@@ -1,5 +1,5 @@
 .new_constructed .field {
-  whitespace:no-wrap; 
+  whitespace:no-wrap;
   margin-bottom:1em;
   font-size:28px;
 }
@@ -20,24 +20,24 @@
 	margin-right:20px;
 }
 
-.yourfield #deckname_0SelectBoxIt,
-.yourfield #deckname_0SelectBoxItContainer,
-.yourfield #deckname_0SelectBoxItContainer .selectboxit-options,
-.yourfield #deckname_0SelectBoxItContainer .selectboxit-options .selectboxit-option,
-.oppfield #constructed_oppclassSelectBoxIt,
-.oppfield #constructed_oppclassSelectBoxItContainer,
-.oppfield #constructed_oppclassSelectBoxItContainer .selectboxit-options,
-.oppfield #constructed_oppclassSelectBoxItContainer .selectboxit-options .selectboxit-option {
+.yourfield #decknameSelectBoxIt,
+.yourfield #decknameSelectBoxItContainer,
+.yourfield #decknameSelectBoxItContainer .selectboxit-options,
+.yourfield #decknameSelectBoxItContainer .selectboxit-options .selectboxit-option,
+.oppfield #match_oppclass_idSelectBoxIt,
+.oppfield #match_oppclass_idSelectBoxItContainer,
+.oppfield #match_oppclass_idSelectBoxItContainer .selectboxit-options,
+.oppfield #match_oppclass_idSelectBoxItContainer .selectboxit-options .selectboxit-option {
     /* Set's the drop down options width to the same width as the drop down button */
     width: 210px !important;
     min-width:210px !important;
 }
 
 
-.yourfield .selectboxit-container > span, 
-.yourfield .selectboxit-container > span > span, 
-.oppfield .selectboxit-container > span, 
-.oppfield .selectboxit-container > span > span { 
+.yourfield .selectboxit-container > span,
+.yourfield .selectboxit-container > span > span,
+.oppfield .selectboxit-container > span,
+.oppfield .selectboxit-container > span > span {
   height: 60px; /* Height of the drop down */
   line-height: 60px; /* Vertically positions the drop down text */
 }
@@ -45,29 +45,36 @@
 #statsFilter .selectboxit-container * {
   font-size: 13px;
 }
-.quickentry #deckname_0SelectBoxIt {
-  max-width:210px !important; 
+.quick_con_entry #decknameSelectBoxIt {
+  max-width:210px !important;
 }
- 
+
 /* Height and Vertical Alignment of Text */
-.quickentry .selectboxit-container span, 
-.quickentry .selectboxit-container .selectboxit-options a {
+.quick_con_entry .selectboxit-container span,
+.quick_con_entry .selectboxit-container .selectboxit-options a {
   height: 34px; /* Height of the drop down */
   line-height: 34px; /* Vertically positions the drop down text */
 }
 
 /* Height and Vertical Alignment of Text */
-.quickentry #deckname_0SelectBoxItContainer .selectboxit-options,
-.quickentry #constructed_oppclassSelectBoxItContainer .selectboxit-options {
+.quick_con_entry #decknameSelectBoxItContainer .selectboxit-options,
+.quick_con_entry #match_oppclass_idSelectBoxItContainer .selectboxit-options {
     /* Set's the drop down options width to the same width as the drop down button */
     width: 100px !important;
 }
 
-.quick_con_entry #deckname_0SelectBoxItContainer {
-  margin-right:10px; 
+.quick_con_entry #decknameSelectBoxItContainer {
+  margin-right:10px;
 }
 
-.quickentry .btn,
-.quick_con_entry #constructed_oppclassSelectBoxItContainer {
+.quick_con_entry .btn,
+.quick_con_entry #match_oppclass_idSelectBoxItContainer {
   margin: 0 5px;
+}
+
+// Edit button styling
+.not-selected{
+	zoom: 1;
+	opacity: 0.55;
+	filter: alpha(opacity=55);
 }

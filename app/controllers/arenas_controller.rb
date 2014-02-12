@@ -14,7 +14,7 @@ class ArenasController < ApplicationController
   # GET /arenas/1
   # GET /arenas/1.json
   def show
-    @arena = Arena.find(params[:id])
+    @arena = Match.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,7 +39,7 @@ class ArenasController < ApplicationController
     runwins = @arenarun.matches.where(result_id: 1).count
     runloses = @arenarun.matches.where(result_id: 2).count
     if runwins > 11 || runloses > 2
-      @arenarun.complete = true 
+      @arenarun.complete = true
       @arenarun.save!
     end
 	  respond_to do |format|
@@ -49,7 +49,7 @@ class ArenasController < ApplicationController
 
   # GET /arenas/1/edit
   def edit
-    @arena = Arena.find(params[:id])
+    @arena = Match.find(params[:id])
     canedit(@arena)
   end
 
@@ -62,7 +62,7 @@ class ArenasController < ApplicationController
     @arena.user_id = current_user.id
     @arena.mode_id = 1
     @arena.coin = params[:match][:coin].to_i.zero?
-    @arena.season_id = current_season 
+    @arena.season_id = current_season
     @runwins = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 1).count
     @runloses = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 2).count
     if @runwins > 11 || @runloses > 2
@@ -88,8 +88,10 @@ class ArenasController < ApplicationController
   # PUT /arenas/1
   # PUT /arenas/1.json
   def update
-    @arena = Arena.find(params[:id])
-
+    @arena = Match.find(params[:id])
+    @arena.result_id = params[:win].to_i
+    @arena.coin = params[:other][:gofirst].to_i.zero?
+    @arena.oppclass_id = params[:match][:oppclass_id]
     respond_to do |format|
       if @arena.update_attributes(params[:arena])
         format.html { redirect_to arenas_url, notice: 'Arena was successfully updated.' }
@@ -104,7 +106,7 @@ class ArenasController < ApplicationController
   # DELETE /arenas/1
   # DELETE /arenas/1.json
   def destroy
-    @arena = Arena.find(params[:id])
+    @arena = Match.find(params[:id])
     @arena.destroy
 
     respond_to do |format|
