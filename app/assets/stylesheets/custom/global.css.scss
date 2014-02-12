@@ -109,8 +109,25 @@
   width:300px;
   padding:1em;
 }
-.deckbuilderWrapper #manaCurveChart {
+.deckbuilderWrapper .deckBuilderCurveChart,
+.deckbuilderWrapper #mechanicsChart {
+  width:230px;
+  height:75px;
+  margin:auto;
+  margin-bottom:2em;
+}
+.deckbuilderWrapper #typeChart {
   width:230px;
   height:100px;
   margin:auto;
+  margin-bottom:2em;
+}
+#flotTooltip {
+  position: absolute;
+  display: none;
+  border: 1px solid #333;
+  padding: 2px;
+  background-color: #fee;
+  color:#000;
+  opacity: 0.90;
 }
