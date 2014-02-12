@@ -25,10 +25,13 @@ app.UI.initClassSelector = function(jquerySelectorString) {
  * would pass to jQuery to select a DOM element
  */
 app.UI.initDeckSelector = function(jquerySelectorString) {
-  $(jquerySelectorString + ' option').each(function() {
-    $(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).attr('class') + "_Icon.gif");
+  $(jquerySelectorString).each(function() {
+    $this = $(this);
+	$('option', $this).each(function() {
+	  $(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).attr('class') + "_Icon.gif");
+	});
+	$this.selectBoxIt({ autoWidth: false });
   });
-  $(jquerySelectorString).selectBoxIt();
 };
 
 /**

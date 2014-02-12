@@ -10,8 +10,7 @@
         div.col-xs-4
           div.slot-id Slot ##{i}
           - deckName = @activeDecks.where(slot: i)[0].name unless @activeDecks.where(slot: i)[0].nil?
-          = select_tag( "#{i}", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, deckName), class: "slot-decks", :include_blank => "-- Select One --")
-    = submit_tag "submit"
-/ javascript:
-/   app.UI.initClassSelector('#deck-1');
-/   app.UI.initDeckSelector("#deckname_0")
+          = select_tag( "#{i}", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => d.race}]}, deckName), class: "slot-decks", :prompt => "-- Select Deck --")
+    = submit_tag "Submit", :class => "btn btn-primary"
+javascript:
+  app.UI.initDeckSelector("select.slot-decks");
