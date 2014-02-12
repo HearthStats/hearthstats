@@ -39,11 +39,6 @@ div.row
 	  div.col-md-6.deck-notes
 	    h3 Notes
 	    = raw @deck.notes
-	    - cache do
-	      h3 Possible Deck Lists
-	      - @gResults.first(5).each do |result|
-	        div.decklist = link_to result.uri do
-	          = result.title
 	  = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
   div.col-md-4.center
     = render :template => 'shared/deckbuilder'
