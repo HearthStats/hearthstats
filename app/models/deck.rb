@@ -4,6 +4,7 @@ class Deck < ActiveRecord::Base
 
   belongs_to :klass
   has_many :matches, :through => :match_deck
+  has_many :match_deck
 
   after_destroy :delete_all_constructed
 
