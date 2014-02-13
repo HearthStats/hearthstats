@@ -21,5 +21,4 @@ module ApplicationHelper
     result
   end
 
-
 end
