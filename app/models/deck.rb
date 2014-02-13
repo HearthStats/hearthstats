@@ -5,6 +5,9 @@ class Deck < ActiveRecord::Base
   belongs_to :klass
   has_many :matches, :through => :match_deck
   has_many :match_deck
+  
+  has_many :cards, :through => :deck_card
+  has_many :deck_card
 
   before_save :validate_and_update_stats
 
