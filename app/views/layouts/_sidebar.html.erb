@@ -23,6 +23,12 @@
       <i class="fa fa-home"></i>
       <span class="title">Dashboard</span>
       </a>
+      <span class="arrow "></span>
+      <ul class="sub-menu">
+      	<li class= "index">
+			<%= link_to "Card Database", cards_path %>
+        </li>
+      </ul>
     </li>
     <li class="arenas arena_runs" data-activeimg="swords">
       <a href="javascript:;">
@@ -30,6 +36,7 @@
       <%= image_tag("swordsgrey.png", height: 16, width: 20, class: "sidebaricon") %>
       <span class="title">Arena</span>
       <span class="arrow "></span>
+      </a>
       <ul class="sub-menu">
       	<li class= "index">
 					<%= link_to "Recent Games", arenas_path %>
@@ -85,7 +92,7 @@
           <%= link_to "My Active Decks", active_decks_decks_path %>
         </li>
         <li class="new">
-          <%= link_to "New", new_deck_path %>
+          <%= link_to "New Deck", new_deck_path %>
         </li>
       </ul>
     </li>
