@@ -64,8 +64,20 @@ class Deck < ActiveRecord::Base
     return klass.name
   end
   
+  def num_matches
+    return matches.count
+  end
+  
   def wins
-    #return matches.where(win: true).count
+    return matches.where(result_id: 1).count
+  end
+  
+  def losses
+    return matches.where(result_id: 2).count
+  end
+  
+  def winrate
+    return num_matches > 0 ? (wins.to_f / num_matches) * 100 : 0
   end
 
   def self.race_count

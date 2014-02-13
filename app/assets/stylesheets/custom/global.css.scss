@@ -131,3 +131,22 @@
   color:#000;
   opacity: 0.90;
 }
+
+/* deck lists */
+table.decklist td.class img {
+  height:24px;
+  width:24px;
+}
+table.decklist th.class,
+table.decklist td.class,
+table.decklist th.matches,
+table.decklist td.matches,
+table.decklist th.wins,
+table.decklist td.wins,
+table.decklist th.losses,
+table.decklist td.losses,
+table.decklist th.winrate,
+table.decklist td.winrate {
+  text-align:center;
+}
+
