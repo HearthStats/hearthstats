@@ -12,6 +12,7 @@ class Deck < ActiveRecord::Base
   after_save :update_unique_deck_details
 
   after_destroy :delete_cleanup
+  
 
   is_impressionable
 
@@ -33,15 +34,7 @@ class Deck < ActiveRecord::Base
     return numCards    
   end
   
-  def set_default_values
-    if self.is_public.nil?
-      self.is_public = true
-    end
-  end
-  
   def validate_and_update_stats
-    
-    
     
     # check for 30 cards and assign unique deck
     if self.num_cards == 30
@@ -63,7 +56,9 @@ class Deck < ActiveRecord::Base
     # re-save the qunique deck on order to trigger
     # proper pulling of data from the first fully
     # saved deck that matches the unique deck's cardstring
-    self.unique_deck.save()
+    if !self.unique_deck.nil?
+      self.unique_deck.save()
+    end
   end
 
   def decklink_message

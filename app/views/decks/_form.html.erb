@@ -35,6 +35,10 @@
 					<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
 				</div>
 				<div class="actions center">
+					<p>
+						<%= f.check_box :is_public %>
+						<%= f.label "This deck is public", { :for => "deck_is_public", :style => "font-size:1em;" } %>
+					</p>
 					<%= f.submit (@deck.id.nil? ? "Create" : "Update") + " Deck", class: "btn btn-lg btn-success arenasubmit" %>
 					<%= link_to decks_path do %>
 					<button class="btn btn-lg">
