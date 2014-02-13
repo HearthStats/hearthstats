@@ -8,12 +8,12 @@ class ArenaRun < ActiveRecord::Base
   after_destroy :delete_all_arena
 
   def delete_all_arena
-  	Arena.destroy_all(:arena_run_id => self.id)
+  	Match.destroy_all(:arena_run_id => self.id)
   end
 
-  def self.averageWins(race, userid)
-  	arena_games = ArenaRun.where(user_id: userid, :userclass => race)
-  	wins = arena_games.map { |e| e.arenas.where(win:true).count }
+  def self.averageWins(klass_id,userid)
+  	arena_games = ArenaRun.where(user_id: userid, :klass_id=> klass_id)
+  	wins = arena_games.map { |e| e.matches.where( result_id: 1).count }
   	average_win = wins.compact.inject{ |sum, el| sum + el }.to_f / wins.size
   	average_win = -1 if average_win.nan?
 
@@ -49,16 +49,16 @@ class ArenaRun < ActiveRecord::Base
   end
 
   def self.classArray(userid)
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     class_array = Hash.new
-  	classes.each do |c|
+    klass_array = Klass.all
+    (1..klass_array.count).each do |c|
   		class_avgwins = ArenaRun.averageWins(c, userid)
-  		class_runs = ArenaRun.where( userclass: c, user_id: userid ).count
-  		class_winrate = Arena.where( userclass: c, user_id: userid, win: true ).count.to_f / Arena.where( userclass: c, user_id: userid ).count
-  		class_coinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: false ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: false).count
-  		class_nocoinrate = Arena.where( userclass: c, user_id: userid, win: true, gofirst: true ).count.to_f / Arena.where( userclass: c, user_id: userid, gofirst: true).count
+  		class_runs = ArenaRun.where( klass_id: c, user_id: userid ).count
+  		class_winrate = Match.where( mode_id: 1, klass_id: c, user_id: userid, result_id: 1 ).count.to_f / Match.where( mode_id: 1, klass_id: c, user_id: userid ).count
+  		class_coinrate = Match.where( mode_id: 1, klass_id: c, user_id: userid, result_id: 1, coin: true ).count.to_f / Match.where( mode_id: 1, klass_id: c, user_id: userid, coin: true).count
+  		class_nocoinrate = Match.where( mode_id: 1, klass_id: c, user_id: userid, result_id: 1, coin: false ).count.to_f / Match.where( mode_id: 1, klass_id: c, user_id: userid, coin: false).count
 
-  		class_array[c] = [["Average wins", class_avgwins],
+      class_array[Klass.find(c)[:name]] = [["Average wins", class_avgwins],
   											["Total runs with class", class_runs],
   											["Class winrate", class_winrate],
   											["Win rate with coin", class_coinrate],

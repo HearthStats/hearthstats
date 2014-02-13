@@ -80,7 +80,7 @@ div class="row profile"
                     div class="portlet-body"
                       = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classconrate.transpose, chartname: "Constructed"
                   div class="tab-pane" id="tab_1_22"
-                    div class="tab-pane active" id="tab_1_1_1"
+                    div class="portlet-body"
                       = render 'classwinratesgraph', width: 500, height: 200, railsdata: @classarenarate.transpose, chartname: "Arena"
                   div class="tab-pane" id="tab_1_33"
                     div class="portlet-body"
@@ -98,10 +98,8 @@ div class="row profile"
                             td =game[1]
                             td =game[2]
                             td
-                              - if game[3]
-                                span.victory Victory
-                              - else
-                                span.defeat Defeat
+                              span class="#{MatchResult.find(game[3]).name}"
+                                = MatchResult.find(game[3]).name
         div class="tab-pane" id="tab_1_3"
           div class="row profile-achievements"
             div class="col-md-12"

@@ -38,7 +38,15 @@ namespace :dbf do
       Rank.new(name: m).save
       p m + " rank added."
     end
-	end
+
+    desc "Import TYPES"
+    TYPES = ["Minion","Spell","Weapon"]
+    TYPES.each do |m|
+      Type.new(name: m).save
+      p m + " type added."
+    end
+
+end
 
 	task :constructed => :environment do
     con_matches = Constructed.all
