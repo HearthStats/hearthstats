@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(:version => 20140217044117) do
     t.datetime "last_played"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.float    "winrate"
   end
 
   create_table "users", :force => true do |t|
