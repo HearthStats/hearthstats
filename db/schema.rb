@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213162237) do
+ActiveRecord::Schema.define(:version => 20140213195032) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20140213162237) do
     t.string   "cardstring"
     t.boolean  "num_cards"
     t.integer  "unique_deck_id"
+    t.boolean  "is_public"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
