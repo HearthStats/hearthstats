@@ -25,7 +25,11 @@
         	<% if current_user.guest %>
         		Guest
         	<% else %>
-	        	<%= current_user.email %>
+        		<%if current_user.profile.name.nil? %>
+		        	<%= current_user.email %>
+        		<% else %>
+		        	<%= current_user.profile.name %>
+        		<% end %>
         	<% end %>
         </span>
         <i class="fa fa-angle-down"></i>
