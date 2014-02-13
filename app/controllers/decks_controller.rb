@@ -10,6 +10,16 @@ class DecksController < ApplicationController
       format.json { render json: @decks }
     end
   end
+  
+  # GET /decks/public
+  # GET /decks/1.json
+  def public
+    @decks = Deck.where(:user_id => current_user.id)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @decks }
+    end
+  end
 
   # GET /decks/1
   # GET /decks/1.json

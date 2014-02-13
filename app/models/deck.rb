@@ -55,6 +55,17 @@ class Deck < ActiveRecord::Base
 		deck = winrates.max_by { |x,y| y}
 		deck
   end
+  
+  def class_name
+    if klass.nil?
+      return race
+    end
+    return klass.name
+  end
+  
+  def wins
+    #return matches.where(win: true).count
+  end
 
   def self.race_count
     races = Deck.pluck(:race)
@@ -62,6 +73,8 @@ class Deck < ActiveRecord::Base
 
     Hash[race_groups.map { |race, list| [race, list.size] }]
   end
+  
+  
 
   private
 

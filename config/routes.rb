@@ -51,6 +51,7 @@ Hearthstats::Application.routes.draw do
   resources :decks do
   	collection do
       get 'active_decks'
+      get 'public'
       post 'submit_active_decks'
   	end
   end

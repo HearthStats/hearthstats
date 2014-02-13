@@ -1,17 +1,15 @@
-- set_meta_tags :title => 'My Decks',
+- set_meta_tags :title => 'Public Decks',
   :description => 'User Made Decks',
   :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'My Deck List')
-- provide(:subtitle, ' all of my constructed decks')
+- provide(:title, 'Public Deck List')
+- provide(:subtitle, ' all public constructed decks')
 - content_for :actions do
   = link_to 'New Deck', new_deck_path, class: "btn blue"
-
-= render :template => 'shared/deckslist'
 
 div class="portlet box green"
   div class="portlet-title"
     div class="caption"
-      | My Decks
+      | Public Decks
   div class="portlet-body flip-scroll"
     table class="table table-bordered table-striped table-condensed flip-content"
       thead class="flip-content"
