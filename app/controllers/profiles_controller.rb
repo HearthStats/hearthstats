@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
 	    else
 	    	return redirect_to root_url, alert: "User profile is not active."
 	    end
-	  end
+    end
 
   	@profile = @user.profile
     if (!@profile.name.nil? && !@profile.name.blank?)
@@ -54,33 +54,33 @@ class ProfilesController < ApplicationController
     else
       @profiletitle = "User"
     end
+    classes = klasses_hash.map { |a| a[0] }
   	recentgames(@user.id, 10)
   	@recent_entries = Profile.get_recent_games(@user.id)
   	impressionist(@profile)
   	# Determine Arena Class Win Rates
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @classarenarate = Array.new
-    classes.each_with_index do |c,i|
+    (1..Klass.all.count).each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
-      totalwins = Arena.where(:userclass => c, :win => true, :user_id => @user.id ).count
-      totalgames = Arena.where(:userclass => c, :user_id => @user.id ).count
+      totalwins = Match.where( mode_id: 1, :klass_id => c, :result_id => 1, :user_id => @user.id ).count
+      totalgames = Match.where( mode_id: 1, :klass_id => c, :user_id => @user.id ).count
       if totalgames == 0
       	@classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
 		    @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
-		  end
+      end
     end
     # @classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
 
     # Determine Constructed Class Win Rates
 
     @classconrate = Array.new
-    classes.each_with_index do |c,i|
+    (1..Klass.all.count).each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
-      totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c, :user_id => @user.id ).count
-      totalgames = Constructed.joins(:deck).where('decks.race' => c, :user_id => @user.id ).count
+      totalwins = Match.where( mode_id: 3,  klass_id: c, result_id: 1, :user_id => @user.id ).count
+      totalgames = Match.where( mode_id: 3, klass_id: c, :user_id => @user.id ).count
       if totalgames == 0
       	@classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else

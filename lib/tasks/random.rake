@@ -76,3 +76,15 @@ task :ArenaKlassToId => :environment do
   end
   p "Arena Run Klass ID fix complete"
 end
+
+task :hoho => :environment do
+	Match.all.each do |q|
+		if !q.oppclass_id.nil? && !q.klass_id.nil?
+			q.oppclass_id = q.oppclass_id/4 if q.oppclass_id >9
+			q.klass_id = q.klass_id/4 if q.klass_id >9
+			q.save!
+		end
+	end
+end
+
+
