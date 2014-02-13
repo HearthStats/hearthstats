@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id
+  attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id, :is_public
   has_many :constructeds
 
   belongs_to :unique_deck
@@ -33,7 +33,15 @@ class Deck < ActiveRecord::Base
     return numCards    
   end
   
+  def set_default_values
+    if self.is_public.nil?
+      self.is_public = true
+    end
+  end
+  
   def validate_and_update_stats
+    
+    
     
     # check for 30 cards and assign unique deck
     if self.num_cards == 30

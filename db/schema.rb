@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213162237) do
+ActiveRecord::Schema.define(:version => 20140213195032) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -88,21 +88,23 @@ ActiveRecord::Schema.define(:version => 20140213162237) do
   add_index "constructeds", ["user_id"], :name => "index_constructeds_on_user_id"
 
   create_table "decks", :force => true do |t|
-    t.string    "name"
-    t.integer   "wins",           :default => 0
-    t.integer   "loses",          :default => 0
-    t.timestamp "created_at",                    :null => false
-    t.timestamp "updated_at",                    :null => false
-    t.string    "race"
-    t.integer   "user_id"
-    t.string    "decklink"
-    t.string    "slug"
-    t.text      "notes"
-    t.integer   "slot"
-    t.boolean   "active"
-    t.integer   "klass_id"
-    t.string    "cardstring"
-    t.integer   "unique_deck_id"
+    t.string   "name"
+    t.integer  "wins",           :default => 0
+    t.integer  "loses",          :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "race"
+    t.integer  "user_id"
+    t.string   "decklink"
+    t.string   "slug"
+    t.text     "notes"
+    t.integer  "slot"
+    t.boolean  "active"
+    t.integer  "klass_id"
+    t.string   "cardstring"
+    t.boolean  "num_cards"
+    t.integer  "unique_deck_id"
+    t.boolean  "is_public"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
