@@ -1,5 +1,5 @@
 class AddIsPublicToDecks < ActiveRecord::Migration
   def change
-    add_column :decks, :is_public, :boolean
+    add_column :unique_decks, :winrate, :float
   end
 end

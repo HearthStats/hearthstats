@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213195032) do
+ActiveRecord::Schema.define(:version => 20140213214432) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -329,6 +329,7 @@ ActiveRecord::Schema.define(:version => 20140213195032) do
     t.datetime "last_played"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.float    "winrate"
   end
 
   create_table "users", :force => true do |t|

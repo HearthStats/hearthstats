@@ -1,5 +1,5 @@
 class UniqueDeck < ActiveRecord::Base
-  attr_accessible :cardstring, :name, :user_id, :num_matches
+  attr_accessible :cardstring, :name, :user_id, :num_matches, :winrate
   has_many :deck
   
   has_many :cards, :through => :unique_deck_card
@@ -32,6 +32,7 @@ class UniqueDeck < ActiveRecord::Base
     self.num_matches = self.matches.count
     self.num_wins = self.matches.where(:result_id => 1).count
     self.num_losses = self.matches.where(:result_id => 2).count
+    self.winrate = self.num_matches > 0 ? self.num_wins / self.num_matches : 0
     
   end
 end
