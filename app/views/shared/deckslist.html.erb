@@ -36,7 +36,7 @@
 				</td>
 			<% end %>
 			<% if global %>
-				<td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+				<td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
 			<% end %>
 		</tr>
 	<% end%>
