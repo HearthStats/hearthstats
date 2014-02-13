@@ -5,23 +5,25 @@
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Decks')
 
+div
+	| Share this deck: &nbsp;
+	= social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
 div.row
   div.col-md-8
     div.row
 	  div.col-md-6
 	    h3.deck_title Stats
-	    = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
 	    p
-	      b Class:
+	      b Class: &nbsp;
 	      - if @deck.klass.nil?
 	      	= @deck.race
 	      - else
 	      	= @deck.klass.name
-	    p
-	      b.victory Wins:
+	      | &nbsp; &nbsp;
+	      b.victory Wins: &nbsp;
 	      = @deck.constructeds.where(win: true).count
-	    p
-	      b.defeat Loses:
+	      | &nbsp; &nbsp;
+	      b.defeat Loses: &nbsp;
 	      = @deck.constructeds.where(win: false).count
 	    div.turnrates
 	      div.winrates.total title="Overall win rate with this deck"
@@ -39,7 +41,7 @@ div.row
 	  div.col-md-6.deck-notes
 	    h3 Notes
 	    = raw @deck.notes
-	  = render 'profiles/classwinratesgraph', width: 500, height: 200, railsdata: @deckrate.transpose, chartname: "Deck"
+	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
   div.col-md-4.center
     = render :template => 'shared/deckbuilder'
 

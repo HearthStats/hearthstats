@@ -1,9 +1,11 @@
-div id="#{chartname}" width="#{width}" height="#{height}"
+div id="#{chartname}"
 javascript:
-  $('##{chartname}').highcharts({
+  var chart = new Highcharts.Chart({
       chart: {
+      	  renderTo: '#{chartname}',
           type: 'column',
-          backgroundColor: '#ffffff'
+          backgroundColor: '#ffffff',
+          height: '#{height}',
       },
       title: {
           text: '#{chartname} Win Rates'
@@ -62,3 +64,4 @@ javascript:
         '#A57A4D'
       ]
   });
+
