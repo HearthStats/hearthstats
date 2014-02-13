@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213032501) do
+ActiveRecord::Schema.define(:version => 20140213162237) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20140213032501) do
     t.integer "hearthhead_id"
   end
 
+  create_table "cardstrings", :force => true do |t|
+    t.string   "value"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "constructeds", :force => true do |t|
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -87,19 +94,12 @@ ActiveRecord::Schema.define(:version => 20140213032501) do
   add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"
   add_index "constructeds", ["user_id"], :name => "index_constructeds_on_user_id"
 
-  create_table "deck_cards", :force => true do |t|
-    t.integer  "deck_id"
-    t.integer  "card_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "decks", :force => true do |t|
     t.string   "name"
-    t.integer  "wins",       :default => 0
-    t.integer  "loses",      :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "wins",           :default => 0
+    t.integer  "loses",          :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "race"
     t.integer  "user_id"
     t.string   "decklink"
@@ -109,7 +109,8 @@ ActiveRecord::Schema.define(:version => 20140213032501) do
     t.boolean  "active"
     t.integer  "klass_id"
     t.string   "cardstring"
-    t.boolean  "is_valid"
+    t.boolean  "num_cards"
+    t.integer  "unique_deck_id"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
@@ -191,6 +192,13 @@ ActiveRecord::Schema.define(:version => 20140213032501) do
 
   add_index "match_runs", ["arena_run_id"], :name => "index_match_runs_on_arena_run_id"
   add_index "match_runs", ["match_id"], :name => "index_match_runs_on_match_id"
+
+  create_table "match_unique_decks", :force => true do |t|
+    t.integer  "unique_deck_id"
+    t.integer  "match_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "matches", :force => true do |t|
     t.integer  "user_id"
@@ -299,6 +307,27 @@ ActiveRecord::Schema.define(:version => 20140213032501) do
 
   create_table "types", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "unique_deck_cards", :force => true do |t|
+    t.integer  "unique_deck_id"
+    t.integer  "card_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "unique_decks", :force => true do |t|
+    t.string   "cardstring"
+    t.integer  "klass_id"
+    t.integer  "num_matches"
+    t.integer  "num_wins"
+    t.integer  "num_losses"
+    t.integer  "num_minions"
+    t.integer  "num_spells"
+    t.integer  "num_weapons"
+    t.datetime "last_played"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

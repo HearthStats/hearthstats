@@ -75,11 +75,14 @@
       <span class="arrow "></span>
       </a>
       <ul class="sub-menu">
-      	<li class="active_decks">
-          <%= link_to "Active Decks", active_decks_decks_path %>
+      	<li class="public_decks">
+          <%= link_to "Public Deck List", public_decks_path %>
         </li>
       	<li class="index">
           <%= link_to "My Deck List", decks_path %>
+        </li>
+      	<li class="active_decks">
+          <%= link_to "My Active Decks", active_decks_decks_path %>
         </li>
         <li class="new">
           <%= link_to "New", new_deck_path %>

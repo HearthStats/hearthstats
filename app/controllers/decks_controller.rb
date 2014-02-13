@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_filter :authenticate_user!, :except => :show
+  before_filter :authenticate_user!, :except => [:show, :public]
   # GET /decks
   # GET /decks.json
   def index
@@ -14,7 +14,12 @@ class DecksController < ApplicationController
   # GET /decks/public
   # GET /decks/1.json
   def public
-    @decks = Deck.where(:user_id => current_user.id)
+    #@decks = Deck.select('*').where("unique_deck_id IS NOT NULL").distinct(:unique_deck_id)
+    @decks = Deck.where("unique_deck_id IS NOT NULL").find(
+      :all,
+      :include => [:unique_deck],
+      :group => 'unique_deck_id'
+    )
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }

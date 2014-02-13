@@ -3,35 +3,13 @@
   :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, 'Public Deck List')
 - provide(:subtitle, ' all public constructed decks')
-- content_for :actions do
-  = link_to 'New Deck', new_deck_path, class: "btn blue"
+- if !current_user.nil?
+  - content_for :actions do
+    = link_to 'New Deck', new_deck_path, class: "btn blue"
 
 div class="portlet box green"
   div class="portlet-title"
     div class="caption"
       | Public Decks
   div class="portlet-body flip-scroll"
-    table class="table table-bordered table-striped table-condensed flip-content"
-      thead class="flip-content"
-        tr
-          th Deck Name
-          th Class
-          th Wins
-          th Losses
-          th Win Rate
-          th Options
-      tbody
-      - @decks.each do |deck|
-        tr.matches
-          td = link_to deck.name ,deck
-          td = deck.race
-          td = deck.constructeds.where(win: true).count
-          td = deck.constructeds.where(win: false).count
-          td = number_to_percentage(deck.constructeds.count > 0 ? (deck.constructeds.where(win: true).count.to_f / deck.constructeds.count)*100 : 0, precision: 2)
-          td
-            =link_to edit_deck_path(deck), class: 'btn default btn-xs purple' do
-              i class="fa fa-pencil-square-o"
-              |Edit
-            = link_to deck, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }, class: 'btn default btn-xs red' do
-              i class="fa fa-trash-o"
-              |Delete
+    = render :template => 'shared/deckslist', :locals => { :global => true }

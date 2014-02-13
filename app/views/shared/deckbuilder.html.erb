@@ -434,31 +434,33 @@
 	    	}
 	    	for(var i = 0; i < _cards.length; i++) {
 	    		var card = _cards[i];
-		    	for(var m = 0; m < mechanics.length; m++) {
-		    		var mechanic = mechanics[m].toLowerCase();
-		    		
-		    		switch(mechanic) {
-		    			case 'attack+':
-				    		if(card.description.toLowerCase().match(/\+\d+\s*attack/))
+	    		if(card.description) {
+			    	for(var m = 0; m < mechanics.length; m++) {
+			    		var mechanic = mechanics[m].toLowerCase();
+			    		
+			    		switch(mechanic) {
+			    			case 'attack+':
+					    		if(card.description.toLowerCase().match(/\+\d+\s*attack/))
+					    			groups[mechanic] += parseInt(card.qty);
+			    				break;
+			    			case 'deal damage':
+					    		if(card.description.toLowerCase().match(/deal\s\d+\sdamage/))
+					    			groups[mechanic] += parseInt(card.qty);
+			    				break;
+			    			case 'health+':
+					    		if(card.description.toLowerCase().match(/\+\d+\s*health/))
+					    			groups[mechanic] += parseInt(card.qty);
+			    				break;
+			    			case 'un-targetable':
+					    		if(card.description.toLowerCase().match(/can.*t\sbe\s(the)?\s*target/))
+					    			groups[mechanic] += parseInt(card.qty);
+			    				break;
+			    			default:
+				    		if(card.description.toLowerCase().match(new RegExp(mechanic,'g')))
 				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			case 'deal damage':
-				    		if(card.description.toLowerCase().match(/deal\s\d+\sdamage/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			case 'health+':
-				    		if(card.description.toLowerCase().match(/\+\d+\s*health/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			case 'un-targetable':
-				    		if(card.description.toLowerCase().match(/can.*t\sbe\s(the)?\s*target/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			default:
-			    		if(card.description.toLowerCase().match(new RegExp(mechanic,'g')))
-			    			groups[mechanic] += parseInt(card.qty);
-		    		}
-		    	}
+			    		}
+			    	}
+			    }
 	    	}
 	    	
 	    	var ticks = [];

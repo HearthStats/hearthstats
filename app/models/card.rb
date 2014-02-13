@@ -7,8 +7,8 @@ class Card < ActiveRecord::Base
   belongs_to :set
   belongs_to :type
   
-  has_many :decks, :through => :deck_card
-  has_many :deck_card
+  has_many :unique_decks, :through => :unique_deck_card
+  has_many :unique_deck_card
 
   def toJSONWithImage
      return to_json[0..-2] + ',"image":"' + getImageUrl + '"}'
