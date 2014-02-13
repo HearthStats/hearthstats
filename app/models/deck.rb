@@ -6,6 +6,8 @@ class Deck < ActiveRecord::Base
   has_many :matches, :through => :match_deck
   has_many :match_deck
 
+  before_save :validate_and_update_stats
+
   after_destroy :delete_all_constructed
 
   is_impressionable
@@ -15,6 +17,14 @@ class Deck < ActiveRecord::Base
 
   def delete_all_constructed
   	Constructed.destroy_all(:deck_id => self.id)
+  end
+  
+  def validate_and_update_stats
+    
+    #update cards from cardstring
+    
+    
+  	#self.is_valid = true
   end
 
   def decklink_message
