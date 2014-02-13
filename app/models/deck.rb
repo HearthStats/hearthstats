@@ -24,7 +24,20 @@ class Deck < ActiveRecord::Base
   
   def validate_and_update_stats
     
+    #remove existing cards
+    self.deck_card.destroy_all()
+    
+    self.notes = ""
+    
     #update cards from cardstring
+    cards = self.cardstring.split(',')
+    cards.each do |cardData|
+      chunks = cardData.split('_')
+      (1..chunks[1].to_f).each do |i|
+        card = Card.find(chunks[0])
+        self.cards << card
+      end
+    end
     
     
   	#self.is_valid = true

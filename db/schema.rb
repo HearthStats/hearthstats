@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20140213032501) do
     t.integer  "card_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "qty"
   end
 
   create_table "decks", :force => true do |t|
