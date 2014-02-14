@@ -21,7 +21,7 @@ http://localhost:3000/api/v1/arena_runs/show?userkey=secret
 
 *Start Arena Run*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{ "userclass":"Rogue" }' localhost:3000/api/v1/arena_runs/new?userkey=0e7f8484496dd312c589ef21a507c393
+curl -X POST -H "Content-Type: application/json" -d '{ "klass_id": 2 }' localhost:3000/api/v1/arena_runs/new?userkey=0e7f8484496dd312c589ef21a507c393
 </pre>
 
 *End Arena Run*
@@ -38,7 +38,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"userclass":"Priest","oppc
 
 *Constructed Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"klass_id": 5, "oppclass_id":1,"result_id": 1 ,"coin":"true", "rank_id":13, "mode_id":3, "oppname":"MubaMuba"}' localhost:3000/api/v1/constructeds/new?userkey=7d58fa431951c92ceb9b9cb44d481108
+curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"klass_id": 1, "oppclass_id": 2,"result_id": 3 ,"coin":"true", "rank_id":1, "mode_id":3, "oppname":"MubaMu22ba"}' localhost:3000/api/v1/constructeds/new?userkey=7d58fa431951c92ceb9b9cb44d481108
 </pre>
 
 Contact

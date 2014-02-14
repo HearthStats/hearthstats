@@ -14,19 +14,19 @@ module Api
 
 			def new
 				# Required params:
-				# :oppclass, :win, :gofirst
+				# :oppclass_id, :result_id, :coin
 				# Optional params:
 				# :notes
 
 				arena_run = ArenaRun.where(user_id: @user.id, complete: false).last
 				if arena_run.nil?
-					arena_run = ArenaRun.new(user_id: @user.id, userclass: @req[:userclass])
+					arena_run = ArenaRun.new(user_id: @user.id, klass_id: @req[:klass_id])
 					arena_run.save
 				end
 				arena = Arena.new(@req)
         arena.user_id = @user.id
 				arena.arena_run_id = arena_run.id
-				arena.userclass = arena_run.userclass
+				arena.klass_id = arena_run.klass_id
 				if arena.save
 	        render json: {status: "success", data: arena}
 	      else
