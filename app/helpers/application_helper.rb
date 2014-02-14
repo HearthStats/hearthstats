@@ -1,6 +1,10 @@
 module ApplicationHelper
   def current_season
-    Season.last.id
+    Season.last.num
+  end
+
+  def current_patch
+    Patch.last.num
   end
 
   def klasses_hash

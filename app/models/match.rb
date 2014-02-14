@@ -20,9 +20,15 @@ class Match < ActiveRecord::Base
 
   belongs_to :match_result, :class_name => 'MatchResult', :foreign_key => 'result_id'
 
-  belongs_to :seaon
+  belongs_to :season
   belongs_to :patch
  
+  before_save :set_season_patch
+
+  def set_season_patch
+    self.season_id ||= Season.last.id
+    self.patch_id ||= Patch.last.id
+  end
   def self.bestuserarena(userid)
     class_arena_rate = Hash.new
     (1..Klass.count).each_with_index do |c,i|

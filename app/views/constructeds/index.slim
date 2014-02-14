@@ -31,15 +31,18 @@ div class="portlet box blue"
           td.cl-effect-3 = link_to match.deck.name, deck_path(match.deck)
           td = get_name(match, "Oppclass")
           td
-            span class="#{get_name(match,'Result')}" = get_name(match,"Result") 
+            span class="#{get_name(match,'Result')}" = get_name(match,"Result")
           td
             -if match.coin
               span Coin
             -else
               span No Coin
           td
-            -if match.rank.nil? && match.mode_id == 3
-              |Ranked
+            -if match.mode_id == 3
+              -unless match.rank.nil?
+                |#{match.rank.id} - #{match.rank.name}
+              -else
+                |Ranked
             -else
               |Casual
           td = match.oppname

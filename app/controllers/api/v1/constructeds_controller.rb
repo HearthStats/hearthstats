@@ -11,39 +11,37 @@ module Api
 
 			def new
 				# Required params:
-				# :userclass, :deckslot, :oppclass, :win, :gofirst, :rank
+				# :klass_id, :deckslot, :oppclass_id, :result_id, :coin, :rank_id
 				# Optional params:
-				# :notes
-				arena_run = ArenaRun.where(user_id: @user.id, complete: false).last
-				constructed = Constructed.new
+				# :notes, :numturns, :duration, :oppname
+				constructed = Match.new
 				@deck = Deck.where(user_id: @user.id, slot: @req[:slot], active: true)[0]
 				# Check if deck exists
 				if @deck.nil?
 					@deck = create_new_deck
-				else
+       
+        elsif	@deck.klass_id != @req[:klass_id]
 					# Check if correct slot
-					if @deck.race != @req[:userclass]
-						@deck.active = false
-						@deck.slot = nil
-						@deck.save
+          @deck.active = false
+          @deck.slot = nil
+          @deck.save
 
-						@deck = create_new_deck
-					end
+          @deck = create_new_deck
 				end
 
 				# Set constructed fields
 				constructed.user_id = @user.id
-				constructed.deckname = @deck.name
-				constructed.deck_id = @deck.id
-				constructed.oppclass = @req[:oppclass]
-				constructed.win = @req[:win]
-				constructed.gofirst = @req[:gofirst]
-				constructed.rank = @req[:rank]
+        constructed.mode_id = @req[:mode_id]
+				constructed.oppclass_id = @req[:oppclass_id]
+				constructed.result_id = @req[:result_id]
+				constructed.coin = @req[:coin]
 				constructed.oppname = @req[:oppname]
-				constructed.ranklvl = @req[:ranklvl]
-				constructed.legendary = @req[:legendary]
+        constructed.numturns = @req[:numturns]
+        constructed.duration = @req[:duration]
 
 				if constructed.save
+          MatchDeck.new(match_id: constructed.id, deck_id: @deck.id).save!
+          MatchRank.new(match_id: constructed.id, rank_id: @req[:rank_id]).save!
 	        render json: {status: "success", data: constructed}
 	      else
 	        render json: {status: "fail", message: constructed.errors.full_messages}
@@ -58,10 +56,12 @@ module Api
 				new_deck.user_id = @user.id
 				new_deck.active = true
 				new_deck.slot = @req[:slot]
-				new_deck.race = @req[:userclass]
-				new_deck.name = "Unnamed #{@req[:userclass]}"
+				new_deck.klass_id= @req[:klass_id]
+        new_deck.name = "Unnamed #{Klass.find(@req[:klass_id]).name}"
 				if new_deck.save
 					deck = new_deck
+          
+          deck
 				else
 	        render json: {status: "fail", message: "New custom deck creation failure."} and return
 				end
