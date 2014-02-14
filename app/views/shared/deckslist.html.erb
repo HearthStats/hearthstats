@@ -13,8 +13,15 @@
     end
     
     # TODO: hack sortField for user (non global stats)
+    finalSortField = @sortField
+    if !global && @sortField.match("num_(matches|wins|losses)")
+    	finalSortField = "user_" + @sortField
+    end
+    if !global && @sortField.match("winrate")
+    	finalSortField = "user_winrate"
+    end
     
-    @decks = @decks.order(@sortField + ' ' + @orderFilter.upcase)
+    @decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
     
     #only show unique decks if global
     if global
