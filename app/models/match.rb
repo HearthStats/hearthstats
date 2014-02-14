@@ -29,6 +29,7 @@ class Match < ActiveRecord::Base
     self.season_id ||= Season.last.id
     self.patch_id ||= Patch.last.id
   end
+  
   def self.bestuserarena(userid)
     class_arena_rate = Hash.new
     (1..Klass.count).each_with_index do |c,i|
