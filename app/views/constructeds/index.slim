@@ -6,8 +6,7 @@
 - provide(:section, 'Constructed')
 - content_for :actions do
   = link_to 'New Constructed', new_constructed_path, class: "btn blue"
-div.arenaheader
-  = will_paginate @constructeds, renderer: BootstrapPagination::Rails
+
 = render "quickentry"
 div class="portlet box blue"
   div class="portlet-title"
@@ -64,6 +63,7 @@ div class="portlet box blue"
               span class= 'btn default btn-xs blue' title="#{match.notes}" rel="tooltip"
                 i class="fa fa-file-text-o"
                 |Notes
+  	= will_paginate @constructeds, renderer: BootstrapPagination::Rails
 
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
