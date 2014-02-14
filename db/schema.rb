@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140214144915) do
+ActiveRecord::Schema.define(:version => 20140214155247) do
 
   create_table "announcements", :force => true do |t|
     t.text     "body"
@@ -50,12 +50,17 @@ ActiveRecord::Schema.define(:version => 20140214144915) do
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
+  create_table "card_sets", :force => true do |t|
+    t.string "name"
+    t.text   "notes"
+  end
+
   create_table "cards", :force => true do |t|
     t.string  "name"
     t.string  "description"
     t.integer "attack"
     t.integer "health"
-    t.integer "set_id"
+    t.integer "card_set_id"
     t.integer "rarity_id"
     t.integer "type_id"
     t.integer "klass_id"
@@ -293,11 +298,6 @@ ActiveRecord::Schema.define(:version => 20140214144915) do
     t.integer  "num"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "sets", :force => true do |t|
-    t.string "name"
-    t.text   "notes"
   end
 
   create_table "tournies", :force => true do |t|
