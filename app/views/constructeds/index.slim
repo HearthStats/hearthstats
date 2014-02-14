@@ -13,6 +13,16 @@ div class="portlet box blue"
     div class="caption"
       | Recent Constructed Games
   div class="portlet-body flip-scroll"
+  	form id="matchesFilter" method="get" class="data-turboform"
+	  p
+	    | Show &nbsp; 
+	    select[name="items"]
+	   	  option[value="10"] 10 
+	   	  option[value="20" selected=("selected" if @items == "20")] 20 
+	  	  option[value="50" selected=("selected" if @items == "50")] 50 
+	      option[value="100" selected=("selected" if @items == "100")] 100
+	    | &nbsp; matches &nbsp; 
+  	    input[type="submit" id="matchesFilterSubmit" value="Apply"]
     table class="table table-bordered table-striped table-condensed flip-content"
       thead class="flip-content"
         tr
@@ -68,3 +78,7 @@ div class="portlet box blue"
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
   app.UI.initDeckSelector("#deckname");
+  $('#matchesFilter select').change(function() {
+    $('#matchesFilter').submit();
+  });
+  $('#matchesFilterSubmit').hide();

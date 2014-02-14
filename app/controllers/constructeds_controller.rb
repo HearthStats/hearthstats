@@ -3,7 +3,13 @@ class ConstructedsController < ApplicationController
   # GET /constructeds
   # GET /constructeds.json
   def index
-    @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    
+    @items = CGI.parse(request.query_string)['items'].first
+    if @items.nil? || !((Float(@items) rescue false))
+      @items = 20
+    end    
+    
+    @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3]).paginate(:page => params[:page], :per_page => @items).order('created_at DESC')
     @constructed = Match.new
     @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
     @myDecks = getMyDecks()
