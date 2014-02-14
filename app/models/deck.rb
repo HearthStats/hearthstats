@@ -37,6 +37,14 @@ class Deck < ActiveRecord::Base
 
   def validate_and_update_stats
 
+    #trim deck name
+    if !self.name.nil?
+      self.name =  self.name.strip
+    end
+    if self.name == ""
+      self.name = "[unnamed]"
+    end
+
     # check for 30 cards and assign unique deck
     if self.num_cards == 30
       uniqueDeck = UniqueDeck.where(:cardstring => self.cardstring, :klass_id => self.klass_id).first
