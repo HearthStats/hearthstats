@@ -23,11 +23,10 @@ module Api
 					arena_run = ArenaRun.new(user_id: @user.id, klass_id: @req[:klass_id])
 					arena_run.save
 				end
-				arena = Arena.new(@req)
+				arena = Match.new(@req)
         arena.user_id = @user.id
-				arena.arena_run_id = arena_run.id
-				arena.klass_id = arena_run.klass_id
 				if arena.save
+          MatchRun.new(match_id: arena.id, arena_run_id: arena_run.id).save!
 	        render json: {status: "success", data: arena}
 	      else
 	        render json: {status: "fail", message: arena.errors.full_messages}
