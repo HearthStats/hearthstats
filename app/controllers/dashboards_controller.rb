@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   before_filter :authenticate_user!
   def race
-  	@matches = Arena.where(user_id: current_user.id, userclass: params[:race])
+  	@matches = Match.where(user_id: current_user.id, userclass: params[:race])
   end
 
   def index
@@ -16,41 +16,20 @@ class DashboardsController < ApplicationController
     @global = Hash.new
     @global[:arena] = (get_win_rate(Match.where(mode_id: 1))).round
     @global[:con] = (get_win_rate(Match.where(mode_id: 3))).round
- 		@global[:coin] = ((Constructed.where(win: true, gofirst: true).count.to_f / Constructed.where(gofirst: true).count)*100).round
+ 		@global[:coin] = (( Match.where(result_id: 1, coin: false ).count.to_f / Match.where( coin: false ).count)*100).round
  		@topdeck = Deck.bestuserdeck(current_user.id)
- 		@toparena = Arena.bestuserarena(current_user.id)
-
-    # Determine Arena Class Win Rates
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-    @classarenarate = Hash.new
-    @arenatot = Hash.new
-    classes.each do |c|
-      totalwins = 0
-      totalgames = 0
-      totalwins = Arena.where(:userclass => c, :win => true).count + Arena.where(:oppclass => c, :win => false).count
-      totalgames = Arena.where(:userclass => c).count + Arena.where(:oppclass => c).count
-      @classarenarate[c] = (totalwins.to_f / totalgames)
-      @arenatot[c] = totalgames
-    end
-    @classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
-
+ 		@toparena = Match.bestuserarena(current_user.id)
     # Determine Constructed Class Win Rates
-
-    @classconrate = Hash.new
-    @contot = Hash.new
-    classes.each do |c|
-      totalwins = 0
-      totalgames = 0
-      totalwins = Constructed.joins(:deck).where(win: true, 'decks.race' => c).count
-      totalwins = totalwins + Constructed.joins(:deck).where(oppclass: c, win: false).count
-      totalgames = Constructed.joins(:deck).where('decks.race' => c).count + Constructed.joins(:deck).where(oppclass: c).count
-      @classconrate[c] = (totalwins.to_f / totalgames)
-      @contot[c] = totalgames
-    end
-    @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
+    conoverallrate = overall_win_rate(3)
+    @classconrate = conoverallrate[1]
+    @contot = conoverallrate[0]
+    # Determine Arena Class Win Rates
+    arenaoverallrate = overall_win_rate(1)
+    @classarenarate = arenaoverallrate[1]
+    @arenatot = arenaoverallrate[0]
   end
 
-  def fullstats
+ def fullstats
 
     # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
@@ -91,6 +70,28 @@ class DashboardsController < ApplicationController
     end
 
     expires_in 4.hour, public: true
+  end
+
+
+  private
+
+  def overall_win_rate(mode)
+    data = Array.new
+    classrate = Hash.new
+    tot = Hash.new
+    (1..Klass.count).each do |c|
+      totalwins = 0
+      totalgames = 0
+      totalwins = Match.where(:mode_id => mode, :klass_id => c, :result_id => 1 ).count + Match.where( :mode_id => mode, :oppclass_id => c, :result_id => 2 ).count
+      totalgames = Match.where( mode_id: mode, :klass_id => c).count + Match.where( mode_id: mode, :oppclass_id => c).count
+      classrate[Klass.find(c).name] = (totalwins.to_f / totalgames)
+      tot[Klass.find(c).name] = totalgames
+    end
+    classrate = classrate.sort_by { |name, winsrate| winsrate }.reverse
+    data << tot
+    data << classrate
+
+    data
   end
 
 

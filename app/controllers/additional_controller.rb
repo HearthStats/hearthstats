@@ -23,7 +23,7 @@ class AdditionalController < ApplicationController
     @items = Array.new
 
     feeds.each do |feed_url, feed|
-
+    	next if feed == 0 || feed == 500
       feed.entries.each do |entry|
         @items[x] = [entry.title, entry.url, entry.summary, entry.published]
         x = x + 1

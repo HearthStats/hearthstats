@@ -15,10 +15,10 @@ module Api
 
 			    user = User.where(userkey: params[:userkey])[0]
 			    last_run = ArenaRun.where(user_id: user.id).last
-			    last_run.arenas.each_with_index do |game, i|
-			    	games[i+1] = {:oppclass => game.oppclass, :win => game.win, :coin => !game.gofirst }
+			    last_run.matches.each_with_index do |game, i|
+			    	games[i+1] = {:oppclass_id => game.oppclass_id, :result_id => game.result_id, :coin => game.coin}
 			    end
-			    last_arena_run = {:userclass => last_run.userclass, :matches => games}
+			    last_arena_run = {:klass_id => last_run.klass_id, :matches => games}
 			  rescue
 			  	api_response = {status: "error", message: "Error getting last arena run games"}
 			  else
@@ -29,14 +29,14 @@ module Api
 
 			def new
 				# Required params:
-				# params[:userclass]
+				# params[:klass_id]
 				existing_runs = ArenaRun.where(user_id: 1, complete: false)
 				existing_runs.update_all(:complete => true)
 				arenarun = ArenaRun.new
 				arenarun.user_id = @user.id
-				arenarun.userclass = @req[:userclass]
+				arenarun.klass_id = @req[:klass_id]
 
-				if arenarun.save
+				if arenarun.save!
 	        render json: {status: "success", data: arenarun}
 	      else
 	        render json: {status: "fail", message: arenarun.errors.full_messages}
@@ -57,7 +57,7 @@ module Api
 				end
 				arena_run.complete = true
 
-				if arena_run.save
+				if arena_run.save!
 	        render json: {status: "success", data: arena_run}
 	      else
 	        render json: {status: "fail", message: arenarun.errors.full_messages}
