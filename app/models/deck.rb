@@ -62,6 +62,13 @@ class Deck < ActiveRecord::Base
     end
   end
 
+  def update_user_stats
+    self.user_num_matches = self.matches.count
+    self.user_num_wins = self.matches.where(:result_id => 1).count
+    self.user_num_losses = self.matches.where(:result_id => 2).count
+    self.user_winrate = self.user_num_matches > 0 ? (self.user_num_wins.to_f / self.user_num_matches) * 100 : 0
+  end
+
   def decklink_message
 
     # Add http:// to link if not present
