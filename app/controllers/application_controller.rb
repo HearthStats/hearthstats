@@ -12,9 +12,10 @@ class ApplicationController < ActionController::Base
     win_rate = (win_rate*100).round(2)
 
     win_rate
-  end  
+  end
 
   helper_method :klasses_hash
+  helper_method :public_url
   private
 
   # API Methods

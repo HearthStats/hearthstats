@@ -6,7 +6,7 @@ class Match < ActiveRecord::Base
 
   has_one :match_deck
   has_one :deck, :through => :match_deck
-  
+
   has_one :match_unique_deck
   has_one :unique_deck, :through => :match_unique_deck
 
@@ -14,7 +14,7 @@ class Match < ActiveRecord::Base
   has_one :rank, :through => :match_rank
   belongs_to :mode
   belongs_to :user
-  
+
   belongs_to :klass, :class_name => 'Klass', :foreign_key => 'klass_id'
   belongs_to :oppclass, :class_name => 'Klass', :foreign_key => 'oppclass_id'
 
@@ -22,7 +22,7 @@ class Match < ActiveRecord::Base
 
   belongs_to :season
   belongs_to :patch
- 
+
   before_save :set_season_patch
 
   def set_season_patch
@@ -46,5 +46,5 @@ class Match < ActiveRecord::Base
 
     arena_class
   end
- 
+
 end
