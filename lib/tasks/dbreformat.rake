@@ -1,4 +1,5 @@
 namespace :dbf do
+  KLASSES = {"Druid"=>1, "Hunter"=>2, "Mage"=>3, "Paladin"=>4, "Priest"=>5, "Rogue"=>6, "Shaman"=>7, "Warlock"=>8, "Warrior"=>9}
 	desc "Add all vars such as mode, result, class and rank"
 	task :init=> :environment do
 		desc "Import MODES"
@@ -17,9 +18,9 @@ namespace :dbf do
     end
 
     desc "Import KLASSES"
-    KLASSES = ["Druid","Hunter","Mage","Paladin",
+    KLASSES_H = ["Druid","Hunter","Mage","Paladin",
                "Priest","Rogue","Shaman","Warlock","Warrior"]
-    KLASSES.each do |m|
+    KLASSES_H.each do |m|
       Klass.new(name: m).save
       p m + " class added."
     end
@@ -53,8 +54,8 @@ end
     i = 0
     con_matches.each do |m|
       next if m.deck.nil?
-      klass = Klass.where(name: m.deck.race).first
-      oppklass = Klass.where(name: m.oppclass).first
+      klass = KLASSES[m.deck.race]
+      oppklass = KLASSES[m.oppclass]
       # Determine if win or loss
       if m.win
         result = 1
@@ -88,6 +89,7 @@ end
       ).save!
 
       i += 1
+      progress(i,con_matches.all)
     end
     p i.to_s + " constructed matches migrated."
 	end
@@ -98,8 +100,8 @@ end
     error_array = Array.new
 
 		arena_matches.each do |am|
-      klass = Klass.where(name: am.userclass).first
-      oppklass = Klass.where(name: am.oppclass).first
+      klass = KLASSES[am.userclass]
+      oppklass = KLASSES[am.oppclass]
 
       if klass.nil?
         error_array << "user" + am.userclass.to_s
@@ -136,6 +138,7 @@ end
       mr.save!
 
       i += 1
+      progress(i, arena_matches.count )
 		end
     p i.to_s + " arena matches migrated."
     p error_array
@@ -146,7 +149,7 @@ end
     error_array = Array.new
     i = 0
     decks.each do |d|
-      klass = Klass.where(name: d.race).first
+      klass = KLASSES[d.race]
 
       if klass.nil?
         error_array << d.race.to_s
@@ -157,8 +160,23 @@ end
 
       d.save!
       i += 1
+      progress(i, decks.count)
     end
     p i.to_s + " decks changed"
+  end
+
+ 	task :test => :environment do
+ 		Constructed.last(500).each_with_index do |ma, i|
+      p KLASSES[ma.deck.race]
+ 			progress(i,500)
+ 		end
+ 	end
+
+  def progress(completed,total)
+    percent = ((completed / total.to_f) * 100).round
+    print percent.to_s + "%"
+    print "\r"
+
   end
 
 end
