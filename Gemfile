@@ -10,7 +10,7 @@ group :development do
   gem 'capistrano', "~> 2.14.2"
   gem "quiet_assets", ">= 1.0.1"
   gem 'rb-fsevent', :require => false
-  gem 'unicorn'
+  gem 'thin'
   gem 'pry'
 end
 

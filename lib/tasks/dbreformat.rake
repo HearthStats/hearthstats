@@ -12,7 +12,7 @@ namespace :dbf do
     desc "Import RESULTS"
     RESULTS = ["Win", "Loss","Draw"]
     RESULTS.each do |m|
-      MatchResult.new(result: m).save
+      MatchResult.new(name: m).save
       p m + " result added."
     end
 
@@ -81,7 +81,7 @@ end
       match.notes = m.notes
 
       match.save!
-      
+
       MatchDeck.new(
         :deck_id => m.deck_id,
         :match_id => match.id
@@ -105,7 +105,7 @@ end
         error_array << "user" + am.userclass.to_s
         next
       end
- 
+
       if oppklass.nil?
         error_array << "opp" + am.userclass.to_s
         next
@@ -129,7 +129,7 @@ end
       m.result_id = result
       m.notes = am.notes
       m.save!
-      
+
       mr = MatchRun.new()
       mr.match_id = m.id
       mr.arena_run_id = am.arena_run_id
