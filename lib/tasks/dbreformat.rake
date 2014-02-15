@@ -73,8 +73,8 @@ end
       match.created_at = m.created_at
       match.updated_at = m.updated_at
       match.user_id = m.user_id
-      match.klass_id = klass.id
-      match.oppclass_id = oppklass.id
+      match.klass_id = klass
+      match.oppclass_id = oppklass
       match.oppname = m.oppname
       match.mode_id = mode
       match.coin = !m.gofirst
@@ -123,8 +123,8 @@ end
       m.created_at = am.created_at
       m.updated_at = am.updated_at
       m.user_id = am.user_id
-      m.klass_id = klass.id
-      m.oppclass_id = oppklass.id
+      m.klass_id = klass
+      m.oppclass_id = oppklass
       m.oppname = am.oppname
       m.coin = !am.gofirst
       m.mode_id = 1
@@ -156,7 +156,7 @@ end
         next
       end
 
-      d.klass_id = klass.id
+      d.klass_id = klass
 
       d.save!
       i += 1
