@@ -89,7 +89,7 @@ end
       ).save!
 
       i += 1
-      progress(i,con_matches.all)
+      progress(i,con_matches.count)
     end
     p i.to_s + " constructed matches migrated."
 	end
