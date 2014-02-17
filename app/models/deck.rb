@@ -37,6 +37,14 @@ class Deck < ActiveRecord::Base
 
   def validate_and_update_stats
 
+    #trim deck name
+    if !self.name.nil?
+      self.name =  self.name.strip
+    end
+    if self.name == ""
+      self.name = "[unnamed]"
+    end
+
     # check for 30 cards and assign unique deck
     if self.num_cards == 30
       uniqueDeck = UniqueDeck.where(:cardstring => self.cardstring, :klass_id => self.klass_id).first
@@ -60,6 +68,13 @@ class Deck < ActiveRecord::Base
     if !self.unique_deck.nil?
       self.unique_deck.save()
     end
+  end
+
+  def update_user_stats
+    self.user_num_matches = self.matches.count
+    self.user_num_wins = self.matches.where(:result_id => 1).count
+    self.user_num_losses = self.matches.where(:result_id => 2).count
+    self.user_winrate = self.user_num_matches > 0 ? (self.user_num_wins.to_f / self.user_num_matches) * 100 : 0
   end
 
   def decklink_message

@@ -1,3 +1,61 @@
+<%
+	#sort field
+    @sortField = "name"
+    sortRequest = CGI.parse(request.query_string)['sort'].first
+    if !sortRequest.nil? && sortRequest.match("name|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate")
+      @sortField = sortRequest
+    end
+    
+    # sort order
+    @orderFilter = CGI.parse(request.query_string)['order'].first
+    if @orderFilter.nil? || (@orderFilter != "desc" && @orderFilter != "asc")
+     @orderFilter = "asc"
+    end
+    
+    # TODO: hack sortField for user (non global stats)
+    finalSortField = @sortField
+    if !global && @sortField.match("num_(matches|wins|losses)")
+    	finalSortField = "user_" + @sortField
+    end
+    if !global && @sortField.match("winrate")
+    	finalSortField = "user_winrate"
+    end
+    
+    @decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
+    
+    #only show unique decks if global
+    if global
+    	@decks = @decks.find(:all, :group => 'unique_deck_id')
+    end
+%>
+
+<form id="deckListFilter" method="get" class="data-turboform">
+	<p>
+		Sort By: 
+		<select name="sort">
+			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>>Losses</option>
+			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>>Matches</option>
+			<option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>>Minions</option>
+			<option value="name" <%= @sortField == "name" ? 'selected="selected"' : ''%>>Name</option>
+			<option value="num_spells" <%= @sortField == "num_spells" ? 'selected="selected"' : ''%>>Spells</option>
+			<option value="num_weapons" <%= @sortField == "num_weapons" ? 'selected="selected"' : ''%>>Weapons</option>
+			<option value="winrate" <%= @sortField == "winrate" ? 'selected="selected"' : ''%>>Win Rate</option>
+			<option value="num_wins" <%= @sortField == "num_wins" ? 'selected="selected"' : ''%>>Wins</option>
+		</select>
+		<select name="order">
+			<option value="asc">Asc</option>
+			<option value="desc" <%= @orderFilter == "desc" ? 'selected="selected"' : ''%>>Desc</option>
+		</select>
+		<input id="deckListFilterSubmit" type="submit" value="Apply"/>
+	</p>
+</form>
+<script type="text/javascript">
+	$('#deckListFilter select').change(function() {
+		$('#deckListFilter').submit();
+	});
+	$('#deckListFilterSubmit').hide();
+</script>
+
 <table class="decklist table table-bordered table-striped table-condensed flip-content">
 	<tr>
 		<th>Name</th>
@@ -9,11 +67,11 @@
 		<th class="wins">Wins <%= global ? "*" : "" %></th>
 		<th class="losses">Losses <%= global ? "*" : "" %></th>
 		<th class="winrate">Win Rate <%= global ? "*" : "" %></th>
-		<% if !current_user.nil? %>
-			<th class="tools">Tools</th>
-		<% end %>
 		<% if global %>
 			<th class="author">Author</th>
+		<% end %>
+		<% if !current_user.nil? %>
+			<th class="tools">Tools</th>
 		<% end %>
 	</tr>
 	<% @decks.each do |deck| %>
@@ -23,20 +81,22 @@
 			<td class="minions"><%= deck.num_minions %></td>
 			<td class="spells"><%= deck.num_spells %></td>
 			<td class="weapons"><%= deck.num_weapons %></td>
-			<td class="matches"><%= global ? deck.num_global_matches : deck.num_matches %></td>
-			<td class="wins"><%= global ? deck.global_wins : deck.wins %></td>
-			<td class="losses"><%= global ? deck.global_losses : deck.losses %></td>
-			<td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.winrate, precision: 1) %></td>
-			<% if !current_user.nil? %>
-				<td class="tools">
-					<%if !current_user.nil? && current_user.id == deck.user_id%>
-						<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
-						<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
-					<% end %>
-				</td>
-			<% end %>
+			<td class="matches"><%= global ? deck.num_global_matches : deck.user_num_matches %></td>
+			<td class="wins"><%= global ? deck.global_wins : deck.user_num_wins %></td>
+			<td class="losses"><%= global ? deck.global_losses : deck.user_num_losses %></td>
+			<td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
 			<% if global %>
 				<td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+			<% end %>
+			<% if !current_user.nil? %>
+				<td class="tools">
+					<%if !current_user.nil? && current_user.id == deck.user_id %>
+						<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+						<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
+					<% else %>
+						<a href="javascript:alert('coming soon ...')">copy to my decks</a>
+					<% end %>
+				</td>
 			<% end %>
 		</tr>
 	<% end%>

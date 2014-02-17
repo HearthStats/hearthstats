@@ -6,14 +6,23 @@
 - provide(:section, 'Constructed')
 - content_for :actions do
   = link_to 'New Constructed', new_constructed_path, class: "btn blue"
-div.arenaheader
-  = will_paginate @constructeds, renderer: BootstrapPagination::Rails
+
 = render "quickentry"
 div class="portlet box blue"
   div class="portlet-title"
     div class="caption"
       | Recent Constructed Games
   div class="portlet-body flip-scroll"
+  	form id="matchesFilter" method="get" class="data-turboform"
+	  p
+	    | Show &nbsp; 
+	    select[name="items"]
+	   	  option[value="10"] 10 
+	   	  option[value="20" selected=("selected" if @items == "20")] 20 
+	  	  option[value="50" selected=("selected" if @items == "50")] 50 
+	      option[value="100" selected=("selected" if @items == "100")] 100
+	    | &nbsp; matches &nbsp; 
+  	    input[type="submit" id="matchesFilterSubmit" value="Apply"]
     table class="table table-bordered table-striped table-condensed flip-content"
       thead class="flip-content"
         tr
@@ -28,7 +37,10 @@ div class="portlet box blue"
       tbody
       - @constructeds.each do |match|
         tr
-          td.cl-effect-3 = link_to match.deck.name, deck_path(match.deck)
+          - if match.deck.nil?
+          	td.cl-effect-3
+          - else
+          	td.cl-effect-3 = link_to match.deck.name, deck_path(match.deck)
           td = get_name(match, "Oppclass")
           td
             span class="#{get_name(match,'Result')}" = get_name(match,"Result")
@@ -61,7 +73,12 @@ div class="portlet box blue"
               span class= 'btn default btn-xs blue' title="#{match.notes}" rel="tooltip"
                 i class="fa fa-file-text-o"
                 |Notes
+  	= will_paginate @constructeds, renderer: BootstrapPagination::Rails
 
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
   app.UI.initDeckSelector("#deckname");
+  $('#matchesFilter select').change(function() {
+    $('#matchesFilter').submit();
+  });
+  $('#matchesFilterSubmit').hide();

@@ -38,6 +38,7 @@ module Api
 				constructed.oppname = @req[:oppname]
         constructed.numturns = @req[:numturns]
         constructed.duration = @req[:duration]
+        constructed.notes = @req[:notes]
 
 				if constructed.save
           MatchDeck.new(match_id: constructed.id, deck_id: @deck.id).save!

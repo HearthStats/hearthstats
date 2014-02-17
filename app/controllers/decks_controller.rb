@@ -3,7 +3,7 @@ class DecksController < ApplicationController
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.where(:user_id => current_user.id)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,11 +15,7 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def public
     #@decks = Deck.select('*').where("unique_deck_id IS NOT NULL").distinct(:unique_deck_id)
-    @decks = Deck.where("unique_deck_id IS NOT NULL AND is_public = 1").find(
-      :all,
-      :include => [:unique_deck],
-      :group => 'unique_deck_id'
-    )
+    @decks = Deck.where("unique_deck_id IS NOT NULL AND is_public = 1").joins(:unique_deck)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }
