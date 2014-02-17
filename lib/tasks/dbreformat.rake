@@ -144,6 +144,23 @@ end
     p error_array
 	end
 
+	task :arenarun => :environment do
+		i = 0
+		allruns = ArenaRun.all
+		allruns.each do |ar|
+			klass = KLASSES[ar.userclass]
+
+      if klass.nil?
+        next
+      end
+      ar.klass_id = klass
+      ar.save!
+      i += 1
+
+      progress(i, allruns.count)
+    end
+	end
+
   task :deck => :environment do
     decks = Deck.all
     error_array = Array.new
