@@ -11,7 +11,7 @@ namespace :dbf do
     p "Modes Module Complete"
 
     desc "Import RESULTS"
-    RESULTS = ["Win", "Loss","Draw"]
+    RESULTS = ["Victory", "Defeat","Draw"]
     RESULTS.each do |m|
       MatchResult.new(name: m).save
       p m + " result added."

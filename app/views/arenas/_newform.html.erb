@@ -23,7 +23,10 @@
         <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
 	    </div>
 	    <div class="cf"></div>
-	    <input type="checkbox" name="match[result_id]" rel="toggle-btn" class="winbutt_style" on="Victory" off="Defeat" offclass="red"/>
+			<div id="1" class= "btn btn-primary green winbutt_style winbutton">Add Win</div>
+				<div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Add Defeat</div>
+				<div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Add Draw</div>
+				<%= f.number_field :result_id, class: "hidden wininput" %> 
       <%= number_field_tag :arena_run_id , @arenarun.id , :class => "hidden" %>
 	    <div class="actions">
 	      <%= link_to arenas_path do %>
@@ -44,8 +47,8 @@
 	  <div class="col-md-6">
 			<div class="arena_notes">
 				<h3>Notes</h3>
-				<% if @arenarun.arenas.last %>
-			  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120, :value => @arenarun.arenas.last.notes %>
+				<% if @arenarun.matches.last %>
+			  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120, :value => @arenarun.matches.last.notes %>
 		  	<% else %>
 			  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
 		  	<% end %>
@@ -82,4 +85,10 @@
 <% end %>
 <script type="text/javascript">
 	app.UI.initClassSelector('#match_oppclass_id');
+	$(".winbutton").click(function(){
+		$(".winbutton").addClass('not-selected');
+		$(this).removeClass('not-selected');
+		result_id = $(this).attr("id");
+		$(".wininput").val(result_id)
+	});
 </script>

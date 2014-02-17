@@ -1,8 +1,11 @@
 <% if @arena.result_id == 1 %>
 	var html = '<tr><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Victory">Victory</span></td></tr>'
 	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
-<% else %>
+<% elsif @arena.result_id == 2 %>
 	var html = '<tr><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Defeat">Defeat</span></td></tr>'
+	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
+<% elsif %>
+  var html = '<tr><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Draw">Draw</span></td></tr>'
 	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
 <% end %>
 toastr.success('Arena Game Added');

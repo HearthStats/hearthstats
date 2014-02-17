@@ -112,6 +112,7 @@ Hearthstats::Application.routes.draw do
 	    post "arena_runs/new"
 	    get "arena_runs/end"
 
+      post "matches/new"
 	    get "decks/show"
 		end
   end
