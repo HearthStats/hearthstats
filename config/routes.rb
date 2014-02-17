@@ -69,7 +69,7 @@ Hearthstats::Application.routes.draw do
       get :stats
     end
   end
-  
+
   # devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :cards do
@@ -113,7 +113,9 @@ Hearthstats::Application.routes.draw do
 	    get "arena_runs/end"
 
       post "matches/new"
+
 	    get "decks/show"
+      post "decks/activate"
 		end
   end
 

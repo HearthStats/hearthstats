@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class AdminController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/admin_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-addid">#addid</a>
+    
+    <li><a href="#method-i-addprofileuserid">#addprofileuserid</a>
+    
+    <li><a href="#method-i-anncreate">#anncreate</a>
+    
+    <li><a href="#method-i-announcement">#announcement</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-new_patch">#new_patch</a>
+    
+    <li><a href="#method-i-update_patch">#update_patch</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/V1.html">Api::V1</a>
+  
+    <li><a href="./Api/V1/ArenaRunsController.html">Api::V1::ArenaRunsController</a>
+  
+    <li><a href="./Api/V1/ArenasController.html">Api::V1::ArenasController</a>
+  
+    <li><a href="./Api/V1/ConstructedsController.html">Api::V1::ConstructedsController</a>
+  
+    <li><a href="./Api/V1/DecksController.html">Api::V1::DecksController</a>
+  
+    <li><a href="./Api/V1/MatchesController.html">Api::V1::MatchesController</a>
+  
+    <li><a href="./RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="./AdditionalController.html">AdditionalController</a>
+  
+    <li><a href="./AdditionalHelper.html">AdditionalHelper</a>
+  
+    <li><a href="./AdminController.html">AdminController</a>
+  
+    <li><a href="./AdminHelper.html">AdminHelper</a>
+  
+    <li><a href="./Announcement.html">Announcement</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Arena.html">Arena</a>
+  
+    <li><a href="./ArenaRun.html">ArenaRun</a>
+  
+    <li><a href="./ArenaRunsController.html">ArenaRunsController</a>
+  
+    <li><a href="./ArenaRunsHelper.html">ArenaRunsHelper</a>
+  
+    <li><a href="./ArenasController.html">ArenasController</a>
+  
+    <li><a href="./ArenasHelper.html">ArenasHelper</a>
+  
+    <li><a href="./Card.html">Card</a>
+  
+    <li><a href="./CardSet.html">CardSet</a>
+  
+    <li><a href="./CardsController.html">CardsController</a>
+  
+    <li><a href="./CardsHelper.html">CardsHelper</a>
+  
+    <li><a href="./Constructed.html">Constructed</a>
+  
+    <li><a href="./ConstructedsController.html">ConstructedsController</a>
+  
+    <li><a href="./ConstructedsHelper.html">ConstructedsHelper</a>
+  
+    <li><a href="./DashboardHelper.html">DashboardHelper</a>
+  
+    <li><a href="./DashboardsController.html">DashboardsController</a>
+  
+    <li><a href="./Deck.html">Deck</a>
+  
+    <li><a href="./DecksController.html">DecksController</a>
+  
+    <li><a href="./DecksHelper.html">DecksHelper</a>
+  
+    <li><a href="./Klass.html">Klass</a>
+  
+    <li><a href="./Link.html">Link</a>
+  
+    <li><a href="./Match.html">Match</a>
+  
+    <li><a href="./MatchDeck.html">MatchDeck</a>
+  
+    <li><a href="./MatchRank.html">MatchRank</a>
+  
+    <li><a href="./MatchResult.html">MatchResult</a>
+  
+    <li><a href="./MatchRun.html">MatchRun</a>
+  
+    <li><a href="./MatchUniqueDeck.html">MatchUniqueDeck</a>
+  
+    <li><a href="./MatchesController.html">MatchesController</a>
+  
+    <li><a href="./MatchesHelper.html">MatchesHelper</a>
+  
+    <li><a href="./Mode.html">Mode</a>
+  
+    <li><a href="./Patch.html">Patch</a>
+  
+    <li><a href="./Profile.html">Profile</a>
+  
+    <li><a href="./ProfileHelper.html">ProfileHelper</a>
+  
+    <li><a href="./ProfilesController.html">ProfilesController</a>
+  
+    <li><a href="./Race.html">Race</a>
+  
+    <li><a href="./Rank.html">Rank</a>
+  
+    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Season.html">Season</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./StreamsController.html">StreamsController</a>
+  
+    <li><a href="./StreamsHelper.html">StreamsHelper</a>
+  
+    <li><a href="./TourniesController.html">TourniesController</a>
+  
+    <li><a href="./Tourny.html">Tourny</a>
+  
+    <li><a href="./TournysHelper.html">TournysHelper</a>
+  
+    <li><a href="./Type.html">Type</a>
+  
+    <li><a href="./UniqueDeck.html">UniqueDeck</a>
+  
+    <li><a href="./UniqueDeckCard.html">UniqueDeckCard</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class AdminController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-addid" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addid</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="addid-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">addid</span>
+      <span class="ruby-identifier">constructed</span> = <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">all</span>
+      <span class="ruby-identifier">constructed</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">currentdeck</span> = <span class="ruby-constant">Deck</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">deckname</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">user_id</span>)[<span class="ruby-value">0</span>]
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentdeck</span>.<span class="ruby-identifier">nil?</span>
+                      <span class="ruby-identifier">c</span>.<span class="ruby-identifier">deck_id</span> = <span class="ruby-constant">Deck</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">deckname</span>)[<span class="ruby-value">0</span>]
+              <span class="ruby-keyword">else</span>
+                     <span class="ruby-identifier">c</span>.<span class="ruby-identifier">deck_id</span> = <span class="ruby-identifier">currentdeck</span>.<span class="ruby-identifier">id</span>
+             <span class="ruby-keyword">end</span>
+             <span class="ruby-identifier">c</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'SUCCESSSS'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- addid-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- addid-method -->
+
+    
+      <div id="method-i-addprofileuserid" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addprofileuserid</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="addprofileuserid-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">addprofileuserid</span>
+  <span class="ruby-identifier">users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">p</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">p</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">p</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'SUCCESSSS PROFILE'</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- addprofileuserid-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- addprofileuserid-method -->
+
+    
+      <div id="method-i-anncreate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">anncreate</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="anncreate-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">anncreate</span>
+  <span class="ruby-ivar">@ann</span> = <span class="ruby-constant">Announcement</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:announcement</span>])
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ann</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_index_path</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'Announcement was successfully created.'</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ann</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ann</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;announcement&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ann</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- anncreate-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- anncreate-method -->
+
+    
+      <div id="method-i-announcement" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">announcement</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="announcement-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">announcement</span>
+  <span class="ruby-ivar">@ann</span> = <span class="ruby-constant">Announcement</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@annrec</span> = <span class="ruby-constant">Announcement</span>.<span class="ruby-identifier">last</span>(<span class="ruby-value">5</span>).<span class="ruby-identifier">reverse</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- announcement-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- announcement-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-new_patch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new_patch</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new_patch-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new_patch</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new_patch-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new_patch-method -->
+
+    
+      <div id="method-i-update_patch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_patch</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_patch-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_patch</span>
+      <span class="ruby-identifier">current_con</span> = <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:patch</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;current&quot;</span>)
+      <span class="ruby-identifier">current_arena_run</span> = <span class="ruby-constant">ArenaRun</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:patch</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;current&quot;</span>)
+
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_arena_run</span>.<span class="ruby-identifier">update_all</span>(<span class="ruby-value">:patch</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:patch</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">current_con</span>.<span class="ruby-identifier">update_all</span>(<span class="ruby-value">:patch</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:patch</span>])
+                      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_index_path</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'Patch Versioned'</span>
+        <span class="ruby-keyword">else</span>
+             <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;update_patch&quot;</span>
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_patch-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_patch-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -53,6 +53,19 @@ curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"klass_id": 5, "o
 
 ```
 
+### Deck
+
+*Activate/Deactivate Deck*
+```
+curl -X POST -H "Content-Type: application/json" -d '{"deck_id": 1652}' http://localhost:3000/api/v1/decks/activate?userkey=7d58fa431951c92ceb9b9cb44d481108
+```
+Note that the deck id must belong to the user or an error will occur
+
+*Show All Decks*
+```
+http://localhost:3000/api/v1/decks/show?userkey=7d58fa431951c92ceb9b9cb44d481108
+```
+
 Contact
 -------
 

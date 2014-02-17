@@ -1,5 +1,34 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+# encoding: utf-8
+# #
+# # To validate this YAML file after you change it, please paste it into
+# # http://yamllint.com/
 en:
-  hello: "Hello world"
+  recent: "Recent Games"
+  news: "News"
+  streams: "Streams"
+  newgame: "New Game"
+  stats: "Statistics"
+  home: "Home"
+  dash: "Dashboard"
+  help: "Help"
+
+  arena:
+    title: "Arena"
+    new: "New Arena Run"
+    cont: "Continue Arena Run"
+
+  con:
+    title: "Constructed"
+
+  decks:
+    title: "Decks"
+    public: "Public Deck List"
+    mine: "My Deck List"
+    active: "Active Decks"
+    new: "New Deck"
+
+  extra:
+    report: "Newest Report"
+    change: "Change Log"
+    about: "About Us"
+    contact: "Contact Us"
