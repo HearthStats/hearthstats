@@ -1,16 +1,27 @@
-HearthStats
-===========
+<a href="http://hearthstats.net/">!(HearthStats Logo)[http://www.hearthstats.net/assets/hearthstatslogo.png]</a>
 
-Detailed Hearthstone match statistics and tracking.
 
-Sample API call:
-----------------
+HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.
+
+You can access the live site at: (HearthStats)[http://hearthstats.net]
+
+The beta is located at: (HearthStats Beta)[http://beta.hearthstats.net]
+
+## Contributing
+
+If you are interested in helping out with HearthStats.net, simply for this repo and make what ever changes and then submit a pull request.
+
+Please follow some [**naming conventions**](itsignals.cascadia.com.au/?p=7) and also some [**best practices**](http://www.sitepoint.com/10-ruby-on-rails-best-practices/).
+
+Make sure you fill the database with some sample data before starting development or else the app will break. We are working on providing some seed data.
+
+## Sample API call:
 
 The HearthStats API
 
 *Response*
 ```json
-	{"status":"success","data":{"complete":false,"created_at":"2014-01-25T19:15:53Z","dust":0,"gold":0,"id":1833,"notes":null,"patch":"current","updated_at":"2014-01-25T19:15:53Z","user_id":1,"userclass":"Rogue"}}
+  {"status":"success","data":{"complete":false,"created_at":"2014-01-25T19:15:53Z","dust":0,"gold":0,"id":1833,"notes":null,"patch":"current","updated_at":"2014-01-25T19:15:53Z","user_id":1,"userclass":"Rogue"}}
 ```
 ### Arena
 
@@ -47,3 +58,6 @@ Contact
 -------
 
 Email: jeff@hearthstats.net
+Twitter: https://twitter.com/HearthStats
+Facebook: https://www.facebook.com/HearthStats.net
+G+: https://plus.google.com/+HearthstatsNet/
