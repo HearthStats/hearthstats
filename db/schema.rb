@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140214155247) do
+ActiveRecord::Schema.define(:version => 20140217044117) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20140214155247) do
     t.integer  "duration"
     t.integer  "patch_id"
     t.integer  "season_id"
+    t.boolean  "appsubmit"
   end
 
   add_index "matches", ["klass_id"], :name => "index_matches_on_klass_id"

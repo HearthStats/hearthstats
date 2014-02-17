@@ -14,6 +14,7 @@ module Api
           end
           match = Match.new(@req)
           match.user_id = @user.id
+          match.appsubmit = true
           if match.save!
             MatchRun.new(match_id: match.id, arena_run_id: arena_run.id).save!
             render json: {status: "success", data: match}
@@ -50,6 +51,7 @@ module Api
           match.numturns = @req[:numturns]
           match.duration = @req[:duration]
           match.notes = @req[:notes]
+          match.appsubmit = true
 
           if match.save
             MatchDeck.new(match_id: match.id, deck_id: @deck.id).save!

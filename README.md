@@ -31,14 +31,16 @@ curl localhost:3000/api/v1/arena_runs/end?userkey=0e7f8484496dd312c589ef21a507c3
 
 *Arena Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"klass_id":4,"oppclass_id":3,"result_id":1,"coin":"true",  "oppname":"MubaMuba"}' localhost:3000/api/v1/arenas/new?userkey=7d58fa431951c92ceb9b9cb44d481108
+curl -X POST -H "Content-Type: application/json" -d '{"klass_id": 1, "oppclass_id": 3,"result_id": 3 ,"coin":"false", "mode_id":1, "oppname":"MubaMu22ba", "notes":"Schooling"}' localhost:3000/api/v1/matches/new?userkey=7d58fa431951c92ceb9b9cb44d481108
 </pre>
 
 ### Constructed
 
 *Constructed Entry*
 <pre>
-curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"klass_id": 1, "oppclass_id": 2,"result_id": 3 ,"coin":"true", "rank_id":1, "mode_id":3, "oppname":"MubaMu22ba"}' localhost:3000/api/v1/constructeds/new?userkey=7d58fa431951c92ceb9b9cb44d481108
+
+curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"klass_id": 5, "oppclass_id": 3,"result_id": 1 ,"coin":"false", "rank_id":1, "mode_id":3, "oppname":"MubaMu22ba"}' localhost:3000/api/v1/matches/new?userkey=7d58fa431951c92ceb9b9cb44d481108
+
 </pre>
 
 Contact
