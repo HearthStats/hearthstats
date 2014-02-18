@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :klasses_hash
   helper_method :public_url
+  helper_method :uploader_url
+
   private
 
   # API Methods
