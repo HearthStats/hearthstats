@@ -5,7 +5,7 @@ namespace :dbf do
 		desc "Import MODES"
     MODES = ["Arena","Casual","Ranked","Friendly","Practice"]
     MODES.each do |m|
-      Mode.new(name: m).save
+      Mode.new(name: m).save!
       p m + " mode added."
     end
     p "Modes Module Complete"
@@ -13,7 +13,7 @@ namespace :dbf do
     desc "Import RESULTS"
     RESULTS = ["Victory", "Defeat","Draw"]
     RESULTS.each do |m|
-      MatchResult.new(name: m).save
+      MatchResult.new(name: m).save!
       p m + " result added."
     end
 
@@ -148,17 +148,17 @@ end
 		i = 0
 		allruns = ArenaRun.all
 		allruns.each do |ar|
-			klass = KLASSES[ar.userclass]
+			next if ar.arenas.first.nil?
+			klass = KLASSES[ar.arenas.first.userclass]
 
-      if klass.nil?
-        next
-      end
+      next if klass.nil?
       ar.klass_id = klass
       ar.save!
       i += 1
 
       progress(i, allruns.count)
     end
+    p i.to_s + " arena runs changed"
 	end
 
   task :deck => :environment do

@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    #update()
+    # update()
     @classes = Klass.order('name ASC');
     @types = Type.order('name ASC');
     @races = Race.order('name ASC');
@@ -83,7 +83,7 @@ class CardsController < ApplicationController
       card.name = cardData["name"];
       card.description = cardData["description"];
       card.hearthhead_id = cardData["hearthhead_id"];
-      card.set_id = cardData["set_id"];
+      card.card_set_id = cardData["set_id"];
       card.rarity_id = cardData["rarity_id"];
       card.type_id = cardData["type_id"];
       card.klass_id = cardData["class_id"];
