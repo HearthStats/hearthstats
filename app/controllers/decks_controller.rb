@@ -29,6 +29,8 @@ class DecksController < ApplicationController
     impressionist(@deck)
 		@gResults = Google::Search::Web.new(:query => "hearthstone deck #{@deck.name}")
 
+	  matches = @deck.matches.where(:mode_id => [2,3])
+	  
     # Deck parsing too hard
     # if @deck.decklink.blank?
     #   @message = "No deck link attatched to this deck yet <p>"
@@ -37,30 +39,31 @@ class DecksController < ApplicationController
     # end
 
     # Win rates vs each class
-		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @deckrate = Array.new
-    classes.each_with_index do |c,i|
-	    wins = @deck.constructeds.where(oppclass: c, win: true).count
-	    totgames = @deck.constructeds.where(oppclass: c).count
+    i = 0
+    Klass.order("name").each do |c|
+	    wins = matches.where(oppclass_id: c.id, result_id: 1).count
+	    totgames = matches.where(oppclass_id: c.id).count
 	    if totgames == 0
-	    	@deckrate[i] = [0,"#{classes[i]}<br/>0 Games"]
+	    	@deckrate[i] = [0,"#{c.name}<br/>0 Games"]
 	    else
-		    @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{classes[i]}<br/>#{totgames} Games"]
+		    @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{c.name}<br/>#{totgames} Games"]
 		  end
+		  i = i + 1
 	  end
 
 	  # Going first vs 2nd
-	  totgamesfirst = @deck.constructeds.where(gofirst: true).count
-	  totgamessec = @deck.constructeds.where(gofirst: false).count
-	  @firstrate = ((@deck.constructeds.where(gofirst: true, win: true).count.to_f / totgamesfirst)*100).round(2)
+	  totgamesfirst = matches.where(coin: false).count
+	  totgamessec = matches .where(coin: true).count
+	  @firstrate = ((matches .where(coin: false, result_id: 1).count.to_f / totgamesfirst)*100).round(2)
 	  @firstrate = @firstrate.nan? ? '0 games' : @firstrate.to_s() + '%'
-	  @secrate = ((@deck.constructeds.where(gofirst: false, win: true).count.to_f / totgamessec)*100).round(2)
+	  @secrate = ((matches.where(coin: true, result_id: 1).count.to_f / totgamessec)*100).round(2)
 	  @secrate = @secrate.nan? ? '0 games' : @secrate.to_s() + '%'
 
     #calculate deck winrate
     @winrate = 0
     if @deck.constructeds.count > 0
-      @winrate = (@deck.constructeds.where(win: true).count.to_f / @deck.constructeds.count * 100)
+      @winrate = (matches.where(result_id: 1).count.to_f / @deck.constructeds.count * 100)
     end
 
     respond_to do |format|
