@@ -1,9 +1,14 @@
 div class="row"
   div class="col-md-12"
     / BEGIN PAGE TITLE & BREADCRUMB
-    h1 class="page-title"
-      = yield(:title)
-      small = yield(:subtitle)
+    div.title-container
+      h1 class="page-title"
+        = yield(:title)
+        small = yield(:subtitle)
+    div.top-cont style="width: 728px; height: 90px; float:right; display:inline-block; padding: 0px; margin: 0px; background: url('#{public_url("assets/adblocked.png")}'); cursor: pointer;"
+      div.top-advvv
+        iframe src="http://ib.adnxs.com/tt?id=2248883&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="728" height="90"
+    div.cf
     ul class="page-breadcrumb breadcrumb"
       li
         i class="fa fa-home"
