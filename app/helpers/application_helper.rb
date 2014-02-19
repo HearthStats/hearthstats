@@ -17,12 +17,14 @@ module ApplicationHelper
   end
 
   def get_name(match, table)
-    id = match.send table.downcase+"_id"
+    id = match.send table.downcase + "_id"
     table = "Klass" if table == "Oppclass"
     table = "MatchResult" if table == "Result"
-    result = table.constantize.find(id).name
-
-    result
+    begin
+      result = table.constantize.find(id).name
+    rescue
+      result = "null"
+    end
   end
 
 end

@@ -23,6 +23,11 @@ Hearthstats::Application.routes.draw do
   match "/help", to: "additional#help"
   match "/changelog", to: "additional#changelog"
   match "/news", to: "additional#news"
+  
+  #apps
+  match "/uploader", to: "additional#uploader"
+  match "/uploader/download/win", to: "additional#uploader_download_win"
+  match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
   match "/jan", to: "welcome#janreport"

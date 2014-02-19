@@ -3,5 +3,7 @@
   :keywords => 'Constructed, games, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, 'New Constructed')
 - provide(:section, 'Constructed')
-
+- content_for :actions do
+  = link_to 'Get the Auto Uploader', uploader_path, class: "btn yellow", title: "Download the auto-uploader"
+  
 = render 'newform'

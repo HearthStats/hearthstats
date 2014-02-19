@@ -17,7 +17,11 @@
 	width: 100%;
 	max-width: 400px;
 }
-
+.deckbuilderWrapper label {
+  font-size:24px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300 !important;
+}
 .notesfield{
 	margin-top: 30px;
 	width: 60%;
@@ -48,5 +52,4 @@
 }
 .slot-row .col-xs-4 {
   margin-bottom:1em;
-  
 }

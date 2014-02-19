@@ -84,7 +84,7 @@ class DashboardsController < ApplicationController
       totalgames = 0
       totalwins = Match.where(:mode_id => mode, :klass_id => c, :result_id => 1 ).count + Match.where( :mode_id => mode, :oppclass_id => c, :result_id => 2 ).count
       totalgames = Match.where( mode_id: mode, :klass_id => c).count + Match.where( mode_id: mode, :oppclass_id => c).count
-      classrate[Klass.find(c).name] = (totalwins.to_f / totalgames)
+      classrate[Klass.find(c).name] = totalgames > 0 ? (totalwins.to_f / totalgames) : 0
       tot[Klass.find(c).name] = totalgames
     end
     classrate = classrate.sort_by { |name, winsrate| winsrate }.reverse
