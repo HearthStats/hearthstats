@@ -55,8 +55,9 @@ class ApplicationController < ActionController::Base
   def cularenagames(userid, days1)
     winrate = Array.new(days1, 0)
     (0..days1).each do |i|
-      win = Match.where( mode_id: 1, user_id: userid, result_id: 1).where("created_at <= ?", i.days.ago.end_of_day).count
-      tot = Match.where( mode_id: 1, user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
+      matches = Match.where( mode_id: 1, user_id: userid).where("created_at <= ?", i.days.ago.end_of_day)
+      win = matches.where(result_id: 1).count
+      tot = matches.count
       winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
     end
 
@@ -66,8 +67,9 @@ class ApplicationController < ActionController::Base
   def culcongames(userid, days1)
     winrate = Array.new(days1, 0)
     (0..days1).each do |i|
-      win = Match.where( mode_id: 2, user_id: userid, result_id: 1).where("created_at <= ?", i.days.ago.end_of_day).count
-      tot = Match.where( mode_id: 2, user_id: userid).where("created_at <= ?", i.days.ago.end_of_day).count
+      matches = Match.where( mode_id: 2, user_id: userid).where("created_at <= ?", i.days.ago.end_of_day)
+      tot = matches.count
+      win = matches.where(result_id: 1).count
       winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
 	  end
 
