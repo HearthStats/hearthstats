@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class CardsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/cards_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/V1.html">Api::V1</a>
+  
+    <li><a href="./Api/V1/ArenaRunsController.html">Api::V1::ArenaRunsController</a>
+  
+    <li><a href="./Api/V1/ArenasController.html">Api::V1::ArenasController</a>
+  
+    <li><a href="./Api/V1/ConstructedsController.html">Api::V1::ConstructedsController</a>
+  
+    <li><a href="./Api/V1/DecksController.html">Api::V1::DecksController</a>
+  
+    <li><a href="./Api/V1/MatchesController.html">Api::V1::MatchesController</a>
+  
+    <li><a href="./RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="./AdditionalController.html">AdditionalController</a>
+  
+    <li><a href="./AdditionalHelper.html">AdditionalHelper</a>
+  
+    <li><a href="./AdminController.html">AdminController</a>
+  
+    <li><a href="./AdminHelper.html">AdminHelper</a>
+  
+    <li><a href="./Announcement.html">Announcement</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Arena.html">Arena</a>
+  
+    <li><a href="./ArenaRun.html">ArenaRun</a>
+  
+    <li><a href="./ArenaRunsController.html">ArenaRunsController</a>
+  
+    <li><a href="./ArenaRunsHelper.html">ArenaRunsHelper</a>
+  
+    <li><a href="./ArenasController.html">ArenasController</a>
+  
+    <li><a href="./ArenasHelper.html">ArenasHelper</a>
+  
+    <li><a href="./Card.html">Card</a>
+  
+    <li><a href="./CardSet.html">CardSet</a>
+  
+    <li><a href="./CardsController.html">CardsController</a>
+  
+    <li><a href="./CardsHelper.html">CardsHelper</a>
+  
+    <li><a href="./Constructed.html">Constructed</a>
+  
+    <li><a href="./ConstructedsController.html">ConstructedsController</a>
+  
+    <li><a href="./ConstructedsHelper.html">ConstructedsHelper</a>
+  
+    <li><a href="./DashboardHelper.html">DashboardHelper</a>
+  
+    <li><a href="./DashboardsController.html">DashboardsController</a>
+  
+    <li><a href="./Deck.html">Deck</a>
+  
+    <li><a href="./DecksController.html">DecksController</a>
+  
+    <li><a href="./DecksHelper.html">DecksHelper</a>
+  
+    <li><a href="./Klass.html">Klass</a>
+  
+    <li><a href="./Link.html">Link</a>
+  
+    <li><a href="./Match.html">Match</a>
+  
+    <li><a href="./MatchDeck.html">MatchDeck</a>
+  
+    <li><a href="./MatchRank.html">MatchRank</a>
+  
+    <li><a href="./MatchResult.html">MatchResult</a>
+  
+    <li><a href="./MatchRun.html">MatchRun</a>
+  
+    <li><a href="./MatchUniqueDeck.html">MatchUniqueDeck</a>
+  
+    <li><a href="./MatchesController.html">MatchesController</a>
+  
+    <li><a href="./MatchesHelper.html">MatchesHelper</a>
+  
+    <li><a href="./Mode.html">Mode</a>
+  
+    <li><a href="./Patch.html">Patch</a>
+  
+    <li><a href="./Profile.html">Profile</a>
+  
+    <li><a href="./ProfileHelper.html">ProfileHelper</a>
+  
+    <li><a href="./ProfilesController.html">ProfilesController</a>
+  
+    <li><a href="./Race.html">Race</a>
+  
+    <li><a href="./Rank.html">Rank</a>
+  
+    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Season.html">Season</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./StreamsController.html">StreamsController</a>
+  
+    <li><a href="./StreamsHelper.html">StreamsHelper</a>
+  
+    <li><a href="./TourniesController.html">TourniesController</a>
+  
+    <li><a href="./Tourny.html">Tourny</a>
+  
+    <li><a href="./TournysHelper.html">TournysHelper</a>
+  
+    <li><a href="./Type.html">Type</a>
+  
+    <li><a href="./UniqueDeck.html">UniqueDeck</a>
+  
+    <li><a href="./UniqueDeckCard.html">UniqueDeckCard</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CardsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/cards_controller.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-comment">#update()</span>
+  <span class="ruby-ivar">@classes</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">'name ASC'</span>);
+  <span class="ruby-ivar">@types</span> = <span class="ruby-constant">Type</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">'name ASC'</span>);
+  <span class="ruby-ivar">@races</span> = <span class="ruby-constant">Race</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">'name ASC'</span>);
+  
+  <span class="ruby-ivar">@cards</span> = <span class="ruby-constant">Card</span>
+  
+  <span class="ruby-comment">#filter by card text</span>
+  <span class="ruby-ivar">@textFilter</span> = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">query_string</span>)[<span class="ruby-string">'text'</span>].<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@textFilter</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">t</span> = <span class="ruby-constant">Card</span>.<span class="ruby-identifier">arel_table</span>
+    <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(
+      <span class="ruby-identifier">t</span>[<span class="ruby-value">:name</span>].<span class="ruby-identifier">matches</span>(<span class="ruby-string">&quot;%&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@textFilter</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;%&quot;</span>).
+      <span class="ruby-identifier">or</span>(<span class="ruby-identifier">t</span>[<span class="ruby-value">:description</span>].<span class="ruby-identifier">matches</span>(<span class="ruby-string">&quot;%&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@textFilter</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;%&quot;</span>))
+    )
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># filter by card type</span>
+  <span class="ruby-ivar">@typeFilter</span> = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">query_string</span>)[<span class="ruby-string">'type'</span>].<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@typeFilter</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-constant">Float</span>(<span class="ruby-ivar">@typeFilter</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">false</span>)
+   <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'type_id = ?'</span>, <span class="ruby-ivar">@typeFilter</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># filter by card race</span>
+  <span class="ruby-ivar">@raceFilter</span> = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">query_string</span>)[<span class="ruby-string">'race'</span>].<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@raceFilter</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-constant">Float</span>(<span class="ruby-ivar">@raceFilter</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">false</span>)
+   <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'race_id = ?'</span>, <span class="ruby-ivar">@raceFilter</span>)
+  <span class="ruby-keyword">else</span> 
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@raceFilter</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;none&quot;</span>
+      <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'race_id  IS NULL'</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># filter by card class</span>
+  <span class="ruby-ivar">@classFilter</span> = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">query_string</span>)[<span class="ruby-string">'class'</span>].<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@classFilter</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-constant">Float</span>(<span class="ruby-ivar">@classFilter</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">false</span>)
+   <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'klass_id = ?'</span>, <span class="ruby-ivar">@classFilter</span>)
+  <span class="ruby-keyword">else</span> 
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@classFilter</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;neutral&quot;</span>
+      <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'klass_id  IS NULL'</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment">#sort field</span>
+  <span class="ruby-ivar">@sortField</span> = <span class="ruby-string">&quot;mana&quot;</span>
+  <span class="ruby-identifier">sortRequest</span> = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">query_string</span>)[<span class="ruby-string">'sort'</span>].<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">sortRequest</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">sortRequest</span>.<span class="ruby-identifier">match</span>(<span class="ruby-string">&quot;attack|name|health|mana&quot;</span>)
+    <span class="ruby-ivar">@sortField</span> = <span class="ruby-identifier">sortRequest</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># don't show spells if sort by attack or health</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@sortField</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;attack&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@sortField</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;health&quot;</span>
+    <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;type_id != ?&quot;</span>, <span class="ruby-value">2</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># sort order</span>
+  <span class="ruby-ivar">@orderFilter</span> = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">request</span>.<span class="ruby-identifier">query_string</span>)[<span class="ruby-string">'order'</span>].<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@orderFilter</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@orderFilter</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;desc&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@orderFilter</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;asc&quot;</span>)
+   <span class="ruby-ivar">@orderFilter</span> = <span class="ruby-string">&quot;asc&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@cards</span> = <span class="ruby-ivar">@cards</span>.<span class="ruby-identifier">order</span>(<span class="ruby-ivar">@sortField</span> <span class="ruby-operator">+</span> <span class="ruby-string">' '</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@orderFilter</span>.<span class="ruby-identifier">upcase</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;, name ASC&quot;</span>)
+  
+  
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/cards_controller.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  
+  <span class="ruby-comment"># set this to the card source URL</span>
+  <span class="ruby-identifier">source</span> = <span class="ruby-string">&quot;&quot;</span> 
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'net/http'</span>
+  <span class="ruby-ivar">@jsonResult</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-constant">URI</span>(<span class="ruby-identifier">source</span>))
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'json'</span>
+  <span class="ruby-ivar">@hash</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span> <span class="ruby-ivar">@jsonResult</span>
+  
+  <span class="ruby-ivar">@hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cardData</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">card</span> = <span class="ruby-constant">Card</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:first</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'hearthhead_id = ?'</span>, <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;hearthhead_id&quot;</span>]])
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">card</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+      <span class="ruby-identifier">card</span> = <span class="ruby-constant">Card</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;name&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">description</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;description&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">hearthhead_id</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;hearthhead_id&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">set_id</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;set_id&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">rarity_id</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;rarity_id&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">type_id</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;type_id&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">klass_id</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;class_id&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">race_id</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;race_id&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">mana</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;mana&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">health</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;health&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">attack</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;attack&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">collectible</span> = <span class="ruby-identifier">cardData</span>[<span class="ruby-string">&quot;collectible&quot;</span>];
+    <span class="ruby-identifier">card</span>.<span class="ruby-identifier">save</span>()
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class ArenaRun - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/arena_run.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-averageWins">::averageWins</a>
+    
+    <li><a href="#method-c-classArray">::classArray</a>
+    
+    <li><a href="#method-c-totalDust">::totalDust</a>
+    
+    <li><a href="#method-c-totalGold">::totalGold</a>
+    
+    <li><a href="#method-i-delete_all_arena">#delete_all_arena</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/V1.html">Api::V1</a>
+  
+    <li><a href="./Api/V1/ArenaRunsController.html">Api::V1::ArenaRunsController</a>
+  
+    <li><a href="./Api/V1/ArenasController.html">Api::V1::ArenasController</a>
+  
+    <li><a href="./Api/V1/ConstructedsController.html">Api::V1::ConstructedsController</a>
+  
+    <li><a href="./Api/V1/DecksController.html">Api::V1::DecksController</a>
+  
+    <li><a href="./Api/V1/MatchesController.html">Api::V1::MatchesController</a>
+  
+    <li><a href="./RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="./AdditionalController.html">AdditionalController</a>
+  
+    <li><a href="./AdditionalHelper.html">AdditionalHelper</a>
+  
+    <li><a href="./AdminController.html">AdminController</a>
+  
+    <li><a href="./AdminHelper.html">AdminHelper</a>
+  
+    <li><a href="./Announcement.html">Announcement</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Arena.html">Arena</a>
+  
+    <li><a href="./ArenaRun.html">ArenaRun</a>
+  
+    <li><a href="./ArenaRunsController.html">ArenaRunsController</a>
+  
+    <li><a href="./ArenaRunsHelper.html">ArenaRunsHelper</a>
+  
+    <li><a href="./ArenasController.html">ArenasController</a>
+  
+    <li><a href="./ArenasHelper.html">ArenasHelper</a>
+  
+    <li><a href="./Card.html">Card</a>
+  
+    <li><a href="./CardSet.html">CardSet</a>
+  
+    <li><a href="./CardsController.html">CardsController</a>
+  
+    <li><a href="./CardsHelper.html">CardsHelper</a>
+  
+    <li><a href="./Constructed.html">Constructed</a>
+  
+    <li><a href="./ConstructedsController.html">ConstructedsController</a>
+  
+    <li><a href="./ConstructedsHelper.html">ConstructedsHelper</a>
+  
+    <li><a href="./DashboardHelper.html">DashboardHelper</a>
+  
+    <li><a href="./DashboardsController.html">DashboardsController</a>
+  
+    <li><a href="./Deck.html">Deck</a>
+  
+    <li><a href="./DecksController.html">DecksController</a>
+  
+    <li><a href="./DecksHelper.html">DecksHelper</a>
+  
+    <li><a href="./Klass.html">Klass</a>
+  
+    <li><a href="./Link.html">Link</a>
+  
+    <li><a href="./Match.html">Match</a>
+  
+    <li><a href="./MatchDeck.html">MatchDeck</a>
+  
+    <li><a href="./MatchRank.html">MatchRank</a>
+  
+    <li><a href="./MatchResult.html">MatchResult</a>
+  
+    <li><a href="./MatchRun.html">MatchRun</a>
+  
+    <li><a href="./MatchUniqueDeck.html">MatchUniqueDeck</a>
+  
+    <li><a href="./MatchesController.html">MatchesController</a>
+  
+    <li><a href="./MatchesHelper.html">MatchesHelper</a>
+  
+    <li><a href="./Mode.html">Mode</a>
+  
+    <li><a href="./Patch.html">Patch</a>
+  
+    <li><a href="./Profile.html">Profile</a>
+  
+    <li><a href="./ProfileHelper.html">ProfileHelper</a>
+  
+    <li><a href="./ProfilesController.html">ProfilesController</a>
+  
+    <li><a href="./Race.html">Race</a>
+  
+    <li><a href="./Rank.html">Rank</a>
+  
+    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Season.html">Season</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./StreamsController.html">StreamsController</a>
+  
+    <li><a href="./StreamsHelper.html">StreamsHelper</a>
+  
+    <li><a href="./TourniesController.html">TourniesController</a>
+  
+    <li><a href="./Tourny.html">Tourny</a>
+  
+    <li><a href="./TournysHelper.html">TournysHelper</a>
+  
+    <li><a href="./Type.html">Type</a>
+  
+    <li><a href="./UniqueDeck.html">UniqueDeck</a>
+  
+    <li><a href="./UniqueDeckCard.html">UniqueDeckCard</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ArenaRun</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-averageWins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">averageWins</span><span
+            class="method-args">(klass_id,userid)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="averageWins-source">
+            <pre><span class="ruby-comment"># File app/models/arena_run.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">averageWins</span>(<span class="ruby-identifier">klass_id</span>,<span class="ruby-identifier">userid</span>)
+      <span class="ruby-identifier">arena_games</span> = <span class="ruby-constant">ArenaRun</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>, <span class="ruby-value">:klass_id=</span><span class="ruby-operator">&gt;</span> <span class="ruby-identifier">klass_id</span>)
+      <span class="ruby-identifier">wins</span> = <span class="ruby-identifier">arena_games</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">matches</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">count</span> }
+      <span class="ruby-identifier">average_win</span> = <span class="ruby-identifier">wins</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">inject</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">el</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">el</span> }.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">wins</span>.<span class="ruby-identifier">size</span>
+      <span class="ruby-identifier">average_win</span> = <span class="ruby-value">-1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">average_win</span>.<span class="ruby-identifier">nan?</span>
+
+      <span class="ruby-identifier">average_win</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- averageWins-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- averageWins-method -->
+
+    
+      <div id="method-c-classArray" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">classArray</span><span
+            class="method-args">(userid)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="classArray-source">
+            <pre><span class="ruby-comment"># File app/models/arena_run.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">classArray</span>(<span class="ruby-identifier">userid</span>)
+  <span class="ruby-identifier">class_array</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">klass_array</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">all</span>
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">klass_array</span>.<span class="ruby-identifier">count</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">class_avgwins</span> = <span class="ruby-constant">ArenaRun</span>.<span class="ruby-identifier">averageWins</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">userid</span>)
+              <span class="ruby-identifier">class_runs</span> = <span class="ruby-constant">ArenaRun</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span> ).<span class="ruby-identifier">count</span>
+              <span class="ruby-identifier">class_winrate</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>, <span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span> ).<span class="ruby-identifier">count</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span> ).<span class="ruby-identifier">count</span>
+              <span class="ruby-identifier">class_coinrate</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>, <span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">coin</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> ).<span class="ruby-identifier">count</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>, <span class="ruby-identifier">coin</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>).<span class="ruby-identifier">count</span>
+              <span class="ruby-identifier">class_nocoinrate</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>, <span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">coin</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> ).<span class="ruby-identifier">count</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">klass_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>, <span class="ruby-identifier">coin</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>).<span class="ruby-identifier">count</span>
+
+    <span class="ruby-identifier">class_array</span>[<span class="ruby-constant">Klass</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">c</span>)[<span class="ruby-value">:name</span>]] = [[<span class="ruby-string">&quot;Average wins&quot;</span>, <span class="ruby-identifier">class_avgwins</span>],
+                                                                                      [<span class="ruby-string">&quot;Total runs with class&quot;</span>, <span class="ruby-identifier">class_runs</span>],
+                                                                                      [<span class="ruby-string">&quot;Class winrate&quot;</span>, <span class="ruby-identifier">class_winrate</span>],
+                                                                                      [<span class="ruby-string">&quot;Win rate with coin&quot;</span>, <span class="ruby-identifier">class_coinrate</span>],
+                                                                                      [<span class="ruby-string">&quot;Win rate without coin&quot;</span>, <span class="ruby-identifier">class_nocoinrate</span>]]
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">class_array</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- classArray-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- classArray-method -->
+
+    
+      <div id="method-c-totalDust" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">totalDust</span><span
+            class="method-args">(userid)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="totalDust-source">
+            <pre><span class="ruby-comment"># File app/models/arena_run.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">totalDust</span>(<span class="ruby-identifier">userid</span>)
+      <span class="ruby-identifier">arena_games</span> = <span class="ruby-constant">ArenaRun</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>)
+      <span class="ruby-identifier">dustamount</span> = <span class="ruby-identifier">arena_games</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">dust</span> }
+      <span class="ruby-identifier">total_dust</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">dustamount</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">total_dust</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">g</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_dust</span>.<span class="ruby-identifier">nil?</span>
+              <span class="ruby-identifier">total_dust</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">total_dust</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- totalDust-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- totalDust-method -->
+
+    
+      <div id="method-c-totalGold" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">totalGold</span><span
+            class="method-args">(userid)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="totalGold-source">
+            <pre><span class="ruby-comment"># File app/models/arena_run.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">totalGold</span>(<span class="ruby-identifier">userid</span>)
+      <span class="ruby-identifier">arena_games</span> = <span class="ruby-constant">ArenaRun</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>)
+      <span class="ruby-identifier">goldamount</span> = <span class="ruby-identifier">arena_games</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">gold</span> }
+      <span class="ruby-identifier">total_gold</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">goldamount</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">total_gold</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">g</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_gold</span>.<span class="ruby-identifier">nil?</span>
+              <span class="ruby-identifier">total_gold</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">total_gold</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- totalGold-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- totalGold-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-delete_all_arena" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_all_arena</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_all_arena-source">
+            <pre><span class="ruby-comment"># File app/models/arena_run.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_all_arena</span>
+      <span class="ruby-constant">Match</span>.<span class="ruby-identifier">destroy_all</span>(<span class="ruby-value">:arena_run_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_all_arena-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete_all_arena-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

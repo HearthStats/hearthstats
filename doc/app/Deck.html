@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Deck - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/deck.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-bestuserdeck">::bestuserdeck</a>
+    
+    <li><a href="#method-c-race_count">::race_count</a>
+    
+    <li><a href="#method-i-class_name">#class_name</a>
+    
+    <li><a href="#method-i-decklink_message">#decklink_message</a>
+    
+    <li><a href="#method-i-delete_cleanup">#delete_cleanup</a>
+    
+    <li><a href="#method-i-global_losses">#global_losses</a>
+    
+    <li><a href="#method-i-global_winrate">#global_winrate</a>
+    
+    <li><a href="#method-i-global_wins">#global_wins</a>
+    
+    <li><a href="#method-i-losses">#losses</a>
+    
+    <li><a href="#method-i-num_cards">#num_cards</a>
+    
+    <li><a href="#method-i-num_global_matches">#num_global_matches</a>
+    
+    <li><a href="#method-i-num_matches">#num_matches</a>
+    
+    <li><a href="#method-i-num_minions">#num_minions</a>
+    
+    <li><a href="#method-i-num_spells">#num_spells</a>
+    
+    <li><a href="#method-i-num_weapons">#num_weapons</a>
+    
+    <li><a href="#method-i-update_unique_deck_details">#update_unique_deck_details</a>
+    
+    <li><a href="#method-i-update_user_stats">#update_user_stats</a>
+    
+    <li><a href="#method-i-validate_and_update_stats">#validate_and_update_stats</a>
+    
+    <li><a href="#method-i-winrate">#winrate</a>
+    
+    <li><a href="#method-i-wins">#wins</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/V1.html">Api::V1</a>
+  
+    <li><a href="./Api/V1/ArenaRunsController.html">Api::V1::ArenaRunsController</a>
+  
+    <li><a href="./Api/V1/ArenasController.html">Api::V1::ArenasController</a>
+  
+    <li><a href="./Api/V1/ConstructedsController.html">Api::V1::ConstructedsController</a>
+  
+    <li><a href="./Api/V1/DecksController.html">Api::V1::DecksController</a>
+  
+    <li><a href="./Api/V1/MatchesController.html">Api::V1::MatchesController</a>
+  
+    <li><a href="./RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="./AdditionalController.html">AdditionalController</a>
+  
+    <li><a href="./AdditionalHelper.html">AdditionalHelper</a>
+  
+    <li><a href="./AdminController.html">AdminController</a>
+  
+    <li><a href="./AdminHelper.html">AdminHelper</a>
+  
+    <li><a href="./Announcement.html">Announcement</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Arena.html">Arena</a>
+  
+    <li><a href="./ArenaRun.html">ArenaRun</a>
+  
+    <li><a href="./ArenaRunsController.html">ArenaRunsController</a>
+  
+    <li><a href="./ArenaRunsHelper.html">ArenaRunsHelper</a>
+  
+    <li><a href="./ArenasController.html">ArenasController</a>
+  
+    <li><a href="./ArenasHelper.html">ArenasHelper</a>
+  
+    <li><a href="./Card.html">Card</a>
+  
+    <li><a href="./CardSet.html">CardSet</a>
+  
+    <li><a href="./CardsController.html">CardsController</a>
+  
+    <li><a href="./CardsHelper.html">CardsHelper</a>
+  
+    <li><a href="./Constructed.html">Constructed</a>
+  
+    <li><a href="./ConstructedsController.html">ConstructedsController</a>
+  
+    <li><a href="./ConstructedsHelper.html">ConstructedsHelper</a>
+  
+    <li><a href="./DashboardHelper.html">DashboardHelper</a>
+  
+    <li><a href="./DashboardsController.html">DashboardsController</a>
+  
+    <li><a href="./Deck.html">Deck</a>
+  
+    <li><a href="./DecksController.html">DecksController</a>
+  
+    <li><a href="./DecksHelper.html">DecksHelper</a>
+  
+    <li><a href="./Klass.html">Klass</a>
+  
+    <li><a href="./Link.html">Link</a>
+  
+    <li><a href="./Match.html">Match</a>
+  
+    <li><a href="./MatchDeck.html">MatchDeck</a>
+  
+    <li><a href="./MatchRank.html">MatchRank</a>
+  
+    <li><a href="./MatchResult.html">MatchResult</a>
+  
+    <li><a href="./MatchRun.html">MatchRun</a>
+  
+    <li><a href="./MatchUniqueDeck.html">MatchUniqueDeck</a>
+  
+    <li><a href="./MatchesController.html">MatchesController</a>
+  
+    <li><a href="./MatchesHelper.html">MatchesHelper</a>
+  
+    <li><a href="./Mode.html">Mode</a>
+  
+    <li><a href="./Patch.html">Patch</a>
+  
+    <li><a href="./Profile.html">Profile</a>
+  
+    <li><a href="./ProfileHelper.html">ProfileHelper</a>
+  
+    <li><a href="./ProfilesController.html">ProfilesController</a>
+  
+    <li><a href="./Race.html">Race</a>
+  
+    <li><a href="./Rank.html">Rank</a>
+  
+    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Season.html">Season</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./StreamsController.html">StreamsController</a>
+  
+    <li><a href="./StreamsHelper.html">StreamsHelper</a>
+  
+    <li><a href="./TourniesController.html">TourniesController</a>
+  
+    <li><a href="./Tourny.html">Tourny</a>
+  
+    <li><a href="./TournysHelper.html">TournysHelper</a>
+  
+    <li><a href="./Type.html">Type</a>
+  
+    <li><a href="./UniqueDeck.html">UniqueDeck</a>
+  
+    <li><a href="./UniqueDeckCard.html">UniqueDeckCard</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Deck</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-bestuserdeck" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bestuserdeck</span><span
+            class="method-args">(userid)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="bestuserdeck-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">bestuserdeck</span>(<span class="ruby-identifier">userid</span>)
+              <span class="ruby-identifier">decks</span> = <span class="ruby-constant">Deck</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">userid</span>)
+              <span class="ruby-identifier">winrates</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+              <span class="ruby-identifier">decks</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+                      <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">constructeds</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                      <span class="ruby-keyword">else</span>
+                              <span class="ruby-identifier">winrates</span>[<span class="ruby-identifier">d</span>.<span class="ruby-identifier">name</span>] = [((<span class="ruby-identifier">d</span>.<span class="ruby-identifier">constructeds</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">win</span><span class="ruby-value">:true</span>).<span class="ruby-identifier">count</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">constructeds</span>.<span class="ruby-identifier">count</span>)*<span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">id</span>]
+                      <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">deck</span> = <span class="ruby-identifier">winrates</span>.<span class="ruby-identifier">max_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">y</span>}
+              <span class="ruby-identifier">deck</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- bestuserdeck-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- bestuserdeck-method -->
+
+    
+      <div id="method-c-race_count" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">race_count</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="race_count-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 167</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">race_count</span>
+  <span class="ruby-identifier">races</span> = <span class="ruby-constant">Deck</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:race</span>)
+  <span class="ruby-identifier">race_groups</span> = <span class="ruby-identifier">races</span>.<span class="ruby-identifier">group_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">race</span><span class="ruby-operator">|</span> <span class="ruby-identifier">race</span> } <span class="ruby-comment"># {&quot;Druid&quot; =&gt; [&quot;Druid&quot;, &quot;Druid&quot;]}</span>
+
+  <span class="ruby-constant">Hash</span>[<span class="ruby-identifier">race_groups</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">race</span>, <span class="ruby-identifier">list</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">race</span>, <span class="ruby-identifier">list</span>.<span class="ruby-identifier">size</span>] }]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- race_count-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- race_count-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-class_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">class_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="class_name-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">class_name</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">race</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- class_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- class_name-method -->
+
+    
+      <div id="method-i-decklink_message" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">decklink_message</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="decklink_message-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">decklink_message</span>
+
+  <span class="ruby-comment"># Add http:// to link if not present</span>
+  <span class="ruby-comment"># If page is not a valid link then return link</span>
+  <span class="ruby-comment"># Else return list of cards in deck</span>
+  <span class="ruby-comment"># If Nokogiri fails to parse, return No deck link if blank</span>
+  <span class="ruby-comment"># Else return link</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">decklink</span>.<span class="ruby-identifier">present?</span>
+    <span class="ruby-identifier">message</span> = <span class="ruby-string">&quot;No deck link attatched to this deck yet &lt;p&gt;&quot;</span>
+  <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">link</span> = <span class="ruby-identifier">prepend_http</span>(<span class="ruby-identifier">decklink</span>)
+          <span class="ruby-keyword">begin</span>
+            <span class="ruby-identifier">page</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML</span>(<span class="ruby-identifier">open</span>(<span class="ruby-identifier">link</span>))
+            <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">page</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">'header'</span>).<span class="ruby-identifier">text</span>.<span class="ruby-identifier">blank?</span>
+              <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;&lt;a href='#{link}'&gt;Link To Deck&lt;/a&gt;&lt;p&gt;&quot;</span>
+            <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">message</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">text</span>
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">rescue</span>
+      <span class="ruby-identifier">link</span> = <span class="ruby-identifier">link</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-10</span>]
+      <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;&lt;a href='#{link}'&gt;Link To Deck&lt;/a&gt;&lt;p&gt;&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">message</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- decklink_message-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- decklink_message-method -->
+
+    
+      <div id="method-i-delete_cleanup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_cleanup</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_cleanup-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_cleanup</span>
+      <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">destroy_all</span>(<span class="ruby-value">:deck_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+      <span class="ruby-constant">DeckCard</span>.<span class="ruby-identifier">destroy_all</span>(<span class="ruby-value">:deck_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_cleanup-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- delete_cleanup-method -->
+
+    
+      <div id="method-i-global_losses" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">global_losses</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="global_losses-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">global_losses</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">num_losses</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- global_losses-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- global_losses-method -->
+
+    
+      <div id="method-i-global_winrate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">global_winrate</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="global_winrate-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 163</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">global_winrate</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">num_global_matches</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">global_wins</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">num_global_matches</span>) * <span class="ruby-value">100</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- global_winrate-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- global_winrate-method -->
+
+    
+      <div id="method-i-global_wins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">global_wins</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="global_wins-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">global_wins</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">num_wins</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- global_wins-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- global_wins-method -->
+
+    
+      <div id="method-i-losses" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">losses</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="losses-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">losses</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span>).<span class="ruby-identifier">count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- losses-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- losses-method -->
+
+    
+      <div id="method-i-num_cards" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_cards</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_cards-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_cards</span>
+      <span class="ruby-keyword">return</span>  <span class="ruby-value">0</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cardstring</span>
+  <span class="ruby-identifier">numCards</span> = <span class="ruby-value">0</span>;
+  <span class="ruby-identifier">cards</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cardstring</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+  <span class="ruby-identifier">cards</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cardData</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">chunks</span> = <span class="ruby-identifier">cardData</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)
+    <span class="ruby-identifier">numCards</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">chunks</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_f</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">numCards</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_cards-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_cards-method -->
+
+    
+      <div id="method-i-num_global_matches" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_global_matches</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_global_matches-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_global_matches</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">num_matches</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_global_matches-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_global_matches-method -->
+
+    
+      <div id="method-i-num_matches" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_matches</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_matches-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_matches</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_matches-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_matches-method -->
+
+    
+      <div id="method-i-num_minions" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_minions</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_minions-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_minions</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">num_minions</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_minions-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_minions-method -->
+
+    
+      <div id="method-i-num_spells" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_spells</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_spells-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_spells</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">num_spells</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_spells-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_spells-method -->
+
+    
+      <div id="method-i-num_weapons" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">num_weapons</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="num_weapons-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">num_weapons</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">num_weapons</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- num_weapons-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- num_weapons-method -->
+
+    
+      <div id="method-i-update_unique_deck_details" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_unique_deck_details</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_unique_deck_details-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_unique_deck_details</span>
+  <span class="ruby-comment"># re-save the qunique deck on order to trigger</span>
+  <span class="ruby-comment"># proper pulling of data from the first fully</span>
+  <span class="ruby-comment"># saved deck that matches the unique deck's cardstring</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck</span>.<span class="ruby-identifier">save</span>()
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_unique_deck_details-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_unique_deck_details-method -->
+
+    
+      <div id="method-i-update_user_stats" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_user_stats</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_user_stats-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_user_stats</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_num_matches</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">matches</span>.<span class="ruby-identifier">count</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_num_wins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">matches</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:result_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">count</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_num_losses</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">matches</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:result_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>).<span class="ruby-identifier">count</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_winrate</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_num_matches</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_num_wins</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_num_matches</span>) * <span class="ruby-value">100</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_user_stats-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_user_stats-method -->
+
+    
+      <div id="method-i-validate_and_update_stats" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate_and_update_stats</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="validate_and_update_stats-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validate_and_update_stats</span>
+
+  <span class="ruby-comment">#trim deck name</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> =  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">strip</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;[unnamed]&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># check for 30 cards and assign unique deck</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">num_cards</span> <span class="ruby-operator">==</span> <span class="ruby-value">30</span>
+    <span class="ruby-identifier">uniqueDeck</span> = <span class="ruby-constant">UniqueDeck</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:cardstring</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cardstring</span>, <span class="ruby-value">:klass_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">klass_id</span>).<span class="ruby-identifier">first</span>
+
+    <span class="ruby-comment"># create a new unique deck if needed</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">uniqueDeck</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">uniqueDeck</span> = <span class="ruby-constant">UniqueDeck</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">uniqueDeck</span>.<span class="ruby-identifier">cardstring</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cardstring</span>
+      <span class="ruby-identifier">uniqueDeck</span>.<span class="ruby-identifier">klass_id</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">klass_id</span>
+      <span class="ruby-identifier">uniqueDeck</span>.<span class="ruby-identifier">save</span>()
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unique_deck_id</span> = <span class="ruby-identifier">uniqueDeck</span>.<span class="ruby-identifier">id</span>;
+
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- validate_and_update_stats-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- validate_and_update_stats-method -->
+
+    
+      <div id="method-i-winrate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">winrate</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="winrate-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">winrate</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">num_matches</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">wins</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">num_matches</span>) * <span class="ruby-value">100</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- winrate-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- winrate-method -->
+
+    
+      <div id="method-i-wins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">wins</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="wins-source">
+            <pre><span class="ruby-comment"># File app/models/deck.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wins</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- wins-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- wins-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

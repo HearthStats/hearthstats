@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class DashboardsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/dashboards_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-fullstats">#fullstats</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-race">#race</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/V1.html">Api::V1</a>
+  
+    <li><a href="./Api/V1/ArenaRunsController.html">Api::V1::ArenaRunsController</a>
+  
+    <li><a href="./Api/V1/ArenasController.html">Api::V1::ArenasController</a>
+  
+    <li><a href="./Api/V1/ConstructedsController.html">Api::V1::ConstructedsController</a>
+  
+    <li><a href="./Api/V1/DecksController.html">Api::V1::DecksController</a>
+  
+    <li><a href="./Api/V1/MatchesController.html">Api::V1::MatchesController</a>
+  
+    <li><a href="./RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="./AdditionalController.html">AdditionalController</a>
+  
+    <li><a href="./AdditionalHelper.html">AdditionalHelper</a>
+  
+    <li><a href="./AdminController.html">AdminController</a>
+  
+    <li><a href="./AdminHelper.html">AdminHelper</a>
+  
+    <li><a href="./Announcement.html">Announcement</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Arena.html">Arena</a>
+  
+    <li><a href="./ArenaRun.html">ArenaRun</a>
+  
+    <li><a href="./ArenaRunsController.html">ArenaRunsController</a>
+  
+    <li><a href="./ArenaRunsHelper.html">ArenaRunsHelper</a>
+  
+    <li><a href="./ArenasController.html">ArenasController</a>
+  
+    <li><a href="./ArenasHelper.html">ArenasHelper</a>
+  
+    <li><a href="./Card.html">Card</a>
+  
+    <li><a href="./CardSet.html">CardSet</a>
+  
+    <li><a href="./CardsController.html">CardsController</a>
+  
+    <li><a href="./CardsHelper.html">CardsHelper</a>
+  
+    <li><a href="./Constructed.html">Constructed</a>
+  
+    <li><a href="./ConstructedsController.html">ConstructedsController</a>
+  
+    <li><a href="./ConstructedsHelper.html">ConstructedsHelper</a>
+  
+    <li><a href="./DashboardHelper.html">DashboardHelper</a>
+  
+    <li><a href="./DashboardsController.html">DashboardsController</a>
+  
+    <li><a href="./Deck.html">Deck</a>
+  
+    <li><a href="./DecksController.html">DecksController</a>
+  
+    <li><a href="./DecksHelper.html">DecksHelper</a>
+  
+    <li><a href="./Klass.html">Klass</a>
+  
+    <li><a href="./Link.html">Link</a>
+  
+    <li><a href="./Match.html">Match</a>
+  
+    <li><a href="./MatchDeck.html">MatchDeck</a>
+  
+    <li><a href="./MatchRank.html">MatchRank</a>
+  
+    <li><a href="./MatchResult.html">MatchResult</a>
+  
+    <li><a href="./MatchRun.html">MatchRun</a>
+  
+    <li><a href="./MatchUniqueDeck.html">MatchUniqueDeck</a>
+  
+    <li><a href="./MatchesController.html">MatchesController</a>
+  
+    <li><a href="./MatchesHelper.html">MatchesHelper</a>
+  
+    <li><a href="./Mode.html">Mode</a>
+  
+    <li><a href="./Patch.html">Patch</a>
+  
+    <li><a href="./Profile.html">Profile</a>
+  
+    <li><a href="./ProfileHelper.html">ProfileHelper</a>
+  
+    <li><a href="./ProfilesController.html">ProfilesController</a>
+  
+    <li><a href="./Race.html">Race</a>
+  
+    <li><a href="./Rank.html">Rank</a>
+  
+    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Season.html">Season</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./StreamsController.html">StreamsController</a>
+  
+    <li><a href="./StreamsHelper.html">StreamsHelper</a>
+  
+    <li><a href="./TourniesController.html">TourniesController</a>
+  
+    <li><a href="./Tourny.html">Tourny</a>
+  
+    <li><a href="./TournysHelper.html">TournysHelper</a>
+  
+    <li><a href="./Type.html">Type</a>
+  
+    <li><a href="./UniqueDeck.html">UniqueDeck</a>
+  
+    <li><a href="./UniqueDeckCard.html">UniqueDeckCard</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./WelcomeController.html">WelcomeController</a>
+  
+    <li><a href="./WelcomeHelper.html">WelcomeHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class DashboardsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-fullstats" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fullstats</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="fullstats-source">
+            <pre><span class="ruby-comment"># File app/controllers/dashboards_controller.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fullstats</span>
+
+   <span class="ruby-comment"># Determine Arena Class Win Rates</span>
+   <span class="ruby-identifier">classes</span> = [<span class="ruby-string">'Druid'</span> ,<span class="ruby-string">'Hunter'</span>, <span class="ruby-string">'Mage'</span>, <span class="ruby-string">'Paladin'</span>, <span class="ruby-string">'Priest'</span>, <span class="ruby-string">'Rogue'</span>, <span class="ruby-string">'Shaman'</span>, <span class="ruby-string">'Warlock'</span>, <span class="ruby-string">'Warrior'</span>]
+   <span class="ruby-ivar">@classwinrate</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+   <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-value">0</span>
+     <span class="ruby-identifier">totalgames</span> = <span class="ruby-value">0</span>
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:userclass</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>, <span class="ruby-value">:win</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>).<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:oppclass</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>, <span class="ruby-value">:win</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>).<span class="ruby-identifier">count</span>
+     <span class="ruby-identifier">totalgames</span> = <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:userclass</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>).<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:oppclass</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">c</span>).<span class="ruby-identifier">count</span>
+     <span class="ruby-ivar">@classwinrate</span>[<span class="ruby-identifier">c</span>] = (<span class="ruby-identifier">totalwins</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">totalgames</span>)
+
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-ivar">@classwinrate</span> = <span class="ruby-ivar">@classwinrate</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">winsrate</span><span class="ruby-operator">|</span> <span class="ruby-identifier">winsrate</span> }.<span class="ruby-identifier">reverse</span>
+
+   <span class="ruby-comment"># Determine Arena Class Win Rates</span>
+   <span class="ruby-identifier">classcombos</span> = <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">combination</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">to_a</span>
+   <span class="ruby-ivar">@userarenarate</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+   <span class="ruby-identifier">classcombos</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">combo</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-value">0</span>
+     <span class="ruby-identifier">totalgames</span> = <span class="ruby-value">0</span>
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">userclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">win</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>).<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">userclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">win</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>).<span class="ruby-identifier">count</span>
+     <span class="ruby-identifier">totalgames</span> = <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">userclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Arena</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">userclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">count</span>
+     <span class="ruby-ivar">@userarenarate</span>[<span class="ruby-node">&quot;#{combo[0]} #{combo[1]}&quot;</span>] = (<span class="ruby-identifier">totalwins</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">totalgames</span>)
+   <span class="ruby-keyword">end</span>
+
+   <span class="ruby-comment"># Determine Arena Class Win Rates</span>
+   <span class="ruby-ivar">@conrate</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+   <span class="ruby-identifier">classcombos</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">combo</span><span class="ruby-operator">|</span>
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-value">0</span>
+     <span class="ruby-identifier">totalgames</span> = <span class="ruby-value">0</span>
+
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:deck</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">win</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>, <span class="ruby-string">'decks.race'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">count</span>
+     <span class="ruby-identifier">totalwins</span> = <span class="ruby-identifier">totalwins</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:deck</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">win</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>, <span class="ruby-string">'decks.race'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">count</span>
+
+     <span class="ruby-identifier">totalgames</span> = <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:deck</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>], <span class="ruby-string">'decks.race'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Constructed</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:deck</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">oppclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">1</span>], <span class="ruby-string">'decks.race'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">combo</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">count</span>
+
+     <span class="ruby-ivar">@conrate</span>[<span class="ruby-node">&quot;#{combo[0]} #{combo[1]}&quot;</span>] = (<span class="ruby-identifier">totalwins</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">totalgames</span>)
+   <span class="ruby-keyword">end</span>
+
+   <span class="ruby-identifier">expires_in</span> <span class="ruby-value">4</span>.<span class="ruby-identifier">hour</span>, <span class="ruby-identifier">public</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+ <span class="ruby-keyword">end</span></pre>
+          </div><!-- fullstats-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- fullstats-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/dashboards_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-comment"># recentgamesbyhr(current_user.id, 12)</span>
+  <span class="ruby-identifier">recentgames</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">10</span>)
+  <span class="ruby-identifier">arena_matches</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">season_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">current_season</span>)
+  <span class="ruby-ivar">@arena_wr</span> = <span class="ruby-identifier">get_win_rate</span>(<span class="ruby-identifier">arena_matches</span>).<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;%&quot;</span>
+  <span class="ruby-identifier">con_matches</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@con_wr</span> = <span class="ruby-identifier">get_win_rate</span>(<span class="ruby-identifier">con_matches</span>).<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;%&quot;</span>
+
+  <span class="ruby-ivar">@recent_entries</span> = <span class="ruby-constant">Profile</span>.<span class="ruby-identifier">get_recent_games</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@global</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@global</span>[<span class="ruby-value">:arena</span>] = (<span class="ruby-identifier">get_win_rate</span>(<span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>))).<span class="ruby-identifier">round</span>
+  <span class="ruby-ivar">@global</span>[<span class="ruby-value">:con</span>] = (<span class="ruby-identifier">get_win_rate</span>(<span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">mode_id</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>))).<span class="ruby-identifier">round</span>
+              <span class="ruby-ivar">@global</span>[<span class="ruby-value">:coin</span>] = (( <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">result_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">coin</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> ).<span class="ruby-identifier">count</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>( <span class="ruby-identifier">coin</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> ).<span class="ruby-identifier">count</span>)*<span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>
+              <span class="ruby-ivar">@topdeck</span> = <span class="ruby-constant">Deck</span>.<span class="ruby-identifier">bestuserdeck</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+              <span class="ruby-ivar">@toparena</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">bestuserarena</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-comment"># Determine Constructed Class Win Rates</span>
+  <span class="ruby-identifier">conoverallrate</span> = <span class="ruby-identifier">overall_win_rate</span>(<span class="ruby-value">3</span>)
+  <span class="ruby-ivar">@classconrate</span> = <span class="ruby-identifier">conoverallrate</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-ivar">@contot</span> = <span class="ruby-identifier">conoverallrate</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-comment"># Determine Arena Class Win Rates</span>
+  <span class="ruby-identifier">arenaoverallrate</span> = <span class="ruby-identifier">overall_win_rate</span>(<span class="ruby-value">1</span>)
+  <span class="ruby-ivar">@classarenarate</span> = <span class="ruby-identifier">arenaoverallrate</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-ivar">@arenatot</span> = <span class="ruby-identifier">arenaoverallrate</span>[<span class="ruby-value">0</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-race" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">race</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="race-source">
+            <pre><span class="ruby-comment"># File app/controllers/dashboards_controller.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">race</span>
+      <span class="ruby-ivar">@matches</span> = <span class="ruby-constant">Match</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">userclass</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:race</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- race-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- race-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

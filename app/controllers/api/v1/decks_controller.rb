@@ -8,7 +8,7 @@ module Api
 			def show
 		    user = User.where(userkey: params[:userkey])[0]
 				begin
-			    decks = Deck.where(user_id: user.id, active: true)
+			    decks = Deck.where(user_id: user.id)
 			  rescue
 			  	api_response = {status: "error", message: "Error getting user's decks"}
 			  else
@@ -16,6 +16,16 @@ module Api
 			  end
 				render :json => api_response
 			end
+
+      def activate
+        deck = Deck.find(@req[:deck_id])
+        if deck.user.id != @user.id
+          render json: {status: "error", message: "Deck does not belong to this user."} and return
+        end
+        deck.active = !deck.active
+        deck.save!
+        render json: {status: "success", data: deck}
+      end
 		end
 	end
 end
