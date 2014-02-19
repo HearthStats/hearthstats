@@ -58,9 +58,8 @@ curl -X POST -H "Content-Type: application/json" -d '{ "klass_id": 2 }' localhos
 </pre>
 
 *End Arena Run*
-<pre>
-curl localhost:3000/api/v1/arena_runs/end?userkey=0e7f8484496dd312c589ef21a507c393
-</pre>
+
+Use matches method above with `mode` set to `Arena`
 
 *Arena Entry*
 ```
@@ -70,9 +69,8 @@ curl -X POST -H "Content-Type: application/json" -d '{"klass_id": 1, "oppclass_i
 ### Constructed
 
 *Constructed Entry*
-```
-curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"klass_id": 5, "oppclass_id": 3,"result_id": 1 ,"coin":"false", "rank_id":1, "mode_id":3, "oppname":"MubaMu22ba"}' localhost:3000/api/v1/matches/new?userkey=7d58fa431951c92ceb9b9cb44d481108
-```
+
+Use matches method above with `mode` set to `Casual` or `Ranked`
 
 ### Deck
 
