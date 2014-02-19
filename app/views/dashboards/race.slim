@@ -1,8 +1,8 @@
-h1 = params[:race]
+h1 = Klass.find(params[:race]).name
   / - for match in @matches do
   /   = match.win
 p Total # of Win(s)
-= @matches.where(win:true).count
+= @matches.where(result_id: 1).count
 
 p Total # of Lose(s)
-= @matches.where(win:false).count
+= @matches.where(result_id: 2).count
