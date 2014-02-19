@@ -21,6 +21,17 @@ class ArenasController < ApplicationController
       format.json { render json: @arena }
     end
   end
+  
+  # GET /arenas/matches
+  # GET /arenas/matches
+  def matches
+    @matches = Match.where(:mode_id => 1).order("created_at DESC")
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @arena }
+    end
+  end
 
   # GET /arenas/new
   # GET /arenas/new.json

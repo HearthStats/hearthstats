@@ -47,9 +47,11 @@ Hearthstats::Application.routes.draw do
   resources :arena_runs do
     collection do
       get 'end'
+      get 'm'
       post 'endrun'
     end
   end
+  match "/arena/matches", to: "arenas#matches"
 
 
   resources :profiles

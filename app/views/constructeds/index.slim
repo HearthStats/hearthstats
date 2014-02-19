@@ -13,7 +13,7 @@ div class="portlet box blue"
     div class="caption"
       | Recent Constructed Games
   div class="portlet-body flip-scroll"
-  	= render :template => 'shared/matchlist', :locals => { :matches => @constructeds, :type => "Constructed" }
+  	= render :template => 'shared/matchlist', :locals => { :matches => @constructeds, :type => "Constructed", :filter => true }
 
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
