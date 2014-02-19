@@ -13,67 +13,7 @@ div class="portlet box blue"
     div class="caption"
       | Recent Constructed Games
   div class="portlet-body flip-scroll"
-  	form id="matchesFilter" method="get" class="data-turboform"
-	  p
-	    | Show &nbsp; 
-	    select[name="items"]
-	   	  option[value="10"] 10 
-	   	  option[value="20" selected=("selected" if @items == "20")] 20 
-	  	  option[value="50" selected=("selected" if @items == "50")] 50 
-	      option[value="100" selected=("selected" if @items == "100")] 100
-	    | &nbsp; matches &nbsp; 
-  	    input[type="submit" id="matchesFilterSubmit" value="Apply"]
-    table class="table table-bordered table-striped table-condensed flip-content"
-      thead class="flip-content"
-        tr
-          th Your Deck
-          th Opponent Class
-          th Win?
-          th Coin?
-          th Ranked
-          th Opponent Name
-          th Time
-          th Options
-      tbody
-      - @constructeds.each do |match|
-        tr
-          - if match.deck.nil?
-          	td.cl-effect-3
-          - else
-          	td.cl-effect-3 = link_to match.deck.name, deck_path(match.deck)
-          td = get_name(match, "Oppclass")
-          td
-            span class="#{get_name(match,'Result')}" = get_name(match,"Result")
-          td
-            -if match.coin
-              span Coin
-            -else
-              span No Coin
-          td
-            -if match.mode_id == 3
-              -unless match.rank.nil?
-                |#{match.rank.id} - #{match.rank.name}
-              -else
-                |Ranked
-            -else
-              |Casual
-          td = match.oppname
-          -if current_user.guest
-            td = match.created_at.strftime("%H:%M on %Y-%m-%d")
-          -else
-            td = match.created_at.in_time_zone(@current_user.profile.time_zone).strftime("%H:%M on %Y-%m-%d")
-          td.cl-effect-3
-            = link_to edit_constructed_path(match), class: 'btn default btn-xs purple' do
-              i class="fa fa-pencil-square-o"
-              |Edit
-            = link_to match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red' do
-              i class="fa fa-trash-o"
-              |Delete
-            - unless match.notes.blank?
-              span class= 'btn default btn-xs blue' title="#{match.notes}" rel="tooltip"
-                i class="fa fa-file-text-o"
-                |Notes
-  	= will_paginate @constructeds, renderer: BootstrapPagination::Rails
+  	= render :template => 'shared/matchlist', :locals => { :matches => @constructeds, :type => "Constructed", :filter => true }
 
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');

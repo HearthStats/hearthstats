@@ -28,7 +28,7 @@
       h3.center Notes
       = f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20
   div.row.arenaedit_notes
-    =render '/arenas/arenagames', arenas: @arenarun.matches
+  	= render :template => 'shared/matchlist', :locals => { :matches => @arenarun.matches, :type => "Arena", :filter => false }
   div.row
     div.col-md-12.center
       button type="submit" class = 'btn btn-success runit'
