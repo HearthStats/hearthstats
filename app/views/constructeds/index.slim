@@ -32,6 +32,8 @@ div class="portlet box blue"
           th Coin?
           th Ranked
           th Opponent Name
+          th Rounds
+          th Duration
           th Time
           th Options
       tbody
@@ -58,6 +60,8 @@ div class="portlet box blue"
             -else
               |Casual
           td = match.oppname
+          td = match.numturns
+          td = match.duration.nil? ? "" : seconds_to_short_readable(match.duration)
           -if current_user.guest
             td = match.created_at.strftime("%H:%M on %Y-%m-%d")
           -else
