@@ -3,12 +3,12 @@ class ConstructedsController < ApplicationController
   # GET /constructeds
   # GET /constructeds.json
   def index
-    
+
     @items = CGI.parse(request.query_string)['items'].first
     if @items.nil? || !((Float(@items) rescue false))
       @items = 20
-    end    
-    
+    end
+
     @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3]).paginate(:page => params[:page], :per_page => @items).order('created_at DESC')
     @constructed = Match.new
     @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
@@ -37,7 +37,7 @@ class ConstructedsController < ApplicationController
   		redirect_to new_deck_path, notice: "Please create a deck first."
   	end
     @constructed = Match.new
-    @lastentry = Match.where(user_id: current_user.id).last
+    @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
     @myDecks = getMyDecks()
   end
 
