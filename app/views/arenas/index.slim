@@ -46,7 +46,11 @@ div class="portlet box green"
       tbody
       - @arenaruns.each do |arena|
         tr
-          td = link_to get_name(arena, "Klass"), race_dashboards_path(:race => Klass.find(arena.klass_id))
+          td
+          	- if !arena.klass_id.nil? 
+          		= link_to get_name(arena, "Klass"), race_dashboards_path(:race => Klass.find(arena.klass_id))
+          	- else
+          		| null
           td
             span.Victory = arena.matches.where(result_id: 1).count
             |/
