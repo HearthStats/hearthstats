@@ -120,22 +120,21 @@ module Api
           end
         end
       end
-    end
-  end
+      private
   
-  private
-
-  def create_new_deck(user, slot, klass)
-    new_deck = Deck.new
-    new_deck.user_id = user.id
-    new_deck.active = true
-    new_deck.slot = slot
-    new_deck.klass = klass
-    new_deck.name = "Unnamed #{klass.name}"
-    if new_deck.save
-      return new_deck
-    else 
-      return nil
+      def create_new_deck(user, slot, klass)
+        new_deck = Deck.new
+        new_deck.user_id = user.id
+        new_deck.active = true
+        new_deck.slot = slot
+        new_deck.klass = klass
+        new_deck.name = "Unnamed #{klass.name}"
+        if new_deck.save
+          return new_deck
+        else 
+          return nil
+        end
+      end
     end
-  end
+  end  
 end
