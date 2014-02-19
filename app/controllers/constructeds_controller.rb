@@ -135,14 +135,14 @@ class ConstructedsController < ApplicationController
   def stats
 
     # get all matches
-    matches = Constructed.joins(:deck)
+    matches = Match.joins(:deck).where(:mode_id => [2,3])
 
     # filter by number of days to show
     daysQuery = CGI.parse(request.query_string)['days'].first
     @daysFilter = daysQuery == "all" ? false : true
     if @daysFilter
      @daysFilter = daysQuery.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? daysQuery.to_f : 30
-     matches = matches.where('constructeds.created_at >= ?', @daysFilter.days.ago)
+     matches = matches.where('matches.created_at >= ?', @daysFilter.days.ago)
     else
       @daysFilter = "all"
     end
@@ -193,7 +193,7 @@ class ConstructedsController < ApplicationController
     winrates = Array.new
     @classes.each_with_index do |c,i|
       classgames = matches.where(decks: { race: c})
-      wins = classgames.where(win: true).count
+      wins = classgames.where(:result_id => 1).count
       totgames = classgames.count
       if totgames == 0
         winrates[i] = 0
