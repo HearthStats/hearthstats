@@ -47,5 +47,4 @@ class Match < ActiveRecord::Base
 
     arena_class
   end
-
-end
+ end
