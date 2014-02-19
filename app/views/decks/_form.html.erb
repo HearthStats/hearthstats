@@ -3,7 +3,7 @@
 <% if @deck.errors.any? %>
 	<div id="error_explanation">
 		<h2><%= pluralize(@deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
-	
+
 		<ul>
 			<% @deck.errors.full_messages.each do |msg| %>
 			<li>
@@ -15,7 +15,7 @@
 <% end %>
 <div class="deckform">
 	<div class="row">
-		<div class="col-md-8 center">
+		<div class="col-md-6 center">
 			<div class="row center">
 				<div class="deckfield col-md-6 center">
 					<%= f.label :name %>
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4 center">
+		<div class="col-md-6 center">
 			<%= render :template => 'shared/deckbuilder' %>
 		</div>
 		<div class="hidden">
@@ -57,7 +57,7 @@
 	</div>
 	<div class="row"></div>
 	<div class="cf"></div>
-	
+
 <% end %>
 <script type="text/javascript">
 	app.UI.initClassSelector('#deck_klass_id');
@@ -72,7 +72,7 @@
 		<% end %>
 		DeckBuilder.render();
 		$('#deck_klass_id').change(function() {
-			DeckBuilder.setClassId($(this).val());	
+			DeckBuilder.setClassId($(this).val());
 		});
 	}
 </script>
