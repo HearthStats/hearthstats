@@ -34,7 +34,7 @@
 
 /* deck builder */
 .deckbuilderWrapper {
- min-height:700px; 
+ min-height:700px;
 }
 .deckbuilderWrapper .cardListHeader,
 .deckbuilderWrapper.enabled .deckBuilderTools {
@@ -46,7 +46,7 @@
   display:none;
 }
 .deckbuilderWrapper .deckBuilderCardsWrapper {
-  margin-bottom:1em; 
+  margin-bottom:1em;
 }
 .deckbuilderWrapper .cardWrapper {
   width:218px;
@@ -59,7 +59,7 @@
   margin:0 auto;
   font-size:12px;
   color:#fff;
-  font-weight:bold; 
+  font-weight:bold;
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   line-height:38px;
 }
@@ -80,7 +80,7 @@
   position:absolute;
   top:0;
   left:38px;
-  z-index:5; 
+  z-index:5;
 }
 .deckbuilderWrapper .cardWrapper .bg {
   background-image:url(/assets/deckbuilder_card.png);
@@ -88,8 +88,8 @@
   top:0;
   left:0;
   z-index:3;
-  width:100%; 
-  height:100%; 
+  width:100%;
+  height:100%;
 }
 .deckbuilderWrapper .cardWrapper.two .bg {
   background-image:url(/assets/deckbuilder_card_2.png);
@@ -165,3 +165,8 @@ table.decklist td.winrate {
   text-align:center;
 }
 
+.cf{
+    content:'';
+    display:block;
+    clear: both;
+}
