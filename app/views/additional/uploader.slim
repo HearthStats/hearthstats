@@ -2,15 +2,22 @@
   :description => 'Official Uploader',
   :keywords => 'uploader, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, 'Official Uploader')
-p 
+p
 	| Why enter your matches manually when you can let our uploader take care of everything for you? &nbsp;
 	| This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, &nbsp;
 	| monitoring, or network modification of any kind. The project is and always will be open source so that you &nbsp;
 	| can do your own builds and see exactly what's happening within the program.
-p  
+p
 	a[href="/uploader/download/win" target="_blank" class="btn btn-large blue"] Download for Windows
-	| &nbsp; 
+	| &nbsp;
 	a[href="/uploader/download/osx" target="_blank" class="btn btn-large green"] Download for OSx
+- if current_user
+  a.api-key
+    div.api-button
+      |User Key
+      small &nbsp; (do not share this with anyone else)
+    div.key
+      div.well = current_user.get_userkey
 h3 Features
 ul
 	li Support for both Windows and OSx
@@ -20,10 +27,10 @@ ul
 	li Tracks your opponent's name
 	li Tracks number of rounds played and match duration
 	li Add notes to your matches directly from the uploader
-	
+
 h3 Help and Support
 ul
-	li 
+	li
 		a[href="https://github.com/JeromeDane/HearthStats.net-Uploader/issues"] Known Issues
 	li
 		a[href="https://github.com/JeromeDane/HearthStats.net-Uploader"] Project Source on GitHub
