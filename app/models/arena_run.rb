@@ -1,22 +1,16 @@
 class ArenaRun < ActiveRecord::Base
   attr_accessible :class, :gold, :dust, :completed, :user_id, :klass_id, :notes, :complete
-  
+
   has_many :arenas
   has_many :match_run
-  has_many :matches, :through => :match_run, :dependent => :destroy
+  has_many :matches, :through => :match_run
 
   belongs_to :klass
 
-  after_destroy :delete_all_arena
-
-  def delete_all_arena
-  	Match.destroy_all(:arena_run_id => self.id)
-  end
-  
   def num_wins
     return self.matches.where(:result_id => 1).count
   end
-  
+
   def num_losses
     return self.matches.where(:result_id => 2).count
   end
