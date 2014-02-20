@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   helper_method :klasses_hash
   helper_method :klasses_hash_2
   helper_method :public_url
-  helper_method :uploader_url
+  helper_method :uploader_url, :get_win_rate
 
   private
 

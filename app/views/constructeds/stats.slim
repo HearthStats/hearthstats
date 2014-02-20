@@ -27,7 +27,7 @@ form id="statsFilter" method="get" class="data-turboform"
 		input type="submit" value="Submit" id="statsFilterSubmit"
 div.details-stats
   -(1..9).each do |k|
-    = render template: 'shared/class_details', matches: @matches
+    = render 'shared/class_details', matches: @matches
 
 javascript:
 	$('#statsFilter select').change(function() {
