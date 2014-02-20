@@ -51,6 +51,12 @@
     if order_field.nil? || !order_field.match("asc|desc")
       order_field = "desc"
     end
+
+    days_filter = CGI.parse(request.query_string)['days'].first
+	days_filter = (days_filter.nil? || days_filter.blank?) ? 30 : days_filter
+    if days_filter.to_s != "all" && days_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
+      	matches = matches.where('matches.created_at >= ?', days_filter.to_f.days.ago)
+    end
     
     totalMatches = matches.count
     winrate = totalMatches > 0 ? (matches.where(:result_id => 1).count / totalMatches.to_f) * 100 : 0
@@ -97,6 +103,14 @@
 					<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
 				<% end %> 
 			</select>
+			for 
+			<select name="days">
+				<option value="all">- all time -</option>
+				<option value="1" <%= days_filter.to_s == "1" ? "selected=\"selected\"" : "" %>>last 24 hours</option>
+				<% [7, 30, 90].each do |num| %>
+					<option value="<%= num %>" <%= days_filter.to_s == num.to_s ? "selected=\"selected\"" : "" %>>last <%= num %> days</option>
+				<% end %> 
+			</select> 
 			sort
 			<select name="sort">
 				<option value="created_at" <%= sort_field == "created_at" ? "selected=\"selected\"" : "" %>>created</option>
@@ -105,8 +119,7 @@
 			</select>
 			<select name="order">
 				<option value="asc">ascending</option>
-				<option value="desc" <%= order_field == "desc" ? "selected=\"selected\"" : "" %>>descending</option>
-			</select> 
+			</select>
 			&nbsp; - &nbsp; 
 			<strong><%= number_to_percentage(winrate, precision: 2) %></strong> win rate over
 			<strong><%= number_with_delimiter(matches.count, :delimiter => ',') %></strong> matches in this list
