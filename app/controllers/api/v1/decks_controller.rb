@@ -26,6 +26,48 @@ module Api
         deck.save!
         render json: {status: "success", data: deck}
       end
+      
+      def slots
+        user = User.where(userkey: params[:userkey])[0]
+        
+        Deck.where(:user_id => user.id).each do |deck|
+          deck.slot = nil
+          deck.active = false
+          deck.save!
+        end
+        
+        deckIds = [@req[:slot_1],@req[:slot_2],@req[:slot_3],@req[:slot_4],@req[:slot_5],@req[:slot_6],@req[:slot_7],@req[:slot_8],@req[:slot_9]]
+        
+        errors = Array.new
+        (1..9).each do |i|
+          error = set_user_deck_slot(user, deckIds[i - 1], i)
+          if !error.nil?
+            errors.push(error)
+          end
+        end
+        
+        if errors.size > 0
+          render json: {status: "fail", data: "", message: errors.join(" ")}
+        else
+          render json: {status: "success", data: "", message: "Deck slots updated"}
+        end
+      end
+      
+      private
+      
+      def set_user_deck_slot(user, deck_id, slot)
+        if deck_id.nil?
+          return nil
+        end
+        deck = Deck.where(:user_id => user.id, :id => deck_id)[0]
+        if deck.nil?
+          return "No deck with ID " + deck_id.to_s + " found for user #" + user.id.to_s + "." 
+        end
+        deck.active = true
+        deck.slot = slot
+        deck.save!
+        return nil
+      end
 		end
 	end
 end
