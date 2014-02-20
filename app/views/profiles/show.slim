@@ -20,7 +20,10 @@ div class="row profile"
             div class="col-md-3"
               ul class="list-unstyled profile-nav"
                 li
-                  = image_tag @profile.avatar.url(:medium), class: "img-responsive center", alt: ""
+                  - if @profile.avatar_file_name
+                    = image_tag @profile.avatar.url(:medium), class: "img-responsive center", alt: ""
+                  - else
+                    = image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
                   - if current_user && params[:id].to_i == current_user.id
                     = link_to 'Edit Profile', edit_profile_path, class: "profile-edit"
                 - if current_user && params[:id].to_i == current_user.id

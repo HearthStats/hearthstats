@@ -1,6 +1,6 @@
 class Profile < ActiveRecord::Base
   attr_accessible :bnetid, :name, :private, :bnetnum, :time_zone, :avatar
-  has_attached_file :avatar, styles:{
+  has_attached_file :avatar, :default_url => "/assets/avatar.jpg", styles:{
     thumb: '29x29>',
     square: '200x200#',
     medium: '300x300>'
