@@ -1,0 +1,21 @@
+- set_meta_tags :title => 'Arena Matches',
+  :description => 'Arena Matches',
+  :keywords => 'Arena, games, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Recent Matches')
+- provide(:subtitle, ' recent matches games');
+- provide(:section, 'Arena')
+
+div class="portlet box blue"
+  div class="portlet-title"
+    div class="caption"
+      | Recent Arena Matches
+  div class="portlet-body flip-scroll"
+  	= render :template => 'shared/matchlist', :locals => { :matches => @matches, :type => "Arena", :filter => true }
+
+javascript:
+  app.UI.initClassSelector('#match_oppclass_id');
+  app.UI.initDeckSelector("#deckname");
+  $('#matchesFilter select').change(function() {
+    $('#matchesFilter').submit();
+  });
+  $('#matchesFilterSubmit').hide();

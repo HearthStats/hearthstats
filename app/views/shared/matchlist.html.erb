@@ -1,0 +1,202 @@
+<%
+	
+	klass_id_field = CGI.parse(request.query_string)['klass_id'].first
+    if ((Float(klass_id_field) rescue false))
+		if type == "Constructed"
+			matches = matches.joins(:deck)
+    		matches = matches.where("decks.klass_id = ?", klass_id_field)
+    	else
+			matches = matches.joins(:arena_run)
+    		matches = matches.where("arena_runs.klass_id = ?", klass_id_field)
+    	end
+    else
+    	klass_id_field = nil
+    end
+    
+	oppclass_id_field = CGI.parse(request.query_string)['oppclass_id'].first
+    if ((Float(oppclass_id_field) rescue false))
+    else
+    	oppclass_id_field = nil
+    end
+    
+	coin_field = CGI.parse(request.query_string)['coin'].first
+    if coin_field.nil? || !coin_field.match("true|false")
+      coin_field = ""
+    else
+    	matches = matches.where(:coin => coin_field == "true" ? true : false)
+    end
+    
+	oppname_field = CGI.parse(request.query_string)['oppname'].first
+	if !oppname_field.nil? && !oppname_field.blank?
+		matches = matches.where("oppname like ?", (oppname_field + "").gsub(/\*/, '%'))
+	end
+	
+	notes_field = CGI.parse(request.query_string)['notes'].first
+	if !notes_field.nil? && !notes_field.blank?
+		#matches = matches.where("matches.notes like ?", "%" + (notes_field + "").gsub!(/\*/, '%').to_s + "%")
+		matches = matches.where("matches.notes like ?", "%" + (notes_field + "").gsub(/\*/, '%') + "%")
+	end
+    
+	items_per_page = CGI.parse(request.query_string)['items'].first
+    if items_per_page.nil? || !((Float(items_per_page) rescue false))
+      items_per_page = 20
+    end
+    
+	sort_field = CGI.parse(request.query_string)['sort'].first
+    if sort_field.nil? || !sort_field.match("created_at|duration|numturns")
+      sort_field = "created_at"
+    end
+    
+    order_field = CGI.parse(request.query_string)['order'].first
+    if order_field.nil? || !order_field.match("asc|desc")
+      order_field = "desc"
+    end
+
+    days_filter = CGI.parse(request.query_string)['days'].first
+	days_filter = (days_filter.nil? || days_filter.blank?) ? 30 : days_filter
+    if days_filter.to_s != "all" && days_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
+      	matches = matches.where('matches.created_at >= ?', days_filter.to_f.days.ago)
+    end
+    
+    totalMatches = matches.count
+    winrate = totalMatches > 0 ? (matches.where(:result_id => 1).count / totalMatches.to_f) * 100 : 0
+    
+    matches = matches.order(sort_field + " " + (order_field == "asc" ? "ASC" : "DESC"))
+    matches = matches.paginate(:page => params[:page], :per_page => items_per_page)
+%>
+<% if filter %>
+	<form id="matchesFilter" method="get" class="data-turboform">
+		<p>
+			Filter 
+			<select name="klass_id" rel="tooltip" title="Your class">
+				<option value="">- any class -</option>
+				<% Klass.order("name").each do |klass| %>
+					<option value="<%= klass.id %>" <%= klass_id_field.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
+				<% end %>
+			</select>
+			vs.
+			<select name="oppclass_id" rel="tooltip" title="Your opponent's class">
+				<option value="">- any class -</option>
+				<% Klass.order("name").each do |klass| %>
+					<option value="<%= klass.id %>" <%= oppclass_id_field.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
+				<% end %>
+			</select>
+			<select name="coin" rel="tooltip" title="Starting with or without the coin?">
+				<option value="">- coin? -</option> 
+				<option value="true" <%= coin_field.to_s == "true" ? "selected=\"selected\"" : "" %>>Coin</option>
+				<option value="false" <%= coin_field.to_s == "false" ? "selected=\"selected\"" : "" %>>No Coin</option>
+			</select>
+			&nbsp;
+			Opponent:
+			<input type="text" size="8" name="oppname" value="<%= oppname_field %>" rel="tooltip" title="Opponent's name - use * for wildcard"/>
+			&nbsp;
+			Notes:
+			<input type="text" size="12" name="notes" value="<%= notes_field %>" rel="tooltip" title="Notes contains ... - use * for wildcard"/>
+			&nbsp;
+			<input type="submit" id="" class="btn btn-sm btn-primary" value="Apply"/>
+			<input type="button" id="clearMatchFiltersButton" class="btn btn-sm dark" value="Reset"/>
+		</p>
+		<p>
+			Show
+			<select name="items">
+				<% [10, 20, 50, 100].each do |num| %>
+					<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
+				<% end %> 
+			</select>
+			for 
+			<select name="days">
+				<option value="all">- all time -</option>
+				<option value="1" <%= days_filter.to_s == "1" ? "selected=\"selected\"" : "" %>>last 24 hours</option>
+				<% [7, 30, 90].each do |num| %>
+					<option value="<%= num %>" <%= days_filter.to_s == num.to_s ? "selected=\"selected\"" : "" %>>last <%= num %> days</option>
+				<% end %> 
+			</select> 
+			sort
+			<select name="sort">
+				<option value="created_at" <%= sort_field == "created_at" ? "selected=\"selected\"" : "" %>>created</option>
+				<option value="duration" <%= sort_field == "duration" ? "selected=\"selected\"" : "" %>>duration</option>
+				<option value="numturns" <%= sort_field == "numturns" ? "selected=\"selected\"" : "" %>>rounds</option>
+			</select>
+			<select name="order">
+				<option value="asc">ascending</option>
+				<option value="desc" <%= order_field == "desc" ? "selected=\"selected\"" : "" %>>descending</option>
+			</select>
+			&nbsp; - &nbsp; 
+			<strong><%= number_to_percentage(winrate, precision: 2) %></strong> win rate over
+			<strong><%= number_with_delimiter(matches.count, :delimiter => ',') %></strong> matches in this list
+		</p>
+	</form>
+<% end %>
+<table class="table table-bordered table-striped table-condensed flip-content">
+	<thead class="flip-content">
+	    <tr>
+	    	<th>Your <%= type == "Arena" ? "Class" : "Deck" %></th>
+		    <th>Opponent Class</th>
+		    <th>Result</th>
+		    <th>Coin</th>
+		    <% if type != "Arena" %>
+	    		<th><%= type == "Constructed" ? "Rank" : "Mode" %></th>
+	    	<% end %>
+		    <th>Opponent Name</th>
+		    <th>Rounds</th>
+		    <th>Duration</th>
+		    <th>Created</th>
+		    <th>Options</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% matches.each do |match| %>
+			<tr>
+				<td>
+					<% if type == "Arena" %>
+						<%= match.arena_run.nil? ? "null" : match.arena_run.klass.name %>
+					<% else %>
+						<%= match.deck.nil? ? "null" : link_to(match.deck.name, deck_path(match.deck)) %>
+					<% end %>
+				</td>
+				<td><%= match.oppclass.nil? ? "null" : match.oppclass.name %></td>
+				<td class="<%= get_name(match,'Result') %>"><%= get_name(match,"Result") %></td>
+				<td><%= !match.coin ? "No" : "" %> Coin</td>
+				<% if type != "Arena" %>
+					<td>
+						<% if !match.mode.nil? %>
+							<% if match.mode.name == "Ranked" && !match.rank.nil? %>
+								<%= match.rank.id %> - <%= match.rank.name %>
+							<% else %>
+								<%= match.mode.name %>
+							<% end %>
+								
+						<% else %>
+							null
+						<% end %>
+					</td>
+				<% end %>
+				<td><%= match.oppname.nil? ? "" : match.oppname %></td>
+				<td><%= match.numturns.nil? ? "" : match.numturns %></td>
+				<td><%= match.duration.nil? ? "" : seconds_to_short_readable(match.duration) %></td>
+				<td><%= match.created_at.in_time_zone(current_user.profile.time_zone).strftime("%H:%M %Y-%m-%d") %></td>
+				<td class="cl-effect-3">
+					<% if type == "Arena" %>
+						<%= link_to(" Edit", edit_arena_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+					<% else %>
+						<%= link_to(" Edit", edit_constructed_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+					<% end %>
+					<%= link_to(" Delete", match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red fa fa-trash-o') %>
+					<% unless match.notes.blank? %>
+						<span class= 'btn default btn-xs blue fa fa-file-text-o' title="<%= match.notes %>" rel="tooltip"> Notes</span>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>	
+</table>
+<%= will_paginate(matches, renderer: WillPaginate::ActionView::LinkRenderer) %>
+<script type="text/javascript">
+	$('#matchesFilter select').change(function() {
+		$('#matchesFilter').submit();
+	});
+	$('#matchesFilterSubmit').hide();
+	$('#clearMatchFiltersButton').click(function() {
+		document.location = "?";
+	})
+</script>

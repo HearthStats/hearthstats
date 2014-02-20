@@ -25,7 +25,7 @@ class ArenasController < ApplicationController
   # GET /arenas/matches
   # GET /arenas/matches
   def matches
-    @matches = Match.where(:mode_id => 1).order("created_at DESC")
+    @matches = Match.where(:mode_id => 1)
 
     respond_to do |format|
       format.html # show.html.erb

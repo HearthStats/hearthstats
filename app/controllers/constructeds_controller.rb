@@ -9,7 +9,7 @@ class ConstructedsController < ApplicationController
       @items = 20
     end
 
-    @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3]).order('created_at DESC')
+    @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3])
     @matches = @constructed # support new matchlist template
     @constructed = Match.new
     @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
