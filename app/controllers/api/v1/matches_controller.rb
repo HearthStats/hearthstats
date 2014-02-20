@@ -5,55 +5,55 @@ module Api
       respond_to :json
 
       def new
-        
+
         req = @req
         user = @user
-        
+
         errors = Array.new
-        
+
         # get mode
         mode = Mode.where(:name => req[:mode])[0]
         if mode.nil?
           errors.push("Unknown game mode '" + req[:mode] + "'.")
         end
-        
+
         # check for deck slot if required
         if !mode.nil? && mode.name != "Arena" && req[:slot].nil?
           errors.push("`slot` missing for " + mode.name + " match.")
         end
-        
+
         #check for rank if ranked mode
-        ranklvl = nil 
+        ranklvl = nil
         if !mode.nil? && mode.name == "Ranked" && !req[:ranklvl].nil?
           ranklvl = Rank.where(:id => req[:ranklvl])[0]
           if ranklvl.nil?
             errors.push("Unknown rank '" + req[:ranklvl].to_s + "'." + str)
           end
         end
-        
+
         # get user class
         userclass = Klass.where(:name => req[:class])[0]
         if userclass.nil?
           errors.push("Unknown user class '" + req[:class] + "'.")
         end
-        
+
         # get opponent class
         oppclass = Klass.where(:name => req[:oppclass])[0]
         if oppclass.nil?
           errors.push("Unknown opponent class '" + req[:oppclass] + "'.")
         end
-        
+
         # get result
         result = MatchResult.where(:name => req[:result])[0]
         if result.nil?
-          errors.push("Unknown result '" + req[:result] + "'." + resultsStr )
+          errors.push("Unknown result '" + req[:result] + "'." )
         end
-        
+
         if errors.count > 0
           render json: {status: "fail", message: errors.join(" ")}
         else
-          
-          #create the match     
+
+          #create the match
           match = Match.new
           match.user_id = user.id
           match.mode = mode
@@ -66,24 +66,24 @@ module Api
           match.duration = req[:duration]
           match.notes = req[:notes]
           match.appsubmit = true
-      
+
           message = "New #{mode.name} #{userclass.name} vs #{oppclass.name} match created"
-      
+
           if match.save
-            
+
             if mode.name == "Arena"
-              
+
               # associate the match with an arena run
               arena_run = ArenaRun.where(user_id: user.id, complete: false).last
               if arena_run.nil? || arena_run.klass_id != userclass.id
                 if arena_run.nil?
                   message = "New #{userclass.name} arena run created"
                 end
+                arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
+                arena_run.save
                 if arena_run.klass_id != userclass.id
                   message = "Existing #{arena_run.klass.name} arena run did not match submitted #{userclass.name} match. New #{userclass.name} arena run created."
                 end
-                arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
-                arena_run.save
               end
               # check for completed arena run
               if arena_run.num_losses >= 3 || arena_run.num_wins >= 12
@@ -92,9 +92,9 @@ module Api
                 arena_run.save
               end
               MatchRun.new(match_id: match.id, arena_run_id: arena_run.id).save!
-              
-            else 
-              
+
+            else
+
               # associate the match with its deck
               deck = Deck.where(user_id: user.id, slot: req[:slot], active: true)[0]
               # Check if deck exists
@@ -121,7 +121,7 @@ module Api
         end
       end
       private
-  
+
       def create_new_deck(user, slot, klass)
         new_deck = Deck.new
         new_deck.user_id = user.id
@@ -131,10 +131,10 @@ module Api
         new_deck.name = "Unnamed #{klass.name}"
         if new_deck.save
           return new_deck
-        else 
+        else
           return nil
         end
       end
     end
-  end  
+  end
 end
