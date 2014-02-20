@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def klasses_hash_2
-    klasses = Klass.all.map{|m| m.name}
+    klasses = Klass.pluck(:name)
   end
 
   def get_name(match, table)

@@ -104,18 +104,17 @@
   left:30px;
   z-index:1;
 }
-.deckbuilderWrapper .preloadCardBg { 
-  background: url(/assets/deckbuilder_card.png) no-repeat -9999px -9999px; 
+.deckbuilderWrapper .preloadCardBg {
+  background: url(/assets/deckbuilder_card.png) no-repeat -9999px -9999px;
 }
-.deckbuilderWrapper .preloadCardBg_2 { 
-  background: url(/assets/deckbuilder_card_2.png) no-repeat -9999px -9999px; 
+.deckbuilderWrapper .preloadCardBg_2 {
+  background: url(/assets/deckbuilder_card_2.png) no-repeat -9999px -9999px;
 }
-.deckbuilderWrapper .preloadCardBg_legendary { 
-  background: url(/assets/deckbuilder_card_legendary.png) no-repeat -9999px -9999px; 
+.deckbuilderWrapper .preloadCardBg_legendary {
+  background: url(/assets/deckbuilder_card_legendary.png) no-repeat -9999px -9999px;
 }
 .deckbuilderWrapper .deckBuilderMissingCards {
   margin:1em auto;
-  width:300px;
   padding:1em;
 }
 .deckbuilderWrapper .deckBuilderCurveChart,
