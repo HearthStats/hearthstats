@@ -20,7 +20,7 @@
       <% if signed_in? %>
 	      <li class="dropdown user">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <%= image_tag("avatar.jpg") %>
+        <%= image_tag current_user.profile.avatar.url(:thumb) %>
         <span class="username">
         	<% if current_user.guest %>
         		Guest

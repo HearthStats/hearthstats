@@ -1,5 +1,11 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :bnetid, :name, :private, :bnetnum, :time_zone
+  attr_accessible :bnetid, :name, :private, :bnetnum, :time_zone, :avatar
+  has_attached_file :avatar, styles:{
+    thumb: '29x29>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   belongs_to :users
   is_impressionable
 

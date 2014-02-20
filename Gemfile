@@ -60,8 +60,10 @@ gem 'carrierwave' # Upload files needed for redactor
 gem 'mini_magick' # Upload images needed for redactor
 gem 'cindy' # Sendy API
 gem 'httparty' # Make them http requests easily
-gem 'google-search' # Google search gem
 gem 'yaml_db'
+gem 'paperclip'
+gem 'aws-sdk'
+
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

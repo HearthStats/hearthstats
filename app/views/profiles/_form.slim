@@ -21,6 +21,10 @@
       .col-md-3
         |#
         =f.number_field :bnetnum
+    .form-group
+      = f.label :avatar, class: "control-label col-md-3"
+      .col-md-3
+        = f.file_field :avatar
 
     = link_to 'Back', "/profiles/#{current_user.id}", class: "btn btn-lg dark"
     = f.submit "Update Profile", class: "btn btn-lg btn-primary"
