@@ -30,11 +30,13 @@ module Api
 			def new
 				# Required params:
 				# params[:klass_id]
+
+				userclass = Klass.where(:name => req[:class])[0]
 				existing_runs = ArenaRun.where(user_id: 1, complete: false)
 				existing_runs.update_all(:complete => true)
 				arenarun = ArenaRun.new
 				arenarun.user_id = @user.id
-				arenarun.klass_id = @req[:klass_id]
+				arenarun.klass_id = userclass.id
 
 				if arenarun.save!
 	        render json: {status: "success", data: arenarun}
