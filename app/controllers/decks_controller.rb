@@ -27,7 +27,6 @@ class DecksController < ApplicationController
   def show
     @deck = Deck.find(params[:id])
     impressionist(@deck)
-		@gResults = Google::Search::Web.new(:query => "hearthstone deck #{@deck.name}")
 
 	  matches = @deck.matches.where(:mode_id => [2,3])
 
