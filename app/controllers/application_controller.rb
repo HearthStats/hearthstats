@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :klasses_hash
+  helper_method :klasses_hash_2
   helper_method :public_url
   helper_method :uploader_url
 

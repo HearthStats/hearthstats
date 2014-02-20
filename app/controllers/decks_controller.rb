@@ -10,7 +10,7 @@ class DecksController < ApplicationController
       format.json { render json: @decks }
     end
   end
-  
+
   # GET /decks/public
   # GET /decks/1.json
   def public
@@ -30,7 +30,7 @@ class DecksController < ApplicationController
 		@gResults = Google::Search::Web.new(:query => "hearthstone deck #{@deck.name}")
 
 	  matches = @deck.matches.where(:mode_id => [2,3])
-	  
+
     # Deck parsing too hard
     # if @deck.decklink.blank?
     #   @message = "No deck link attatched to this deck yet <p>"
@@ -95,6 +95,7 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
+    @deck.klass_id = klasses_hash(@deck.race)
     respond_to do |format|
       if @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }

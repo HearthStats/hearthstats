@@ -137,6 +137,7 @@ class ConstructedsController < ApplicationController
 
     # get all matches
     matches = Match.joins(:deck).where(:mode_id => [2,3])
+    @matches = matches
 
     # filter by number of days to show
     daysQuery = CGI.parse(request.query_string)['days'].first

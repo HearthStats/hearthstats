@@ -27,7 +27,7 @@ div.overall
   div.stats-table.row
     div.most-played.col-md-6
       h4 Most played
-      table.rankingtable
+      table.table.table-condensed
         - winRate = @arena_array.sort_by{ |array| array[1][1][1]}.reverse
         - winRate.each do |klass|
           tr
@@ -35,7 +35,7 @@ div.overall
             td = klass[1][1][1]
     div.most-played.col-md-6
       h4 Longest average runs
-      table.rankingtable
+      table.table.table-condensed
         - winRate = @arena_array.sort_by{ |array| array[1][0][1]}.reverse
         - winRate.each do |klass|
           tr

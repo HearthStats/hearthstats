@@ -1,0 +1,37 @@
+- klass = get_name(matches.first, "Klass")
+.portlet.box class="#{klass}"
+  .portlet-title
+    .caption.class-name
+      = image_tag("Icons/Classes/#{klass}_Icon.gif", height: "24", width: "24")
+      = klass
+    .portlet-body
+      table.table.table-condensed.overall
+        tr
+          th
+            |Matches Played
+          th
+            |Overall Win Rate
+        tr
+          td = matches.count
+          td = get_win_rate(matches)
+      table.table.table-condensed.details
+        tr
+          th Against
+          th Wins
+          th Losses
+          th Draws
+          th Win %
+        -(1..Klass.count).each do |k|
+          tr
+            td = klasses_hash_2(k)
+            td = matches.where(result_id: 1, klass_id: k).count
+            td = matches.where(result_id: 2, klass_id: k).count
+            td = matches.where(result_id: 3, klass_id: k).count
+            td = get_win_rate(matches.where(klass_id: k))
+
+
+
+
+
+
+

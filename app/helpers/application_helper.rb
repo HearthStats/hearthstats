@@ -16,6 +16,10 @@ module ApplicationHelper
     klasses
   end
 
+  def klasses_hash_2
+    klasses = Klass.all.map{|m| m.name}
+  end
+
   def get_name(match, table)
     id = match.send table.downcase + "_id"
     table = "Klass" if table == "Oppclass"
@@ -26,7 +30,7 @@ module ApplicationHelper
       result = "null"
     end
   end
-  
+
   def seconds_to_short_readable secs
     [[60, :s], [60, :m], [24, :h], [1000, :d]].map{ |count, name|
       if secs > 0
