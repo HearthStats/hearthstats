@@ -1,9 +1,14 @@
 <%
-	matches = matches.joins(:deck)
 	
 	klass_id_field = CGI.parse(request.query_string)['klass_id'].first
     if ((Float(klass_id_field) rescue false))
-    	matches = matches.where("decks.klass_id = ?", klass_id_field)
+		if type == "Constructed"
+			matches = matches.joins(:deck)
+    		matches = matches.where("decks.klass_id = ?", klass_id_field)
+    	else
+			matches = matches.joins(:arena_run)
+    		matches = matches.where("arena_runs.klass_id = ?", klass_id_field)
+    	end
     else
     	klass_id_field = nil
     end
@@ -111,9 +116,7 @@
 <table class="table table-bordered table-striped table-condensed flip-content">
 	<thead class="flip-content">
 	    <tr>
-		    <% if type != "Arena" %>
-		    	<th>Your Deck</th>
-		    <% end %>
+	    	<th>Your <%= type == "Arena" ? "Class" : "Deck" %></th>
 		    <th>Opponent Class</th>
 		    <th>Result</th>
 		    <th>Coin</th>
@@ -130,9 +133,13 @@
 	<tbody>
 		<% matches.each do |match| %>
 			<tr>
-				<% if type != "Arena" %>
-					<td><%= match.deck.nil? ? "null" : link_to(match.deck.name, deck_path(match.deck)) %></td>
-				<% end %>
+				<td>
+					<% if type == "Arena" %>
+						<%= match.arena_run.nil? ? "null" : match.arena_run.klass.name %>
+					<% else %>
+						<%= match.deck.nil? ? "null" : link_to(match.deck.name, deck_path(match.deck)) %>
+					<% end %>
+				</td>
 				<td><%= match.oppclass.nil? ? "null" : match.oppclass.name %></td>
 				<td class="<%= get_name(match,'Result') %>"><%= get_name(match,"Result") %></td>
 				<td><%= !match.coin ? "No" : "" %> Coin</td>
