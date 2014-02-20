@@ -119,6 +119,7 @@
 			</select>
 			<select name="order">
 				<option value="asc">ascending</option>
+				<option value="desc" <%= order_field == "desc" ? "selected=\"selected\"" : "" %>>descending</option>
 			</select>
 			&nbsp; - &nbsp; 
 			<strong><%= number_to_percentage(winrate, precision: 2) %></strong> win rate over
