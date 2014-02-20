@@ -20,8 +20,7 @@ class Deck < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   def delete_cleanup
-  	Constructed.destroy_all(:deck_id => self.id)
-  	DeckCard.destroy_all(:deck_id => self.id)
+  	self.matches.delete_all
   end
 
   def num_cards

@@ -7,6 +7,12 @@ class ArenaRun < ActiveRecord::Base
 
   belongs_to :klass
 
+  before_destroy :delete_all_arena
+
+  def delete_all_arena
+  	self.matches.delete_all
+  end
+
   def num_wins
     return self.matches.where(:result_id => 1).count
   end
