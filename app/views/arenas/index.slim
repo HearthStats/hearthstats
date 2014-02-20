@@ -27,7 +27,8 @@
               div.caption Notes
             div class="portlet-body"
               =raw arena.notes
-        button type="button" class="btn default" data-dismiss="modal" Close
+        div.modal-footer
+          button type="button" class="btn default" data-dismiss="modal" Close
 div.arenaheader
   = will_paginate @arenaruns, renderer: BootstrapPagination::Rails
 div class="portlet box green"
@@ -47,7 +48,7 @@ div class="portlet box green"
       - @arenaruns.each do |arena|
         tr
           td
-          	- if !arena.klass_id.nil? 
+          	- if !arena.klass_id.nil?
           		= link_to get_name(arena, "Klass"), race_dashboards_path(:race => Klass.find(arena.klass_id))
           	- else
           		| null

@@ -26,7 +26,9 @@ div class="row profile"
                 - if current_user && params[:id].to_i == current_user.id
                   li
                     a.api-key
-                      div.api-button User Key
+                      div.api-button
+                        |User Key
+                        small &nbsp; (do not share this with anyone else)
                       div.key
                         div.well = @userkey
 
