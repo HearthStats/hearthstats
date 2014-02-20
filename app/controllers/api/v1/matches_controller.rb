@@ -46,7 +46,7 @@ module Api
         # get result
         result = MatchResult.where(:name => req[:result])[0]
         if result.nil?
-          errors.push("Unknown result '" + req[:result] + "'." + resultsStr )
+          errors.push("Unknown result '" + req[:result] + "'.")
         end
         
         if errors.count > 0
@@ -79,11 +79,11 @@ module Api
                 if arena_run.nil?
                   message = "New #{userclass.name} arena run created"
                 end
+                arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
+                arena_run.save
                 if arena_run.klass_id != userclass.id
                   message = "Existing #{arena_run.klass.name} arena run did not match submitted #{userclass.name} match. New #{userclass.name} arena run created."
                 end
-                arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
-                arena_run.save
               end
               # check for completed arena run
               if arena_run.num_losses >= 3 || arena_run.num_wins >= 12
