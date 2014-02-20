@@ -27,7 +27,6 @@ class DecksController < ApplicationController
   def show
     @deck = Deck.find(params[:id])
     impressionist(@deck)
-		@gResults = Google::Search::Web.new(:query => "hearthstone deck #{@deck.name}")
 
 	  matches = @deck.matches.where(:mode_id => [2,3])
 
@@ -95,7 +94,6 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
-    @deck.klass_id = klasses_hash(@deck.race)
     respond_to do |format|
       if @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
