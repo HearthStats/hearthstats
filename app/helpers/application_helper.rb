@@ -17,7 +17,12 @@ module ApplicationHelper
   end
 
   def klasses_hash_2
-    klasses = Klass.pluck(:name)
+    klasses = Array.new
+    Klass.all.each do |k|
+      klasses[k.id] = k.name
+    end
+
+    klasses
   end
 
   def get_name(match, table)

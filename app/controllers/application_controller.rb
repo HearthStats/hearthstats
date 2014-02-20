@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   layout :layout
 
   def get_win_rate(matches)
+    return 0 if matches.nil?
     wins = matches.where(result_id: 1).count.to_f
     tot_games = matches.count
     win_rate = wins / tot_games
@@ -14,10 +15,7 @@ class ApplicationController < ActionController::Base
     win_rate
   end
 
-  helper_method :klasses_hash
-  helper_method :klasses_hash_2
-  helper_method :public_url
-  helper_method :uploader_url, :get_win_rate
+  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash_2, :klasses_hash
 
   private
 

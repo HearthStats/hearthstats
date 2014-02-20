@@ -25,10 +25,6 @@ form id="statsFilter" method="get" class="data-turboform"
 			option[value="casual" selected=("selected" if @modeFilter == 'casual')] casual
 			option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] ranked
 		input type="submit" value="Submit" id="statsFilterSubmit"
-div.details-stats
-  -(1..9).each do |k|
-    = render 'shared/class_details', matches: @matches
-
 javascript:
 	$('#statsFilter select').change(function() {
 		$('#statsFilter').submit();
@@ -37,5 +33,7 @@ javascript:
 
 = render 'winratechart'
 
-
-
+div.details-stats
+  -(1..9).each do |k|
+    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: klasses_hash_2[k]
+.cf

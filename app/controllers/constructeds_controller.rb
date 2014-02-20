@@ -136,12 +136,11 @@ class ConstructedsController < ApplicationController
   def stats
 
     # get all matches
-    matches = Match.joins(:deck).where(:mode_id => [2,3])
-    @matches = matches
+    matches = Match.where(:mode_id => [2,3])
 
     # filter by number of days to show
     daysQuery = CGI.parse(request.query_string)['days'].first
-    @daysFilter = daysQuery == "all" ? false : true
+    @daysFilter = daysQuery != nil && daysQuery != 'all' ? true : false
     if @daysFilter
      @daysFilter = daysQuery.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? daysQuery.to_f : 30
      matches = matches.where('matches.created_at >= ?', @daysFilter.days.ago)
@@ -152,10 +151,10 @@ class ConstructedsController < ApplicationController
     # filter by first/second
     @firstFilter = CGI.parse(request.query_string)['first'].first
     if @firstFilter == "yes"
-      matches = matches.where(gofirst: true)
+      matches = matches.where(coin: false)
     else
       if @firstFilter == "no"
-        matches = matches.where(gofirst: false)
+        matches = matches.where(coin: true)
       else
         @firstFilter = ""
       end
@@ -164,10 +163,10 @@ class ConstructedsController < ApplicationController
     # filter by mode
     @modeFilter = CGI.parse(request.query_string)['mode'].first
     if @modeFilter == "casual"
-      matches = matches.where(rank: "casual")
+      matches = matches.where(mode_id: 2)
     else
       if @modeFilter == "ranked"
-        matches = matches.where(rank: "ranked")
+        matches = matches.where(mode_id: 3)
       else
         @modeFilter = ""
       end
@@ -178,23 +177,23 @@ class ConstructedsController < ApplicationController
     @personalWinRates = getClassWinRatesForMatches(personalMatches);
     @globalWinRates = getClassWinRatesForMatches(matches);
 
+    @matches = matches
     # calculate number of games per class
-    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @numMatchesPersonal = Hash.new
     @numMatchesGlobal = Hash.new
-    @classes.each_with_index do |c,i|
-      @numMatchesGlobal.store(c, matches.where(decks: { race: c}).count)
-      @numMatchesPersonal.store(c, personalMatches.where(decks: { race: c}).count)
+    classes.each_with_index do |c,i|
+      @numMatchesGlobal.store(c, matches.where(klass_id: i+1).count)
+      @numMatchesPersonal.store(c, personalMatches.where( klass_id: i+1).count)
     end
 
   end
 
   protected
   def getClassWinRatesForMatches(matches)
-    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     winrates = Array.new
-    @classes.each_with_index do |c,i|
-      classgames = matches.where(decks: { race: c})
+    (1..9).each_with_index do |c,i|
+      classgames = matches.where( klass_id: c)
       wins = classgames.where(:result_id => 1).count
       totgames = classgames.count
       if totgames == 0
