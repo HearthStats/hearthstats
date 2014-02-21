@@ -5,7 +5,7 @@ class Match < ActiveRecord::Base
   has_one :arena_run, :through => :match_run
 
   has_one :match_deck
-  has_one :deck, :through => :match_deck
+  has_one :deck, :through => :match_deck, :dependent => :destroy
 
   has_one :match_unique_deck
   has_one :unique_deck, :through => :match_unique_deck
@@ -29,7 +29,7 @@ class Match < ActiveRecord::Base
     self.season_id ||= Season.last.id
     self.patch_id ||= Patch.last.id
   end
-  
+
   def self.bestuserarena(userid)
     class_arena_rate = Hash.new
     (1..Klass.count).each_with_index do |c,i|

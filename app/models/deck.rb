@@ -5,7 +5,7 @@ class Deck < ActiveRecord::Base
   belongs_to :unique_deck
   belongs_to :klass
   belongs_to :user
-  has_many :matches, :through => :match_deck, :dependent => :destroy
+  has_many :matches, :through => :match_deck, dependent: :destroy
   has_many :match_deck
 
   before_save :validate_and_update_stats
