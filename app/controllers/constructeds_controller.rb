@@ -206,7 +206,9 @@ class ConstructedsController < ApplicationController
   end
 
   def getMyDecks()
-    Deck.where(:user_id => current_user.id).sort_by{|e| e[:name]}
+    return Deck.joins(:klass)
+      .where(:user_id => current_user.id)
+      .order("klasses.name, decks.name").all
   end
 
 end
