@@ -1,7 +1,7 @@
 class MatchDeck < ActiveRecord::Base
   attr_accessible :deck_id, :match_id
   belongs_to :deck
-  belongs_to :match
+  belongs_to :match, :dependent => :destroy
 
   before_save :set_unique_deck
   after_save :update_deck_user_stats
