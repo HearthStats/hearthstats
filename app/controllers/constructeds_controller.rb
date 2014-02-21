@@ -206,9 +206,7 @@ class ConstructedsController < ApplicationController
   end
 
   def getMyDecks()
-    return Deck.joins(:klass)
-      .where(:user_id => current_user.id).all
-      .order(:name)
+    Deck.where(:user_id => current_user.id).all.order(:name)
   end
 
 end
