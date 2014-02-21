@@ -32,6 +32,9 @@ module Api
 				# params[:klass_id]
 
 				userclass = Klass.where(:name => @req[:class])[0]
+				if userclass.nil?
+          render json: {status: "fail", message: "Unknown user class '" + @req[:class] + "'."}
+        end
 				existing_runs = ArenaRun.where(user_id: 1, complete: false)
 				existing_runs.update_all(:complete => true)
 				arenarun = ArenaRun.new

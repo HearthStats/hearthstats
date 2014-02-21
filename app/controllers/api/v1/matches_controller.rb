@@ -46,7 +46,7 @@ module Api
         # get result
         result = MatchResult.where(:name => req[:result])[0]
         if result.nil?
-          errors.push("Unknown result '" + req[:result] + "'." )
+          errors.push("Unknown result '" + req[:result] + "'.")
         end
 
         if errors.count > 0

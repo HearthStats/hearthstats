@@ -3,9 +3,9 @@ class ArenaRun < ActiveRecord::Base
 
   has_many :arenas
   has_many :match_run
-  has_many :matches, :through => :match_run, dependent: :destroy
-  validates :dust, :numericality => { :greater_than => 0 }
-  validates :gold, :numericality => { :greater_than => 0 }
+  has_many :matches, :through => :match_run
+  validates :dust, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :gold, :numericality => { :greater_than_or_equal_to => 0 }
 
   belongs_to :klass
 
