@@ -20,17 +20,18 @@
       <% if signed_in? %>
 	      <li class="dropdown user">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <%= image_tag current_user.profile.avatar.url(:thumb) %>
-        <span class="username">
-        	<% if current_user.guest %>
+        <% if current_user.guest %>
+	      	<%= image_tag("avatar.jpg") %>
+	        <span class="username">
         		Guest
-        	<% else %>
-        		<%if current_user.profile.name.blank? %>
-		        	<%= current_user.email %>
-        		<% else %>
-		        	<%= current_user.profile.name %>
-        		<% end %>
-        	<% end %>
+      	<% else %>
+	        <%= image_tag current_user.profile.avatar.url(:thumb) %>
+      		<%if current_user.profile.name.blank? %>
+	        	<%= current_user.email %>
+      		<% else %>
+	        	<%= current_user.profile.name %>
+      		<% end %>
+      	<% end %>
         </span>
         <i class="fa fa-angle-down"></i>
         </a>
