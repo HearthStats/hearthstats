@@ -35,8 +35,8 @@ class Match < ActiveRecord::Base
     (1..Klass.count).each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
-      totalwins = Match.where(:klass_id => c, :result_id => 1, :user_id => userid ).count
-      totalgames = Match.where(:klass_id => c, :user_id => userid ).count
+      totalwins = Match.where(:klass_id => c, :result_id => 1, :user_id => userid, mode_id: 1 ).count
+      totalgames = Match.where(:klass_id => c, :user_id => userid, mode_id: 1 ).count
       if totalgames == 0
         class_arena_rate[Klass.find(c).name] = 0
       else
