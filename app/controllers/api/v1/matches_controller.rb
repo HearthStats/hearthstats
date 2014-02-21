@@ -14,7 +14,7 @@ module Api
         # get mode
         mode = Mode.where(:name => req[:mode])[0]
         if mode.nil?
-          errors.push("Unknown game mode '" + req[:mode] + "'.")
+          errors.push("Unknown game mode.")
         end
 
         # check for deck slot if required
