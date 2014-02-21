@@ -21,7 +21,7 @@ class ArenasController < ApplicationController
       format.json { render json: @arena }
     end
   end
-  
+
   # GET /arenas/matches
   # GET /arenas/matches
   def matches
@@ -77,9 +77,7 @@ class ArenasController < ApplicationController
     @runwins = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 1).count
     @runloses = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 2).count
     if @runwins > 11 || @runloses > 2
-      respond_to do |format|
-        format.js
-      end
+      render action: "new"
     else
       respond_to do |format|
         if @arena.save

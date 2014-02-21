@@ -34,7 +34,7 @@
       tooltip: {
 	  	valueSuffix: '%',
 	  	formatter: function() {
-	  		var numGames = this.series.name.match(/personal/i) ? numMatchesPerClassPersonal[this.x] : numMatchesPerClassGlobal[this.x]; 
+	  		var numGames = this.series.name === "Personal" ? numMatchesPerClassPersonal[this.x] : numMatchesPerClassGlobal[this.x];
             return '<b>'+ this.x +'</b><br/>'+
                 this.series.name +': '+ this.y + '%<br/>' +
                 numGames.toLocaleString() + ' games'

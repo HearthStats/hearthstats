@@ -179,10 +179,10 @@ class ConstructedsController < ApplicationController
 
     @matches = matches
     # calculate number of games per class
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     @numMatchesPersonal = Hash.new
     @numMatchesGlobal = Hash.new
-    classes.each_with_index do |c,i|
+    @classes.each_with_index do |c,i|
       @numMatchesGlobal.store(c, matches.where(klass_id: i+1).count)
       @numMatchesPersonal.store(c, personalMatches.where( klass_id: i+1).count)
     end
