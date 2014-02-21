@@ -163,6 +163,6 @@ class DecksController < ApplicationController
   private
 
   def getMyDecks()
-    return Deck.where(:user_id => current_user.id).order(:race, :name).all
+    Deck.where(:user_id => current_user.id).order(:klass_id, :name).all
   end
 end
