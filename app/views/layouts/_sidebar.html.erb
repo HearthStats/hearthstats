@@ -42,7 +42,7 @@
         <li class= "new">
         	<% if ArenaRun.where(user_id: current_user.id).last  %>
 	        	<% if !ArenaRun.where(user_id: current_user.id).last.complete %>
-					    <%= link_to 'Continue Arena Run', new_arena_path%>
+					    <%= link_to 'Continue Arena Run', new_arena_path %>
 					  <% else %>
 					    <%= link_to 'New Arena Run', new_arena_run_path %>
 	          <% end %>
@@ -141,8 +141,8 @@
 	        <% end %>
         </li>
       	<li class="dec">
-          <%= link_to "/dec" do %>
-						December Report
+          <%= link_to "/jan" do %>
+						January Report
 	        <% end %>
         </li>
       	<li class="changelog">
