@@ -11,7 +11,7 @@ namespace :dbf do
     p "Modes Module Complete"
 
     desc "Import RESULTS"
-    RESULTS = ["Victory", "Defeat","Draw"]
+    RESULTS = ["Win", "Loss","Draw"]
     RESULTS.each do |m|
       MatchResult.new(name: m).save!
       p m + " result added."
@@ -148,7 +148,10 @@ end
 		i = 0
 		allruns = ArenaRun.all
 		allruns.each do |ar|
-			next if ar.arenas.first.nil?
+			if ar.arenas.first.nil?
+				ar.delete!
+				next
+			end
 			klass = KLASSES[ar.arenas.first.userclass]
 
       next if klass.nil?

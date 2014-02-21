@@ -5,13 +5,13 @@ class Deck < ActiveRecord::Base
   belongs_to :unique_deck
   belongs_to :klass
   belongs_to :user
-  has_many :matches, :through => :match_deck
+  has_many :matches, :through => :match_deck, :dependent => :destroy
   has_many :match_deck
 
   before_save :validate_and_update_stats
   after_save :update_unique_deck_details
 
-  after_destroy :delete_cleanup
+  before_destroy :delete_cleanup
 
 
   is_impressionable
@@ -20,8 +20,7 @@ class Deck < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   def delete_cleanup
-  	Constructed.destroy_all(:deck_id => self.id)
-  	DeckCard.destroy_all(:deck_id => self.id)
+  	self.matches.delete_all
   end
 
   def num_cards

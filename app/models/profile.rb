@@ -10,8 +10,8 @@ class Profile < ActiveRecord::Base
   is_impressionable
 
 	def self.get_recent_games(userid)
-    con = Match.where( mode_id:[2..3], user_id: userid).last(3)
-		arena = Match.where( mode_id: 1, user_id: userid).last(3)
+    con = Match.where( mode_id:[2..3], user_id: userid ).last(3)
+		arena = Match.where( mode_id: 1, user_id: userid ).last(3)
 		i = 0
 		recent_games = Array.new
 		con.each do |d|

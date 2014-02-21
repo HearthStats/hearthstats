@@ -12,7 +12,7 @@ class ConstructedsController < ApplicationController
     @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3])
     @matches = @constructed # support new matchlist template
     @constructed = Match.new
-    @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
+    @lastentry = @constructeds.last
     @myDecks = getMyDecks()
     respond_to do |format|
       format.html # index.html.erb
