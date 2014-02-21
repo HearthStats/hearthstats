@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
     recentgames(current_user.id, 10)
     arena_matches = Match.where(mode_id: 1, user_id: current_user.id, season_id: current_season)
     @arena_wr = get_win_rate(arena_matches).to_s + "%"
-    con_matches = Match.where(mode_id: 3, user_id: current_user.id)
+    con_matches = Match.where(mode_id: 3, user_id: current_user.id, season_id: current_season)
     @con_wr = get_win_rate(con_matches).to_s + "%"
 
     @recent_entries = Profile.get_recent_games(current_user.id)
