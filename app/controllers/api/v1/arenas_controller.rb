@@ -7,7 +7,7 @@ module Api
 
 			def show
 		    user = User.where(userkey: params[:userkey])[0]
-				api_response = {status: "success", data: ArenaRun.classArray(user.id) }
+				api_response = {status: "success", data: ArenaRun.classArray(arena_run.klass.id) }
 
 				render :json => api_response
 			end
