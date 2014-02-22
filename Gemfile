@@ -8,6 +8,7 @@ group :development do
   gem "binding_of_caller", ">= 0.6.8"
   gem 'sqlite3'
   gem 'capistrano', "~> 2.14.2"
+  gem 'capistrano_rsync_with_remote_cache'
   gem "quiet_assets", ">= 1.0.1"
   gem 'rb-fsevent', :require => false
   gem 'thin'
