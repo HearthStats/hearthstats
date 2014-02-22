@@ -160,7 +160,7 @@ class Deck < ActiveRecord::Base
     return num_matches > 0 ? (wins.to_f / num_matches) * 100 : 0
   end
   def global_winrate
-    return self.unique_deck.nil? ? "-" : num_global_matches > 0 ? (global_wins.to_f / num_global_matches) * 100 : 0
+    return self.unique_deck.nil? ? "-" : self.unique_deck.winrate
   end
 
   def self.race_count

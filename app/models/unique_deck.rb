@@ -32,7 +32,7 @@ class UniqueDeck < ActiveRecord::Base
     self.num_matches = self.matches.count
     self.num_wins = self.matches.where(:result_id => 1).count
     self.num_losses = self.matches.where(:result_id => 2).count
-    self.winrate = self.num_matches > 0 ? self.num_wins / self.num_matches : 0
+    self.winrate = self.num_matches > 0 ? (self.num_wins.to_f / self.num_matches.to_f * 100) : 0
     
   end
 end

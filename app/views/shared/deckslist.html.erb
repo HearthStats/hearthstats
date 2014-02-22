@@ -28,7 +28,7 @@
     	@decks = @decks.find(:all, :group => 'unique_deck_id')
     end
 %>
-
+<%= finalSortField %>
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
 		Sort By:
