@@ -41,7 +41,6 @@
   display:block;
 }
 .deckbuilderWrapper .deckBuilderTools,
-.deckbuilderWrapper .deckBuilderMissingCards,
 .deckbuilderWrapper.enabled .cardListHeader {
   display:none;
 }
@@ -115,7 +114,8 @@
 }
 .deckbuilderWrapper .deckBuilderMissingCards {
   margin:1em auto;
-  padding:1em;
+  padding:2em 1em;
+  text-align:center;
 }
 .deckbuilderWrapper .deckBuilderCurveChart,
 .deckbuilderWrapper #mechanicsChart {

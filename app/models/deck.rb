@@ -170,7 +170,12 @@ class Deck < ActiveRecord::Base
     Hash[race_groups.map { |race, list| [race, list.size] }]
   end
 
-
+  def cards
+    if self.unique_deck.nil?
+      return nil
+    end
+    return self.unique_deck.cards
+  end
 
   private
 
