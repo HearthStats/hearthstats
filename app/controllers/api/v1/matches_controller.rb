@@ -50,7 +50,7 @@ module Api
         end
 
         if errors.count > 0
-          render json: {status: "fail", message: errors.join(" ")}
+          render json: {status: "fail", message: "MATCH NOT RECORDED. Errors detected: " + errors.join(" ")}
         else
 
           #create the match
