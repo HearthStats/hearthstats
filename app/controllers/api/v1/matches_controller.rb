@@ -14,7 +14,7 @@ module Api
         # get mode
         mode = Mode.where(:name => req[:mode])[0]
         if mode.nil?
-          errors.push("Unknown game mode.")
+          errors.push("Unknown game mode '" + (req[:mode].nil? ? "[undetected]" : req[:mode]) + "'.")
         end
 
         # check for deck slot if required
@@ -34,23 +34,23 @@ module Api
         # get user class
         userclass = Klass.where(:name => req[:class])[0]
         if userclass.nil?
-          errors.push("Unknown user class '" + req[:class] + "'.")
+          errors.push("Unknown user class '" + (req[:class].nil? ? "[undetected]" : req[:class]) + "'.")
         end
 
         # get opponent class
         oppclass = Klass.where(:name => req[:oppclass])[0]
         if oppclass.nil?
-          errors.push("Unknown opponent class '" + req[:oppclass] + "'.")
+          errors.push("Unknown opponent class '" + (req[:oppclass].nil? ? "[undetected]" : req[:oppclass]) + "'.")
         end
 
         # get result
         result = MatchResult.where(:name => req[:result])[0]
         if result.nil?
-          errors.push("Unknown result '" + req[:result] + "'.")
+          errors.push("Unknown result '" + (req[:result].nil? ? "[undetected]" : req[:result]) + "'.")
         end
 
         if errors.count > 0
-          render json: {status: "fail", message: errors.join(" ")}
+          render json: {status: "fail", message: "MATCH NOT RECORDED. Errors detected: " + errors.join(" ")}
         else
 
           #create the match
