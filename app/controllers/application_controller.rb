@@ -4,13 +4,14 @@ class ApplicationController < ActionController::Base
 
   layout :layout
 
-  def get_win_rate(matches)
+  def get_win_rate(matches, strOut = false )
     return 0 if matches.nil?
     wins = matches.where(result_id: 1).count.to_f
     tot_games = matches.count
     win_rate = wins / tot_games
     win_rate = "N/A" and return win_rate if win_rate.nan?
     win_rate = (win_rate*100).round(2)
+		win_rate = win_rate.to_s + "%" if strOut
 
     win_rate
   end

@@ -28,14 +28,7 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     impressionist(@deck)
 
-	  matches = @deck.matches.where(:mode_id => [2,3])
-
-    # Deck parsing too hard
-    # if @deck.decklink.blank?
-    #   @message = "No deck link attatched to this deck yet <p>"
-    # else
-    #   @message = @deck.decklink_message
-    # end
+	  matches = @deck.matches
 
     # Win rates vs each class
     @deckrate = Array.new
@@ -52,18 +45,12 @@ class DecksController < ApplicationController
 	  end
 
 	  # Going first vs 2nd
-	  totgamesfirst = matches.where(coin: false).count
-	  totgamessec = matches .where(coin: true).count
-	  @firstrate = ((matches .where(coin: false, result_id: 1).count.to_f / totgamesfirst)*100).round(2)
-	  @firstrate = @firstrate.nan? ? '0 games' : @firstrate.to_s() + '%'
-	  @secrate = ((matches.where(coin: true, result_id: 1).count.to_f / totgamessec)*100).round(2)
-	  @secrate = @secrate.nan? ? '0 games' : @secrate.to_s() + '%'
+	  @firstrate = get_win_rate(matches.where(coin: false), true)
+	  @secrate = get_win_rate(matches.where(coin: true), true)
 
     #calculate deck winrate
-    @winrate = 0
-    if @deck.constructeds.count > 0
-      @winrate = (matches.where(result_id: 1).count.to_f / @deck.constructeds.count * 100)
-    end
+
+    @winrate = matches.count > 0 ? get_win_rate(matches) : 0
 
     respond_to do |format|
       format.html # show.html.erb

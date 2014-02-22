@@ -5,13 +5,13 @@
     if !sortRequest.nil? && sortRequest.match("name|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate")
       @sortField = sortRequest
     end
-    
+
     # sort order
     @orderFilter = CGI.parse(request.query_string)['order'].first
     if @orderFilter.nil? || (@orderFilter != "desc" && @orderFilter != "asc")
      @orderFilter = "asc"
     end
-    
+
     # TODO: hack sortField for user (non global stats)
     finalSortField = @sortField
     if !global && @sortField.match("num_(matches|wins|losses)")
@@ -20,9 +20,9 @@
     if !global && @sortField.match("winrate")
     	finalSortField = "user_winrate"
     end
-    
+
     @decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
-    
+
     #only show unique decks if global
     if global
     	@decks = @decks.find(:all, :group => 'unique_deck_id')
@@ -31,7 +31,7 @@
 
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
-		Sort By: 
+		Sort By:
 		<select name="sort">
 			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>>Losses</option>
 			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>>Matches</option>
@@ -77,7 +77,7 @@
 	<% @decks.each do |deck| %>
 		<tr>
 			<td class="name"><%= link_to(deck.name ,deck) %></td>
-			<td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" title="<%= deck.class_name %>"/></td>
+			<td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>"/></td>
 			<td class="minions"><%= deck.num_minions %></td>
 			<td class="spells"><%= deck.num_spells %></td>
 			<td class="weapons"><%= deck.num_weapons %></td>
