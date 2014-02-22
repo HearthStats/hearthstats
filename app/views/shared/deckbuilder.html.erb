@@ -18,14 +18,17 @@
       	<p><span class="deckBuilderNumCards"></span> of 30 cards</p>
       <% end %>
     </div>
-    <div class="cardListHeader">
+    <div class="cardListHeader" >
       <% if !enabled && @deck.cards.nil? %>
 	      <div class="deckBuilderMissingCards ui-state-error">
 	        This deck is incomplete.
 	      </div>
 	  <% end %>
     </div>
-    <div class="deckBuilderCardsWrapper"></div>
+    <div style="position:relative;">
+    	<div class="deckBuilderCardsWrapper" <% if enabled %>title="Left-click to add. Right-click to remove." rel="tooltip"<% end %>></div>
+    	<img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
+    </div>
   </div>
   <div class="col-sm-6">
     <div class="deckBuilderStats">
@@ -162,10 +165,24 @@
 						'<div class="qty">' + card.qty + '</div>' +
 						'<img src="' + card.image + '" class="image"/>' +
 						'<div class="bg">&nbsp;</div>' +
-						'<img src="' + card.image + '" class="image"/>' +
 					'</div>'
 				);
 			}
+			
+			// enable card mouseover to show full image
+			var fullCardImage = $('#deckBuilderFullCardView');
+			$('.deckBuilderCardsWrapper .cardWrapper').mouseover(function(e) {
+				fullCardImage.attr('src', $('img', this).attr('src'));
+				fullCardImage.css({
+					top: 120,
+					left: ($(this).position().left + 255) + 'px'
+				})
+				fullCardImage.show();
+			});
+			$('.deckBuilderCardsWrapper .cardWrapper').mouseout(function() {
+				fullCardImage.hide();
+			});
+			
 		}
 
 		function _addCardById(id) {
@@ -247,7 +264,7 @@
 					}
 					return true;
 				});
-				$('.deckbuilderWrapper .cardWrapper').bind("contextmenu",function(){
+				$('.deckbuilderWrapper .deckBuilderCardsWrapper').bind("contextmenu",function(){
 			       return false;
 			    });
 			}
