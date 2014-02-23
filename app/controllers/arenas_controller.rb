@@ -69,7 +69,7 @@ class ArenasController < ApplicationController
   def create
 
     @arena = Match.new(params[:match])
-    @arenarun = MatchRun.where(arena_run_id: session[:arenarunid])[0].arena_run
+    @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
     @arena.result_id = 2 if params[:match][:result_id].to_i == 0
     @arena.user_id = current_user.id
     @arena.mode_id = 1

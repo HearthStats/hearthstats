@@ -39,11 +39,7 @@
 										</div>
 										<div class="cont-col2">
 											<div class="desc">
-												<% if entry[3] == 1 %>
-												  You won against <%= entry[2] %> with <%= entry[1] %>
-												<% else %>
-													You lost against <%= entry[2] %> with <%= entry[1] %>
-												<% end %>
+											  You <%= MatchResult.find(entry[3]).name %> against <%= entry[2] %> with <%= entry[1] %>
 											</div>
 										</div>
 									</div>
