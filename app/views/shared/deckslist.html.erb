@@ -1,4 +1,11 @@
 <%
+
+	# class filter
+	class_filter = CGI.parse(request.query_string)['class'].first
+    if !class_filter.nil? && class_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
+		@decks = @decks.where(:klass_id => class_filter)
+	end
+	
 	#sort field
     @sortField = "num_users"
     sortRequest = CGI.parse(request.query_string)['sort'].first
@@ -43,7 +50,14 @@
 %>
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
-		Show
+		Filter
+		<select name="class">
+			<option value="">- any class-</option>
+			<% Klass.order("name ASC").each do |klass| %>
+				<option value="<%= klass.id %>" <%= class_filter.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
+			<% end %>	
+		</select>
+		show
 		<select name="items">
 			<% [10, 20, 50, 100].each do |num| %>
 				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
