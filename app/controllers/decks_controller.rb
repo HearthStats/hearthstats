@@ -69,6 +69,16 @@ class DecksController < ApplicationController
     end
   end
 
+  # GET /decks/1/copy
+  def copy
+    @deck = Deck.find(params[:id])
+    userCopy = @deck.get_user_copy(current_user)
+    if userCopy.nil?
+      userCopy = @deck.copy(current_user)
+    end
+    redirect_to(edit_deck_path(userCopy))
+  end
+  
   # GET /decks/1/edit
   def edit
     @deck = Deck.find(params[:id])

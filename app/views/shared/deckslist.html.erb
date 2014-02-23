@@ -135,7 +135,7 @@
 							user_copy = deck.get_user_copy(current_user) 
 							if user_copy.nil? 
 						%>
-							<a href="javascript:alert('coming soon ...')">copy to my decks</a>
+							<%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
 						<% else %>
 							<%= link_to("View My Copy", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
 						<% end %>

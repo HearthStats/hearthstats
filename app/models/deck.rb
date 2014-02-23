@@ -167,6 +167,19 @@ class Deck < ActiveRecord::Base
     return self.unique_deck.nil? ? "-" : self.unique_deck.winrate
   end
 
+  def copy(user)
+    newCopy = Deck.new
+    newCopy.name = self.name
+    newCopy.unique_deck = self.unique_deck
+    newCopy.user_id = user.id
+    newCopy.klass = self.klass
+    newCopy.notes = self.notes
+    newCopy.cardstring = self.cardstring
+    newCopy.is_public = true
+    newCopy.save
+    return newCopy
+  end
+  
   def get_user_copy(user)
     return Deck.where(:user_id => user.id, :unique_deck_id => self.unique_deck_id)[0]
   end
