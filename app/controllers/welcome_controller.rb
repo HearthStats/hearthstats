@@ -14,100 +14,100 @@ class WelcomeController < ApplicationController
 	end
 
 
-	def janreport
-		# Determine Arena Class Win Rates
-		@classesArray = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-		@classarenarate = Hash.new
-		@arenatot = Hash.new
-		classes.each do |c|
-			totalwins = 0
-			totalgames = 0
-			totalwins = Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:userclass => c, :win => true).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:oppclass => c, :win => false).count
-			totalgames = Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:userclass => c).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:oppclass => c).count
-			if totalgames == 0
-				@classarenarate[c] = 0
-			else
-				@classarenarate[c] = (totalwins.to_f / totalgames)
-			end
-			@arenatot[c] = totalgames
+	# def janreport
+	# 	# Determine Arena Class Win Rates
+	# 	@classesArray = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+	# 	classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+	# 	@classarenarate = Hash.new
+	# 	@arenatot = Hash.new
+	# 	classes.each do |c|
+	# 		totalwins = 0
+	# 		totalgames = 0
+	# 		totalwins = Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:userclass => c, :win => true).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:oppclass => c, :win => false).count
+	# 		totalgames = Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:userclass => c).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(:oppclass => c).count
+	# 		if totalgames == 0
+	# 			@classarenarate[c] = 0
+	# 		else
+	# 			@classarenarate[c] = (totalwins.to_f / totalgames)
+	# 		end
+	# 		@arenatot[c] = totalgames
 
-		end
-		@classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
+	# 	end
+	# 	@classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
 
-		# Determine Constructed Class Win Rates
+	# 	# Determine Constructed Class Win Rates
 
-		@classconrate = Hash.new
-		@contot = Hash.new
-		classes.each do |c|
-			totalwins = 0
-			totalgames = 0
-			totalwins = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(win: true, 'decks.race' => c).count
-			totalwins = totalwins + Constructed.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: c, win: false).count
-			totalgames = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where('decks.race' => c).count + Constructed.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: c).count
-			if totalgames == 0
-				@classconrate[c] = 0
-			else
-				@classconrate[c] = (totalwins.to_f / totalgames)
-			end
+	# 	@classconrate = Hash.new
+	# 	@contot = Hash.new
+	# 	classes.each do |c|
+	# 		totalwins = 0
+	# 		totalgames = 0
+	# 		totalwins = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(win: true, 'decks.race' => c).count
+	# 		totalwins = totalwins + Constructed.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: c, win: false).count
+	# 		totalgames = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where('decks.race' => c).count + Constructed.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: c).count
+	# 		if totalgames == 0
+	# 			@classconrate[c] = 0
+	# 		else
+	# 			@classconrate[c] = (totalwins.to_f / totalgames)
+	# 		end
 
-			@contot[c] = totalgames
-		end
-		@classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
+	# 		@contot[c] = totalgames
+	# 	end
+	# 	@classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
 
-		# Most Played
+	# 	# Most Played
 
-		@conclassnum = Hash.new
-		classes.each do |a|
-			@conclassnum[a] = @arenatot[a] + @contot[a]
-		end
+	# 	@conclassnum = Hash.new
+	# 	classes.each do |a|
+	# 		@conclassnum[a] = @arenatot[a] + @contot[a]
+	# 	end
 
-		# Determine Arena Class Win Rates
-		# classcombos = classes.combination(2).to_a
-		classcombos = Array.new
-		classes.each do |c|
-			classes.each do |c2|
-				classcombos << [c,c2]
-			end
-		end
-		@userarenarate = Array.new
-		@totarenagames = Hash.new
-		classcombos.each_with_index do |combo, i |
-			totalwins = 0
-			totalgames = 0
-			totalwins = Arena.where("arenas.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[0], oppclass: combo[1], win: true).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[1], oppclass: combo[0], win: false).count
-			totalgames = Arena.where("arenas.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[0], oppclass: combo[1]).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[1], oppclass: combo[0]).count
-			@userarenarate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
-		end
-		# Determine Constructed Class Win Rates
-		@conrate = Array.new
-		@totcongames = Hash.new
-		classcombos.each_with_index do |combo, i |
-			totalwins = 0
-			totalgames = 0
+	# 	# Determine Arena Class Win Rates
+	# 	# classcombos = classes.combination(2).to_a
+	# 	classcombos = Array.new
+	# 	classes.each do |c|
+	# 		classes.each do |c2|
+	# 			classcombos << [c,c2]
+	# 		end
+	# 	end
+	# 	@userarenarate = Array.new
+	# 	@totarenagames = Hash.new
+	# 	classcombos.each_with_index do |combo, i |
+	# 		totalwins = 0
+	# 		totalgames = 0
+	# 		totalwins = Arena.where("arenas.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[0], oppclass: combo[1], win: true).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[1], oppclass: combo[0], win: false).count
+	# 		totalgames = Arena.where("arenas.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[0], oppclass: combo[1]).count + Arena.where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(userclass: combo[1], oppclass: combo[0]).count
+	# 		@userarenarate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
+	# 	end
+	# 	# Determine Constructed Class Win Rates
+	# 	@conrate = Array.new
+	# 	@totcongames = Hash.new
+	# 	classcombos.each_with_index do |combo, i |
+	# 		totalwins = 0
+	# 		totalgames = 0
 
-			totalwins = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[1], win: true, 'decks.race' => combo[0]).count
-			totalwins = totalwins + Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[0], win: false, 'decks.race' => combo[1]).count
+	# 		totalwins = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[1], win: true, 'decks.race' => combo[0]).count
+	# 		totalwins = totalwins + Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[0], win: false, 'decks.race' => combo[1]).count
 
-			totalgames = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[1], 'decks.race' => combo[0]).count
+	# 		totalgames = Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where("constructeds.created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).where(oppclass: combo[1], 'decks.race' => combo[0]).count
 
-			@conrate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
-		end
+	# 		@conrate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
+	# 	end
 
-		# Arena Runs Data
-		@arenaRuns = Array.new
-		classes.each_with_index do |c,i|
-			runCount = Array.new(13,0)
-			totGames = ArenaRun.where(klass_id: i+1).where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).count
-			ArenaRun.where(klass_id: i+1).where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).each do |ar|
-				runCount[ar.arenas.count] += 1 unless ar.arenas.count > 12
-			end
-			runPercent = runCount.map { |e| e.to_f/totGames }
-			@arenaRuns << [c, runCount, runPercent]
-		end
+	# 	# Arena Runs Data
+	# 	@arenaRuns = Array.new
+	# 	classes.each_with_index do |c,i|
+	# 		runCount = Array.new(13,0)
+	# 		totGames = ArenaRun.where(klass_id: i+1).where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).count
+	# 		ArenaRun.where(klass_id: i+1).where("created_at between ? and ?", Time.at(1389830400).to_datetime, Date.current.end_of_day).each do |ar|
+	# 			runCount[ar.arenas.count] += 1 unless ar.arenas.count > 12
+	# 		end
+	# 		runPercent = runCount.map { |e| e.to_f/totGames }
+	# 		@arenaRuns << [c, runCount, runPercent]
+	# 	end
 
-		render :layout=> 'fullpage'
-	end
+	# 	render :layout=> 'fullpage'
+	# end
 
 	def decreport
 		render :layout=> 'fullpage'

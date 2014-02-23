@@ -36,6 +36,7 @@ config/initializers/secret_token.rb
 
 # Deployment
 /config/deploy.rb
+/.rsync_cache/
 
 # Ignore application configuration
 /config/application.yml
