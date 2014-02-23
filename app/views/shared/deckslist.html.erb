@@ -1,15 +1,22 @@
 <%
+
+	# class filter
+	class_filter = CGI.parse(request.query_string)['class'].first
+    if !class_filter.nil? && class_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
+		@decks = @decks.where(:klass_id => class_filter)
+	end
+	
 	#sort field
-    @sortField = "name"
+    @sortField = "num_users"
     sortRequest = CGI.parse(request.query_string)['sort'].first
-    if !sortRequest.nil? && sortRequest.match("name|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate")
+    if !sortRequest.nil? && sortRequest.match("name|num_users|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate|created_at")
       @sortField = sortRequest
     end
 
     # sort order
     @orderFilter = CGI.parse(request.query_string)['order'].first
     if @orderFilter.nil? || (@orderFilter != "desc" && @orderFilter != "asc")
-     @orderFilter = "asc"
+     @orderFilter = "desc"
     end
 
     # TODO: hack sortField for user (non global stats)
@@ -21,23 +28,50 @@
     	finalSortField = "user_winrate"
     end
 
-    @decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
+	if finalSortField == "num_users"
+    	@decks = @decks.order("num_users " + @orderFilter.upcase + ", winrate " + @orderFilter.upcase)
+   	else
+    	@decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
+   	end
 
     #only show unique decks if global
     if global
     	@decks = @decks.find(:all, :group => 'unique_deck_id')
     end
+    
+    items_per_page = CGI.parse(request.query_string)['items'].first
+    if items_per_page.nil? || !((Float(items_per_page) rescue false))
+      items_per_page = 20
+    end
+    
+    totalDecks = @decks.count
+    @decks = @decks.paginate(:page => params[:page], :per_page => items_per_page)
+    
 %>
-
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
-		Sort By:
+		Filter
+		<select name="class">
+			<option value="">- any class-</option>
+			<% Klass.order("name ASC").each do |klass| %>
+				<option value="<%= klass.id %>" <%= class_filter.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
+			<% end %>	
+		</select>
+		show
+		<select name="items">
+			<% [10, 20, 50, 100].each do |num| %>
+				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
+			<% end %> 
+		</select>
+		sort By
 		<select name="sort">
+			<option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>>Created</option>
 			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>>Losses</option>
 			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>>Matches</option>
 			<option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>>Minions</option>
 			<option value="name" <%= @sortField == "name" ? 'selected="selected"' : ''%>>Name</option>
 			<option value="num_spells" <%= @sortField == "num_spells" ? 'selected="selected"' : ''%>>Spells</option>
+			<option value="num_users" <%= @sortField == "num_users" ? 'selected="selected"' : ''%>>Popularity</option>
 			<option value="num_weapons" <%= @sortField == "num_weapons" ? 'selected="selected"' : ''%>>Weapons</option>
 			<option value="winrate" <%= @sortField == "winrate" ? 'selected="selected"' : ''%>>Win Rate</option>
 			<option value="num_wins" <%= @sortField == "num_wins" ? 'selected="selected"' : ''%>>Wins</option>
@@ -48,6 +82,7 @@
 		</select>
 		<input id="deckListFilterSubmit" type="submit" value="Apply"/>
 	</p>
+	<p><strong><%= number_with_delimiter(totalDecks, :delimiter => ',') %></strong> deck<%= totalDecks == 1 ? "" : "s" %> found matching your criteria</p>
 </form>
 <script type="text/javascript">
 	$('#deckListFilter select').change(function() {
@@ -63,12 +98,13 @@
 		<th class="minions">Minions</th>
 		<th class="spells">Spells</th>
 		<th class="weapons">Weapons</th>
-		<th class="matches">Matches <%= global ? "*" : "" %></th>
-		<th class="wins">Wins <%= global ? "*" : "" %></th>
-		<th class="losses">Losses <%= global ? "*" : "" %></th>
-		<th class="winrate">Win Rate <%= global ? "*" : "" %></th>
+		<th class="matches">Matches *</th>
+		<th class="wins">Wins *</th>
+		<th class="losses">Losses *</th>
+		<th class="winrate">Win Rate *</th>
+		<th class="num_users" title="Number of people using this exact deck" rel="tooltip">Users</th>
 		<% if global %>
-			<th class="author">Author</th>
+			<th class="author" title="Who first listed this exact deck" rel="tooltip">Listed By</th>
 		<% end %>
 		<% if !current_user.nil? %>
 			<th class="tools">Tools</th>
@@ -85,6 +121,7 @@
 			<td class="wins"><%= global ? deck.global_wins : deck.user_num_wins %></td>
 			<td class="losses"><%= global ? deck.global_losses : deck.user_num_losses %></td>
 			<td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
+			<td class="num_users"><%= number_with_delimiter(deck.num_users, :delimiter => ',') %></td>
 			<% if global %>
 				<td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
 			<% end %>
@@ -94,7 +131,14 @@
 						<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
 						<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
 					<% else %>
-						<a href="javascript:alert('coming soon ...')">copy to my decks</a>
+						<% 
+							user_copy = deck.get_user_copy(current_user) 
+							if user_copy.nil? 
+						%>
+							<%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
+						<% else %>
+							<%= link_to("View My Copy", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
+						<% end %>
 					<% end %>
 				</td>
 			<% end %>
@@ -102,5 +146,8 @@
 	<% end%>
 </table>
 <% if global %>
-	<p>* <em>stats are for all users that have played the deck, not just the original author</em></p>
+	<p>* <em>stats are for all users that have played the deck in the last 30 days, not just the original author</em></p>
+<% else %>
+	<p>* <em>stats are for for your personal play using each deck</em></p>
 <% end %>
+<%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>

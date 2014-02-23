@@ -53,7 +53,7 @@ Hearthstats::Application.routes.draw do
   end
   match "/arena/matches", to: "arenas#matches"
 
-
+  match "decks/:id/copy", to: "decks#copy"  
   resources :profiles
   resources :decks do
   	collection do
@@ -61,6 +61,11 @@ Hearthstats::Application.routes.draw do
       get 'public'
       post 'submit_active_decks'
   	end
+  end
+  resources :decks do
+  	collection do
+      get 'copy'
+    end
   end
   resources :dashboards do
     collection do

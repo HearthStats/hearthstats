@@ -1,6 +1,6 @@
 class UniqueDeck < ActiveRecord::Base
-  attr_accessible :cardstring, :name, :user_id, :num_matches, :winrate
-  has_many :deck
+  attr_accessible :cardstring, :name, :user_id, :num_matches, :winrate, :num_users
+  has_many :decks
   
   has_many :cards, :through => :unique_deck_card
   has_many :unique_deck_card
@@ -29,10 +29,13 @@ class UniqueDeck < ActiveRecord::Base
     self.num_spells = self.cards.where(:type_id => 2).count
     self.num_weapons = self.cards.where(:type_id => 3).count
     
+    matches = self.matches.where('created_at >= ?', 30.days.ago)
+    
+    self.num_users = self.decks.where(:klass_id => self.klass_id).count
     self.num_matches = self.matches.count
     self.num_wins = self.matches.where(:result_id => 1).count
     self.num_losses = self.matches.where(:result_id => 2).count
-    self.winrate = self.num_matches > 0 ? self.num_wins / self.num_matches : 0
+    self.winrate = self.num_matches > 0 ? (self.num_wins.to_f / self.num_matches.to_f * 100) : 0
     
   end
 end

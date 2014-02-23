@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="col-md-6 center">
-			<%= render :template => 'shared/deckbuilder' %>
+			<%= render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => true } %>
 		</div>
 		<div class="hidden">
 			<%= f.text_field :decklink %>
@@ -64,7 +64,6 @@
 <script type="text/javascript">
 	app.UI.initClassSelector('#deck_klass_id');
 	if(DeckBuilder) {
-		DeckBuilder.enable();
 		DeckBuilder.addChangeHandler(function() {
 			$('#deck_cardstring').val(DeckBuilder.getCardString());
 		});

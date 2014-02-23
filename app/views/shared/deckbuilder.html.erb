@@ -6,23 +6,29 @@
   <div class="col-sm-6">
     <label>Card List</label>
     <div class="deckBuilderTools">
-      <p>
-        <select name="deckBuilderAddCardField">
-          <option value="">Add a card ...</option>
-          <% Card.order("name ASC").each do |card| %>
-            <option value="<%= card.id %>" icon	="<%= card.getImageUrl() %>"><%= card.name %></option>
-          <% end %>
-        </select>
-      </p>
-      <p><span class="deckBuilderNumCards"></span> of 30 cards</p>
+      <% if enabled %>
+	      <p>
+	        <select name="deckBuilderAddCardField">
+	          <option value="">Add a card ...</option>
+	          <% Card.order("name ASC").each do |card| %>
+	            <option value="<%= card.id %>" icon	="<%= card.getImageUrl() %>"><%= card.name %></option>
+	          <% end %>
+	        </select>
+	      </p>
+      	<p><span class="deckBuilderNumCards"></span> of 30 cards</p>
+      <% end %>
     </div>
-    <div class="cardListHeader">
-      <div class="deckBuilderMissingCards ui-state-error">
-        <p>This deck is incomplete.</p>
-        <p>It only has <span class="deckBuilderNumCards"></span> of 30 cards.</p>
-      </div>
+    <div class="cardListHeader" >
+      <% if !enabled && @deck.cards.nil? %>
+	      <div class="deckBuilderMissingCards ui-state-error">
+	        This deck is incomplete.
+	      </div>
+	  <% end %>
     </div>
-    <div class="deckBuilderCardsWrapper"></div>
+    <div style="position:relative;">
+    	<div class="deckBuilderCardsWrapper" <% if enabled %>title="Left-click to add. Right-click to remove." rel="tooltip"<% end %>></div>
+    	<img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
+    </div>
   </div>
   <div class="col-sm-6">
     <div class="deckBuilderStats">
@@ -40,7 +46,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
 	var DeckBuilder = (new function() {
 
@@ -53,9 +58,15 @@
 		 * All the cards in the game
 		 */
 		var _allCards = [
-			<% Card.order("name ASC").each do |card| %>
-				<%= raw card.toJSONWithImage() %>,
-			<% end %>
+			<% if enabled %>
+				<% Card.order("name ASC").each do |card| %>
+					<%= raw card.toJSONWithImage() %>,
+				<% end %>
+			<% elsif !@deck.cards.nil? %> 
+				<% @deck.cards.order("name ASC").each do |card| %>
+					<%= raw card.toJSONWithImage() %>,
+				<% end %>
+			<% end %> 
 		];
 
 		function _getCardById(id) {
@@ -154,10 +165,31 @@
 						'<div class="qty">' + card.qty + '</div>' +
 						'<img src="' + card.image + '" class="image"/>' +
 						'<div class="bg">&nbsp;</div>' +
-						'<img src="' + card.image + '" class="image"/>' +
 					'</div>'
 				);
 			}
+			
+			// enable card mouseover to show full image
+			var fullCardImage = $('#deckBuilderFullCardView');
+			$('.deckBuilderCardsWrapper .cardWrapper').mouseover(function(e) {
+				$this = $(this);
+				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, .8);
+				$this.fadeTo(0, 1);
+				fullCardImage.attr('src', $('img', $this).attr('src'));
+				var top = $this.position().top;
+				if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
+					top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
+				fullCardImage.css({
+					top: top + 'px',
+					left: ($this.position().left + 245) + 'px'
+				})
+				fullCardImage.show();
+			});
+			$('.deckBuilderCardsWrapper .cardWrapper').mouseout(function() {
+				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, 1);
+				fullCardImage.hide();
+			});
+			
 		}
 
 		function _addCardById(id) {
@@ -239,15 +271,9 @@
 					}
 					return true;
 				});
-				$('.deckbuilderWrapper .cardWrapper').bind("contextmenu",function(){
+				$('.deckbuilderWrapper .deckBuilderCardsWrapper').bind("contextmenu",function(){
 			       return false;
 			    });
-			} else {
-				if(_getNumCards() < 30) {
-					$('.deckBuilderMissingCards').show();
-				} else {
-					$('.deckBuilderMissingCards').hide();
-				}
 			}
 
 
@@ -542,18 +568,25 @@
 		         }
 			});
 	    }
+	    
+	    function _enable() {
+			_enabled = true;
+
+			_deckBuilderAddCardField.change(_deckBuilderAddCardChange);
+
+			$('.deckbuilderWrapper').addClass('enabled');
+
+		    // no context builder in deckbuilder
+			$('.deckbuilderWrapper').bind("contextmenu",function(){
+		       return false;
+		    });
+	    }
+	    if(<%= enabled.to_s %>) 
+	    	_enable();
+	    
 		return {
 			enable:function() {
-				_enabled = true;
-
-				_deckBuilderAddCardField.change(_deckBuilderAddCardChange);
-
-				$('.deckbuilderWrapper').addClass('enabled');
-
-			    // no context builder in deckbuilder
-				$('.deckbuilderWrapper').bind("contextmenu",function(){
-			       return false;
-			    });
+				_enable();
 			},
 			render:function() {
 				_render();

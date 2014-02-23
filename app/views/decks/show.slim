@@ -42,7 +42,7 @@ div.row
 	    = raw @deck.notes
 	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
   div.col-md-6
-    = render :template => 'shared/deckbuilder'
+    = render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => false }
 
 - if (!current_user.nil? && current_user.id == @deck.user_id)
   = link_to 'Edit', edit_deck_path(@deck), :class=>"btn btn-lg btn-primary"

@@ -41,7 +41,6 @@
   display:block;
 }
 .deckbuilderWrapper .deckBuilderTools,
-.deckbuilderWrapper .deckBuilderMissingCards,
 .deckbuilderWrapper.enabled .cardListHeader {
   display:none;
 }
@@ -115,7 +114,8 @@
 }
 .deckbuilderWrapper .deckBuilderMissingCards {
   margin:1em auto;
-  padding:1em;
+  padding:2em 1em;
+  text-align:center;
 }
 .deckbuilderWrapper .deckBuilderCurveChart,
 .deckbuilderWrapper #mechanicsChart {
@@ -159,6 +159,8 @@ table.decklist th.wins,
 table.decklist td.wins,
 table.decklist th.losses,
 table.decklist td.losses,
+table.decklist th.num_users,
+table.decklist td.num_users,
 table.decklist th.winrate,
 table.decklist td.winrate {
   text-align:center;

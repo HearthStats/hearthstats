@@ -123,6 +123,10 @@ class Deck < ActiveRecord::Base
     return klass.name
   end
 
+  def num_users
+    return self.unique_deck.nil? ? 0 : self.unique_deck.num_users
+  end
+  
   def num_matches
     return matches.count
   end
@@ -160,7 +164,24 @@ class Deck < ActiveRecord::Base
     return num_matches > 0 ? (wins.to_f / num_matches) * 100 : 0
   end
   def global_winrate
-    return self.unique_deck.nil? ? "-" : num_global_matches > 0 ? (global_wins.to_f / num_global_matches) * 100 : 0
+    return self.unique_deck.nil? ? "-" : self.unique_deck.winrate
+  end
+
+  def copy(user)
+    newCopy = Deck.new
+    newCopy.name = self.name
+    newCopy.unique_deck = self.unique_deck
+    newCopy.user_id = user.id
+    newCopy.klass = self.klass
+    newCopy.notes = self.notes
+    newCopy.cardstring = self.cardstring
+    newCopy.is_public = true
+    newCopy.save
+    return newCopy
+  end
+  
+  def get_user_copy(user)
+    return Deck.where(:user_id => user.id, :unique_deck_id => self.unique_deck_id)[0]
   end
 
   def self.race_count
@@ -170,7 +191,12 @@ class Deck < ActiveRecord::Base
     Hash[race_groups.map { |race, list| [race, list.size] }]
   end
 
-
+  def cards
+    if self.unique_deck.nil?
+      return nil
+    end
+    return self.unique_deck.cards
+  end
 
   private
 
