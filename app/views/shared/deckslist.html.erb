@@ -27,11 +27,25 @@
     if global
     	@decks = @decks.find(:all, :group => 'unique_deck_id')
     end
+    
+    items_per_page = CGI.parse(request.query_string)['items'].first
+    if items_per_page.nil? || !((Float(items_per_page) rescue false))
+      items_per_page = 20
+    end
+    
+    totalDecks = @decks.count
+    @decks = @decks.paginate(:page => params[:page], :per_page => items_per_page)
+    
 %>
-<%= finalSortField %>
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
-		Sort By:
+		Show
+		<select name="items">
+			<% [10, 20, 50, 100].each do |num| %>
+				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
+			<% end %> 
+		</select>
+		sort By
 		<select name="sort">
 			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>>Losses</option>
 			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>>Matches</option>
@@ -48,6 +62,7 @@
 		</select>
 		<input id="deckListFilterSubmit" type="submit" value="Apply"/>
 	</p>
+	<p><strong><%= number_with_delimiter(totalDecks, :delimiter => ',') %></strong> deck<%= totalDecks == 1 ? "" : "s" %> found matching your criteria</p>
 </form>
 <script type="text/javascript">
 	$('#deckListFilter select').change(function() {
@@ -104,3 +119,4 @@
 <% if global %>
 	<p>* <em>stats are for all users that have played the deck, not just the original author</em></p>
 <% end %>
+<%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>
