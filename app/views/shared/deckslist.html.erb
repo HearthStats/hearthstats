@@ -2,7 +2,7 @@
 	#sort field
     @sortField = "name"
     sortRequest = CGI.parse(request.query_string)['sort'].first
-    if !sortRequest.nil? && sortRequest.match("name|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate")
+    if !sortRequest.nil? && sortRequest.match("name|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate|created_at")
       @sortField = sortRequest
     end
 
@@ -47,6 +47,7 @@
 		</select>
 		sort By
 		<select name="sort">
+			<option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>>Created</option>
 			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>>Losses</option>
 			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>>Matches</option>
 			<option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>>Minions</option>
