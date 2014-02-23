@@ -172,14 +172,21 @@
 			// enable card mouseover to show full image
 			var fullCardImage = $('#deckBuilderFullCardView');
 			$('.deckBuilderCardsWrapper .cardWrapper').mouseover(function(e) {
-				fullCardImage.attr('src', $('img', this).attr('src'));
+				$this = $(this);
+				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, .8);
+				$this.fadeTo(0, 1);
+				fullCardImage.attr('src', $('img', $this).attr('src'));
+				var top = $this.position().top;
+				if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
+					top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
 				fullCardImage.css({
-					top: 120,
-					left: ($(this).position().left + 255) + 'px'
+					top: top + 'px',
+					left: ($this.position().left + 245) + 'px'
 				})
 				fullCardImage.show();
 			});
 			$('.deckBuilderCardsWrapper .cardWrapper').mouseout(function() {
+				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, 1);
 				fullCardImage.hide();
 			});
 			
