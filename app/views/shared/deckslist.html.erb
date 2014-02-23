@@ -131,7 +131,14 @@
 						<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
 						<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
 					<% else %>
-						<a href="javascript:alert('coming soon ...')">copy to my decks</a>
+						<% 
+							user_copy = deck.get_user_copy(current_user) 
+							if user_copy.nil? 
+						%>
+							<a href="javascript:alert('coming soon ...')">copy to my decks</a>
+						<% else %>
+							<%= link_to("View My Copy", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
+						<% end %>
 					<% end %>
 				</td>
 			<% end %>

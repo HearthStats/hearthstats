@@ -167,6 +167,10 @@ class Deck < ActiveRecord::Base
     return self.unique_deck.nil? ? "-" : self.unique_deck.winrate
   end
 
+  def get_user_copy(user)
+    return Deck.where(:user_id => user.id, :unique_deck_id => self.unique_deck_id)[0]
+  end
+
   def self.race_count
     races = Deck.pluck(:race)
     race_groups = races.group_by { |race| race } # {"Druid" => ["Druid", "Druid"]}
