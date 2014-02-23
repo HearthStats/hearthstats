@@ -123,6 +123,10 @@ class Deck < ActiveRecord::Base
     return klass.name
   end
 
+  def num_users
+    return self.unique_deck.nil? ? 0 : self.unique_deck.num_users
+  end
+  
   def num_matches
     return matches.count
   end
