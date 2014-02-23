@@ -112,7 +112,7 @@ class ConstructedsController < ApplicationController
     @constructed.mode_id = mode_id
     @constructed.coin = params[:other][:gofirst].to_i.zero?
     respond_to do |format|
-      if @constructed.update_attributes(params[:constructed])
+      if @constructed.update_attributes(params[:match])
         format.html { redirect_to constructeds_url, notice: 'Constructed was successfully updated.' }
         format.json { head :no_content }
       else

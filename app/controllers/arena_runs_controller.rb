@@ -36,7 +36,7 @@ class ArenaRunsController < ApplicationController
 		@arenarun = ArenaRun.find(params[:id])
 
 		if request.referer == end_arena_runs_url
-			lastarena = Arena.where(user_id: current_user.id, arena_run_id: @arenarun.id).last
+      lastarena = @arenarun.matches.last
 			@arenarun.notes = lastarena.notes unless lastarena.nil?
 			session[:arenarunid] = nil
 			@arenarun.complete = true

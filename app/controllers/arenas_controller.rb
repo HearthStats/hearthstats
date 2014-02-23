@@ -69,21 +69,24 @@ class ArenasController < ApplicationController
   def create
 
     @arena = Match.new(params[:match])
+    @arenarun = MatchRun.where(arena_run_id: session[:arenarunid])[0].arena_run
     @arena.result_id = 2 if params[:match][:result_id].to_i == 0
     @arena.user_id = current_user.id
     @arena.mode_id = 1
     @arena.coin = params[:match][:coin].to_i.zero?
     @arena.season_id = current_season
-    @runwins = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 1).count
-    @runloses = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 2).count
+    @runwins = @arenarun.matches.where(result_id: 1).count
+    @runloses = @arenarun.matches.where(result_id: 2).count
     if @runwins > 11 || @runloses > 2
       render action: "new"
     else
       respond_to do |format|
         if @arena.save
           MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
-          @runwins = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 1).count
-          @runloses = ArenaRun.find(session[:arenarunid]).matches.where(result_id: 2).count
+          @arenarun.notes = @arena.notes
+          @arenarun.save!
+          @runwins = @arenarun.matches.where(result_id: 1).count
+          @runloses = @arenarun.matches.where(result_id: 2).count
           format.html { redirect_to new_arena_url, notice: 'Arena was successfully created.' }
           format.js
         else
