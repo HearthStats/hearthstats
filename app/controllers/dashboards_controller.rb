@@ -7,24 +7,34 @@ class DashboardsController < ApplicationController
   def index
     # recentgamesbyhr(current_user.id, 12)
     recentgames(current_user.id, 10)
-    arena_matches = Match.where(mode_id: 1, user_id: current_user.id, season_id: current_season)
+    # Get all user's matches from this season
+    matches = Match.where(user_id: current_user.id, season_id: current_season)
+    arena_matches = matches.where(mode_id: 1)
     @arena_wr = get_win_rate(arena_matches, true)
-    con_matches = Match.where(mode_id: 3, user_id: current_user.id, season_id: current_season)
+    con_matches = matches.where(mode_id: 3)
     @con_wr = get_win_rate(con_matches, true)
 
     @recent_entries = Profile.get_recent_games(current_user.id)
-    @global = Hash.new
-    @global[:arena] = (get_win_rate(Match.where(mode_id: 1))).round
-    @global[:con] = (get_win_rate(Match.where(mode_id: 3))).round
- 		@global[:coin] = (( Match.where(result_id: 1, coin: false ).count.to_f / Match.where( coin: false ).count)*100).round
- 		@topdeck = Deck.bestuserdeck(current_user.id)
+    @topdeck = Deck.bestuserdeck(current_user.id)
  		@toparena = Match.bestuserarena(current_user.id)
-    # Determine Constructed Class Win Rates
-    conoverallrate = overall_win_rate(3)
+    overall = Rails.cache.fetch("global")
+    if overall.nil?
+      # Determine Constructed Class Win Rates
+      conoverallrate = overall_win_rate(3)
+      # Determine Arena Class Win Rates
+      arenaoverallrate = overall_win_rate(1)
+      @global = Hash.new
+      @global[:arena] = (get_win_rate(Match.where(mode_id: 1))).round
+      @global[:con] = (get_win_rate(Match.where(mode_id: 3))).round
+      @global[:coin] = (( Match.where(result_id: 1, coin: false ).count.to_f / Match.where( coin: false ).count)*100).round
+      Rails.cache.write("global", [conoverallrate,arenaoverallrate,@global], :expires_in => 1.days)
+    else
+      conoverallrate = overall[0]
+      arenaoverallrate = overall[1]
+      @global = overall[2]
+    end
     @classconrate = conoverallrate[1]
     @contot = conoverallrate[0]
-    # Determine Arena Class Win Rates
-    arenaoverallrate = overall_win_rate(1)
     @classarenarate = arenaoverallrate[1]
     @arenatot = arenaoverallrate[0]
   end
