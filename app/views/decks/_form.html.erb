@@ -37,7 +37,7 @@
 				<div class="actions center">
 					<% if !current_user.guest? %>
 						<p>
-							<%= f.check_box :is_public, checked: false %>
+							<%= f.check_box :is_public %>
 							<%= f.label "This deck is public", { :for => "deck_is_public", :style => "font-size:1em;" } %>
 						</p>
 					<% end %>
