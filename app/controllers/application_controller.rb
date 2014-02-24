@@ -34,12 +34,6 @@ class ApplicationController < ActionController::Base
 		@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 
-  # Cache things
-
-  def cache_or_fetch(obj)
-#    if Rails.cache.fetch('')
-  end
-
   def layout
     # only turn it off for login pages:
     is_a?(Devise::SessionsController) ? false : "application"
