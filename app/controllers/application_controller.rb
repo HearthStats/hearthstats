@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   # Cache things
 
   def cache_or_fetch(obj)
-    if Rails.cache.fetch('')
+#    if Rails.cache.fetch('')
   end
 
   def layout
