@@ -47,13 +47,12 @@ Hearthstats::Application.routes.draw do
   resources :arena_runs do
     collection do
       get 'end'
-      get 'm'
       post 'endrun'
     end
   end
   match "/arena/matches", to: "arenas#matches"
 
-  match "decks/:id/copy", to: "decks#copy"  
+  match "decks/:id/copy", to: "decks#copy"
   resources :profiles
   resources :decks do
   	collection do
@@ -94,6 +93,7 @@ Hearthstats::Application.routes.draw do
     collection do
       get :archives
       get :stats
+      post :quickentry
     end
   end
   authenticated :user do

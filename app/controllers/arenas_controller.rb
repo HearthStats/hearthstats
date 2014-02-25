@@ -70,6 +70,7 @@ class ArenasController < ApplicationController
 
     @arena = Match.new(params[:match])
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
+    @arena.klass_id = @arenarun.id
     @arena.result_id = 2 if params[:match][:result_id].to_i == 0
     @arena.user_id = current_user.id
     @arena.mode_id = 1
@@ -135,4 +136,29 @@ class ArenasController < ApplicationController
   	@matches = Arena.where(user_id: current_user.id)
   	@arena_array = ArenaRun.classArray(current_user.id)
   end
+
+
+  def quickentry
+    @arena = Match.new(params[:match])
+    @arenarun = ArenaRun.find(params[:arena_run_id])
+    @arena.klass_id = @arenarun.id
+    @arena.user_id = current_user.id
+    @arena.mode_id = 1
+    @arena.coin = params[:match][:coin].to_i.zero?
+    @arena.season_id = current_season
+    if params[:commit] == "Add Win"
+      @arena.result_id = 1
+    elsif params[:commit] == "Add Defeat"
+      @arena.result_id = 2
+    else
+      @arena.result_id = 3
+    end
+    if @arena.save
+      MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
+			redirect_to arenas_url, notice: 'Arena was successfully created.'
+    else
+      redirect_to arenas_url, alert: 'Arena could not be created.'
+    end
+  end
+
 end

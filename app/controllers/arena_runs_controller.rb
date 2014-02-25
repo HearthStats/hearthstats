@@ -1,5 +1,8 @@
 class ArenaRunsController < ApplicationController
   before_filter :authenticate_user!
+  def index
+  	redirect_to arenas_url
+  end
 	def new
 		@arenarun = ArenaRun.new
 		@gamestoday = ArenaRun.where(user_id: current_user.id).where("created_at >= ?", Time.zone.now.beginning_of_day).count
@@ -27,6 +30,7 @@ class ArenaRunsController < ApplicationController
 
 	def edit
 		@arenarun = ArenaRun.find(params[:id])
+    @arena = Match.new
 		if current_user.id != @arenarun.user_id
 			redirect_to root_url, alert: 'You are not authorized to edit that.'
 		end
