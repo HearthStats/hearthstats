@@ -31,17 +31,18 @@
     div.col-md-12.center
       button type="submit" class = 'btn btn-success runit'
         |Submit <i class='fa fa-check'></i>
-
-div.row.arenaedit_notes
-  = render :template => 'shared/matchlist', :locals => { :matches => @arenarun.matches, :type => "Arena", :filter => false }
-div.row.arenaedit_notes
-  = form_for @arena, url: {controller: "arenas", action: "quickentry"} do |f|
+div.row.arenaedit_notes.quick_con_entry
+  h3 Add Match
+  = form_for @arena, url: {controller: "arena_runs", action: "quickentry"} do |f|
     = f.select :oppclass_id, options_for_select(klasses_hash.to_a), class: 'quick_input'
-    input name="other[rank]" rel="toggle-btn" on="Ranked" off="Casual"
     input name="other[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
     = f.submit "Add Win", class: "btn btn-primary"
     = f.submit "Add Defeat", class: "btn btn-primary red"
     = f.submit "Add Draw", class: "btn btn-primary yellow"
     = number_field_tag :arena_run_id , @arenarun.id , :class => "hidden"
+
+div.row.arenaedit_notes
+  h3 Matches in Arena Run
+  = render :template => 'shared/matchlist', :locals => { :matches => @arenarun.matches, :type => "Arena", :filter => false }
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
