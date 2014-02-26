@@ -8,7 +8,7 @@ The beta is located at: (HearthStats Beta)[http://beta.hearthstats.net]
 
 ## Contributing
 
-If you are interested in helping out with HearthStats.net, simply for this repo and make what ever changes and then submit a pull request.
+If you are interested in helping out with HearthStats.net, simply fork this repo and make whatever changes and then submit a pull request.
 
 Please follow some [**naming conventions**](itsignals.cascadia.com.au/?p=7) and also some [**best practices**](http://www.sitepoint.com/10-ruby-on-rails-best-practices/).
 
