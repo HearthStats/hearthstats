@@ -141,7 +141,7 @@ class ArenasController < ApplicationController
   def quickentry
     @arena = Match.new(params[:match])
     @arenarun = ArenaRun.find(params[:arena_run_id])
-    @arena.klass_id = @arenarun.id
+    @arena.klass_id = @arenarun.klass_id
     @arena.user_id = current_user.id
     @arena.mode_id = 1
     @arena.coin = params[:match][:coin].to_i.zero?
