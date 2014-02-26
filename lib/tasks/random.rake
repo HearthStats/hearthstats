@@ -44,14 +44,6 @@ task :AddSeason => :environment do
   end
 end
 
-task :ArenaKlassToId => :environment do
-  ArenaRun.all.each do |ar|
-    ar.klass_id = Klass.where(name: ar.klass_id).last.id
-    ar.save!
-  end
-  p "Arena Run Klass ID fix complete"
-end
-
 task :ArenaRunFix => :environment do
   ArenaRun.all.each do |ar|
     ar.klass_id = ar.matches.first.klass_id unless ar.matches.first.nil?
@@ -69,13 +61,7 @@ task :ArenaKlassToId => :environment do
   end
   p "Arena Run Klass ID fix complete"
 end
-task :ArenaKlassToId => :environment do
-  ArenaRun.all.each do |ar|
-    ar.klass_id = Klass.where(name: ar.klass_id).last.id
-    ar.save!
-  end
-  p "Arena Run Klass ID fix complete"
-end
+
 
 task :hoho => :environment do
 	Match.all.each do |q|
@@ -87,4 +73,12 @@ task :hoho => :environment do
 	end
 end
 
-
+task :toto => :environment do
+	i= 0
+	Match.where(mode_id: 1).all.each do |q|
+		q.klass_id =  q.arena_run.klass_id
+		q.save
+		i += 1
+	end
+	p i.to_s + "arena games fixed."
+end
