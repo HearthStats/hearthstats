@@ -76,7 +76,7 @@ end
 task :toto => :environment do
 	i= 0
 	Match.where(mode_id: 1).all.each do |q|
-		q.klass_id =  q.arena_run.klass_id
+		q.klass_id =  q.arena_run.klass_id unless q.arena_run.nil?
 		q.save
 		i += 1
 	end
