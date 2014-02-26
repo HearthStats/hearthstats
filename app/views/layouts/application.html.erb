@@ -23,6 +23,7 @@
 <% else %>
 	<body class="page-header-fixed page-full-width">
 <% end %>
+	<script type="text/javascript">_gaq.push(['_trackPageview']);</script>
 	<%= render 'layouts/header' %>
 	<div class="clearfix"></div>
 	<div class="page-container">
@@ -87,16 +88,6 @@
 
 			// Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
 			UserVoice.push(['autoprompt', {}]);
-
-			// GA
-
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-45442103-1', 'hearthstats.net');
-			ga('send', 'pageview');
 		</script>
 		<% if current_user.guest %>
 			<script>
