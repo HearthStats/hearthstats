@@ -26,10 +26,10 @@ div.row
 	      	= @deck.klass.name
 	      | &nbsp; &nbsp;
 	      b.victory Wins: &nbsp;
-	      = @deck.constructeds.where(win: true).count
+	      = @deck.matches.where(result_id: 1).count
 	      | &nbsp; &nbsp;
 	      b.defeat Loses: &nbsp;
-	      = @deck.constructeds.where(win: false).count
+	      = @deck.matches.where(result_id: 2).count
 	    div.turnrates
 	      div.winrates.total title="Overall win rate with this deck"
 	        |Win Rate
