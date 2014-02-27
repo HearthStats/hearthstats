@@ -20,6 +20,7 @@ group :assets do
 # in production environments by default.
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'turbo-sprockets-rails3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -37,20 +38,18 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'taps'
-gem "nokogiri", "~> 1.6.0"
+gem "nokogiri"
 gem 'social-share-button'
 gem 'meta-tags', :require => 'meta_tags'
 gem "figaro"
 gem 'jquery-ui-rails'
 gem 'dalli' # Memcache store
-gem "select2-rails"
 gem 'turbolinks'
 gem 'jquery-turbolinks' # Fixes JS for turbolinks
 gem 'nprogress-rails' # Progress bar for turbolinks
 gem 'sitemap_generator'
 gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
-gem 'challonge-api'
 gem 'time_diff'
 gem 'feedzirra' # Parse rss feeds
 gem 'twitch' # Get Twitch streamers
@@ -61,11 +60,14 @@ gem 'carrierwave' # Upload files needed for redactor
 gem 'mini_magick' # Upload images needed for redactor
 gem 'cindy' # Sendy API
 gem 'httparty' # Make them http requests easily
-gem 'yaml_db'
 gem 'paperclip'
 gem 'aws-sdk'
+gem "select2-rails"
 gem "opinio"
-
+gem "kaminari"
+gem "asset_sync"
+gem "fog"
+gem 'unf'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
@@ -88,4 +90,3 @@ end
 # To use debugger
 # gem 'debugger'
 
-gem "kaminari"
