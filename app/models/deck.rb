@@ -15,6 +15,7 @@ class Deck < ActiveRecord::Base
 
 
   is_impressionable
+  opinio_subjectum
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -126,7 +127,7 @@ class Deck < ActiveRecord::Base
   def num_users
     return self.unique_deck.nil? ? 0 : self.unique_deck.num_users
   end
-  
+
   def num_matches
     return matches.count
   end
@@ -179,7 +180,7 @@ class Deck < ActiveRecord::Base
     newCopy.save
     return newCopy
   end
-  
+
   def get_user_copy(user)
     return Deck.where(:user_id => user.id, :unique_deck_id => self.unique_deck_id)[0]
   end

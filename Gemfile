@@ -64,6 +64,7 @@ gem 'httparty' # Make them http requests easily
 gem 'yaml_db'
 gem 'paperclip'
 gem 'aws-sdk'
+gem "opinio"
 
 
 group :test do
@@ -86,3 +87,5 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem "kaminari"

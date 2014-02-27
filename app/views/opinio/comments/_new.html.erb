@@ -1,0 +1,22 @@
+<div id="new_comment">
+  <% if send(Opinio.current_user_method) %>
+    <%= form_for Comment.new, :remote => false do |f| %>
+	    <div class="chat-form">
+		    <h4><%= t('opinio.messages.add_comment') %></h4>
+	      <div class= "input-cont">
+	        <%= f.text_field :body, class: "form-control", placeholder: "Type a comment here..."  %>
+	      </div>
+	      <%= hidden_field_tag :commentable_id, commentable.id %>
+	      <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
+	      <div class="btn-cont">
+					<span class="arrow"></span>
+					<button type="submit" class="btn blue icn-only"><i class="fa fa-check icon-white"></i></button>
+				</div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>
+      <%= t('opinio.messages.must_be_logged_in_to_comment') %>
+    </p>
+  <% end %>
+</div>

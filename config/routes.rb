@@ -1,4 +1,6 @@
 Hearthstats::Application.routes.draw do
+  opinio_model
+
   get "cards/index"
 
   mount RedactorRails::Engine => '/redactor_rails'
@@ -62,6 +64,7 @@ Hearthstats::Application.routes.draw do
   	end
   end
   resources :decks do
+    opinio
   	collection do
       get 'copy'
     end

@@ -4,6 +4,12 @@
 - provide(:title, @deck.name)
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Decks')
+- content_for :actions do
+  - if (!current_user.nil? && current_user.id == @deck.user_id)
+    = link_to 'Edit', edit_deck_path(@deck), :class=>"btn retirebut btn-primary"
+    = " "
+  = link_to 'Back', decks_path, :class=>"btn retirebut dark"
+
 
 div
 	| Share this deck: &nbsp;
@@ -41,15 +47,11 @@ div.row
 	    h3 Notes
 	    = raw @deck.notes
 	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
+      .comments
+        = render_comments_form @deck
+        = render_comments @deck, :page => params[:page], :limit => 5
   div.col-md-6
     = render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => false }
-
-- if (!current_user.nil? && current_user.id == @deck.user_id)
-  = link_to 'Edit', edit_deck_path(@deck), :class=>"btn btn-lg btn-primary"
-  = " "
-
-= link_to 'Back', decks_path, :class=>"btn btn-lg dark"
-
 javascript:
   if(DeckBuilder) {
   	DeckBuilder.setCardString('#{@deck.cardstring}');

@@ -148,6 +148,9 @@ GEM
     jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
     lograge (0.2.2)
@@ -181,6 +184,10 @@ GEM
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     nprogress-rails (0.1.2.3)
+    opinio (0.6)
+      jquery-rails
+      kaminari
+      rails (~> 3)
     orm_adapter (0.5.0)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
@@ -337,6 +344,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  kaminari
   launchy (>= 2.1.2)
   lograge
   meta-tags
@@ -344,6 +352,7 @@ DEPENDENCIES
   mysql2
   nokogiri (~> 1.6.0)
   nprogress-rails
+  opinio
   paperclip
   pry
   quiet_assets (>= 1.0.1)
