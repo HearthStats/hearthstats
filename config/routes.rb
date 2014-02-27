@@ -134,6 +134,4 @@ Hearthstats::Application.routes.draw do
       post "decks/slots"
 		end
   end
-
-
 end

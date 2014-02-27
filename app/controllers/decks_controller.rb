@@ -78,7 +78,7 @@ class DecksController < ApplicationController
     end
     redirect_to(edit_deck_path(userCopy))
   end
-  
+
   # GET /decks/1/edit
   def edit
     @deck = Deck.find(params[:id])
