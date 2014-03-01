@@ -29,26 +29,29 @@
 				</div>
 			</div>
 			<div class="row center">
-				<div class="notesfield center">
+				<div class="col-md-10 notesfield center">
 					<label for="deck_notes">Notes</label><small> Decklist, etc.</small>
 					<br />
 					<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
 				</div>
-				<div class="actions center">
-					<% if !current_user.guest? %>
-						<p>
-							<%= f.check_box :is_public %>
-							<%= f.label "This deck is public", { :for => "deck_is_public", :style => "font-size:1em;" } %>
-						</p>
-					<% end %>
-					<%= f.submit (@deck.id.nil? ? "Create" : "Update") + " Deck", class: "btn btn-lg btn-success arenasubmit" %>
-					<%= link_to decks_path do %>
-					<button class="btn btn-lg">
-						Back
-					</button>
-					<% end %>
-				</div>
+
 			</div>
+      <div class="row">
+        <div class="actions center">
+          <% if !current_user.guest? %>
+            <p>
+              <%= f.check_box :is_public %>
+              <%= f.label "This deck is public", { :for => "deck_is_public", :style => "font-size:1em;" } %>
+            </p>
+          <% end %>
+          <%= f.submit (@deck.id.nil? ? "Create" : "Update") + " Deck", class: "btn btn-lg btn-success arenasubmit" %>
+          <%= link_to decks_path do %>
+          <button class="btn btn-lg">
+            Back
+          </button>
+          <% end %>
+        </div>
+      </div>
 		</div>
 		<div class="col-md-6 center">
 			<%= render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => true } %>

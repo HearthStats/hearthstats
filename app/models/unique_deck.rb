@@ -1,6 +1,7 @@
 class UniqueDeck < ActiveRecord::Base
   attr_accessible :cardstring, :name, :user_id, :num_matches, :winrate, :num_users
   has_many :decks
+  has_many :deck_versions
 
   has_many :cards, :through => :unique_deck_card
   has_many :unique_deck_card

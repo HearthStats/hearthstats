@@ -11,7 +11,7 @@
   = link_to 'Back', decks_path, :class=>"btn retirebut dark"
 
 
-div
+div.share
 	| Share this deck: &nbsp;
 	= social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
 div.row
@@ -30,6 +30,10 @@ div.row
 	      | &nbsp; &nbsp;
 	      b.defeat Loses: &nbsp;
 	      = @deck.matches.where(result_id: 2).count
+	      | &nbsp; &nbsp;
+	      b.draw Draws: &nbsp;
+	      = @deck.matches.where(result_id: 3).count
+
 	    div.turnrates
 	      div.winrates.total title="Overall win rate with this deck"
 	        |Win Rate
@@ -44,8 +48,12 @@ div.row
 	        br
 	        | #{@secrate}
 	  div.col-md-6.deck-notes
-	    h3 Notes
-	    = raw @deck.notes
+      div.version
+        h3 Versions
+        - @deck.deck_versions.each do |version|
+          = version.name
+      h3 Notes
+      = raw @deck.notes
 	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments
         = render_comments_form @deck

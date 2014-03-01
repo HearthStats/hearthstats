@@ -33,7 +33,9 @@ div class="row profile"
                         |User Key
                         small &nbsp; (do not share this with anyone else)
                       div.key
-                        div.well = @userkey
+                        div.well
+                          .reveal Click to reveal
+                          .user-key = @userkey
 
             div class="col-md-9"
               div class="row"

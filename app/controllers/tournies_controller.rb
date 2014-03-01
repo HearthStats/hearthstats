@@ -1,6 +1,6 @@
 class TourniesController < ApplicationController
 
-  before_filter :challongesignin
+  # before_filter :challongesignin
 
   def index
   end
@@ -12,16 +12,16 @@ class TourniesController < ApplicationController
   end
 
   def regtourny
-    user = User.find(current_user.id)
-    cid = Tourny.where(complete: false).last.challonge_id
-    user.tourny_id = cid
-    challonge = Challonge::Tournament.find(cid)
-    ct = Challonge::Participant.create(:name => user.profile.bnetid, :tournament => challonge)
-    if user.save and ct.errors.full_messages.blank?
-			redirect_to root_path, notice: 'You entered the tournament!'
-    else
-    	redirect_to root_path, alert: "You were not added to the tournament. #{ct.errors.full_messages}"
-    end
+    # user = User.find(current_user.id)
+    # cid = Tourny.where(complete: false).last.challonge_id
+    # user.tourny_id = cid
+    # challonge = Challonge::Tournament.find(cid)
+    # ct = Challonge::Participant.create(:name => user.profile.bnetid, :tournament => challonge)
+    # if user.save and ct.errors.full_messages.blank?
+		# 	redirect_to root_path, notice: 'You entered the tournament!'
+    # else
+    # 	redirect_to root_path, alert: "You were not added to the tournament. #{ct.errors.full_messages}"
+    # end
   end
 
   def new

@@ -17,7 +17,9 @@ p
       |User Key
       small &nbsp; (do not share this with anyone else)
     div.key
-      div.well = current_user.get_userkey
+      div.well
+        .reveal Click to reveal
+        .user-key = current_user.get_userkey
 h3 Features
 ul
 	li Support for both Windows and OSx
