@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140227062925) do
+ActiveRecord::Schema.define(:version => 20140227233920) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -109,6 +109,15 @@ ActiveRecord::Schema.define(:version => 20140227062925) do
   add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"
   add_index "constructeds", ["user_id"], :name => "index_constructeds_on_user_id"
 
+  create_table "deck_versions", :force => true do |t|
+    t.integer  "deck_id"
+    t.integer  "unique_deck_id"
+    t.text     "notes"
+    t.string   "name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "decks", :force => true do |t|
     t.string    "name"
     t.integer   "wins",             :default => 0
@@ -135,14 +144,6 @@ ActiveRecord::Schema.define(:version => 20140227062925) do
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
   add_index "decks", ["user_id"], :name => "index_decks_on_user_id"
-
-  create_table "deckversions", :force => true do |t|
-    t.integer  "deck_id"
-    t.string   "cardstring"
-    t.text     "notes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "impressions", :force => true do |t|
     t.string    "impressionable_type"

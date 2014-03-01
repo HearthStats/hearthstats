@@ -1,0 +1,2 @@
+class ConstructedsController < ApplicationController
+end

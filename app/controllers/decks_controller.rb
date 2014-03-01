@@ -127,7 +127,6 @@ class DecksController < ApplicationController
 		@deck.destroy
     respond_to do |format|
       format.html { redirect_to decks_url }
-      format.json { head :no_content }
     end
   end
 
@@ -161,6 +160,10 @@ class DecksController < ApplicationController
   end
 
   private
+
+  def version_deck(deck)
+    DeckVersion.new(deck_id: deck.id, unique_deck_id: deck.unique_deck_id).save!
+	end
 
   def getMyDecks()
     Deck.where(:user_id => current_user.id).order(:klass_id, :name).all

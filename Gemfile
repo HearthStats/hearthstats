@@ -68,6 +68,7 @@ gem "kaminari"
 gem "asset_sync"
 gem "fog"
 gem 'unf'
+gem "cancan"
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
