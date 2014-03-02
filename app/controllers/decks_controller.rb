@@ -159,11 +159,24 @@ class DecksController < ApplicationController
 		end
   end
 
+  def version
+    deck = Deck.find(params[:id])
+    canedit(deck)
+    version_deck(deck)
+    redirect_to decks_url, notice: "Deck successfully versioned"
+  end
+
   private
 
   def version_deck(deck)
-    DeckVersion.new(deck_id: deck.id, unique_deck_id: deck.unique_deck_id).save!
-	end
+    last_version = deck.deck_versions.last
+    if last_version.nil?
+      version = 2
+    else
+      version = last_version.version.to_i + 1
+    end
+    DeckVersion.new(deck_id: deck.id, unique_deck_id: deck.unique_deck_id, version: version ).save!
+  end
 
   def getMyDecks()
     Deck.where(:user_id => current_user.id).order(:klass_id, :name).all

@@ -1,2 +1,2 @@
-class ConstructedsController < ApplicationController
+class DeckVersionsController < ApplicationController
 end

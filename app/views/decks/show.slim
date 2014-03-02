@@ -51,7 +51,7 @@ div.row
       div.version
         h3 Versions
         - @deck.deck_versions.each do |version|
-          = version.name
+          = version.version
       h3 Notes
       = raw @deck.notes
 	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"

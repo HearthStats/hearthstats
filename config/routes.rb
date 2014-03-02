@@ -62,7 +62,9 @@ Hearthstats::Application.routes.draw do
       get 'public'
       post 'submit_active_decks'
   	end
+    get 'version', on: :member
   end
+
   resources :decks do
     opinio
   	collection do

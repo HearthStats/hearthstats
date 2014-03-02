@@ -34,6 +34,13 @@
 					<br />
 					<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
 				</div>
+        <div class="col-md-2 versions">
+          <label>Versions</label>
+          <%= link_to "New Version", version_deck_path %>
+          <% @deck.deck_versions.each do |version|%>
+            <%= version.version %>
+          <%end%>
+        </div>
 
 			</div>
       <div class="row">
