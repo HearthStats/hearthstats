@@ -1,6 +1,11 @@
 class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id, :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
 
+  scope :wins, ( where(result_id: 1) )
+  scope :losses, ( where(result_id: 2) )
+  scope :draws, ( where(result_id: 3) )
+
+
   has_one :match_run
   has_one :arena_run, :through => :match_run
 

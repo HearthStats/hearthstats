@@ -133,7 +133,6 @@ class ArenasController < ApplicationController
   end
 
   def stats
-  	@matches = Arena.where(user_id: current_user.id)
   	@arena_array = ArenaRun.classArray(current_user.id)
   end
 

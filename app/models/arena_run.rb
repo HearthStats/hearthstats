@@ -61,14 +61,15 @@ class ArenaRun < ActiveRecord::Base
   end
 
   def self.classArray(userid)
+    matches = Match.where(user_id: userid, mode_id: 1)
     class_array = Hash.new
     klass_array = Klass.all
     (1..klass_array.count).each do |c|
   		class_avgwins = ArenaRun.averageWins(c, userid)
   		class_runs = ArenaRun.where( klass_id: c, user_id: userid ).count
-  		class_winrate = Match.where( mode_id: 1, klass_id: c, user_id: userid, result_id: 1 ).count.to_f / Match.where( mode_id: 1, klass_id: c, user_id: userid ).count
-  		class_coinrate = Match.where( mode_id: 1, klass_id: c, user_id: userid, result_id: 1, coin: true ).count.to_f / Match.where( mode_id: 1, klass_id: c, user_id: userid, coin: true).count
-  		class_nocoinrate = Match.where( mode_id: 1, klass_id: c, user_id: userid, result_id: 1, coin: false ).count.to_f / Match.where( mode_id: 1, klass_id: c, user_id: userid, coin: false).count
+      class_winrate = matches.where( klass_id:c ).wins.count.to_f / matches.where(klass_id: c).count
+      class_coinrate = matches.where( klass_id: c, coin: true ).wins.count.to_f / matches.where( klass_id: c, coin: true).count
+      class_nocoinrate = matches.where( klass_id: c,  coin: false ).wins.count.to_f / matches.where( klass_id: c, coin: false).count
 
       class_array[Klass.find(c)[:name]] = [["Average wins", class_avgwins],
   											["Total runs with class", class_runs],

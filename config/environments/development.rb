@@ -12,9 +12,8 @@ Hearthstats::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-  config.serve_static_assets = false
-  config.sass.cache = false
-  config.assets.cache_store = :null_store
+  config.cache_store = :null_store
+  config.serve_static_assets = true
   # Caching testing:
   # config.consider_all_requests_local       = false
   # config.action_controller.perform_caching = true
@@ -41,6 +40,7 @@ Hearthstats::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.assets.digest = false
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 

@@ -11,7 +11,7 @@ h3.detail-title Overall Arena Stats
 div.overall
   div.arena-overall
     div.arena-overall-title Overall Win Rate
-    = number_to_percentage((Arena.where(user_id: current_user.id,win: true).count.to_f/ Arena.where(user_id: current_user.id).count)*100, precision: 2)
+    = get_win_rate(Match.where(user_id: current_user.id, mode_id: 1), true)
   div.arena-overall
     div.arena-overall-title Total Gold Amount
     = ArenaRun.totalGold(current_user.id)
@@ -23,7 +23,7 @@ div.overall
     = ArenaRun.where(user_id: current_user.id).count
   div.arena-overall
     div.arena-overall-title Arena Games Played
-    = Arena.where(user_id: current_user.id).count
+    = Match.where(mode_id:1, user_id: current_user.id).count
   div.stats-table.row
     div.most-played.col-md-6
       h4 Most played
