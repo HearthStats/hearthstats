@@ -13,7 +13,6 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'thin'
   gem 'pry'
-  gem 'rack-mini-profiler'
 end
 
 group :assets do
@@ -30,7 +29,6 @@ group :assets do
 end
 
 group :production do
-	gem "asset_sync"
 	gem 'mysql2'
 end
 
