@@ -53,7 +53,8 @@ class DecksController < ApplicationController
 
     @winrate = matches.count > 0 ? get_win_rate(matches) : 0
     if !params[:version].nil?
-      @deck.cardstring = Deck.find(params[:id]).deck_versions.select {|d| d.version == params[:version].to_i}[0].unique_deck.cardstring
+    	unique_deck = Deck.find(params[:id]).deck_versions.select {|d| d.version == params[:version].to_i}[0].unique_deck
+      @deck.cardstring = unique_deck.cardstring unless unique_deck.nil?
     end
     respond_to do |format|
       format.html # show.html.erb
