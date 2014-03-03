@@ -1,7 +1,7 @@
 - set_meta_tags :title => @deck.name,
   :description => @deck.name,
   :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
-- provide(:title, @deck.name)
+- provide(:title, @deck.name + " v" + params[:version].to_s )
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Decks')
 - content_for :actions do
@@ -50,8 +50,11 @@ div.row
 	  div.col-md-6.deck-notes
       div.version
         h3 Versions
+        .curr-version
+          = link_to "Current Version", deck_path(@deck)
         - @deck.deck_versions.each do |version|
-          = version.version
+          span.version-number
+            = link_to "v#{version.version}", deck_path(@deck, version: version.version)
       h3 Notes
       = raw @deck.notes
 	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"

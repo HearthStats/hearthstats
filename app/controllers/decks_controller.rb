@@ -26,7 +26,8 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def show
     @deck = Deck.find(params[:id])
-    impressionist(@deck)
+
+    impressionist(@deck) unless params[:version]
 
 	  matches = @deck.matches
 
@@ -51,7 +52,9 @@ class DecksController < ApplicationController
     #calculate deck winrate
 
     @winrate = matches.count > 0 ? get_win_rate(matches) : 0
-
+    if !params[:version].nil?
+      @deck.cardstring = Deck.find(params[:id]).deck_versions.select {|d| d.version == params[:version].to_i}[0].unique_deck.cardstring
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @deck }
