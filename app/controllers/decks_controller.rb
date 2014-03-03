@@ -166,7 +166,7 @@ class DecksController < ApplicationController
     deck = Deck.find(params[:id])
     canedit(deck)
     version_deck(deck)
-    redirect_to decks_url, notice: "Deck successfully versioned"
+    redirect_to deck_path(deck), notice: "Deck successfully versioned"
   end
 
   private
@@ -174,7 +174,7 @@ class DecksController < ApplicationController
   def version_deck(deck)
     last_version = deck.deck_versions.last
     if last_version.nil?
-      version = 2
+      version = 1
     else
       version = last_version.version.to_i + 1
     end

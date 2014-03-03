@@ -34,11 +34,18 @@
 					<br />
 					<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
 				</div>
-        <div class="col-md-2 versions">
-          <label>Versions</label>
-          <%= link_to "New Version", version_deck_path %>
-          <% @deck.deck_versions.each do |version|%>
-            <%= version.version %>
+        <div class="col-md-4 versions">
+          <label>Versions <i class="fa fa-question-circle tooltips" data-original-title="Click version to save the current state then edit the deck for the new version"></i></label>
+          <div>
+	          <%= link_to version_deck_path, class: "btn btn-sm purple" do %>
+	          	<i class="fa fa-plus"></i> New Version
+	          <% end %>
+          </div>
+          <br/>
+          <% @deck.deck_versions.each do |version| %>
+	          <span class='version-number'>
+	            <%= link_to "v#{version.version}", deck_path(@deck, version: version.version) %>
+            </span>
           <%end%>
         </div>
 
