@@ -1,4 +1,5 @@
 Hearthstats::Application.configure do
+	config.action_controller.asset_host = "http://hearthprod-assets.s3.amazonaws.com"
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
