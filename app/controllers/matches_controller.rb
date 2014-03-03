@@ -71,6 +71,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to request.referer, notice: 'Match was successfully deleted.' }
+      format.js
     end
   end
 end

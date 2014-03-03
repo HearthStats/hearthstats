@@ -124,7 +124,7 @@ class ArenasController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to arenas_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 
