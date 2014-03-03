@@ -29,7 +29,7 @@ group :assets do
 end
 
 group :production do
-	gem "asset_sync"
+	# gem "asset_sync"
 	gem 'mysql2'
 end
 
