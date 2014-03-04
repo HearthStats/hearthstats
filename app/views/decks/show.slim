@@ -1,7 +1,10 @@
 - set_meta_tags :title => @deck.name,
   :description => @deck.name,
   :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
-- provide(:title, @deck.name + " v" + params[:version].to_s )
+- if params[:version]
+  - provide(:title, @deck.name + " v" + params[:version].to_s )
+- else
+  - provide(:title, @deck.name)
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Decks')
 - content_for :actions do
