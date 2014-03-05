@@ -12,13 +12,13 @@ p
 	| &nbsp;
 	a[href="/uploader/download/osx" target="_blank" class="btn btn-large green"] Download for OSx
 - if current_user
-  a.api-key
+  div.api-key
     div.api-button
       |User Key
       small &nbsp; (do not share this with anyone else)
     div.key
       div.well
-        .reveal Click to reveal
+        a.reveal Click to reveal
         .user-key = current_user.get_userkey
 div.row
   div.col-md-6
