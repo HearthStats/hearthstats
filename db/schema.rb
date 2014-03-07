@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140314171622) do
+=======
+ActiveRecord::Schema.define(:version => 20140307020321) do
+>>>>>>> created basic teams table
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
