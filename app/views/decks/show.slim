@@ -51,15 +51,15 @@ div.row
 	        br
 	        | #{@secrate}
 	  div.col-md-6.deck-notes
-      div.version
-        h3 Versions
-        .curr-version
-          = link_to "Current Version", deck_path(@deck)
-        - @deck.deck_versions.each do |version|
-          span.version-number
-            = link_to "v#{version.version}", deck_path(@deck, version: version.version)
-      h3 Notes
-      = raw @deck.notes
+        div.version
+          h3 Versions
+          .curr-version
+            = link_to "Current Version", deck_path(@deck)
+          - @deck.deck_versions.each do |version|
+            span.version-number
+              = link_to "v#{version.version}", deck_path(@deck, version: version.version)
+        h3 Notes
+        = raw @deck.notes
 	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments
         = render_comments_form @deck

@@ -3,7 +3,7 @@
   <div class="preloadCardBg"></div>
   <div class="preloadCardBg_2"></div>
   <div class="preloadCardBg_legendary"></div>
-  <div class="col-sm-6">
+  <div class="col-lg-6">
     <label>Card List</label>
     <div class="deckBuilderTools">
       <% if enabled %>
@@ -62,11 +62,11 @@
 				<% Card.order("name ASC").each do |card| %>
 					<%= raw card.toJSONWithImage() %>,
 				<% end %>
-			<% elsif !@deck.cards.nil? %> 
+			<% elsif !@deck.cards.nil? %>
 				<% @deck.cards.order("name ASC").each do |card| %>
 					<%= raw card.toJSONWithImage() %>,
 				<% end %>
-			<% end %> 
+			<% end %>
 		];
 
 		function _getCardById(id) {
@@ -168,7 +168,7 @@
 					'</div>'
 				);
 			}
-			
+
 			// enable card mouseover to show full image
 			var fullCardImage = $('#deckBuilderFullCardView');
 			$('.deckBuilderCardsWrapper .cardWrapper').mouseover(function(e) {
@@ -189,7 +189,7 @@
 				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, 1);
 				fullCardImage.hide();
 			});
-			
+
 		}
 
 		function _addCardById(id) {
@@ -568,7 +568,7 @@
 		         }
 			});
 	    }
-	    
+
 	    function _enable() {
 			_enabled = true;
 
@@ -581,9 +581,9 @@
 		       return false;
 		    });
 	    }
-	    if(<%= enabled.to_s %>) 
+	    if(<%= enabled.to_s %>)
 	    	_enable();
-	    
+
 		return {
 			enable:function() {
 				_enable();
