@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def opinio_after_create_path(comment)
 	  begin
 	  	Notification::notify_all( User.all, "test", "tes")
-	  rescue
+	  rescue NoMethodError
 	  	p test
 	  end
 	end
