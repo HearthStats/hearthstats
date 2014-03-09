@@ -62,7 +62,6 @@ local.properties
 .loadpath
 .buildpath
 database.yml
-db/schema.rb
 
 
 # Ignore application configuration
