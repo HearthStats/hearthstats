@@ -106,7 +106,7 @@ class Deck < ActiveRecord::Base
   end
 
   def self.bestuserdeck(userid)
-		decks = Deck.where(user_id: userid)
+    decks = Deck.includes(:matches).where(user_id: userid)
 		winrates = Hash.new
 		decks.each do |d|
 			if d.matches.count == 0
