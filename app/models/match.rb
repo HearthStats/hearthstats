@@ -46,7 +46,7 @@ class Match < ActiveRecord::Base
         class_arena_rate[Klass.find(c).name] = 0
       else
         class_arena_rate[Klass.find(c).name] = ((totalwins.to_f / totalgames)*100).round
-		  end
+  end
     end
     arena_class = class_arena_rate.max_by {|x,y| y}
 

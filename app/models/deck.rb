@@ -109,9 +109,9 @@ class Deck < ActiveRecord::Base
 		decks = Deck.where(user_id: userid)
 		winrates = Hash.new
 		decks.each do |d|
-			if d.constructeds.count == 0
+			if d.matches.count == 0
 			else
-				winrates[d.name] = [((d.constructeds.where(win:true).count.to_f / d.constructeds.count)*100).round, d.id]
+				winrates[d.name] = [((d.matches.where(result_id: 1).count.to_f / d.matches.count)*100).round, d.id]
 			end
 		end
 		deck = winrates.max_by { |x,y| y}
