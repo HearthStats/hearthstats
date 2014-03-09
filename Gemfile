@@ -51,7 +51,6 @@ gem 'nprogress-rails' # Progress bar for turbolinks
 gem 'sitemap_generator'
 gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
-gem 'time_diff'
 gem 'feedzirra' # Parse rss feeds
 gem 'twitch' # Get Twitch streamers
 gem "lograge" # Minify log outputs
@@ -64,12 +63,12 @@ gem 'httparty' # Make them http requests easily
 gem 'paperclip'
 gem 'aws-sdk'
 gem "select2-rails"
-gem "opinio"
+gem "opinio" # Comment system
 gem "kaminari"
 gem "fog"
 gem 'unf'
 gem "cancan"
-gem 'mailboxer'
+gem 'mailboxer' # User notifications and mailing
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

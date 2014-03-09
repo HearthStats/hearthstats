@@ -22,7 +22,6 @@
 				<div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0">
 					<ul class="feeds">
 						<% @recent_entries.each do |entry| %>
-							<% timepassed = Time.diff(Time.now, entry[4], '%h hr %m min') %>
 							<li>
 								<div class="col1">
 									<div class="cont">
@@ -46,7 +45,7 @@
 								</div>
 								<div class="col2">
 									<div class="date">
-										<%= timepassed[:diff] %> ago
+										<%= time_ago_in_words(entry[4]) %> ago
 									</div>
 								</div>
 							</li>

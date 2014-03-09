@@ -20,7 +20,7 @@
             </span>
             <span class="subject">
             <span class="from">HS Robot</span>
-            <span class="time">Just Now</span>
+            <span class="time"><%= time_ago_in_words(note.created_at) %> ago</span>
             </span>
             <span class="message">
               <%= note.body %>
