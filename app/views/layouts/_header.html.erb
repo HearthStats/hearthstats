@@ -18,6 +18,7 @@
     <ul class="nav navbar-nav pull-right">
       <!-- BEGIN USER LOGIN DROPDOWN -->
       <% if signed_in? %>
+      	<%= render 'layouts/inbox' %>
 	      <li class="dropdown user">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <% if current_user.guest %>

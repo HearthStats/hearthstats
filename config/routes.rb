@@ -16,8 +16,12 @@ Hearthstats::Application.routes.draw do
       post 'createtourny'
     end
   end
-  # get "profile/index"
 
+  # Notifications
+
+  post "notifications/note_read"
+
+  opinio_model :controller => 'my_comments'
   # get "profile/edit"
 
   match "/contactus", to: "additional#contactus"

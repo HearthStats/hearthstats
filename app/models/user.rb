@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	extend Mailboxer::Models::Messageable::ActiveRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey
-  # attr_accessible :title, :body
+
   has_one :profile, dependent: :destroy
   has_many :arenas, dependent: :destroy
   has_many :decks, dependent: :destroy
@@ -14,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :arena_runs, dependent: :destroy
   belongs_to :tourny
   has_many :matches, dependent: :destroy
+  acts_as_messageable
 
   def get_userkey
   	if self.userkey.nil?
@@ -25,4 +28,13 @@ class User < ActiveRecord::Base
   		self.userkey
   	end
   end
+
+  def name
+	  return "You should add method :name in your Messageable model"
+	end
+
+  def mailboxer_email(object)
+	  nil
+	end
+
 end

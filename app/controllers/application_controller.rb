@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
 
   layout :layout
 
+  def opinio_after_create_path(comment)
+	  begin
+	  	Notification::notify_all( User.all, "test", "tes")
+	  rescue
+	  	p test
+	  end
+	end
+
   def get_win_rate(matches, strOut = false )
     return 0 if matches.nil?
     wins = matches.where(result_id: 1).count.to_f

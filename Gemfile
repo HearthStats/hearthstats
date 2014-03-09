@@ -69,6 +69,7 @@ gem "kaminari"
 gem "fog"
 gem 'unf'
 gem "cancan"
+gem 'mailboxer'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

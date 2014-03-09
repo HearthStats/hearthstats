@@ -1,0 +1,34 @@
+<li class="dropdown" id="header_inbox_bar">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+    data-close-others="true">
+  <i class="fa fa-envelope"></i>
+  <% receipts = current_user.receipts.where(is_read: false) %>
+  <% notes = Notification.find(receipts.map(&:notification_id)) %>
+  <span class="badge"><%= notes.count %></span>
+  </a>
+  <ul class="dropdown-menu extended inbox">
+    <li>
+      <p>You have <%= notes.count %> new messages</p>
+    </li>
+    <li>
+      <ul class="dropdown-menu-list scroller" style="height: 250px;">
+        <% notes.each do |note| %>
+          <li>
+            <%= link_to notifications_note_read_path(note_id: note.id), method: :post, :remote => true do %>
+            <span class="photo">
+              <%= image_tag("hslogo-thumb.jpg") %>
+            </span>
+            <span class="subject">
+            <span class="from">HS Robot</span>
+            <span class="time">Just Now</span>
+            </span>
+            <span class="message">
+              <%= note.body %>
+            </span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</li>
