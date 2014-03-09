@@ -4,16 +4,16 @@
   <i class="fa fa-envelope"></i>
   <% receipts = current_user.receipts.where(is_read: false) %>
   <% notes = Notification.find(receipts.map(&:notification_id)) %>
-  <span class="badge"><%= notes.count %></span>
+  <span class="badge inbox-count"><%= notes.count %></span>
   </a>
   <ul class="dropdown-menu extended inbox">
     <li>
-      <p>You have <%= notes.count %> new messages</p>
+      <p>You have <span class="new-msg-count"><%= notes.count %></span> new messages</p>
     </li>
     <li>
       <ul class="dropdown-menu-list scroller" style="height: 250px;">
         <% notes.each do |note| %>
-          <li>
+          <li class="note-<%= note.id %>">
             <%= link_to notifications_note_read_path(note_id: note.id), method: :post, :remote => true do %>
             <span class="photo">
               <%= image_tag("hslogo-thumb.jpg") %>
@@ -28,6 +28,9 @@
             <% end %>
           </li>
         <% end %>
+        <div class="inbox-dismiss">
+        	Click message to dismiss
+        </div>
       </ul>
     </li>
   </ul>

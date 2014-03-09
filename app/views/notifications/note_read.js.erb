@@ -1,1 +1,6 @@
 toastr.success("Marked as read");
+$(".note-<%=@note.id%>").fadeOut();
+countStr = $('.new-msg-count').text();
+count = parseInt(countStr);
+$('.new-msg-count').text(count-1)
+$('.inbox-count').text(count-1)

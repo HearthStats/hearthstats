@@ -4,12 +4,9 @@ class ApplicationController < ActionController::Base
 
   layout :layout
 
-  def opinio_after_create_path(comment)
-	  begin
-	  	Notification::notify_all( User.all, "test", "tes")
-	  rescue NoMethodError
-	  	p test
-	  end
+  def opinio_after_create_path(resource)
+  	resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
+  	resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
 	end
 
   def get_win_rate(matches, strOut = false )
