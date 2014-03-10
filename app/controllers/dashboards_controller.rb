@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
   end
 
   def index
-    if current_user.profile.name.nil?
+    if !current_user.guest? && current_user.profile.name.nil?
       redirect_to edit_profile_path(current_user), alert: 'Please add an username' and return
     end
 
