@@ -69,6 +69,7 @@ gem "fog"
 gem 'unf'
 gem "cancan"
 gem 'mailboxer' # User notifications and mailing
+gem 'imgkit'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

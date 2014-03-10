@@ -29,6 +29,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    matches = Match.where(user_id: @user.id, season_id: current_season)
     @userkey = @user.get_userkey
     if @user.guest
     	return redirect_to root_url, alert: "Guests cannot access profiles"
@@ -58,7 +59,51 @@ class ProfilesController < ApplicationController
   	recentgames(@user.id, 10)
   	@recent_entries = Profile.get_recent_games(@user.id)
   	impressionist(@profile)
-  	# Determine Arena Class Win Rates
+
+    # Overall win rates
+    arena_matches = matches.where(mode_id: 1)
+    @overallarena= get_win_rate(arena_matches, true)
+    con_matches = matches.where(mode_id: 3)
+    @overallcon = get_win_rate(con_matches, true)
+
+    # Determine Constructed Class Win Rates
+
+    @classconrate = Array.new
+    (1..Klass.all.count).each_with_index do |c,i|
+      totalwins = 0
+      totalgames = 0
+      totalwins = matches.where( mode_id: 3,  klass_id: c, result_id: 1 ).count
+      totalgames = matches.where( mode_id: 3, klass_id: c ).count
+      if totalgames == 0
+      	@classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
+      else
+        @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
+      end
+    end
+
+    arenaClass
+
+    # User's Highest Winning Decks
+    @topdeck = Deck.bestuserdeck(@user.id)
+
+  end
+
+  def sig
+    @user = User.find(params[:profile_id])
+    matches = Match.where(user_id: @user.id, season_id: current_season)
+    # Overall win rates
+    arena_matches = matches.where(mode_id: 1)
+    @overallarena= get_win_rate(arena_matches, true)
+    con_matches = matches.where(mode_id: 3)
+    @overallcon = get_win_rate(con_matches, true)
+
+    render layout: false
+  end
+  private
+
+  def arenaClass
+    classes = klasses_hash.map { |a| a[0] }
+    # Determine Arena Class Win Rates
     @classarenarate = Array.new
     (1..Klass.all.count).each_with_index do |c,i|
       totalwins = 0
@@ -71,39 +116,6 @@ class ProfilesController < ApplicationController
 		    @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
       end
     end
-    # @classarenarate = @classarenarate.sort_by { |name, winsrate| winsrate }.reverse
-
-    # Determine Constructed Class Win Rates
-
-    @classconrate = Array.new
-    (1..Klass.all.count).each_with_index do |c,i|
-      totalwins = 0
-      totalgames = 0
-      totalwins = Match.where( mode_id: 3,  klass_id: c, result_id: 1, :user_id => @user.id ).count
-      totalgames = Match.where( mode_id: 3, klass_id: c, :user_id => @user.id ).count
-      if totalgames == 0
-      	@classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
-      else
-        @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
-		  end
-    end
-    # @classconrate = @classconrate.sort_by { |name, winsrate| winsrate }.reverse
-
-    # User's Highest Winning Decks
-    decks = Deck.where(user_id: @user.id)
-    @userdeckrates = Hash.new
-    decks.each do |d|
-      totalgames = d.constructeds.count
-      if totalgames == 0
-        @userdeckrates[d.name] = [d.race, -1, d.id]
-      else
-      	@userdeckrates[d.name] = [d.race, d.constructeds.where(win:true).count.to_f / totalgames, d.id]
-      end
-    end
-    @userdeckrates = @userdeckrates.sort_by { |name, winsrate| winsrate[1] }.reverse
-    # Overall win rates
-    @overallarena = [Arena.where(user_id: @user.id, win: true).count, Arena.where(user_id: @user.id, win: false).count, Arena.where(user_id: @user.id).count]
-    @overallcon = [Constructed.where(user_id: @user.id, win: true).count, Constructed.where(user_id: @user.id, win: false).count, Constructed.where(user_id: @user.id).count]
 
   end
 end

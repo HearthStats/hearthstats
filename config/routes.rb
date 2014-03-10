@@ -1,10 +1,11 @@
 Hearthstats::Application.routes.draw do
+
+  # Gem routes
+  #
   opinio_model
-
-  get "cards/index"
-
   mount RedactorRails::Engine => '/redactor_rails'
 
+  get "cards/index"
   get "streams/index"
 
 	# match '(*foo)' => 'additional#serverupgrade'
@@ -59,7 +60,9 @@ Hearthstats::Application.routes.draw do
   match "/arena/matches", to: "arenas#matches"
 
   match "decks/:id/copy", to: "decks#copy"
-  resources :profiles
+  resources :profiles do
+    get 'sig'
+  end
   resources :decks do
   	collection do
       get 'active_decks'

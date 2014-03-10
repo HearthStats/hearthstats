@@ -68,10 +68,10 @@ div class="row profile"
                         li
                           span class="sale-info" Top Deck
                           span class="sale-num"
-                            -if @userdeckrates.blank?
+                            -if @topdeck.blank?
                               |N/A
                             -else
-                              = link_to @userdeckrates.first[0], deck_path(Deck.find(@userdeckrates.first[1][2]).friendly_id)
+                              = link_to truncate(@topdeck[0], :length => 30), deck_path(@topdeck[1][1])
 
               div class="tabbable tabbable-custom tabbable-custom-profile"
                 ul class="nav nav-tabs"
