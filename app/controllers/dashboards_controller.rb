@@ -5,7 +5,10 @@ class DashboardsController < ApplicationController
   end
 
   def index
-    # recentgamesbyhr(current_user.id, 12)
+    if current_user.profile.name.nil?
+      redirect_to edit_profile_path(current_user), alert: 'Please add an username' and return
+    end
+
     recentgames(current_user.id, 10)
     # Get all user's matches from this season
     matches = Match.where(user_id: current_user.id, season_id: current_season)
