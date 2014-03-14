@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey, :subscription_id
 
   has_one :profile, dependent: :destroy
   has_many :arenas, dependent: :destroy
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :arena_runs, dependent: :destroy
   belongs_to :tourny
   has_many :matches, dependent: :destroy
+  belongs_to :subscription
+
   acts_as_messageable
 
   def get_userkey

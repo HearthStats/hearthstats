@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140308204028) do
+ActiveRecord::Schema.define(:version => 20140314171622) do
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -363,6 +363,11 @@ ActiveRecord::Schema.define(:version => 20140308204028) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "subscriptions", :force => true do |t|
+    t.string "name"
+    t.float  "cost"
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -423,6 +428,7 @@ ActiveRecord::Schema.define(:version => 20140308204028) do
     t.integer   "tourny_id"
     t.boolean   "guest"
     t.string    "userkey"
+    t.integer   "subscription_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
