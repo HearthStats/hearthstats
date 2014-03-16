@@ -70,6 +70,7 @@ gem 'unf'
 gem "cancan"
 gem 'mailboxer' # User notifications and mailing
 gem 'imgkit'
+gem 'analytics-ruby', '~>1.0'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
