@@ -10,10 +10,13 @@
           th
             |Matches Played
           th
-            |Overall Win Rate
+            |Overall Casual Win Rate
+          th
+            |Overall Ranked Win Rate
         tr
           td = matches.count
-          td = get_win_rate(matches)
+          td = get_win_rate(matches.where(mode: 2))
+          td = get_win_rate(matches.where(mode: 3))
       table.table.table-condensed.details
         tr
           th Against
