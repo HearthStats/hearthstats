@@ -5,21 +5,21 @@ class AdditionalController < ApplicationController
 
   def uploader
   end
-  
+
   def uploader_download_win
     version = HTTParty.get(
-      "http://raw.github.com/JeromeDane/HearthStats.net-Uploader/master/src/version"
+      "http://raw.github.com/HearthStats/HearthStats.net-Uploader/master/src/version"
     )
-    redirect_to("https://github.com/JeromeDane/HearthStats.net-Uploader/releases/download/v" + version + "/HearthStats.net.Uploader.v" + version + ".zip")
+    redirect_to("https://github.com/HearthStats/HearthStats.net-Uploader/releases/download/v" + version + "/HearthStats.net.Uploader.v" + version + ".zip")
   end
-  
+
   def uploader_download_osx
     version = HTTParty.get(
-      "http://raw.github.com/JeromeDane/HearthStats.net-Uploader/master/src/version-osx"
+      "http://raw.github.com/HearthStats/HearthStats.net-Uploader/master/src/version-osx"
     )
-    redirect_to("https://github.com/JeromeDane/HearthStats.net-Uploader/releases/download/v" + version + "-osx/HearthStats.net.Uploader.v" + version + "-osx.zip")
+    redirect_to("https://github.com/HearthStats/HearthStats.net-Uploader/releases/download/v" + version + "-osx/HearthStats.net.Uploader.v" + version + "-osx.zip")
   end
-  
+
   def aboutus
   end
 
@@ -32,7 +32,7 @@ class AdditionalController < ApplicationController
 
   def news
 
-  	feeds_urls = ["http://us.battle.net/hearthstone/en/feed/news","http://www.liquidhearth.com/rss/news.xml", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
+  	feeds_urls = ["http://hearthstone.blizzpro.com/feed/","http://us.battle.net/hearthstone/en/feed/news","http://www.liquidhearth.com/rss/news.xml", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
 
   	feeds = Feedzirra::Feed.fetch_and_parse(feeds_urls)
 
