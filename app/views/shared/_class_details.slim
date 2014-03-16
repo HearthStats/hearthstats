@@ -15,8 +15,8 @@
             |Overall Ranked Win Rate
         tr
           td = matches.count
-          td = get_win_rate(matches.where(mode: 2))
-          td = get_win_rate(matches.where(mode: 3))
+          td = get_win_rate(matches.where(mode_id: 2))
+          td = get_win_rate(matches.where(mode_id: 3))
       table.table.table-condensed.details
         tr
           th Against
