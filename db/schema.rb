@@ -12,10 +12,14 @@
 # It's strongly recommended to check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140314171622) do
 =======
 ActiveRecord::Schema.define(:version => 20140307020321) do
 >>>>>>> created basic teams table
+=======
+ActiveRecord::Schema.define(:version => 20140317181644) do
+>>>>>>> addded team users table
 
   create_table "announcements", :force => true do |t|
     t.text      "body"
@@ -370,6 +374,11 @@ ActiveRecord::Schema.define(:version => 20140307020321) do
   create_table "subscriptions", :force => true do |t|
     t.string "name"
     t.float  "cost"
+  end
+
+  create_table "team_users", :force => true do |t|
+    t.integer "user_id"
+    t.integer "team_id"
   end
 
   create_table "teams", :force => true do |t|
