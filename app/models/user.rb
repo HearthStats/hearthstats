@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   belongs_to :subscription
 
   acts_as_messageable
+  has_many :team_users
+  has_many :teams, through: :team_users
 
   def get_userkey
   	if self.userkey.nil?
