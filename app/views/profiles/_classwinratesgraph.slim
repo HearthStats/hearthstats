@@ -2,7 +2,7 @@ div id="#{chartname}"
 javascript:
   var chart = new Highcharts.Chart({
       chart: {
-      	  renderTo: '#{chartname}',
+          renderTo: '#{chartname}',
           type: 'column',
           backgroundColor: '#ffffff',
           height: '#{height}',
@@ -14,7 +14,7 @@ javascript:
           text: 'Source: HearthStats.net'
       },
       xAxis: {
-        categories: #{raw railsdata[1]}, 
+        categories: #{raw railsdata[1]},
           title: {
               text: null
           }

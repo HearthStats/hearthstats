@@ -60,7 +60,8 @@ div.row
               = link_to "v#{version.version}", deck_path(@deck, version: version.version)
         h3 Notes
         = raw @deck.notes
-	  = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
+      div.deck-show-graph
+        = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments
         = render_comments_form @deck
         = render_comments @deck, :page => params[:page], :limit => 5
