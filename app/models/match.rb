@@ -17,6 +17,7 @@ class Match < ActiveRecord::Base
 
   has_one :match_rank
   has_one :rank, :through => :match_rank
+
   belongs_to :mode
   belongs_to :user
 

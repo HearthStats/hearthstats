@@ -1,0 +1,75 @@
+div class="row"
+  div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
+    div class="dashboard-stat blue"
+      div class="visual"
+        =image_tag("swords.svg", height: 65, width: 65)
+
+      div class="details"
+        div class="number"
+          = @arena_wr
+        div class="desc" Arena Win Rate
+
+      =link_to arenas_path, class: "more" do
+        |View more
+        i class="m-icon-swapright m-icon-white"
+
+
+  div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
+    div class="dashboard-stat green"
+      div class="visual"
+        = image_tag("hammerwrench.svg", height: 65, width: 65)
+
+      div class="details"
+        div class="number"
+          = @con_wr
+        div class="desc" Ranked Win Rate
+
+      = link_to constructeds_path, class: "more" do
+        |View more
+        i class="m-icon-swapright m-icon-white"
+
+
+  div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
+    div class="dashboard-stat purple"
+      div class="visual"
+        i class="fa fa-globe"
+      - if @topdeck == nil
+        div class="details"
+          div class="number" N/A
+          div class="desc" Best Deck
+
+        = link_to new_deck_path, class: "more" do
+          |Create a Deck
+          i class="m-icon-swapright m-icon-white"
+      - else
+        div class="details"
+          div class="number" = truncate(@topdeck[0], :length => 12)
+          div class="desc" Best Deck
+
+        = link_to deck_path(@topdeck[1][1]), class: "more" do
+          |View more
+          i class="m-icon-swapright m-icon-white"
+
+
+  div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"
+    div class="dashboard-stat Mage"
+      div class="visual"
+        i class="fa fa-bar-chart-o"
+      - if @toparena == nil
+        div class="details"
+          div class="number" N/A
+          div class="desc" Best Arena Class
+
+        = link_to new_arena_path, class: "more" do
+          |New Arena Game
+          i class="m-icon-swapright m-icon-white"
+      - else
+        div class="details"
+          div class="number" = truncate(@toparena[0], :length => 12)
+          div class="desc" Best Arena Class
+        = link_to stats_arenas_path, class: "more" do
+          |View more
+          i class="m-icon-swapright m-icon-white"
+/ <!-- END DASHBOARD STATS --
+div class="clearfix"
+

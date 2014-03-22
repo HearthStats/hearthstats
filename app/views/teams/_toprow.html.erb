@@ -3,7 +3,7 @@
     <!-- BEGIN GRAPH-->
     <div class="portlet solid bordered light-grey">
       <div class="portlet-title">
-        <div class="caption"><i class="fa fa-bar-chart-o"></i>Personal Win Rates</div>
+        <div class="caption"><i class="fa fa-bar-chart-o"></i>Team Average Win Rate</div>
       </div>
       <div class="portlet-body">
         <%= render "dashboards/chart", height: 334 %>
@@ -22,7 +22,7 @@
 				<div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0">
 					<ul class="feeds">
 						<% @recent_entries.each do |entry| %>
-              <li id="<%= entry.mode.name %>">
+							<li>
 								<div class="col1">
 									<div class="cont">
 										<div class="cont-col1">
@@ -35,15 +35,14 @@
 													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
 												</div>
                       <% elsif entry.mode.name == "Casual" %>
-                        <div class="label label-sm label-<%=entry.klass.name%>">
-													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
+                          <div class="label label-sm label-<%=entry.klass.name%>">
+                            <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
 												</div>
                       <% end%>
-
 										</div>
 										<div class="cont-col2">
 											<div class="desc">
-											  <%= entry.match_result.name %> against <%= entry.oppclass.name %> with <%= entry.klass.name %>
+											  You <%= entry.match_result.name %> against <%= entry.oppclass.name %> with <%= entry.klass.name %>
 											</div>
 										</div>
 									</div>
@@ -66,28 +65,6 @@
 				<div class="caption"><i class="fa fa-globe"></i>Global Stats</div>
 			</div>
 			<div class="portlet-body">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="easy-pie-chart">
-							<div class="number transactions" data-percent=<%= @global[:arena] %>><span><%= @global[:arena] %></span>%</div>
-							<span class="title" href="#">Arena Win Rate</span>
-						</div>
-					</div>
-					<div class="margin-bottom-10 visible-sm"></div>
-					<div class="col-md-4">
-						<div class="easy-pie-chart">
-							<div class="number visits" data-percent=<%= @global[:con] %>><span><%= @global[:con] %></span>%</div>
-							<span class="title">Constructed Win Rate</span>
-						</div>
-					</div>
-					<div class="margin-bottom-10 visible-sm"></div>
-					<div class="col-md-4">
-						<div class="easy-pie-chart">
-							<div class="number bounce" data-percent=<%= @global[:coin] %>><span><%= @global[:coin] %></span>%</div>
-							<span class="title" href="#">Constructed Coin Win Rate</span>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
     <!-- END PORTLET-->

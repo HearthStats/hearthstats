@@ -16,6 +16,17 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @members = @team.users
 
+    # Get Win Rates
+    matches = Match.where(user_id: @members, season_id: current_season)
+    @arena_wr = get_win_rate(matches.where(mode_id: 1), true)
+    @con_wr = get_win_rate(matches.where(mode_id: 3), true)
+
+    # Get recent games
+    @recent_entries = matches.last(10)
+    recentgames(@members, 10)
+
+
+
     # Get decks from all team members
     @decks = Array.new
     @members.each do |m|

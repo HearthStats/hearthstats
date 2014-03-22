@@ -5,29 +5,51 @@
 - provide(:subtitle, ' team page');
 - provide(:section, 'Teams')
 
-div.members.col-md-6
-  h2 Members
-  table
-    th Name
-    th Constructed Win Rate
-    th Arena Win Rate
-    - @members.each do |m|
-      tr
-        td.name = m.profile.name
-        td.con-wr = get_win_rate(Match.where(user_id: m.id, mode_id: 3), true)
-        td.arena-wr = get_win_rate(Match.where(user_id: m.id, mode_id: 1), true)
-div.decks.col-md-6
-  h2 Decks
-  table
-    th Name
-    th Win Rate
-    th Creator
-    - @decks[0].each do |d|
-      tr
-        td = d.name
-        td = get_win_rate(d.matches, true)
-        td = d.user.profile.name
+= render 'shared/block_stats'
+= render 'toprow'
+
+div.row
+  div.col-md-6
+    div.portlet.box.blue
+      div.portlet-title
+        div.caption Members
+      div.portlet-body
+        table.table.table-bordered.table-striped.members
+          th Name
+          th Constructed Win Rate
+          th Arena Win Rate
+          - @members.each do |m|
+            tr
+              td.name = m.profile.name
+              td.con-wr = get_win_rate(Match.where(user_id: m.id, mode_id: 3), true)
+              td.arena-wr = get_win_rate(Match.where(user_id: m.id, mode_id: 1), true)
+  div.col-md-6
+    div.portlet.box.green
+      div.portlet-title
+        div.caption Team Decks
+      div.portlet-body
+        table.table.table-bordered.table-striped#decks
+          thead
+            th Name
+            th Win Rate
+            th Creator
+          tbody
+            - @decks[0].each do |d|
+              tr
+                td = d.name
+                td = get_win_rate(d.matches, true)
+                td = d.user.profile.name
 
 = link_to 'Edit', edit_team_path(@team)
 '|
 = link_to 'Back', teams_path
+
+javascript:
+  $(document).ready(function() {
+    $('#decks').dataTable( {
+      "aaSorting": [[ 4, "desc" ]]
+    } );
+  });
+  Index.init();
+  Index.initMiniCharts();
+

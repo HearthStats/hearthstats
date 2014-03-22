@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
       redirect_to edit_profile_path(current_user), alert: 'Please add an username' and return
     end
 
-    recentgames(current_user.id, 10)
+    recentgames(current_user, 10)
     # Get all user's matches from this season
     matches = Match.where(user_id: current_user.id, season_id: current_season)
     arena_matches = matches.where(mode_id: 1)
@@ -17,7 +17,7 @@ class DashboardsController < ApplicationController
     con_matches = matches.where(mode_id: 3)
     @con_wr = get_win_rate(con_matches, true)
 
-    @recent_entries = Profile.get_recent_games(current_user.id)
+    @recent_entries = matches.last(10)
     @topdeck = Deck.bestuserdeck(current_user.id)
  		@toparena = Match.bestuserarena(current_user.id)
     overall = Rails.cache.fetch("global")
