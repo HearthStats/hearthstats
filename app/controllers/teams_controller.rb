@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
+    redirect_to root_path, alert: "No new teams allowed right now" and return
     @teams = Team.all
 
     respond_to do |format|
@@ -42,6 +43,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
+    redirect_to root_path, alert: "No new teams allowed right now" and return
     @team = Team.new
 
     respond_to do |format|
@@ -90,6 +92,7 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+    redirect_to root_path, alert: "No new teams allowed right now" and return
     @team = Team.find(params[:id])
     @team.destroy
 
