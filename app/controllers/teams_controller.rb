@@ -31,7 +31,9 @@ class TeamsController < ApplicationController
     # Get decks from all team members
     @decks = Array.new
     @members.each do |m|
-      @decks << m.decks
+      m.decks.each do |d|
+        @decks << d
+      end
     end
     @decks.sort_by { |d| d.name }.reverse!
     respond_to do |format|

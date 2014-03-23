@@ -35,7 +35,7 @@ div.row
             th Win Rate
             th Creator
           tbody
-            - @decks[0].each do |d|
+            - @decks.each do |d|
               tr
                 td = d.name
                 td = get_win_rate(d.matches, true)
