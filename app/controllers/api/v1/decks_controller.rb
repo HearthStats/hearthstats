@@ -22,8 +22,40 @@ module Api
 
 			def find
 				deck = Deck.find(params[:deck_id])
+				card_array = deck.cardstring.split(",")
+				res_array = Array.new
+				card_array.each do |card|
+					card_count = /_(\d*)/.match(card)[1]
+					card_id = /(\d*)_/.match(card)[1]
+					card = Card.find(card_id)
+					card_name = card.name
+					card_mana = card.mana
+					res_array << [card_name, card_count, card_mana]
+				end
+
+				# html = String.new
+				# html << "<div class='decklist'>"
+				# card_array.each do |card|
+					# card_id = /(\d*)_/.match(card)[1]
+					# Card.find()
+					# card_count = /_(\d*)/.match(card)[1]
+				# 	html << "<div class='cardWrapper #{card_count}'>"
+				# 	html << "<div class='mana'>"
+				# 	html << "</div>"
+				# 	html << "<div class='name'>"
+				# 	html << "</div>"
+				# 	html << "<div class='qty'>"
+				# 	html << "</div>"
+				# 	html << "<img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{}.png'>"
+				# 	html << "<div class='frame'>"
+				# 	html << "</div>"
+				# 	html << "</div>"
+
+				# end
+				# html << "</div>"
+
 				if deck.is_public
-					render :json => deck
+					render :json => {status: "success", data: {deck: deck, deck_array: res_array}}
 				else
 					render :json => {status: "error", message: "Deck is private"}
 				end
