@@ -141,6 +141,7 @@ Hearthstats::Application.routes.draw do
       post "matches/new"
 
 	    get "decks/show"
+	    get "decks/find"
       post "decks/activate"
       post "decks/slots"
 		end
