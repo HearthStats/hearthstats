@@ -4,6 +4,7 @@ module Api
 			before_filter :validate_userkey, :get_user_api
 			skip_before_filter :get_user_api, :only => :show
 			skip_before_filter :get_user_api, :only => :find
+			skip_before_filter :validate_userkey, :only => :find
 
 			respond_to :json
 
