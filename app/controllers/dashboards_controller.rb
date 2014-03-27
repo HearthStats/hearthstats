@@ -17,7 +17,7 @@ class DashboardsController < ApplicationController
     con_matches = matches.where(mode_id: 3)
     @con_wr = get_win_rate(con_matches, true)
 
-    @recent_entries = matches.last(10)
+    @recent_entries = matches.last(10).reverse
     @topdeck = Deck.bestuserdeck(current_user.id)
  		@toparena = Match.bestuserarena(current_user.id)
     overall = Rails.cache.fetch("global")

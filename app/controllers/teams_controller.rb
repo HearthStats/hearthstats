@@ -23,7 +23,7 @@ class TeamsController < ApplicationController
     @con_wr = get_win_rate(matches.where(mode_id: 3), true)
 
     # Get recent games
-    @recent_entries = matches.last(10)
+    @recent_entries = matches.last(10).reverse
     recentgames(@members, 10)
 
 
