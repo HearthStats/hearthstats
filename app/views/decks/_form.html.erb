@@ -33,7 +33,6 @@
 					<label for="deck_notes">Notes</label><small> Decklist, etc.</small>
 					<br />
 					<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
-          <%= text_area_tag :deck_text %>
 				</div>
 				<div class="actions center">
 					<% if !current_user.guest? %>
