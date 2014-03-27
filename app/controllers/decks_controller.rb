@@ -99,7 +99,11 @@ class DecksController < ApplicationController
       @deck.is_public = false
     end
     if !params[:deck_text].blank?
-      @deck.cardstring = text_to_deck(params[:deck_text])
+    	begin
+	      @deck.cardstring = text_to_deck(params[:deck_text])
+	    rescue
+        render action: "edit", alert: 'Deck list process error'
+	    end
     end
     respond_to do |format|
       if @deck.save
