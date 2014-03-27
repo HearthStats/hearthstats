@@ -96,7 +96,10 @@ class DecksController < ApplicationController
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
     if current_user.guest?
-    	@deck.is_public = false
+      @deck.is_public = false
+    end
+    if !params[:deck_text].blank?
+      @deck.cardstring = text_to_deck(params[:deck_text])
     end
     respond_to do |format|
       if @deck.save
@@ -184,5 +187,18 @@ class DecksController < ApplicationController
 
   def getMyDecks()
     Deck.where(:user_id => current_user.id).order(:klass_id, :name).all
+  end
+
+  def text_to_deck(text)
+    text_array = text.split("\r\n")
+    card_array = Array.new
+    text_array.each do |line|
+      qty = /^([1-2])/.match(line)[1]
+      name = /^[1-2] (.*)/.match(line)[1]
+      card_id = Card.where("lower(name) =?", name.downcase).first.id
+      card_array << card_id.to_s + "_" + qty.to_s
+    end
+
+    return card_array.join(',')
   end
 end
