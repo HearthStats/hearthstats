@@ -1,0 +1,217 @@
+- set_meta_tags :title => 'January Report',
+  :description => 'January Report on statistics from Hearthstats',
+  :keywords => 'stats, january, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
+
+div class="nav-top clearfix"
+  div.nav-social
+    a href="https://twitter.com/HearthStats"
+      =image_tag("social/simple/32-twitter.png", width: 20, height: 20)
+    a href="https://www.facebook.com/HearthStats.net"
+      =image_tag("social/simple/32-facebook.png", width: 20, height: 20)
+    a href="https://plus.google.com/+HearthstatsNet"
+      =image_tag("social/simple/32-googleplus.png", width: 20, height: 20)
+
+  span class="right"
+    a class="nav-icon" href="http://hss.io/"
+      span HearthStats
+  span class="right"
+    a class="nav-icon" href="http://hss.io/users/sign_up"
+      span Sign Up
+div.main
+  section.most-played#splash
+    div.patch All stats are post 1.0.0.4458
+  section.most-played.page1
+    div.page_container.global
+      h2 Most Played Classes
+      div.row
+        div.col-md-6
+          div.mptitle ARENA
+          - @arenamp = @arenatot.sort_by { |name, winsrate| winsrate }.reverse
+          table.mptable
+            tr
+              td.mpfirst 1. #{@arenamp.first[0]}
+              td.mpfirst =@arenamp.first[1]
+            tr
+              td.mpsec 2. #{@arenamp.second[0]}
+              td.mpsec =@arenamp.second[1]
+            tr
+              td.mpthird 3. #{@arenamp.third[0]}
+              td.mpthird =@arenamp.third[1]
+          div.arenamore
+            table.mptable
+              -(3..8).each do |mp|
+                tr
+                  td #{mp+1}. #{@arenamp[mp][0]}
+                  td #{@arenamp[mp][1]}
+          div.showarena More
+        div.col-md-6
+          div.mptitle CONSTRUCTED
+          - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
+          table.mptable
+            tr
+              td.mpfirst 1. #{@conmp.first[0]}
+              td.mpfirst =@conmp.first[1]
+            tr
+              td.mpsec 2. #{@conmp.second[0]}
+              td.mpsec =@conmp.second[1]
+            tr
+              td.mpthird 3. #{@conmp.third[0]}
+              td.mpthird =@conmp.third[1]
+          div.conmore
+            table.mptable
+              -(3..8).each do |mp|
+                tr
+                  td #{mp+1}. #{@conmp[mp][0]}
+                  td #{@conmp[mp][1]}
+          div.showcon More
+      h2 Global Win Rates
+      div.row
+        div.col-md-6.arena
+          div.tableheader ARENA
+          - counter = 1
+          table.rankingtable
+            - @classarenarate.each do |c|
+              -if c[1] == -1
+              -else
+                tr
+                  td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+                  td
+                    #{number_to_percentage(c[1]*100, precision: 2)}
+                  td
+                    #{@arenatot[c[0]]} Games
+
+              -counter = counter + 1
+        div.col-md-6.con
+          div.tableheader CONSTRUCTED
+          - counter = 1
+          table.rankingtable
+            - @classconrate.each do |c|
+              -if c[1] == -1
+              -else
+                tr
+                  td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
+                  td
+                    #{number_to_percentage(c[1]*100, precision: 2)}
+                  td
+                    #{@contot[c[0]]} Games
+              -counter = counter + 1
+  section.page2.global-rates
+    div.page_container
+      h2 Global Win Rates
+      div.global-arena
+        h3 ARENA
+        table.arena-win-rates.report-table
+          th
+            -@classesArray.each do |c|
+              td class="#{c}" = c
+          -@classesArray.each do |c|
+            tr
+              td class="#{c}" = c
+              -currentClass = @userarenarate.select {|a| a[0] == c}
+              -currentClass.each do |rate|
+                td
+                  = number_to_percentage(rate[1][1]*100, precision: 2)
+        small how to read: horizontal vs vertical
+  section.page3
+    div.page_container
+      h2 Arena Win Counts
+      div.global-arena
+        table.arena-win-rates.report-table
+          th
+            -(0..12).each do |i|
+              td.game-count = i
+          -@classesArray.each do |c|
+            tr
+              td class="#{c}" = c
+              -currentClass = @arenaRuns.select {|a| a[0] == c}
+              -currentClass[0][1].each_with_index do |runs, i|
+                td
+                  div.run-count = runs
+                  div.run-percent = number_to_percentage(currentClass[0][2][i]*100, precision: 2)
+  section.page4
+    div.page_container
+      h2 Global Win Rates
+      div.global-arena
+        h3 CONSTRUCTED
+        table.arena-win-rates.report-table
+          th
+            -@classesArray.each do |c|
+              td class="#{c}" = c
+          -@classesArray.each do |c|
+            tr
+              td class="#{c}" = c
+              -currentClass = @conrate.select {|a| a[0] == c}
+              -currentClass.each do |rate|
+                td
+                  = number_to_percentage(rate[1][1]*100, precision: 2)
+        small how to read: horizontal vs vertical
+  section.page5
+    div.page_container.hsstats
+      h2 HearthStats
+      div.row
+        div.col-md-6
+          div.users
+            span.usercount = User.all.count
+            | users contributed to this data
+          div.contribute.tracking HearthStats was made by suggestions from the community and made for the community. If there's something you would like to see, just ask <a href="http://hearthstats.uservoice.com">here</a>!
+          div.donate If you like what I'm doing, toss me a few coins.
+          form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
+            input type="hidden" name="cmd" value="_s-xclick"
+            input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----"
+            input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"
+            img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"
+          div.smile
+            |:)
+        div.col-md-6
+          div.tracking
+            p You can track your own Hearthstone stats though our online interface or our new tracking app.
+            p.auto <b>Automatically</b> track your win rates, rank, and opponents for arena and constructed!
+            p The app is currently in open beta and developed by the awesome <a href="http://twitter.com/JeromeDane" target="_blank" title="Follow Jerome on Twitter"> Jerome Dane </a> and you can try it out <a href="https://github.com/JeromeDane/HearthStats.net-Uploader/releases/download/v0.7.201301302/HearthStats.net.Uploader.v0.7.201301302.zip">here</a>.
+            a href="https://github.com/JeromeDane/HearthStats.net-Uploader/releases/download/v0.8.201301311/HearthStats.net.Uploader.v0.8.201301311.zip"
+              i.fa.fa-download.download
+            p.disclaimer Please note that the HearthStats uploader app uses screen capture technology so it is perfectly legal. You can find the source code <a href="https://github.com/JeromeDane/HearthStats.net-Uploader"> here</a> if you are curious. You can also check out the related <a href="http://redd.it/1wa4rc">Reddit Thread</a>.
+          div.regcont
+            a class="btn btn-success btn-lg regbutton " href="/users/sign_up" Register Now
+footer
+  a href="#" class="go-top" Go Top
+javascript:
+  $(document).ready(function() {
+    var isShownArena = false;
+    $('.showarena').click(function(){
+      $('.arenamore').slideToggle();
+      if (isShownArena == false){
+        $('.showarena').text("Less");
+        isShownArena = true;
+      }else{
+        $('.showarena').text("More");
+        isShownArena = false;
+      }
+    });
+    var isShownCon = false;
+    $('.showcon').click(function(){
+      $('.conmore').slideToggle();
+      if (isShownCon == false){
+        $('.showcon').text("Less");
+        isShownCon = true;
+      }else{
+        $('.showcon').text("More");
+        isShownCon = false;
+      }
+    });
+
+    // Show or hide the sticky footer button
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $('.go-top').fadeIn(200);
+      } else {
+        $('.go-top').fadeOut(200);
+      }
+    });
+
+    // Animate the scroll to top
+    $('.go-top').click(function(event) {
+      event.preventDefault();
+
+      $('html, body').animate({scrollTop: 0}, 300);
+    })
+  });
