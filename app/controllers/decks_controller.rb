@@ -102,7 +102,7 @@ class DecksController < ApplicationController
     	begin
 	      @deck.cardstring = text_to_deck(params[:deck_text])
 	    rescue
-        render action: "edit", alert: 'Deck list process error'
+        redirect_to new_deck_path, alert: 'Deck list process error' and return
 	    end
     end
     respond_to do |format|
