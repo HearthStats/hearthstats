@@ -5,7 +5,7 @@
 }
 .main #splash{
 	height: 100%;
-	background: url('/assets/janbg.jpg') no-repeat center top fixed;
+	background: url('/assets/report_pic/marbg.jpg') no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -510,4 +510,11 @@ body, .onepage-wrapper, html {
 
 .Warrior {
   background-color: #C79C6E;
+}
+.nav-right{
+	padding-right: 20px;
+}
+
+.hover{
+	background-color: rgba(189, 195, 199,0.2);
 }

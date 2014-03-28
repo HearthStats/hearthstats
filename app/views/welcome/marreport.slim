@@ -2,7 +2,7 @@
   :description => 'January Report on statistics from Hearthstats',
   :keywords => 'stats, january, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
 
-div class="nav-top clearfix"
+div class="nav-top"
   div.nav-social
     a href="https://twitter.com/HearthStats"
       =image_tag("social/simple/32-twitter.png", width: 20, height: 20)
@@ -11,15 +11,14 @@ div class="nav-top clearfix"
     a href="https://plus.google.com/+HearthstatsNet"
       =image_tag("social/simple/32-googleplus.png", width: 20, height: 20)
 
-  span class="right"
+  span class="right nav-right"
     a class="nav-icon" href="http://hss.io/"
       span HearthStats
-  span class="right"
     a class="nav-icon" href="http://hss.io/users/sign_up"
       span Sign Up
 div.main
   section.most-played#splash
-    div.patch All stats are post 1.0.0.4458
+    div.patch Season 4 Stats
   section.most-played.page1
     div.page_container.global
       h2 Most Played Classes
@@ -166,8 +165,8 @@ div.main
           div.tracking
             p You can track your own Hearthstone stats though our online interface or our new tracking app.
             p.auto <b>Automatically</b> track your win rates, rank, and opponents for arena and constructed!
-            p The app is currently in open beta and developed by the awesome <a href="http://twitter.com/JeromeDane" target="_blank" title="Follow Jerome on Twitter"> Jerome Dane </a> and you can try it out <a href="https://github.com/JeromeDane/HearthStats.net-Uploader/releases/download/v0.7.201301302/HearthStats.net.Uploader.v0.7.201301302.zip">here</a>.
-            a href="https://github.com/JeromeDane/HearthStats.net-Uploader/releases/download/v0.8.201301311/HearthStats.net.Uploader.v0.8.201301311.zip"
+            p The app is currently in open beta and developed by the awesome <a href="http://twitter.com/JeromeDane" target="_blank" title="Follow Jerome on Twitter"> Jerome Dane </a> and you can try it out <a href="https://hearthstats.net/uploader">here</a>.
+            a href="https://hearthstats.net/uploader"
               i.fa.fa-download.download
             p.disclaimer Please note that the HearthStats uploader app uses screen capture technology so it is perfectly legal. You can find the source code <a href="https://github.com/JeromeDane/HearthStats.net-Uploader"> here</a> if you are curious. You can also check out the related <a href="http://redd.it/1wa4rc">Reddit Thread</a>.
           div.regcont
@@ -176,6 +175,19 @@ footer
   a href="#" class="go-top" Go Top
 javascript:
   $(document).ready(function() {
+
+    var allCells = $(".report-table td, th");
+
+    allCells
+      .on("mouseover", function() {
+        var el = $(this),
+            pos = el.index();
+        el.parent().find("th, td").addClass("hover");
+        allCells.filter(":nth-child(" + (pos+1) + ")").addClass("hover");
+      })
+      .on("mouseout", function() {
+        allCells.removeClass("hover");
+      });
     var isShownArena = false;
     $('.showarena').click(function(){
       $('.arenamore').slideToggle();
