@@ -1,5 +1,7 @@
 class AdditionalController < ApplicationController
 
+  caches_page :news, :expires_in => 1.day
+
   def contactus
   end
 
@@ -27,7 +29,7 @@ class AdditionalController < ApplicationController
   end
 
   def serverupgrade
-  	render :layout=>false
+  	render :layout => false
   end
 
   def news

@@ -1,36 +1,34 @@
-<!-- <script src="http://masonry.desandro.com/js/masonry-docs.min.js"></script> -->
 <% set_meta_tags :title => 'Hearthstone News',
   :description => 'Latest Hearthstone News',
   :keywords => 'latest hearthstone, hearthstats, hearthstone, match, tracking, win, loss' %>
 <% provide(:title, 'Hearthstone News') %>
 <% provide(:subtitle, ' the latest in Hearthstone news') %>
 
-<% cache("news", :expires_in => 1.day) do %>
-	<div class="row">
-		<div class="col-md-12">
-			<small>Suggestions for news sources are welcome</small>
-		</div>
-		<div class="col-md-12 news-page">
-			<!-- entry array: title, url, summary, published -->
-			<div class="gridsizer"></div>
-			<% @items.each do |entry| %>
-			<div class="news-blocks rssentry">
-				<h3><a href=<%=entry[1]%> target="_blank" > <%= entry[0] %></a></h3>
-				<div class="news-block-tags">
-					<strong>Posted:</strong>
-					<em><%= entry[3].strftime("%b-%d-%Y") %></em>
-				</div>
-				<div class="rss_divider"></div>
-				<p><%= raw truncate(entry[2], :length => 500)  %></p>
-				<a href=<%=entry[1]%> class="news-block-btn" target="_blank" >
-				Read more
-				<i class="m-icon-swapright m-icon-black"></i>
-				</a>
-			</div>
-			<% end %>
-		</div>
-	</div>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <small>Suggestions for news sources are welcome</small>
+  </div>
+  <div class="col-md-12 news-page">
+    <!-- entry array: title, url, summary, published -->
+    <div class="gridsizer"></div>
+    <% @items.each do |entry| %>
+    <div class="news-blocks rssentry">
+      <h3><a href=<%=entry[1]%> target="_blank" > <%= entry[0] %></a></h3>
+      <div class="news-block-tags">
+        <strong>Posted:</strong>
+        <em><%= entry[3].strftime("%b-%d-%Y") %></em>
+      </div>
+      <div class="rss_divider"></div>
+      <p><%= raw truncate(entry[2], :length => 500)  %></p>
+      <a href=<%=entry[1]%> class="news-block-btn" target="_blank" >
+      Read more
+      <i class="m-icon-swapright m-icon-black"></i>
+      </a>
+    </div>
+    <% end %>
+  </div>
+</div>
+
 <script>
 	$('.news-page').isotope({
 	  // options
