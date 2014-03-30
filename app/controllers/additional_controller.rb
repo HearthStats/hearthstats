@@ -36,14 +36,12 @@ class AdditionalController < ApplicationController
 
   	feeds = Feedzirra::Feed.fetch_and_parse(feeds_urls)
 
-  	x = 0
     @items = Array.new
 
     feeds.each do |feed_url, feed|
     	next if feed == 0 || feed == 500
       feed.entries.each do |entry|
-        @items[x] = [entry.title, entry.url, entry.summary, entry.published]
-        x = x + 1
+        @items << [entry.title, entry.url, entry.summary, entry.published]
       end
 
     end
