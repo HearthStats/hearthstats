@@ -73,10 +73,9 @@ News Page
   text-decoration: none;
 }
 
-.news-blocks img.news-block-img {
-  width: 70px;
-  height: 70px;
-  margin: 5px 0px 0 10px;
+.news-blocks img {
+    max-width: 100%;
+    height: auto;
 }
 
 .news-blocks .news-block-tags {
