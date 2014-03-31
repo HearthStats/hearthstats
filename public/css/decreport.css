@@ -518,3 +518,6 @@ body, .onepage-wrapper, html {
 .hover{
 	background-color: rgba(189, 195, 199,0.2);
 }
+.below-reg{
+	padding-top: 20px;
+}
