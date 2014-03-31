@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   def edit
     authenticate_user!
     @profile = User.find(params[:id]).profile
+    flash[:new_user] = true if current_user.sign_in_count == 1
     if current_user.id != @profile.user_id
       redirect_to root_url, alert: 'You are not authorized to edit that.'
     end

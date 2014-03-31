@@ -8,4 +8,20 @@
 - provide(:subtitle, ' customize your personal profile');
 - provide(:section, 'Profile')
 
+- if flash[:new_user]
+  div class="modal fade" tabindex="-1" role="dialog"
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+          h4 class="modal-title" Welcome to HearthStats
+        div.modal-body
+          p Here's a quick video to get you started with HearthStats and it's basic features.
+          iframe width="480" height="360" src="//www.youtube.com/embed/IEkRqygequU?start=19" frameborder="0" allowfullscreen
+        div.modal-footer
+          button type="button" class="btn default" data-dismiss="modal" Close
+  javascript:
+    $(document).ready(function () {
+      $('.modal').modal('show')
+    });
 = render 'form'
