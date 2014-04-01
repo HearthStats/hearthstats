@@ -25,6 +25,7 @@ class UniqueDeck < ActiveRecord::Base
         self.cards << card
       end
     end
+    matches = self.decks.flat_map {|m| m.matches}
 
     self.num_minions = self.cards.where(:type_id => 1).count
     self.num_spells = self.cards.where(:type_id => 2).count
@@ -33,9 +34,9 @@ class UniqueDeck < ActiveRecord::Base
     matches = self.matches.where('created_at >= ?', 30.days.ago)
 
     self.num_users = self.decks.where(:klass_id => self.klass_id).count
-    self.num_matches = self.matches.count
-    self.num_wins = self.matches.where(:result_id => 1).count
-    self.num_losses = self.matches.where(:result_id => 2).count
+    self.num_matches = matches.count
+    self.num_wins = matches.select{ |m| m.result_id == 1 }.count
+    self.num_losses = matches.select{ |m| m.result_id == 2 }.count
     self.winrate = self.num_matches > 0 ? (self.num_wins.to_f / self.num_matches.to_f * 100) : 0
 
   end
