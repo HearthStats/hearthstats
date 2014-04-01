@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
 
 
 	def marreport
-		matches = Match.where(season_id: current_season)
+		matches = Match.where(season_id: 4)
 		# Determine match Class Win Rates
 		@classesArray = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
 		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
