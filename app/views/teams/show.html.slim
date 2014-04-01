@@ -37,9 +37,9 @@ div.row
           tbody
             - @decks.each do |d|
               tr
-                td = d.name
+                td = link_to d.name, d
                 td = get_win_rate(d.matches, true)
-                td = d.user.profile.name
+                td = link_to d.user.profile.name, profile_path(d.user)
 
 = link_to 'Edit', edit_team_path(@team)
 '|
