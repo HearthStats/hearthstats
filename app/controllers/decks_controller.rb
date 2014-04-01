@@ -15,7 +15,7 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def public
     #@decks = Deck.select('*').where("unique_deck_id IS NOT NULL").distinct(:unique_deck_id)
-    @decks = Deck.where("unique_deck_id IS NOT NULL AND is_public = 1").joins(:unique_deck)
+    @decks = Deck.group(:unique_deck_id).where(is_public: true).joins(:unique_deck)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }

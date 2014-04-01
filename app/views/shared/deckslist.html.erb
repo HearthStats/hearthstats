@@ -5,7 +5,7 @@
     if !class_filter.nil? && class_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
 		@decks = @decks.where(:klass_id => class_filter)
 	end
-	
+
 	#sort field
     @sortField = "num_users"
     sortRequest = CGI.parse(request.query_string)['sort'].first
@@ -38,15 +38,15 @@
     if global
     	@decks = @decks.find(:all, :group => 'unique_deck_id')
     end
-    
+
     items_per_page = CGI.parse(request.query_string)['items'].first
     if items_per_page.nil? || !((Float(items_per_page) rescue false))
       items_per_page = 20
     end
-    
+
     totalDecks = @decks.count
     @decks = @decks.paginate(:page => params[:page], :per_page => items_per_page)
-    
+
 %>
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
@@ -55,13 +55,13 @@
 			<option value="">- any class-</option>
 			<% Klass.order("name ASC").each do |klass| %>
 				<option value="<%= klass.id %>" <%= class_filter.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
-			<% end %>	
+			<% end %>
 		</select>
 		show
 		<select name="items">
 			<% [10, 20, 50, 100].each do |num| %>
 				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
-			<% end %> 
+			<% end %>
 		</select>
 		sort By
 		<select name="sort">
@@ -131,9 +131,9 @@
 						<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
 						<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
 					<% else %>
-						<% 
-							user_copy = deck.get_user_copy(current_user) 
-							if user_copy.nil? 
+						<%
+							user_copy = deck.get_user_copy(current_user)
+							if user_copy.nil?
 						%>
 							<%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
 						<% else %>
