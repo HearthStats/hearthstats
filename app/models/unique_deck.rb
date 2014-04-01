@@ -30,9 +30,6 @@ class UniqueDeck < ActiveRecord::Base
     self.num_minions = self.cards.where(:type_id => 1).count
     self.num_spells = self.cards.where(:type_id => 2).count
     self.num_weapons = self.cards.where(:type_id => 3).count
-
-    matches = self.matches.where('created_at >= ?', 30.days.ago)
-
     self.num_users = self.decks.where(:klass_id => self.klass_id).count
     self.num_matches = matches.count
     self.num_wins = matches.select{ |m| m.result_id == 1 }.count
