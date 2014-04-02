@@ -28,9 +28,10 @@ class DashboardsController < ApplicationController
       arenaoverallrate = overall_win_rate(1)
       matches = Match.where(season_id: current_season)
       @global = Hash.new
-      @global[:arena] = (get_win_rate(matches.where(mode_id: 1))).round
-      @global[:con] = (get_win_rate(matches.where(mode_id: 3))).round
-      @global[:coin] = (( matches.where(result_id: 1, coin: false ).count.to_f / matches.where( coin: false ).count)*100).round
+      @global[:arena] = get_win_rate(matches.where(mode_id: 1)).blank? ? (get_win_rate(matches.where(mode_id: 1))).round : 0
+      @global[:con] = get_win_rate(matches.where(mode_id: 3)).blank? ? (get_win_rate(matches.where(mode_id: 3))).round : 0
+      win_rate = ( matches.where(result_id: 1, coin: false ).count.to_f / matches.where( coin: false ).count)*100
+      @global[:coin] = win_rate.blank? ? (win_rate).round : 0
       Rails.cache.write("global", [conoverallrate,arenaoverallrate,@global], :expires_in => 1.days)
     else
       conoverallrate = overall[0]
