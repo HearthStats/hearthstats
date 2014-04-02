@@ -4,7 +4,7 @@ class MatchDeck < ActiveRecord::Base
   belongs_to :match, :dependent => :destroy
 
   before_save :set_unique_deck
-  after_save :update_deck_user_stats
+  after_create :update_deck_user_stats
 
   def set_unique_deck
     if !self.deck.nil? && !self.deck.unique_deck.nil?

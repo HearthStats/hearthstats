@@ -25,16 +25,16 @@ class UniqueDeck < ActiveRecord::Base
         self.cards << card
       end
     end
-    matches = self.decks.flat_map {|m| m.matches}
+    decks = self.decks
 
     self.num_minions = self.cards.where(:type_id => 1).count
     self.num_spells = self.cards.where(:type_id => 2).count
     self.num_weapons = self.cards.where(:type_id => 3).count
     self.num_users = self.decks.where(:klass_id => self.klass_id).count
-    self.num_matches = matches.count
-    self.num_wins = matches.select{ |m| m.result_id == 1 }.count
-    self.num_losses = matches.select{ |m| m.result_id == 2 }.count
-    self.winrate = self.num_matches > 0 ? (self.num_wins.to_f / self.num_matches.to_f * 100) : 0
+    self.num_matches = decks.map(&:user_num_matches).compact.inject(:+)
+    self.num_wins = decks.map(&:user_num_wins).compact.inject(:+)
+    self.num_losses = decks.map(&:user_num_losses).compact.inject(:+)
+    self.winrate = !self.num_matches.blank? ? (self.num_wins.to_f / self.num_matches.to_f * 100) : 0
 
   end
 end
