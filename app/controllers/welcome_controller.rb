@@ -105,7 +105,7 @@ class WelcomeController < ApplicationController
 			runCount = Array.new(13,0)
 			totGames = ArenaRun.where(klass_id: i+1).count
 			ArenaRun.where(klass_id: i+1).each do |ar|
-				runCount[ar.matches.count] += 1 unless ar.matches.count > 12
+				runCount[ar.matches.where(result_id: 1).count] += 1 unless ar.matches.where(result_id: 1).count > 12
 			end
 			runPercent = runCount.map { |e| e.to_f/totGames }
 			@arenaRuns << [c, runCount, runPercent]
