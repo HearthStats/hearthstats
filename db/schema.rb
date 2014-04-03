@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140317181644) do
-
-  create_table "announcements", :force => true do |t|
-    t.text      "body"
-    t.string    "type"
-    t.timestamp "created_at", :null => false
-    t.timestamp "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20140403233739) do
 
   create_table "arena_run_cards", :force => true do |t|
     t.integer  "arena_run_id"

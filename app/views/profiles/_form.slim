@@ -15,7 +15,7 @@
       .col-md-3
         = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, class: 'form-control form-control-inline input-medium'
     .form-group
-      = f.label "Battnet ID", class: "control-label col-md-3"
+      = f.label "Battle.net ID", class: "control-label col-md-3"
       .col-md-3
         =f.text_field :bnetid
       .col-md-3
