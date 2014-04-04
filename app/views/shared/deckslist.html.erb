@@ -91,63 +91,71 @@
 	$('#deckListFilterSubmit').hide();
 </script>
 
-<table class="decklist table table-bordered table-striped table-condensed flip-content">
-	<tr>
-		<th>Name</th>
-		<th class="class">Class</th>
-		<th class="minions">Minions</th>
-		<th class="spells">Spells</th>
-		<th class="weapons">Weapons</th>
-		<th class="matches">Matches *</th>
-		<th class="wins">Wins *</th>
-		<th class="losses">Losses *</th>
-		<th class="winrate">Win Rate *</th>
-		<th class="num_users" title="Number of people using this exact deck" rel="tooltip">Users</th>
-		<% if global %>
-			<th class="author" title="Who first listed this exact deck" rel="tooltip">Listed By</th>
-		<% end %>
-		<% if !current_user.nil? %>
-			<th class="tools">Tools</th>
-		<% end %>
-	</tr>
-	<% @decks.each do |deck| %>
+<table class="decklist table table-bordered table-striped table-condensed flip-content" id="decklist">
+	<thead>
 		<tr>
-			<td class="name"><%= link_to(deck.name ,deck) %></td>
-			<td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>"/></td>
-			<td class="minions"><%= deck.num_minions %></td>
-			<td class="spells"><%= deck.num_spells %></td>
-			<td class="weapons"><%= deck.num_weapons %></td>
-			<td class="matches"><%= global ? deck.num_global_matches : deck.user_num_matches %></td>
-			<td class="wins"><%= global ? deck.global_wins : deck.user_num_wins %></td>
-			<td class="losses"><%= global ? deck.global_losses : deck.user_num_losses %></td>
-			<td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
-			<td class="num_users"><%= number_with_delimiter(deck.num_users, :delimiter => ',') %></td>
+			<th>Name</th>
+			<th class="class">Class</th>
+			<th class="minions">Minions</th>
+			<th class="spells">Spells</th>
+			<th class="weapons">Weapons</th>
+			<th class="matches">Matches *</th>
+			<th class="wins">Wins *</th>
+			<th class="losses">Losses *</th>
+			<th class="winrate">Win Rate *</th>
+			<th class="num_users" title="Number of people using this exact deck" rel="tooltip">Users</th>
 			<% if global %>
-				<td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+				<th class="author" title="Who first listed this exact deck" rel="tooltip">Listed By</th>
 			<% end %>
 			<% if !current_user.nil? %>
-				<td class="tools">
-					<%if !current_user.nil? && current_user.id == deck.user_id %>
-						<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
-						<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
-					<% else %>
-						<%
-							user_copy = deck.get_user_copy(current_user)
-							if user_copy.nil?
-						%>
-							<%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
-						<% else %>
-							<%= link_to("View My Copy", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
-						<% end %>
-					<% end %>
-				</td>
+				<th class="tools">Tools</th>
 			<% end %>
 		</tr>
-	<% end%>
+	</thead>
+	<tbody>
+		<% @decks.each do |deck| %>
+			<tr>
+				<td class="name"><%= link_to(deck.name ,deck) %></td>
+				<td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>"/></td>
+				<td class="minions"><%= deck.num_minions %></td>
+				<td class="spells"><%= deck.num_spells %></td>
+				<td class="weapons"><%= deck.num_weapons %></td>
+				<td class="matches"><%= global ? deck.num_global_matches : deck.user_num_matches %></td>
+				<td class="wins"><%= global ? deck.global_wins : deck.user_num_wins %></td>
+				<td class="losses"><%= global ? deck.global_losses : deck.user_num_losses %></td>
+				<td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
+				<td class="num_users"><%= number_with_delimiter(deck.num_users, :delimiter => ',') %></td>
+				<% if global %>
+					<td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+				<% end %>
+				<% if !current_user.nil? %>
+					<td class="tools">
+						<%if !current_user.nil? && current_user.id == deck.user_id %>
+							<%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+							<%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
+						<% else %>
+							<%
+								user_copy = deck.get_user_copy(current_user)
+								if user_copy.nil?
+							%>
+								<%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
+							<% else %>
+								<%= link_to("View My Copy", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
+							<% end %>
+						<% end %>
+					</td>
+				<% end %>
+			</tr>
+		<% end%>
+	</tbody>
 </table>
 <% if global %>
 	<p>* <em>stats are for all users that have played the deck in the last 30 days, not just the original author</em></p>
 <% else %>
 	<p>* <em>stats are for for your personal play using each deck</em></p>
 <% end %>
-<%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>
+<script>
+  $('#decklist').dataTable( {
+    "aaSorting": [[ 4, "desc" ]]
+  } );
+</script>

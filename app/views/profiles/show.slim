@@ -13,7 +13,7 @@ div class="row profile"
         li class="active"
           a href="#tab_1_1" data-toggle="tab" Overview
         li class=""
-          a href="#tab_1_3" data-toggle="tab" Achievements
+          a href="#tab_1_3" data-toggle="tab" Decks
       div class="tab-content"
         div class="tab-pane active" id="tab_1_1"
           div class="row"
@@ -108,6 +108,7 @@ div class="row profile"
                               span class="#{MatchResult.find(game[3]).name}"
                                 = MatchResult.find(game[3]).name
         div class="tab-pane" id="tab_1_3"
-          div class="row profile-achievements"
+          div class="row profile-decks"
             div class="col-md-12"
-              h2 Coming soon...
+              h2 #{@profiletitle}'s Decks
+              = render :template => 'shared/deckslist', :locals => { :global => false }

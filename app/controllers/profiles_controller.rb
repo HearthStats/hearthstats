@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    matches = Match.where(user_id: @user.id, season_id: current_season)
+    matches = Match.where(user_id: @user.id)
     @userkey = @user.get_userkey
     if @user.guest
     	return redirect_to root_url, alert: "Guests cannot access profiles"
@@ -86,6 +86,7 @@ class ProfilesController < ApplicationController
 
     # User's Highest Winning Decks
     @topdeck = Deck.bestuserdeck(@user.id)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => @user.id)
 
   end
 
