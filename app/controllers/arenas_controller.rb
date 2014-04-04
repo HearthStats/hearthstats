@@ -29,7 +29,6 @@ class ArenasController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @arena }
     end
   end
 
@@ -108,10 +107,8 @@ class ArenasController < ApplicationController
     respond_to do |format|
       if @arena.update_attributes(params[:arena])
         format.html { redirect_to arenas_url, notice: 'Arena was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @arena.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -154,7 +151,7 @@ class ArenasController < ApplicationController
     end
     if @arena.save
       MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
-			redirect_to arenas_url, notice: 'Arena was successfully created.'
+      redirect_to arenas_url, notice: 'Arena was successfully created.'
     else
       redirect_to arenas_url, alert: 'Arena could not be created.'
     end

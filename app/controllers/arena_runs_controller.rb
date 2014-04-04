@@ -38,9 +38,8 @@ class ArenaRunsController < ApplicationController
 
 	def update
 		@arenarun = ArenaRun.find(params[:id])
-
+    lastarena = @arenarun.matches.last
 		if request.referer == end_arena_runs_url
-      lastarena = @arenarun.matches.last
 			@arenarun.notes = lastarena.notes unless lastarena.nil?
 			session[:arenarunid] = nil
 			@arenarun.complete = true
@@ -48,11 +47,11 @@ class ArenaRunsController < ApplicationController
 
 		respond_to do |format|
 			if @arenarun.update_attributes(params[:arena_run])
+        lastarena.notes = @arenarun.notes
+        lastarena.save!
 				format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }
-				format.json { head :no_content }
 			else
 				format.html { render action: "edit" }
-				format.json { render json: @arena.errors, status: :unprocessable_entity }
 			end
 		end
 	end
