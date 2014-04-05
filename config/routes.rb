@@ -43,7 +43,7 @@ Hearthstats::Application.routes.draw do
   match '/jan', :to => redirect('/reports/jan/index.html')
   match "/dec", to: "welcome#decreport"
   match "/nov", to: "welcome#novreport"
-  match "/mar", to: "welcome#marreport"
+  match "/mar", :to => redirect('/reports/mar/index.html')
 
   get "admin/index"
   get "admin/addprofileuserid"
