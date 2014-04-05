@@ -69,7 +69,6 @@ class DecksController < ApplicationController
     @deck.is_public = true
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @deck }
     end
   end
 
@@ -108,10 +107,8 @@ class DecksController < ApplicationController
     respond_to do |format|
       if @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
-        format.json { render json: @deck, status: :created, location: @deck }
       else
         format.html { render action: "new" }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
       end
     end
   end
