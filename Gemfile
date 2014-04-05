@@ -71,6 +71,7 @@ gem "cancan"
 gem 'mailboxer' # User notifications and mailing
 gem 'imgkit'
 gem 'rollbar'
+gem 'xss_terminate'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

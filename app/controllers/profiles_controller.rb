@@ -86,7 +86,7 @@ class ProfilesController < ApplicationController
 
     # User's Highest Winning Decks
     @topdeck = Deck.bestuserdeck(@user.id)
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => @user.id)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => @user.id, is_public: true)
 
   end
 
