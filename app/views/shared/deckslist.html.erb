@@ -39,7 +39,13 @@
     	@decks = @decks.find(:all, :group => 'unique_deck_id')
     end
 
+    items_per_page = CGI.parse(request.query_string)['items'].first
+    if items_per_page.nil? || !((Float(items_per_page) rescue false))
+      items_per_page = 20
+    end
+
     totalDecks = @decks.count
+    @decks = @decks.paginate(:page => params[:page], :per_page => items_per_page)
 
 %>
 <form id="deckListFilter" method="get" class="data-turboform">
@@ -51,7 +57,12 @@
 				<option value="<%= klass.id %>" <%= class_filter.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
 			<% end %>
 		</select>
-
+		show
+		<select name="items">
+			<% [10, 20, 50, 100].each do |num| %>
+				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
+			<% end %>
+		</select>
 		sort By
 		<select name="sort">
 			<option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>>Created</option>
@@ -143,8 +154,10 @@
 <% else %>
 	<p>* <em>stats are for for your personal play using each deck</em></p>
 <% end %>
+<%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>
 <script>
   $('#decklist').dataTable( {
-    "aaSorting": [[ 4, "desc" ]]
+    "aaSorting": [[ 4, "desc" ]],
+    "bPaginate": false
   } );
 </script>
