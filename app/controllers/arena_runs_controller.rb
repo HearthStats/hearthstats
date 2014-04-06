@@ -47,8 +47,8 @@ class ArenaRunsController < ApplicationController
 
 		respond_to do |format|
 			if @arenarun.update_attributes(params[:arena_run])
-        lastarena.notes = @arenarun.notes
-        lastarena.save!
+        lastarena.notes = @arenarun.notes unless lastarena.nil?
+        lastarena.save! unless lastarena.nil?
 				format.html { redirect_to arenas_url, notice: 'Arena Run was successfully updated.' }
 			else
 				format.html { render action: "edit" }
