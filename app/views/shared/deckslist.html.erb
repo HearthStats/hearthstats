@@ -155,9 +155,3 @@
 	<p>* <em>stats are for for your personal play using each deck</em></p>
 <% end %>
 <%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>
-<script>
-  $('#decklist').dataTable( {
-    "aaSorting": [[ 4, "desc" ]],
-    "bPaginate": false
-  } );
-</script>
