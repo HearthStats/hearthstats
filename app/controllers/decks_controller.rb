@@ -121,6 +121,14 @@ class DecksController < ApplicationController
     expire_fragment(@deck)
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
+      	if !params[:deck_text].blank?
+		    	begin
+			      @deck.cardstring = text_to_deck(params[:deck_text])
+			      @deck.save!
+			    rescue
+		        redirect_to new_deck_path, alert: 'Deck list process error' and return
+			    end
+		    end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
       else
         format.html { render action: "edit" }
