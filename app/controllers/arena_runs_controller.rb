@@ -9,7 +9,6 @@ class ArenaRunsController < ApplicationController
 	end
 
 	def create
-		raise
 		@arenarun = ArenaRun.new(params[:arena_run])
 		@arenarun.user_id = current_user.id
 		if @arenarun.save
