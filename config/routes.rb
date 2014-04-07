@@ -50,6 +50,7 @@ Hearthstats::Application.routes.draw do
   get "admin/addprofileuserid"
   get "admin/announcement"
   post "admin/anncreate"
+  get "admin/test_excep"
   get "admin/new_patch"
   post "admin/update_patch"
 
