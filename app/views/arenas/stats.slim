@@ -4,36 +4,64 @@
 - provide(:title, 'Statistics')
 - provide(:subtitle, ' detailed arena game stats');
 - provide(:section, 'Arena')
+div.well
+  span.label.label-danger NOTE!
+  span.bold Page is still being designed
+h3.detail-title Overall Arena Stats
+div.overall
+  div.arena-overall
+    div.arena-overall-title Overall Win Rate
+    = get_win_rate(Match.where(user_id: current_user.id, mode_id: 1), true)
+  div.arena-overall
+    div.arena-overall-title Total Gold Amount
+    = ArenaRun.totalGold(current_user.id)
+  div.arena-overall
+    div.arena-overall-title Total Dust Amount
+    = ArenaRun.totalDust(current_user.id)
+  div.arena-overall
+    div.arena-overall-title Arena Runs Played
+    = ArenaRun.where(user_id: current_user.id).count
+  div.arena-overall
+    div.arena-overall-title Arena Games Played
+    = Match.where(mode_id:1, user_id: current_user.id).count
+  div.stats-table.row
+    div.most-played.col-md-6
+      h4 Most played
+      table.table.table-condensed
+        - winRate = @arena_array.sort_by{ |array| array[1][1][1]}.reverse
+        - winRate.each do |klass|
+          tr
+            td = klass[0]
+            td = klass[1][1][1]
+    div.most-played.col-md-6
+      h4 Longest average runs
+      table.table.table-condensed
+        - winRate = @arena_array.sort_by{ |array| array[1][0][1]}.reverse
+        - winRate.each do |klass|
+          tr
+            td = klass[0]
+            - if klass[1][0][1].round(2) == -1
+              td No games
+            - else
+              td = klass[1][0][1].round(2)
 
-form id="statsFilter" method="get" class="data-turboform"
-  p
-    | Filter by: &nbsp;
-    select name="days"
-      option[value="1" selected=("selected" if @daysFilter == 24)] last 24 hours
-      option[value="7" selected=("selected" if @daysFilter == 7)] last 7 days
-      option[value="30" selected=("selected" if @daysFilter == 30)] last 30 days
-      option[value="90" selected=("selected" if @daysFilter == 90)] last 90 days
-      option[value="all" selected=("selected" if @daysFilter =="all")] all time
-    | &nbsp;
-    select name="first"
-      option[value=""] - first or second -
-      option[value="yes" selected=("selected" if @firstFilter == 'yes')] going first
-      option[value="no" selected=("selected" if @firstFilter == 'no')] going second
-    | &nbsp;
-    select name="mode"
-      option[value=""] - any mode -
-      option[value="casual" selected=("selected" if @modeFilter == 'casual')] casual
-      option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] ranked
-    input type="submit" value="Submit" id="statsFilterSubmit"
-javascript:
-  $('#statsFilter select').change(function() {
-    $('#statsFilter').submit();
-  });
-  $('#statsFilterSubmit').hide();
-
-= render 'constructeds/winratechart'
-
-div.details-stats
-  -(1..9).each do |k|
-    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: klasses_hash_2[k]
-.cf
+h3.detail-title Detailed Class Stats
+div.row
+  - @arena_array.each do |arena_run|
+    div.col-sm-12.col-md-6.col-lg-4
+      div class="portlet box #{arena_run[0]}"
+        div.portlet-title.arena-class
+          div.caption.class-name
+            = image_tag("Icons/Classes/#{arena_run[0]}_Icon.gif", height: "24", width: "24")
+            = arena_run[0]
+        div.portlet-body
+          - arena_run[1].each_with_index do |arena_detail, i|
+            div.arena-detail
+              div.arena-detail-title = arena_detail[0]
+              -if i == 0 || i == 1
+                - if arena_detail[1].round(2) == -1
+                  div.arena-detail-value No games
+                - else
+                  div.arena-detail-value = arena_detail[1].round(2)
+              -else
+                div.arena-detail-value = number_to_percentage(arena_detail[1]*100, precision: 2)

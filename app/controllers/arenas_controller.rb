@@ -130,59 +130,7 @@ class ArenasController < ApplicationController
   end
 
   def stats
-
-    # get all matches
-    matches = Match.where(:mode_id => 1)
-
-    # filter by number of days to show
-    daysQuery = CGI.parse(request.query_string)['days'].first
-    @daysFilter = daysQuery != nil && daysQuery != 'all' ? true : false
-    if @daysFilter
-     @daysFilter = daysQuery.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? daysQuery.to_f : 30
-     matches = matches.where('matches.created_at >= ?', @daysFilter.days.ago)
-    else
-      @daysFilter = "all"
-    end
-
-    # filter by first/second
-    @firstFilter = CGI.parse(request.query_string)['first'].first
-    if @firstFilter == "yes"
-      matches = matches.where(coin: false)
-    else
-      if @firstFilter == "no"
-        matches = matches.where(coin: true)
-      else
-        @firstFilter = ""
-      end
-    end
-
-    # filter by mode
-    @modeFilter = CGI.parse(request.query_string)['mode'].first
-    if @modeFilter == "casual"
-      matches = matches.where(mode_id: 2)
-    else
-      if @modeFilter == "ranked"
-        matches = matches.where(mode_id: 3)
-      else
-        @modeFilter = ""
-      end
-    end
-
-    # build win rates while playing each class
-    personalMatches = matches.where(user_id: current_user.id)
-    @personalWinRates = getClassWinRatesForMatches(personalMatches);
-    @globalWinRates = getClassWinRatesForMatches(matches);
-
-    @matches = matches
-    # calculate number of games per class
-    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-    @numMatchesPersonal = Hash.new
-    @numMatchesGlobal = Hash.new
-    @classes.each_with_index do |c,i|
-      @numMatchesGlobal.store(c, matches.where(klass_id: i+1).count)
-      @numMatchesPersonal.store(c, personalMatches.where( klass_id: i+1).count)
-    end
-
+		@arena_array = ArenaRun.classArray(current_user.id)
   end
 
 
