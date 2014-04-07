@@ -3,20 +3,19 @@
 # Ruby, Java, .NET, PHP, and Python applications with deep visibility and low overhead.
 # For more information, visit www.newrelic.com.
 #
-# Generated November 05, 2013
+# Generated April 07, 2014
 #
-# This configuration file is custom generated for app19106880@heroku.com
+# This configuration file is custom generated for HearthStats
 
 
 # Here are the settings that are common to all environments
 common: &default_settings
-	disable_curb: true
   # ============================== LICENSE KEY ===============================
 
   # You must specify the license key associated with your New Relic
   # account.  This key binds your Agent's data to your account in the
   # New Relic service.
-  license_key: '4e84db51becde163d6a0136e73c6b6da432a357d'
+  license_key: 'd37a720742822e029a32f56f4b0a8ca73f824268'
 
   # Agent Enabled (Ruby/Rails Only)
   # Use this setting to force the agent to run or not run.
@@ -43,7 +42,7 @@ common: &default_settings
   #       - Ajax Service
   #       - All Services
   #
-  app_name: HearthStats
+  app_name: My Application
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
