@@ -14,15 +14,16 @@ class RegistrationsController < Devise::RegistrationsController
       profile.save
 
     	c.subscribe "aQOe0RrtTXddPhL9p28929MA", resource.email
+    	c.subscribe "6V763uDbDJuEja62CUwTlthQ", resource.email
     end
   end
 
   def update
     super
   end
-  
+
   private
-  
+
   def destroy_guest
   	if session[:guest_user_id]
 			User.find(session[:guest_user_id]).destroy
