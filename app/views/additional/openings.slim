@@ -1,0 +1,96 @@
+- set_meta_tags :title => 'Openings',
+  :description => 'Find out how to contribute to HearthStats',
+  :keywords => 'openings, jobs, hearthstats, hearthstone, match, tracking, win, loss'
+
+- provide(:title, 'Openings')
+
+.row
+  .col-md-12
+    small Note that all positions are currently <b>voluntary</b>, but things may change in the future.
+.row
+  .col-md-3
+    ul.ver-inline-menu.tabbable.margin-top-20.job-list
+      li.active
+        a data-toggle="tab" data-link="#content-manager"
+          i class="fa fa-rss"
+          | Content Manager
+      li
+        a data-toggle="tab" data-link="#community-manager"
+          i class="fa fa-group"
+          | Community Manager
+      li
+        a data-toggle="tab" data-link="#anything"
+          i class="fa fa-smile-o"
+          | Anything Else!
+  .col-md-9
+    #content-manager.job
+      h2 Content Manager
+      hr
+      p.job-desc HearthStats' mission is to create an awesome tool for all Hearthstone players to enjoy and to help them improve their game. The content manager will help discover content for the newsletters and also discover great user created content within HearthStats.
+      b Responsibilities
+      ul
+        li Finding great Hearthstone content
+        li Compiling and summarizing content
+        li Creating newsletters and other articles
+      b Requirements
+      ul
+        li Excellent verbal and written communication and interpersonal skills
+        li Loves Hearthstone and read a bunch that may or may not help
+      b Bonus Points
+      ul
+        li Graphics design skills
+        li Video editing skills
+        li Previous eSport experience
+      a href="mailto:jeff@hearthstats.com?subject=Content Manager Position" target="_blank"
+        .btn.btn-lg.green
+          |Apply now
+
+    #community-manager.job
+      h2 Community Manager
+      hr
+      p.job-desc The Community Manager is the connection between HearthStats and various communities. The community manager is both a brand ambassador and community advocate by using various social outlets. This position will drive HearthStats' community strategy, managing engagement and interactivity with its audiences, and fostering community spirit.
+      b Responsibilities
+      ul
+        li Engage various communities and promote HearthStats
+        li Manage social media outlets such as Twitter and Facebook
+        li Communicate with other Hearthstone sites to create partnerships
+      b Requirements
+      ul
+        li Experienced social media practitioner
+        li Superior verbal and written communication skills
+        li Detailed knowledge of Hearthstone and HearthStats
+        li Strong ability to interview partners and community members
+      b Bonus Points
+      ul
+        li Editorial and/or Marketing experience
+        li Previous experience in community management
+        li Previous eSport experience
+      a href="mailto:jeff@hearthstats.com?subject=Community Manager Position" target="_blank"
+        .btn.btn-lg.green
+          |Apply now
+
+    #anything.job
+      h2 Anything Else
+      hr
+      p.job-desc HearthStats is always growing and there's definitely things we don't know we need! Do you have some skill that you think HearthStats would benefit from? Well, let us know!
+      b Responsibilities
+      ul
+        li Eat Cookies
+      b Requirements
+      ul
+        li Blue and furry
+      b Bonus Points
+      ul
+        li A monster
+      a href="mailto:jeff@hearthstats.com?subject=Anything" target="_blank"
+        .btn.btn-lg.green
+          |Apply now
+javascript:
+  var activeJob = $('.job-list .active a').data('link');
+  $(activeJob).fadeIn();
+  $('.job-list a').click(function(){
+    var activeJob = $(this).data('link');
+    $('.job').fadeOut(function(){
+      $(activeJob).fadeIn();
+    });
+  });
