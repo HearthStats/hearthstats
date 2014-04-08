@@ -11,7 +11,6 @@ group :development do
   gem 'capistrano_rsync_with_remote_cache'
   gem "quiet_assets", ">= 1.0.1"
   gem 'rb-fsevent', :require => false
-  gem 'thin'
   gem 'pry'
 end
 
@@ -73,6 +72,7 @@ gem 'imgkit'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'honeybadger'
+gem 'unicorn'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
