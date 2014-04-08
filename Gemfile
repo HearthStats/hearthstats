@@ -50,7 +50,7 @@ gem 'nprogress-rails' # Progress bar for turbolinks
 gem 'sitemap_generator'
 gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
-gem 'feedzirra' # Parse rss feeds
+gem 'feedjira' # Parse rss feeds
 gem 'twitch' # Get Twitch streamers
 gem "lograge" # Minify log outputs
 gem 'redactor-rails' # WYSIWYG editor
@@ -72,7 +72,7 @@ gem 'imgkit'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'honeybadger'
-gem 'thin'
+gem 'puma'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
