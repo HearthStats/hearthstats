@@ -72,7 +72,7 @@ gem 'imgkit'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'honeybadger'
-gem 'unicorn'
+gem 'thin'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
