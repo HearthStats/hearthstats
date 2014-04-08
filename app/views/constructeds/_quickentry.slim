@@ -6,7 +6,7 @@ div class="portlet quick_con_entry"
       a href="javascript:;" class="collapse"
   div class="portlet-body"
     = form_for @constructed, url: {controller: "constructeds", action: "create"} do |f|
-      -if !@lastentry.nil? || !@lastentry.deck.nil?
+      -if !@lastentry.nil? && !@lastentry.deck.nil?
         = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}, @lastentry.deck.name))
       -else
         = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}))
