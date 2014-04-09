@@ -21,6 +21,7 @@ SitemapGenerator::Sitemap.create do
   add '/help'
   add '/nov'
   add '/news'
+  add '/openings'
   add '/streams/index'
 
   #
