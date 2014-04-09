@@ -24,11 +24,11 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
+	gem "asset_sync"
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :production do
-	# gem "asset_sync"
 	gem 'mysql2'
 end
 
@@ -72,7 +72,7 @@ gem 'imgkit'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'honeybadger'
-gem 'puma'
+gem 'thin'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
