@@ -36,7 +36,7 @@ class AdditionalController < ApplicationController
 
   	feeds_urls = ["http://hearthstone.blizzpro.com/feed/","http://us.battle.net/hearthstone/en/feed/news","http://www.liquidhearth.com/rss/news.xml", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
 
-  	feeds = Feedzirra::Feed.fetch_and_parse(feeds_urls)
+  	feeds = Feedjira::Feed.fetch_and_parse(feeds_urls)
 
     @items = Array.new
 
