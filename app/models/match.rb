@@ -30,10 +30,16 @@ class Match < ActiveRecord::Base
   belongs_to :patch
 
   before_save :set_season_patch
+  after_save :update_user_stats_constructed
 
   def set_season_patch
     self.season_id ||= Season.last.id
     self.patch_id ||= Patch.last.id
+  end
+
+  def update_user_stats_constructed
+  	self.deck.update_user_stats
+  	self.deck.save!
   end
 
   def self.bestuserarena(userid)

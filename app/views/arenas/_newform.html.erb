@@ -23,9 +23,9 @@
         <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
 	    </div>
 	    <div class="cf"></div>
-			<div id="1" class= "btn btn-primary green winbutt_style winbutton">Add Win</div>
-      <div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Add Defeat</div>
-      <div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Add Draw</div>
+			<div id="1" class= "btn btn-primary green winbutt_style winbutton">Win</div>
+      <div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Defeat</div>
+      <div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Draw</div>
       <%= f.number_field :result_id, value: 1, class: "hidden wininput"%>
       <%= number_field_tag :arena_run_id , @arenarun.id , :class => "hidden" %>
 	    <div class="actions">

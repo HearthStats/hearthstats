@@ -120,7 +120,7 @@
 				<td class="minions"><%= deck.num_minions %></td>
 				<td class="spells"><%= deck.num_spells %></td>
 				<td class="weapons"><%= deck.num_weapons %></td>
-				<td class="matches"><%= global ? deck.num_global_matches : deck.user_num_matches %></td>
+				<td class="matches"><%= global ? deck.num_global_matches : deck.matches.count %></td>
 				<td class="wins"><%= global ? deck.global_wins : deck.user_num_wins %></td>
 				<td class="losses"><%= global ? deck.global_losses : deck.user_num_losses %></td>
 				<td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
