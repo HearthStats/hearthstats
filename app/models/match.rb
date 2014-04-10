@@ -38,8 +38,10 @@ class Match < ActiveRecord::Base
   end
 
   def update_user_stats_constructed
-  	self.deck.update_user_stats
-  	self.deck.save!
+  	unless self.deck.nil?
+	  	self.deck.update_user_stats
+	  	self.deck.save!
+	  end
   end
 
   def self.bestuserarena(userid)
