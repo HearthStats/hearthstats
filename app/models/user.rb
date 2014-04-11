@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
 	extend Mailboxer::Models::Messageable::ActiveRecord
 
   # Include default devise modules. Others available are:
