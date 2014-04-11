@@ -12,6 +12,7 @@ group :development do
   gem "quiet_assets", ">= 1.0.1"
   gem 'rb-fsevent', :require => false
   gem 'pry'
+  gem 'seed_dump'
 end
 
 group :assets do
@@ -35,7 +36,7 @@ end
 gem 'slim-rails'
 gem 'devise'
 gem 'jquery-rails'
-gem 'will_paginate', '~> 3.0'
+gem "will_paginate", ">=3.0.pre2"
 gem 'will_paginate-bootstrap'
 gem 'taps'
 gem "nokogiri"
@@ -63,7 +64,6 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem "select2-rails"
 gem "opinio" # Comment system
-gem "kaminari"
 gem "fog"
 gem 'unf'
 gem "cancan"
@@ -73,6 +73,8 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'honeybadger'
 gem 'thin'
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre' # For active admin
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

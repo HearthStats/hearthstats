@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery.ui.tooltip
+//= require jquery.ui.all
 //= require select2
 //= require social-share-button
 //= require nprogress

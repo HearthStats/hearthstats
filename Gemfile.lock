@@ -14,6 +14,17 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    activeadmin (0.6.3)
+      arbre (~> 1.0)
+      bourbon (>= 1.0.0, < 4)
+      devise (>= 1.5.4, < 4, != 2.2.2, != 2.2.1, != 2.2.0, != 2.1.2, != 2.1.1, != 2.1.0, != 2.0.4, != 2.0.3, != 2.0.2, != 2.0.1, != 2.0.0)
+      formtastic (~> 2.0)
+      inherited_resources (~> 1.3)
+      jquery-rails (>= 1.0.0, < 3)
+      kaminari (~> 0.13, != 0.15.0)
+      meta_search (~> 1.0)
+      rails (>= 3.0.0, < 4)
+      sass (~> 3.1)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -29,6 +40,8 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.6)
+    arbre (1.0.1)
+      activesupport (>= 3.0.0)
     arel (3.0.3)
     asset_sync (1.0.0)
       activemodel
@@ -43,6 +56,9 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (2.14.2)
@@ -131,7 +147,7 @@ GEM
       fog-core (~> 1.21, >= 1.21.1)
       fog-json
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.0.1)
+    fog-brightbox (0.0.2)
       fog-core
       fog-json
     fog-core (1.21.1)
@@ -146,10 +162,15 @@ GEM
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
     formatador (0.2.4)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
@@ -164,8 +185,11 @@ GEM
     impressionist (1.5.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
     journey (1.0.4)
-    jquery-rails (3.1.0)
+    jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-turbolinks (2.0.2)
@@ -194,6 +218,11 @@ GEM
       rails (> 3.0.0)
     meta-tags (1.5.0)
       actionpack
+    meta_search (1.1.3)
+      actionpack (~> 3.1)
+      activerecord (~> 3.1)
+      activesupport (~> 3.1)
+      polyamorous (~> 0.5.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_magick (3.7.0)
@@ -225,6 +254,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    polyamorous (0.5.0)
+      activerecord (~> 3.0)
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -262,6 +293,8 @@ GEM
       devise
       mime-types
       orm_adapter
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.2)
@@ -286,6 +319,9 @@ GEM
       tilt (~> 1.3)
     sax-machine (0.2.1)
       nokogiri (~> 1.6.0)
+    seed_dump (3.1.0)
+      activerecord
+      activesupport
     select2-rails (3.5.4)
       thor (~> 0.14)
     sequel (3.20.0)
@@ -356,6 +392,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin
   asset_sync
   aws-sdk
   better_errors (>= 0.3.2)
@@ -384,11 +421,11 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
-  kaminari
   launchy (>= 2.1.2)
   lograge
   mailboxer
   meta-tags
+  meta_search (>= 1.1.0.pre)
   mini_magick
   mysql2
   newrelic_rpm
@@ -406,6 +443,7 @@ DEPENDENCIES
   rollbar
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
+  seed_dump
   select2-rails
   sitemap_generator
   slim-rails
@@ -418,5 +456,5 @@ DEPENDENCIES
   twitch
   uglifier (>= 1.0.3)
   unf
-  will_paginate (~> 3.0)
+  will_paginate (>= 3.0.pre2)
   will_paginate-bootstrap
