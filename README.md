@@ -2,9 +2,9 @@
 
 HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.
 
-You can access the live site at: (HearthStats)[http://hearthstats.net]
+You can access the live site at: [HearthStats](http://hearthstats.net)
 
-The beta is located at: (HearthStats Beta)[http://beta.hearthstats.net]
+The beta is located at: [HearthStats Beta](http://beta.hearthstats.net)
 
 ## Contributing
 
