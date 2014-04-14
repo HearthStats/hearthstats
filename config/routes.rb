@@ -1,10 +1,10 @@
 Hearthstats::Application.routes.draw do
 
+	# Gem routes
+  #
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # Gem routes
-  #
   opinio_model
   mount RedactorRails::Engine => '/redactor_rails'
 
