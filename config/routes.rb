@@ -49,13 +49,13 @@ Hearthstats::Application.routes.draw do
   match "/nov", to: "welcome#novreport"
   match "/mar", :to => redirect('/reports/mar/index.html')
 
-  get "admin/index"
-  get "admin/addprofileuserid"
-  get "admin/announcement"
-  post "admin/anncreate"
-  get "admin/test_excep"
-  get "admin/new_patch"
-  post "admin/update_patch"
+  # get "admin/index"
+  # get "admin/addprofileuserid"
+  # get "admin/announcement"
+  # post "admin/anncreate"
+  # get "admin/test_excep"
+  # get "admin/new_patch"
+  # post "admin/update_patch"
 
   get "welcome/index"
   get "welcome/demo_user"

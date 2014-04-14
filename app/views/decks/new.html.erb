@@ -3,34 +3,5 @@
   :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss' %>
 <% provide(:title, 'New Deck') %>
 <% provide(:section, 'Decks') %>
-<!-- <div class="row">
-	<div class="col-md-12 center">
-		<div class="linkie">Deck Link (I.e. "http://www.hearthpwn.com/decks/7112-low-cost-warlock-rush") <i><b>(Optional)</b></i></div>
-		<form >
-			<input id="decklink" size="30" type="text" data-validate="url">
-		</form>
-	</div>
-</div> -->
+
 <%= render 'form' %>
-
-<!-- Javascript to render Hearthpwn Link etc -->
-<script>
-	$('#decklink').bind('blur keyup', function(e){
-		if(e.type === 'keyup' && e.keyCode !== 10 && e.keyCode !== 13) return;
-		var link = $('#decklink').val();
-		if( !link ) {
-
-    }else{
-			var linkarray = link.split('/');
-			var linkvalue = linkarray[linkarray.length-1].split('-');
-			var linkid = linkvalue.shift();
-			$('#deck_name').val(linkvalue.join(" "));
-			$('#deck_race').css("border", "3px solid red")
-			linkarray.pop();
-			linkarray[linkarray.length]=linkid;
-			linkarray[linkarray.length]="export/4";
-			finaldecklink = linkarray.join('/');
-			$('#deck_decklink').val(finaldecklink);
-		}
-	});
-</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140411085913) do
+ActiveRecord::Schema.define(:version => 20140414090037) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -160,26 +160,22 @@ ActiveRecord::Schema.define(:version => 20140411085913) do
   end
 
   create_table "decks", :force => true do |t|
-    t.string    "name"
-    t.integer   "wins",             :default => 0
-    t.integer   "loses",            :default => 0
-    t.timestamp "created_at",                      :null => false
-    t.timestamp "updated_at",                      :null => false
-    t.string    "race"
-    t.integer   "user_id"
-    t.string    "decklink"
-    t.string    "slug"
-    t.text      "notes"
-    t.integer   "slot"
-    t.boolean   "active"
-    t.integer   "klass_id"
-    t.string    "cardstring"
-    t.integer   "unique_deck_id"
-    t.integer   "user_num_matches"
-    t.integer   "user_num_wins"
-    t.integer   "user_num_losses"
-    t.float     "user_winrate"
-    t.boolean   "is_public"
+    t.string   "name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
+    t.string   "slug"
+    t.text     "notes"
+    t.integer  "slot"
+    t.boolean  "active"
+    t.integer  "klass_id"
+    t.string   "cardstring"
+    t.integer  "unique_deck_id"
+    t.integer  "user_num_matches"
+    t.integer  "user_num_wins"
+    t.integer  "user_num_losses"
+    t.float    "user_winrate"
+    t.boolean  "is_public"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"

@@ -14,10 +14,10 @@ ActiveAdmin.register_page "Dashboard" do
     
     columns do
       column do
-        panel "Recent Posts" do
+        panel "Recent Decks" do
           ul do
-            Comment.recent(5).map do |post|
-              li link_to(post.title, admin_post_path(post))
+            Deck.last(5).map do |deck|
+              li link_to(deck.name, deck)
             end
           end
         end
@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Info" do
-          para "Welcome to ActiveAdmin."
+          para "Welcome to HearthStats Admin."
         end
       end
     end
