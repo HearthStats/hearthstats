@@ -43,7 +43,15 @@ class AdditionalController < ApplicationController
     feeds.each do |feed_url, feed|
     	next if feed == 0 || feed == 500
       feed.entries.each do |entry|
-        @items << [entry.title, entry.url, entry.summary, entry.published]
+      	sanitized_summary = Sanitize.clean(entry.summary,
+																      		:elements =>['a', 'img', 'b'], 
+																      		:attributes => {
+																											  'a'          => ['href', 'title'],
+																											  'blockquote' => ['cite'],
+																											  'img'        => ['alt', 'src', 'title']
+																												}
+																					)
+        @items << [entry.title, entry.url, sanitized_summary , entry.published]
       end
 
     end

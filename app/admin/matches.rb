@@ -17,5 +17,6 @@ ActiveAdmin.register Match do
     column "Opponent Class", :oppclass
     column :match_result
     column "Coin?", :coin
+    column :created_at
   end
 end
