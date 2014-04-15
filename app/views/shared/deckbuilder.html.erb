@@ -281,6 +281,12 @@
 					}
 					return true;
 				});
+
+				// long press to remove card
+				$('.deckbuilderWrapper .cardWrapper').longpress(function() {
+			    _removeCardById($(this).attr('cardid'));
+					return false;
+				});
 				$('.deckbuilderWrapper .deckBuilderCardsWrapper').bind("contextmenu",function(){
 			       return false;
 			    });
