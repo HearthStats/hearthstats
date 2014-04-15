@@ -174,8 +174,6 @@ GEM
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
-    honeybadger (1.11.2)
-      json
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -417,7 +415,6 @@ DEPENDENCIES
   figaro
   fog
   friendly_id
-  honeybadger
   httparty
   imgkit
   impressionist

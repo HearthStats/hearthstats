@@ -187,7 +187,7 @@
 					<% end %>
 					<%= link_to(" Delete", match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red fa fa-trash-o') %>
 					<% unless match.notes.blank? %>
-						<span class= 'btn default btn-xs blue fa fa-file-text-o' title="<%= match.notes %>" rel="tooltip"> Notes</span>
+						<span class='btn default btn-xs blue fa fa-file-text-o' title="<%= Sanitize.clean(match.notes) %>" rel="tooltip" > Notes</span>
 					<% end %>
 				</td>
 			</tr>

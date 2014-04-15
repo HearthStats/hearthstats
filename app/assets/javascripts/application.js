@@ -23,9 +23,7 @@
 //= require turbolinks
 
 $(document).ready(function(){
-	$('.notifications').delay(500).slideDown('normal', function() {
-    $(this).delay(2500).slideUp();
-  });
+	$('[rel="tooltip"]').tooltip();
   NProgress.configure({
 	  showSpinner: false,
 	  ease: 'ease',

@@ -72,6 +72,6 @@ div class="portlet box green"
               |Delete
             a.showmore data-target="#run#{arena.id}" data-toggle="modal" class="btn default btn-xs green" <i class="fa fa-external-link"></i>Show
             - unless arena.notes.blank?
-              span class= 'btn default btn-xs blue' title="#{arena.notes}" rel="tooltip"
+              span class= 'btn default btn-xs blue' title="#{Sanitize.clean(arena.notes)}" rel="tooltip"
                 i class="fa fa-file-text-o"
                 |Notes

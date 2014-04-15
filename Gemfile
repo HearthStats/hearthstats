@@ -71,7 +71,6 @@ gem 'mailboxer' # User notifications and mailing
 gem 'imgkit'
 gem 'rollbar'
 gem 'newrelic_rpm'
-gem 'honeybadger'
 gem 'thin'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre' # For active admin
