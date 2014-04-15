@@ -112,8 +112,3 @@ div class="row profile"
             div class="col-md-12"
               h2 #{@profiletitle}'s Decks
               = render :template => 'shared/deckslist', :locals => { :global => false }
-javascript:
-  $('#decklist').dataTable( {
-    "aaSorting": [[ 4, "desc" ]],
-    "bPaginate": false
-  } );

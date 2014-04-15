@@ -13,10 +13,3 @@ div class="portlet box green"
       | My Decks
   div class="portlet-body flip-scroll"
 	= render :template => 'shared/deckslist', :locals => { :global => false }
-javascript:
-  $(document).ready(function() {
-      $('#decklist').dataTable( {
-        "aaSorting": [[ 4, "desc" ]],
-        "bPaginate": false
-      } );
-    });

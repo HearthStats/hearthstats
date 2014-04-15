@@ -23,7 +23,6 @@
 //= require turbolinks
 
 $(document).ready(function(){
-	$('[rel="tooltip"]').tooltip();
   NProgress.configure({
 	  showSpinner: false,
 	  ease: 'ease',

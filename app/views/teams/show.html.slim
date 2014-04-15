@@ -29,7 +29,7 @@ div.row
         div.caption Team Decks
       div.portlet-body
         small Click table headers to sort
-        table.table.table-bordered.table-striped#decks
+        table.table.table-bordered.table-striped#decklist
           thead
             th Name
             th Win Rate
@@ -46,11 +46,6 @@ div.row
 = link_to 'Back', teams_path
 
 javascript:
-  $(document).ready(function() {
-    $('#decks').dataTable( {
-      "aaSorting": [[ 4, "desc" ]]
-    } );
-  });
   Index.init();
   Index.initMiniCharts();
 
