@@ -59,7 +59,7 @@ div.row
             span.version-number
               = link_to "v#{version.version}", deck_path(@deck, version: version.version)
         h3 Notes
-        = sanitize @deck.notes
+        = sanitize @deck.notes, tags: %w(table tr td), attributes: %w(id class style)
       div.deck-show-graph
         = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments

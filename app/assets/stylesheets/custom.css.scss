@@ -1,3 +1,5 @@
+@import "bootstrap";
+
 .btn.blue{
 	color: white !important;
 }
@@ -75,4 +77,7 @@
 }
 .sidebaricon{
 	margin-right: 10px;
+}
+.deck-notes table {
+	@extend .table;
 }
