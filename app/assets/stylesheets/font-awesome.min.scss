@@ -1,10 +1,10 @@
 @font-face{
 	font-family:'FontAwesome';
-	src:asset_url('fontawesome-webfont.eot?v=4.0.1', font);
-	src:asset_url('fontawesome-webfont.eot?#iefix&v=4.0.1', font) format('embedded-opentype'),
-	asset_url('fontawesome-webfont.woff?v=4.0.1', font) format('woff'),
-	asset_url('fontawesome-webfont.ttf?v=4.0.1', font) format('truetype'),
-	asset_url('fontawesome-webfont.svg?v=4.0.1#fontawesomeregular', font) format('svg');
+	src:url('http://hearthstats.net/assets/fontawesome-webfont.eot?v=4.0.1');
+	src:url('http://hearthstats.net/assets/fontawesome-webfont.eot?#iefix&v=4.0.1') format('embedded-opentype'),
+	url('http://hearthstats.net/assets/fontawesome-webfont.woff?v=4.0.1') format('woff'),
+	url('http://hearthstats.net/assets/fontawesome-webfont.ttf?v=4.0.1') format('truetype'),
+	url('http://hearthstats.net/assets/fontawesome-webfont.svg?v=4.0.1#fontawesomeregular') format('svg');
 	font-weight:normal;font-style:normal
 }
 .fa{
