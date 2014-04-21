@@ -1,8 +1,117 @@
 # encoding: utf-8
-# #
-# # To validate this YAML file after you change it, please paste it into
-# # http://yamllint.com/
 en:
+
+  shared:
+    arena_win_rate: Arena Win Rate
+    ranked_win_rate: Ranked Win Rate
+    best_deck: Best Deck
+    best_arena_class: Best Arena Class
+    create_deck: Create a Deck
+    new_arena_game: New Arena Game
+    best_deck: Best Deck
+    view_more: View More
+    edit: edit
+    delete: delete
+    notes: Notes
+    run: run
+    error: erro
+    prohibited_this_being_save: "prohibited this %{resource} from being saved:"
+    arenarun: arenarun
+    show: show
+    arena: arena
+
+  dashboards:
+    index:
+      title: Dashboard
+      subtitle: ' statistics for the current season'
+      global_win_rates: Global Win Rates
+      arena_win_rates: Arena Win Rates
+      games_recorded: Games Recorded
+      constructed_win_rates: Constructed Win Rates
+      hearthstats_news: HearthStats News
+      read_more: Read More
+      view_more: View More
+      news:
+        huge_update: Huge update with lots of features. 
+        ability_to_rank: Ability to rank/casual added for Constructed Games. 
+        donation_link: Donation link added at 
+        notes_feature: Notes feature added!
+      personal_win_rate: Personal Win Rate
+      constructed_win_rates: Constructed Win Rate
+      constructed_coin_win_rates: Constructed Win Coin Rate
+      recent_activities: Recent Activities
+      against: against
+      with: with
+      global_stats: Global Stats
+      arena_win_rate: Arena Win Rate
+
+  cards:
+    index:
+      title: Card Database
+      not_found: No cards were found matching your criteria
+      text_contains: Text contains
+      filter_by: Filter by
+      sort_by: Sort by
+      any_type: any type
+      any_race: any race
+      any_class: any class
+      ascending: Ascending
+      descending: Descending
+      attack: Attack
+      health_dur: Health/Dur.
+      mana_cost: Mana Cost
+      name: Name
+      none: none
+      reset_filters: Reset Filters
+
+  arenas:
+    index:
+      title: Recent Games
+      description: ' recent arena games'
+      section: Arena
+      continue_arena_run: Continue Arena Run
+      new_arena_run: New Arena Run
+      arena_run_with: arena run with
+      on: on
+      notes: Notes
+      close: Close
+      recent_arena_games: Recent Arena Games
+      your_class: Your Class
+      win_loss: Win/Loss
+      prizes: Prizes
+      timee_played: Time Played
+      options: Options
+    new:
+      title: New Arena Match
+      section: Arena
+      retire: Retire
+      sure_want_retire: Are you sure you want to retire early from this Arena Run?
+      opponent_class: Opponent's Class
+      win: Win
+      defeat: Defeat
+      draw: Draw
+      back: Back
+      end_run: End Run
+      create_entry: Create entry
+      arena_run_results: Arena Run Results
+      result: Result
+      options: Options
+      played_first: Played First
+      played_second: Played Second
+
+  arena_runs:
+    new:
+      title: New Arena Run
+      section: Arena
+      first_arena_of_day: First Arena of the day? Let's get started!
+      keep_it_going: "Only %{runs}? Keep it going!"
+      going_hardcore: "Wow, going hardcore today? %{runs} already, well good luck!"
+      your_class: Your class
+      continue: Continue
+      get_auto_uploader: Get the Auto Uploader
+
+
+
   recent: "Recent Games"
   news: "News"
   streams: "Streams"

@@ -1,4 +1,13 @@
 module ApplicationHelper
+
+  def available_languages
+    @available_languages || available_languages_list
+  end
+
+  def available_languages_list
+    {'en' => 'English', 'es' => 'Español', 'pt-BR' => 'Português'}
+  end
+
   def current_season
     Season.last.num
   end

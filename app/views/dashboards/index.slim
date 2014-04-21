@@ -1,21 +1,22 @@
 - set_meta_tags :title => 'Dashboard',
   :description => 'HearthStats User Dashboard',
   :keywords => 'Dashboard, global, stats, news, hst'
-- provide(:title, 'Dashboard')
-- provide(:subtitle, ' statistics for the current season')
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
 
 = render 'shared/block_stats'
 = render 'toprow'
 div.row
+
   - cache "globalstats", expires_in: 1.day do
     div.col-md-6.col-sm-6
       div.portlet.box.green
         div.portlet-title
-          div.caption Global Win Rates
+          div.caption= t '.global_win_rates'
         div.portlet-body
           div.row
             div.col-md-6.col-sm-6
-              h4 Arena Win Rates
+              h4= t ".arena_win_rates"
               - counter = 1
               table.rankingtable
                 - @classarenarate.each do |c|
@@ -24,11 +25,11 @@ div.row
                     tr
                       td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
                       td
-                        abbr title="#{@arenatot[c[0]]} Games Recorded" rel="tooltip" #{number_to_percentage(c[1]*100, precision: 2)}
+                        abbr title="#{@arenatot[c[0]]} #{t '.games_recorded'}" rel="tooltip" #{number_to_percentage(c[1]*100, precision: 2)}
 
                   -counter = counter + 1
             div.col-md-6.col-sm-6
-              h4 Constructed Win Rates
+              h4= t '.constructed_win_rates'
               - counter = 1
               table.rankingtable
                 - @classconrate.each do |c|
@@ -42,7 +43,7 @@ div.row
   div.col-md-6.col-sm-6
     div.portlet.box.blue
       div.portlet-title
-        div.caption HearthStats News
+        div.caption= t '.hearthstats_news' 
       div.portlet-body
         div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0"
           ul.feeds
@@ -53,7 +54,9 @@ div.row
                     div.label.label-sm.label-success
                       i.fa.fa-bullhorn
                   div.cont-col2
-                    div.desc Huge update with lots of features. <a href="http://hearthstats.net/changelog">Read More</a>
+                    div.desc
+                      = t '.news.huge_update'
+                      = link_to t('.read_more'),  "http://hearthstats.net/changelog"
               div.col2
                 div.date Thu, 20 Feb 2014 13:33:20
             li
@@ -63,7 +66,9 @@ div.row
                     div.label.label-sm.label-success
                       i.fa.fa-bullhorn
                   div.cont-col2
-                    div.desc Ability to rank/casual added for Constructed Games. <a href="http://hearthstats.net/changelog">Read More</a>
+                    div.desc 
+                      = t '.news.ability_to_rank'
+                      = link_to t('.read_more'),  "http://hearthstats.net/changelog"
               div.col2
                 div.date Mon, 30 Dec 2013 19:49:14
             li
@@ -73,7 +78,9 @@ div.row
                     div.label.label-sm.label-success
                       i.fa.fa-bullhorn
                   div.cont-col2
-                    div.desc Donation link added at <a href="http://hearthstats.net/aboutus"> About Us.</a>
+                    div.desc 
+                      = t '.news.donation_link'
+                      = link_to t('.read_more'),  "http://hearthstats.net/aboutus"
               div.col2
                 div.date Mon, 16 Dec 2013 07:17:46
             li
@@ -83,7 +90,8 @@ div.row
                     div.label.label-sm.label-warning
                       i.fa.fa-bullhorn
                   div.cont-col2
-                    div.desc Notes feature added!
+                    div.desc 
+                      = t '.news.notes_feature'
               div.col2
                 div.date Mon, 16 Dec 2013 06:23:12
             li

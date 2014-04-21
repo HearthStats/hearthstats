@@ -1,45 +1,46 @@
 - set_meta_tags :title => 'Card Database',
   :description => 'Card Database',
   :keywords => 'cards, card, database, games, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Card Database')
+
+- provide(:title, t('.title'))
 - provide(:subtitle, '');
 - provide(:section, '')
 
 form id="cardsFilter" method="get" class="data-turboform"
 	p
-		| Text Contains: &nbsp; 
+		| #{t '.text_contains'}: &nbsp; 
 		input[name="text" value="#{@textFilter}"]
-		| &nbsp; Filter by: &nbsp; 
+		| &nbsp; #{t '.filter_by'}: &nbsp; 
 		select name="class"
-			option[value=""] - any class -
+			option[value=""] - #{t '.any_class'} -
 			option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
 			- @classes.each do |c|
 				option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)] = c.name
 		| &nbsp; 
 		select name="type"
-			option[value=""] - any type -
+			option[value=""] - #{t '.any_type'} -
 			- @types.each do |type|
 				option[value="#{type.id}" selected=("selected" if @typeFilter.to_f == type.id.to_f)] = type.name
 		| &nbsp; 
 		select name="race"
-			option[value=""] - any race -
-			option[value="none" selected=("selected" if @raceFilter == "none")] None
+			option[value=""] - #{t '.any_race'} -
+			option[value="none" selected=("selected" if @raceFilter == "none")] #{t '.none'}
 			- @races.each do |race|
 				option[value="#{race.id}" selected=("selected" if @raceFilter.to_f == race.id.to_f)] = race.name
-		| &nbsp; Sort by: &nbsp;
+		| &nbsp; #{t '.sort_by'}: &nbsp;
 		select name="sort"
-			option[value="attack" selected=("selected" if @sortField == "attack")] Attack
-			option[value="health" selected=("selected" if @sortField == "health")] Health/Dur.
-			option[value="mana" selected=("selected" if @sortField == "mana")] Mana Cost
-			option[value="name" selected=("selected" if @sortField == "name")] Name
+			option[value="attack" selected=("selected" if @sortField == "attack")] #{t '.attack'}
+			option[value="health" selected=("selected" if @sortField == "health")] #{t '.health_dur'}
+			option[value="mana" selected=("selected" if @sortField == "mana")] #{t '.mana_cost'}
+			option[value="name" selected=("selected" if @sortField == "name")] #{t '.name'}
 		| &nbsp; 
 		select name="order"
-			option[value="asc"] Ascending
-			option[value="desc" selected=("selected" if @orderFilter == "desc")] Descenting
+			option[value="asc"] #{t '.ascending'}
+			option[value="desc" selected=("selected" if @orderFilter == "desc")] #{t '.descending'}
 		| &nbsp; 
 		input type="submit" value="Submit" id="cardsFilterSubmit"
 		| &nbsp; 
-		input type="button" value="Reset Filters" id="cardsFilterReset"
+		input type="button" value="#{t '.reset_filters'}" id="cardsFilterReset"
 		
 javascript:
 	$('#cardsFilter select').change(function() {
@@ -51,7 +52,7 @@ javascript:
 	});
 
 - if @cards.count == 0
-	div[class="ui-state-error" style="padding:1em"] No cards were found matching your criteria
+	div[class="ui-state-error" style="padding:1em"]= t('.not_found')
 
 - @cards.each do |card|
 	div.cardWrapper
