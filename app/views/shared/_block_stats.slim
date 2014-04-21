@@ -7,10 +7,10 @@ div class="row"
       div class="details"
         div class="number"
           = @arena_wr
-        div class="desc" Arena Win Rate
+        div class="desc"= t 'shared.arena_win_rate'
 
       =link_to arenas_path, class: "more" do
-        |View more
+        |#{t 'shared.view_more'}
         i class="m-icon-swapright m-icon-white"
 
 
@@ -22,10 +22,10 @@ div class="row"
       div class="details"
         div class="number"
           = @con_wr
-        div class="desc" Ranked Win Rate
+        div class="desc"= t 'shared.ranked_win_rate'
 
       = link_to constructeds_path, class: "more" do
-        |View more
+        |#{t 'shared.view_more'}
         i class="m-icon-swapright m-icon-white"
 
 
@@ -36,18 +36,18 @@ div class="row"
       - if @topdeck == nil
         div class="details"
           div class="number" N/A
-          div class="desc" Best Deck
+          div class="desc"= t 'shared.best_deck'
 
         = link_to new_deck_path, class: "more" do
-          |Create a Deck
+          |#{t 'shared.create_deck'}
           i class="m-icon-swapright m-icon-white"
       - else
         div class="details"
           div class="number" = truncate(@topdeck[0], :length => 12)
-          div class="desc" Best Deck
+          div class="desc"= t 'shared.best_deck'
 
         = link_to deck_path(@topdeck[1][1]), class: "more" do
-          |View more
+          |#{t 'shared.view_more'}
           i class="m-icon-swapright m-icon-white"
 
 
@@ -58,17 +58,17 @@ div class="row"
       - if @toparena == nil
         div class="details"
           div class="number" N/A
-          div class="desc" Best Arena Class
+          div class="desc"= t 'shared.best_arena_class'
 
         = link_to new_arena_path, class: "more" do
-          |New Arena Game
+          |#{t 'shared.new_arena_game'}
           i class="m-icon-swapright m-icon-white"
       - else
         div class="details"
           div class="number" = truncate(@toparena[0], :length => 12)
-          div class="desc" Best Arena Class
+          div class="desc"= t 'shared.best_deck'
         = link_to stats_arenas_path, class: "more" do
-          |View more
+          |#{t 'shared.view_more'}
           i class="m-icon-swapright m-icon-white"
 / <!-- END DASHBOARD STATS --
 div class="clearfix"

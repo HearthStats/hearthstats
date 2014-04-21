@@ -13,6 +13,8 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'pry'
   gem 'seed_dump'
+  gem 'guard-livereload', require: false
+
 end
 
 group :assets do

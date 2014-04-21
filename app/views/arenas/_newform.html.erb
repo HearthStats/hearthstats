@@ -4,7 +4,7 @@
 		<div class="col-md-6 center">
 	    <% if @arena.errors.any? %>
 	      <div id="error_explanation">
-	        <h2><%= pluralize(@arena.errors.count, "error") %> prohibited this arena from being saved:</h2>
+	        <h2><%= pluralize(@arena.errors.count, t("shared.error")) %> <%=t('shared.prohibited_this_being_save', resource: t('shared.arena'))%>:</h2>
 
 	        <ul>
 	        <% @arena.errors.full_messages.each do |msg| %>
@@ -16,37 +16,37 @@
 
 	    <%= f.text_field :klass_id, :value => @arenarun.klass_id, class: "hidden" %>
 			<div class="gofirst-cont">
-	      <input type="checkbox" name="match[coin]" rel="toggle-btn" class="btn btn-lg green" on="Played First" off="Played Second"/>
+	      <input type="checkbox" name="match[coin]" rel="toggle-btn" class="btn btn-lg green" on="<%=t('arenas.new.played_first')%>" off="<%=t('arenas.new.played_second')%>"/>
 	    </div>
 	    <div class="oppfield arenaopp">
-	      <h2 style="margin-top:0;">Opponent's Class</h2>
+	      <h2 style="margin-top:0;"><%= t('arenas.new.opponent_class') %></h2>
         <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
 	    </div>
 	    <div class="cf"></div>
-			<div id="1" class= "btn btn-primary green winbutt_style winbutton">Win</div>
-      <div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Defeat</div>
-      <div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Draw</div>
+			<div id="1" class= "btn btn-primary green winbutt_style winbutton"><%=t('arenas.new.win') %></div>
+      <div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected"><%=t('arenas.new.defeat')  %></div>
+      <div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected"><%= t('arenas.new.draw') %></div>
       <%= f.number_field :result_id, value: 1, class: "hidden wininput"%>
       <%= number_field_tag :arena_run_id , @arenarun.id , :class => "hidden" %>
 	    <div class="actions">
 	      <%= link_to arenas_path do %>
-	      <button class="btn btn-lg">Back</button>
+	      <button class="btn btn-lg"><%= t('arenas.new.back') %></button>
 	      <% end %>
 	      <% if @arenarun.complete %>
 					<%= link_to end_arena_runs_path do %>
-		      	<button class="btn btn-lg btn-warning">End Run</button>
+		      	<button class="btn btn-lg btn-warning"><%= t('arenas.new.end_run') %></button>
 		      <% end %>
 				<% else %>
-		      <%= f.submit "Create Entry", class: "btn btn-lg btn-primary arenasubmit" %>
+		      <%= f.submit t('arenas.new.create_entry'), class: "btn btn-lg btn-primary arenasubmit" %>
 		      <%= link_to end_arena_runs_path do %>
-		      	<button class="btn btn-lg btn-warning arenaendrun">End Run</button>
+		      	<button class="btn btn-lg btn-warning arenaendrun"><%= t('arenas.new.end_run') %></button>
 		      <% end %>
 	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-md-6">
 			<div class="arena_notes">
-				<h3>Notes</h3>
+				<h3><%=t('shared.notes')%></h3>
 				<% if @arenarun.matches.last %>
 			  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120, :value => @arenarun.matches.last.notes %>
 		  	<% else %>
@@ -55,13 +55,13 @@
 			</div>
 	  	<div class="portlet box green">
 	  		<div class="portlet-title">
-	  			<div class="caption">Arena Run Results</div>
+	  			<div class="caption"><%= t('arenas.new.arena_run_results') %></div>
 	  		</div>
 	  		<div class="portlet-body">
 			  	<div class="table-reponsive">
 				    <table id="arenagames" class="table table-striped">
 				      <thead>
-                <tr><th>Opponent Class</th><th>Result</th><th>Options</th></tr>
+                <tr><th><%= t('arenas.new.opponent_class') %></th><th><%= t('arenas.new.result') %></th><th><%= t('arenas.new.options') %></th></tr>
 				      </thead>
 				        <tbody>
 				        	<% @arenarun.matches.each do |a| %>
@@ -73,7 +73,7 @@
                         <span class=<%= get_name(a,'Result') %>><%= get_name(a, "Result") %></span>
                       </td>
                       <td>
-                        <%= link_to "Delete", a, method: :delete , remote: true %>
+                        <%= link_to t('shared.delete'), a, method: :delete , remote: true %>
                       </td>
                     </tr>
 				        	<% end %>

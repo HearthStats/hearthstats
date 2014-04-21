@@ -1,17 +1,19 @@
 - set_meta_tags :title => 'Arena Matches',
   :description => 'Arena Matches',
   :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Recent Games')
-- provide(:subtitle, ' recent arena games');
-- provide(:section, 'Arena')
+
+
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.description'))
+- provide(:section, t('.section'))
 - content_for :actions do
   - if ArenaRun.where(user_id: current_user.id).last
     - if !ArenaRun.where(user_id: current_user.id).last.complete
-      = link_to 'Continue Arena Run', new_arena_path, class: "btn blue"
+      = link_to t('.continue_arena_run'), new_arena_path, class: "btn blue"
     - else
-      = link_to 'New Arena Run', new_arena_run_path, class: "btn blue"
+      = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue"
   - else
-    = link_to 'New Arena Run', new_arena_run_path, class: "btn blue"
+    = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue"
 
 - @arenaruns.each do |arena|
   div id="run#{arena.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="run#{arena.id}" aria-hidden="true"
@@ -19,31 +21,31 @@
       div.modal-content
         div.modal-header
           button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-          h4 class="modal-title" Arena run with #{get_name(arena, "Klass")} on #{arena.created_at}
+          h4 class="modal-title" #{t('.arena_run_with')} #{get_name(arena, "Klass")} #{t('.on')} #{arena.created_at}
         div.modal-body
           =render 'arenagames', arenas: arena.matches
           div class="portlet box red"
             div class="portlet-title"
-              div.caption Notes
+              div.caption=t('.notes')
             div class="portlet-body"
               =raw arena.notes
         div.modal-footer
-          button type="button" class="btn default" data-dismiss="modal" Close
+          button type="button" class="btn default" data-dismiss="modal"=t('.close')
 div.arenaheader
   = will_paginate @arenaruns, renderer: BootstrapPagination::Rails
 div class="portlet box green"
   div class="portlet-title"
     div class="caption"
-      | Recent Arena Games
+      | #{t('.recent_arena_games')}
   div class="portlet-body flip-scroll"
     table class="table table-bordered table-striped table-condensed flip-content"
       thead class="flip-content"
         tr
-          th Your Class
-          th Win/Loss
-          th Prizes
-          th Time Played
-          th Options
+          th= t('.your_class')
+          th= t('.win_loss')
+          th= t('.prizes')
+          th= t('.time_played')
+          th= t('.options')
       tbody
       - @arenaruns.each do |arena|
         tr
@@ -66,12 +68,12 @@ div class="portlet box green"
           td
             = link_to edit_arena_run_path(arena), class: 'btn default btn-xs purple' do
               i class="fa fa-pencil-square-o"
-              |Edit
+              |#{t('shared.edit').titleize}
             = link_to arena, method: :delete, data: { confirm: 'Are you sure? This will delete the associated Arena Matches as well.' }, class: 'btn default btn-xs red' do
               i class="fa fa-trash-o"
-              |Delete
-            a.showmore data-target="#run#{arena.id}" data-toggle="modal" class="btn default btn-xs green" <i class="fa fa-external-link"></i>Show
+              |#{t('shared.delete').titleize}
+            a.showmore data-target="#run#{arena.id}" data-toggle="modal" class="btn default btn-xs green" <i class="fa fa-external-link"></i>#{t('shared.show').titleize}
             - unless arena.notes.blank?
               span class= 'btn default btn-xs blue' title="#{Sanitize.clean(arena.notes)}" rel="tooltip"
                 i class="fa fa-file-text-o"
-                |Notes
+                |#{t('shared.notes')}

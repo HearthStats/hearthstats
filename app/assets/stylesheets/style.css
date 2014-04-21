@@ -4248,3 +4248,7 @@ Responsive Flip Scroll Tables
   .flip-scroll td:last-child { border-bottom: 1px solid #ddd; }
 
 }
+
+.locale-flag{
+  margin-bottom: 6px;
+}

@@ -1,0 +1,17 @@
+<li class="dropdown" id="header_inbox_bar">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <%=image_tag "country_flags/icon_#{I18n.locale}.jpg", class: 'locale-flag' %>  <i class="fa fa-caret-down"></i>
+  </a>
+  <ul class="dropdown-menu dropdown-alerts">
+    <% available_languages.each_pair do |k, v| %>
+      <li>
+        <%= link_to url_for(locale: k) do %>
+          <div>
+            <%=image_tag "country_flags/icon_#{k}.jpg"%> Change to <%=v%>
+          </div>
+        <% end %>
+      </li>
+      <li class="divider"></li>
+    <% end %>
+  </ul>
+</li>
