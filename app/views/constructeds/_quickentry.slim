@@ -1,7 +1,7 @@
 div class="portlet quick_con_entry"
   div class="portlet-title"
     div class="caption"
-      | Quick Entry
+      | #{t('.quick_entry')}
     div class="tools"
       a href="javascript:;" class="collapse"
   div class="portlet-body"
@@ -12,11 +12,11 @@ div class="portlet quick_con_entry"
         = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}))
       | vs.
       = f.select :oppclass_id, options_for_select(klasses_hash.to_a), class: 'quick_input'
-      input name="other[rank]" rel="toggle-btn" on="Ranked" off="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
-      input name="other[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
-      = f.submit "Add Win", class: "btn btn-primary"
-      = f.submit "Add Defeat", class: "btn btn-primary red"
-      = f.submit "Add Draw", class: "btn btn-primary yellow"
+      input name="other[rank]" rel="toggle-btn" on="#{t('.ranked')}" off="#{t('.casual')}" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
+      input name="other[gofirst]" rel="toggle-btn" type="checkbox" on="#{t('.no_coin')}" off="#{t('.coin')}"
+      = f.submit t(".add_win"), class: "btn btn-primary"
+      = f.submit t(".add_defeat"), class: "btn btn-primary red"
+      = f.submit t(".add_draw"), class: "btn btn-primary yellow"
 
 javascript:
   app.UI.initClassSelector('#constructed_oppclass');

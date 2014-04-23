@@ -1,29 +1,31 @@
 - set_meta_tags :title => 'Constructed Game Statistics',
   :description => 'Constructed Game Statistics',
   :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Statistics')
-- provide(:subtitle, ' constructed game stats');
-- provide(:section, 'Constructed')
+
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.description'))
+- provide(:section, t('.section'))
+
 
 form id="statsFilter" method="get" class="data-turboform"
 	p
-		| Filter by: &nbsp;
+		| #{t('.filter_by')}: &nbsp;
 		select name="days"
-			option[value="1" selected=("selected" if @daysFilter == 24)] last 24 hours
-			option[value="7" selected=("selected" if @daysFilter == 7)] last 7 days
-			option[value="30" selected=("selected" if @daysFilter == 30)] last 30 days
-			option[value="90" selected=("selected" if @daysFilter == 90)] last 90 days
-			option[value="all" selected=("selected" if @daysFilter =="all")] all time
+			option[value="1" selected=("selected" if @daysFilter == 24)] #{t('.last')}last 24 #{t('.hours')}
+			option[value="7" selected=("selected" if @daysFilter == 7)] #{t('.last')} 7 #{t('.days')}
+			option[value="30" selected=("selected" if @daysFilter == 30)] #{t('.last')} 30 #{t('.days')}
+			option[value="90" selected=("selected" if @daysFilter == 90)] #{t('.last')} 90 #{t('.days')}
+			option[value="all" selected=("selected" if @daysFilter =="all")] #{t('.all_time')}
 		| &nbsp;
 		select name="first"
-			option[value=""] - first or second -
-			option[value="yes" selected=("selected" if @firstFilter == 'yes')] going first
-			option[value="no" selected=("selected" if @firstFilter == 'no')] going second
+			option[value=""] - #{t('.first_or_second')} -
+			option[value="yes" selected=("selected" if @firstFilter == 'yes')] #{t('.going_first')}
+			option[value="no" selected=("selected" if @firstFilter == 'no')] #{t('.going_second')}
 		| &nbsp;
 		select name="mode"
-			option[value=""] - any mode -
-			option[value="casual" selected=("selected" if @modeFilter == 'casual')] casual
-			option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] ranked
+			option[value=""] - #{t('.any_mode')} -
+			option[value="casual" selected=("selected" if @modeFilter == 'casual')] #{t('.casual')}
+			option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] #{t('.ranked')}
 		input type="submit" value="Submit" id="statsFilterSubmit"
 javascript:
 	$('#statsFilter select').change(function() {

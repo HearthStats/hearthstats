@@ -19,6 +19,57 @@ en:
     arenarun: arenarun
     show: show
     arena: arena
+    class: Class
+    deck: Deck
+    create: Create
+    update: Update
+    deckbuilder:
+      card_list: Card List
+      optional_deck_will_be_created_if: 'Optional (Deck will be created if you leave this blank)'
+      toggle_text_import: Toggle Text Import
+      add_a_card: Add a Card
+      of_30_cards: of 30 cards
+      this_deck_is_incomplete: This Deck is Incomplete
+      left_click_add_right_remove: Left-click to add. Right-click to remove.
+      mana_curve: Mana curve
+      attack_distribution: Attack distribution
+      health_distribution: Health distribution
+      type_distribution: Type distribution
+      mechanics: Mechanics
+
+    matchlist:
+      filter: Filter
+      any_class: any class
+      coin?: Coin?
+      coin: Coin
+      no_coin: No Coin
+      opponent: Opponent
+      apply: Apply
+      reset: Reset
+      show: Show
+      per_page: per page
+      all_time: All time
+      last_24_hours: Last 24 hours
+      last: last
+      days: days
+      sort: sort
+      created: created
+      duration: Duration
+      rounds: rounds
+      ascending: ascending
+      descending: descending
+      win_rate_over: win rate over
+      matches_in_this_list: matches in this list
+      your: Your
+      opponent_class: Opponent Class
+      result: Result
+      rank: Rank
+      mode: Mode
+      opponent_name: Opponent Name
+      rounds: Rounds
+      created: Created
+      options: Options
+
 
   dashboards:
     index:
@@ -98,6 +149,77 @@ en:
       options: Options
       played_first: Played First
       played_second: Played Second
+    matches:
+      title: Recent Matches
+      subtitle: ' recent matches games'
+      section: Arena
+      recent_arena_matches: Recent Arena Matches
+    stats:
+      title: Statistics
+      subtitle: ' detailed arena game stats'
+      section: Arena
+      note: NOTE!
+      page_being_designed: Page is still being designed
+      overall_arena_stats: Overall Arena Stats
+      overall_win_rate: Overall Win Rate
+      total_gold_amount: Total Gold Amount
+      total_dust_amount: Total Dust Amount
+      arena_runs_played: Arena Runs Played
+      arena_games_played: Arena Games Played
+      most_played: Most Played
+      longest_average_runs: Longest Average Runs
+      no_games: No games
+      detailed_class_status: Detailed Class Status
+
+  constructeds:
+    quickentry:
+      quick_entry: Quick Entry
+      ranked: Ranked
+      casual: Casual
+      no_coin: No Coin
+      coin: Coin
+      add_win: Add Win
+      add_defeat: Add Defeat
+      add_draw: Add Draw
+    index:
+      title: 'Recent Games'
+      description: ' recent constructed games'
+      section: 'Constructed'
+      new_constructed: New Constructed
+    new:
+      title: New Constructed
+      section: Constructed
+    stats:
+      title: Statistics
+      description: ' constructed game stats'
+      section: Constructed
+      filter_by: Filter by
+      last: last
+      hours: hours
+      days: days
+      all_time: all time
+      first_or_second: first or second
+      going_first: going first
+      going_second: going second
+      any_mode: any mode
+      casual: casual
+      ranked: ranked
+    winratechart:
+      constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
+
+
+
+  decks:
+    form:
+      name: Name
+      class: Class
+      notes: Notes
+      decklist_etc: ' Decklist, etc'
+      this_deck_public: This Deck Is Public
+    new:
+      title: New Deck
+      section: Decks
+
 
   arena_runs:
     new:
@@ -111,33 +233,39 @@ en:
       get_auto_uploader: Get the Auto Uploader
 
 
-
-  recent: "Recent Games"
-  news: "News"
-  streams: "Streams"
-  newgame: "New Game"
-  stats: "Statistics"
-  home: "Home"
-  dash: "Dashboard"
-  help: "Help"
-
-  arena:
-    title: "Arena"
-    new: "New Arena Run"
-    cont: "Continue Arena Run"
-
-  con:
-    title: "Constructed"
-
-  decks:
-    title: "Decks"
-    public: "Public Deck List"
-    mine: "My Deck List"
-    active: "Active Decks"
-    new: "New Deck"
-
-  extra:
-    report: "Newest Report"
-    change: "Change Log"
-    about: "About Us"
-    contact: "Contact Us"
+  menu:
+    dashboard: Dashboard
+    card_database: Card Database
+    arena:
+      title: Arena
+      recent_arena_runs: Recent Arena Runs
+      continue_arena_run: Continue Arena Run
+      new_arena_run: New Arena Run
+      recent_arena_matches: Recent Arena Matches
+      statistics: Statistics
+    constructed:
+      title: Constructed
+      recent_matches: Recent Matches
+      new_match: New Match
+      statistics: Statistics
+    deck:
+      title: Deck
+      public_deck_list: Public Deck List
+      my_deck: My Deck
+      my_active_deck: My Active Deck
+      new_deck: New Deck
+    news: News
+    streams: Streams
+    tournaments:
+      title: Tournaments
+      register: Register
+      Calendar: Calendar
+      past_winners: Past Winners
+    extra:
+      title: Extra
+      official_uploader: Official Uploader
+      march_report: March Report
+      change_log: Change Log
+      about_us: About Us
+      contact_info: Contact Info
+    help: Help
