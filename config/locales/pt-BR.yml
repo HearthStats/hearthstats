@@ -5,9 +5,9 @@ pt-BR:
     arena_win_rate: Taxa de Vitórias em Arena
     ranked_win_rate: Taxa de Vitórias Rankeada
     best_deck: Melhor Deck
-    best_arena_class: Melhor Classe de Arena
+    best_arena_class: Melhor Classe em Arena
     create_deck: Criar um Deck
-    new_arena_game: Nova Partida de Arena
+    new_arena_game: Nova Partida em Arena
     best_deck: Melhor Deck
     view_more: Ver Mais
     edit: Editar
@@ -16,9 +16,60 @@ pt-BR:
     run: série
     error: erro
     prohibited_this_being_save: "impediram que este(a) %{resource} fosse salvo(a):"
-    arenarun: Série de Jogadas de Arena
+    arenarun: Série de Jogadas em Arena
     show: exibir
     arena: arena
+    class: Classe
+    deck: Deck
+    create: Criar
+    update: Atualizar
+    deckbuilder:
+      card_list: Lista de Cartas
+      optional_deck_will_be_created_if: 'Opcional (Deck vai ser criado se você deixar em branco)'
+      toggle_text_import: Alternar Importação de Texto
+      add_a_card: Adicionar uma carta
+      of_30_cards: de 30 cartas
+      this_deck_is_incomplete: Esse Deck Está Incompleto
+      left_click_add_right_remove: Clique com o botão esquerdo para adicionar. Com o direito para remover.
+      mana_curve: Curva de Mana
+      attack_distribution: Distribuição do Ataque
+      health_distribution: Distribuição da Vida
+      type_distribution: Distribuição do Tipo
+      mechanics: Mecânicos
+
+    matchlist:
+      filter: Filtro
+      any_class: qualquer classe
+      coin?: moeda?
+      coin: Moeda
+      no_coin: Sem Moeda
+      opponent: Oponente
+      apply: Enviar
+      reset: Resetar
+      show: Exibir
+      per_page: por página
+      all_time: Tudo
+      last_24_hours: Últimas 24 horas
+      last: últimos
+      days: dias
+      sort: ordem
+      created: criado
+      duration: Duração
+      rounds: rounds
+      ascending: crescente
+      descending: decrescente
+      win_rate_over: taxa de vitória sobre
+      matches_in_this_list: partidas nessa lista
+      your: Sua
+      opponent_class: Classe do Oponente
+      result: Resultado
+      rank: Ranking
+      mode: Modo
+      opponent_name: Nome do Oponente
+      rounds: Rounds
+      created: Criado
+      options: Opções
+
 
   dashboards:
     index:
@@ -67,22 +118,22 @@ pt-BR:
   arenas:
     index:
       title: Partidas Recentes
-      description: ' partidas recentes de arena'
+      description: ' partidas recentes em arena'
       section: Arena
       continue_arena_run: Continuar Série de Partidas Arenas
-      new_arena_run: Nova Série de Partidas de Arena
-      arena_run_with: série de partidas de arena com
+      new_arena_run: Nova Série de Partidas em Arena
+      arena_run_with: série de partidas em arena com
       on: em
       notes: Notas
       close: Fechar
-      recent_arena_games: Partidas Recentes de Arena
+      recent_arena_games: Partidas Recentes em Arena
       your_class: Sua Classe
       win_loss: Vitória/Derrota
       prizes: Prêmios
       timee_played: Duração
       options: Opções
     new:
-      title: Nova Partida de Arena
+      title: Nova Partida em Arena
       section: Arena
       retire: Retirar-se
       sure_want_retire: Voce tem certeza que deseja se retirar antes dessa série de partidas em arena?
@@ -93,15 +144,84 @@ pt-BR:
       back: Voltar
       end_run: Jogada Final
       create_entry: Criar
-      arena_run_results: Resultado da Séria de Arena
+      arena_run_results: Resultado da Séria em Arena
       result: Resultado
       options: Opções
       played_first: Jogado Primeiro
       played_second: Jogado Segundo
+    matches:
+      title: Partidas Recentes
+      subtitle: ' partídas recentes'
+      section: Arena
+      recent_arena_matches: Partidas Recentes em Arena
+    stats:
+      title: Estatísticas
+      subtitle: ' estatísticas detalhadas de jogos em Arena'
+      section: Arena
+      note: NOTA!
+      page_being_designed: A página ainda está sendo desenvolvida
+      overall_arena_stats: Visão geral
+      overall_win_rate: Taxa de Vitória Global
+      total_gold_amount: Quantidade de Gold Total
+      total_dust_amount: Quantidade de Dust Total
+      arena_runs_played: Jogadas em Arena
+      arena_games_played: Jogos em Arena
+      most_played: Mais Jogado
+      longest_average_runs: Maior média de jogadas
+      no_games: Sem jogos
+      detailed_class_status: Status Detalhado de Classe
+
+  constructeds:
+    quickentry:
+      quick_entry: Preenchimento Rápido
+      ranked: Rankiado
+      casual: Casual
+      no_coin: Sem Moeda
+      coin: Moeda
+      add_win: Adicionar Vitória
+      add_defeat: Adicionar Derrota
+      add_draw: Adicionar Empate
+    index:
+      title: 'Jogos Recentes'
+      description: ' jogos recentes constructed'
+      section: 'Constructed'
+      new_constructed: Novo Constructed
+    new:
+      title: Novo Constructed
+      section: Constructed
+    stats:
+      title: Estatísticas
+      description: ' de jogos constructed'
+      section: Constructed
+      filter_by: Filtrar por
+      last: últimos
+      hours: horas
+      days: dias
+      all_time: Tudo
+      first_or_second: primeiro ou segundo
+      going_first: indo primeiro
+      going_second: indo segundo
+      any_mode: qualquer modo
+      casual: casual
+      ranked: rankeado
+    winratechart:
+      constructed_win_rate_title: Taxa de Vitórias em Constructed por Classe (Pessoal vs Global)
+
+  decks:
+    form:
+      name: Nome
+      class: Classe
+      notes: Notas
+      decklist_etc: ' Lista de decks, etc'
+      this_deck_public: Esse Deck é Público
+    new:
+      title: Novo Deck
+      section: Decks
+
 
   arena_runs:
     new:
-      title: Nova Série de Jogadas De Arena
+      title: Nova Série de Jogadas em Arena
       section: Arena
       first_arena_of_day: Primeira série do dia? Vamos começar!
       keep_it_going: "Só %{runs}? Vamo que vamo!"
@@ -110,7 +230,42 @@ pt-BR:
       continue: Continuar
       get_auto_uploader: Baixar o Auto Uploader
 
-
+  menu:
+    dashboard: Dashboard
+    card_database: Banco de Cartas
+    arena:
+      title: Arena
+      recent_arena_runs: Arenas Recentes
+      continue_arena_run: Continuar a Arena
+      new_arena_run: Nova Arena
+      recent_arena_matches: Partidas recentes em Arena
+      statistics: Estatísticas
+    constructed:
+      title: Constructed
+      recent_matches: Partidas Recentes
+      new_match: Nova Partida
+      statistics: Estatísticas
+    deck:
+      title: Deck
+      public_deck_list: Lista de Deck Publica
+      my_deck: Meu Deck
+      my_active_deck: Meu Deck Ativo
+      new_deck: Novo Deck
+    news: Notícias
+    streams: Ao Vivo
+    tournaments:
+      title: Torneios
+      register: Registrar
+      Calendar: Calendário
+      past_winners: Últimos Vencedores
+    extra:
+      title: Extra
+      official_uploader: Uploader Oficial 
+      march_report: Relatório de Março
+      change_log: Change Log
+      about_us: Sobre
+      contact_info: Contato
+    help: Ajuda
 
 
 

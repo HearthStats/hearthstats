@@ -4,13 +4,13 @@
   <div class="preloadCardBg_2"></div>
   <div class="preloadCardBg_legendary"></div>
   <div class="col-lg-6">
-    <label>Card List</label>
+    <label><%= t('.card_list') %></label>
     <% if params[:action] == "new" || params[:action] == "edit" %>
     <div>
-    <small>Optional (Deck will be created if you leave this blank)</small>
+    <small><%= t('.optional_deck_will_be_created_if') %></small>
     </div>
     <div class="toggle-box">
-			<div class="btn blue btn-sm deck-text-trigger">Toggle Text Import</div>&nbsp;<a href="http://hearthstats.uservoice.com/knowledgebase/articles/339087" target="_blank"><i class="fa fa-question-circle tooltips" data-original-title="Click to learn more"></i></a>
+			<div class="btn blue btn-sm deck-text-trigger"><%= t('.toggle_text_import') %></div>&nbsp;<a href="http://hearthstats.uservoice.com/knowledgebase/articles/339087" target="_blank"><i class="fa fa-question-circle tooltips" data-original-title="Click to learn more"></i></a>
 		</div>
     <%= text_area_tag :deck_text, nil , class: "deck-text" %>
     <% end %>
@@ -18,40 +18,40 @@
       <% if enabled %>
 	      <p>
 	        <select name="deckBuilderAddCardField">
-	          <option value="">Add a card ...</option>
+	          <option value=""><%= t('.add_a_card') %> ...</option>
 	          <% Card.order("name ASC").each do |card| %>
 	            <option value="<%= card.id %>" icon	="<%= card.getImageUrl() %>"><%= card.name %></option>
 	          <% end %>
 	        </select>
 	      </p>
-      	<p><span class="deckBuilderNumCards"></span> of 30 cards</p>
+      	<p><span class="deckBuilderNumCards"></span> <%= t('.of_30_cards') %></p>
       <% end %>
     </div>
     <div class="cardListHeader" >
       <% if !enabled && @deck.cards.nil? %>
 	      <div class="deckBuilderMissingCards ui-state-error">
-	        This deck is incomplete.
+	        <%= t('.this_deck_is_incomplete') %>
 	      </div>
 	  <% end %>
     </div>
     <div style="position:relative;">
       <div class="deckBuilderCardsWrapper"></div>
-      Left-click to add. Right-click to remove.
+      <%= t('.left_click_add_right_remove') %>
     	<img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="deckBuilderStats">
       <label>&nbsp;</label>
-      <div>Mana Curve:</div>
+      <div><%= t('.mana_curve') %>:</div>
       <div id="manaCurveChart" class="deckBuilderCurveChart"></div>
-      <div>Attack Distribution:</div>
+      <div><%= t('.attack_distribution') %>:</div>
       <div id="attackCurveChart" class="deckBuilderCurveChart"></div>
-      <div>Health Distribution:</div>
+      <div><%= t('.health_distribution') %>:</div>
       <div id="healthCurveChart" class="deckBuilderCurveChart"></div>
-      <p>Type Distribution:</p>
+      <p><%= t('.type_distribution') %>:</p>
       <div id="typeChart"></div>
-      <p>Mechanics:</p>
+      <p><%= t('.mechanics') %>:</p>
       <div id="mechanicsChart"></div>
     </div>
   </div>
