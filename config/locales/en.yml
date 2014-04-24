@@ -2,6 +2,22 @@
 en:
 
   shared:
+    header:
+      guest: Guest
+      my_profile: My Profile
+      sign_out: Sign Out
+      register_now_login: Register Now / Login
+      you_have: You have
+      new_messages: new messages
+      click_message_to_dismiss: Click on the message to dismiss
+      change_to: Change to
+    footer:
+      about: About
+      faq: FAQ
+      open_positions: Open positions
+      support: Support
+      privacy_policy: Privacy Policy
+      copyright_text: Copyright 2014 HearthStats. Hearthstone is a registered trademark of Blizzard Entertainment.
     arena_win_rate: Arena Win Rate
     ranked_win_rate: Ranked Win Rate
     best_deck: Best Deck
@@ -36,6 +52,33 @@ en:
       health_distribution: Health distribution
       type_distribution: Type distribution
       mechanics: Mechanics
+    back: Back
+    deckslist:
+      filter: Filter
+      any_class: any class
+      show: Show
+      per_page: per page
+      sort_by: Sort by
+      created: Created
+      losses: Losses
+      matches: Matches
+      minions: Minions
+      name: Name
+      spells: Spells
+      popularity: Popularity
+      weapons: Weapons
+      win_rate: Win Rate
+      wins: Wins
+      asc: Asc
+      desc: Desc
+      apply: Apply
+      found_matching_your_criteria: found matching your criteria
+      class: Class
+      users: Users
+      listed_by: Listed By
+      tools: Tools
+      stats_are_for_all_users: 'stats are for all users that have played the deck in the last 30 days, not just the original author'
+      stats_are_for_your_personal: 'stats are for for your personal play using each deck'
 
     matchlist:
       filter: Filter
@@ -189,6 +232,7 @@ en:
     new:
       title: New Constructed
       section: Constructed
+      get_the_auto_uploader: Get the Auto Uploader
     stats:
       title: Statistics
       description: ' constructed game stats'
@@ -206,6 +250,18 @@ en:
       ranked: ranked
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
+    newform:
+      you_played_on_the: You played on the
+      first_turn: first turn
+      second_turn: second turn
+      this_match_is: This match is
+      ranked: Ranked
+      casual: Casual
+      deck_name: Deck name
+      opponent_class: Opponent class
+      add_win: Add Win
+      add_defeat: Add Defeat
+      add_draw: Add Draw
 
 
 
@@ -219,7 +275,22 @@ en:
     new:
       title: New Deck
       section: Decks
-
+    public:
+      title: Public Deck List
+      subtitle: ' all public constructed decks'
+      new_deck: New Deck
+      public_decks: Public Decks
+    active_decks:
+      title: Active Deck
+      subtitle: ' all active constructed decks'
+      slot: Slot
+      select_deck: Select Deck
+      submit: Submit
+    index:
+      title: My Decks
+      subtitle: ' all of my constructed decks'
+      new_deck: New Deck
+      my_decks: My Decks
 
   arena_runs:
     new:
@@ -231,6 +302,91 @@ en:
       your_class: Your class
       continue: Continue
       get_auto_uploader: Get the Auto Uploader
+
+
+  additional:
+    news:
+      title: Hearthstone News
+      subtitle: ' the latest in Hearthstone news'
+      suggestions_for_news: Suggestions for news sources are welcome
+      posted: Posted
+      read_more: Read More
+    uploader:
+      title: Official Uploader
+      header_text: "| Why enter your matches manually when you can let our uploader take care of everything for you? &nbsp;| This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, &nbsp;| monitoring, or network modification of any kind. The project is and always will be open source so that you &nbsp;| can do your own builds and see exactly what's happening within the program."
+      download_for: Download for
+      user_key: User Key
+      do_not_share: do not share this with anyone else
+      click_to_reveal: Click to reveal
+      instructions: Instructions
+      please_have_installed: Please make sure you have Java 7+ installed. 
+      download_java_here: Download Java Here
+      instructions_osx:
+        inst_osx_1: Download from the link above
+        inst_osx_2: Unzip the file
+        inst_osx_3: Drag the file to your Applications folder
+        inst_osx_4: <b>Right Click</b> the file then click open
+        inst_osx_5: Enter your userkey from the uploader page or the profile page
+        inst_osx_6: Open up your game and play away!
+      instructions_win:
+        inst_win_1: Download from the link above
+        inst_win_2: Unzip the file
+        inst_win_3: Click to open up the app
+        inst_win_4: Enter your userkey from the uploader page or the profile page
+        inst_win_5: Open up your game and play away!
+      features_title: Features
+      features:
+        feat_1: Support for both Windows and OSx
+        feat_2: Automatically tracks constructed and arena matches
+        feat_3: Tracks your class and your opponent's class
+        feat_4: Tracks your rank level for ranked matches
+        feat_5: Tracks your opponent's name
+        feat_6: Tracks number of rounds played and match duration
+        feat_7: Add notes to your matches directly from the uploader   
+      help_and_support: Help and Support
+      known_issues: Known issues
+      project_source_on_github: Project source on Github
+    changelog:
+      title: Changelog
+      all_time_in_utc: All time in UTC
+    aboutus:
+      title: About Us
+      founded_by_text: This site was founded by Jeffrey Tong with love.
+      you_can_follow_twitter: You can follow me on Twitter
+      a_huge_thanks_to: A huge thanks to
+      thanks_jerome_text: Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
+      built_suggestions_text: HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
+      others_contributors: Others Contributors
+      charles_text_1: Charles put in some amazing great work on the OSx uploader 
+      charles_text_2: Charles deserves a lot of appreciation for coming out of nowhere and doing some open source work
+      charles_text_3: You can find more about Charles
+      here: here
+      eckert_text: J Eckert contributed a lot to styling and colors
+      donate_text:  "If you like what I'm doing, toss me a few coins."
+      rackspace_text: "I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!"
+    contactus:
+      title: Contact Info
+      contact_email_text: "Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions."
+      contact_email_text_2: "You can also follow us on Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: I'm really bored so your emails are welcomed.
+      fadein_text_2: Please just send me an email! It could be about anything!
+      fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
+    help:
+      title: Help
+      help_text: "Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems."
+
+
+  streams:
+    index:
+      title: Streams
+      subtitle: ' find all your favourite streams in one place'
+
+  tournies:
+    index:
+      title: Sign Up
+      subtitle: ' Register for our newest tournaments/leagues'
+      section: 'Tournaments'
+
 
 
   menu:

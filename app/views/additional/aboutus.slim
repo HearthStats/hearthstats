@@ -1,34 +1,34 @@
 - set_meta_tags :title => 'About Us',
   :description => 'The team behind HearthStats',
   :keywords => 'About Us, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'About Us')
+- provide(:title, t('.title'))
 
 p
-  h3 This site was founded by Jeffrey Tong with love.
-  br You can follow me on Twitter: <a href="http://twitter.com/trigun0x2"> @trigun0x2 </a>
+  h3= t('.founded_by_text')
+  br #{t('.you_can_follow_twitter')}: <a href="http://twitter.com/trigun0x2"> @trigun0x2 </a>
 
 p
-  | A huge thanks to:
+  | #{t('.a_huge_thanks_to')}:
   a(href="http://jeromedane.com" target="_blank") &nbsp; Jerome Dane
   | &nbsp; (
   a(href="http://twitter.com/JeromeDane" target="_blank" title="Follow Jerome on Twitter")@JeromeDane
   | )
-p Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
-p HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
+p #{t('.thanks_jerome_text')}
+p #{t('.built_suggestions_text')}
 
-h4 Other Contributors
+h4= t('.others_contributors')
 ul
   li <b>Charles Gutjah</b>
   ul
-    li Charles put in some amazing great work on the OSx uploader
-    li Charles deserves a lot of appreciation for coming out of nowhere and doing some open source work
-    li You can find more about Charles <a href="http://charlesgutjahr.com/">here</a>
+    li= t('.charles_text_1')
+    li= t('.charles_text_2') 
+    li #{t('.charles_text_3')} <a href="http://charlesgutjahr.com/">#{t('.here')}</a>
   li <b>J Eckert</b>
   ul
-    li J Eckert contributed a lot to styling and colors
+    li= t('.eckert_text')
 
 p
-  b If you like what I'm doing, toss me a few coins.
+  b= t('.donate_text')
   form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
     input type="hidden" name="cmd" value="_s-xclick"
     input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----"
@@ -36,5 +36,5 @@ p
     img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"
 
 
-p I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!
+p= t('.rackspace_text')
 =image_tag('RSLogo.png', width: '200px')

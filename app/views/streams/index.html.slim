@@ -1,8 +1,10 @@
 - set_meta_tags :title => 'Streams',
   :description => 'All Hearthstone streams',
   :keywords => 'stream, all, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Streams')
-- provide(:subtitle, ' find all your favourite streams in one place')
+
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+
 = will_paginate @streams, renderer: BootstrapPagination::Rails
 div class="row"
   div class="col-md-12"

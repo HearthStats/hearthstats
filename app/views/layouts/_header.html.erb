@@ -25,7 +25,7 @@
         <% if current_user.guest %>
 	      	<%= image_tag("avatar.jpg") %>
 	        <span class="username">
-        		Guest
+        		<%= t('shared.header.guest') %>
       	<% else %>
 	        <%= image_tag current_user.profile.avatar.url(:thumb) %>
       		<%if current_user.profile.name.blank? %>
@@ -38,16 +38,16 @@
         <i class="fa fa-angle-down"></i>
         </a>
         <ul class="dropdown-menu">
-          <li><%= link_to profile_path(current_user.id) do %><i class="fa fa-user"></i> My Profile<% end %>
+          <li><%= link_to profile_path(current_user.id) do %><i class="fa fa-user"></i> <%= t('shared.header.my_profile') %><% end %>
           </li>
           <li class="divider"></li>
-          <li><%= link_to destroy_user_session_path do %><i class="fa fa-key"></i> Log Out<% end %>
+          <li><%= link_to destroy_user_session_path do %><i class="fa fa-key"></i> <%= t('shared.header.sign_out') %><% end %>
           </li>
         </ul>
       <% else %>
       	<li class="dropdown user">
         <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
-	        <span class="username">Register Now / Login</span>
+	        <span class="username"><%= t('shared.header.register_now_login')%></span>
         <% end %>
       <% end %>
       </li>

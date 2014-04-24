@@ -2,6 +2,22 @@
 pt-BR:
 
   shared:
+    header:
+      guest: Convidado
+      my_profile: Meu Perfil
+      sign_out: Sair
+      register_now_login: Cadastre-se / Login
+      you_have: Você tem
+      new_messages: novas mensagens
+      click_message_to_dismiss: Clique na mensagem para dispensar
+      change_to: Alterar para
+    footer:
+      about: Sobre
+      faq: FAQ
+      open_positions: Posições Abertas
+      support: Suporte
+      privacy_policy: Política de Privacidade
+      copyright_text: Copyright 2014 HearthStats. Hearthstone é uma marca registrada da Blizzard Entertainment.
     arena_win_rate: Taxa de Vitórias em Arena
     ranked_win_rate: Taxa de Vitórias Rankeada
     best_deck: Melhor Deck
@@ -36,6 +52,33 @@ pt-BR:
       health_distribution: Distribuição da Vida
       type_distribution: Distribuição do Tipo
       mechanics: Mecânicos
+    back: Voltar
+    deckslist:
+      filter: Filtro
+      any_class: qualquer classe
+      show: Mostrar
+      per_page: por página
+      sort_by: Ordenar por
+      created: Criado
+      losses: Perdidos
+      matches: Partidas
+      minions: Minions
+      name: Nome
+      spells: Feitiços
+      popularity: Popularidade
+      weapons: Armas
+      win_rate: Taxa de Vitórias
+      wins: Vitórias
+      asc: Ascendente
+      desc: Descendente
+      apply: Aplicar
+      found_matching_your_criteria: encontrados que batem com os critérios
+      class: Classe
+      users: Usuários
+      listed_by: Listado por
+      tools: Ferramentss
+      stats_are_for_all_users: 'estatísticas são para todos usuários que tenham jogado o deck nos últimos 30 dias, não somente o autor original'
+      stats_are_for_your_personal: 'estatísticas são para o seu jogo pessoal usando cada deck'
 
     matchlist:
       filter: Filtro
@@ -189,6 +232,7 @@ pt-BR:
     new:
       title: Novo Constructed
       section: Constructed
+      get_the_auto_uploader: Baixar o Auto Uploader
     stats:
       title: Estatísticas
       description: ' de jogos constructed'
@@ -206,6 +250,18 @@ pt-BR:
       ranked: rankeado
     winratechart:
       constructed_win_rate_title: Taxa de Vitórias em Constructed por Classe (Pessoal vs Global)
+    newform:
+      you_played_on_the: Você jogou no
+      first_turn: primeiro turno
+      second_turn: segundo turno
+      this_match_is: Essa partida é
+      ranked: Rankeada
+      casual: Casual
+      deck_name: Nome do Deck
+      opponent_class: Classe do oponente
+      add_win: Deu Vitória
+      add_defeat: Deu Derrota
+      add_draw: Deu Empate
 
   decks:
     form:
@@ -217,6 +273,23 @@ pt-BR:
     new:
       title: Novo Deck
       section: Decks
+    public:
+      title: Lista de Decks Públicos
+      subtitle: ' todos os decks constructed públicos'
+      new_deck: Novo Deck
+      public_decks: Decks Públicos
+    active_decks:
+      title: Decks Atívos
+      subtitle: ' todos os decks constructed ativos'
+      slot: Campo
+      select_deck: Selecione o Deck
+      submit: Enviar
+    index:
+      title: Meus Decks
+      subtitle: ' todos os meus decks constructeds'
+      new_deck: Novo Deck
+      my_decks: Meus Decks
+
 
 
   arena_runs:
@@ -229,6 +302,91 @@ pt-BR:
       your_class: Sua Classe
       continue: Continuar
       get_auto_uploader: Baixar o Auto Uploader
+
+
+  additional:
+    news:
+      title: Notícias Hearthstone
+      subtitle: ' as últimas sobre Hearthstone'
+      suggestions_for_news: Sugestões de novas fontes de notícias são bem vindas
+      posted: Postado
+      read_more: Leia Mais
+    uploader:
+      title: Uploader Oficial
+      header_text: "| Porque digiar cada partida manualmente se você pode deixar nosso uploader cuidar de tudo para você? &nbsp;| Essa ferramenta open source utiliza de captura de tela para analisar sua janela do Hearthstone. Não faz packet sniffing, &nbsp;| monitoramento, ou mudanças na rede de nenhum tipo. O projeto é e sempre será de código aberto para que você &nbsp;| possa saber como compilar e ver exatamente o que está acontecendo no programa."
+      download_for: Download para
+      user_key: Chave do Usuário
+      do_not_share: não divulgue isso para ninguém
+      click_to_reveal: Clique para revelar
+      instructions: Instruções
+      please_have_installed: Por favor certifique-se de ter o Java 7+ instalado.
+      download_java_here: Download do Java aqui
+      instructions_osx:
+        inst_osx_1: Faça o Download do link emcima
+        inst_osx_2: Descompacte o arquivo
+        inst_osx_3: Mova para a pasta Applications
+        inst_osx_4: <b>Clique com o botão direito</b> sobre o arquivo e depois clique em Abrir (open)
+        inst_osx_5: Digite sua Chave do Usuário mostrada acima
+        inst_osx_6: Inicie o jogo e jogue!
+      instructions_win:
+        inst_win_1: Faça o Download do link emcima
+        inst_win_2: Descompacte o arquivo
+        inst_win_3: Abra o arquivo
+        inst_win_4: Utilize a sua chave do Usuário mostrada acimaEnter your userkey from the uploader page or the profile page
+        inst_win_5: Inicie o jogo e jogue!
+      features_title: Funcionalidades
+      features:
+        feat_1: Suporte para ambos Windows e OSx
+        feat_2: Monitore automaticamente seus jogos constructed e arena
+        feat_3: Monitore sua classe e a classe de seu oponente
+        feat_4: Monitore o seu ranking para partidas rankeadas
+        feat_5: Monitore o nome do seus oponentes
+        feat_6: Monitore o número de rodadas e a duração de cada partida
+        feat_7: Adicione notas para a suas partidas diretamente do Uploader
+      help_and_support: Ajuda e Suporte
+      known_issues: Problemas conhecidos
+      project_source_on_github: Código Aberto do Projeto no Github
+    changelog:
+      title: Changelog
+      all_time_in_utc: Todos as datas estão em UTC
+    aboutus:
+      title: Sobre
+      founded_by_text: Esse site foi criado por Jeffrey Tong com amor.
+      you_can_follow_twitter: Você pode me seguir no Twitter
+      a_huge_thanks_to: Um grande abraços para
+      thanks_jerome_text: Jerome definitivalemte ajudou o HearthStats e me motivou a trabalhar melhor. Obrigado demais!
+      built_suggestions_text: HearthStats foi criado com sugestões de toda a comunidade e continuará sendo uma ferramenta feita por/para ela.
+      others_contributors: Outros contribuintes
+      charles_text_1: Charles fez um excelente trabalho no OsX Uploader
+      charles_text_2: Charles merece muito respeito por ter surgido do nada e feito um grande trabalho open source
+      charles_text_3: Você pode ler mais sobre o Charles
+      here: aqui
+      eckert_text: J Eckert contribuiu bastante para a estilização e cores
+      donate_text:  "Se você gosta do que euestou fazendo, doe uns trocados."
+      rackspace_text: "Gostaria de agradecer também o Rackspace por proporcionar um excelente serviço de hospedagem! Se vocês precisarem de algo, definitivamente vale a pena dar uma olhada lá."
+    contactus:
+      title: Contato
+      contact_email_text: "Sinta-se a vontade para me mandar um email em <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a> para qualquer coisa."
+      contact_email_text_2: "Você também pode me seguir no Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: Eu estou realmente entediado então mande emails.
+      fadein_text_2: Por favor! Pode ser sobre qualquer coisa!
+      fadein_text_3: Minha bunda já ta doendo aqui. Olha só tudo que eu to passando para desenvolver esse site para voces...
+    help:
+      title: Ajuda
+      help_text: "Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas."
+
+
+  streams:
+    index:
+      title: Ao Vivo
+      subtitle: ' encontre todos os seus jogos ao vivo favoritos em um só lugar'
+
+  tournies:
+    index:
+      title: Cadastre-se
+      subtitle: ' Cadastre-se para os nosso Torneios/Ligas'
+      section: 'Torneios'
+
 
   menu:
     dashboard: Dashboard
@@ -479,3 +637,21 @@ pt-BR:
   activerecord:
     errors:
       <<: *errors
+
+
+  will_paginate:
+    next_label: Próximos &#8594;
+    page_entries_info:
+      multi_page: Exibindo %{model} %{from} - %{to} de %{count} no total
+      multi_page_html: Exibindo %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b>
+        no total
+      single_page:
+        one: Exibindo 1 %{model}
+        other: Exibindo todos os %{count} %{model}
+        zero: Nenhum %{model} encontrado
+      single_page_html:
+        one: Exibindo <b>1</b> %{model}
+        other: Exibindo <b>todos os&nbsp;%{count}</b> %{model}
+        zero: Nenhum %{model} encontrado
+    page_gap: '&hellip;'
+    previous_label: '&#8592; Anteriores'

@@ -8,7 +8,7 @@
   </a>
   <ul class="dropdown-menu extended inbox">
     <li>
-      <p>You have <span class="new-msg-count"><%= notes.count %></span> new messages</p>
+      <p><%= t('shared.header.you_have')%> <span class="new-msg-count"><%= notes.count %></span> <%= t('shared.header.new_messages')%></p>
     </li>
     <li>
       <ul class="dropdown-menu-list scroller" style="height: 250px;">
@@ -29,7 +29,7 @@
           </li>
         <% end %>
         <div class="inbox-dismiss">
-        	Click message to dismiss
+        	<%= t('shared.header.click_message_to_dismiss')%>
         </div>
       </ul>
     </li>
