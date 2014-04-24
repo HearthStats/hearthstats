@@ -7,7 +7,7 @@
       <li>
         <%= link_to url_for(locale: k) do %>
           <div>
-            <%=image_tag "country_flags/icon_#{k}.jpg"%> Change to <%=v%>
+            <%=image_tag "country_flags/icon_#{k}.jpg"%> <%= t('shared.header.change_to')%> <%=v%>
           </div>
         <% end %>
       </li>

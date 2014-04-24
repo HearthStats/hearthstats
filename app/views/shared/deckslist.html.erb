@@ -50,39 +50,39 @@
 %>
 <form id="deckListFilter" method="get" class="data-turboform">
 	<p>
-		Filter
+		<%= t('.filter') %>
 		<select name="class">
-			<option value="">- any class-</option>
+			<option value="">- <%= t('.any_class') %>-</option>
 			<% Klass.order("name ASC").each do |klass| %>
 				<option value="<%= klass.id %>" <%= class_filter.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
 			<% end %>
 		</select>
-		show
+		<%= t('.show') %>
 		<select name="items">
 			<% [10, 20, 50, 100].each do |num| %>
-				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> per page</option>
+				<option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> <%= t('.per_page') %></option>
 			<% end %>
 		</select>
-		sort By
+		<%= t('.sort_by') %>
 		<select name="sort">
-			<option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>>Created</option>
-			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>>Losses</option>
-			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>>Matches</option>
-			<option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>>Minions</option>
-			<option value="name" <%= @sortField == "name" ? 'selected="selected"' : ''%>>Name</option>
-			<option value="num_spells" <%= @sortField == "num_spells" ? 'selected="selected"' : ''%>>Spells</option>
-			<option value="num_users" <%= @sortField == "num_users" ? 'selected="selected"' : ''%>>Popularity</option>
-			<option value="num_weapons" <%= @sortField == "num_weapons" ? 'selected="selected"' : ''%>>Weapons</option>
-			<option value="winrate" <%= @sortField == "winrate" ? 'selected="selected"' : ''%>>Win Rate</option>
-			<option value="num_wins" <%= @sortField == "num_wins" ? 'selected="selected"' : ''%>>Wins</option>
+			<option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>><%= t('.created') %></option>
+			<option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>><%= t('.losses') %></option>
+			<option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>><%= t('.matches') %></option>
+			<option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>><%= t('.minions') %></option>
+			<option value="name" <%= @sortField == "name" ? 'selected="selected"' : ''%>><%= t('.name') %></option>
+			<option value="num_spells" <%= @sortField == "num_spells" ? 'selected="selected"' : ''%>><%= t('.spells') %></option>
+			<option value="num_users" <%= @sortField == "num_users" ? 'selected="selected"' : ''%>><%= t('.popularity') %></option>
+			<option value="num_weapons" <%= @sortField == "num_weapons" ? 'selected="selected"' : ''%>><%= t('.weapons') %></option>
+			<option value="winrate" <%= @sortField == "winrate" ? 'selected="selected"' : ''%>><%= t('.win_rate') %></option>
+			<option value="num_wins" <%= @sortField == "num_wins" ? 'selected="selected"' : ''%>><%= t('.wins') %></option>
 		</select>
 		<select name="order">
-			<option value="asc">Asc</option>
-			<option value="desc" <%= @orderFilter == "desc" ? 'selected="selected"' : ''%>>Desc</option>
+			<option value="asc"><%= t('.asc') %></option>
+			<option value="desc" <%= @orderFilter == "desc" ? 'selected="selected"' : ''%>><%= t('.desc') %></option>
 		</select>
-		<input id="deckListFilterSubmit" type="submit" value="Apply"/>
+		<input id="deckListFilterSubmit" type="submit" value="<%=t('.apply')%>"/>
 	</p>
-	<p><strong><%= number_with_delimiter(totalDecks, :delimiter => ',') %></strong> deck<%= totalDecks == 1 ? "" : "s" %> found matching your criteria</p>
+	<p><strong><%= number_with_delimiter(totalDecks, :delimiter => ',') %></strong> <%= t('shared.deck') %><%= totalDecks == 1 ? "" : "s" %> <%= t('.found_matching_your_criteria') %></p>
 </form>
 <script type="text/javascript">
 	$('#deckListFilter select').change(function() {
@@ -94,21 +94,21 @@
 <table class="decklist table table-bordered table-striped table-condensed flip-content" id="decklist">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th class="class">Class</th>
-			<th class="minions">Minions</th>
-			<th class="spells">Spells</th>
-			<th class="weapons">Weapons</th>
-			<th class="matches">Matches *</th>
-			<th class="wins">Wins *</th>
-			<th class="losses">Losses *</th>
-			<th class="winrate">Win Rate *</th>
-			<th class="num_users">Users</th>
+			<th><%= t('.name') %></th>
+			<th class="class"><%= t('.class') %></th>
+			<th class="minions"><%= t('.minions') %></th>
+			<th class="spells"><%= t('.spells') %></th>
+			<th class="weapons"><%= t('.weapons') %></th>
+			<th class="matches"><%= t('.matches') %> *</th>
+			<th class="wins"><%= t('.wins') %> *</th>
+			<th class="losses"><%= t('.losses') %> *</th>
+			<th class="winrate"><%= t('.win_rate') %> *</th>
+			<th class="num_users"><%= t('.users') %></th>
 			<% if global %>
-				<th class="author">Listed By</th>
+				<th class="author"><%= t('.listed_by') %></th>
 			<% end %>
 			<% if !current_user.nil? %>
-				<th class="tools">Tools</th>
+				<th class="tools"><%= t('.tools') %></th>
 			<% end %>
 		</tr>
 	</thead>
@@ -150,8 +150,8 @@
 	</tbody>
 </table>
 <% if global %>
-	<p>* <em>stats are for all users that have played the deck in the last 30 days, not just the original author</em></p>
+	<p>* <em><%= t('.stats_are_for_all_users') %></em></p>
 <% else %>
-	<p>* <em>stats are for for your personal play using each deck</em></p>
+	<p>* <em><%= t('.stats_are_for_your_personal') %></em></p>
 <% end %>
 <%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>

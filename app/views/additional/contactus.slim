@@ -1,12 +1,12 @@
 - set_meta_tags :title => 'Contact Info',
   :description => 'Find our how to reach us here.',
   :keywords => 'contact, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Contact Info')
-p Feel free to email me at<a href="mailto:jeff@hearthstats.net"> jeff@hearthstats.net </a>for any questions.
-p You can also follow us on Twitter: <a href="https://twitter.com/hearthstats" class="twitter-follow-button" data-show-count="false" data-lang="en"> @hearthstats</a>
-p.fadein1 I'm really bored so your emails are welcomed.
-p.fadein2 Please just send me an email! It could be about anything!
-p.fadein3 My butt is getting sore... Look at the pain I endure to make this site for you guys!
+- provide(:title, t('.title'))
+p= t('.contact_email_text').html_safe
+p= t('.contact_email_text_2').html_safe 
+p.fadein1= t('.fadein_text_1')
+p.fadein2= t('.fadein_text_2')
+p.fadein3= t('.fadein_text_3')
 
 javascript:
   $('.fadein1').hide().delay(2000).fadeIn();
