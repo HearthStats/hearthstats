@@ -59,11 +59,11 @@ div.row
             span.version-number
               = link_to "v#{version.version}", deck_path(@deck, version: version.version)
         h3 Notes
-        = sanitize @deck.notes, tags: %w(table tr td <a href=""></a>), attributes: %w(id class style)
+        = sanitize @deck.notes, tags: %w(table tr td span <a href=""></a>), attributes: %w(id class style)
       div.deck-show-graph
         = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments
-        = render_comments_form @deck
+        = render_comments_form @deck unless current_user.guest
         = render_comments @deck, :page => params[:page], :limit => 5
   div.col-md-6
     = render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => false }

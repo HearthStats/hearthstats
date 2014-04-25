@@ -1,20 +1,22 @@
 <% reply = defined?(reply) ? reply : false %>
-<li id="comment_<%= comment.id %>" class="in">
-  <%= image_tag comment.owner.profile.avatar.url(:thumb),class: "avatar img-responsive" %>
-  <div class="message">
-  	<span class="arrow"></span>
-  	<a href="/profiles/<%= comment.owner.id %>" class= "name" ><%= comment.owner.profile.name %></a>
-  	<span class="datetime">at <%= comment.created_at.strftime("%b %d, %Y %H:%M") %></span>
-  	<span class="body">
-  		<%= simple_format(comment.body) %>
-  	</span>
-  </div>
+<% if comment.owner.profile %>
+  <li id="comment_<%= comment.id %>" class="in">
+    <%= image_tag comment.owner.profile.avatar.url(:thumb),class: "avatar img-responsive" %>
+    <div class="message">
+      <span class="arrow"></span>
+      <a href="/profiles/<%= comment.owner.id %>" class= "name" ><%= comment.owner.profile.name %></a>
+      <span class="datetime">at <%= comment.created_at.strftime("%b %d, %Y %H:%M") %></span>
+      <span class="body">
+        <%= simple_format(comment.body) %>
+      </span>
+    </div>
 
-  <%# this enables only 1 level of replies %>
-  <% if Opinio.accept_replies && !reply %>
-    <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
-    <ul id="comment_<%= comment.id %>_replies" class="replies">
-      <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
-    </ul>
-  <% end %>
-</li>
+    <%# this enables only 1 level of replies %>
+    <% if Opinio.accept_replies && !reply %>
+      <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
+      <ul id="comment_<%= comment.id %>_replies" class="replies">
+        <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
+      </ul>
+    <% end %>
+  </li>
+<% end %>
