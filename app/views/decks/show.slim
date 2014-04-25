@@ -63,7 +63,7 @@ div.row
       div.deck-show-graph
         = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments
-        = render_comments_form @deck unless current_user.guest
+        = render_comments_form @deck unless current_user && current_user.guest
         = render_comments @deck, :page => params[:page], :limit => 5
   div.col-md-6
     = render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => false }
