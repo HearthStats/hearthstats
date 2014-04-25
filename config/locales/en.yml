@@ -14,7 +14,7 @@ en:
     footer:
       about: About
       faq: FAQ
-      open_positions: Open positions
+      open_positions: Open Positions
       support: Support
       privacy_policy: Privacy Policy
       copyright_text: Copyright 2014 HearthStats. Hearthstone is a registered trademark of Blizzard Entertainment.
@@ -126,9 +126,9 @@ en:
       read_more: Read More
       view_more: View More
       news:
-        huge_update: Huge update with lots of features. 
-        ability_to_rank: Ability to rank/casual added for Constructed Games. 
-        donation_link: Donation link added at 
+        huge_update: Huge update with lots of features.
+        ability_to_rank: Ability to rank/casual added for Constructed Games.
+        donation_link: Donation link added at
         notes_feature: Notes feature added!
       personal_win_rate: Personal Win Rate
       constructed_win_rates: Constructed Win Rate
@@ -319,7 +319,7 @@ en:
       do_not_share: do not share this with anyone else
       click_to_reveal: Click to reveal
       instructions: Instructions
-      please_have_installed: Please make sure you have Java 7+ installed. 
+      please_have_installed: Please make sure you have Java 7+ installed.
       download_java_here: Download Java Here
       instructions_osx:
         inst_osx_1: Download from the link above
@@ -342,7 +342,7 @@ en:
         feat_4: Tracks your rank level for ranked matches
         feat_5: Tracks your opponent's name
         feat_6: Tracks number of rounds played and match duration
-        feat_7: Add notes to your matches directly from the uploader   
+        feat_7: Add notes to your matches directly from the uploader
       help_and_support: Help and Support
       known_issues: Known issues
       project_source_on_github: Project source on Github
@@ -357,7 +357,7 @@ en:
       thanks_jerome_text: Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
       built_suggestions_text: HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
       others_contributors: Others Contributors
-      charles_text_1: Charles put in some amazing great work on the OSx uploader 
+      charles_text_1: Charles put in some amazing great work on the OSx uploader
       charles_text_2: Charles deserves a lot of appreciation for coming out of nowhere and doing some open source work
       charles_text_3: You can find more about Charles
       here: here
