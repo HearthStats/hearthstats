@@ -4,14 +4,12 @@ ActiveAdmin.register_page "Dashboard" do
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
     div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
+      h2 'HearthStats Dashboard'
+      small 'Some basic functionality'
     end
 
     # Here is an example of a simple dashboard with columns and panels.
-    
+
     columns do
       column do
         panel "Recent Decks" do
@@ -24,8 +22,12 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Info" do
-          para "Welcome to HearthStats Admin."
+        panel "Export" do
+          small 'Click to export data for the current season'
+          ul do
+            li link_to "Ranked CSV", admin_export_con_path(format: "csv")
+            li link_to "Arena CSV", admin_export_arena_path(format: "csv")
+          end
         end
       end
     end

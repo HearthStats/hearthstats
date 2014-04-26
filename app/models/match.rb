@@ -18,6 +18,9 @@ class Match < ActiveRecord::Base
   has_one :match_rank
   has_one :rank, :through => :match_rank
 
+  belongs_to :match_result
+  belongs_to :result, :class_name => 'MatchResult', :foreign_key => 'result_id'
+
   belongs_to :mode
   belongs_to :user
 
@@ -38,10 +41,10 @@ class Match < ActiveRecord::Base
   end
 
   def update_user_stats_constructed
-  	unless self.deck.nil?
-	  	self.deck.update_user_stats
-	  	self.deck.save!
-	  end
+    unless self.deck.nil?
+      self.deck.update_user_stats
+      self.deck.save!
+    end
   end
 
   def self.bestuserarena(userid)
@@ -55,10 +58,36 @@ class Match < ActiveRecord::Base
         class_arena_rate[Klass.find(c).name] = 0
       else
         class_arena_rate[Klass.find(c).name] = ((totalwins.to_f / totalgames)*100).round
-  end
+      end
     end
     arena_class = class_arena_rate.max_by {|x,y| y}
 
     arena_class
   end
+
+  def self.to_csv
+    # Create CSV
+    CSV.generate do |writer|
+      writer << [ first.mode.name + ' Games']
+      writer << [
+                  'Class',
+                  'Opponent Class',
+                  'Result',
+                  'Coin?',
+                  'Created Time'
+                ]
+      all.each do |match|
+        next unless match.user_id
+        writer << [
+                    match.klass.name,
+                    match.oppclass.name,
+                    match.result.name,
+                    match.coin,
+                    match.created_at
+                  ]
+      end
+    end
+
+  end
+
  end
