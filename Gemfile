@@ -79,6 +79,7 @@ gem "meta_search",    '>= 1.1.0.pre' # For active admin
 gem "rolify"
 gem 'cancan'
 gem 'sanitize'
+gem 'i18n_data' # For translating code to full country name
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

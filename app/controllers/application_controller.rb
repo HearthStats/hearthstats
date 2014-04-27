@@ -126,7 +126,7 @@ class ApplicationController < ActionController::Base
   end
 
   def public_url(file)
-    root_url + file
+    "http://hearthstats.net/" + file
   end
 
   def newuser?(userid)
