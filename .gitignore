@@ -62,7 +62,7 @@ local.properties
 .loadpath
 .buildpath
 database.yml
-
+console
 
 # Ignore application configuration
 /config/application.yml

@@ -1,32 +1,33 @@
 - set_meta_tags :title => 'Arena Game Statistics',
   :description => 'Arena Game Statistics',
   :keywords => 'arena, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Statistics')
-- provide(:subtitle, ' detailed arena game stats');
-- provide(:section, 'Arena')
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+- provide(:section, t('.section'))
+
 div.well
-  span.label.label-danger NOTE!
-  span.bold Page is still being designed
-h3.detail-title Overall Arena Stats
+  span.label.label-danger=t('.note')
+  span.bold=t('.page_being_designed')
+h3.detail-title=t('.overall_arena_stats')
 div.overall
   div.arena-overall
-    div.arena-overall-title Overall Win Rate
+    div.arena-overall-title=t('.overall_win_rate')
     = get_win_rate(Match.where(user_id: current_user.id, mode_id: 1), true)
   div.arena-overall
-    div.arena-overall-title Total Gold Amount
+    div.arena-overall-title=t('.total_gold_amount')
     = ArenaRun.totalGold(current_user.id)
   div.arena-overall
-    div.arena-overall-title Total Dust Amount
+    div.arena-overall-title=t('.total_dust_amount')
     = ArenaRun.totalDust(current_user.id)
   div.arena-overall
-    div.arena-overall-title Arena Runs Played
+    div.arena-overall-title=t('.arena_runs_played')
     = ArenaRun.where(user_id: current_user.id).count
   div.arena-overall
-    div.arena-overall-title Arena Games Played
+    div.arena-overall-title=t('.arena_games_played')
     = Match.where(mode_id:1, user_id: current_user.id).count
   div.stats-table.row
     div.most-played.col-md-6
-      h4 Most played
+      h4=t('.most_played')
       table.table.table-condensed
         - winRate = @arena_array.sort_by{ |array| array[1][1][1]}.reverse
         - winRate.each do |klass|
@@ -34,18 +35,18 @@ div.overall
             td = klass[0]
             td = klass[1][1][1]
     div.most-played.col-md-6
-      h4 Longest average runs
+      h4=t('.longest_average_runs')
       table.table.table-condensed
         - winRate = @arena_array.sort_by{ |array| array[1][0][1]}.reverse
         - winRate.each do |klass|
           tr
             td = klass[0]
             - if klass[1][0][1].round(2) == -1
-              td No games
+              td=t('.no_games')
             - else
               td = klass[1][0][1].round(2)
 
-h3.detail-title Detailed Class Stats
+h3.detail-title=t('.detailed_class_status')
 div.row
   - @arena_array.each do |arena_run|
     div.col-sm-12.col-md-6.col-lg-4
@@ -60,7 +61,7 @@ div.row
               div.arena-detail-title = arena_detail[0]
               -if i == 0 || i == 1
                 - if arena_detail[1].round(2) == -1
-                  div.arena-detail-value No games
+                  div.arena-detail-value=t('.no_games')
                 - else
                   div.arena-detail-value = arena_detail[1].round(2)
               -else

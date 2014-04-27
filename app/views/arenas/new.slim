@@ -1,9 +1,9 @@
 - set_meta_tags :title => 'Arena Match Entry',
   :description => 'New Arena Match Entry',
   :keywords => 'new, entry, arena, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'New Arena Match')
-- provide(:section, 'Arena')
+- provide(:title, t('.title'))
+- provide(:section, t('.section'))
 - content_for :actions do
-  = link_to end_arena_runs_path, class: "btn btn-danger retirebut", :confirm => ("Are you sure you want to retire early from this Arena Run?") do
-    |<i class="fa fa-times"></i> Retire
+  = link_to end_arena_runs_path, class: "btn btn-danger retirebut", :confirm => t(".sure_want_retire") do
+    |<i class="fa fa-times"></i> #{t('.retire')}
 = render 'newform'

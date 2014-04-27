@@ -1,16 +1,18 @@
 - set_meta_tags :title => 'Active Decks',
   :description => 'Active User Decks',
   :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Active Deck')
-- provide(:subtitle, ' all active constructed decks')
+
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+
 = form_tag('/decks/submit_active_decks') do
   div.deck-slot
     div.row.slot-row
       -(1..9).each do |i|
         div.col-xs-4
-          div.slot-id Slot ##{i}
+          div.slot-id #{t('.slot')} ##{i}
           - deckName = @activeDecks.where(slot: i)[0].name unless @activeDecks.where(slot: i)[0].nil?
-          = select_tag( "#{i}", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, deckName), class: "slot-decks", :prompt => "-- Select Deck --")
-    = submit_tag "Submit", :class => "btn btn-primary"
+          = select_tag( "#{i}", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, deckName), class: "slot-decks", :prompt => "-- #{t('.select_deck')} --")
+    = submit_tag t(".submit"), :class => "btn btn-primary"
 javascript:
   app.UI.initDeckSelector("select.slot-decks");

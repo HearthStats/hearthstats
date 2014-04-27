@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   layout :layout
+  before_filter :set_locale
+
+
 
   def opinio_after_create_path(resource)
   	resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
@@ -21,9 +24,18 @@ class ApplicationController < ActionController::Base
     win_rate
   end
 
+  def default_url_options(options={})
+    { :locale => I18n.locale }.merge options
+  end
+
   helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash_2, :klasses_hash
 
+
   private
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   # API Methods
   def validate_userkey

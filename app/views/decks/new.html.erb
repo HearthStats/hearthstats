@@ -1,7 +1,7 @@
 <% set_meta_tags :title => 'New Deck Entry',
   :description => 'New Deck Entry',
   :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss' %>
-<% provide(:title, 'New Deck') %>
-<% provide(:section, 'Decks') %>
+<%= provide(:title, t('decks.new.title'))  %>
+<%= provide(:section, t('.section')) %>
 
 <%= render 'form' %>

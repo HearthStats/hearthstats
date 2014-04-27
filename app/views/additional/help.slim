@@ -1,5 +1,5 @@
 - set_meta_tags :title => 'Help',
   :description => 'Help page',
   :keywords => 'help, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Help')
-p Please visit <a href="http://hearthstats.uservoice.com/">http://hearthstats.uservoice.com/</a> for any suggestions or problems.
+- provide(:title, t('.title'))
+p= t('.help_text').html_safe 

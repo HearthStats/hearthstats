@@ -1,11 +1,13 @@
 - set_meta_tags :title => 'Constructed Matches',
   :description => 'Constructed Matches',
   :keywords => 'Constructed, games, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Recent Games')
-- provide(:subtitle, ' recent constructed games');
-- provide(:section, 'Constructed')
+
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.description'))
+- provide(:section, t('.section'))
+
 - content_for :actions do
-  = link_to 'New Constructed', new_constructed_path, class: "btn blue"
+  = link_to t('.new_constructed'), new_constructed_path, class: "btn blue"
 
 = render "quickentry"
 div class="portlet box blue"

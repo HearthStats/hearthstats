@@ -1,14 +1,15 @@
 - set_meta_tags :title => 'Arena Matches',
   :description => 'Arena Matches',
   :keywords => 'Arena, games, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'Recent Matches')
-- provide(:subtitle, ' recent matches games');
-- provide(:section, 'Arena')
+
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+- provide(:section, t('.section'))
 
 div class="portlet box blue"
   div class="portlet-title"
     div class="caption"
-      | Recent Arena Matches
+      | #{t('.recent_arena_matches')}
   div class="portlet-body flip-scroll"
   	= render :template => 'shared/matchlist', :locals => { :matches => @matches, :type => "Arena", :filter => true }
 

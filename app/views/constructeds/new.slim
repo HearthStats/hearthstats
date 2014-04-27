@@ -1,9 +1,11 @@
 - set_meta_tags :title => 'New Constructed',
   :description => 'Constructed Matches',
   :keywords => 'Constructed, games, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, 'New Constructed')
-- provide(:section, 'Constructed')
+
+- provide(:title, t('.title'))
+- provide(:section, t('.section'))
+
 - content_for :actions do
-  = link_to 'Get the Auto Uploader', uploader_path, class: "btn yellow", title: "Download the auto-uploader"
+  = link_to t('.get_the_auto_uploader'), uploader_path, class: "btn yellow", title: "Download the auto-uploader"
   
 = render 'newform'

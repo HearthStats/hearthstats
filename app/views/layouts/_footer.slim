@@ -2,20 +2,20 @@
   .footer-inner
     ul.footer-text
       li
-        a href="/aboutus" About
+        a href="/aboutus"= t('shared.footer.about')
       li
-        a href="https://hearthstats.uservoice.com/" FAQ
+        a href="https://hearthstats.uservoice.com/"= t('shared.footer.faq')
       li
-        a href="/openings" Open Positions
+        a href="/openings"= t('shared.footer.open_positions')
       li
-        a href="https://hearthstats.uservoice.com/" Support
-      li <a href="/privacy" target="_blank">Privacy Policy</a>
+        a href="https://hearthstats.uservoice.com/"= t('shared.footer.support')
+      li <a href="/privacy" target="_blank">#{t('shared.footer.privacy_policy')}</a>
       ul
         li <a href="https://twitter.com/HearthStats" target="_blank"> Twitter </a>
         li <a href="https://www.facebook.com/HearthStats.net" target="_blank"> Facebook </a>
         li <a href="https://plus.google.com/108193002230555494327" target="_blank"> Google </a>
         li <a href="https://www.youtube.com/channel/UCwO1F3vnldvHep-CyQ6_h9A" target="_blank"> Youtube </a>
-    div.copy-right Copyright 2014 HearthStats. Hearthstone is a registered trademark of Blizzard Entertainment.
+    div.copy-right=t('shared.footer.copyright_text')
   div class="footer-tools"
     span class="go-top"
       i class="fa fa-angle-up"
