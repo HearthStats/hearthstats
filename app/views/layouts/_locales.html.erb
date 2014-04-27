@@ -1,17 +1,16 @@
 <li class="dropdown" id="header_locale_bar">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    <%=image_tag "country_flags/icon_#{I18n.locale}.jpg", class: 'locale-flag' %>  <i class="fa fa-caret-down"></i>
+    <%=image_tag "country_flags/icon_#{I18n.locale}.png", width: '24px', class: 'locale-flag' %>  <i class="fa fa-caret-down"></i>
   </a>
-  <ul class="dropdown-menu dropdown-alerts">
+  <ul class="dropdown-menu dropdown-alerts language-options">
     <% available_languages.each_pair do |k, v| %>
-      <li>
+      <li class="language-option" >
         <%= link_to url_for(locale: k) do %>
           <div>
-            <%=image_tag "country_flags/icon_#{k}.jpg"%> <%= t('shared.header.change_to')%> <%=v%>
+            <%=image_tag "country_flags/icon_#{k}.png", width: '24px' %> <%=v%>
           </div>
         <% end %>
       </li>
-      <li class="divider"></li>
     <% end %>
   </ul>
 </li>

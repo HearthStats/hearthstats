@@ -199,7 +199,6 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.3.4.1)
     i18n (0.6.1)
-    i18n_data (0.4.1)
     imgkit (1.4.0)
     impressionist (1.5.1)
       httpclient (~> 2.2)
@@ -448,7 +447,6 @@ DEPENDENCIES
   friendly_id
   guard-livereload
   httparty
-  i18n_data
   imgkit
   impressionist
   jquery-rails

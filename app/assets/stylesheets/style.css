@@ -400,7 +400,7 @@ Header and header elements.
 
 .header .navbar-nav > li.dropdown .dropdown-toggle {
   margin: 0px;
-  padding: 15px 10px 7px 10px;
+  padding: 10px 10px 7px 10px;
 }
 
 .header .navbar-nav > li.dropdown .dropdown-toggle > i {
