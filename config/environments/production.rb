@@ -77,8 +77,8 @@ Hearthstats::Application.configure do
   config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
       :port      => 587,
-      :user_name => "trigun0x2@gmail.com",
-      :password  => "2EHw5V8KxBxqfHRvkdZhIg"
+      :user_name => ENV['MANDRILL_EMAIL'],
+      :password  => ENV['MANDRILL_KEY']
     }
 
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
