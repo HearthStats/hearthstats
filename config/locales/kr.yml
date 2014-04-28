@@ -1,0 +1,427 @@
+# encoding: utf-8
+en:
+
+  shared:
+    header:
+      guest: 손님
+      my_profile: 내 프로필
+      sign_out: 로그 아웃
+      register_now_login: 지금 등록 / 로그인
+      you_have: You have
+      new_messages: 새로운 메시지
+      click_message_to_dismiss: 메시지를 삭제하려면 클릭하세요.
+      change_to: Change to
+    footer:
+      about: 소개
+      faq: FAQ
+      open_positions: 개방형 직위제
+      support: 지원
+      privacy_policy: 개인정보 보호정책
+      copyright_text: Copyright 2014 HearthStats. 하스스톤은 블리자드 엔터테인먼트의 등록 상표입니다.
+    arena_win_rate: 투기장 승률
+    ranked_win_rate: 등급전 승률
+    best_deck: 최고의 덱
+    best_arena_class: 최고 투기장 직업
+    create_deck: 덱 생성
+    new_arena_game: 새로운 투기장 게임
+    best_deck: 최고 덱
+    view_more: 더 보기
+    edit: 수정
+    delete: 삭제
+    notes: 노트
+    run: 실행
+    error: 오류
+    prohibited_this_being_save: "prohibited this %{resource} from being saved:"
+    arenarun: 투기장
+    show: 보기
+    arena: 투기장
+    class: 직업
+    deck: 덱
+    create: 생성
+    update: 갱신
+    deckbuilder:
+      card_list: 카드 목록
+      optional_deck_will_be_created_if: '선택사항 (이 곳을 비워놓아도 덱은 생성됨)'
+      toggle_text_import: 텍스트로 불러오기
+      add_a_card: 카드 추가
+      of_30_cards: / 30
+      this_deck_is_incomplete: 이 덱은 미완성입니다.
+      left_click_add_right_remove: 왼클릭 추가. 오른클릭 제거.
+      mana_curve: 마나 커브
+      attack_distribution: 공격력 분포
+      health_distribution: 생명력 분포
+      type_distribution: 형태 분포
+      mechanics: 메카닉
+    back: 뒤로
+    deckslist:
+      filter: 핕터
+      any_class: 아무 직업
+      show: 보기
+      per_page: / 페이지
+      sort_by: 정렬
+      created: 생성
+      losses: 패
+      matches: 경기
+      minions: 하수인
+      name: 이름
+      spells: 주문
+      popularity: 인기도
+      weapons: 무기
+      win_rate: 승률
+      wins: 승
+      asc: 오름차순
+      desc: 내림차순
+      apply: 적용
+      found_matching_your_criteria: 기준에 부합되는 것을 찾음
+      class: 직업
+      users: 사용자수
+      listed_by: 등록자
+      tools: 도구
+      stats_are_for_all_users: '이는 원래 제작자뿐 아니라 지난 30일간 플레이한 모든 사용자들에 대한 것입니다'
+      stats_are_for_your_personal: '이는 각 덱을 사용한 여러분들의 플레이에 대한 것입니다.'
+
+    matchlist:
+      filter: 필터
+      any_class: 아무 직업
+      coin?: 동전?
+      coin: 동전 있음
+      no_coin: 동전 없음
+      opponent: 상대방
+      apply: 적용
+      reset: 리셋
+      show: 보기
+      per_page: / 페이지
+      all_time: 전체 시간
+      last_24_hours: 최근 24시간
+      last: 최근
+      days: 일
+      sort: 정렬
+      created: 경기 일자
+      duration: 경기 시간
+      rounds: 라운드
+      ascending: 오름차순
+      descending: 내림차순
+      win_rate_over: 승률
+      matches_in_this_list: 경기
+      your: 당신의
+      opponent_class: 상대방 직업
+      result: 결과
+      rank: 등급
+      mode: 모드
+      opponent_name: 상대방 이름
+      rounds: 라운드
+      created: 경기 일자
+      options: 옵션
+
+
+  dashboards:
+    index:
+      title: 대시보드
+      subtitle: ' 현재 시즌의 통계'
+      global_win_rates: 전체 승률
+      arena_win_rates: 투기장 승률
+      games_recorded: 경기 기록됨
+      constructed_win_rates: 제작덱 승률
+      hearthstats_news: HearthStats 소식
+      read_more: 더 읽기
+      view_more: 더 보기
+      news:
+        huge_update: 많은 기능상의 대규모 업데이트
+        ability_to_rank: 제작덱 경기에 등급전/일반전 기능 추가.
+        donation_link: 기부 링크 추가
+        notes_feature: 노트 기능 추가!
+      personal_win_rate: 개인 승률
+      constructed_win_rates: 제작덱 승률
+      constructed_coin_win_rates: 제작덱 승률 (동전)
+      recent_activities: 최근 활동
+      against: against
+      with: with
+      global_stats: 전체 상태
+      arena_win_rate: 투기장 승률
+
+  cards:
+    index:
+      title: 카드 데이터베이스
+      not_found: 기준에 부합된 카드가 없음
+      text_contains: 문구 포함
+      filter_by: 필터
+      sort_by: 정렬
+      any_type: 임의 형태
+      any_race: 임의 종족
+      any_class: 임의 직업
+      ascending: 오름차순
+      descending: 내림차순
+      attack: 공격력
+      health_dur: 생명력
+      mana_cost: 마나 코스트
+      name: 이름
+      none: 없음
+      reset_filters: 필터 초기화
+
+  arenas:
+    index:
+      title: 최근 경기
+      description: ' 최근 투기장 경기'
+      section: 투기장
+      continue_arena_run: 투기장 계속
+      new_arena_run: 새로운 투기장
+      arena_run_with: arena run with
+      on: on
+      notes: 노트
+      close: 닫기
+      recent_arena_games: 최근 투기장 게임
+      your_class: 당신 직업
+      win_loss: 승/패
+      prizes: 보상
+      timee_played: 플레이 시간
+      options: 옵션
+    new:
+      title: 새로운 투기장 경기
+      section: 투기장
+      retire: 포기
+      sure_want_retire: 정말로 투기장 플레이를 포기하시는겁니까?
+      opponent_class: 상대방 직업
+      win: 승
+      defeat: 패
+      draw: 무승부
+      back: 뒤로
+      end_run: End Run
+      create_entry: 참가 생성
+      arena_run_results: 투기장 결과
+      result: 결과
+      options: 옵션
+      played_first: 선공
+      played_second: 후공
+    matches:
+      title: 최근 경기
+      subtitle: ' 최근 게임'
+      section: 투기장
+      recent_arena_matches: 최근 투기장 경기
+    stats:
+      title: 통계
+      subtitle: ' 세부적인 투기장 경기 결과'
+      section: 투기장
+      note: 알림!
+      page_being_designed: 이 페이지는 아직도 디자인 중입니다.
+      overall_arena_stats: 전체 투기장 통계
+      overall_win_rate: 전체 승률
+      total_gold_amount: 총 골드
+      total_dust_amount: 총 신비한 가루
+      arena_runs_played: 총 투기장 플레이
+      arena_games_played: 총 투기장 경기
+      most_played: 최다 플레이
+      longest_average_runs: 평균 플레이
+      no_games: 게임 없음
+      detailed_class_status: 세부적인 직업 통계
+
+  constructeds:
+    quickentry:
+      quick_entry: 빠른 입력
+      ranked: 등급전
+      casual: 일반전
+      no_coin: 동전 없음
+      coin: 동전
+      add_win: 승 추가
+      add_defeat: 패 추가
+      add_draw: 무승부 추가
+    index:
+      title: '최근 경기'
+      description: ' 최근 제작덱 경기'
+      section: '제작덱'
+      new_constructed: 새로운 제작덱 경기
+    new:
+      title: 새로운 제작덱 경기
+      section: 제작덱 경기
+      get_the_auto_uploader: 자동 업로더 얻기
+    stats:
+      title: 통계
+      description: ' 제작덱 게임 상태'
+      section: 제작덱 경기
+      filter_by: 필터
+      last: 최근
+      hours: 시간
+      days: 일
+      all_time: 모든 시간
+      first_or_second: 선공 또는 후공
+      going_first: 선공
+      going_second: 후공
+      any_mode: 아무 모드
+      casual: 일반전
+      ranked: 등급전
+    winratechart:
+      constructed_win_rate_title: 직업별 제작덱 승률 (개인 vs 전체)
+    newform:
+      you_played_on_the: 당신 공격 순서는
+      first_turn: 선공
+      second_turn: 후공
+      this_match_is: 이 경기는
+      ranked: 등급전
+      casual: 일반전
+      deck_name: 덱 이름
+      opponent_class: 상대방 직업
+      add_win: 승 추가
+      add_defeat: 패 추가
+      add_draw: 무승부 추가
+
+
+
+  decks:
+    form:
+      name: 이름
+      class: 직업
+      notes: 노트
+      decklist_etc: ' 덱 목록, 기타'
+      this_deck_public: 이 덱은 공개 덱입니다.
+    new:
+      title: 새로운 덱
+      section: 덱
+    public:
+      title: 공개 덱 목록
+      subtitle: ' 모든 공개 제작덱'
+      new_deck: 새로운 덱
+      public_decks: 공개 덱
+    active_decks:
+      title: 활성화 덱
+      subtitle: ' 모든 활성화된 제작덱'
+      slot: 슬롯
+      select_deck: 덱 선택
+      submit: 제출
+    index:
+      title: 나의 덱
+      subtitle: ' 나의 모든 제작덱'
+      new_deck: 새로운 덱
+      my_decks: 나의 덱
+
+  arena_runs:
+    new:
+      title: 새로운 투기장
+      section: 투기장
+      first_arena_of_day: 첫 투기장 플레이십니까? 자 시작합니다!
+      keep_it_going: "단지 %{runs}? 계속하세요!"
+      going_hardcore: "와우, 오늘 너무 열심히 하시는데요? 이미 %{runs} 입니다, 행운을 빌어요!"
+      your_class: 당신 직업
+      continue: 계속
+      get_auto_uploader: 자동 업로더 얻기
+
+
+  additional:
+    news:
+      title: 하스스톤 소식
+      subtitle: ' 최신 하스스톤 소식'
+      suggestions_for_news: 소식 출처에 대한 제안은 언제나 환영합니다.
+      posted: Posted
+      read_more: 더 일기
+    uploader:
+      title: 공식 업로더
+      header_text: "왜 우리 업로더가 여러분들의 모든 것을 해결해 주고 있을때 당신의 경기 결과를 직접 입력하고 계십니까? 이 오픈 소스 유틸리티는 여러분들의 하스스톤 윈도우 화면 캡쳐 분석 방식을 이용합니다. 이는 어떠한 형태로든 네크워트 수정이나 포켓 스니핑, 모니터링을 하지 않습니다. 이 프로젝트는 여러분들이 프로그램 상에 어떤 일이 일어나는지 정확하게 확인할 수 있도록 항상 오픈소스로 유지될 것입니다."
+      download_for: 다운로드 -
+      user_key: 사용자 키
+      do_not_share: 절대 다른 사람과 공유하시지 마세요
+      click_to_reveal: 클릭해서 확인
+      instructions: 설명
+      please_have_installed: Java 7+ 이상이 설치되어 있어야 합니다.
+      download_java_here: 이곳에서 Java 다운로드
+      instructions_osx:
+        inst_osx_1: 위 링크에서 다운로드
+        inst_osx_2: 파일 압축해제
+        inst_osx_3: Applications 폴더로 파일 이동
+        inst_osx_4: 파일 <b>오른 클릭</b> 후 '열기'
+        inst_osx_5: 프로필 페이지나 업로더 페이지에서 당신의 사용자 키 입력
+        inst_osx_6: 하스스톤을 실행하고 즐기세요!
+      instructions_win:
+        inst_win_1: 위 링크에서 다운로드
+        inst_win_2: 파일 압축해제
+        inst_win_3: 열기 클릭
+        inst_win_4: 프로필 페이지나 업로더 페이지에서 당신의 사용자 키 입력
+        inst_win_5: 하스스톤을 실행하고 즐기세요!
+      features_title: 기능
+      features:
+        feat_1: Windows 및 OSx 모두 지원
+        feat_2: 제작덱 및 투기장 경기 자동 추적
+        feat_3: 당신의 직업 및 상대방의 직업 추적
+        feat_4: 등급전의 경우 등급 추적
+        feat_5: 상대방의 이름 추적
+        feat_6: 라운드 수와 경기 시간 추적
+        feat_7: 업로더에서 경기에 대한 노트 직접 입력
+      help_and_support: 도움 및 지원
+      known_issues: 알려진 문제점
+      project_source_on_github: Github 의 프로젝트 소스
+    changelog:
+      title: 업데이트 기록
+      all_time_in_utc: 협정 세계시(UTC) 기준
+    aboutus:
+      title: About Us
+      founded_by_text: 이 사이트는 Jeffrey Tong이 정성을 다해 만들었습니다.
+      you_can_follow_twitter: 트위터에서 팔로우하세요.
+      a_huge_thanks_to: 대단히 감사한 분
+      thanks_jerome_text: Jerome은 HearthStats를 보다 나은 방향으로 발전시키는데 많은 도움을 주었고, 저에게 적지않은 동기부여를 해주었습니다. 정말로 감사합니다!
+      built_suggestions_text: HearthStats은 커뮤니티에 있는 모든 분들의 의견들로 만들어졌습니다. 그리고 하스스톤 커뮤니티가 제작하고 사용하는 도구가 될 것입니다.
+      others_contributors: 다른 참여자들
+      charles_text_1: Charles은 OSx 업로더 제작에 놀라운 도움을 주었습니다
+      charles_text_2: 또한 Charles는 오픈 소스 작업을 하는데 정말로 많은 도움을 주었습니다.
+      charles_text_3: Charles에 대해 더 많은 걸 확인하실 수 있습니다.
+      here: 여기
+      eckert_text: J Eckert 디자인에 많은 도움을 주었습니다
+      donate_text:  "제가 하는 일이 도움이 되셨다면, 기부를 부탁드립니다."
+      rackspace_text: "호스팅을 제공해주신 Rackspace사에게 감사드립니다! 만약 클라우드 호스팅 또는 관련 서비스가 필요하시다면 확인해보세요!"
+    contactus:
+      title: 연락처
+      contact_email_text: "질문 사항이 있으시다면 <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>로 언제든 메일 주세요."
+      contact_email_text_2: "트위터에서 팔로우하세요: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: 정말로 심심해요 그러니 메일은 언제든 환영합니다.
+      fadein_text_2: 제발 메일 좀 주세요! 어떤 내용이든 상관없어요!
+      fadein_text_3: 엉덩이가 아파와요... 그러나 여러분들 위해 이 사이트를 만드는 것이라면 고통따윈 참을 수 있습니다!
+    help:
+      title: 도움말
+      help_text: "제안이나 문제가 있으시면 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a>를 방문해주세요."
+
+
+  streams:
+    index:
+      title: 스트림
+      subtitle: ' 한 곳에서 좋아하는 모든 스트림을 찾으세요'
+
+  tournies:
+    index:
+      title: 등록
+      subtitle: ' 우리의 새로운 토너먼트/리그에 등록하세요'
+      section: '토너먼트'
+
+
+
+  menu:
+    dashboard: 대시보드
+    card_database: 카드 데이터베이스
+    arena:
+      title: 투기장
+      recent_arena_runs: 최근 투기장 경기
+      continue_arena_run: 투기장 경기 계속
+      new_arena_run: 새로운 투기장 경기
+      recent_arena_matches: 최근 투기장 경기
+      statistics: 통계
+    constructed:
+      title: 제작
+      recent_matches: 최근 경기
+      new_match: 새로운 경기
+      statistics: 통계
+    deck:
+      title: 덱
+      public_deck_list: 공개 덱 목록
+      my_deck: 나의 덱
+      my_active_deck: 나의 활성화 덱
+      new_deck: 새로운 덱
+    news: 뉴스
+    streams: 스트림
+    tournaments:
+      title: 토너먼트
+      register: 등록
+      Calendar: 달력
+      past_winners: 지난 우승자
+    extra:
+      title: 추가
+      official_uploader: 공식 업로더
+      march_report: 월별 보고서
+      change_log: 업데이트 기록
+      about_us: HearthStats 소개
+      contact_info: 연락처
+    help: 도움말

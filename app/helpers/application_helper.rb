@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def available_languages_list
-    {'en' => 'English', 'pt-BR' => 'Português'}
+    {'en' => 'English', 'pt-BR' => 'Português', 'kr' => 'Korean'}
   end
 
   def current_season
