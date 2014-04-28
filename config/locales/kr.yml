@@ -41,7 +41,7 @@ kr:
     update: 갱신
     deckbuilder:
       card_list: 카드 목록
-      optional_deck_will_be_created_if: '선택사항 (이 곳을 비워놓아도 덱은 생성됨)'
+      optional_deck_will_be_created_if: '선택사항 (입력하지 않아도 덱은 생성됨)'
       toggle_text_import: 텍스트로 불러오기
       add_a_card: 카드 추가
       of_30_cards: / 30
@@ -77,8 +77,8 @@ kr:
       users: 사용자수
       listed_by: 등록자
       tools: 도구
-      stats_are_for_all_users: '이는 원래 제작자뿐 아니라 지난 30일간 플레이한 모든 사용자들에 대한 것입니다'
-      stats_are_for_your_personal: '이는 각 덱을 사용한 여러분들의 플레이에 대한 것입니다.'
+      stats_are_for_all_users: '이는 원래 제작자뿐 아니라 지난 30일간 플레이한 모든 사용자들에 대한 통계입니다'
+      stats_are_for_your_personal: '이는 각각의 덱을 사용한 당신의 플레이에 대한 통계입니다.'
 
     matchlist:
       filter: 필터
@@ -104,7 +104,7 @@ kr:
       win_rate_over: 승률
       matches_in_this_list: 경기
       your: 당신의
-      opponent_class: 상대방 직업
+      opponent_class: 상대 직업
       result: 결과
       rank: 등급
       mode: 모드
@@ -117,7 +117,7 @@ kr:
   dashboards:
     index:
       title: 대시보드
-      subtitle: ' 현재 시즌의 통계'
+      subtitle: ' 현재 시즌에 대한 통계'
       global_win_rates: 전체 승률
       arena_win_rates: 투기장 승률
       games_recorded: 경기 기록됨
@@ -163,8 +163,8 @@ kr:
       title: 최근 경기
       description: ' 최근 투기장 경기'
       section: 투기장
-      continue_arena_run: 투기장 계속
-      new_arena_run: 새로운 투기장
+      continue_arena_run: 투기장 런 계속
+      new_arena_run: 새로운 투기장 런
       arena_run_with: arena run with
       on: on
       notes: 노트
@@ -180,13 +180,13 @@ kr:
       section: 투기장
       retire: 포기
       sure_want_retire: 정말로 투기장 플레이를 포기하시는겁니까?
-      opponent_class: 상대방 직업
+      opponent_class: 상대 직업
       win: 승
       defeat: 패
       draw: 무승부
       back: 뒤로
-      end_run: End Run
-      create_entry: 참가 생성
+      end_run: 플레이 종료
+      create_entry: 입력
       arena_run_results: 투기장 결과
       result: 결과
       options: 옵션
@@ -202,7 +202,7 @@ kr:
       subtitle: ' 세부적인 투기장 경기 결과'
       section: 투기장
       note: 알림!
-      page_being_designed: 이 페이지는 아직도 디자인 중입니다.
+      page_being_designed: 이 페이지는 아직 디자인 중입니다.
       overall_arena_stats: 전체 투기장 통계
       overall_win_rate: 전체 승률
       total_gold_amount: 총 골드
@@ -212,7 +212,7 @@ kr:
       most_played: 최다 플레이
       longest_average_runs: 평균 플레이
       no_games: 게임 없음
-      detailed_class_status: 세부적인 직업 통계
+      detailed_class_status: 세부적인 직업별 통계
 
   constructeds:
     quickentry:
@@ -232,7 +232,7 @@ kr:
     new:
       title: 새로운 제작덱 경기
       section: 제작덱 경기
-      get_the_auto_uploader: 자동 업로더 얻기
+      get_the_auto_uploader: 자동 업로더 다운로드
     stats:
       title: 통계
       description: ' 제작덱 게임 상태'
@@ -258,7 +258,7 @@ kr:
       ranked: 등급전
       casual: 일반전
       deck_name: 덱 이름
-      opponent_class: 상대방 직업
+      opponent_class: 상대 직업
       add_win: 승 추가
       add_defeat: 패 추가
       add_draw: 무승부 추가
@@ -274,23 +274,23 @@ kr:
       this_deck_public: 이 덱은 공개 덱입니다.
     new:
       title: 새로운 덱
-      section: 덱
+      section: 덱들
     public:
       title: 공개 덱 목록
-      subtitle: ' 모든 공개 제작덱'
+      subtitle: ' 모든 공개 제작덱들'
       new_deck: 새로운 덱
-      public_decks: 공개 덱
+      public_decks: 공개 덱들
     active_decks:
       title: 활성화 덱
-      subtitle: ' 모든 활성화된 제작덱'
+      subtitle: ' 모든 활성화된 제작덱들'
       slot: 슬롯
       select_deck: 덱 선택
       submit: 제출
     index:
-      title: 나의 덱
-      subtitle: ' 나의 모든 제작덱'
+      title: 나의 덱들
+      subtitle: ' 나의 모든 제작덱들'
       new_deck: 새로운 덱
-      my_decks: 나의 덱
+      my_decks: 나의 덱들
 
   arena_runs:
     new:
@@ -301,7 +301,7 @@ kr:
       going_hardcore: "와우, 오늘 너무 열심히 하시는데요? 이미 %{runs} 입니다, 행운을 빌어요!"
       your_class: 당신 직업
       continue: 계속
-      get_auto_uploader: 자동 업로더 얻기
+      get_auto_uploader: 자동 업로더 다운로드
 
 
   additional:
@@ -394,13 +394,13 @@ kr:
     card_database: 카드 데이터베이스
     arena:
       title: 투기장
-      recent_arena_runs: 최근 투기장 경기
-      continue_arena_run: 투기장 경기 계속
-      new_arena_run: 새로운 투기장 경기
+      recent_arena_runs: 최근 투기장 플레이
+      continue_arena_run: 투기장 플레이 계속
+      new_arena_run: 새로운 투기장 플레이
       recent_arena_matches: 최근 투기장 경기
       statistics: 통계
     constructed:
-      title: 제작
+      title: 제작덱 경기
       recent_matches: 최근 경기
       new_match: 새로운 경기
       statistics: 통계

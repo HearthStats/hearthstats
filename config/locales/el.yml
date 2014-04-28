@@ -1,0 +1,427 @@
+﻿# encoding: utf-8
+el:
+
+  shared:
+    header:
+      guest: Επισκέπτης
+      my_profile: Προφίλ
+      sign_out: Έξοδος
+      register_now_login: Εγγραφή / Είσοδος
+      you_have: Έχετε
+      new_messages: νέα μηνύματα
+      click_message_to_dismiss: Πατήστε στο μήνυμα για απόκρυψη
+      change_to: Αλλαγή σε
+    footer:
+      about: Περί
+      faq: Συνήθεις ερωτήσεις
+      open_positions: Ανοιχτές θέσεις
+      support: Υποστήρηξη
+      privacy_policy: πολιτική προστασίας προσωπικών δεδομένων
+      copyright_text: Copyright 2014 HearthStats. Το Hearthstone είναι σήμα κατατεθέν της Blizzard Entertainment.
+    arena_win_rate: Συχνότητα νικών στην Αρένα
+    ranked_win_rate: Συχνότητα νικών στα παιχνίδια κατάταξης
+    best_deck: Καλύτερη τράπουλα
+    best_arena_class: Καλύτερη κλάση στην Αρένα
+    create_deck: Δημιουργήστε μια τράπουλα
+    new_arena_game: Νέο παιχνίδι αρένας
+    best_deck: Καλύτερη τράπουλα
+    view_more: Δείτε περισσότερα
+    edit: Επεξεργασία
+    delete: Διαγραφή
+    notes: Σημειώσεις
+    run: Εκτέλεση
+    error: Σφάλμα
+    prohibited_this_being_save: "Απαγόρευση της %{source} για αποθήκευση :"
+    arenarun: Αγώνας αρένας
+    show: Εμφάνηση
+    arena: Αρένα
+    class: Κλάση
+    deck: Τράπουλα
+    create: Δημιουργία
+    update: Ενημέρωση
+    deckbuilder:
+      card_list: Λίστα καρτών
+      optional_deck_will_be_created_if: 'Προαιρετικό (Η τράπουλα θα δημιουργηθεί αν το αφήσετε κενό)'
+      toggle_text_import: Εναλλαγή εισαγωγής κειμένου
+      add_a_card: Προσθήκη κάρτας
+      of_30_cards: από 30 κάρτες
+      this_deck_is_incomplete: Αυτή η τράπουλα είναι ελλειπής.
+      left_click_add_right_remove: Αριστερό κλίκ για προσθήκη. Δεξί κλίκ για αφαίρεση.
+      mana_curve: Καμπύλη Mana
+      attack_distribution: Κατανομή επίθεσης
+      health_distribution: Κατανομή ζωής
+      type_distribution: Κατανομή τύπου
+      mechanics: Μηχανικές
+    back: Πίσω
+    deckslist:
+      filter: Φίλτρο
+      any_class: Οποιαδήποτε κλάση
+      show: Εμφάνηση
+      per_page: ανα σελίδα
+      sort_by: Ταξινόμηση ανα
+      created: Δημιουργήθηκε
+      losses: Ήττες
+      matches: Αγώνες
+      minions: Τσιράκια
+      name: Όνομα
+      spells: Ξόρκια
+      popularity: Δημοφιλές
+      weapons: Όπλα
+      win_rate: Συχνότητα νίκης
+      wins: Νίκες
+      asc: Αύξουσα
+      desc: Φθίνουσα
+      apply: Εφαρμογή
+      found_matching_your_criteria: Βρέθηκαν να ταιριάζουν τα κριτήρια σας.
+      class: Κλάση
+      users: Χρήστες
+      listed_by: Εισηγμένες Με
+      tools: Εργαλεία
+      stats_are_for_all_users: 'Τα στατιστικά είναι για όλους τους χρήστες που έχουν παίξει αυτή τη τράπουλα τις τελευταίες 30 ημέρες, όχι μόνο του αρχικού δημιουργού'
+      stats_are_for_your_personal: 'Τα στατιστικά είναι για την προσωπική σας χρήση της τράπουλας'
+
+    matchlist:
+      filter: Φίλτρο
+      any_class: οποιαδήποτε κλάση
+      coin?: Νόμισμα;
+      coin: Νόμισμα
+      no_coin: Χωρίς Νόμισμα
+      opponent: Αντίπαλος
+      apply: Εφαρμογή
+      reset: Επαναφορά
+      show: Εμφάνηση
+      per_page: ανα σελίδα
+      all_time: Όλα
+      last_24_hours: Τελευταίες 24 ώρες
+      last: τελευταίο
+      days: μέρες
+      sort: ταξινόμηση
+      created: δημιουργήθηκε
+      duration: Διάρκεια
+      rounds: γύροι
+      ascending: αύξουσα
+      descending: φθίνουσα
+      win_rate_over: Συχνότητα νικών πάνω από
+      matches_in_this_list: αγώνες σε αυτή τη λίστα
+      your: δικό σου
+      opponent_class: Αντίπαλη κλάση
+      result: Αποτέλεσμα
+      rank: Βαθμός
+      mode: Τρόπος
+      opponent_name: Όνομα αντιπάλου
+      rounds: Γύροι
+      created: Δημιουργήθηκε
+      options: Επιλογές
+
+
+  dashboards:
+    index:
+      title: Ταμπλό
+      subtitle: ' στατιστικά στοιχεία για την τρέχουσα περίοδο'
+      global_win_rates: Παγκόσμια συχνότητα νικών
+      arena_win_rates: Συχνότητα νικών στην Αρένα
+      games_recorded: Εγγεγραμμένα παιχνίδια
+      constructed_win_rates: Συχνότητα νικών - Κατασκευασμένη (Τράπουλα)
+      hearthstats_news: Νέα του HearthStats
+      read_more: Διαβάστε περισσότερα
+      view_more: Δείτε περισσότερα
+      news:
+        huge_update: Τεράστια ενημέρωση με πολλά νέα στοιχεία.
+        ability_to_rank: Ικανότητα προσθήκης στα "Κατασκευασμένα" παιχνήδια για Βαθμό/Σύνηθες
+        donation_link: Σύνδεσμος δωρεάς προσθέθηκε στο
+        notes_feature: Προσθέθηκε δυνατότητα σημειώσεων!
+      personal_win_rate: Προσωπική συχνότητα νικών
+      constructed_win_rates: Συχνότητα νικών κατασκευασμένων
+      constructed_coin_win_rates: Συχνότητα νικών κατασκευασμένων με νόμισμα
+      recent_activities: Πρόσφατες δραστηριότητες
+      against: εναντία
+      with: με
+      global_stats: Παγκόσμια στατιστικά
+      arena_win_rate: Συχνότητα νίκης στην Αρένα
+
+  cards:
+    index:
+      title: Βάση Δεδομένων καρτών
+      not_found: Δεν βρέθηκαν οι κάρτες που αναζητήσατε.
+      text_contains: περιέχει κείμενο
+      filter_by: Φιλτράρισμα ανα
+      sort_by: Ταξινόμηση ανα
+      any_type: οποιδήποτε τύπο
+      any_race: οποιαδήποτε φυλή
+      any_class: οποιαδήποτε κλάση
+      ascending: Αύξουσα
+      descending: Φθίνουσα
+      attack: Επίθεση
+      health_dur: Ζωή/Αντοχή
+      mana_cost: Κόστος Mana
+      name: Όνομα
+      none: κανένα
+      reset_filters: Επαναφορά φίλτρων
+
+  arenas:
+    index:
+      title: Πρόσφατα Παιχνίδια
+      description: ' πρόσφατα παιχνίδια στην Αρένα'
+      section: Αρένα
+      continue_arena_run: Συνέχεια προσπάθειας Αρένας
+      new_arena_run: Νέα προσπάθεια Αρένας
+      arena_run_with: Προσπάθεια Αρένας με
+      on: Ανοιχτό
+      notes: Σημειώσεις
+      close: Κλείσιμο
+      recent_arena_games: Πρόσφατα παιχνίδια Αρένας
+      your_class: Η κλάση σου
+      win_loss: Νίκη/Ήττα
+      prizes: Βραβεία
+      timee_played: Χρόνος παιχνιδιού
+      options: Επιλογές
+    new:
+      title: Νέος αγώνας Αρένας
+      section: Αρένα
+      retire: Εγκατάληψη
+      sure_want_retire: Είστε σίγουρος ότι θέλετε να εγκαταλήψετε νωρίς την Αρένα;
+      opponent_class: Κλάση αντιπάλου
+      win: Νίκη
+      defeat: Ήττα
+      draw: Ισοπαλία
+      back: Πίσω
+      end_run: Τέλος αγώνα
+      create_entry: Δημιουργία εγγραφής
+      arena_run_results: Αποτελέσματα αγώνα Αρένας
+      result: Αποτέλεσμα
+      options: Επιλογές
+      played_first: Έπεξες πρώτος
+      played_second: Έπεξες δεύτερος
+    matches:
+      title: Πρόσφατοι αγώνες
+      subtitle: ' Πρόσφατοι αγώνες'
+      section: Αρένα
+      recent_arena_matches: Πρόσφατοι αγώνες Αρένας
+    stats:
+      title: Στατιστικά
+      subtitle: ' λεπτομερής αναφορά παιχνιδιών Αρένας'
+      section: Αρένα
+      note: Σημείωση!
+      page_being_designed: Η σελίδα σχεδιάζεται
+      overall_arena_stats: Συνολικά στατιστικά Αρένας
+      overall_win_rate: Συνολική συχνότητα Νικών
+      total_gold_amount: Συνολικό ποσό Χρυσού
+      total_dust_amount: Συνολικό ποσό Σκόνης
+      arena_runs_played: Προσπάθειες Αρένας
+      arena_games_played: Παιχνίδια Αρένας
+      most_played: Πιο πολύ παιγμένα
+      longest_average_runs: Μεγαλύτερη μέση προσπάθεια
+      no_games: Δεν υπάρχουν παιχνίδια
+      detailed_class_status: Αναλυτική Κατάσταση Κλάσης
+
+  constructeds:
+    quickentry:
+      quick_entry: Γρήγορη είσοδος
+      ranked: Κατάταξης
+      casual: Ανέμελο
+      no_coin: Χωρίς Νόμισμα
+      coin: Νόμισμα
+      add_win: Προσθήκη Νίκης
+      add_defeat: Προσθήκη Ήττας
+      add_draw: Προσθήκη Ισοπαλίας
+    index:
+      title: 'Πρόσφατα Παιχνίδια'
+      description: ' πρόσφατα κατασκευασμένα παιχνίδια'
+      section: 'Κατασκευασμένα'
+      new_constructed: Νέο Κατασκευασμένο
+    new:
+      title: Νέο Κατασκευασμένο
+      section: Κατασκευασμένο
+      get_the_auto_uploader: Λήψη του Auto Uploader
+    stats:
+      title: Στατιστικά
+      description: ' Στατιστικά κατασκευασμένων παιχνιδιών'
+      section: Κατασκευασμένο
+      filter_by: Φίλτρο ανα
+      last: Τελευταίος
+      hours: Ώρες
+      days: Μέρες
+      all_time: all time
+      first_or_second: Πρώτος ή δεύτερος
+      going_first: Παίζεις πρώτος
+      going_second: Παίζεις δεύτερος
+      any_mode: Οποιοδήποτε λειτουργία
+      casual: Ανέμελο
+      ranked: Κατάταξης
+    winratechart:
+      constructed_win_rate_title: Συχνότητα νικών κατασκευασμένης τράπουλας ανα κλάση (Προσωπικό VS Παγκόσμιο)
+    newform:
+      you_played_on_the: Έπαιξες στον
+      first_turn: πρώτο γύρο.
+      second_turn: δεύτερο γύρο.
+      this_match_is: Ο αγώνας αυτός είναι
+      ranked: Κατάταξης
+      casual: Ανέμελος
+      deck_name: Ονομασία Τράπουλας
+      opponent_class: Κλάση αντιπάλου
+      add_win: Προσθήκη Νίκης
+      add_defeat: Προσθήκη Ήττας
+      add_draw: Προσθήκη Ισοπαλίας
+
+
+
+  decks:
+    form:
+      name: Όνομα
+      class: Κλάση
+      notes: Σημειώσεις
+      decklist_etc: ' Λίστα τραπουλών, κλπ'
+      this_deck_public: Αυτή η τράπουλα είναι δημόσια
+    new:
+      title: Νέα τράπουλα
+      section: Τράπουλες
+    public:
+      title: Δημόσια λίστα τραπουλών
+      subtitle: ' όλες οι δημόσιες τράπουλές'
+      new_deck: Νέα τράπουλα
+      public_decks: Δημόσιες τράπουλες
+    active_decks:
+      title: Ενεργή τράπουλα
+      subtitle: ' όλα οι ενεργές κατασκευασμένες τράπουλες'
+      slot: Slot
+      select_deck: Επιλογή τράπουλας
+      submit: Υποβολή
+    index:
+      title: Οι τράπουλές μου
+      subtitle: ' όλες οι κατασκευασμένες μου τράπουλες'
+      new_deck: Νέα τράπουλα
+      my_decks: Οι τράπουλές μου
+
+  arena_runs:
+    new:
+      title: Νέα προσπάθεια Αρένας
+      section: Αρένα
+      first_arena_of_day: Πρώτη Αρένα της ημέρας; Ας ξεκκινήσουμε!
+      keep_it_going: "Μόνο %{runs} προσπάθειες; Συνέχισε!"
+      going_hardcore: "Ουάου, το πήρες πατριωτικά σημερα ε; Κι'όλας σημέιωσες %{runs} προσπάθειες, Καλή τύχη! "
+      your_class: Η κλάση σου
+      continue: Συνέχεια
+      get_auto_uploader: Λήψη του αυτόματου Uploader
+
+
+  additional:
+    news:
+      title: Νέα του Hearthstone
+      subtitle: ' Τα πιο πρόσφατα νέα του Hearthstone'
+      suggestions_for_news: Οι προτάσεις για νέες πηγές είναι ευπρόσδεκτες
+      posted: Αναρτημένο
+      read_more: Διαβάστε περισσότερα
+    uploader:
+      title: Επίσημος Uploader
+      header_text: "| Γιατί να εισάγετε τα αποτελέσματα σας χειροκίνητα ενώ μπορείτε να αφήσετε τον uploader μας να τακτοποιήσεις τα πάντα για εσάς; &nbsp;| Αυτό το βοηθητικό πρόγραμμα ανοιχτού κώδικα χρησιμοποιεί την σάρωση οθόνης ,συλλαμβάνει το παράθυρό σας του Hearthstone. Δεν κάνει υποκλοπή πακέτων, | παρακολούθηση, ή τροποποίησης του δικτύου οποιουδήποτε είδους. Το έργο είναι και θα είναι πάντα ανοικτή πηγή, ώστε να μπορείτε | να κάνετε τη δική σας εφαρμογή και να μπορείτε να δείτε τι ακριβώς συμβαίνει στο πλαίσιο του προγράμματος."
+      download_for: Λήψη για
+      user_key: Κλειδί Χρήστη
+      do_not_share: δεν μοιράζονται με κανέναν άλλο
+      click_to_reveal: Κάντε κλικ για να αποκαλύψετε
+      instructions: Οδηγίες
+      please_have_installed: Παρακαλώ βεβαιωθείτε ότι έχετε την Java 7+ εγκατεστημένη.
+      download_java_here: Κατεβάστε την Java από εδώ
+      instructions_osx:
+        inst_osx_1: Κατέβασέ το από τον παραπάνω σύνδεσμο
+        inst_osx_2: Αποσυμπιέστε το αρχείο
+        inst_osx_3: Σύρετε το αρχείο στο φάκελο Applications σας
+        inst_osx_4: <b>Δεξί κλικ</b> στο αρχείο, στη συνέχεια, κάντε κλικ στο Άνοιγμα
+        inst_osx_5: Εισάγετε το κλειδί χρήστη σας από τη σελίδα του uploader ή τη σελίδα προφίλ
+        inst_osx_6: Ανοίξτε το παιχνίδι σας και παίξετε!
+      instructions_win:
+        inst_win_1: Κατέβασέ το από τον παραπάνω σύνδεσμο
+        inst_win_2: Αποσυμπιέστε το αρχείο
+        inst_win_3: Κάντε κλικ για να ανοίξει η εφαρμογή
+        inst_win_4: Εισάγετε το κλειδί χρήστη σας από τη σελίδα του uploader ή τη σελίδα προφίλ
+        inst_win_5: Ανοίξτε το παιχνίδι σας και παίξετε!
+      features_title: Features
+      features:
+        feat_1: Υποστήριξη για Windows και OSx
+        feat_2: Εντοπίζει αυτόματα και τα Κατασκευασμένα και τους αγώνες στην Αρένα.
+        feat_3: Παρακολουθεί την κλάση σας και την κλάση του αντιπάλου.
+        feat_4: Παρακολουθεί το βαθμολογικό σας επίπεδο για τους αγώνες κατάταξης
+        feat_5: Παρακολουθεί το όνομα του αντιπάλου σας
+        feat_6: Παρακολουθεί τον αριθμό γύρων που παιχτήκαν και τη διάρκεια του αγώνα
+        feat_7: Δυνατότητα προσθήκης σημειώσεων κατευθείαν από τον uploader
+      help_and_support: Βοήθεια και Υποστήριξη
+      known_issues: Γνωστά θέματα
+      project_source_on_github: Προέλευση του έργου στο Github
+    changelog:
+      title: Καταγραφή αλλαγών
+      all_time_in_utc: Όλες οι ώρες σε UTC
+    aboutus:
+      title: Σχετικά με εμάς
+      founded_by_text: Αυτή η ιστοσελίδα ιδρύθηκε από τον Jeffrey Tong με αγάπη.
+      you_can_follow_twitter: Μπορείτε να με ακολουθήσετε στο Twitter
+      a_huge_thanks_to: Ένα μεγάλο ευχαριστώ σε
+      thanks_jerome_text: Jerome σίγουρα βοήθησε να ανεβάσουμε το HearthStats στο επόμενο επίπεδο και με στήριξε τα κίνητρα μου για να δουλεύψω πολύ σκληρότερα. Ευχαριστώ πολύ!
+      built_suggestions_text: Το HearthStats χτίστηκε από τις προτάσεις του καθενός στην κοινότητα. Και θα συνεχίσει να είναι ένα εργαλείο που χρησιμοποιείται / φτιάχτηκε από την κοινότητα Hearthstone.
+      others_contributors: άλλοι συντελεστές
+      charles_text_1: Charles έκαλε απίστευτα μεγάλη δουλεία στον OSx uploader
+      charles_text_2: Ο Charles αξίζει πολλή εκτίμηση για το ότι ήρθε από το πουθενά και έκανε κάποια εργασία ανοιχτού κώδικα.
+      charles_text_3: Μπορείτε να βρείτε περισσότερες πληροφορίες σχετικά με τον Charles
+      here: εδώ
+      eckert_text: Ο J Eckert συνέβαλε πολύ στο στυλ και στα χρώματα.
+      donate_text:  "Αν σας αρέσει αυτό που κάνω, ρίξε με λίγα κέρματα."
+      rackspace_text: "Θα ήθελα να ευχαριστήσω την Rackspace για την παροχή τέτοιας τρομερής φιλοξενίας! Αν ποτέ χρειαστείτε cloud hosting ή κάθε είδους φιλοξενία, να τους ελέγξετε σίγουρα έξω!"
+    contactus:
+      title: Επικοινωνία
+      contact_email_text: "Μη διστάσετε να μου στείλετε email στο <a href='mailto:jeff@hearthstats.net'>jeff@hearthstats.net</a> για τυχόν απορίες."
+      contact_email_text_2: "Μπορείτε επίσης να μας ακολουθήσετε στο Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: Βαριέμαι τόσο πόλυ, οπότε τα email σας είναι ευπρόσδεκτα.
+      fadein_text_2: Παρακαλώ να μου στείλετε ένα email! Θα μπορούσε να είναι για τα πάντα!
+      fadein_text_3: Ο πισινός μου έχει ανοίξει πληγές. Κοιτάξτε τον πόνο που αντέχω για την κατασκευή αυτού του ιστότοπου για εσάς!
+    help:
+      title: Help
+      help_text: "Παρακαλούμε επισκεφθείτε <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> για τυχόν προτάσεις ή προβλήματα."
+
+
+  streams:
+    index:
+      title: Streams
+      subtitle: 'βρείτε όλα τα αγαπημένα σας streams σε ένα μέρος'
+
+  tournies:
+    index:
+      title: Εγγραφή
+      subtitle: ' Εγγραφήτε στο νεότερο μας Τουρνουά/Πρωταθλήμα'
+      section: 'Τουρνουά'
+
+
+
+  menu:
+    dashboard: Ταμπλό
+    card_database: Βάση δεδομένων καρτών
+    arena:
+      title: Αρένα
+      recent_arena_runs: Πρόσφατες προσπάθειες Αρένα
+      continue_arena_run: Συνέχεια προσπάθειας Αρένας
+      new_arena_run: Νέα προσπάθεια Αρένας
+      recent_arena_matches: Πρόσφατα παιχνίδια Αρένας
+      statistics: Στατιστικά
+    constructed:
+      title: Κατασκευασμένο
+      recent_matches: Πρόσφατα παιχνίδια
+      new_match: Νέο παιχνίδι
+      statistics: Στατιστικά
+    deck:
+      title: Τράπουλα
+      public_deck_list: Δημόσια λίστα τραπουλών
+      my_deck: Η τραπουλά μου
+      my_active_deck: Η ενεργή μου τράπουλα
+      new_deck: Νέα τράπουλα
+    news: Νέα
+    streams: Streams
+    Τουρνουά:
+      title: Τουρνουά
+      register: Εγγραφή
+      Calendar: Ημερολόγιο
+      past_winners: Προηγούμενοι Νικιτές
+    extra:
+      title: Έξτρα
+      official_uploader: Επίσημος Uploader
+      march_report: Αναφορά αγώνα
+      change_log: Καταγραφή αλλαγών
+      about_us: Σχετικά με εμάς
+      contact_info: Πληροφορίες Επικοινωνίας
+    help: Βοήθεια
