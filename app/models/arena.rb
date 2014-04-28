@@ -5,8 +5,9 @@ class Arena < ActiveRecord::Base
 
 
   def self.overall_win_rate(userid)
-  	wins = Match.where(user_id: userid, result_id: true).count
-  	totgames = Match.where(user_id: userid).count
+  	matches = Match.where(user_id: userid, season_id: Season.last.num, mode_id: 1)
+  	wins = matches.where(result_id: true).count
+  	totgames = matches.count
   	winrate = wins.to_f / totgames
 
   	winrate

@@ -4,8 +4,9 @@ class Constructed < ActiveRecord::Base
   belongs_to :deck
 
   def self.overall_win_rate(userid)
-  	wins = Match.where(user_id: userid, result_id: 1).count
-  	totgames = Match.where(user_id: userid).count
+  	matches = Match.where(user_id: userid, season_id: Season.last.num, mode_id: 3)
+  	wins = matches.where(result_id: true).count
+  	totgames = matches.count
   	winrate = wins.to_f / totgames
 
   	winrate
