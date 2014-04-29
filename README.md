@@ -15,75 +15,9 @@ Please follow some [**naming conventions**](itsignals.cascadia.com.au/?p=7) and 
 Make sure you fill the database with some sample data before starting development or else the app will break. We are working on providing some seed data.
 
 ## Sample API call:
+Check out our wiki for API V1 and V2:
 
-The HearthStats API
-
-*Response*
-```json
-  {"status":"success","data":{"complete":false,"created_at":"2014-01-25T19:15:53Z","dust":0,"gold":0,"id":1833,"notes":null,"patch":"current","updated_at":"2014-01-25T19:15:53Z","user_id":1,"userclass":"Rogue"}}
-```
-
-### Matches
-
-*Match Entry*
-```
-curl -X POST -H "Content-Type: application/json" -d '{"slot":1,"class": "Mage", "oppclass": "Druid","result": "Draw" ,"coin":"false", "rank":1, "mode": "Casual", "oppname":"MubaMu22ba"}' localhost:3000/api/v1/matches/new?userkey=7d58fa431951c92ceb9b9cb44d481108
-```
-
-*Parameters*
-
-* **userkey** - required
-* **mode** - Accepts `Arena`, `Casual`, and `Ranked` 
-* **class** - The player's class (e.g. "Mage", "Hunter", etc.)
-* **oppclass** - The opponent's class (e.g. "Mage", "Hunter", etc.)
-* **result** - The result of the match - accepts `Victory`, `Defeat`, `Draw`
-* **coin** - Whether or not the user had the coin - accepts `true`, `false`
-* **numturns** - The number of turns the user had in the match
-* **duration** - The duration of the match in seconds
-* **notes** - Any notes to add to the match
-* **slot** - The deck slot number from 1 to 9 - required when `mode` is `Casual` or `Ranked`
-* **ranklvl** - If mode is `Ranked` this will set the exact rank level - accepts `1` to `25`
-
-
-### Arena
-
-*Last Arena Run*
-<pre>
-http://localhost:3000/api/v1/arena_runs/show?userkey=secret
-</pre>
-
-*Start Arena Run*
-<pre>
-curl -X POST -H "Content-Type: application/json" -d '{ "klass_id": 2 }' localhost:3000/api/v1/arena_runs/new?userkey=0e7f8484496dd312c589ef21a507c393
-</pre>
-
-*End Arena Run*
-
-Use matches method above with `mode` set to `Arena`
-
-*Arena Entry*
-```
-curl -X POST -H "Content-Type: application/json" -d '{"klass_id": 1, "oppclass_id": 3,"result_id": 3 ,"coin":"false", "mode_id":1, "oppname":"MubaMu22ba", "notes":"Schooling"}' localhost:3000/api/v1/matches/new?userkey=7d58fa431951c92ceb9b9cb44d481108
-```
-
-### Constructed
-
-*Constructed Entry*
-
-Use matches method above with `mode` set to `Casual` or `Ranked`
-
-### Deck
-
-*Activate/Deactivate Deck*
-```
-curl -X POST -H "Content-Type: application/json" -d '{"deck_id": 1652}' http://localhost:3000/api/v1/decks/activate?userkey=7d58fa431951c92ceb9b9cb44d481108
-```
-Note that the deck id must belong to the user or an error will occur
-
-*Show All Decks*
-```
-http://localhost:3000/api/v1/decks/show?userkey=7d58fa431951c92ceb9b9cb44d481108
-```
+[Wiki](https://github.com/HearthStats/hearthstats/wiki)
 
 Contact
 -------
