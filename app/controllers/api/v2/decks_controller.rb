@@ -1,5 +1,7 @@
 class Api::V2::DecksController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter :get_req
+
 	respond_to :json
 
 	def show

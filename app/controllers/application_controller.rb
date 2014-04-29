@@ -51,6 +51,10 @@ class ApplicationController < ActionController::Base
 		@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 
+  def get_req
+  	@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
+  end
+
   def layout
     # only turn it off for login pages:
     is_a?(Devise::SessionsController) ? false : "application"

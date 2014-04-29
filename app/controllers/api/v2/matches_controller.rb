@@ -1,5 +1,7 @@
 class Api::V2::MatchesController < ApplicationController
   before_filter :authenticate_user!
+	before_filter :get_req
+
   respond_to :json
 
   def new
@@ -23,26 +25,26 @@ class Api::V2::MatchesController < ApplicationController
     #check for rank if ranked mode
     ranklvl = nil
     if !mode.nil? && mode.name == "Ranked" && !req[:ranklvl].nil?
-      ranklvl = Rank.where(:id => req[:ranklvl])[0]
+      ranklvl = Rank.find_by_name(req[:ranklvl])
       if ranklvl.nil?
         errors.push("Unknown rank '" + req[:ranklvl].to_s + "'." + str)
       end
     end
 
     # get user class
-    userclass = Klass.where(:name => req[:class])[0]
+    userclass = Klass.find_by_name(req[:class])
     if userclass.nil?
       errors.push("Unknown user class '" + (req[:class].nil? ? "[undetected]" : req[:class]) + "'.")
     end
 
     # get opponent class
-    oppclass = Klass.where(:name => req[:oppclass])[0]
+    oppclass = Klass.find_by_name(req[:oppclass])
     if oppclass.nil?
       errors.push("Unknown opponent class '" + (req[:oppclass].nil? ? "[undetected]" : req[:oppclass]) + "'.")
     end
 
     # get result
-    result = MatchResult.where(:name => req[:result])[0]
+    result = MatchResult.find_by_name(req[:result])
     if result.nil?
       errors.push("Unknown result '" + (req[:result].nil? ? "[undetected]" : req[:result]) + "'.")
     end
