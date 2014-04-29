@@ -38,4 +38,11 @@ class SessionsController < Devise::RegistrationsController
   def auth_options
     { :scope => resource_name, :recall => "#{controller_path}#new" }
   end
+
+  def destroy_guest
+  	if session[:guest_user_id]
+			User.find(session[:guest_user_id]).destroy
+			session[:guest_user_id] = nil
+		end
+  end
 end

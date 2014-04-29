@@ -1,7 +1,5 @@
-class Api::V1::ArenaRunsController < ApplicationController
-	before_filter :validate_userkey, :get_user_api
-	skip_before_filter :get_user_api, :only => :end
-	skip_before_filter :get_user_api, :only => :show
+class Api::V2::ArenaRunsController < ApplicationController
+	before_filter :authenticate_user!
 	respond_to :json
 
 	def show
@@ -11,7 +9,7 @@ class Api::V1::ArenaRunsController < ApplicationController
 	    last_arena_run = Hash.new
 	    games = Hash.new
 
-	    user = User.where(userkey: params[:userkey])[0]
+	    user = current_user
 	    last_run = ArenaRun.where(user_id: user.id).last
 	    last_run.matches.each_with_index do |game, i|
 	    	games[i+1] = {:oppclass_id => game.oppclass_id, :result_id => game.result_id, :coin => game.coin}
@@ -33,10 +31,10 @@ class Api::V1::ArenaRunsController < ApplicationController
 		if userclass.nil?
       render json: {status: "fail", message: "Unknown user class."} and return
     end
-		existing_runs = ArenaRun.where(user_id: @user.id, complete: false)
+		existing_runs = ArenaRun.where(user_id: current_user.id, complete: false)
 		existing_runs.update_all(:complete => true)
 		arenarun = ArenaRun.new
-		arenarun.user_id = @user.id
+		arenarun.user_id = current_user.id
 		arenarun.klass_id = userclass.id
 
 		if arenarun.save!
@@ -52,7 +50,7 @@ class Api::V1::ArenaRunsController < ApplicationController
 		# Optional params:
 		# :notes, :gold, :dust
 
-    user = User.where(userkey: params[:userkey])[0]
+    user = currnet_user
 
 		arena_run = ArenaRun.where(user_id: user.id, complete: false).last
 		if arena_run.nil?

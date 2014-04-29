@@ -1,0 +1,427 @@
+# encoding: utf-8
+es:
+
+  shared:
+    header:
+      guest: Invitado
+      my_profile: Mi Perfil
+      sign_out: Cerrar Sesión
+      register_now_login: Inscríbete Ahora / Iniciar Sesión
+      you_have: Tienes
+      new_messages: nuevos mensajes
+      click_message_to_dismiss: Haz clic el mensaje para cerrarlo
+      change_to: Cambiar a
+    footer:
+      about: Quienes Somos
+      faq: FAQ
+      open_positions: Puestos Vacantes
+      support: Soporte
+      privacy_policy: Política de Privacidad
+      copyright_text: Copyright 2014 HearthStats. Hearthstone es una marca registrada de Blizzard Entertainment.
+    arena_win_rate: Proporción de Victorias en Arena
+    ranked_win_rate: Proporción de Victorias en Clasificado
+    best_deck: Mejor Mazo
+    best_arena_class: Mejor Clase en Arena
+    create_deck: Crear un Mazo
+    new_arena_game: Nueva Arena
+    best_deck: Mejor Mazo
+    view_more: Ver Más
+    edit: editar
+    delete: borrar
+    notes: Notas
+    run: correr
+    error: error
+    prohibited_this_being_save: "este %{resource} se prohibió de ser guardado:"
+    arenarun: arenarun
+    show: mostrar
+    arena: arena
+    class: Clase
+    deck: Mazo
+    create: Crear
+    update: Actualizar
+    deckbuilder:
+      card_list: Lista de Cartas
+      optional_deck_will_be_created_if: 'Opcional (Mazo será creado si dejas esto en blanco)'
+      toggle_text_import: Activar/Desactivar Importación de Texto
+      add_a_card: Añadir una Carta
+      of_30_cards: de 30 cartas
+      this_deck_is_incomplete: Este Mazo está Incompleto
+      left_click_add_right_remove: Haz Clic Izquierdo para añadir. Haz Clic Derecho para eliminar.
+      mana_curve: Curva de maná
+      attack_distribution: Distribución de Ataque
+      health_distribution: Distributión de Salud
+      type_distribution: Distribución de Tipo
+      mechanics: Mecanismos
+    back: Regresar
+    deckslist:
+      filter: Filtro
+      any_class: cualquier clase
+      show: Mostrar
+      per_page: por página
+      sort_by: Ordenar por
+      created: Creado
+      losses: Pérdidas
+      matches: Partidos
+      minions: Esbirros
+      name: Nombre
+      spells: Hechizos
+      popularity: Popularidad
+      weapons: Armas
+      win_rate: Proporción de Victorias
+      wins: Victorias
+      asc: Asc
+      desc: Desc
+      apply: Aplicar
+      found_matching_your_criteria: encontrado cumpliendo con tus criterios
+      class: Clase
+      users: Usuarios
+      listed_by: Enumerado Por
+      tools: Herramientas
+      stats_are_for_all_users: 'estadísticas son para todos los usuarios que han jugado con el mazo en los últimos 30 días, no solo el autor original'
+      stats_are_for_your_personal: 'estadísticas son para tu uso personal usando cada mazo'
+
+    matchlist:
+      filter: Filtro
+      any_class: cualquier clase
+      coin?: Moneda?
+      coin: Moneda
+      no_coin: Sin Moneda
+      opponent: Oponente
+      apply: Aplicar
+      reset: Restablecer
+      show: Mostrar
+      per_page: por página
+      all_time: Todos
+      last_24_hours: Ultimas 24 horas
+      last: último
+      days: días
+      sort: ordenar
+      created: creado
+      duration: Duración
+      rounds: rondas
+      ascending: ascendiendo
+      descending: descendiendo
+      win_rate_over: índice de victorias sobre
+      matches_in_this_list: resultados encontrados en esta lista
+      your: Tu
+      opponent_class: Clase del Oponente
+      result: Resultado
+      rank: Rango
+      mode: Modo
+      opponent_name: Nombre del Oponente
+      rounds: Rondas
+      created: Creado
+      options: Opciones
+
+
+  dashboards:
+    index:
+      title: Panel
+      subtitle: ' estadísticas para la temporada actual'
+      global_win_rates: Proporción Global de Victorias
+      arena_win_rates: Proporción de Victorias en Arena
+      games_recorded: Juegos Grabados
+      constructed_win_rates: Proporción de Victorias en Clasificado
+      hearthstats_news: Noticias de HearthStats
+      read_more: Leer Más
+      view_more: Ver Más
+      news:
+        huge_update: Actualización enorme con muchas características.
+        ability_to_rank: Abilidad de modos casual y clasificado agregado.
+        donation_link: Enlace de Donaciones agregado a
+        notes_feature: Opción de Notas agregado!
+      personal_win_rate: Proporción Personal de Victorias
+      constructed_win_rates: Proporción de Victorias en Clasificado
+      constructed_coin_win_rates: Proporción de Victorias en Clasificado con la Moneda
+      recent_activities: Actividades Recientes
+      against: contra
+      with: con
+      global_stats: Estadísticas Globales
+      arena_win_rate: Proporción de Victorias en Arena
+
+  cards:
+    index:
+      title: Base de Datos de Cartas
+      not_found: No se encontró ninguna carta
+      text_contains: Texto contiene
+      filter_by: Filtrar por
+      sort_by: Ordenar por
+      any_type: cualquier tipo
+      any_race: cualquier raza
+      any_class: cualquier clase
+      ascending: Ascendiendo
+      descending: Descendiendo
+      attack: Ataque
+      health_dur: Salud/Dur.
+      mana_cost: Costo de Maná
+      name: Nombre
+      none: ninguno
+      reset_filters: Restablecer Filtros
+
+  arenas:
+    index:
+      title: Juegos Recientes
+      description: ' juegos recientes en arena'
+      section: Arena
+      continue_arena_run: Continuar Arena
+      new_arena_run: Nueva Arena
+      arena_run_with: arena con
+      on: en
+      notes: Notas
+      close: Cerrar
+      recent_arena_games: Juegos recientes de arena
+      your_class: Tu Clase
+      win_loss: Victoria/Derrota
+      prizes: Premios
+      timee_played: Tiempo Jugado
+      options: Opciones
+    new:
+      title: Nuevo Partido de Arena
+      section: Arena
+      retire: Retirar
+      sure_want_retire: Estás seguro que quieres retirarte temprano de esta Arena
+      opponent_class: Clase del Oponente
+      win: Victoria
+      defeat: Derrota
+      draw: Empate
+      back: Regresar
+      end_run: Terminar Arena
+      create_entry: Crear entrada
+      arena_run_results: Resultados de Arena
+      result: Resultado
+      options: Opciones
+      played_first: Jugó Primero
+      played_second: Jugó Segundo
+    matches:
+      title: Partidos Recientes
+      subtitle: ' partidos recientes'
+      section: Arena
+      recent_arena_matches: Partidos Recientes de Arena
+    stats:
+      title: Estadísticas
+      subtitle: ' estadísticas detalladas de arena'
+      section: Arena
+      note: NOTA!
+      page_being_designed: Esta página todavía esta en construcción
+      overall_arena_stats: Estadísticas Globales de Arenas
+      overall_win_rate: Proporción Global de Victorias
+      total_gold_amount: Cantidad Total de Oro
+      total_dust_amount: Cantidad Total de Polvo
+      arena_runs_played: Sets de Arena Jugados
+      arena_games_played: Juegos de Arena Jugados
+      most_played: Mas Jugado
+      longest_average_runs: Promedios mas Largos
+      no_games: Ningún juego
+      detailed_class_status: Estado de Clase Detallado
+
+  constructeds:
+    quickentry:
+      quick_entry: Entrada Rápida
+      ranked: Clasificado
+      casual: Casual
+      no_coin: No Moneda
+      coin: Moneda
+      add_win: Agregar Victoria
+      add_defeat: Agregar Derrota
+      add_draw: Agregar Empate
+    index:
+      title: 'Juegos Recientes'
+      description: ' juegos recientes en modo Construído'
+      section: 'Construido'
+      new_constructed: Nuevo Construído
+    new:
+      title: Nuevo Construído
+      section: Construído
+      get_the_auto_uploader: Descargar el Cargador Automático
+    stats:
+      title: Estadísticas
+      description: ' estadísticas de juegos en modo Construído'
+      section: Construído
+      filter_by: Filtrar por
+      last: último
+      hours: horas
+      days: días
+      all_time: todos
+      first_or_second: primero o segundo
+      going_first: siendo primero
+      going_second: siendo segundo
+      any_mode: cualquier modo
+      casual: casual
+      ranked: clasificado
+    winratechart:
+      constructed_win_rate_title: Proporción de Victorias en Construído por Clase (Personal vs. Global)
+    newform:
+      you_played_on_the: Jugaste en
+      first_turn: primer turno
+      second_turn: segundo turno
+      this_match_is: Este partido es
+      ranked: Clasificado
+      casual: Casual
+      deck_name: Nombre del mazo
+      opponent_class: Clase del oponente
+      add_win: Añadir Victoria
+      add_defeat: Añadir Derrota
+      add_draw: Añadir Empate
+
+
+
+  decks:
+    form:
+      name: Nombre
+      class: Clase
+      notes: Notas
+      decklist_etc: ' Listado del mazo, etc'
+      this_deck_public: Este Mazo es Público
+    new:
+      title: Nuevo Mazo
+      section: Mazos
+    public:
+      title: Listado de Mazos Públicos
+      subtitle: ' todos los mazos públicos'
+      new_deck: Nuevo Mazo
+      public_decks: Mazos Públicos
+    active_decks:
+      title: Mazo Activo
+      subtitle: ' todos los mazos activos'
+      slot: Posición
+      select_deck: Seleccionar Mazo
+      submit: Enviar
+    index:
+      title: Mis Mazos
+      subtitle: ' todos mis mazos'
+      new_deck: Nuevo Mazo
+      my_decks: Mis Mazos
+
+  arena_runs:
+    new:
+      title: Nueva Arena
+      section: Arena
+      first_arena_of_day: Primera Arena de hoy? Empezemos!
+      keep_it_going: "Solo %{runs}? Sigue adelante!"
+      going_hardcore: "Wow, estás dándole duro hoy? %{runs} ya, buena suerte!"
+      your_class: Tu clase
+      continue: Continuar
+      get_auto_uploader: Descargar el Cargador Automático
+
+
+  additional:
+    news:
+      title: Noticias de Hearthstone
+      subtitle: ' las últimas noticias en Hearthstone'
+      suggestions_for_news: Sugerencias para fuentes de noticias son bienvenidas
+      posted: Publicado
+      read_more: Leer Más
+    uploader:
+      title: Cargador Oficial
+      header_text: "| Porqué ingresar tus partidos manualmente cuando nuestro cargador puede hacerlo? &nbsp;| Esta herramienta de código abierto usa análisis de captura de pantalla. No rastrea paquetes de datos (packet sniffing), &nbsp;| ni monitoreo, ni cualquier otro tipo de alteración de redes. El proyecto es y siempre será código abierto así que &nbsp;| podrás compilarlo tu mismo y ver exactamente que pasa dentro del programa."
+      download_for: Descargar por
+      user_key: Llave de Usuario
+      do_not_share: no compartas esto con nadie
+      click_to_reveal: Haz clic para revelar
+      instructions: Instrucciones
+      please_have_installed: Por favor aségurate que Java 7+ esté instalado.
+      download_java_here: Descargar Java Aquí
+      instructions_osx:
+        inst_osx_1: Descarga del enlace de arriba
+        inst_osx_2: Unzip el archivo
+        inst_osx_3: Arrastrar el archivo al folder Applications
+        inst_osx_4: Haz <b>Clic Derecho</b> en el archivo y luego haz clic abrir
+        inst_osx_5: Ingresa tu llave de usuario de la página del cargador o la página de perfil
+        inst_osx_6: Abre tu juego y a jugar!
+      instructions_win:
+        inst_win_1: Descarga del enlace de arriba
+        inst_win_2: Unzip el archivo
+        inst_win_3: Haz clic para abrir el programa
+        inst_win_4: Ingresa tu llave de usuario de la página del cargador o la página de perfil
+        inst_win_5: Abre tu juego y a jugar!
+      features_title: Características
+      features:
+        feat_1: Soporte para ambos Windows y Mac
+        feat_2: Automáticamente monitorea tus partidos de construído y arena
+        feat_3: Monitorea tu clase y la del oponente
+        feat_4: Monitorea tu rango para partidos en modo Clasificado
+        feat_5: Monitorea el nombre de tus oponentes
+        feat_6: Monitorea la cantidad de rondas jugadas y duración de partidos
+        feat_7: Agrega notas a tus partidos directamente del cargador
+      help_and_support: Ayuda y Soporte
+      known_issues: Problemas conocidos
+      project_source_on_github: Código fuente del proyecto en Github
+    changelog:
+      title: Registro de cambios
+      all_time_in_utc: Todas los relojes muestran la hora en UTC/GMT
+    aboutus:
+      title: Quienes Somos
+      founded_by_text: Este sitio web fue fundado por Jeffrey Tong con amor.
+      you_can_follow_twitter: Puedes seguirme en Twitter
+      a_huge_thanks_to: Muchas gracias a
+      thanks_jerome_text: Jerome definitivamente impulsó HearthStats al siguiente nivel y me motivó a trabajar mas duro. Muchas gracias!
+      built_suggestions_text: Hearthstats fue creado desde las sugerencias de la comunidad y seguirá siendo una herramienta usada/creada por la comunidad de Hearthstone.
+      others_contributors: Otros Contribuidores
+      charles_text_1: Charles hizo un gran trabajo en el Cargador para Mac
+      charles_text_2: Charles se merece mucha apreciación por salir de la nada y trabajar con código abierto
+      charles_text_3: Puedes encontrar más información sobre Charles
+      here: aquí
+      eckert_text: J Eckert contribuyó mucho con estilos y colores
+      donate_text:  "Si te gusta lo que hago, envíame unas cuantas monedas."
+      rackspace_text: "Me gustaría agradecer a Rackspace por proveer un servicio de hosting excepcional! Si necesitas cloud hosting, definitivamente échales una mirada!"
+    contactus:
+      title: Contáctanos
+      contact_email_text: "Puedes enviarme me email a<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>si tienes preguntas"
+      contact_email_text_2: "También puedes seguirnos en Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: Estoy bien aburrido así que sus emails son bienvenidos.
+      fadein_text_2: Por favor envíame un email! Puede tratarse de cualquier cosa!
+      fadein_text_3: Mi trasero me está empezando a doler... Miren todo lo que tengo que sufrir para hacer este sitio para ustedes!
+    help:
+      title: Ayuda
+      help_text: "Visita <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para cualquier problema o sugerencia."
+
+
+  streams:
+    index:
+      title: Transmisiones (Streams)
+      subtitle: ' encuentra todos tus streams favoritos aquí'
+
+  tournies:
+    index:
+      title: Inscripción
+      subtitle: ' Inscríbete para nuestros últimos torneos/ligas'
+      section: 'Torneos'
+
+
+
+  menu:
+    dashboard: Panel
+    card_database: Base de Datos de Cartas
+    arena:
+      title: Arena
+      recent_arena_runs: Arenas Recientes
+      continue_arena_run: Continuar Arena
+      new_arena_run: Nueva Arena
+      recent_arena_matches: Partidos de Arena Recientes
+      statistics: Estadísticas
+    constructed:
+      title: Construído
+      recent_matches: Partidos Recientes
+      new_match: Nuevo Partido
+      statistics: Estadísticas
+    deck:
+      title: Mazo
+      public_deck_list: Listado de Mazos Públicos
+      my_deck: Mi Mazo
+      my_active_deck: Mi Mazo Activo
+      new_deck: Nuevo Mazo
+    news: Noticias
+    streams: Streams
+    tournaments:
+      title: Torneos
+      register: Inscripción
+      Calendar: Calendario
+      past_winners: Ultimos Ganadores
+    extra:
+      title: Extra
+      official_uploader: Cargador Oficial
+      march_report: Reporte de Partido
+      change_log: Registro de Cambios
+      about_us: Quienes Somos
+      contact_info: Contáctanos
+    help: Ayuda

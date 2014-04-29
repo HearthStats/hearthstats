@@ -1,11 +1,11 @@
-class Api::V1::MatchesController < ApplicationController
-  before_filter :validate_userkey, :get_user_api
+class Api::V2::MatchesController < ApplicationController
+  before_filter :authenticate_user!
   respond_to :json
 
   def new
 
     req = @req
-    user = @user
+    user = current_user
 
     errors = Array.new
 

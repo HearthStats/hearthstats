@@ -153,5 +153,25 @@ Hearthstats::Application.routes.draw do
       post "decks/activate"
       post "decks/slots"
 		end
+
+		namespace :v2 do
+			devise_for :users
+  		get "arenas/show"
+	    post "arenas/new"
+
+	    get "constructeds/show"
+	    post "constructeds/new"
+
+	    get "arena_runs/show"
+	    post "arena_runs/new"
+	    get "arena_runs/end"
+
+      post "matches/new"
+
+	    get "decks/show"
+	    get "decks/find"
+      post "decks/activate"
+      post "decks/slots"
+		end
   end
 end

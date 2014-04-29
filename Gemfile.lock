@@ -123,6 +123,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-token_authenticatable (0.1.0)
+      devise (~> 3.2.0)
     diff-lcs (1.2.5)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
@@ -193,6 +195,8 @@ GEM
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
+    hipchat (1.1.0)
+      httparty
     http_parser.rb (0.5.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -439,6 +443,7 @@ DEPENDENCIES
   dalli
   database_cleaner (>= 0.9.1)
   devise
+  devise-token_authenticatable
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.2.0)
   feedjira
@@ -446,6 +451,7 @@ DEPENDENCIES
   fog
   friendly_id
   guard-livereload
+  hipchat
   httparty
   imgkit
   impressionist

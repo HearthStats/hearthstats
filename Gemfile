@@ -9,6 +9,7 @@ group :development do
   gem 'sqlite3'
   gem 'capistrano', "~> 2.14.2"
   gem 'capistrano_rsync_with_remote_cache'
+  gem "hipchat"
   gem "quiet_assets", ">= 1.0.1"
   gem 'rb-fsevent', :require => false
   gem 'pry'
@@ -37,6 +38,7 @@ end
 
 gem 'slim-rails'
 gem 'devise'
+gem 'devise-token_authenticatable'
 gem 'jquery-rails'
 gem "will_paginate", ">=3.0.pre2"
 gem 'will_paginate-bootstrap'
