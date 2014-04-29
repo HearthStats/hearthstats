@@ -99,8 +99,8 @@ el:
       created: δημιουργήθηκε
       duration: Διάρκεια
       rounds: γύροι
-      ascending: αύξουσα
-      descending: φθίνουσα
+      ascending: Αύξουσα
+      descending: Φθίνουσα
       win_rate_over: Συχνότητα νικών πάνω από
       matches_in_this_list: αγώνες σε αυτή τη λίστα
       your: δικό σου
@@ -124,10 +124,10 @@ el:
       constructed_win_rates: Συχνότητα νικών - Κατασκευασμένη (Τράπουλα)
       hearthstats_news: Νέα του HearthStats
       read_more: Διαβάστε περισσότερα
-      view_more: Δείτε περισσότερα
+      view_more: ΔΕΙΤΕ ΠΕΡΙΣΣΟΤΕΡΑ
       news:
         huge_update: Τεράστια ενημέρωση με πολλά νέα στοιχεία.
-        ability_to_rank: Ικανότητα προσθήκης στα "Κατασκευασμένα" παιχνήδια για Βαθμό/Σύνηθες
+        ability_to_rank: Ικανότητα προσθήκης στα "Κατασκευασμένα" παιχνίδια για Βαθμόλογημένα/Ανέμελα.
         donation_link: Σύνδεσμος δωρεάς προσθέθηκε στο
         notes_feature: Προσθέθηκε δυνατότητα σημειώσεων!
       personal_win_rate: Προσωπική συχνότητα νικών
@@ -412,7 +412,7 @@ el:
       new_deck: Νέα τράπουλα
     news: Νέα
     streams: Streams
-    Τουρνουά:
+    Tournaments:
       title: Τουρνουά
       register: Εγγραφή
       Calendar: Ημερολόγιο
