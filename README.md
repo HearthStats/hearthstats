@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/hearthstats/hearthstats.png?label=ready&title=Ready)](https://waffle.io/hearthstats/hearthstats)
 # <a href="http://hearthstats.net/"><img src="http://www.hearthstats.net/assets/hearthstatslogo.png" width="100px"/></a> HearthStats
 
 HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.
