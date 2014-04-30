@@ -313,7 +313,7 @@ en:
       read_more: Read More
     uploader:
       title: Official Uploader
-      header_text: "| Why enter your matches manually when you can let our uploader take care of everything for you? &nbsp;| This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, &nbsp;| monitoring, or network modification of any kind. The project is and always will be open source so that you &nbsp;| can do your own builds and see exactly what's happening within the program."
+      header_text: "Why enter your matches manually when you can let our uploader take care of everything for you? This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, monitoring, or network modification of any kind. The project is and always will be open source so that you can do your own builds and see exactly what's happening within the program."
       download_for: Download for
       user_key: User Key
       do_not_share: do not share this with anyone else

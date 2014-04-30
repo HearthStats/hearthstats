@@ -3,12 +3,14 @@
   :keywords => 'uploader, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, t('.title'))
 p
-	= t('.header_text')
-  
+  = t('.header_text')
+
 p
-	a[href="/uploader/download/win" target="_blank" class="btn btn-large blue"] #{t('.download_for')} Windows
-	| &nbsp;
-	a[href="/uploader/download/osx" target="_blank" class="btn btn-large green"] #{t('.download_for')} OSx
+  a href="/uploader/download/win" target="_blank" class="btn btn-large blue"
+    | #{t('.download_for')} Windows
+  |&nbsp;
+  a href="/uploader/download/osx" target="_blank" class="btn btn-large green"
+    | #{t('.download_for')} OSX
 - if current_user
   div.api-key
     div.api-button
@@ -54,4 +56,4 @@ ul
 	li
 		a[href="https://github.com/JeromeDane/HearthStats.net-Uploader/issues"]= t('.known_issues')
 	li
-		a[href="https://github.com/JeromeDane/HearthStats.net-Uploader"]= t('.project_source_on_github') 
+		a[href="https://github.com/JeromeDane/HearthStats.net-Uploader"]= t('.project_source_on_github')
