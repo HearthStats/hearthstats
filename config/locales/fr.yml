@@ -1,0 +1,427 @@
+# encoding: utf-8
+fr:
+
+  shared:
+    header:
+      guest: Invité
+      my_profile: Mon profil
+      sign_out: Déconnexion
+      register_now_login: S'enregistrer / Se connecter
+      you_have: Vous avez
+      new_messages: nouveau(x) message(s)
+      click_message_to_dismiss: Cliquez sur le message pour le faire disparaître
+      change_to: changer en
+    footer:
+      about: A propos
+      faq: FAQ
+      open_positions: Postes à pourvoir
+      support: Support
+      privacy_policy: Politique de confidentialité
+      copyright_text: Copyright 2014 HearthStats. Hearthstone est une marque déposée par Blizzard Entertainment.
+    arena_win_rate: Pourcentage de victoires Arène
+    ranked_win_rate: Pourcentage de victoires en Partie classée
+    best_deck: Meilleur Deck
+    best_arena_class: Meilleur classement en arène
+    create_deck: Créer un deck
+    new_arena_game: Nouvelle Arène
+    best_deck: Meilleur Deck
+    view_more: Voir plus
+    edit: éditer
+    delete: Supprimer
+    notes: Notes
+    run: run
+    error: erreur
+    prohibited_this_being_save: "Vous ne pouvez pas sauvegarder : %{resource}"
+    arenarun: arenarun
+    show: Voir
+    arena: arène
+    class: Classe
+    deck: Deck
+    create: Créer
+    update: Mise à jour
+    deckbuilder:
+      card_list: Liste des cartes
+      optional_deck_will_be_created_if: 'Optionel (Le deck sera créé si vous laisser vide)'
+      toggle_text_import: Toggle Text Import
+      add_a_card: Ajouter une carte
+      of_30_cards: sur 30 cartes
+      this_deck_is_incomplete: Ce deck est incomplet
+      left_click_add_right_remove: Clic gauche ajouter. Clic droit supprimer.
+      mana_curve: Courbe de Mana
+      attack_distribution: Points d'attaque
+      health_distribution: Points de defense
+      type_distribution: Type
+      mechanics: Mécanisme
+    back: Retour
+    deckslist:
+      filter: Filtre
+      any_class: Toute classe
+      show: Voir
+      per_page: par page
+      sort_by: Trier par
+      created: Créé
+      losses: Défaites
+      matches: Matchs
+      minions: Serviteurs
+      name: Nom
+      spells: Sorts
+      popularity: Popularité
+      weapons: Armes
+      win_rate: Pourcentage de victoires
+      wins: Victoires
+      asc: Asc
+      desc: Desc
+      apply: Appliquer
+      found_matching_your_criteria: Résultats pour votre recherche
+      class: Classe
+      users: Utilisateurs
+      listed_by: listé par
+      tools: Outils
+      stats_are_for_all_users: 'Les statistiques affichés prennent en compte tous les joueurs qui ont joué ce deck durant les 30 derniers jours, pas uniquement les stats de l'auteur de ce deck'
+      stats_are_for_your_personal: 'stats are for for your personal play using each deck'
+
+    matchlist:
+      filter: Filtre
+      any_class: Toute classe
+      coin?: Pièce ?
+      coin: Avec la pièce
+      no_coin: Sans la pièce
+      opponent: Adversaire
+      apply: Appliquer
+      reset: Reset
+      show: Voir
+      per_page: par page
+      all_time: Depuis toujours
+      last_24_hours: Les dernières 24 heures
+      last: Dernier
+      days: jours
+      sort: Trier
+      created: créé
+      duration: Durée
+      rounds: Tours
+      ascending: Croissant
+      descending: Décroissant
+      win_rate_over: win rate over
+      matches_in_this_list: matchs dans cette liste
+      your: Votre
+      opponent_class: Classe de votre adversaire
+      result: Resultat
+      rank: Rang
+      mode: Mode
+      opponent_name: Nom de votre adversaire
+      rounds: Tours
+      created: Créé
+      options: Options
+
+
+  dashboards:
+    index:
+      title: Tableaux de bord
+      subtitle: ' statistiques pour la saison en cours'
+      global_win_rates: Victoires globales
+      arena_win_rates: Victoires en Arene
+      games_recorded: Parties enregistrées
+      constructed_win_rates: Victoires en parties construites
+      hearthstats_news: HearthStats News
+      read_more: Lire plus
+      view_more: Voir plus
+      news:
+        huge_update: Importante mise à jour avec de nombreuses améliorations.
+        ability_to_rank: Possibilité de choisir entre partie classée  ou challenge pour les parties construites.
+        donation_link: Donation link added at
+        notes_feature: Notes feature added!
+      personal_win_rate: Taux de victoire personnel
+      constructed_win_rates: Taux de victoires en partie classée
+      constructed_coin_win_rates: Taux de victoires en partie classée avec la pièce
+      recent_activities: Activités recentes
+      against: contre
+      with: avec
+      global_stats: Statistiques globales
+      arena_win_rate: Taux de victoire en arène
+
+  cards:
+    index:
+      title: Listes des cartes
+      not_found: Aucune carte correspondant à vos critères n'a été trouvé
+      text_contains: Le texte contient
+      filter_by: Filtrer par
+      sort_by: Trier par
+      any_type: Tout type
+      any_race: Toute race
+      any_class: Toute classe
+      ascending: Croissant
+      descending: Décroissant
+      attack: Attaque
+      health_dur: Santé/Dur.
+      mana_cost: Coût en mana
+      name: Nom
+      none: rien
+      reset_filters: anuler les filtres
+
+  arenas:
+    index:
+      title: Parties recentes
+      description: ' Parties d'arène récentes'
+      section: Arène
+      continue_arena_run: Continue une session d'Arène
+      new_arena_run: Nouvelle session d'arène
+      arena_run_with: arena run with
+      on: on
+      notes: Notes
+      close: Fermer
+      recent_arena_games: Partie d'Arène récentes
+      your_class: Votre classe
+      win_loss: Vict / Def
+      prizes: Prix
+      timee_played: Temps joué
+      options: Options
+    new:
+      title: Nouvealle session d'arène
+      section: Arène
+      retire: abandonner
+      sure_want_retire: Êtes vous surs de vouloir abandonner aussi precipitemment durant cette session d'Arène?
+      opponent_class: Classe de votre adversaire
+      win: Victoire
+      defeat: Defaite
+      draw: égalité
+      back: Retour
+      end_run: Fin du tour
+      create_entry: Créer une entrée
+      arena_run_results: Résultats de votre session
+      result: Resultat
+      options: Options
+      played_first: Joué en premier
+      played_second: Joué en second
+    matches:
+      title: Matchs recents
+      subtitle: ' Les parties jouées récemment'
+      section: Arène
+      recent_arena_matches: Recent Arena Matches
+    stats:
+      title: Statistiques
+      subtitle: ' Statistiques détaillées des matchs d'Arène'
+      section: Arène
+      note: NOTE!
+      page_being_designed: La page est en cours de refonte
+      overall_arena_stats: Stats Globales d'Arene
+      overall_win_rate: Taux de victoires global
+      total_gold_amount: Total d'or gagné
+      total_dust_amount: Total de poussière ammassé
+      arena_runs_played: Tours d'arène joués
+      arena_games_played: Parties d'arène jouées
+      most_played: le plus joué
+      longest_average_runs: plus long Tours d'arène
+      no_games: pas de partie
+      detailed_class_status: Satuts de classe détaillé
+
+  constructeds:
+    quickentry:
+      quick_entry: Entrée rapide
+      ranked: Classée
+      casual: Non classée
+      no_coin: sans la pièce
+      coin: avec la pièce
+      add_win: Ajouter victoire
+      add_defeat: Ajouter défaite
+      add_draw: Ajouter une égalité
+    index:
+      title: 'Parties récentes'
+      description: ' Parties classées récentes'
+      section: 'Classée'
+      new_constructed: Nouveau deck construit
+    new:
+      title: New Constructed
+      section: Constructed
+      get_the_auto_uploader: Obtenir l'auto uploader
+    stats:
+      title: Statistiques
+      description: ' les statistiques des decks construits'
+      section: construits
+      filter_by: Filtrer par
+      last: dernière
+      hours: heures
+      days: jours
+      all_time: depuis toujours
+      first_or_second: premier ou second
+      going_first: être premier
+      going_second: être second
+      any_mode: Tous les modes
+      casual: non classé
+      ranked: classé
+    winratechart:
+      constructed_win_rate_title: Taux de victoires par classe (personnel contre Globale)
+    newform:
+      you_played_on_the: Vous avez joué
+      first_turn: en premier
+      second_turn: en second
+      this_match_is: ce match est
+      ranked: classé
+      casual: non classé
+      deck_name: Nom du deck
+      opponent_class: Classe de votre adversaire
+      add_win: Ajouter victoire
+      add_defeat: Ajouter défaite
+      add_draw: Ajouter égalité
+
+
+
+  decks:
+    form:
+      name: Nom
+      class: Classe
+      notes: Notes
+      decklist_etc: ' Decklist, etc'
+      this_deck_public: Ce deck est public
+    new:
+      title: nouveau deck
+      section: decks
+    public:
+      title: Liste des deck publics
+      subtitle: ' tous les decks construits publics'
+      new_deck: nouveau deck
+      public_decks: Decks publics
+    active_decks:
+      title: Deck actif
+      subtitle: ' Tous les decks construits actifs'
+      slot: Slot
+      select_deck: Selection Deck
+      submit: Soumettre
+    index:
+      title: Mes decks
+      subtitle: ' Tous mes decks construits'
+      new_deck: Nouveau deck
+      my_decks: Mes decks
+
+  arena_runs:
+    new:
+      title: Nouvelle partie d'arène
+      section: Arène
+      first_arena_of_day: Première arène de la journée? Allé c'est parti!
+      keep_it_going: "Seulement %{runs}? Keep it going!"
+      going_hardcore: "Wow, going hardcore today? %{runs} already, well good luck!"
+      your_class: Votre classe
+      continue: Continue
+      get_auto_uploader: Get the Auto Uploader
+
+
+  additional:
+    news:
+      title: Les news Hearthstone
+      subtitle: ' Les dernières news Hearthstone'
+      suggestions_for_news: Toutespour de nouvelles sources d'informations Heartstone sont les bienvenues
+      posted: Postées
+      read_more: Lire plus
+    uploader:
+      title: L'uploader officiel
+      header_text: "| Pourquoi entrer manuellement le resultat de chaque partie quand vous pouvez laisser l'Uploader gérer seul cette tâche pour vous? &nbsp;| Cet utilitaire open source utilise l'analyse de capture d'écran de votre fenêtre Heartstone. Il n'analyse pas le traffic réseau ni ne sniffe  paquets réseaux. Le projet est et restera open source pour que vous puissiez créer votre propre build et que vous puissiez toujours controler ce qui se passe quand notre logiciel est lancé, &nbsp;| "
+      download_for: Télécharger pour
+      user_key: Clé utilisateur
+      do_not_share: Ne partagez cette clé avec personne
+      click_to_reveal: Clic pour révéler
+      instructions: Instructions
+      please_have_installed: Assurez vous d'avoir Java 7 ou sup d'installée.
+      download_java_here: Télécharger Java ici
+      instructions_osx:
+        inst_osx_1: Télécharger avec le lien ci-dessous
+        inst_osx_2: Décomprésser l'archive
+        inst_osx_3: Copier les fichiers extraits dans votre dossier d'applications
+        inst_osx_4: <b>Clic droit</b> sur le fichier et cliquez sur ouvrir
+        inst_osx_5: Entrer la clé utilisateur disponible sur la page de l'uploader ou de votre profil
+        inst_osx_6: Ouvrir de nouveau votre jeu et vous pouvez jouer!
+      instructions_win:
+        inst_win_1: Télécharger grâce au lien ci-dessous
+        inst_win_2: Extraire l'archive
+        inst_win_3: Cliquer pour ouvrir l'application
+        inst_win_4: Entrer votre clé utilisateur disponible sur la page de l'uploader ou de votre profil
+        inst_win_5: Ouvrir de nouveau le jeu et c'est parti!
+      features_title: Caractériqtiques
+      features:
+        feat_1: Fonctionne sous Windows et OSx
+        feat_2: Enregistre automatiquement vos matchs classés et d'arène
+        feat_3: Enregistre votre classe et celle de votre adversaire
+        feat_4: Enregistre votre level pour les parties classées
+        feat_5: Enregistre le nom de votre adversaire
+        feat_6: Enregistre le nombre de tours joué ainsi que le temps de jeu
+        feat_7: Vous pouvez ajouter des notes à vos parties directement à partir de l'uploader
+      help_and_support: Aide et support
+      known_issues: Solutions connues
+      project_source_on_github: les sources du projet sont sur Github
+    changelog:
+      title: Changelog
+      all_time_in_utc: All time in UTC
+    aboutus:
+      title: A propos
+      founded_by_text: Ce site à été créé par Jeffrey Tong avec AMOUR.
+      you_can_follow_twitter: Vous pouvez me suivre sur Twitter
+      a_huge_thanks_to: Un énorme merci à
+      thanks_jerome_text: Jerome qui m'a encouragé et aidé a pousser Heartstats jusqu'à ce jour et qui m'a motivé à travailler à chaque fois plus durement. Milles mercis!
+      built_suggestions_text: HearthStats s'est créé suite aux suggestions de chaque personne faisant partie de cette communauté. Ce site continuera à être fait par et pour la communauté d'Heartstone.
+      others_contributors: Les autres contributeurs
+      charles_text_1: Charles a su mettre tout son coeur dans la conception de l'uploader pour OSx
+      charles_text_2: Charles mérite beaucoup de reconnaissance pour avoir su créer de toute pièce cet outil open source
+      charles_text_3: Vous pouvez en apprendre d'avantage sur Charles
+      here: ici
+      eckert_text: J Eckert a contribué au style de cette application et aux couleurs
+      donate_text:  "Si vous aimez mon travail n'hésitez pas à me laisser quelques pièces."
+      rackspace_text: "Je tiens également à remercier Rackspace qui nous a fourni un hébragement aussi génial! Si vous avez besoin d'une espace de stockage en ligne n'hesitez pas à les solliciter!"
+    contactus:
+      title: Contact Info
+      contact_email_text: "N'hesitez pas à m'envoyer un email à <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>pour toutes questions"
+      contact_email_text_2: "Vous pouvez aussi nous suivre sur twitter : <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: Je m'ennuie tellement que vos mails seront les bienvenus.
+      fadein_text_2: S'il vous plait juste une mail! ça peut-être a propos de n'importe quoi mais un mail !!
+      fadein_text_3: Mes fesses commencent à devenir douloureuses... Regarder la douleur que j'endure pour faire ce site pour vous les gars!
+    help:
+      title: Aide
+      help_text: "Veuillez visiter <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> pour toute suggestion ou problèmes."
+
+
+  streams:
+    index:
+      title: Streams
+      subtitle: ' Rechercher tous vos streams favoris ici'
+
+  tournies:
+    index:
+      title: Inscription
+      subtitle: ' Inscrition pour nos nouveaux tournois ou leagues'
+      section: 'Tournois'
+
+
+
+  menu:
+    dashboard: tableau de bord
+    card_database: Base de données Cartes
+    arena:
+      title: Arène
+      recent_arena_runs: Session d'arène recents
+      continue_arena_run: Continuer session d'arène
+      new_arena_run: Nouvelle session d'arène
+      recent_arena_matches: Matchs récents d'arène
+      statistics: Statistiques
+    constructed:
+      title: Construits
+      recent_matches: Matchs récents
+      new_match: Nouveau match
+      statistics: Statistiques
+    deck:
+      title: Deck
+      public_deck_list: List des decks publics
+      my_deck: Mon deck
+      my_active_deck: Mon deck actif
+      new_deck: Nouveau deck
+    news: News
+    streams: Streams
+    tournaments:
+      title: Tournois
+      register: Enregistrement
+      Calendar: Calendrier
+      past_winners: Gagnants passés
+    extra:
+      title: Extra
+      official_uploader: Uploader officiel
+      march_report: rapport du mois de mars"
+      change_log: Change Log
+      about_us: A propos
+      contact_info: Contact Info
+    help: Aide

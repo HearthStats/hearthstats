@@ -1,6 +1,6 @@
 class Api::V2::DecksController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :get_req
+	before_filter :get_req, :except => [:show]
 
 	respond_to :json
 
@@ -10,7 +10,7 @@ class Api::V2::DecksController < ApplicationController
 	  rescue
 	  	api_response = {status: "error", message: "Error getting user's decks"}
 	  else
-	    api_response = {status: "success", data: current_user}
+	    api_response = {status: "success", data: decks}
 	  end
 		render :json => api_response
 	end
