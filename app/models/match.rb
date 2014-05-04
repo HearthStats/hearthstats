@@ -76,7 +76,7 @@ class Match < ActiveRecord::Base
                   'Coin?',
                   'Created Time'
                 ]
-      all.find_each do |match|
+      all.each do |match|
         next unless match.user_id
         writer << [
                     match.klass.name,
