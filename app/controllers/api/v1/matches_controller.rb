@@ -23,7 +23,8 @@ class Api::V1::MatchesController < ApplicationController
     #check for rank if ranked mode
     ranklvl = nil
     if !mode.nil? && mode.name == "Ranked" && !req[:ranklvl].nil?
-      ranklvl = Rank.where(:id => req[:ranklvl])[0]
+      ranklvl = Rank.find(req[:ranklvl])
+      legend = req[:legend] if !req[:legend].nil?
       if ranklvl.nil?
         errors.push("Unknown rank '" + req[:ranklvl].to_s + "'." + str)
       end
@@ -109,7 +110,11 @@ class Api::V1::MatchesController < ApplicationController
           end
           MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
           if !ranklvl.nil?
-            MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
+            if legend
+	            MatchRank.new(match_id: match.id, rank_id: ranklvl.id, legendary: legend).save!
+	          else
+	            MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
+	          end
           end
         end
         render json: {status: "success", message: message,  data: match}
