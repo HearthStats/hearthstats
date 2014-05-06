@@ -1,0 +1,12 @@
+- cards.each do |card|
+  -wrapperClass = "normal"
+  -if card[1] == 2
+    -wrapperClass = 'two'
+  -elsif card[0].rarity_id == 5
+    -wrapperClass = "legendary"
+  div class="cardWrapper #{wrapperClass}"
+    .mana = card[0].mana
+    .name  = card[0].name
+    .qty = card[1]
+    img.image src="https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card[0].name.parameterize}.png"
+    .bg

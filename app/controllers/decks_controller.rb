@@ -28,6 +28,13 @@ class DecksController < ApplicationController
   # GET /decks/1.json
   def show
     @deck = Deck.find(params[:id])
+		@card_array = Array.new
+    @deck.cardstring.split(",").each do |card_splitted|
+			card_id = card_splitted.split("_")[0]
+			card_quantity = card_splitted.split("_")[1].to_i
+			card = Card.find(card_id)
+			@card_array << [card, card_quantity]
+		end
 
     impressionist(@deck) unless params[:version]
 

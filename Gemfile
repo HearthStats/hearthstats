@@ -14,8 +14,7 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'pry'
   gem 'seed_dump'
-  gem 'guard-livereload', require: false
-
+  gem 'rack-mini-profiler'
 end
 
 group :assets do

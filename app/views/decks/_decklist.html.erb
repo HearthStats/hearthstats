@@ -4,13 +4,15 @@
   <div class="preloadCardBg_2"></div>
   <div class="preloadCardBg_legendary"></div>
   <div class="col-lg-6">
-   </div>
-    <div class="toggle-box">
-      <div class="btn blue btn-sm deck-text-trigger"><%= t('.toggle_text_import') %></div>&nbsp;<a href="http://hearthstats.uservoice.com/knowledgebase/articles/339087" target="_blank"><i class="fa fa-question-circle tooltips" data-original-title="Click to learn more"></i></a>
+    <label><%= t('.card_list') %></label>
+    <div style="position:relative;">
+      <div class="deckBuilderCardsWrapper">
+      	<%= render 'card_list', cards: @card_array %>
+      </div>
+    	<img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
     </div>
-    <%= text_area_tag :deck_text, nil , class: "deck-text" %>
-    <% end %>
-    <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
     <div class="deckBuilderStats">
       <label>&nbsp;</label>
       <div><%= t('.mana_curve') %>:</div>
@@ -56,34 +58,6 @@
 			return null;
 		}
 
-		/**
-		 * Format the deck builder add card selector options
-		 */
-		function _formatdeckBuilderAddCardFieldSelector(o) {
-			if(o.text == "Add a card ...")
-				return null;
-			return '<img src="' + $(o.element[0]).attr('image') + '" style="height:50px;"/> ' + o.text
-		}
-
-		/**
-		 * Generate the deck builder card selector
-		 */
-		function _generateCardSelector() {
-
-			_deckBuilderAddCardField.html('<option value="">Add a card ...</option>');
-			for(var i = 0; i < _allCards.length; i++) {
-				var card = _allCards[i];
-				if(!card.klass_id || parseInt(card.klass_id) == _classId)
-					_deckBuilderAddCardField.append('<option value="' + card.id + '" image="' + card.image + '">' + card.name + '</option>');
-			}
-
-			 _deckBuilderAddCardFieldSelect2 = _deckBuilderAddCardField.select2({
-		    	formatResult: _formatdeckBuilderAddCardFieldSelector,
-		    	width:'220px'
-		    });
-
-		}
-
 		var _cards = [];
 
 		var _changeHandlers = [];
@@ -92,89 +66,8 @@
 				_changeHandlers[i]();
 		}
 
-		/**
-		 * Sort cards by mana cost and name
-		 */
-		function _sortCards() {
-
-			var manaGroups = {};
-
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				manaGroups[card.mana + ""] = manaGroups[card.mana + ""] || [];
-				manaGroups[card.mana + ""].push(card);
-			}
-
-			_cards = [];
-
-			for(var mana in manaGroups) {
-				var group = manaGroups[mana];
-				group.sort(function(a, b) {
-					var valA;
-					var valB;
-				    valA = a.name.toUpperCase();
-				    valB = b.name.toUpperCase();
-				    return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;
-				});
-				for(var i = 0; i < group.length; i++) {
-					_cards.push(group[i]);
-				}
-			}
-		}
-
-		function _drawCards() {
-			_sortCards();
-			var cardsWrapper = $('.deckBuilderCardsWrapper');
-			cardsWrapper.html("");
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				var wrapperClass = "normal";
-				if(card.qty == 2)
-					wrapperClass = "two";
-				if(card.rarity_id == 5)
-					wrapperClass = "legendary";
-				var title = "Right-click to remove";
-				if(_getNumCards() < 30 && card.qty < 2 && card.rarity_id != 5)
-					title = "Left-click to add. " + title;
-				if(!_enabled)
-					title = "";
-				cardsWrapper.append(
-					'<div class="cardWrapper ' + wrapperClass + '" title="' + title + '" cardid="' + card.id + '">' +
-						'<div class="mana">' + card.mana + '</div>' +
-						'<div class="name">' + card.name + '</div>' +
-						'<div class="qty">' + card.qty + '</div>' +
-						'<img src="' + card.image + '" class="image"/>' +
-						'<div class="bg">&nbsp;</div>' +
-					'</div>'
-				);
-			}
-
-			// enable card mouseover to show full image
-			var fullCardImage = $('#deckBuilderFullCardView');
-			$('.deckBuilderCardsWrapper .cardWrapper').mouseover(function(e) {
-				$this = $(this);
-				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, .8);
-				$this.fadeTo(0, 1);
-				fullCardImage.attr('src', $('img', $this).attr('src'));
-				var top = $this.position().top;
-				if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
-					top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
-				fullCardImage.css({
-					top: top + 'px',
-					left: ($this.position().left + 245) + 'px'
-				})
-				fullCardImage.show();
-			});
-			$('.deckBuilderCardsWrapper .cardWrapper').mouseout(function() {
-				$('.deckBuilderCardsWrapper .cardWrapper').fadeTo(0, 1);
-				fullCardImage.hide();
-			});
-
-		}
 
 		function _addCardById(id) {
-			if(_getNumCards() == 30)
-				return;
 			id = parseInt(id);
 			var alreadyFound = false;
 			for(var i = 0; i < _cards.length; i++) {
@@ -197,22 +90,6 @@
 			_render();
 			_fireChange();
 		}
-		function _removeCardById(id) {
-			id = parseInt(id);
-			var alreadyFound = false;
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				if(card.id == id) {
-					if(card.qty == 1)
-						_cards.splice(i, 1);
-					else
-						_cards[i].qty--;
-				};
-			}
-
-			_render();
-			_fireChange();
-		}
 
 		function _setCardString(str) {
 			_cards = [];
@@ -229,85 +106,11 @@
 
 		function _render() {
 
-			_drawCards();
-			if(_getNumCards() > 0)
-				$('.deckBuilderStats').show();
-			else
-				$('.deckBuilderStats').hide();
-
-			if(_enabled) {
-				_generateCardSelector();
-
-				// left click on card to add
-				$('.deckbuilderWrapper .cardWrapper').click(function() {
-					_addCardById($(this).attr('cardid'));
-				});
-
-				// right click on card to remove
-				$('.deckbuilderWrapper .cardWrapper').mousedown(function(e){
-					if( e.button == 2 ) {
-						_removeCardById($(this).attr('cardid'));
-						return false;
-					}
-					return true;
-				});
-
-				// long press to remove card
-				$('.deckbuilderWrapper .cardWrapper').longpress(function() {
-			    _removeCardById($(this).attr('cardid'));
-					return false;
-				});
-				$('.deckbuilderWrapper .deckBuilderCardsWrapper').bind("contextmenu",function(){
-			       return false;
-			    });
-			}
-
-
-			$('.deckBuilderNumCards').html(_getNumCards());
 			_drawCurveChart('mana', 'blue');
 			_drawCurveChart('attack', 'gold');
 			_drawCurveChart('health', 'red');
 			_drawTypeDistributionChart();
 			_drawMechanicsChart();
-		}
-
-		function _deckBuilderAddCardChange() {
-			var id = parseInt($(this).val());
-			_addCardById(id);
-	    	_generateCardSelector();
-		}
-
-		function _getNumCards() {
-			var numCards = 0;
-			for(var i = 0; i < _cards.length; i++)
-				numCards += _cards[i].qty;
-			return numCards;
-		}
-
-		function _getCardString() {
-			_sortCards();
-			var parts = [];
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				parts.push(card.id + '_' + card.qty);
-			}
-			return parts.join(',');
-
-		}
-
-		function _purgeNonClassCards() {
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				if(card.klass_id && parseInt(card.klass_id) != _classId)
-					_cards.splice(i, 1);
-			}
-			_fireChange();
-		}
-
-		function _setClassId(classId) {
-			_classId = parseInt(classId);
-			_purgeNonClassCards();
-			_render();
 		}
 
 	    var _curveGraphOptions = {
