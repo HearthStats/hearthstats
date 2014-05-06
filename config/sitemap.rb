@@ -33,6 +33,7 @@ SitemapGenerator::Sitemap.create do
 
   # Add all Decks:
 	  Deck.find_each do |deck|
-      add deck_path(deck), :lastmod => deck.updated_at
+      add public_show_deck_path(deck), :lastmod => deck.updated_at
     end
+
 end
