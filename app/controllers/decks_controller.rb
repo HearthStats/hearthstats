@@ -1,5 +1,7 @@
 class DecksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :public]
+	caches_action :show ,expires_in: 1.day
+
   # GET /decks
   # GET /decks.json
   def index

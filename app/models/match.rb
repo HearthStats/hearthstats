@@ -67,7 +67,8 @@ class Match < ActiveRecord::Base
 
   def self.to_csv
     # Create CSV
-    CSV.generate do |writer|
+    file = "#{Rails.root}/public/#{first.mode.name}_export_#{Time.now}.csv"
+    CSV.open( file, 'w' ) do |writer|
       writer << [ first.mode.name + ' Games']
       writer << [
                   'Class',

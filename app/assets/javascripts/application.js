@@ -28,9 +28,9 @@ $(document).ready(function(){
 	  ease: 'ease',
 	  speed: 500
 	});
-  // send get forms through turbolinks
-  $(document).on("submit", "form.data-turboform", function(e) {
-    Turbolinks.visit(this.action+(this.action.indexOf('?') == -1 ? '?' : '&')+$(this).serialize());
-    return false;
-  });
+});
+// send get forms through turbolinks
+$(document).on("submit", "form.data-turboform", function(e) {
+  Turbolinks.visit(this.action+(this.action.indexOf('?') == -1 ? '?' : '&')+$(this).serialize());
+  return false;
 });
