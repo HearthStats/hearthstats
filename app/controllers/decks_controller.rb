@@ -129,9 +129,9 @@ class DecksController < ApplicationController
 	  	@firstrate = deck_cache_stats[1]
 	  	@secrate = deck_cache_stats[2]
 	  	@winrate = deck_cache_stats[3]
-	  	@victory = deck_cache_stats[4][0]
-    	@losses = deck_cache_stats[4][1]
-    	@draws = deck_cache_stats[4][2]
+	  	# @victory = deck_cache_stats[4][0]
+    # 	@losses = deck_cache_stats[4][1]
+    # 	@draws = deck_cache_stats[4][2]
 	  end
 
     respond_to do |format|
