@@ -15,60 +15,60 @@
 
 
 div.share
-	| Share this deck: &nbsp;
-	= social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
+  | Share this deck: &nbsp;
+  = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
 div.row
   div.col-md-6
-	  div.col-md-6
-	    h3.deck_title Stats
-	    p
-	      b Class: &nbsp;
-	      - if @deck.klass.nil?
-	      	= @deck.race
-	      - else
-	      	= @deck.klass.name
-	      | &nbsp; &nbsp;
-	      b.victory Wins: &nbsp;
-	      = @deck.matches.where(result_id: 1).count
-	      | &nbsp; &nbsp;
-	      b.defeat Losses: &nbsp;
-	      = @deck.matches.where(result_id: 2).count
-	      | &nbsp; &nbsp;
-	      b.draw Draws: &nbsp;
-	      = @deck.matches.where(result_id: 3).count
+    div.col-md-6
+      h3.deck_title Stats
+      p
+        b Class: &nbsp;
+        - if @deck.klass.nil?
+          = @deck.race
+        - else
+          = @deck.klass.name
+        | &nbsp; &nbsp;
+        b.victory Wins: &nbsp;
+        = @deck.matches.where(result_id: 1).count
+        | &nbsp; &nbsp;
+        b.defeat Losses: &nbsp;
+        = @deck.matches.where(result_id: 2).count
+        | &nbsp; &nbsp;
+        b.draw Draws: &nbsp;
+        = @deck.matches.where(result_id: 3).count
 
-	    div.turnrates
-	      div.winrates.total title="Overall win rate with this deck"
-	        |Win Rate
-	        br
-	        | #{number_to_percentage(@winrate, precision: 2)}
-	      div.winrates.firstrate title="Percentage of games won when playing first"
-	        |No Coin
-	        br
-	        | #{@firstrate}
-	      div.winrates.secrate title="Percentage of games won when playing second"
-	        |Coin
-	        br
-	        | #{@secrate}
-	  div.col-md-6.deck-notes
-        div.version
-          h3 Versions
-          .curr-version
-            = link_to "Current Version", deck_path(@deck)
-          - @deck.deck_versions.each do |version|
-            span.version-number
-              = link_to "v#{version.version}", deck_path(@deck, version: version.version)
-        h3 Notes
-        = sanitize @deck.notes, tags: %w(table tr td span <a href=""></a>), attributes: %w(id class style)
+      div.turnrates
+        div.winrates.total title="Overall win rate with this deck"
+          |Win Rate
+          br
+          | #{number_to_percentage(@winrate, precision: 2)}
+        div.winrates.firstrate title="Percentage of games won when playing first"
+          |No Coin
+          br
+          | #{@firstrate}
+        div.winrates.secrate title="Percentage of games won when playing second"
+          |Coin
+          br
+          | #{@secrate}
+    div.col-md-6.deck-notes
+      div.version
+        h3 Versions
+        .curr-version
+          = link_to "Current Version", deck_path(@deck)
+        - @deck.deck_versions.each do |version|
+          span.version-number
+            = link_to "v#{version.version}", deck_path(@deck, version: version.version)
+      h3 Notes
+      = sanitize @deck.notes, tags: %w(table tr td span <a href=""></a>), attributes: %w(id class style)
       div.deck-show-graph
         = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
       .comments
         = render_comments_form @deck unless current_user && current_user.guest
         = render_comments @deck, :page => params[:page], :limit => 5
   div.col-md-6
-    = render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => false }
+    = render :template => 'decklist', :locals => { :deck => @deck, :enabled => false }
 javascript:
   if(DeckBuilder) {
-  	DeckBuilder.setCardString('#{@deck.cardstring}');
-  	DeckBuilder.render();
+    DeckBuilder.setCardString('#{@deck.cardstring}');
+    DeckBuilder.render();
   }

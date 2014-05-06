@@ -58,7 +58,7 @@ class AdditionalController < ApplicationController
 
 	    @items.sort_by! { |a| a[3] }
 	    @items.reverse!
-      Rails.cache.write("news", @items, :expires_in => 1.days)
+      Rails.cache.write("news", @items, :expires_in => 1.hours)
     end
 
 
