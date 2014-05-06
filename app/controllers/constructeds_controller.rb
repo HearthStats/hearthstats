@@ -81,6 +81,7 @@ class ConstructedsController < ApplicationController
     respond_to do |format|
       if @constructed.save
         MatchDeck.new( deck_id: deck.id, match_id: @constructed.id ).save!
+        delete_deck_cache!(deck)
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
       else
@@ -115,6 +116,7 @@ class ConstructedsController < ApplicationController
       if @constructed.update_attributes(params[:match])
         format.html { redirect_to constructeds_url, notice: 'Constructed was successfully updated.' }
         format.json { head :no_content }
+        delete_deck_cache!(deck)
       else
         format.html { render action: "edit" }
         format.json { render json: @constructed.errors, status: :unprocessable_entity }
@@ -189,7 +191,12 @@ class ConstructedsController < ApplicationController
 
   end
 
-  protected
+  private
+
+  def delete_deck_cache!(deck)
+  	Rails.cache.delete('deck_stats' + deck.id.to_s)
+  end
+
   def getClassWinRatesForMatches(matches)
     winrates = Array.new
     (1..9).each_with_index do |c,i|

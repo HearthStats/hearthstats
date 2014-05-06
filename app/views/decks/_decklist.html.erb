@@ -357,50 +357,6 @@
 		         }
 			});
 	    }
-
-	    function _enable() {
-			_enabled = true;
-
-			_deckBuilderAddCardField.change(_deckBuilderAddCardChange);
-
-			$('.deckbuilderWrapper').addClass('enabled');
-
-		    // no context builder in deckbuilder
-			$('.deckbuilderWrapper').bind("contextmenu",function(){
-		       return false;
-		    });
-	    }
-	    if(<%= enabled.to_s %>)
-	    	_enable();
-
-		return {
-			enable:function() {
-				_enable();
-			},
-			render:function() {
-				_render();
-			},
-			getNumCards:function() {
-				return _getNumCards();
-			},
-			getCardString:function() {
-				return _getCardString();
-			},
-			addChangeHandler:function(callback) {
-				_changeHandlers.push(callback);
-			},
-			setCardString:function(str) {
-				_setCardString(str);
-			},
-			setClassId:function(classId) {
-				_setClassId(classId);
-			}
-		};
 	}());
-	$(".deck-text-trigger").click(function(){
-		$('.deckBuilderTools').slideToggle(function(){
-			$('#deck_text').slideToggle();
-		});
-	});
 </script>
 

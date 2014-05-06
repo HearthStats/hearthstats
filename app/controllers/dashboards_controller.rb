@@ -1,5 +1,6 @@
 class DashboardsController < ApplicationController
   before_filter :authenticate_user!
+
   def race
   	@matches = Match.where(user_id: current_user.id, klass_id: params[:race])
   end

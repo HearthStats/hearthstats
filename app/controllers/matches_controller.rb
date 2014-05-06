@@ -1,6 +1,8 @@
 class MatchesController < ApplicationController
+	before_filter :authenticate_user!
   # GET /matches
   # GET /matches.json
+
   def index
     @matches = Match.all
 
@@ -74,4 +76,5 @@ class MatchesController < ApplicationController
       format.js
     end
   end
+
 end
