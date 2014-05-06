@@ -94,20 +94,20 @@ class DecksController < ApplicationController
 				@card_array << [card, card_quantity]
 			end
 		end
+  	@matches = unique.matches
 
 		deck_cache_stats = Rails.cache.fetch("deck_stats" + unique.id.to_s)
     if deck_cache_stats.nil?
-    	matches = unique.matches
-    	@victory = matches.where(result_id: 1).count
-    	@losses = matches.where(result_id: 2).count
-    	@draws = matches.where(result_id: 3).count
+    	@victory = @matches.where(result_id: 1).count
+    	@losses = @matches.where(result_id: 2).count
+    	@draws = @matches.where(result_id: 3).count
     	basic = [@victory, @losses, @draws]
 	    # Win rates vs each class
 	    @deckrate = Array.new
 	    i = 0
 	    Klass.order("name").each do |c|
-		    wins = matches.where(oppclass_id: c.id, result_id: 1).count
-		    totgames = matches.where(oppclass_id: c.id).count
+		    wins = @matches.where(oppclass_id: c.id, result_id: 1).count
+		    totgames = @matches.where(oppclass_id: c.id).count
 		    if totgames == 0
 		    	@deckrate[i] = [0,"#{c.name}<br/>0 Games"]
 		    else
@@ -117,13 +117,13 @@ class DecksController < ApplicationController
 		  end
 
 		  # Going first vs 2nd
-		  @firstrate = get_win_rate(matches.where(coin: false), true)
-		  @secrate = get_win_rate(matches.where(coin: true), true)
+		  @firstrate = get_win_rate(@matches.where(coin: false), true)
+		  @secrate = get_win_rate(@matches.where(coin: true), true)
 
 	    #calculate deck winrate
 
-	    @winrate = matches.count > 0 ? get_win_rate(matches) : 0
-      Rails.cache.write("deck_stats" + unique.id.to_s, [@deckrate,@firstrate,@secrate,@winrate, basic], :expires_in => 1.days)
+	    @winrate = @matches.count > 0 ? get_win_rate(@matches) : 0
+      Rails.cache.write("deck_stats" + unique.id.to_s, [@deckrate,@firstrate,@secrate,@winrate,basic], :expires_in => 1.days)
 	  else
 	  	@deckrate = deck_cache_stats[0]
 	  	@firstrate = deck_cache_stats[1]
