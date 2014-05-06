@@ -11,6 +11,8 @@
   - if (!current_user.nil? && current_user.id == @deck.user_id)
     = link_to 'Edit', edit_deck_path(@deck), :class=>"btn retirebut btn-primary"
     = " "
+  - if (!current_user.nil? && current_user.id != @deck.user_id)
+    = link_to("Copy to My Decks", copy_deck_path(@deck), class: 'btn retirebut green', :rel => "tooltip", :title => "Make your own copy of this deck")
   = link_to 'Back', decks_path, :class=>"btn retirebut dark"
 
 
@@ -21,6 +23,9 @@ div.row
   div.col-md-6
     div.col-md-6
       h3.deck_title Stats
+      div
+        |Created by:&nbsp;
+        = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
       p
         b Class: &nbsp;
         - if @deck.klass.nil?

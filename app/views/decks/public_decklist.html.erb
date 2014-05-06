@@ -1,0 +1,157 @@
+<%
+
+  # class filter
+  class_filter = CGI.parse(request.query_string)['class'].first
+    if !class_filter.nil? && class_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
+    @decks = @decks.where(:klass_id => class_filter)
+  end
+
+  #sort field
+    @sortField = "num_users"
+    sortRequest = CGI.parse(request.query_string)['sort'].first
+    if !sortRequest.nil? && sortRequest.match("name|num_users|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate|created_at")
+      @sortField = sortRequest
+    end
+
+    # sort order
+    @orderFilter = CGI.parse(request.query_string)['order'].first
+    if @orderFilter.nil? || (@orderFilter != "desc" && @orderFilter != "asc")
+     @orderFilter = "desc"
+    end
+
+    # TODO: hack sortField for user (non global stats)
+    finalSortField = @sortField
+    if !global && @sortField.match("num_(matches|wins|losses)")
+      finalSortField = "user_" + @sortField
+    end
+    if !global && @sortField.match("winrate")
+      finalSortField = "user_winrate"
+    end
+
+  if finalSortField == "num_users"
+      @decks = @decks.order("num_users " + @orderFilter.upcase + ", winrate " + @orderFilter.upcase)
+    else
+      @decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
+    end
+
+    #only show unique decks if global
+    if global
+      @decks = @decks.find(:all, :group => 'unique_deck_id')
+    end
+
+    items_per_page = CGI.parse(request.query_string)['items'].first
+    if items_per_page.nil? || !((Float(items_per_page) rescue false))
+      items_per_page = 20
+    end
+
+    totalDecks = @decks.count
+    @decks = @decks.paginate(:page => params[:page], :per_page => items_per_page)
+
+%>
+<form id="deckListFilter" method="get" class="data-turboform">
+  <p>
+    <%= t('.filter') %>
+    <select name="class">
+      <option value="">- <%= t('.any_class') %>-</option>
+      <% Klass.order("name ASC").each do |klass| %>
+        <option value="<%= klass.id %>" <%= class_filter.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
+      <% end %>
+    </select>
+    <%= t('.show') %>
+    <select name="items">
+      <% [10, 20, 50, 100].each do |num| %>
+        <option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> <%= t('.per_page') %></option>
+      <% end %>
+    </select>
+    <%= t('.sort_by') %>
+    <select name="sort">
+      <option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>><%= t('.created') %></option>
+      <option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>><%= t('.losses') %></option>
+      <option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>><%= t('.matches') %></option>
+      <option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>><%= t('.minions') %></option>
+      <option value="name" <%= @sortField == "name" ? 'selected="selected"' : ''%>><%= t('.name') %></option>
+      <option value="num_spells" <%= @sortField == "num_spells" ? 'selected="selected"' : ''%>><%= t('.spells') %></option>
+      <option value="num_users" <%= @sortField == "num_users" ? 'selected="selected"' : ''%>><%= t('.popularity') %></option>
+      <option value="num_weapons" <%= @sortField == "num_weapons" ? 'selected="selected"' : ''%>><%= t('.weapons') %></option>
+      <option value="winrate" <%= @sortField == "winrate" ? 'selected="selected"' : ''%>><%= t('.win_rate') %></option>
+      <option value="num_wins" <%= @sortField == "num_wins" ? 'selected="selected"' : ''%>><%= t('.wins') %></option>
+    </select>
+    <select name="order">
+      <option value="asc"><%= t('.asc') %></option>
+      <option value="desc" <%= @orderFilter == "desc" ? 'selected="selected"' : ''%>><%= t('.desc') %></option>
+    </select>
+    <input id="deckListFilterSubmit" type="submit" value="<%=t('.apply')%>"/>
+  </p>
+  <p><strong><%= number_with_delimiter(totalDecks, :delimiter => ',') %></strong> <%= t('shared.deck') %><%= totalDecks == 1 ? "" : "s" %> <%= t('.found_matching_your_criteria') %></p>
+</form>
+<script type="text/javascript">
+  $('#deckListFilter select').change(function() {
+    $('#deckListFilter').submit();
+  });
+  $('#deckListFilterSubmit').hide();
+</script>
+
+<table class="decklist table table-bordered table-striped table-condensed flip-content" id="decklist">
+  <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th class="class"><%= t('.class') %></th>
+      <th class="minions"><%= t('.minions') %></th>
+      <th class="spells"><%= t('.spells') %></th>
+      <th class="weapons"><%= t('.weapons') %></th>
+      <th class="matches"><%= t('.matches') %> *</th>
+      <th class="wins"><%= t('.wins') %> *</th>
+      <th class="losses"><%= t('.losses') %> *</th>
+      <th class="winrate"><%= t('.win_rate') %> *</th>
+      <th class="num_users"><%= t('.users') %></th>
+      <% if global %>
+        <th class="author"><%= t('.listed_by') %></th>
+      <% end %>
+      <% if !current_user.nil? %>
+        <th class="tools"><%= t('.tools') %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @decks.each do |deck| %>
+      <tr>
+        <td class="name"><%= link_to deck.name, public_show_deck_path(deck) %></td>
+        <td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>"/></td>
+        <td class="minions"><%= deck.num_minions %></td>
+        <td class="spells"><%= deck.num_spells %></td>
+        <td class="weapons"><%= deck.num_weapons %></td>
+        <td class="matches"><%= global ? deck.num_global_matches : deck.matches.count %></td>
+        <td class="wins"><%= global ? deck.global_wins : deck.user_num_wins %></td>
+        <td class="losses"><%= global ? deck.global_losses : deck.user_num_losses %></td>
+        <td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
+        <td class="num_users"><%= number_with_delimiter(deck.num_users, :delimiter => ',') %></td>
+        <% if global %>
+          <td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+        <% end %>
+        <% if !current_user.nil? %>
+          <td class="tools">
+            <%if !current_user.nil? && current_user.id == deck.user_id %>
+              <%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+              <%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
+            <% else %>
+              <%
+                user_copy = deck.get_user_copy(current_user)
+                if user_copy.nil?
+              %>
+                <%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
+              <% else %>
+                <%= link_to("View My Copy", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<% if global %>
+  <p>* <em><%= t('.stats_are_for_all_users') %></em></p>
+<% else %>
+  <p>* <em><%= t('.stats_are_for_your_personal') %></em></p>
+<% end %>
+<%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>

@@ -11,6 +11,8 @@ class UniqueDeck < ActiveRecord::Base
 
   before_save :update_stats
 
+  is_impressionable
+
   def update_stats
 
     #remove existing cards

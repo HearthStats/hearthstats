@@ -1,0 +1,67 @@
+- set_meta_tags :title => @deck.name,
+  :description => @deck.name,
+  :keywords => "user, deck, statistics, hearthstats, hearthstone, #{@deck.name}"
+- if params[:version]
+  - provide(:title, @deck.name + " v" + params[:version].to_s )
+- else
+  - provide(:title, @deck.name)
+- provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
+- provide(:section, 'Decks')
+- content_for :actions do
+  = link_to("Copy to My Decks", copy_deck_path(@deck), class: 'btn retirebut green', :rel => "tooltip", :title => "Make your own copy of this deck")
+  - if (!current_user.nil? && current_user.id == @deck.user_id)
+    = link_to 'Edit', edit_deck_path(@deck), :class=>"btn retirebut btn-primary"
+    = " "
+  = link_to 'Back', decks_path, :class=>"btn retirebut dark"
+
+
+div.share
+  | Share this deck: &nbsp;
+  = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
+div.row
+  div.col-md-6
+    h3.deck_title
+      |Global stats&nbsp;
+      i class="fa fa-question-circle tooltips" data-original-title="This takes into account all of the games played with this deck list"
+
+    p
+      b Class: &nbsp;
+      - if @deck.klass.nil?
+        = @deck.race
+      - else
+        = @deck.klass.name
+      | &nbsp; &nbsp;
+      b.victory Wins: &nbsp;
+      = @deck.matches.where(result_id: 1).count
+      | &nbsp; &nbsp;
+      b.defeat Losses: &nbsp;
+      = @deck.matches.where(result_id: 2).count
+      | &nbsp; &nbsp;
+      b.draw Draws: &nbsp;
+      = @deck.matches.where(result_id: 3).count
+
+    div.turnrates
+      div.winrates.total title="Overall win rate with this deck"
+        |Win Rate
+        br
+        | #{number_to_percentage(@winrate, precision: 2)}
+      div.winrates.firstrate title="Percentage of games won when playing first"
+        |No Coin
+        br
+        | #{@firstrate}
+      div.winrates.secrate title="Percentage of games won when playing second"
+        |Coin
+        br
+        | #{@secrate}
+    div.deck-show-graph
+      = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
+    .comments
+      = render_comments_form @deck unless current_user && current_user.guest
+      = render_comments @deck, :page => params[:page], :limit => 5
+  div.col-md-6
+    = render 'decklist',  :deck => @deck, :enabled => false
+javascript:
+  if(DeckBuilder) {
+    DeckBuilder.setCardString('#{@deck.cardstring}');
+    DeckBuilder.render();
+  }
