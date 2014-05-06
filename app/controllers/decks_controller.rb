@@ -31,11 +31,13 @@ class DecksController < ApplicationController
     impressionist(@deck) unless params[:version]
 
 		@card_array = Array.new
-    @deck.cardstring.split(",").each do |card_splitted|
-			card_id = card_splitted.split("_")[0]
-			card_quantity = card_splitted.split("_")[1].to_i
-			card = Card.find(card_id)
-			@card_array << [card, card_quantity]
+		if !@deck.cardstring.nil?
+	    @deck.cardstring.split(",").each do |card_splitted|
+				card_id = card_splitted.split("_")[0]
+				card_quantity = card_splitted.split("_")[1].to_i
+				card = Card.find(card_id)
+				@card_array << [card, card_quantity]
+			end
 		end
 
 		deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)
@@ -153,6 +155,7 @@ class DecksController < ApplicationController
         format.html { render action: "edit" }
       end
     end
+
   end
 
   # DELETE /decks/1
@@ -202,6 +205,7 @@ class DecksController < ApplicationController
   end
 
   private
+
   def version_deck(deck)
     last_version = deck.deck_versions.last
     if last_version.nil?
