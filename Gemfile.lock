@@ -39,6 +39,8 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.4.1)
+      rails (>= 3, < 5)
     addressable (2.3.6)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
@@ -400,6 +402,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  acts-as-taggable-on
   asset_sync
   aws-sdk
   better_errors (>= 0.3.2)

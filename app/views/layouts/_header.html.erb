@@ -18,22 +18,22 @@
     <ul class="nav navbar-nav pull-right f32">
       <!-- BEGIN USER LOGIN DROPDOWN -->
       <% if signed_in? %>
-      	<%= render 'layouts/inbox' %>
+        <%= render 'layouts/inbox' %>
         <%= render 'layouts/locales' %>
-	      <li class="dropdown user">
+        <li class="dropdown user">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <% if current_user.guest %>
-	      	<%= image_tag("avatar.jpg") %>
-	        <span class="username">
-        		<%= t('shared.header.guest') %>
-      	<% else %>
-	        <%= image_tag current_user.profile.avatar.url(:thumb) %>
-      		<%if current_user.profile.name.blank? %>
-	        	<%= current_user.email %>
-      		<% else %>
-	        	<%= current_user.profile.name %>
-      		<% end %>
-      	<% end %>
+          <%= image_tag("avatar.jpg") %>
+          <span class="username">
+            <%= t('shared.header.guest') %>
+        <% else %>
+          <%= image_tag current_user.profile.avatar.url(:thumb) %>
+          <%if current_user.profile.name.blank? %>
+            <%= current_user.email %>
+          <% else %>
+            <%= current_user.profile.name %>
+          <% end %>
+        <% end %>
         </span>
         <i class="fa fa-angle-down"></i>
         </a>

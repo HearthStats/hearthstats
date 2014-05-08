@@ -27,12 +27,12 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-	gem "asset_sync"
+  gem "asset_sync"
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :production do
-	gem 'mysql2'
+  gem 'mysql2'
 end
 
 gem 'slim-rails'
@@ -80,6 +80,7 @@ gem "meta_search",    '>= 1.1.0.pre' # For active admin
 gem "rolify"
 gem 'cancan'
 gem 'sanitize'
+gem 'acts-as-taggable-on' # Tagging for decks
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
