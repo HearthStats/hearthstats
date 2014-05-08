@@ -25,7 +25,10 @@ div.row
       h3.deck_title Stats
       div
         |Created by:&nbsp;
-        = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
+        -if @deck.user.profile.nil?
+          | Anonymous
+        - else
+          = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
       p
         b Class: &nbsp;
         - if @deck.klass.nil?
