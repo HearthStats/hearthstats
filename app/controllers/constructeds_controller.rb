@@ -57,7 +57,7 @@ class ConstructedsController < ApplicationController
       redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
     end
 
-    # Find ranked_id
+    # Find mode_id
     if params[:other][:rank] == "Ranked"
       mode_id = 3
     elsif params[:other][:rank] == "Casual"
@@ -194,7 +194,7 @@ class ConstructedsController < ApplicationController
   private
 
   def delete_deck_cache!(deck)
-  	Rails.cache.delete('deck_stats' + deck.id.to_s)
+    Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
 
   def getClassWinRatesForMatches(matches)
