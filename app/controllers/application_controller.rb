@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
 
 
   def default_url_options(options={})
-	  if current_user && !current_user.guest? && !current_user.profile
+	  if current_user && !current_user.guest? && !current_user.profile.nil?
 	    { locale: current_user.profile.locale || I18n.default_locale }
   	else
-  		{}
+  		{ :locale => I18n.locale }.merge options
 	  end
   end
 
