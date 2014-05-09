@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-	caches_action :april_report ,expires_in: 1.day
 	def index
 		render :layout=>false
 	end
@@ -14,7 +13,10 @@ class WelcomeController < ApplicationController
 	end
 
 
-	def april_report
+	def generate_report
+		if !current_user.is_admin?
+  		redirect_to root_path, alert: "Y U NO ADMIN" and return
+  	end
 		matches = Match.where(season_id: 5)
 		# Determine match Class Win Rates
 		@classesArray = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
@@ -110,12 +112,17 @@ class WelcomeController < ApplicationController
 			runPercent = runCount.map { |e| e.to_f/totGames }
 			@arenaRuns << [c, runCount, runPercent]
 		end
-
+		html = render_to_string(:layout=> 'fullpage')
+		File.open("#{Rails.root}/public/reports/april_report.html", 'w') {|f| f.write(html) }
 		render :layout=> 'fullpage'
 	end
 
 	def decreport
 		render :layout=> 'fullpage'
+	end
+
+	def april_report
+		render file: "#{Rails.root}/public/reports/april_report.html", layout: 'fullpage'
 	end
 
 	def novreport

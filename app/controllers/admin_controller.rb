@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :admin_user?
 
   def export_con
     matches = Match.where(season_id: current_season, mode_id: 3)
@@ -15,4 +16,11 @@ class AdminController < ApplicationController
     end
   end
 
+  private
+
+  def admin_user?
+  	if !current_user.is_admin?
+  		redirect_to root_path, alert: "Y U NO ADMIN"
+  	end
+	end
 end

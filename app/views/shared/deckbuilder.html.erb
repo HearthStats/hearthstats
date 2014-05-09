@@ -107,10 +107,12 @@
 					_deckBuilderAddCardField.append('<option value="' + card.id + '" image="' + card.image + '">' + card.name + '</option>');
 			}
 
-			 _deckBuilderAddCardFieldSelect2 = _deckBuilderAddCardField.select2({
+			_deckBuilderAddCardFieldSelect2 = _deckBuilderAddCardField.select2({
 		    	formatResult: _formatdeckBuilderAddCardFieldSelector,
 		    	width:'220px'
 		    });
+			_deckBuilderAddCardFieldSelect2.select2('open');
+
 
 		}
 
