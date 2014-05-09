@@ -45,9 +45,10 @@ Hearthstats::Application.routes.draw do
 
   # Monthly Reports
   match '/jan', :to => redirect('/reports/jan/index.html')
-  match "/dec", to: "welcome#decreport"
-  match "/nov", to: "welcome#novreport"
+  match "/dec", :to => "welcome#decreport"
+  match "/nov", :to => "welcome#novreport"
   match "/mar", :to => redirect('/reports/mar/index.html')
+  match "/apr", :to => "welcome#april_report"
 
   # Admin Stats Export
 

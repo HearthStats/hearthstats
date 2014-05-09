@@ -13,8 +13,8 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/f
     = javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
-    link rel="stylesheet" type="text/css" href="/css/decreport.css" data-turbolinks-track=""
-    meta property="og:image" content="http://www.hearthstats.net/assets/hearthstatslogo.png"
+    link rel="stylesheet" type="text/css" href="/css/report.css" data-turbolinks-track=""
+    meta property="og:image" content='#{yield(:ogimage)}'
 
   body
     = yield

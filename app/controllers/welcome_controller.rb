@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-	caches_action :marreport ,expires_in: 1.day
+	caches_action :april_report ,expires_in: 1.day
 	def index
 		render :layout=>false
 	end
@@ -14,8 +14,8 @@ class WelcomeController < ApplicationController
 	end
 
 
-	def marreport
-		matches = Match.where(season_id: 4)
+	def april_report
+		matches = Match.where(season_id: 5)
 		# Determine match Class Win Rates
 		@classesArray = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
 		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
