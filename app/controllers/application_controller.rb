@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
 
 
   def default_url_options(options={})
-    {locale: current_user.profile.locale || 'en'}
+  	if current_user.guest?
+  		{}
+	  elsif current_user
+	    { locale: current_user.profile.locale || I18n.default_locale }
+  	else
+  		{}
+	  end
   end
 
   def opinio_after_create_path(resource)
