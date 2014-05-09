@@ -313,7 +313,7 @@ zh-TW:
       read_more: 閱讀更多
     uploader:
       title: 官方上傳器
-      header_text: "| 如果可以讓我們的戰績上傳器替你照料你的任何事，為什麼還要自己手動輸入戰績呢? &nbsp;| 此開放原始碼的實用程式對你的爐石視窗使用螢幕擷取分析. 它並不會導致封包監聽, &nbsp;|螢幕監控, 或任何種類的網路變更. 此程式將永遠是開放原始碼，因此你 &nbsp;| 可以做你自己的模組，以便察看它究竟會發生什麼事."
+      header_text: "如果可以讓我們的戰績上傳器替你照料你的任何事，為什麼還要自己手動輸入戰績呢? 此開放原始碼的實用程式對你的爐石視窗使用螢幕擷取分析. 它並不會導致封包監聽, 螢幕監控, 或任何種類的網路變更. 此程式將永遠是開放原始碼，因此你可以做你自己的模組，以便察看它究竟會發生什麼事."
       download_for: 下載
       user_key: 用戶密鑰
       do_not_share: 不要和任何人分享
@@ -385,7 +385,7 @@ zh-TW:
     index:
       title: 登入
       subtitle: ' 為我們最新錦標賽和聯盟賽進行註冊'
-      section: '錦標事'
+      section: '錦標賽'
 
 
 
@@ -397,7 +397,7 @@ zh-TW:
       recent_arena_runs: 近期競技場賽事
       continue_arena_run: 繼續競技場賽事
       new_arena_run: 新競技場賽事
-      recent_arena_matches: 近期競技場比賽競
+      recent_arena_matches: 近期競技場比賽
       statistics: 統計數據
     constructed:
       title: 構組套牌
