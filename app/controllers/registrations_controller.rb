@@ -7,11 +7,9 @@ class RegistrationsController < Devise::RegistrationsController
   	destroy_guest
     super
     c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
-    if resource.save
+    if resource.save!
     	# Create Profile
-    	profile = Profile.new
-      profile.user_id = resource.id
-      profile.save
+    	Profile.new(user_id:resource.id).save!
 
     	c.subscribe "aQOe0RrtTXddPhL9p28929MA", resource.email
     	c.subscribe "6V763uDbDJuEja62CUwTlthQ", resource.email
@@ -26,7 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def destroy_guest
   	if session[:guest_user_id]
-			User.find(session[:guest_user_id]).destroy
+			User.find(session[:guest_user_id]).delete
 			session[:guest_user_id] = nil
 		end
   end
