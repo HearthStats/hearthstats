@@ -6,11 +6,14 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
 
+  def default_url_options(options={})
+    {locale: current_user.profile.locale || 'en'}
+  end
 
   def opinio_after_create_path(resource)
-  	resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
-  	resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
-	end
+    resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
+    resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
+  end
 
   def get_win_rate(matches, strOut = false )
     return 0 if matches.nil?
@@ -19,13 +22,9 @@ class ApplicationController < ActionController::Base
     win_rate = wins / tot_games
     win_rate = "N/A" and return win_rate if win_rate.nan?
     win_rate = (win_rate*100).round(2)
-		win_rate = win_rate.to_s + "%" if strOut
+    win_rate = win_rate.to_s + "%" if strOut
 
     win_rate
-  end
-
-  def default_url_options(options={})
-    { :locale => I18n.locale }.merge options
   end
 
   helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash_2, :klasses_hash

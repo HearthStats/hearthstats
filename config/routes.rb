@@ -68,9 +68,10 @@ Hearthstats::Application.routes.draw do
   match "decks/:id/copy", to: "decks#copy"
   resources :profiles do
     get 'sig'
+    post 'set_locale', on: :collection
   end
   resources :decks do
-  	collection do
+    collection do
       get 'active_decks'
       get 'public'
       post 'submit_active_decks'

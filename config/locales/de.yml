@@ -10,13 +10,13 @@ de:
       you_have: Du hast
       new_messages: neue Nachrichten
       click_message_to_dismiss: Klick zum Ausblenden auf die Nachricht
-      change_to: Ändere zu
+      change_to: Ã„ndere zu
     footer:
-      about: Über uns
+      about: Ãœber uns
       faq: FAQ
       open_positions: Freie Stellen
       support: Hilfe
-      privacy_policy: Datenschutzerklärung
+      privacy_policy: DatenschutzerklÃ¤rung
       copyright_text: Copyright 2014 HearthStats. Hearthstone ist eine registrierte Handelsmarke von Blizzard Entertainment.
     arena_win_rate: Arena Sieg Rate
     ranked_win_rate: Gewertet Sieg Rate
@@ -27,7 +27,7 @@ de:
     best_deck: Bestes Deck
     view_more: zeige mehr
     edit: edit
-    delete: löschen
+    delete: lÃ¶schen
     notes: Notizen
     run: starte
     error: Fehler
@@ -43,16 +43,16 @@ de:
       card_list: Kartenliste
       optional_deck_will_be_created_if: 'Optional (Deck wird erstellt wenn nichts eingetragen wird)'
       toggle_text_import: Zeige Text Import
-      add_a_card: Füge eine Karte hinzu
+      add_a_card: FÃ¼ge eine Karte hinzu
       of_30_cards: von 30 Karten
-      this_deck_is_incomplete: Das Deck ist unvollständig
-      left_click_add_right_remove: Linksklick zum hinzufügen. Rechtsklick zum entfernen.
+      this_deck_is_incomplete: Das Deck ist unvollstÃ¤ndig
+      left_click_add_right_remove: Linksklick zum hinzufÃ¼gen. Rechtsklick zum entfernen.
       mana_curve: Mana Kurve
       attack_distribution: Angriffsverteilung
       health_distribution: Gesundheitsverteilung
       type_distribution: Typverteilung
       mechanics: Mechaniken
-    back: Zurück
+    back: ZurÃ¼ck
     deckslist:
       filter: Filter
       any_class: jede Klasse
@@ -72,20 +72,20 @@ de:
       asc: Aufsteigend
       desc: Absteigend
       apply: Anwenden
-      found_matching_your_criteria: Ergebnisse die deine Kriterien erfüllen
+      found_matching_your_criteria: Ergebnisse die deine Kriterien erfÃ¼llen
       class: Klasse
       users: Benutzer
       listed_by: Sortiert nach
       tools: Tools
-      stats_are_for_all_users: 'Statistiken sind für alle, die in den letzen 30 Tage dieses Deck gespielt haben.'
-      stats_are_for_your_personal: 'Statisken für deine Nutzung des Decks'
+      stats_are_for_all_users: 'Statistiken sind fÃ¼r alle, die in den letzen 30 Tage dieses Deck gespielt haben.'
+      stats_are_for_your_personal: 'Statisken fÃ¼r deine Nutzung des Decks'
 
     matchlist:
       filter: Filter
       any_class: jede Klasse
-      coin?: Münze?
-      coin: Münze
-      no_coin: keine Münze
+      coin?: MÃ¼nze?
+      coin: MÃ¼nze
+      no_coin: keine MÃ¼nze
       opponent: Gegner
       apply: Anwenden
       reset: Reset
@@ -117,7 +117,7 @@ de:
   dashboards:
     index:
       title: Dashboard
-      subtitle: ' Statistiken für die aktuelle Season'
+      subtitle: ' Statistiken fÃ¼r die aktuelle Season'
       global_win_rates: globale Sieg Rate
       arena_win_rates: Arena Sieg Rate
       games_recorded: aufgezeichnete Spiele
@@ -126,14 +126,14 @@ de:
       read_more: Mehr lesen
       view_more: Mehr zeigen
       news:
-        huge_update: Großes Update mit vielen Features.
-        ability_to_rank: Möglichkeit für rank/casual hinzugefügt für Constructed Games.
-        donation_link: SpendenLink hinzugefügt
-        notes_feature: Notizen-Feature hinzugefügt
-      personal_win_rate: Persönliche Sieg Rate
+        huge_update: GroÃŸes Update mit vielen Features.
+        ability_to_rank: MÃ¶glichkeit fÃ¼r rank/casual hinzugefÃ¼gt fÃ¼r Constructed Games.
+        donation_link: SpendenLink hinzugefÃ¼gt
+        notes_feature: Notizen-Feature hinzugefÃ¼gt
+      personal_win_rate: PersÃ¶nliche Sieg Rate
       constructed_win_rates: gewertete Sieg Rate
-      constructed_coin_win_rates: gewertete Sieg Rate mit Münze
-      recent_activities: Letzte Aktivitäten
+      constructed_coin_win_rates: gewertete Sieg Rate mit MÃ¼nze
+      recent_activities: Letzte AktivitÃ¤ten
       against: gegen
       with: mit
       global_stats: Globale Statistiken
@@ -142,8 +142,8 @@ de:
   cards:
     index:
       title: Karten Datenbank
-      not_found: Keine Karten gefunden, die deine Kriterien erfüllen
-      text_contains: Text enthält
+      not_found: Keine Karten gefunden, die deine Kriterien erfÃ¼llen
+      text_contains: Text enthÃ¤lt
       filter_by: gefiltert nach
       sort_by: Sortiert nach
       any_type: jeder Typ
@@ -156,7 +156,7 @@ de:
       mana_cost: Mana Kosten
       name: Name
       none: keine
-      reset_filters: Filter zurücksetzen
+      reset_filters: Filter zurÃ¼cksetzen
 
   arenas:
     index:
@@ -168,7 +168,7 @@ de:
       arena_run_with: Arena Runde mit
       on: on
       notes: Notizen
-      close: schließen
+      close: schlieÃŸen
       recent_arena_games: aktuelle Arena Spiele
       your_class: Deine Klasse
       win_loss: Win/Loss
@@ -184,7 +184,7 @@ de:
       win: Win
       defeat: Verloren
       draw: Unentschieden
-      back: zurück
+      back: zurÃ¼ck
       end_run: Runde beenden
       create_entry: Erstelle Eintrag
       arena_run_results: Arena Runde Ergebnisse
@@ -203,14 +203,14 @@ de:
       section: Arena
       note: NOTE!
       page_being_designed: Seite wird noch designed
-      overall_arena_stats: Über alles Arena Stats
-      overall_win_rate: Über alles Win Rate
+      overall_arena_stats: Ãœber alles Arena Stats
+      overall_win_rate: Ãœber alles Win Rate
       total_gold_amount: Gesamtes erspieltes Gold
       total_dust_amount: Gesamt erspielter Staub
       arena_runs_played: Arena Runden gespielt
       arena_games_played: Arena Spiele gespielt
       most_played: am meisten gespielt
-      longest_average_runs: Längste durchschnittliche Runden
+      longest_average_runs: LÃ¤ngste durchschnittliche Runden
       no_games: keine Spiele
       detailed_class_status: Detailierte Klassenstatus
 
@@ -219,11 +219,11 @@ de:
       quick_entry: Schnelleintrag
       ranked: gewertet
       casual: ungewertet
-      no_coin: keine Münze
-      coin: Münze
-      add_win: Sieg hinzufügen
-      add_defeat: Niederlage hinzufügen
-      add_draw: Unentschieden hinzufügen
+      no_coin: keine MÃ¼nze
+      coin: MÃ¼nze
+      add_win: Sieg hinzufÃ¼gen
+      add_defeat: Niederlage hinzufÃ¼gen
+      add_draw: Unentschieden hinzufÃ¼gen
     index:
       title: 'letzte Spiele'
       description: ' letzte gewertet Spiele'
@@ -249,7 +249,7 @@ de:
       casual: Ungewertet
       ranked: Gewertet
     winratechart:
-      constructed_win_rate_title: Gewertete Sieg Rate pro Klasse (Persönlich vs. Global)
+      constructed_win_rate_title: Gewertete Sieg Rate pro Klasse (PersÃ¶nlich vs. Global)
     newform:
       you_played_on_the: Du hattest den
       first_turn: ersten zug
@@ -259,9 +259,9 @@ de:
       casual: Casual
       deck_name: Deck Name
       opponent_class: Gegner Klasse
-      add_win: Sieg hinzufügen
-      add_defeat: Niederlage hinzufügen
-      add_draw: Unentschieden hinzufügen
+      add_win: Sieg hinzufÃ¼gen
+      add_defeat: Niederlage hinzufÃ¼gen
+      add_draw: Unentschieden hinzufÃ¼gen
 
 
 
@@ -271,21 +271,21 @@ de:
       class: Klasse
       notes: Notizen
       decklist_etc: ' Deckliste, etc'
-      this_deck_public: Dieses Deck ist öffentlich
+      this_deck_public: Dieses Deck ist Ã¶ffentlich
     new:
       title: Neues Deck
       section: Decks
     public:
-      title: Öffentliche Deck List
-      subtitle: ' alle öffentlichen gewertet-Decks'
+      title: Ã–ffentliche Deck List
+      subtitle: ' alle Ã¶ffentlichen gewertet-Decks'
       new_deck: Neues Deck
-      public_decks: Öffentliche Decks
+      public_decks: Ã–ffentliche Decks
     active_decks:
       title: Aktives Deck
       subtitle: ' alle aktiven gewertet-Decks'
       slot: Position
-      select_deck: Deck auswählen
-      submit: Übermitteln
+      select_deck: Deck auswÃ¤hlen
+      submit: Ãœbermitteln
     index:
       title: Meine Decks
       subtitle: ' alle von meinen gewertet-Decks'
@@ -298,7 +298,7 @@ de:
       section: Arena
       first_arena_of_day: Erste Arena Runde heute? Lass uns beginnen!
       keep_it_going: "Nur %{runs}? Weiter gehts!"
-      going_hardcore: "Wow, heute läufts richtig gut? %{runs} schon, weiterhin viel Erfolg!"
+      going_hardcore: "Wow, heute lÃ¤ufts richtig gut? %{runs} schon, weiterhin viel Erfolg!"
       your_class: Deine Klasse
       continue: fortsetzen
       get_auto_uploader: hol dir den Auto Uploader
@@ -308,15 +308,15 @@ de:
     news:
       title: Hearthstone News
       subtitle: ' die letzen Hearthstone news'
-      suggestions_for_news: Vorschläge für Newsquellen sind willkommen
+      suggestions_for_news: VorschlÃ¤ge fÃ¼r Newsquellen sind willkommen
       posted: gepostet
       read_more: Mehr lesen
     uploader:
       title: Offizieller Uploader
-      header_text: "| Warum Spiele manuell eintragen, wenn du den Uploader alles erledigen lassen kannst?? &nbsp;| Dieses open source Benutzerwerkezug wertet Screenshots von deinem Hearthstone Fenster aus. Es fängt keine Daten ab, &nbsp;| . Dieses Projekt wird immer Open Source bleiben, &nbsp;| so dass du deine eigenen Versionen erstellen kannst, und immer verfolgen kannst, was mit dem Tool passiert."
-      download_for: Download für
-      user_key: Benutzerschlüssel
-      do_not_share: Teile den Benutzerschlüssel mit niemanden
+      header_text: "| Warum Spiele manuell eintragen, wenn du den Uploader alles erledigen lassen kannst?? &nbsp;| Dieses open source Benutzerwerkezug wertet Screenshots von deinem Hearthstone Fenster aus. Es fÃ¤ngt keine Daten ab, &nbsp;| . Dieses Projekt wird immer Open Source bleiben, &nbsp;| so dass du deine eigenen Versionen erstellen kannst, und immer verfolgen kannst, was mit dem Tool passiert."
+      download_for: Download fÃ¼r
+      user_key: BenutzerschlÃ¼ssel
+      do_not_share: Teile den BenutzerschlÃ¼ssel mit niemanden
       click_to_reveal: Klicken zum Anzeigen
       instructions: Anleitung
       please_have_installed: Bitte stelle sicher, dass Java 7+ installiert ist.
@@ -325,24 +325,24 @@ de:
         inst_osx_1: Download vom obigen Link
         inst_osx_2: Entpacke die Datei
         inst_osx_3: Ziehe den Pfeil in dein Anwendungsverzeichnis
-        inst_osx_4: <b>Rechts Klick</b> auf die Datei, dann öffne diese
-        inst_osx_5: Gib deinen Benutzerschlüssel von deiner Profilseite ein
-        inst_osx_6: Öffne dein Spiel und leg los
+        inst_osx_4: <b>Rechts Klick</b> auf die Datei, dann Ã¶ffne diese
+        inst_osx_5: Gib deinen BenutzerschlÃ¼ssel von deiner Profilseite ein
+        inst_osx_6: Ã–ffne dein Spiel und leg los
       instructions_win:
         inst_win_1: Download vom obigen Link
         inst_win_2: Entpacke die Datei
         inst_win_3: Klick um die Anwendung zu starten
-        inst_win_4: Gib deinen Benutzerschlüssel von deiner Profilseite ein
-        inst_win_5: Öffne dein Spiel und leg los
+        inst_win_4: Gib deinen BenutzerschlÃ¼ssel von deiner Profilseite ein
+        inst_win_5: Ã–ffne dein Spiel und leg los
       features_title: Features
       features:
         feat_1: Support for both Windows and OSx
         feat_2: Zeichnet automatisch gewertete Spiele und Arena-Runden auf
         feat_3: Zeichnet deine und die Gegnerklasse auf
-        feat_4: Zeichnet deinen Rang für gewertete Spiele auf
+        feat_4: Zeichnet deinen Rang fÃ¼r gewertete Spiele auf
         feat_5: Zeichnet den Gegnernamen auf
         feat_6: Zeichnet die Dauer des Spiels und die Anzahl der Runden auf
-        feat_7: der Uploader fügt Notizen zum Spiel automatisch hinzu
+        feat_7: der Uploader fÃ¼gt Notizen zum Spiel automatisch hinzu
       help_and_support: Hilfe und Support
       known_issues: Bekannte Proleme
       project_source_on_github: Projekt Quellcode auf Github
@@ -350,10 +350,10 @@ de:
       title: Changelog
       all_time_in_utc: Die Ganze Zeit in UTC
     aboutus:
-      title: Über uns
-      founded_by_text: Diese Seite wurde mit Liebe gegründet von Jeffrey Tong.
+      title: Ãœber uns
+      founded_by_text: Diese Seite wurde mit Liebe gegrÃ¼ndet von Jeffrey Tong.
       you_can_follow_twitter: Du kannst mir auf Twitter folgen
-      a_huge_thanks_to: Ein großes Danke an
+      a_huge_thanks_to: Ein groÃŸes Danke an
       thanks_jerome_text: Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
       built_suggestions_text: HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
       others_contributors: Others Contributors
@@ -384,7 +384,7 @@ de:
   tournies:
     index:
       title: Anmelden
-      subtitle: ' Registrier dich für unsere neuesten Turniere'
+      subtitle: ' Registrier dich fÃ¼r unsere neuesten Turniere'
       section: 'Turniere'
 
 
@@ -406,7 +406,7 @@ de:
       statistics: Statistiken
     deck:
       title: Deck
-      public_deck_list: Öffentliche Deck Liste
+      public_deck_list: Ã–ffentliche Deck Liste
       my_deck: Mein Deck
       my_active_deck: Mein aktives Deck
       new_deck: Neues Deck
@@ -420,8 +420,8 @@ de:
     extra:
       title: Extras
       official_uploader: Offizieller Uploader
-      march_report: März Report
-      change_log: Änderungen
-      about_us: Über uns
+      march_report: MÃ¤rz Report
+      change_log: Ã„nderungen
+      about_us: Ãœber uns
       contact_info: Kontakt Info
     help: Hilfe

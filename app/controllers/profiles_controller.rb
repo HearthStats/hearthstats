@@ -101,6 +101,17 @@ class ProfilesController < ApplicationController
 
     render layout: false
   end
+
+  def set_locale
+    language = params[:locale]
+    profile = current_user.profile
+    profile.locale = language
+    profile.save!
+    respond_to do |format|
+      format.html { redirect_to root_path }
+    end
+  end
+
   private
 
   def arenaClass

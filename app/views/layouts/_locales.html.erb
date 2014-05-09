@@ -5,7 +5,7 @@
   <ul class="dropdown-menu dropdown-alerts language-options">
     <% available_languages.each_pair do |k, v| %>
       <li class="language-option" >
-        <%= link_to url_for(locale: k) do %>
+        <%= link_to set_locale_profiles_path(locale: k), method: :post do %>
           <div>
             <%=image_tag "country_flags/icon_#{k}.png", width: '24px' %> <%=v%>
           </div>

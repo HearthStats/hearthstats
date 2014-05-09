@@ -208,7 +208,7 @@ zh-TW:
       total_gold_amount: 金幣總和
       total_dust_amount: 魔塵總和
       arena_runs_played: 競技場賽事次數
-      arena_games_played:競技場比賽次數
+      arena_games_played: 競技場比賽次數
       most_played: 最多使用的職業
       longest_average_runs: 最長的平均賽事
       no_games: 沒有比賽
