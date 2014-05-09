@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
   def default_url_options(options={})
-  	if current_user.guest?
+  	if current_user && current_user.guest?
   		{}
 	  elsif current_user
 	    { locale: current_user.profile.locale || I18n.default_locale }
