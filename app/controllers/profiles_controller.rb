@@ -80,6 +80,7 @@ class ProfilesController < ApplicationController
       else
         @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
       end
+
     end
 
     arenaClass

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   layout :layout
-  before_filter :set_locale
+  before_filter :set_locale_from_url
 
 
   def default_url_options(options={})
@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   		{}
 	  end
   end
+
+  def redirect_to(options = {}, response_status = {})
+	  ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
+	  super(options, response_status)
+	end
 
   def opinio_after_create_path(resource)
     resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
@@ -36,7 +41,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_locale
+  def set_locale_from_url
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
