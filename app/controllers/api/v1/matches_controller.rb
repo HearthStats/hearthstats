@@ -104,11 +104,12 @@ class Api::V1::MatchesController < ApplicationController
             # Check if correct slot
             deck.active = false
             deck.slot = nil
-            deck.save
+            deck.save!
             message = "The '#{deck.name}' deck in slot #{req[:slot]} was #{deck.klass.name}. A new #{userclass.name} deck created and assigned in its place."
             deck = create_new_deck(user, req[:slot], userclass)
           end
           MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+          delete_deck_cache!(deck)
           if !ranklvl.nil?
             if legend
 	            MatchRank.new(match_id: match.id, rank_id: ranklvl.id, legendary: legend).save!
@@ -125,6 +126,9 @@ class Api::V1::MatchesController < ApplicationController
   end
   private
 
+	def delete_deck_cache!(deck)
+    Rails.cache.delete('deck_stats' + deck.id.to_s)
+  end
   def create_new_deck(user, slot, klass)
     new_deck = Deck.new
     new_deck.user_id = user.id

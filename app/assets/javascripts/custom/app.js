@@ -55,6 +55,8 @@ app.UI.initToggleButtons = function() {
     var isOn = $this.attr('state') != "off";
     var onText = $this.attr('on');
     var offText = $this.attr('off');
+    var onValue = $this.attr('onValue');
+    var offValue = $this.attr('offValue');
 
     $this.after('<div class="btn ' + $this.attr('class') + ' ' + (isOn ? onClass : offClass) + '"></div>');
     var button = $this.next();
@@ -67,7 +69,7 @@ app.UI.initToggleButtons = function() {
       if(isCheckbox) {
         $this[0].value = isOn ? '1' : '0';
       } else {
-        $this[0].value = isOn ? onText : offText;
+        $this[0].value = isOn ? onValue : offValue;
       }
     }
 

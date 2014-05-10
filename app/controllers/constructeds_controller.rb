@@ -71,11 +71,11 @@ class ConstructedsController < ApplicationController
     deck = Deck.where( name: params[:deckname], user_id: current_user.id ).first
     @constructed.klass_id = deck.klass_id
     @constructed.user_id = current_user.id
-    if params[:commit] == "Add Win"
+    if params[:win].present?
       @constructed.result_id = 1
-    elsif params[:commit] == "Add Defeat"
+    elsif params[:defeat].present?
       @constructed.result_id = 2
-    else
+    elsif params[:draw].present?
       @constructed.result_id = 3
     end
     respond_to do |format|

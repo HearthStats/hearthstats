@@ -110,6 +110,7 @@ class Api::V2::MatchesController < ApplicationController
             deck = create_new_deck(user, req[:slot], userclass)
           end
           MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+          delete_deck_cache!(deck)
           if !ranklvl.nil?
             MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
           end
@@ -121,6 +122,10 @@ class Api::V2::MatchesController < ApplicationController
     end
   end
   private
+
+  def delete_deck_cache!(deck)
+    Rails.cache.delete('deck_stats' + deck.id.to_s)
+  end
 
   def create_new_deck(user, slot, klass)
     new_deck = Deck.new
