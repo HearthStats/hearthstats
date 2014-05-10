@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
   # GET /matches
   # GET /matches.json
 
@@ -74,6 +74,14 @@ class MatchesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to request.referer, notice: 'Match was successfully deleted.' }
       format.js
+    end
+  end
+
+  def delete_all
+    @matches = Match.where(user_id: current_user.id)
+    @matches.delete_all
+    respond_to do |format|
+      format.html { redirect_to constructeds_path , notice: 'All Matches Deleted!'}
     end
   end
 

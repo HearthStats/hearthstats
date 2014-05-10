@@ -26,4 +26,5 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
+<%= button_to "Delete all the matches", delete_all_matches_path, method: :delete %>
 <%= link_to "Home", root_path %>

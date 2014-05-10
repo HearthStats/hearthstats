@@ -130,7 +130,10 @@ Hearthstats::Application.routes.draw do
     root to: "welcome#index"
   end
 
-  resources :matches
+  resources :matches do
+    delete :delete_all, on: :collection
+  end
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -139,43 +142,43 @@ Hearthstats::Application.routes.draw do
 
   # HearthStats API
   namespace :api do
-  	namespace :v1 do
-  		get "arenas/show"
-	    post "arenas/new"
+    namespace :v1 do
+      get "arenas/show"
+      post "arenas/new"
 
-	    get "constructeds/show"
-	    post "constructeds/new"
+      get "constructeds/show"
+      post "constructeds/new"
 
-	    get "arena_runs/show"
-	    post "arena_runs/new"
-	    get "arena_runs/end"
-
-      post "matches/new"
-
-	    get "decks/show"
-	    get "decks/find"
-      post "decks/activate"
-      post "decks/slots"
-		end
-
-		namespace :v2 do
-			devise_for :users
-  		get "arenas/show"
-	    post "arenas/new"
-
-	    get "constructeds/show"
-	    post "constructeds/new"
-
-	    get "arena_runs/show"
-	    post "arena_runs/new"
-	    get "arena_runs/end"
+      get "arena_runs/show"
+      post "arena_runs/new"
+      get "arena_runs/end"
 
       post "matches/new"
 
-	    get "decks/show"
-	    get "decks/find"
+      get "decks/show"
+      get "decks/find"
       post "decks/activate"
       post "decks/slots"
-		end
+    end
+
+    namespace :v2 do
+      devise_for :users
+      get "arenas/show"
+      post "arenas/new"
+
+      get "constructeds/show"
+      post "constructeds/new"
+
+      get "arena_runs/show"
+      post "arena_runs/new"
+      get "arena_runs/end"
+
+      post "matches/new"
+
+      get "decks/show"
+      get "decks/find"
+      post "decks/activate"
+      post "decks/slots"
+    end
   end
 end
