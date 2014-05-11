@@ -32,6 +32,11 @@ class Match < ActiveRecord::Base
   belongs_to :season
   belongs_to :patch
 
+  validates_presence_of :result_id
+  validates_presence_of :mode_id
+  validates_presence_of :oppclass_id
+  validates_presence_of :klass_id
+
   before_save :set_season_patch
   after_save :update_user_stats_constructed
 

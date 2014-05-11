@@ -129,6 +129,7 @@ class Api::V1::MatchesController < ApplicationController
 	def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
+
   def create_new_deck(user, slot, klass)
     new_deck = Deck.new
     new_deck.user_id = user.id
