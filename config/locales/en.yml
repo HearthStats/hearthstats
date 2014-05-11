@@ -262,6 +262,18 @@ en:
       add_win: Add Win
       add_defeat: Add Defeat
       add_draw: Add Draw
+    form:
+      you_played_on_the: You played on the
+      first_turn: first turn
+      second_turn: second turn
+      this_match_is: This match is
+      ranked: Ranked
+      casual: Casual
+      deck_name: Deck name
+      opponent_class: Opponent class
+      add_win: Add Win
+      add_defeat: Add Defeat
+      add_draw: Add Draw
 
 
 
