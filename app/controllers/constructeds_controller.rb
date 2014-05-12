@@ -4,7 +4,7 @@ class ConstructedsController < ApplicationController
   # GET /constructeds.json
   def index
 
-    @items = CGI.parse(request.query_string)['items'].first
+    @items = params['items']
     if @items.nil? || !((Float(@items) rescue false))
       @items = 20
     end
@@ -141,7 +141,7 @@ class ConstructedsController < ApplicationController
     matches = Match.where(:mode_id => [2,3])
 
     # filter by number of days to show
-    daysQuery = CGI.parse(request.query_string)['days'].first
+    daysQuery = params['days']
     @daysFilter = daysQuery != nil && daysQuery != 'all' ? true : false
     if @daysFilter
      @daysFilter = daysQuery.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? daysQuery.to_f : 30
@@ -151,7 +151,7 @@ class ConstructedsController < ApplicationController
     end
 
     # filter by first/second
-    @firstFilter = CGI.parse(request.query_string)['first'].first
+    @firstFilter = params['first']
     if @firstFilter == "yes"
       matches = matches.where(coin: false)
     else
@@ -163,7 +163,7 @@ class ConstructedsController < ApplicationController
     end
 
     # filter by mode
-    @modeFilter = CGI.parse(request.query_string)['mode'].first
+    @modeFilter = params['mode']
     if @modeFilter == "casual"
       matches = matches.where(mode_id: 2)
     else
@@ -174,8 +174,19 @@ class ConstructedsController < ApplicationController
       end
     end
 
+    # filter by active decks
+
+    if params[:active] == 'on'
+      @active = true
+    end
+
+    if @active
+      personalMatches = Match.includes(:deck).where('decks.active' => true, user_id: current_user.id)
+    else
+      personalMatches = matches.where(user_id: current_user.id)
+    end
+
     # build win rates while playing each class
-    personalMatches = matches.where(user_id: current_user.id)
     @personalWinRates = getClassWinRatesForMatches(personalMatches);
     @globalWinRates = getClassWinRatesForMatches(matches);
 

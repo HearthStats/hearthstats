@@ -8,30 +8,35 @@
 
 
 form id="statsFilter" method="get" class="data-turboform"
-	p
-		| #{t('.filter_by')}: &nbsp;
-		select name="days"
-			option[value="1" selected=("selected" if @daysFilter == 24)] #{t('.last')}last 24 #{t('.hours')}
-			option[value="7" selected=("selected" if @daysFilter == 7)] #{t('.last')} 7 #{t('.days')}
-			option[value="30" selected=("selected" if @daysFilter == 30)] #{t('.last')} 30 #{t('.days')}
-			option[value="90" selected=("selected" if @daysFilter == 90)] #{t('.last')} 90 #{t('.days')}
-			option[value="all" selected=("selected" if @daysFilter =="all")] #{t('.all_time')}
-		| &nbsp;
-		select name="first"
-			option[value=""] - #{t('.first_or_second')} -
-			option[value="yes" selected=("selected" if @firstFilter == 'yes')] #{t('.going_first')}
-			option[value="no" selected=("selected" if @firstFilter == 'no')] #{t('.going_second')}
-		| &nbsp;
-		select name="mode"
-			option[value=""] - #{t('.any_mode')} -
-			option[value="casual" selected=("selected" if @modeFilter == 'casual')] #{t('.casual')}
-			option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] #{t('.ranked')}
-		input type="submit" value="Submit" id="statsFilterSubmit"
+  p
+    | #{t('.filter_by')}: &nbsp;
+    select name="days"
+      option[value="1" selected=("selected" if @daysFilter == 24)] #{t('.last')}last 24 #{t('.hours')}
+      option[value="7" selected=("selected" if @daysFilter == 7)] #{t('.last')} 7 #{t('.days')}
+      option[value="30" selected=("selected" if @daysFilter == 30)] #{t('.last')} 30 #{t('.days')}
+      option[value="90" selected=("selected" if @daysFilter == 90)] #{t('.last')} 90 #{t('.days')}
+      option[value="all" selected=("selected" if @daysFilter =="all")] #{t('.all_time')}
+    | &nbsp;
+    select name="first"
+      option[value=""] - #{t('.first_or_second')} -
+      option[value="yes" selected=("selected" if @firstFilter == 'yes')] #{t('.going_first')}
+      option[value="no" selected=("selected" if @firstFilter == 'no')] #{t('.going_second')}
+    | &nbsp;
+    select name="mode"
+      option[value=""] - #{t('.any_mode')} -
+      option[value="casual" selected=("selected" if @modeFilter == 'casual')] #{t('.casual')}
+      option[value="ranked" selected=("selected" if @modeFilter == 'ranked')] #{t('.ranked')}
+    | &nbsp; Only Active Decks &nbsp;
+    - if @active
+      input type="checkbox" name="active" onchange="this.form.submit()" checked='true'
+    - else
+      input type="checkbox" name="active" onchange="this.form.submit()"
+    input type="submit" value="Submit" id="statsFilterSubmit"
 javascript:
-	$('#statsFilter select').change(function() {
-		$('#statsFilter').submit();
-	});
-	$('#statsFilterSubmit').hide();
+  $('#statsFilter select').change(function() {
+    $('#statsFilter').submit();
+  });
+  $('#statsFilterSubmit').hide();
 
 = render 'winratechart'
 
