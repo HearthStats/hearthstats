@@ -14,7 +14,7 @@
           th
             |Overall Ranked Win Rate
         tr
-          td = matches.count
+          td = matches.length
           td = get_win_rate(matches.where(mode_id: 2))
           td = get_win_rate(matches.where(mode_id: 3))
       table.table.table-condensed.details
@@ -27,7 +27,7 @@
         -(1..Klass.count).each do |k|
           tr
             td = klasses_hash_2[k]
-            td = matches.where(result_id: 1, oppclass_id: k).count
-            td = matches.where(result_id: 2, oppclass_id: k).count
-            td = matches.where(result_id: 3, oppclass_id: k).count
+            td = matches.where(result_id: 1, oppclass_id: k).length
+            td = matches.where(result_id: 2, oppclass_id: k).length
+            td = matches.where(result_id: 3, oppclass_id: k).length
             td = get_win_rate(matches.where(oppclass_id: k))
