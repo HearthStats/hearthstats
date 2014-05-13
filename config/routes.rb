@@ -76,6 +76,7 @@ Hearthstats::Application.routes.draw do
     collection do
       get 'active_decks'
       get 'public'
+      get 'new_splash'
       post 'submit_active_decks'
     end
     get 'version', on: :member

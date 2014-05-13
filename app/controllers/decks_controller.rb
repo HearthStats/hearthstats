@@ -123,9 +123,18 @@ class DecksController < ApplicationController
     end
   end
 
+  def new_splash
+    @klasses = Klass.all
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /decks/new
   # GET /decks/new.json
   def new
+    gon.cards = Card.all
     @deck = Deck.new
     @deck.is_public = true
     respond_to do |format|

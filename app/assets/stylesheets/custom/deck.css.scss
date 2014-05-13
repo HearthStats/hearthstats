@@ -1,3 +1,19 @@
+// New Deck Builder Styling
+.deckbuilder-img{
+	height: 250px;
+}
+#deckbuilder-list{
+	width: 625px;
+	li{
+		list-style-type: none;
+		display: inline;
+		float: left;
+	}
+	.name{
+		visibility: hidden;
+	}
+}
+
 .highcharts-container{
   overflow: visible !important;
   position: static !important;

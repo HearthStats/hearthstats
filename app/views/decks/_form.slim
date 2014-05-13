@@ -1,0 +1,155 @@
+= form_for(@deck) do |f|
+  = f.text_field :cardstring
+  - if @deck.errors.any?
+    div#error_explanation
+      h2
+        = pluralize(@deck.errors.count, "error")
+        = t('shared.prohibited_this_being_saved', resouce: t('shared.deck'))
+        |:
+      ul
+        - @deck.errors.full_messages.each do |msg|
+          li = msg
+  .row
+    .col-sm-12.col-md-3.col-lg-3
+      .form-body
+        h3 Deck Details
+        .form-group
+          = f.label t('decks.form.name')
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label t('decks.form.class')
+          = collection_select :deck, :klass_id, Klass.order("name ASC"), :id, :name, {}, { class: 'form-control' }
+        .form-group
+          = f.label t('decks.form.notes')
+          = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
+        .form-group
+          span = f.check_box :is_public
+          label
+            |&nbsp;
+            = t("decks.form.this_deck_public")
+    .col-sm-12.col-md-7.col-lg-7
+      .form-body
+        h3 Deck Builder
+        #deckbuilder-list
+          input type="text" class="fuzzy-search"
+          ul.list
+            - Card.where(klass_id: [params[:klass],nil]).each do |card|
+              li id="#{card.id}" data-rarity="#{card.rarity_id}"
+                img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
+                p.name = card.name
+                .deckbuilder-actions
+                  .add add
+                  .remove remove
+          ul.pagintion
+    .col-sm-12.col-md-2.col-lg-2
+      .total-card-count 0 of 30
+      table#deck-list
+        thead
+          th Name
+          th Count
+        tbody
+
+
+javascript:
+
+  var DeckBuilder = new function(){
+    var cardArray = [];
+    var totalCardCount = 0;
+    var allCards = gon.cards;
+
+    this.addCard = function(id, leg){
+      if (totalCardCount >= 30){
+        return;
+      }
+      leg = typeof leg !== 'undefined' ? leg : false;
+      id = parseInt(id)
+      cardCount = cardArray[id]
+      if (cardCount == undefined ){
+        cardArray[id] = 1;
+        totalCardCount = totalCardCount + 1;
+      }else if( cardCount == 1 ){
+        if (leg == true){
+          return
+        }else{
+          cardArray[id] = 2;
+          totalCardCount = totalCardCount + 1;
+        }
+      }else{
+        this._errorNotification("max");
+      }
+      this._addCardToTable(id);
+      this.createCardString();
+    };
+
+    this.removeCard = function(id){
+      id = parseInt(id)
+      cardCount = cardArray[id]
+      if (cardCount == 2 ){
+        cardArray[id] = 1
+        totalCardCount = totalCardCount - 1;
+      }else if( cardCount == 1 ){
+        cardArray[id] = undefined;
+        totalCardCount = totalCardCount - 1;
+      }else{
+        this._errorNotification("max");
+      }
+      this._removeCardToTable(id);
+      this.createCardString();
+    };
+
+    this._errorNotification = function(type){
+      if (type == "max"){
+        console.log("Max Card Limit");
+      }
+    };
+
+    this._addCardToTable = function(i){
+      if (cardArray[i] == 1){
+        $("#deck-list").append("<tr id="+i+"><td>"+allCards[i-1].name+"</td><td class='card-count'>"+cardArray[i]+"</tr>");
+      } else if (cardArray[i] == 2){
+        $("#deck-list tr#"+i+" .card-count").text("2");
+      }
+    };
+
+    this._removeCardToTable = function(i){
+      if (cardArray[i] == 1){
+        $("#deck-list tr#"+i+" .card-count").text("1");
+      } else if (cardArray[i] == undefined){
+        $("#deck-list tr#"+i).fadeOut();
+      }
+      cardCount = cardCount - 1;
+    };
+
+    this.createCardString = function(){
+      var _cardString = [];
+      for (i = 0; i < cardArray.length; ++i) {
+        if (cardArray[i] != undefined){
+          _cardString.push(i+"_"+cardArray[i]);
+        }
+      }
+      $('#deck_cardstring').val(_cardString.join());
+      $('.total-card-count').text(totalCardCount + " of 30");
+    }
+  }
+
+  $(".add").click(function(){
+    id = $(this).parent().parent().attr('id');
+    leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
+    DeckBuilder.addCard(id, leg);
+  });
+
+  $(".remove").click(function(){
+    id = $(this).parent().parent().attr('id');
+    DeckBuilder.removeCard(id);
+  });
+
+  var monkeyList = new List('deckbuilder-list', {
+    valueNames: ['name'],
+    page: 6,
+    plugins: [
+      ListFuzzySearch(),
+      ListPagination({
+        innerWindow: 5
+      })
+    ]
+  });
