@@ -1,0 +1,116 @@
+<div id="arena_distribution_loading">
+  <%= image_tag('loading.gif') %>
+</div>
+<div id="arena_distribution_content" class="display-none">
+  <div id="arena_distribution" class="chart" style="height: 300px"></div>
+  <div class="center">Number of wins in arena run</div>
+</div>
+
+<script>
+$(document).ready(function () {
+
+  function showTooltip(x, y, realx, realy) {
+      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realy + '<\/div><\/div>').css({
+          position: 'absolute',
+          display: 'none',
+          top: y - 50,
+          width: 80,
+          left: x - 40,
+          border: '0px solid #ccc',
+          padding: '2px 6px',
+          'background-color': '#fff',
+      }).appendTo("body").fadeIn(200);
+  }
+
+  $('#arena_distribution_loading').hide();
+  $('#arena_distribution_content').show();
+
+  var plot_statistics = $.plot($("#arena_distribution"), [{
+          data: <%= @arena_distrib[0] %>,
+          label: "Druid"
+      }, {
+          data: <%= @arena_distrib[1] %>,
+          label: "Hunter"
+      },  {
+      		data: <%= @arena_distrib[2] %>,
+          label: "Mage"
+      }, {
+      		data: <%= @arena_distrib[3] %>,
+          label: "Paladin"
+      }, {
+      		data: <%= @arena_distrib[4] %>,
+          label: "Priest"
+      }, {
+      		data: <%= @arena_distrib[5] %>,
+          label: "Rogue"
+      }, {
+      		data: <%= @arena_distrib[6] %>,
+          label: "Shaman"
+      }, {
+      		data: <%= @arena_distrib[7] %>,
+          label: "Warlock"
+      }, {
+      		data: <%= @arena_distrib[8] %>,
+          label: "Warrior"
+      }
+  ], {
+      series: {
+          lines: {
+              show: true,
+              lineWidth: 2,
+              fill: true,
+              fillColor: {
+                  colors: [{
+                          opacity: 0.05
+                      }, {
+                          opacity: 0.01
+                      }
+                  ]
+              }
+          },
+          points: {
+              show: true
+          },
+          shadowSize: 2
+      },
+      grid: {
+          hoverable: true,
+          clickable: true,
+          tickColor: "#eee",
+          borderWidth: 0
+      },
+      colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+      				"#F58CBA", "#999999", "#f1c40f",
+      				"#0070DE", "#9482C9", "#A57A4D"],
+      xaxis: {
+      },
+      yaxis: {
+          ticks: 11,
+          tickDecimals: 0
+      },
+      legend: {
+      	position: "ne"
+      }
+  });
+
+  var previousPoint = null;
+  $("#arena_distribution").bind("plothover", function (event, pos, item) {
+      if (item) {
+          if (previousPoint != item.dataIndex) {
+              previousPoint = item.dataIndex;
+
+              $("#tooltip").remove();
+              var x = item.datapoint[0].toFixed(2),
+                  y = item.datapoint[1].toFixed(2);
+
+              showTooltip(item.pageX, item.pageY, x, y);
+          }
+      } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+      }
+  });
+
+});
+
+</script>

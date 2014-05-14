@@ -44,7 +44,7 @@ class DashboardsController < ApplicationController
     @arenatot = arenaoverallrate[0]
   end
 
- def fullstats
+ 	def fullstats
 
     # Determine Arena Class Win Rates
     classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']

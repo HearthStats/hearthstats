@@ -37,13 +37,13 @@ class ArenasController < ApplicationController
   def new
     @arena = Match.new
 
-		# Get last arena run
+    # Get last arena run
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
 
-  	# Redirect back to page is no current arena run
-  	if @arenarun.nil?
-  		redirect_to arenas_url, alert: 'No active arena run.' and return
-  	end
+    # Redirect back to page is no current arena run
+    if @arenarun.nil?
+      redirect_to arenas_url, alert: 'No active arena run.' and return
+    end
 
     session[:arenarunid] = @arenarun.id
     runwins = @arenarun.matches.where(result_id: 1).count
@@ -130,7 +130,8 @@ class ArenasController < ApplicationController
   end
 
   def stats
-		@arena_array = ArenaRun.classArray(current_user.id)
+    @arena_array = ArenaRun.classArray(current_user.id)
+    @arena_distrib = distribution_array
   end
 
 
@@ -159,6 +160,24 @@ class ArenasController < ApplicationController
 
 
   protected
+
+  def distribution_array
+    all_klasses = Array.new
+    Klass.all.each do |klass|
+      total_array = Array.new
+      arena_dist = Array.new(13,0)
+      ArenaRun.where(user_id: current_user, klass_id: klass.id).each do |run|
+        arena_dist[run.matches.where(result_id: 1).length] += 1
+      end
+      arena_dist.each_with_index do |a,i|
+        total_array << [i, arena_dist[i]]
+      end
+      all_klasses << total_array
+    end
+
+    return all_klasses
+  end
+
   def getClassWinRatesForMatches(matches)
     winrates = Array.new
     (1..9).each_with_index do |c,i|

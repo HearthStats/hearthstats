@@ -213,6 +213,8 @@ en:
       longest_average_runs: Longest Average Runs
       no_games: No games
       detailed_class_status: Detailed Class Status
+      distribution_graph: Distribution Graph
+      dist_desc: Times achieved vs Number of wins in arena run
 
   constructeds:
     quickentry:

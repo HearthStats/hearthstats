@@ -5,16 +5,16 @@ class Arena < ActiveRecord::Base
 
 
   def self.overall_win_rate(userid)
-  	matches = Match.where(user_id: userid, season_id: Season.last.num, mode_id: 1)
-  	wins = matches.where(result_id: true).count
-  	totgames = matches.count
-  	winrate = wins.to_f / totgames
+    matches = Match.where(user_id: userid, season_id: Season.last.num, mode_id: 1)
+    wins = matches.where(result_id: true).count
+    totgames = matches.count
+    winrate = wins.to_f / totgames
 
-  	winrate
+    winrate
   end
 
   def self.bestuserarena(userid)
-		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
     class_arena_rate = Hash.new
     classes.each_with_index do |c,i|
       totalwins = 0
@@ -22,10 +22,10 @@ class Arena < ActiveRecord::Base
       totalwins = Arena.where(:userclass => c, :win => true, :user_id => userid ).count
       totalgames = Arena.where(:userclass => c, :user_id => userid ).count
       if totalgames == 0
-      	class_arena_rate[c] = 0
+        class_arena_rate[c] = 0
       else
-		    class_arena_rate[c] = ((totalwins.to_f / totalgames)*100).round
-		  end
+        class_arena_rate[c] = ((totalwins.to_f / totalgames)*100).round
+      end
     end
     arena_class = class_arena_rate.max_by {|x,y| y}
 

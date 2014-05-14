@@ -7,17 +7,17 @@ class ApplicationController < ActionController::Base
 
 
   def default_url_options(options={})
-	  if current_user && !current_user.guest? && !current_user.profile.nil?
-	    { locale: current_user.profile.locale || I18n.default_locale }
-  	else
-  		{ :locale => I18n.locale }.merge options
-	  end
+    if current_user && !current_user.guest? && !current_user.profile.nil?
+      { locale: current_user.profile.locale || I18n.default_locale }
+    else
+      { :locale => I18n.locale }.merge options
+    end
   end
 
   def redirect_to(options = {}, response_status = {})
-	  ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
-	  super(options, response_status)
-	end
+    ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
+    super(options, response_status)
+  end
 
   def opinio_after_create_path(resource)
     resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
@@ -56,11 +56,11 @@ class ApplicationController < ActionController::Base
 
   def get_user_api
     @user = User.where(userkey: params[:userkey])[0]
-		@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
+    @req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 
   def get_req
-  	@req = ActiveSupport::JSON.decode(request.body).symbolize_keys
+    @req = ActiveSupport::JSON.decode(request.body).symbolize_keys
   end
 
   def layout
@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
   end
 
   def canedit(entry)
-  	if current_user.id != entry.user_id
+    if current_user.id != entry.user_id
       redirect_to root_url, alert: 'You are not authorized to edit that.'
     end
   end
@@ -100,10 +100,10 @@ class ApplicationController < ActionController::Base
       tot = matches.count
       win = matches.where(result_id: 1).count
       winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
-	  end
+    end
 
-	  return winrate
-	end
+    return winrate
+  end
 
   def recentgamesbyhr(userid, durlen)
     # Find games from 12 hours and before

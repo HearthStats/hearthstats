@@ -46,6 +46,9 @@ div.overall
             - else
               td = klass[1][0][1].round(2)
 
+h2.detail-title =t('.distribution_graph')
+small = t('.dist_desc')
+= render 'stats_chart'
 h3.detail-title=t('.detailed_class_status')
 div.row
   - @arena_array.each do |arena_run|
