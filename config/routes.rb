@@ -1,6 +1,6 @@
 Hearthstats::Application.routes.draw do
 
-	# Gem routes
+  # Gem routes
   #
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -13,7 +13,7 @@ Hearthstats::Application.routes.draw do
 
   resources :teams
 
-	# match '(*foo)' => 'additional#serverupgrade'
+  # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
     collection do
       get 'signup'
@@ -77,14 +77,14 @@ Hearthstats::Application.routes.draw do
       get 'active_decks'
       get 'public'
       post 'submit_active_decks'
-  	end
+    end
     get 'version', on: :member
     get 'public_show', on: :member
   end
 
   resources :decks do
     opinio
-  	collection do
+    collection do
       get 'copy'
     end
   end
@@ -143,6 +143,7 @@ Hearthstats::Application.routes.draw do
   # HearthStats API
   namespace :api do
     namespace :v1 do
+      resources :cards
       get "arenas/show"
       post "arenas/new"
 
