@@ -53,7 +53,11 @@ class Match < ActiveRecord::Base
   end
 
   def self.search(field, query = nil)
-    where("#{field} like ?", "%#{query}%" ) unless query.nil?
+    if query.nil?
+      return self
+    else
+      where("#{field} like ?", "%#{query}%" )
+    end
   end
 
   def self.bestuserarena(userid)

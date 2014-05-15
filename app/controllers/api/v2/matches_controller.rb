@@ -1,27 +1,44 @@
 class Api::V2::MatchesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req
+  before_filter :get_req, :except => [:query]
 
   respond_to :json
 
-  def show
-    matches = Match.where(user_id: current_user.id)
-                   .search('mode_id', req[:mode])
-                   .search('result_id', req[:result])
-                   .search('klass_id', req[:klass])
-                   .search('oppclass_id', req[:oppclass])
-                   .search('coin', req[:coin])
-                   .search('season_id', req[:season])
-    render json: { status: "success", data: matches }
+  def query
+    # Check Params
+    params[:mode].nil?
+    result = Match.where(user_id: current_user.id)
+    if params[:mode].present?
+      result = result.where(mode_id: params[:mode])
+    end
+    if params[:result].present?
+      result = result.where(result_id: params[:result])
+    end
+    if params[:klass].present?
+      result = result.where(klass_id: params[:klass])
+    end
+    if params[:oppclass].present?
+      result = result.where(oppclass_id: params[:oppclass])
+    end
+    if params[:coin].present?
+      if params[:coin] == 'true'
+        coin = true
+      else
+        coin = false
+      end
+      result = result.where(coin: coin)
+    end
+    if params[:season].present?
+      result = result.where(season_id: params[:season])
+    end
+    render json: { status: "success", data: result }
   end
 
   def new
 
     req = @req
     user = current_user
-
     errors = Array.new
-
     # get mode
     mode = Mode.where(:name => req[:mode])[0]
     if mode.nil?

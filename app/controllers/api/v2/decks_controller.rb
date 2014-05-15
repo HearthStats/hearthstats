@@ -1,38 +1,38 @@
 class Api::V2::DecksController < ApplicationController
-	before_filter :authenticate_user!
-	before_filter :get_req, :except => [:show]
+  before_filter :authenticate_user!
+  before_filter :get_req, :except => [:show]
 
-	respond_to :json
+  respond_to :json
 
-	def show
-		begin
-	    decks = Deck.where(user_id: current_user.id)
-	  rescue
-	  	api_response = {status: "error", message: "Error getting user's decks"}
-	  else
-	    api_response = {status: "success", data: decks}
-	  end
-		render :json => api_response
-	end
+  def show
+    begin
+      decks = Deck.where(user_id: current_user.id)
+    rescue
+      api_response = {status: "error", message: "Error getting user's decks"}
+    else
+      api_response = {status: "success", data: decks}
+    end
+    render :json => api_response
+  end
 
-	def find
-		deck = Deck.find(params[:deck_id])
-		card_array = deck.cardstring.split(",")
-		res_array = Array.new
-		card_array.each do |card|
-			card_count = /_(\d*)/.match(card)[1]
-			card_id = /(\d*)_/.match(card)[1]
-			card = Card.find(card_id)
-			card_name = card.name
-			card_mana = card.mana
-			res_array << [card_name, card_count, card_mana]
-		end
-		if deck.is_public
-			render :json => {status: "success", data: {deck: deck, deck_array: res_array}}
-		else
-			render :json => {status: "error", message: "Deck is private"}
-		end
-	end
+  def find
+    deck = Deck.find(params[:deck_id])
+    card_array = deck.cardstring.split(",")
+    res_array = Array.new
+    card_array.each do |card|
+      card_count = /_(\d*)/.match(card)[1]
+      card_id = /(\d*)_/.match(card)[1]
+      card = Card.find(card_id)
+      card_name = card.name
+      card_mana = card.mana
+      res_array << [card_name, card_count, card_mana]
+    end
+    if deck.is_public
+      render :json => {status: "success", data: {deck: deck, deck_array: res_array}}
+    else
+      render :json => {status: "error", message: "Deck is private"}
+    end
+  end
 
   def activate
     deck = Deck.find(@req[:deck_id])

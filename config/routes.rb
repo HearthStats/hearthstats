@@ -175,6 +175,7 @@ Hearthstats::Application.routes.draw do
       get "arena_runs/end"
 
       post "matches/new"
+      get "matches/query"
 
       get "decks/show"
       get "decks/find"
