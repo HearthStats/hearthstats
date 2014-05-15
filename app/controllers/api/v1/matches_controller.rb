@@ -112,10 +112,10 @@ class Api::V1::MatchesController < ApplicationController
           delete_deck_cache!(deck)
           if !ranklvl.nil?
             if legend
-	            MatchRank.new(match_id: match.id, rank_id: ranklvl.id, legendary: legend).save!
-	          else
-	            MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
-	          end
+              MatchRank.new(match_id: match.id, rank_id: ranklvl.id, legendary: legend).save!
+            else
+              MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
+            end
           end
         end
         render json: {status: "success", message: message,  data: match}
@@ -126,7 +126,7 @@ class Api::V1::MatchesController < ApplicationController
   end
   private
 
-	def delete_deck_cache!(deck)
+  def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
 

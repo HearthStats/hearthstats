@@ -52,6 +52,10 @@ class Match < ActiveRecord::Base
     end
   end
 
+  def self.search(field, query = nil)
+    where("#{field} like ?", "%#{query}%" ) unless query.nil?
+  end
+
   def self.bestuserarena(userid)
     class_arena_rate = Hash.new
     (1..Klass.count).each_with_index do |c,i|
@@ -96,4 +100,4 @@ class Match < ActiveRecord::Base
 
   end
 
- end
+end

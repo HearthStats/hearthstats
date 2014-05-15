@@ -2,16 +2,12 @@ class Api::V1::CardsController < ApplicationController
 
   def index
     @cards = Card.all
-    respond_to do |format|
-      format.json { render json: @cards }
-    end
+    render json: { status: "success", data: @cards }
   end
 
   def show
     @card = Card.find(params[:id])
-    respond_to do |format|
-      format.json { render json: @card }
-    end
+    render json: { status: "success", data: @card }
   end
 
 end

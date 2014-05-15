@@ -1,8 +1,19 @@
 class Api::V2::MatchesController < ApplicationController
   before_filter :authenticate_user!
-	before_filter :get_req
+  before_filter :get_req
 
   respond_to :json
+
+  def show
+    matches = Match.where(user_id: current_user.id)
+                   .search('mode_id', req[:mode])
+                   .search('result_id', req[:result])
+                   .search('klass_id', req[:klass])
+                   .search('oppclass_id', req[:oppclass])
+                   .search('coin', req[:coin])
+                   .search('season_id', req[:season])
+    render json: { status: "success", data: matches }
+  end
 
   def new
 
