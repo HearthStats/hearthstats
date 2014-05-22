@@ -394,5 +394,27 @@
 			}
 		};
 	}());
+$(document).ready(function(){
+	var fullCardImage = $('#deckBuilderFullCardView');
+
+	$('.card').mouseover(function(e) {
+		$this = $(this);
+		$('.card').fadeTo(0, .8);
+		$this.fadeTo(0, 1);
+		fullCardImage.attr('src', $('img', $this).attr('src'));
+		var top = $this.position().top;
+		if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
+			top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
+		fullCardImage.css({
+			top: top + 'px',
+			left: ($this.position().left + 218) + 'px'
+		})
+		fullCardImage.show();
+	});
+	$('.card').mouseout(function() {
+		$('.card').fadeTo(0, 1);
+		fullCardImage.hide();
+	});
+});
 </script>
 
