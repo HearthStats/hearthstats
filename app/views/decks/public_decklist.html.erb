@@ -80,7 +80,7 @@
       <option value="asc"><%= t('.asc') %></option>
       <option value="desc" <%= @orderFilter == "desc" ? 'selected="selected"' : ''%>><%= t('.desc') %></option>
     </select>
-    <input id="deckListFilterSubmit" type="submit" value="<%=t('.apply')%>"/>
+    <input id="deckListFilterSubmit" type="submit" value="Apply"/>
   </p>
   <p><strong><%= number_with_delimiter(totalDecks, :delimiter => ',') %></strong> <%= t('shared.deck') %><%= totalDecks == 1 ? "" : "s" %> <%= t('.found_matching_your_criteria') %></p>
 </form>
