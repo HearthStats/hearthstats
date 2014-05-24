@@ -13,6 +13,8 @@ class UniqueDeck < ActiveRecord::Base
 
   is_impressionable
 
+  acts_as_taggable
+
   def update_stats
 
     #remove existing cards
