@@ -1,5 +1,5 @@
 = form_for(@deck) do |f|
-  = f.text_field :cardstring
+  = f.hidden_field :cardstring
   - if @deck.errors.any?
     div#error_explanation
       h2
@@ -23,30 +23,37 @@
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
         .form-group
+          input name="tags" id="tags"
+        .form-group
           span = f.check_box :is_public
           label
             |&nbsp;
             = t("decks.form.this_deck_public")
+        .form-group
+          = f.submit class: 'btn btn-block green'
     .col-sm-12.col-md-7.col-lg-7
       .form-body
         h3 Deck Builder
         #deckbuilder-list
-          input type="text" class="fuzzy-search"
-          ul.list
+          .form-group
+            label =t("decks.form.search")
+            input type="text" class="fuzzy-search form-control"
+          ul.list.card-list
             - Card.where(klass_id: [params[:klass],nil]).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}"
                 img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
-                p.name = card.name
+                p.name.hidden = card.name
                 .deckbuilder-actions
-                  .add add
-                  .remove remove
-          ul.pagintion
+                  .add Add
+                  .remove Remove
+          .cf
+          ul.pagination
     .col-sm-12.col-md-2.col-lg-2
       .total-card-count 0 of 30
       table#deck-list
         thead
-          th Name
-          th Count
+          th =t("decks.form.name")
+          th =t("decks.form.count")
         tbody
 
 
@@ -59,6 +66,7 @@ javascript:
 
     this.addCard = function(id, leg){
       if (totalCardCount >= 30){
+        this._errorNotification("deck-max");
         return;
       }
       leg = typeof leg !== 'undefined' ? leg : false;
@@ -69,6 +77,7 @@ javascript:
         totalCardCount = totalCardCount + 1;
       }else if( cardCount == 1 ){
         if (leg == true){
+          this._errorNotification("legend");
           return
         }else{
           cardArray[id] = 2;
@@ -91,7 +100,7 @@ javascript:
         cardArray[id] = undefined;
         totalCardCount = totalCardCount - 1;
       }else{
-        this._errorNotification("max");
+        this._errorNotification("none");
       }
       this._removeCardToTable(id);
       this.createCardString();
@@ -100,6 +109,19 @@ javascript:
     this._errorNotification = function(type){
       if (type == "max"){
         console.log("Max Card Limit");
+        toastr.error("#{t('decks.form.card_limit')}");
+      }
+      if (type == "deck-max"){
+        console.log("Max Deck Limit");
+        toastr.error("#{t('decks.form.deck_limit')}");
+      }
+      if (type == "none"){
+        console.log("No More In Deck");
+        toastr.error("#{t('decks.form.no_more')}");
+      }
+      if (type == "legend"){
+        console.log("Only one legendary allowed per deck.");
+        toastr.error("#{t('decks.form.legend')}");
       }
     };
 
@@ -143,13 +165,13 @@ javascript:
     DeckBuilder.removeCard(id);
   });
 
+  $('#tags').tagsInput();
+
   var monkeyList = new List('deckbuilder-list', {
     valueNames: ['name'],
     page: 6,
     plugins: [
       ListFuzzySearch(),
-      ListPagination({
-        innerWindow: 5
-      })
+      ListPagination({})
     ]
   });

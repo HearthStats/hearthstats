@@ -134,7 +134,7 @@ class DecksController < ApplicationController
   # GET /decks/new
   # GET /decks/new.json
   def new
-    gon.cards = Card.all
+    gon.cards = Card.where(klass_id: [nil, params[:klass].to_i])
     @deck = Deck.new
     @deck.is_public = true
     respond_to do |format|
@@ -176,6 +176,8 @@ class DecksController < ApplicationController
     end
     respond_to do |format|
       if @deck.save
+      	@deck.tag_list.add(params[:tags], parse: true)
+        @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
       else
         format.html { render action: "new" }
@@ -251,6 +253,11 @@ class DecksController < ApplicationController
     canedit(deck)
     version_deck(deck)
     redirect_to deck_path(deck), notice: "Deck successfully versioned"
+  end
+
+  def tags
+  	response = Deck.tag_counts.map { |tag| {id:tag.name,label:tag.name, value: tag.name} }
+  	render :json => response
   end
 
   private

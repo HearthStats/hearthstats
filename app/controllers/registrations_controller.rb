@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
   	destroy_guest
     super
     c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
-    if resource.save!
+    if resource.save
     	# Create Profile
     	Profile.new(user_id:resource.id).save!
 
