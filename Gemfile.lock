@@ -232,7 +232,7 @@ GEM
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
     mini_portile (0.5.3)
-    multi_json (1.9.2)
+    multi_json (1.10.1)
     multi_test (0.1.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
@@ -291,7 +291,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.2.2)
+    rake (10.3.2)
     rb-fsevent (0.9.4)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -420,7 +420,7 @@ DEPENDENCIES
   devise
   devise-token_authenticatable
   email_spec (>= 1.4.0)
-  factory_girl_rails (>= 4.2.0)
+  factory_girl_rails
   feedjira
   figaro
   fog
