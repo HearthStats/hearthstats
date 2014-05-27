@@ -13,83 +13,83 @@
   </div>
   <div class="col-md-6 col-sm-6">
     <!-- BEGIN PORTLET-->
-
-		<div class="portlet solid bordered light-grey">
-			<div class="portlet-title">
-				<div class="caption"><i class="fa fa-bell-o"></i><%= t 'dashboards.index.recent_activities' %></div>
-			</div>
-			<div class="portlet-body">
-				<div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0">
-					<ul class="feeds">
-						<% @recent_entries.each do |entry| %>
+    
+    <div class="portlet solid bordered light-grey">
+      <div class="portlet-title">
+        <div class="caption"><i class="fa fa-bell-o"></i><%= t 'dashboards.index.recent_activities' %></div>
+      </div>
+      <div class="portlet-body">
+        <div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0">
+          <ul class="feeds">
+            <% @recent_entries.each do |entry| %>
               <li id="<%= entry.mode.name %>">
-								<div class="col1">
-									<div class="cont">
-										<div class="cont-col1">
-											<% if entry.mode.name == "Arena" %>
+                <div class="col1">
+                  <div class="cont">
+                    <div class="cont-col1">
+                      <% if entry.mode.name == "Arena" %>
                         <div class="label label-sm label-<%=entry.klass.name%>">
-													<%=image_tag("swords.svg", height: 17, width: 17) %>
-												</div>
-											<% elsif entry.mode.name == "Ranked" %>
+                          <%=image_tag("swords.svg", height: 17, width: 17) %>
+                        </div>
+                      <% elsif entry.mode.name == "Ranked" %>
                         <div class="label label-sm label-<%=entry.klass.name%>">
-													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
-												</div>
+                          <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
+                        </div>
                       <% elsif entry.mode.name == "Casual" %>
                         <div class="label label-sm label-<%=entry.klass.name%>">
-													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
-												</div>
+                          <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
+                        </div>
                       <% end%>
 
-										</div>
-										<div class="cont-col2">
-											<div class="desc">
-											  <%= entry.match_result.name %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.with' %> <%= entry.klass.name %>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col2">
-									<div class="date">
-										<%= time_ago_in_words(entry.created_at) %> ago
-									</div>
-								</div>
-							</li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
+                    </div>
+                    <div class="cont-col2">
+                      <div class="desc">
+                        <%= entry.match_result.name %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.with' %> <%= entry.klass.name %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col2">
+                  <div class="date">
+                    <%= time_ago_in_words(entry.created_at) %> ago
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!-- END PORTLET-->
     <!-- BEGIN PORTLET-->
     <div class="portlet solid bordered light-grey">
-			<div class="portlet-title">
-				<div class="caption"><i class="fa fa-globe"></i><%= t 'dashboards.index.global_stats' %></div>
-			</div>
-			<div class="portlet-body">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="easy-pie-chart">
-							<div class="number transactions" data-percent=<%= @global[:arena] %>><span><%= @global[:arena] %></span>%</div>
-							<span class="title" href="#"><%= t 'dashboards.index.arena_win_rate' %></span>
-						</div>
-					</div>
-					<div class="margin-bottom-10 visible-sm"></div>
-					<div class="col-md-4">
-						<div class="easy-pie-chart">
-							<div class="number visits" data-percent=<%= @global[:con] %>><span><%= @global[:con] %></span>%</div>
-							<span class="title"><%= t 'dashboards.index.constructed_win_rates' %></span>
-						</div>
-					</div>
-					<div class="margin-bottom-10 visible-sm"></div>
-					<div class="col-md-4">
-						<div class="easy-pie-chart">
-							<div class="number bounce" data-percent=<%= @global[:coin] %>><span><%= @global[:coin] %></span>%</div>
-							<span class="title" href="#"><%= t 'dashboards.index.constructed_coin_win_rates' %></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+      <div class="portlet-title">
+        <div class="caption"><i class="fa fa-globe"></i><%= t 'dashboards.index.global_stats' %></div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="easy-pie-chart">
+              <div class="number transactions" data-percent=<%= @global[:arena] %>><span><%= @global[:arena] %></span>%</div>
+              <span class="title" href="#"><%= t 'dashboards.index.arena_win_rate' %></span>
+            </div>
+          </div>
+          <div class="margin-bottom-10 visible-sm"></div>
+          <div class="col-md-4">
+            <div class="easy-pie-chart">
+              <div class="number visits" data-percent=<%= @global[:con] %>><span><%= @global[:con] %></span>%</div>
+              <span class="title"><%= t 'dashboards.index.constructed_win_rates' %></span>
+            </div>
+          </div>
+          <div class="margin-bottom-10 visible-sm"></div>
+          <div class="col-md-4">
+            <div class="easy-pie-chart">
+              <div class="number bounce" data-percent=<%= @global[:coin] %>><span><%= @global[:coin] %></span>%</div>
+              <span class="title" href="#"><%= t 'dashboards.index.constructed_coin_win_rates' %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- END PORTLET-->
   </div>
 </div>

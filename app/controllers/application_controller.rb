@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
 
   def recentgames(userid, durlen)
     @arenawins = cularenagames(userid, durlen)
-    @conwins = culcongames(userid, durlen)
+    @conwins   = culcongames(userid, durlen)
   end
 
   def cularenagames(userid, days1)
