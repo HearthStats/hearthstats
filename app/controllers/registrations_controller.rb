@@ -6,6 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     destroy_guest
     super
+
     c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
     if resource.save
     	# Create Profile
