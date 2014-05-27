@@ -3,6 +3,8 @@ class UniqueDeck < ActiveRecord::Base
 
   is_impressionable
 
+  acts_as_taggable
+
   ### ASSOCIATIONS:
 
   has_many :decks
@@ -14,7 +16,6 @@ class UniqueDeck < ActiveRecord::Base
   has_many :matches, :through => :match_unique_deck
   has_many :match_unique_deck
 
-  act_as_taggable
 
   ### CALLBACKS:
 
