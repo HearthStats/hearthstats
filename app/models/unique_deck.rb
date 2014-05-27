@@ -14,6 +14,8 @@ class UniqueDeck < ActiveRecord::Base
   has_many :matches, :through => :match_unique_deck
   has_many :match_unique_deck
 
+  act_as_taggable
+
   ### CALLBACKS:
 
   before_save :update_stats, if: :cardstring_changed?
