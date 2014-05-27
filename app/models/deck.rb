@@ -20,9 +20,7 @@ class Deck < ActiveRecord::Base
   ### CALLBACKS:
   
   before_save :validate_and_update_stats
-  after_save :update_unique_deck_details
-  before_destroy :delete_cleanup
-
+  after_save  :update_unique_deck_details
   
   ### CLASS METHODS:
   
@@ -47,10 +45,6 @@ class Deck < ActiveRecord::Base
   end
   
   ### INSTANCE METHODS:
-  
-  def delete_cleanup
-    self.matches.delete_all
-  end
   
   def num_cards
     return  0 unless self.cardstring
