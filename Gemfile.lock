@@ -423,7 +423,7 @@ DEPENDENCIES
   devise
   devise-token_authenticatable
   email_spec (>= 1.4.0)
-  factory_girl_rails (>= 4.2.0)
+  factory_girl_rails
   feedjira
   figaro
   fog
