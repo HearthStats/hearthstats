@@ -1,24 +1,24 @@
 require 'spec_helper'
 
-describe TournysController do
+describe TourniesController do
 
-  describe "GET 'index.slim'" do
+  describe "GET 'index'" do
     it "returns http success" do
-      get 'index.slim'
+      get 'index'
       response.should be_success
     end
   end
 
-  describe "GET 'signup.slim'" do
+  describe "GET 'signup'" do
     it "returns http success" do
-      get 'signup.slim'
+      get 'signup'
       response.should be_success
     end
   end
 
-  describe "GET 'past.slim'" do
+  describe "GET 'past'" do
     it "returns http success" do
-      get 'past.slim'
+      get 'past'
       response.should be_success
     end
   end
