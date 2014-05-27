@@ -3,3 +3,4 @@
 #
 
 require "#{Rails.root}/db/card_seeds.rb"
+require "#{Rails.root}/db/class_seeds.rb"
