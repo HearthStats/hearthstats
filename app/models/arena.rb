@@ -18,22 +18,19 @@ class Arena < ActiveRecord::Base
   end
   
   def self.bestuserarena(userid)
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-    class_arena_rate = Hash.new
-    classes.each_with_index do |c,i|
-      totalwins = 0
-      totalgames = 0
-      totalwins = Arena.where(:userclass => c, :win => true, :user_id => userid ).count
-      totalgames = Arena.where(:userclass => c, :user_id => userid ).count
-      if totalgames == 0
-        class_arena_rate[c] = 0
-      else
-        class_arena_rate[c] = ((totalwins.to_f / totalgames)*100).round
-      end
+    # this method does not seem to be called from anywhere
+    
+    scope  = Arena.where(user_id: userid).group(:userclass)
+    played = scope.count
+    wins   = scope.where(win: true).count
+    
+    class_arena_rate = {}
+    played.each do |klass, count|
+      class_arena_rate[klass] = ((wins[klass].to_f / count.to_f)*100).round if count > 0
     end
-    arena_class = class_arena_rate.max_by {|x,y| y}
-
-    arena_class
+    
+    return [Klass.first.name, 0] if class_arena_rate.blank?
+    class_arena_rate.max_by {|x,y| y}
   end
 
 end

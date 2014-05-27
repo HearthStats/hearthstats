@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
 
     # Get recent games
     @recent_entries = matches.last(10).reverse
-    recentgames(@members, 10)
+    load_recent_games(@members, 10)
 
 
 

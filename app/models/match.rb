@@ -59,21 +59,18 @@ class Match < ActiveRecord::Base
   end
   
   def self.bestuserarena(userid)
-    class_arena_rate = Hash.new
-    (1..Klass.count).each_with_index do |c,i|
-      totalwins = 0
-      totalgames = 0
-      totalwins = Match.where(:klass_id => c, :result_id => 1, :user_id => userid, mode_id: 1 ).count
-      totalgames = Match.where(:klass_id => c, :user_id => userid, mode_id: 1 ).count
-      if totalgames == 0
-        class_arena_rate[Klass.find(c).name] = 0
-      else
-        class_arena_rate[Klass.find(c).name] = ((totalwins.to_f / totalgames)*100).round
-      end
-    end
-    arena_class = class_arena_rate.max_by {|x,y| y}
+    scope  = Match.where(user_id: userid, mode_id: 1).group(:klass_id)
+    played = scope.count
+    wins   = scope.where(result_id: 1).count
     
-    arena_class
+    class_arena_rate = {}
+    played.each do |klass_id, count|
+      class_arena_rate[klass] = ((wins[klass_id].to_f / count.to_f)*100).round if count > 0
+    end
+    
+    return [Klass.first.name, 0] if class_arena_rate.blank?
+    max = class_arena_rate.max_by {|x,y| y}
+    { Klass.find(max.keys.first) => max.values.first }
   end
   
   def self.to_csv
