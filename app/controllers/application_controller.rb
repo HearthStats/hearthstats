@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def recentgames(userid, durlen)
+  def load_recent_games(userid, durlen)
     @arenawins = cularenagames(userid, durlen)
     @conwins   = culcongames(userid, durlen)
   end
