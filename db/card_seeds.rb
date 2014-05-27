@@ -1,5 +1,5 @@
-Card.create!([
 #encoding: utf-8
+Card.create([
   {name: "Edwin VanCleef", description: "Combo: Gain +2/+2 for each card played earlier this turn.", attack: 2, health: 2, card_set_id: 2, rarity_id: 5, type_id: 1, klass_id: 6, race_id: nil, mana: 3, collectible: true},
   {name: "Perdition's Blade", description: "Battlecry: Deal 1 damage. Combo: Deal 2 instead.", attack: 2, health: 2, card_set_id: 2, rarity_id: nil, type_id: 3, klass_id: 6, race_id: nil, mana: 3, collectible: true},
   {name: "Bloodsail Raider", description: "Battlecry: Gain Attack equal to the Attack of your weapon.", attack: 2, health: 3, card_set_id: 2, rarity_id: 2, type_id: 1, klass_id: nil, race_id: 5, mana: 2, collectible: true},

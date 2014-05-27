@@ -4,4 +4,8 @@ class Season < ActiveRecord::Base
   ### ASSOCIATIONS:
   
   has_many :matches
+  
+  ### VALIDATIONS:
+  
+  validates :num, uniqueness: true
 end
