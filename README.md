@@ -11,7 +11,7 @@ The beta is located at: [HearthStats Beta](http://beta.hearthstats.net)
 
 If you are interested in helping out with HearthStats.net, simply fork this repo and make whatever changes and then submit a pull request.
 
-Please follow some [**naming conventions**](itsignals.cascadia.com.au/?p=7) and also some [**best practices**](http://www.sitepoint.com/10-ruby-on-rails-best-practices/).
+Please follow the  [**Ruby Style Guide**](https://github.com/bbatsov/ruby-style-guide) and also some [**best practices**](http://www.sitepoint.com/10-ruby-on-rails-best-practices/).
 
 Make sure you fill the database with some sample data before starting development or else the app will break. We are working on providing some seed data.
 
