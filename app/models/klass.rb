@@ -9,4 +9,10 @@ class Klass < ActiveRecord::Base
   ### VALIDATIONS:
   
   validates :name, uniqueness: true
+  
+  ### CLASS METHODS:
+  
+  def self.class_list
+    ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+  end
 end
