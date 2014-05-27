@@ -25,32 +25,32 @@
       <% end %>
       <span class="arrow "></span>
       <ul class="sub-menu">
-      	<li class= "cards">
-			<%= link_to t("menu.card_database"), cards_path %>
+        <li class= "cards">
+          <%= link_to t("menu.card_database"), cards_path %>
         </li>
       </ul>
     </li>
     <li class="arenas arena_runs" data-activeimg="swords">
       <a href="javascript:;">
-      	<!-- <span class="icon-swords"></span> -->
+        <!-- <span class="icon-swords"></span> -->
       <%= image_tag("swordsgrey.png", height: 16, width: 20, class: "sidebaricon") %>
       <span class="title"><%=t('menu.arena.title')%></span>
       <span class="arrow "></span>
       </a>
       <ul class="sub-menu">
-      	<li class= "index"><%= link_to t("menu.arena.recent_arena_runs"), arenas_path %></li>
+        <li class= "index"><%= link_to t("menu.arena.recent_arena_runs"), arenas_path %></li>
         <li class= "new">
-        	<% if ArenaRun.where(user_id: current_user.id).last  %>
-	        	<% if !ArenaRun.where(user_id: current_user.id).last.complete %>
-					    <%= link_to t('menu.arena.continue_arena_run'), new_arena_path %>
-					  <% else %>
-					    <%= link_to t('menu.arena.new_arena_run'), new_arena_run_path %>
-	          <% end %>
-				  <% else %>
-				    <%= link_to t('menu.arena.new_arena_run'), new_arena_run_path %>
+          <% if ArenaRun.where(user_id: current_user.id).last  %>
+            <% if !ArenaRun.where(user_id: current_user.id).last.complete %>
+              <%= link_to t('menu.arena.continue_arena_run'), new_arena_path %>
+            <% else %>
+              <%= link_to t('menu.arena.new_arena_run'), new_arena_run_path %>
+            <% end %>
+          <% else %>
+            <%= link_to t('menu.arena.new_arena_run'), new_arena_run_path %>
           <% end %>
         </li>
-      	<li class= "matches"><%= link_to t('menu.arena.recent_arena_matches'), "/arena/matches" %></li>
+        <li class= "matches"><%= link_to t('menu.arena.recent_arena_matches'), "/arena/matches" %></li>
         <li class= "stats">
           <%= link_to t('menu.arena.statistics'), stats_arenas_path %>
         </li>
@@ -81,13 +81,13 @@
       <span class="arrow "></span>
       </a>
       <ul class="sub-menu">
-      	<li class="public_decks">
+        <li class="public_decks">
           <%= link_to t('menu.deck.public_deck_list'), public_decks_path %>
         </li>
-      	<li class="index">
+        <li class="index">
           <%= link_to t('menu.deck.my_deck'), decks_path %>
         </li>
-      	<li class="active_decks">
+        <li class="active_decks">
           <%= link_to t('menu.deck.my_active_deck'), active_decks_decks_path %>
         </li>
         <li class="new">
@@ -99,7 +99,7 @@
       <a href="/news">
       <i class="fa fa-rss"></i>
       <span class="title"><%= t('menu.news')  %></span>
-			</a>
+      </a>
     </li>
     <li class="streams">
       <%= link_to streams_index_path do %>
@@ -135,30 +135,30 @@
       <span class="arrow "></span>
       </a>
       <ul class="sub-menu">
-      	<li class="uploader">
+        <li class="uploader">
           <%= link_to uploader_path do %>
-						<%= t('menu.extra.official_uploader') %>
-	        <% end %>
+            <%= t('menu.extra.official_uploader') %>
+          <% end %>
         </li>
-      	<li class="dec">
+        <li class="dec">
           <%= link_to "/apr" do %>
-						<%= t('menu.extra.april_report') %>
-	        <% end %>
+            <%= t('menu.extra.april_report') %>
+          <% end %>
         </li>
-      	<li class="changelog">
+        <li class="changelog">
           <%= link_to changelog_path do %>
-						<%= t('menu.extra.change_log') %>
-	        <% end %>
+            <%= t('menu.extra.change_log') %>
+          <% end %>
         </li>
         <li class="aboutus">
           <%= link_to aboutus_path do %>
-						<%= t('menu.extra.about_us') %>
-	        <% end %>
+            <%= t('menu.extra.about_us') %>
+          <% end %>
         </li>
         <li class="contactus">
           <%= link_to contactus_path do %>
-						<%= t('menu.extra.contact_info') %>
-	        <% end %>
+            <%= t('menu.extra.contact_info') %>
+          <% end %>
         </li>
       </ul>
     </li>
@@ -172,12 +172,12 @@
   <!-- END SIDEBAR MENU -->
 </div>
 <script>
-	<% if params[:controller] == "additional" && params[:action] == "help"%>
-		$("#help").addClass('active');
-	<% elsif params[:controller] == "additional" && params[:action] == "news"%>
-		$(".news").addClass('active');
-	<% else %>
-		$(".<%= params[:controller] %>").addClass('active');
-		$(".<%= params[:controller] %>").find(".<%= params[:action] %>").addClass('active');
-	<% end %>
+  <% if params[:controller] == "additional" && params[:action] == "help"%>
+    $("#help").addClass('active');
+  <% elsif params[:controller] == "additional" && params[:action] == "news"%>
+    $(".news").addClass('active');
+  <% else %>
+    $(".<%= params[:controller] %>").addClass('active');
+    $(".<%= params[:controller] %>").find(".<%= params[:action] %>").addClass('active');
+  <% end %>
 </script>
