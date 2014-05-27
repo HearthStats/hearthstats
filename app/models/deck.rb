@@ -1,32 +1,58 @@
 class Deck < ActiveRecord::Base
   attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id, :is_public
-  has_many :constructeds
-
+  
+  is_impressionable
+  opinio_subjectum
+  
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
+  ### ASSOCIATIONS:
+  
   belongs_to :unique_deck
   belongs_to :klass
   belongs_to :user
   has_many :matches, :through => :match_deck, dependent: :destroy
   has_many :match_deck
   has_many :deck_versions
-
+  has_many :constructeds
+  
+  ### CALLBACKS:
+  
   before_save :validate_and_update_stats
   after_save :update_unique_deck_details
-
   before_destroy :delete_cleanup
-
-
-  is_impressionable
-  opinio_subjectum
-
-  extend FriendlyId
-  friendly_id :name, use: :slugged
-
-  def delete_cleanup
-  	self.matches.delete_all
+  
+  ### CLASS METHODS:
+  
+  def self.bestuserdeck(userid)
+    decks = Deck.includes(:matches).where(user_id: userid)
+    winrates = Hash.new
+    decks.each do |d|
+      if d.matches.count == 0
+      else
+        winrates[d.name] = [((d.matches.where(result_id: 1).count.to_f / d.matches.count)*100).round, d.id]
+      end
+    end
+    deck = winrates.max_by { |x,y| y}
+    deck
   end
-
+  
+  def self.race_count
+    races = Deck.pluck(:race)
+    race_groups = races.group_by { |race| race } # {"Druid" => ["Druid", "Druid"]}
+    
+    Hash[race_groups.map { |race, list| [race, list.size] }]
+  end
+  
+  ### INSTANCE METHODS:
+  
+  def delete_cleanup
+    self.matches.delete_all
+  end
+  
   def num_cards
-  	return  0 unless self.cardstring
+    return  0 unless self.cardstring
     numCards = 0;
     cards = self.cardstring.split(',')
     cards.each do |cardData|
@@ -35,9 +61,9 @@ class Deck < ActiveRecord::Base
     end
     return numCards
   end
-
+  
   def validate_and_update_stats
-
+    
     #trim deck name
     if !self.name.nil?
       self.name =  self.name.strip
@@ -45,11 +71,11 @@ class Deck < ActiveRecord::Base
     if self.name == ""
       self.name = "[unnamed]"
     end
-
+    
     # check for 30 cards and assign unique deck
     if self.num_cards == 30
       uniqueDeck = UniqueDeck.where(:cardstring => self.cardstring, :klass_id => self.klass_id).first
-
+      
       # create a new unique deck if needed
       if uniqueDeck.nil?
         uniqueDeck = UniqueDeck.new
@@ -58,10 +84,10 @@ class Deck < ActiveRecord::Base
         uniqueDeck.save()
       end
       self.unique_deck_id = uniqueDeck.id;
-
+      
     end
   end
-
+  
   def update_unique_deck_details
     # re-save the qunique deck on order to trigger
     # proper pulling of data from the first fully
@@ -70,16 +96,16 @@ class Deck < ActiveRecord::Base
       self.unique_deck.save()
     end
   end
-
+  
   def update_user_stats
     self.user_num_matches = self.matches.count
-    self.user_num_wins = self.matches.where(:result_id => 1).count
-    self.user_num_losses = self.matches.where(:result_id => 2).count
-    self.user_winrate = self.user_num_matches > 0 ? (self.user_num_wins.to_f / self.user_num_matches) * 100 : 0
+    self.user_num_wins    = self.matches.where(result_id: 1).count
+    self.user_num_losses  = self.matches.where(result_id: 2).count
+    self.user_winrate     = self.user_num_matches > 0 ? (self.user_num_wins.to_f / self.user_num_matches) * 100 : 0
   end
-
+  
   def decklink_message
-
+    
     # Add http:// to link if not present
     # If page is not a valid link then return link
     # Else return list of cards in deck
@@ -88,87 +114,74 @@ class Deck < ActiveRecord::Base
     if !decklink.present?
       message = "No deck link attatched to this deck yet <p>"
     else
-    	link = prepend_http(decklink)
-	    begin
-	      page = Nokogiri::HTML(open(link))
-	      if !page.css('header').text.blank?
-	        message = "<a href='#{link}'>Link To Deck</a><p>"
-	      else
-	        message = page.text
-	      end
-	    rescue
+      link = prepend_http(decklink)
+      begin
+        page = Nokogiri::HTML(open(link))
+        if !page.css('header').text.blank?
+          message = "<a href='#{link}'>Link To Deck</a><p>"
+        else
+          message = page.text
+        end
+      rescue
         link = link[0..-10]
         message = "<a href='#{link}'>Link To Deck</a><p>"
       end
     end
-
+    
     message
   end
-
-  def self.bestuserdeck(userid)
-    decks = Deck.includes(:matches).where(user_id: userid)
-		winrates = Hash.new
-		decks.each do |d|
-			if d.matches.count == 0
-			else
-				winrates[d.name] = [((d.matches.where(result_id: 1).count.to_f / d.matches.count)*100).round, d.id]
-			end
-		end
-		deck = winrates.max_by { |x,y| y}
-		deck
-  end
-
+  
   def class_name
     if klass.nil?
       return race
     end
     return klass.name
   end
-
+  
   def num_users
     return self.unique_deck.nil? ? 0 : self.unique_deck.num_users
   end
-
+  
   def num_matches
     return matches.count
   end
   def num_global_matches
     return self.unique_deck.nil? ? 0 : self.unique_deck.num_matches
   end
-
+  
   def num_minions
     return self.unique_deck.nil? ? "-" : self.unique_deck.num_minions
   end
-
+  
   def num_spells
     return self.unique_deck.nil? ? "-" : self.unique_deck.num_spells
   end
-
+  
   def num_weapons
     return self.unique_deck.nil? ? "-" : self.unique_deck.num_weapons
   end
-
+  
   def wins
     return matches.where(result_id: 1).count
   end
   def global_wins
     return self.unique_deck.nil? ? "-" : self.unique_deck.num_wins
   end
-
+  
   def losses
     return matches.where(result_id: 2).count
   end
   def global_losses
     return self.unique_deck.nil? ? "-" : self.unique_deck.num_losses
   end
-
+  
   def winrate
     return num_matches > 0 ? (wins.to_f / num_matches) * 100 : 0
   end
   def global_winrate
     return self.unique_deck.nil? ? "-" : self.unique_deck.winrate
   end
-
+  
   def copy(user)
     newCopy = Deck.new
     newCopy.name = self.name
@@ -181,30 +194,23 @@ class Deck < ActiveRecord::Base
     newCopy.save
     return newCopy
   end
-
+  
   def get_user_copy(user)
     return Deck.where(:user_id => user.id, :unique_deck_id => self.unique_deck_id)[0]
   end
-
-  def self.race_count
-    races = Deck.pluck(:race)
-    race_groups = races.group_by { |race| race } # {"Druid" => ["Druid", "Druid"]}
-
-    Hash[race_groups.map { |race, list| [race, list.size] }]
-  end
-
+  
   def cards
     if self.unique_deck.nil?
       return nil
     end
     return self.unique_deck.cards
   end
-
+  
   private
-
+  
   def prepend_http(url)
     url = "http://" + url if URI.parse(url).scheme.nil?
-
+    
     url
   end
 end
