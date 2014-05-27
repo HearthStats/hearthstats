@@ -1,4 +1,4 @@
-Klass.create!([
+Klass.create([
   { name: 'Druid'},
   { name: 'Priest'},
   { name: 'Mage'},

@@ -12,6 +12,10 @@ class Card < ActiveRecord::Base
   has_many :unique_decks, :through => :unique_deck_card
   has_many :unique_deck_card
   
+  ### VALIDATIONS:
+  
+  validates :name, uniqueness: true
+  
   ### INSTANCE METHODS:
   
   def toJSONWithImage
