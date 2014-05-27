@@ -19,7 +19,8 @@ class Deck < ActiveRecord::Base
   
   ### CALLBACKS:
   
-  before_save :validate_and_update_stats
+  before_save :normalize_name
+  before_save :create_unique_deck
   after_save  :update_unique_deck_details
   
   ### CLASS METHODS:
@@ -57,29 +58,14 @@ class Deck < ActiveRecord::Base
     return numCards
   end
   
-  def validate_and_update_stats
-    
-    #trim deck name
-    if !self.name.nil?
-      self.name =  self.name.strip
-    end
-    if self.name == ""
-      self.name = "[unnamed]"
-    end
-    
+  def create_unique_deck
     # check for 30 cards and assign unique deck
-    if self.num_cards == 30
-      uniqueDeck = UniqueDeck.where(:cardstring => self.cardstring, :klass_id => self.klass_id).first
-      
-      # create a new unique deck if needed
-      if uniqueDeck.nil?
-        uniqueDeck = UniqueDeck.new
-        uniqueDeck.cardstring = self.cardstring
-        uniqueDeck.klass_id = self.klass_id
-        uniqueDeck.save()
+    if num_cards == 30
+      unique_deck = UniqueDeck.where(cardstring: cardstring, klass_id: klass_id).first
+      unless unique_deck
+        unique_deck = UniqueDeck.create(cardstring: cardstring, klass_id: klass_id)
       end
-      self.unique_deck_id = uniqueDeck.id;
-      
+      self.unique_deck_id = unique_deck.id
     end
   end
   
@@ -207,5 +193,10 @@ class Deck < ActiveRecord::Base
     url = "http://" + url if URI.parse(url).scheme.nil?
     
     url
+  end
+  
+  def normalize_name
+    self.name.strip! unless name.nil?
+    self.name = "[unnamed]" if name.blank?
   end
 end

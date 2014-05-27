@@ -3,17 +3,21 @@ class Card < ActiveRecord::Base
     :rarity_id, :type_id, :klass_id, :race_id, :mana, :health, :attack, 
     :collectible, :race_id
     
+  ### ASSOCIATIONS:
+  
   belongs_to :klass
   belongs_to :card_set
   belongs_to :type
   
   has_many :unique_decks, :through => :unique_deck_card
   has_many :unique_deck_card
-
+  
+  ### INSTANCE METHODS:
+  
   def toJSONWithImage
      return to_json[0..-2] + ',"image":"' + getImageUrl + '"}'
   end
-
+  
   def getImageUrl
     return "https://s3-us-west-2.amazonaws.com/hearthstats/cards/" + name.parameterize + ".png" 
   end
