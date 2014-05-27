@@ -19,8 +19,8 @@ class WelcomeController < ApplicationController
   	end
 		matches = Match.where(season_id: 5)
 		# Determine match Class Win Rates
-		@classesArray = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
-		classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+		@classesArray = Klass.list
+		classes = Klass.list
 		@classarenarate = Hash.new
 		@arenatot = Hash.new
 		mode_matches = matches.where(mode_id: 1)

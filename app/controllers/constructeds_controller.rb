@@ -192,7 +192,7 @@ class ConstructedsController < ApplicationController
 
     @matches = matches
     # calculate number of games per class
-    @classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    @classes = Klass.list
     @numMatchesPersonal = Hash.new
     @numMatchesGlobal = Hash.new
     @classes.each_with_index do |c,i|

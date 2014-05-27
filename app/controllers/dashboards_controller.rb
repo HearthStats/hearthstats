@@ -47,7 +47,7 @@ class DashboardsController < ApplicationController
   def fullstats
     
     # Determine Arena Class Win Rates
-    classes = ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
+    classes = Klass.list
     @classwinrate = Hash.new
     classes.each do |c|
       totalwins = 0
