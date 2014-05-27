@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe "Arena" do
   describe "Arena Stats" do
-    it "should exist" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+    it "should redirect to the login page when user is not logged in" do
       get stats_arenas_path
-      response.status.should be(200)
+      response.status.should == 302
     end
   end
 end
