@@ -3,12 +3,12 @@ class ConstructedsController < ApplicationController
   # GET /constructeds
   # GET /constructeds.json
   def index
-
+    
     @items = params['items']
     if @items.nil? || !((Float(@items) rescue false))
       @items = 20
     end
-
+    
     @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3])
     @matches = @constructed # support new matchlist template
     @constructed = Match.new
@@ -19,12 +19,12 @@ class ConstructedsController < ApplicationController
       format.json { render json: @constructeds }
     end
   end
-
+  
   # GET /constructeds/1
   # GET /constructeds/1.json
   def show
     @constructed = Match.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @constructed }
@@ -34,9 +34,9 @@ class ConstructedsController < ApplicationController
   # GET /constructeds/new
   # GET /constructeds/new.json
   def new
-  	if Deck.where(user_id: current_user.id).count == 0
-  		redirect_to new_deck_path, notice: "Please create a deck first."
-  	end
+    if Deck.where(user_id: current_user.id).count == 0
+      redirect_to new_deck_path, notice: "Please create a deck first."
+    end
     @constructed = Match.new
     @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
     @myDecks = getMyDecks()
@@ -48,7 +48,7 @@ class ConstructedsController < ApplicationController
     canedit(@constructed)
     @myDecks = getMyDecks()
   end
-
+  
   # POST /constructeds
   # POST /constructeds.json
   def create
@@ -56,7 +56,7 @@ class ConstructedsController < ApplicationController
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
     end
-
+    
     # Find mode_id
     if params[:other][:rank] == "Ranked"
       mode_id = 3
@@ -101,7 +101,7 @@ class ConstructedsController < ApplicationController
     matchdeck.save!
     @constructed.klass_id = deck.klass_id
     @constructed.result_id = params[:win].to_i
-
+    
     # Find ranked_id
     if params[:other][:rank] == "Ranked"
       mode_id = 3
@@ -123,7 +123,7 @@ class ConstructedsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /constructeds/1
   # DELETE /constructeds/1.json
   def destroy
@@ -179,17 +179,17 @@ class ConstructedsController < ApplicationController
     if params[:active] == 'on'
       @active = true
     end
-
+    
     if @active
       personalMatches = Match.includes(:deck).where('decks.active' => true, user_id: current_user.id)
     else
       personalMatches = matches.where(user_id: current_user.id)
     end
-
+    
     # build win rates while playing each class
     @personalWinRates = getClassWinRatesForMatches(personalMatches);
     @globalWinRates = getClassWinRatesForMatches(matches);
-
+    
     @matches = matches
     # calculate number of games per class
     @classes = Klass.list
