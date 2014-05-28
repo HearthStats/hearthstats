@@ -51,6 +51,8 @@ class Match < ActiveRecord::Base
   ### CLASS METHODS:
   
   def self.search(field, query = nil)
+    # this method does not seem to be called from anywhere
+    
     if query.nil?
       return self
     else

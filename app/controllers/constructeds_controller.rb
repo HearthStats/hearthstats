@@ -3,14 +3,16 @@ class ConstructedsController < ApplicationController
   # GET /constructeds
   # GET /constructeds.json
   def index
-    
+    params[:q] ||= {}
+    @q = current_user.matches.ransack(params[:q])
+    @matches = @q.result
     @items = params['items']
     if @items.nil? || !((Float(@items) rescue false))
       @items = 20
     end
     
-    @constructeds = Match.where(user_id: current_user.id, mode_id: [2,3])
-    @matches = @constructed # support new matchlist template
+    @constructeds = current_user.matches.where(mode_id: [2,3])
+    # @matches = @constructed # support new matchlist template
     @constructed = Match.new
     @lastentry = @constructeds.last
     @my_decks = get_my_decks()
