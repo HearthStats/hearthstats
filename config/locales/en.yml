@@ -281,7 +281,7 @@ en:
 
   decks:
     form:
-      name: Name
+      name: Card Name
       class: Class
       notes: Notes
       decklist_etc: ' Decklist, etc'
@@ -295,6 +295,8 @@ en:
     new:
       title: New Deck
       section: Decks
+    new_splash:
+      title: New Deck Class Selection
     public:
       title: Public Deck List
       subtitle: ' all public constructed decks'

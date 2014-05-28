@@ -121,6 +121,39 @@
 		cursor: pointer;
 	}
 }
+.splash-class{
+	display: inline-block;
+	/* A one-second transition was to disturbing for me */
+        -webkit-transition: all 0.3s ease;
+        -moz-transition:    all 0.3s ease;
+        -o-transition:      all 0.3s ease;
+        -ms-transition:     all 0.3s ease;
+        transition:         all 0.3s ease;
+}
 .splash-class:hover{
-	background-color: black;
+	transform:scale(1.5);
+  -ms-transform:scale(1.5); /* IE 9 */
+  -moz-transform:scale(1.5); /* Firefox */
+  -webkit-transform:scale(1.5); /* Safari and Chrome */
+  -o-transform:scale(1.5); /* Opera */
+}
+.splash-class-container{
+	display: inline-block;
+	padding: 10px;
+}
+.classes-cont{
+	display: block;
+	width: 510px;
+	margin: auto;
+}
+.card-count{
+	text-align: right;
+}
+#deck-list{
+	th{
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 400;
+		font-size: 14px;
+		border-bottom: 1px solid black;
+	}
 }
