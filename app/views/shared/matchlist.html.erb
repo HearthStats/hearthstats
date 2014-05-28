@@ -65,69 +65,7 @@
     matches = matches.order(sort_field + " " + (order_field == "asc" ? "ASC" : "DESC"))
     matches = matches.paginate(:page => params[:page], :per_page => items_per_page)
 %>
-<% if filter %>
-  <form id="matchesFilter" method="get" class="data-turboform">
-    <p>
-      <%= t('.filter') %>
-      <select name="klass_id" rel="tooltip" title="Your class">
-        <option value="">- <%= t('.any_class') %> -</option>
-        <% Klass.order("name").each do |klass| %>
-          <option value="<%= klass.id %>" <%= klass_id_field.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
-        <% end %>
-      </select>
-      vs.
-      <select name="oppclass_id" rel="tooltip" title="Your opponent's class">
-        <option value="">- <%= t('.any_class') %> -</option>
-        <% Klass.order("name").each do |klass| %>
-          <option value="<%= klass.id %>" <%= oppclass_id_field.to_s == klass.id.to_s ? "selected=\"selected\"" : "" %>><%= klass.name %></option>
-        <% end %>
-      </select>
-      <select name="coin" rel="tooltip" title="Starting with or without the coin?">
-        <option value="">- <%= t('.coin?') %> -</option>
-        <option value="true" <%= coin_field.to_s == "true" ? "selected=\"selected\"" : "" %>><%= t('.coin') %></option>
-        <option value="false" <%= coin_field.to_s == "false" ? "selected=\"selected\"" : "" %>><%= t('.no_coin') %></option>
-      </select>
-      &nbsp;
-      <%= t('.opponent') %>:
-      <input type="text" size="8" name="oppname" value="<%= oppname_field %>" rel="tooltip" title="Opponent's name - use * for wildcard"/>
-      &nbsp;
-      <%= t('shared.notes') %>:
-      <input type="text" size="12" name="notes" value="<%= notes_field %>" rel="tooltip" title="Notes contains ... - use * for wildcard"/>
-      &nbsp;
-      <input type="submit" id="" class="btn btn-sm btn-primary" value="<%= t('.apply') %>"/>
-      <input type="button" id="clearMatchFiltersButton" class="btn btn-sm dark" value="<%= t('.reset') %>"/>
-    </p>
-    <p>
-      <%= t('.show') %>
-      <select name="items">
-        <% [10, 20, 50, 100].each do |num| %>
-          <option value="<%= num %>" <%= items_per_page.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= num %> <%= t('.per_page') %></option>
-        <% end %>
-      </select>
-      for
-      <select name="days">
-        <option value="all">- <%= t('.all_time') %> -</option>
-        <option value="1" <%= days_filter.to_s == "1" ? "selected=\"selected\"" : "" %>><%= t('.last_24_hours') %></option>
-        <% [7, 30, 90].each do |num| %>
-          <option value="<%= num %>" <%= days_filter.to_s == num.to_s ? "selected=\"selected\"" : "" %>><%= t('.last') %> <%= num %> <%= t('.days') %></option>
-        <% end %>
-      </select>
-      <%= t('.sort') %>
-      <select name="sort">
-        <option value="created_at" <%= sort_field == "created_at" ? "selected=\"selected\"" : "" %>><%= t('.created') %></option>
-        <option value="duration" <%= sort_field == "duration" ? "selected=\"selected\"" : "" %>><%= t('.duration') %></option>
-        <option value="numturns" <%= sort_field == "numturns" ? "selected=\"selected\"" : "" %>><%= t('.rounds') %></option>
-      </select>
-      <select name="order">
-        <option value="asc"><%= t('.ascending') %></option>
-        <option value="desc" <%= order_field == "desc" ? "selected=\"selected\"" : "" %>><%= t('.descending') %></option>
-      </select>
-      &nbsp; - &nbsp;
-      <strong><%= number_to_percentage(winrate, precision: 2) %></strong> <%= t('.win_rate_over') %>
-      <strong><%= number_with_delimiter(matches.count, :delimiter => ',') %></strong> <%= t('.matches_in_this_list') %>
-    </p>
-  </form>
-<% end %>
+<%= render 'filter' %>
 <table class="table table-bordered table-striped table-condensed flip-content">
   <thead class="flip-content">
       <tr>
@@ -146,7 +84,7 @@
     </tr>
   </thead>
   <tbody>
-    <% matches.each do |match| %>
+    <% @matches.each do |match| %>
       <tr>
         <td>
           <% if type == "Arena" %>

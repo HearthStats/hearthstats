@@ -83,7 +83,6 @@ en:
     matchlist:
       filter: Filter
       any_class: any class
-      coin?: Coin?
       coin: Coin
       no_coin: No Coin
       opponent: Opponent
@@ -217,6 +216,11 @@ en:
       dist_desc: Times achieved vs Number of wins in arena run
 
   constructeds:
+    filter:
+      coin?: Coin?
+      apply: Apply
+      reset: Reset
+      per_page: per page
     quickentry:
       quick_entry: Quick Entry
       ranked: Ranked
