@@ -135,6 +135,9 @@ class DecksController < ApplicationController
   # GET /decks/new
   # GET /decks/new.json
   def new
+  	if params[:klass].nil?
+  		redirect_to new_splash_decks_path, alert: "Please select a class" and return
+  	end
     gon.cards = Card.where(klass_id: [nil, params[:klass]])
     @deck = Deck.new
     @deck.is_public = true
