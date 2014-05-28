@@ -75,7 +75,7 @@ class Deck < ActiveRecord::Base
     # proper pulling of data from the first fully
     # saved deck that matches the unique deck's cardstring
     if !self.unique_deck.nil?
-      self.unique_deck.save()
+      self.unique_deck.save
     end
   end
   
