@@ -1,6 +1,7 @@
 class Deck < ActiveRecord::Base
   attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id, :is_public
   
+  acts_as_taggable
   is_impressionable
   opinio_subjectum
   
