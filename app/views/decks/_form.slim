@@ -1,3 +1,5 @@
+small You may have to refresh the page if nothing works.
+
 = form_for(@deck) do |f|
   = f.hidden_field :cardstring
   - if @deck.errors.any?
@@ -21,7 +23,8 @@
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
         .form-group
-          input name="tags" id="tags"
+          input name="tags" id="tags" width="100%"
+          small Tags separated by commas
         .form-group
           span = f.check_box :is_public
           label
