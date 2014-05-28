@@ -23,10 +23,6 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'turbo-sprockets-rails3'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -35,10 +31,19 @@ group :production do
   gem 'mysql2'
 end
 
-gem 'slim-rails'
+# authentication
 gem 'devise'
 gem 'devise-token_authenticatable'
-gem 'jquery-rails'
+gem 'cancan'
+
+# storage
+gem 'fog'
+gem 'dalli' # Memcache store
+gem 'aws-sdk'
+gem 'paperclip'
+
+# frontend
+gem 'slim-rails'
 gem 'will_paginate', '>=3.0.pre2'
 gem 'will_paginate-bootstrap'
 gem 'taps'
@@ -46,8 +51,8 @@ gem 'nokogiri'
 gem 'social-share-button'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'figaro'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'dalli' # Memcache store
 gem 'turbolinks'
 gem 'jquery-turbolinks' # Fixes JS for turbolinks
 gem 'nprogress-rails' # Progress bar for turbolinks
@@ -63,13 +68,9 @@ gem 'carrierwave' # Upload files needed for redactor
 gem 'mini_magick' # Upload images needed for redactor
 gem 'cindy' # Sendy API
 gem 'httparty' # Make them http requests easily
-gem 'paperclip'
-gem 'aws-sdk'
 gem 'select2-rails'
 gem 'opinio' # Comment system
-gem 'fog'
 gem 'unf'
-gem 'cancan'
 gem 'mailboxer' # User notifications and mailing
 gem 'imgkit'
 gem 'rollbar'
