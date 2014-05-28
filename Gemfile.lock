@@ -298,6 +298,11 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.3.2)
+    ransack (1.2.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
     rb-fsevent (0.9.4)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -460,6 +465,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 3.2.13)
   rake
+  ransack
   rb-fsevent
   redactor-rails
   rmagick
