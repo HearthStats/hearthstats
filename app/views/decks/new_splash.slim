@@ -1,2 +1,5 @@
-- @klasses.each do |klass|
-  = link_to klass.name, new_deck_path(klass: klass.id)
+.row
+  - @klasses.each do |klass|
+    .col-md-4.splash-class-container
+      = link_to new_deck_path(klass: klass.id) do
+        = image_tag "/assets/Icons/Classes/full/#{klass.name}_full.png", width: '150px', class: 'splash-class'
