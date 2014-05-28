@@ -19,7 +19,7 @@ class UniqueDeck < ActiveRecord::Base
 
   ### CALLBACKS:
 
-  before_save :update_stats, if: :cardstring_changed?
+  before_save :update_stats
 
   ### VALIDATIONS:
 
@@ -49,6 +49,5 @@ class UniqueDeck < ActiveRecord::Base
     self.num_wins    = self.decks.sum(:user_num_wins)
     self.num_losses  = self.decks.sum(:user_num_losses)
     self.winrate     = num_matches.present? ? (num_wins.to_f / num_matches.to_f * 100) : 0
-
   end
 end

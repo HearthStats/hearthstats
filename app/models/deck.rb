@@ -71,7 +71,7 @@ class Deck < ActiveRecord::Base
   end
   
   def update_unique_deck_details
-    # re-save the qunique deck on order to trigger
+    # re-save the unique deck on order to trigger
     # proper pulling of data from the first fully
     # saved deck that matches the unique deck's cardstring
     if !self.unique_deck.nil?
