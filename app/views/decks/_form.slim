@@ -16,9 +16,7 @@
         .form-group
           = f.label t('decks.form.name')
           = f.text_field :name, class: 'form-control'
-        .form-group
-          = f.label t('decks.form.class')
-          = collection_select :deck, :klass_id, Klass.order("name ASC"), :id, :name, {}, { class: 'form-control' }
+          = f.hidden_field :klass_id, value: "#{params[:klass]}"
         .form-group
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
@@ -40,7 +38,7 @@
             input type="text" class="fuzzy-search form-control"
           ul.list.card-list
             - Card.where(klass_id: [params[:klass],nil]).each do |card|
-              li id="#{card.id}" data-rarity="#{card.rarity_id}"
+              li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
                 img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
                 p.name.hidden = card.name
                 .deckbuilder-actions
@@ -61,10 +59,11 @@ javascript:
 
   var DeckBuilder = new function(){
     var cardArray = [];
+    var cardName = [];
     var totalCardCount = 0;
     var allCards = gon.cards;
 
-    this.addCard = function(id, leg){
+    this.addCard = function(id, name, leg){
       if (totalCardCount >= 30){
         this._errorNotification("deck-max");
         return;
@@ -74,6 +73,7 @@ javascript:
       cardCount = cardArray[id]
       if (cardCount == undefined ){
         cardArray[id] = 1;
+        cardName[id] = name
         totalCardCount = totalCardCount + 1;
       }else if( cardCount == 1 ){
         if (leg == true){
@@ -127,7 +127,7 @@ javascript:
 
     this._addCardToTable = function(i){
       if (cardArray[i] == 1){
-        $("#deck-list").append("<tr id="+i+"><td>"+allCards[i-1].name+"</td><td class='card-count'>"+cardArray[i]+"</tr>");
+        $("#deck-list").append("<tr id="+i+"><td>"+cardName[i]+"</td><td class='card-count'>"+cardArray[i]+"</tr>");
       } else if (cardArray[i] == 2){
         $("#deck-list tr#"+i+" .card-count").text("2");
       }
@@ -156,8 +156,9 @@ javascript:
 
   $(".add").click(function(){
     id = $(this).parent().parent().attr('id');
+    name = $(this).parent().parent().data('name')
     leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
-    DeckBuilder.addCard(id, leg);
+    DeckBuilder.addCard(id, name, leg);
   });
 
   $(".remove").click(function(){

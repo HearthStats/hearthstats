@@ -134,7 +134,7 @@ class DecksController < ApplicationController
   # GET /decks/new
   # GET /decks/new.json
   def new
-    gon.cards = Card.where(klass_id: [nil, params[:klass].to_i])
+    gon.cards = Card.where(klass_id: [nil, params[:klass]])
     @deck = Deck.new
     @deck.is_public = true
     respond_to do |format|
