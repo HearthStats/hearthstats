@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
     c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
     if resource.save
     	# Create Profile
-    	Profile.new(user_id:resource.id).save!
+    	Profile.new(user_id:resource.id).save
 
     	c.subscribe "aQOe0RrtTXddPhL9p28929MA", resource.email
     	c.subscribe "6V763uDbDJuEja62CUwTlthQ", resource.email
