@@ -36,6 +36,7 @@ class DecksController < ApplicationController
         card = Card.find(card_id)
         @card_array << [card, card_quantity]
       end
+      @card_array.sort_by! {|card| card[2]}
     end
     
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)

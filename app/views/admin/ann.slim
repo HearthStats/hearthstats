@@ -6,14 +6,14 @@ h1 New Announcement
       h2 #{pluralize(@ann.errors.count, "error")} prohibited this ann from being saved:
       ul
         - @ann.errors.full_messages.each do |msg|
-          li = msg 
+          li = msg
 
-  = f.label :body
-  = f.text_field :body
+  = f.label :description
+  = f.text_field :description
 
-  = f.submit "Update Profile", class: "pure-button pure-button-success", style: "padding-top: 8px;"
+  = f.submit "Create Announcement", class: "btn btn-lg green", style: "padding-top: 8px;"
 
 h2 Recent Annoucements
 - @annrec.each do |a|
-  p = a.body
+  p = a.description
   

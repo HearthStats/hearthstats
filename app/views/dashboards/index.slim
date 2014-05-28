@@ -47,73 +47,21 @@ div.row
       div.portlet-body
         div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0"
           ul.feeds
-            li
-              div.col1
-                div.cont
-                  div.cont-col1
-                    div.label.label-sm.label-success
-                      i.fa.fa-bullhorn
-                  div.cont-col2
-                    div.desc
-                      = t '.news.huge_update'
-                      = link_to t('.read_more'),  "http://hearthstats.net/changelog"
-              div.col2
-                div.date Thu, 20 Feb 2014 13:33:20
-            li
-              div.col1
-                div.cont
-                  div.cont-col1
-                    div.label.label-sm.label-success
-                      i.fa.fa-bullhorn
-                  div.cont-col2
-                    div.desc
-                      = t '.news.ability_to_rank'
-                      = link_to t('.read_more'),  "http://hearthstats.net/changelog"
-              div.col2
-                div.date Mon, 30 Dec 2013 19:49:14
-            li
-              div.col1
-                div.cont
-                  div.cont-col1
-                    div.label.label-sm.label-success
-                      i.fa.fa-bullhorn
-                  div.cont-col2
-                    div.desc
-                      = t '.news.donation_link'
-                      = link_to t('.read_more'),  "http://hearthstats.net/aboutus"
-              div.col2
-                div.date Mon, 16 Dec 2013 07:17:46
-            li
-              div.col1
-                div.cont
-                  div.cont-col1
-                    div.label.label-sm.label-warning
-                      i.fa.fa-bullhorn
-                  div.cont-col2
-                    div.desc
-                      = t '.news.notes_feature'
-              div.col2
-                div.date Mon, 16 Dec 2013 06:23:12
-            li
-              div.col1
-                div.cont
-                  div.cont-col1
-                    div.label.label-sm.label-info
-                      i.fa.fa-bullhorn
-                  div.cont-col2
-                    div.desc Hearthstone v1.0.0.4217 Patch. <a href="http://www.hearthstats.net/changelog"> Read more </a>
-              div.col2
-                div.date Sat, 14 Dec 2013 21:52:50
-            li
-              div.col1
-                div.cont
-                  div.cont-col1
-                    div.label.label-sm.label-info
-                      i.fa.fa-bullhorn
-                  div.cont-col2
-                    div.desc HearthStats v2 Released. <a href="http://www.hearthstats.net/changelog"> Read more </a>
-              div.col2
-                div.date Tue, 10 Dec 2013 20:48:46
+            - Annoucement.order('created_at DESC').take(6).each do |ann|
+              li
+                div.col1
+                  div.cont
+                    div.cont-col1
+                      div.label.label-sm.label-success
+                        i.fa.fa-bullhorn
+                    div.cont-col2
+                      div.desc
+                        = ann.description
+                div.col2
+                  - if current_user.guest?
+                    div.date = ann.created_at
+                  - else
+                    div.date = ann.created_at.in_time_zone(current_user.profile.time_zone).strftime("%b %d, %Y %H:%M")
 div class="clearfix"
 
 javascript:

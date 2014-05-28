@@ -55,6 +55,8 @@ Hearthstats::Application.routes.draw do
 
   get "admin/export_arena"
   get "admin/export_con"
+  match "admin/ann", to: "admin#ann"
+  post "admin/anncreate"
 
   get "welcome/index"
   get "welcome/demo_user"
