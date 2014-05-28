@@ -16,21 +16,5 @@ class Arena < ActiveRecord::Base
     
     winrate
   end
-  
-  def self.bestuserarena(userid)
-    # this method does not seem to be called from anywhere
-    
-    scope  = Arena.where(user_id: userid).group(:userclass)
-    played = scope.count
-    wins   = scope.where(win: true).count
-    
-    class_arena_rate = {}
-    played.each do |klass, count|
-      class_arena_rate[klass] = ((wins[klass].to_f / count.to_f)*100).round if count > 0
-    end
-    
-    return [Klass.first.name, 0] if class_arena_rate.blank?
-    class_arena_rate.max_by {|x,y| y}
-  end
 
 end
