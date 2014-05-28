@@ -12,7 +12,7 @@ class Klass < ActiveRecord::Base
   
   ### CLASS METHODS:
   
-  def self.class_list
+  def self.list
     ['Druid' ,'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior']
   end
 end
