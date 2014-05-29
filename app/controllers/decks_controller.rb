@@ -86,16 +86,8 @@ class DecksController < ApplicationController
     unique = @deck.unique_deck
     impressionist(unique)
     
-    @card_array = Array.new
-    if !@deck.cardstring.nil?
-      @deck.cardstring.split(",").each do |card_splitted|
-        card_id = card_splitted.split("_")[0]
-        card_quantity = card_splitted.split("_")[1].to_i
-        card = Card.find(card_id)
-        @card_array << [card, card_quantity]
-      end
-    end
-    @matches = unique.matches
+    @card_array = @deck.card_array_from_cardstring
+    @matches    = unique.matches
     
     # Win rates vs each class
     @deckrate = Array.new
