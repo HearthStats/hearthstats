@@ -1,6 +1,7 @@
 class Deck < ActiveRecord::Base
   attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id, :is_public
   
+  acts_as_taggable
   is_impressionable
   opinio_subjectum
   
@@ -70,11 +71,11 @@ class Deck < ActiveRecord::Base
   end
   
   def update_unique_deck_details
-    # re-save the qunique deck on order to trigger
+    # re-save the unique deck on order to trigger
     # proper pulling of data from the first fully
     # saved deck that matches the unique deck's cardstring
     if !self.unique_deck.nil?
-      self.unique_deck.save()
+      self.unique_deck.save
     end
   end
   

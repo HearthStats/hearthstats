@@ -281,14 +281,22 @@ en:
 
   decks:
     form:
-      name: Name
+      name: Card Name
       class: Class
       notes: Notes
       decklist_etc: ' Decklist, etc'
-      this_deck_public: This Deck Is Public
+      this_deck_public: Make Deck Public
+      search: Search
+      count: Count
+      card_limit: Max Card Limit
+      deck_limit: Max Deck Limit
+      no_more: No More In Deck
+      legend: Only one legendary allowed per deck.
     new:
       title: New Deck
       section: Decks
+    new_splash:
+      title: New Deck Class Selection
     public:
       title: Public Deck List
       subtitle: ' all public constructed decks'

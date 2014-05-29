@@ -1,3 +1,19 @@
+// New Deck Builder Styling
+.deckbuilder-img{
+	height: 250px;
+}
+#deckbuilder-list{
+	width: 625px;
+	li{
+		list-style-type: none;
+		display: inline;
+		float: left;
+	}
+	.name{
+		visibility: hidden;
+	}
+}
+
 .highcharts-container{
   overflow: visible !important;
   position: static !important;
@@ -77,4 +93,67 @@
 }
 .toggle-box{
 	padding: 5px;
+}
+.deckbuilder-actions{
+	display: block;
+	padding: 0 10px 0 10px;
+	color: white;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	.add{
+		float: left;
+		background-color: #428BCA;
+		width: 50%;
+		text-align: center;
+		padding: 10px;
+		cursor: pointer;
+	}
+	.remove{
+		float: right;
+		background-color: #D84A38;
+		width: 50%;
+		text-align: center;
+		padding: 10px;
+		cursor: pointer;
+	}
+}
+.splash-class{
+	display: inline-block;
+	/* A one-second transition was to disturbing for me */
+        -webkit-transition: all 0.3s ease;
+        -moz-transition:    all 0.3s ease;
+        -o-transition:      all 0.3s ease;
+        -ms-transition:     all 0.3s ease;
+        transition:         all 0.3s ease;
+}
+.splash-class:hover{
+	transform:scale(1.5);
+  -ms-transform:scale(1.5); /* IE 9 */
+  -moz-transform:scale(1.5); /* Firefox */
+  -webkit-transform:scale(1.5); /* Safari and Chrome */
+  -o-transform:scale(1.5); /* Opera */
+}
+.splash-class-container{
+	display: inline-block;
+	padding: 10px;
+}
+.classes-cont{
+	display: block;
+	width: 510px;
+	margin: auto;
+}
+.card-count{
+	text-align: right;
+}
+#deck-list{
+	th{
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 400;
+		font-size: 14px;
+		border-bottom: 1px solid black;
+	}
 }

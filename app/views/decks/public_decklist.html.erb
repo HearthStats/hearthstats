@@ -126,7 +126,11 @@
         <td class="winrate"><%= number_to_percentage(global ? deck.global_winrate : deck.user_winrate, precision: 1) %></td>
         <td class="num_users"><%= number_with_delimiter(deck.num_users, :delimiter => ',') %></td>
         <% if global %>
-          <td class="author"><%= link_to(deck.user.profile.name.nil? ? "[anonymous]" : deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+        	<% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+          <td class="author">[anonymous]</td>
+          <% else %>
+	          <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user.profile.user_id))%></td>
+          <% end %>
         <% end %>
         <% if !current_user.nil? %>
           <td class="tools">

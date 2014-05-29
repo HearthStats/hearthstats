@@ -36,6 +36,7 @@ class DecksController < ApplicationController
         card = Card.find(card_id)
         @card_array << [card, card_quantity]
       end
+      @card_array.sort_by! {|card| card[2]}
     end
     
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)
@@ -122,10 +123,22 @@ class DecksController < ApplicationController
       format.html # show.html.erb
     end
   end
-  
+
+  def new_splash
+    @klasses = Klass.all
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /decks/new
   # GET /decks/new.json
   def new
+  	if params[:klass].nil?
+  		redirect_to new_splash_decks_path, alert: "Please select a class" and return
+  	end
+    gon.cards = Card.where(klass_id: [nil, params[:klass]])
     @deck = Deck.new
     @deck.is_public = true
     respond_to do |format|
@@ -167,6 +180,8 @@ class DecksController < ApplicationController
     end
     respond_to do |format|
       if @deck.save
+      	@deck.tag_list.add(params[:tags], parse: true)
+        @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
       else
         format.html { render action: "new" }
@@ -241,7 +256,12 @@ class DecksController < ApplicationController
     version_deck(deck)
     redirect_to deck_path(deck), notice: "Deck successfully versioned"
   end
-  
+
+  def tags
+  	response = Deck.tag_counts.map { |tag| {id:tag.name,label:tag.name, value: tag.name} }
+  	render :json => response
+  end
+
   private
   
   def version_deck(deck)

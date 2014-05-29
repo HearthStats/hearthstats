@@ -32,7 +32,6 @@ div.row
       p
         b Class: &nbsp;
         - if @deck.klass.nil?
-          = @deck.race
         - else
           = @deck.klass.name
         | &nbsp; &nbsp;
@@ -66,6 +65,8 @@ div.row
         - @deck.deck_versions.each do |version|
           span.version-number
             = link_to "v#{version.version}", deck_path(@deck, version: version.version)
+      h3 Tags
+      = @deck.tag_list
       h3 Notes
       = sanitize @deck.notes, tags: %w(table tr td span <a href=""></a>), attributes: %w(id class style)
     div.deck-show-graph

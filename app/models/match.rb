@@ -1,5 +1,5 @@
 class Match < ActiveRecord::Base
-  attr_accessible :created_at, :updated_at, :user_id, :klass_id, 
+  attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
   
   ### SCOPES:
@@ -65,12 +65,12 @@ class Match < ActiveRecord::Base
     
     class_arena_rate = {}
     played.each do |klass_id, count|
-      class_arena_rate[klass] = ((wins[klass_id].to_f / count.to_f)*100).round if count > 0
+      class_arena_rate[klass_id] = ((wins[klass_id].to_f / count.to_f)*100).round if count > 0
     end
     
     return [Klass.first.name, 0] if class_arena_rate.blank?
     max = class_arena_rate.max_by {|x,y| y}
-    { Klass.find(max.keys.first) => max.values.first }
+    [ Klass.find(max[0]).name, max[1] ]
   end
   
   def self.to_csv

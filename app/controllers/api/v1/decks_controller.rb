@@ -72,11 +72,7 @@ class Api::V1::DecksController < ApplicationController
   def slots
     user = User.where(userkey: params[:userkey])[0]
 
-    Deck.where(:user_id => user.id).each do |deck|
-      deck.slot = nil
-      deck.active = false
-      deck.save!
-    end
+    Deck.where(:user_id => user.id).update_all(:slot => nil, :active => false)
 
     deckIds = [@req[:slot_1],@req[:slot_2],@req[:slot_3],@req[:slot_4],@req[:slot_5],@req[:slot_6],@req[:slot_7],@req[:slot_8],@req[:slot_9]]
 

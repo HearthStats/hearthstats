@@ -1,0 +1,181 @@
+small You may have to refresh the page if nothing works.
+
+= form_for(@deck) do |f|
+  = f.hidden_field :cardstring
+  - if @deck.errors.any?
+    div#error_explanation
+      h2
+        = pluralize(@deck.errors.count, "error")
+        = t('shared.prohibited_this_being_saved', resouce: t('shared.deck'))
+        |:
+      ul
+        - @deck.errors.full_messages.each do |msg|
+          li = msg
+  .row
+    .col-sm-12.col-md-3.col-lg-3
+      .form-body
+        h3 Deck Details
+        .form-group
+          = f.label t('decks.form.name')
+          = f.text_field :name, class: 'form-control'
+          = f.hidden_field :klass_id, value: "#{params[:klass]}"
+        .form-group
+          = f.label t('decks.form.notes')
+          = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
+        .form-group
+          input name="tags" id="tags" width="100%"
+          small Tags separated by commas
+        .form-group
+          span = f.check_box :is_public
+          label
+            |&nbsp;
+            = t("decks.form.this_deck_public")
+        .form-group
+          = f.submit class: 'btn btn-block green'
+    .col-sm-12.col-md-7.col-lg-7
+      .form-body
+        h3 Deck Builder
+        #deckbuilder-list
+          .form-group
+            label =t("decks.form.search")
+            input type="text" class="fuzzy-search form-control"
+          ul.list.card-list
+            - Card.where(klass_id: [params[:klass],nil]).each do |card|
+              li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
+                img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
+                p.name.hidden = card.name
+                .deckbuilder-actions
+                  .add Add
+                  .remove Remove
+          .cf
+          ul.pagination
+    .col-sm-12.col-md-2.col-lg-2
+      .total-card-count 0 of 30
+      table#deck-list
+        thead
+          th =t("decks.form.name")
+          th =t("decks.form.count")
+        tbody
+
+
+javascript:
+
+  var DeckBuilder = new function(){
+    var cardArray = [];
+    var cardName = [];
+    var totalCardCount = 0;
+    var allCards = gon.cards;
+
+    this.addCard = function(id, name, leg){
+      if (totalCardCount >= 30){
+        this._errorNotification("deck-max");
+        return;
+      }
+      leg = typeof leg !== 'undefined' ? leg : false;
+      id = parseInt(id)
+      cardCount = cardArray[id]
+      if (cardCount == undefined ){
+        cardArray[id] = 1;
+        cardName[id] = name
+        totalCardCount = totalCardCount + 1;
+      }else if( cardCount == 1 ){
+        if (leg == true){
+          this._errorNotification("legend");
+          return
+        }else{
+          cardArray[id] = 2;
+          totalCardCount = totalCardCount + 1;
+        }
+      }else{
+        this._errorNotification("max");
+      }
+      this._addCardToTable(id);
+      this.createCardString();
+    };
+
+    this.removeCard = function(id){
+      id = parseInt(id)
+      cardCount = cardArray[id]
+      if (cardCount == 2 ){
+        cardArray[id] = 1
+        totalCardCount = totalCardCount - 1;
+      }else if( cardCount == 1 ){
+        cardArray[id] = undefined;
+        totalCardCount = totalCardCount - 1;
+      }else{
+        this._errorNotification("none");
+      }
+      this._removeCardToTable(id);
+      this.createCardString();
+    };
+
+    this._errorNotification = function(type){
+      if (type == "max"){
+        console.log("Max Card Limit");
+        toastr.error("#{t('decks.form.card_limit')}");
+      }
+      if (type == "deck-max"){
+        console.log("Max Deck Limit");
+        toastr.error("#{t('decks.form.deck_limit')}");
+      }
+      if (type == "none"){
+        console.log("No More In Deck");
+        toastr.error("#{t('decks.form.no_more')}");
+      }
+      if (type == "legend"){
+        console.log("Only one legendary allowed per deck.");
+        toastr.error("#{t('decks.form.legend')}");
+      }
+    };
+
+    this._addCardToTable = function(i){
+      if (cardArray[i] == 1){
+        $("#deck-list").append("<tr id="+i+"><td>"+cardName[i]+"</td><td class='card-count'>"+cardArray[i]+"</tr>");
+      } else if (cardArray[i] == 2){
+        $("#deck-list tr#"+i+" .card-count").text("2");
+      }
+    };
+
+    this._removeCardToTable = function(i){
+      if (cardArray[i] == 1){
+        $("#deck-list tr#"+i+" .card-count").text("1");
+      } else if (cardArray[i] == undefined){
+        $("#deck-list tr#"+i).fadeOut();
+      }
+      cardCount = cardCount - 1;
+    };
+
+    this.createCardString = function(){
+      var _cardString = [];
+      for (i = 0; i < cardArray.length; ++i) {
+        if (cardArray[i] != undefined){
+          _cardString.push(i+"_"+cardArray[i]);
+        }
+      }
+      $('#deck_cardstring').val(_cardString.join());
+      $('.total-card-count').text(totalCardCount + " of 30");
+    }
+  }
+
+  $(".add").click(function(){
+    id = $(this).parent().parent().attr('id');
+    name = $(this).parent().parent().data('name')
+    leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
+    DeckBuilder.addCard(id, name, leg);
+  });
+
+  $(".remove").click(function(){
+    id = $(this).parent().parent().attr('id');
+    DeckBuilder.removeCard(id);
+  });
+
+  $('#tags').tagsInput();
+
+  var monkeyList = new List('deckbuilder-list', {
+    valueNames: ['name'],
+    page: 6,
+    plugins: [
+      ListFuzzySearch(),
+      ListPagination({})
+    ]
+  });

@@ -55,6 +55,8 @@ Hearthstats::Application.routes.draw do
 
   get "admin/export_arena"
   get "admin/export_con"
+  match "admin/ann", to: "admin#ann"
+  post "admin/anncreate"
 
   get "welcome/index"
   get "welcome/demo_user"
@@ -73,21 +75,19 @@ Hearthstats::Application.routes.draw do
     post 'set_locale', on: :collection
   end
   resources :decks do
+    opinio
     collection do
       get 'active_decks'
       get 'public'
+      get 'new_splash'
       post 'submit_active_decks'
+      get 'copy'
+      get 'tags'
     end
     get 'version', on: :member
     get 'public_show', on: :member
   end
 
-  resources :decks do
-    opinio
-    collection do
-      get 'copy'
-    end
-  end
   resources :dashboards do
     collection do
       get 'race'
