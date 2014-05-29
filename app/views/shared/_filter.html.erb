@@ -1,0 +1,33 @@
+<%= search_form_for @q, url: constructeds_path, html: { class: 'data-turboform' } do |f| %>
+  <p>
+    <%= t('.filter') %>
+    <%= f.select :klass_id_eq, klass_collection_for_select %>
+    vs.
+    <%= f.select :oppclass_id_eq, klass_collection_for_select %>
+    <%= f.select :coin_eq, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']] %>
+    &nbsp;
+    <%= t('.opponent') %>:
+    <%= f.text_field :oppname_cont, { size: 8 } %>
+    &nbsp;
+    <%= t('.shared.notes') %>:
+    <%= f.text_field :notes_cont, { size: 12 } %>
+    &nbsp;
+    
+    <%= f.submit class: 'btn btn-sm btn-primary', id: '', value: t('.apply') %>
+    <%= f.submit class: 'btn btn-sm dark',        id: 'clearMatchFiltersButton', value: t('.reset') %>
+  </p>
+  <p>
+    <%= t('.show') %>
+    <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]) %>
+    <%= t('.for') %>
+    <%= select_tag :days, options_for_select(days_options_for_select, params[:days]) %>
+    <%= t('.sort') %>
+    <%= select_tag :sort, options_for_select(%w(created_at duration numturns).map { |a| [t(".#{a}"), a]}, params[:sort]) %>
+    <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'], [t('.descending'), 'desc']], params[:order]) %>
+    
+    &nbsp; - &nbsp;
+    
+    <strong><%= number_to_percentage(@winrate, precision: 2) %></strong> <%= t('.win_rate_over') %>
+    <strong><%= number_with_delimiter(@matches.count, :delimiter => ',') %></strong> <%= t('.matches_in_this_list') %>
+ </p>
+<% end %>
