@@ -417,8 +417,6 @@ ActiveRecord::Schema.define(:version => 20140528174535) do
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "team_users", :force => true do |t|
     t.integer "user_id"
