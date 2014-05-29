@@ -3,13 +3,18 @@ class ConstructedsController < ApplicationController
   # GET /constructeds
   # GET /constructeds.json
   def index
-    params[:q] ||= {}
+    params[:q]     ||= {}
+    params[:items] ||= 20
+    params[:days]  ||= 30
+    params[:page]  ||= 1
+    
     @q = current_user.matches.ransack(params[:q])
-    @matches = @q.result
-    @items = params['items']
-    if @items.nil? || !((Float(@items) rescue false))
-      @items = 20
-    end
+    @matches = @q.result.limit(params[:items])
+    @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    @matches = @matches.order("#{params[:sort]} #{params[:order]}")
+    @matches = @matches.paginate(page: params[:page], per_page: params[:items])
+    
+    @winrate = @matches.present? ? (@matches.where(result_id: 1).count / @matches.count) * 100 : 0
     
     @constructeds = current_user.matches.where(mode_id: [2,3])
     # @matches = @constructed # support new matchlist template

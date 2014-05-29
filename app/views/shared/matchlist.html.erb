@@ -1,71 +1,5 @@
-<%
-
-  klass_id_field = CGI.parse(request.query_string)['klass_id'].first
-    if ((Float(klass_id_field) rescue false))
-    if type == "Constructed"
-      matches = matches.joins(:deck)
-        matches = matches.where("decks.klass_id = ?", klass_id_field)
-      else
-      matches = matches.joins(:arena_run)
-        matches = matches.where("arena_runs.klass_id = ?", klass_id_field)
-      end
-    else
-      klass_id_field = nil
-    end
-
-  oppclass_id_field = CGI.parse(request.query_string)['oppclass_id'].first
-  if ((Float(oppclass_id_field) rescue false))
-    matches = matches.where(oppclass_id: oppclass_id_field)
-  else
-    oppclass_id_field = nil
-  end
-
-  coin_field = CGI.parse(request.query_string)['coin'].first
-    if coin_field.nil? || !coin_field.match("true|false")
-      coin_field = ""
-    else
-      matches = matches.where(:coin => coin_field == "true" ? true : false)
-    end
-
-  oppname_field = CGI.parse(request.query_string)['oppname'].first
-  if !oppname_field.nil? && !oppname_field.blank?
-    matches = matches.where("oppname like ?", (oppname_field + "").gsub(/\*/, '%'))
-  end
-
-  notes_field = CGI.parse(request.query_string)['notes'].first
-  if !notes_field.nil? && !notes_field.blank?
-    #matches = matches.where("matches.notes like ?", "%" + (notes_field + "").gsub!(/\*/, '%').to_s + "%")
-    matches = matches.where("matches.notes like ?", "%" + (notes_field + "").gsub(/\*/, '%') + "%")
-  end
-
-  items_per_page = CGI.parse(request.query_string)['items'].first
-    if items_per_page.nil? || !((Float(items_per_page) rescue false))
-      items_per_page = 20
-    end
-
-  sort_field = CGI.parse(request.query_string)['sort'].first
-    if sort_field.nil? || !sort_field.match("created_at|duration|numturns")
-      sort_field = "created_at"
-    end
-
-    order_field = CGI.parse(request.query_string)['order'].first
-    if order_field.nil? || !order_field.match("asc|desc")
-      order_field = "desc"
-    end
-
-    days_filter = CGI.parse(request.query_string)['days'].first
-  days_filter = (days_filter.nil? || days_filter.blank?) ? 30 : days_filter
-    if days_filter.to_s != "all" && days_filter.to_s =~ /^[\d]+(\.[\d]+){0,1}$/
-        matches = matches.where('matches.created_at >= ?', days_filter.to_f.days.ago)
-    end
-
-    totalMatches = matches.count
-    winrate = totalMatches > 0 ? (matches.where(:result_id => 1).count / totalMatches.to_f) * 100 : 0
-
-    matches = matches.order(sort_field + " " + (order_field == "asc" ? "ASC" : "DESC"))
-    matches = matches.paginate(:page => params[:page], :per_page => items_per_page)
-%>
-<%= render 'filter' %>
+<%= render 'shared/filter' %>
+>>>>>>> Refactor of match-list and filtering.
 <table class="table table-bordered table-striped table-condensed flip-content">
   <thead class="flip-content">
       <tr>
@@ -133,7 +67,7 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate(matches, renderer: WillPaginate::ActionView::LinkRenderer) %>
+<%= will_paginate(@matches, renderer: WillPaginate::ActionView::LinkRenderer) %>
 <script type="text/javascript">
   $('#matchesFilter select').change(function() {
     $('#matchesFilter').submit();
