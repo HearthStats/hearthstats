@@ -10,8 +10,8 @@ SitemapGenerator::Sitemap.create do
   # Usage: add(path, options={})
   #        (default options are used if you don't specify)
   #
-  # Defaults: :priority => 0.5, :changefreq => 'weekly',
-  #           :lastmod => Time.now, :host => default_host
+  # Defaults: priority: 0.5, changefreq: 'weekly',
+  #           lastmod: Time.now, host: default_host
   #
   # Examples:
   #
@@ -28,12 +28,12 @@ SitemapGenerator::Sitemap.create do
   # Add all articles:
   #
     Profile.find_each do |profile|
-      add profile_path(profile), :lastmod => profile.updated_at
+      add profile_path(profile), lastmod: profile.updated_at
     end
 
   # Add all Decks:
     Deck.find_each do |deck|
-      add public_show_deck_path(deck), :lastmod => deck.updated_at
+      add public_show_deck_path(deck), lastmod: deck.updated_at
     end
 
 end

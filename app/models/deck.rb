@@ -13,7 +13,7 @@ class Deck < ActiveRecord::Base
   belongs_to :unique_deck
   belongs_to :klass
   belongs_to :user
-  has_many :matches, :through => :match_deck, dependent: :destroy
+  has_many :matches, through: :match_deck, dependent: :destroy
   has_many :match_deck
   has_many :deck_versions
   has_many :constructeds
@@ -178,7 +178,7 @@ class Deck < ActiveRecord::Base
   end
   
   def get_user_copy(user)
-    return Deck.where(:user_id => user.id, :unique_deck_id => self.unique_deck_id)[0]
+    return Deck.where(user_id: user.id, unique_deck_id: self.unique_deck_id)[0]
   end
   
   def cards

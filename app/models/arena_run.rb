@@ -3,9 +3,9 @@ class ArenaRun < ActiveRecord::Base
 
   has_many :arenas
   has_many :match_run
-  has_many :matches, :through => :match_run, dependent: :destroy
-  validates :dust, :numericality => { :greater_than_or_equal_to => 0 }
-  validates :gold, :numericality => { :greater_than_or_equal_to => 0 }
+  has_many :matches, through: :match_run, dependent: :destroy
+  validates :dust, numericality: { greater_than_or_equal_to: 0 }
+  validates :gold, numericality: { greater_than_or_equal_to: 0 }
 
   belongs_to :klass
 
@@ -16,15 +16,15 @@ class ArenaRun < ActiveRecord::Base
   end
 
   def num_wins
-    return self.matches.where(:result_id => 1).count
+    return self.matches.where(result_id: 1).count
   end
 
   def num_losses
-    return self.matches.where(:result_id => 2).count
+    return self.matches.where(result_id: 2).count
   end
 
   def self.averageWins(klass_id,userid)
-    arena_games = ArenaRun.where(user_id: userid, :klass_id=> klass_id)
+    arena_games = ArenaRun.where(user_id: userid, klass_id: klass_id)
     wins = arena_games.map { |e| e.matches.where( result_id: 1).count }
     average_win = wins.compact.inject{ |sum, el| sum + el }.to_f / wins.size
     average_win = -1 if average_win.nan?

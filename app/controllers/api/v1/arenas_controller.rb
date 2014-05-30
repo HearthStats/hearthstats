@@ -1,13 +1,13 @@
 class Api::V1::ArenasController < ApplicationController
   before_filter :validate_userkey, :get_user_api
-  skip_before_filter :get_user_api, :only => :show
+  skip_before_filter :get_user_api, only: :show
   respond_to :json
 
   def show
     user = User.where(userkey: params[:userkey])[0]
     api_response = {status: "success", data: ArenaRun.classArray(arena_run.klass.id) }
 
-    render :json => api_response
+    render json: api_response
   end
 
   def new

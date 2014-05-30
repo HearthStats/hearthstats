@@ -1,11 +1,11 @@
 class DecksController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :public, :public_show]
-  caches_action :public_show, :expires_in => 1.day
+  before_filter :authenticate_user!, except: [:show, :public, :public_show]
+  caches_action :public_show, expires_in: 1.day
   
   # GET /decks
   # GET /decks.json
   def index
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => current_user.id)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: current_user.id)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -64,7 +64,7 @@ class DecksController < ApplicationController
       #calculate deck winrate
       
       @winrate = matches.count > 0 ? get_win_rate(matches) : 0
-      Rails.cache.write("deck_stats" + @deck.id.to_s, [@deckrate,@firstrate,@secrate,@winrate], :expires_in => 1.days)
+      Rails.cache.write("deck_stats" + @deck.id.to_s, [@deckrate,@firstrate,@secrate,@winrate], expires_in: 1.days)
     else
       @deckrate = deck_cache_stats[0]
       @firstrate = deck_cache_stats[1]
@@ -185,7 +185,7 @@ class DecksController < ApplicationController
   # PUT /decks/1.json
   def update
     @deck = Deck.find(params[:id])
-    @deck.constructeds.update_all(:deckname => params[:deck]['name'])
+    @deck.constructeds.update_all(deckname: params[:deck]['name'])
     expire_fragment(@deck)
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
@@ -215,19 +215,19 @@ class DecksController < ApplicationController
   end
   
   def active_decks
-    @activeDecks = Deck.where(:user_id => current_user.id, active: true)
+    @activeDecks = Deck.where(user_id: current_user.id, active: true)
     @myDecks = getMyDecks()
   end
   
   def submit_active_decks
     saves = 0
-    Deck.where(:user_id => current_user.id).update_all(:active => nil)
+    Deck.where(user_id: current_user.id).update_all(active: nil)
     (1..9).each do |i|
       if params[i.to_s].blank?
         next
         saves += 1
       end
-      deck = Deck.where(:user_id => current_user.id, :name => params[i.to_s])[0]
+      deck = Deck.where(user_id: current_user.id, name: params[i.to_s])[0]
       deck.slot = i
       deck.active = true
       
@@ -251,7 +251,7 @@ class DecksController < ApplicationController
 
   def tags
     response = Deck.tag_counts.map { |tag| {id:tag.name,label:tag.name, value: tag.name} }
-    render :json => response
+    render json: response
   end
 
   private
@@ -267,7 +267,7 @@ class DecksController < ApplicationController
   end
   
   def getMyDecks()
-    Deck.where(:user_id => current_user.id).order(:klass_id, :name).all
+    Deck.where(user_id: current_user.id).order(:klass_id, :name).all
   end
   
   def text_to_deck(text)

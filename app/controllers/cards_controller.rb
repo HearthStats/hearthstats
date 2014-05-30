@@ -76,7 +76,7 @@ class CardsController < ApplicationController
     @hash = JSON.parse @jsonResult
 
     @hash.each do |cardData|
-      card = Card.find(:first, :conditions => ['hearthhead_id = ?', cardData["hearthhead_id"]])
+      card = Card.find(:first, conditions: ['hearthhead_id = ?', cardData["hearthhead_id"]])
       if(card == nil)
         card = Card.new()
       end

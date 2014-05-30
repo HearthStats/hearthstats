@@ -16,7 +16,7 @@ class TourniesController < ApplicationController
     # cid = Tourny.where(complete: false).last.challonge_id
     # user.tourny_id = cid
     # challonge = Challonge::Tournament.find(cid)
-    # ct = Challonge::Participant.create(:name => user.profile.bnetid, :tournament => challonge)
+    # ct = Challonge::Participant.create(name: user.profile.bnetid, tournament: challonge)
     # if user.save and ct.errors.full_messages.blank?
     #   redirect_to root_path, notice: 'You entered the tournament!'
     # else

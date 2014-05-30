@@ -95,7 +95,7 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Match.find(params[:id])
-    deck = Deck.where(:user_id => current_user.id, :name => params[:deckname])[0]
+    deck = Deck.where(user_id: current_user.id, name: params[:deckname])[0]
     matchdeck = @constructed.match_deck
     matchdeck.deck_id = deck.id
     matchdeck.save!
@@ -138,7 +138,7 @@ class ConstructedsController < ApplicationController
   def stats
 
     # get all matches
-    matches = Match.where(:mode_id => [2,3])
+    matches = Match.where(mode_id: [2,3])
 
     # filter by number of days to show
     daysQuery = params['days']
@@ -181,7 +181,7 @@ class ConstructedsController < ApplicationController
     end
     
     if @active
-      personalMatches = Match.includes(:deck).where('decks.active' => true, user_id: current_user.id)
+      personalMatches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
     else
       personalMatches = matches.where(user_id: current_user.id)
     end
@@ -212,7 +212,7 @@ class ConstructedsController < ApplicationController
     winrates = Array.new
     (1..9).each_with_index do |c,i|
       classgames = matches.where( klass_id: c)
-      wins = classgames.where(:result_id => 1).count
+      wins = classgames.where(result_id: 1).count
       totgames = classgames.count
       if totgames == 0
         winrates[i] = 0
@@ -225,7 +225,7 @@ class ConstructedsController < ApplicationController
 
   def getMyDecks()
     return Deck.joins(:klass)
-      .where(:user_id => current_user.id)
+      .where(user_id: current_user.id)
       .order("klasses.name, decks.name").all.compact
   end
 

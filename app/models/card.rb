@@ -9,7 +9,7 @@ class Card < ActiveRecord::Base
   belongs_to :card_set
   belongs_to :type
   
-  has_many :unique_decks, :through => :unique_deck_card
+  has_many :unique_decks, through: :unique_deck_card
   has_many :unique_deck_card
   
   ### VALIDATIONS:

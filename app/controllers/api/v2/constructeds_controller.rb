@@ -5,7 +5,7 @@ class Api::V2::ConstructedsController < ApplicationController
   respond_to :json
 
   def show
-    render :json => "hello"
+    render json: "hello"
   end
 
   def new

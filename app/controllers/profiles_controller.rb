@@ -87,7 +87,7 @@ class ProfilesController < ApplicationController
 
     # User's Highest Winning Decks
     @topdeck = Deck.bestuserdeck(@user.id)
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => @user.id, is_public: true)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true)
 
   end
 
@@ -125,8 +125,8 @@ class ProfilesController < ApplicationController
     (1..Klass.all.count).each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
-      totalwins = Match.where( mode_id: 1, :klass_id => c, :result_id => 1, :user_id => @user.id ).count
-      totalgames = Match.where( mode_id: 1, :klass_id => c, :user_id => @user.id ).count
+      totalwins = Match.where( mode_id: 1, klass_id: c, result_id: 1, user_id: @user.id ).count
+      totalgames = Match.where( mode_id: 1, klass_id: c, user_id: @user.id ).count
       if totalgames == 0
         @classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else

@@ -27,7 +27,7 @@ class AdditionalController < ApplicationController
   end
 
   def serverupgrade
-    render :layout => false
+    render layout: false
   end
 
   def news
@@ -43,14 +43,16 @@ class AdditionalController < ApplicationController
       feeds.each do |feed_url, feed|
         next if feed == 0 || feed == 500
         feed.entries.each do |entry|
-          sanitized_summary = Sanitize.clean(entry.summary,
-                                            :elements =>['a', 'img', 'b'],
-                                            :attributes => {
-                                                          'a'          => ['href', 'title'],
-                                                          'blockquote' => ['cite'],
-                                                          'img'        => ['alt', 'src', 'title']
-                                                          }
-                                            )
+          sanitized_summary = Sanitize.clean(
+            entry.summary,
+            elements:   ['a', 'img', 'b'],
+            attributes: {
+              'a'          => ['href', 'title'],
+              'blockquote' => ['cite'],
+              'img'        => ['alt', 'src', 'title']
+            }
+          )
+          
           @items << [entry.title, entry.url, sanitized_summary , entry.published]
         end
 
@@ -58,7 +60,7 @@ class AdditionalController < ApplicationController
 
       @items.sort_by! { |a| a[3] }
       @items.reverse!
-      Rails.cache.write("news", @items, :expires_in => 1.hours)
+      Rails.cache.write("news", @items, expires_in: 1.hours)
     end
 
 

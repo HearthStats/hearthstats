@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     if current_user && !current_user.guest? && !current_user.profile.nil?
       { locale: current_user.profile.locale || I18n.default_locale }
     else
-      { :locale => I18n.locale }.merge options
+      { locale: I18n.locale }.merge options
     end
   end
 
@@ -50,7 +50,8 @@ class ApplicationController < ActionController::Base
     userkey = User.where(userkey: params[:userkey])
     unless userkey.exists? && !params[:userkey].nil?
       api_response = {status: "error", message: "User Key Error"}
-      render :json => api_response and return
+      render json: api_response
+      return false
     end
   end
 

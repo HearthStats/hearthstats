@@ -1,8 +1,8 @@
 class Api::V1::DecksController < ApplicationController
   before_filter :validate_userkey, :get_user_api
-  skip_before_filter :get_user_api, :only => :show
-  skip_before_filter :get_user_api, :only => :find
-  skip_before_filter :validate_userkey, :only => :find
+  skip_before_filter :get_user_api, only: :show
+  skip_before_filter :get_user_api, only: :find
+  skip_before_filter :validate_userkey, only: :find
 
   respond_to :json
 
@@ -11,11 +11,17 @@ class Api::V1::DecksController < ApplicationController
     begin
       decks = Deck.where(user_id: user.id)
     rescue
-      api_response = {status: "error", message: "Error getting user's decks"}
+      api_response = {
+        status:  "error",
+        message: "Error getting user's decks"
+      }
     else
-      api_response = {status: "success", data: decks}
+      api_response = {
+        status: "success",
+        data:   decks
+      }
     end
-    render :json => api_response
+    render json: api_response
   end
 
   def find
@@ -53,26 +59,42 @@ class Api::V1::DecksController < ApplicationController
     # html << "</div>"
 
     if deck.is_public
-      render :json => {status: "success", data: {deck: deck, deck_array: res_array}}
+      render json: {
+        status: "success",
+        data: {
+          deck:       deck,
+          deck_array: res_array
+        }
+      }
     else
-      render :json => {status: "error", message: "Deck is private"}
+      render json: {
+        status:  "error",
+        message: "Deck is private"
+      }
     end
   end
 
   def activate
     deck = Deck.find(@req[:deck_id])
     if deck.user.id != @user.id
-      render json: {status: "error", message: "Deck does not belong to this user."} and return
+      render json: {
+        status:  "error",
+        message: "Deck does not belong to this user."
+      }
+      return
     end
     deck.active = !deck.active
     deck.save!
-    render json: {status: "success", data: deck}
+    render json: {
+      status: "success",
+      data:   deck
+    }
   end
 
   def slots
     user = User.where(userkey: params[:userkey])[0]
 
-    Deck.where(:user_id => user.id).update_all(:slot => nil, :active => false)
+    Deck.where(user_id: user.id).update_all(slot: nil, active: false)
 
     deckIds = [@req[:slot_1],@req[:slot_2],@req[:slot_3],@req[:slot_4],@req[:slot_5],@req[:slot_6],@req[:slot_7],@req[:slot_8],@req[:slot_9]]
 
@@ -85,9 +107,17 @@ class Api::V1::DecksController < ApplicationController
     end
 
     if errors.size > 0
-      render json: {status: "fail", data: "", message: errors.join(" ")}
+      render json: {
+        status:  "fail",
+        data:    "",
+        message: errors.join(" ")
+      }
     else
-      render json: {status: "success", data: "", message: "Deck slots updated"}
+      render json: {
+        status:  "success",
+        data:    "",
+        message: "Deck slots updated"
+      }
     end
   end
 
@@ -97,7 +127,7 @@ class Api::V1::DecksController < ApplicationController
     if deck_id.nil?
       return nil
     end
-    deck = Deck.where(:user_id => user.id, :id => deck_id)[0]
+    deck = Deck.where(user_id: user.id, id: deck_id)[0]
     if deck.nil?
       return "No deck with ID " + deck_id.to_s + " found for user #" + user.id.to_s + "."
     end

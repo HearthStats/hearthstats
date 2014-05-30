@@ -1,5 +1,5 @@
 ActiveAdmin.register Deck do
-  actions :all, :except => [:new]
+  actions :all, except: [:new]
   remove_filter :constructeds
   remove_filter :unique_deck
   remove_filter :user
