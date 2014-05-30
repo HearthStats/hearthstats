@@ -49,8 +49,8 @@ class ApplicationController < ActionController::Base
   def validate_userkey
     userkey = User.where(userkey: params[:userkey])
     unless userkey.exists? && !params[:userkey].nil?
-    	api_response = {status: "error", message: "User Key Error"}
-    	render :json => api_response and return
+      api_response = {status: "error", message: "User Key Error"}
+      render :json => api_response and return
     end
   end
 
@@ -142,11 +142,11 @@ class ApplicationController < ActionController::Base
   end
 
   def newuser?(userid)
-  	user = User.find(userid)
-  	games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
-  	return true if games_count == 0
+    user = User.find(userid)
+    games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
+    return true if games_count == 0
 
-  	false
+    false
   end
 
 

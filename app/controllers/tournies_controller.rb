@@ -18,9 +18,9 @@ class TourniesController < ApplicationController
     # challonge = Challonge::Tournament.find(cid)
     # ct = Challonge::Participant.create(:name => user.profile.bnetid, :tournament => challonge)
     # if user.save and ct.errors.full_messages.blank?
-		# 	redirect_to root_path, notice: 'You entered the tournament!'
+    #   redirect_to root_path, notice: 'You entered the tournament!'
     # else
-    # 	redirect_to root_path, alert: "You were not added to the tournament. #{ct.errors.full_messages}"
+    #   redirect_to root_path, alert: "You were not added to the tournament. #{ct.errors.full_messages}"
     # end
   end
 
@@ -55,7 +55,7 @@ class TourniesController < ApplicationController
 
     respond_to do |format|
       if t.save
-      	localtourny(t.id,params[:type])
+        localtourny(t.id,params[:type])
         format.html { redirect_to root_path, notice: 'Tourny was successfully created.' }
       else
         flash[:notice] = t.errors.full_messages
@@ -67,12 +67,12 @@ class TourniesController < ApplicationController
   private
 
   def challongesignin
-  	Challonge::API.username = 'HearthStats'
-		Challonge::API.key = 'K0A8CfyGghLAJXL8klGajpjk32LfTMuXqMOofpgS'
+    Challonge::API.username = 'HearthStats'
+    Challonge::API.key = 'K0A8CfyGghLAJXL8klGajpjk32LfTMuXqMOofpgS'
   end
 
   def localtourny(cid, status)
-  	tourny = Tourny.new
+    tourny = Tourny.new
     tourny.challonge_id = cid
     tourny.status = status
     tourny.save

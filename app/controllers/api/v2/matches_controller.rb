@@ -29,11 +29,11 @@ class Api::V2::MatchesController < ApplicationController
       result = result.where(coin: coin)
     end
     if params[:season].present?
-    	if params[:season] == "0"
-	      result = result.where(season_id: current_season)
-	    else
-	      result = result.where(season_id: params[:season])
-	    end
+      if params[:season] == "0"
+        result = result.where(season_id: current_season)
+      else
+        result = result.where(season_id: params[:season])
+      end
     end
     render json: { status: "success", data: result }
   end

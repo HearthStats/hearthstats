@@ -27,37 +27,37 @@ class AdditionalController < ApplicationController
   end
 
   def serverupgrade
-  	render :layout => false
+    render :layout => false
   end
 
   def news
 
-  	@items = Rails.cache.fetch("news")
+    @items = Rails.cache.fetch("news")
     if @items.nil?
       feeds_urls = ["http://hearthstone.blizzpro.com/feed/","http://us.battle.net/hearthstone/en/feed/news","http://www.liquidhearth.com/rss/news.xml", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
 
-	  	feeds = Feedjira::Feed.fetch_and_parse(feeds_urls)
+      feeds = Feedjira::Feed.fetch_and_parse(feeds_urls)
 
-	    @items = Array.new
+      @items = Array.new
 
-	    feeds.each do |feed_url, feed|
-	    	next if feed == 0 || feed == 500
-	      feed.entries.each do |entry|
-	      	sanitized_summary = Sanitize.clean(entry.summary,
-																	      		:elements =>['a', 'img', 'b'],
-																	      		:attributes => {
-																												  'a'          => ['href', 'title'],
-																												  'blockquote' => ['cite'],
-																												  'img'        => ['alt', 'src', 'title']
-																													}
-																						)
-	        @items << [entry.title, entry.url, sanitized_summary , entry.published]
-	      end
+      feeds.each do |feed_url, feed|
+        next if feed == 0 || feed == 500
+        feed.entries.each do |entry|
+          sanitized_summary = Sanitize.clean(entry.summary,
+                                            :elements =>['a', 'img', 'b'],
+                                            :attributes => {
+                                                          'a'          => ['href', 'title'],
+                                                          'blockquote' => ['cite'],
+                                                          'img'        => ['alt', 'src', 'title']
+                                                          }
+                                            )
+          @items << [entry.title, entry.url, sanitized_summary , entry.published]
+        end
 
-	    end
+      end
 
-	    @items.sort_by! { |a| a[3] }
-	    @items.reverse!
+      @items.sort_by! { |a| a[3] }
+      @items.reverse!
       Rails.cache.write("news", @items, :expires_in => 1.hours)
     end
 

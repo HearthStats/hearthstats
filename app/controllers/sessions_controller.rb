@@ -5,7 +5,7 @@ class SessionsController < Devise::RegistrationsController
 
   # GET /resource/sign_in
   def new
-  	destroy_guest
+    destroy_guest
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource))
@@ -40,9 +40,9 @@ class SessionsController < Devise::RegistrationsController
   end
 
   def destroy_guest
-  	if session[:guest_user_id]
-			User.find(session[:guest_user_id]).destroy
-			session[:guest_user_id] = nil
-		end
+    if session[:guest_user_id]
+      User.find(session[:guest_user_id]).destroy
+      session[:guest_user_id] = nil
+    end
   end
 end

@@ -127,9 +127,9 @@ class DecksController < ApplicationController
   # GET /decks/new
   # GET /decks/new.json
   def new
-  	if params[:klass].nil?
-  		redirect_to new_splash_decks_path, alert: "Please select a class" and return
-  	end
+    if params[:klass].nil?
+      redirect_to new_splash_decks_path, alert: "Please select a class" and return
+    end
     gon.cards = Card.where(klass_id: [nil, params[:klass]])
     @deck = Deck.new
     @deck.is_public = true
@@ -172,7 +172,7 @@ class DecksController < ApplicationController
     end
     respond_to do |format|
       if @deck.save
-      	@deck.tag_list.add(params[:tags], parse: true)
+        @deck.tag_list.add(params[:tags], parse: true)
         @deck.save
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
       else
@@ -250,8 +250,8 @@ class DecksController < ApplicationController
   end
 
   def tags
-  	response = Deck.tag_counts.map { |tag| {id:tag.name,label:tag.name, value: tag.name} }
-  	render :json => response
+    response = Deck.tag_counts.map { |tag| {id:tag.name,label:tag.name, value: tag.name} }
+    render :json => response
   end
 
   private

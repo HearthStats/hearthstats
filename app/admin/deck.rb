@@ -1,5 +1,5 @@
 ActiveAdmin.register Deck do
-	actions :all, :except => [:new]
+  actions :all, :except => [:new]
   remove_filter :constructeds
   remove_filter :unique_deck
   remove_filter :user
@@ -12,7 +12,7 @@ ActiveAdmin.register Deck do
 
 
   index do
-  	column :name
+    column :name
     column "Num Matches", :user_num_matches
     column "Wins", :user_num_wins
     column "Losses", :user_num_losses
@@ -20,9 +20,9 @@ ActiveAdmin.register Deck do
       deck.matches.where(result_id: 3).count
     end
     column "Win Rate", :user_winrate do |wr|
-    	if wr.user_winrate
-    		wr.user_winrate.round(2)
-    	end
+      if wr.user_winrate
+        wr.user_winrate.round(2)
+      end
     end
     column :created_at
     default_actions
