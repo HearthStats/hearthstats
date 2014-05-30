@@ -28,16 +28,7 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     impressionist(@deck) unless params[:version]
     
-    @card_array = Array.new
-    if !@deck.cardstring.nil?
-      @deck.cardstring.split(",").each do |card_splitted|
-        card_id = card_splitted.split("_")[0]
-        card_quantity = card_splitted.split("_")[1].to_i
-        card = Card.find(card_id)
-        @card_array << [card, card_quantity]
-      end
-      @card_array.sort_by! {|card| card[2]}
-    end
+    @card_array = @deck.card_array_from_cardstring
     
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)
     if deck_cache_stats.nil?
