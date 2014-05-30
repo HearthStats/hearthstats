@@ -9,13 +9,12 @@ class UniqueDeck < ActiveRecord::Base
 
   has_many :decks
   has_many :deck_versions
-
+  
   has_many :cards, :through => :unique_deck_card
   has_many :unique_deck_card
-
+  
   has_many :matches, :through => :match_unique_deck
   has_many :match_unique_deck
-
 
   ### CALLBACKS:
 

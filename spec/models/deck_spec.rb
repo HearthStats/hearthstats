@@ -41,4 +41,16 @@ describe Deck do
     deck.unique_deck_id.should == UniqueDeck.last.id
   end
   
+  describe '#card_array_from_cardstring' do
+    it 'returns the cards ordered by mana and then name' do
+      card1 = create :card, id: 500, mana: 1, name: 'aaa'
+      card2 = create :card, id: 600, mana: 1, name: 'bbb'
+      card3 = create :card, id: 700, mana: 2, name: 'ccc'
+      cardstring = "700_1,600_1,500_2"
+      deck = build :deck, cardstring: cardstring
+      
+      deck.card_array_from_cardstring.should == [[card1,2], [card2,1],[card3,1]]
+    end
+  end
+  
 end
