@@ -41,7 +41,7 @@ class AdditionalController < ApplicationController
       @items = Array.new
 
       feeds.each do |feed_url, feed|
-        next if feed == 0 || feed == 500
+        next if [0, 301, 500].include? feed
         feed.entries.each do |entry|
           sanitized_summary = Sanitize.clean(
             entry.summary,
