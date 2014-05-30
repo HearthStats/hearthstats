@@ -15,6 +15,7 @@ group :development do
   gem 'pry'
   gem 'seed_dump'
   gem 'rack-mini-profiler'
+  gem 'database_cleaner'
 end
 
 group :assets do
@@ -86,7 +87,7 @@ gem 'ransack' # the new meta_search
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
-  gem 'database_cleaner', '>= 0.9.1'
+  gem 'database_cleaner'
   gem 'email_spec', '>= 1.4.0'
   gem 'cucumber-rails', '>= 1.3.0', require: false
   gem 'launchy', '>= 2.1.2'
