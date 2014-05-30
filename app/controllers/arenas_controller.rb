@@ -36,7 +36,7 @@ class ArenasController < ApplicationController
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
     
-    @winrate = @matches.present? ? (@matches.where(result_id: 1).count / @matches.count) * 100 : 0 
+    @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
   end
   
   # GET /arenas/new
