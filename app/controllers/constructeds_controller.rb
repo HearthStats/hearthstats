@@ -8,19 +8,17 @@ class ConstructedsController < ApplicationController
     params[:days]  ||= 30
     params[:page]  ||= 1
     
-    @q = current_user.matches.ransack(params[:q])
+    @q = current_user.matches.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
     @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
     
-    @winrate = @matches.present? ? (@matches.where(result_id: 1).count / @matches.count) * 100 : 0
+    @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
     
     @constructeds = current_user.matches.where(mode_id: [2,3])
-    # @matches = @constructed # support new matchlist template
-    @constructed = Match.new
-    @lastentry = @constructeds.last
-    @my_decks = get_my_decks()
+    @lastentry    = @constructeds.last
+    @myDecks      = getMyDecks()
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
