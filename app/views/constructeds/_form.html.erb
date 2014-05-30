@@ -46,7 +46,7 @@
           <div class="yourfield">
             <%= f.label "Deck Name" %>
             <br />
-              <%= select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}, @constructed.deck.name)) %>
+              <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}, @constructed.deck.name)) %>
           </div>
         </div>
         <div class="col-md-6">

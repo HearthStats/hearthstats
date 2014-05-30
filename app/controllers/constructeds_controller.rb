@@ -13,7 +13,7 @@ class ConstructedsController < ApplicationController
     @matches = @constructed # support new matchlist template
     @constructed = Match.new
     @lastentry = @constructeds.last
-    @myDecks = getMyDecks()
+    @my_decks = get_my_decks()
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
@@ -39,14 +39,14 @@ class ConstructedsController < ApplicationController
     end
     @constructed = Match.new
     @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
-    @myDecks = getMyDecks()
+    @my_decks = get_my_decks()
   end
 
   # GET /constructeds/1/edit
   def edit
     @constructed = Match.find(params[:id])
     canedit(@constructed)
-    @myDecks = getMyDecks()
+    @my_decks = get_my_decks()
   end
   
   # POST /constructeds
@@ -141,36 +141,36 @@ class ConstructedsController < ApplicationController
     matches = Match.where(mode_id: [2,3])
 
     # filter by number of days to show
-    daysQuery = params['days']
-    @daysFilter = daysQuery != nil && daysQuery != 'all' ? true : false
-    if @daysFilter
-     @daysFilter = daysQuery.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? daysQuery.to_f : 30
-     matches = matches.where('matches.created_at >= ?', @daysFilter.days.ago)
+    days_query = params['days']
+    @days_filter = days_query != nil && days_query != 'all' ? true : false
+    if @days_filter
+     @days_filter = days_query.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? days_query.to_f : 30
+     matches = matches.where('matches.created_at >= ?', @days_filter.days.ago)
     else
-      @daysFilter = "all"
+      @days_filter = "all"
     end
 
     # filter by first/second
-    @firstFilter = params['first']
-    if @firstFilter == "yes"
+    @first_filter = params['first']
+    if @first_filter == "yes"
       matches = matches.where(coin: false)
     else
-      if @firstFilter == "no"
+      if @first_filter == "no"
         matches = matches.where(coin: true)
       else
-        @firstFilter = ""
+        @first_filter = ""
       end
     end
 
     # filter by mode
-    @modeFilter = params['mode']
-    if @modeFilter == "casual"
+    @mode_filter = params['mode']
+    if @mode_filter == "casual"
       matches = matches.where(mode_id: 2)
     else
-      if @modeFilter == "ranked"
+      if @mode_filter == "ranked"
         matches = matches.where(mode_id: 3)
       else
-        @modeFilter = ""
+        @mode_filter = ""
       end
     end
 
@@ -181,23 +181,23 @@ class ConstructedsController < ApplicationController
     end
     
     if @active
-      personalMatches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
+      personal_Matches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
     else
-      personalMatches = matches.where(user_id: current_user.id)
+      personal_matches = matches.where(user_id: current_user.id)
     end
     
     # build win rates while playing each class
-    @personalWinRates = getClassWinRatesForMatches(personalMatches);
-    @globalWinRates = getClassWinRatesForMatches(matches);
+    @personal_win_rates = get_class_win_rates_for_matches(personal_matches);
+    @global_win_rates = get_class_win_rates_for_matches(matches);
     
     @matches = matches
     # calculate number of games per class
     @classes = Klass.list
-    @numMatchesPersonal = Hash.new
-    @numMatchesGlobal = Hash.new
+    @num_matches_personal = Hash.new
+    @num_matches_global = Hash.new
     @classes.each_with_index do |c,i|
-      @numMatchesGlobal.store(c, matches.where(klass_id: i+1).count)
-      @numMatchesPersonal.store(c, personalMatches.where( klass_id: i+1).count)
+      @num_matches_global.store(c, matches.where(klass_id: i+1).count)
+      @num_matches_personal.store(c, personal_matches.where( klass_id: i+1).count)
     end
 
   end
@@ -208,7 +208,7 @@ class ConstructedsController < ApplicationController
     Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
 
-  def getClassWinRatesForMatches(matches)
+  def get_class_win_rates_for_matches(matches)
     winrates = Array.new
     (1..9).each_with_index do |c,i|
       classgames = matches.where( klass_id: c)
@@ -223,7 +223,7 @@ class ConstructedsController < ApplicationController
     return winrates
   end
 
-  def getMyDecks()
+  def get_my_decks
     return Deck.joins(:klass)
       .where(user_id: current_user.id)
       .order("klasses.name, decks.name").all.compact

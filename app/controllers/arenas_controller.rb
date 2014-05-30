@@ -176,7 +176,7 @@ class ArenasController < ApplicationController
     return all_klasses
   end
   
-  def getClassWinRatesForMatches(matches)
+  def get_class_win_rates_for_matches(matches)
     winrates = Array.new
     (1..9).each_with_index do |c,i|
       classgames = matches.where( klass_id: c)

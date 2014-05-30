@@ -2,8 +2,8 @@
 <div id="winrate_container" style="min-width: 310px; height: 400px; margin: 0 auto; margin-right:20px;"></div>
 
 <script type="text/javascript">
-	var numMatchesPerClassGlobal = <%= raw @numMatchesGlobal.to_json %>;
-	var numMatchesPerClassPersonal = <%= raw @numMatchesPersonal.to_json %>;
+	var numMatchesPerClassGlobal = <%= raw @num_matches_global.to_json %>;
+	var numMatchesPerClassPersonal = <%= raw @num_matches_personal.to_json %>;
   $('#winrate_container').highcharts({
 
       chart: {
@@ -56,11 +56,11 @@
 
       series: [{
           name: 'Personal',
-          data: <%= raw @personalWinRates.to_json %>,
+          data: <%= raw @personal_win_rates.to_json %>,
           stack: 'Druid'
       }, {
           name: 'Global',
-          data: <%= raw @globalWinRates.to_json %>,
+          data: <%= raw @global_win_rates.to_json %>,
           stack: 'male'
       }],
     colors: [

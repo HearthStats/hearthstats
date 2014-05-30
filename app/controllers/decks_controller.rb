@@ -141,11 +141,11 @@ class DecksController < ApplicationController
   # GET /decks/1/copy
   def copy
     @deck = Deck.find(params[:id])
-    userCopy = @deck.get_user_copy(current_user)
-    if userCopy.nil?
-      userCopy = @deck.copy(current_user)
+    user_copy = @deck.get_user_copy(current_user)
+    if user_copy.nil?
+      user_copy = @deck.copy(current_user)
     end
-    redirect_to(edit_deck_path(userCopy))
+    redirect_to(edit_deck_path(user_copy))
   end
   
   # GET /decks/1/edit
@@ -215,8 +215,8 @@ class DecksController < ApplicationController
   end
   
   def active_decks
-    @activeDecks = Deck.where(user_id: current_user.id, active: true)
-    @myDecks = getMyDecks()
+    @active_decks = Deck.where(user_id: current_user.id, active: true)
+    @my_decks = getMyDecks()
   end
   
   def submit_active_decks

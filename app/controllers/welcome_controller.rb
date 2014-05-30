@@ -19,7 +19,7 @@ class WelcomeController < ApplicationController
     end
     matches = Match.where(season_id: 5)
     # Determine match Class Win Rates
-    @classesArray = Klass.list
+    @classes_array = Klass.list
     classes = Klass.list
     @classarenarate = Hash.new
     @arenatot = Hash.new
@@ -102,15 +102,15 @@ class WelcomeController < ApplicationController
     end
 
     # mode_matches Runs Data
-    @arenaRuns = Array.new
+    @arena_runs = Array.new
     classes.each_with_index do |c,i|
-      runCount = Array.new(13,0)
-      totGames = ArenaRun.where(klass_id: i+1).count
+      run_count = Array.new(13,0)
+      tot_games = ArenaRun.where(klass_id: i+1).count
       ArenaRun.where(klass_id: i+1).each do |ar|
-        runCount[ar.matches.where(result_id: 1).count] += 1 unless ar.matches.where(result_id: 1).count > 12
+        run_count[ar.matches.where(result_id: 1).count] += 1 unless ar.matches.where(result_id: 1).count > 12
       end
-      runPercent = runCount.map { |e| e.to_f/totGames }
-      @arenaRuns << [c, runCount, runPercent]
+      run_percent = run_count.map { |e| e.to_f / tot_games }
+      @arena_runs << [c, run_count, run_percent]
     end
     html = render_to_string(layout: 'fullpage')
     File.open("#{Rails.root}/public/reports/april_report.html", 'w') {|f| f.write(html) }

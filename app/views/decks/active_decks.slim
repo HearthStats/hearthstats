@@ -11,8 +11,8 @@
       -(1..9).each do |i|
         div.col-xs-4
           div.slot-id #{t('.slot')} ##{i}
-          - deckName = @activeDecks.where(slot: i)[0].name unless @activeDecks.where(slot: i)[0].nil?
-          = select_tag( "#{i}", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, deckName), class: "slot-decks", :prompt => "-- #{t('.select_deck')} --")
+          - deckName = @active_decks.where(slot: i)[0].name unless @active_decks.where(slot: i)[0].nil?
+          = select_tag( "#{i}", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, deckName), class: "slot-decks", :prompt => "-- #{t('.select_deck')} --")
     = submit_tag t(".submit"), :class => "btn btn-primary"
 javascript:
   app.UI.initDeckSelector("select.slot-decks");

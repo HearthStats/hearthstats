@@ -50,13 +50,13 @@ class Deck < ActiveRecord::Base
   
   def num_cards
     return  0 unless self.cardstring
-    numCards = 0;
+    num_cards = 0
     cards = self.cardstring.split(',')
-    cards.each do |cardData|
-      chunks = cardData.split('_')
-      numCards += chunks[1].to_f
+    cards.each do |card_data|
+      chunks = card_data.split('_')
+      num_cards += chunks[1].to_f
     end
-    return numCards
+    return num_cards
   end
   
   def create_unique_deck
@@ -165,16 +165,16 @@ class Deck < ActiveRecord::Base
   end
   
   def copy(user)
-    newCopy = Deck.new
-    newCopy.name = self.name
-    newCopy.unique_deck = self.unique_deck
-    newCopy.user_id = user.id
-    newCopy.klass = self.klass
-    newCopy.notes = self.notes
-    newCopy.cardstring = self.cardstring
-    newCopy.is_public = true
-    newCopy.save
-    return newCopy
+    new_copy = Deck.new
+    new_copy.name = self.name
+    new_copy.unique_deck = self.unique_deck
+    new_copy.user_id = user.id
+    new_copy.klass = self.klass
+    new_copy.notes = self.notes
+    new_copy.cardstring = self.cardstring
+    new_copy.is_public = true
+    new_copy.save
+    return new_copy
   end
   
   def get_user_copy(user)

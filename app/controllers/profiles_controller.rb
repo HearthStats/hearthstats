@@ -83,7 +83,7 @@ class ProfilesController < ApplicationController
 
     end
 
-    arenaClass
+    arena_class
 
     # User's Highest Winning Decks
     @topdeck = Deck.bestuserdeck(@user.id)
@@ -118,7 +118,7 @@ class ProfilesController < ApplicationController
 
   private
 
-  def arenaClass
+  def arena_class
     classes = klasses_hash.map { |a| a[0] }
     # Determine Arena Class Win Rates
     @classarenarate = Array.new

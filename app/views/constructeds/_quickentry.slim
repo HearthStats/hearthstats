@@ -7,9 +7,9 @@ div class="portlet quick_con_entry"
   div class="portlet-body"
     = form_for @constructed, url: {controller: "constructeds", action: "create"} do |f|
       -if !@lastentry.nil? && !@lastentry.deck.nil?
-        = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}, @lastentry.deck.name))
+        = select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}, @lastentry.deck.name))
       -else
-        = select_tag("deckname", options_for_select(@myDecks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}))
+        = select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d, "Klass")}]}))
       | vs.
       = f.select :oppclass_id, options_for_select(klasses_hash.to_a), class: 'quick_input'
       input name="other[rank]" rel="toggle-btn" on="#{t('.ranked')}" off="#{t('.casual')}" onValue="Ranked" offValue="Casual" state="#{raw (!@lastentry.nil? && @lastentry.rank == "Casual") ? 'off' : '' }"
