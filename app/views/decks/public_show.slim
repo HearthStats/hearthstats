@@ -10,9 +10,9 @@
 - content_for :actions do
   = link_to("Copy to My Decks", copy_deck_path(@deck), class: 'btn retirebut green', :rel => "tooltip", :title => "Make your own copy of this deck")
   - if (!current_user.nil? && current_user.id == @deck.user_id)
-    = link_to 'Edit', edit_deck_path(@deck), :class=>"btn retirebut btn-primary"
+    = link_to 'Edit', edit_deck_path(@deck), class: "btn retirebut btn-primary"
     = " "
-  = link_to 'Back', decks_path, :class=>"btn retirebut dark"
+  = link_to 'Back', decks_path, class: "btn retirebut dark"
 
 
 div.share

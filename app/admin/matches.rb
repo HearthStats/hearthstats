@@ -1,5 +1,5 @@
 ActiveAdmin.register Match do
-  actions :all, :except => [:new]
+  actions :all, except: [:new]
   remove_filter :match_run
   remove_filter :deck
   remove_filter :match_unique_deck

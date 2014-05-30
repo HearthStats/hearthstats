@@ -7,31 +7,31 @@
   end
 
   #sort field
-    @sortField = "num_users"
+    @sort_field = "num_users"
     sortRequest = CGI.parse(request.query_string)['sort'].first
     if !sortRequest.nil? && sortRequest.match("name|num_users|num_minions|num_matches|num_weapons|num_spells|num_matches|num_wins|num_losses|winrate|created_at")
-      @sortField = sortRequest
+      @sort_field = sortRequest
     end
 
     # sort order
-    @orderFilter = CGI.parse(request.query_string)['order'].first
-    if @orderFilter.nil? || (@orderFilter != "desc" && @orderFilter != "asc")
-     @orderFilter = "desc"
+    @order_filter = CGI.parse(request.query_string)['order'].first
+    if @order_filter.nil? || (@order_filter != "desc" && @order_filter != "asc")
+     @order_filter = "desc"
     end
 
     # TODO: hack sortField for user (non global stats)
-    finalSortField = @sortField
-    if !global && @sortField.match("num_(matches|wins|losses)")
-      finalSortField = "user_" + @sortField
+    finalSortField = @sort_field
+    if !global && @sort_field.match("num_(matches|wins|losses)")
+      finalSortField = "user_" + @sort_field
     end
-    if !global && @sortField.match("winrate")
+    if !global && @sort_field.match("winrate")
       finalSortField = "user_winrate"
     end
 
   if finalSortField == "num_users"
-      @decks = @decks.order("num_users " + @orderFilter.upcase + ", winrate " + @orderFilter.upcase)
+      @decks = @decks.order("num_users " + @order_filter.upcase + ", winrate " + @order_filter.upcase)
     else
-      @decks = @decks.order(finalSortField + ' ' + @orderFilter.upcase)
+      @decks = @decks.order(finalSortField + ' ' + @order_filter.upcase)
     end
 
     #only show unique decks if global
@@ -65,20 +65,20 @@
     </select>
     <%= t('.sort_by') %>
     <select name="sort">
-      <option value="created_at" <%= @sortField == "created_at" ? 'selected="selected"' : ''%>><%= t('.created') %></option>
-      <option value="num_losses" <%= @sortField == "num_losses" ? 'selected="selected"' : ''%>><%= t('.losses') %></option>
-      <option value="num_matches" <%= @sortField == "num_matches" ? 'selected="selected"' : ''%>><%= t('.matches') %></option>
-      <option value="num_minions" <%= @sortField == "num_minions" ? 'selected="selected"' : ''%>><%= t('.minions') %></option>
-      <option value="name" <%= @sortField == "name" ? 'selected="selected"' : ''%>><%= t('.name') %></option>
-      <option value="num_spells" <%= @sortField == "num_spells" ? 'selected="selected"' : ''%>><%= t('.spells') %></option>
-      <option value="num_users" <%= @sortField == "num_users" ? 'selected="selected"' : ''%>><%= t('.popularity') %></option>
-      <option value="num_weapons" <%= @sortField == "num_weapons" ? 'selected="selected"' : ''%>><%= t('.weapons') %></option>
-      <option value="winrate" <%= @sortField == "winrate" ? 'selected="selected"' : ''%>><%= t('.win_rate') %></option>
-      <option value="num_wins" <%= @sortField == "num_wins" ? 'selected="selected"' : ''%>><%= t('.wins') %></option>
+      <option value="created_at" <%= @sort_field == "created_at" ? 'selected="selected"' : ''%>><%= t('.created') %></option>
+      <option value="num_losses" <%= @sort_field == "num_losses" ? 'selected="selected"' : ''%>><%= t('.losses') %></option>
+      <option value="num_matches" <%= @sort_field == "num_matches" ? 'selected="selected"' : ''%>><%= t('.matches') %></option>
+      <option value="num_minions" <%= @sort_field == "num_minions" ? 'selected="selected"' : ''%>><%= t('.minions') %></option>
+      <option value="name" <%= @sort_field == "name" ? 'selected="selected"' : ''%>><%= t('.name') %></option>
+      <option value="num_spells" <%= @sort_field == "num_spells" ? 'selected="selected"' : ''%>><%= t('.spells') %></option>
+      <option value="num_users" <%= @sort_field == "num_users" ? 'selected="selected"' : ''%>><%= t('.popularity') %></option>
+      <option value="num_weapons" <%= @sort_field == "num_weapons" ? 'selected="selected"' : ''%>><%= t('.weapons') %></option>
+      <option value="winrate" <%= @sort_field == "winrate" ? 'selected="selected"' : ''%>><%= t('.win_rate') %></option>
+      <option value="num_wins" <%= @sort_field == "num_wins" ? 'selected="selected"' : ''%>><%= t('.wins') %></option>
     </select>
     <select name="order">
       <option value="asc"><%= t('.asc') %></option>
-      <option value="desc" <%= @orderFilter == "desc" ? 'selected="selected"' : ''%>><%= t('.desc') %></option>
+      <option value="desc" <%= @order_filter == "desc" ? 'selected="selected"' : ''%>><%= t('.desc') %></option>
     </select>
     <input id="deckListFilterSubmit" type="submit" value="Apply"/>
   </p>

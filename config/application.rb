@@ -4,15 +4,15 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  Bundler.require(*Rails.groups(assets: %w(development test)))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
 
 module Hearthstats
   class Application < Rails::Application
-  	# Shorten log files
-		config.lograge.enabled = true
+    # Shorten log files
+    config.lograge.enabled = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -37,10 +37,10 @@ module Hearthstats
     config.i18n.default_locale = :en
 
     # rails will fallback to config.i18n.default_locale translation
-		config.i18n.fallbacks = true
+    config.i18n.fallbacks = true
 
-		# rails will fallback to en, no matter what is set as config.i18n.default_locale
-		config.i18n.fallbacks = [:en]
+    # rails will fallback to en, no matter what is set as config.i18n.default_locale
+    config.i18n.fallbacks = [:en]
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

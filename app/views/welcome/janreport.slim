@@ -102,9 +102,9 @@ div.main
         h3 ARENA
         table.arena-win-rates.report-table
           th
-            -@classesArray.each do |c|
+            -@classes_array.each do |c|
               td class="#{c}" = c
-          -@classesArray.each do |c|
+          -@classes_array.each do |c|
             tr
               td class="#{c}" = c
               -currentClass = @userarenarate.select {|a| a[0] == c}
@@ -120,10 +120,10 @@ div.main
           th
             -(0..12).each do |i|
               td.game-count = i
-          -@classesArray.each do |c|
+          -@classes_array.each do |c|
             tr
               td class="#{c}" = c
-              -currentClass = @arenaRuns.select {|a| a[0] == c}
+              -currentClass = @arena_runs.select {|a| a[0] == c}
               -currentClass[0][1].each_with_index do |runs, i|
                 td
                   div.run-count = runs
@@ -135,9 +135,9 @@ div.main
         h3 CONSTRUCTED
         table.arena-win-rates.report-table
           th
-            -@classesArray.each do |c|
+            -@classes_array.each do |c|
               td class="#{c}" = c
-          -@classesArray.each do |c|
+          -@classes_array.each do |c|
             tr
               td class="#{c}" = c
               -currentClass = @conrate.select {|a| a[0] == c}

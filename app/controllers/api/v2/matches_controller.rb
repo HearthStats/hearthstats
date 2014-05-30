@@ -1,6 +1,6 @@
 class Api::V2::MatchesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, :except => [:query]
+  before_filter :get_req, except: [:query]
 
   respond_to :json
 
@@ -29,11 +29,11 @@ class Api::V2::MatchesController < ApplicationController
       result = result.where(coin: coin)
     end
     if params[:season].present?
-    	if params[:season] == "0"
-	      result = result.where(season_id: current_season)
-	    else
-	      result = result.where(season_id: params[:season])
-	    end
+      if params[:season] == "0"
+        result = result.where(season_id: current_season)
+      else
+        result = result.where(season_id: params[:season])
+      end
     end
     render json: { status: "success", data: result }
   end
@@ -44,7 +44,7 @@ class Api::V2::MatchesController < ApplicationController
     user = current_user
     errors = Array.new
     # get mode
-    mode = Mode.where(:name => req[:mode])[0]
+    mode = Mode.where(name: req[:mode])[0]
     if mode.nil?
       errors.push("Unknown game mode '" + (req[:mode].nil? ? "[undetected]" : req[:mode]) + "'.")
     end

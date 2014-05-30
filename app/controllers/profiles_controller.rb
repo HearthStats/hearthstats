@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 
   def index
     authenticate_user!
-  	redirect_to "/profiles/#{current_user.id}"
+    redirect_to "/profiles/#{current_user.id}"
   end
 
   def edit
@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
     matches = Match.where(user_id: @user.id)
     @userkey = @user.get_userkey
     if @user.guest
-    	return redirect_to root_url, alert: "Guests cannot access profiles"
+      return redirect_to root_url, alert: "Guests cannot access profiles"
     end
 
     if !current_user || !(current_user.id == @user.id)
@@ -43,23 +43,23 @@ class ProfilesController < ApplicationController
     end
 
     if newuser?(@user.id)
-	    if current_user.id == @user.id
-	    	return redirect_to root_url, alert: "You must enter at least one game before your profile is active."
-	    else
-	    	return redirect_to root_url, alert: "User profile is not active."
-	    end
+      if current_user.id == @user.id
+        return redirect_to root_url, alert: "You must enter at least one game before your profile is active."
+      else
+        return redirect_to root_url, alert: "User profile is not active."
+      end
     end
 
-  	@profile = @user.profile
+    @profile = @user.profile
     if (!@profile.name.nil? && !@profile.name.blank?)
       @profiletitle = @profile.name
     else
       @profiletitle = "User"
     end
     classes = klasses_hash.map { |a| a[0] }
-  	load_recent_games(@user.id, 10)
-  	@recent_entries = Profile.get_recent_games(@user.id)
-  	impressionist(@profile)
+    load_recent_games(@user.id, 10)
+    @recent_entries = Profile.get_recent_games(@user.id)
+    impressionist(@profile)
 
     # Overall win rates
     arena_matches = matches.where(mode_id: 1)
@@ -76,18 +76,18 @@ class ProfilesController < ApplicationController
       totalwins = matches.where( mode_id: 3,  klass_id: c, result_id: 1 ).count
       totalgames = matches.where( mode_id: 3, klass_id: c ).count
       if totalgames == 0
-      	@classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
+        @classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
         @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
       end
 
     end
 
-    arenaClass
+    arena_class
 
     # User's Highest Winning Decks
     @topdeck = Deck.bestuserdeck(@user.id)
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(:user_id => @user.id, is_public: true)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true)
 
   end
 
@@ -104,9 +104,9 @@ class ProfilesController < ApplicationController
   end
 
   def set_locale
-  	if current_user && current_user.guest?
-  		redirect_to root_path, alert: "Guests cannot change languages" and return
-  	end
+    if current_user && current_user.guest?
+      redirect_to root_path, alert: "Guests cannot change languages" and return
+    end
     language = params[:locale]
     profile = current_user.profile
     profile.locale = language
@@ -118,19 +118,19 @@ class ProfilesController < ApplicationController
 
   private
 
-  def arenaClass
+  def arena_class
     classes = klasses_hash.map { |a| a[0] }
     # Determine Arena Class Win Rates
     @classarenarate = Array.new
     (1..Klass.all.count).each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
-      totalwins = Match.where( mode_id: 1, :klass_id => c, :result_id => 1, :user_id => @user.id ).count
-      totalgames = Match.where( mode_id: 1, :klass_id => c, :user_id => @user.id ).count
+      totalwins = Match.where( mode_id: 1, klass_id: c, result_id: 1, user_id: @user.id ).count
+      totalgames = Match.where( mode_id: 1, klass_id: c, user_id: @user.id ).count
       if totalgames == 0
-      	@classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
+        @classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
       else
-		    @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
+        @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
       end
     end
 

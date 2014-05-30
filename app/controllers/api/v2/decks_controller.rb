@@ -1,6 +1,6 @@
 class Api::V2::DecksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, :except => [:show]
+  before_filter :get_req, except: [:show]
 
   respond_to :json
 
@@ -8,11 +8,17 @@ class Api::V2::DecksController < ApplicationController
     begin
       decks = Deck.where(user_id: current_user.id)
     rescue
-      api_response = {status: "error", message: "Error getting user's decks"}
+      api_response = {
+        status:  "error",
+        message: "Error getting user's decks"
+      }
     else
-      api_response = {status: "success", data: decks}
+      api_response = {
+        status: "success",
+        data:   decks
+      }
     end
-    render :json => api_response
+    render json: api_response
   end
 
   def find
@@ -28,25 +34,41 @@ class Api::V2::DecksController < ApplicationController
       res_array << [card_name, card_count, card_mana]
     end
     if deck.is_public
-      render :json => {status: "success", data: {deck: deck, deck_array: res_array}}
+      render json: {
+        status: "success",
+        data: {
+          deck:       deck,
+          deck_array: res_array
+        }
+      }
     else
-      render :json => {status: "error", message: "Deck is private"}
+      render json: {
+        status:  "error",
+        message: "Deck is private"
+      }
     end
   end
 
   def activate
     deck = Deck.find(@req[:deck_id])
     if deck.user.id != current_user.id
-      render json: {status: "error", message: "Deck does not belong to this user."} and return
+      render json: {
+        status:  "error",
+        message: "Deck does not belong to this user."
+      }
+      return
     end
     deck.active = !deck.active
     deck.save!
-    render json: {status: "success", data: deck}
+    render json: {
+      status: "success",
+      data:   deck
+    }
   end
 
   def slots
 
-    Deck.where(:user_id => current_user.id).each do |deck|
+    Deck.where(user_id: current_user.id).each do |deck|
       deck.slot = nil
       deck.active = false
       deck.save!
@@ -63,9 +85,17 @@ class Api::V2::DecksController < ApplicationController
     end
 
     if errors.size > 0
-      render json: {status: "fail", data: "", message: errors.join(" ")}
+      render json: {
+        status:  "fail",
+        data:    "",
+        message: errors.join(" ")
+      }
     else
-      render json: {status: "success", data: "", message: "Deck slots updated"}
+      render json: {
+        status:  "success",
+        data:    "",
+        message: "Deck slots updated"
+      }
     end
   end
 
@@ -75,7 +105,7 @@ class Api::V2::DecksController < ApplicationController
     if deck_id.nil?
       return nil
     end
-    deck = Deck.where(:user_id => current_user.id, :id => deck_id)[0]
+    deck = Deck.where(user_id: current_user.id, id: deck_id)[0]
     if deck.nil?
       return "No deck with ID " + deck_id.to_s + " found for user #" + current_user.id.to_s + "."
     end

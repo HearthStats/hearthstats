@@ -27,7 +27,7 @@ Hearthstats::Application.routes.draw do
 
   post "notifications/note_read"
 
-  opinio_model :controller => 'my_comments'
+  opinio_model controller: 'my_comments'
   # get "profile/edit"
 
   match "/contactus", to: "additional#contactus"
@@ -44,12 +44,12 @@ Hearthstats::Application.routes.draw do
   match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
-  match '/jan', :to => redirect('/reports/jan/index.html')
-  match "/dec", :to => "welcome#decreport"
-  match "/nov", :to => "welcome#novreport"
-  match "/mar", :to => redirect('/reports/mar/index.html')
-  match "/apr", :to => "welcome#april_report"
-  match "/gen_report", :to => "welcome#generate_report"
+  match '/jan', to: redirect('/reports/jan/index.html')
+  match "/dec", to: "welcome#decreport"
+  match "/nov", to: "welcome#novreport"
+  match "/mar", to: redirect('/reports/mar/index.html')
+  match "/apr", to: "welcome#april_report"
+  match "/gen_report", to: "welcome#generate_report"
 
   # Admin Stats Export
 
@@ -97,7 +97,7 @@ Hearthstats::Application.routes.draw do
 
   # devise_for :users
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, controllers: {registrations: "registrations"}
   ActiveAdmin.routes(self)
   resources :constructeds do
     collection do
@@ -107,7 +107,7 @@ Hearthstats::Application.routes.draw do
 
   # devise_for :users
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, controllers: {registrations: "registrations"}
   ActiveAdmin.routes(self)
   resources :cards do
     collection do
@@ -123,7 +123,7 @@ Hearthstats::Application.routes.draw do
     end
   end
   authenticated :user do
-    root :to => 'dashboards#index'
+    root to: 'dashboards#index'
   end
 
   devise_scope :user do

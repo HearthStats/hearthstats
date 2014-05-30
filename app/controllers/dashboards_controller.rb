@@ -32,7 +32,7 @@ class DashboardsController < ApplicationController
       @global[:arena] = get_win_rate(matches.where(mode_id: 1))
       @global[:con] = get_win_rate(matches.where(mode_id: 3))
       @global[:coin] = get_win_rate(matches.where(coin: false))
-      Rails.cache.write("global", [conoverallrate,arenaoverallrate,@global], :expires_in => 1.days)
+      Rails.cache.write("global", [conoverallrate,arenaoverallrate,@global], expires_in: 1.days)
     else
       conoverallrate = overall[0]
       arenaoverallrate = overall[1]
@@ -52,8 +52,8 @@ class DashboardsController < ApplicationController
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = Arena.where(:userclass => c, :win => true).count + Arena.where(:oppclass => c, :win => false).count
-      totalgames = Arena.where(:userclass => c).count + Arena.where(:oppclass => c).count
+      totalwins = Arena.where(userclass: c, win: true).count + Arena.where(oppclass: c, win: false).count
+      totalgames = Arena.where(userclass: c).count + Arena.where(oppclass: c).count
       @classwinrate[c] = (totalwins.to_f / totalgames)
       
     end
@@ -76,10 +76,10 @@ class DashboardsController < ApplicationController
       totalwins = 0
       totalgames = 0
       
-      totalwins = Constructed.joins(:deck).where(oppclass: combo[1], win: true, 'decks.race' => combo[0]).count
-      totalwins = totalwins + Constructed.joins(:deck).where(oppclass: combo[0], win: false, 'decks.race' => combo[1]).count
+      totalwins = Constructed.joins(:deck).where(:oppclass => combo[1], :win => true, 'decks.race' => combo[0]).count
+      totalwins = totalwins + Constructed.joins(:deck).where(:oppclass => combo[0], :win => false, 'decks.race' => combo[1]).count
       
-      totalgames = Constructed.joins(:deck).where(oppclass: combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where(oppclass: combo[1], 'decks.race' => combo[0]).count
+      totalgames = Constructed.joins(:deck).where(:oppclass => combo[0], 'decks.race' => combo[1]).count + Constructed.joins(:deck).where(:oppclass => combo[1], 'decks.race' => combo[0]).count
       
       @conrate["#{combo[0]} #{combo[1]}"] = (totalwins.to_f / totalgames)
     end
@@ -97,8 +97,8 @@ class DashboardsController < ApplicationController
     (1..Klass.count).each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = Match.where(:mode_id => mode, :klass_id => c, :result_id => 1 ).count + Match.where( :mode_id => mode, :oppclass_id => c, :result_id => 2 ).count
-      totalgames = Match.where( mode_id: mode, :klass_id => c).count + Match.where( mode_id: mode, :oppclass_id => c).count
+      totalwins = Match.where(mode_id: mode, klass_id: c, result_id: 1 ).count + Match.where( mode_id: mode, oppclass_id: c, result_id: 2 ).count
+      totalgames = Match.where( mode_id: mode, klass_id: c).count + Match.where( mode_id: mode, oppclass_id: c).count
       classrate[Klass.find(c).name] = totalgames > 0 ? (totalwins.to_f / totalgames) : 0
       tot[Klass.find(c).name] = totalgames
     end

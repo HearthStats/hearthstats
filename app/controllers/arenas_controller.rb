@@ -3,7 +3,7 @@ class ArenasController < ApplicationController
   # GET /arenas
   # GET /arenas.json
   def index
-    @arenaruns = ArenaRun.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @arenaruns = ArenaRun.where(user_id: current_user.id).paginate(page: params[:page], per_page: 10).order('created_at DESC')
     
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,7 @@ class ArenasController < ApplicationController
   # GET /arenas/matches
   # GET /arenas/matches
   def matches
-    @matches = Match.where(:mode_id => 1, user_id: current_user.id)
+    @matches = Match.where(mode_id: 1, user_id: current_user.id)
     
     respond_to do |format|
       format.html # show.html.erb
@@ -126,7 +126,7 @@ class ArenasController < ApplicationController
   end
   
   def archives
-    @arenas = Arena.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @arenas = Arena.where(user_id: current_user.id).paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
   
   def stats
@@ -176,11 +176,11 @@ class ArenasController < ApplicationController
     return all_klasses
   end
   
-  def getClassWinRatesForMatches(matches)
+  def get_class_win_rates_for_matches(matches)
     winrates = Array.new
     (1..9).each_with_index do |c,i|
       classgames = matches.where( klass_id: c)
-      wins = classgames.where(:result_id => 1).count
+      wins = classgames.where(result_id: 1).count
       totgames = classgames.count
       if totgames == 0
         winrates[i] = 0

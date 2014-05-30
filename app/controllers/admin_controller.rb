@@ -17,24 +17,24 @@ class AdminController < ApplicationController
   end
 
   def ann
-  	@ann = Annoucement.new
-  	@annrec = Annoucement.last(10)
+    @ann = Annoucement.new
+    @annrec = Annoucement.last(10)
   end
 
   def anncreate
-  	@ann = Annoucement.new(params[:annoucement])
-  	if @ann.save
-			redirect_to root_path, notice: "New annoucement created!"
-		else
-			redirect_to 'admin/ann'
-		end
+    @ann = Annoucement.new(params[:annoucement])
+    if @ann.save
+      redirect_to root_path, notice: "New annoucement created!"
+    else
+      redirect_to 'admin/ann'
+    end
   end
 
   private
 
   def admin_user?
-  	if !current_user.is_admin?
-  		redirect_to root_path, alert: "Y U NO ADMIN"
-  	end
-	end
+    if !current_user.is_admin?
+      redirect_to root_path, alert: "Y U NO ADMIN"
+    end
+  end
 end

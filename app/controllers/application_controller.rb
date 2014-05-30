@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     if current_user && !current_user.guest? && !current_user.profile.nil?
       { locale: current_user.profile.locale || I18n.default_locale }
     else
-      { :locale => I18n.locale }.merge options
+      { locale: I18n.locale }.merge options
     end
   end
 
@@ -24,14 +24,14 @@ class ApplicationController < ActionController::Base
     resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
   end
 
-  def get_win_rate(matches, strOut = false )
+  def get_win_rate(matches, strout = false )
     return 0 if matches.nil?
     wins = matches.where(result_id: 1).length.to_f
     tot_games = matches.length
     win_rate = wins / tot_games
     win_rate = "N/A" and return win_rate if win_rate.nan?
     win_rate = (win_rate*100).round(2)
-    win_rate = win_rate.to_s + "%" if strOut
+    win_rate = win_rate.to_s + "%" if strout
 
     win_rate
   end
@@ -49,8 +49,9 @@ class ApplicationController < ActionController::Base
   def validate_userkey
     userkey = User.where(userkey: params[:userkey])
     unless userkey.exists? && !params[:userkey].nil?
-    	api_response = {status: "error", message: "User Key Error"}
-    	render :json => api_response and return
+      api_response = {status: "error", message: "User Key Error"}
+      render json: api_response
+      return false
     end
   end
 
@@ -142,11 +143,11 @@ class ApplicationController < ActionController::Base
   end
 
   def newuser?(userid)
-  	user = User.find(userid)
-  	games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
-  	return true if games_count == 0
+    user = User.find(userid)
+    games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
+    return true if games_count == 0
 
-  	false
+    false
   end
 
 
