@@ -13,12 +13,12 @@ class User < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
-  has_one :profile, dependent: :destroy
-  has_many :arenas, dependent: :destroy
-  has_many :decks, dependent: :destroy
+  has_one :profile,       dependent: :destroy
+  has_many :arenas,       dependent: :destroy
+  has_many :decks,        dependent: :destroy
   has_many :constructeds, dependent: :destroy
-  has_many :arena_runs, dependent: :destroy
-  has_many :matches, dependent: :destroy
+  has_many :arena_runs,   dependent: :destroy
+  has_many :matches,      dependent: :destroy
   has_many :team_users
   has_many :teams, through: :team_users
   belongs_to :tourny
