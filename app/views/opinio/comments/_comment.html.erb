@@ -1,5 +1,5 @@
 <% reply = defined?(reply) ? reply : false %>
-<% if comment.owner.profile %>
+<% if comment.owner.try(:profile) %>
   <li id="comment_<%= comment.id %>" class="in">
     <%= image_tag comment.owner.profile.avatar.url(:thumb),class: "avatar img-responsive" %>
     <div class="message">
