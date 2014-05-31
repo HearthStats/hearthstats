@@ -15,10 +15,10 @@ div.overall
     = get_win_rate(Match.where(user_id: current_user.id, mode_id: 1), true)
   div.arena-overall
     div.arena-overall-title=t('.total_gold_amount')
-    = ArenaRun.totalGold(current_user.id)
+    = ArenaRun.total_gold(current_user.id)
   div.arena-overall
     div.arena-overall-title=t('.total_dust_amount')
-    = ArenaRun.totalDust(current_user.id)
+    = ArenaRun.total_dust(current_user.id)
   div.arena-overall
     div.arena-overall-title=t('.arena_runs_played')
     = ArenaRun.where(user_id: current_user.id).count
