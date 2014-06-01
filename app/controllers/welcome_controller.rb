@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
     if !current_user.is_admin?
       redirect_to root_path, alert: "Y U NO ADMIN" and return
     end
-    matches = Match.where(season_id: 5)
+    matches = Match.where(season_id: 6)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list

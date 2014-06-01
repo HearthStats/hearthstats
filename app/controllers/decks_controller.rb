@@ -36,8 +36,8 @@ class DecksController < ApplicationController
       
       # Win rates vs each class
       @deckrate = Array.new
-      i = 0
-      Klass.order("name").each do |c|
+
+      Klass.order("name").each_with_index do |c, i|
         wins = matches.where(oppclass_id: c.id, result_id: 1).count
         totgames = matches.where(oppclass_id: c.id).count
         if totgames == 0
@@ -45,9 +45,7 @@ class DecksController < ApplicationController
         else
           @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{c.name}<br/>#{totgames} Games"]
         end
-        i = i + 1
       end
-      
       # Going first vs 2nd
       @firstrate = get_win_rate(matches.where(coin: false), true)
       @secrate = get_win_rate(matches.where(coin: true), true)

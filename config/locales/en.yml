@@ -281,7 +281,7 @@ en:
 
   decks:
     form:
-      name: Card Name
+      name: Name
       class: Class
       notes: Notes
       decklist_etc: ' Decklist, etc'
