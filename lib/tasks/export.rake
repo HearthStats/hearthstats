@@ -14,14 +14,24 @@ namespace :export do
                 ]
       matches.find_each do |match|
         next unless match.user_id
-        writer << [
-                    match.klass.name,
-                    match.oppclass.name,
-                    match.result.name,
-                    match.coin,
-                    match.created_at,
-                    match.rank
-                  ]
+        if match.rank.nil?
+          writer << [
+                      match.klass.name,
+                      match.oppclass.name,
+                      match.result.name,
+                      match.coin,
+                      match.created_at,
+                    ]
+        else
+          writer << [
+                      match.klass.name,
+                      match.oppclass.name,
+                      match.result.name,
+                      match.coin,
+                      match.created_at,
+                      match.rank.name
+                    ]
+        end
       end
     end
     p "Constructed Matches Exported"
