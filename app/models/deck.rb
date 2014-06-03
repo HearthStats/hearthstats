@@ -189,6 +189,9 @@ class Deck < ActiveRecord::Base
   end
   
   def card_array_from_cardstring
+    # Guarding for an empty cardstring
+    return [] if cardstring.nil?
+    
     cardstring_array = cardstring_as_array
     
     arr = []
