@@ -1,0 +1,24 @@
+<%= search_form_for @q, url: constructeds_path, html: { class: 'data-turboform' } do |f| %>
+  <p>
+    <%= t('.filter') %>
+
+    <%= f.select :klass_id, klass_collection_for_select %>
+    vs.   
+    <%= f.select :oppclass_id, klass_collection_for_select %>
+    <%= f.select :coin, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']] %>
+    &nbsp;
+    <%= t('.opponent') %>:
+    <%= f.text_field :oppname, { size: 8 } %>
+    &nbsp;
+    <%= t('.shared.notes') %>:
+    <%= f.text_field :notes, { size: 12 } %>
+    &nbsp;
+    
+    <%= f.submit class: 'btn btn-sm btn-primary', id: '', value: t('.apply') %>
+    <%= f.submit class: 'btn btn-sm dark',        id: 'clearMatchFiltersButton', value: t('.reset') %>
+ </p>
+ <p>
+   <%= t('.show') %>
+   <%= select_tag :items_per_page, options_for_select(items_per_page_for_select, params[:per_page]) %>
+ </p>
+<% end %>

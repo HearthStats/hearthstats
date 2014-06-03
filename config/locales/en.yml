@@ -83,26 +83,12 @@ en:
     matchlist:
       filter: Filter
       any_class: any class
-      coin?: Coin?
       coin: Coin
       no_coin: No Coin
       opponent: Opponent
-      apply: Apply
-      reset: Reset
       show: Show
-      per_page: per page
-      all_time: All time
-      last_24_hours: Last 24 hours
-      last: last
-      days: days
-      sort: sort
-      created: created
-      duration: Duration
-      rounds: rounds
       ascending: ascending
       descending: descending
-      win_rate_over: win rate over
-      matches_in_this_list: matches in this list
       your: Your
       opponent_class: Opponent Class
       result: Result
@@ -112,7 +98,20 @@ en:
       rounds: Rounds
       created: Created
       options: Options
-
+    filter:
+      coin?: Coin?
+      apply: Apply
+      reset: Reset
+      per_page: per page
+      last_days: Last %{num} days
+      last_24_hours: Last 24 hours
+      all_time: All time
+      sort: sort
+      created_at: Created
+      duration: Duration
+      numturns: Rounds
+      win_rate_over: win rate over
+      matches_in_this_list: matches in this list
 
   dashboards:
     index:
@@ -217,6 +216,11 @@ en:
       dist_desc: Times achieved vs Number of wins in arena run
 
   constructeds:
+    filter:
+      coin?: Coin?
+      apply: Apply
+      reset: Reset
+      per_page: per page
     quickentry:
       quick_entry: Quick Entry
       ranked: Ranked

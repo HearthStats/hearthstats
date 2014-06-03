@@ -1,14 +1,24 @@
 class Profile < ActiveRecord::Base
   attr_accessible :bnetid, :name, :private, :bnetnum, :time_zone, :avatar, :user_id
-  has_attached_file :avatar, default_url: "/assets/avatar.jpg", styles:{
+  
+  is_impressionable
+  
+  ### ASSOCIATIONS:
+  
+  belongs_to :users
+  
+  has_attached_file :avatar, :default_url => "/assets/avatar.jpg", styles:{
     thumb: '29x29>',
     square: '200x200#',
     medium: '300x300>'
   }
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-  belongs_to :users
-  is_impressionable
-
+  
+  ### VALIDATIONS:
+  
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  
+  ### CLASS METHODS:
+  
   def self.get_recent_games(userid)
     con = Match.where( mode_id:[2..3], user_id: userid ).last(3)
     arena = Match.where( mode_id: 1, user_id: userid ).last(3)
@@ -28,7 +38,7 @@ class Profile < ActiveRecord::Base
     end
     recent_games.sort_by! { |a| a[4] }
     recent_games.reverse!
-
+    
     recent_games
   end
 
