@@ -14,7 +14,7 @@ namespace :export do
                   'Rank'
                 ]
       matches.find_each do |match|
-        next unless match.user_id
+        next unless match.user.nil?
         if match.rank.nil?
           writer << [
                       Digest::SHA1.hexdigest(match.user.id.to_s),
