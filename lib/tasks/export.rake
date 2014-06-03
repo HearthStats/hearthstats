@@ -1,10 +1,11 @@
 namespace :export do
   task :con => :environment do
     matches = Match.where(season_id: 6, mode_id: 3)
-    file = "#{Rails.root}/public/ranked_export.csv"
+    file = "#{Rails.root}/public/ranked_export_#{Time.now.strftime('%d_%m_%Y')}.csv"
     CSV.open( file, 'w' ) do |writer|
       writer << [ matches.first.mode.name + ' Games']
       writer << [
+                  'User Hash',
                   'Class',
                   'Opponent Class',
                   'Result',
@@ -16,6 +17,7 @@ namespace :export do
         next unless match.user_id
         if match.rank.nil?
           writer << [
+                      Digest::SHA1.hexdigest(match.user.id.to_s),
                       match.klass.name,
                       match.oppclass.name,
                       match.result.name,
@@ -24,12 +26,13 @@ namespace :export do
                     ]
         else
           writer << [
+                      Digest::SHA1.hexdigest(match.user.id.to_s),
                       match.klass.name,
                       match.oppclass.name,
                       match.result.name,
                       match.coin,
                       match.created_at,
-                      match.rank.name
+                      match.rank.id
                     ]
         end
       end
