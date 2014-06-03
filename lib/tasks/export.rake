@@ -1,7 +1,7 @@
 namespace :export do
   task :con => :environment do
     matches = Match.where(season_id: 6, mode_id: 3)
-    file = "#{Rails.root}/public/#{first.mode.name}_export.csv"
+    file = "#{Rails.root}/public/ranked_export.csv"
     CSV.open( file, 'w' ) do |writer|
       writer << [ matches.first.mode.name + ' Games']
       writer << [
