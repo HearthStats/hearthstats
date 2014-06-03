@@ -18,7 +18,7 @@ class ConstructedsController < ApplicationController
     
     @constructeds = current_user.matches.where(mode_id: [2,3])
     @lastentry    = @constructeds.last
-    @myDecks      = getMyDecks()
+    @my_decks     = get_my_decks
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
