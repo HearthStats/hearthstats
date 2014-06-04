@@ -3,8 +3,8 @@ class Klass < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
-  belongs_to :deck
-  belongs_to :match
+  has_many :deck
+  has_many :matches
   
   ### VALIDATIONS:
   
