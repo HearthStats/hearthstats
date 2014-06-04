@@ -12,6 +12,11 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def ranked_test
+    season = 6
+    @ranked_array = get_klass_ranked_wr(season)
+  end
+
 
   def generate_report
     if !current_user.is_admin?
@@ -156,4 +161,23 @@ class WelcomeController < ApplicationController
 
       u
     end
+
+    def get_klass_ranked_wr(season)
+      ranked_stats_array = Array.new
+      Klass.all.each do |klass|
+        ranked_stats_array << get_rank_wr_array_for_klass(klass, season)
+      end
+
+      ranked_stats_array
+    end
+
+    def get_rank_wr_array_for_klass(klass, season)
+      klass_wr = Array.new
+      Rank.all.each do |rank|
+        klass_wr << get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))
+      end
+
+      klass_wr
+    end
+
 end

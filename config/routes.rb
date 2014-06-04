@@ -50,6 +50,7 @@ Hearthstats::Application.routes.draw do
   match "/mar", to: redirect('/reports/mar/index.html')
   match "/apr", to: "welcome#april_report"
   match "/gen_report", to: "welcome#generate_report"
+  get "welcome/ranked_test"
 
   # Admin Stats Export
 
