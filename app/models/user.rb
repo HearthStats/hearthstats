@@ -40,4 +40,8 @@ class User < ActiveRecord::Base
     nil
   end
 
+  def is_new?
+    (Arena.where(user_id: id).count + Constructed.where(user_id: id).count) == 0
+  end
+  
 end

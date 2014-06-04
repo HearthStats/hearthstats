@@ -62,9 +62,6 @@ class AdditionalController < ApplicationController
       @items.reverse!
       Rails.cache.write("news", @items, expires_in: 1.hours)
     end
-
-
-
   end
 
 end
