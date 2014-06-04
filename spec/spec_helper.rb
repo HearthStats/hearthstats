@@ -42,3 +42,7 @@ Spork.prefork do
     config.include Capybara::DSL
   end
 end
+
+Spork.each_run do
+  ActiveSupport::Dependencies.clear
+end

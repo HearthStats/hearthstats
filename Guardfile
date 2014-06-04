@@ -1,12 +1,35 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+guard 'bundler' do
+  watch('Gemfile')
+end
 
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)$})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+guard 'spork', wait: 40, rspec_env: { 'RAILS_ENV' => 'test' } do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('Gemfile.lock')
+  watch('spec/spec_helper.rb')
+  watch(%r{^spec/factories.+\.rb$})
+end
+
+guard 'rspec',
+      version:        2,
+      all_after_pass: true,
+      notification:   true,
+      cli:            '--drb' do
+
+  # Rails example
+  watch(%r{^spec/.+_spec\.rb$})
+  watch(%r{^spec/.+\.feature$})
+  watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
+  watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb"] }
+  watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
+  watch('spec/spec_helper.rb')                        { "spec" }
+  watch(%r{^spec/factories.+\.rb$})                   { "spec" }
+  watch('app/controllers/application_controller.rb')  { "spec/controllers" }
 end

@@ -15,6 +15,12 @@ group :development do
   gem 'pry'
   gem 'seed_dump'
   gem 'rack-mini-profiler'
+  
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  
 end
 
 group :assets do
