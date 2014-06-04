@@ -58,7 +58,10 @@ class ProfilesController < ApplicationController
       @profiletitle = "User"
     end
     classes = klasses_hash.map { |a| a[0] }
-    load_recent_games(@user.id, 10)
+
+    @arenawins = @user.winrate_per_day(10, 'arena')
+    @conwins   = @user.winrate_per_day(10, 'constructed')
+    
     @recent_entries = Profile.get_recent_games(@user.id)
     impressionist(@profile)
 
