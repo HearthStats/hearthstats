@@ -174,7 +174,7 @@ class WelcomeController < ApplicationController
     def get_rank_wr_array_for_klass(klass, season)
       klass_wr = Array.new
       Rank.all.each do |rank|
-        klass_wr << get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))
+        klass_wr << [rank.id, get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))]
       end
 
       klass_wr

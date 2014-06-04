@@ -1,0 +1,181 @@
+<%= @ranked_array %>
+<div id="arena_distribution_loading">
+  <%= image_tag('loading.gif') %>
+</div>
+<div id="arena_distribution_content" class="display-none">
+  <div class="row">
+    <div class="col-md-10">
+      <div id="arena_distribution" class="chart" style="height: 300px"></div>
+      <div class="center">Number of wins in arena run</div>
+    </div>
+    <div class="col-md2 graph-selection-cont">
+      <div id="choices"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function () {
+
+  function showTooltip(x, y, realx, realy) {
+      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realy + '<\/div><\/div>').css({
+          position: 'absolute',
+          display: 'none',
+          top: y - 50,
+          width: 80,
+          left: x - 40,
+          border: '0px solid #ccc',
+          padding: '2px 6px',
+          'background-color': '#fff',
+      }).appendTo("body").fadeIn(200);
+  }
+
+  $('#arena_distribution_loading').hide();
+  $('#arena_distribution_content').show();
+  var datasets = {
+      "Druid": {
+          data: <%= @ranked_array[0].to_json %>,
+          label: "Druid"
+      },
+      "Hunter": {
+          data: <%= @ranked_array[1].to_json %>,
+          label: "Hunter"
+      },
+       "Mage": {
+          data: <%= @ranked_array[2].to_json %>,
+          label: "Mage"
+      },
+      "Paladin": {
+          data: <%= @ranked_array[3].to_json %>,
+          label: "Paladin"
+      },
+      "Priest": {
+          data: <%= @ranked_array[4].to_json %>,
+          label: "Priest"
+      },
+      "Rogue": {
+          data: <%= @ranked_array[5].to_json %>,
+          label: "Rogue"
+      },
+      "Shaman": {
+          data: <%= @ranked_array[6].to_json %>,
+          label: "Shaman"
+      },
+      "Warlock": {
+          data: <%= @ranked_array[7].to_json %>,
+          label: "Warlock"
+      },
+      "Warrior": {
+          data: <%= @ranked_array[8].to_json %>,
+          label: "Warrior"
+      }
+    };
+  // var plot_statistics = $.plot($("#arena_distribution"), [
+  // ], {
+  //     series: {
+  //         lines: {
+  //             show: true,
+  //             lineWidth: 2,
+  //             fill: true,
+  //             fillColor: {
+  //                 colors: [{
+  //                         opacity: 0.05
+  //                     }, {
+  //                         opacity: 0.01
+  //                     }
+  //                 ]
+  //             }
+  //         },
+  //         points: {
+  //             show: true
+  //         },
+  //         shadowSize: 2
+  //     },
+  //     grid: {
+  //         hoverable: true,
+  //         clickable: true,
+  //         tickColor: "#eee",
+  //         borderWidth: 0
+  //     },
+  //     colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+  //            "#F58CBA", "#999999", "#f1c40f",
+  //            "#0070DE", "#9482C9", "#A57A4D"],
+  //     xaxis: {
+  //     },
+  //     yaxis: {
+  //         ticks: 11,
+  //         tickDecimals: 0
+  //     },
+  //     legend: {
+  //      position: "ne"
+  //     }
+  // });
+
+  var i = 0;
+    $.each(datasets, function(key, val) {
+      val.color = i;
+      ++i;
+    });
+
+    // insert checkboxes
+    var choiceContainer = $("#choices");
+    $.each(datasets, function(key, val) {
+      choiceContainer.append("<br/><input type='checkbox' name='" + key +
+        "' checked='checked' id='id" + key + "'></input>" +
+        "<label for='id" + key + "'>"
+        + val.label + "</label>");
+    });
+
+    choiceContainer.find("input").click(plotAccordingToChoices);
+
+    function plotAccordingToChoices() {
+
+      var data = [];
+
+      choiceContainer.find("input:checked").each(function () {
+        var key = $(this).attr("name");
+        if (key && datasets[key]) {
+          data.push(datasets[key]);
+        }
+      });
+
+      if (data.length > 0) {
+        $.plot("#arena_distribution", data, {
+          yaxis: {
+            min: 0
+          },
+          colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+             "#F58CBA", "#999999", "#f1c40f",
+             "#0070DE", "#9482C9", "#A57A4D"],
+          xaxis: {
+            tickDecimals: 0
+          }
+        });
+      }
+    }
+
+    plotAccordingToChoices();
+
+
+  var previousPoint = null;
+  $("#arena_distribution").bind("plothover", function (event, pos, item) {
+      if (item) {
+          if (previousPoint != item.dataIndex) {
+              previousPoint = item.dataIndex;
+
+              $("#tooltip").remove();
+              var x = item.datapoint[0].toFixed(2),
+                  y = item.datapoint[1].toFixed(2);
+
+              showTooltip(item.pageX, item.pageY, x, y);
+          }
+      } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+      }
+  });
+
+});
+
+</script>

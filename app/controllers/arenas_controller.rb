@@ -4,24 +4,24 @@ class ArenasController < ApplicationController
   # GET /arenas.json
   def index
     @arenaruns = ArenaRun.where(user_id: current_user.id).paginate(page: params[:page], per_page: 10).order('created_at DESC')
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @arenas }
     end
   end
-  
+
   # GET /arenas/1
   # GET /arenas/1.json
   def show
     @arena = Match.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @arena }
     end
   end
-  
+
   # GET /arenas/matches
   # GET /arenas/matches
   def matches
@@ -29,29 +29,29 @@ class ArenasController < ApplicationController
     params[:items] ||= 20
     params[:days]  ||= 30
     params[:page]  ||= 1
-    
+
     @q = current_user.matches.where(mode_id: 1).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
     @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
-    
+
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
   end
-  
+
   # GET /arenas/new
   # GET /arenas/new.json
   def new
     @arena = Match.new
-    
+
     # Get last arena run
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
-    
+
     # Redirect back to page is no current arena run
     if @arenarun.nil?
       redirect_to arenas_url, alert: 'No active arena run.' and return
     end
-    
+
     session[:arenarunid] = @arenarun.id
     runwins = @arenarun.matches.where(result_id: 1).count
     runloses = @arenarun.matches.where(result_id: 2).count
@@ -63,17 +63,17 @@ class ArenasController < ApplicationController
       format.html # new.html.erb
     end
   end
-  
+
   # GET /arenas/1/edit
   def edit
     @arena = Match.find(params[:id])
     canedit(@arena)
   end
-  
+
   # POST /arenas
   # POST /arenas.json
   def create
-    
+
     @arena = Match.new(params[:match])
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
     @arena.klass_id = @arenarun.klass_id
@@ -103,7 +103,7 @@ class ArenasController < ApplicationController
       end
     end
   end
-  
+
   # PUT /arenas/1
   # PUT /arenas/1.json
   def update
@@ -119,28 +119,28 @@ class ArenasController < ApplicationController
       end
     end
   end
-  
+
   # DELETE /arenas/1
   # DELETE /arenas/1.json
   def destroy
     @arena = Match.find(params[:id])
     @arena.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to arenas_url }
       format.js
     end
   end
-  
+
   def archives
     @arenas = Arena.where(user_id: current_user.id).paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
-  
+
   def stats
     @arena_array = ArenaRun.classArray(current_user.id)
     @arena_distrib = distribution_array
   end
-  
+
   def quickentry
     @arena = Match.new(params[:match])
     @arenarun = ArenaRun.find(params[:arena_run_id])
@@ -163,9 +163,9 @@ class ArenasController < ApplicationController
       redirect_to arenas_url, alert: 'Arena could not be created.'
     end
   end
-  
+
   protected
-  
+
   def distribution_array
     all_klasses = Array.new
     Klass.all.each do |klass|
@@ -179,10 +179,10 @@ class ArenasController < ApplicationController
       end
       all_klasses << total_array
     end
-    
+
     return all_klasses
   end
-  
+
   def get_class_win_rates_for_matches(matches)
     winrates = Array.new
     (1..9).each_with_index do |c,i|
