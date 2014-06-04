@@ -21,6 +21,7 @@
 capybara-*.html
 .rspec
 .rvmrc
+.powrc
 /.bundle
 /vendor/bundle
 /log/*
@@ -63,6 +64,3 @@ local.properties
 .buildpath
 database.yml
 console
-
-# Ignore application configuration
-/config/application.yml
