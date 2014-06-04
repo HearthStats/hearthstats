@@ -2,8 +2,15 @@
   <%= image_tag('loading.gif') %>
 </div>
 <div id="arena_distribution_content" class="display-none">
-  <div id="arena_distribution" class="chart" style="height: 300px"></div>
-  <div class="center">Number of wins in arena run</div>
+  <div class="row">
+    <div class="col-md-10">
+      <div id="arena_distribution" class="chart" style="height: 300px"></div>
+      <div class="center">Number of wins in arena run</div>
+    </div>
+    <div class="col-md2 graph-selection-cont">
+      <div id="choices"></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -24,74 +31,130 @@ $(document).ready(function () {
 
   $('#arena_distribution_loading').hide();
   $('#arena_distribution_content').show();
-
-  var plot_statistics = $.plot($("#arena_distribution"), [{
+  var datasets = {
+      "Druid": {
           data: <%= @arena_distrib[0] %>,
           label: "Druid"
-      }, {
+      },
+      "Hunter": {
           data: <%= @arena_distrib[1] %>,
           label: "Hunter"
-      },  {
-      		data: <%= @arena_distrib[2] %>,
+      },
+       "Mage": {
+          data: <%= @arena_distrib[2] %>,
           label: "Mage"
-      }, {
-      		data: <%= @arena_distrib[3] %>,
+      },
+      "Paladin": {
+          data: <%= @arena_distrib[3] %>,
           label: "Paladin"
-      }, {
-      		data: <%= @arena_distrib[4] %>,
+      },
+      "Priest": {
+          data: <%= @arena_distrib[4] %>,
           label: "Priest"
-      }, {
-      		data: <%= @arena_distrib[5] %>,
+      },
+      "Rogue": {
+          data: <%= @arena_distrib[5] %>,
           label: "Rogue"
-      }, {
-      		data: <%= @arena_distrib[6] %>,
+      },
+      "Shaman": {
+          data: <%= @arena_distrib[6] %>,
           label: "Shaman"
-      }, {
-      		data: <%= @arena_distrib[7] %>,
+      },
+      "Warlock": {
+          data: <%= @arena_distrib[7] %>,
           label: "Warlock"
-      }, {
-      		data: <%= @arena_distrib[8] %>,
+      },
+      "Warrior": {
+          data: <%= @arena_distrib[8] %>,
           label: "Warrior"
       }
-  ], {
-      series: {
-          lines: {
-              show: true,
-              lineWidth: 2,
-              fill: true,
-              fillColor: {
-                  colors: [{
-                          opacity: 0.05
-                      }, {
-                          opacity: 0.01
-                      }
-                  ]
-              }
+    };
+  // var plot_statistics = $.plot($("#arena_distribution"), [
+  // ], {
+  //     series: {
+  //         lines: {
+  //             show: true,
+  //             lineWidth: 2,
+  //             fill: true,
+  //             fillColor: {
+  //                 colors: [{
+  //                         opacity: 0.05
+  //                     }, {
+  //                         opacity: 0.01
+  //                     }
+  //                 ]
+  //             }
+  //         },
+  //         points: {
+  //             show: true
+  //         },
+  //         shadowSize: 2
+  //     },
+  //     grid: {
+  //         hoverable: true,
+  //         clickable: true,
+  //         tickColor: "#eee",
+  //         borderWidth: 0
+  //     },
+  //     colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+  //     				"#F58CBA", "#999999", "#f1c40f",
+  //     				"#0070DE", "#9482C9", "#A57A4D"],
+  //     xaxis: {
+  //     },
+  //     yaxis: {
+  //         ticks: 11,
+  //         tickDecimals: 0
+  //     },
+  //     legend: {
+  //     	position: "ne"
+  //     }
+  // });
+
+  var i = 0;
+    $.each(datasets, function(key, val) {
+      val.color = i;
+      ++i;
+    });
+
+    // insert checkboxes
+    var choiceContainer = $("#choices");
+    $.each(datasets, function(key, val) {
+      choiceContainer.append("<br/><input type='checkbox' name='" + key +
+        "' checked='checked' id='id" + key + "'></input>" +
+        "<label for='id" + key + "'>"
+        + val.label + "</label>");
+    });
+
+    choiceContainer.find("input").click(plotAccordingToChoices);
+
+    function plotAccordingToChoices() {
+
+      var data = [];
+
+      choiceContainer.find("input:checked").each(function () {
+        var key = $(this).attr("name");
+        if (key && datasets[key]) {
+          data.push(datasets[key]);
+        }
+      });
+
+      if (data.length > 0) {
+        $.plot("#arena_distribution", data, {
+          yaxis: {
+            min: 0
           },
-          points: {
-              show: true
-          },
-          shadowSize: 2
-      },
-      grid: {
-          hoverable: true,
-          clickable: true,
-          tickColor: "#eee",
-          borderWidth: 0
-      },
-      colors: ["#FF7D0A", "#ABD473", "#69CCF0",
-      				"#F58CBA", "#999999", "#f1c40f",
-      				"#0070DE", "#9482C9", "#A57A4D"],
-      xaxis: {
-      },
-      yaxis: {
-          ticks: 11,
-          tickDecimals: 0
-      },
-      legend: {
-      	position: "ne"
+          colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+             "#F58CBA", "#999999", "#f1c40f",
+             "#0070DE", "#9482C9", "#A57A4D"],
+          xaxis: {
+            tickDecimals: 0
+          }
+        });
       }
-  });
+    }
+
+    plotAccordingToChoices();
+
 
   var previousPoint = null;
   $("#arena_distribution").bind("plothover", function (event, pos, item) {
