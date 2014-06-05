@@ -20,17 +20,19 @@
 $(document).ready(function () {
 
   console.log(gon.counts);
-  function showTooltip(klass, xvalue, yvalue) {
-      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + klass + gon.cards[klass][xvalue] + '<\/div><\/div>').css({
-          position: 'absolute',
-          display: 'none',
-          top: y - 50,
-          width: 80,
-          left: x - 40,
-          border: '0px solid #ccc',
-          padding: '2px 6px',
-          'background-color': '#fff',
-      }).appendTo("body").fadeIn(200);
+  function showTooltip(klass, x, y, realx, realy) {
+    console.log(gon.counts[klass]);
+    console.log(realx);
+    $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + gon.counts[klass][parseInt(realx)] + ' matches <\/div><\/div>').css({
+        position: 'absolute',
+        display: 'none',
+        top: y - 50,
+        width: 80,
+        left: x - 40,
+        border: '0px solid #ccc',
+        padding: '2px 6px',
+        'background-color': '#fff',
+    }).appendTo("body").fadeIn(200);
   }
 
   $('#arena_distribution_loading').hide();
@@ -213,8 +215,7 @@ $(document).ready(function () {
               $("#tooltip").remove();
               var x = item.datapoint[0].toFixed(2),
                   y = item.datapoint[1].toFixed(2);
-              console.log(item)
-              showTooltip(item.label, x, y);
+              showTooltip(item.series.label,item.pageX, item.pageY, x, y);
           }
       } else {
           $("#tooltip").remove();
