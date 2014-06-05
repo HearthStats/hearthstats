@@ -168,13 +168,15 @@ class WelcomeController < ApplicationController
         ranked_stats_array << get_rank_wr_array_for_klass(klass, season)
       end
 
-      ranked_stats_array
+      ranked_stats_array.reverse
     end
 
     def get_rank_wr_array_for_klass(klass, season)
       klass_wr = Array.new
       Rank.all.each do |rank|
-        klass_wr << [rank.id, get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))]
+        id = rank.id
+        id = 'Legend' if rank.id == 26
+        klass_wr << [id, get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))]
       end
 
       klass_wr
