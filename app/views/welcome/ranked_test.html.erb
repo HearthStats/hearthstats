@@ -5,7 +5,7 @@
 <div id="arena_distribution_content" class="display-none">
   <div class="row">
     <div class="col-md-10">
-      <div id="arena_distribution" class="chart" style="height: 300px"></div>
+      <div id="arena_distribution" class="chart" style="height: 600px"></div>
       <div class="center">Number of wins in arena run</div>
     </div>
     <div class="col-md2 graph-selection-cont">
@@ -18,56 +18,52 @@
 <script>
 $(document).ready(function () {
 
-  function showTooltip(x, y, realx, realy) {
-      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realy + '<\/div><\/div>').css({
-          position: 'absolute',
-          display: 'none',
-          top: y - 50,
-          width: 80,
-          left: x - 40,
-          border: '0px solid #ccc',
-          padding: '2px 6px',
-          'background-color': '#fff',
-      }).appendTo("body").fadeIn(200);
-  }
+  $("<div id='tooltip'></div>").css({
+      position: "absolute",
+      display: "none",
+      border: "1px solid #fdd",
+      padding: "2px",
+      "background-color": "#fee",
+      opacity: 0.80
+    }).appendTo("body");
 
   $('#arena_distribution_loading').hide();
   $('#arena_distribution_content').show();
   var datasets = {
       "Druid": {
-          data: <%= @ranked_array[0].to_json %>,
+          data: <%= @ranked_array[0].win_rate_array.to_json %>,
           label: "Druid"
       },
       "Hunter": {
-          data: <%= @ranked_array[1].to_json %>,
+          data: <%= @ranked_array[1].win_rate_array.to_json %>,
           label: "Hunter"
       },
        "Mage": {
-          data: <%= @ranked_array[2].to_json %>,
+          data: <%= @ranked_array[2].win_rate_array.to_json %>,
           label: "Mage"
       },
       "Paladin": {
-          data: <%= @ranked_array[3].to_json %>,
+          data: <%= @ranked_array[3].win_rate_array.to_json %>,
           label: "Paladin"
       },
       "Priest": {
-          data: <%= @ranked_array[4].to_json %>,
+          data: <%= @ranked_array[4].win_rate_array.to_json %>,
           label: "Priest"
       },
       "Rogue": {
-          data: <%= @ranked_array[5].to_json %>,
+          data: <%= @ranked_array[5].win_rate_array.to_json %>,
           label: "Rogue"
       },
       "Shaman": {
-          data: <%= @ranked_array[6].to_json %>,
+          data: <%= @ranked_array[6].win_rate_array.to_json %>,
           label: "Shaman"
       },
       "Warlock": {
-          data: <%= @ranked_array[7].to_json %>,
+          data: <%= @ranked_array[7].win_rate_array.to_json %>,
           label: "Warlock"
       },
       "Warrior": {
-          data: <%= @ranked_array[8].to_json %>,
+          data: <%= @ranked_array[8].win_rate_array.to_json %>,
           label: "Warrior"
       }
     };
@@ -142,8 +138,33 @@ $(document).ready(function () {
 
       if (data.length > 0) {
         $.plot("#arena_distribution", data, {
+          series: {
+            lines: {
+              show: true,
+              lineWidth: 2,
+              fill: true,
+              fillColor: {
+                  colors: [{
+                          opacity: 0.05
+                      }, {
+                          opacity: 0.01
+                      }
+                  ]
+              }
+            },
+            points: {
+              show: true
+            },
+            shadowSize: 2
+          },
           yaxis: {
             min: 0
+          },
+          grid: {
+            hoverable: true,
+            clickable: true,
+            tickColor: "#eee",
+            borderWidth: 0
           },
           colors: ["#FF7D0A", "#ABD473", "#69CCF0",
              "#F58CBA", "#999999", "#f1c40f",
@@ -157,22 +178,17 @@ $(document).ready(function () {
 
     plotAccordingToChoices();
 
+  $("#placeholder").bind("plothover", function (event, pos, item) {
 
-  var previousPoint = null;
-  $("#arena_distribution").bind("plothover", function (event, pos, item) {
       if (item) {
-          if (previousPoint != item.dataIndex) {
-              previousPoint = item.dataIndex;
+        var x = item.datapoint[0].toFixed(2),
+          y = item.datapoint[1].toFixed(2);
 
-              $("#tooltip").remove();
-              var x = item.datapoint[0].toFixed(2),
-                  y = item.datapoint[1].toFixed(2);
-
-              showTooltip(item.pageX, item.pageY, x, y);
-          }
+        $("#tooltip").html(item.series.label + " of " + x + " = " + y)
+          .css({top: item.pageY+5, left: item.pageX+5})
+          .fadeIn(200);
       } else {
-          $("#tooltip").remove();
-          previousPoint = null;
+        $("#tooltip").hide();
       }
   });
 

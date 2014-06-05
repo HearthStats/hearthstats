@@ -17,7 +17,7 @@
 $(document).ready(function () {
 
   function showTooltip(x, y, realx, realy) {
-      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realy + '<\/div><\/div>').css({
+      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realx + '<\/div><\/div>').css({
           position: 'absolute',
           display: 'none',
           top: y - 50,
@@ -142,6 +142,12 @@ $(document).ready(function () {
         $.plot("#arena_distribution", data, {
           yaxis: {
             min: 0
+          },
+          grid: {
+            hoverable: true,
+            clickable: true,
+            tickColor: "#eee",
+            borderWidth: 0
           },
           colors: ["#FF7D0A", "#ABD473", "#69CCF0",
              "#F58CBA", "#999999", "#f1c40f",
