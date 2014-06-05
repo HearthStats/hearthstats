@@ -31,39 +31,39 @@ $(document).ready(function () {
   $('#arena_distribution_content').show();
   var datasets = {
       "Druid": {
-          data: <%= @ranked_array[0].win_rate_array.to_json %>,
+          data: <%= @ranked_array[0][0].to_json %>,
           label: "Druid"
       },
       "Hunter": {
-          data: <%= @ranked_array[1].win_rate_array.to_json %>,
+          data: <%= @ranked_array[1][0].to_json %>,
           label: "Hunter"
       },
        "Mage": {
-          data: <%= @ranked_array[2].win_rate_array.to_json %>,
+          data: <%= @ranked_array[2][0].to_json %>,
           label: "Mage"
       },
       "Paladin": {
-          data: <%= @ranked_array[3].win_rate_array.to_json %>,
+          data: <%= @ranked_array[3][0].to_json %>,
           label: "Paladin"
       },
       "Priest": {
-          data: <%= @ranked_array[4].win_rate_array.to_json %>,
+          data: <%= @ranked_array[4][0].to_json %>,
           label: "Priest"
       },
       "Rogue": {
-          data: <%= @ranked_array[5].win_rate_array.to_json %>,
+          data: <%= @ranked_array[5][0].to_json %>,
           label: "Rogue"
       },
       "Shaman": {
-          data: <%= @ranked_array[6].win_rate_array.to_json %>,
+          data: <%= @ranked_array[6][0].to_json %>,
           label: "Shaman"
       },
       "Warlock": {
-          data: <%= @ranked_array[7].win_rate_array.to_json %>,
+          data: <%= @ranked_array[7][0].to_json %>,
           label: "Warlock"
       },
       "Warrior": {
-          data: <%= @ranked_array[8].win_rate_array.to_json %>,
+          data: <%= @ranked_array[8][0].to_json %>,
           label: "Warrior"
       }
     };
