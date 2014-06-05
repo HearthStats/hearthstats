@@ -175,8 +175,12 @@ class WelcomeController < ApplicationController
       klass_wr = Array.new
       Rank.all.each do |rank|
         id = rank.id
-        id = 0 if rank.id == 26
-        klass_wr << [id, get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))]
+        if rank.id == 26
+          id = 0
+          klass_wr.unshift([id, get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))])
+        else
+          klass_wr << [id, get_win_rate(rank.matches.where(klass_id: klass.id, season_id: season))]
+        end
       end
 
       klass_wr
