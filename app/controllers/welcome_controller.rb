@@ -122,7 +122,7 @@ class WelcomeController < ApplicationController
       @arena_runs << [c, run_count, run_percent]
     end
     html = render_to_string(layout: 'fullpage')
-    File.open("#{Rails.root}/public/reports/april_report.html", 'w') {|f| f.write(html) }
+    File.open("#{Rails.root}/public/reports/#{Time.now.strftime('%d_%m_%Y')}.html", 'w') {|f| f.write(html) }
     render layout: 'fullpage'
   end
 
@@ -132,6 +132,10 @@ class WelcomeController < ApplicationController
 
   def april_report
     render file: "#{Rails.root}/public/reports/april_report.html", layout: 'fullpage'
+  end
+
+  def may_report
+    render file: "#{Rails.root}/public/reports/may_report.html", layout: 'fullpage'
   end
 
   def novreport
