@@ -7,15 +7,17 @@ class ConstructedsController < ApplicationController
     params[:items] ||= 20
     params[:days]  ||= 30
     params[:page]  ||= 1
-    
+    params[:sort]  ||= 'created_at'
+    params[:order] ||= 'desc'
+
     @q = current_user.matches.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
     @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
-    
+
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
-    
+
     @constructeds = current_user.matches.where(mode_id: [2,3])
     @lastentry    = @constructeds.last
     @my_decks     = get_my_decks
@@ -24,12 +26,12 @@ class ConstructedsController < ApplicationController
       format.json { render json: @constructeds }
     end
   end
-  
+
   # GET /constructeds/1
   # GET /constructeds/1.json
   def show
     @constructed = Match.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @constructed }
@@ -53,7 +55,7 @@ class ConstructedsController < ApplicationController
     canedit(@constructed)
     @my_decks = get_my_decks()
   end
-  
+
   # POST /constructeds
   # POST /constructeds.json
   def create
@@ -61,7 +63,7 @@ class ConstructedsController < ApplicationController
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.' and return
     end
-    
+
     # Find mode_id
     if params[:other][:rank] == "Ranked"
       mode_id = 3
@@ -106,7 +108,7 @@ class ConstructedsController < ApplicationController
     matchdeck.save!
     @constructed.klass_id = deck.klass_id
     @constructed.result_id = params[:win].to_i
-    
+
     # Find ranked_id
     if params[:other][:rank] == "Ranked"
       mode_id = 3
@@ -128,7 +130,7 @@ class ConstructedsController < ApplicationController
       end
     end
   end
-  
+
   # DELETE /constructeds/1
   # DELETE /constructeds/1.json
   def destroy
@@ -184,17 +186,17 @@ class ConstructedsController < ApplicationController
     if params[:active] == 'on'
       @active = true
     end
-    
+
     if @active
       personal_Matches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
     else
       personal_matches = matches.where(user_id: current_user.id)
     end
-    
+
     # build win rates while playing each class
     @personal_win_rates = get_class_win_rates_for_matches(personal_matches);
     @global_win_rates = get_class_win_rates_for_matches(matches);
-    
+
     @matches = matches
     # calculate number of games per class
     @classes = Klass.list
