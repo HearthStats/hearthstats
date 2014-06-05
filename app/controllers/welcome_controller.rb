@@ -12,20 +12,20 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def ranked_test
-    season = 6
+  def get_ranked_graph_data(season)
     ranked_wr_count = get_klass_ranked_wr(season)
     @ranked_winrates = ranked_wr_count[0]
-    # @ranked_counts = ranked_wr_count[1]
     gon.counts = ranked_wr_count[1]
-
   end
-
 
   def generate_report
     if !current_user.is_admin?
       redirect_to root_path, alert: "Y U NO ADMIN" and return
     end
+    season = 6
+    
+    get_ranked_graph_data(season)
+
     matches = Match.where(season_id: 6)
     # Determine match Class Win Rates
     @classes_array = Klass.list

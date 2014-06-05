@@ -1,5 +1,3 @@
-<%= @ranked_winrates %>
-<%= @ranked_counts %>
 <div id="arena_distribution_loading">
   <%= image_tag('loading.gif') %>
 </div>
@@ -178,7 +176,10 @@ $(document).ready(function () {
              "#F58CBA", "#999999", "#f1c40f",
              "#0070DE", "#9482C9", "#A57A4D"],
           xaxis: {
-            tickDecimals: 0
+            tickSize: 1
+          },
+          legend: {
+           position: "ne"
           }
         });
       }

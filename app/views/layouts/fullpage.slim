@@ -12,7 +12,9 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/f
     link href='http://fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'
     = javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
+    = include_gon
     = javascript_include_tag "application"
+    = favicon_link_tag 'favicon.ico'
     link rel="stylesheet" type="text/css" href="/css/report.css" data-turbolinks-track=""
     meta property="og:image" content='#{yield(:ogimage)}'
 

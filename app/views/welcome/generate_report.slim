@@ -19,7 +19,7 @@ div class="nav-top"
       span Sign Up
 div.main
   section.most-played#splash
-    div.patch Season 1 Stats
+    div.patch Season #{current_season - 5} Stats
   section.most-played.page1
     div.page_container.global
       h2 Most Played Classes
@@ -146,6 +146,12 @@ div.main
                   = number_to_percentage(rate[1][1]*100, precision: 2)
         small how to read: horizontal vs vertical
   section.page5
+    div.page_container
+      h2 Ranked Win Rate Distribution
+      div.global-arena
+        = render 'ranked_graph'
+      small note: mouse-over the points to see the number of games recorded
+  section.page6
     div.page_container.hsstats
       h2 HearthStats
       div.row
