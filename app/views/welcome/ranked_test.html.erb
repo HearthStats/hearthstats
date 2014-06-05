@@ -1,4 +1,5 @@
-<%= @ranked_array %>
+<%= @ranked_winrates %>
+<%= @ranked_counts %>
 <div id="arena_distribution_loading">
   <%= image_tag('loading.gif') %>
 </div>
@@ -18,52 +19,57 @@
 <script>
 $(document).ready(function () {
 
-  $("<div id='tooltip'></div>").css({
-      position: "absolute",
-      display: "none",
-      border: "1px solid #fdd",
-      padding: "2px",
-      "background-color": "#fee",
-      opacity: 0.80
-    }).appendTo("body");
+  console.log(gon.counts);
+  function showTooltip(klass, xvalue, yvalue) {
+      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + klass + gon.cards[klass][xvalue] + '<\/div><\/div>').css({
+          position: 'absolute',
+          display: 'none',
+          top: y - 50,
+          width: 80,
+          left: x - 40,
+          border: '0px solid #ccc',
+          padding: '2px 6px',
+          'background-color': '#fff',
+      }).appendTo("body").fadeIn(200);
+  }
 
   $('#arena_distribution_loading').hide();
   $('#arena_distribution_content').show();
   var datasets = {
       "Druid": {
-          data: <%= @ranked_array[0][0].to_json %>,
+          data: <%= @ranked_winrates[0].to_json %>,
           label: "Druid"
       },
       "Hunter": {
-          data: <%= @ranked_array[1][0].to_json %>,
+          data: <%= @ranked_winrates[1].to_json %>,
           label: "Hunter"
       },
        "Mage": {
-          data: <%= @ranked_array[2][0].to_json %>,
+          data: <%= @ranked_winrates[2].to_json %>,
           label: "Mage"
       },
       "Paladin": {
-          data: <%= @ranked_array[3][0].to_json %>,
+          data: <%= @ranked_winrates[3].to_json %>,
           label: "Paladin"
       },
       "Priest": {
-          data: <%= @ranked_array[4][0].to_json %>,
+          data: <%= @ranked_winrates[4].to_json %>,
           label: "Priest"
       },
       "Rogue": {
-          data: <%= @ranked_array[5][0].to_json %>,
+          data: <%= @ranked_winrates[5].to_json %>,
           label: "Rogue"
       },
       "Shaman": {
-          data: <%= @ranked_array[6][0].to_json %>,
+          data: <%= @ranked_winrates[6].to_json %>,
           label: "Shaman"
       },
       "Warlock": {
-          data: <%= @ranked_array[7][0].to_json %>,
+          data: <%= @ranked_winrates[7].to_json %>,
           label: "Warlock"
       },
       "Warrior": {
-          data: <%= @ranked_array[8][0].to_json %>,
+          data: <%= @ranked_winrates[8].to_json %>,
           label: "Warrior"
       }
     };
@@ -180,6 +186,12 @@ $(document).ready(function () {
 
   $("#placeholder").bind("plothover", function (event, pos, item) {
 
+    if ($("#enablePosition:checked").length > 0) {
+      var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+      $("#hoverdata").text(str);
+    }
+
+    if ($("#enableTooltip:checked").length > 0) {
       if (item) {
         var x = item.datapoint[0].toFixed(2),
           y = item.datapoint[1].toFixed(2);
@@ -189,6 +201,24 @@ $(document).ready(function () {
           .fadeIn(200);
       } else {
         $("#tooltip").hide();
+      }
+    }
+  });
+  var previousPoint = null;
+  $("#arena_distribution").bind("plothover", function (event, pos, item) {
+      if (item) {
+          if (previousPoint != item.dataIndex) {
+              previousPoint = item.dataIndex;
+
+              $("#tooltip").remove();
+              var x = item.datapoint[0].toFixed(2),
+                  y = item.datapoint[1].toFixed(2);
+              console.log(item)
+              showTooltip(item.label, x, y);
+          }
+      } else {
+          $("#tooltip").remove();
+          previousPoint = null;
       }
   });
 
