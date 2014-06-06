@@ -74,7 +74,6 @@ gem 'opinio' # Comment system
 gem 'unf'
 gem 'mailboxer' # User notifications and mailing
 gem 'imgkit'
-gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'thin'
 gem 'activeadmin'
@@ -84,6 +83,7 @@ gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon'
 gem 'ransack' # the new meta_search
+gem 'airbrake'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
