@@ -61,4 +61,8 @@ class User < ActiveRecord::Base
   def winrate_per_day(days, mode)
     User.winrate_per_day(id, days, mode)
   end
+  
+  def is_new?
+    (Arena.where(user_id: id).count + Constructed.where(user_id: id).count) == 0
+  end
 end

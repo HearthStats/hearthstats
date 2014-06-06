@@ -120,13 +120,4 @@ class ApplicationController < ActionController::Base
     "http://hearthstats.net/" + file
   end
 
-  def newuser?(userid)
-    user = User.find(userid)
-    games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
-    return true if games_count == 0
-
-    false
-  end
-
-
 end

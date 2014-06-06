@@ -32,6 +32,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     matches = Match.where(user_id: @user.id)
     @userkey = @user.get_userkey
+    
     if @user.guest
       return redirect_to root_url, alert: "Guests cannot access profiles"
     end
@@ -42,7 +43,7 @@ class ProfilesController < ApplicationController
       end
     end
 
-    if newuser?(@user.id)
+    if @user.is_new?
       if current_user.id == @user.id
         return redirect_to root_url, alert: "You must enter at least one game before your profile is active."
       else
