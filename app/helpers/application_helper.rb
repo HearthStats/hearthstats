@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def current_season
-    Season.last.num
+    Season.current
   end
 
   def current_patch

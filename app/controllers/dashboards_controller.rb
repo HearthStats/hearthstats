@@ -10,7 +10,9 @@ class DashboardsController < ApplicationController
       redirect_to edit_profile_path(current_user), alert: 'Please add a username' and return
     end
     
-    load_recent_games(current_user, 10)
+    @arenawins = current_user.winrate_per_day(10, 'arena')
+    @conwins   = current_user.winrate_per_day(10, 'constructed')
+    
     # Get all user's matches from this season
     matches = Match.where(user_id: current_user.id, season_id: current_season)
     arena_matches = matches.where(mode_id: 1)
