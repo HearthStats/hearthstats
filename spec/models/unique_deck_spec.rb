@@ -3,13 +3,15 @@ require 'spec_helper'
 describe UniqueDeck do
   let(:unique_deck) { build :unique_deck }
   
-  describe '#update_stats' do
+  describe '#update_cards_from_cardstring' do
     it 'removes existing unique deck cards' do
       create :unique_deck_card, unique_deck: unique_deck
       
-      expect { unique_deck.reload.update_stats }.to change { UniqueDeckCard.count }.by(-1)
+      expect { unique_deck.reload.update_cards_from_cardstring }.to change { UniqueDeckCard.count }.by(-1)
     end
-    
+  end
+  
+  describe '#update_stats' do
     it 'has empty stats without cards' do
       %w(num_minions num_spells num_weapons num_users num_matches num_wins num_losses winrate).each do |var|
         unique_deck.send(var).should be_nil
