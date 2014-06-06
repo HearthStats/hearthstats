@@ -107,6 +107,8 @@ class ApplicationController < ActionController::Base
   end
 
   def recentgamesbyhr(userid, durlen)
+    # I do not think this method is called form anywhere
+    
     # Find games from 12 hours and before
     @timearray = Array.new(durlen, 0)
     (1..durlen).each do |i|
