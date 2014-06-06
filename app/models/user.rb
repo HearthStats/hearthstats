@@ -24,6 +24,24 @@ class User < ActiveRecord::Base
   belongs_to :tourny
   belongs_to :subscription
   
+  ### CLASS METHODS:
+  
+  def self.winrate_per_day(user_id_or_ids, days, mode = 'arena')
+    mode_id = mode == 'arena' ? 1 : 3
+    winrate = Array.new(days, 0)
+    
+    (0..days).each do |i|
+      matches = Match.where(user_id: user_id_or_ids).
+                      where(mode_id: mode_id, season_id: Season.current).
+                      where("created_at <= ?", i.days.ago.end_of_day)
+      win = matches.where(result_id: 1).count
+      tot = matches.count
+      winrate[i] = [i.days.ago.beginning_of_day.to_i*1000, (win.to_f / tot * 100).round(2)]
+    end
+
+    return winrate
+  end
+  
   ### INSTANCE METHODS:
   
   def get_userkey
@@ -40,4 +58,11 @@ class User < ActiveRecord::Base
     nil
   end
 
+  def winrate_per_day(days, mode)
+    User.winrate_per_day(id, days, mode)
+  end
+  
+  def is_new?
+    (Arena.where(user_id: id).count + Constructed.where(user_id: id).count) == 0
+  end
 end
