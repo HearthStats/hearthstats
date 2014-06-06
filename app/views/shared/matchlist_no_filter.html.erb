@@ -1,0 +1,76 @@
+<table class="table table-bordered table-striped table-condensed flip-content">
+  <thead class="flip-content">
+      <tr>
+        <th><%= t('.your') %> <%= type == "Arena" ? t('shared.class') : t('shared.deck') %></th>
+        <th><%= t('.opponent_class') %></th>
+        <th><%= t('.result') %></th>
+        <th><%= t('.coin') %></th>
+        <% if type != "Arena" %>
+          <th><%= type == "Constructed" ? t(".rank") : t(".mode") %></th>
+        <% end %>
+        <th><%= t('.opponent_name') %></th>
+        <th><%= t('.rounds') %></th>
+        <th><%= t('.duration') %></th>
+        <th><%= t('.created') %></th>
+        <th><%= t('.options') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% matches.each do |match| %>
+      <tr>
+        <td>
+          <% if type == "Arena" %>
+            <%= match.arena_run.nil? ? "null" : match.arena_run.klass.name %>
+          <% else %>
+            <%= match.deck.nil? ? "null" : link_to(match.deck.name, deck_path(match.deck)) %>
+          <% end %>
+        </td>
+        <td><%= match.oppclass.nil? ? "null" : match.oppclass.name %></td>
+        <td class="<%= get_name(match,'Result') %>"><%= get_name(match,"Result") %></td>
+        <td><%= !match.coin ? "No" : "" %> Coin</td>
+        <% if type != "Arena" %>
+          <td>
+            <% if !match.mode.nil? %>
+              <% if match.mode.name == "Ranked" && !match.rank.nil? %>
+                <%= match.rank.id %> - <%= match.rank.name %>
+              <% else %>
+                <%= match.mode.name %>
+              <% end %>
+
+            <% else %>
+              null
+            <% end %>
+          </td>
+        <% end %>
+        <td><%= match.oppname.nil? ? "" : match.oppname %></td>
+        <td><%= match.numturns.nil? ? "" : match.numturns %></td>
+        <td><%= match.duration.nil? ? "" : seconds_to_short_readable(match.duration) %></td>
+        <% if current_user.guest %>
+          <td><%= match.created_at.strftime("%b %d, %Y %H:%M") %></td>
+        <% else %>
+          <td><%= match.created_at.in_time_zone(current_user.profile.time_zone).strftime("%b %d, %Y %H:%M") %></td>
+        <% end %>
+        <td class="cl-effect-3">
+          <% if type == "Arena" %>
+            <%= link_to(t('shared.edit'), edit_arena_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+          <% else %>
+            <%= link_to(t('shared.edit'), edit_constructed_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+          <% end %>
+          <%= link_to(t('shared.delete'), match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red fa fa-trash-o') %>
+          <% unless match.notes.blank? %>
+            <span class='btn default btn-xs blue fa fa-file-text-o' title="<%= Sanitize.clean(match.notes) %>" rel="tooltip" > <%=  t('shared.notes') %></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<script type="text/javascript">
+  $('#matchesFilter select').change(function() {
+    $('#matchesFilter').submit();
+  });
+  $('#matchesFilterSubmit').hide();
+  $('#clearMatchFiltersButton').click(function() {
+    document.location = "?";
+  })
+</script>
