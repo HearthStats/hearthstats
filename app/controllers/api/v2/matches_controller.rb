@@ -157,6 +157,7 @@ class Api::V2::MatchesController < ApplicationController
       end
     end
   end
+  
   private
 
   def delete_deck_cache!(deck)
