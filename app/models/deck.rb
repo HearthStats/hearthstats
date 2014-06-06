@@ -21,7 +21,7 @@ class Deck < ActiveRecord::Base
   ### CALLBACKS:
   
   before_save :normalize_name
-  before_save :create_unique_deck
+  before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_details
   
   ### CLASS METHODS:
@@ -74,7 +74,7 @@ class Deck < ActiveRecord::Base
     # re-save the unique deck on order to trigger
     # proper pulling of data from the first fully
     # saved deck that matches the unique deck's cardstring
-    if !unique_deck.nil?
+    unless unique_deck.nil?
       unique_deck.save
     end
   end

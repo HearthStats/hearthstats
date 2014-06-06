@@ -49,10 +49,10 @@ describe Deck do
         card3 = create :card, id: 700, mana: 2, name: 'ccc'
         cardstring = "700_1,600_1,500_2"
         deck = build :deck, cardstring: cardstring
-      
+        
         deck.card_array_from_cardstring.should == [[card1,2], [card2,1],[card3,1]]
       end
-    
+      
       it 'returns an empty array if the cardstring is nil' do
         deck.card_array_from_cardstring.should == []
       end
