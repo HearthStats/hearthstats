@@ -76,6 +76,9 @@ class ArenasController < ApplicationController
 
     @arena = Match.new(params[:match])
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
+    if @arenarun.nil?
+      redirect_to arenas_path, alert: "No active arena runs" and return
+    end
     @arena.klass_id = @arenarun.klass_id
     @arena.result_id = 2 if params[:match][:result_id].to_i == 0
     @arena.user_id = current_user.id
