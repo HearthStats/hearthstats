@@ -51,6 +51,10 @@ describe Deck do
       
       deck.card_array_from_cardstring.should == [[card1,2], [card2,1],[card3,1]]
     end
+    
+    it 'returns an empty array if the cardstring is nil' do
+      deck.card_array_from_cardstring.should == []
+    end
   end
   
 end

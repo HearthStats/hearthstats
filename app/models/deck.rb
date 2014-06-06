@@ -189,9 +189,6 @@ class Deck < ActiveRecord::Base
   end
   
   def card_array_from_cardstring
-    # Guarding for an empty cardstring
-    return [] if cardstring.nil?
-    
     cardstring_array = cardstring_as_array
     
     arr = []
@@ -207,6 +204,9 @@ class Deck < ActiveRecord::Base
   private
   
   def cardstring_as_array
+    # Guarding for an empty cardstring
+    return [] if cardstring.nil?
+    
     cardstring.split(",").map do |card_data|
       card_data.split('_').map(&:to_i)
     end
