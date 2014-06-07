@@ -8,4 +8,11 @@ class Season < ActiveRecord::Base
   ### VALIDATIONS:
   
   validates :num, uniqueness: true
+  
+  ### CLASS METHODS:
+  
+  def self.current
+    @current ||= Season.last.num
+  end
+  
 end
