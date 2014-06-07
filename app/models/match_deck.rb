@@ -22,7 +22,6 @@ class MatchDeck < ActiveRecord::Base
   
   def update_deck_user_stats
     #update personal stats
-    self.deck.update_user_stats()
-    self.deck.save()
+    deck.update_user_stats!
   end
 end

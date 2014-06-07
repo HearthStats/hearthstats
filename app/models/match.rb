@@ -107,9 +107,8 @@ class Match < ActiveRecord::Base
   end
   
   def update_user_stats_constructed
-    unless self.deck.nil?
-      self.deck.update_user_stats
-      self.deck.save!
+    unless deck.nil?
+      deck.update_user_stats!
     end
   end
   

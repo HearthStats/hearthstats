@@ -21,7 +21,7 @@ class Deck < ActiveRecord::Base
   ### CALLBACKS:
   
   before_save :normalize_name
-  before_save :create_unique_deck
+  before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_details
   
   ### CLASS METHODS:
@@ -74,16 +74,18 @@ class Deck < ActiveRecord::Base
     # re-save the unique deck on order to trigger
     # proper pulling of data from the first fully
     # saved deck that matches the unique deck's cardstring
-    if !self.unique_deck.nil?
-      self.unique_deck.save
+    unless unique_deck.nil?
+      unique_deck.save
     end
   end
   
-  def update_user_stats
-    self.user_num_matches = self.matches.count
-    self.user_num_wins    = self.matches.where(result_id: 1).count
-    self.user_num_losses  = self.matches.where(result_id: 2).count
-    self.user_winrate     = self.user_num_matches > 0 ? (self.user_num_wins.to_f / self.user_num_matches) * 100 : 0
+  def update_user_stats!
+    self.user_num_matches = matches.count
+    self.user_num_wins    = matches.where(result_id: 1).count
+    self.user_num_losses  = matches.where(result_id: 2).count
+    self.user_winrate     = user_num_matches > 0 ? (user_num_wins.to_f / user_num_matches) * 100 : 0
+    
+    save
   end
   
   def decklink_message
@@ -189,9 +191,6 @@ class Deck < ActiveRecord::Base
   end
   
   def card_array_from_cardstring
-    # Guarding for an empty cardstring
-    return [] if cardstring.nil?
-    
     cardstring_array = cardstring_as_array
     
     arr = []
@@ -207,6 +206,9 @@ class Deck < ActiveRecord::Base
   private
   
   def cardstring_as_array
+    # Guarding for an empty cardstring
+    return [] if cardstring.nil?
+    
     cardstring.split(",").map do |card_data|
       card_data.split('_').map(&:to_i)
     end
