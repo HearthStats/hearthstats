@@ -63,6 +63,6 @@ class User < ActiveRecord::Base
   end
   
   def is_new?
-    (Arena.where(user_id: id).count + Constructed.where(user_id: id).count) == 0
+    Match.where(user_id: id).count == 0
   end
 end
