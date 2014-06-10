@@ -191,7 +191,7 @@ class ConstructedsController < ApplicationController
     end
 
     if @active
-      personal_matches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
+      personal_matches = matches.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
     else
       personal_matches = matches.where(user_id: current_user.id)
     end
