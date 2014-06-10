@@ -99,6 +99,20 @@ class Match < ActiveRecord::Base
     end
   end
   
+  def self.winrate_per_class(matches = Match)
+    total = matches.joins(:klass).group("klasses.id").count
+    wins  = matches.joins(:klass).group("klasses.id").where("matches.result_id = 1").count
+    
+    winrate_per_class = {}
+    9.times { |i| winrate_per_class[i+1] = 0 }
+    
+    total.each do |klass_id, count|
+      winrate_per_class[klass_id] = ((wins[klass_id].to_f / count)*100).round(2)
+    end
+    
+    winrate_per_class
+  end
+  
   ### INSTANCE METHODS:
   
   def set_season_patch
@@ -111,5 +125,5 @@ class Match < ActiveRecord::Base
       deck.update_user_stats!
     end
   end
-  
+
 end
