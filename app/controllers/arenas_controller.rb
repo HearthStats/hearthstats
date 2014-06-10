@@ -161,7 +161,7 @@ class ArenasController < ApplicationController
     end
     if @arena.save
       MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
-      redirect_to arenas_url, notice: 'Arena was successfully created.'
+      redirect_to edit_arena_run_path(@arena.arena_run), notice: 'Arena was successfully created.'
     else
       redirect_to arenas_url, alert: 'Arena could not be created.'
     end

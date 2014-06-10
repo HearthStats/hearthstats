@@ -12,7 +12,9 @@ class ConstructedsController < ApplicationController
 
     @q = current_user.matches.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
-    @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    unless params[:days] == "all"
+      @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    end
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
 
@@ -21,6 +23,7 @@ class ConstructedsController < ApplicationController
     @constructeds = current_user.matches.where(mode_id: [2,3])
     @lastentry    = @constructeds.last
     @my_decks     = get_my_decks
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
@@ -188,7 +191,7 @@ class ConstructedsController < ApplicationController
     end
 
     if @active
-      personal_Matches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
+      personal_matches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
     else
       personal_matches = matches.where(user_id: current_user.id)
     end
