@@ -84,6 +84,7 @@ gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon'
 gem 'ransack' # the new meta_search
 gem 'airbrake'
+gem 'localeapp'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
