@@ -1,28 +1,15 @@
-form id="statsFilter" method="get" class="data-turboform"
+= form_for @q, url: stats_constructeds_path, method: :get, html: { class: 'data-turboform', id: 'statsFilter' } do |f|
   p
     | #{t('.filter_by')}: &nbsp;
-    select name="days"
-      option[value="1" selected=("selected" if @days_filter == 24)] #{t('.last')}last 24 #{t('.hours')}
-      option[value="7" selected=("selected" if @days_filter == 7)] #{t('.last')} 7 #{t('.days')}
-      option[value="30" selected=("selected" if @days_filter == 30)] #{t('.last')} 30 #{t('.days')}
-      option[value="90" selected=("selected" if @days_filter == 90)] #{t('.last')} 90 #{t('.days')}
-      option[value="all" selected=("selected" if @days_filter =="all")] #{t('.all_time')}
+    = select_tag :days, options_for_select(days_options_for_select, params[:days])
     | &nbsp;
-    select name="first"
-      option[value=""] - #{t('.first_or_second')} -
-      option[value="yes" selected=("selected" if @first_filter == 'yes')] #{t('.going_first')}
-      option[value="no" selected=("selected" if @first_filter == 'no')] #{t('.going_second')}
+    = f.select :coin_eq, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']]
     | &nbsp;
-    select name="mode"
-      option[value=""] - #{t('.any_mode')} -
-      option[value="casual" selected=("selected" if @mode_filter == 'casual')] #{t('.casual')}
-      option[value="ranked" selected=("selected" if @mode_filter == 'ranked')] #{t('.ranked')}
+    = f.select :mode_id_eq, [["- #{t('.any_mode')} -", ''], [t('.casual'), 2], [t('.ranked'), 3]]
     | &nbsp; Only Active Decks &nbsp;
-    - if @active
-      input type="checkbox" name="active" onchange="this.form.submit()" checked='true'
-    - else
-      input type="checkbox" name="active" onchange="this.form.submit()"
-    input type="submit" value="Submit" id="statsFilterSubmit"
+    = f.check_box :deck_active_eq, onchange: "this.form.submit()"
+    = f.submit :filter, id: 'statsFilterSubmit'
+    
 javascript:
   $('#statsFilter select').change(function() {
     $('#statsFilter').submit();

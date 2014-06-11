@@ -30,5 +30,20 @@ describe Match do
         Match.winrate_per_class.should == {1=>50, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0}
       end
     end
+    
+    describe '#matches_per_class' do
+      it 'inits all classes to 0' do
+        Match.matches_per_class.should == {"Druid"=>0, "Hunter"=>0, "Mage"=>0, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0}
+      end
+      
+      it 'returns the number of played matches per class' do
+        klass1 = create :klass, name: "Druid"
+        klass2 = create :klass, name: "Mage"
+        create :match, klass: klass1
+        create :match, klass: klass2
+        
+        Match.matches_per_class.should == {"Druid"=>1, "Hunter"=>0, "Mage"=>1, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0}
+      end
+    end
   end
 end

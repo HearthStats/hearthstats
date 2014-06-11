@@ -2,12 +2,6 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
   
-  ### SCOPES:
-  
-  scope :wins,   where(result_id: 1)
-  scope :losses, where(result_id: 2)
-  scope :draws,  where(result_id: 3)
-  
   ### ASSOCIATIONS:
   
   has_one :match_run
@@ -35,6 +29,12 @@ class Match < ActiveRecord::Base
   
   belongs_to :season
   belongs_to :patch
+  
+  ### SCOPES:
+  
+  scope :wins,   where(result_id: 1)
+  scope :losses, where(result_id: 2)
+  scope :draws,  where(result_id: 3)
   
   ### VALIDATIONS:
   
@@ -111,6 +111,17 @@ class Match < ActiveRecord::Base
     end
     
     winrate_per_class
+  end
+  
+  def self.matches_per_class(matches = Match)
+    matches_per_class = {}
+    Klass.list.each { |klass| matches_per_class[klass] = 0 }
+    
+    matches.joins(:klass).group("klasses.name").count.each do |name, count|
+      matches_per_class[name] = count
+    end
+    
+    matches_per_class
   end
   
   ### INSTANCE METHODS:

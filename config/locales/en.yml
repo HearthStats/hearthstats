@@ -245,12 +245,13 @@ en:
       section: Constructed
       filter_by: Filter by
       last: last
+    stats_filter:
       hours: hours
       days: days
       all_time: all time
+      last_days: Last %{num} days
       first_or_second: first or second
-      going_first: going first
-      going_second: going second
+      coin?: Coin?
       any_mode: any mode
       casual: casual
       ranked: ranked
