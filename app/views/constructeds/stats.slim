@@ -6,12 +6,11 @@
 - provide(:subtitle, t('.description'))
 - provide(:section, t('.section'))
 
-
 = render 'stats_filter'
 
 = render 'winratechart'
 
 div.details-stats
   -(1..9).each do |k|
-    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: klasses_hash_2[k]
+    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: Klass::LIST[k]
 .cf

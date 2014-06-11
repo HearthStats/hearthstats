@@ -26,7 +26,7 @@
           th Win %
         -(1..Klass.count).each do |k|
           tr
-            td = klasses_hash_2[k]
+            td = Klass::LIST[k]
             td = matches.where(result_id: 1, oppclass_id: k).length
             td = matches.where(result_id: 2, oppclass_id: k).length
             td = matches.where(result_id: 3, oppclass_id: k).length

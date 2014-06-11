@@ -27,15 +27,6 @@ module ApplicationHelper
     klasses
   end
 
-  def klasses_hash_2
-    klasses = Array.new
-    Klass.all.each do |k|
-      klasses[k.id] = k.name
-    end
-
-    klasses
-  end
-
   def get_name(match, table)
     id = match.send table.downcase + "_id"
     table = "Klass" if table == "Oppclass"
