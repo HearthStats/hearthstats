@@ -144,11 +144,13 @@ class ConstructedsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   def stats
     params[:q]     ||= {}
     params[:days]  ||= 'all'
-    params[:q].delete(:deck_active_eq)# if params[:q][:deck_active_eq] == "0"
+    
+    # prevent searching for decks that are explicitly not active
+    params[:q].delete(:deck_active_eq) if params[:q][:deck_active_eq] == "0"
     
     @q       = Match.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result
@@ -156,10 +158,6 @@ class ConstructedsController < ApplicationController
     unless params[:days] == "all"
       @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
-    
-    # coin doet ransack
-    # mode doet ransack
-    # with_active_decks ransacken
     
     personal_matches    = @matches.where(user_id: current_user.id)
     @personal_win_rates = Match.winrate_per_class(personal_matches)
@@ -170,9 +168,9 @@ class ConstructedsController < ApplicationController
     
     @classes = Klass.list
   end
-
+  
   private
-
+  
   def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
