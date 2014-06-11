@@ -25,14 +25,15 @@ class ApplicationController < ActionController::Base
   end
 
   def get_win_rate(matches, strout = false )
-    return 0 if matches.nil?
-    wins = matches.where(result_id: 1).length.to_f
-    tot_games = matches.length
+    tot_games = matches.count
+    return 0 if tot_games == 0
+    
+    wins = matches.where(result_id: 1).count.to_f
     win_rate = wins / tot_games
-    win_rate = "N/A" and return win_rate if win_rate.nan?
+    return "N/A" if win_rate.nan?
     win_rate = (win_rate*100).round(2)
     win_rate = win_rate.to_s + "%" if strout
-
+    
     win_rate
   end
 
