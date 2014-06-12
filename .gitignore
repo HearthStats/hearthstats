@@ -68,3 +68,5 @@ console
 /config/application.yml
 
 .localeapp
+.powrc
+.ruby-version
