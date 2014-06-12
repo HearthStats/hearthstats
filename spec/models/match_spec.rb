@@ -19,7 +19,7 @@ describe Match do
     
     describe '#winrate_per_class' do
       it 'inits all classes to 0' do
-        Match.winrate_per_class.should == {1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0}
+        Match.winrate_per_class(Match).should == [0, 0, 0, 0, 0, 0, 0, 0, 0]
       end
       
       it 'calculates the winrate per class' do
@@ -27,7 +27,7 @@ describe Match do
         win   = create :match, klass: klass, result_id: 1
         loss  = create :match, klass: klass, result_id: 0
         
-        Match.winrate_per_class.should == {1=>50, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0}
+        Match.winrate_per_class(Match).should == [50, 0, 0, 0, 0, 0, 0, 0, 0]
       end
     end
     
