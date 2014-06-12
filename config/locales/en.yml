@@ -243,7 +243,6 @@ en:
       title: Statistics
       description: ' constructed game stats'
       section: Constructed
-      filter_by: Filter by
       last: last
     stats_filter:
       hours: hours
@@ -255,6 +254,7 @@ en:
       any_mode: any mode
       casual: casual
       ranked: ranked
+      filter_by: Filter by
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
     newform:

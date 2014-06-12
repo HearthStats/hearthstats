@@ -149,9 +149,6 @@ class ConstructedsController < ApplicationController
     params[:q]     ||= {}
     params[:days]  ||= 'all'
     
-    # prevent searching for decks that are explicitly not active
-    params[:q].delete(:deck_active_eq) if params[:q][:deck_active_eq] == "0"
-    
     @q       = Match.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result
     
