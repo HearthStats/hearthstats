@@ -3,14 +3,14 @@ class Klass < ActiveRecord::Base
   
   LIST = { 
     1 => 'Druid',
-    2 => 'Hunter',
+    2 => 'Priest',
     3 => 'Mage',
-    4 => 'Paladin',
-    5 => 'Priest',
-    6 => 'Rogue',
+    4 => 'Warlock',
+    5 => 'Warrior',
+    6 => 'Paladin',
     7 => 'Shaman',
-    8 => 'Warlock',
-    9 => 'Warrior'
+    8 => 'Hunter',
+    9 => 'Rogue'
   }
   
   ### ASSOCIATIONS:
