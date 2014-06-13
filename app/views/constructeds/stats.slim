@@ -6,41 +6,11 @@
 - provide(:subtitle, t('.description'))
 - provide(:section, t('.section'))
 
-
-form id="statsFilter" method="get" class="data-turboform"
-  p
-    | #{t('.filter_by')}: &nbsp;
-    select name="days"
-      option[value="1" selected=("selected" if @days_filter == 24)] #{t('.last')}last 24 #{t('.hours')}
-      option[value="7" selected=("selected" if @days_filter == 7)] #{t('.last')} 7 #{t('.days')}
-      option[value="30" selected=("selected" if @days_filter == 30)] #{t('.last')} 30 #{t('.days')}
-      option[value="90" selected=("selected" if @days_filter == 90)] #{t('.last')} 90 #{t('.days')}
-      option[value="all" selected=("selected" if @days_filter =="all")] #{t('.all_time')}
-    | &nbsp;
-    select name="first"
-      option[value=""] - #{t('.first_or_second')} -
-      option[value="yes" selected=("selected" if @first_filter == 'yes')] #{t('.going_first')}
-      option[value="no" selected=("selected" if @first_filter == 'no')] #{t('.going_second')}
-    | &nbsp;
-    select name="mode"
-      option[value=""] - #{t('.any_mode')} -
-      option[value="casual" selected=("selected" if @mode_filter == 'casual')] #{t('.casual')}
-      option[value="ranked" selected=("selected" if @mode_filter == 'ranked')] #{t('.ranked')}
-    | &nbsp; Only Active Decks &nbsp;
-    - if @active
-      input type="checkbox" name="active" onchange="this.form.submit()" checked='true'
-    - else
-      input type="checkbox" name="active" onchange="this.form.submit()"
-    input type="submit" value="Submit" id="statsFilterSubmit"
-javascript:
-  $('#statsFilter select').change(function() {
-    $('#statsFilter').submit();
-  });
-  $('#statsFilterSubmit').hide();
+= render 'stats_filter'
 
 = render 'winratechart'
 
 div.details-stats
   -(1..9).each do |k|
-    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: klasses_hash_2[k]
+    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: Klass::LIST[k]
 .cf

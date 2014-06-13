@@ -1,0 +1,17 @@
+= search_form_for @q, url: stats_constructeds_path, method: :get, html: { class: 'data-turboform', id: 'statsFilter' } do |f|
+  p
+    | #{t('.filter_by')}: &nbsp;
+    = select_tag :days, options_for_select(days_options_for_select, params[:days])
+    | &nbsp;
+    = f.select :coin_eq, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']]
+    | &nbsp;
+    = f.select :mode_id_eq, [["- #{t('.any_mode')} -", ''], [t('.casual'), 2], [t('.ranked'), 3]]
+    | &nbsp; Only Active Decks &nbsp;
+    = f.check_box :deck_active_true, onchange: "this.form.submit()"
+    = f.submit :filter, id: 'statsFilterSubmit'
+    
+javascript:
+  $('#statsFilter select').change(function() {
+    $('#statsFilter').submit();
+  });
+  $('#statsFilterSubmit').hide();

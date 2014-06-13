@@ -3,6 +3,6 @@ DatabaseCleaner.clean_with(:truncation, only: [:match_results])
 
 Mode.create([
   { name: 'Arena'  },
-  { name: 'Ranked' },
-  { name: 'Practise' }
+  { name: 'Casual' },
+  { name: 'Ranked' }
 ])

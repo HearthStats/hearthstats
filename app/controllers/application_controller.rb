@@ -25,18 +25,18 @@ class ApplicationController < ActionController::Base
   end
 
   def get_win_rate(matches, strout = false )
-    return 0 if matches.nil?
-    wins = matches.where(result_id: 1).length.to_f
-    tot_games = matches.length
-    win_rate = wins / tot_games
-    win_rate = "N/A" and return win_rate if win_rate.nan?
-    win_rate = (win_rate*100).round(2)
+    tot_games = matches.count
+    return "N/A" if tot_games == 0
+    
+    wins = matches.where(result_id: 1).count
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
     win_rate = win_rate.to_s + "%" if strout
-
+    
     win_rate
   end
 
-  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash_2, :klasses_hash
+  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash
 
 
   private
