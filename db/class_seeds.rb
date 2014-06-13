@@ -2,13 +2,13 @@
 DatabaseCleaner.clean_with(:truncation, only: [:klasses])
 
 Klass.create([
-  { name: 'Druid'},
-  { name: 'Priest'},
-  { name: 'Mage'},
-  { name: 'Warlock'},
-  { name: 'Warrior'},
+  { name: 'Druid'  },
+  { name: 'Hunter' },
+  { name: 'Mage'   },
   { name: 'Paladin'},
-  { name: 'Shaman'},
-  { name: 'Hunter'},
-  { name: 'Rogue'}
+  { name: 'Priest' },
+  { name: 'Rogue'  },
+  { name: 'Shaman' },
+  { name: 'Warlock'},
+  { name: 'Warrior'}
 ])
