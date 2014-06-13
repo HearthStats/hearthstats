@@ -1,16 +1,16 @@
 class Klass < ActiveRecord::Base
   attr_accessible :name
   
-  LIST = { 
+  LIST = {
     1 => 'Druid',
-    2 => 'Priest',
+    2 => 'Hunter',
     3 => 'Mage',
-    4 => 'Warlock',
-    5 => 'Warrior',
-    6 => 'Paladin',
+    4 => 'Paladin',
+    5 => 'Priest',
+    6 => 'Rogue',
     7 => 'Shaman',
-    8 => 'Hunter',
-    9 => 'Rogue'
+    8 => 'Warlock',
+    9 => 'Warrior'
   }
   
   ### ASSOCIATIONS:
