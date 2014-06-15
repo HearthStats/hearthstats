@@ -16,8 +16,14 @@ class DecksController < ApplicationController
   # GET /decks/public
   # GET /decks/1.json
   def public
-    #@decks = Deck.select('*').where("unique_deck_id IS NOT NULL").distinct(:unique_deck_id)
-    @decks = Deck.group(:unique_deck_id).where(is_public: true).joins(:unique_deck)
+    params[:items] ||= 20
+    
+    @q = Deck.where(is_public: true).group(:unique_deck_id).joins(:unique_deck).ransack(params[:q])
+    @decks = @q.result
+    
+    @decks = @decks.order("#{sort_by} #{direction}")
+    @decks = @decks.paginate(page: params[:page], per_page: params[:items])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }
@@ -270,5 +276,13 @@ class DecksController < ApplicationController
     end
     
     return card_array.join(',')
+  end
+  
+  def sort_by
+    (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
+  end
+
+  def direction
+    %w{asc desc}.include?(params[:order]) ? params[:order] : 'desc'
   end
 end

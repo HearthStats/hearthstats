@@ -1,0 +1,21 @@
+<%= search_form_for @q, url: public_decks_url, html: { class: 'data-turboform', id: 'deckListFilter' } do |f| %>
+  <p>
+    <%= t('.filter') %>
+    <%= f.select :klass_id_eq, klass_collection_for_select %>
+    <%= t('.show') %>
+    <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]) %>
+    <%= t('.sort_by') %>
+    <%= select_tag :sort, options_for_select(sort_for_select, params[:sort]) %>
+    <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'], [t('.descending'), 'desc']], params[:order]) %>
+    <%= f.submit 'Apply', id: 'deckListFilterSubmit' %>
+  </p>
+  
+  <p><strong><%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></p>
+<% end %>
+
+<script type="text/javascript">
+  $('#deckListFilter select').change(function() {
+    $('#deckListFilter').submit();
+  });
+  $('#deckListFilterSubmit').hide();
+</script>
