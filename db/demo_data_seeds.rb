@@ -17,7 +17,11 @@ end
   
   # create decks
   (9 + rand(15)).times do |i|
-    deck = Deck.new(name: "demo-deck ##{i}", klass_id: klasses.sample.id, user_id: user.id, active: [true, false].sample)
+    deck = Deck.new(name:      "demo-deck ##{i}",
+                    klass_id:  klasses.sample.id,
+                    user_id:   user.id, 
+                    active:    [true, false].sample,
+                    is_public: [true, false].sample)
     
     # pick 30 cards
     possible_cards = Card.where("klass_id = ? OR klass_id IS NULL", deck.klass_id)
