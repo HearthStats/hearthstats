@@ -109,7 +109,7 @@ class Deck < ActiveRecord::Base
   end
   
   def class_name
-    Klass::LIST[klass_id]
+    Klass::LIST[klass_id]1
   end
   
   def num_users
