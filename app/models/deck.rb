@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id, :is_public
+  attr_accessible :loses, :name, :wins, :decklink, :notes, :cardstring, :klass_id, :is_public
   
   acts_as_taggable
   is_impressionable
@@ -37,13 +37,6 @@ class Deck < ActiveRecord::Base
     end
     deck = winrates.max_by { |x,y| y}
     deck
-  end
-  
-  def self.race_count
-    races = Deck.pluck(:race)
-    race_groups = races.group_by { |race| race } # {"Druid" => ["Druid", "Druid"]}
-    
-    Hash[race_groups.map { |race, list| [race, list.size] }]
   end
   
   ### INSTANCE METHODS:
@@ -116,9 +109,6 @@ class Deck < ActiveRecord::Base
   end
   
   def class_name
-    if klass.nil?
-      return race
-    end
     return klass.name
   end
   
