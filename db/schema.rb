@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140606094005) do
+ActiveRecord::Schema.define(:version => 20140617013656) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -443,12 +443,17 @@ ActiveRecord::Schema.define(:version => 20140606094005) do
 
   create_table "tournies", :force => true do |t|
     t.integer   "challonge_id"
-    t.integer   "status",       :default => 0
+    t.integer   "status",        :default => 0
     t.integer   "winner_id"
     t.string    "prize"
-    t.timestamp "created_at",                      :null => false
-    t.timestamp "updated_at",                      :null => false
-    t.boolean   "complete",     :default => false
+    t.timestamp "created_at",                       :null => false
+    t.timestamp "updated_at",                       :null => false
+    t.boolean   "complete",      :default => false
+    t.integer   "user_decks_id"
+    t.string    "title"
+    t.string    "desc"
+    t.datetime  "date"
+    t.string    "pic_link"
   end
 
   create_table "types", :force => true do |t|

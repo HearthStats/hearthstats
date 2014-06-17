@@ -410,8 +410,8 @@ en:
 
   tournies:
     index:
-      title: Sign Up
-      subtitle: ' Register for our newest tournaments/leagues'
+      title: Recent Tournaments
+      subtitle: ' Check out recent tournament deck lists!'
       section: 'Tournaments'
 
 
@@ -441,6 +441,7 @@ en:
     streams: Streams
     tournaments:
       title: Tournaments
+      recent: Recent Tournaments
       register: Register
       Calendar: Calendar
       past_winners: Past Winners

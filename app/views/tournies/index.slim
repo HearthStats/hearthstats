@@ -1,9 +1,28 @@
-- set_meta_tags :title => 'Tournament Sign Up',
-  :description => 'Sign up for new Hearthstats tournaments',
-  :keywords => 'register, tournament, hearthstats, hearthstone, match, tracking, win, loss'
-- provide(:title, t('.title'))
-- provide(:subtitle, t('.subtitle'))
+- set_meta_tags :title => 'Recent Tournaments',
+  :description => 'Recent Hearthstats tournament deck lists and win rates',
+  :keywords => 'recent, tournament, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, 'Recent Tournaments')
+- provide(:subtitle, ' Check out recent tournament deck lists!')
+- provide(:section, 'Tournaments')
 
-- provide(:section, t('.section'))
-
-h2 TBA
+- @tournies.each do |tourny|
+  .row
+    .col-md-12.blog-page
+      h1 Latest Tournaments
+      div class="row"
+        div class="col-md-4 blog-img blog-tag-data"
+          img src="#{tourny.pic_link}" alt="" class="img-responsive"
+          ul class="list-inline"
+            li
+              i class="fa fa-calendar"
+              |&nbsp;
+              - if current_user.guest
+                = tourny.date.strftime("%b %d, %Y %H:%M")
+              - else
+                = tourny.date.in_time_zone(current_user.profile.time_zone).strftime("%b %d, %Y %H:%M")
+        div class="col-md-8 blog-article"
+          h3 = tourny.title
+          p = tourny.desc
+          = link_to tourny, class: "btn blue" do
+            |View Decks &nbsp;
+            i class="m-icon-swapright m-icon-white"

@@ -3,6 +3,12 @@ class TourniesController < ApplicationController
   # before_filter :challongesignin
 
   def index
+    @tournies = Tourny.all
+  end
+
+  def show
+    @tourny = Tourny.find(params[:id])
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @tourny.user_decks_id, is_public: true)
   end
 
   def signup
