@@ -16,7 +16,7 @@
             li
               i class="fa fa-calendar"
               |&nbsp;
-              - if current_user.guest
+              - if current_user && current_user.guest
                 = tourny.date.strftime("%b %d, %Y %H:%M")
               - else
                 = tourny.date.in_time_zone(current_user.profile.time_zone).strftime("%b %d, %Y %H:%M")
