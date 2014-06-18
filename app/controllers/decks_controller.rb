@@ -2,8 +2,6 @@ class DecksController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :public, :public_show]
   caches_action :public_show, expires_in: 1.day
   
-  # GET /decks
-  # GET /decks.json
   def index
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: current_user.id)
     
@@ -12,9 +10,7 @@ class DecksController < ApplicationController
       format.json { render json: @decks }
     end
   end
-  
-  # GET /decks/public
-  # GET /decks/1.json
+
   def public
     params[:items] ||= 20
     
@@ -119,8 +115,6 @@ class DecksController < ApplicationController
     end
   end
 
-  # GET /decks/new
-  # GET /decks/new.json
   def new
     if params[:klass].nil?
       redirect_to new_splash_decks_path, alert: "Please select a class" and return
@@ -132,8 +126,7 @@ class DecksController < ApplicationController
       format.html # new.html.erb
     end
   end
-  
-  # GET /decks/1/copy
+
   def copy
     @deck = Deck.find(params[:id])
     user_copy = @deck.get_user_copy(current_user)
@@ -142,16 +135,13 @@ class DecksController < ApplicationController
     end
     redirect_to(edit_deck_path(user_copy))
   end
-  
-  # GET /decks/1/edit
+
   def edit
     @deck = Deck.find(params[:id])
     @classes = Klass.all
     canedit(@deck)
   end
-  
-  # POST /decks
-  # POST /decks.json
+
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
@@ -175,9 +165,7 @@ class DecksController < ApplicationController
       end
     end
   end
-  
-  # PUT /decks/1
-  # PUT /decks/1.json
+
   def update
     @deck = Deck.find(params[:id])
     @deck.constructeds.update_all(deckname: params[:deck]['name'])
@@ -198,9 +186,7 @@ class DecksController < ApplicationController
       end
     end
   end
-  
-  # DELETE /decks/1
-  # DELETE /decks/1.json
+
   def destroy
     @deck = Deck.find(params[:id])
     @deck.destroy
