@@ -1,7 +1,4 @@
 module DecksHelper
-  def copy_deck_path(deck)
-    return "/decks/" + deck.slug + "/copy"
-  end
   
   def sort_for_select
     sort_array = %w(created_at
