@@ -28,7 +28,7 @@ class DecksController < ApplicationController
       unique_deck_ids = @decks.map(&:unique_deck_id)
       @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
     end
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }
