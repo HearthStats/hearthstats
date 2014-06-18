@@ -14,11 +14,20 @@ class DecksController < ApplicationController
   def public
     params[:items] ||= 20
     
-    @q = Deck.where(is_public: true).group(:unique_deck_id).joins(:unique_deck).ransack(params[:q])
+    @q = Deck.where(is_public: true).
+              group(:unique_deck_id).
+              joins(:unique_deck).
+              includes(:unique_deck, user: :profile).
+              ransack(params[:q])
+              
     @decks = @q.result
-    
     @decks = @decks.order("#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
+    
+    unless current_user.nil?
+      unique_deck_ids = @decks.map(&:unique_deck_id)
+      @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
+    end
     
     respond_to do |format|
       format.html # index.html.erb
