@@ -3,10 +3,10 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="Jeffrey Tong" name="author" />
-	<meta name="MobileOptimized" content="320">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Jeffrey Tong" name="author" />
+  <meta name="MobileOptimized" content="320">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -16,17 +16,17 @@
   <link rel="apple-touch-icon" href="/hearthstatslogo.png">
   <link rel="apple-touch-icon-precomposed" href="/hearthstatslogo.png">
   <link href="/hearthstatslogo.png" rel="apple-touch-icon" sizes="76x76">
-	<link href="/hearthstatslogo.png" rel="apple-touch-icon" sizes="120x120">
-	<link href="/hearthstatslogo.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/hearthstatslogo.png" rel="apple-touch-icon" sizes="120x120">
+  <link href="/hearthstatslogo.png" rel="apple-touch-icon" sizes="152x152">
   <script src="http://code.highcharts.com/highcharts.js"></script>
-	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
 
 </head>
 <% if signed_in? %>
-	<body class="page-header-fixed">
+  <body class="page-header-fixed">
 <% else %>
-	<body class="page-header-fixed page-full-width">
+  <body class="page-header-fixed page-full-width">
 <% end %>
 	<%= render 'layouts/header' %>
 	<div class="clearfix"></div>
@@ -76,40 +76,40 @@
 			// Include the UserVoice JavaScript SDK (only needed once on a page)
 			UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Kk0pKUYPigy8io1njnDA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
-			//
-			// UserVoice Javascript SDK developer documentation:
-			// https://www.uservoice.com/o/javascript-sdk
-			//
+      //
+      // UserVoice Javascript SDK developer documentation:
+      // https://www.uservoice.com/o/javascript-sdk
+      //
 
-			// Identify the user and pass traits
-			// To enable, replace sample data with actual user traits and uncomment the line
-			UserVoice.push(['identify', {
-			  email:      '<%= current_user.email %>', // User’s email address
-			  id:         <%= current_user.id %>, // Optional: Unique id of the user (if set, this should not change)
-			}]);
+      // Identify the user and pass traits
+      // To enable, replace sample data with actual user traits and uncomment the line
+      UserVoice.push(['identify', {
+        email:      '<%= current_user.email %>', // User’s email address
+        id:         <%= current_user.id %>, // Optional: Unique id of the user (if set, this should not change)
+      }]);
 
-			// Or, use your own custom trigger:
-			//UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+      // Or, use your own custom trigger:
+      //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
 
-			// Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
-			UserVoice.push(['autoprompt', {}]);
-		</script>
-		<% if current_user.guest %>
-			<script>
-				toastr.info("Guest data will be deleted, please register to save your records.");
-			</script>
-		<% end %>
-	<% end %>
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-45442103-1']);
-	  _gaq.push(['_trackPageview']);
+      // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+      UserVoice.push(['autoprompt', {}]);
+    </script>
+    <% if current_user.guest %>
+      <script>
+        toastr.info("Guest data will be deleted, please register to save your records.");
+      </script>
+    <% end %>
+  <% end %>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45442103-1']);
+    _gaq.push(['_trackPageview']);
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	</script>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </body>
 </html>
