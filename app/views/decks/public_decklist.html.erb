@@ -21,7 +21,6 @@
     </tr>
   </thead>
   <tbody>
-    
     <% @decks.each do |deck| %>
       <% unique_deck = deck.unique_deck %>
       <tr>
@@ -48,7 +47,7 @@
               <%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
               <%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
             <% else %>
-              <% user_copy = deck.get_user_copy(current_user) %>
+              <% user_copy = @user_decks.detect { |d| d.unique_deck_id == deck.unique_deck_id } %>
               <% if user_copy.nil? %>
                 <%= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
               <% else %>
