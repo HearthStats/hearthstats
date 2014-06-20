@@ -146,7 +146,8 @@ class DecksController < ApplicationController
 
   def edit
     @deck = Deck.find(params[:id])
-    @classes = Klass.all
+    gon.deck = @deck
+    gon.cards = Card.all
     canedit(@deck)
   end
 

@@ -147,7 +147,7 @@
 	margin: auto;
 }
 .card-count{
-	text-align: right;
+	text-align: center;
 }
 #deck-list{
 	th{
@@ -156,4 +156,27 @@
 		font-size: 14px;
 		border-bottom: 1px solid black;
 	}
+  th:last-child{
+    padding-left: 10px;
+    text-align: right;
+  }
+}
+.quick-add{
+  color: white;
+  float: left;
+  background-color: #428BCA;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+}
+.quick-remove{
+  color: white;
+  float: right;
+  background-color: #D84A38;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+
 }

@@ -46,7 +46,7 @@ en:
       add_a_card: Add a Card
       of_30_cards: of 30 cards
       this_deck_is_incomplete: This Deck is Incomplete
-      left_click_add_right_remove: Left-click to add. Right-click to remove.
+      left_click_add_right_remove: Left-click to add. Click and hold to remove.
       mana_curve: Mana curve
       attack_distribution: Attack distribution
       health_distribution: Health distribution
@@ -313,6 +313,7 @@ en:
       this_deck_public: Make Deck Public
       search: Search
       count: Count
+      controls: Controls
       card_limit: Max Card Limit
       deck_limit: Max Deck Limit
       no_more: No More In Deck
