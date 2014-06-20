@@ -2,8 +2,6 @@ class DecksController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :public, :public_show]
   caches_action :public_show, expires_in: 1.day
   
-  # GET /decks
-  # GET /decks.json
   def index
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: current_user.id)
     
@@ -12,12 +10,25 @@ class DecksController < ApplicationController
       format.json { render json: @decks }
     end
   end
-  
-  # GET /decks/public
-  # GET /decks/1.json
+
   def public
-    #@decks = Deck.select('*').where("unique_deck_id IS NOT NULL").distinct(:unique_deck_id)
-    @decks = Deck.group(:unique_deck_id).where(is_public: true).joins(:unique_deck)
+    params[:items] ||= 20
+    
+    @q = Deck.where(is_public: true).
+              group(:unique_deck_id).
+              joins(:unique_deck).
+              includes(:unique_deck, user: :profile).
+              ransack(params[:q])
+              
+    @decks = @q.result
+    @decks = @decks.order("#{sort_by} #{direction}")
+    @decks = @decks.paginate(page: params[:page], per_page: params[:items])
+    
+    unless current_user.nil?
+      unique_deck_ids = @decks.map(&:unique_deck_id)
+      @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }
@@ -113,8 +124,6 @@ class DecksController < ApplicationController
     end
   end
 
-  # GET /decks/new
-  # GET /decks/new.json
   def new
     if params[:klass].nil?
       redirect_to new_splash_decks_path, alert: "Please select a class" and return
@@ -126,8 +135,7 @@ class DecksController < ApplicationController
       format.html # new.html.erb
     end
   end
-  
-  # GET /decks/1/copy
+
   def copy
     @deck = Deck.find(params[:id])
     user_copy = @deck.get_user_copy(current_user)
@@ -136,16 +144,13 @@ class DecksController < ApplicationController
     end
     redirect_to(edit_deck_path(user_copy))
   end
-  
-  # GET /decks/1/edit
+
   def edit
     @deck = Deck.find(params[:id])
     @classes = Klass.all
     canedit(@deck)
   end
-  
-  # POST /decks
-  # POST /decks.json
+
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
@@ -169,9 +174,7 @@ class DecksController < ApplicationController
       end
     end
   end
-  
-  # PUT /decks/1
-  # PUT /decks/1.json
+
   def update
     @deck = Deck.find(params[:id])
     @deck.constructeds.update_all(deckname: params[:deck]['name'])
@@ -192,9 +195,7 @@ class DecksController < ApplicationController
       end
     end
   end
-  
-  # DELETE /decks/1
-  # DELETE /decks/1.json
+
   def destroy
     @deck = Deck.find(params[:id])
     @deck.destroy
@@ -270,5 +271,13 @@ class DecksController < ApplicationController
     end
     
     return card_array.join(',')
+  end
+  
+  def sort_by
+    (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
+  end
+
+  def direction
+    %w{asc desc}.include?(params[:order]) ? params[:order] : 'desc'
   end
 end

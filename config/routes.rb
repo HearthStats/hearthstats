@@ -71,11 +71,11 @@ Hearthstats::Application.routes.draw do
   end
   match "/arena/matches", to: "arenas#matches"
 
-  match "decks/:id/copy", to: "decks#copy"
   resources :profiles do
     get 'sig'
     post 'set_locale', on: :collection
   end
+  
   resources :decks do
     opinio
     collection do
@@ -88,6 +88,7 @@ Hearthstats::Application.routes.draw do
     end
     get 'version', on: :member
     get 'public_show', on: :member
+    get 'copy', on: :member
   end
 
   resources :dashboards do

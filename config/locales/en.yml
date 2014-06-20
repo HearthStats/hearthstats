@@ -285,6 +285,26 @@ en:
 
 
   decks:
+    filter:
+      ascending: Ascending
+      descending: Descending
+      per_page: Per page
+      sort_by: Sort by
+      show: Show
+      filter: Filter
+      decks_found:
+        one: 1 deck found matching your criteria
+        other: '%{count} decks found matching your criteria'
+      created_at: Created
+      num_losses: Losses
+      num_matches: Matches
+      num_minions: Minions
+      name: Name
+      num_spells: Spells
+      num_users: Popularity
+      num_weapons: Weapons
+      winrate : Winrate
+      num_wins: Wins
     form:
       name: Name
       class: Class

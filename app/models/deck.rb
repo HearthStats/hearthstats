@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :race, :decklink, :notes, :cardstring, :klass_id, :is_public
+  attr_accessible :loses, :name, :wins, :decklink, :notes, :cardstring, :klass_id, :is_public
   
   acts_as_taggable
   is_impressionable
@@ -39,19 +39,12 @@ class Deck < ActiveRecord::Base
     deck
   end
   
-  def self.race_count
-    races = Deck.pluck(:race)
-    race_groups = races.group_by { |race| race } # {"Druid" => ["Druid", "Druid"]}
-    
-    Hash[race_groups.map { |race, list| [race, list.size] }]
-  end
-  
   ### INSTANCE METHODS:
   
   def num_cards
-    return  0 unless self.cardstring
+    return 0 unless cardstring
     num_cards = 0
-    cards = self.cardstring.split(',')
+    cards = cardstring.split(',')
     cards.each do |card_data|
       chunks = card_data.split('_')
       num_cards += chunks[1].to_f
@@ -116,10 +109,7 @@ class Deck < ActiveRecord::Base
   end
   
   def class_name
-    if klass.nil?
-      return race
-    end
-    return klass.name
+    Klass::LIST[klass_id]
   end
   
   def num_users
@@ -129,65 +119,70 @@ class Deck < ActiveRecord::Base
   def num_matches
     return matches.count
   end
+  
   def num_global_matches
-    return self.unique_deck.nil? ? 0 : self.unique_deck.num_matches
+    return unique_deck.nil? ? 0 : unique_deck.num_matches
   end
   
   def num_minions
-    return self.unique_deck.nil? ? "-" : self.unique_deck.num_minions
+    return unique_deck.nil? ? "-" : unique_deck.num_minions
   end
   
   def num_spells
-    return self.unique_deck.nil? ? "-" : self.unique_deck.num_spells
+    return unique_deck.nil? ? "-" : unique_deck.num_spells
   end
   
   def num_weapons
-    return self.unique_deck.nil? ? "-" : self.unique_deck.num_weapons
+    return unique_deck.nil? ? "-" : unique_deck.num_weapons
   end
   
   def wins
     return matches.where(result_id: 1).count
   end
+  
   def global_wins
-    return self.unique_deck.nil? ? "-" : self.unique_deck.num_wins
+    return unique_deck.nil? ? "-" : unique_deck.num_wins
   end
   
   def losses
     return matches.where(result_id: 2).count
   end
+  
   def global_losses
-    return self.unique_deck.nil? ? "-" : self.unique_deck.num_losses
+    return unique_deck.nil? ? "-" : unique_deck.num_losses
   end
   
   def winrate
     return num_matches > 0 ? (wins.to_f / num_matches) * 100 : 0
   end
+  
   def global_winrate
-    return self.unique_deck.nil? ? "-" : self.unique_deck.winrate
+    return unique_deck.nil? ? "-" : unique_deck.winrate
   end
   
   def copy(user)
     new_copy = Deck.new
-    new_copy.name = self.name
-    new_copy.unique_deck = self.unique_deck
+    new_copy.name = name
+    new_copy.unique_deck = unique_deck
     new_copy.user_id = user.id
-    new_copy.klass = self.klass
-    new_copy.notes = self.notes
-    new_copy.cardstring = self.cardstring
+    new_copy.klass = klass
+    new_copy.notes = notes
+    new_copy.cardstring = cardstring
     new_copy.is_public = true
     new_copy.save
+    
     return new_copy
   end
   
   def get_user_copy(user)
-    return Deck.where(user_id: user.id, unique_deck_id: self.unique_deck_id)[0]
+    return user.decks.find_by_unique_deck_id(unique_deck_id)
   end
   
   def cards
-    if self.unique_deck.nil?
+    if unique_deck.nil?
       return nil
     end
-    return self.unique_deck.cards
+    return unique_deck.cards
   end
   
   def card_array_from_cardstring
