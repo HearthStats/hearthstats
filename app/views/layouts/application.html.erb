@@ -28,53 +28,52 @@
 <% else %>
   <body class="page-header-fixed page-full-width">
 <% end %>
-	<%= render 'layouts/header' %>
-	<div class="clearfix"></div>
-	<div class="page-container">
-		<% if signed_in? %>
-			<%= render 'layouts/sidebar' %>
-		<% end %>
-		<div class="page-content">
-			<script type="text/javascript">
-				// A tab to launch the Classic Widget
-				UserVoice.push(['showTab', 'classic_widget', {
-				  mode: 'full',
-				  primary_color: '#cc6d00',
-				  link_color: '#007dbf',
-				  default_mode: 'support',
-				  forum_id: 236878,
-				  tab_label: 'Feedback',
-				  tab_color: '#3d3d3d',
-				  tab_position: 'middle-right',
-				  tab_inverted: false
-				}]);
-		  </script>
-			<!-- BEGIN PAGE HEADER -->
-			<%= render 'layouts/breadcrumbs' %>
-			<!-- END PAGE HEADER -->
-			<%= yield %>
-      <%= render 'layouts/foot_ads' %>
-		</div>
-	</div>
-	<%= render 'layouts/footer' %>
-	<script>
-		App.init(); // initlayout and core plugins
-	</script>
-	<% if notice || alert %>
-		<% if notice %>
-			<script>
-					toastr.success("<%= raw notice %>");
-			</script>
-		<% elsif alert %>
-			<script>
-					toastr.error("<%= raw alert %>");
-			</script>
-		<% end %>
-	<% end %>
-	<% if current_user %>
-		<script>
-			// Include the UserVoice JavaScript SDK (only needed once on a page)
-			UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Kk0pKUYPigy8io1njnDA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+  <%= render 'layouts/header' %>
+  <div class="clearfix"></div>
+  <div class="page-container">
+    <% if signed_in? %>
+      <%= render 'layouts/sidebar' %>
+    <% end %>
+    <div class="page-content">
+      <script type="text/javascript">
+        // A tab to launch the Classic Widget
+        UserVoice.push(['showTab', 'classic_widget', {
+          mode: 'full',
+          primary_color: '#cc6d00',
+          link_color: '#007dbf',
+          default_mode: 'support',
+          forum_id: 236878,
+          tab_label: 'Feedback',
+          tab_color: '#3d3d3d',
+          tab_position: 'middle-right',
+          tab_inverted: false
+        }]);
+      </script>
+      <!-- BEGIN PAGE HEADER -->
+      <%= render 'layouts/breadcrumbs' %>
+      <!-- END PAGE HEADER -->
+      <%= yield %>
+    </div>
+  </div>
+  <%= render 'layouts/footer' %>
+  <script>
+    App.init(); // initlayout and core plugins
+  </script>
+  <% if notice || alert %>
+    <% if notice %>
+      <script>
+          toastr.success("<%= raw notice %>");
+      </script>
+    <% elsif alert %>
+      <script>
+          toastr.error("<%= raw alert %>");
+      </script>
+    <% end %>
+  <% end %>
+  <% if current_user %>
+    <script>
+      // Include the UserVoice JavaScript SDK (only needed once on a page)
+      UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Kk0pKUYPigy8io1njnDA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
       //
       // UserVoice Javascript SDK developer documentation:

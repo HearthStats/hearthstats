@@ -12,60 +12,60 @@
     <!-- END GRAPH-->
   </div>
   <div class="col-md-6 col-sm-6">
-  	<!-- BEGIN PORTLET-->
+    <!-- BEGIN PORTLET-->
     <div class="portlet solid bordered light-grey">
-			<div class="portlet-title">
-				<div class="caption"><i class="fa fa-rss-square"></i>Team Description</div>
-			</div>
-			<div class="portlet-body">
-			</div>
-		</div>
+      <div class="portlet-title">
+        <div class="caption"><i class="fa fa-rss-square"></i>Team Description</div>
+      </div>
+      <div class="portlet-body">
+      </div>
+    </div>
     <!-- END PORTLET-->
     <!-- BEGIN PORTLET-->
-		<div class="portlet solid bordered light-grey">
-			<div class="portlet-title">
-				<div class="caption"><i class="fa fa-bell-o"></i>Recent Activities</div>
-			</div>
-			<div class="portlet-body">
-				<div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0">
-					<ul class="feeds">
-						<% @recent_entries.each do |entry| %>
-							<li>
-								<div class="col1">
-									<div class="cont">
-										<div class="cont-col1">
-											<% if entry.mode.name == "Arena" %>
+    <div class="portlet solid bordered light-grey">
+      <div class="portlet-title">
+        <div class="caption"><i class="fa fa-bell-o"></i>Recent Activities</div>
+      </div>
+      <div class="portlet-body">
+        <div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0">
+          <ul class="feeds">
+            <% @recent_entries.each do |entry| %>
+              <li>
+                <div class="col1">
+                  <div class="cont">
+                    <div class="cont-col1">
+                      <% if entry.mode.name == "Arena" %>
                         <div class="label label-sm label-<%=entry.klass.name%>">
-													<%=image_tag("swords.svg", height: 17, width: 17) %>
-												</div>
-											<% elsif entry.mode.name == "Ranked" %>
+                          <%=image_tag("swords.svg", height: 17, width: 17) %>
+                        </div>
+                      <% elsif entry.mode.name == "Ranked" %>
                         <div class="label label-sm label-<%=entry.klass.name%>">
-													<%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
-												</div>
+                          <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
+                        </div>
                       <% elsif entry.mode.name == "Casual" %>
                           <div class="label label-sm label-<%=entry.klass.name%>">
                             <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
-												</div>
+                        </div>
                       <% end%>
-										</div>
-										<div class="cont-col2">
-											<div class="desc">
+                    </div>
+                    <div class="cont-col2">
+                      <div class="desc">
                         <%= entry.user.profile.name%>: <%= entry.match_result.name %> against <%= entry.oppclass.name %> with <%= entry.klass.name %>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col2">
-									<div class="date">
-										<%= time_ago_in_words(entry.created_at) %> ago
-									</div>
-								</div>
-							</li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col2">
+                  <div class="date">
+                    <%= time_ago_in_words(entry.created_at) %> ago
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!-- END PORTLET-->
 
   </div>

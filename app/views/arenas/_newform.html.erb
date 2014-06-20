@@ -1,70 +1,70 @@
 <%= form_for @arena, url: {controller: "arenas", action: "create"}, remote: true do |f| %>
-	<div class="row arenas">
-		<!-- Right Arena Entry first so that it will appear on top on smaller screens-->
-		<div class="col-md-6 center">
-	    <% if @arena.errors.any? %>
-	      <div id="error_explanation">
-	        <h2><%= pluralize(@arena.errors.count, t("shared.error")) %> <%=t('shared.prohibited_this_being_save', resource: t('shared.arena'))%>:</h2>
+  <div class="row arenas">
+    <!-- Right Arena Entry first so that it will appear on top on smaller screens-->
+    <div class="col-md-6 center">
+      <% if @arena.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@arena.errors.count, t("shared.error")) %> <%=t('shared.prohibited_this_being_save', resource: t('shared.arena'))%>:</h2>
 
-	        <ul>
-	        <% @arena.errors.full_messages.each do |msg| %>
-	          <li><%= msg %></li>
-	        <% end %>
-	        </ul>
-	      </div>
-	    <% end %>
+          <ul>
+          <% @arena.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-	    <%= f.text_field :klass_id, :value => @arenarun.klass_id, class: "hidden" %>
-			<div class="gofirst-cont">
-	      <input type="checkbox" name="match[coin]" rel="toggle-btn" class="btn btn-lg green" on="<%=t('arenas.new.played_first')%>" off="<%=t('arenas.new.played_second')%>"/>
-	    </div>
-	    <div class="oppfield arenaopp">
-	      <h2 style="margin-top:0;"><%= t('arenas.new.opponent_class') %></h2>
+      <%= f.text_field :klass_id, :value => @arenarun.klass_id, class: "hidden" %>
+      <div class="gofirst-cont">
+        <input type="checkbox" name="match[coin]" rel="toggle-btn" class="btn btn-lg green" on="<%=t('arenas.new.played_first')%>" off="<%=t('arenas.new.played_second')%>"/>
+      </div>
+      <div class="oppfield arenaopp">
+        <h2 style="margin-top:0;"><%= t('arenas.new.opponent_class') %></h2>
         <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
-	    </div>
-	    <div class="cf"></div>
-			<div id="1" class= "btn btn-primary green winbutt_style winbutton"><%=t('arenas.new.win') %></div>
+      </div>
+      <div class="cf"></div>
+      <div id="1" class= "btn btn-primary green winbutt_style winbutton"><%=t('arenas.new.win') %></div>
       <div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected"><%=t('arenas.new.defeat')  %></div>
       <div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected"><%= t('arenas.new.draw') %></div>
       <%= f.number_field :result_id, value: 1, class: "hidden wininput"%>
       <%= number_field_tag :arena_run_id , @arenarun.id , :class => "hidden" %>
-	    <div class="actions">
-	      <%= link_to arenas_path do %>
-	      <button class="btn btn-lg"><%= t('arenas.new.back') %></button>
-	      <% end %>
-	      <% if @arenarun.complete %>
-					<%= link_to end_arena_runs_path do %>
-		      	<button class="btn btn-lg btn-warning"><%= t('arenas.new.end_run') %></button>
-		      <% end %>
-				<% else %>
-		      <%= f.submit t('arenas.new.create_entry'), class: "btn btn-lg btn-primary arenasubmit" %>
-		      <%= link_to end_arena_runs_path do %>
-		      	<button class="btn btn-lg btn-warning arenaendrun"><%= t('arenas.new.end_run') %></button>
-		      <% end %>
-	      <% end %>
-	    </div>
-	  </div>
-	  <div class="col-md-6">
-			<div class="arena_notes">
-				<h3><%=t('shared.notes')%></h3>
-				<% if @arenarun.matches.last %>
-			  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120, :value => @arenarun.matches.last.notes %>
-		  	<% else %>
-			  	<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
-		  	<% end %>
-			</div>
-	  	<div class="portlet box green">
-	  		<div class="portlet-title">
-	  			<div class="caption"><%= t('arenas.new.arena_run_results') %></div>
-	  		</div>
-	  		<div class="portlet-body">
-			  	<div class="table-reponsive">
-				    <table id="arenagames" class="table table-striped">
-				      <thead>
+      <div class="actions">
+        <%= link_to arenas_path do %>
+        <button class="btn btn-lg"><%= t('arenas.new.back') %></button>
+        <% end %>
+        <% if @arenarun.complete %>
+          <%= link_to end_arena_runs_path do %>
+            <button class="btn btn-lg btn-warning"><%= t('arenas.new.end_run') %></button>
+          <% end %>
+        <% else %>
+          <%= f.submit t('arenas.new.create_entry'), class: "btn btn-lg btn-primary arenasubmit" %>
+          <%= link_to end_arena_runs_path do %>
+            <button class="btn btn-lg btn-warning arenaendrun"><%= t('arenas.new.end_run') %></button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="arena_notes">
+        <h3><%=t('shared.notes')%></h3>
+        <% if @arenarun.matches.last %>
+          <%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120, :value => @arenarun.matches.last.notes %>
+        <% else %>
+          <%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 120 %>
+        <% end %>
+      </div>
+      <div class="portlet box green">
+        <div class="portlet-title">
+          <div class="caption"><%= t('arenas.new.arena_run_results') %></div>
+        </div>
+        <div class="portlet-body">
+          <div class="table-reponsive">
+            <table id="arenagames" class="table table-striped">
+              <thead>
                 <tr><th><%= t('arenas.new.opponent_class') %></th><th><%= t('arenas.new.result') %></th><th><%= t('arenas.new.options') %></th></tr>
-				      </thead>
-				        <tbody>
-				        	<% @arenarun.matches.each do |a| %>
+              </thead>
+                <tbody>
+                  <% @arenarun.matches.each do |a| %>
                     <tr id=<%=a.id%>>
                       <td>
                         <%= image_tag("Icons/Classes/#{get_name(a,"Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(a,"Oppclass")%>
@@ -76,22 +76,22 @@
                         <%= link_to t('shared.delete'), a, method: :delete , remote: true %>
                       </td>
                     </tr>
-				        	<% end %>
-				        </tbody>
-				    </table>
-			    </div>
-			  </div>
-	    </div>
-	  </div>
-	  <!-- Left Past Arena Games -->
-	</div>
+                  <% end %>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Left Past Arena Games -->
+  </div>
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#match_oppclass_id');
-	$(".winbutton").click(function(){
-		$(".winbutton").addClass('not-selected');
-		$(this).removeClass('not-selected');
-		result_id = $(this).attr("id");
-		$(".wininput").val(result_id)
-	});
+  app.UI.initClassSelector('#match_oppclass_id');
+  $(".winbutton").click(function(){
+    $(".winbutton").addClass('not-selected');
+    $(this).removeClass('not-selected');
+    result_id = $(this).attr("id");
+    $(".wininput").val(result_id)
+  });
 </script>

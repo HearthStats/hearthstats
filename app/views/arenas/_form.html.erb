@@ -15,32 +15,32 @@
     <%= f.number_field :user_id %>
   </div> -->
   <div class="row">
-	  <div class="gofirstfield center">
-	    <h3>You played on the: </h3>
-	    <input type="checkbox"
-				name="other[gofirst]"
-				rel="toggle-btn"
-				class="btn btn-lg gofirst"
-				on="First Turn"
-				off="Second Turn"
-				<% if @arena.coin %>
-				state="off"
-				<% end %>
-			/>
-	  </div>
-	</div>
-	<div class="row center">
-  	<div class="oppfield">
-	    <%= f.label "Opponent Class" %><br />
-	    <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a, @arena.oppclass_id) %>
-	  </div>
+    <div class="gofirstfield center">
+      <h3>You played on the: </h3>
+      <input type="checkbox"
+        name="other[gofirst]"
+        rel="toggle-btn"
+        class="btn btn-lg gofirst"
+        on="First Turn"
+        off="Second Turn"
+        <% if @arena.coin %>
+        state="off"
+        <% end %>
+      />
+    </div>
+  </div>
+  <div class="row center">
+    <div class="oppfield">
+      <%= f.label "Opponent Class" %><br />
+      <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a, @arena.oppclass_id) %>
+    </div>
   </div>
   <div class="cf"></div>
   <div class="winfield center">
-  	<div id="1" class= "btn btn-primary green winbutt_style winbutton not-selected">Add Win</div>
-		<div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Add Defeat</div>
-		<div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Add Draw</div>
-		<%= number_field_tag 'win',@arena.result_id, class: "hidden wininput" %>
+    <div id="1" class= "btn btn-primary green winbutt_style winbutton not-selected">Add Win</div>
+    <div id="2" class= "btn btn-primary red winbutt_style winbutton not-selected">Add Defeat</div>
+    <div id="3" class= "btn btn-primary yellow winbutt_style winbutton not-selected">Add Draw</div>
+    <%= number_field_tag 'win',@arena.result_id, class: "hidden wininput" %>
   </div>
   <div class="actions center">
     <%= link_to 'Back', arenas_path, class: "pure-button pure-button-secondary" %>
@@ -48,12 +48,12 @@
   </div>
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#match_oppclass_id');
-	$("#<%=@arena.result_id%>").removeClass('not-selected');
-	$(".winbutton").click(function(){
-		$(".winbutton").addClass('not-selected');
-		$(this).removeClass('not-selected');
-		result_id = $(this).attr("id");
-		$(".wininput").val(result_id)
-	});
+  app.UI.initClassSelector('#match_oppclass_id');
+  $("#<%=@arena.result_id%>").removeClass('not-selected');
+  $(".winbutton").click(function(){
+    $(".winbutton").addClass('not-selected');
+    $(this).removeClass('not-selected');
+    result_id = $(this).attr("id");
+    $(".wininput").val(result_id)
+  });
 </script>
