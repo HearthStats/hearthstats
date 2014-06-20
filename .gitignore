@@ -66,3 +66,7 @@ console
 
 # Ignore application configuration
 /config/application.yml
+
+.localeapp
+.powrc
+.ruby-version

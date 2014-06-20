@@ -2,12 +2,6 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
   
-  ### SCOPES:
-  
-  scope :wins,   where(result_id: 1)
-  scope :losses, where(result_id: 2)
-  scope :draws,  where(result_id: 3)
-  
   ### ASSOCIATIONS:
   
   has_one :match_run
@@ -35,6 +29,12 @@ class Match < ActiveRecord::Base
   
   belongs_to :season
   belongs_to :patch
+  
+  ### SCOPES:
+  
+  scope :wins,   where(result_id: 1)
+  scope :losses, where(result_id: 2)
+  scope :draws,  where(result_id: 3)
   
   ### VALIDATIONS:
   
@@ -99,6 +99,30 @@ class Match < ActiveRecord::Base
     end
   end
   
+  def self.winrate_per_class(matches = Match)
+    total = matches.joins(:klass).group("klasses.id").count
+    wins  = matches.joins(:klass).group("klasses.id").where("matches.result_id = 1").count
+    
+    winrate_per_class = Array.new(9, 0)
+    
+    total.each do |klass_id, count|
+      winrate_per_class[klass_id - 1] = ((wins[klass_id].to_f / count)*100).round(2)
+    end
+    
+    winrate_per_class
+  end
+  
+  def self.matches_per_class(matches = Match)
+    matches_per_class = {}
+    Klass.list.each { |klass| matches_per_class[klass] = 0 }
+    
+    matches.joins(:klass).group("klasses.name").count.each do |name, count|
+      matches_per_class[name] = count
+    end
+    
+    matches_per_class
+  end
+  
   ### INSTANCE METHODS:
   
   def set_season_patch
@@ -107,10 +131,9 @@ class Match < ActiveRecord::Base
   end
   
   def update_user_stats_constructed
-    unless self.deck.nil?
-      self.deck.update_user_stats
-      self.deck.save!
+    unless deck.nil?
+      deck.update_user_stats!
     end
   end
-  
+
 end

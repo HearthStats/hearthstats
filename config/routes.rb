@@ -160,6 +160,7 @@ Hearthstats::Application.routes.draw do
 
       get "decks/show"
       get "decks/find"
+      post "decks/delete"
       post "decks/activate"
       post "decks/slots"
     end

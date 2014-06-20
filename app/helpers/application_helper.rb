@@ -7,11 +7,11 @@ module ApplicationHelper
   end
 
   def available_languages_list
-    {'en' => 'English', 'fr' => 'French', 'zh-TW' => '繁體中文', 'zh-CN' => '簡體中文', 'de' => 'German', 'pt-BR' => 'Português', 'kr' => 'Korean', 'el' => 'Greek', 'es' => 'Spanish'}
+    {'en' => 'English', 'fr' => 'French', 'zh-TW' => '繁體中文', 'zh-CN' => '簡體中文', 'de' => 'German', 'pt-BR' => 'Português', 'ko' => 'Korean', 'el' => 'Greek', 'es' => 'Spanish'}
   end
 
   def current_season
-    Season.last.num
+    Season.current
   end
 
   def current_patch
@@ -22,15 +22,6 @@ module ApplicationHelper
     klasses = Hash.new
     Klass.all.each do |k|
       klasses[k.name] = k.id
-    end
-
-    klasses
-  end
-
-  def klasses_hash_2
-    klasses = Array.new
-    Klass.all.each do |k|
-      klasses[k.id] = k.name
     end
 
     klasses

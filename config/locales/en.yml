@@ -243,17 +243,18 @@ en:
       title: Statistics
       description: ' constructed game stats'
       section: Constructed
-      filter_by: Filter by
       last: last
+    stats_filter:
       hours: hours
       days: days
       all_time: all time
+      last_days: Last %{num} days
       first_or_second: first or second
-      going_first: going first
-      going_second: going second
+      coin?: Coin?
       any_mode: any mode
       casual: casual
       ranked: ranked
+      filter_by: Filter by
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
     newform:
@@ -409,8 +410,8 @@ en:
 
   tournies:
     index:
-      title: Sign Up
-      subtitle: ' Register for our newest tournaments/leagues'
+      title: Recent Tournaments
+      subtitle: ' Check out recent tournament deck lists!'
       section: 'Tournaments'
 
 
@@ -440,13 +441,14 @@ en:
     streams: Streams
     tournaments:
       title: Tournaments
+      recent: Recent Tournaments
       register: Register
       Calendar: Calendar
       past_winners: Past Winners
     extra:
       title: Extra
       official_uploader: Official Uploader
-      april_report: April Report
+      may_report: May Report
       change_log: Change Log
       about_us: About Us
       contact_info: Contact Info

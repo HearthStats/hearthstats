@@ -35,6 +35,10 @@ class Api::V2::MatchesController < ApplicationController
         result = result.where(season_id: params[:season])
       end
     end
+    if params[:last_id]
+      result = result.where('id > ?', params[:last_id].to_i)
+    end
+    
     render json: { status: "success", data: result }
   end
 

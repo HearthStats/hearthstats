@@ -1,27 +1,6 @@
 class MatchesController < ApplicationController
   before_filter :authenticate_user!
-  # GET /matches
-  # GET /matches.json
-
-  def index
-    @matches = Match.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
-  # GET /matches/1
-  # GET /matches/1.json
-  def show
-    @match = Match.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @match }
-    end
-  end
-
+  
   # GET /matches/new
   # GET /matches/new.json
   def new

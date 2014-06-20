@@ -32,6 +32,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     matches = Match.where(user_id: @user.id)
     @userkey = @user.get_userkey
+    
     if @user.guest
       return redirect_to root_url, alert: "Guests cannot access profiles"
     end
@@ -42,8 +43,8 @@ class ProfilesController < ApplicationController
       end
     end
 
-    if newuser?(@user.id)
-      if current_user.id == @user.id
+    if @user.is_new?
+      if current_user && current_user.id == @user.id
         return redirect_to root_url, alert: "You must enter at least one game before your profile is active."
       else
         return redirect_to root_url, alert: "User profile is not active."
@@ -57,7 +58,10 @@ class ProfilesController < ApplicationController
       @profiletitle = "User"
     end
     classes = klasses_hash.map { |a| a[0] }
-    load_recent_games(@user.id, 10)
+    
+    @arenawins = @user.winrate_per_day(10, 'arena')
+    @conwins   = @user.winrate_per_day(10, 'constructed')
+    
     @recent_entries = Profile.get_recent_games(@user.id)
     impressionist(@profile)
 

@@ -121,7 +121,28 @@ class Api::V1::DecksController < ApplicationController
     end
   end
 
+  def delete
+    unless deck_belongs_to_user?(@user, @req[:deck_id])
+      response = {status: "fail", message: "At least one or more of the decks do not belong to the user"}
+    else
+      Deck.find(@req[:deck_id]).map(&:destroy)
+      response = {status: "success", message: "Decks deleted"}
+    end
+    render json: response
+    
+  end
   private
+
+  def deck_belongs_to_user?(user, deck_ids)
+    user_deck_ids = user.decks.pluck(:id)
+
+
+    array_subset?(deck_ids, user_deck_ids)
+  end
+
+  def array_subset?(child, parent)
+    parent.length - (parent - child).length == child.length
+  end
 
   def set_user_deck_slot(user, deck_id, slot)
     if deck_id.nil?

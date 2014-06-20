@@ -25,18 +25,18 @@ class ApplicationController < ActionController::Base
   end
 
   def get_win_rate(matches, strout = false )
-    return 0 if matches.nil?
-    wins = matches.where(result_id: 1).length.to_f
-    tot_games = matches.length
-    win_rate = wins / tot_games
-    win_rate = "N/A" and return win_rate if win_rate.nan?
-    win_rate = (win_rate*100).round(2)
+    tot_games = matches.count
+    return "N/A" if tot_games == 0
+    
+    wins = matches.where(result_id: 1).count
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
     win_rate = win_rate.to_s + "%" if strout
-
+    
     win_rate
   end
 
-  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash_2, :klasses_hash
+  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash
 
 
   private
@@ -82,31 +82,9 @@ class ApplicationController < ActionController::Base
     @conwins   = culcongames(userid, durlen)
   end
 
-  def cularenagames(userid, days1)
-    winrate = Array.new(days1, 0)
-    (0..days1).each do |i|
-      matches = Match.where( mode_id: 1, user_id: userid, season_id: current_season).where("created_at <= ?", i.days.ago.end_of_day)
-      win = matches.where(result_id: 1).count
-      tot = matches.count
-      winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
-    end
-
-    return winrate
-  end
-
-  def culcongames(userid, days1)
-    winrate = Array.new(days1, 0)
-    (0..days1).each do |i|
-      matches = Match.where( mode_id: 3, user_id: userid, season_id: current_season).where("created_at <= ?", i.days.ago.end_of_day)
-      tot = matches.count
-      win = matches.where(result_id: 1).count
-      winrate[i] = [i.days.ago.beginning_of_day.to_i*1000,((win.to_f / tot)*100).round(2)]
-    end
-
-    return winrate
-  end
-
   def recentgamesbyhr(userid, durlen)
+    # I do not think this method is called form anywhere
+    
     # Find games from 12 hours and before
     @timearray = Array.new(durlen, 0)
     (1..durlen).each do |i|
@@ -141,14 +119,5 @@ class ApplicationController < ActionController::Base
   def public_url(file)
     "http://hearthstats.net/" + file
   end
-
-  def newuser?(userid)
-    user = User.find(userid)
-    games_count = Arena.where(user_id = user.id).count + Constructed.where(user_id = user.id).count
-    return true if games_count == 0
-
-    false
-  end
-
 
 end

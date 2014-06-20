@@ -30,3 +30,15 @@ Twitter: https://twitter.com/HearthStats
 Facebook: https://www.facebook.com/HearthStats.net
 
 G+: https://plus.google.com/+HearthstatsNet/
+
+---
+
+A ruby translation project managed on [Locale](http://www.localeapp.com/) that's open to all!
+
+## Contributing to hearthstats
+
+- Edit the translations directly on the [hearthstats](http://www.localeapp.com/projects/public?search=hearthstats) project on Locale.
+- **That's it!**
+- The maintainer will then pull translations from the Locale project and push to Github.
+
+Happy translating!

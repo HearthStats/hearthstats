@@ -76,6 +76,9 @@ class ArenasController < ApplicationController
 
     @arena = Match.new(params[:match])
     @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
+    if @arenarun.nil?
+      redirect_to arenas_path, alert: "No active arena runs" and return
+    end
     @arena.klass_id = @arenarun.klass_id
     @arena.result_id = 2 if params[:match][:result_id].to_i == 0
     @arena.user_id = current_user.id
@@ -158,7 +161,7 @@ class ArenasController < ApplicationController
     end
     if @arena.save
       MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
-      redirect_to arenas_url, notice: 'Arena was successfully created.'
+      redirect_to edit_arena_run_path(@arena.arena_run), notice: 'Arena was successfully created.'
     else
       redirect_to arenas_url, alert: 'Arena could not be created.'
     end

@@ -1,0 +1,13 @@
+- set_meta_tags :title => @tourny.title,
+  :description => '#{@tourny.title} Hearthstats tournament deck lists and win rates',
+  :keywords => '#{@tourny.title}, tournament, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, @tourny.title)
+- provide(:subtitle, ' Tournament decklist')
+- provide(:section, 'Tournaments')
+
+div class="portlet box green"
+  div class="portlet-title"
+    div class="caption"
+      | #{t('.decks')}
+  div class="portlet-body flip-scroll"
+    = render :template => 'decks/public_decklist', :locals => { :global => true }

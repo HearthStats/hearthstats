@@ -33,9 +33,9 @@
         |Submit <i class='fa fa-check'></i>
 div.row.arenaedit_notes.quick_con_entry
   h3 Add Match
-  = form_for @arena, url: {controller: "arenas", action: "quickentry"} do |f|
+  = form_for @arena, url: {controller: "arenas", action: "quickentry", mode: "matches"} do |f|
     = f.select :oppclass_id, options_for_select(klasses_hash.to_a), class: 'quick_input'
-    input name="other[gofirst]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
+    input name="match[coin]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
     = f.submit "Add Win", class: "btn btn-primary"
     = f.submit "Add Defeat", class: "btn btn-primary red"
     = f.submit "Add Draw", class: "btn btn-primary yellow"
@@ -43,6 +43,6 @@ div.row.arenaedit_notes.quick_con_entry
 
 div.row.arenaedit_notes
   h3 Matches in Arena Run
-  = render :template => 'shared/matchlist', :locals => { :matches => @arenarun.matches, :type => "Arena", :filter => false }
+  = render :template => 'shared/matchlist_no_filter', :locals => { :matches => @arenarun.matches, :type => "Arena", :filter => false }
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');

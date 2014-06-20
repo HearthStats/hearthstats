@@ -3,7 +3,7 @@ klasses = Klass.all
 
 # temp add some attributes to be accessible
 class Deck < ActiveRecord::Base
-  attr_accessible :name, :cardstring, :klass_id, :user_id
+  attr_accessible :name, :cardstring, :klass_id, :user_id, :active
 end
 
 class Match < ActiveRecord::Base
@@ -16,8 +16,8 @@ end
   Profile.create(user_id: user.id, name: "info_#{user_count+1}")
   
   # create decks
-  (1 + rand(15)).times do |i|
-    deck = Deck.new(name: "demo-deck ##{i}", klass_id: klasses.sample.id, user_id: user.id)
+  (9 + rand(15)).times do |i|
+    deck = Deck.new(name: "demo-deck ##{i}", klass_id: klasses.sample.id, user_id: user.id, active: [true, false].sample)
     
     # pick 30 cards
     possible_cards = Card.where("klass_id = ? OR klass_id IS NULL", deck.klass_id)

@@ -12,7 +12,9 @@ class ConstructedsController < ApplicationController
 
     @q = current_user.matches.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
-    @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    unless params[:days] == "all"
+      @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    end
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
 
@@ -21,6 +23,7 @@ class ConstructedsController < ApplicationController
     @constructeds = current_user.matches.where(mode_id: [2,3])
     @lastentry    = @constructeds.last
     @my_decks     = get_my_decks
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @constructeds }
@@ -141,95 +144,34 @@ class ConstructedsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   def stats
-
-    # get all matches
-    matches = Match.where(mode_id: [2,3])
-
-    # filter by number of days to show
-    days_query = params['days']
-    @days_filter = days_query != nil && days_query != 'all' ? true : false
-    if @days_filter
-     @days_filter = days_query.to_s =~ /^[\d]+(\.[\d]+){0,1}$/ ? days_query.to_f : 30
-     matches = matches.where('matches.created_at >= ?', @days_filter.days.ago)
-    else
-      @days_filter = "all"
+    params[:q]     ||= {}
+    params[:days]  ||= 'all'
+    
+    @q       = Match.where(mode_id: [2,3]).ransack(params[:q])
+    @matches = @q.result
+    
+    unless params[:days] == "all"
+      @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
-
-    # filter by first/second
-    @first_filter = params['first']
-    if @first_filter == "yes"
-      matches = matches.where(coin: false)
-    else
-      if @first_filter == "no"
-        matches = matches.where(coin: true)
-      else
-        @first_filter = ""
-      end
-    end
-
-    # filter by mode
-    @mode_filter = params['mode']
-    if @mode_filter == "casual"
-      matches = matches.where(mode_id: 2)
-    else
-      if @mode_filter == "ranked"
-        matches = matches.where(mode_id: 3)
-      else
-        @mode_filter = ""
-      end
-    end
-
-    # filter by active decks
-
-    if params[:active] == 'on'
-      @active = true
-    end
-
-    if @active
-      personal_Matches = Match.includes(:deck).where('decks.active' => true, :user_id => current_user.id)
-    else
-      personal_matches = matches.where(user_id: current_user.id)
-    end
-
-    # build win rates while playing each class
-    @personal_win_rates = get_class_win_rates_for_matches(personal_matches);
-    @global_win_rates = get_class_win_rates_for_matches(matches);
-
-    @matches = matches
-    # calculate number of games per class
+    
+    personal_matches    = @matches.where(user_id: current_user.id)
+    @personal_win_rates = Match.winrate_per_class(personal_matches)
+    @global_win_rates   = Match.winrate_per_class(@matches)
+    
+    @num_matches_global   = Match.matches_per_class(@matches)
+    @num_matches_personal = Match.matches_per_class(personal_matches)
+    
     @classes = Klass.list
-    @num_matches_personal = Hash.new
-    @num_matches_global = Hash.new
-    @classes.each_with_index do |c,i|
-      @num_matches_global.store(c, matches.where(klass_id: i+1).count)
-      @num_matches_personal.store(c, personal_matches.where( klass_id: i+1).count)
-    end
-
   end
-
+  
   private
-
+  
   def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
-
-  def get_class_win_rates_for_matches(matches)
-    winrates = Array.new
-    (1..9).each_with_index do |c,i|
-      classgames = matches.where( klass_id: c)
-      wins = classgames.where(result_id: 1).count
-      totgames = classgames.count
-      if totgames == 0
-        winrates[i] = 0
-      else
-        winrates[i] = ((wins.to_f / totgames)*100).round(2)
-      end
-    end
-    return winrates
-  end
-
+  
   def get_my_decks
     return Deck.joins(:klass)
       .where(user_id: current_user.id)
