@@ -2,6 +2,7 @@ small You may have to refresh the page if nothing works.
 
 = form_for(@deck) do |f|
   = f.hidden_field :cardstring
+  = f.hidden_field :klass_id, :value => @deck.klass_id
   - if @deck.errors.any?
     div#error_explanation
       h2
@@ -41,7 +42,7 @@ small You may have to refresh the page if nothing works.
             label =t("decks.form.search")
             input type="text" class="fuzzy-search form-control"
           ul.list.card-list
-            - Card.where(klass_id: [@deck.klass.id,nil]).each do |card|
+            - Card.where(klass_id: [@deck.klass_id,nil]).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
                 img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
                 p.name.hidden = card.name
