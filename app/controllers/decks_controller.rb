@@ -17,7 +17,6 @@ class DecksController < ApplicationController
     @q = Deck.where(is_public: true).
               group(:unique_deck_id).
               joins(:unique_deck).
-              includes(:unique_deck, user: :profile).
               ransack(params[:q])
               
     @decks = @q.result
@@ -28,7 +27,7 @@ class DecksController < ApplicationController
       unique_deck_ids = @decks.map(&:unique_deck_id)
       @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
     end
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }

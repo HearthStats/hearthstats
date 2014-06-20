@@ -10,7 +10,7 @@
     <%= f.submit 'Apply', id: 'deckListFilterSubmit' %>
   </p>
   
-  <p><strong><%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></p>
+  <p><strong><%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong></p>
 <% end %>
 
 <script type="text/javascript">
