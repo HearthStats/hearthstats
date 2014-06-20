@@ -1,91 +1,91 @@
 <%= form_for @constructed, url: {controller: "constructeds", action: "create"} do |f| %>
-	<% if @constructed.errors.any? %>
-		<div id="error_explanation">
-	    <h2><%= pluralize(@constructed.errors.count, "error") %> <%=t('shared.prohibited_this_being_save', resource: t('shared.arena'))%>:</h2>
+  <% if @constructed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@constructed.errors.count, "error") %> <%=t('shared.prohibited_this_being_save', resource: t('shared.arena'))%>:</h2>
 
-			<ul>
-				<% @constructed.errors.full_messages.each do |msg| %>
-				<li>
-					<%= msg %>
-				</li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<div class="row">
-		<div class="col-md-6">
-			<div class="gofirstfield center row">
-				<span class="coin col-md-6">
-					<h3><%= t('.you_played_on_the') %>: </h3>
-					<input type="checkbox"
-						name="other[gofirst]"
-						rel="toggle-btn"
-						class="btn-lg"
-						on="<%= t('.first_turn') %>"
-						off="<%= t('.second_turn') %>"
-						onValue="First"
-						offValue="Casual"
-					/>
-				</span>
-				<span class="ranked col-md-6"> <h3><%= t('.this_match_is') %>: </h3>
-					<input type="text"
-						name="other[rank]"
-						rel="toggle-btn"
-						class="btn-lg"
-						on="<%= t('.ranked') %>"
-						off="<%= t('.casual') %>"
-						onValue="Ranked"
-						offValue="Casual"
-						<% if !@lastentry.nil? && @lastentry.rank == "Casual" %>state="off"<%end%>
-					/>
-				</span>
-			</div>
-			<div class="row center">
-				<div class="col-md-6">
-					<div class="yourfield">
-						<%= f.label t(".deck_name") %>
-						<br />
-						<% if !@lastentry.nil? %>
+      <ul>
+        <% @constructed.errors.full_messages.each do |msg| %>
+        <li>
+          <%= msg %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="gofirstfield center row">
+        <span class="coin col-md-6">
+          <h3><%= t('.you_played_on_the') %>: </h3>
+          <input type="checkbox"
+            name="other[gofirst]"
+            rel="toggle-btn"
+            class="btn-lg"
+            on="<%= t('.first_turn') %>"
+            off="<%= t('.second_turn') %>"
+            onValue="First"
+            offValue="Casual"
+          />
+        </span>
+        <span class="ranked col-md-6"> <h3><%= t('.this_match_is') %>: </h3>
+          <input type="text"
+            name="other[rank]"
+            rel="toggle-btn"
+            class="btn-lg"
+            on="<%= t('.ranked') %>"
+            off="<%= t('.casual') %>"
+            onValue="Ranked"
+            offValue="Casual"
+            <% if !@lastentry.nil? && @lastentry.rank == "Casual" %>state="off"<%end%>
+          />
+        </span>
+      </div>
+      <div class="row center">
+        <div class="col-md-6">
+          <div class="yourfield">
+            <%= f.label t(".deck_name") %>
+            <br />
+            <% if !@lastentry.nil? %>
               <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, @lastentry.deck.name)) %>
-						<% else %>
+            <% else %>
               <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]})) %>
-						<% end %>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="oppfield">
-						<%= f.label t(".opponent_class") %>
-						<br />
-						<%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
-					</div>
-				</div>
-			</div>
-			<div class="cf"></div>
-			<div class="winfield center">
-				<div class="winfield center">
-					<%= f.submit t(".add_win"), class: "btn btn-primary green winbutt_style winbutton", name: "win" %>
-			    <%= f.submit t(".add_defeat"), class: "btn btn-primary red winbutt_style winbutton", name: "defeat" %>
-			    <%= f.submit t(".add_draw"), class: "btn btn-primary yellow winbutt_style winbutton", name: "draw" %>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="con_notes">
-				<h3><%= t('shared.notes') %></h3>
-				<%= f.text_area :notes, :class => "redactor", :cols => 120 %>
-			</div>
-		</div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="oppfield">
+            <%= f.label t(".opponent_class") %>
+            <br />
+            <%= f.select :oppclass_id, options_for_select(klasses_hash.to_a) %>
+          </div>
+        </div>
+      </div>
+      <div class="cf"></div>
+      <div class="winfield center">
+        <div class="winfield center">
+          <%= f.submit t(".add_win"), class: "btn btn-primary green winbutt_style winbutton", name: "win" %>
+          <%= f.submit t(".add_defeat"), class: "btn btn-primary red winbutt_style winbutton", name: "defeat" %>
+          <%= f.submit t(".add_draw"), class: "btn btn-primary yellow winbutt_style winbutton", name: "draw" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="con_notes">
+        <h3><%= t('shared.notes') %></h3>
+        <%= f.text_area :notes, :class => "redactor", :cols => 120 %>
+      </div>
+    </div>
 
-	</div>
-	<div class="actions center">
-		<%= link_to constructeds_path do %>
+  </div>
+  <div class="actions center">
+    <%= link_to constructeds_path do %>
       <button class="btn btn-lg">
         <%= t('shared.back') %>
       </button>
-		<% end %>
-	</div>
+    <% end %>
+  </div>
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#match_oppclass_id');
-	app.UI.initDeckSelector("#deckname")
+  app.UI.initClassSelector('#match_oppclass_id');
+  app.UI.initDeckSelector("#deckname")
 </script>

@@ -7,53 +7,53 @@
 - provide(:section, '')
 
 form id="cardsFilter" method="get" class="data-turboform"
-	p
-		| #{t '.text_contains'}: &nbsp; 
-		input[name="text" value="#{@textFilter}"]
-		| &nbsp; #{t '.filter_by'}: &nbsp; 
-		select name="class"
-			option[value=""] - #{t '.any_class'} -
-			option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
-			- @classes.each do |c|
-				option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)] = c.name
-		| &nbsp; 
-		select name="type"
-			option[value=""] - #{t '.any_type'} -
-			- @types.each do |type|
-				option[value="#{type.id}" selected=("selected" if @typeFilter.to_f == type.id.to_f)] = type.name
-		| &nbsp; 
-		select name="race"
-			option[value=""] - #{t '.any_race'} -
-			option[value="none" selected=("selected" if @raceFilter == "none")] #{t '.none'}
-			- @races.each do |race|
-				option[value="#{race.id}" selected=("selected" if @raceFilter.to_f == race.id.to_f)] = race.name
-		| &nbsp; #{t '.sort_by'}: &nbsp;
-		select name="sort"
-			option[value="attack" selected=("selected" if @sortField == "attack")] #{t '.attack'}
-			option[value="health" selected=("selected" if @sortField == "health")] #{t '.health_dur'}
-			option[value="mana" selected=("selected" if @sortField == "mana")] #{t '.mana_cost'}
-			option[value="name" selected=("selected" if @sortField == "name")] #{t '.name'}
-		| &nbsp; 
-		select name="order"
-			option[value="asc"] #{t '.ascending'}
-			option[value="desc" selected=("selected" if @orderFilter == "desc")] #{t '.descending'}
-		| &nbsp; 
-		input type="submit" value="Submit" id="cardsFilterSubmit"
-		| &nbsp; 
-		input type="button" value="#{t '.reset_filters'}" id="cardsFilterReset"
-		
+  p
+    | #{t '.text_contains'}: &nbsp; 
+    input[name="text" value="#{@textFilter}"]
+    | &nbsp; #{t '.filter_by'}: &nbsp; 
+    select name="class"
+      option[value=""] - #{t '.any_class'} -
+      option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
+      - @classes.each do |c|
+        option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)] = c.name
+    | &nbsp; 
+    select name="type"
+      option[value=""] - #{t '.any_type'} -
+      - @types.each do |type|
+        option[value="#{type.id}" selected=("selected" if @typeFilter.to_f == type.id.to_f)] = type.name
+    | &nbsp; 
+    select name="race"
+      option[value=""] - #{t '.any_race'} -
+      option[value="none" selected=("selected" if @raceFilter == "none")] #{t '.none'}
+      - @races.each do |race|
+        option[value="#{race.id}" selected=("selected" if @raceFilter.to_f == race.id.to_f)] = race.name
+    | &nbsp; #{t '.sort_by'}: &nbsp;
+    select name="sort"
+      option[value="attack" selected=("selected" if @sortField == "attack")] #{t '.attack'}
+      option[value="health" selected=("selected" if @sortField == "health")] #{t '.health_dur'}
+      option[value="mana" selected=("selected" if @sortField == "mana")] #{t '.mana_cost'}
+      option[value="name" selected=("selected" if @sortField == "name")] #{t '.name'}
+    | &nbsp; 
+    select name="order"
+      option[value="asc"] #{t '.ascending'}
+      option[value="desc" selected=("selected" if @orderFilter == "desc")] #{t '.descending'}
+    | &nbsp; 
+    input type="submit" value="Submit" id="cardsFilterSubmit"
+    | &nbsp; 
+    input type="button" value="#{t '.reset_filters'}" id="cardsFilterReset"
+    
 javascript:
-	$('#cardsFilter select').change(function() {
-		$('#cardsFilter').submit();
-	});
-	$('#cardsFilterSubmit').hide();
-	$('#cardsFilterReset').click(function() {
-		document.location = "cards";
-	});
+  $('#cardsFilter select').change(function() {
+    $('#cardsFilter').submit();
+  });
+  $('#cardsFilterSubmit').hide();
+  $('#cardsFilterReset').click(function() {
+    document.location = "cards";
+  });
 
 - if @cards.count == 0
-	div[class="ui-state-error" style="padding:1em"]= t('.not_found')
+  div[class="ui-state-error" style="padding:1em"]= t('.not_found')
 
 - @cards.each do |card|
-	div.cardWrapper
-		span = raw '<img src="' + card.getImageUrl() + '" title="' + card.name + '"/> '
+  div.cardWrapper
+    span = raw '<img src="' + card.getImageUrl() + '" title="' + card.name + '"/> '

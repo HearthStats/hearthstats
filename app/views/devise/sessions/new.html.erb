@@ -4,163 +4,163 @@
 <!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta name="MobileOptimized" content="320">
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<%= stylesheet_link_tag    "application", :media => "all" %>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="MobileOptimized" content="320">
+  <!-- BEGIN GLOBAL MANDATORY STYLES -->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= display_meta_tags :site => 'HearthStats' %>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= favicon_link_tag '/hearthstatslogo.png', rel: 'apple-touch-icon', type: 'image/png' %>
-	<!-- END GLOBAL MANDATORY STYLES -->
+  <!-- END GLOBAL MANDATORY STYLES -->
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
-	<!-- BEGIN LOGO -->
-	<div class="logo">
-		<%= image_tag('hearthstatslogo.svg', height: 100) %>
-	</div>
-	<!-- END LOGO -->
-	<!-- BEGIN LOGIN -->
-	<div class="content">
-		<!-- BEGIN LOGIN FORM -->
-		<%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
-			<h3 class="form-title">Login to your account</h3>
-			<div class="form-group">
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-				<label class="control-label visible-ie8 visible-ie9">Email</label>
-				<div class="input-icon">
-					<i class="fa fa-envelope"></i>
-					<%= f.email_field :email, :autofocus => true, :placeholder => "Email", class: "form-control placeholder-no-fix"%>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">Password</label>
-				<div class="input-icon">
-					<i class="fa fa-lock"></i>
-					<%= f.password_field :password, :placeholder => "Password", class: "form-control placeholder-no-fix" %>
-				</div>
-			</div>
-			<div class="form-actions">
-				<label>
-			    <%= f.check_box :remember_me %>
-				  Remember me
-				</label>
-				<%= f.submit "Login", class: "btn blue pull-right" %>
-			</div>
-			<div class="forget-password">
-				<h4>Forgot your password ?</h4>
-				<p>
-					no worries, click <a href="javascript:;"  id="forget-password">here</a>
-					to reset your password.
-				</p>
-			</div>
-			<div class="create-account">
-				<p>
-					Don't have an account yet ?&nbsp;
-					<a href="javascript:;" id="register-btn" >Create an account</a>
-				</p>
-			</div>
-		<% end %>
-		<!-- END LOGIN FORM -->
-		<!-- LOGIN FORMMMM -->
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:autocomplete => "off", class: "register-form"} ) do |f| %>
-			<h3 >Sign Up</h3>
-			<p>Enter your account details below:</p>
-			<div class="form-group">
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-				<label class="control-label visible-ie8 visible-ie9">Email</label>
-				<div class="input-icon">
-					<i class="fa fa-envelope"></i>
-					<%= f.email_field :email, :placeholder => "Email", class: "form-control placeholder-no-fix" %>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">Password</label>
-				<div class="input-icon">
-					<i class="fa fa-lock"></i>
-					<%= f.password_field :password, :placeholder => "Password", id: "register_password", class: "form-control placeholder-no-fix" %>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-				<div class="controls">
-					<div class="input-icon">
-						<i class="fa fa-check"></i>
-						<%= f.password_field :password_confirmation, :placeholder => "Re-type Your Password", class: "form-control placeholder-no-fix" %>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label>
-				<input type="checkbox" name="tnc"/> I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>
-				</label>
-				<div id="register_tnc_error"></div>
-			</div>
-			<div class="form-actions">
-				<button id="register-back-btn" type="button" class="btn">
-				<i class="m-icon-swapleft"></i>  Back
-				</button>
-				<button type="submit" id="register-submit-btn" class="btn blue pull-right">
-				Sign Up <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-		<% end %>
-		<!-- END THAT LOGIN SHITTTT -->
-		<!-- FORGOT FORM -->
-		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, class: "forget-form"}) do |f| %>
-		  <%= devise_error_messages! %>
-			<h3 >Forget Password ?</h3>
-			<p>Enter your e-mail address below to reset your password.</p>
-			<div class="form-group">
-				<div class="input-icon">
-					<i class="fa fa-envelope"></i>
-					<%= f.email_field :email, :placeholder => "Email", :autofocus => true, class: "form-control placeholder-no-fix" %>
-				</div>
-			</div>
-			<div class="form-actions">
-				<a href="/">
-				<button type="button" id="back-btn" class="btn">
-				<i class="m-icon-swapleft"></i> Back
-				</button></a>
-				<button type="submit" class="btn blue pull-right">
-				Submit <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-		<% end %>
-		<!-- END FORGOT FORM -->
-	</div>
-	<!-- END LOGIN -->
-	<!-- BEGIN COPYRIGHT -->
-	<div class="copyright">
-		2013 &copy; HearthStats - Hearthstone win/loss tracking. <a href="/privacy" target="_blank">Privacy Policy</a>
-	</div>
-	<!-- END COPYRIGHT -->
+  <!-- BEGIN LOGO -->
+  <div class="logo">
+    <%= image_tag('hearthstatslogo.svg', height: 100) %>
+  </div>
+  <!-- END LOGO -->
+  <!-- BEGIN LOGIN -->
+  <div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
+      <h3 class="form-title">Login to your account</h3>
+      <div class="form-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Email</label>
+        <div class="input-icon">
+          <i class="fa fa-envelope"></i>
+          <%= f.email_field :email, :autofocus => true, :placeholder => "Email", class: "form-control placeholder-no-fix"%>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <div class="input-icon">
+          <i class="fa fa-lock"></i>
+          <%= f.password_field :password, :placeholder => "Password", class: "form-control placeholder-no-fix" %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <label>
+          <%= f.check_box :remember_me %>
+          Remember me
+        </label>
+        <%= f.submit "Login", class: "btn blue pull-right" %>
+      </div>
+      <div class="forget-password">
+        <h4>Forgot your password ?</h4>
+        <p>
+          no worries, click <a href="javascript:;"  id="forget-password">here</a>
+          to reset your password.
+        </p>
+      </div>
+      <div class="create-account">
+        <p>
+          Don't have an account yet ?&nbsp;
+          <a href="javascript:;" id="register-btn" >Create an account</a>
+        </p>
+      </div>
+    <% end %>
+    <!-- END LOGIN FORM -->
+    <!-- LOGIN FORMMMM -->
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:autocomplete => "off", class: "register-form"} ) do |f| %>
+      <h3 >Sign Up</h3>
+      <p>Enter your account details below:</p>
+      <div class="form-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Email</label>
+        <div class="input-icon">
+          <i class="fa fa-envelope"></i>
+          <%= f.email_field :email, :placeholder => "Email", class: "form-control placeholder-no-fix" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <div class="input-icon">
+          <i class="fa fa-lock"></i>
+          <%= f.password_field :password, :placeholder => "Password", id: "register_password", class: "form-control placeholder-no-fix" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+        <div class="controls">
+          <div class="input-icon">
+            <i class="fa fa-check"></i>
+            <%= f.password_field :password_confirmation, :placeholder => "Re-type Your Password", class: "form-control placeholder-no-fix" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+        <input type="checkbox" name="tnc"/> I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>
+        </label>
+        <div id="register_tnc_error"></div>
+      </div>
+      <div class="form-actions">
+        <button id="register-back-btn" type="button" class="btn">
+        <i class="m-icon-swapleft"></i>  Back
+        </button>
+        <button type="submit" id="register-submit-btn" class="btn blue pull-right">
+        Sign Up <i class="m-icon-swapright m-icon-white"></i>
+        </button>
+      </div>
+    <% end %>
+    <!-- END THAT LOGIN SHITTTT -->
+    <!-- FORGOT FORM -->
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, class: "forget-form"}) do |f| %>
+      <%= devise_error_messages! %>
+      <h3 >Forget Password ?</h3>
+      <p>Enter your e-mail address below to reset your password.</p>
+      <div class="form-group">
+        <div class="input-icon">
+          <i class="fa fa-envelope"></i>
+          <%= f.email_field :email, :placeholder => "Email", :autofocus => true, class: "form-control placeholder-no-fix" %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <a href="/">
+        <button type="button" id="back-btn" class="btn">
+        <i class="m-icon-swapleft"></i> Back
+        </button></a>
+        <button type="submit" class="btn blue pull-right">
+        Submit <i class="m-icon-swapright m-icon-white"></i>
+        </button>
+      </div>
+    <% end %>
+    <!-- END FORGOT FORM -->
+  </div>
+  <!-- END LOGIN -->
+  <!-- BEGIN COPYRIGHT -->
+  <div class="copyright">
+    2013 &copy; HearthStats - Hearthstone win/loss tracking. <a href="/privacy" target="_blank">Privacy Policy</a>
+  </div>
+  <!-- END COPYRIGHT -->
 
-	<script>
-	  App.init();
-	  Login.init();
-	</script>
-	<% if notice || alert %>
-		<% if notice %>
-			<script>
-				jQuery(document).ready(function() {
-					toastr.success("<%= raw notice %>");
-				});
-			</script>
-		<% elsif alert %>
-			<script>
-				jQuery(document).ready(function() {
-					toastr.error("<%= raw alert %>");
-				});
-			</script>
-		<% end %>
-	<% end %>
-	<!-- END JAVASCRIPTS -->
+  <script>
+    App.init();
+    Login.init();
+  </script>
+  <% if notice || alert %>
+    <% if notice %>
+      <script>
+        jQuery(document).ready(function() {
+          toastr.success("<%= raw notice %>");
+        });
+      </script>
+    <% elsif alert %>
+      <script>
+        jQuery(document).ready(function() {
+          toastr.error("<%= raw alert %>");
+        });
+      </script>
+    <% end %>
+  <% end %>
+  <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

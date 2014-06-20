@@ -4,14 +4,14 @@
   <div class="header-inner">
     <!-- BEGIN LOGO -->
     <%= link_to root_path, class: "navbar-brand" do %>
-	    <%= image_tag("logo.png", alt: "logo", class: "img-responsive") %>
+      <%= image_tag("logo.png", alt: "logo", class: "img-responsive") %>
     <% end %>
     <!-- END LOGO -->
     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
     <% if signed_in? %>
-	    <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	    <%= image_tag("menu-toggler.png") %>
-	    </a>
+      <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <%= image_tag("menu-toggler.png") %>
+      </a>
     <% end %>
     <!-- END RESPONSIVE MENU TOGGLER -->
     <!-- BEGIN TOP NAVIGATION MENU -->
@@ -45,9 +45,9 @@
           </li>
         </ul>
       <% else %>
-      	<li class="dropdown user">
+        <li class="dropdown user">
         <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
-	        <span class="username"><%= t('shared.header.register_now_login')%></span>
+          <span class="username"><%= t('shared.header.register_now_login')%></span>
         <% end %>
       <% end %>
       </li>

@@ -7,9 +7,9 @@
     <label><%= t('.card_list') %></label>
     <div style="position:relative;">
       <div class="deckBuilderCardsWrapper">
-      	<%= render 'card_list', cards: @card_array %>
+        <%= render 'card_list', cards: @card_array %>
       </div>
-    	<img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
+      <img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
     </div>
   </div>
   <div class="col-sm-6">
@@ -29,84 +29,84 @@
   </div>
 </div>
 <script async type="text/javascript">
-	var DeckBuilder = (new function() {
+  var DeckBuilder = (new function() {
 
-		/**
-		 * All the cards in the game
-		 */
-		var _allCards = [
-			<% if enabled %>
-				<% Card.order("name ASC").each do |card| %>
-					<%= raw card.toJSONWithImage() %>,
-				<% end %>
-			<% elsif !@deck.cards.nil? %>
-				<% @deck.cards.order("name ASC").each do |card| %>
-					<%= raw card.toJSONWithImage() %>,
-				<% end %>
-			<% end %>
-		];
+    /**
+     * All the cards in the game
+     */
+    var _allCards = [
+      <% if enabled %>
+        <% Card.order("name ASC").each do |card| %>
+          <%= raw card.toJSONWithImage() %>,
+        <% end %>
+      <% elsif !@deck.cards.nil? %>
+        <% @deck.cards.order("name ASC").each do |card| %>
+          <%= raw card.toJSONWithImage() %>,
+        <% end %>
+      <% end %>
+    ];
 
-		function _getCardById(id) {
-			for(var i = 0; i < _allCards.length; i++)
-				if(_allCards[i].id == id)
-					return _allCards[i]
-			return null;
-		}
+    function _getCardById(id) {
+      for(var i = 0; i < _allCards.length; i++)
+        if(_allCards[i].id == id)
+          return _allCards[i]
+      return null;
+    }
 
-		var _cards = [];
+    var _cards = [];
 
-		var _changeHandlers = [];
-		function _fireChange() {
-			for(var i = 0; i < _changeHandlers.length; i++)
-				_changeHandlers[i]();
-		}
+    var _changeHandlers = [];
+    function _fireChange() {
+      for(var i = 0; i < _changeHandlers.length; i++)
+        _changeHandlers[i]();
+    }
 
 
-		function _addCardById(id) {
-			id = parseInt(id);
-			var alreadyFound = false;
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				if(card.id == id) {
-					alreadyFound = true;
-					if(card.rarity_id == 5)	// you can only have one legendary
-						break;
-					_cards[i].qty = 2;
-					break;
-				};
-			}
+    function _addCardById(id) {
+      id = parseInt(id);
+      var alreadyFound = false;
+      for(var i = 0; i < _cards.length; i++) {
+        var card = _cards[i];
+        if(card.id == id) {
+          alreadyFound = true;
+          if(card.rarity_id == 5)  // you can only have one legendary
+            break;
+          _cards[i].qty = 2;
+          break;
+        };
+      }
 
-			var card = _getCardById(id);
-			if(card&& !alreadyFound) {
-				card.qty = 1;
-				_cards.push(card);
-			}
+      var card = _getCardById(id);
+      if(card&& !alreadyFound) {
+        card.qty = 1;
+        _cards.push(card);
+      }
 
-			_render();
-			_fireChange();
-		}
+      _render();
+      _fireChange();
+    }
 
-		function _setCardString(str) {
-			_cards = [];
-			var groups = str.split(',');
-			for(var i = 0; i < groups.length; i++) {
-				var card = groups[i].split('_');
-				var id = card[0];
-				var qty = parseInt(card[1]);
-				for(var num = 0; num < qty; num++) {
-					_addCardById(id);
-				}
-			}
-		}
+    function _setCardString(str) {
+      _cards = [];
+      var groups = str.split(',');
+      for(var i = 0; i < groups.length; i++) {
+        var card = groups[i].split('_');
+        var id = card[0];
+        var qty = parseInt(card[1]);
+        for(var num = 0; num < qty; num++) {
+          _addCardById(id);
+        }
+      }
+    }
 
-		function _render() {
+    function _render() {
 
-			_drawCurveChart('mana', 'blue');
-			_drawCurveChart('attack', 'gold');
-			_drawCurveChart('health', 'red');
-			_drawTypeDistributionChart();
-			_drawMechanicsChart();
-		}
+      _drawCurveChart('mana', 'blue');
+      _drawCurveChart('attack', 'gold');
+      _drawCurveChart('health', 'red');
+      _drawTypeDistributionChart();
+      _drawMechanicsChart();
+    }
 
     var _curveGraphOptions = {
       legend: {
@@ -122,16 +122,16 @@
           }
       },
       grid: {
-		  borderWidth: 0,
-		  hoverable: true
-		},
+      borderWidth: 0,
+      hoverable: true
+    },
         xaxis: {
             ticks: [[0.5,"0"],[1.5,"1"],[2.5,"2"],[3.5,"3"],[4.5,"4"],[5.5,"5"],[6.5,"6"],[7.5,"7+"]],
-	        tickLength: 0 // disable tick
+          tickLength: 0 // disable tick
         },
         yaxis: {
-        	show:false
-	    }
+          show:false
+      }
 
     };
 
@@ -143,10 +143,10 @@
     }
     var _previousPoint;
     function _enableBarTooltips(selector, flip) {
-    	flip = typeof(flip) == 'undefined' ? false : flip;
-    	selector.bind("plothover", function (event, pos, item) {
-	        $("#x").text(pos.x.toFixed(2));
-	        $("#y").text(pos.y.toFixed(2));
+      flip = typeof(flip) == 'undefined' ? false : flip;
+      selector.bind("plothover", function (event, pos, item) {
+          $("#x").text(pos.x.toFixed(2));
+          $("#y").text(pos.y.toFixed(2));
 
             if (item) {
                 if (_previousPoint != item.dataIndex) {
@@ -159,7 +159,7 @@
                     var numCards = flip ? item.datapoint[0] : item.datapoint[1];
                     var text = numCards + " card";
                     if(numCards != 1)
-                    	text += "s";
+                      text += "s";
                     _showBarchartTooltip(item.pageX, item.pageY, text);
                 }
             }
@@ -167,254 +167,254 @@
                 $("#flotTooltip").remove();
                 previousPoint = null;
             }
-	    });
+      });
     }
     function _drawCurveChart(type, color) {
 
-    	var groups = {
-    		"0":0,
-    		"1":0,
-    		"2":0,
-    		"3":0,
-    		"4":0,
-    		"5":0,
-    		"6":0,
-    		"7+":0
-    	};
-    	for(var i = 0; i < _cards.length; i++) {
-    		var card = _cards[i];
-    		if(card[type] != null) {
-	    		var val = parseInt(card[type]);
-	    		if(val < 7)
-	    			groups[val + ""] += parseInt(card.qty);
-	    		else
-	    			groups["7+"] += parseInt(card.qty);
-	    	}
-	    }
+      var groups = {
+        "0":0,
+        "1":0,
+        "2":0,
+        "3":0,
+        "4":0,
+        "5":0,
+        "6":0,
+        "7+":0
+      };
+      for(var i = 0; i < _cards.length; i++) {
+        var card = _cards[i];
+        if(card[type] != null) {
+          var val = parseInt(card[type]);
+          if(val < 7)
+            groups[val + ""] += parseInt(card.qty);
+          else
+            groups["7+"] += parseInt(card.qty);
+        }
+      }
 
-    	var graphData = [
-    		{
-    			color: color,
-		        data: [
-		    		[0, groups["0"]],
-		    		[1, groups["1"]],
-		    		[2, groups["2"]],
-		    		[3, groups["3"]],
-		    		[4, groups["4"]],
-		    		[5, groups["5"]],
-		    		[6, groups["6"]],
-		    		[7, groups["7+"]]
-		    	]
-		    }
-		];
-		$('#' + type + 'CurveChart').html("");
-    	$.plot($('#' + type + 'CurveChart'), graphData, _curveGraphOptions);
+      var graphData = [
+        {
+          color: color,
+            data: [
+            [0, groups["0"]],
+            [1, groups["1"]],
+            [2, groups["2"]],
+            [3, groups["3"]],
+            [4, groups["4"]],
+            [5, groups["5"]],
+            [6, groups["6"]],
+            [7, groups["7+"]]
+          ]
+        }
+    ];
+    $('#' + type + 'CurveChart').html("");
+      $.plot($('#' + type + 'CurveChart'), graphData, _curveGraphOptions);
 
-    	_enableBarTooltips($('#' + type + 'CurveChart'));
+      _enableBarTooltips($('#' + type + 'CurveChart'));
     }
     function _drawMechanicsChart() {
 
-    	var mechanics = [
-    		"attack+",
-    		"battlecry",
-    		"charge",
-    		"choose one",
-    		"combo",
-    		"control",
-    		"counter",
-    		"deal damage",
-    		"deathrattle",
-    		"destroy",
-    		"discard",
-    		"divine shield",
-    		"draw",
-    		"enrage",
-    		"freeze",
-    		"health+",
-    		"immune",
-    		"overload",
-    		"poison",
-    		"random",
-    		"return",
-    		"secret",
-    		"silence",
-    		"stealth",
-    		"spell damage",
-    		"summon",
-    		"un-targetable",
-    		"taunt",
-    		"transform",
-    		"windfury"
-    	];
+      var mechanics = [
+        "attack+",
+        "battlecry",
+        "charge",
+        "choose one",
+        "combo",
+        "control",
+        "counter",
+        "deal damage",
+        "deathrattle",
+        "destroy",
+        "discard",
+        "divine shield",
+        "draw",
+        "enrage",
+        "freeze",
+        "health+",
+        "immune",
+        "overload",
+        "poison",
+        "random",
+        "return",
+        "secret",
+        "silence",
+        "stealth",
+        "spell damage",
+        "summon",
+        "un-targetable",
+        "taunt",
+        "transform",
+        "windfury"
+      ];
 
-    	var groups = {};
-    	for(var i = 0; i < mechanics.length; i++) {
-    		groups[mechanics[i]] = 0;
-    	}
-    	for(var i = 0; i < _cards.length; i++) {
-    		var card = _cards[i];
-    		if(card.description) {
-		    	for(var m = 0; m < mechanics.length; m++) {
-		    		var mechanic = mechanics[m].toLowerCase();
+      var groups = {};
+      for(var i = 0; i < mechanics.length; i++) {
+        groups[mechanics[i]] = 0;
+      }
+      for(var i = 0; i < _cards.length; i++) {
+        var card = _cards[i];
+        if(card.description) {
+          for(var m = 0; m < mechanics.length; m++) {
+            var mechanic = mechanics[m].toLowerCase();
 
-		    		switch(mechanic) {
-		    			case 'attack+':
-				    		if(card.description.toLowerCase().match(/\+\d+\s*attack/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			case 'deal damage':
-				    		if(card.description.toLowerCase().match(/deal\s\d+\sdamage/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			case 'health+':
-				    		if(card.description.toLowerCase().match(/\+\d+\s*health/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			case 'un-targetable':
-				    		if(card.description.toLowerCase().match(/can.*t\sbe\s(the)?\s*target/))
-				    			groups[mechanic] += parseInt(card.qty);
-		    				break;
-		    			default:
-			    		if(card.description.toLowerCase().match(new RegExp(mechanic,'g')))
-			    			groups[mechanic] += parseInt(card.qty);
-		    		}
-		    	}
-		    }
-    	}
+            switch(mechanic) {
+              case 'attack+':
+                if(card.description.toLowerCase().match(/\+\d+\s*attack/))
+                  groups[mechanic] += parseInt(card.qty);
+                break;
+              case 'deal damage':
+                if(card.description.toLowerCase().match(/deal\s\d+\sdamage/))
+                  groups[mechanic] += parseInt(card.qty);
+                break;
+              case 'health+':
+                if(card.description.toLowerCase().match(/\+\d+\s*health/))
+                  groups[mechanic] += parseInt(card.qty);
+                break;
+              case 'un-targetable':
+                if(card.description.toLowerCase().match(/can.*t\sbe\s(the)?\s*target/))
+                  groups[mechanic] += parseInt(card.qty);
+                break;
+              default:
+              if(card.description.toLowerCase().match(new RegExp(mechanic,'g')))
+                groups[mechanic] += parseInt(card.qty);
+            }
+          }
+        }
+      }
 
-    	var ticks = [];
-    	var points = []
-    	var i = 99;
-    	for(var mechanic in groups) {
-    		if(groups[mechanic] > 0) {
-	    		ticks.push([i + .5, mechanic.charAt(0).toUpperCase() + mechanic.slice(1) + " &nbsp;"])
-	    		points.push([groups[mechanic], i]);
-	    		i--;
-    		}
-    	}
-    	var graphData = [
-    		{
-    			color: 'gray',
-		        data: points
-		    }
-		];
-		var graphConfig = jQuery.extend(true, {}, _curveGraphOptions);
-		graphConfig.series.bars.horizontal =true;
-		graphConfig.xaxis.ticks = [];
-		graphConfig.yaxis.ticks = ticks;
-		graphConfig.yaxis.show = true;
-		graphConfig.yaxis.tickLength = 0;
-		$('#mechanicsChart').height((17 * (points.length + 1)) + 'px');
-		$('#mechanicsChart').html("");
-    	$.plot($('#mechanicsChart'), graphData, graphConfig);
+      var ticks = [];
+      var points = []
+      var i = 99;
+      for(var mechanic in groups) {
+        if(groups[mechanic] > 0) {
+          ticks.push([i + .5, mechanic.charAt(0).toUpperCase() + mechanic.slice(1) + " &nbsp;"])
+          points.push([groups[mechanic], i]);
+          i--;
+        }
+      }
+      var graphData = [
+        {
+          color: 'gray',
+            data: points
+        }
+    ];
+    var graphConfig = jQuery.extend(true, {}, _curveGraphOptions);
+    graphConfig.series.bars.horizontal =true;
+    graphConfig.xaxis.ticks = [];
+    graphConfig.yaxis.ticks = ticks;
+    graphConfig.yaxis.show = true;
+    graphConfig.yaxis.tickLength = 0;
+    $('#mechanicsChart').height((17 * (points.length + 1)) + 'px');
+    $('#mechanicsChart').html("");
+      $.plot($('#mechanicsChart'), graphData, graphConfig);
 
-    	_enableBarTooltips($('#mechanicsChart'), true);
+      _enableBarTooltips($('#mechanicsChart'), true);
     }
 
     function _drawTypeDistributionChart() {
 
-			var types = [];
-			<% Type.order("id ASC").each do |type| %>
-				types.push(<%= raw type.to_json %>);
-			<% end %>
+      var types = [];
+      <% Type.order("id ASC").each do |type| %>
+        types.push(<%= raw type.to_json %>);
+      <% end %>
 
-			var pointVals = {};
-			for(var i = 0; i < _cards.length; i++) {
-				var card = _cards[i];
-				pointVals[card.type_id] = pointVals[card.type_id] || 0;
-				pointVals[card.type_id] += card.qty;
-			}
+      var pointVals = {};
+      for(var i = 0; i < _cards.length; i++) {
+        var card = _cards[i];
+        pointVals[card.type_id] = pointVals[card.type_id] || 0;
+        pointVals[card.type_id] += card.qty;
+      }
 
-			var data = [];
-			for(var i = 0; i < types.length; i++) {
-				var type = types[i];
-			    data.push({ label: type.name,  data: pointVals[type.id]});
-			}
-			$("#typeChart").html("");
-			$.plot($("#typeChart"), data, {
-		        series: {
-		            pie: {
-		                show: true,
-		                radius: 1,
-			            label: {
-			                show: true,
-			                radius: 3/4,
-			                formatter: function(label, series) {
-			                	return series.data[0][1];
-			                },
-			                background: {
-			                    opacity: 0
-			                }
-			            }
-		            }
-		         },
-		         legend: {
-		            labelBoxBorderColor: "none",
-		            show:true
-		         }
-			});
+      var data = [];
+      for(var i = 0; i < types.length; i++) {
+        var type = types[i];
+          data.push({ label: type.name,  data: pointVals[type.id]});
+      }
+      $("#typeChart").html("");
+      $.plot($("#typeChart"), data, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                  label: {
+                      show: true,
+                      radius: 3/4,
+                      formatter: function(label, series) {
+                        return series.data[0][1];
+                      },
+                      background: {
+                          opacity: 0
+                      }
+                  }
+                }
+             },
+             legend: {
+                labelBoxBorderColor: "none",
+                show:true
+             }
+      });
     }
 
     function _enable() {
-			_enabled = true;
+      _enabled = true;
 
-			_deckBuilderAddCardField.change(_deckBuilderAddCardChange);
+      _deckBuilderAddCardField.change(_deckBuilderAddCardChange);
 
-			$('.deckbuilderWrapper').addClass('enabled');
+      $('.deckbuilderWrapper').addClass('enabled');
 
-		    // no context builder in deckbuilder
-			$('.deckbuilderWrapper').bind("contextmenu",function(){
-		       return false;
-		    });
-	    }
-	    if(<%= enabled.to_s %>)
-	    	_enable();
+        // no context builder in deckbuilder
+      $('.deckbuilderWrapper').bind("contextmenu",function(){
+           return false;
+        });
+      }
+      if(<%= enabled.to_s %>)
+        _enable();
 
-		return {
-			enable:function() {
-				_enable();
-			},
-			render:function() {
-				_render();
-			},
-			getNumCards:function() {
-				return _getNumCards();
-			},
-			getCardString:function() {
-				return _getCardString();
-			},
-			addChangeHandler:function(callback) {
-				_changeHandlers.push(callback);
-			},
-			setCardString:function(str) {
-				_setCardString(str);
-			},
-			setClassId:function(classId) {
-				_setClassId(classId);
-			}
-		};
-	}());
+    return {
+      enable:function() {
+        _enable();
+      },
+      render:function() {
+        _render();
+      },
+      getNumCards:function() {
+        return _getNumCards();
+      },
+      getCardString:function() {
+        return _getCardString();
+      },
+      addChangeHandler:function(callback) {
+        _changeHandlers.push(callback);
+      },
+      setCardString:function(str) {
+        _setCardString(str);
+      },
+      setClassId:function(classId) {
+        _setClassId(classId);
+      }
+    };
+  }());
 $(document).ready(function(){
-	var fullCardImage = $('#deckBuilderFullCardView');
+  var fullCardImage = $('#deckBuilderFullCardView');
 
-	$('.card').mouseover(function(e) {
-		$this = $(this);
-		$('.card').fadeTo(0, .8);
-		$this.fadeTo(0, 1);
-		fullCardImage.attr('src', $('img', $this).attr('src'));
-		var top = $this.position().top;
-		if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
-			top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
-		fullCardImage.css({
-			top: top + 'px',
-			left: ($this.position().left + 218) + 'px'
-		})
-		fullCardImage.show();
-	});
-	$('.card').mouseout(function() {
-		$('.card').fadeTo(0, 1);
-		fullCardImage.hide();
-	});
+  $('.card').mouseover(function(e) {
+    $this = $(this);
+    $('.card').fadeTo(0, .8);
+    $this.fadeTo(0, 1);
+    fullCardImage.attr('src', $('img', $this).attr('src'));
+    var top = $this.position().top;
+    if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
+      top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
+    fullCardImage.css({
+      top: top + 'px',
+      left: ($this.position().left + 218) + 'px'
+    })
+    fullCardImage.show();
+  });
+  $('.card').mouseout(function() {
+    $('.card').fadeTo(0, 1);
+    fullCardImage.hide();
+  });
 });
 </script>
 
