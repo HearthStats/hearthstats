@@ -1,16 +1,16 @@
 <% if @arena.result_id == 1 %>
   var html = '<tr class=<%=@arena.id%> ><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Victory">Win</span></td><td><%= link_to "Delete", @arena, method: :delete , remote: true %></td></tr>'
-	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
+  $(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
 <% elsif @arena.result_id == 2 %>
-	var html = '<tr class=<%=@arena.id%> ><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Defeat">Loss</span></td><td><%= link_to "Delete", @arena, method: :delete , remote: true %></td></tr>'
-	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
+  var html = '<tr class=<%=@arena.id%> ><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Defeat">Loss</span></td><td><%= link_to "Delete", @arena, method: :delete , remote: true %></td></tr>'
+  $(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
 <% elsif @arena.result_id ==3 %>
   var html = '<tr class=<%=@arena.id%> ><td><%= image_tag("Icons/Classes/#{get_name(@arena, "Oppclass")}_Icon.gif", height: "24", width: "24")%>   <%=get_name(@arena, "Oppclass")%></td><td><span class="Draw">Draw</span></td><td><%= link_to "Delete", @arena, method: :delete , remote: true %></td></tr>'
-	$(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
+  $(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
 <% end %>
 toastr.success('Arena Game Added');
 <% if @runwins > 11 || @runloses > 2 %>
-	$('.arenasubmit').fadeOut(function(){
-		$('.arenaendrun').fadeIn();
-	});
+  $('.arenasubmit').fadeOut(function(){
+    $('.arenaendrun').fadeIn();
+  });
 <% end %>

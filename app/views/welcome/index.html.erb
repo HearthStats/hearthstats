@@ -1,172 +1,172 @@
 <!DOCTYPE html>
 <html lang="en"
-			xmlns="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 
-	<meta charset="utf-8" />
-	<meta content="Jeffrey Tong" name="author" />
-	<%= csrf_meta_tags %>
+  <meta charset="utf-8" />
+  <meta content="Jeffrey Tong" name="author" />
+  <%= csrf_meta_tags %>
   <title>HearthStats | Hearthstone Statistics and Tracking</title>
-	<meta name="keywords" content="hearthstone, stats, hearthstats, statistics, tracking, win, loss, online, cloud, automatic">
-	<meta name="description" content="HearthStats makes Hearthstone win/loss tracking simple. HearthStats will provide statistical feedback on your results to help you improve your game.">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- OG Meta -->
-	<meta property="og:image" content="http://www.hearthstats.net/assets/hearthstatslogo.png">
-	<meta property="og:url" content="http://hearthstats.net/">
-	<meta property="og:title" content="HearthStats | Hearthstone Statistics and Tracking">
-	<meta property="og:description" content="HearthStats makes Hearthstone win/loss tracking simple. HearthStats will provide statistical feedback on your results to help you improve your game.">
+  <meta name="keywords" content="hearthstone, stats, hearthstats, statistics, tracking, win, loss, online, cloud, automatic">
+  <meta name="description" content="HearthStats makes Hearthstone win/loss tracking simple. HearthStats will provide statistical feedback on your results to help you improve your game.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- OG Meta -->
+  <meta property="og:image" content="http://www.hearthstats.net/assets/hearthstatslogo.png">
+  <meta property="og:url" content="http://hearthstats.net/">
+  <meta property="og:title" content="HearthStats | Hearthstone Statistics and Tracking">
+  <meta property="og:description" content="HearthStats makes Hearthstone win/loss tracking simple. HearthStats will provide statistical feedback on your results to help you improve your game.">
 
-	<!--[if lt IE 9]>
-	    <script src= "http://html5shiv.googlecode.com/svn/trunk/html5.js")></script>
-	<![endif]-->
-	<!-- CSS Files -->
+  <!--[if lt IE 9]>
+      <script src= "http://html5shiv.googlecode.com/svn/trunk/html5.js")></script>
+  <![endif]-->
+  <!-- CSS Files -->
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/reset.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("foundation.css")%> data-turbolinks-track />
-	<link rel="stylesheet" type="text/css" href=<%= public_url("css/style.css")%> data-turbolinks-track />
-	<link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
-	<link rel="stylesheet" type="text/css" href=<%= public_url("css/flexslider.css")%> data-turbolinks-track />
-	<link rel="stylesheet" type="text/css" href=<%= public_url("css/prettyphoto.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/style.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/flexslider.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/prettyphoto.css")%> data-turbolinks-track />
 
-	<!--[if IE 8]>
-		<link rel="stylesheet" type="text/css" href=<%= public_url("css/ie8.css")%> media="screen" />
-	<![endif]-->
+  <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href=<%= public_url("css/ie8.css")%> media="screen" />
+  <![endif]-->
 
-	<!-- FAVICON-->
-	<%= favicon_link_tag 'favicon.ico' %>
+  <!-- FAVICON-->
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= favicon_link_tag '/hearthstatslogo.png', rel: 'apple-touch-icon', type: 'image/png' %>
 
-	<!-- Google Webfont -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <!-- Google Webfont -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 <!-- Header section -->
 <header>
-	<div class="header">
-		<div class="row">
+  <div class="header">
+    <div class="row">
 
-			<!-- Logo content -->
-			<div class="four columns logo">
-				<h1><a href="/">Hearth<span>Stats</span></a></h1>
-			</div>
+      <!-- Logo content -->
+      <div class="four columns logo">
+        <h1><a href="/">Hearth<span>Stats</span></a></h1>
+      </div>
 
-			<div class="eight columns">
+      <div class="eight columns">
 
-				<!-- Social icons -->
-				<ul class="top-social">
-					<li class="top-tweet"><a href="https://twitter.com/HearthStats"><div class="icon-twitter"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
-					<li class="top-fb"><a href="https://www.facebook.com/HearthStats.net"><div class="icon-facebook"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
-					<li class="top-gplus"><a href="https://plus.google.com/+HearthstatsNet/posts"><div class="icon-google-plus"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
-				</ul>
+        <!-- Social icons -->
+        <ul class="top-social">
+          <li class="top-tweet"><a href="https://twitter.com/HearthStats"><div class="icon-twitter"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
+          <li class="top-fb"><a href="https://www.facebook.com/HearthStats.net"><div class="icon-facebook"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
+          <li class="top-gplus"><a href="https://plus.google.com/+HearthstatsNet/posts"><div class="icon-google-plus"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
+        </ul>
 
-				<!-- Nav menu -->
-				<ul class="top-nav">
-					<li><%= link_to "/uploader" do %>Uploader<% end %></li>
-					<li><%= link_to "/may" do %>May Report<% end %></li>
-					<li><%= link_to welcome_demo_user_path do %>Demo<% end %></li>
-					<li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
-					<li><%= link_to new_user_session_path do %>Sign In<% end %></li>
-				</ul>
-			</div>
+        <!-- Nav menu -->
+        <ul class="top-nav">
+          <li><%= link_to "/uploader" do %>Uploader<% end %></li>
+          <li><%= link_to "/may" do %>May Report<% end %></li>
+          <li><%= link_to welcome_demo_user_path do %>Demo<% end %></li>
+          <li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
+          <li><%= link_to new_user_session_path do %>Sign In<% end %></li>
+        </ul>
+      </div>
 
-		</div>
-	</div>
+    </div>
+  </div>
 </header>
 <!-- Header section -->
 
 <!-- Slider section -->
 <section class="slider-top">
-	<div class="row">
-		<div class="twelve columns top-content">
-			<div class="home_logo">
-			</div>
-			<h3>
-			<%= image_tag('hearthstatslogo.svg', class: "home_logo")%>
-				Welcome to HearthStats</h3>
-			<p>HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.</p>
-			<div class="actions">
-				<%= link_to welcome_demo_user_path, class: "icon-share demo" do %><span>Demo</span><% end %>
-				<%= link_to new_user_registration_path, class: "icon-signin signup" do %><span>Sign Up</span><% end %>
-			</div>
-		</div>
+  <div class="row">
+    <div class="twelve columns top-content">
+      <div class="home_logo">
+      </div>
+      <h3>
+      <%= image_tag('hearthstatslogo.svg', class: "home_logo")%>
+        Welcome to HearthStats</h3>
+      <p>HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.</p>
+      <div class="actions">
+        <%= link_to welcome_demo_user_path, class: "icon-share demo" do %><span>Demo</span><% end %>
+        <%= link_to new_user_registration_path, class: "icon-signin signup" do %><span>Sign Up</span><% end %>
+      </div>
+    </div>
 
-		<div class="twelve columns">
-			<!-- Slider content -->
-			<div id="main-slider" class="flexslider">
-				<ul class="slides">
-					<li><img src= <%= public_url("demo/slides/slide1.png" ) %> alt=""/></li>
-					<li><img src= <%= public_url("demo/slides/slide2.png" ) %> alt=""/></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="twelve columns">
+      <!-- Slider content -->
+      <div id="main-slider" class="flexslider">
+        <ul class="slides">
+          <li><img src= <%= public_url("demo/slides/slide1.png" ) %> alt=""/></li>
+          <li><img src= <%= public_url("demo/slides/slide2.png" ) %> alt=""/></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Slider section -->
 
 <!-- Services section -->
 <section id="services">
-	<div class="row">
+  <div class="row">
 
-		<div class="content-head">
-			<h2>Features</h2>
-			<div class="line"></div>
-		</div>
+    <div class="content-head">
+      <h2>Features</h2>
+      <div class="line"></div>
+    </div>
 
-		<div class="twelve columns">
-			<div class="four columns services-info">
-				<div class="ico"><img src= <%= public_url("images/trophy_icon.svg" ) %> alt=""/></div>
-				<div class="desc">
-					<h4>Win/Loss Tracking</h4>
-					<p>Simple win/loss tracking for both arena and constructed games. Arenas are entered by each arena run and gold/dust amount is also recorded for each run.</p>
-				</div>
-			</div>
+    <div class="twelve columns">
+      <div class="four columns services-info">
+        <div class="ico"><img src= <%= public_url("images/trophy_icon.svg" ) %> alt=""/></div>
+        <div class="desc">
+          <h4>Win/Loss Tracking</h4>
+          <p>Simple win/loss tracking for both arena and constructed games. Arenas are entered by each arena run and gold/dust amount is also recorded for each run.</p>
+        </div>
+      </div>
 
-			<div class="four columns services-info">
-				<div class="ico"><img src= <%= public_url("images/piechart_icon.svg" ) %> alt=""/></div>
-				<div class="desc">
-					<h4>Statistical Analysis</h4>
-					<p>After all your games, sit down to review which decks did well against which class. This will allow you to fine tune your deck.</p>
-				</div>
-			</div>
+      <div class="four columns services-info">
+        <div class="ico"><img src= <%= public_url("images/piechart_icon.svg" ) %> alt=""/></div>
+        <div class="desc">
+          <h4>Statistical Analysis</h4>
+          <p>After all your games, sit down to review which decks did well against which class. This will allow you to fine tune your deck.</p>
+        </div>
+      </div>
 
-			<div class="four columns services-info">
-				<div class="ico"><img src= <%= public_url("images/profile_icon.svg" ) %> alt=""/></div>
-				<div class="desc">
-					<h4>Profiles</h4>
-					<p>Socially share your profile with your friends and other players to show your win rates, records and best decks.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="four columns services-info">
+        <div class="ico"><img src= <%= public_url("images/profile_icon.svg" ) %> alt=""/></div>
+        <div class="desc">
+          <h4>Profiles</h4>
+          <p>Socially share your profile with your friends and other players to show your win rates, records and best decks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Services section -->
 
 <!-- About section -->
 <section id="about">
-	<div class="row">
-      	<div class="content-head">
-			<h2>About HearthStats</h2>
-			<div class="line"></div>
-		</div>
+  <div class="row">
+        <div class="content-head">
+      <h2>About HearthStats</h2>
+      <div class="line"></div>
+    </div>
 
-		<div class="six columns">
-			<img src= <%= public_url("demo/2.jpg" ) %> alt=""/>
-		</div>
+    <div class="six columns">
+      <img src= <%= public_url("demo/2.jpg" ) %> alt=""/>
+    </div>
 
-		<div class="six columns about-info">
-			<h4>Want to perfect your game?</h4>
-			<p>HearthStats makes it easy to pinpoint your weaknesses and strengths. Take the data to easily optimize your deck or arena strategy.</p>
-			<ul class="list">
-				<li>Deck win rates vs each class</li>
-				<li>Arena win rates vs each class</li>
-				<li>See how the coin affects your play</li>
-				<li>Learn from other people's decks</li>
-			</ul>
-			<%= link_to "Register now", new_user_registration_path, class:"download-btn" %>
-		</div>
-	</div>
+    <div class="six columns about-info">
+      <h4>Want to perfect your game?</h4>
+      <p>HearthStats makes it easy to pinpoint your weaknesses and strengths. Take the data to easily optimize your deck or arena strategy.</p>
+      <ul class="list">
+        <li>Deck win rates vs each class</li>
+        <li>Arena win rates vs each class</li>
+        <li>See how the coin affects your play</li>
+        <li>Learn from other people's decks</li>
+      </ul>
+      <%= link_to "Register now", new_user_registration_path, class:"download-btn" %>
+    </div>
+  </div>
 </section>
 <!-- About section -->
 
@@ -175,190 +175,190 @@
 
 <!-- Screenshot/gallery section -->
 <section id="gallery">
-	<div class="row">
+  <div class="row">
 
-      	<div class="content-head">
-			<h2>Screenshot gallery</h2>
-			<div class="line"></div>
-		</div>
+        <div class="content-head">
+      <h2>Screenshot gallery</h2>
+      <div class="line"></div>
+    </div>
 
-		<div class="twelve columns no-padding">
-			<div class="slidewrap">
-				<ul class="slider gallery" id="sliderName">
-					<li class="slide">
-						<div class="three columns">
-							<a href="demo/works/1.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/1.jpg" ) %> alt="" />
-									<span class="portfolio-inner" >
-										<span class="zoom-inner">
-											<span class="overlay title">Quick Match Entry</span>
-											<span class="overlay-tag">Constructed</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
+    <div class="twelve columns no-padding">
+      <div class="slidewrap">
+        <ul class="slider gallery" id="sliderName">
+          <li class="slide">
+            <div class="three columns">
+              <a href="demo/works/1.jpg" class="prettyPhoto">
+                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/1.jpg" ) %> alt="" />
+                  <span class="portfolio-inner" >
+                    <span class="zoom-inner">
+                      <span class="overlay title">Quick Match Entry</span>
+                      <span class="overlay-tag">Constructed</span>
+                    </span>
+                  </span>
+                </div>
+              </a>
+            </div>
 
-						<div class="three columns">
-							<a href="demo/works/2.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/2.jpg" ) %> alt="" />
-									<span class="portfolio-inner" >
-										<span class="zoom-inner">
-											<span class="overlay title">Arena Run Entry</span>
-											<span class="overlay-tag">Arena</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
+            <div class="three columns">
+              <a href="demo/works/2.jpg" class="prettyPhoto">
+                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/2.jpg" ) %> alt="" />
+                  <span class="portfolio-inner" >
+                    <span class="zoom-inner">
+                      <span class="overlay title">Arena Run Entry</span>
+                      <span class="overlay-tag">Arena</span>
+                    </span>
+                  </span>
+                </div>
+              </a>
+            </div>
 
-						<div class="three columns">
-							<a href="demo/works/3.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/3.jpg" ) %> alt="" />
-									<span class="portfolio-inner" >
-										<span class="zoom-inner">
-											<span class="overlay title">Profile Win Rate Graph</span>
-											<span class="overlay-tag">Profile</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
+            <div class="three columns">
+              <a href="demo/works/3.jpg" class="prettyPhoto">
+                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/3.jpg" ) %> alt="" />
+                  <span class="portfolio-inner" >
+                    <span class="zoom-inner">
+                      <span class="overlay title">Profile Win Rate Graph</span>
+                      <span class="overlay-tag">Profile</span>
+                    </span>
+                  </span>
+                </div>
+              </a>
+            </div>
 
-						<div class="three columns">
-							<a href="demo/works/4.jpg" class="prettyPhoto">
-								<div class="portfolio_thumb"><img src= <%= public_url("demo/works/4.jpg" ) %> alt="" />
-									<span class="portfolio-inner">
-										<span class="zoom-inner">
-											<span class="overlay title">Global Statistics</span>
-											<span class="overlay-tag">Dashboard</span>
-										</span>
-									</span>
-								</div>
-							</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+            <div class="three columns">
+              <a href="demo/works/4.jpg" class="prettyPhoto">
+                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/4.jpg" ) %> alt="" />
+                  <span class="portfolio-inner">
+                    <span class="zoom-inner">
+                      <span class="overlay title">Global Statistics</span>
+                      <span class="overlay-tag">Dashboard</span>
+                    </span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Screenshot/gallery section -->
 
 <!-- Features section -->
 <section id="features">
-	<div class="row">
-      	<div class="content-head">
-			<h2>Additional Features</h2>
-			<div class="line"></div>
-		</div>
+  <div class="row">
+        <div class="content-head">
+      <h2>Additional Features</h2>
+      <div class="line"></div>
+    </div>
 
-		<div class="twelve columns">
-			<div class="four columns features-content">
-				<div class="ico">
-					<i class="icon-desktop"></i>
-				</div>
-				<div class="features-desc">
-				<h4>Responsive</h4>
-				<p>HearthStats looks beautiful on your desktop, tablet and mobile phone.</p>
-				</div>
-			</div>
+    <div class="twelve columns">
+      <div class="four columns features-content">
+        <div class="ico">
+          <i class="icon-desktop"></i>
+        </div>
+        <div class="features-desc">
+        <h4>Responsive</h4>
+        <p>HearthStats looks beautiful on your desktop, tablet and mobile phone.</p>
+        </div>
+      </div>
 
-			<div class="four columns features-content">
-				<div class="ico">
-					<i class="icon-rss"></i>
-				</div>
-				<div class="features-desc">
-				<h4>News Aggregation</h4>
-				<p>HearthStats will gather Hearthstone news and articles from all over the web into one place.</p>
-				</div>
-			</div>
-
-
-			<div class="four columns features-content">
-				<div class="ico">
-					<i class="icon-sitemap"></i>
-				</div>
-				<div class="features-desc">
-				<h4>Tournaments</h4>
-				<p>Join the exclusive HearthStats tournament and league system to win prizes and see how you fare against other players.</p>
-				</div>
-			</div>
+      <div class="four columns features-content">
+        <div class="ico">
+          <i class="icon-rss"></i>
+        </div>
+        <div class="features-desc">
+        <h4>News Aggregation</h4>
+        <p>HearthStats will gather Hearthstone news and articles from all over the web into one place.</p>
+        </div>
+      </div>
 
 
-			<div class="four columns features-content">
-				<div class="ico">
-					<i class="icon-globe"></i>
-				</div>
-				<div class="features-desc">
-				<h4>Collaborative Data</h4>
-				<p>A large user base allows users to see how each class is doing globally.</p>
-				</div>
-			</div>
+      <div class="four columns features-content">
+        <div class="ico">
+          <i class="icon-sitemap"></i>
+        </div>
+        <div class="features-desc">
+        <h4>Tournaments</h4>
+        <p>Join the exclusive HearthStats tournament and league system to win prizes and see how you fare against other players.</p>
+        </div>
+      </div>
 
 
-			<div class="four columns features-content">
-				<div class="ico">
-					<i class="icon-question-sign"></i>
-				</div>
-				<div class="features-desc">
-				<h4>Friendly Support</h4>
-				<p>If you have a question, just ask. HearthStat is a tool by the community for the community!</p>
-				</div>
-			</div>
+      <div class="four columns features-content">
+        <div class="ico">
+          <i class="icon-globe"></i>
+        </div>
+        <div class="features-desc">
+        <h4>Collaborative Data</h4>
+        <p>A large user base allows users to see how each class is doing globally.</p>
+        </div>
+      </div>
 
 
-			<div class="four columns features-content">
-				<div class="ico">
-					<i class="icon-beaker"></i>
-				</div>
-				<div class="features-desc">
-				<h4>Constant Development</h4>
-				<p>New features are added every week and there are constant improvements.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="four columns features-content">
+        <div class="ico">
+          <i class="icon-question-sign"></i>
+        </div>
+        <div class="features-desc">
+        <h4>Friendly Support</h4>
+        <p>If you have a question, just ask. HearthStat is a tool by the community for the community!</p>
+        </div>
+      </div>
+
+
+      <div class="four columns features-content">
+        <div class="ico">
+          <i class="icon-beaker"></i>
+        </div>
+        <div class="features-desc">
+        <h4>Constant Development</h4>
+        <p>New features are added every week and there are constant improvements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Features section -->
 
 <!-- Testimonial / quote section -->
 <section id="wrap2">
-	<div class="row">
-		<div class="twelve columns testimonials">
-			<div id="quote-slider" class="flexslider">
-				<ul class="slides">
-					<li>
-						<blockquote>HeartStats improves gaming through unrivaled up to the minute statistical analysis. <cite>Anya Kylie, icegirlak</cite></blockquote>
-					</li>
-					<li>
-						<blockquote>Hearthstats gives me that 30,000ft view of my game that I wouldn't trade for anything else. <cite>Neil Murphy, Cecil</cite></blockquote>
-					</li>
-					<li>
-						<blockquote>Отличный портал статистики: всё доступно, понятно, удобно и главное информативно. <cite>Victor Stanley</cite></blockquote>
-					</li>
+  <div class="row">
+    <div class="twelve columns testimonials">
+      <div id="quote-slider" class="flexslider">
+        <ul class="slides">
+          <li>
+            <blockquote>HeartStats improves gaming through unrivaled up to the minute statistical analysis. <cite>Anya Kylie, icegirlak</cite></blockquote>
+          </li>
+          <li>
+            <blockquote>Hearthstats gives me that 30,000ft view of my game that I wouldn't trade for anything else. <cite>Neil Murphy, Cecil</cite></blockquote>
+          </li>
+          <li>
+            <blockquote>Отличный портал статистики: всё доступно, понятно, удобно и главное информативно. <cite>Victor Stanley</cite></blockquote>
+          </li>
 
-				</ul>
-			</div>
-		</div>
-	</div>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Testimonial / quote section -->
 
 <!-- Footer section -->
 <footer>
-	<div class="footer">
-		<p class="space10">&copy; 2013. <a href="#">HearthStats.</a> All rights reserved. <a href="/privacy" target="_blank">Privacy Policy</a></p>
+  <div class="footer">
+    <p class="space10">&copy; 2013. <a href="#">HearthStats.</a> All rights reserved. <a href="/privacy" target="_blank">Privacy Policy</a></p>
     <div class="center">
       <img src="/assets/RSLogo.png" width="200px" />
     </div>
-	</div>
+  </div>
 </footer>
 <!-- Footer section -->
 
 <!-- Back to top button Section -->
 <p id="back-top">
-	<a href="#top"><span></span></a>
+  <a href="#top"><span></span></a>
 </p>
 <!-- Back to top button Section -->
 

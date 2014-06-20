@@ -1,55 +1,55 @@
 <%= form_for(@deck) do |f| %>
 <%= f.hidden_field :cardstring, class: "" %>
 <% if @deck.errors.any? %>
-	<div id="error_explanation">
+  <div id="error_explanation">
     <h2><%= pluralize(@deck.errors.count, "error") %> <%=t('shared.prohibited_this_being_save', resource: t('shared.deck'))%>:</h2>
 
-		<ul>
-			<% @deck.errors.full_messages.each do |msg| %>
-			<li>
-				<%= msg %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
+    <ul>
+      <% @deck.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 <div class="deckform">
-	<div class="row">
-		<div class="col-md-6 center">
-			<div class="row center">
-				<div class="deckfield col-md-6 center">
-					<%= f.label t('decks.form.name') %>
-					<br />
-					<%= f.text_field :name, class: "deckname" %>
-				</div>
-				<div class="oppfield col-md-6 center">
-					<%= f.label t('decks.form.class') %>
-					<br>
-					<%= collection_select(:deck, :klass_id, Klass.order("name ASC"), :id, :name) %>
-				</div>
-			</div>
-			<div class="row center">
-				<div class="col-md-10 notesfield center">
-					<label for="deck_notes"><% t('decks.form.notes')%></label><small> <% t('decks.form.decklist_etc')%></small>
-					<br />
-					<%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
-				</div>
+  <div class="row">
+    <div class="col-md-6 center">
+      <div class="row center">
+        <div class="deckfield col-md-6 center">
+          <%= f.label t('decks.form.name') %>
+          <br />
+          <%= f.text_field :name, class: "deckname" %>
+        </div>
+        <div class="oppfield col-md-6 center">
+          <%= f.label t('decks.form.class') %>
+          <br>
+          <%= collection_select(:deck, :klass_id, Klass.order("name ASC"), :id, :name) %>
+        </div>
+      </div>
+      <div class="row center">
+        <div class="col-md-10 notesfield center">
+          <label for="deck_notes"><% t('decks.form.notes')%></label><small> <% t('decks.form.decklist_etc')%></small>
+          <br />
+          <%= f.text_area :notes, :class => "redactor", :rows => 40, :cols => 20 %>
+        </div>
         <div class="col-md-4 versions">
           <label>Versions <i class="fa fa-question-circle tooltips" data-original-title="Click version to save the current state then edit the deck for the new version"></i></label>
           <div>
-	          <%= link_to version_deck_path, class: "btn btn-sm purple" do %>
-	          	<i class="fa fa-plus"></i> New Version
-	          <% end %>
+            <%= link_to version_deck_path, class: "btn btn-sm purple" do %>
+              <i class="fa fa-plus"></i> New Version
+            <% end %>
           </div>
           <br/>
           <% @deck.deck_versions.each do |version| %>
-	          <span class='version-number'>
-	            <%= link_to "v#{version.version}", deck_path(@deck, version: version.version) %>
+            <span class='version-number'>
+              <%= link_to "v#{version.version}", deck_path(@deck, version: version.version) %>
             </span>
           <%end%>
         </div>
 
-			</div>
+      </div>
       <div class="row">
         <div class="actions center">
           <% if !current_user.guest? %>
@@ -66,28 +66,28 @@
           <% end %>
         </div>
       </div>
-		</div>
-		<div class="col-md-6 center">
-			<%= render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => true } %>
-		</div>
-	</div>
-	<div class="row"></div>
-	<div class="cf"></div>
+    </div>
+    <div class="col-md-6 center">
+      <%= render :template => 'shared/deckbuilder', :locals => { :deck => @deck, :enabled => true } %>
+    </div>
+  </div>
+  <div class="row"></div>
+  <div class="cf"></div>
 
 <% end %>
 <script type="text/javascript">
-	app.UI.initClassSelector('#deck_klass_id');
-	if(DeckBuilder) {
-		DeckBuilder.addChangeHandler(function() {
-			$('#deck_cardstring').val(DeckBuilder.getCardString());
-		});
-		DeckBuilder.setCardString('<%= @deck.cardstring %>');
-		<% if !@deck.klass.nil? %>
-			DeckBuilder.setClassId(<%= @deck.klass.id %>);
-		<% end %>
-		DeckBuilder.render();
-		$('#deck_klass_id').change(function() {
-			DeckBuilder.setClassId($(this).val());
-		});
-	}
+  app.UI.initClassSelector('#deck_klass_id');
+  if(DeckBuilder) {
+    DeckBuilder.addChangeHandler(function() {
+      $('#deck_cardstring').val(DeckBuilder.getCardString());
+    });
+    DeckBuilder.setCardString('<%= @deck.cardstring %>');
+    <% if !@deck.klass.nil? %>
+      DeckBuilder.setClassId(<%= @deck.klass.id %>);
+    <% end %>
+    DeckBuilder.render();
+    $('#deck_klass_id').change(function() {
+      DeckBuilder.setClassId($(this).val());
+    });
+  }
 </script>

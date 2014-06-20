@@ -11,7 +11,7 @@ div class="portlet box blue"
     div class="caption"
       | #{t('.recent_arena_matches')}
   div class="portlet-body flip-scroll"
-  	= render :template => 'shared/matchlist', :locals => { :matches => @matches, :type => "Arena", :filter => true }
+    = render :template => 'shared/matchlist', :locals => { :matches => @matches, :type => "Arena", :filter => true }
 
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
