@@ -1,7 +1,7 @@
 small You may have to refresh the page if nothing works.
 
 = form_for(@deck) do |f|
-  = f.hidden_field :cardstring
+  = f.hidden_field :cardstring, value: @deck.cardstring
   - if @deck.errors.any?
     div#error_explanation
       h2
