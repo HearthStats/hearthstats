@@ -194,8 +194,8 @@ class Deck < ActiveRecord::Base
       element = cardstring_array.detect {|c| c[0].to_i == card.id }
       arr << [card, element[1]]
     end
-    
-    arr
+
+    arr.sort_by { |c| c[0].name }
   end
   
   private
