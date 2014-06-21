@@ -181,6 +181,8 @@ class DecksController < ApplicationController
     expire_fragment(@deck)
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
+        @deck.tag_list = params[:tags]
+        @deck.save
         if !params[:deck_text].blank?
           begin
             @deck.cardstring = text_to_deck(params[:deck_text])
