@@ -24,10 +24,12 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <% if current_user.guest %>
           <%= image_tag("avatar.jpg") %>
+          &nbsp;
           <span class="username">
             <%= t('shared.header.guest') %>
         <% else %>
           <%= image_tag current_user.profile.avatar.url(:thumb) %>
+          &nbsp;
           <%if current_user.profile.name.blank? %>
             <%= current_user.email %>
           <% else %>
