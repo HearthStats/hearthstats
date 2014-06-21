@@ -109,6 +109,7 @@ javascript:
       }
       this._addCardToTable(id);
       this.createCardString();
+      $('#deck-list').tablesorter( {sortList: [[0,0]]} );
     };
 
     this.removeCard = function(id){
@@ -125,6 +126,7 @@ javascript:
       }
       this._removeCardToTable(id);
       this.createCardString();
+      $('#deck-list').tablesorter( {sortList: [[0,0]]} );
     };
 
     this._errorNotification = function(type){
