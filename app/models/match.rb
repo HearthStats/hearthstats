@@ -8,7 +8,7 @@ class Match < ActiveRecord::Base
   has_one :arena_run, through: :match_run
   
   has_one :match_deck
-  has_one :deck, through: :match_deck, dependent: :destroy
+  has_one :deck, through: :match_deck
   
   has_one :match_unique_deck
   has_one :unique_deck, through: :match_unique_deck

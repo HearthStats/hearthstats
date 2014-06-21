@@ -83,6 +83,9 @@ class DecksController < ApplicationController
   def public_show
     @deck = Deck.find(params[:id])
     unique = @deck.unique_deck
+    if unique.nil?
+      redirect_to deck_path(@deck) and return
+    end
     impressionist(unique)
     
     @card_array = @deck.card_array_from_cardstring
