@@ -17,6 +17,7 @@ class DecksController < ApplicationController
     @q = Deck.where(is_public: true).
               group(:unique_deck_id).
               joins(:unique_deck).
+              includes(:unique_deck, user: :profile).
               ransack(params[:q])
               
     @decks = @q.result
