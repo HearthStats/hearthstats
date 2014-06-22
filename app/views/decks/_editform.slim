@@ -16,13 +16,17 @@ small You may have to refresh the page if nothing works.
       .form-body
         h3 Deck Details
         .form-group
+          = f.label t('decks.form.class')
+          |: &nbsp;
+          = @deck.klass.name
+        .form-group
           = f.label t('decks.form.name')
           = f.text_field :name, class: 'form-control'
-          = f.hidden_field :klass_id, value: @deck.klass_id
         .form-group
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
         .form-group
+          = f.label t('decks.form.tags')
           input name="tags" id="tags" width="100%" value="#{@deck.tag_list}"
           div
             small Tags separated by commas

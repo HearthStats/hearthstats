@@ -309,6 +309,7 @@ en:
       name: Name
       class: Class
       notes: Notes
+      tags: Tags
       decklist_etc: ' Decklist, etc'
       this_deck_public: Make Deck Public
       search: Search
