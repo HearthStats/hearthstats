@@ -71,7 +71,8 @@ div.row
           - else
             = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version"
       h3 Tags
-      = @deck.tag_list
+      - @deck.tag_list.each do |tag|
+        div.btn.default.btn-xs.green-stripe = tag
       h3 Notes
       = sanitize @deck.notes, tags: %w(table tr td span <a href=""></a>), attributes: %w(id class style)
     div.deck-show-graph
