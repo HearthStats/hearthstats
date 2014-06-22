@@ -61,10 +61,15 @@ div.row
       div.version
         h3 Versions
         .curr-version
-          = link_to "Current Version", deck_path(@deck)
+          - if params[:version].nil?
+            = link_to "Newest Version", deck_path(@deck), class: "btn btn-md green active"
+          - else
+            = link_to "Newest Version", deck_path(@deck), class: "btn btn-md green"
         - @deck.deck_versions.each do |version|
-          span.version-number
-            = link_to "v#{version.version}", deck_path(@deck, version: version.version)
+          - if params[:version].to_i == version.version
+            = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version active"
+          - else
+            = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version"
       h3 Tags
       = @deck.tag_list
       h3 Notes

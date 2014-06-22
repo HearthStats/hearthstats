@@ -36,8 +36,13 @@ class DecksController < ApplicationController
   
   def show
     @deck = Deck.find(params[:id])
-    impressionist(@deck) unless params[:version]
-    
+    impressionist(@deck)
+
+    unless params[:version].nil?
+      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].cardstring
+      @deck.cardstring = cardstring
+    end
+
     @card_array = @deck.card_array_from_cardstring
     
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)
@@ -71,10 +76,6 @@ class DecksController < ApplicationController
       @winrate = deck_cache_stats[3]
     end
     
-    if !params[:version].nil?
-      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].cardstring
-      @deck.cardstring = cardstring
-    end
     respond_to do |format|
       format.html # show.html.erb
     end

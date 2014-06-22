@@ -39,7 +39,6 @@ small You may have to refresh the page if nothing works.
           label = t("decks.form.other_versions")
           div
             - @deck.deck_versions.each do |version|
-              span
                 = link_to "v#{version.version}", deck_path(@deck, version: version.version), class: "btn blue btn-sm btn-version"
     .col-sm-12.col-md-6.col-lg-6
       .form-body
