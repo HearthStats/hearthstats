@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140617013656) do
+ActiveRecord::Schema.define(:version => 20140621223922) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,11 +158,11 @@ ActiveRecord::Schema.define(:version => 20140617013656) do
 
   create_table "deck_versions", :force => true do |t|
     t.integer  "deck_id"
-    t.integer  "unique_deck_id"
     t.text     "notes"
-    t.integer  "version",        :limit => 255
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "version",    :limit => 255
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "cardstring"
   end
 
   create_table "decks", :force => true do |t|

@@ -1,5 +1,5 @@
 class DeckVersion < ActiveRecord::Base
-  attr_accessible :version, :notes, :deck_id, :unique_deck_id
+  attr_accessible :version, :notes, :deck_id, :cardstring
   
   ### ASSOCIATIONS:
   

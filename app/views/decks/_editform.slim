@@ -24,7 +24,7 @@ small You may have to refresh the page if nothing works.
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
         .form-group
           input name="tags" id="tags" width="100%" value="#{@deck.tag_list}"
-          .div
+          div
             small Tags separated by commas
         .form-group
           span = f.check_box :is_public
@@ -33,6 +33,14 @@ small You may have to refresh the page if nothing works.
             = t("decks.form.this_deck_public")
         .form-group
           = f.submit class: 'btn btn-block green'
+        .form-group
+          = link_to 'Create New Deck Version', version_deck_path(@deck),class: 'btn btn-block yellow', method: :post
+        .form-group
+          label = t("decks.form.other_versions")
+          div
+            - @deck.deck_versions.each do |version|
+              span
+                = link_to "v#{version.version}", deck_path(@deck, version: version.version), class: "btn blue btn-sm btn-version"
     .col-sm-12.col-md-6.col-lg-6
       .form-body
         h3 Deck Builder
@@ -41,7 +49,7 @@ small You may have to refresh the page if nothing works.
             label =t("decks.form.search")
             input type="text" class="fuzzy-search form-control"
           ul.list.card-list
-            - Card.where(klass_id: [@deck.klass_id ,nil]).each do |card|
+            - Card.where(klass_id: [@deck.klass_id ,nil]).order(:name).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
                 img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
                 p.name.hidden = card.name
@@ -58,6 +66,7 @@ small You may have to refresh the page if nothing works.
           th =t("decks.form.count")
           th =t("decks.form.controls")
         tbody
+      small.top-border The green star indicated this card was edited
 
 
 javascript:
@@ -124,6 +133,7 @@ javascript:
       }else{
         this._errorNotification("none");
       }
+
       this._removeCardToTable(id);
       this.createCardString();
       $('#deck-list').tablesorter( {sortList: [[0,0]]} );
@@ -150,9 +160,9 @@ javascript:
 
     this._addCardToTable = function(i){
       if (cardArray[i] == 1){
-        $("#deck-list").append("<tr id="+i+"><td>"+cardName[i]+"</td><td class='card-count'>"+cardArray[i]+"</td></tr>");
+        $("#deck-list").append("<tr id="+i+"><td>"+cardName[i]+"</td><td class='card-count'><span class='green'>* </span>"+cardArray[i]+"</td><td><div class='quick-add'>+</div><div class='quick-remove'>-</div></td></tr>");
       } else if (cardArray[i] == 2){
-        $("#deck-list tr#"+i+" .card-count").text("2");
+        $("#deck-list tr#"+i+" .card-count").html("<span class='green'>* </span>2");
       }
     };
 

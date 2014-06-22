@@ -150,6 +150,10 @@
 	text-align: center;
 }
 #deck-list{
+  border-bottom: 1px solid black;
+  .green{
+    color: #35aa47;
+  }
 	th{
 		font-family: 'Open Sans', sans-serif;
 		font-weight: 400;
@@ -181,4 +185,7 @@
 }
 th .header{
   background-color: none !important;
+}
+.btn-version{
+  margin-right: 5px;
 }

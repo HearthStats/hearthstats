@@ -72,8 +72,8 @@ class DecksController < ApplicationController
     end
     
     if !params[:version].nil?
-      unique_deck = Deck.find(params[:id]).deck_versions.select {|d| d.version == params[:version].to_i}[0].unique_deck
-      @deck.cardstring = unique_deck.cardstring unless unique_deck.nil?
+      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].cardstring
+      @deck.cardstring = cardstring
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -233,15 +233,18 @@ class DecksController < ApplicationController
     if saves == 9
       redirect_to active_decks_decks_path, notice: 'Active decks successfully updated.'
     else
-      redirect_to active_decks_decks_path, error: 'Cannot Update Active Decks'
+      redirect_to active_decks_decks_path, alert: 'Cannot Update Active Decks'
     end
   end
   
   def version
     deck = Deck.find(params[:id])
     canedit(deck)
-    version_deck(deck)
-    redirect_to deck_path(deck), notice: "Deck successfully versioned"
+    if version_deck(deck)
+      redirect_to edit_deck_path(deck), notice: "Previous deck version saved"
+    else
+      redirect_to edit_deck_path(deck), alert: "Deck version could not be saved"
+    end
   end
 
   def tags
@@ -258,7 +261,12 @@ class DecksController < ApplicationController
     else
       version = last_version.version.to_i + 1
     end
-    DeckVersion.new(deck_id: deck.id, unique_deck_id: deck.unique_deck_id, version: version ).save!
+    version = DeckVersion.new( deck_id: deck.id, cardstring: deck.cardstring, version: version )
+    if version.save
+      return true
+    else
+      return false
+    end
   end
   
   def getMyDecks()
