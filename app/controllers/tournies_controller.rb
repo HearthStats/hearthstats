@@ -8,7 +8,19 @@ class TourniesController < ApplicationController
 
   def show
     @tourny = Tourny.find(params[:id])
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @tourny.user_decks_id, is_public: true)
+
+    params[:items] ||= 20
+    
+    @q = Deck.where(is_public: true).
+              where(user_id: @tourny.user_decks_id).
+              group(:unique_deck_id).
+              joins(:unique_deck).
+              includes(:unique_deck, user: :profile).
+              ransack(params[:q])
+              
+    @decks = @q.result
+    @decks = @decks.order("#{sort_by} #{direction}")
+    @decks = @decks.paginate(page: params[:page], per_page: params[:items])
   end
 
   def signup
@@ -86,5 +98,13 @@ class TourniesController < ApplicationController
     else
       format.html { redirect_to root_path, alert: 'Local Tourny not saved!' }
     end
+  end
+  
+  def sort_by
+    (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
+  end
+
+  def direction
+    %w{asc desc}.include?(params[:order]) ? params[:order] : 'desc'
   end
 end
