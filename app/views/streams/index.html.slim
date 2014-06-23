@@ -5,24 +5,26 @@
 - provide(:title, t('.title'))
 - provide(:subtitle, t('.subtitle'))
 
-/ h2 Featured Streamers
+h3 Featured Streamers
 .featured-streamers
   |Contact chris@hearthstats.net if you are interested in being a featured streamer.
-/ div class="row"
-/   div class="col-md-12"
-/     div class="margin-top-10"
-/       div.row
-/         - @featured_streams.each do |s|
-/           div class="mix-grid"
-/             div class="col-md-3 col-sm-4 mix"
-/               div class="mix-inner"
-/                 img src="#{s['logo']}" class="img-responsive featured-stream-image"
-/                 div class="mix-details"
-/                   h4 = s["display_name"]
-/                   div = s["status"]
-/                   a class="mix-link" href="#{s['url']}" target="_none"
-/                     i class="fa fa-link"
+div class="row"
+  div class="col-md-12"
+    div class="margin-top-10"
+      div.row
+        - @featured_streams.each do |s|
+          div class="mix-grid"
+            div class="col-md-3 col-sm-4 mix"
+              div class="mix-inner"
+                div.streamer-badge class="#{s[0]}" = s[0]
+                img src="#{s[1]['logo']}" class="img-responsive"
+                div class="mix-details"
+                  h4 = s[1]["display_name"]
+                  div = s[1]["status"]
+                  a class="mix-link" href="#{s[1]['url']}" target="_none"
+                    i class="fa fa-link"
 
+h3 Top Streams
 = will_paginate @streams, renderer: BootstrapPagination::Rails
 div class="row"
   div class="col-md-12"

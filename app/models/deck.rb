@@ -195,7 +195,7 @@ class Deck < ActiveRecord::Base
       arr << [card, element[1]]
     end
 
-    arr.sort_by { |c| c[0].name }
+    arr.sort_by { |c| c[0].mana }
   end
   
   private
