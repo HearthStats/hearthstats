@@ -41,7 +41,7 @@ small You may have to refresh the page if nothing works.
             label =t("decks.form.search")
             input type="text" class="fuzzy-search form-control"
           ul.list.card-list
-            - Card.where(klass_id: [params[:klass],nil]).each do |card|
+            - Card.where(collectible: true, klass_id: [params[:klass],nil]).order(:name).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
                 img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
                 p.name.hidden = card.name
