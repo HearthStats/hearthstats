@@ -17,6 +17,7 @@ class DecksController < ApplicationController
     @q = Deck.where(is_public: true).
               group(:unique_deck_id).
               joins(:unique_deck).
+              includes(:unique_deck, user: :profile).
               ransack(params[:q])
               
     @decks = @q.result
@@ -288,7 +289,7 @@ class DecksController < ApplicationController
   end
   
   def sort_by
-    (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
+    (Deck.column_names + UniqueDeck.column_names).include?(params[:sort].split('.').last) ? params[:sort] : 'num_users'
   end
 
   def direction
