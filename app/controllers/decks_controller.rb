@@ -17,7 +17,7 @@ class DecksController < ApplicationController
     @q = Deck.where(is_public: true).
               group(:unique_deck_id).
               joins(:unique_deck).
-              includes(:unique_deck, user: :profile).
+              includes(:unique_deck).
               ransack(params[:q])
               
     @decks = @q.result
@@ -188,7 +188,7 @@ class DecksController < ApplicationController
       if @deck.update_attributes(params[:deck])
         @deck.tag_list = params[:tags]
         @deck.save
-        if !params[:deck_text].blank?
+        unless params[:deck_text].blank?
           begin
             @deck.cardstring = text_to_deck(params[:deck_text])
             @deck.save!

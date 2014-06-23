@@ -21,6 +21,12 @@ class TourniesController < ApplicationController
     @decks = @q.result
     @decks = @decks.order("#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
+
+    unless current_user.nil?
+      unique_deck_ids = @decks.map(&:unique_deck_id)
+      @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
+    end
+    
   end
 
   def signup
