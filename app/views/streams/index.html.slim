@@ -5,21 +5,40 @@
 - provide(:title, t('.title'))
 - provide(:subtitle, t('.subtitle'))
 
+/ h2 Featured Streamers
+.featured-streamers
+  |Contact chris@hearthstats.net if you are interested in being a featured streamer.
+/ div class="row"
+/   div class="col-md-12"
+/     div class="margin-top-10"
+/       div.row
+/         - @featured_streams.each do |s|
+/           div class="mix-grid"
+/             div class="col-md-3 col-sm-4 mix"
+/               div class="mix-inner"
+/                 img src="#{s['logo']}" class="img-responsive featured-stream-image"
+/                 div class="mix-details"
+/                   h4 = s["display_name"]
+/                   div = s["status"]
+/                   a class="mix-link" href="#{s['url']}" target="_none"
+/                     i class="fa fa-link"
+
 = will_paginate @streams, renderer: BootstrapPagination::Rails
 div class="row"
   div class="col-md-12"
     div class="margin-top-10"
       div.row
-      - @streams.each do |s|
-        div class="mix-grid"
-          div class="col-md-3 col-sm-4 mix"
-            div class="mix-inner"
-              img src="#{s['preview']['medium']}" class="img-responsive"
-              div class="mix-details"
-                h4 =s['channel']["display_name"]
-                a class="mix-link" href="#{s['channel']['url']}" target="_none"
-                  i class="fa fa-link"
-                a class="mix-preview viewers"
-                  =s['viewers']
+        - @streams.each do |s|
+          div class="mix-grid"
+            div class="col-md-3 col-sm-4 mix"
+              div class="mix-inner"
+                img src="#{s['preview']['medium']}" class="img-responsive"
+                div class="mix-details"
+                  h4 = s['channel']["display_name"]
+                  div = s['channel']["status"]
+                  a class="mix-link" href="#{s['channel']['url']}" target="_none"
+                    i class="fa fa-link"
+                  a class="mix-preview viewers"
+                    = s['viewers']
 javascript:
   Portfolio.init();

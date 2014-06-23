@@ -90,7 +90,7 @@ class ConstructedsController < ApplicationController
     end
     respond_to do |format|
       if @constructed.save
-        MatchDeck.new( deck_id: deck.id, match_id: @constructed.id ).save!
+        MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
         delete_deck_cache!(deck)
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
@@ -144,34 +144,34 @@ class ConstructedsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def stats
     params[:q]     ||= {}
     params[:days]  ||= 'all'
-    
+
     @q       = Match.where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result
-    
+
     unless params[:days] == "all"
       @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
-    
+
     personal_matches    = @matches.where(user_id: current_user.id)
     @personal_win_rates = Match.winrate_per_class(personal_matches)
     @global_win_rates   = Match.winrate_per_class(@matches)
-    
+
     @num_matches_global   = Match.matches_per_class(@matches)
     @num_matches_personal = Match.matches_per_class(personal_matches)
-    
+
     @classes = Klass.list
   end
-  
+
   private
-  
+
   def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
   end
-  
+
   def get_my_decks
     return Deck.joins(:klass)
       .where(user_id: current_user.id)
