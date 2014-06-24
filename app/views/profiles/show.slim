@@ -71,7 +71,7 @@ div class="row profile"
                             -if @topdeck.blank?
                               |N/A
                             -else
-                              = link_to truncate(@topdeck[0], :length => 30), deck_path(@topdeck[1][1])
+                              = link_to truncate(@topdeck.name, :length => 30), deck_path(@topdeck)
 
               div class="tabbable tabbable-custom tabbable-custom-profile"
                 ul class="nav nav-tabs"

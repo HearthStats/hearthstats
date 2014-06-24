@@ -26,17 +26,8 @@ class Deck < ActiveRecord::Base
   
   ### CLASS METHODS:
   
-  def self.bestuserdeck(userid)
-    decks = Deck.includes(:matches).where(user_id: userid)
-    winrates = Hash.new
-    decks.each do |d|
-      if d.matches.count == 0
-      else
-        winrates[d.name] = [((d.matches.where(result_id: 1).count.to_f / d.matches.count)*100).round, d.id]
-      end
-    end
-    deck = winrates.max_by { |x,y| y}
-    deck
+  def self.bestuserdeck(user_id)
+    Deck.where(user_id: user_id).order("user_winrate DESC").first
   end
   
   ### INSTANCE METHODS:

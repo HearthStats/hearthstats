@@ -43,10 +43,10 @@ div class="row"
           i class="m-icon-swapright m-icon-white"
       - else
         div class="details"
-          div class="number" = truncate(@topdeck[0], :length => 12)
+          div class="number" = truncate(@topdeck.name, :length => 12)
           div class="desc"= t 'shared.best_deck'
 
-        = link_to deck_path(@topdeck[1][1]), class: "more" do
+        = link_to deck_path(@topdeck), class: "more" do
           |#{t 'shared.view_more'}
           i class="m-icon-swapright m-icon-white"
 
