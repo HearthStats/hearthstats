@@ -67,6 +67,9 @@ console
 # Ignore application configuration
 /config/application.yml
 
+# Ignore Honeybadger
+/initializers/honeybadger.rb
+
 .localeapp
 .powrc
 .ruby-version
