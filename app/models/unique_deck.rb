@@ -13,7 +13,7 @@ class UniqueDeck < ActiveRecord::Base
   has_many :unique_deck_cards
   has_many :cards, through: :unique_deck_cards
   
-  has_many :matches, through: :match_unique_deck
+  has_many :matches, through: :match_unique_decks
   has_many :match_unique_decks
 
   ### CALLBACKS:

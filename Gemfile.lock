@@ -448,7 +448,6 @@ DEPENDENCIES
   carrierwave
   cindy
   coffee-rails (~> 3.2.1)
-  daemons
   dalli
   database_cleaner
   delayed_job_active_record
