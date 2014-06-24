@@ -43,9 +43,6 @@ GEM
       actionpack (>= 3, < 5)
       activerecord (>= 3, < 5)
     addressable (2.3.6)
-    airbrake (3.1.16)
-      builder
-      multi_json
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.3)
@@ -202,6 +199,8 @@ GEM
     hike (1.2.3)
     hipchat (1.1.0)
       httparty
+    honeybadger (1.11.2)
+      json
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -436,7 +435,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on
-  airbrake
   asset_sync
   aws-sdk
   better_errors (>= 0.3.2)
@@ -465,6 +463,7 @@ DEPENDENCIES
   guard-rspec
   guard-spork
   hipchat
+  honeybadger
   httparty
   imgkit
   impressionist

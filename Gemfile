@@ -83,7 +83,7 @@ gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon'
 gem 'ransack' # the new meta_search
-gem 'airbrake'
+gem 'honeybadger'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
 
