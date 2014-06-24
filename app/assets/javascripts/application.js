@@ -17,17 +17,3 @@
 //= require social-share-button
 //= require redactor-rails
 //= require_tree .
-
-
-$(document).ready(function(){
-  NProgress.configure({
-	  showSpinner: false,
-	  ease: 'ease',
-	  speed: 500
-	});
-});
-// send get forms through turbolinks
-$(document).on("submit", "form.data-turboform", function(e) {
-  Turbolinks.visit(this.action+(this.action.indexOf('?') == -1 ? '?' : '&')+$(this).serialize());
-  return false;
-});
