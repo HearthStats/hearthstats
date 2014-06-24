@@ -97,4 +97,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'guard-rspec'
 end
