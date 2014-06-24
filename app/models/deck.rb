@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :decklink, :notes, :cardstring, :klass_id, :is_public
+  attr_accessible :loses, :name, :wins, :notes, :cardstring, :klass_id, :is_public
   
   acts_as_taggable
   is_impressionable
@@ -13,6 +13,7 @@ class Deck < ActiveRecord::Base
   belongs_to :unique_deck
   belongs_to :klass
   belongs_to :user
+  
   has_many :matches, through: :match_deck, dependent: :destroy
   has_many :match_deck
   has_many :deck_versions
@@ -54,33 +55,6 @@ class Deck < ActiveRecord::Base
     self.user_winrate     = user_num_matches > 0 ? (user_num_wins.to_f / user_num_matches) * 100 : 0
     
     save
-  end
-  
-  def decklink_message
-    
-    # Add http:// to link if not present
-    # If page is not a valid link then return link
-    # Else return list of cards in deck
-    # If Nokogiri fails to parse, return No deck link if blank
-    # Else return link
-    if !decklink.present?
-      message = "No deck link attatched to this deck yet <p>"
-    else
-      link = prepend_http(decklink)
-      begin
-        page = Nokogiri::HTML(open(link))
-        if !page.css('header').text.blank?
-          message = "<a href='#{link}'>Link To Deck</a><p>"
-        else
-          message = page.text
-        end
-      rescue
-        link = link[0..-10]
-        message = "<a href='#{link}'>Link To Deck</a><p>"
-      end
-    end
-    
-    message
   end
   
   def class_name
@@ -136,17 +110,19 @@ class Deck < ActiveRecord::Base
   end
   
   def copy(user)
-    new_copy = Deck.new
-    new_copy.name = name
+    new_copy             = Deck.new
+    
+    new_copy.name        = name
     new_copy.unique_deck = unique_deck
-    new_copy.user_id = user.id
-    new_copy.klass = klass
-    new_copy.notes = notes
-    new_copy.cardstring = cardstring
-    new_copy.is_public = true
+    new_copy.user_id     = user.id
+    new_copy.klass       = klass
+    new_copy.notes       = notes
+    new_copy.cardstring  = cardstring
+    new_copy.is_public   = true
+    
     new_copy.save
     
-    return new_copy
+    new_copy
   end
   
   def get_user_copy(user)
@@ -169,7 +145,7 @@ class Deck < ActiveRecord::Base
       element = cardstring_array.detect {|c| c[0].to_i == card.id }
       arr << [card, element[1]]
     end
-
+    
     arr.sort_by { |c| c[0].mana }
   end
   
