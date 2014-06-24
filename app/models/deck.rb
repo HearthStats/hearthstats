@@ -55,11 +55,6 @@ class Deck < ActiveRecord::Base
   def create_unique_deck
     # check for 30 cards and assign unique deck
     if num_cards == 30
-      unique_deck = UniqueDeck.where(cardstring: cardstring, klass_id: klass_id).first
-      unless unique_deck
-        unique_deck = UniqueDeck.create(cardstring: cardstring, klass_id: klass_id)
-      end
-      self.unique_deck_id = unique_deck.id
     end
   end
   
@@ -69,6 +64,7 @@ class Deck < ActiveRecord::Base
     # saved deck that matches the unique deck's cardstring
     unless unique_deck.nil?
       unique_deck.save
+      self.unique_deck = UniqueDeck.where(cardstring: cardstring, klass_id: klass_id).first_or_create
     end
   end
   
