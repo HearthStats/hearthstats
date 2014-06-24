@@ -289,7 +289,11 @@ class DecksController < ApplicationController
   end
   
   def sort_by
-    (Deck.column_names + UniqueDeck.column_names).include?(params[:sort].split('.').last) ? params[:sort] : 'num_users'
+    if params[:sort]
+      (Deck.column_names + UniqueDeck.column_names).include?(params[:sort].split('.').last) ? params[:sort] : 'num_users'
+    else
+      'num_users'
+    end
   end
 
   def direction
