@@ -85,6 +85,7 @@ gem 'gon'
 gem 'ransack' # the new meta_search
 gem 'airbrake'
 gem 'delayed_job_active_record'
+gem "delayed_job_web"
 gem "daemons"
 
 group :test do
