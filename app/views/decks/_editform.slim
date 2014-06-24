@@ -80,6 +80,7 @@ javascript:
     var totalCardCount = 0;
     var deck = gon.deck;
     var allCards = gon.cards;
+    console.log(deck);
 
     this.drawCards = function(){
       deckCards = deck.cardstring.split(",");
@@ -91,6 +92,7 @@ javascript:
         DeckBuilder._drawCardToTable(id)
         totalCardCount = totalCardCount + quantity;
       });
+
       DeckBuilder.createCardString();
       $('#deck_klass_id').val(deck.klass_id);
 

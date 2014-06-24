@@ -54,9 +54,9 @@ gem 'meta-tags', :require => 'meta_tags'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks' # Fixes JS for turbolinks
-gem 'nprogress-rails' # Progress bar for turbolinks
+# gem 'turbolinks'
+# gem 'jquery-turbolinks' # Fixes JS for turbolinks
+# gem 'nprogress-rails' # Progress bar for turbolinks
 gem 'sitemap_generator'
 gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
@@ -91,7 +91,7 @@ group :test do
   gem 'rspec-rails', '>= 2.12.2'
   gem 'database_cleaner'
   gem 'email_spec', '>= 1.4.0'
-  gem 'cucumber-rails', '>= 1.3.0', require: false
+  # gem 'cucumber-rails', '>= 1.3.0', require: false
   gem 'launchy', '>= 2.1.2'
   gem 'capybara', '>= 2.0.2'
   gem 'factory_girl_rails'

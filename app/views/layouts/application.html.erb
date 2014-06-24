@@ -7,11 +7,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="Jeffrey Tong" name="author" />
   <meta name="MobileOptimized" content="320">
+  <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= display_meta_tags :site => 'HearthStats' %>
-  <%= include_gon %>
   <%= favicon_link_tag 'favicon.ico' %>
   <link rel="apple-touch-icon" href="/hearthstatslogo.png">
   <link rel="apple-touch-icon-precomposed" href="/hearthstatslogo.png">

@@ -11,16 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require select2
 //= require social-share-button
-//= require nprogress
-//= require nprogress-turbolinks
 //= require redactor-rails
 //= require_tree .
-//= require turbolinks
+
 
 $(document).ready(function(){
   NProgress.configure({
