@@ -11,7 +11,7 @@ FactoryGirl.define do
         id, count = card.split('_')
         card  = create(:card, id: id)
         
-        create_list(:unique_deck_card, count, card: card, unique_deck: unique_deck)
+        create_list(:unique_deck_card, count.to_i, card: card, unique_deck: unique_deck)
       end
     end
   end

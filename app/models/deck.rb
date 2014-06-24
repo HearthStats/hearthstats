@@ -22,7 +22,7 @@ class Deck < ActiveRecord::Base
   
   before_save :normalize_name
   before_save :create_unique_deck, if: :cardstring_changed?
-  after_save  :update_unique_deck_details
+  after_save  :update_unique_deck_stats
   
   ### CLASS METHODS:
   
@@ -55,15 +55,6 @@ class Deck < ActiveRecord::Base
   def create_unique_deck
     # check for 30 cards and assign unique deck
     if num_cards == 30
-    end
-  end
-  
-  def update_unique_deck_details
-    # re-save the unique deck on order to trigger
-    # proper pulling of data from the first fully
-    # saved deck that matches the unique deck's cardstring
-    unless unique_deck.nil?
-      unique_deck.save
       self.unique_deck = UniqueDeck.where(cardstring: cardstring, klass_id: klass_id).first_or_create
     end
   end
@@ -195,6 +186,10 @@ class Deck < ActiveRecord::Base
   end
   
   private
+  
+  def update_unique_deck_stats
+    UniqueDeck.delay.update_stats(unique_deck_id) if unique_deck_id
+  end
   
   def cardstring_as_array
     # Guarding for an empty cardstring

@@ -18,15 +18,27 @@ class UniqueDeck < ActiveRecord::Base
 
   ### CALLBACKS:
 
-  before_save :update_stats
   before_save :update_cards_from_cardstring, if: :cardstring_changed?
   
   ### VALIDATIONS:
 
   validates :cardstring, presence: true
 
+  ### CLASS METHODS
+  
+  def self.update_stats(id)
+    if unique_deck = UniqueDeck.find_by_id(id)
+      unique_deck.update_stats!
+    end
+  end
+  
   ### INSTANCE METHODS:
 
+  def update_stats!
+    update_stats
+    save
+  end
+  
   def update_stats
     self.num_minions = cards.where(type_id: 1).count
     self.num_spells  = cards.where(type_id: 2).count
