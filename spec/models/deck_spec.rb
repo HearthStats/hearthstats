@@ -3,6 +3,10 @@ require 'spec_helper'
 describe Deck do
   let(:deck) { build :deck }
   
+  before do
+    deck.stub(:num_cards).and_return 30
+  end
+  
   it 'removes all matches if destroyed' do
     deck.save
     create(:match_deck, deck: deck)
@@ -25,7 +29,6 @@ describe Deck do
   end
   
   it 'creates an unique_deck if there are 30 cards and the deck is unique' do
-    deck.stub(:num_cards).and_return 30
     deck.cardstring = "2_2"
     deck.klass_id   = 1
     
@@ -33,7 +36,6 @@ describe Deck do
   end
   
   it 'sets unique_deck_id' do
-    deck.stub(:num_cards).and_return 30
     deck.cardstring = "2_2"
     deck.klass_id   = 1
     deck.save
@@ -41,6 +43,15 @@ describe Deck do
     deck.unique_deck_id.should == UniqueDeck.last.id
   end
   
+  it 'updates the details on its unique_deck' do
+    UniqueDeck.stub(:delay).and_return UniqueDeck
+    deck = build :deck_with_unique_deck
+    deck.user_num_matches = 666
+    deck.save
+    
+    deck.unique_deck.reload.num_matches.should == 666
+  end
+
   describe 'instance methods' do
     describe '#card_array_from_cardstring' do
       it 'returns the cards ordered by mana and then name' do
