@@ -45,7 +45,7 @@
           <div class="yourfield">
             <%= f.label t(".deck_name") %>
             <br />
-            <% if !@lastentry.nil? %>
+            <% if @lastentry %>
               <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, @lastentry.deck.name)) %>
             <% else %>
               <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]})) %>

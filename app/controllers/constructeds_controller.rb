@@ -1,7 +1,6 @@
 class ConstructedsController < ApplicationController
   before_filter :authenticate_user!
-  # GET /constructeds
-  # GET /constructeds.json
+
   def index
     params[:q]     ||= {}
     params[:items] ||= 20
@@ -25,42 +24,37 @@ class ConstructedsController < ApplicationController
     @my_decks     = get_my_decks
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @constructeds }
     end
   end
 
-  # GET /constructeds/1
-  # GET /constructeds/1.json
   def show
     @constructed = Match.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @constructed }
     end
   end
 
-  # GET /constructeds/new
-  # GET /constructeds/new.json
   def new
-    if Deck.where(user_id: current_user.id).count == 0
+    @my_decks = get_my_decks
+    
+    if @my_decks.blank?
       redirect_to new_deck_path, notice: "Please create a deck first."
+    else 
+      @constructed = Match.new
+      @lastentry   = Match.where(user_id: current_user.id, mode_id: [2,3]).last
     end
-    @constructed = Match.new
-    @lastentry = Match.where(user_id: current_user.id, mode_id: [2,3]).last
-    @my_decks = get_my_decks()
   end
 
-  # GET /constructeds/1/edit
   def edit
     @constructed = Match.find(params[:id])
     canedit(@constructed)
-    @my_decks = get_my_decks()
+    @my_decks = get_my_decks
   end
 
-  # POST /constructeds
-  # POST /constructeds.json
   def create
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.'
@@ -180,9 +174,9 @@ class ConstructedsController < ApplicationController
   end
 
   def get_my_decks
-    return Deck.joins(:klass)
-      .where(user_id: current_user.id)
-      .order("klasses.name, decks.name").all.compact
+    Deck.joins(:klass)
+        .where(user_id: current_user.id)
+        .order("klasses.name, decks.name").all.compact
   end
 
 end
