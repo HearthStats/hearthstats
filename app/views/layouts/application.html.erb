@@ -35,20 +35,6 @@
       <%= render 'layouts/sidebar' %>
     <% end %>
     <div class="page-content">
-      <script type="text/javascript">
-        // A tab to launch the Classic Widget
-        UserVoice.push(['showTab', 'classic_widget', {
-          mode: 'full',
-          primary_color: '#cc6d00',
-          link_color: '#007dbf',
-          default_mode: 'support',
-          forum_id: 236878,
-          tab_label: 'Feedback',
-          tab_color: '#3d3d3d',
-          tab_position: 'middle-right',
-          tab_inverted: false
-        }]);
-      </script>
       <!-- BEGIN PAGE HEADER -->
       <%= render 'layouts/breadcrumbs' %>
       <!-- END PAGE HEADER -->
@@ -73,26 +59,40 @@
   <% end %>
   <% if current_user %>
     <script>
-      // Include the UserVoice JavaScript SDK (only needed once on a page)
-      UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Kk0pKUYPigy8io1njnDA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+      $(document).ready(function() {
+        // Include the UserVoice JavaScript SDK (only needed once on a page)
+        UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/Kk0pKUYPigy8io1njnDA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
-      //
-      // UserVoice Javascript SDK developer documentation:
-      // https://www.uservoice.com/o/javascript-sdk
-      //
+        //
+        // UserVoice Javascript SDK developer documentation:
+        // https://www.uservoice.com/o/javascript-sdk
+        //
 
-      // Identify the user and pass traits
-      // To enable, replace sample data with actual user traits and uncomment the line
-      UserVoice.push(['identify', {
-        email:      '<%= current_user.email %>', // User’s email address
-        id:         <%= current_user.id %>, // Optional: Unique id of the user (if set, this should not change)
-      }]);
+        // Identify the user and pass traits
+        // To enable, replace sample data with actual user traits and uncomment the line
+        UserVoice.push(['identify', {
+          email:      '<%= current_user.email %>', // User’s email address
+          id:         <%= current_user.id %>, // Optional: Unique id of the user (if set, this should not change)
+        }]);
 
-      // Or, use your own custom trigger:
-      //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+        // Or, use your own custom trigger:
+        //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
 
-      // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
-      UserVoice.push(['autoprompt', {}]);
+        // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+        UserVoice.push(['autoprompt', {}]);
+
+        UserVoice.push(['showTab', 'classic_widget', {
+          mode: 'full',
+          primary_color: '#cc6d00',
+          link_color: '#007dbf',
+          default_mode: 'support',
+          forum_id: 236878,
+          tab_label: 'Feedback',
+          tab_color: '#3d3d3d',
+          tab_position: 'middle-right',
+          tab_inverted: false
+        }]);
+      });
     </script>
     <% if current_user.guest %>
       <script>

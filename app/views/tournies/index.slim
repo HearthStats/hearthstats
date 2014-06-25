@@ -5,10 +5,10 @@
 - provide(:subtitle, ' Check out recent tournament deck lists!')
 - provide(:section, 'Tournaments')
 
-- @tournies.each do |tourny|
-  .row
-    .col-md-12.blog-page
-      h1 Latest Tournaments
+.row
+  .col-md-12.blog-page
+    h1 Latest Tournaments
+    - @tournies.each do |tourny|
       div class="row"
         div class="col-md-4 blog-img blog-tag-data"
           img src="#{tourny.pic_link}" alt="" class="img-responsive"

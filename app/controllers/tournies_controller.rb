@@ -3,7 +3,7 @@ class TourniesController < ApplicationController
   # before_filter :challongesignin
 
   def index
-    @tournies = Tourny.all
+    @tournies = Tourny.all.reverse
   end
 
   def show

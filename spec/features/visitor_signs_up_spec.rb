@@ -18,12 +18,4 @@ feature 'Visitor signs up' do
     
     expect(page).to have_content('Sign Up')
   end
-  
-  def sign_up_with(email, password)
-    visit new_user_registration_path
-    fill_in 'user_email', with: email
-    fill_in 'register_password', with: password
-    fill_in 'user_password_confirmation', with: password
-    click_button "register-submit-btn"
-  end
 end

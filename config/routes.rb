@@ -102,19 +102,13 @@ Hearthstats::Application.routes.draw do
   end
 
   # devise_for :users
-  ActiveAdmin.routes(self)
   devise_for :users, controllers: {registrations: "registrations"}
-  ActiveAdmin.routes(self)
   resources :constructeds do
     collection do
       get :stats
     end
   end
 
-  # devise_for :users
-  ActiveAdmin.routes(self)
-  devise_for :users, controllers: {registrations: "registrations"}
-  ActiveAdmin.routes(self)
   resources :cards do
     collection do
     end
