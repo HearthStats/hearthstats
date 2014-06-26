@@ -1,7 +1,7 @@
 module DecksHelper
   
   def sort_for_select
-    sort_array = %w(decks.created_at
+    sort_array = %w(created_at
                     num_losses
                     num_matches
                     num_minions
