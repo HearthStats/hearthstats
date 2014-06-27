@@ -9,13 +9,13 @@ module Features
     end
 
     def sign_in
-      user = create(:user)
+      @user = create(:user)
       create(:season)
       create(:klass)
       visit new_user_session_path
       within(".login-form") do
-        fill_in 'user_email', with: user.email
-        fill_in 'user_password', with: user.password
+        fill_in 'user_email', with: @user.email
+        fill_in 'user_password', with: @user.password
         click_button 'Login'
       end
     end
