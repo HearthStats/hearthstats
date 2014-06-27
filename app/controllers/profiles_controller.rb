@@ -108,7 +108,7 @@ class ProfilesController < ApplicationController
   end
 
   def set_locale
-    if (current_user && current_user.guest?) || current_user.nil?
+    if current_user.try(:guest?) || current_user.nil?
       redirect_to root_path, alert: "Guests cannot change languages" and return
     end
     language = params[:locale]
