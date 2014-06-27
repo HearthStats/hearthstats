@@ -293,7 +293,7 @@ class DecksController < ApplicationController
     
     sort = (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
     
-    sort = "decks.#{sort}" if %w(created_at name).include?(sort)
+    sort =  %w(created_at name).include?(sort) ? "decks.#{sort}" : sort
   end
 
   def direction
