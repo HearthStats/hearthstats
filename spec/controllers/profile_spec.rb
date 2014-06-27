@@ -10,8 +10,6 @@ describe ProfilesController do
 
     it 'should change to locale if logged in' do
       @user = create(:user)
-      create(:season)
-      create(:klass)
       sign_in @user
       post :set_locale, { locale: 'zh-CN' }
       @user.reload.profile.locale.should == 'zh-CN'
