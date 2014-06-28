@@ -29,14 +29,19 @@ class ArenasController < ApplicationController
     params[:items] ||= 20
     params[:days]  ||= 30
     params[:page]  ||= 1
+    params[:sort]  ||= 'created_at'
+    params[:order] ||= 'desc'
 
     @q = current_user.matches.where(mode_id: 1).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
-    @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    unless params[:days] == "all"
+      @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+    end
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
 
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
+
   end
 
   # GET /arenas/new

@@ -80,9 +80,9 @@ javascript:
     var totalCardCount = 0;
     var deck = gon.deck;
     var allCards = gon.cards;
-    console.log(deck);
 
     this.drawCards = function(){
+      if ( deck.cardstring === null ) return;
       deckCards = deck.cardstring.split(",");
       deckCards.forEach(function(card){
         id = parseInt(card.split("_")[0]);
@@ -201,6 +201,7 @@ javascript:
   }
 
   DeckBuilder.drawCards();
+
   $(".add").click(function(){
     id = $(this).parent().parent().attr('id');
     name = $(this).parent().parent().data('name')
@@ -212,17 +213,19 @@ javascript:
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
   });
-
+  
   $(".quick-add").click(function(){
     id = $(this).parent().parent().attr('id');
     name = $(this).parent().parent().data('name')
     leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
     DeckBuilder.addCard(id, name, leg);
+    console.log("ad");
   });
 
   $(".quick-remove").click(function(){
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
+    console.log("ad");
   });
 
   $('#tags').tagsInput();

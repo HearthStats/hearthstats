@@ -1,4 +1,4 @@
-<%= search_form_for @q, url: constructeds_path, html: { class: 'data-turboform' } do |f| %>
+<%= search_form_for @q, url: send("#{params[:action]}_#{params[:controller]}_path"), html: { class: 'data-turboform' } do |f| %>
   <p>
     <%= t('.filter') %>
     <%= f.select :klass_id_eq, klass_collection_for_select %>

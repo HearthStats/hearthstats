@@ -41,7 +41,7 @@
         <li class= "index"><%= link_to t("menu.arena.recent_arena_runs"), arenas_path %></li>
         <li class= "new">
           <% if ArenaRun.where(user_id: current_user.id).last  %>
-            <% if !ArenaRun.where(user_id: current_user.id).last.complete %>
+            <% unless ArenaRun.where(user_id: current_user.id).last.complete %>
               <%= link_to t('menu.arena.continue_arena_run'), new_arena_path %>
             <% else %>
               <%= link_to t('menu.arena.new_arena_run'), new_arena_run_path %>
@@ -50,7 +50,7 @@
             <%= link_to t('menu.arena.new_arena_run'), new_arena_run_path %>
           <% end %>
         </li>
-        <li class= "matches"><%= link_to t('menu.arena.recent_arena_matches'), "/arena/matches" %></li>
+        <li class= "matches"><%= link_to t('menu.arena.recent_arena_matches'), matches_arenas_path %></li>
         <li class= "stats">
           <%= link_to t('menu.arena.statistics'), stats_arenas_path %>
         </li>

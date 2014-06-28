@@ -72,7 +72,6 @@ Hearthstats::Application.routes.draw do
       post 'endrun'
     end
   end
-  match "/arena/matches", to: "arenas#matches"
 
   resources :profiles do
     get 'sig'
@@ -120,6 +119,7 @@ Hearthstats::Application.routes.draw do
       get :archives
       get :stats
       post :quickentry
+      get :matches
     end
   end
   authenticated :user do
