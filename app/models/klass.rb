@@ -25,6 +25,6 @@ class Klass < ActiveRecord::Base
   ### CLASS METHODS:
   
   def self.list
-    LIST.values
+    LIST
   end
 end

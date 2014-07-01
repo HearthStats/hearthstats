@@ -2,6 +2,12 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
   
+  ResultsList = {
+    1 => 'Victory',
+    2 => 'Defeat',
+    3 => 'Draw'
+  }
+
   ### ASSOCIATIONS:
   
   has_one :match_run
@@ -50,6 +56,10 @@ class Match < ActiveRecord::Base
   
   ### CLASS METHODS:
   
+  def self.results_list
+    ResultsList
+  end
+
   def self.search(field, query = nil)
     # this method does not seem to be called from anywhere
     

@@ -26,11 +26,11 @@ en:
     new_arena_game: New Arena Game
     best_deck: Best Deck
     view_more: View More
-    edit: edit
-    delete: delete
+    edit: Edit
+    delete: Delete
     notes: Notes
     run: run
-    error: erro
+    error: error
     prohibited_this_being_save: "prohibited this %{resource} from being saved:"
     arenarun: arenarun
     show: show

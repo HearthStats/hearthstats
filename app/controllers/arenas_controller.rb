@@ -50,7 +50,7 @@ class ArenasController < ApplicationController
     @arena = Match.new
 
     # Get last arena run
-    @arenarun = ArenaRun.where(user_id: current_user.id, complete: false).last
+    @arenarun = ArenaRun.includes(:matches).where(user_id: current_user.id, complete: false).last
 
     # Redirect back to page is no current arena run
     if @arenarun.nil?
@@ -62,7 +62,7 @@ class ArenasController < ApplicationController
     runloses = @arenarun.matches.where(result_id: 2).count
     if runwins > 11 || runloses > 2
       @arenarun.complete = true
-      @arenarun.save!
+      @arenarun.save
     end
     respond_to do |format|
       format.html # new.html.erb
