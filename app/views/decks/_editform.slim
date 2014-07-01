@@ -50,6 +50,13 @@ small You may have to refresh the page if nothing works.
     .col-sm-12.col-md-7.col-lg-6
       .form-body
         h3 Deck Builder
+        div class="deck-text-box"
+          h5
+            |Deck Importer&nbsp;
+            a href="http://hearthstats.uservoice.com/knowledgebase/articles/339087" target="_blank"
+              i class="fa fa-question-circle tooltips" data-original-title="Click to learn more"
+          small This will override your current list
+          = text_area_tag :deck_text, nil , class: "deck-text"
         #deckbuilder-list
           .form-group
             label =t("decks.form.search")
