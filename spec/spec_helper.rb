@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'spork'
 
 ENV["RAILS_ENV"] ||= 'test'
 

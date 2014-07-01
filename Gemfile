@@ -91,9 +91,9 @@ group :test do
   gem 'rspec-rails', '>= 2.12.2'
   gem 'database_cleaner'
   gem 'email_spec', '>= 1.4.0'
-  # gem 'cucumber-rails', '>= 1.3.0', require: false
   gem 'launchy', '>= 2.1.2'
   gem 'capybara', '>= 2.0.2'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'guard-rspec'
 end
