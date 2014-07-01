@@ -67,10 +67,10 @@
                   <% @arenarun.matches.each do |a| %>
                     <tr id=<%=a.id%>>
                       <td>
-                        <%= image_tag("Icons/Classes/#{Klass.list[a.oppclass_id]}_Icon.gif", height: "24", width: "24")%>   <%= Klass.list[a.oppclass_id] %>
+                        <%= image_tag("Icons/Classes/#{Klass::LIST[a.oppclass_id]}_Icon.gif", height: "24", width: "24")%>   <%= Klass::LIST[a.oppclass_id] %>
                       </td>
                       <td>
-                        <span class=<%= Match.results_list[a.result_id] %>><%= Match.results_list[a.result_id] %></span>
+                        <span class=<%= Match::RESULTS_LIST[a.result_id] %>><%= Match::RESULTS_LIST[a.result_id] %></span>
                       </td>
                       <td>
                         <%= link_to t('shared.delete'), a, method: :delete , remote: true %>

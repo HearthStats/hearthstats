@@ -1,3 +1,6 @@
+- content_for :actions do
+  div class="btn blue btn-sm deck-text-trigger" = t('.toggle_text_import')
+
 small You may have to refresh the page if nothing works.
 
 = form_for(@deck) do |f|
@@ -12,7 +15,7 @@ small You may have to refresh the page if nothing works.
         - @deck.errors.full_messages.each do |msg|
           li = msg
   .row
-    .col-sm-12.col-md-3.col-lg-3
+    .col-sm-12.col-md-12.col-lg-3
       .form-body
         h3 Deck Details
         .form-group
@@ -44,7 +47,7 @@ small You may have to refresh the page if nothing works.
           div
             - @deck.deck_versions.each do |version|
                 = link_to "v#{version.version}", deck_path(@deck, version: version.version), class: "btn blue btn-sm btn-version"
-    .col-sm-12.col-md-6.col-lg-6
+    .col-sm-12.col-md-7.col-lg-6
       .form-body
         h3 Deck Builder
         #deckbuilder-list
@@ -228,7 +231,9 @@ javascript:
     console.log("ad");
   });
 
-  $('#tags').tagsInput();
+  $('#tags').tagsInput({
+    'width':'100%'
+  });
 
   var monkeyList = new List('deckbuilder-list', {
     valueNames: ['name'],

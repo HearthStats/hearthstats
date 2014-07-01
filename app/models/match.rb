@@ -2,7 +2,7 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
   
-  ResultsList = {
+  RESULTS_LIST = {
     1 => 'Victory',
     2 => 'Defeat',
     3 => 'Draw'
@@ -57,7 +57,7 @@ class Match < ActiveRecord::Base
   ### CLASS METHODS:
   
   def self.results_list
-    ResultsList
+    RESULTS_LIST.values
   end
 
   def self.search(field, query = nil)

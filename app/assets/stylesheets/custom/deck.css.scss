@@ -3,7 +3,7 @@
 	height: 250px;
 }
 #deckbuilder-list{
-	width: 625px;
+	width: 100%;
 	li{
 		list-style-type: none;
 		display: inline;
@@ -86,10 +86,12 @@
 .slot-row .col-xs-4 {
   margin-bottom:1em;
 }
-.deck-text{
-	display: none;
-	width: 100%;
-	height: 100px;
+.deck-text-box{
+  display: none;
+  .deck-text{
+    width: 100%;
+    height: 100px;
+  }
 }
 .toggle-box{
 	padding: 5px;
@@ -188,4 +190,8 @@ th .header{
 }
 .btn-version{
   margin-right: 5px;
+}
+
+.card-list{
+  padding: 0;
 }

@@ -5,7 +5,7 @@ describe DecksController do
 
   describe 'GET #edit' do
 
-    context 'when deck is blank' do
+    context 'when cardstring is blank' do
       it 'should still load' do
         user = create(:user)
         sign_in user
