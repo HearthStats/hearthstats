@@ -67,7 +67,7 @@
                   <% @arenarun.matches.each do |a| %>
                     <tr id=<%=a.id%>>
                       <td>
-                        <%= image_tag("Icons/Classes/#{Klass.list[a.klass_id]}_Icon.gif", height: "24", width: "24")%>   <%= Klass.list[a.klass_id] %>
+                        <%= image_tag("Icons/Classes/#{Klass.list[a.oppclass_id]}_Icon.gif", height: "24", width: "24")%>   <%= Klass.list[a.oppclass_id] %>
                       </td>
                       <td>
                         <span class=<%= Match.results_list[a.result_id] %>><%= Match.results_list[a.result_id] %></span>
