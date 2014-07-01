@@ -162,7 +162,7 @@ class DecksController < ApplicationController
     if current_user.guest?
       @deck.is_public = false
     end
-    if !params[:deck_text].blank?
+    unless params[:deck_text].blank?
       begin
         @deck.cardstring = text_to_deck(params[:deck_text])
       rescue
