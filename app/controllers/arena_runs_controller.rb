@@ -30,7 +30,6 @@ class ArenaRunsController < ApplicationController
 
   def edit
     @arenarun = ArenaRun.find(params[:id])
-    @arena = Match.new
     if current_user.id != @arenarun.user_id
       redirect_to root_url, alert: 'You are not authorized to edit that.'
     end

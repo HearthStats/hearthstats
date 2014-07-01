@@ -33,7 +33,7 @@
         |Submit <i class='fa fa-check'></i>
 div.row.arenaedit_notes.quick_con_entry
   h3 Add Match
-  = form_for @arena, url: {controller: "arenas", action: "quickentry", mode: "matches"} do |f|
+  = form_for Match.new, url: {controller: "arenas", action: "quickentry", mode: "matches"} do |f|
     = f.select :oppclass_id, options_for_select(klasses_hash.to_a), class: 'quick_input'
     input name="match[coin]" rel="toggle-btn" type="checkbox" on="No Coin" off="Coin"
     = f.submit "Add Win", class: "btn btn-primary"
