@@ -92,7 +92,7 @@ javascript:
     var allCards = gon.cards;
 
     this.drawCards = function(){
-      if ( deck.cardstring === null ) return;
+      if ( deck.cardstring.length === 0 ) return;
       deckCards = deck.cardstring.split(",");
       deckCards.forEach(function(card){
         id = parseInt(card.split("_")[0]);
@@ -223,7 +223,7 @@ javascript:
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
   });
-  
+
   $(".quick-add").click(function(){
     id = $(this).parent().parent().attr('id');
     name = $(this).parent().parent().data('name')
