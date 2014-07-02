@@ -61,19 +61,21 @@ class ConstructedsController < ApplicationController
       return
     end
 
-    deck = Deck.where( name: params[:deckname], user_id: current_user.id ).first
+    deck = Deck.where(name: params[:deckname], user_id: current_user.id ).first
     unless deck
       redirect_to new_constructed_path, alert: 'Unknown deck'
       return
     end
-
+    
     # Find mode_id
-    if params[:other][:rank] == "Ranked"
+    rank = params[:other].try(:[], :rank)
+    if rank == "Ranked"
       mode_id = 3
-    elsif params[:other][:rank] == "Casual"
+    elsif rank == "Casual"
       mode_id = 2
     else
-      redirect_to constructeds_path, alert: 'Mode Error' and return
+      redirect_to constructeds_path, alert: 'Mode Error'
+      return
     end
     
     @constructed = Match.new(params[:match])
@@ -96,6 +98,7 @@ class ConstructedsController < ApplicationController
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
       else
+        @my_decks = get_my_decks
         format.html { render action: "new" }
         format.json { render json: @constructed.errors, status: :unprocessable_entity }
       end
