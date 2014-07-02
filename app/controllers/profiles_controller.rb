@@ -43,14 +43,6 @@ class ProfilesController < ApplicationController
       end
     end
 
-    if @user.is_new?
-      if current_user && current_user.id == @user.id
-        return redirect_to root_url, alert: "You must enter at least one game before your profile is active."
-      else
-        return redirect_to root_url, alert: "User profile is not active."
-      end
-    end
-
     @profile = @user.profile
     if (!@profile.name.nil? && !@profile.name.blank?)
       @profiletitle = @profile.name
