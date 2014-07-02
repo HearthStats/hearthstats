@@ -73,3 +73,8 @@ console
 .localeapp
 .powrc
 .ruby-version
+
+# Zeus!
+
+custom_plan.rb
+zeus.json

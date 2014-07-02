@@ -16,6 +16,7 @@ group :development do
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'database_cleaner'
+  gem 'guard-zeus'
 end
 
 group :assets do

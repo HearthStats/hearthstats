@@ -26,7 +26,7 @@ class WelcomeController < ApplicationController
     
     get_ranked_graph_data(season)
 
-    matches = Match.where(season_id: 6)
+    matches = Match.where(season_id: 7)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
