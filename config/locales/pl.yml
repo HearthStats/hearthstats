@@ -1,0 +1,439 @@
+# encoding: utf-8
+pl:
+
+  shared:
+    header:
+      guest: Gość
+      my_profile: Mój profil
+      sign_out: Wypisz się
+      register_now_login: Zarejestruj się / Logowanie
+      you_have: Masz
+      new_messages: nowe wiadomości
+      click_message_to_dismiss: "Kliknij na wiadomość, by usunąć"
+      change_to: Zmień na
+    footer:
+      about: O Nas
+      faq: FAQ
+      open_positions: Dołącz do Nas
+      support: Wsparcie
+      privacy_policy: Polityka prywatności
+      copyright_text: Copyright 2014 HearthStats. Hearthstone jest zastrzeżonym znakiem towarowym należącym do Blizzard Entertainment.
+    arena_win_rate: Arena - wskaźnik zwycięstw
+    ranked_win_rate: Gra rankingowa - wskaźnik zwycięstw
+    best_deck: Najlepsza talia
+    best_arena_class: Najlepsza klasa na Arenie
+    create_deck: Tworzenie talii
+    new_arena_game: Nowa gra na Arenie
+    best_deck: Najlepsza talia
+    view_more: Pokaż więcej
+    edit: Edytuj
+    delete: Usuń
+    notes: Notatki
+    run: Rozgrywka
+    error: błąd
+    prohibited_this_being_save: "nie można %{resource} zapisać:"
+    arenarun: Gra na Arenie
+    show: Pokaż
+    arena: Arena
+    class: Klasa
+    deck: Talia
+    create: Utwórz
+    update: Modyfikuj
+    deckbuilder:
+      card_list: Lista kart
+      optional_deck_will_be_created_if: "Opcjonalnie (Talia będzie utworzona, gdy zostawisz to pole puste)"
+      toggle_text_import: Przełącz w tryb tekstowy
+      add_a_card: Dodaj kartę
+      of_30_cards: z 30 kart
+      this_deck_is_incomplete: Talia jest niekompletna
+      left_click_add_right_remove: "Kliknij lewym przyciskiem, by dodać. Kliknij prawym przyciskiem, by usunąć."
+      mana_curve: Krzywa many
+      attack_distribution: Rozkład ataku
+      health_distribution: Rozkład zdrowia
+      type_distribution: Rozkład wg. typu
+      mechanics: Mechanika
+    back: Cofnij
+    deckslist:
+      filter: Filtr
+      any_class: dowolna klasa
+      show: Pokaż
+      per_page: na stronę
+      sort_by: sortuj po
+      created: data utworzenia
+      losses: liczba porażek
+      matches: liczba gier
+      minions: stronnicy
+      name: nazwa
+      spells: zaklęcia
+      popularity: popularność
+      weapons: bronie
+      win_rate: wskaźnik zwycięstw
+      wins: liczba zwycięstw
+      asc: rosnąco
+      desc: malejąco
+      apply: Zatwierdź
+      found_matching_your_criteria: odpowiada kryteriom wyboru
+      class: Klasa
+      users: Użytkownicy
+      listed_by: Utworzone przez
+      tools: Narzędzia
+      stats_are_for_all_users: 'Prezentowane statystyki dotyczą wszystkich użytkowników (nie tylko autora talii), którzy grali określoną talią w przeciągu ostatnich 30 dni.'
+      stats_are_for_your_personal: 'Prezentowane statystyki dotyczą gier dla każdej z Twoich talii.'
+
+    matchlist:
+      filter: Filtr
+      any_class: każda klasa
+      coin?: "Moneta?"
+      coin: Moneta
+      no_coin: Bez monety
+      opponent: Przeciwnik
+      apply: Zatwierdź
+      reset: Resetuj
+      show: Pokaż
+      per_page: na stronę
+      all_time: Cały okres
+      last_24_hours: ostatnie 24 godz.
+      last: ostatnie
+      days: dni
+      sort: sortuj po
+      created: Data utworzenia
+      duration: Czas
+      rounds: Ilość rund
+      ascending: rosnąco
+      descending: malejąco
+      win_rate_over: wskaźnik zwycięstw w ponad
+      matches_in_this_list: rozgrywkach na liście
+      your: Twoja
+      opponent_class: Klasa przeciwnika
+      result: Wynik
+      rank: Ranga
+      mode: Tryb
+      opponent_name: Nazwa przeciwnika
+      rounds: Rundy
+      created: Data utworzenia
+      options: Opcje
+
+
+  dashboards:
+    index:
+      title: Panel główny
+      subtitle: ' statystki z obecnego sezonu'
+      global_win_rates: Globalny wskaźnik zwycięstw
+      arena_win_rates: Wskaźnik zwycięstw z Areny
+      games_recorded: Zarejestrowanych gier
+      constructed_win_rates: Wskaźnik zwycięstw z Trybu Pojedynku
+      hearthstats_news: Nowości HearthStats
+      read_more: Czytaj więcej
+      view_more: Pokaż więcej
+      news:
+        huge_update: Duża aktualizacja z wieloma funkcjami.
+        ability_to_rank: Możliwość rozróżnienia gier w trybie rankingowym/rozrywkowym.
+        donation_link: Link do dotacji dodany
+        notes_feature: Dodano funkcję notatek!
+      personal_win_rate: Twój wskaźnik zwycięstw
+      constructed_win_rates: Wskaźnik zwycięstw Tryb Pojedynku
+      constructed_coin_win_rates: Wskaźnik zwycięstw Tryb Pojedynku z Monetą
+      recent_activities: Ostatnie aktywności
+      against: przeciwko
+      with: z
+      global_stats: Statystyki globalne
+      arena_win_rate: Wskaźnik zwycięstw z Areny
+
+  cards:
+    index:
+      title: Baza kart
+      not_found: Nie znaleziono kart pasujących do kryteriów wyszukiwania
+      text_contains: Tekst zawiera
+      filter_by: Filtruj po
+      sort_by: Sortuj po
+      any_type: każdy typ
+      any_race: każda rasa
+      any_class: każda klasa
+      ascending: Rosnąco
+      descending: Malejąco
+      attack: Atak
+      health_dur: Zdrowie/Wytrzymałość
+      mana_cost: Koszt many
+      name: Nazwa
+      none: żadna
+      reset_filters: Resetuj filtry
+
+  arenas:
+    index:
+      title: Ostatnie gry
+      description: ' ostatnie gry na Arenie'
+      section: Arena
+      continue_arena_run: Kontynuuj Areny
+      new_arena_run: Nowa Arena
+      arena_run_with: arena z
+      on: na
+      notes: Notatki
+      close: Zamknij
+      recent_arena_games: Ostatnie gry na Arenie
+      your_class: Twoja klasa
+      win_loss: Zwycięstwo/Porażka
+      prizes: Nagroda
+      timee_played: Czas
+      options: Opcje
+    new:
+      title: Nowa bitwa na Arenie
+      section: Arena
+      retire: Zrezygnuj
+      sure_want_retire: "Czy jesteś pewnien, że chcesz zrezygnować wcześniej z Areny?"
+      opponent_class: Klasa przeciwnika
+      win: Zwycięstwo
+      defeat: Porażka
+      draw: Remis
+      back: Cofnij
+      end_run: Zakończ Arenę
+      create_entry: Stwórz wpis
+      arena_run_results: Wyniki bitew na Arenie
+      result: Wynik
+      options: Opcje
+      played_first: Grasz jako pierwszy
+      played_second: Grasz jako drugi
+    matches:
+      title: Ostatnie bitwy
+      subtitle: ' ostatnie bitwy'
+      section: Arena
+      recent_arena_matches: Ostatnie bitwy na Arenach
+    stats:
+      title: Statystyki
+      subtitle: ' szczegółowe statystyki z Areny'
+      section: Arena
+      note: UWAGA!
+      page_being_designed: Strona jest w ciągłym doskonaleniu
+      overall_arena_stats: Całkowite statystyki z Areny
+      overall_win_rate: Całkowity wskaźnik zwycięstw
+      total_gold_amount: Całkowite złoto zgromadzone
+      total_dust_amount: Całkowita ilość pyłu
+      arena_runs_played: Rozegrano liczbę Aren
+      arena_games_played: Rozegrano bitew na Arenach
+      most_played: Najbardziej grywalny
+      longest_average_runs: Największa średnia na Arenie
+      no_games: Brak gier
+      detailed_class_status: Szczegółowe zestawienie klas
+
+  constructeds:
+    quickentry:
+      quick_entry: Szybki wpis
+      ranked: Rankingowa
+      casual: Rozrywkowa
+      no_coin: Bez Monety
+      coin: Moneta
+      add_win: Dodaj Zwycięstwo
+      add_defeat: Dodaj Porażkę
+      add_draw: Dodaj Remis
+    index:
+      title: 'Ostatnie gry'
+      description: ' ostatnie gry w Trybie Pojedynku'
+      section: 'Tryb Pojedynku'
+      new_constructed: Nowy Pojedynek
+    new:
+      title: Nowa gra w Trybie Pojedynku
+      section: Tryb Pojedynku
+      get_the_auto_uploader: Pobierz Auto Uploader
+    stats:
+      title: Statystyki
+      description: ' statystyki dla Trybu Pojedynku'
+      section: Tryb Pojedynku
+      filter_by: Sortuj po
+      last: ostatnie
+      hours: godziny
+      days: dni
+      all_time: cały okres
+      first_or_second: pierwszy czy drugi
+      going_first: jako pierwszy
+      going_second: jako drugi
+      any_mode: każdy rodzaj
+      casual: rozrywka
+      ranked: ranking
+    winratechart:
+      constructed_win_rate_title: "Tryb Pojedynku - Wskaźnik zwycięstw wg. klasy (Twój vs. Globalny)"
+    newform:
+      you_played_on_the: Grasz jako
+      first_turn: pierwszy
+      second_turn: drugi
+      this_match_is: "Tryb tej gry to:"
+      ranked: Ranking
+      casual: Rozrywka
+      deck_name: Nazwa talii
+      opponent_class: Klasa przeciwnika
+      add_win: Dodaj Zwycięstwo
+      add_defeat: Dodaj Porażkę
+      add_draw: Dodaj Remis
+    form:
+      you_played_on_the: Grasz jako
+      first_turn: pierwszy
+      second_turn: drugi
+      this_match_is: "Tryb tej gry to:"
+      ranked: Ranking
+      casual: Rozrywka
+      deck_name: Nazwa talii
+      opponent_class: Klasa przeciwnika
+      add_win: Dodaj Zwycięstwo
+      add_defeat: Dodaj Porażkę
+      add_draw: Dodaj Remis
+
+
+
+  decks:
+    form:
+      name: Nazwa
+      class: Klasa
+      notes: Notatki
+      decklist_etc: ' Lista talii, itd.'
+      this_deck_public: Talia jest ogólnodostępna
+    new:
+      title: Nowa talia
+      section: Talie
+    public:
+      title: Ogólnodostępna lista talii
+      subtitle: ' wszystkie ogólnodostępne talie'
+      new_deck: Nowa talia
+      public_decks: Ogólnodostępne talie
+    active_decks:
+      title: Aktywna talia
+      subtitle: ' wszystkie aktywne talie'
+      slot: Miejsce
+      select_deck: Wybierz talię
+      submit: Zatwierdź
+    index:
+      title: Moje talie
+      subtitle: ' wszystkie moje talie'
+      new_deck: Nowa talia
+      my_decks: Moje talie
+
+  arena_runs:
+    new:
+      title: Nowa Arena
+      section: Arena
+      first_arena_of_day: Pierwsza Arena dzisiaj? Zaczynajmy!
+      keep_it_going: "Tylko %{runs}? Idźmy dalej!"
+      going_hardcore: "Wow, ostro dzisiaj jedziesz? %{runs} , cóż... powodzenia!"
+      your_class: Twoja klasa
+      continue: Kontynuuj
+      get_auto_uploader: Pobierz Auto Uploader
+
+
+  additional:
+    news:
+      title: Nowości Hearthstone
+      subtitle: ' ostatnie nowości w Hearthstone'
+      suggestions_for_news: Sugestie dotyczące źródeł informacji są mile widziane
+      posted: Opublikowano
+      read_more: Czytaj więcej
+    uploader:
+      title: Oficjalny Uploader
+      header_text: "Po co wpisywać każdą grę ręcznie, skoro Uploader może to wszystko zrobić za Ciebie? Uploader działa na zasadzie analizy przechwytywania ekraniu i jest oprogramowaniem otwartym. To w żadnym wypadku nie jest oprogramowanie szpiegujące, modyfikujące ani monitorujące Twoją sieć, czy komputer. Projekt ten jest i zawsze będzie oprogramowaniem otwartym, więc będziesz mógł w każdej chwili tworzyć jego własne konstrukcje i obserwować co dokładnie się w nim dzieje."
+      download_for: Pobierz z
+      user_key: Klucz Użytkownika
+      do_not_share: nie dziel się nim z nikim
+      click_to_reveal: "Kliknij, by ujawnić"
+      instructions: Instrukcje
+      please_have_installed: "Upewnij się, czy masz zainstalowaną Java 7+."
+      download_java_here: Pobierz Java stąd
+      instructions_osx:
+        inst_osx_1: Pobierz z linku powyżej
+        inst_osx_2: Rozpakuj plik
+        inst_osx_3: Przeciągnij plik do folderu Aplikacje
+        inst_osx_4: <b>Wciśnij Prawy Przycisk Myszy</b> na pliku i wybierz Otwórz
+        inst_osx_5: Wprowadź swój Klucz Użytkownika ze strony Uploadera lub ze swojego profilu
+        inst_osx_6: Uruchom grę i graj!
+      instructions_win:
+        inst_win_1: Pobierz z linku powyżej
+        inst_win_2: Rozpakuj plik
+        inst_win_3: "Kliknij, by otworzyć aplikację"
+        inst_win_4: Wprowadź swój Klucz Użytkownika ze strony Uploadera lub ze swojego profilu
+        inst_win_5: Uruchom grę i graj!
+      features_title: Funkcje
+      features:
+        feat_1: Wsparcie zarówno dla Windows jak i Mac OS X
+        feat_2: Automatycznie rozpoznaje gry w Trybie Pojedynku i Areny
+        feat_3: Rozpoznaje Twoją klasę oraz klasę przeciwnika
+        feat_4: Rozpoznaje Twój ranking w Trybie Pojedynku
+        feat_5: Rozpoznaje imię przeciwnika
+        feat_6: Rozpoznaje ilość rozegranych rund oraz ich czas całej gry
+        feat_7: Możesz dodać komentarz do swoich gier bezpośrednio z Uploadera
+      help_and_support: Pomoc i wsparcie
+      known_issues: Znane problemy
+      project_source_on_github: Źródło projektu na Github
+    changelog:
+      title: Lista zmian
+      all_time_in_utc: Czas w UTC
+    aboutus:
+      title: O nas
+      founded_by_text: Ta strona została założona przez Jeffreya Tong z miłości.
+      you_can_follow_twitter: Możesz mnie śledzić na Twitterze
+      a_huge_thanks_to: Wielkie podziękowania dla
+      thanks_jerome_text: Jerome zdecydowanie pomógł w rozwoju HearthStats oraz wzmógł moją motywację do tego, by pracować jeszcze więcej. Wielkie dzięki!
+      built_suggestions_text: HearthStats został stworzony dzięki sugestiom całej społeczności i będzie w dalszym ciągu narzędziem używanym oraz tworzonym właśnie przez społeczność fanów Hearthstone.
+      others_contributors: Pozostali współtworzyciele
+      charles_text_1: Charles dokonał wspaniałego wkładu w pracę nad Uploaderem pod Mac OSx
+      charles_text_2: Charles zasługuje na wielkie uznanie za objawienie się i pracę nad otwartym oprogramowaniem
+      charles_text_3: Możesz znaleźć więcej informacji Charlsie
+      here: tutaj
+      eckert_text: J Eckert znacznie przyczynił się do kolorystyki oraz wyglądu
+      donate_text:  "Jeżeli lubisz to co robię, daj parę groszy, proszę."
+      rackspace_text: "Chciałbym podziękować Rackspace za zapewnienie niesamowitego hostingu! Jeżeli kiedykolwiek będziesz potrzebował hostingu opartego na chmurze albo jakiegokolwiek - zdecydowanie spradź ich!"
+    contactus:
+      title: Kontakt
+      contact_email_text: "Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań."
+      contact_email_text_2: "Możesz też śledzić nas na Twitterze: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: "Trochę się nudzę, więc Twoje e-maile są bardzo mile widziane."
+      fadein_text_2: "Proszę, prześlij mi jakiegoś maila! To może być cokolwiek!"
+      fadein_text_3: Tyłek aż mnie boli... tyle bólu mnie kosztuje zrobienie tej strony dla Was!
+    help:
+      title: Pomoc
+      help_text: "Odwiedź <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> w razie jakichkolwiek pytań lub sugestii."
+
+
+  streams:
+    index:
+      title: Streamy
+      subtitle: ' znajdź wszystkie swoje ulubione streamy w jednym miejscu'
+
+  tournies:
+    index:
+      title: Zarejestruj się
+      subtitle: ' Zarejestruj się do naszych najnowszych turniejów'
+      section: 'Turnieje'
+
+
+
+  menu:
+    dashboard: Panel główny
+    card_database: Baza kart
+    arena:
+      title: Arena
+      recent_arena_runs: Ostatnie Areny
+      continue_arena_run: Kontynuuj Arenę
+      new_arena_run: Nowa Arena
+      recent_arena_matches: Ostatnie bitwy na Arenach
+      statistics: Statystyki
+    constructed:
+      title: Tryb pojedynku
+      recent_matches: Ostatnie gry
+      new_match: Nowa gra
+      statistics: Statystyki
+    deck:
+      title: Talia
+      public_deck_list: Ogólnodostępne talie
+      my_deck: Moje talie
+      my_active_deck: Moja aktualna talia
+      new_deck: Nowa talia
+    news: Nowości
+    streams: Streamy
+    tournaments:
+      title: Turnieje
+      register: Zarejestruj się
+      Calendar: Kalendarz
+      past_winners: Niedawni zwycięzcy
+    extra:
+      title: Extra
+      official_uploader: Oficjalny Uploader
+      march_report: Raport z marca
+      change_log: Lista zmian
+      about_us: O Nas
+      contact_info: Kontakt
+    help: Pomoc

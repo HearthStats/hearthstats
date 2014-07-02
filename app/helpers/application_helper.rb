@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def available_languages_list
-    {'en' => 'English', 'fr' => 'French', 'zh-TW' => '繁體中文', 'zh-CN' => '簡體中文', 'de' => 'German', 'pt-BR' => 'Português', 'ko' => 'Korean', 'el' => 'Greek', 'es' => 'Spanish'}
+    {'en' => 'English', 'fr' => 'French', 'zh-TW' => '繁體中文', 'zh-CN' => '簡體中文', 'de' => 'German', 'pt-BR' => 'Português', 'ko' => 'Korean', 'el' => 'Greek', 'es' => 'Spanish', 'pl' => 'Polish'}
   end
 
   def current_season
