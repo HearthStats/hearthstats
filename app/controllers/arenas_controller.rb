@@ -145,7 +145,7 @@ class ArenasController < ApplicationController
   end
 
   def stats
-    @arena_array = ArenaRun.classArray(current_user.id)
+    @arena_array = ArenaRun.class_array(current_user.id)
     @arena_distrib = distribution_array
   end
 

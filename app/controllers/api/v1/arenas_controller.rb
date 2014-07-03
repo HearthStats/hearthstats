@@ -5,7 +5,7 @@ class Api::V1::ArenasController < ApplicationController
 
   def show
     user = User.where(userkey: params[:userkey])[0]
-    api_response = {status: "success", data: ArenaRun.classArray(arena_run.klass.id) }
+    api_response = {status: "success", data: ArenaRun.class_array(user.id) }
 
     render json: api_response
   end

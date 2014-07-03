@@ -31,7 +31,7 @@ class ArenaRun < ActiveRecord::Base
     ArenaRun.where(user_id: userid).sum(:dust)
   end
 
-  def self.classArray(userid)
+  def self.class_array(userid)
     matches = Match.where(user_id: userid, mode_id: 1)
     class_array = Hash.new
     klass_array = Klass.all

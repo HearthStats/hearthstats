@@ -5,7 +5,7 @@ class Api::V2::ArenasController < ApplicationController
   respond_to :json
 
   def show
-    api_response = {status: "success", data: ArenaRun.classArray(arena_run.klass.id) }
+    api_response = {status: "success", data: ArenaRun.class_array(current_user.id) }
 
     render json: api_response
   end
