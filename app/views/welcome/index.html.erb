@@ -23,13 +23,8 @@
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/reset.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("foundation.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/style.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/footable.core.min.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
-  <link rel="stylesheet" type="text/css" href=<%= public_url("css/flexslider.css")%> data-turbolinks-track />
-  <link rel="stylesheet" type="text/css" href=<%= public_url("css/prettyphoto.css")%> data-turbolinks-track />
-
-  <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href=<%= public_url("css/ie8.css")%> media="screen" />
-  <![endif]-->
 
   <!-- FAVICON-->
   <%= favicon_link_tag 'favicon.ico' %>
@@ -135,41 +130,58 @@
   </div>
 </section>
 
-<!-- Services section -->
-<section id="services">
+<!-- Decklists section -->
+<section id="decklists">
   <div class="row">
 
     <div class="content-head">
-      <h2>Features</h2>
+      <h2>Decklists</h2>
       <div class="line"></div>
     </div>
-
     <div class="twelve columns">
-      <div class="four columns services-info">
-        <div class="ico"><img src= <%= public_url("images/trophy_icon.svg" ) %> alt=""/></div>
-        <div class="desc">
-          <h4>Win/Loss Tracking</h4>
-          <p>Simple win/loss tracking for both arena and constructed games. Arenas are entered by each arena run and gold/dust amount is also recorded for each run.</p>
-        </div>
-      </div>
-
-      <div class="four columns services-info">
-        <div class="ico"><img src= <%= public_url("images/piechart_icon.svg" ) %> alt=""/></div>
-        <div class="desc">
-          <h4>Statistical Analysis</h4>
-          <p>After all your games, sit down to review which decks did well against which class. This will allow you to fine tune your deck.</p>
-        </div>
-      </div>
-
-      <div class="four columns services-info">
-        <div class="ico"><img src= <%= public_url("images/profile_icon.svg" ) %> alt=""/></div>
-        <div class="desc">
-          <h4>Profiles</h4>
-          <p>Socially share your profile with your friends and other players to show your win rates, records and best decks.</p>
-        </div>
-      </div>
+      <table id="decklist" class="footable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th data-hide="phone,tablet">Minions</th>
+            <th data-hide="phone,tablet">Spells</th>
+            <th data-hide="phone,tablet">Weapons</th>
+            <th data-hide="phone">Matches</th>
+            <th>Win Rate</th>
+            <th data-hide="phone,tablet">Posted By</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @decks.each do |deck| %>
+            <% unique_deck = deck.unique_deck %>
+            <tr>
+              <td class="name"><%= deck.name %></td>
+              <td class="class"><%= deck.class_name %></td>
+              <td class="minions"><%= unique_deck.num_minions %></td>
+              <td class="spells"><%= unique_deck.num_spells %></td>
+              <td class="weapons"><%= unique_deck.num_weapons %></td>
+              <td class="matches"><%= unique_deck.num_matches %></td>
+              <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+              <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                <td class="author">[anonymous]</td>
+              <% else %>
+                <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+              <% end %>
+              <td class="show">
+                <%= link_to public_show_deck_path(deck) do %>
+                  <div class="arrow">
+                    <i class="fa icon-double-angle-right arrow-icon"></i>
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  </div>
+ </div>
 </section>
 <!-- Services section -->
 
@@ -400,8 +412,20 @@
 <script type="text/javascript" src= <%= public_url("js/jquery.scrollTo.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.easing.1.3.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/main.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/contact.js") %> ></script>
+<script type="text/javascript" src= <%= public_url("js/jquery.footable.js") %> ></script>
 <script type='text/javascript' src= <%= public_url("js/jquery.placeholder.min.js") %> ></script>
 
+<script type="text/javascript">
+$(function () {
+
+    $('table').footable({
+      breakpoints: {
+        phone: 480,
+        tablet: 700
+      }
+    });
+
+});
+</script>
 </body>
 </html>
