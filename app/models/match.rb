@@ -80,9 +80,10 @@ class Match < ActiveRecord::Base
       class_arena_rate[klass_id] = ((wins[klass_id].to_f / count.to_f)*100).round if count > 0
     end
     
-    return [Klass.first.name, 0] if class_arena_rate.blank?
+    return [Klass.list.first, 0] if class_arena_rate.blank?
     max = class_arena_rate.max_by {|x,y| y}
-    [ Klass.find(max[0]).name, max[1] ]
+    
+    [ Klass::LIST[max[0]], max[1] ]
   end
   
   def self.to_csv
