@@ -1,7 +1,6 @@
 $(document).ready(function(){
 'use strict';
 
-$('.top-nav li').localScroll();
  
 //================ Responsive menu ===================//
 
@@ -96,27 +95,12 @@ $('.top-nav').mobileMenu({
 
   });
 
-
-//==================== Back to top ========================//
-
-$("#back-top").hide();
-	
-$(function () {
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 100) {
-			$('#back-top').fadeIn();
-		} else {
-			$('#back-top').fadeOut();
-		}
-	});
-
-	$('#back-top a').click(function () {
-		$('body,html').animate({
-			scrollTop: 0
-		}, 800);
-		return false;
-	});
-});
-
+  $('table').footable({
+    breakpoints: {
+      phone: 480,
+      tablet: 700
+    }
+  });
+  $('#tab-container').easytabs();
 });
 

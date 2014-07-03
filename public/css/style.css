@@ -967,13 +967,13 @@ input[type="submit"]:active {}
 /*-----------------------------------------------------------------------------------*/
 
 .footer {
-	background:#333;
+	background:#30353B;
 	padding:15px 0 10px;
 }
 
 .footer p {
 	margin:0px;
-	color:#fff;
+	color:#565B62;
 	font-size:15px;
 	text-align:center;
 }
