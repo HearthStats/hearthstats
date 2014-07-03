@@ -138,50 +138,103 @@
       <h2>Decklists</h2>
       <div class="line"></div>
     </div>
+    
     <div class="twelve columns">
-      <table id="decklist" class="footable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Class</th>
-            <th data-hide="phone,tablet">Minions</th>
-            <th data-hide="phone,tablet">Spells</th>
-            <th data-hide="phone,tablet">Weapons</th>
-            <th data-hide="phone">Matches</th>
-            <th>Win Rate</th>
-            <th data-hide="phone,tablet">Posted By</th>
-            <th>View</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @decks.each do |deck| %>
-            <% unique_deck = deck.unique_deck %>
-            <tr>
-              <td class="name"><%= deck.name %></td>
-              <td class="class"><%= deck.class_name %></td>
-              <td class="minions"><%= unique_deck.num_minions %></td>
-              <td class="spells"><%= unique_deck.num_spells %></td>
-              <td class="weapons"><%= unique_deck.num_weapons %></td>
-              <td class="matches"><%= unique_deck.num_matches %></td>
-              <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
-              <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
-                <td class="author">[anonymous]</td>
-              <% else %>
-                <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+      <div id="tab-container" class="tab-container">
+        <ul class="etabs">
+          <li class="tab"><a href="#recent">Recent Decks</a></li>
+          <li class="tab"><a href="#top">Top Decks</a></li>
+        </ul>
+        <div id="recent">
+          <table id="decklist" class="footable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th data-hide="phone,tablet">Minions</th>
+                <th data-hide="phone,tablet">Spells</th>
+                <th data-hide="phone,tablet">Weapons</th>
+                <th data-hide="phone">Matches</th>
+                <th>Win Rate</th>
+                <th data-hide="phone,tablet">Posted By</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @recentdecks.each do |deck| %>
+                <% unique_deck = deck.unique_deck %>
+                <tr>
+                  <td class="name"><%= deck.name %></td>
+                  <td class="class"><%= deck.class_name %></td>
+                  <td class="minions"><%= unique_deck.num_minions %></td>
+                  <td class="spells"><%= unique_deck.num_spells %></td>
+                  <td class="weapons"><%= unique_deck.num_weapons %></td>
+                  <td class="matches"><%= unique_deck.num_matches %></td>
+                  <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                  <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                    <td class="author">[anonymous]</td>
+                  <% else %>
+                    <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                  <% end %>
+                  <td class="show">
+                    <%= link_to public_show_deck_path(deck) do %>
+                      <div class="arrow">
+                        <i class="icon-arrow-right arrow-icon"></i>
+                      </div>
+                    <% end %>
+                  </td>
+                </tr>
               <% end %>
-              <td class="show">
-                <%= link_to public_show_deck_path(deck) do %>
-                  <div class="arrow">
-                    <i class="fa icon-double-angle-right arrow-icon"></i>
-                  </div>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </div>
+        <div id="top">
+          <table id="decklist" class="footable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th data-hide="phone,tablet">Minions</th>
+                <th data-hide="phone,tablet">Spells</th>
+                <th data-hide="phone,tablet">Weapons</th>
+                <th data-hide="phone">Matches</th>
+                <th>Win Rate</th>
+                <th data-hide="phone,tablet">Posted By</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @topdecks.each do |deck| %>
+                <% unique_deck = deck.unique_deck %>
+                <tr>
+                  <td class="name"><%= deck.name %></td>
+                  <td class="class"><%= deck.class_name %></td>
+                  <td class="minions"><%= unique_deck.num_minions %></td>
+                  <td class="spells"><%= unique_deck.num_spells %></td>
+                  <td class="weapons"><%= unique_deck.num_weapons %></td>
+                  <td class="matches"><%= unique_deck.num_matches %></td>
+                  <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                  <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                    <td class="author">[anonymous]</td>
+                  <% else %>
+                    <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                  <% end %>
+                  <td class="show">
+                    <%= link_to public_show_deck_path(deck) do %>
+                      <div class="arrow">
+                        <i class="fa icon-arrow-right arrow-icon"></i>
+                      </div>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="all-decks"><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks</div>
     </div>
- </div>
+  </div>
 </section>
 <!-- Services section -->
 
@@ -425,6 +478,7 @@ $(function () {
         tablet: 700
       }
     });
+    $('#tab-container').easytabs();
 
 });
 </script>

@@ -2,10 +2,17 @@ class WelcomeController < ApplicationController
   def index
     @arena_top = Match.where(mode_id: 1).top_winrates_with_class.shift(5)
     @con_top = Match.where(mode_id: 3).top_winrates_with_class.shift(5)
-    @decks = Deck.where(is_public: true).
+    @recentdecks = Deck.where(is_public: true).
               group(:unique_deck_id).
               joins(:unique_deck).
               last(7)
+    @topdecks = Deck.where(is_public: true).
+              group(:unique_deck_id).
+              joins(:unique_deck).
+              where("unique_decks.num_matches >= ?", 10).
+              sort_by { |deck| deck.unique_deck.winrate || 0 }.
+              last(7).
+              reverse
     render layout: false
   end
   # Past last patch

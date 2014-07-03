@@ -183,6 +183,14 @@ p {
 /*-----------------------------------------------------------------------------------*/
 /* 4. DECKLIST STYLES
 /*-----------------------------------------------------------------------------------*/
+#decklists{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #CDD1D4;
+  -webkit-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
+}
 .arrow{
   background-color: #F27F45;
   width: 35px;
@@ -192,6 +200,36 @@ p {
 .arrow-icon {
   color: white;
 }
+
+/* 4a. Decklist Toggle
+===================== */
+
+.etabs{
+  background-color: #AFB2B7;
+  padding: 5px;
+}
+.tab {
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+}
+.tab a {
+  color: white;
+
+}
+.tab.active {
+  background-color: #24292D;
+}
+
+.all-decks-arrow-icon {
+  color: #24292D;
+}
+.all-decks{
+  color: #F27F45;
+  font-weight: 700;
+  font-size: 16px;
+  float: right;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* 5. ABOUT STYLES
 /*-----------------------------------------------------------------------------------*/
