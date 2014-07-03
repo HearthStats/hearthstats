@@ -68,11 +68,11 @@ class ArenaRun < ActiveRecord::Base
   ### INSTANCE METHODS:
   
   def num_wins
-    matches.where(result_id: 1).count
+    matches.wins.count
   end
 
   def num_losses
-    matches.where(result_id: 2).count
+    matches.losses.count
   end
 
 
