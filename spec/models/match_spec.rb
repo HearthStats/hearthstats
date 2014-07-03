@@ -33,16 +33,14 @@ describe Match do
     
     describe '#matches_per_class' do
       it 'inits all classes to 0' do
-        Match.matches_per_class.should == {"Druid"=>0, "Hunter"=>0, "Mage"=>0, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0}
+        Match.matches_per_class.should == { "Druid"=>0, "Hunter"=>0, "Mage"=>0, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0 }
       end
       
       it 'returns the number of played matches per class' do
-        klass1 = create :klass, name: "Druid"
-        klass2 = create :klass, name: "Mage"
-        create :match, klass: klass1
-        create :match, klass: klass2
+        create :match, klass_id: 1
+        create :match, klass_id: 3
         
-        Match.matches_per_class.should == {"Druid"=>1, "Hunter"=>0, "Mage"=>1, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0}
+        Match.matches_per_class.should == { "Druid"=>1, "Hunter"=>0, "Mage"=>1, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0 }
       end
     end
   end
