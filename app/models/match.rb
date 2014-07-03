@@ -144,6 +144,19 @@ class Match < ActiveRecord::Base
     
     winrate_per_class
   end
+
+  def self.top_winrates_with_class(matches = Match)
+    total = matches.joins(:klass).group("klasses.id").count
+    wins  = matches.joins(:klass).group("klasses.id").where("matches.result_id = 1").count
+    
+    winrate_per_class = Array.new(9, 0)
+    
+    total.each do |klass_id, count|
+      winrate_per_class[klass_id - 1] = [Klass::LIST[klass_id], ((wins[klass_id].to_f / count)*100).round(2)]
+    end
+    
+    winrate_per_class.sort_by { |c| c[1] }.reverse
+  end
   
   def self.matches_per_class(matches = Match)
     matches_per_class = {}

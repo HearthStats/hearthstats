@@ -3,7 +3,8 @@
 /*-----------------------------------------------------------------------------------*/
 
 body {
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Quicksand';
+  background-color: #f7fafd;
 }
 
 a {color:#000;}
@@ -15,9 +16,11 @@ p {
 	line-height: 25px;
 	font-weight:400;
 	color:#666;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .center{text-align:center;}
+.center-block{margin: auto; display: block;width: 100px;}
 .no-padding {padding:0px;}
 .space10 {margin-bottom:10px;}
 .space15 {margin-bottom:15px;}
@@ -36,31 +39,27 @@ p {
 /* 2. HEADER STYLES
 /*-----------------------------------------------------------------------------------*/
 
-.header {
+.top-bar {
 	background:#212121;
+  height: 37px;
+  margin-bottom: 0px;
 }
 
-/* 2a. Logo
-===================== */
+@media (max-width: 767px) {
 
-.logo h1 {
-	font-size:25px;
-	margin:0px;
-	padding:18px 0;
+.top-bar {display: none;margin:0;}
+
 }
 
-.logo h1 a {
-	color:#fff;
+/* 2a. Nav Menu
+======================*/
+
+.nav-bar{
+  margin-top: 0px !important;
+  background-color: #30353b;
 }
-
-.logo h1 a span {
-	color:#e02222;
-}
-
-/* 2b. Navmenu
-===================== */
-
 .top-nav {
+  height: 78px;
 	display:table;
 	float:right;
 }
@@ -81,38 +80,40 @@ p {
 	border:none;
 }
 
+.mobile-only {display: none;}
 @media (max-width: 767px) {
 
 .top-nav { display: none;margin:0;}
+.nav-bar { background-color: #212121;}
+.mobile-only {display: inherit;}
 
 .select-menu {
-	display: block;
-	background: #000;
-	width: 85%;
-	padding: 5px;
-	font-size: 12px;
-	border: 1px solid #252525;
-	height: 34px;
-	margin:10px auto 20px ;
-	color:#fff !important;
-	font-family:Open Sans,Arial;
+  display: block;
+  background: #000;
+  width: 85%;
+  padding: 5px;
+  font-size: 12px;
+  border: 1px solid #252525;
+  height: 34px;
+  margin:22px auto;
+  color:#fff !important;
+  font-family:Open Sans,Arial;
 }
 }
 
-/* 2c. Social icons
+/* 2b. Social icons
 ===================== */
 
 .top-social {
 	display:table;
-	float:right;
-	margin-left:10px;
+	float:left;
 }
 
 .top-social li {
 	color:#000;
 	float:left;
 	margin-left:5px;
-	margin-top:22px;
+	margin-top:7.5px;
 	background:#444;
 	width:22px;
 	height:22px;
@@ -140,36 +141,32 @@ p {
 .top-skype:hover {background:#00a8ec;}
 
 /*-----------------------------------------------------------------------------------*/
-/* 3. SLIDER STYLES
+/* 3. Global Stats
 /*-----------------------------------------------------------------------------------*/
 
-.slider-top {
-	background:url(/images/bg.jpg) no-repeat center;
-	background-size: auto 100%;
-}
-
-.top-content {}
-
-.top-content h3 {
-	font-weight:300;
-	font-size:50px;
-	color:#fff;
-	text-align:center;
-	margin:55px 0 20px;
-}
-
-.top-content p {
-	font-size:17px;
-	color:#fff;
-	line-height:24px;
-	text-align:center;
-	width:93%;
-	margin:0 auto;
-}
-
-/* 3a. Subscribe form
+/* 3a. Win Rate Graph
 ===================== */
 
+.top-wr {
+  text-align: center;
+}
+.wr {
+  margin: auto;
+}
+.wr-graph-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  padding: 20px 15px 15px 15px;
+  margin: 15px auto 30px auto;
+}
+
+.wr-graph-placeholder {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.2em;
+}
 .top-content form {
 	background: rgba(255,255,255,0.1);
 	height: 50px;
@@ -808,12 +805,12 @@ span.portfolio-inner {background:url(/images/overlay-ico.png) no-repeat center c
 }
 
 .content-head h2 {
-	font-weight:300;
+	font-weight:500;
 	font-size:20px;
 	text-align:center;
 	text-transform:uppercase;
 	color:#a5a5a5;
-	font-family:Montserrat, Sans-serif;
+	font-family: 'Quicksand' , Sans-serif;
 }
 
 .line {
@@ -833,7 +830,7 @@ span.portfolio-inner {background:url(/images/overlay-ico.png) no-repeat center c
 	margin:0px 0px 15px;
 	text-transform:uppercase;
 	color:#a5a5a5;
-	font-family:Montserrat;
+	font-family: 'Quicksand';
 	font-weight:300;
 }
 
@@ -1147,4 +1144,3 @@ input[type="submit"]:active {}
 	margin: auto;
 	margin-bottom: 20px;
 }
-

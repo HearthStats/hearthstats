@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
   def index
+    @arena_top = Match.where(mode_id: 1).top_winrates_with_class.shift(5)
+    @con_top = Match.where(mode_id: 3).top_winrates_with_class.shift(5)
     render layout: false
   end
   # Past last patch

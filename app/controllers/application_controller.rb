@@ -117,7 +117,7 @@ class ApplicationController < ActionController::Base
   end
 
   def public_url(file)
-    "http://hearthstats.net/" + file
+    request.base_url + "/" + file
   end
 
 end

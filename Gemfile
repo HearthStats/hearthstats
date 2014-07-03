@@ -16,7 +16,11 @@ group :development do
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
+<<<<<<< HEAD
   gem 'awesome_print', :require => false
+=======
+  gem 'awesome_print'
+>>>>>>> Started homepage redesign
 end
 
 group :assets do
