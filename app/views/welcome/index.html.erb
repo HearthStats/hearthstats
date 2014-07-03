@@ -247,6 +247,18 @@
       <h2>Streams</h2>
       <div class="line"></div>
     </div>
+    <% @featured_streams.each do |stream| %>
+      <% if stream[0] == 'Online' %>
+        <div class="six columns">
+          <div class="screenshot"><%= stream[1]['stream']['preview']["medium"] %></div>
+          <div class="name"><%= stream[1]['stream']['channel']["display_name"] %></div>
+          <div class="status"><%= stream[1]['stream']['channel']["status"] %></div>
+          <div class="viewers"><%= stream[1]['stream']['viewers'] %></div>
+          <div class="view"><%= stream[1]['stream']['channel']["url"] %></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </section>
 
 <!-- Footer section -->

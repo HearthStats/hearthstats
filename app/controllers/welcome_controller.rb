@@ -1,7 +1,11 @@
 class WelcomeController < ApplicationController
   def index
+
+    # Global Stats
     @arena_top = Match.where(mode_id: 1).top_winrates_with_class.shift(5)
     @con_top = Match.where(mode_id: 3).top_winrates_with_class.shift(5)
+
+    # Decklists
     @recentdecks = Deck.where(is_public: true).
               group(:unique_deck_id).
               joins(:unique_deck).
@@ -13,6 +17,11 @@ class WelcomeController < ApplicationController
               sort_by { |deck| deck.unique_deck.winrate || 0 }.
               last(7).
               reverse
+
+    # Streams
+    @featured_streams = get_featured_streamers
+    @top_streams = get_top_streamers
+
     render layout: false
   end
   # Past last patch
@@ -225,6 +234,29 @@ class WelcomeController < ApplicationController
       end
 
       output = Winrate.new(klass_wr, match_count)
+    end
+
+    def get_featured_streamers
+      featured_streams = Array.new
+      featured_streamers.each do |u|
+        stream = HTTParty.get("https://api.twitch.tv/kraken/streams/#{u}")
+        online = !stream['stream'].nil?
+        status = online ? "Online" : "Offline"
+
+        featured_streams << [status, stream]
+      end
+
+      featured_streams
+    end
+
+    def get_top_streamers
+      top_streams = Rails.cache.fetch("top_streams")
+      if top_streams.nil?
+        top_streams = HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')
+        Rails.cache.write("top_streams", top_streams, expires_in: 2.minutes)
+      end
+
+      top_streams
     end
 
 end
