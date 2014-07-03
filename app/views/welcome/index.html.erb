@@ -232,7 +232,7 @@
           </table>
         </div>
       </div>
-      <div class="all-decks"><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks</div>
+      <%= link_to public_decks_path, class: 'all-decks' do %><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks<% end %>
     </div>
   </div>
 </section>
