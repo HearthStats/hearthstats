@@ -44,6 +44,10 @@ p {
 /* 2. HEADER STYLES
 /*-----------------------------------------------------------------------------------*/
 
+.header-logo{
+  height: 50px;
+}
+
 .top-bar {
 	background:#212121;
   height: 37px;
@@ -51,8 +55,14 @@ p {
 }
 
 @media (max-width: 767px) {
-
-.top-bar {display: none;margin:0;}
+  .nav-bar{
+    padding-top: 20px;
+  }
+  .header-logo{
+    display: block;
+    margin: auto;
+  }
+  .top-bar {display: none;margin:0;}
 
 }
 
@@ -61,7 +71,7 @@ p {
 
 .nav-bar{
   margin-top: 0px !important;
-  background-color: #30353b;
+  background-color: #30353B;
 }
 .top-nav {
   height: 78px;
@@ -89,7 +99,6 @@ p {
 @media (max-width: 767px) {
 
 .top-nav { display: none;margin:0;}
-.nav-bar { background-color: #212121;}
 .mobile-only {display: inherit;}
 
 .select-menu {
@@ -969,6 +978,12 @@ input[type="submit"]:active {}
 .footer {
 	background:#30353B;
 	padding:15px 0 10px;
+}
+
+.footer-logo{
+  display: block;
+  width: 200px;
+  margin: auto;
 }
 
 .footer p {
