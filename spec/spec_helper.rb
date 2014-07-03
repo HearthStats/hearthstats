@@ -1,3 +1,5 @@
+require 'coveralls'
+Coveralls.wear!
 require 'rubygems'
 
 ENV["RAILS_ENV"] ||= 'test'

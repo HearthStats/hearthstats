@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/HearthStats/hearthstats.svg?branch=master)](https://travis-ci.org/HearthStats/hearthstats)
+[![Coverage Status](https://img.shields.io/coveralls/HearthStats/hearthstats.svg)](https://coveralls.io/r/HearthStats/hearthstats?branch=master)
 [![Stories in Ready](https://badge.waffle.io/hearthstats/hearthstats.png?label=ready&title=Ready)](https://waffle.io/hearthstats/hearthstats)
 # <a href="http://hearthstats.net/"><img src="http://www.hearthstats.net/assets/hearthstatslogo.png" width="100px"/></a> HearthStats
 
