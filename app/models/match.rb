@@ -110,8 +110,8 @@ class Match < ActiveRecord::Base
   end
   
   def self.winrate_per_class(matches = Match)
-    total = matches.group(:klass_id).count
-    wins  = matches.group(:klass_id).where(result_id: 1).count
+    total = matches.group('matches.klass_id').count
+    wins  = matches.group('matches.klass_id').where(result_id: 1).count
     
     winrate_per_class = Array.new(9, 0)
     
