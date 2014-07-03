@@ -149,6 +149,10 @@ p {
 /* 3. Global Stats
 /*-----------------------------------------------------------------------------------*/
 
+#global-stats{
+  padding:60px 0 60px 0;
+}
+
 /* 3a. Win Rate Table
 ===================== */
 
@@ -184,8 +188,7 @@ p {
 /* 4. DECKLIST STYLES
 /*-----------------------------------------------------------------------------------*/
 #decklists{
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding:60px 0 60px 0;
   background-color: #CDD1D4;
   -webkit-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
      -moz-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
@@ -234,7 +237,9 @@ p {
 /* 5. ABOUT STYLES
 /*-----------------------------------------------------------------------------------*/
 
-#about, #gallery, #features {	padding:60px 0 0;}
+#streams {
+  padding:60px 0 60px 0;
+}
 
 .about-info {}
 
