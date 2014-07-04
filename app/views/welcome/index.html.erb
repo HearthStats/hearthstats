@@ -37,7 +37,7 @@
 </head>
 <body>
 <!-- Header section -->
-<header>
+<div class="header">
   <div class="top-bar">
     <div class="row">
 
@@ -54,212 +54,226 @@
 
         <!-- Login menu -->
         <div class="top-login">
+          test
         </div>
       </div>
 
     </div>
   </div>
   <div class="nav-bar">
-    <div class="four columns">
-      <%= image_tag 'logo_v2/orange_inline.png', class: 'header-logo' %>
-    </div>
-    <div class="eight columns">
-      <ul class="top-nav">
-        <li class="mobile-only"><%= link_to new_user_session_path do %>LOGIN<% end %></li>
-        <li class="mobile-only"><%= link_to new_user_registration_path do %>REGISTER<% end %></li>
-        <li><%= link_to root_path do %>HOME<% end %></li>
-        <li><%= link_to public_decks_path do %>DECKS<% end %></li>
-        <li><%= link_to streams_index_path do %>STREAMS<% end %></li>
-        <li><%= link_to news_path do %>NEWS<% end %></li>
-        <li><%= link_to '/june' do %>STAT REPORT<% end %></li>
-        <li><%= link_to uploader_path do %>STAT TRACKER<% end %></li>
-        <li><%= link_to contactus_path do %>CONTACT<% end %></li>
-      </ul>
-    </div>
-  </div>
-</header>
-
-<!-- Global Stats section -->
-<section id="global-stats">
-  <div class="row">
-    <div class="twelve columns wr-graph">
-      <div class="content-head">
-        <h2>Global Stats</h2>
-        <div class="line"></div>
-      <div>
-      <div class="wr-graph-container">
-        <div id="wr-graph" class="wr-graph-placeholder"></div>
+    <div class="row">
+      <div class="four columns logo-cont">
+        <%= image_tag 'logo_v2/orange_inline.png', class: 'header-logo' %>
       </div>
-    </div>
-
-    <div class="twelve columns">
-      <div class="row">
-        <div class="six columns top-wr">
-          <h3>Arena Top 5 Classes</h3>
-          <table class="wr">
-            <thead>
-            </thead>
-            <tbody>
-              <% @arena_top.each_with_index do |c,i| %>
-                <tr>
-                  <td class="wr-change"></td>
-                  <td class="wr-rank"><%= i + 1 %>.</td>
-                  <td class="wr-class"><%= c[0] %></td>
-                  <td class="wr-wr"><%= c[1] %>%</td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-        <div class="six columns top-wr">
-          <h3>Constructed Top 5 Classes</h3>
-          <table class="wr">
-            <thead>
-            </thead>
-            <tbody>
-              <% @con_top.each_with_index do |c,i| %>
-                <tr>
-                  <td class="wr-change"></td>
-                  <td class="wr-rank"><%= i + 1 %>.</td>
-                  <td class="wr-class"><%= c[0] %></td>
-                  <td class="wr-wr"><%= c[1] %>%</td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Decklists section -->
-<section id="decklists">
-  <div class="row">
-
-    <div class="content-head">
-      <h2>Decklists</h2>
-      <div class="line"></div>
-    </div>
-    
-    <div class="twelve columns">
-      <div id="tab-container" class="tab-container">
-        <ul class="etabs">
-          <li class="tab"><a href="#recent">Recent Decks</a></li>
-          <li class="tab"><a href="#top">Top Decks</a></li>
+      <div class="eight columns nav-cont">
+        <ul class="top-nav">
+          <li class="mobile-only"><%= link_to new_user_session_path do %>LOGIN<% end %></li>
+          <li class="mobile-only"><%= link_to new_user_registration_path do %>REGISTER<% end %></li>
+          <li><%= link_to root_path do %>HOME<% end %></li>
+          <li><%= link_to public_decks_path do %>DECKS<% end %></li>
+          <li><%= link_to streams_index_path do %>STREAMS<% end %></li>
+          <li><%= link_to news_path do %>NEWS<% end %></li>
+          <li><%= link_to '/june' do %>STAT REPORT<% end %></li>
+          <li><%= link_to uploader_path do %>STAT TRACKER<% end %></li>
+          <li><%= link_to contactus_path do %>CONTACT<% end %></li>
         </ul>
-        <div id="recent">
-          <table id="decklist" class="footable">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Class</th>
-                <th data-hide="phone,tablet">Minions</th>
-                <th data-hide="phone,tablet">Spells</th>
-                <th data-hide="phone,tablet">Weapons</th>
-                <th data-hide="phone">Matches</th>
-                <th>Win Rate</th>
-                <th data-hide="phone,tablet">Posted By</th>
-                <th>View</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @recentdecks.each do |deck| %>
-                <% unique_deck = deck.unique_deck %>
-                <tr>
-                  <td class="name"><%= deck.name %></td>
-                  <td class="class"><%= deck.class_name %></td>
-                  <td class="minions"><%= unique_deck.num_minions %></td>
-                  <td class="spells"><%= unique_deck.num_spells %></td>
-                  <td class="weapons"><%= unique_deck.num_weapons %></td>
-                  <td class="matches"><%= unique_deck.num_matches %></td>
-                  <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
-                  <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
-                    <td class="author">[anonymous]</td>
-                  <% else %>
-                    <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
-                  <% end %>
-                  <td class="show">
-                    <%= link_to public_show_deck_path(deck) do %>
-                      <div class="arrow">
-                        <i class="icon-arrow-right arrow-icon"></i>
-                      </div>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+      </div>
+    </div>
+  </div>
+</div class="header">
+<div class="row">
+  <div class="eight columns" id="main">
+    
+    <!-- Global Stats section -->
+    <section id="global-stats">
+      <div class="row">
+        <div class="twelve columns wr-graph">
+          <div class="content-head">
+            <h2>Global Stats</h2>
+            <div class="line"></div>
+          <div>
+          <div class="wr-graph-container">
+            <div id="wr-graph" class="wr-graph-placeholder"></div>
+          </div>
         </div>
-        <div id="top">
-          <table id="decklist" class="footable">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Class</th>
-                <th data-hide="phone,tablet">Minions</th>
-                <th data-hide="phone,tablet">Spells</th>
-                <th data-hide="phone,tablet">Weapons</th>
-                <th data-hide="phone">Matches</th>
-                <th>Win Rate</th>
-                <th data-hide="phone,tablet">Posted By</th>
-                <th>View</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @topdecks.each do |deck| %>
-                <% unique_deck = deck.unique_deck %>
-                <tr>
-                  <td class="name"><%= deck.name %></td>
-                  <td class="class"><%= deck.class_name %></td>
-                  <td class="minions"><%= unique_deck.num_minions %></td>
-                  <td class="spells"><%= unique_deck.num_spells %></td>
-                  <td class="weapons"><%= unique_deck.num_weapons %></td>
-                  <td class="matches"><%= unique_deck.num_matches %></td>
-                  <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
-                  <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
-                    <td class="author">[anonymous]</td>
-                  <% else %>
-                    <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+
+        <div class="twelve columns">
+          <div class="row">
+            <div class="six columns top-wr">
+              <h3>Arena Top 5 Classes</h3>
+              <table class="wr">
+                <thead>
+                </thead>
+                <tbody>
+                  <% @arena_top.each_with_index do |c,i| %>
+                    <tr>
+                      <td class="wr-change"></td>
+                      <td class="wr-rank"><%= i + 1 %>.</td>
+                      <td class="wr-class"><%= c[0] %></td>
+                      <td class="wr-wr"><%= c[1] %>%</td>
+                    </tr>
                   <% end %>
-                  <td class="show">
-                    <%= link_to public_show_deck_path(deck) do %>
-                      <div class="arrow">
-                        <i class="fa icon-arrow-right arrow-icon"></i>
-                      </div>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+                </tbody>
+              </table>
+            </div>
+            <div class="six columns top-wr">
+              <h3>Constructed Top 5 Classes</h3>
+              <table class="wr">
+                <thead>
+                </thead>
+                <tbody>
+                  <% @con_top.each_with_index do |c,i| %>
+                    <tr>
+                      <td class="wr-change"></td>
+                      <td class="wr-rank"><%= i + 1 %>.</td>
+                      <td class="wr-class"><%= c[0] %></td>
+                      <td class="wr-wr"><%= c[1] %>%</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-      <%= link_to public_decks_path, class: 'all-decks' do %><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks<% end %>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Streams section -->
-<section id="streams">
-  <div class="row">
-    <div class="content-head">
-      <h2>Streams</h2>
-      <div class="line"></div>
-    </div>
-    <% @featured_streams.each do |stream| %>
-      <% if stream[0] == 'Online' %>
-        <div class="six columns">
-          <div class="screenshot"><%= stream[1]['stream']['preview']["medium"] %></div>
-          <div class="name"><%= stream[1]['stream']['channel']["display_name"] %></div>
-          <div class="status"><%= stream[1]['stream']['channel']["status"] %></div>
-          <div class="viewers"><%= stream[1]['stream']['viewers'] %></div>
-          <div class="view"><%= stream[1]['stream']['channel']["url"] %></div>
+    <!-- Decklists section -->
+    <section id="decklists">
+      <div class="row">
+
+        <div class="content-head">
+          <h2>Decklists</h2>
+          <div class="line"></div>
         </div>
-      <% end %>
-    <% end %>
+        
+        <div class="twelve columns">
+          <div id="tab-container" class="tab-container">
+            <ul class="etabs">
+              <li class="tab"><a href="#recent">Recent Decks</a></li>
+              <li class="tab"><a href="#top">Top Decks</a></li>
+            </ul>
+            <div id="recent">
+              <table id="decklist" class="footable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th data-hide="phone,tablet">Minions</th>
+                    <th data-hide="phone,tablet">Spells</th>
+                    <th data-hide="phone,tablet">Weapons</th>
+                    <th data-hide="phone">Matches</th>
+                    <th>Win Rate</th>
+                    <th data-hide="phone,tablet">Posted By</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @recentdecks.each do |deck| %>
+                    <% unique_deck = deck.unique_deck %>
+                    <tr>
+                      <td class="name"><%= deck.name %></td>
+                      <td class="class"><%= deck.class_name %></td>
+                      <td class="minions"><%= unique_deck.num_minions %></td>
+                      <td class="spells"><%= unique_deck.num_spells %></td>
+                      <td class="weapons"><%= unique_deck.num_weapons %></td>
+                      <td class="matches"><%= unique_deck.num_matches %></td>
+                      <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                      <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                        <td class="author">[anonymous]</td>
+                      <% else %>
+                        <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                      <% end %>
+                      <td class="show">
+                        <%= link_to public_show_deck_path(deck) do %>
+                          <div class="arrow">
+                            <i class="icon-arrow-right arrow-icon"></i>
+                          </div>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div id="top">
+              <table id="decklist" class="footable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th data-hide="phone,tablet">Minions</th>
+                    <th data-hide="phone,tablet">Spells</th>
+                    <th data-hide="phone,tablet">Weapons</th>
+                    <th data-hide="phone">Matches</th>
+                    <th>Win Rate</th>
+                    <th data-hide="phone,tablet">Posted By</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @topdecks.each do |deck| %>
+                    <% unique_deck = deck.unique_deck %>
+                    <tr>
+                      <td class="name"><%= deck.name %></td>
+                      <td class="class"><%= deck.class_name %></td>
+                      <td class="minions"><%= unique_deck.num_minions %></td>
+                      <td class="spells"><%= unique_deck.num_spells %></td>
+                      <td class="weapons"><%= unique_deck.num_weapons %></td>
+                      <td class="matches"><%= unique_deck.num_matches %></td>
+                      <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                      <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                        <td class="author">[anonymous]</td>
+                      <% else %>
+                        <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                      <% end %>
+                      <td class="show">
+                        <%= link_to public_show_deck_path(deck) do %>
+                          <div class="arrow">
+                            <i class="fa icon-arrow-right arrow-icon"></i>
+                          </div>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <%= link_to public_decks_path, class: 'all-decks' do %><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks<% end %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Streams section -->
+    <section id="streams">
+      <div class="row">
+        <div class="content-head">
+          <h2>Streams</h2>
+          <div class="line"></div>
+        </div>
+        <% (1..3).each do |stream| %>
+          <% if stream[0] == 'Online' %>
+            <div class="six columns stream">
+              <div class="stream-screenshot"><a href="<%= stream[1]['stream']['channel']["url"] %>"><img src="<%= stream[1]['stream']['preview']["medium"] %>" alt=""></a></div>
+              <div class="stream-description">
+                <div class="stream-name"><%= stream[1]['stream']['channel']["display_name"] %></div>
+                <div class="stream-status"><%= stream[1]['stream']['channel']["status"] %></div>
+              </div>
+              <div class="live-details">
+                <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream[1]['stream']['viewers'] %></div>
+                <div class="stream-view"><a href="<%= stream[1]['stream']['channel']["url"] %>" class="orange">VIEW</a> </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
   </div>
-</section>
+  <div class="four columns" id="sidebar">
+    
+  </div>
+</div>
 
 <!-- Footer section -->
 <footer>

@@ -98,7 +98,7 @@ $('.top-nav').mobileMenu({
   $('table').footable({
     breakpoints: {
       phone: 480,
-      tablet: 700
+      tablet: 660
     }
   });
   $('#tab-container').easytabs();

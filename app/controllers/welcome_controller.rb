@@ -19,8 +19,8 @@ class WelcomeController < ApplicationController
               reverse
 
     # Streams
-    @featured_streams = get_featured_streamers
-    @top_streams = get_top_streamers
+    # @featured_streams = get_featured_streamers
+    # @top_streams = get_top_streamers
 
     render layout: false
   end

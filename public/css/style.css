@@ -2,9 +2,18 @@
 /* 1. GLOBAL STYLES
 /*-----------------------------------------------------------------------------------*/
 
+html{
+  height: 100%;
+}
 body {
   font-family: 'Quicksand';
   background-color: #f7fafd;
+  height: 100%;
+}
+
+#main, #sidebar{
+  margin: 0;
+  padding: 0;
 }
 
 a {color:#000;}
@@ -22,6 +31,9 @@ p {
 	font-weight:400;
 	color:#666;
   font-family: 'Open Sans', sans-serif;
+}
+.orange{
+  color: #F27F45;
 }
 
 .center{text-align:center;}
@@ -44,12 +56,15 @@ p {
 /* 2. HEADER STYLES
 /*-----------------------------------------------------------------------------------*/
 
+.logo-cont{
+}
 .header-logo{
+  margin-bottom: 8px;
   height: 50px;
 }
 
 .top-bar {
-	background:#212121;
+	background: #212121;
   height: 37px;
   margin-bottom: 0px;
 }
@@ -70,18 +85,22 @@ p {
 ======================*/
 
 .nav-bar{
+  height: 100%;
   margin-top: 0px !important;
   background-color: #30353B;
+  font-weight: 700;
+
 }
 .top-nav {
-  height: 78px;
+  margin: 5px 0;
 	display:table;
 	float:right;
 }
 
 .top-nav li {
 	float:left;
-	margin:20px 15px 5px;
+  font-size: 14px;
+  padding: 10px;
 }
 
 .top-nav li a {
@@ -97,6 +116,9 @@ p {
 
 .mobile-only {display: none;}
 @media (max-width: 767px) {
+  .top-nav li {
+    margin:20px 15px 5px;
+  }
 
 .top-nav { display: none;margin:0;}
 .mobile-only {display: inherit;}
@@ -119,6 +141,7 @@ p {
 ===================== */
 
 .top-social {
+  margin: 0;
 	display:table;
 	float:left;
 }
@@ -141,6 +164,8 @@ p {
 .top-social li a{
 	color:#000;
 	font-size:12px;
+  padding: 4px 5px 0 !important;
+  line-height: 0 !important;
 }
 
 .top-social li:hover a{
@@ -148,11 +173,11 @@ p {
 	font-size:12px;
 }
 
-.top-tweet:hover {background:#3fbcef;}
-.top-fb:hover {background:#314396;}
-.top-gplus:hover {background:#314396;}
-.top-dribble:hover {background:#ed6c9e;}
-.top-skype:hover {background:#00a8ec;}
+.top-tweet:hover {background:#3fbcef !important;}
+.top-fb:hover {background:#314396!important;}
+.top-gplus:hover {background:#D34836!important;}
+.top-dribble:hover {background:#ed6c9e!important;}
+.top-skype:hover {background:#00a8ec!important;}
 
 /*-----------------------------------------------------------------------------------*/
 /* 3. Global Stats
@@ -219,6 +244,7 @@ p {
 .etabs{
   background-color: #AFB2B7;
   padding: 5px;
+  margin-bottom: 0;
 }
 .tab {
   padding: 5px 10px 5px 10px;
@@ -236,6 +262,7 @@ p {
   color: #24292D;
 }
 .all-decks{
+  margin-right: 20px;
   color: #F27F45;
   font-weight: 700;
   font-size: 16px;
@@ -243,519 +270,44 @@ p {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* 5. ABOUT STYLES
+/* 5. STREAMS STYLES
 /*-----------------------------------------------------------------------------------*/
 
 #streams {
   padding:60px 0 60px 0;
 }
-
-.about-info {}
-
-.about-info h4 {
-	font-size:30px;
-	letter-spacing:-0.8px;
-	line-height:35px;
-	font-weight:400;
-	margin:0px 0px 20px;
+.stream-screenshot img{
+  width: 100%;
+  margin-bottom: 10px;
 }
-
-.about-info p {
-	font-size:15px;
-	line-height:22px;
+.stream-name{
+  font-size: 23px;
 }
-
-.list {
-	margin-bottom:20px;
+.stream-viewers{
+  text-align: right;
 }
-
-.list li {
-	background:url(/images/tick.png) no-repeat left center;
-	padding-left:35px;
-	padding-top:5px;
-	padding-bottom:5px;
+.stream-view{
+  text-align: right;
+  font-weight: 700;
 }
-
-.download-btn {
-	color:#fff;
-	padding:13px 20px;
-	display:table;
-	margin:0;
-	text-transform:uppercase;
-	font-weight:700;
-	background: #7abcff; /* Old browsers */
-	background: -moz-linear-gradient(top,  #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
-	border-radius:25px;
-	border:1px solid #4a92d7;
-	position:relative;
+@media (max-width: 767px) {
+  .stream-description{
+    float: left;
+  }
+  .live-details{
+    float: right;
+  }
+  .stream-view{
+    margin-top: 8px;
+  }
 }
-
-.download-btn:hover {
-	color:#fff;
-	-webkit-transition:all 0.2s ease-in-out;
-	-moz-transition:all 0.2s ease-in-out;
-	-o-transition:all 0.2s ease-in-out;
-	transition:all 0.2s ease-in-out;
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 0%, #60abf8 56%, #7abcff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(56%,#60abf8), color-stop(100%,#7abcff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#7abcff',GradientType=0 ); /* IE6-9 */
-}
-
 /*-----------------------------------------------------------------------------------*/
-/* 6. SCREENSHOT / GALLERY STYLES
+/* 6. SIDEBAR
 /*-----------------------------------------------------------------------------------*/
 
-.portfolio_thumb {
-	position:relative;
-	overflow:hidden;
-}
-
-.gallery li div {
-	line-height:0px;
-	margin-bottom:20px;
-}
-
-.portfolio-inner{
-	background:rgba(0,0,0,0.4);
-	position:absolute;
-	width:100%;
-	height:100%;
-	top:100%;
-	left:0;
-	display:block;
-	-webkit-transition:all 0.4s ease-in-out;
-	-moz-transition:all 0.4s ease-in-out;
-	-o-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out;
-}
-
-.gallery li div:hover .portfolio-inner {
-	top:0%;
-	-webkit-transition:all 0.4s ease-in-out;
-	-moz-transition:all 0.4s ease-in-out;
-	-o-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out;
-}
-
-.overlay {
-	display:block;
-	position:absolute;
-	left:0%;
-	top:10px;
-	z-index:1;
-}
-
-.overlay-tag {
-	display:block;
-	position:absolute;
-	right:13px;
-	bottom:15px;
-	z-index:1;
-	background:#fff;
-	color:#00a8ec;
-	padding:1px 12px;
-	border-radius:3px;
-	font-size:11px;
-	text-transform:uppercase;
-	font-weight:700;
-	line-height:20px;
-}
-
-.title {
-	font-size:16px;
-	font-weight:400;
-	line-height:normal;
-	color:#fff;
-	left:15px;
-}
-
-span.portfolio-inner {background:url(/images/overlay-ico.png) no-repeat center center rgba(0,168,236,0.8);}
-
-.slidewrap {margin-top:-10px;}
-.slidewrap .carousel {padding: 0;}
-.slidewrap .carousel li,.slidewrap .carousel a {
-	display: block;
-	float: left;
-}
-
-.slidewrap2 .carousel .carousel-active-tab a {
-	background: #777;
-}
-
-.slidecontrol {
-}
-
-.slidecontrol li a.next {
-	position:absolute;
-	top:-25px;
-	right:-20px;
-	left:0px;
-	margin:0 auto;
-	display:table;
-	background:url(/images/next1_active.png) no-repeat center;
-}
-
-.slidecontrol li a.prev {
-	position:absolute;
-	top:-25px;
-	right:20px;
-	left:0px;
-	margin:0 auto;
-	display:table;
-	background:url(/images/prev1_active.png) no-repeat center;
-}
-
-.slidecontrol li a.next, .slidecontrol li a.prev{
-	width:16px;
-	height:16px;
-	display:block;
-	cursor:pointer;
-	text-indent:-999em;
-}
-
-.slidecontrol li a.next.carousel-disabled {
-	display:block;
-	background:url(/images/next1.png) no-repeat center;
-	cursor:default;
-}
-
-.slidecontrol li a.prev.carousel-disabled {
-	display:block;
-	background:url(/images/prev1.png) no-repeat center;
-	cursor:default;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* 7. PRICING TABLE STYLES
-/*-----------------------------------------------------------------------------------*/
-
-#pricing{
-	padding:40px 0 0;
-}
-
-.pricing1 {
-	width:30%;
-	float:left;
-	position:relative;
-	z-index:99;
-	top:25px;
-	border:1px solid #d2d2d2;
-	border-bottom:1px solid #c2c2c2;
-	border-right:none;
-}
-
-.pricing2 {
-	width:40%;
-	float:left;
-	position:relative;
-	z-index:999;
-	border:1px solid #d2d2d2;
-	border-bottom:1px solid #c2c2c2;
-}
-
-.pricing3 {
-	width:30%;
-	float:left;
-	position:relative;
-	z-index:99;
-	top:25px;
-	border:1px solid #d2d2d2;
-	border-bottom:1px solid #c2c2c2;
-	border-left:none;
-}
-
-.plan-title {
-	text-align:center;
-	margin-top:35px;
-	font-weight:600;
-	font-size:20px;
-	letter-spacing: -0.3px;
-}
-
-.plan-price {
-	text-align:center;
-	margin:30px 0 20px;
-	font-weight:300;
-	font-size:60px;
-}
-
-.plan-features {
-	margin-top:15px;
-}
-
-.plan-features ul li {
-	text-align:center;
-	color:#777;
-	margin:10px 0;
-	font-size:13px;
-}
-
-.buy-now {
-	color:#999;
-	padding:12px 20px;
-	display:table;
-	margin:0 auto;
-	text-transform:uppercase;
-	font-weight:700;
-	background: #eeeeee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
-	border:1px solid #ccc;
-	border-radius:25px;
-	position:relative;
-	top:15px;
-}
-
-.buy-now:hover {
-	-webkit-transition:all 0.2s ease-in-out;
-	-moz-transition:all 0.2s ease-in-out;
-	-o-transition:all 0.2s ease-in-out;
-	transition:all 0.2s ease-in-out;
-	background: #c8d7dc; /* Old browsers */
-	background: -moz-linear-gradient(top,  #c8d7dc 0%, #e3eaed 63%, #f2f5f6 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8d7dc), color-stop(63%,#e3eaed), color-stop(100%,#f2f5f6)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8d7dc', endColorstr='#f2f5f6',GradientType=0 ); /* IE6-9 */
-}
-
-.plan-title-sp {
-	text-align:center;
-	margin-top:40px;
-	font-weight:600;
-	font-size:25px;
-	color:#00a8ec;
-	letter-spacing: -0.3px;
-}
-
-.bvalue {
-	background:url(/images/bvalue.png) no-repeat;
-	width:108px;
-	height:108px;
-	position:absolute;
-	top: -6px;
-	right: -5px;
-}
-
-.plan-price-sp {
-	text-align:center;
-	margin:30px 0 20px;
-	font-weight:300;
-	font-size:75px;
-}
-
-.plan-features-sp {
-	margin-top:15px;
-}
-
-.plan-features-sp ul li {
-	text-align:center;
-	margin:10px 0;
-	font-size:13px;
-}
-
-.buy-now-sp {
-	color:#fff;
-	padding:13px 20px;
-	display:table;
-	margin:0 auto;
-	text-transform:uppercase;
-	font-weight:700;
-	background: #7abcff; /* Old browsers */
-	background: -moz-linear-gradient(top,  #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
-	border-radius:25px;
-	border:1px solid #4a92d7;
-	position:relative;
-	top:15px;
-}
-
-.buy-now-sp:hover {
-	color:#fff;
-	-webkit-transition:all 0.2s ease-in-out;
-	-moz-transition:all 0.2s ease-in-out;
-	-o-transition:all 0.2s ease-in-out;
-	transition:all 0.2s ease-in-out;
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 0%, #60abf8 56%, #7abcff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(56%,#60abf8), color-stop(100%,#7abcff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#7abcff',GradientType=0 ); /* IE6-9 */
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* 8. FEATURES STYLES
-/*-----------------------------------------------------------------------------------*/
-
-.features-content {
-	margin-bottom:20px;
-}
-
-.features-content .ico {
-	width:45px;
-	height:45px;
-	background:#fff;
-	border:2px solid #000;
-	font-size:20px;
-	line-height:42px;
-	text-align:center;
-	float:left;
-	color:#000;
-	border-radius:50%;
-	-webkit-transition:all 0.4s ease-in-out;
-	-moz-transition:all 0.4s ease-in-out;
-	-o-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out;
-}
-
-.features-content:hover .ico {
-	background:#fff;
-	color:#00a8ec;
-	border:2px solid #00a8ec;
-	-webkit-transition:all 0.4s ease-in-out;
-	-moz-transition:all 0.4s ease-in-out;
-	-o-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out;
-}
-
-.features-content:hover {
-	cursor:pointer;
-	-webkit-transition:all 0.4s ease-in-out;
-	-moz-transition:all 0.4s ease-in-out;
-	-o-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out;
-}
-
-.features-content:hover h4{
-	color:#00a8ec !important;
-	-webkit-transition:all 0.4s ease-in-out;
-	-moz-transition:all 0.4s ease-in-out;
-	-o-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out;
-}
-
-.features-desc{
-	margin-left:65px;
-}
-
-.features-desc h4 {
-	margin:0px 0px 10px;
-	font-size:18px;
-	letter-spacing: -0.4px;
-}
-
-.features-desc p {
-	line-height:20px;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* 9. TEAM STYLES
-/*-----------------------------------------------------------------------------------*/
-
-#team {padding:50px 0 100px;}
-
-.team-info {}
-
-.thumb {
-	border-radius:3px;
-}
-
-.team-info h4 {
-	margin:20px 0px 7px;
-	font-weight:600;
-	font-size:21px;
-}
-
-.team-info h5 {
-	font-size:13px;
-	text-transform:uppercase;
-	margin:0px;
-	font-weight:400;
-}
-
-.team-info p {
-	margin:15px 0;
-	line-height:18px;
-	color:#777;
-}
-
-/* 9a. Team social
-===================== */
-
-.team-social {}
-
-.team-social li {
-	float:left;
-	width:20px;
-	height:20px;
-	overflow:hidden;
-	position:relative;
-	text-align:center;
-	line-height:20px;
-}
-
-.team-social li a {
-	color:#aaa;
-}
-
-.team-social li a:hover {
-	color:#00a8ec
-}
-
-.social-inner {
-	position:absolute;
-	left:0px;
-	right:0px;
-	top:0px;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* 10. TESTIMONIAL / QUOTE STYLES
-/*-----------------------------------------------------------------------------------*/
-
-#wrap2 {
-	background:#00a8ec;
-	padding:50px 0 70px;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* 11. CLIENT STYLES
-/*-----------------------------------------------------------------------------------*/
-
-.clients {
-	background:#454545;
-	padding:40px 0;
-}
-
-.clients img {
-	display:table;
-	margin:0 auto;
+#sidebar{
+  background: #212121;
+  height: 100%;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -797,179 +349,6 @@ span.portfolio-inner {background:url(/images/overlay-ico.png) no-repeat center c
 }
 
 .cblue { color:#00a8ec;}
-
-/*-----------------------------------------------------------------------------------*/
-/* 13. CONTACT STYLES
-/*-----------------------------------------------------------------------------------*/
-
-#contact {
-	padding:20px 0px 100px 0;
-}
-
-#contact-wrap {}
-
-#contactForm {
-	width: 100%;
-	height: auto;
-	padding: 0;
-}
-
-#contactForm.positioned {}
-
-.statusMessage, .successmessage, .errormessage {
-	display: none;
-	margin: auto;
-	width: 100%;
-	height: auto;
-	margin: 25px auto 0;
-}
-
-.success-ico, .error-ico {
-	padding-top:0px;
-}
-
-.statusMessage p {
-	margin: 0;
-	padding:20px;
-	color:#000;
-}
-
-.successmessage p {
-	margin: 0 0 0 35px;
-	padding:0;
-	color:#000;
-}
-
-.success-ico {
-	color:#00b034;
-	font-size:25px;
-	float:left;
-	padding-right:10px;
-	margin-top:0px;
-	font-family: 'HeydingsCommonIconsRegular';
-}
-
-.error-ico {
-	color:#ff0000;
-	font-size:25px;
-	float:left;
-	padding-right:10px;
-	margin-top:0px;
-	font-family: 'HeydingsCommonIconsRegular';
-}
-
-.errormessage p {
-	margin: 0 0 0 35px;
-	padding:0;
-	color:#000;
-}
-
-#contactForm ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-#contactForm ul li {
-	margin: .9em 0 0 0;
-}
-
-#contactForm input, #contactForm label {line-height: 1em;}
-
-input, textarea {
-	display: block;
-	width: 100%;
-	font-size: 13px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-moz-box-shadow: rgba(0,0,0,.1) 0 1px 4px inset;
-	-webkit-box-shadow: rgba(0,0,0,.1) 0 1px 4px inset;
-	box-shadow: rgba(0,0,0,.1) 0 1px 4px inset;
-}
-
-textarea {line-height: 1.5em;}
-
-#contactForm *:focus {
-	outline: none;
-	box-shadow: none;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-}
-
-input:valid, textarea:valid {}
-input[type="submit"] {padding: 6px 15px;}
-input[type="submit"]:hover,input[type="submit"]:active{border: 1px solid #0594ce;}
-input[type="submit"]:active {}
-
-.button-contact {
-	background: #7abcff; /* Old browsers */
-	background: -moz-linear-gradient(top,  #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
-	border-radius:25px;
-	border:1px solid #4a92d7;
-	position:relative;
-	width:100px;
-	font-family:Open Sans;
-	float:right;
-	color:#fff;
-	display:table;
-	margin-right:15px;
-	text-transform:uppercase;
-	font-weight:700;
-}
-
-.button-contact:hover {
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 0%, #60abf8 56%, #7abcff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(56%,#60abf8), color-stop(100%,#7abcff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 0%,#60abf8 56%,#7abcff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#7abcff',GradientType=0 ); /* IE6-9 */
-	cursor:pointer;
-	color:#fff;
-	-webkit-transition:all 0.2s ease-in-out;
-	-moz-transition:all 0.2s ease-in-out;
-	-o-transition:all 0.2s ease-in-out;
-	transition:all 0.2s ease-in-out;
-}
-
-#contact-wrap {
-	width:100%;
-}
-
-.success-ico, .error-ico {
-	padding-top:0px;
-}
-
-/* 13a. contact info
-===================== */
-
-.contact-info {
-	margin-top:25px;
-}
-
-.contact-info p {
-	line-height:22px;
-	font-size:14px;
-}
-
-.contact-info .ico {
-	margin-right:15px;
-}
-
-.contact-info ul li {
-	font-size:18px;
-	font-weight:400;
-	margin-bottom:10px;
-}
 
 /*-----------------------------------------------------------------------------------*/
 /* 14. FOOTER STYLES
@@ -1041,43 +420,6 @@ input[type="submit"]:active {}
 	font-size:14px;
 }
 
-/*-----------------------------------------------------------------------------------*/
-/* 16. BACK TO TOP BUTTON STYLES
-/*-----------------------------------------------------------------------------------*/
-
-#back-top {
-	position: fixed;
-	bottom: 30px;
-	right:20px;
-}
-
-#back-top a {
-	width: 60px;
-	-webkit-transition: 1s;
-	-moz-transition: 1s;
-	transition: 1s;
-}
-
-#back-top a:hover {
-	color: #000;
-}
-
-#back-top span {
-	width: 60px;
-	height: 60px;
-	display: block;
-	margin-bottom: 7px;
-	background: url(/images/back-top.png) no-repeat center center;
-	opacity:0.5;
-	filter: alpha(opacity = 50);
-	-webkit-transition: 1s;
-	-moz-transition: 1s;
-	transition: 1s;
-}
-
-#back-top a:hover span {opacity:1;}
-
-
 /*  #Mobile (Portrait)
 ================================================== */
 
@@ -1103,12 +445,4 @@ input[type="submit"]:active {}
 .top-content input {width: 120px;}
 .top-content form a {width: 118px;}
 
-}
-
-/* Custome Changes */
-.home_logo{
-	width: 100px;
-	display: block;
-	margin: auto;
-	margin-bottom: 20px;
 }
