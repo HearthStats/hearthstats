@@ -1,0 +1,16 @@
+<% if current_user.nil? || current_user.subscription.nil? %>
+  <div class="top-cont" style="width: 728px; height: 90px; display:block; padding: 0px; margin: auto; background: url('<%=public_url("assets/adblocked.png")%>  '); cursor: pointer; margin-top: 30px;">
+    <div class="foot-advvv">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- footer-ad -->
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:728px;height:90px"
+           data-ad-client="ca-pub-2223694883391157"
+           data-ad-slot="4334666625"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+<div class="cf"></div>
+<% end %>
