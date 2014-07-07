@@ -127,8 +127,8 @@ class Match < ActiveRecord::Base
     matches_per_class = {}
     Klass.list.each { |klass| matches_per_class[klass] = 0 }
     
-    matches.group(:klass_id).count.each do |id, count|
-      matches_per_class[Klass::LIST[id]] = count
+    matches.joins(:klass).group("klasses.name").count.each do |name, count|
+      matches_per_class[name] = count
     end
     
     matches_per_class
