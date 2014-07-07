@@ -40,7 +40,7 @@ class DecksController < ApplicationController
     impressionist(@deck)
 
     unless params[:version].nil?
-      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].cardstring
+      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].try(:cardstring)
       @deck.cardstring = cardstring
     end
 
