@@ -311,6 +311,11 @@ p {
 #sidebar{
   background: #212121;
   height: 100%;
+  color: white;
+}
+
+#sidebar h2{
+  color: white;
 }
 
 /* 6.a TRACKER PROMO */
@@ -318,7 +323,7 @@ p {
   width: 80%;
   margin: auto;
   display: block;
-  padding: 50px 0;
+  padding-top: 74px;
 }
 
 /*-----------------------------------------------------------------------------------*/
