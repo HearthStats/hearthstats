@@ -463,7 +463,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy (>= 2.1.2)
   lograge
-  mailboxer
+  mailboxer (~> 0.11.0)
   meta-tags
   meta_search (>= 1.1.0.pre)
   mini_magick

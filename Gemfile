@@ -71,7 +71,7 @@ gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
 gem 'unf'
-gem 'mailboxer' # User notifications and mailing
+gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
 gem 'imgkit'
 gem 'thin'
 gem 'activeadmin'
