@@ -96,13 +96,14 @@ class DashboardsController < ApplicationController
     data = Array.new
     classrate = Hash.new
     tot = Hash.new
-    (1..Klass.count).each do |c|
+    Klass::LIST.each do |c,name|
+      matches = Match.where(season_id: current_season)
       totalwins = 0
       totalgames = 0
-      totalwins = Match.where(mode_id: mode, klass_id: c, result_id: 1 ).count + Match.where( mode_id: mode, oppclass_id: c, result_id: 2 ).count
-      totalgames = Match.where( mode_id: mode, klass_id: c).count + Match.where( mode_id: mode, oppclass_id: c).count
-      classrate[Klass.find(c).name] = totalgames > 0 ? (totalwins.to_f / totalgames) : 0
-      tot[Klass.find(c).name] = totalgames
+      totalwins = matches.where(mode_id: mode, klass_id: c, result_id: 1 ).count + matches.where( mode_id: mode, oppclass_id: c, result_id: 2 ).count
+      totalgames = matches.where( mode_id: mode, klass_id: c).count + matches.where( mode_id: mode, oppclass_id: c).count
+      classrate[name] = totalgames > 0 ? (totalwins.to_f / totalgames) : 0
+      tot[name] = totalgames
     end
     classrate = classrate.sort_by { |name, winsrate| winsrate }.reverse
     data << tot
