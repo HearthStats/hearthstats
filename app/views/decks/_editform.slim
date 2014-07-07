@@ -21,7 +21,7 @@ small You may have to refresh the page if nothing works.
         .form-group
           = f.label t('decks.form.class')
           |: &nbsp;
-          = @deck.klass.name
+          = @deck.klass.try(:name)
         .form-group
           = f.label t('decks.form.name')
           = f.text_field :name, class: 'form-control'
