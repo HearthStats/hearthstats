@@ -87,7 +87,6 @@ gem 'ransack' # the new meta_search
 gem 'honeybadger'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
-gem 'coveralls', require: false
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
