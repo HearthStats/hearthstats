@@ -15,7 +15,6 @@ group :development do
   gem 'pry'
   gem 'seed_dump'
   gem 'rack-mini-profiler'
-  gem 'database_cleaner'
   gem 'guard-zeus'
 end
 
@@ -37,6 +36,7 @@ end
 gem 'devise'
 gem 'devise-token_authenticatable'
 gem 'cancan'
+gem 'rolify'
 
 # storage
 gem 'fog'
@@ -62,31 +62,32 @@ gem 'sitemap_generator'
 gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
 gem 'feedjira' # Parse rss feeds
-gem 'twitch' # Get Twitch streamers
 gem 'lograge' # Minify log outputs
 gem 'redactor-rails' # WYSIWYG editor
 gem 'rmagick' # Upload images needed for redactor
 gem 'carrierwave' # Upload files needed for redactor
 gem 'mini_magick' # Upload images needed for redactor
-gem 'cindy' # Sendy API
 gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
 gem 'unf'
 gem 'mailboxer' # User notifications and mailing
 gem 'imgkit'
-gem 'newrelic_rpm'
 gem 'thin'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
-gem 'rolify'
 gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
-gem 'gon'
+gem 'gon' # Easy Rails to JS Vars
 gem 'ransack' # the new meta_search
-gem 'honeybadger'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
+
+# APIs
+gem 'newrelic_rpm'
+gem 'honeybadger'
+gem 'cindy' # Sendy API
+
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

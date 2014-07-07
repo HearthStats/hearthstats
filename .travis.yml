@@ -11,4 +11,7 @@ script:
   - RAILS_ENV=test bundle exec rake spec
 notifications:
   email:
-    - jeff@hearthstats.net
+    recipients:
+      - jeff@hearthstats.net
+    on_success: [always|never|change] # default: change
+    on_failure: [always|never|change] # default: always
