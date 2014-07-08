@@ -114,4 +114,8 @@ class User < ActiveRecord::Base
 
     rank
   end
+
+  def is_admin?
+    has_role? :admin
+  end
 end

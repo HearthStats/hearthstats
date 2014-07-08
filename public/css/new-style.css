@@ -23,6 +23,9 @@ a {color:#000;}
 a:hover {color:#333333;}
 a:link,a:visited,a:active {outline:0;}
 
+h2{
+  font-family: 'Quicksand';
+}
 h3 {
   font-family: 'Quicksand';
   font-weight: 300;
@@ -104,6 +107,7 @@ p {
 	float:left;
   font-size: 14px;
   padding: 10px;
+  text-transform:uppercase;
 }
 
 .top-nav li a {
@@ -231,6 +235,10 @@ p {
      -moz-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
           box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
 }
+
+#decklist td{
+  font-size: 12px;
+}
 .arrow{
   background-color: #F27F45;
   width: 35px;
@@ -312,18 +320,24 @@ p {
   background: #212121;
   height: 100%;
   color: white;
+  padding: 20px 50px;
 }
 
 #sidebar h2{
   color: white;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 /* 6.a TRACKER PROMO */
 .deck-screen{
-  width: 80%;
   margin: auto;
   display: block;
-  padding-top: 74px;
+  padding-top: 54px;
+}
+.tracker-desc{
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 /*-----------------------------------------------------------------------------------*/
