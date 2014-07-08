@@ -1,6 +1,18 @@
 $(document).ready(function(){
 'use strict';
 
+// Ad refreshing
+window.setInterval(function() {
+  var iframe = document.getElementById('side1');
+  iframe.src = iframe.src;
+},180000);
+window.setInterval(function() {
+  var iframe = document.getElementById('side2');
+  iframe.src = iframe.src;
+},180000);
+
+// Set height because CSS is messed up
+$("#sidebar").height($("#main").parent().height());
  
 //================ Responsive menu ===================//
 

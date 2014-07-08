@@ -22,9 +22,9 @@
   <!-- CSS Files -->
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/reset.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("foundation.css")%> data-turbolinks-track />
-  <link rel="stylesheet" type="text/css" href=<%= public_url("css/new-style.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/footable.core.min.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/new-style.css")%> data-turbolinks-track />
 
   <!-- FAVICON-->
   <%= favicon_link_tag 'favicon.ico' %>
@@ -54,7 +54,13 @@
 
         <!-- Login menu -->
         <div class="top-login">
-          test
+          <%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
+            <%= f.email_field :email, :autofocus => true, :placeholder => "Email", class: "form-control"%>
+            <%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
+
+            <%= f.check_box :remember_me, checked: true,  class: "hide" %>
+            <%= f.submit "Login", class: "form-button" %>
+          <% end %>
         </div>
       </div>
 
@@ -137,7 +143,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Decklists section -->
     <section id="decklists">
       <div class="row">
@@ -271,14 +277,45 @@
     </section>
   </div>
   <div class="four columns" id="sidebar">
-    <div class="tracker">
+    <section class="tracker">
       <img src="<%= public_url("images/screen/deck-page.jpg") %>" alt="" class="deck-screen">
       <h2>Stat Tracker</h2>
       <div class="tracker-desc">
         Automatically track your Hearthstone games with this FREE TRACKER. Gain insight into your win percentages and more!
       </div>
-    </div>
+      <div class="actions">
+        <div class="button success">Web App</div>
+        <div class="button">Download</div>
+      </div>
+    </section>
+    
+    <section class="sidead">
+      <iframe src="http://ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="227" height="250" id="side1"></iframe>
+    </section>
+    
+    <section class="report">
+
+      <h2>Stat Report</h2>
+      <div class="tracker-desc">
+        View this month's global stats from the whole Hearthstats community! See the most popular class, highest win rate and more!
+      </div>
+      <div class="actions">
+        <div class="button success expand">View</div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+     <h2>Newsletter Sign Up</h2>
+     <div class="tracker-desc">
+       Gain even more insight into the game by signing up to our weekly newsletter and receive the best of Hearthstone for the week.
+     </div>
+   </section>
+
+   <section class="sidead">
+      <iframe src="http://ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="227" height="250" id="side2"></iframe>
+    </section>
   </div>
+   
 </div>
 
 <!-- Footer section -->

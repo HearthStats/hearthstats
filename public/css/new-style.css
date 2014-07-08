@@ -2,13 +2,12 @@
 /* 1. GLOBAL STYLES
 /*-----------------------------------------------------------------------------------*/
 
-html{
-  height: 100%;
-}
-body {
+html, body{
   font-family: 'Quicksand';
   background-color: #f7fafd;
-  height: 100%;
+  height: 100% !important;
+  margin: 0;
+  padding: 0;
 }
 
 #main, #sidebar{
@@ -85,6 +84,19 @@ p {
   }
   .top-bar {display: none;margin:0;}
 
+}
+
+/* LOGIN FORM */
+
+.form-control{
+  width: 30% !important;
+  float: left;
+  margin: 0 !important;
+  height: auto !important;
+}
+
+form{
+  margin: 0;
 }
 
 /* 2a. Nav Menu
@@ -231,9 +243,9 @@ p {
 #decklists{
   padding:60px 0 60px 0;
   background-color: #CDD1D4;
-  -webkit-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
-     -moz-box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
-          box-shadow: 0 10px 6px -6px #777, inset 0 10px 6px -6px #777;
+  -webkit-box-shadow: inset 0 10px 6px -6px #777;
+     -moz-box-shadow: inset 0 10px 6px -6px #777;
+          box-shadow: inset 0 10px 6px -6px #777;
 }
 
 #decklist td{
@@ -286,6 +298,9 @@ p {
 
 #streams {
   padding:60px 0 60px 0;
+  -webkit-box-shadow: inset 0 10px 6px -6px #777;
+     -moz-box-shadow: inset 0 10px 6px -6px #777;
+          box-shadow: inset 0 10px 6px -6px #777;
 }
 .stream-screenshot img{
   width: 100%;
@@ -318,18 +333,27 @@ p {
 
 #sidebar{
   background: #212121;
-  height: 100%;
   color: white;
-  padding: 20px 50px;
+  height: 100%;
 }
 
+#sidebar section{
+  padding: 20px 50px;
+}
 #sidebar h2{
   color: white;
   font-size: 20px;
   text-transform: uppercase;
 }
 
+.break-line{
+  border-top: medium solid #333;
+}
 /* 6.a TRACKER PROMO */
+
+.tracker{
+  padding-bottom: 20px;
+}
 .deck-screen{
   margin: auto;
   display: block;
@@ -340,6 +364,15 @@ p {
   line-height: 1.5;
 }
 
+.actions{
+  margin-top: 10px;
+}
+
+/* 6.c NEWSLETTER*/
+
+.newsletter{
+  background-color: #F27F45;
+}
 /*-----------------------------------------------------------------------------------*/
 /* 12. OTHER STYLES
 /*-----------------------------------------------------------------------------------*/
