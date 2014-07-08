@@ -19,8 +19,8 @@ class WelcomeController < ApplicationController
               reverse
 
     # Streams
-    # @featured_streams = get_featured_streamers
-    # @top_streams = get_top_streamers
+    @featured_streams = get_featured_streamers
+    @top_streams = get_top_streamers.first(6)
 
     render layout: false
   end
@@ -250,10 +250,8 @@ class WelcomeController < ApplicationController
     end
 
     def get_top_streamers
-      top_streams = Rails.cache.fetch("top_streams")
-      if top_streams.nil?
-        top_streams = HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')
-        Rails.cache.write("top_streams", top_streams, expires_in: 2.minutes)
+      top_streams = Rails.cache.fetch("top_streams") do
+        HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
       end
 
       top_streams

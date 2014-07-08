@@ -114,5 +114,6 @@ $('.top-nav').mobileMenu({
     }
   });
   $('#tab-container').easytabs();
+  $('#stream-container').easytabs();
 });
 

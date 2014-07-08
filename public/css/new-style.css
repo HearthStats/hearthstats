@@ -69,7 +69,7 @@ p {
 }
 
 .top-bar {
-	background: #212121;
+	background: #24292d;
   height: 37px;
   margin-bottom: 0px;
 }
@@ -87,14 +87,49 @@ p {
 }
 
 /* LOGIN FORM */
-
+.top-login{
+  text-align: right;
+}
 .form-control{
   width: 30% !important;
-  float: left;
   margin: 0 !important;
-  height: auto !important;
+  padding: 0 0 0 15px !important;
+  padding-left: 10px;
+  height: 37px !important;
+  vertical-align: top;
+  display: inline-block !important;
+  border-radius: 0 !important;
+  background-color: #1f2327 !important;
+  border: none !important;
+  color: white !important;
+  
+}
+.form-control:focus{
+  background-color: #1c2023 !important;
 }
 
+.login-button{
+  height: 37px;
+  width: 100px;
+  background-color: #F27F45;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none;
+  vertical-align: top;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block !important;
+  cursor: pointer;
+  webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+.login-button:hover{
+  background-color: #f47422 !important;
+}
 form{
   margin: 0;
 }
@@ -105,7 +140,7 @@ form{
 .nav-bar{
   height: 100%;
   margin-top: 0px !important;
-  background-color: #30353B;
+  background-color: #30353b;
   font-weight: 700;
 
 }
@@ -332,7 +367,7 @@ form{
 /*-----------------------------------------------------------------------------------*/
 
 #sidebar{
-  background: #212121;
+  background: #1f2327;
   color: white;
   height: 100%;
 }
@@ -364,6 +399,11 @@ form{
   line-height: 1.5;
 }
 
+.button{
+  border: none !important;
+  box-shadow: none;
+  webkit-box-shadow: none;
+}
 .actions{
   margin-top: 10px;
 }
