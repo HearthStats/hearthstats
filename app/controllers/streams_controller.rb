@@ -4,7 +4,7 @@ class StreamsController < ApplicationController
     @streams = twitch_response['streams'].paginate(page: params[:page], per_page: 12)
 
     @featured_streams = Array.new
-    streamers = ['kisstafer','bradhs','imd2','ihosty']
+    streamers = ['rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
     streamers.each do |u|
       channel_info = HTTParty.get("https://api.twitch.tv/kraken/channels/#{u}")
       online = !HTTParty.get("https://api.twitch.tv/kraken/streams/#{u}")['stream'].nil?

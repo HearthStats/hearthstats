@@ -13,16 +13,17 @@ div class="row"
     div class="margin-top-10"
       div.row
         - @featured_streams.each do |s|
-          div class="mix-grid"
-            div class="col-md-3 col-sm-4 mix"
-              div class="mix-inner"
-                div.streamer-badge class="#{s[0]}" = s[0]
-                img src="#{s[1]['logo']}" class="img-responsive"
-                div class="mix-details"
-                  h4 = s[1]["display_name"]
-                  div = s[1]["status"]
-                  a class="mix-link" href="#{s[1]['url']}" target="_none"
-                    i class="fa fa-link"
+          - if s[0] == 'Online'
+            div class="mix-grid"
+              div class="col-md-3 col-sm-4 mix"
+                div class="mix-inner"
+                  div.streamer-badge class="#{s[0]}" = s[0]
+                  img src="#{s[1]['logo']}" class="img-responsive"
+                  div class="mix-details"
+                    h4 = s[1]["display_name"]
+                    div = s[1]["status"]
+                    a class="mix-link" href="#{s[1]['url']}" target="_none"
+                      i class="fa fa-link"
 
 h3 Top Streams
 = will_paginate @streams, renderer: BootstrapPagination::Rails
