@@ -24,8 +24,19 @@ class WelcomeController < ApplicationController
 
     render layout: false
   end
-  # Past last patch
-  # where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current.end_of_day)
+
+  def newsletter_sub
+    begin
+      c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
+      c.subscribe "6V763uDbDJuEja62CUwTlthQ", params[:email]
+    rescue Cindy::AlreadySubscribed => e
+    end
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Newsletter Subscribed" }
+    end
+  end
+
   def demo_user
     sign_in(:user, create_guest_user)
     respond_to do |format|

@@ -331,7 +331,11 @@
     <section class="newsletter">
      <h2>Newsletter Sign Up</h2>
      <div class="tracker-desc">
-       Gain even more insight into the game by signing up to our weekly newsletter and receive the best of Hearthstone for the week.
+        Gain even more insight into the game by signing up to our weekly newsletter and receive the best of Hearthstone for the week.
+        <%= form_tag welcome_newsletter_sub_path, method: :post, class: 'newsletter-form' do %>
+          <%= text_field_tag 'email', nil, placeholder: 'Email' %>
+          <%= submit_tag "Subscribe" ,class: 'button newsletter-submit' %>
+        <% end %>
      </div>
    </section>
 

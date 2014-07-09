@@ -69,6 +69,7 @@ Hearthstats::Application.routes.draw do
 
   get "welcome/index"
   get "welcome/demo_user"
+  post "welcome/newsletter_sub"
 
   resources :arena_runs do
     collection do
