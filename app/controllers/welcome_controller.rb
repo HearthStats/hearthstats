@@ -138,6 +138,10 @@ class WelcomeController < ApplicationController
     render file: "#{Rails.root}/public/reports/may_report.html", layout: 'fullpage'
   end
 
+  def june_report
+    render file: "#{Rails.root}/public/reports/june_report.html", layout: 'fullpage'
+  end
+
   def novreport
     render layout: 'fullpage'
   end
