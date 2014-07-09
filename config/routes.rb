@@ -4,7 +4,7 @@ Hearthstats::Application.routes.draw do
   #
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
+
   # Delayed_job_web
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
@@ -23,6 +23,7 @@ Hearthstats::Application.routes.draw do
       get 'past'
       post 'regtourny'
       post 'createtourny'
+      get 'calendar'
     end
   end
 
@@ -78,7 +79,7 @@ Hearthstats::Application.routes.draw do
     get 'sig'
     post 'set_locale', on: :collection
   end
-  
+
   resources :decks do
     opinio
     collection do

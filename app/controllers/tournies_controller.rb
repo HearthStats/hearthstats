@@ -10,14 +10,14 @@ class TourniesController < ApplicationController
     @tourny = Tourny.find(params[:id])
 
     params[:items] ||= 20
-    
+
     @q = Deck.where(is_public: true).
               where(user_id: @tourny.user_decks_id).
               group(:unique_deck_id).
               joins(:unique_deck).
               includes(:unique_deck, user: :profile).
               ransack(params[:q])
-              
+
     @decks = @q.result
     @decks = @decks.order("#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
@@ -26,13 +26,16 @@ class TourniesController < ApplicationController
       unique_deck_ids = @decks.map(&:unique_deck_id)
       @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
     end
-    
+
   end
 
   def signup
   end
 
   def past
+  end
+
+  def calendar
   end
 
   def regtourny
@@ -105,10 +108,10 @@ class TourniesController < ApplicationController
       format.html { redirect_to root_path, alert: 'Local Tourny not saved!' }
     end
   end
-  
+
   def sort_by
     return 'num_users' unless params[:sort]
-    
+
     sort = (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
     sort = 'decks.created_at' if sort == 'created_at'
   end

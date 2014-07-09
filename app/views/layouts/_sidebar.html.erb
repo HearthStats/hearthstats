@@ -116,11 +116,13 @@
       <ul class="sub-menu">
         <li >
           <%= link_to tournies_path do %>
-          <span class="badge badge-warning badge-roundless"></span><%= t('menu.tournaments.recent') %><% end %>
+            <%= t('menu.tournaments.recent') %>
+          <% end %>
         </li>
         <li >
-          <a href="#">
-          <span class="badge badge-warning badge-roundless">TBA</span><%= t('menu.tournaments.Calendar') %></a>
+          <%= link_to calendar_tournies_path do %>
+            <span class="badge badge-success badge-roundless">NEW</span><%= t('menu.tournaments.Calendar') %>
+          <% end %>
         </li>
         <li >
           <a href="#">
