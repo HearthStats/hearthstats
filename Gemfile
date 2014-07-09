@@ -61,7 +61,7 @@ gem 'jquery-ui-rails'
 gem 'sitemap_generator'
 gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
-gem 'feedjira' # Parse rss feeds
+gem 'feedjira', :require => false # Parse rss feeds
 gem 'lograge' # Minify log outputs
 gem 'redactor-rails' # WYSIWYG editor
 gem 'rmagick' # Upload images needed for redactor
@@ -80,6 +80,8 @@ gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon' # Easy Rails to JS Vars
 gem 'ransack' # the new meta_search
+
+# Background
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
 

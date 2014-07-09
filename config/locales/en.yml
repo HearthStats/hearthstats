@@ -368,6 +368,7 @@ en:
       do_not_share: do not share this with anyone else
       click_to_reveal: Click to reveal
       instructions: Instructions
+      tutorial_video: Tutorial Video
       please_have_installed: Please make sure you have Java 7+ installed.
       download_java_here: Download Java Here
       instructions_osx:
