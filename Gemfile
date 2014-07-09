@@ -15,6 +15,7 @@ group :development do
   gem 'pry'
   gem 'seed_dump'
   gem 'rack-mini-profiler'
+  gem 'database_cleaner'
   gem 'guard-zeus'
 end
 
