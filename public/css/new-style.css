@@ -333,9 +333,22 @@ form{
 
 #streams {
   padding:60px 0 60px 0;
-  -webkit-box-shadow: inset 0 10px 6px -6px #777;
-     -moz-box-shadow: inset 0 10px 6px -6px #777;
-          box-shadow: inset 0 10px 6px -6px #777;
+}
+.stream{
+  height: 250px;
+}
+.stream-tabs{
+  background-color: #F0F1F3;
+}
+
+.stream-tabs li a {
+  color: #24292D;
+}
+.stream-tabs .active {
+  background-color: #AFB2B7;
+}
+.stream-container{
+  padding: 10px;
 }
 .stream-screenshot img{
   width: 100%;
@@ -344,6 +357,13 @@ form{
 .stream-name{
   font-size: 23px;
 }
+.stream-description{
+  padding-bottom: 20px;
+  float: left;
+}
+.live-details{
+  float: right;
+}
 .stream-viewers{
   text-align: right;
 }
@@ -351,13 +371,10 @@ form{
   text-align: right;
   font-weight: 700;
 }
+.stream-tab-container{
+  padding: 30px 20px;
+}
 @media (max-width: 767px) {
-  .stream-description{
-    float: left;
-  }
-  .live-details{
-    float: right;
-  }
   .stream-view{
     margin-top: 8px;
   }
@@ -412,6 +429,12 @@ form{
 
 .newsletter{
   background-color: #F27F45;
+}
+
+@media (max-width: 767px) {
+  #sidebar{
+    display: none;
+  }
 }
 /*-----------------------------------------------------------------------------------*/
 /* 12. OTHER STYLES

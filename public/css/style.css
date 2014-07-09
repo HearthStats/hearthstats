@@ -279,34 +279,12 @@ p {
 #streams {
   padding:60px 0 60px 0;
 }
-.stream{
-  margin-bottom: 10px;
-}
-.stream-tabs{
-  background-color: #F0F1F3;
-}
-
-.stream-tabs li a {
-  color: white;
-}
-.stream-tabs.tabs.active {
-  background-color: #CDD1D4;
-}
-.stream-container{
-  padding: 10px;
-}
 .stream-screenshot img{
   width: 100%;
   margin-bottom: 10px;
 }
 .stream-name{
   font-size: 23px;
-}
-.stream-description{
-  float: left;
-}
-.live-details{
-  float: right;
 }
 .stream-viewers{
   text-align: right;
@@ -315,10 +293,13 @@ p {
   text-align: right;
   font-weight: 700;
 }
-.stream-tab-container{
-  padding: 30px 20px;
-}
 @media (max-width: 767px) {
+  .stream-description{
+    float: left;
+  }
+  .live-details{
+    float: right;
+  }
   .stream-view{
     margin-top: 8px;
   }
