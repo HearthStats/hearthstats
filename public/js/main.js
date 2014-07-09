@@ -12,7 +12,7 @@ window.setInterval(function() {
 },180000);
 
 // Set height because CSS is messed up
-// $("#sidebar").height($("#main").parent().height());
+$("#sidebar").height($("#main").parent().height());
  
 //================ Responsive menu ===================//
 
