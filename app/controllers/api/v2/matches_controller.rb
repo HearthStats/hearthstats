@@ -7,8 +7,13 @@ class Api::V2::MatchesController < ApplicationController
   def query
     # Check Params
     params[:mode].nil?
-    result = Match.where(user_id: current_user.id)
-    if params[:mode].present?
+
+    if params[:deck_id].present?
+      result = Match.joins(:deck).includes(:deck).where('decks.id' => params[:deck_id], user_id: current_user.id)
+    else
+      result = Match.where(user_id: current_user.id)
+    end
+      if params[:mode].present?
       result = result.where(mode_id: params[:mode])
     end
     if params[:result].present?
@@ -38,8 +43,9 @@ class Api::V2::MatchesController < ApplicationController
     if params[:last_id]
       result = result.where('id > ?', params[:last_id].to_i)
     end
-    
-    render json: { status: "success", data: result }
+
+    merged_result = result.map { |r| r.attributes.merge(deck_id: r.deck.id)}
+    render json: { status: "success", data: merged_result }
   end
 
   def new
