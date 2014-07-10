@@ -43,7 +43,7 @@ class ConstructedsController < ApplicationController
     
     if @my_decks.blank?
       redirect_to new_deck_path, notice: "Please create a deck first."
-    else 
+    else
       @constructed = Match.new
       @lastentry   = Match.where(user_id: current_user.id, mode_id: [2,3]).last
     end
@@ -109,7 +109,7 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Match.find(params[:id])
-    deck = Deck.where(user_id: current_user.id, name: params[:deckname])[0]
+    deck = @constructed.deck
     matchdeck = @constructed.match_deck
     matchdeck.deck_id = deck.id
     matchdeck.save!
