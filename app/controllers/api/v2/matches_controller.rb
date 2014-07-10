@@ -9,7 +9,7 @@ class Api::V2::MatchesController < ApplicationController
     params[:mode].nil?
 
     if params[:deck_id].present?
-      result = Match.joins(:deck).includes(:deck).where('decks.id' => params[:deck_id], user_id: current_user.id)
+      result = Match.joins(:deck).where('decks.id' => params[:deck_id], user_id: current_user.id)
     else
       result = Match.where(user_id: current_user.id)
     end
