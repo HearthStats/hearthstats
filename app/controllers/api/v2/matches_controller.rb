@@ -13,7 +13,7 @@ class Api::V2::MatchesController < ApplicationController
     else
       result = Match.where(user_id: current_user.id)
     end
-      if params[:mode].present?
+    if params[:mode].present?
       result = result.where(mode_id: params[:mode])
     end
     if params[:result].present?
