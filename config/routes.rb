@@ -163,6 +163,7 @@ Hearthstats::Application.routes.draw do
       post "decks/delete"
       post "decks/activate"
       post "decks/slots"
+      get "users/premium"
     end
 
     namespace :v2 do
