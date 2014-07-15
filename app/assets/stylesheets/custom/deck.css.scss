@@ -153,6 +153,7 @@
 }
 #deck-list{
   border-bottom: 1px solid black;
+  tr:nth-child(even){background: #CCC}
   .green{
     color: #35aa47;
   }

@@ -49,6 +49,7 @@ GEM
     asset_sync (1.0.0)
       activemodel
       fog (>= 1.8.0)
+    awesome_print (1.2.0)
     aws-sdk (1.41.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -428,6 +429,7 @@ DEPENDENCIES
   activeadmin
   acts-as-taggable-on
   asset_sync
+  awesome_print
   aws-sdk
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)

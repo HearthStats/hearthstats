@@ -78,3 +78,6 @@ console
 
 custom_plan.rb
 zeus.json
+
+# Screw gitignore
+.DS_Store

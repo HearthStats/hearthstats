@@ -16,6 +16,7 @@ group :development do
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
+  gem 'awesome_print'
 end
 
 group :assets do
