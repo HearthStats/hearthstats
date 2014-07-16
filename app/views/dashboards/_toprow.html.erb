@@ -43,7 +43,7 @@
                     </div>
                     <div class="cont-col2">
                       <div class="desc">
-                        <%= entry.match_result.name %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.with' %> <%= entry.klass.name %>
+                        <%= Match::RESULTS_LIST[entry.result_id] %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.with' %> <%= entry.klass.name %>
                       </div>
                     </div>
                   </div>

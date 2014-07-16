@@ -47,7 +47,7 @@ div.row
       div.portlet-body
         div class="scroller" style="height: 136px;" data-always-visible="1" data-rail-visible="0"
           ul.feeds
-            - Annoucement.order('created_at DESC').take(6).each do |ann|
+            - @announcements.each do |ann|
               li
                 div.col1
                   div.cont
@@ -56,7 +56,7 @@ div.row
                         i.fa.fa-bullhorn
                     div.cont-col2
                       div.desc
-                        = ann.description
+                        = raw ann.description
                 div.col2
                   - if current_user.guest?
                     div.date = ann.created_at
