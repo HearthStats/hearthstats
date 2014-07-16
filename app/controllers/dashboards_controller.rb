@@ -12,6 +12,7 @@ class DashboardsController < ApplicationController
     
     @arenawins = current_user.winrate_per_day(10, 'arena')
     @conwins   = current_user.winrate_per_day(10, 'constructed')
+    @announcements = Annoucement.order('created_at DESC').take(6)
     
     # Get all user's matches from this season
     matches = Match.where(user_id: current_user.id, season_id: current_season)
