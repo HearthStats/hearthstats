@@ -108,7 +108,7 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Match.find(params[:id])
-    deck = @constructed.deck
+    deck = Deck.where(user_id: current_user.id, name: params[:deckname])[0]
     matchdeck = @constructed.match_deck
     matchdeck.deck_id = deck.id
     matchdeck.save!
