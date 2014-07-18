@@ -17,4 +17,15 @@ module ConstructedsHelper
     
     options
   end
+
+  def cal_win_rate(wins, loss, draw)
+    tot_games = wins + loss + draw
+    return "N/A" if tot_games == 0 
+    
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
+    
+    win_rate
+  end
+
 end
