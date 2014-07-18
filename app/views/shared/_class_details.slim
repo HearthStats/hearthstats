@@ -26,7 +26,6 @@
           th Win %
         - results = matches.group([:result_id, :oppclass_id]).count
         - (1..Klass.count).each do |k|
-          - logger.debug "------ run through klass #{k}"
           tr
             td = Klass::LIST[k]
             td = results[[1, k]] || 0

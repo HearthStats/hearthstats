@@ -159,12 +159,18 @@ class ConstructedsController < ApplicationController
       @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
 
+    # Personal Stats
     @personal_matches    = @matches.where(user_id: current_user.id)
     @personal_win_rates = Match.winrate_per_class(@personal_matches)
-    @global_win_rates   = Match.winrate_per_class(@matches)
-
-    @num_matches_global   = Match.matches_per_class(@matches)
     @num_matches_personal = Match.matches_per_class(@personal_matches)
+
+    # Global Stats
+    global_stats = Rails.cache.fetch('con_global_stats', expires_in: 12.hours) do
+      [ Match.matches_per_class(@matches), 
+        Match.winrate_per_class(@matches) ]
+    end
+    @num_matches_global   = global_stats[0]
+    @global_win_rates   =  global_stats[1]
 
     @classes = Klass.list
   end

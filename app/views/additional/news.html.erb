@@ -1,42 +1,39 @@
-<% cache do %>
-
-  <% set_meta_tags :title => 'Hearthstone News',
-    :description => 'Latest Hearthstone News',
-    :keywords => 'latest hearthstone, hearthstats, hearthstone, match, tracking, win, loss' %>
+<% set_meta_tags :title => 'Hearthstone News',
+  :description => 'Latest Hearthstone News',
+  :keywords => 'latest hearthstone, hearthstats, hearthstone, match, tracking, win, loss' %>
 
 
-  <% provide(:title, t('.title'))%>
-  <% provide(:subtitle, t('.subtitle'))%>
+<% provide(:title, t('.title'))%>
+<% provide(:subtitle, t('.subtitle'))%>
 
-  <div class="row">
-    <div class="col-md-12">
-      <small><%= t('.suggestions_for_news') %></small>
-    </div>
-    <div class="col-md-12 news-page">
-      <!-- entry array: title, url, summary, published -->
-      <div class="gridsizer"></div>
-      <% @items.each do |entry| %>
-      <div class="news-blocks rssentry">
-        <h3><a href=<%=entry[1]%> target="_blank" > <%= entry[0] %></a></h3>
-        <div class="news-block-tags">
-          <strong><%= t('.posted') %>:</strong>
-          <em><%= entry[3].strftime("%b-%d-%Y") %></em>
-        </div>
-        <div class="rss_divider"></div>
-        <p><%= raw truncate(entry[2], :length => 500)  %></p>
-        <a href=<%=entry[1]%> class="news-block-btn" target="_blank" >
-        <%= t('.read_more') %>
-        <i class="m-icon-swapright m-icon-black"></i>
-        </a>
-      </div>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <small><%= t('.suggestions_for_news') %></small>
   </div>
+  <div class="col-md-12 news-page">
+    <!-- entry array: title, url, summary, published -->
+    <div class="gridsizer"></div>
+    <% @items.each do |entry| %>
+    <div class="news-blocks rssentry">
+      <h3><a href=<%=entry[1]%> target="_blank" > <%= entry[0] %></a></h3>
+      <div class="news-block-tags">
+        <strong><%= t('.posted') %>:</strong>
+        <em><%= entry[3].strftime("%b-%d-%Y") %></em>
+      </div>
+      <div class="rss_divider"></div>
+      <p><%= raw truncate(entry[2], :length => 500)  %></p>
+      <a href=<%=entry[1]%> class="news-block-btn" target="_blank" >
+      <%= t('.read_more') %>
+      <i class="m-icon-swapright m-icon-black"></i>
+      </a>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-  <script>
-    $('.news-page').isotope({
-      // options
-      itemSelector : '.rssentry'
-    });
-  </script>
-<% end %>
+<script>
+  $('.news-page').isotope({
+    // options
+    itemSelector : '.rssentry'
+  });
+</script>
