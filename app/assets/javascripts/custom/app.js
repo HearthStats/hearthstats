@@ -1,4 +1,3 @@
-
 // define a global app object to store easily accessible common methods
 var app = app || {};
 

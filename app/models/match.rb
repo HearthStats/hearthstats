@@ -130,7 +130,7 @@ class Match < ActiveRecord::Base
     matches.group("matches.klass_id").count.each do |id, count|
       matches_per_class[Klass::LIST[id]] = count
     end
-    
+
     matches_per_class
   end
   

@@ -33,7 +33,7 @@ class DecksController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @decks }
     end
-  end
+  
   
   def show
     @deck = Deck.find(params[:id])
@@ -221,8 +221,8 @@ class DecksController < ApplicationController
     Deck.where(user_id: current_user.id).update_all(active: nil)
     (1..9).each do |i|
       if params[i.to_s].blank?
-        next
         saves += 1
+        next
       end
       deck = Deck.where(user_id: current_user.id, name: params[i.to_s])[0]
       deck.slot = i

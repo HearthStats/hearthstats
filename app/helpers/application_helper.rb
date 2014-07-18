@@ -19,12 +19,7 @@ module ApplicationHelper
   end
 
   def klasses_hash
-    klasses = Hash.new
-    Klass.all.each do |k|
-      klasses[k.name] = k.id
-    end
-
-    klasses
+    Klass::LIST.invert
   end
 
   def get_name(match, table)

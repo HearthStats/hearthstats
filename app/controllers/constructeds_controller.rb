@@ -19,9 +19,8 @@ class ConstructedsController < ApplicationController
 
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
 
-    @constructeds = current_user.matches.where(mode_id: [2,3])
-    @lastentry    = @constructeds.last
-    @my_decks     = get_my_decks
+    @last_deck = @matches.last.try(:deck)
+    @my_decks = get_my_decks
 
     respond_to do |format|
       format.html
@@ -160,12 +159,12 @@ class ConstructedsController < ApplicationController
       @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
 
-    personal_matches    = @matches.where(user_id: current_user.id)
-    @personal_win_rates = Match.winrate_per_class(personal_matches)
+    @personal_matches    = @matches.where(user_id: current_user.id)
+    @personal_win_rates = Match.winrate_per_class(@personal_matches)
     @global_win_rates   = Match.winrate_per_class(@matches)
 
     @num_matches_global   = Match.matches_per_class(@matches)
-    @num_matches_personal = Match.matches_per_class(personal_matches)
+    @num_matches_personal = Match.matches_per_class(@personal_matches)
 
     @classes = Klass.list
   end

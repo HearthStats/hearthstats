@@ -35,8 +35,17 @@ class ApplicationController < ActionController::Base
     
     win_rate
   end
+  
+  def cal_win_rate(wins, tot_games)
+    return "N/A" if tot_games == 0
+    
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
+    
+    win_rate
+  end
 
-  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash
+  helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash, :cal_win_rate
 
 
   private

@@ -25,10 +25,11 @@
           th Draws
           th Win %
         - results = matches.group([:result_id, :oppclass_id]).count
-        -(1..Klass.count).each do |k|
+        - (1..Klass.count).each do |k|
+          - logger.debug "------ run through klass #{k}"
           tr
             td = Klass::LIST[k]
             td = results[[1, k]] || 0
             td = results[[2, k]] || 0
             td = results[[3, k]] || 0
-            td = get_win_rate(matches.where(oppclass_id: k))
+            td = cal_win_rate(results[[1, k]] || 0, results.sum[1])
