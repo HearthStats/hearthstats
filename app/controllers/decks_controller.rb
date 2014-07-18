@@ -33,6 +33,7 @@ class DecksController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @decks }
     end
+  end
   
   
   def show
