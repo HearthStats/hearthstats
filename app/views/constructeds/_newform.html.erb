@@ -16,7 +16,7 @@
     <div class="col-md-6">
       <div class="gofirstfield center row">
         <span class="coin col-md-6">
-          <h3><%= t('.you_played_on_the') %>: </h3>
+          <h3><%= t('.you_played_on_the') %> </h3>
           <input type="checkbox"
             name="other[gofirst]"
             rel="toggle-btn"
@@ -27,7 +27,7 @@
             offValue="Casual"
           />
         </span>
-        <span class="ranked col-md-6"> <h3><%= t('.this_match_is') %>: </h3>
+        <span class="ranked col-md-6"> <h3><%= t('.this_match_is') %> </h3>
           <input type="text"
             name="other[rank]"
             rel="toggle-btn"
@@ -71,8 +71,15 @@
     </div>
     <div class="col-md-6">
       <div class="con_notes">
-        <h3><%= t('shared.notes') %></h3>
-        <%= f.text_area :notes, :class => "redactor", :cols => 120 %>
+        <h3> Optional Fields </h3>
+        <div class="form-group">
+          <%= f.label "Opponent Name" %>
+          <%= f.text_field :oppname, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Notes" %>
+          <%= f.text_area :notes, :class => "redactor form-control", :cols => 120 %>
+        </div>
       </div>
     </div>
 
