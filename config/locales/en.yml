@@ -259,8 +259,8 @@ en:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
     newform:
       you_played_on_the: You played on the
-      first_turn: first turn
-      second_turn: second turn
+      first_turn: First turn
+      second_turn: Second turn
       this_match_is: This match is
       ranked: Ranked
       casual: Casual
@@ -271,8 +271,8 @@ en:
       add_draw: Add Draw
     form:
       you_played_on_the: You played on the
-      first_turn: first turn
-      second_turn: second turn
+      first_turn: First turn
+      second_turn: Second turn
       this_match_is: This match is
       ranked: Ranked
       casual: Casual
