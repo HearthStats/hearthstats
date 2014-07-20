@@ -4,7 +4,9 @@
   <i class="fa fa-envelope"></i>
   <% receipts = current_user.receipts.where(is_read: false) %>
   <% notes = Notification.find(receipts.map(&:notification_id)) %>
-  <span class="badge inbox-count"><%= notes.count %></span>
+  <% unless notes.count == 0 %>
+    <span class="badge inbox-count"><%= notes.count %></span>
+  <% end %>
   </a>
   <ul class="dropdown-menu extended inbox">
     <li>
