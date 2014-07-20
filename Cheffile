@@ -1,0 +1,12 @@
+# encoding: utf-8
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook "apt"
+cookbook "sqlite", {}
+cookbook "build-essential", {}
+cookbook "rvm", {:github=>"fnichol/chef-rvm", :ref=>"v0.9.0"}
+cookbook "vim", {}
+cookbook "mysql", {}
+cookbook "tmux", {}
+cookbook "git", {}
