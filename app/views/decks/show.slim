@@ -74,7 +74,8 @@ div.row
       - @deck.tag_list.each do |tag|
         div.btn.default.btn-xs.green-stripe = tag
       h3 Notes
-      = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img), attributes: %w(style)
+      = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img),
+        attributes: %w(style src)
     div.deck-show-graph
       = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
     .comments
