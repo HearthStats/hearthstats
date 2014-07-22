@@ -5,7 +5,11 @@
     | &nbsp;
     = f.select :coin_eq, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']]
     | &nbsp;
-    = f.select :mode_id_eq, [["- #{t('.any_mode')} -", ''], [t('.casual'), 2], [t('.ranked'), 3]]
+    = f.select :mode_id_eq, [["- #{t('.all_mode')} -", ''], [t('.casual'), 2], [t('.ranked'), 3]]
+    | &nbsp;
+    = f.select :season_id_eq, content_tag(:option,"- #{t('.all_seasons')} -",
+      :value=>"")+options_from_collection_for_select(Season.all, "id",
+      "name", @q.season_id_eq)
     | &nbsp; Only Active Decks &nbsp;
     = f.check_box :deck_active_true, onchange: "this.form.submit()"
     = f.submit :filter, id: 'statsFilterSubmit'

@@ -12,7 +12,7 @@ class Season < ActiveRecord::Base
   ### CLASS METHODS:
   
   def self.current
-    Season.last.num
+    Season.last.id
   end
   
 end

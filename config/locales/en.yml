@@ -244,17 +244,19 @@ en:
       description: ' constructed game stats'
       section: Constructed
       last: last
+     
     stats_filter:
       hours: hours
       days: days
-      all_time: all time
+      all_time: All Time
       last_days: Last %{num} days
       first_or_second: first or second
-      coin?: Coin?
-      any_mode: any mode
-      casual: casual
-      ranked: ranked
       filter_by: Filter by
+      casual: Casual
+      ranked: Ranked
+      coin?: Coin?
+      all_mode: All Mode
+      all_seasons: All Seasons
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
     newform:
