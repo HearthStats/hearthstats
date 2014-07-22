@@ -7,6 +7,8 @@
     <%= t('.sort_by') %>
     <%= select_tag :sort, options_for_select(sort_for_select, params[:sort]) %>
     <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'], [t('.descending'), 'desc']], params[:order]) %>
+    <%= t('.deck_name') %>
+    <%= f.text_field :name_cont %>
     <%= f.submit 'Apply', id: 'deckListFilterSubmit' %>
   </p>
   
@@ -17,5 +19,4 @@
   $('#deckListFilter select').change(function() {
     $('#deckListFilter').submit();
   });
-  $('#deckListFilterSubmit').hide();
 </script>
