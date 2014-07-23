@@ -1,5 +1,5 @@
 # <a href="http://hearthstats.net/"><img src="https://s3-us-west-2.amazonaws.com/hearthstats/assets/PNG/full_colour/full_colour_inline.png" width="500px"/></a> 
-[![Build Status](http://img.shields.io/travis/HearthStats/hearthstats.svg?branch=master?style=flat)](https://travis-ci.org/HearthStats/hearthstats)
+[![Build Status](http://img.shields.io/travis/HearthStats/hearthstats.svg?style=flat)](https://travis-ci.org/HearthStats/hearthstats)
 [![Coverage Status](https://img.shields.io/coveralls/HearthStats/hearthstats.svg?style=flat)](https://coveralls.io/r/HearthStats/hearthstats?branch=master)
 
 ***
