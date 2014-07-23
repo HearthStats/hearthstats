@@ -18,7 +18,7 @@ task :NewCards => :environment do
                 health: q["health"].to_i,
                 mana: q["cost"].to_i,
                 rarity_id: rarity[q["rarity"]],
-                klass_id: klasses_hash["playerClass"],
+                klass_id: klasses_hash[q["playerClass"]],
                 blizz_id: q["id"]
                )
     counter += 1
