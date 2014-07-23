@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140722214857) do
+ActiveRecord::Schema.define(:version => 20140723020834) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20140722214857) do
     t.integer "mana"
     t.boolean "collectible"
     t.integer "patch_id"
+    t.string  "blizz_id"
   end
 
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"

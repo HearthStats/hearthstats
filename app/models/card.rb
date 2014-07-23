@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   attr_accessible :name, :hearthhead_id, :description, :card_set_id, 
     :rarity_id, :type_id, :klass_id, :race_id, :mana, :health, :attack, 
-    :collectible, :race_id
+    :collectible, :race_id, :blizz_id
     
   ### ASSOCIATIONS:
   

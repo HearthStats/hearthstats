@@ -69,20 +69,19 @@ class CardsController < ApplicationController
   def update
 
     # set this to the card source URL
-    source = ""
+    source = "http://jeromedane.com/hearthstonejson.php"
     require 'net/http'
     @json_result = Net::HTTP.get(URI(source))
     require 'json'
     @hash = JSON.parse @json_result
 
     @hash.each do |card_data|
-      card = Card.find(:first, conditions: ['hearthhead_id = ?', card_data["hearthhead_id"]])
+      card = Card.where(name: card_data["name"]).first
       if(card == nil)
         card = Card.new()
       end
       card.name = card_data["name"]
       card.description = card_data["description"]
-      card.hearthhead_id = card_data["hearthhead_id"]
       card.card_set_id = card_data["set_id"]
       card.rarity_id = card_data["rarity_id"]
       card.type_id = card_data["type_id"]
