@@ -195,6 +195,13 @@ class ConstructedsController < ApplicationController
     end
   end
 
+  def win_rates
+    req = ActiveSupport::JSON.decode(request.body).symbolize_keys
+    matches = Match.where('created_at >= ?', 1.week.ago).where(klass_id: req['klass_id'])
+
+
+  end
+
   def stats
     params[:q]     ||= {}
     params[:days]  ||= 'all'

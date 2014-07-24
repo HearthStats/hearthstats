@@ -10,10 +10,10 @@ class WelcomeController < ApplicationController
               group(:unique_deck_id).
               joins(:unique_deck).
               last(7)
-    @topdecks = Deck.where(is_public: true).
+    @topdecks = Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
               group(:unique_deck_id).
               joins(:unique_deck).
-              where("unique_decks.num_matches >= ?", 10).
+              where("unique_decks.num_matches >= ?", 30).
               sort_by { |deck| deck.unique_deck.winrate || 0 }.
               last(7).
               reverse
@@ -261,7 +261,7 @@ class WelcomeController < ApplicationController
     end
 
     def get_top_streamers
-      top_streams = Rails.cache.fetch("top_streams") do
+      top_streams = Rails.cache.fetch("top_streams", expires_in: 30.minutes) do
         HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
       end
 
