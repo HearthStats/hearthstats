@@ -61,14 +61,14 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
   end
 
   create_table "arena_runs", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "gold",       :default => 0
-    t.integer  "dust",       :default => 0
-    t.boolean  "complete",   :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "user_id",    :limit => 255
+    t.integer  "gold",                      :default => 0
+    t.integer  "dust",                      :default => 0
+    t.boolean  "complete",                  :default => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.text     "notes"
-    t.string   "patch",      :default => "current"
+    t.string   "patch",                     :default => "current"
     t.integer  "klass_id"
   end
 
@@ -219,7 +219,11 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
+<<<<<<< HEAD
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
+=======
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
+>>>>>>> ...
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "klasses", :force => true do |t|
@@ -467,6 +471,52 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tourn_decks", :force => true do |t|
+    t.integer  "tournament_id"
+    t.integer  "tourn_user_id"
+    t.integer  "deck_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "tourn_matches", :force => true do |t|
+    t.integer  "tourn_pair_id"
+    t.integer  "p1_tourndeck_id"
+    t.integer  "p2_tourndeck_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "tourn_pairs", :force => true do |t|
+    t.integer  "tournament_id"
+    t.integer  "roundof"
+    t.integer  "pos"
+    t.integer  "p1_id"
+    t.integer  "p2_id"
+    t.boolean  "winners"
+    t.integer  "winner_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
+  end
+
+  create_table "tourn_users", :force => true do |t|
+    t.integer "tournament_id"
+    t.integer "user_id"
+  end
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name"
+    t.integer  "creator_id"
+    t.integer  "bracket_format"
+    t.integer  "num_players"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "tournies", :force => true do |t|

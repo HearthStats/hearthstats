@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tournpair_id: 1
+  p1_tourndeck_id: 1
+  p2_tourndeck_id: 1
+
+two:
+  tournpair_id: 1
+  p1_tourndeck_id: 1
+  p2_tourndeck_id: 1
