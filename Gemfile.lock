@@ -277,6 +277,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    phashion (1.1.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.4)
@@ -474,6 +475,7 @@ DEPENDENCIES
   nokogiri
   opinio
   paperclip
+  phashion
   pry
   quiet_assets (>= 1.0.1)
   rack-mini-profiler

@@ -100,6 +100,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'
+  gem 'phashion'
 end
 
 group :development, :test do
