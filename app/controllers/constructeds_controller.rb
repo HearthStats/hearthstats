@@ -1,5 +1,5 @@
 class ConstructedsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :win_rates
 
   def index
     params[:q]     ||= {}
@@ -195,13 +195,6 @@ class ConstructedsController < ApplicationController
     end
   end
 
-  def win_rates
-    req = ActiveSupport::JSON.decode(request.body).symbolize_keys
-    matches = Match.where('created_at >= ?', 1.week.ago).where(klass_id: req['klass_id'])
-
-
-  end
-
   def stats
     params[:q]     ||= {}
     params[:days]  ||= 'all'
@@ -227,6 +220,18 @@ class ConstructedsController < ApplicationController
     @global_win_rates   =  global_stats[1]
 
     @classes = Klass.list
+  end
+
+  def win_rates
+    matches = Match.where('created_at >= ?', 2.weeks.ago).
+      where(klass_id: params[:klass_id]).group_by_day(:created_at)
+    wins = matches.where(result_id: 1).count
+    tot = matches.count
+    data =  Hash.new
+    wins.zip(tot).map do |x, y| 
+      data[x[0]] =  (x[1]/y[1] rescue 0)
+    end
+    render json: data
   end
 
   private

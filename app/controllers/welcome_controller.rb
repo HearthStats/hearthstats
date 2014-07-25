@@ -25,6 +25,14 @@ class WelcomeController < ApplicationController
     render layout: false
   end
 
+  def select_klass
+    @klass = params[:klass_id]
+    p @klass
+    respond_to do |format|
+      format.js
+    end 
+  end
+
   def newsletter_sub
     begin
       c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"

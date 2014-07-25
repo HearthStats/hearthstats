@@ -35,6 +35,10 @@ module ConstructedsHelper
     win_rate
   end
 
+  def group_by_day
+    created_at.to_date
+  end
+
   private
 
   def corrected_season(season_id)

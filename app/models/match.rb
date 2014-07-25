@@ -182,13 +182,4 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def get_wr_per_day
-    self.group_by(&:group_by_day)
-  end
-
-  private
-
-  def group_by_day
-    created_at.to_date
-  end
 end

@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="Jeffrey Tong" name="author" />
+  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
   <title>HearthStats | Hearthstone Statistics and Tracking</title>
   <meta name="keywords" content="hearthstone, stats, hearthstats, statistics, tracking, win, loss, online, cloud, automatic">
@@ -26,6 +27,8 @@
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/new-style.css")%> data-turbolinks-track />
 
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <!-- FAVICON-->
   <%= favicon_link_tag 'favicon.ico' %>
   <%= favicon_link_tag '/hearthstatslogo.png', rel: 'apple-touch-icon', type: 'image/png' %>
@@ -99,7 +102,15 @@
             <div class="line"></div>
           <div>
           <div class="wr-graph-container">
-            <div id="wr-graph" class="wr-graph-placeholder"></div>
+            <div id="klass_chart" >
+              <%= line_chart win_rates_constructeds_path(:klass_id => 1), height: "200px"%>
+            </div>
+            <div class="graph-klass-selector">
+              <% Klass::LIST.each do |id, name| %>
+                <% raise %>
+                <%= link_to "Druid", welcome_select_klass_path(:klass_id => k), :remote => true %>
+              <% end %>
+            </div>
           </div>
         </div>
 
@@ -356,9 +367,7 @@
 <!-- Footer section -->
 
 <!-- jQuery Files -->
-<script type="text/javascript" src= <%= public_url("js/jquery.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.mobilemenu.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/jquery.flot.min.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.easing.1.3.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/main.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.footable.js") %> ></script>
