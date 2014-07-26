@@ -229,7 +229,7 @@ class ConstructedsController < ApplicationController
     tot = matches.count
     data =  Hash.new
     wins.zip(tot).map do |x, y| 
-      data[x[0]] =  (x[1]/y[1] rescue 0)
+      data[x[0]] =  (x[1].to_f/y[1] rescue 0)
     end
     render json: data
   end
