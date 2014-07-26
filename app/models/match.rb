@@ -8,6 +8,12 @@ class Match < ActiveRecord::Base
     3 => 'Draw'
   }
 
+  MODES_LIST = {
+    1 => 'Arena',
+    2 => 'Casual',
+    3 => 'Ranked'
+  }
+
   ### ASSOCIATIONS:
   
   has_one :match_run

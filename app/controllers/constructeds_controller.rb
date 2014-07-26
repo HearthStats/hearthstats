@@ -9,17 +9,17 @@ class ConstructedsController < ApplicationController
     params[:sort]  ||= 'created_at'
     params[:order] ||= 'desc'
 
-    @q = current_user.matches.where(mode_id: [2,3]).ransack(params[:q])
+    @q = current_user.matches.includes(:rank).includes(:deck).where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
     unless params[:days] == "all"
-      @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+      @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
 
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
 
-    @last_deck = @matches.last.try(:deck)
+    @last_deck = current_user.matches.last.try(:deck)
     @my_decks = get_my_decks
 
     respond_to do |format|
@@ -53,6 +53,53 @@ class ConstructedsController < ApplicationController
     canedit(@constructed)
     @my_decks = get_my_decks
   end
+
+  def quick_create
+    if params[:deckname].nil?
+      redirect_to new_constructed_path, alert: 'Please create a deck first.'
+      return
+    end
+
+    deck = Deck.where(name: params[:deckname], user_id: current_user.id ).first
+    unless deck
+      redirect_to new_constructed_path, alert: 'Unknown deck'
+      return
+    end
+    
+    # Find mode_id
+    rank = params[:other].try(:[], :rank)
+    if rank == "Ranked"
+      mode_id = 3
+    elsif rank == "Casual"
+      mode_id = 2
+    else
+      redirect_to constructeds_path, alert: 'Mode Error'
+      return
+    end
+    
+    @constructed = Match.new(params[:match])
+    @constructed.mode_id = mode_id
+    @constructed.coin = params[:other][:gofirst].to_i.zero?
+
+    @constructed.klass_id = deck.klass_id
+    @constructed.user_id = current_user.id
+    if params[:win].present?
+      @constructed.result_id = 1
+    elsif params[:defeat].present?
+      @constructed.result_id = 2
+    elsif params[:draw].present?
+      @constructed.result_id = 3
+    end
+    respond_to do |format|
+      if @constructed.save
+        MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
+        delete_deck_cache!(deck)
+        format.js
+      else
+      end
+    end
+  end
+
 
   def create
     if params[:deckname].nil?

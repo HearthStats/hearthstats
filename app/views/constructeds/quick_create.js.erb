@@ -1,0 +1,3 @@
+var html = "<tr><td><%= escape_javascript(link_to(@constructed.deck.name, deck_path(@constructed.deck)))%></td><td><%= Klass::LIST[@arena.oppclass_id] %></td><td><span class='<%= Match::RESULTS_LIST[@constructed.result_id] %>'><%=Match::RESULTS_LIST[match.result_id]%></span></td><td> ASD </td><td> ASD </td><td> ASD </td><td> ASD </td><td> ASD </td><td><%= @constructed.created_at.strftime("%b %d, %Y %H:%M") %></td><td>OPTIONS</td></tr>"
+
+$(html).hide().appendTo('.table > tbody:first').fadeIn(999);

@@ -107,6 +107,7 @@ Hearthstats::Application.routes.draw do
   resources :constructeds do
     collection do
       get :stats
+      post :quick_create
     end
   end
 
