@@ -19,7 +19,7 @@ class ConstructedsController < ApplicationController
 
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
 
-    @last_deck = current_user.matches.last.try(:deck)
+    @last_deck = current_user.matches.where(mode_id: [2,3]).last.try(:deck)
     @my_decks = get_my_decks
 
     respond_to do |format|
