@@ -102,14 +102,20 @@
             <div class="line"></div>
           <div>
           <div class="wr-graph-container">
-            <div id="klass_chart" >
-              <%= line_chart win_rates_constructeds_path(:klass_id => 1), height: "200px"%>
+            <div class="graph-container">
+              <div id="klass-title"><img src="/assets/Icons/Classes/Druid_Icon.gif", 
+                id="klass-img" /><span id="klass-name">Druid</span></div>
+              <div id="klass_chart" >
+                <%= line_chart win_rates_constructeds_path(:klass_id => 1), height: "200px"%>
+              </div>
             </div>
             <div class="graph-klass-selector">
               <% Klass::LIST.each do |id, name| %>
-                <% raise %>
-                <%= link_to "Druid", welcome_select_klass_path(:klass_id => k), :remote => true %>
+                <%= link_to welcome_select_klass_path(:klass_id => id), :remote => true, class:"klass-link", data: {klass: "#{name}"} do %>
+                  <%= name %>
+                <% end %>
               <% end %>
+              <div class="cf"></div>
             </div>
           </div>
         </div>

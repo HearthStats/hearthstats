@@ -261,11 +261,31 @@ form{
 .wr-graph-container {
   box-sizing: border-box;
   width: 100%;
-  height: 200px;
-  padding: 20px 15px 15px 15px;
-  margin: 15px auto 30px auto;
+  padding: 0px 15px 25px 15px;
+  margin: 15px auto 0px auto;
 }
-
+.graph-klass-selector{
+  padding:0px 15px 20px 15px;
+  text-align: center;
+}
+.klass-link{
+  padding: 15px 0px 15px 0px;
+  width: 30%;
+  display: inline-block;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  transition: all 0.4s;
+}
+#klass-title {
+  margin: auto;
+  display: block;
+  text-align: center;
+  font-size: 25px;
+}
+#klass-img {
+  height: 25px;
+  padding-right: 5px;
+}
 .wr-graph-placeholder {
   width: 100%;
   height: 100%;
@@ -584,4 +604,41 @@ form{
 .top-content input {width: 120px;}
 .top-content form a {width: 118px;}
 
+}
+/*Class Colors*/
+
+.Druid {
+  background-color: #FF7D0A;
+}
+
+.Hunter {
+  background-color: #ABD473;
+}
+
+.Mage {
+  background-color: #69CCF0;
+}
+
+.Paladin {
+  background-color: #F58CBA;
+}
+
+.Priest {
+  background-color: #999999;
+}
+
+.Rogue {
+  background-color: #f1c40f;
+}
+
+.Shaman {
+  background-color: #0070DE;
+}
+
+.Warlock {
+  background-color: #9482C9;
+}
+
+.Warrior {
+  background-color: #C79C6E;
 }

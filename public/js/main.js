@@ -22,8 +22,24 @@ $('.top-nav').mobileMenu({
 	subMenuDash: '&ndash;'
 });
 
-//================ Win rate graph (Flot) ====================//
+//================ Win rate graph ====================//
 
+$('.klass-link').click( function(){
+  $('.klass-link').css('font-weight', 'normal');
+  $(this).css('font-weight', 'bold');
+});
+$('.klass-link').hover(
+  function(){
+    var klass = $(this).data("klass");
+    $(this).addClass(klass);
+  },
+  function(){
+    var klass = $(this).data("klass");
+    $(this).removeClass(klass);
+  }
+);
+var random = Math.round(Math.random()*9+1);
+$('.klass-link').eq(random).click();
   //
   // $(function() {
   //
