@@ -268,54 +268,6 @@
       </div>
     </section>
 
-    <!-- Streams section -->
-    <section id="streams row">
-      <div class="content-head">
-        <h2>Streams</h2>
-        <div class="line"></div>
-      </div>
-      <div id="stream-container" class="tab-container">
-        <ul class="etabs stream-tabs">
-          <li class="tab"><a href="#stream-top">Top Streams</a></li>
-          <li class="tab"><a href="#stream-featured">Featured Streams</a></li>
-        </ul>
-        <div class="stream-tab-container">
-          <div id="stream-featured">
-            <% @featured_streams.each do |stream| %>
-              <% if stream[0] == 'Online' %>
-                <div class="six columns stream">
-                  <div class="stream-screenshot"><a href="<%= stream[1]['stream']['channel']["url"] %>"><img src="<%= stream[1]['stream']['preview']["medium"] %>" alt=""></a></div>
-                  <div class="stream-description">
-                    <div class="stream-name"><%= stream[1]['stream']['channel']["display_name"] %></div>
-                    <div class="stream-status"><%= stream[1]['stream']['channel']["status"] %></div>
-                  </div>
-                  <div class="live-details">
-                    <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream[1]['stream']['viewers'] %></div>
-                    <div class="stream-view"><a href="<%= stream[1]['stream']['channel']["url"] %>" class="orange">VIEW</a> </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-          <div id="stream-top">
-            <% @top_streams.each do |stream| %>
-              <div class="six columns stream">
-                <div class="stream-screenshot"><a href="<%= stream['channel']["url"] %>"><img src="<%= stream['preview']["medium"] %>" alt=""></a></div>
-                <div class="row">
-                  <div class="nine columns stream-description">
-                    <div class="stream-name"><%= stream['channel']["display_name"] %></div>
-                    <div class="stream-status"><%= truncate(stream['channel']["status"], length: 50) %></div>
-                  </div>
-                  <div class="three columns live-details">
-                    <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream['viewers'] %></div>
-                    <div class="stream-view"><a href="<%= stream['channel']["url"] %>" class="orange">VIEW</a> </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-    </section>
   </div>
   <div class="four columns" id="sidebar">
     <section class="tracker">
