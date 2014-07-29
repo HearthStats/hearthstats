@@ -19,8 +19,8 @@ class WelcomeController < ApplicationController
               reverse
 
     # Streams
-    # @featured_streams = get_featured_streamers
-    # @top_streams = get_top_streamers.first(6)
+    @featured_streams = Stream.get_featured_streamers
+    @top_streams = get_top_streamers.first(6)
 
     render layout: false
   end
@@ -253,19 +253,6 @@ class WelcomeController < ApplicationController
       end
 
       output = Winrate.new(klass_wr, match_count)
-    end
-
-    def get_featured_streamers
-      featured_streams = Array.new
-      featured_streamers.each do |u|
-        stream = HTTParty.get("https://api.twitch.tv/kraken/streams/#{u}")
-        online = !stream['stream'].nil?
-        status = online ? "Online" : "Offline"
-
-        featured_streams << [status, stream]
-      end
-
-      featured_streams
     end
 
     def get_top_streamers

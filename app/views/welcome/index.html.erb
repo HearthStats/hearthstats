@@ -5,6 +5,8 @@
 <head>
   <meta charset="utf-8" />
   <meta content="Jeffrey Tong" name="author" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src= <%= public_url("js/jquery.ujs.js") %> ></script>
   <%= csrf_meta_tags %>
   <title>HearthStats | Hearthstone Statistics and Tracking</title>
   <meta name="keywords" content="hearthstone, stats, hearthstats, statistics, tracking, win, loss, online, cloud, automatic">
@@ -26,7 +28,6 @@
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/new-style.css")%> data-turbolinks-track />
 
-  <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <!-- FAVICON-->
   <%= favicon_link_tag 'favicon.ico' %>
@@ -267,6 +268,54 @@
       </div>
     </section>
 
+    <!-- Streams section -->
+    <section id="streams row">
+      <div class="content-head">
+        <h2>Streams</h2>
+        <div class="line"></div>
+      </div>
+      <div id="stream-container" class="tab-container">
+        <ul class="etabs stream-tabs">
+          <li class="tab"><a href="#stream-top">Top Streams</a></li>
+          <li class="tab"><a href="#stream-featured">Featured Streams</a></li>
+        </ul>
+        <div class="stream-tab-container">
+          <div id="stream-featured">
+            <% @featured_streams.each do |stream| %>
+              <% if stream[0] == 'Online' %>
+                <div class="six columns stream">
+                  <div class="stream-screenshot"><a href="<%= stream.details['stream']['channel']["url"] %>"><img src="<%= stream.details['stream']['preview']["medium"] %>" alt=""></a></div>
+                  <div class="stream-description">
+                    <div class="stream-name"><%= stream.details['stream']['channel']["display_name"] %></div>
+                    <div class="stream-status"><%= stream.details['stream']['channel']["status"] %></div>
+                  </div>
+                  <div class="live-details">
+                    <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream.details['stream']['viewers'] %></div>
+                    <div class="stream-view"><a href="<%= stream.details['stream']['channel']["url"] %>" class="orange">VIEW</a> </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div id="stream-top">
+            <% @top_streams.each do |stream| %>
+              <div class="six columns stream">
+                <div class="stream-screenshot"><a href="<%= stream['channel']["url"] %>"><img src="<%= stream['preview']["medium"] %>" alt=""></a></div>
+                <div class="row">
+                  <div class="nine columns stream-description">
+                    <div class="stream-name"><%= stream['channel']["display_name"] %></div>
+                    <div class="stream-status"><%= truncate(stream['channel']["status"], length: 50) %></div>
+                  </div>
+                  <div class="three columns live-details">
+                    <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream['viewers'] %></div>
+                    <div class="stream-view"><a href="<%= stream['channel']["url"] %>" class="orange">VIEW</a> </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </section>
   </div>
   <div class="four columns" id="sidebar">
     <section class="tracker">

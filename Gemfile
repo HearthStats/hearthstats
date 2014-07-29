@@ -88,8 +88,9 @@ gem 'groupdate'
 
 # Background
 gem 'delayed_job_active_record'
-gem "delayed_job_web"
 gem 'daemons'
+gem 'delayed_job_web'
+gem 'whenever'
 
 # APIs
 gem 'newrelic_rpm'

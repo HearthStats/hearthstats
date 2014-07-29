@@ -87,6 +87,7 @@ GEM
       timers (~> 1.1.0)
     chronic (0.10.2)
     chartkick (1.3.2)
+    chronic (0.10.2)
     cindy (0.1.1)
       faraday (~> 0.8.5)
       faraday_middleware (~> 0.9)

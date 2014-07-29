@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def featured_streamers
-    ['reynad27','kisstafer','bradhs','imd2','ihosty']
+    ['ceciltv', 'rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
   end
 
   def current_season

@@ -10,13 +10,13 @@ Hearthstats::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  # config.consider_all_requests_local       = true
+  # config.action_controller.perform_caching = false
   # config.cache_store = :null_store
   config.serve_static_assets = true
   # Caching testing:
-  # config.action_controller.perform_caching = true
-  # config.cache_store = :dalli_store
+  config.action_controller.perform_caching = true
+  config.cache_store = :dalli_store
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false

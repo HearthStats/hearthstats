@@ -223,14 +223,16 @@ class ConstructedsController < ApplicationController
   end
 
   def win_rates
-    win_rate = Rails.cache.fetch("con#wr_rate-#{params[:klass_id]}", expires_in: 1.day) do
+    win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}") do
       matches = Match.where('created_at >= ?', 2.weeks.ago).
         where(klass_id: params[:klass_id]).group_by_day(:created_at)
       wins = matches.where(result_id: 1).count
       tot = matches.count
       data =  Hash.new
       wins.zip(tot).map do |x, y| 
-        data[x[0]] =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
+        wr =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
+        wr = 0 if wr.NaN?
+        data[x[0]] = wr
       end
       data
     end
