@@ -12,7 +12,9 @@ class Stream
   def self.get_featured_streamers
     featured_streams = Array.new
     FEATURED.each do |streamer|
-      featured_streams << get_streamer_with_status(streamer)
+      Rails.cache.fetch("streamer-#{streamer}", expires_in: 1.hour) do
+        featured_streams << get_streamer_with_status(streamer)
+      end
     end
 
     featured_streams

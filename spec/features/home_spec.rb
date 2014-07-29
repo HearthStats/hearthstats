@@ -6,16 +6,15 @@ describe 'home page' do
     page.status_code.should be 200
   end
 
-  it 'should go to login page' do
+  it 'should go to champanion page' do
     visit '/'
-    click_on 'Sign In'
-    page.should have_content('Login to your account')
+    click_on 'Download'
+    page.should have_content('Official Uploader')
   end
 
-  it 'should allow user to sign up' do
+  it 'should link to report' do
     visit '/'
-    page.find('.signup').click
-    page.should have_content('Enter your account details below:')
+    page.should have_content('Stat Report')
   end
 
 end

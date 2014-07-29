@@ -44,11 +44,5 @@ describe Match do
   end
 
   describe "instance methods" do
-    describe "#get_wr_per_day" do
-      it 'inits to 0' do
-        Match.all.get_wr_per_day.should == Array.new(20).map{|q| q.to_i}
-      end
-    end
-
   end
 end
