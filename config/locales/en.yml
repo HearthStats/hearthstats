@@ -78,7 +78,7 @@ en:
       listed_by: Listed By
       tools: Tools
       stats_are_for_all_users: 'stats are for all users that have played the deck in the last 30 days, not just the original author'
-      stats_are_for_your_personal: 'stats are for for your personal play using each deck'
+      stats_are_for_your_personal: 'stats are for your personal play using each deck'
 
     matchlist:
       filter: Filter
