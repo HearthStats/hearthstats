@@ -67,13 +67,14 @@ class User < ActiveRecord::Base
   end
 
   def gen_sig_pic
+    p self.id
     new_pic = self.profile.sig_pic_file_name.nil? ? true : false
     matches = self.matches
     con_wr = con_wr(matches)
     arena_wr = arena_wr(matches)
     rank = get_rank(matches)
     p rank
-    name = self.profile.name.nil? ? "N/A" : self.profile.name
+    name = self.profile.name.blank? ? "N/A" : self.profile.name
     pic_info = { name: name,
                 const_win_rate: con_wr,
                 arena_win_rate: arena_wr,
@@ -125,7 +126,7 @@ class User < ActiveRecord::Base
     rank = matches.includes(:match_rank)
       .includes(match_rank: :rank)
       .where('match_ranks.rank_id IS NOT NULL')
-      .last.try(:rank).id
+      .last.try(:rank).try(:id)
     rank = 0 if rank.nil?
 
     rank
