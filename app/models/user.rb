@@ -72,7 +72,8 @@ class User < ActiveRecord::Base
     con_wr = con_wr(matches)
     arena_wr = arena_wr(matches)
     rank = get_rank(matches)
-    pic_info = { name: self.profile.name, 
+    name = self.profile.name.nil? ? "N/A" : self.profile.name
+    pic_info = { name: name, 
                 const_win_rate: con_wr, 
                 arena_win_rate: arena_wr, 
                 ranking: rank, 

@@ -9,13 +9,13 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.save
       # Create Profile
-      Profile.new(user_id:resource.id).save
+      Profile.create(user_id:resource.id)
 
       begin
         c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
         c.subscribe "aQOe0RrtTXddPhL9p28929MA", resource.email
         c.subscribe "6V763uDbDJuEja62CUwTlthQ", resource.email
-      rescue Cindy::AlreadySubscribed => e
+      rescue Cindy::AlreadySubscribed
       end
     end
 

@@ -85,6 +85,7 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chronic (0.10.2)
     cindy (0.1.1)
       faraday (~> 0.8.5)
       faraday_middleware (~> 0.9)
@@ -417,6 +418,9 @@ GEM
     unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
+    whenever (0.9.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
     will_paginate (3.0.5)
     will_paginate-bootstrap (1.0.0)
       will_paginate (>= 3.0.3)
@@ -503,5 +507,6 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
   unf
+  whenever
   will_paginate (>= 3.0.pre2)
   will_paginate-bootstrap
