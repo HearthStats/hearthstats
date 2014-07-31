@@ -72,12 +72,13 @@ class User < ActiveRecord::Base
     con_wr = con_wr(matches)
     arena_wr = arena_wr(matches)
     rank = get_rank(matches)
+    p rank
     name = self.profile.name.nil? ? "N/A" : self.profile.name
-    pic_info = { name: name, 
-                const_win_rate: con_wr, 
-                arena_win_rate: arena_wr, 
-                ranking: rank, 
-                legend: false} 
+    pic_info = { name: name,
+                const_win_rate: con_wr,
+                arena_win_rate: arena_wr,
+                ranking: rank,
+                legend: false }
     image = ProfileImage.new(pic_info).image.flatten_images
     temp_pic = Tempfile.new(["sig_pic-#{self.id}", '.png'])
     image.write(temp_pic.path)
@@ -124,7 +125,9 @@ class User < ActiveRecord::Base
     rank = matches.includes(:match_rank)
       .includes(match_rank: :rank)
       .where('match_ranks.rank_id IS NOT NULL')
-      .last.try(:rank)
+      .last.try(:rank).id
     rank = 0 if rank.nil?
+
+    rank
   end
 end
