@@ -3,6 +3,8 @@ class Profile < ActiveRecord::Base
   
   is_impressionable
   
+  has_shortened_urls
+
   ### ASSOCIATIONS:
   
   belongs_to :users
@@ -13,7 +15,7 @@ class Profile < ActiveRecord::Base
     medium: '300x300>'
   }
 
-  has_attached_file :sig_pic, :default_url => "/assets/sig_pic.jpg"
+  has_attached_file :sig_pic, :default_url => "/assets/sig_pic.png"
   
   ### VALIDATIONS:
   

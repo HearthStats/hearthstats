@@ -65,4 +65,65 @@ class User < ActiveRecord::Base
   def is_new?
     Match.where(user_id: id).count == 0
   end
+
+  def gen_sig_pic
+    new_pic = self.profile.sig_pic_file_name.nil? ? true : false
+    matches = self.matches
+    con_wr = con_wr(matches)
+    arena_wr = arena_wr(matches)
+    rank = get_rank(matches)
+    pic_info = { name: self.profile.name, 
+                const_win_rate: con_wr, 
+                arena_win_rate: arena_wr, 
+                ranking: rank, 
+                legend: false} 
+    image = ProfileImage.new(pic_info).image.flatten_images
+    temp_pic = Tempfile.new(["sig_pic-#{self.id}", '.png'])
+    image.write(temp_pic.path)
+    self.profile.update_attribute(:sig_pic, temp_pic)
+
+    if new_pic
+      Shortener::ShortenedUrl.generate(self.profile.sig_pic.url, self.profile)
+    else
+      self.profile.shortened_urls.first.update_attribute(:url, self.profile.sig_pic.url)
+    end
+
+    p "Sig for #{self.id} updated, view it at: #{self.profile.shortened_urls}"
+  end
+
+  ### PRIVATE METHODS:
+
+  private
+  
+  def arena_wr(matches)
+    arena_matches = matches.where(mode_id: 1)
+    arena_tot = arena_matches.count
+    arena_wr = "N/A"
+    unless arena_tot == 0
+      arena_wins = arena_matches.where(result_id: 1).count
+      arena_wr = (arena_wins.to_f / arena_tot * 100).round(2).to_s
+    end
+
+    arena_wr
+  end
+  
+  def con_wr(matches)
+    con_matches = matches.where(mode_id: 3)
+    con_tot = con_matches.count
+    con_wr = "N/A"
+    unless con_tot == 0
+      con_wins = con_matches.where(result_id: 1).count
+      con_wr = (con_wins.to_f / con_tot * 100).round(2).to_s
+    end
+  
+    con_wr
+  end
+
+  def get_rank(matches)
+    rank = matches.includes(:match_rank)
+      .includes(match_rank: :rank)
+      .where('match_ranks.rank_id IS NOT NULL')
+      .last.try(:rank)
+    rank = 0 if rank.nil?
+  end
 end

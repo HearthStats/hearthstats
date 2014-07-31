@@ -81,6 +81,7 @@ gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon' # Easy Rails to JS Vars
 gem 'ransack' # the new meta_search
+gem 'shortener'
 
 # Background
 gem 'delayed_job_active_record'
