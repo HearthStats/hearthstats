@@ -1,4 +1,8 @@
 module ProfileHelper
+  def profile_owner?
+    current_user && params[:id].to_i == current_user.id
+  end
+
   def sig_pic_url
     if @profile.shortened_urls.blank?
       return
