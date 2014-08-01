@@ -68,6 +68,10 @@ class User < ActiveRecord::Base
 
   def gen_sig_pic
     p self.id
+    if self.profile.nil?
+      Profile.create(user_id: self.id)
+      return
+    end
     new_pic = self.profile.sig_pic_file_name.nil? ? true : false
     matches = self.matches
     con_wr = con_wr(matches)
