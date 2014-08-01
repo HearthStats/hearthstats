@@ -42,10 +42,7 @@ class ProfilesController < ApplicationController
     @profiletitle = @profile.name.blank? ? "User" : @profile.name
 
     classes = klasses_hash.map { |a| a[0] }
-    
-    @arenawins = @user.winrate_per_day(10, 'arena')
-    @conwins   = @user.winrate_per_day(10, 'constructed')
-    
+       
     @recent_matches = matches.last(6).reverse
 
     # Overall win rates
@@ -53,6 +50,9 @@ class ProfilesController < ApplicationController
     @overallarena= get_win_rate(arena_matches, true)
     con_matches = matches.where(mode_id: 3)
     @overallcon = get_win_rate(con_matches, true)
+ 
+    @conwins   = Match.winrate_per_day(con_matches, 10)
+    @arenawins = Match.winrate_per_day(arena_matches, 10)
 
     # Determine Constructed Class Win Rates
 

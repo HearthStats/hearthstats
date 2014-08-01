@@ -25,8 +25,8 @@ class TeamsController < ApplicationController
     # Get recent games
     @recent_entries = matches.last(10).reverse
     
-    @arenawins = User.winrate_per_day(@members.map(&:id), 10, 'arena')
-    @conwins   = User.winrate_per_day(@members.map(&:id), 10, 'constructed')
+    @arenawins = Match.winrate_per_day(matches.where(mode_id: 1), 10)
+    @conwins   = Match.winrate_per_day(matches.where(mode_id: 3), 10)
 
     # Get decks from all team members
     @decks = Array.new

@@ -61,7 +61,23 @@ class Match < ActiveRecord::Base
   after_save :update_user_stats_constructed
   
   ### CLASS METHODS:
-  
+   
+  def self.winrate_per_day(all_matches, before_days)
+    matches = all_matches
+      .where("created_at >= ?", before_days.days.ago.beginning_of_day)
+      .group_by_day(:created_at)
+    wins = matches.where(result_id: 1).count
+    tot = matches.count
+    winrate = Array.new
+    wins.zip(tot).map do |x, y| 
+      wr =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
+      wr = 0 if wr == Float::NAN
+      winrate << [x[0].to_time.to_i*1000, wr]
+    end
+    
+    winrate
+  end
+
   def self.results_list
     RESULTS_LIST.values
   end

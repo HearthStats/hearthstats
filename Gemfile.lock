@@ -178,6 +178,8 @@ GEM
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
+    groupdate (2.2.1)
+      activesupport (>= 3)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -461,6 +463,7 @@ DEPENDENCIES
   fog
   friendly_id
   gon
+  groupdate
   guard-rspec
   guard-zeus
   hipchat

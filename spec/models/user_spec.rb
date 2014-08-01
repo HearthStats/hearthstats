@@ -4,13 +4,7 @@ describe User do
   let(:user) { build :user }
   
   describe 'class methods' do
-    describe '#winrate_per_day' do
-      let!(:season) { create :season }
-      
-      it 'returns an array the size of days + 1' do
-        User.winrate_per_day(user.id, 10).should have(11).elements
-      end
-    end
+    
   end
   
   describe 'instance methods' do

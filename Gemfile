@@ -83,6 +83,7 @@ gem 'gon' # Easy Rails to JS Vars
 gem 'ransack' # the new meta_search
 gem 'shortener'
 gem 'whenever'
+gem 'groupdate'
 
 # Background
 gem 'delayed_job_active_record'
