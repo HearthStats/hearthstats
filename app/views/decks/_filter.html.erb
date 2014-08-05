@@ -2,6 +2,10 @@
   <p>
     <%= t('.filter') %>
     <%= f.select :klass_id_eq, klass_collection_for_select %>
+    <%= t('.created_after') %>
+    <%= f.search_field :unique_deck_created_at_gteq %>
+    <%= t('.min_games') %>
+    <%= f.search_field :unique_deck_num_matches_gteq %>
     <%= t('.show') %>
     <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]) %>
     <%= t('.sort_by') %>
@@ -16,7 +20,12 @@
 <% end %>
 
 <script type="text/javascript">
-  $('#deckListFilter select').change(function() {
-    $('#deckListFilter').submit();
+  $(document).ready(function(){
+    $('#deckListFilter select').change(function() {
+      $('#deckListFilter').submit();
+    });
+    $('#q_unique_deck_created_at_gteq').datepicker(
+      { dateFormat: 'yy-mm-dd'}
+      );
   });
 </script>
