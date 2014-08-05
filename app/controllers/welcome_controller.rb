@@ -19,12 +19,16 @@ class WelcomeController < ApplicationController
   end
 
   def generate_report
-    if !current_user.is_admin?
-      redirect_to root_path, alert: "Y U NO ADMIN" and return
-    end
+    # if !current_user.is_admin?
+    #   redirect_to root_path, alert: "Y U NO ADMIN" and return
+    # end
     season = 6
     
     get_ranked_graph_data(season)
+
+    @prev_global = [
+      {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
+      {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
 
     matches = Match.where(season_id: 7)
     # Determine match Class Win Rates
