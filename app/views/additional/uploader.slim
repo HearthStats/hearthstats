@@ -6,10 +6,10 @@ p
   = t('.header_text')
 
 p
-  a href="/uploader/download/win" target="_blank" class="btn btn-large blue"
+  a href="#{@urls['windows']}" target="_blank" class="btn btn-large blue"
     | #{t('.download_for')} Windows
   |&nbsp;
-  a href="/uploader/download/osx" target="_blank" class="btn btn-large green"
+  a href="#{@urls['osx']}" target="_blank" class="btn btn-large green"
     | #{t('.download_for')} OSX
 - if current_user
   div.api-key
