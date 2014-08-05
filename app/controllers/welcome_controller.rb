@@ -60,10 +60,10 @@ class WelcomeController < ApplicationController
   end
 
   def generate_report
-    # if !current_user.is_admin?
-    #   redirect_to root_path, alert: "Y U NO ADMIN" and return
-    # end
-    season = 6
+    if !current_user.is_admin?
+      redirect_to root_path, alert: "Y U NO ADMIN" and return
+    end
+    season = 8
     
     get_ranked_graph_data(season)
 
