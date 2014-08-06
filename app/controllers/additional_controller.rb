@@ -1,14 +1,17 @@
 class AdditionalController < ApplicationController
-  caches_action :uploader, expires_in: 2.days
 
   def contactus
   end
 
   def uploader
-    @urls = Hash.new
-    git_response = HTTParty.get('https://api.github.com/repos/HearthStats/HearthStats.net-Uploader/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})
-    @urls["osx"] = git_response[0]["assets"][0]["browser_download_url"]
-    @urls["windows"] = git_response[0]["assets"][1]["browser_download_url"]
+    
+    @urls = Rails.cache.fetch('uploader_url', expires_in: 2.days) do
+      urls = Hash.new
+      git_response = HTTParty.get('https://api.github.com/repos/HearthStats/HearthStats.net-Uploader/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})
+      urls["osx"] = git_response[0]["assets"][0]["browser_download_url"]
+      urls["windows"] = git_response[0]["assets"][1]["browser_download_url"]
+      urls
+    end
   end
 
   def aboutus
