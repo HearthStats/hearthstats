@@ -13,6 +13,8 @@ class DecksController < ApplicationController
 
   def public
     params[:items] ||= 20
+    params[:sort] ||= "winrate"
+    params[:order] ||= "desc"
 
     @q = Deck.where(is_public: true).
               group(:unique_deck_id).

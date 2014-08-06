@@ -55,7 +55,7 @@ en:
     back: Back
     deckslist:
       filter: Filter
-      any_class: any class
+      any_class: Any class
       show: Show
       per_page: per page
       sort_by: Sort by
@@ -82,7 +82,7 @@ en:
 
     matchlist:
       filter: Filter
-      any_class: any class
+      any_class: Any class
       coin: Coin
       no_coin: No Coin
       opponent: Opponent
@@ -147,7 +147,7 @@ en:
       sort_by: Sort by
       any_type: any type
       any_race: any race
-      any_class: any class
+      any_class: Any class
       ascending: Ascending
       descending: Descending
       attack: Attack
@@ -294,6 +294,9 @@ en:
       sort_by: Sort by
       show: Show
       filter: Filter
+      min_games: Min Games
+      created_after: Created After
+      klass: Class
       decks_found:
         one: 1 deck found matching your criteria
         other: '%{count} decks found matching your criteria'
