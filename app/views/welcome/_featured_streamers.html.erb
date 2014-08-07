@@ -1,0 +1,17 @@
+<div id="stream-featured">
+  <% @featured_streams.each do |stream| %>
+    <% if stream[0] == 'Online' %>
+      <div class="six columns stream">
+        <div class="stream-screenshot"><a href="<%= stream.details['stream']['channel']["url"] %>"><img src="<%= stream.details['stream']['preview']["medium"] %>" alt=""></a></div>
+        <div class="stream-description">
+          <div class="stream-name"><%= stream.details['stream']['channel']["display_name"] %></div>
+          <div class="stream-status"><%= stream.details['stream']['channel']["status"] %></div>
+        </div>
+        <div class="live-details">
+          <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream.details['stream']['viewers'] %></div>
+          <div class="stream-view"><a href="<%= stream.details['stream']['channel']["url"] %>" class="orange">VIEW</a> </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

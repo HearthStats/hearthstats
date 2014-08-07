@@ -19,6 +19,15 @@
 
 # Learn more: http://github.com/javan/whenever
 
+every 5.hours do 
+  rake "cron:welcome_cache"
+  :expire_top_decks
+end
+
 every 2.hours do 
-  rake "cron:con_wr"
+  rake "cron:expire_top_decks"
+end
+
+every 5.minutes do 
+  rale "cron:expire_recent_decks"
 end

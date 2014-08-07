@@ -2,24 +2,28 @@ class WelcomeController < ApplicationController
   def index
 
     # Global Stats
-    @arena_top = Match.where(mode_id: 1).top_winrates_with_class.shift(5)
-    @con_top = Match.where(mode_id: 3).top_winrates_with_class.shift(5)
+    @arena_top = Rails.cache.read('wel#arena_top')
+    @con_top = Rails.cache.read('wel#con_top')
 
     # Decklists
-    @recentdecks = Deck.where(is_public: true).
-              group(:unique_deck_id).
+    @recentdecks = Rails.cache.fetch('wel#recent_deck') do
+      Deck.where(is_public: true).
               joins(:unique_deck).
               last(7)
-    @topdecks = Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
-              group(:unique_deck_id).
-              joins(:unique_deck).
-              where("unique_decks.num_matches >= ?", 30).
-              sort_by { |deck| deck.unique_deck.winrate || 0 }.
-              last(7).
-              reverse
+    end
+    @topdecks = Rails.cache.fetch('wel#top_deck') do
+      Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
+                group(:unique_deck_id).
+                joins(:unique_deck).
+                joins(:user).
+                where("unique_decks.num_matches >= ?", 30).
+                sort_by { |deck| deck.unique_deck.winrate || 0 }.
+                last(7).
+                reverse
+    end
 
     # Streams
-    @featured_streams = Stream.get_featured_streamers
+    # @featured_streams = Stream.get_featured_streamers
     @top_streams = get_top_streamers.first(6)
 
     render layout: false
