@@ -14,7 +14,7 @@ namespace :cron do
       end
       Rails.cache.delete("con#wr_rate-#{i+1}")
       Rails.cache.write("con#wr_rate-#{i+1}", klass_wr)
-      p "Finished con#wr cache preheating"
+      p "Finished con#wr " + klass + " cache preheating"
     end
     arena_top = Match.where(mode_id: 3).top_winrates_with_class.shift(5)
     con_top = Match.where(mode_id: 1).top_winrates_with_class.shift(5)
