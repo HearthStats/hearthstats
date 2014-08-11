@@ -126,7 +126,7 @@ class DecksController < ApplicationController
   end
 
   def new_splash
-    @klasses = Klass.all
+    @klasses = Klass::LIST
 
     respond_to do |format|
       format.html
