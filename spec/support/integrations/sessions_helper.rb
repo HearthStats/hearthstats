@@ -1,4 +1,4 @@
-module SessionHelpers
+module SessionsHelper
   def sign_up_with(email, password)
     visit new_user_registration_path
     fill_in 'user_email', with: email
