@@ -5,7 +5,7 @@ div class="portlet quick_con_entry"
     div class="tools"
       a href="javascript:;" class="collapse"
   div class="portlet-body"
-    = form_for Match.new, url: {controller: "constructeds", 
+    = form_for Match.new, url: {controller: "constructeds",
       action: "create"} do |f|
       - unless @last_deck.nil?
         = select_tag "deckname", options_for_select(@my_decks.map{ |d| [d.name,d.name, {:class => Klass::LIST[d.klass_id]}]}, @last_deck.name)

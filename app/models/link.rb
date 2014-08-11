@@ -18,7 +18,7 @@ class Link
       else
         @url = @url[0..-10]
         @html = "<a href='#{url}'>Link To Deck</a><p>"
-      end     
+      end
     end
   end
 

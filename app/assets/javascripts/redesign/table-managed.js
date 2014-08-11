@@ -4,7 +4,7 @@ var TableManaged = function () {
 
         //main function to initiate the module
         init: function () {
-            
+
             if (!jQuery().dataTable) {
                 return;
             }

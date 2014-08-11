@@ -6,9 +6,9 @@ var Charts = function () {
         init: function () {
 
             App.addResponsiveHandler(function () {
-                 Charts.initPieCharts(); 
+                 Charts.initPieCharts();
             });
-            
+
         },
 
         initCharts: function () {
@@ -441,34 +441,34 @@ var Charts = function () {
 
             // bar chart:
             var data1 = GenerateSeries(0);
-     
+
             function GenerateSeries(added){
                 var data = [];
                 var start = 100 + added;
                 var end = 200 + added;
-         
-                for(i=1;i<=20;i++){        
-                    var d = Math.floor(Math.random() * (end - start + 1) + start);        
+
+                for(i=1;i<=20;i++){
+                    var d = Math.floor(Math.random() * (end - start + 1) + start);
                     data.push([i, d]);
                     start++;
                     end++;
                 }
-         
+
                 return data;
             }
-         
+
             var options = {
                     series:{
                         bars:{show: true}
                     },
                     bars:{
                           barWidth:0.8
-                    },            
+                    },
                     grid:{
                         backgroundColor: { colors: ["#fafafa", "#35aa47"] }
                     }
             };
- 
+
             $.plot($("#chart_1_1"), [data1], options);
 
             // horizontal bar chart:
@@ -476,7 +476,7 @@ var Charts = function () {
             var data1 = [
                 [10, 10], [20, 20], [30, 30], [40, 40], [50, 50]
             ];
-         
+
             var options = {
                     series:{
                         bars:{show: true}
@@ -489,8 +489,8 @@ var Charts = function () {
                         backgroundColor: { colors: ["#fafafa", "#4b8df8"] }
                     }
             };
-         
-            $.plot($("#chart_1_2"), [data1], options);  
+
+            $.plot($("#chart_1_2"), [data1], options);
         },
 
         initPieCharts: function () {
@@ -498,7 +498,7 @@ var Charts = function () {
             var data = [];
             var series = Math.floor(Math.random() * 10) + 1;
             series = series < 5 ? 5 : series;
-            
+
             for (var i = 0; i < series; i++) {
                 data[i] = {
                     label: "Series" + (i + 1),
@@ -746,7 +746,7 @@ var Charts = function () {
             }
 
         }
-        
+
     };
 
 }();

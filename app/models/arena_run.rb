@@ -2,24 +2,24 @@ class ArenaRun < ActiveRecord::Base
   attr_accessible :class, :gold, :dust, :completed, :user_id, :klass_id, :notes, :complete
 
   ### ASSOCIATIONS:
-  
+
   has_many :arenas
   has_many :match_runs
   has_many :matches, through: :match_runs, dependent: :destroy
   belongs_to :klass
-   
+
   ### VALIDATIONS:
-  
+
   validates :dust, numericality: { greater_than_or_equal_to: 0 }
   validates :gold, numericality: { greater_than_or_equal_to: 0 }
 
   ### CLASS METHODS:
-  
+
   def self.average_wins(klass_id, userid)
     runs = ArenaRun.where(user_id: userid, klass_id: klass_id)
     return -1 if runs.blank?
     wins = runs.sum { |r| r.matches.wins.count }
-    
+
     wins.to_f / runs.count
   end
 
@@ -64,9 +64,9 @@ class ArenaRun < ActiveRecord::Base
       raise
     end
   end
-  
+
   ### INSTANCE METHODS:
-  
+
   def num_wins
     matches.wins.count
   end

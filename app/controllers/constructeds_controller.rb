@@ -39,7 +39,7 @@ class ConstructedsController < ApplicationController
 
   def new
     @my_decks = get_my_decks
-    
+
     if @my_decks.blank?
       redirect_to new_deck_path, notice: "Please create a deck first."
     else
@@ -65,7 +65,7 @@ class ConstructedsController < ApplicationController
       redirect_to new_constructed_path, alert: 'Unknown deck'
       return
     end
-    
+
     # Find mode_id
     rank = params[:other].try(:[], :rank)
     if rank == "Ranked"
@@ -76,7 +76,7 @@ class ConstructedsController < ApplicationController
       redirect_to constructeds_path, alert: 'Mode Error'
       return
     end
-    
+
     @constructed = Match.new(params[:match])
     @constructed.mode_id = mode_id
     @constructed.coin = params[:other][:gofirst].to_i.zero?
@@ -112,7 +112,7 @@ class ConstructedsController < ApplicationController
       redirect_to new_constructed_path, alert: 'Unknown deck'
       return
     end
-    
+
     # Find mode_id
     rank = params[:other].try(:[], :rank)
     if rank == "Ranked"
@@ -123,7 +123,7 @@ class ConstructedsController < ApplicationController
       redirect_to constructeds_path, alert: 'Mode Error'
       return
     end
-    
+
     @constructed = Match.new(params[:match])
     @constructed.mode_id = mode_id
     @constructed.coin = params[:other][:gofirst].to_i.zero?
@@ -213,7 +213,7 @@ class ConstructedsController < ApplicationController
 
     # Global Stats
     global_stats = Rails.cache.fetch('con_global_stats', expires_in: 12.hours) do
-      [ Match.matches_per_class(@matches), 
+      [ Match.matches_per_class(@matches),
         Match.winrate_per_class(@matches) ]
     end
     @num_matches_global   = global_stats[0]
@@ -229,7 +229,7 @@ class ConstructedsController < ApplicationController
       wins = matches.where(result_id: 1).count
       tot = matches.count
       data =  Hash.new
-      wins.zip(tot).map do |x, y| 
+      wins.zip(tot).map do |x, y|
         wr =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
         wr = 0 if wr.NaN?
         data[x[0]] = wr

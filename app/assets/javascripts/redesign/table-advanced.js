@@ -12,7 +12,7 @@ var TableAdvanced = function () {
             sOut += '<tr><td>CSS grade:</td><td>'+aData[4]+'</td></tr>';
             sOut += '<tr><td>Others:</td><td>Could provide a link here</td></tr>';
             sOut += '</table>';
-             
+
             return sOut;
         }
 
@@ -22,15 +22,15 @@ var TableAdvanced = function () {
         var nCloneTh = document.createElement( 'th' );
         var nCloneTd = document.createElement( 'td' );
         nCloneTd.innerHTML = '<span class="row-details row-details-close"></span>';
-         
+
         $('#sample_1 thead tr').each( function () {
             this.insertBefore( nCloneTh, this.childNodes[0] );
         } );
-         
+
         $('#sample_1 tbody tr').each( function () {
             this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
         } );
-         
+
         /*
          * Initialize DataTables, with no sorting on the 'details' column
          */
@@ -50,7 +50,7 @@ var TableAdvanced = function () {
         jQuery('#sample_1_wrapper .dataTables_filter input').addClass("form-control input-small"); // modify table search input
         jQuery('#sample_1_wrapper .dataTables_length select').addClass("form-control input-small"); // modify table per page dropdown
         jQuery('#sample_1_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
-         
+
         /* Add event listener for opening and closing details
          * Note that the indicator for showing which row is open is not controlled by DataTables,
          * rather it is done here
@@ -65,7 +65,7 @@ var TableAdvanced = function () {
             }
             else
             {
-                /* Open this row */                
+                /* Open this row */
                 $(this).addClass("row-details-open").removeClass("row-details-close");
                 oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
             }
@@ -73,7 +73,7 @@ var TableAdvanced = function () {
     }
 
      var initTable2 = function() {
-        var oTable = $('#sample_2').dataTable( {           
+        var oTable = $('#sample_2').dataTable( {
             "aoColumnDefs": [
                 { "aTargets": [ 0 ] }
             ],
@@ -102,7 +102,7 @@ var TableAdvanced = function () {
 
         //main function to initiate the module
         init: function () {
-            
+
             if (!jQuery().dataTable) {
                 return;
             }

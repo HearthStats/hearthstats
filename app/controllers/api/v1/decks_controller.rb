@@ -129,7 +129,7 @@ class Api::V1::DecksController < ApplicationController
       response = {status: "success", message: "Decks deleted"}
     end
     render json: response
-    
+
   end
   private
 

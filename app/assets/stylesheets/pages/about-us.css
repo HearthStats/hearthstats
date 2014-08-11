@@ -9,12 +9,12 @@ Anout Us Page
 }
 
 .meet-our-team small {
-  display:block; 
+  display:block;
   font-size:12px;
 }
 
 .meet-our-team .team-info {
   padding: 10px;
-  overflow: hidden; 
+  overflow: hidden;
   background: #f5f5f5;
 }

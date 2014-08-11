@@ -33,7 +33,7 @@
         <td class="wins"><%= unique_deck.num_wins %></td>
         <td class="losses"><%= unique_deck.num_losses %></td>
         <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
-        
+
         <td class="num_users"><%= number_with_delimiter(unique_deck.num_users, :delimiter => ',') %></td>
         <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
           <td class="author">[anonymous]</td>

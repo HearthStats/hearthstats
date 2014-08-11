@@ -34,7 +34,7 @@ class WelcomeController < ApplicationController
     p @klass
     respond_to do |format|
       format.js
-    end 
+    end
   end
 
   def newsletter_sub
@@ -68,7 +68,7 @@ class WelcomeController < ApplicationController
       redirect_to root_path, alert: "Y U NO ADMIN" and return
     end
     season = 8
-    
+
     get_ranked_graph_data(season)
 
     @prev_global = [
