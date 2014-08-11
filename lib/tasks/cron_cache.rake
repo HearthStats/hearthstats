@@ -20,7 +20,9 @@ namespace :cron do
     con_top = Match.where(mode_id: 1).top_winrates_with_class.shift(5)
     Rails.cache.delete('wel#arena_top')
     Rails.cache.write('wel#arena_top', arena_top)
+    p "Arena top classes preheated"
     Rails.cache.delete('wel#con_top')
+    p "Con top classes preheated"
     Rails.cache.write('wel#con_top', con_top)
   end
 
@@ -30,5 +32,9 @@ namespace :cron do
 
   task :expire_recent_decks => :environment do
     expire_fragment('recent_decks')
+  end
+
+  task :get_top_streamers => :environment do
+    expire_fragement('top_streamers')
   end
 end

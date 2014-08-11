@@ -96,6 +96,7 @@ gem 'whenever'
 gem 'newrelic_rpm'
 gem 'honeybadger'
 gem 'cindy' # Sendy API
+gem 'appsignal'
 
 
 group :test do
