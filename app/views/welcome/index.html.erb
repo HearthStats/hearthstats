@@ -286,22 +286,20 @@
         </ul>
         <div class="stream-tab-container">
           <div id="stream-top">
-            <% cache ('streams') do %>
-              <% @top_streams.each do |stream| %>
-                <div class="six columns stream">
-                  <div class="stream-screenshot"><a href="<%= stream['channel']["url"] %>" target="_blank" ><img src="<%= stream['preview']["medium"] %>" alt=""></a></div>
-                  <div class="row">
-                    <div class="nine columns stream-description">
-                      <div class="stream-name"><%= stream['channel']["display_name"] %></div>
-                      <div class="stream-status"><%= truncate(stream['channel']["status"], length: 50) %></div>
-                    </div>
-                    <div class="three columns live-details">
-                      <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream['viewers'] %></div>
-                      <div class="stream-view"><a href="<%= stream['channel']["url"] %>" class="orange">VIEW</a> </div>
-                    </div>
+            <% @top_streams.each do |stream| %>
+              <div class="six columns stream">
+                <div class="stream-screenshot"><a href="<%= stream['channel']["url"] %>" target="_blank" ><img src="<%= stream['preview']["medium"] %>" alt=""></a></div>
+                <div class="row">
+                  <div class="nine columns stream-description">
+                    <div class="stream-name"><%= stream['channel']["display_name"] %></div>
+                    <div class="stream-status"><%= truncate(stream['channel']["status"], length: 50) %></div>
+                  </div>
+                  <div class="three columns live-details">
+                    <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream['viewers'] %></div>
+                    <div class="stream-view"><a href="<%= stream['channel']["url"] %>" class="orange">VIEW</a> </div>
                   </div>
                 </div>
-              <% end %>
+              </div>
             <% end %>
           </div>
         </div>
