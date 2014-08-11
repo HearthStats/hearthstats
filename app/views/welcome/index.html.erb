@@ -313,8 +313,8 @@
         Automatically track your Hearthstone games with this FREE TRACKER. Gain insight into your win percentages and more!
       </div>
       <div class="actions">
-        <div class="button success">Web App</div>
-        <div class="button">Download</div>
+        <%= link_to "Web App", new_user_session_path, class: "button success web-app-btn" %>
+        <%= link_to "Companion", uploader_path , class: "button uploader-btn" %>
       </div>
     </section>
     
@@ -330,7 +330,7 @@
         View this month's global stats from the whole Hearthstats community! See the most popular class, highest win rate and more!
       </div>
       <div class="actions">
-        <div class="button success expand">View</div>
+        <%= link_to "View", '/july' , class: "button success expand report-btn" %>
       </div>
     </section>
 
