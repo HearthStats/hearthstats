@@ -1,8 +1,8 @@
 namespace :dbf do
   KLASSES = {"Druid"=>1, "Hunter"=>2, "Mage"=>3, "Paladin"=>4, "Priest"=>5, "Rogue"=>6, "Shaman"=>7, "Warlock"=>8, "Warrior"=>9}
-	desc "Add all vars such as mode, result, class and rank"
-	task :init=> :environment do
-		desc "Import MODES"
+  desc "Add all vars such as mode, result, class and rank"
+  task :init=> :environment do
+    desc "Import MODES"
     MODES = ["Arena","Casual","Ranked","Friendly","Practice"]
     MODES.each do |m|
       Mode.new(name: m).save!
@@ -49,7 +49,7 @@ namespace :dbf do
 
 end
 
-	task :constructed => :environment do
+  task :constructed => :environment do
     con_matches = Constructed.all
     i = 0
     con_matches.each do |m|
@@ -92,14 +92,14 @@ end
       progress(i,con_matches.count)
     end
     p i.to_s + " constructed matches migrated."
-	end
+  end
 
-	task :arena => :environment do
-		arena_matches = Arena.all
+  task :arena => :environment do
+    arena_matches = Arena.all
     i = 0
     error_array = Array.new
 
-		arena_matches.each do |am|
+    arena_matches.each do |am|
       klass = KLASSES[am.userclass]
       oppklass = KLASSES[am.oppclass]
 
@@ -139,20 +139,20 @@ end
 
       i += 1
       progress(i, arena_matches.count )
-		end
+    end
     p i.to_s + " arena matches migrated."
     p error_array
-	end
+  end
 
-	task :arenarun => :environment do
-		i = 0
-		allruns = ArenaRun.all
-		allruns.each do |ar|
-			if ar.arenas.first.nil?
-				ar.delete!
-				next
-			end
-			klass = KLASSES[ar.arenas.first.userclass]
+  task :arenarun => :environment do
+    i = 0
+    allruns = ArenaRun.all
+    allruns.each do |ar|
+      if ar.arenas.first.nil?
+        ar.delete!
+        next
+      end
+      klass = KLASSES[ar.arenas.first.userclass]
 
       next if klass.nil?
       ar.klass_id = klass
@@ -162,7 +162,7 @@ end
       progress(i, allruns.count)
     end
     p i.to_s + " arena runs changed"
-	end
+  end
 
   task :deck => :environment do
     decks = Deck.all
@@ -185,12 +185,12 @@ end
     p i.to_s + " decks changed"
   end
 
- 	task :test => :environment do
- 		Constructed.last(500).each_with_index do |ma, i|
+   task :test => :environment do
+     Constructed.last(500).each_with_index do |ma, i|
       p KLASSES[ma.deck.race]
- 			progress(i,500)
- 		end
- 	end
+       progress(i,500)
+     end
+   end
 
   def progress(completed,total)
     percent = ((completed / total.to_f) * 100).round

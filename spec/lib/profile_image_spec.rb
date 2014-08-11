@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'phashion'
 describe ProfileImage do
-  
+
   it "should verify the hash passed" do
     user_hash = {
       name: 'Username',

@@ -27,15 +27,15 @@ class ApplicationController < ActionController::Base
   def get_win_rate(matches, strout = false )
     tot_games = matches.count
     return "N/A" if tot_games == 0
-    
+
     wins = matches.where(result_id: 1).count
     win_rate = wins.to_f / tot_games
     win_rate = (win_rate * 100).round(2)
     win_rate = win_rate.to_s + "%" if strout
-    
+
     win_rate
   end
-  
+
   helper_method :uploader_url, :get_win_rate, :public_url, :klasses_hash
 
 
@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
 
   def recentgamesbyhr(userid, durlen)
     # I do not think this method is called form anywhere
-    
+
     # Find games from 12 hours and before
     @timearray = Array.new(durlen, 0)
     (1..durlen).each do |i|

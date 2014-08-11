@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   def new
     super
   end
-  
+
   def create
     destroy_guest
     super
@@ -20,13 +20,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
   end
-  
+
   def update
     super
   end
-  
+
   private
-  
+
   def destroy_guest
     if session[:guest_user_id]
       User.find(session[:guest_user_id]).delete

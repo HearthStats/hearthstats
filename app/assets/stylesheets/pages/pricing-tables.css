@@ -55,7 +55,7 @@ Pricing table
 
 .pricing-table .rate {
   border-top: 1px solid #ddd;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   padding-top: 15px;
   clear: both;
 }
@@ -76,7 +76,7 @@ Pricing table
 
 .pricing-table .rate .price {
   display: inline-block;
-  float: left; 
+  float: left;
   clear: both;
 }
 
@@ -98,7 +98,7 @@ Pricing table
 }
 
 .pricing-table .rate .price .amount {
-  padding-top: 4px;  
+  padding-top: 4px;
   letter-spacing: -3px;
   float: left;
   text-align: right;
@@ -181,8 +181,8 @@ Pricing table(Alternative)
   font-size: 16px;
 }
 
-.pricing-table2 .rate { 
-  margin-bottom: 10px; 
+.pricing-table2 .rate {
+  margin-bottom: 10px;
   padding: 15px 15px;
   margin-left: -15px;
   margin-right: -15px;
@@ -207,7 +207,7 @@ Pricing table(Alternative)
 
 .pricing-table2 .rate .price {
   display: inline-block;
-  float: left; 
+  float: left;
   clear: both;
 }
 
@@ -287,7 +287,7 @@ Pricing table(Alternative 2)
   margin:0;
   line-height:normal;
 }
-.pricing-head h3 span, 
+.pricing-head h3 span,
 .pricing-head h4 span {
   display:block;
   margin-top:5px;
@@ -325,7 +325,7 @@ Pricing table(Alternative 2)
   font-style:normal;
   position:relative;
 }
-  
+
 /*Pricing Content*/
 .pricing-content li {
   color:#888;
@@ -377,7 +377,7 @@ Pricing table(Alternative 2)
 }
 
 
-@media (min-width: 768px) and (max-width: 1280px) { 
+@media (min-width: 768px) and (max-width: 1280px) {
 
   .pricing-table .rate .price,
   .pricing-table2 .rate .price {
@@ -387,4 +387,4 @@ Pricing table(Alternative 2)
     margin-bottom: 10px;
   }
 
-} 
+}

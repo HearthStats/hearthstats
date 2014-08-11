@@ -14,7 +14,7 @@
     <%= t('.shared.notes') %>:
     <%= f.text_field :notes_cont, { size: 12 } %>
     &nbsp;
-    
+
     <%= f.submit class: 'btn btn-sm btn-primary', id: '', value: t('.apply') %>
     <%= f.submit class: 'btn btn-sm dark',        id: 'clearMatchFiltersButton', value: t('.reset') %>
   </p>
@@ -26,9 +26,9 @@
     <%= t('.sort') %>
     <%= select_tag :sort, options_for_select(%w(created_at duration numturns).map { |a| [t(".#{a}"), a]}, params[:sort]) %>
     <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'], [t('.descending'), 'desc']], params[:order]) %>
-    
+
     &nbsp; - &nbsp;
-    
+
     <strong><%= number_to_percentage(@winrate, precision: 2) %></strong> <%= t('.win_rate_over') %>
     <strong><%= number_with_delimiter(@matches.count, :delimiter => ',') %></strong> <%= t('.matches_in_this_list') %>
  </p>

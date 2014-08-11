@@ -4,7 +4,7 @@ var FormComponents = function () {
     var handleBootstrapTouchSpin = function() {
 
         $("#touchspin_demo1").TouchSpin({
-            inputGroupClass: 'input-medium',            
+            inputGroupClass: 'input-medium',
             spinUpClass: 'green',
             spinDownClass: 'green',
             min: -1000000000,
@@ -12,8 +12,8 @@ var FormComponents = function () {
             stepinterval: 50,
             maxboostedstep: 10000000,
             prefix: '$'
-        }); 
-        
+        });
+
         $("#touchspin_demo2").TouchSpin({
             inputGroupClass: 'input-medium',
             spinUpClass: 'blue',
@@ -25,14 +25,14 @@ var FormComponents = function () {
             boostat: 5,
             maxboostedstep: 10,
             postfix: '%'
-        });         
+        });
     }
 
     var handleBootstrapMaxlength = function() {
         $('#maxlength_defaultconfig').maxlength({
             limitReachedClass: "label label-danger",
         })
-    
+
         $('#maxlength_thresholdconfig').maxlength({
             limitReachedClass: "label label-danger",
             threshold: 20
@@ -138,7 +138,7 @@ var FormComponents = function () {
                 console.log("Callback has been called!");
                 $('#defaultrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
-        );        
+        );
 
         $('#reportrange').daterangepicker({
                 opens: (App.isRTL() ? 'left' : 'right'),
@@ -542,7 +542,7 @@ var FormComponents = function () {
 
         $("#mask_date").inputmask("d/m/y", {
             autoUnmask: true
-        }); //direct mask        
+        }); //direct mask
         $("#mask_date1").inputmask("d/m/y", {
             "placeholder": "*"
         }); //change the placeholder
@@ -604,7 +604,7 @@ var FormComponents = function () {
                     return word.match(/[a-z].[0-9]/) && score;
                 }, 10, true);
 
-                // set as initialized 
+                // set as initialized
                 initialized = true;
             }
         });
@@ -628,7 +628,7 @@ var FormComponents = function () {
                 });
                 // add error class to the popover
                 pop.data('bs.popover').tip().addClass('error');
-                // set last poped popover to be closed on click(see App.js => handlePopovers function)     
+                // set last poped popover to be closed on click(see App.js => handlePopovers function)
                 App.setLastPopedPopover(pop);
                 pop.popover('show');
                 e.stopPropagation(); // prevent closing the popover

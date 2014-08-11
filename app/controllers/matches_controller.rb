@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   before_filter :authenticate_user!
-  
+
   # GET /matches/new
   # GET /matches/new.json
   def new

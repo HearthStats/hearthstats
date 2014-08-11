@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .rankingtable{
-	text-align: left;
+  text-align: left;
   width: 90%;
   margin: auto;
   margin-bottom: 20px;
@@ -19,7 +19,7 @@
   }
 }
 .tableheader{
-	padding-left: 50px;
+  padding-left: 50px;
   text-align: left;
   font-size: 20px;
   margin-bottom: 10px;
@@ -44,21 +44,21 @@
     width: 449px;
     text-align: left;
   }
-	.mpfirst{
-	  font-size: 35px;
-	  padding-left: 0px;
-	  color: #E64C65;
-	}
-	.mpsec{
-	  font-size: 25px;
-	  padding-left: 0px;
-	  color: #2c3e50;
-	}
-	.mpthird{
-	  font-size: 20px;
-	  padding-left: 0px;
-	  color: #2c3e50;
-	}
+  .mpfirst{
+    font-size: 35px;
+    padding-left: 0px;
+    color: #E64C65;
+  }
+  .mpsec{
+    font-size: 25px;
+    padding-left: 0px;
+    color: #2c3e50;
+  }
+  .mpthird{
+    font-size: 20px;
+    padding-left: 0px;
+    color: #2c3e50;
+  }
 }
 .conmore, .arenamore {
   display: none;
@@ -75,7 +75,7 @@
   cursor: pointer;
 }
 .showcon:hover, .showarena:hover{
-	color: #E64C65;
+  color: #E64C65;
 }
 // Nov Report
 .novreport{

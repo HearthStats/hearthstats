@@ -244,7 +244,7 @@ en:
       description: ' constructed game stats'
       section: Constructed
       last: last
-     
+
     stats_filter:
       hours: hours
       days: days

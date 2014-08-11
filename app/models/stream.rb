@@ -1,6 +1,6 @@
 class Stream
 
-  FEATURED =['ceciltv', 
+  FEATURED =['ceciltv',
              'rambunctiousrogue',
              'kisstafer',
              'bradhs',

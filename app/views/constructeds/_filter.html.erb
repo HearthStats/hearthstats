@@ -3,7 +3,7 @@
     <%= t('.filter') %>
 
     <%= f.select :klass_id, klass_collection_for_select %>
-    vs.   
+    vs.
     <%= f.select :oppclass_id, klass_collection_for_select %>
     <%= f.select :coin, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']] %>
     &nbsp;
@@ -13,7 +13,7 @@
     <%= t('.shared.notes') %>:
     <%= f.text_field :notes, { size: 12 } %>
     &nbsp;
-    
+
     <%= f.submit class: 'btn btn-sm btn-primary', id: '', value: t('.apply') %>
     <%= f.submit class: 'btn btn-sm dark',        id: 'clearMatchFiltersButton', value: t('.reset') %>
  </p>

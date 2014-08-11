@@ -26,10 +26,10 @@ Buttons & Dropdown Buttons
 ***/
 
 .btn {
-	border-width: 0;
-	padding: 7px 14px;
+  border-width: 0;
+  padding: 7px 14px;
   font-size: 14px;
-	outline: none !important;
+  outline: none !important;
   -webkit-box-shadow: none !important;
      -moz-box-shadow: none !important;
           box-shadow: none !important;
@@ -61,19 +61,19 @@ Buttons & Dropdown Buttons
 }
 
 .btn.red-stripe {
-	border-left: 3px solid #d84a38;
+  border-left: 3px solid #d84a38;
 }
 
 .btn.blue-stripe {
-	border-left: 3px solid #4d90fe;
+  border-left: 3px solid #4d90fe;
 }
 
 .btn.purple-stripe {
-	border-left: 3px solid #852b99;
+  border-left: 3px solid #852b99;
 }
 
 .btn.green-stripe {
-	border-left: 3px solid #35aa47;
+  border-left: 3px solid #35aa47;
 }
 
 .btn.yellow-stripe {

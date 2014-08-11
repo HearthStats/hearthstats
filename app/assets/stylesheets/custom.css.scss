@@ -1,54 +1,54 @@
 .btn.blue{
-	color: white !important;
+  color: white !important;
 }
 .center{
-	margin: auto;
+  margin: auto;
 }
 .profile-info{
-	.bnetprofile{
-		font-style: normal;
-		font-weight: 600;
-		font-size: 14px !important;
-		padding-right: 5px;
-	}
-	.profile_title{
-		display: inline-block;
-		color: #383839;
-		font-size: 24px;
-		font-weight: 400;
-		margin: 0 0 10px 0;
-	}
+  .bnetprofile{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px !important;
+    padding-right: 5px;
+  }
+  .profile_title{
+    display: inline-block;
+    color: #383839;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+  }
 
-	.profile_addinfo{
-		padding-left: 10px;
-		display: inline-block;
-	}
-	.profile_winrate{
-		padding-bottom: 30px;
-	}
+  .profile_addinfo{
+    padding-left: 10px;
+    display: inline-block;
+  }
+  .profile_winrate{
+    padding-bottom: 30px;
+  }
 }
 
 .transition{
-	transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 // Sexy Transition to make things look better
 .btn{
-	transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .winbutt_style,
 .arenas .gofirst {
-	margin-top: 30px;
-	font-size: 20px !important;
-	width: 150px;
-	padding: 10px 0 10px 0 !important;
-	margin-bottom: 30px;
-	margin-left: 10px;
-	margin-right: 10px;
-	cursor: pointer !important;
+  margin-top: 30px;
+  font-size: 20px !important;
+  width: 150px;
+  padding: 10px 0 10px 0 !important;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer !important;
 }
 .gofirst-cont{
-	margin-top: 20px;
-	margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .arenas .gofirst {
  margin-bottom:0;
@@ -62,22 +62,22 @@
   color: #d84a38;
 }
 .Draw{
-	color: #ffb848;
+  color: #ffb848;
 }
 .feeds {
-	.col1{
-		width: auto;
-	}
-	.col2{
-		float: right;
-		width: auto;
-	}
+  .col1{
+    width: auto;
+  }
+  .col2{
+    float: right;
+    width: auto;
+  }
 }
 .sidebaricon{
-	margin-right: 10px;
+  margin-right: 10px;
 }
 .deck-notes table {
-	td{
-		border: solid 1px darkgrey;
-	}
+  td{
+    border: solid 1px darkgrey;
+  }
 }

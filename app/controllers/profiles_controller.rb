@@ -38,11 +38,11 @@ class ProfilesController < ApplicationController
     @userkey = @user.get_userkey
     @profile = @user.profile
     impressionist(@profile)
-    
+
     @profiletitle = @profile.name.blank? ? "User" : @profile.name
 
     classes = klasses_hash.map { |a| a[0] }
-       
+
     @recent_matches = matches.last(6).reverse
 
     # Overall win rates
@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
     @overallarena= get_win_rate(arena_matches, true)
     con_matches = matches.where(mode_id: 3)
     @overallcon = get_win_rate(con_matches, true)
- 
+
     @conwins   = Match.winrate_per_day(con_matches, 10)
     @arenawins = Match.winrate_per_day(arena_matches, 10)
 
