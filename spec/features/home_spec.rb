@@ -8,13 +8,13 @@ describe 'home page' do
 
   it 'should go to companion page' do
     visit '/'
-    click_on '.uploader-btn'
+    click_on 'Companion'
     page.should have_content('Official Uploader')
   end
 
   it 'should go to login page' do
     visit '/'
-    click_on '.web-app-btn'
+    click_on 'Web App'
     page.should have_content('Login')
   end
 

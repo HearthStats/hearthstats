@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.string   "namespace"
   end
 
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -38,6 +42,9 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
+
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "annoucements", :force => true do |t|
     t.string   "description"
@@ -65,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.integer  "klass_id"
   end
 
+  add_index "arena_runs", ["user_id"], :name => "index_arena_runs_on_user_id"
+
   create_table "arenas", :force => true do |t|
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
@@ -77,6 +86,9 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.text     "notes"
     t.string   "oppname"
   end
+
+  add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
+  add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
   create_table "card_sets", :force => true do |t|
     t.string "name"
@@ -99,14 +111,6 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.string  "blizz_id"
   end
 
-  create_table "coaches", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "description"
-    t.text     "available"
-    t.boolean  "active",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
   create_table "comments", :force => true do |t|
@@ -172,6 +176,11 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.boolean  "is_public"
   end
 
+  add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
+  add_index "decks", ["slug"], :name => "index_decks_on_slug"
+  add_index "decks", ["unique_deck_id"], :name => "index_decks_on_unique_deck_id"
+  add_index "decks", ["user_id"], :name => "index_decks_on_user_id"
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
     t.integer  "attempts",   :default => 0, :null => false
@@ -185,6 +194,8 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"
@@ -222,6 +233,9 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "match_decks", ["deck_id"], :name => "index_match_decks_on_deck_id"
+  add_index "match_decks", ["match_id"], :name => "index_match_decks_on_match_id"
+
   create_table "match_ranks", :force => true do |t|
     t.integer  "rank_id"
     t.integer  "match_id"
@@ -230,6 +244,9 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.integer  "legendary"
   end
 
+  add_index "match_ranks", ["match_id"], :name => "index_match_ranks_on_match_id"
+  add_index "match_ranks", ["rank_id"], :name => "index_match_ranks_on_rank_id"
+
   create_table "match_results", :force => true do |t|
     t.integer  "match_id"
     t.string   "name"
@@ -237,12 +254,17 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "match_results", ["match_id"], :name => "index_match_results_on_match_id"
+
   create_table "match_runs", :force => true do |t|
     t.integer  "arena_run_id"
     t.integer  "match_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "match_runs", ["arena_run_id"], :name => "index_match_runs_on_arena_run_id"
+  add_index "match_runs", ["match_id"], :name => "index_match_runs_on_match_id"
 
   create_table "match_unique_decks", :force => true do |t|
     t.integer  "unique_deck_id"
@@ -269,6 +291,12 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.boolean  "appsubmit"
   end
 
+  add_index "matches", ["klass_id"], :name => "index_matches_on_klass_id"
+  add_index "matches", ["mode_id"], :name => "index_matches_on_mode_id"
+  add_index "matches", ["oppclass_id"], :name => "index_matches_on_oppclass_id"
+  add_index "matches", ["result_id"], :name => "index_matches_on_result_id"
+  add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
+
   create_table "modes", :force => true do |t|
     t.string "name"
   end
@@ -290,6 +318,8 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.boolean  "global",               :default => false
     t.datetime "expires"
   end
+
+  add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
   create_table "patches", :force => true do |t|
     t.string   "num"
@@ -316,8 +346,6 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.string   "sig_pic_content_type"
     t.integer  "sig_pic_file_size"
     t.datetime "sig_pic_updated_at"
-  end
-    t.string   "locale",              :default => "en"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
@@ -354,6 +382,8 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "updated_at",                                       :null => false
   end
 
+  add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
+
   create_table "redactor_assets", :force => true do |t|
     t.integer  "user_id"
     t.string   "data_file_name",                  :null => false
@@ -378,6 +408,9 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "seasons", :force => true do |t|
     t.integer  "num"
@@ -415,10 +448,14 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "created_at"
   end
 
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], :name => "taggings_idx", :unique => true
+
   create_table "tags", :force => true do |t|
     t.string  "name"
     t.integer "taggings_count", :default => 0
   end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "team_users", :force => true do |t|
     t.integer "user_id"
@@ -474,6 +511,8 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.integer  "num_users"
   end
 
+  add_index "unique_decks", ["cardstring"], :name => "index_unique_decks_on_cardstring"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -492,7 +531,6 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.string   "userkey"
     t.integer  "subscription_id"
     t.string   "authentication_token"
-    t.string   "customer_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
