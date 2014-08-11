@@ -1,17 +1,17 @@
 // New Deck Builder Styling
 .deckbuilder-img{
-	height: 250px;
+  height: 250px;
 }
 #deckbuilder-list{
-	width: 100%;
-	li{
-		list-style-type: none;
-		display: inline;
-		float: left;
-	}
-	.name{
-		visibility: hidden;
-	}
+  width: 100%;
+  li{
+    list-style-type: none;
+    display: inline;
+    float: left;
+  }
+  .name{
+    visibility: hidden;
+  }
 }
 
 .highcharts-container{
@@ -28,23 +28,23 @@
   border-right: 1px solid black;
 }
 .deckform{
-	label{
+  label{
     font-size: 38px;
     margin-bottom: 20px;
   }
-	.deckname{
-		height: 50px;
-		width: 100%;
-		max-width: 300px;
-		font-size: 20px;
-	}
-	.actions{
-		margin-top: 30px;
-	}
+  .deckname{
+    height: 50px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 20px;
+  }
+  .actions{
+    margin-top: 30px;
+  }
 }
 .decklink{
-	width: 100%;
-	max-width: 400px;
+  width: 100%;
+  max-width: 400px;
 }
 .deckbuilderWrapper label {
   font-size:24px;
@@ -52,10 +52,10 @@
   font-weight: 300 !important;
 }
 .notesfield{
-	margin-top: 30px;
-	width: 60%;
-	display: inline-block;
-	text-align: left;
+  margin-top: 30px;
+  width: 60%;
+  display: inline-block;
+  text-align: left;
 }
 
 .versions{
@@ -63,22 +63,22 @@
 }
 
 .deck_title{
-	display: inline-block;
+  display: inline-block;
 }
 .winrates{
-	display: inline-block;
-	margin-right: 10px;
-	border: 1px #eee solid;
-	padding: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  border: 1px #eee solid;
+  padding: 5px;
 }
 .deck-notes{
-	p{
-		word-wrap: break-word;
-	}
-	.decklist {
-		display: block;
-		margin-bottom: 5px;
-	}
+  p{
+    word-wrap: break-word;
+  }
+  .decklist {
+    display: block;
+    margin-bottom: 5px;
+  }
 }
 .selectboxit-container .selectboxit {
   width: 200px !important;
@@ -94,38 +94,38 @@
   }
 }
 .toggle-box{
-	padding: 5px;
+  padding: 5px;
 }
 .deckbuilder-actions{
-	display: block;
-	padding: 0 10px 0 10px;
-	color: white;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	.add{
-		float: left;
-		background-color: #428BCA;
-		width: 50%;
-		text-align: center;
-		padding: 10px;
-		cursor: pointer;
-	}
-	.remove{
-		float: right;
-		background-color: #D84A38;
-		width: 50%;
-		text-align: center;
-		padding: 10px;
-		cursor: pointer;
-	}
+  display: block;
+  padding: 0 10px 0 10px;
+  color: white;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .add{
+    float: left;
+    background-color: #428BCA;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .remove{
+    float: right;
+    background-color: #D84A38;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+  }
 }
 .splash-class{
-	display: inline-block;
-	/* A one-second transition was to disturbing for me */
+  display: inline-block;
+  /* A one-second transition was to disturbing for me */
         -webkit-transition: all 0.3s ease;
         -moz-transition:    all 0.3s ease;
         -o-transition:      all 0.3s ease;
@@ -133,23 +133,23 @@
         transition:         all 0.3s ease;
 }
 .splash-class:hover{
-	transform:scale(1.5);
+  transform:scale(1.5);
   -ms-transform:scale(1.5); /* IE 9 */
   -moz-transform:scale(1.5); /* Firefox */
   -webkit-transform:scale(1.5); /* Safari and Chrome */
   -o-transform:scale(1.5); /* Opera */
 }
 .splash-class-container{
-	display: inline-block;
-	padding: 10px;
+  display: inline-block;
+  padding: 10px;
 }
 .classes-cont{
-	display: block;
-	width: 510px;
-	margin: auto;
+  display: block;
+  width: 510px;
+  margin: auto;
 }
 .card-count{
-	text-align: center;
+  text-align: center;
 }
 #deck-list{
   border-bottom: 1px solid black;
@@ -157,12 +157,12 @@
   .green{
     color: #35aa47;
   }
-	th{
-		font-family: 'Open Sans', sans-serif;
-		font-weight: 400;
-		font-size: 14px;
-		border-bottom: 1px solid black;
-	}
+  th{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border-bottom: 1px solid black;
+  }
   th:last-child{
     padding-left: 10px;
     text-align: right;

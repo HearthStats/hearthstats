@@ -105,7 +105,7 @@
   padding: 0 2px;
 }
 .selectboxit-option .selectboxit-option-icon-container .selectboxit-option-icon {
-	margin-left:4px; 	
+  margin-left:4px;
 }
 
 /* Individual Option Hover Action */
@@ -290,5 +290,5 @@
        position the dropdown (when opened) to make sure the drop down items are not
        displayed outside of the current window viewport.
     */
-	max-height:250px;
+  max-height:250px;
 }

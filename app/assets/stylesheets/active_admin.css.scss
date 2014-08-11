@@ -9,8 +9,8 @@
 
 // Active Admin's got SASS!
 .admin_namespace {
-	@import "active_admin/mixins";
-	@import "active_admin/base";
+  @import "active_admin/mixins";
+  @import "active_admin/base";
 }
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -21,7 +21,7 @@
 //
 // Notice that Active Admin CSS rules are nested within a
 // 'body.active_admin' selector to prevent conflicts with
-// other pages in the app. It is best to wrap your changes in a 
+// other pages in the app. It is best to wrap your changes in a
 // namespace so they are properly recognized. You have options
 // if you e.g. want different styles for different namespaces:
 //

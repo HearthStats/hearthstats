@@ -19,7 +19,7 @@ class ProfileImage
   end
 
   protected
-  
+
   def add_username
     username = Draw.new
     image.annotate(username, 0,0,110,44, user[:name]) do
@@ -67,14 +67,14 @@ class ProfileImage
     end
 
     ranking = Draw.new
-    image.annotate(ranking, 0,0,ranking_x_cord,ranking_y_cord, user[:ranking].to_s) do 
+    image.annotate(ranking, 0,0,ranking_x_cord,ranking_y_cord, user[:ranking].to_s) do
       self.font = QUICKSAND_FONT
       self.gravity = Magick::CenterGravity
       self.align = Magick::CenterAlign
       self.pointsize = size_of_number
       self.fill = DEFAULT_COLOR
     end
-    
+
     if user[:legend]
       legend = Draw.new
       image.annotate(legend, 0,0,legend_x_cord,55, "LEGEND") do

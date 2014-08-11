@@ -8,20 +8,20 @@
 
 form id="cardsFilter" method="get" class="data-turboform"
   p
-    | #{t '.text_contains'}: &nbsp; 
+    | #{t '.text_contains'}: &nbsp;
     input[name="text" value="#{@textFilter}"]
-    | &nbsp; #{t '.filter_by'}: &nbsp; 
+    | &nbsp; #{t '.filter_by'}: &nbsp;
     select name="class"
       option[value=""] - #{t '.any_class'} -
       option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
       - @classes.each do |c|
         option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)] = c.name
-    | &nbsp; 
+    | &nbsp;
     select name="type"
       option[value=""] - #{t '.any_type'} -
       - @types.each do |type|
         option[value="#{type.id}" selected=("selected" if @typeFilter.to_f == type.id.to_f)] = type.name
-    | &nbsp; 
+    | &nbsp;
     select name="race"
       option[value=""] - #{t '.any_race'} -
       option[value="none" selected=("selected" if @raceFilter == "none")] #{t '.none'}
@@ -33,15 +33,15 @@ form id="cardsFilter" method="get" class="data-turboform"
       option[value="health" selected=("selected" if @sortField == "health")] #{t '.health_dur'}
       option[value="mana" selected=("selected" if @sortField == "mana")] #{t '.mana_cost'}
       option[value="name" selected=("selected" if @sortField == "name")] #{t '.name'}
-    | &nbsp; 
+    | &nbsp;
     select name="order"
       option[value="asc"] #{t '.ascending'}
       option[value="desc" selected=("selected" if @orderFilter == "desc")] #{t '.descending'}
-    | &nbsp; 
+    | &nbsp;
     input type="submit" value="Submit" id="cardsFilterSubmit"
-    | &nbsp; 
+    | &nbsp;
     input type="button" value="#{t '.reset_filters'}" id="cardsFilterReset"
-    
+
 javascript:
   $('#cardsFilter select').change(function() {
     $('#cardsFilter').submit();

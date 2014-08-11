@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
 
     # Get recent games
     @recent_entries = matches.last(10).reverse
-    
+
     @arenawins = Match.winrate_per_day(matches.where(mode_id: 1), 10)
     @conwins   = Match.winrate_per_day(matches.where(mode_id: 3), 10)
 

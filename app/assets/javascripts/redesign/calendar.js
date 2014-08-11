@@ -35,7 +35,7 @@ var Calendar = function () {
                         center: '',
                         left: 'agendaDay, agendaWeek, month, today, prev,next'
                     };
-                }                
+                }
             } else {
                  if ($('#calendar').parents(".portlet").width() <= 720) {
                     $('#calendar').addClass("mobile");
@@ -53,7 +53,7 @@ var Calendar = function () {
                     };
                 }
             }
-           
+
 
             var initDrag = function (el) {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
@@ -125,7 +125,7 @@ var Calendar = function () {
                     }
                 },
                 events: [{
-                        title: 'All Day Event',                        
+                        title: 'All Day Event',
                         start: new Date(y, m, 1),
                         backgroundColor: App.getLayoutColorCode('yellow')
                     }, {

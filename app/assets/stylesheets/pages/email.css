@@ -1,9 +1,9 @@
-/*** 
-Email Template Page 
+/***
+Email Template Page
 ***/
-.mail-template ul { 
+.mail-template ul {
   padding:0px;
-  margin: 0px; 
+  margin: 0px;
   list-style:none;
 }
 
@@ -26,7 +26,7 @@ Email Template Page
 }
 
 .mail-template li a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .mail-template li.color-black {

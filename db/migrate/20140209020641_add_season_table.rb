@@ -3,7 +3,7 @@ class AddSeasonTable < ActiveRecord::Migration
     create_table :season do |t|
       t.integer :num
       t.timestamps
-    end 
+    end
   end
 
   def down

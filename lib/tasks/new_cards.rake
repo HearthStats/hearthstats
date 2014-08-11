@@ -33,8 +33,8 @@ task :RenameCards => :environment do
   Dir.glob(folder_path + "/*").sort.each do |f|
     filename = File.basename(f, File.extname(f))
     p filename
-    File.rename(f, folder_path + "/" + 
-                Card.where(blizz_id: filename).first.name.parameterize + 
+    File.rename(f, folder_path + "/" +
+                Card.where(blizz_id: filename).first.name.parameterize +
                 File.extname(f))
   end
 end

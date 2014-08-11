@@ -1,6 +1,6 @@
 class RenameApikeyToUserkey < ActiveRecord::Migration
   def up
-  	rename_column :users, :apikey, :userkey
+    rename_column :users, :apikey, :userkey
   end
 
   def down

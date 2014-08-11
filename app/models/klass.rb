@@ -1,6 +1,6 @@
 class Klass < ActiveRecord::Base
   attr_accessible :name
-  
+
   LIST = {
     1 => 'Druid',
     2 => 'Hunter',
@@ -12,18 +12,18 @@ class Klass < ActiveRecord::Base
     8 => 'Warlock',
     9 => 'Warrior'
   }
-  
+
   ### ASSOCIATIONS:
-  
+
   has_many :deck
   has_many :matches
-  
+
   ### VALIDATIONS:
-  
+
   validates :name, uniqueness: true
-  
+
   ### CLASS METHODS:
-  
+
   def self.list
     LIST.values
   end

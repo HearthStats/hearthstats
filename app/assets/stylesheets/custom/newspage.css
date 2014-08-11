@@ -1,10 +1,10 @@
 .rssentry{
-	width: 350px;
-	margin: 10px;
+  width: 350px;
+  margin: 10px;
 }
 .rss_divider{
-	border-bottom: 1px black solid;
-	margin-bottom: 10px;
+  border-bottom: 1px black solid;
+  margin-bottom: 10px;
 }
 
 /**** Isotope Filtering ****/

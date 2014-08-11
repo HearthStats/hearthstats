@@ -21,7 +21,7 @@ div class="row profile"
               ul class="list-unstyled profile-nav"
                 li
                   - if @profile.avatar_file_name
-                    = image_tag @profile.avatar.url(:medium), 
+                    = image_tag @profile.avatar.url(:medium),
                       class: "img-responsive center", alt: ""
                   - else
                     = image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
@@ -37,10 +37,10 @@ div class="row profile"
                         div.well
                           .reveal Click to reveal
                           .user-key = @userkey
-                li.profile-sidebar-block 
+                li.profile-sidebar-block
                   div.badge-title HearthStats Badge
-                  div.sig-pic 
-                    = image_tag @profile.sig_pic.url, 
+                  div.sig-pic
+                    = image_tag @profile.sig_pic.url,
                     class: "img-responsive center"
                     small Note sig is only generated for active users
                   div.embed-link

@@ -1,10 +1,10 @@
 class DecksController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :public, :public_show]
   caches_action :public_show, expires_in: 1.day
-  
+
   def index
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: current_user.id)
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }
@@ -23,11 +23,11 @@ class DecksController < ApplicationController
               ransack(params[:q])
     @q.unique_deck_num_matches_gteq = '30' unless params[:q]
     @q.unique_deck_created_at_gteq = 1.week.ago unless params[:q]
-              
+
     @decks = @q.result
     @decks = @decks.order("#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
-    
+
     unless current_user.nil?
       unique_deck_ids = @decks.map(&:unique_deck_id)
       @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
@@ -38,8 +38,8 @@ class DecksController < ApplicationController
       format.json { render json: @decks }
     end
   end
-  
-  
+
+
   def show
     @deck = Deck.find(params[:id])
     impressionist(@deck)
@@ -50,11 +50,11 @@ class DecksController < ApplicationController
     end
 
     @card_array = @deck.card_array_from_cardstring
-    
+
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)
     if deck_cache_stats.nil?
       matches = @deck.matches
-      
+
       # Win rates vs each class
       @deckrate = Array.new
 
@@ -70,9 +70,9 @@ class DecksController < ApplicationController
       # Going first vs 2nd
       @firstrate = get_win_rate(matches.where(coin: false), true)
       @secrate = get_win_rate(matches.where(coin: true), true)
-      
+
       #calculate deck winrate
-      
+
       @winrate = matches.count > 0 ? get_win_rate(matches) : 0
       Rails.cache.write("deck_stats" + @deck.id.to_s, [@deckrate,@firstrate,@secrate,@winrate], expires_in: 1.days)
     else
@@ -81,12 +81,12 @@ class DecksController < ApplicationController
       @secrate = deck_cache_stats[2]
       @winrate = deck_cache_stats[3]
     end
-    
+
     respond_to do |format|
       format.html # show.html.erb
     end
   end
-  
+
   def public_show
     @deck = Deck.find(params[:id])
     unique = @deck.unique_deck
@@ -94,10 +94,10 @@ class DecksController < ApplicationController
       redirect_to deck_path(@deck) and return
     end
     impressionist(unique)
-    
+
     @card_array = @deck.card_array_from_cardstring
     @matches    = unique.matches
-    
+
     # Win rates vs each class
     @deckrate = Array.new
     i = 0
@@ -111,15 +111,15 @@ class DecksController < ApplicationController
       end
       i = i + 1
     end
-    
+
     # Going first vs 2nd
     @firstrate = get_win_rate(@matches.where(coin: false), true)
     @secrate = get_win_rate(@matches.where(coin: true), true)
-    
+
     #calculate deck winrate
-    
+
     @winrate = @matches.count > 0 ? get_win_rate(@matches) : 0
-    
+
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -215,12 +215,12 @@ class DecksController < ApplicationController
       format.html { redirect_to decks_url }
     end
   end
-  
+
   def active_decks
     @active_decks = Deck.where(user_id: current_user.id, active: true)
     @my_decks = getMyDecks()
   end
-  
+
   def submit_active_decks
     saves = 0
     Deck.where(user_id: current_user.id).update_all(active: nil)
@@ -232,7 +232,7 @@ class DecksController < ApplicationController
       deck = Deck.where(user_id: current_user.id, name: params[i.to_s])[0]
       deck.slot = i
       deck.active = true
-      
+
       if deck.save
         saves += 1
       end
@@ -243,7 +243,7 @@ class DecksController < ApplicationController
       redirect_to active_decks_decks_path, alert: 'Cannot Update Active Decks'
     end
   end
-  
+
   def version
     deck = Deck.find(params[:id])
     canedit(deck)
@@ -260,7 +260,7 @@ class DecksController < ApplicationController
   end
 
   private
-  
+
   def version_deck(deck)
     last_version = deck.deck_versions.last
     if last_version.nil?
@@ -275,11 +275,11 @@ class DecksController < ApplicationController
       return false
     end
   end
-  
+
   def getMyDecks()
     Deck.where(user_id: current_user.id).order(:klass_id, :name).all
   end
-  
+
   def text_to_deck(text)
     text_array = text.split("\r\n")
     card_array = Array.new
@@ -289,15 +289,15 @@ class DecksController < ApplicationController
       card_id = Card.where("lower(name) =?", name.downcase).first.id
       card_array << card_id.to_s + "_" + qty.to_s
     end
-    
+
     return card_array.join(',')
   end
-  
+
   def sort_by
     return 'num_users' unless params[:sort]
-    
+
     sort = (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
-    
+
     sort =  %w(created_at name).include?(sort) ? "decks.#{sort}" : sort
   end
 

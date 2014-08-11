@@ -2,17 +2,17 @@ class User < ActiveRecord::Base
   rolify
   extend Mailboxer::Models::Messageable::ActiveRecord
   acts_as_messageable
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:token_authenticatable
-         
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey, :subscription_id, :authentication_token
-  
+
   ### ASSOCIATIONS:
-  
+
   has_one :profile,       dependent: :destroy
   has_many :arenas,       dependent: :destroy
   has_many :decks,        dependent: :destroy
@@ -23,20 +23,20 @@ class User < ActiveRecord::Base
   has_many :teams, through: :team_users
   belongs_to :tourny
   belongs_to :subscription
-  
+
   ### CLASS METHODS:
   ### INSTANCE METHODS:
-  
+
   def get_userkey
     update_attribute(:userkey, SecureRandom.hex) if userkey.nil?
-    
+
     userkey
   end
-  
+
   def name
     return "You should add method :name in your Messageable model"
   end
-  
+
   def mailboxer_email(object)
     nil
   end
@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   ### PRIVATE METHODS:
 
   private
-  
+
   def arena_wr(matches)
     arena_matches = matches.where(mode_id: 1)
     arena_tot = arena_matches.count
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
 
     arena_wr
   end
-  
+
   def con_wr(matches)
     con_matches = matches.where(mode_id: 3)
     con_tot = con_matches.count
@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
       con_wins = con_matches.where(result_id: 1).count
       con_wr = (con_wins.to_f / con_tot * 100).round(2).to_s
     end
-  
+
     con_wr
   end
 

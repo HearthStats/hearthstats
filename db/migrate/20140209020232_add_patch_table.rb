@@ -4,7 +4,7 @@ class AddPatchTable < ActiveRecord::Migration
       t.integer :num
       t.text :changelog
       t.timestamps
-    end 
+    end
   end
 
   def down
