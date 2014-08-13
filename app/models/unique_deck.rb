@@ -13,9 +13,6 @@ class UniqueDeck < ActiveRecord::Base
   has_many :unique_deck_cards
   has_many :cards, through: :unique_deck_cards
 
-  has_many :matches, through: :match_unique_decks
-  has_many :match_unique_decks
-
   ### CALLBACKS:
 
   after_create :create_cards_from_cardstring, if: :cardstring
@@ -40,6 +37,11 @@ class UniqueDeck < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
+  def matches
+    all_matches = decks.map { |m| m.matches }.flatten
+    Match.where("id IN (#{all_matches.map(&:id).join(',')})")
+  end
+  
   def update_stats!
     update_stats
     save
