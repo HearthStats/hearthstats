@@ -27,14 +27,16 @@ namespace :cron do
   end
 
   task :expire_top_decks => :environment do
-    expire_fragment('top_decks')
+    Rails.cache.delete('wel#top_deck')
+    ActionController::Base.new.expire_fragment('top_decks')
   end
 
   task :expire_recent_decks => :environment do
-    expire_fragment('recent_decks')
+    Rails.cache.delete('wel#recent_deck')
+    ActionController::Base.new.expire_fragment('recent_decks')
   end
 
   task :get_top_streamers => :environment do
-    expire_fragement('top_streamers')
+    ActionController::Base.new.expire_fragement('top_streamers')
   end
 end
