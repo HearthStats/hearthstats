@@ -338,6 +338,7 @@ en:
       title: Active Deck
       subtitle: ' all active constructed decks'
       slot: Slot
+      deleted_deck: Deleted Deck
       select_deck: Select Deck
       submit: Submit
     index:

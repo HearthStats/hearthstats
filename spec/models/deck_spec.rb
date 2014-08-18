@@ -69,6 +69,16 @@ describe Deck do
       end
     end
 
+    describe '#deactive_deck' do
+      it 'should set slot and active to nil and false' do
+        deck = build :deck, slot: 1, active: true
+
+        deck.deactivate_deck
+        deck.slot.should == nil
+        deck.active.should == false
+      end
+    end
+
     describe '#update_user_stats!' do
       let!(:deck) { create :deck                            }
       let!(:win)  { create :match, deck: deck, result_id: 1 }

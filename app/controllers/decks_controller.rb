@@ -221,15 +221,32 @@ class DecksController < ApplicationController
     @my_decks = getMyDecks()
   end
 
+  def delete_active
+    deleted_deck = Deck.find(params[:id])
+    if current_user.id != deleted_deck.user_id
+      return
+    end
+    slot = deleted_deck.slot
+    deleted_deck.deactivate_deck
+    moved_decks = current_user.decks.where(active: true).where('slot > ?', slot)
+    moved_decks.each do |deck|
+      deck.update_attribute(:slot, slot)
+      slot += 1
+    end
+
+    redirect_to active_decks_decks_path
+  end
+
   def submit_active_decks
     saves = 0
     Deck.where(user_id: current_user.id).update_all(active: nil)
     (1..9).each do |i|
-      if params[i.to_s].blank?
+      slot_deck_id = params[i.to_s]
+      if slot_deck_id.blank?
         saves += 1
         next
       end
-      deck = Deck.where(user_id: current_user.id, name: params[i.to_s])[0]
+      deck = Deck.find(slot_deck_id)
       deck.slot = i
       deck.active = true
 

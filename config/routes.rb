@@ -94,9 +94,13 @@ Hearthstats::Application.routes.draw do
       get 'copy'
       get 'tags'
     end
-    post 'version', on: :member
-    get 'public_show', on: :member
-    get 'copy', on: :member
+
+    member do
+      post 'version'
+      post 'delete_active'
+      get 'public_show'
+      get 'copy'
+    end
   end
 
   resources :dashboards do

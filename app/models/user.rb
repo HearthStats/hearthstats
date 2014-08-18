@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey, :subscription_id, :authentication_token
 
+  ### VALIDATIONS:
+  
+  validates :userkey, :uniqueness => true
+  
   ### ASSOCIATIONS:
 
   has_one :profile,       dependent: :destroy

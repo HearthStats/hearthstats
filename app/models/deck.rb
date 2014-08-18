@@ -33,6 +33,16 @@ class Deck < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
+  def deactivate_deck
+    self.slot = nil
+    self.active = false
+    save
+  end
+
+  def active?
+    self.active == true && self.slot != nil
+  end
+
   def num_cards
     return 0 unless cardstring
     num_cards = 0
