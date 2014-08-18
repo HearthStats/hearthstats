@@ -1,5 +1,5 @@
 $(".graph-container").fadeOut(function(){
-  $("#klass_chart").html("<%= escape_javascript(line_chart win_rates_constructeds_path(:klass_id => @klass), height: '200px' )%>");
+  $("#klass_chart").html("<%= escape_javascript(line_chart win_rates_constructeds_path(:klass_id => @klass), max: 100, height: '200px' )%>");
   $("#klass-img").attr("src", "/assets/Icons/Classes/<%= Klass::LIST[@klass.to_i] %>_Icon.gif");
   $("#klass-name").text("<%= Klass::LIST[@klass.to_i] %>");
   $(".graph-container").fadeIn();
