@@ -208,6 +208,7 @@ en:
       total_dust_amount: Total Dust Amount
       arena_runs_played: Arena Runs Played
       arena_games_played: Arena Games Played
+      average_length: Average Run Length
       most_played: Most Played
       longest_average_runs: Longest Average Runs
       no_games: No games

@@ -147,6 +147,7 @@ class ArenasController < ApplicationController
   def stats
     @arena_array = ArenaRun.class_array(current_user.id)
     @arena_distrib = distribution_array
+    @average_length = ArenaRun.avg_length(current_user.id)
   end
 
   def quickentry

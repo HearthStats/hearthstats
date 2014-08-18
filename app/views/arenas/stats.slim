@@ -14,6 +14,9 @@ div.overall
     div.arena-overall-title=t('.overall_win_rate')
     = get_win_rate(Match.where(user_id: current_user.id, mode_id: 1), true)
   div.arena-overall
+    div.arena-overall-title=t('.average_length')
+    = @average_length
+  div.arena-overall
     div.arena-overall-title=t('.total_gold_amount')
     = ArenaRun.total_gold(current_user.id)
   div.arena-overall

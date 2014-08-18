@@ -31,6 +31,13 @@ class ArenaRun < ActiveRecord::Base
     ArenaRun.where(user_id: userid).sum(:dust)
   end
 
+  def self.avg_length(userid)
+    matches = Match.joins(:arena_run).where(user_id: userid, result_id: 1).group('arena_runs.id').count
+    average = matches.inject(0.0) { |result, el| result + el[1] } / matches.count
+
+    average
+  end
+
   def self.class_array(userid)
     matches = Match.where(user_id: userid, mode_id: 1)
     class_array = Hash.new
