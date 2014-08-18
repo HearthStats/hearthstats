@@ -35,7 +35,7 @@ class ArenaRun < ActiveRecord::Base
     matches = Match.joins(:arena_run).where(user_id: userid, result_id: 1).group('arena_runs.id').count
     average = matches.inject(0.0) { |result, el| result + el[1] } / matches.count
 
-    average
+    average.round(2)
   end
 
   def self.class_array(userid)
