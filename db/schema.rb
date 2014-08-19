@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140731170706) do
+ActiveRecord::Schema.define(:version => 20140819152744) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -509,6 +509,7 @@ ActiveRecord::Schema.define(:version => 20140731170706) do
     t.datetime "updated_at",  :null => false
     t.float    "winrate"
     t.integer  "num_users"
+    t.integer  "mana_cost"
   end
 
   add_index "unique_decks", ["cardstring"], :name => "index_unique_decks_on_cardstring"

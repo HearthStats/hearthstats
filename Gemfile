@@ -36,7 +36,7 @@ end
 # authentication
 gem 'devise'
 gem 'devise-token_authenticatable'
-gem 'cancan'
+gem 'cancancan'
 gem 'rolify'
 
 # storage

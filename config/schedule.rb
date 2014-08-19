@@ -29,5 +29,5 @@ every 2.hours do
 end
 
 every 5.minutes do
-  rale "cron:expire_recent_decks"
+  rake "cron:expire_recent_decks"
 end

@@ -67,7 +67,7 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.0.4)
-    cancan (1.6.10)
+    cancancan (1.9.2)
     capistrano (2.14.2)
       highline
       net-scp (>= 1.0.0)
@@ -448,7 +448,7 @@ DEPENDENCIES
   aws-sdk
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
-  cancan
+  cancancan
   capistrano (~> 2.14.2)
   capistrano_rsync_with_remote_cache
   capybara (>= 2.0.2)

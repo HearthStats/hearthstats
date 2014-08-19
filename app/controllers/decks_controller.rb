@@ -57,14 +57,16 @@ class DecksController < ApplicationController
 
       # Win rates vs each class
       @deckrate = Array.new
+      scope = matches.group(:oppclass_id)
+      total = scope.count
+      wins = scope.where(result_id: 1).count
 
-      Klass.order("name").each_with_index do |c, i|
-        wins = matches.where(oppclass_id: c.id, result_id: 1).count
-        totgames = matches.where(oppclass_id: c.id).count
-        if totgames == 0
-          @deckrate[i] = [0,"#{c.name}<br/>0 Games"]
+      total.each do |klass_id, tot|
+        klass_name = Klass::LIST[klass_id]
+        if tot== 0
+          @deckrate << [0,"#{klass_name}<br/>0 Games"]
         else
-          @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{c.name}<br/>#{totgames} Games"]
+          @deckrate << [((wins[klass_id].to_f / tot )*100).round(2), "#{klass_name}<br/>#{tot} Games"]
         end
       end
       # Going first vs 2nd
