@@ -198,7 +198,7 @@ class DecksController < ApplicationController
         unless params[:deck_text].blank?
           begin
             @deck.cardstring = text_to_deck(params[:deck_text])
-            @deck.save!
+            @deck.save
           rescue
             redirect_to new_deck_path, alert: 'Deck list process error' and return
           end

@@ -59,9 +59,35 @@ class UniqueDeck < ActiveRecord::Base
     self.num_wins    = decks.sum(:user_num_wins)
     self.num_losses  = decks.sum(:user_num_losses)
     self.winrate     = (num_matches.present? && num_matches != 0) ? (num_wins.to_f / num_matches.to_f * 100) : 0
+    self.mana_cost = get_mana_cost
   end
 
-  private
+  def get_mana_cost
+    sum = 0
+    self.cards.each do |card|
+      if card.card_set_id == 3
+        next
+      end
+      cost = case card.rarity_id
+      when 1
+        0
+      when 2
+        40
+      when 3
+        100
+      when 4
+        400
+      else
+        1600
+      end
+
+      sum += cost
+      p card.name
+      p cost
+    end
+    
+    sum
+  end
 
   def create_cards_from_cardstring
     cardstring.split(',').each do |card_data|
