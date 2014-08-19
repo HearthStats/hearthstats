@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe 'home page' do
+  before do
+    Rails.cache.write('wel#arena_top', [])
+    Rails.cache.write('wel#con_top', [])
+  end
+
+  after do
+    Rails.cache.delete('wel#arena_top')
+    Rails.cache.delete('wel#con_top')
+  end
+
   it 'should load' do
     visit '/'
     page.status_code.should be 200
