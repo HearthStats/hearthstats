@@ -17,7 +17,7 @@ task :NewCards => :environment do
                 attack: q["attack"].to_i,
                 health: q["health"].to_i,
                 mana: q["cost"].to_i,
-                card_set_id: 3
+                card_set_id: 3,
                 rarity_id: rarity[q["rarity"]],
                 klass_id: klasses_hash[q["playerClass"]],
                 blizz_id: q["id"]
