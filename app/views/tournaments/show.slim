@@ -1,0 +1,14 @@
+table
+  thead
+  tbody
+    tr
+      - (1..@num_columns).reverse_each do |column|
+        td
+          table
+            - @pairs.where(roundof: (2**column)).each do |pair|
+              tr 
+                p 
+                  |Pair:&nbsp;
+                  span = pair.p1_id
+                  |&nbsp;V.S.&nbsp;
+                  span = pair.p2_id

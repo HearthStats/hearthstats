@@ -1,6 +1,6 @@
 class TournUser < ActiveRecord::Base
-  attr_accessible :user_id
+  attr_accessible :user_id, :tournament_id
 
-  belongs_to :tournaments
-  belongs_to :users
+  belongs_to :tournament
+  belongs_to :user
 end

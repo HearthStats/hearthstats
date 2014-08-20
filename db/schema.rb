@@ -219,11 +219,7 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
-<<<<<<< HEAD
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
-=======
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
->>>>>>> ...
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "klasses", :force => true do |t|
@@ -335,12 +331,12 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
   create_table "profiles", :force => true do |t|
     t.string   "name"
     t.string   "bnetid"
-    t.boolean  "private",              :default => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.boolean  "private",             :default => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "user_id"
-    t.integer  "bnetnum",              :default => 0
-    t.string   "time_zone",            :default => "EST"
+    t.integer  "bnetnum",             :default => 0
+    t.string   "time_zone",           :default => "EST"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -503,12 +499,15 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
     t.datetime "screenshot_updated_at"
+    t.integer  "undecided"
   end
 
   create_table "tourn_users", :force => true do |t|
     t.integer "tournament_id"
     t.integer "user_id"
   end
+
+  add_index "tourn_users", ["user_id"], :name => "index_tourn_users_on_user_id"
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"

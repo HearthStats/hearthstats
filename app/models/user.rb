@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   belongs_to :subscription
 
   has_many :tournaments, through: :tourn_users
+  has_one :tourn_user
   
   ### CLASS METHODS:
   

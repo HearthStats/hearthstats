@@ -33,6 +33,8 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-import (0.5.0)
+      activerecord (>= 3.0)
     activeresource (3.2.13)
       activemodel (= 3.2.13)
       activesupport (= 3.2.13)
@@ -441,6 +443,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activerecord-import
   acts-as-taggable-on
   appsignal
   asset_sync

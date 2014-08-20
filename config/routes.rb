@@ -126,6 +126,7 @@ Hearthstats::Application.routes.draw do
     end
   end
 
+  resources :tournaments
 
   resources :arenas do
     collection do

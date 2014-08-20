@@ -445,6 +445,12 @@ en:
       title: Recent Tournaments
       subtitle: ' Check out recent tournament deck lists!'
       section: 'Tournaments'
+  tournaments:
+    new:
+      title: New Tournament
+      section: 'Tournaments'
+    form:
+      name: Name
 
 
 

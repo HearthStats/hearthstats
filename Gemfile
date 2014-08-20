@@ -97,7 +97,8 @@ gem 'honeybadger'
 gem 'cindy' # Sendy API
 gem 'appsignal'
 
-
+# DB
+gem 'activerecord-import'
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
   gem 'email_spec', '>= 1.4.0'
