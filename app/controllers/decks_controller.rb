@@ -197,11 +197,12 @@ class DecksController < ApplicationController
         @deck.tag_list = params[:tags]
         @deck.save
         unless params[:deck_text].blank?
-          begin
-            @deck.cardstring = text_to_deck(params[:deck_text])
+          text2deck = text_to_deck(params[:deck_text])
+          if !text2deck.errors.empty?
+            redirect_to new_deck_path(klass: @deck.klass_id), alert: text2deck.errors and return
+          else 
+            @deck.cardstring = text2deck.cardstring
             @deck.save
-          rescue
-            redirect_to new_deck_path, alert: 'Deck list process error' and return
           end
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
