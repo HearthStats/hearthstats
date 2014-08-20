@@ -22,13 +22,13 @@
       <tr>
         <td>
           <% if type == "Arena" %>
-            <%= match.arena_run.nil? ? "null" : match.arena_run.klass.name %>
+            <%= match.arena_run.nil? ? "null" : Klass::LIST[match.klass_id] %>
           <% else %>
             <%= match.deck.nil? ? "null" : link_to(match.deck.name, deck_path(match.deck)) %>
           <% end %>
         </td>
         <td><%= match.oppclass.nil? ? "null" : match.oppclass.name %></td>
-        <td class="<%= get_name(match,'Result') %>"><%= get_name(match,"Result") %></td>
+        <td class="<%= Match::RESULTS_LIST[match.result_id] %>"><%= Match::RESULTS_LIST[match.result_id] %></td>
         <td><%= !match.coin ? "No" : "" %> Coin</td>
         <% if type != "Arena" %>
           <td>

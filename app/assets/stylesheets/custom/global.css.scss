@@ -1,35 +1,35 @@
 .selectboxit-options .Druid{
-	background-color: rgba(92,75,81,0.7);
+  background-color: rgba(92,75,81,0.7);
 }
 .selectboxit-options .Hunter{
-	background-color: rgba(39,174,96,0.7);
+  background-color: rgba(39,174,96,0.7);
 }
 .selectboxit-options .Mage{
-	background-color: rgba(52,152,219,0.7);
+  background-color: rgba(52,152,219,0.7);
 }
 .selectboxit-options .Paladin{
-	background-color: rgba(241,196,15,0.7);
+  background-color: rgba(241,196,15,0.7);
 }
 .selectboxit-options .Priest{
-	background-color: rgba(189,195,199,0.7);
+  background-color: rgba(189,195,199,0.7);
 }
 .selectboxit-options .Rogue{
-	background-color: rgba(44,62,80,0.7);
+  background-color: rgba(44,62,80,0.7);
 }
 .selectboxit-options .Shaman{
-	background-color: rgba(61,62,148,0.7);
+  background-color: rgba(61,62,148,0.7);
 }
 .selectboxit-options .Warlock{
-	background-color: rgba(142,68,173,0.7);
+  background-color: rgba(142,68,173,0.7);
 }
 .selectboxit-options .Warrior{
-	background-color: rgba(192,57,43,0.7);
+  background-color: rgba(192,57,43,0.7);
 }
 .selectboxit-options .Druid .selectboxit-option-anchor,
 .selectboxit-options .Rogue .selectboxit-option-anchor,
 .selectboxit-options .Warlock .selectboxit-option-anchor,
 .selectboxit-options .Warrior .selectboxit-option-anchor{
-	color:#fff;
+  color:#fff;
 }
 
 /* deck builder */
@@ -99,7 +99,7 @@
 .deckbuilderWrapper .cardWrapper .image {
   width:250px;
   position:absolute;
-  top:-38px;
+  top:-48px;
   left:30px;
   z-index:1;
 }
@@ -174,25 +174,25 @@ table.decklist td.winrate {
 
 /* pagination */
 .portlet-body{
-	.pagination > * {
-	  position: relative;
-	  float: left;
-	  padding: 6px 12px;
-	  margin-left: -1px;
-	  line-height: 1.428571429;
-	  text-decoration: none;
-	  background-color: #ffffff;
-	  border: 1px solid #dddddd;
-	}
-	.pagination > a:hover {
-	  text-decoration:none;
-	  background:#ddd;
-	}
-	.pagination > .current {
-	  z-index: 2;
-	  color: #ffffff;
-	  cursor: default;
-	  background-color: #428bca;
-	  border-color: #428bca;
-	}
+  .pagination > * {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+  }
+  .pagination > a:hover {
+    text-decoration:none;
+    background:#ddd;
+  }
+  .pagination > .current {
+    z-index: 2;
+    color: #ffffff;
+    cursor: default;
+    background-color: #428bca;
+    border-color: #428bca;
+  }
 }

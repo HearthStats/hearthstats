@@ -1,9 +1,54 @@
 class WelcomeController < ApplicationController
   def index
+
+    # Global Stats
+    @arena_top = Rails.cache.read('wel#arena_top')
+    @con_top = Rails.cache.read('wel#con_top')
+
+    # Decklists
+    @recentdecks = Rails.cache.fetch('wel#recent_deck') do
+      Deck.where(is_public: true).
+              joins(:unique_deck).
+              last(7)
+    end
+    @topdecks = Rails.cache.fetch('wel#top_deck') do
+      Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
+                group(:unique_deck_id).
+                joins(:unique_deck).
+                joins(:user).
+                where("unique_decks.num_matches >= ?", 30).
+                sort_by { |deck| deck.unique_deck.winrate || 0 }.
+                last(7).
+                reverse
+    end
+
+    # Streams
+    # @featured_streams = Stream.get_featured_streamers
+    @top_streams = get_top_streamers.first(6)
+
     render layout: false
   end
-  # Past last patch
-  # where("created_at between ? and ?", Time.at(1386633600).to_datetime, Date.current.end_of_day)
+
+  def select_klass
+    @klass = params[:klass_id]
+    p @klass
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def newsletter_sub
+    begin
+      c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
+      c.subscribe "6V763uDbDJuEja62CUwTlthQ", params[:email]
+    rescue Cindy::AlreadySubscribed => e
+    end
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Newsletter Subscribed" }
+    end
+  end
+
   def demo_user
     sign_in(:user, create_guest_user)
     respond_to do |format|
@@ -22,9 +67,13 @@ class WelcomeController < ApplicationController
     if !current_user.is_admin?
       redirect_to root_path, alert: "Y U NO ADMIN" and return
     end
-    season = 6
-    
+    season = 8
+
     get_ranked_graph_data(season)
+
+    @prev_global = [
+      {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
+      {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
 
     matches = Match.where(season_id: 7)
     # Determine match Class Win Rates
@@ -142,6 +191,10 @@ class WelcomeController < ApplicationController
     render file: "#{Rails.root}/public/reports/june_report.html", layout: 'fullpage'
   end
 
+  def july_report
+    render file: "#{Rails.root}/public/reports/july_report.html", layout: 'fullpage'
+  end
+
   def novreport
     render layout: 'fullpage'
   end
@@ -204,6 +257,14 @@ class WelcomeController < ApplicationController
       end
 
       output = Winrate.new(klass_wr, match_count)
+    end
+
+    def get_top_streamers
+      top_streams = Rails.cache.fetch("top_streams", expires_in: 30.minutes) do
+        HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
+      end
+
+      top_streams
     end
 
 end

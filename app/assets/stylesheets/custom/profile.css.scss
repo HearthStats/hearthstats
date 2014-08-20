@@ -1,12 +1,31 @@
 .api-key{
-	.key{
-		margin-top: 10px;
-	}
+  .key{
+    margin-top: 10px;
+  }
 }
 .user-key{
   display:none;
   overflow-x: auto;
 }
 .reveal{
-	cursor: pointer;
+  cursor: pointer;
+}
+
+.profile-sidebar-block{
+  margin-top: 20px;
+}
+
+.badge-title{
+  font-size: 18px;
+  font-weight: 400;
+}
+.embed-link{
+  margin-top: 10px;
+  label{
+    font-size: 12px;
+  }
+  input{
+    height: auto;
+    font-size: 10px;
+  }
 }

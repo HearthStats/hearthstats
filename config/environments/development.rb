@@ -15,7 +15,6 @@ Hearthstats::Application.configure do
   config.cache_store = :null_store
   config.serve_static_assets = true
   # Caching testing:
-  # config.consider_all_requests_local       = false
   # config.action_controller.perform_caching = true
   # config.cache_store = :dalli_store
 

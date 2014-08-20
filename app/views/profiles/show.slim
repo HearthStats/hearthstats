@@ -3,7 +3,7 @@
   :keywords => "user, profile, personal, statistics, hearthstats, hearthstone, share, #{@profile.name}"
 - provide(:title, "#{@profiletitle}'s Profile")
 - provide(:subtitle, social_share_button_tag("#{@profiletitle}'s Hearthstone Profile from HearthStats"))
-- if current_user && params[:id].to_i == current_user.id
+- if profile_owner?
   - content_for :actions do
     = link_to 'Edit Profile', edit_profile_path, class: "btn blue"
 div class="row profile"
@@ -21,13 +21,14 @@ div class="row profile"
               ul class="list-unstyled profile-nav"
                 li
                   - if @profile.avatar_file_name
-                    = image_tag @profile.avatar.url(:medium), class: "img-responsive center", alt: ""
+                    = image_tag @profile.avatar.url(:medium),
+                      class: "img-responsive center", alt: ""
                   - else
                     = image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
-                  - if current_user && params[:id].to_i == current_user.id
+                  - if profile_owner?
                     = link_to 'Edit Profile', edit_profile_path, class: "profile-edit"
-                - if current_user && params[:id].to_i == current_user.id
-                  li
+                - if profile_owner?
+                  li.profile-sidebar-block
                     a.api-key
                       div.api-button
                         |User Key
@@ -36,6 +37,23 @@ div class="row profile"
                         div.well
                           .reveal Click to reveal
                           .user-key = @userkey
+                li.profile-sidebar-block
+                  div.badge-title HearthStats Badge
+                  div.sig-pic
+                    = image_tag @profile.sig_pic.url,
+                    class: "img-responsive center"
+                    small Note sig is only generated for active users
+                  div.embed-link
+                    label Image Link
+                    input type='text' value="#{sig_pic_url}" class="form-control"
+                    label HTML Image
+                    input type='text' value="<a href='#{request.original_url}'><img src='#{sig_pic_url}'/></a>"  class="form-control"
+
+                    label Markdown (reddit)
+                    input type='text' value="[![Profile Image](#{sig_pic_url})](#{request.original_url})"  class="form-control"
+
+                    label BBCode
+                    input type='text' value="[URL=#{request.original_url}][IMG]#{sig_pic_url}[/IMG][/URL]" class="form-control"
 
             div class="col-md-9"
               div class="row"
@@ -99,16 +117,16 @@ div class="row profile"
                             th Opponent
                             th Result
                         tbody
-                        - @recent_entries.each do |game|
+                        - @recent_matches.each do |match|
                           tr
-                            td =game[0]
-                            td =game[1]
-                            td =game[2]
+                            td = Match::MODES_LIST[match.mode_id]
+                            td = Klass::LIST[match.klass_id]
+                            td = Klass::LIST[match.oppclass_id]
                             td
-                              span class="#{MatchResult.find(game[3]).name}"
-                                = MatchResult.find(game[3]).name
+                              span class="#{Match::RESULTS_LIST[match.result_id]}"
+                                = Match::RESULTS_LIST[match.result_id]
         div class="tab-pane" id="decks"
           div class="row profile-decks"
             div class="col-md-12"
               h2 #{@profiletitle}'s Decks
-              = render :template => 'shared/deckslist', :locals => { :global => false }
+              = render :template => 'shared/deckslist_no_filter', :locals => { :global => false }

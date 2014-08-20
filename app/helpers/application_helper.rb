@@ -10,6 +10,10 @@ module ApplicationHelper
     {'en' => 'English', 'fr' => 'French', 'zh-TW' => '繁體中文', 'zh-CN' => '簡體中文', 'de' => 'German', 'pt-BR' => 'Português', 'ko' => 'Korean', 'el' => 'Greek', 'es' => 'Spanish', 'pl' => 'Polish'}
   end
 
+  def featured_streamers
+    ['ceciltv', 'rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
+  end
+
   def current_season
     Season.current
   end
@@ -19,12 +23,7 @@ module ApplicationHelper
   end
 
   def klasses_hash
-    klasses = Hash.new
-    Klass.all.each do |k|
-      klasses[k.name] = k.id
-    end
-
-    klasses
+    Klass::LIST.invert
   end
 
   def get_name(match, table)

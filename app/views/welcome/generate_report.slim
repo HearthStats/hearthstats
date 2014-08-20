@@ -1,7 +1,7 @@
-- content_for :ogimage, '/assets/report_pic/aprbg.jpg'
-- set_meta_tags :title => 'April Report',
-  :description => 'April Report on statistics from Hearthstats',
-  :keywords => 'stats, April, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
+- content_for :ogimage, '/assets/report_pic/julybg.jpg'
+- set_meta_tags :title => 'July Report',
+  :description => 'July Report on statistics from Hearthstats',
+  :keywords => 'stats, July, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
 
 div class="nav-top"
   div.nav-social
@@ -18,7 +18,7 @@ div class="nav-top"
     a class="nav-icon" href="http://hearthstats.net/users/sign_up"
       span Sign Up
 div.main
-  section.most-played#splash style="background: url('/assets/report_pic/aprbg.jpg') no-repeat;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"
+  section.most-played#splash style="background: url('/assets/report_pic/julybg.jpg') no-repeat;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;"
     div.patch Season #{current_season - 5} Stats
   section.most-played.page1
     div.page_container.global
@@ -77,6 +77,7 @@ div.main
                   td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
                   td
                     #{number_to_percentage(c[1]*100, precision: 2)}
+                  td #{number_to_percentage((c[1]*100-@prev_global[0][c[0]]), precision: 2)}
                   td
                     #{@arenatot[c[0]]} Games
 
@@ -92,6 +93,7 @@ div.main
                   td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
                   td
                     #{number_to_percentage(c[1]*100, precision: 2)}
+                  td #{number_to_percentage((c[1]*100-@prev_global[1][c[0]]), precision: 2)}
                   td
                     #{@contot[c[0]]} Games
               -counter = counter + 1

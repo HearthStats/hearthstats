@@ -7,7 +7,9 @@
     <label><%= t('.card_list') %></label>
     <div style="position:relative;">
       <div class="deckBuilderCardsWrapper">
-        <%= render 'card_list', cards: @card_array %>
+        <% cache(@deck) do %>
+          <%= render 'card_list', cards: @card_array %>
+        <% end %>
       </div>
       <img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"/>
     </div>

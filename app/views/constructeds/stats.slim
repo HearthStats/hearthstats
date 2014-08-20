@@ -10,7 +10,7 @@
 
 = render 'winratechart'
 
-div.details-stats
+asiv.details-stats
   -(1..9).each do |k|
-    = render 'shared/class_details', matches: @matches.where(klass_id: k, user_id: current_user.id), klass: Klass::LIST[k]
+    = render 'shared/class_details', matches: @personal_matches.where(klass_id: k), klass: Klass::LIST[k]
 .cf

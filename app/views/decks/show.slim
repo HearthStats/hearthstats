@@ -29,6 +29,10 @@ div.row
           | Anonymous
         - else
           = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
+      - if @deck.unique_deck
+        p 
+          b Total Dust Cost: 
+          = @deck.unique_deck.mana_cost
       p
         b Class: &nbsp;
         - if @deck.klass.nil?
@@ -74,7 +78,8 @@ div.row
       - @deck.tag_list.each do |tag|
         div.btn.default.btn-xs.green-stripe = tag
       h3 Notes
-      = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr <a href=""></a>), attributes: %w(id class style)
+      = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img),
+        attributes: %w(style src)
     div.deck-show-graph
       = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
     .comments

@@ -1,5 +1,5 @@
 /**************************
- PLUGIN CSS CUSTOMIZATIONS 
+ PLUGIN CSS CUSTOMIZATIONS
 **************************/
 
 /***
@@ -8,7 +8,7 @@ Calendar with full calendar
 .external-event {
   display: inline-block ;
   cursor:move;
-  margin-bottom: 5px ;  
+  margin-bottom: 5px ;
   margin-left: 5px ;
 }
 
@@ -26,7 +26,7 @@ Calendar with full calendar
   text-shadow: none;
   border: 0 ;
   padding: 6px 8px 30px 8px ;
-  margin-left:2px;  
+  margin-left:2px;
   border-top-style: none;
   border-bottom-style: none;
   border-right-style: solid;
@@ -64,7 +64,7 @@ Calendar with full calendar
 .portlet.calendar .fc-text-arrow {
   font-size: 22px;
   font-family: "Courier New", Courier, monospace;
-  vertical-align: baseline; 
+  vertical-align: baseline;
 }
 
 /* begin: event element */
@@ -117,7 +117,7 @@ Calendar with full calendar
 .portlet.calendar .mobile .fc-button {
     padding: 0px 6px 20px 6px ;
     margin-left:2px ;
-    border: 0;    
+    border: 0;
     background-color: #ddd ;
       background-image: none;
       -webkit-box-shadow: none ;
@@ -131,7 +131,7 @@ Calendar with full calendar
       text-align: center;
 }
 
-.portlet.calendar .mobile .fc-state-hover, 
+.portlet.calendar .mobile .fc-state-hover,
 .portlet.calendar .mobile .fc-state-active {
   background-color: #eee ;
 }
@@ -141,7 +141,7 @@ Calendar with full calendar
   margin-top: -2px;
 }
 
-.portlet.calendar .mobile .fc-button-next {   
+.portlet.calendar .mobile .fc-button-next {
   margin-right: -0px;
   margin-top: -2px;
 }
@@ -160,13 +160,13 @@ Calendar with full calendar
     position: absolute;
     z-index: 10;
   }
-    
+
   .portlet.calendar .mobile .fc-header-right {
     position: absolute;
      z-index: 9;
   }
 
-  .portlet.calendar .mobile .fc-header-left .fc-button { 
+  .portlet.calendar .mobile .fc-header-left .fc-button {
     top: -2px ;
   }
 
@@ -175,7 +175,7 @@ Calendar with full calendar
     right:0;
   }
 
-  .portlet.calendar .mobile .fc-header-right .fc-button { 
+  .portlet.calendar .mobile .fc-header-right .fc-button {
     top: 35px ;
   }
 
@@ -197,7 +197,7 @@ Form wizard
   margin-bottom: 15px;
 }
 
-.form-wizard .steps {  
+.form-wizard .steps {
   background-color: #fff ;
   background-image: none ;
   filter:none ;
@@ -241,7 +241,7 @@ Form wizard
   font-size: 16px;
   font-weight: 300;
 }
- 
+
 .form-wizard .active .step .number {
   background-color: #35aa47;
   color: #fff;
@@ -273,18 +273,18 @@ Form wizard
 }
 
 
-@media (min-width: 768px) and (max-width: 1280px) { 
+@media (min-width: 768px) and (max-width: 1280px) {
   .form-wizard .step .desc {
     margin-top: 10px;
     display: block;
   }
-} 
+}
 
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   .form-wizard .steps > li > a {
     text-align: left;
   }
-} 
+}
 
 /***
 Google Maps
@@ -296,7 +296,7 @@ Google Maps
 
 /* important!  bootstrap sets max-width on img to 100% which conflicts with google map canvas*/
 .gmaps img {
-  max-width: none; 
+  max-width: none;
 }
 
 #gmap_static div{
@@ -353,11 +353,11 @@ jqvmap changes
 .jqvmap-zoomout {
   height: 16px;
   width: 16px;
- background-color: #666 ; 
+ background-color: #666 ;
 }
 
 .vmaps {
-  position: relative; 
+  position: relative;
   overflow: hidden;
   height: 300px;
 }
@@ -367,13 +367,13 @@ jqvmap changes
 Error state for WYSIWYG Editors
 ***/
 .has-error .md-editor,
-.has-error .wysihtml5-sandbox, 
+.has-error .wysihtml5-sandbox,
 .has-error .cke {
   border: 1px solid #B94A48 !important;
 }
 
 .has-success .md-editor,
-.has-success .wysihtml5-sandbox, 
+.has-success .wysihtml5-sandbox,
 .has-success .cke {
   border: 1px solid #468847 !important;
 }
@@ -388,7 +388,7 @@ Select2 plugin css changes
 }
 
 .has-error .select2-container.select2-dropdown-open .select2-choice {
-  border-color: #e5e5e5; 
+  border-color: #e5e5e5;
 }
 
 .has-error .select2-container.select2-dropdown-open .select2-choice > span {
@@ -400,7 +400,7 @@ Select2 plugin css changes
 }
 
 .has-success .select2-container.select2-dropdown-open .select2-choice {
-  border-color: #e5e5e5; 
+  border-color: #e5e5e5;
 }
 
 .has-success .select2-container.select2-dropdown-open .select2-choice > span {
@@ -446,15 +446,15 @@ WYSIWYG
 /***
 CKEditor css changes
 ***/
-.cke_bottom, 
-.cke_inner, 
-.cke_top, 
-.cke_reset, 
+.cke_bottom,
+.cke_inner,
+.cke_top,
+.cke_reset,
 .cke_dialog_title,
 .cke_dialog_footer,
 .cke_dialog {
   background-image: none !important;
-  filter:none ; 
+  filter:none ;
   border-top: 0 ;
   border-bottom: 0 ;
    -webkit-box-shadow: none !important;
@@ -487,9 +487,9 @@ CKEditor css changes
   box-shadow: none !important;
 }
 
-.cke_combo_button, 
-.cke_button, 
-.cke_toolbar, 
+.cke_combo_button,
+.cke_button,
+.cke_toolbar,
 .cke_toolgroup {
   background-image: none !important;
   filter:none !important;
@@ -499,10 +499,10 @@ CKEditor css changes
   box-shadow: none !important;
 }
 
-.cke_button, 
+.cke_button,
 .cke_combo_button,
 .cke_panel_grouptitle,
-.cke_hc.cke_panel_listItem a {  
+.cke_hc.cke_panel_listItem a {
   background-image: none !important;
   filter:none ;
   text-shadow:none ;
@@ -512,8 +512,8 @@ CKEditor css changes
   -o-border-radius: 0px !important;
 }
 
-.cke_button:hover, 
-.cke_combo_button:hover {  
+.cke_button:hover,
+.cke_combo_button:hover {
   background-color: #ddd;
 }
 
@@ -549,7 +549,7 @@ div.tagsinput span.tag {
 }
 
 div.tagsinput input {
-  padding: 3px 6px ; 
+  padding: 3px 6px ;
   width: 75px !important;
 }
 
@@ -590,7 +590,7 @@ jQuery UI Sliders(new in v1.1.1)
   padding: 0;
   display: block;
   margin: 12px 5px;
-  min-height: 11px; 
+  min-height: 11px;
 }
 
 .ui-slider-vertical {
@@ -641,7 +641,7 @@ Dashboard Charts(new in v1.2.1)
     margin: 0 auto;
 }
 
-.sparkline-chart .number {  
+.sparkline-chart .number {
     width: 100px;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -680,7 +680,7 @@ Fancy box fix overlay fix(in v1.2.4)
 /***
 Datatables Plugin(in v1.3)
 ***/
-.dataTable {  
+.dataTable {
   width: 100% !important;
   clear: both;
   margin-top: 5px;
@@ -690,7 +690,7 @@ Datatables Plugin(in v1.3)
   line-height: 32px ;
 }
 
-.dataTable .row-details {  
+.dataTable .row-details {
   margin-top: 3px;
   display: inline-block;
   cursor: pointer;
@@ -702,7 +702,7 @@ Datatables Plugin(in v1.3)
   background: url("../img/datatable-row-openclose.png") no-repeat 0 0;
 }
 
-.dataTable .row-details.row-details-open {  
+.dataTable .row-details.row-details-open {
   background: url("../img/datatable-row-openclose.png") no-repeat 0 -23px ;
 }
 
@@ -742,7 +742,7 @@ Datatables Plugin(in v1.3)
   width: 8px !important;
 }
 
-@media (max-width: 768px) {  
+@media (max-width: 768px) {
   .dataTables_wrapper .dataTables_length .form-control,
   .dataTables_wrapper .dataTables_filter .form-control {
     display: inline-block;
@@ -757,7 +757,7 @@ Datatables Plugin(in v1.3)
   }
 }
 
-@media (max-width: 480px) {  
+@media (max-width: 480px) {
   .dataTables_wrapper .dataTables_filter .form-control {
     width: 175px !important;
   }
@@ -805,14 +805,14 @@ Uniform disabled checkbox, radio button fix(in v1.4)
   outline: none !important;
 }
 
-div.checker.disabled span, 
+div.checker.disabled span,
 div.checker.disabled.active span{
-    background-position: -152px -260px; 
+    background-position: -152px -260px;
 }
 
 div.checker.disabled:hover,
 div.radio.disabled:hover {
-    cursor: not-allowed;  
+    cursor: not-allowed;
 }
 
 /***
@@ -872,7 +872,7 @@ Bootstrap Colorpicker
   width: 20px;
   height: 20px;
   right: 6px;
-} 
+}
 
 .colorpicker.dropdown-menu {
   padding: 5px;
@@ -896,7 +896,7 @@ Bootstrap  Datetimepicker
   padding: 5px;
 }
 
-.datetimepicker .active {  
+.datetimepicker .active {
   background-color:#4b8df8 !important;
   background-image: none !important;
   filter: none !important;
@@ -923,13 +923,13 @@ Bootstrap Datepicker
   padding: 5px;
 }
 
-.datepicker .selected {  
+.datepicker .selected {
   background-color:#909090 !important;
   background-image: none !important;
   filter: none !important;
 }
 
-.datepicker .active {  
+.datepicker .active {
   background-color:#4b8df8 !important;
   background-image: none !important;
   filter: none !important;
@@ -1023,7 +1023,7 @@ Bootstrap Daterangepicker
   color: #333;
 }
 
-.daterangepicker .ranges li.active, 
+.daterangepicker .ranges li.active,
 .daterangepicker .ranges li:hover {
   background: #4b8df8 !important;
   border: 1px solid #4b8df8 !important;
@@ -1060,7 +1060,7 @@ FuelUX Spinners
   width: 22px;
   padding-left: 6px;
   padding-right: 6px;
-} 
+}
 
 .spinner-buttons.btn-group-vertical .btn .icon-angle-down {
   display: inline-block;

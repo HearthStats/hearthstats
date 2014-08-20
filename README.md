@@ -1,7 +1,9 @@
-[![Build Status](https://travis-ci.org/HearthStats/hearthstats.svg?branch=master)](https://travis-ci.org/HearthStats/hearthstats)
-[![Coverage Status](https://img.shields.io/coveralls/HearthStats/hearthstats.svg)](https://coveralls.io/r/HearthStats/hearthstats?branch=master)
-[![Stories in Ready](https://badge.waffle.io/hearthstats/hearthstats.png?label=ready&title=Ready)](https://waffle.io/hearthstats/hearthstats)
-# <a href="http://hearthstats.net/"><img src="http://www.hearthstats.net/assets/hearthstatslogo.png" width="100px"/></a> HearthStats
+[![HearthStats](https://s3-us-west-2.amazonaws.com/hearthstats/assets/PNG/full_colour/full_colour_inline.png)](http://hearthstats.net)
+[![Build Status](http://img.shields.io/travis/HearthStats/hearthstats.svg?style=flat)](https://travis-ci.org/HearthStats/hearthstats)
+[![Coverage Status](https://img.shields.io/coveralls/HearthStats/hearthstats.svg?style=flat)](https://coveralls.io/r/HearthStats/hearthstats?branch=master)
+
+***
+
 
 HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.
 
@@ -17,6 +19,7 @@ Please follow the  [**Ruby Style Guide**](https://github.com/bbatsov/ruby-style-
 
 Make sure you fill the database with some sample data before starting development or else the app will break. We are working on providing some seed data.
 
+You can setup the environment very easily with Vagrant. Check out the wiki for a [walkthrough](https://github.com/HearthStats/hearthstats/wiki/Vagrant-Up!).
 ## Sample API call:
 Check out our wiki for API V1 and V2:
 

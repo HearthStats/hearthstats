@@ -146,7 +146,7 @@ var UIGeneral = function () {
             prev: '<icon class="fa fa-angle-left"></i>',
             total: 24,
             page: 1,
-            maxVisible: 6 
+            maxVisible: 6
         }).on('page', function(event, num){
             $("#dynamic_pager_content2").html("Page " + num + " content here"); // or some ajax content loading...
         });

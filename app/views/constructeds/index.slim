@@ -18,8 +18,6 @@ div class="portlet box blue"
     = render :template => 'shared/matchlist', :locals => { :matches => @constructeds, :type => "Constructed", :filter => true }
 
 javascript:
-  app.UI.initClassSelector('#match_oppclass_id');
-  app.UI.initDeckSelector("#deckname");
   $('#matchesFilter select').change(function() {
     $('#matchesFilter').submit();
   });

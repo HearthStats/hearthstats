@@ -30,32 +30,20 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.guest
+      return redirect_to root_url, alert: "Guests profiles cannot be accessed"
+    end
+
     matches = Match.where(user_id: @user.id)
     @userkey = @user.get_userkey
-    
-    if @user.guest
-      return redirect_to root_url, alert: "Guests cannot access profiles"
-    end
-
-    if !current_user || !(current_user.id == @user.id)
-      if @user.profile.private
-        return redirect_to root_url, notice: "User's Profile is Private"
-      end
-    end
-
     @profile = @user.profile
-    if (!@profile.name.nil? && !@profile.name.blank?)
-      @profiletitle = @profile.name
-    else
-      @profiletitle = "User"
-    end
-    classes = klasses_hash.map { |a| a[0] }
-    
-    @arenawins = @user.winrate_per_day(10, 'arena')
-    @conwins   = @user.winrate_per_day(10, 'constructed')
-    
-    @recent_entries = Profile.get_recent_games(@user.id)
     impressionist(@profile)
+
+    @profiletitle = @profile.name.blank? ? "User" : @profile.name
+
+    classes = klasses_hash.map { |a| a[0] }
+
+    @recent_matches = matches.last(6).reverse
 
     # Overall win rates
     arena_matches = matches.where(mode_id: 1)
@@ -63,10 +51,13 @@ class ProfilesController < ApplicationController
     con_matches = matches.where(mode_id: 3)
     @overallcon = get_win_rate(con_matches, true)
 
+    @conwins   = Match.winrate_per_day(con_matches, 10)
+    @arenawins = Match.winrate_per_day(arena_matches, 10)
+
     # Determine Constructed Class Win Rates
 
     @classconrate = Array.new
-    (1..Klass.all.count).each_with_index do |c,i|
+    (1..9).each_with_index do |c,i|
       totalwins = 0
       totalgames = 0
       totalwins = matches.where( mode_id: 3,  klass_id: c, result_id: 1 ).count

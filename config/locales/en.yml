@@ -55,7 +55,7 @@ en:
     back: Back
     deckslist:
       filter: Filter
-      any_class: any class
+      any_class: Any class
       show: Show
       per_page: per page
       sort_by: Sort by
@@ -78,11 +78,11 @@ en:
       listed_by: Listed By
       tools: Tools
       stats_are_for_all_users: 'stats are for all users that have played the deck in the last 30 days, not just the original author'
-      stats_are_for_your_personal: 'stats are for for your personal play using each deck'
+      stats_are_for_your_personal: 'stats are for your personal play using each deck'
 
     matchlist:
       filter: Filter
-      any_class: any class
+      any_class: Any class
       coin: Coin
       no_coin: No Coin
       opponent: Opponent
@@ -147,7 +147,7 @@ en:
       sort_by: Sort by
       any_type: any type
       any_race: any race
-      any_class: any class
+      any_class: Any class
       ascending: Ascending
       descending: Descending
       attack: Attack
@@ -208,6 +208,7 @@ en:
       total_dust_amount: Total Dust Amount
       arena_runs_played: Arena Runs Played
       arena_games_played: Arena Games Played
+      average_length: Average Run Length
       most_played: Most Played
       longest_average_runs: Longest Average Runs
       no_games: No games
@@ -244,23 +245,25 @@ en:
       description: ' constructed game stats'
       section: Constructed
       last: last
+
     stats_filter:
       hours: hours
       days: days
-      all_time: all time
+      all_time: All Time
       last_days: Last %{num} days
       first_or_second: first or second
-      coin?: Coin?
-      any_mode: any mode
-      casual: casual
-      ranked: ranked
       filter_by: Filter by
+      casual: Casual
+      ranked: Ranked
+      coin?: Coin?
+      all_mode: All Mode
+      all_seasons: All Seasons
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
     newform:
       you_played_on_the: You played on the
-      first_turn: first turn
-      second_turn: second turn
+      first_turn: First turn
+      second_turn: Second turn
       this_match_is: This match is
       ranked: Ranked
       casual: Casual
@@ -271,8 +274,8 @@ en:
       add_draw: Add Draw
     form:
       you_played_on_the: You played on the
-      first_turn: first turn
-      second_turn: second turn
+      first_turn: First turn
+      second_turn: Second turn
       this_match_is: This match is
       ranked: Ranked
       casual: Casual
@@ -292,6 +295,9 @@ en:
       sort_by: Sort by
       show: Show
       filter: Filter
+      min_games: Min Games
+      created_after: Created After
+      klass: Class
       decks_found:
         one: 1 deck found matching your criteria
         other: '%{count} decks found matching your criteria'
@@ -333,6 +339,7 @@ en:
       title: Active Deck
       subtitle: ' all active constructed decks'
       slot: Slot
+      deleted_deck: Deleted Deck
       select_deck: Select Deck
       submit: Submit
     index:

@@ -1,21 +1,55 @@
-<%= search_form_for @q, url: public_decks_url, html: { class: 'data-turboform', id: 'deckListFilter' } do |f| %>
-  <p>
-    <%= t('.filter') %>
-    <%= f.select :klass_id_eq, klass_collection_for_select %>
-    <%= t('.show') %>
-    <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]) %>
-    <%= t('.sort_by') %>
-    <%= select_tag :sort, options_for_select(sort_for_select, params[:sort]) %>
-    <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'], [t('.descending'), 'desc']], params[:order]) %>
-    <%= f.submit 'Apply', id: 'deckListFilterSubmit' %>
-  </p>
-  
-  <p><strong><%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong></p>
-<% end %>
+<%= search_form_for @q, url: public_decks_url,
+  html: { class: 'data-turboform', id: 'deckListFilter' } do |f| %>
+  <div class="form-inline">
+    <div class="form-group">
+      <%= t('.klass') %>
+      <%= f.select :klass_id_eq, klass_collection_for_select, {}, { class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <%= t('.created_after') %>
+      <%= f.search_field :unique_deck_created_at_gteq, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= t('.min_games') %>
+      <%= f.search_field :unique_deck_num_matches_gteq, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= t('.deck_name') %>
+      <%= f.text_field :name_cont, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group">
+      <%= t('.show') %>
+      <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]),
+        { class: "form-control"} %>
 
+    </div>
+    <div class="form-group">
+      <%= t('.sort_by') %>
+      <%= select_tag :sort, options_for_select(sort_for_select, params[:sort]),
+        { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      &nbsp;
+      <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'],
+                                                 [t('.descending'), 'desc']],
+      params[:order]),  { class: "form-control"} %>
+
+    </div>
+  </div>
+  <div class="form-group deck-filter-apply">
+    <%= f.submit 'Apply', id: 'deckListFilterSubmit', class: "btn blue" %>
+    <strong><%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong>
+  </div>
+<% end %>
 <script type="text/javascript">
-  $('#deckListFilter select').change(function() {
-    $('#deckListFilter').submit();
+  $(document).ready(function(){
+    $('#deckListFilter select').change(function() {
+      $('#deckListFilter').submit();
+    });
+    $('#q_unique_deck_created_at_gteq').datepicker(
+      { dateFormat: 'yy-mm-dd'}
+      );
   });
-  $('#deckListFilterSubmit').hide();
 </script>

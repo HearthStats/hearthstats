@@ -3,9 +3,10 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-
   <meta charset="utf-8" />
   <meta content="Jeffrey Tong" name="author" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src= <%= public_url("js/jquery.ujs.js") %> ></script>
   <%= csrf_meta_tags %>
   <title>HearthStats | Hearthstone Statistics and Tracking</title>
   <meta name="keywords" content="hearthstone, stats, hearthstats, statistics, tracking, win, loss, online, cloud, automatic">
@@ -23,357 +24,349 @@
   <!-- CSS Files -->
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/reset.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("foundation.css")%> data-turbolinks-track />
-  <link rel="stylesheet" type="text/css" href=<%= public_url("css/style.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/footable.core.min.css")%> data-turbolinks-track />
   <link rel="stylesheet" type="text/css" href=<%= public_url("css/ico.css")%> data-turbolinks-track />
-  <link rel="stylesheet" type="text/css" href=<%= public_url("css/flexslider.css")%> data-turbolinks-track />
-  <link rel="stylesheet" type="text/css" href=<%= public_url("css/prettyphoto.css")%> data-turbolinks-track />
+  <link rel="stylesheet" type="text/css" href=<%= public_url("css/new-style.css")%> data-turbolinks-track />
 
-  <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href=<%= public_url("css/ie8.css")%> media="screen" />
-  <![endif]-->
-
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <!-- FAVICON-->
-  <%= favicon_link_tag 'favicon.ico' %>
+  <link rel="shortcut icon" href="/favicon.ico?v=2">
   <%= favicon_link_tag '/hearthstatslogo.png', rel: 'apple-touch-icon', type: 'image/png' %>
 
   <!-- Google Webfont -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 <!-- Header section -->
-<header>
-  <div class="header">
+<div class="header">
+  <div class="top-bar">
     <div class="row">
 
-      <!-- Logo content -->
-      <div class="four columns logo">
-        <h1><a href="/">Hearth<span>Stats</span></a></h1>
-      </div>
-
-      <div class="eight columns">
-
-        <!-- Social icons -->
+      <!-- Social icons -->
+      <div class="four columns">
         <ul class="top-social">
           <li class="top-tweet"><a href="https://twitter.com/HearthStats"><div class="icon-twitter"><div class="social-inner"><img src= <%= public_url("images/pat.png" ) %> alt=""></div></div></a></li>
           <li class="top-fb"><a href="https://www.facebook.com/HearthStats.net"><div class="icon-facebook"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
           <li class="top-gplus"><a href="https://plus.google.com/+HearthstatsNet/posts"><div class="icon-google-plus"><div class="social-inner"><img src="images/pat.png" alt=""></div></div></a></li>
         </ul>
+      </div>
 
-        <!-- Nav menu -->
+      <div class="eight columns">
+
+        <!-- Login menu -->
+        <div class="top-login">
+          <%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
+            <%= f.email_field :email, :autofocus => true, :placeholder => "Email", class: "form-control"%>
+            <%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
+
+            <%= f.check_box :remember_me, checked: true,  class: "hide" %>
+            <%= f.submit "Login", class: "login-button" %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="row">
+      <div class="four columns logo-cont">
+        <%= image_tag 'logo_v2/orange_inline.png', class: 'header-logo' %>
+      </div>
+      <div class="eight columns nav-cont">
         <ul class="top-nav">
-          <li><%= link_to "/uploader" do %>Uploader<% end %></li>
-          <li><%= link_to "/june" do %>June Report<% end %></li>
-          <li><%= link_to welcome_demo_user_path do %>Demo<% end %></li>
-          <li><%= link_to new_user_registration_path do %>Sign Up<% end %></li>
-          <li><%= link_to new_user_session_path do %>Sign In<% end %></li>
+          <li class="mobile-only"><%= link_to new_user_session_path do %>Login<% end %></li>
+          <li class="mobile-only"><%= link_to new_user_registration_path do %>Register<% end %></li>
+          <li><%= link_to root_path do %>Home<% end %></li>
+          <li><%= link_to public_decks_path do %>Decks<% end %></li>
+          <li><%= link_to streams_index_path do %>Streams<% end %></li>
+          <li><%= link_to news_path do %>News<% end %></li>
+          <li><%= link_to '/june' do %>Stat Report<% end %></li>
+          <li><%= link_to uploader_path do %>Stat Tracker<% end %></li>
+          <li><%= link_to contactus_path do %>Contact<% end %></li>
         </ul>
       </div>
-
     </div>
   </div>
-</header>
-<!-- Header section -->
+</div class="header">
+<div class="row">
+  <div class="seven columns" id="main">
 
-<!-- Slider section -->
-<section class="slider-top">
-  <div class="row">
-    <div class="twelve columns top-content">
-      <div class="home_logo">
+    <!-- Global Stats section -->
+    <section id="global-stats">
+      <div class="row">
+        <div class="twelve columns wr-graph">
+          <div class="content-head">
+            <h2>Global Stats</h2>
+            <div class="line"></div>
+          <div>
+          <div class="wr-graph-container">
+            <div class="graph-container">
+              <div id="klass-title"><img src="/assets/Icons/Classes/Druid_Icon.gif",
+                id="klass-img" /><span id="klass-name">Druid</span></div>
+              <div id="klass_chart" >
+                <%= line_chart win_rates_constructeds_path(:klass_id => 1), max: 100, height: "200px"%>
+              </div>
+            </div>
+            <div class="graph-klass-selector">
+              <% Klass::LIST.each do |id, name| %>
+                <%= link_to welcome_select_klass_path(:klass_id => id), :remote => true, class:"klass-link", data: {klass: "#{name}"} do %>
+                  <%= name %>
+                <% end %>
+              <% end %>
+              <div class="cf"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="twelve columns">
+          <div class="row">
+            <div class="six columns top-wr">
+              <h3>Arena Top 5</h3>
+              <table class="wr">
+                <thead>
+                </thead>
+                <tbody>
+                  <% @arena_top.each_with_index do |c,i| %>
+                    <tr>
+                      <td class="wr-change"></td>
+                      <td class="wr-rank"><%= i + 1 %>.</td>
+                      <td class="wr-class"><%= c[0] %></td>
+                      <td class="wr-wr"><%= c[1] %>%</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="six columns top-wr">
+              <h3>Constructed Top 5</h3>
+              <table class="wr">
+                <thead>
+                </thead>
+                <tbody>
+                  <% @con_top.each_with_index do |c,i| %>
+                    <tr>
+                      <td class="wr-change"></td>
+                      <td class="wr-rank"><%= i + 1 %>.</td>
+                      <td class="wr-class"><%= c[0] %></td>
+                      <td class="wr-wr"><%= c[1] %>%</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      <h3>
-      <%= image_tag('hearthstatslogo.svg', class: "home_logo")%>
-        Welcome to HearthStats</h3>
-      <p>HearthStats makes it simple to keep track of your wins and losses. Take control of your game and learn about your strengths and weaknesses with a full suite of statistics with our completely free webapp.</p>
+    </section>
+
+    <!-- Decklists section -->
+    <section id="decklists">
+      <div class="row">
+
+        <div class="content-head">
+          <h2>Decklists</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="twelve columns">
+          <div id="tab-container" class="tab-container">
+            <ul class="etabs">
+              <li class="tab"><a href="#top">Top Decks</a></li>
+              <li class="tab"><a href="#recent">Recent Decks</a></li>
+            </ul>
+            <% cache('top_decks') do %>
+              <div id="top">
+                <table id="decklist" class="footable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Class</th>
+                      <th data-hide="phone,tablet">Minions</th>
+                      <th data-hide="phone,tablet">Spells</th>
+                      <th data-hide="phone,tablet">Weapons</th>
+                      <th data-hide="phone">Matches</th>
+                      <th>Win Rate</th>
+                      <th data-hide="phone,tablet">Posted By</th>
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @topdecks.each do |deck| %>
+                      <% unique_deck = deck.unique_deck %>
+                      <tr>
+                        <td class="name"><%= deck.name %></td>
+                        <td class="class"><%= deck.class_name %></td>
+                        <td class="minions"><%= unique_deck.num_minions %></td>
+                        <td class="spells"><%= unique_deck.num_spells %></td>
+                        <td class="weapons"><%= unique_deck.num_weapons %></td>
+                        <td class="matches"><%= unique_deck.num_matches %></td>
+                        <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                        <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                          <td class="author">[anonymous]</td>
+                        <% else %>
+                          <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                        <% end %>
+                        <td class="show">
+                          <%= link_to deck_path(deck), :target => "_blank" do %>
+                            <div class="arrow">
+                              <i class="fa icon-arrow-right arrow-icon"></i>
+                            </div>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            <% end %>
+            <% cache('recent_decks') do %>
+              <div id="recent">
+                <table id="decklist" class="footable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Class</th>
+                      <th data-hide="phone,tablet">Minions</th>
+                      <th data-hide="phone,tablet">Spells</th>
+                      <th data-hide="phone,tablet">Weapons</th>
+                      <th data-hide="phone">Matches</th>
+                      <th>Win Rate</th>
+                      <th data-hide="phone,tablet">Posted By</th>
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @recentdecks.each do |deck| %>
+                      <% unique_deck = deck.unique_deck %>
+                      <tr>
+                        <td class="name"><%= deck.name %></td>
+                        <td class="class"><%= deck.class_name %></td>
+                        <td class="minions"><%= unique_deck.num_minions %></td>
+                        <td class="spells"><%= unique_deck.num_spells %></td>
+                        <td class="weapons"><%= unique_deck.num_weapons %></td>
+                        <td class="matches"><%= unique_deck.num_matches %></td>
+                        <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                        <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                          <td class="author">[anonymous]</td>
+                        <% else %>
+                          <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                        <% end %>
+                        <td class="show">
+                          <%= link_to deck_path(deck), :target => "_blank" do %>
+                            <div class="arrow">
+                              <i class="icon-arrow-right arrow-icon"></i>
+                            </div>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            <% end %>
+          </div>
+
+          <%= link_to public_decks_path, class: 'all-decks' do %><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks<% end %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Streams section -->
+    <section id="streams row">
+      <div class="content-head">
+        <h2>Streams</h2>
+        <div class="line"></div>
+      </div>
+      <div id="stream-container" class="tab-container">
+        <ul class="etabs stream-tabs">
+          <li class="tab"><a href="#stream-top">Top Streams</a></li>
+          <!-- <li class="tab"><a href="#stream-featured">Featured Streams</a></li> -->
+        </ul>
+        <div class="stream-tab-container">
+          <div id="stream-top">
+            <% @top_streams.each do |stream| %>
+              <div class="six columns stream">
+                <div class="stream-screenshot"><a href="<%= stream['channel']["url"] %>" target="_blank" ><img src="<%= stream['preview']["medium"] %>" alt=""></a></div>
+                <div class="row">
+                  <div class="nine columns stream-description">
+                    <div class="stream-name"><%= stream['channel']["display_name"] %></div>
+                    <div class="stream-status"><%= truncate(stream['channel']["status"], length: 50) %></div>
+                  </div>
+                  <div class="three columns live-details">
+                    <div class="stream-viewers"><i class="fa icon-eye-open orange"></i>&nbsp;<%= stream['viewers'] %></div>
+                    <div class="stream-view"><a href="<%= stream['channel']["url"] %>" class="orange">VIEW</a> </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </section>
+  </div>
+  <div class="five columns" id="sidebar">
+    <section class="tracker">
+      <img src="<%= public_url("images/screen/deck-page.jpg") %>" alt="" class="deck-screen">
+      <h2>Stat Tracker</h2>
+      <div class="tracker-desc">
+        Automatically track your Hearthstone games with this FREE TRACKER. Gain insight into your win percentages and more!
+      </div>
       <div class="actions">
-        <%= link_to welcome_demo_user_path, class: "icon-share demo" do %><span>Demo</span><% end %>
-        <%= link_to new_user_registration_path, class: "icon-signin signup" do %><span>Sign Up</span><% end %>
+        <%= link_to "Web App", new_user_session_path, class: "button success web-app-btn" %>
+        <%= link_to "Companion", uploader_path , class: "button uploader-btn" %>
       </div>
-    </div>
+    </section>
 
-    <div class="twelve columns">
-      <!-- Slider content -->
-      <div id="main-slider" class="flexslider">
-        <ul class="slides">
-          <li><img src= <%= public_url("demo/slides/slide1.png" ) %> alt=""/></li>
-          <li><img src= <%= public_url("demo/slides/slide2.png" ) %> alt=""/></li>
-        </ul>
+    <section class="sidead">
+      <iframe src="http://ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"  height="250" id="side1"></iframe>
+    </section>
+
+    <section class="report">
+
+      <h2>Stat Report</h2>
+      <%= image_tag('report_pic/julybgx300.png') %>
+      <div class="tracker-desc">
+        View this month's global stats from the whole Hearthstats community! See the most popular class, highest win rate and more!
       </div>
-    </div>
+      <div class="actions">
+        <%= link_to "View", '/july' , class: "button success expand report-btn" %>
+      </div>
+    </section>
+
+    <section class="newsletter">
+     <h2>Newsletter Sign Up</h2>
+     <div class="tracker-desc">
+        Gain even more insight into the game by signing up to our weekly newsletter and receive the best of Hearthstone for the week.
+        <%= form_tag welcome_newsletter_sub_path, method: :post, class: 'newsletter-form' do %>
+          <%= text_field_tag 'email', nil, placeholder: 'Email' %>
+          <%= submit_tag "Subscribe" ,class: 'button newsletter-submit' %>
+        <% end %>
+     </div>
+   </section>
+
+   <section class="sidead">
+      <iframe src="http://ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"  height="250" id="side2"></iframe>
+    </section>
   </div>
-</section>
-<!-- Slider section -->
 
-<!-- Services section -->
-<section id="services">
-  <div class="row">
-
-    <div class="content-head">
-      <h2>Features</h2>
-      <div class="line"></div>
-    </div>
-
-    <div class="twelve columns">
-      <div class="four columns services-info">
-        <div class="ico"><img src= <%= public_url("images/trophy_icon.svg" ) %> alt=""/></div>
-        <div class="desc">
-          <h4>Win/Loss Tracking</h4>
-          <p>Simple win/loss tracking for both arena and constructed games. Arenas are entered by each arena run and gold/dust amount is also recorded for each run.</p>
-        </div>
-      </div>
-
-      <div class="four columns services-info">
-        <div class="ico"><img src= <%= public_url("images/piechart_icon.svg" ) %> alt=""/></div>
-        <div class="desc">
-          <h4>Statistical Analysis</h4>
-          <p>After all your games, sit down to review which decks did well against which class. This will allow you to fine tune your deck.</p>
-        </div>
-      </div>
-
-      <div class="four columns services-info">
-        <div class="ico"><img src= <%= public_url("images/profile_icon.svg" ) %> alt=""/></div>
-        <div class="desc">
-          <h4>Profiles</h4>
-          <p>Socially share your profile with your friends and other players to show your win rates, records and best decks.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Services section -->
-
-<!-- About section -->
-<section id="about">
-  <div class="row">
-        <div class="content-head">
-      <h2>About HearthStats</h2>
-      <div class="line"></div>
-    </div>
-
-    <div class="six columns">
-      <img src= <%= public_url("demo/2.jpg" ) %> alt=""/>
-    </div>
-
-    <div class="six columns about-info">
-      <h4>Want to perfect your game?</h4>
-      <p>HearthStats makes it easy to pinpoint your weaknesses and strengths. Take the data to easily optimize your deck or arena strategy.</p>
-      <ul class="list">
-        <li>Deck win rates vs each class</li>
-        <li>Arena win rates vs each class</li>
-        <li>See how the coin affects your play</li>
-        <li>Learn from other people's decks</li>
-      </ul>
-      <%= link_to "Register now", new_user_registration_path, class:"download-btn" %>
-    </div>
-  </div>
-</section>
-<!-- About section -->
-
-<div class="clear"></div>
-<div class="space30"></div>
-
-<!-- Screenshot/gallery section -->
-<section id="gallery">
-  <div class="row">
-
-        <div class="content-head">
-      <h2>Screenshot gallery</h2>
-      <div class="line"></div>
-    </div>
-
-    <div class="twelve columns no-padding">
-      <div class="slidewrap">
-        <ul class="slider gallery" id="sliderName">
-          <li class="slide">
-            <div class="three columns">
-              <a href="demo/works/1.jpg" class="prettyPhoto">
-                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/1.jpg" ) %> alt="" />
-                  <span class="portfolio-inner" >
-                    <span class="zoom-inner">
-                      <span class="overlay title">Quick Match Entry</span>
-                      <span class="overlay-tag">Constructed</span>
-                    </span>
-                  </span>
-                </div>
-              </a>
-            </div>
-
-            <div class="three columns">
-              <a href="demo/works/2.jpg" class="prettyPhoto">
-                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/2.jpg" ) %> alt="" />
-                  <span class="portfolio-inner" >
-                    <span class="zoom-inner">
-                      <span class="overlay title">Arena Run Entry</span>
-                      <span class="overlay-tag">Arena</span>
-                    </span>
-                  </span>
-                </div>
-              </a>
-            </div>
-
-            <div class="three columns">
-              <a href="demo/works/3.jpg" class="prettyPhoto">
-                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/3.jpg" ) %> alt="" />
-                  <span class="portfolio-inner" >
-                    <span class="zoom-inner">
-                      <span class="overlay title">Profile Win Rate Graph</span>
-                      <span class="overlay-tag">Profile</span>
-                    </span>
-                  </span>
-                </div>
-              </a>
-            </div>
-
-            <div class="three columns">
-              <a href="demo/works/4.jpg" class="prettyPhoto">
-                <div class="portfolio_thumb"><img src= <%= public_url("demo/works/4.jpg" ) %> alt="" />
-                  <span class="portfolio-inner">
-                    <span class="zoom-inner">
-                      <span class="overlay title">Global Statistics</span>
-                      <span class="overlay-tag">Dashboard</span>
-                    </span>
-                  </span>
-                </div>
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Screenshot/gallery section -->
-
-<!-- Features section -->
-<section id="features">
-  <div class="row">
-        <div class="content-head">
-      <h2>Additional Features</h2>
-      <div class="line"></div>
-    </div>
-
-    <div class="twelve columns">
-      <div class="four columns features-content">
-        <div class="ico">
-          <i class="icon-desktop"></i>
-        </div>
-        <div class="features-desc">
-        <h4>Responsive</h4>
-        <p>HearthStats looks beautiful on your desktop, tablet and mobile phone.</p>
-        </div>
-      </div>
-
-      <div class="four columns features-content">
-        <div class="ico">
-          <i class="icon-rss"></i>
-        </div>
-        <div class="features-desc">
-        <h4>News Aggregation</h4>
-        <p>HearthStats will gather Hearthstone news and articles from all over the web into one place.</p>
-        </div>
-      </div>
-
-
-      <div class="four columns features-content">
-        <div class="ico">
-          <i class="icon-sitemap"></i>
-        </div>
-        <div class="features-desc">
-        <h4>Tournaments</h4>
-        <p>Join the exclusive HearthStats tournament and league system to win prizes and see how you fare against other players.</p>
-        </div>
-      </div>
-
-
-      <div class="four columns features-content">
-        <div class="ico">
-          <i class="icon-globe"></i>
-        </div>
-        <div class="features-desc">
-        <h4>Collaborative Data</h4>
-        <p>A large user base allows users to see how each class is doing globally.</p>
-        </div>
-      </div>
-
-
-      <div class="four columns features-content">
-        <div class="ico">
-          <i class="icon-question-sign"></i>
-        </div>
-        <div class="features-desc">
-        <h4>Friendly Support</h4>
-        <p>If you have a question, just ask. HearthStat is a tool by the community for the community!</p>
-        </div>
-      </div>
-
-
-      <div class="four columns features-content">
-        <div class="ico">
-          <i class="icon-beaker"></i>
-        </div>
-        <div class="features-desc">
-        <h4>Constant Development</h4>
-        <p>New features are added every week and there are constant improvements.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Features section -->
-
-<!-- Testimonial / quote section -->
-<section id="wrap2">
-  <div class="row">
-    <div class="twelve columns testimonials">
-      <div id="quote-slider" class="flexslider">
-        <ul class="slides">
-          <li>
-            <blockquote>HeartStats improves gaming through unrivaled up to the minute statistical analysis. <cite>Anya Kylie, icegirlak</cite></blockquote>
-          </li>
-          <li>
-            <blockquote>Hearthstats gives me that 30,000ft view of my game that I wouldn't trade for anything else. <cite>Neil Murphy, Cecil</cite></blockquote>
-          </li>
-          <li>
-            <blockquote>Отличный портал статистики: всё доступно, понятно, удобно и главное информативно. <cite>Victor Stanley</cite></blockquote>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Testimonial / quote section -->
+</div>
 
 <!-- Footer section -->
 <footer>
   <div class="footer">
-    <p class="space10">&copy; 2013. <a href="#">HearthStats.</a> All rights reserved. <a href="/privacy" target="_blank">Privacy Policy</a></p>
-    <div class="center">
-      <img src="/assets/RSLogo.png" width="200px" />
-    </div>
+    <p class="copyright"> Copyright HearthStats &copy; 2014</p>
+    <%= image_tag ('logo_v2/grey_transparent_inline.png'), class: "footer-logo" %>
   </div>
 </footer>
 <!-- Footer section -->
 
-<!-- Back to top button Section -->
-<p id="back-top">
-  <a href="#top"><span></span></a>
-</p>
-<!-- Back to top button Section -->
-
 <!-- jQuery Files -->
-<script type="text/javascript" src= <%= public_url("js/jquery.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/jquery.localscroll-1.2.7-min.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.mobilemenu.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/jquery.scrollTo.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/jquery.easing.1.3.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/jquery.flexslider.js") %> ></script>
 <script type="text/javascript" src= <%= public_url("js/main.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/contact.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/carousel.js") %> ></script>
-<script type='text/javascript' src= <%= public_url("js/jquery.placeholder.min.js") %> ></script>
-<script type="text/javascript" src= <%= public_url("js/jquery.prettyphoto.js") %> ></script>
+<script type="text/javascript" src= <%= public_url("js/jquery.footable.js") %> ></script>
+<script type='text/javascript' src= <%= public_url("js/jquery.easytabs.min.js") %> ></script>
 
 </body>
 </html>

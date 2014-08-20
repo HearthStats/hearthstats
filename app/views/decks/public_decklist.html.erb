@@ -24,7 +24,7 @@
     <% @decks.each do |deck| %>
       <% unique_deck = deck.unique_deck %>
       <tr>
-        <td class="name"><%= link_to deck.name, public_show_deck_path(deck) %></td>
+        <td class="name"><%= link_to deck.name, deck_path(deck) %></td>
         <td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>"/></td>
         <td class="minions"><%= unique_deck.num_minions %></td>
         <td class="spells"><%= unique_deck.num_spells %></td>
@@ -33,7 +33,7 @@
         <td class="wins"><%= unique_deck.num_wins %></td>
         <td class="losses"><%= unique_deck.num_losses %></td>
         <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
-        
+
         <td class="num_users"><%= number_with_delimiter(unique_deck.num_users, :delimiter => ',') %></td>
         <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
           <td class="author">[anonymous]</td>

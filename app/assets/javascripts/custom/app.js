@@ -1,4 +1,3 @@
-
 // define a global app object to store easily accessible common methods
 var app = app || {};
 
@@ -27,10 +26,10 @@ app.UI.initClassSelector = function(jquerySelectorString) {
 app.UI.initDeckSelector = function(jquerySelectorString) {
   $(jquerySelectorString).each(function() {
     $this = $(this);
-	$('option', $this).each(function() {
-	  $(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).attr('class') + "_Icon.gif");
-	});
-	$this.selectBoxIt({ autoWidth: false });
+  $('option', $this).each(function() {
+    $(this).attr('data-iconurl', "/assets/Icons/Classes/" + $(this).attr('class') + "_Icon.gif");
+  });
+  $this.selectBoxIt({ autoWidth: false });
   });
 };
 

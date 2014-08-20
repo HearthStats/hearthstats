@@ -1,6 +1,6 @@
 - set_meta_tags :title => 'November Report',
   :description => 'November Report on statistics from Hearthstats',
-  :keywords => 'stats, november, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss' 
+  :keywords => 'stats, november, report, statistics, analysis, tracking, trends, blizzard, hearthstats, hearthstone, match, tracking, win, loss'
 javascript:
   $(document).ready(function() {
     var q = false;
@@ -42,13 +42,13 @@ div.novreport
             - @arenamp = @arenatot.sort_by { |name, winsrate| winsrate }.reverse
             table.mptable
               tr
-                td.mpfirst 1. #{@arenamp.first[0]} 
+                td.mpfirst 1. #{@arenamp.first[0]}
                 td.mpfirst =@arenamp.first[1]
               tr
-                td.mpsec 2. #{@arenamp.second[0]} 
+                td.mpsec 2. #{@arenamp.second[0]}
                 td.mpsec =@arenamp.second[1]
               tr
-                td.mpthird 3. #{@arenamp.third[0]} 
+                td.mpthird 3. #{@arenamp.third[0]}
                 td.mpthird =@arenamp.third[1]
             div.arenamore
               table.mptable
@@ -62,13 +62,13 @@ div.novreport
             - @conmp = @contot.sort_by { |name, winsrate| winsrate }.reverse
             table.mptable
               tr
-                td.mpfirst 1. #{@conmp.first[0]} 
+                td.mpfirst 1. #{@conmp.first[0]}
                 td.mpfirst =@conmp.first[1]
               tr
-                td.mpsec 2. #{@conmp.second[0]} 
+                td.mpsec 2. #{@conmp.second[0]}
                 td.mpsec =@conmp.second[1]
               tr
-                td.mpthird 3. #{@conmp.third[0]} 
+                td.mpthird 3. #{@conmp.third[0]}
                 td.mpthird =@conmp.third[1]
             div.conmore
               table.mptable
@@ -85,11 +85,11 @@ div.novreport
             - counter = 1
             table.rankingtable
               - @classarenarate.each do |c|
-                -if c[1] == -1 
+                -if c[1] == -1
                 -else
-                  tr 
+                  tr
                     td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                    td 
+                    td
                       #{number_to_percentage(c[1]*100, precision: 2)}
                     td
                       #{@arenatot[c[0]]} Games
@@ -100,11 +100,11 @@ div.novreport
             - counter = 1
             table.rankingtable
               - @classconrate.each do |c|
-                -if c[1] == -1 
+                -if c[1] == -1
                 -else
-                  tr 
+                  tr
                     td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                    td 
+                    td
                       #{number_to_percentage(c[1]*100, precision: 2)}
                     td
                       #{@contot[c[0]]} Games
@@ -119,27 +119,27 @@ div.novreport
               -c[0] = @userarenarate.keys[i]
               -c[1] = @userarenarate.values[i]
               div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
-                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
-                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
-                  | #{number_to_percentage(c[1]*100, precision: 2)} 
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
           div.pure-u-1-3
             -(13..25).each do |i|
               -c = Array.new
               -c[0] = @userarenarate.keys[i]
               -c[1] = @userarenarate.values[i]
               div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
-                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
-                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
-                  | #{number_to_percentage(c[1]*100, precision: 2)} 
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
           div.pure-u-1-3
             -(25..35).each do |i|
               -c = Array.new
               -c[0] = @userarenarate.keys[i]
               -c[1] = @userarenarate.values[i]
               div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
-                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
-                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
-                  | #{number_to_percentage(c[1]*100, precision: 2)} 
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
         h2 Arena Class Game Wins Per Day
         small x-axis represents days ago from today
         div.cf
@@ -155,27 +155,27 @@ div.novreport
               -c[0] = @conrate.keys[i]
               -c[1] = @conrate.values[i]
               div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
-                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
-                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
-                  | #{number_to_percentage(c[1]*100, precision: 2)} 
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
           div.pure-u-1-3
             -(13..25).each do |i|
               -c = Array.new
               -c[0] = @conrate.keys[i]
               -c[1] = @conrate.values[i]
               div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
-                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
-                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
-                  | #{number_to_percentage(c[1]*100, precision: 2)} 
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
           div.pure-u-1-3
             -(25..35).each do |i|
               -c = Array.new
               -c[0] = @conrate.keys[i]
               -c[1] = @conrate.values[i]
               div id="##{c[0].split(' ')[0]}vs#{c[0].split(' ')[1]}" class="arateentry"
-                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}: 
-                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip" 
-                  | #{number_to_percentage(c[1]*100, precision: 2)} 
+                |#{image_tag("Icons/Classes/#{c[0].split(' ')[0]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[0]} vs. #{image_tag("Icons/Classes/#{c[0].split(' ')[1]}_Icon.gif", height: "24", width: "24")} #{c[0].split(' ')[1]}:
+                abbr title="#{@totarenagames.values[i]} Games Recorded" rel="tooltip"
+                  | #{number_to_percentage(c[1]*100, precision: 2)}
         h2 Constructed Class Game Wins Per Day
         small x-axis represents days ago from today
         div.cf
@@ -188,19 +188,19 @@ div.novreport
         div.pure-u-1-3.center
           div.hscont
             div.hssimage = image_tag('Icons/ninjauser.png', width: 150, height: 150)
-            div.hsscount 
+            div.hsscount
               div.iconlabel Users
               = User.all.count
         div.pure-u-1-3.center
           div.hscont
             div.hssimage = image_tag('Icons/matches.png', width: 150, height: 150)
-            div.hsscount 
+            div.hsscount
               div.iconlabel Matches
               = Arena.all.count + Constructed.all.count
         div.pure-u-1-3.center
           div.hscont
             div.hssimage = image_tag('hearthstatslogobg.png', width: 150, height: 150)
-            div.hsscount 
+            div.hsscount
               div.iconlabel Decks
               = Deck.all.count
       div.joinus.center We Would Love For You To Join Us

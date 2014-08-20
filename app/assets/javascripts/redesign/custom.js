@@ -14,7 +14,7 @@ var Custom = function () {
 
         //main function
         init: function () {
-            //initialize here something.            
+            //initialize here something.
         },
 
         //some helper function

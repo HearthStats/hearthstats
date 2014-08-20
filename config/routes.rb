@@ -4,6 +4,7 @@ Hearthstats::Application.routes.draw do
   #
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  match '/s/:id' => "shortener/shortened_urls#show"
 
   # Delayed_job_web
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
@@ -56,8 +57,10 @@ Hearthstats::Application.routes.draw do
   match "/apr", to: "welcome#april_report"
   match "/may", to: "welcome#may_report"
   match "/june", to: "welcome#june_report"
+  match "/july", to: "welcome#july_report"
   match "/gen_report", to: "welcome#generate_report"
   get "welcome/ranked_test"
+  get "welcome/select_klass"
 
   # Admin Stats Export
 
@@ -68,6 +71,7 @@ Hearthstats::Application.routes.draw do
 
   get "welcome/index"
   get "welcome/demo_user"
+  post "welcome/newsletter_sub"
 
   resources :arena_runs do
     collection do
@@ -91,9 +95,13 @@ Hearthstats::Application.routes.draw do
       get 'copy'
       get 'tags'
     end
-    post 'version', on: :member
-    get 'public_show', on: :member
-    get 'copy', on: :member
+
+    member do
+      post 'version'
+      post 'delete_active'
+      get 'public_show'
+      get 'copy'
+    end
   end
 
   resources :dashboards do
@@ -108,6 +116,8 @@ Hearthstats::Application.routes.draw do
   resources :constructeds do
     collection do
       get :stats
+      post :quick_create
+      get :win_rates
     end
   end
 

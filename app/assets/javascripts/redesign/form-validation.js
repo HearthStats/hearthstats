@@ -1,7 +1,7 @@
 var FormValidation = function () {
 
     var handleValidation1 = function() {
-        // for more info visit the official plugin documentation: 
+        // for more info visit the official plugin documentation:
             // http://docs.jquery.com/Plugins/Validation
 
             var form1 = $('#form_sample_1');
@@ -46,7 +46,7 @@ var FormValidation = function () {
                     }
                 },
 
-                invalidHandler: function (event, validator) { //display error alert on form submit              
+                invalidHandler: function (event, validator) { //display error alert on form submit
                     success1.hide();
                     error1.show();
                     App.scrollTo(error1, -200);
@@ -76,7 +76,7 @@ var FormValidation = function () {
     }
 
     var handleValidation2 = function() {
-        // for more info visit the official plugin documentation: 
+        // for more info visit the official plugin documentation:
             // http://docs.jquery.com/Plugins/Validation
 
             var form2 = $('#form_sample_2');
@@ -119,7 +119,7 @@ var FormValidation = function () {
                     },
                 },
 
-                invalidHandler: function (event, validator) { //display error alert on form submit              
+                invalidHandler: function (event, validator) { //display error alert on form submit
                     success2.hide();
                     error2.show();
                     App.scrollTo(error2, -200);
@@ -127,17 +127,17 @@ var FormValidation = function () {
 
                 errorPlacement: function (error, element) { // render error placement for each input type
                     var icon = $(element).parent('.input-icon').children('i');
-                    icon.removeClass('fa-check').addClass("fa-warning");  
+                    icon.removeClass('fa-check').addClass("fa-warning");
                     icon.attr("data-original-title", error.text()).tooltip({'container': 'body'});
                 },
 
                 highlight: function (element) { // hightlight error inputs
                     $(element)
-                        .closest('.form-group').addClass('has-error'); // set error class to the control group   
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
                 },
 
                 unhighlight: function (element) { // revert the change done by hightlight
-                    
+
                 },
 
                 success: function (label, element) {
@@ -156,7 +156,7 @@ var FormValidation = function () {
     }
 
     var handleValidation3 = function() {
-        // for more info visit the official plugin documentation: 
+        // for more info visit the official plugin documentation:
         // http://docs.jquery.com/Plugins/Validation
 
             var form3 = $('#form_sample_3');
@@ -227,22 +227,22 @@ var FormValidation = function () {
                 errorPlacement: function (error, element) { // render error placement for each input type
                     if (element.parent(".input-group").size() > 0) {
                         error.insertAfter(element.parent(".input-group"));
-                    } else if (element.attr("data-error-container")) { 
+                    } else if (element.attr("data-error-container")) {
                         error.appendTo(element.attr("data-error-container"));
-                    } else if (element.parents('.radio-list').size() > 0) { 
+                    } else if (element.parents('.radio-list').size() > 0) {
                         error.appendTo(element.parents('.radio-list').attr("data-error-container"));
-                    } else if (element.parents('.radio-inline').size() > 0) { 
+                    } else if (element.parents('.radio-inline').size() > 0) {
                         error.appendTo(element.parents('.radio-inline').attr("data-error-container"));
                     } else if (element.parents('.checkbox-list').size() > 0) {
                         error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
-                    } else if (element.parents('.checkbox-inline').size() > 0) { 
+                    } else if (element.parents('.checkbox-inline').size() > 0) {
                         error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
                     } else {
                         error.insertAfter(element); // for other inputs, just perform default behavior
                     }
                 },
 
-                invalidHandler: function (event, validator) { //display error alert on form submit   
+                invalidHandler: function (event, validator) { //display error alert on form submit
                     success3.hide();
                     error3.show();
                     App.scrollTo(error3, -200);
@@ -278,7 +278,7 @@ var FormValidation = function () {
 
     var handleWysihtml5 = function() {
         if (!jQuery().wysihtml5) {
-            
+
             return;
         }
 

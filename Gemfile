@@ -36,7 +36,7 @@ end
 # authentication
 gem 'devise'
 gem 'devise-token_authenticatable'
-gem 'cancan'
+gem 'cancancan'
 gem 'rolify'
 
 # storage
@@ -81,15 +81,21 @@ gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon' # Easy Rails to JS Vars
 gem 'ransack' # the new meta_search
+gem 'shortener'
+gem 'chartkick'
+gem 'groupdate'
 
 # Background
 gem 'delayed_job_active_record'
-gem "delayed_job_web"
+gem 'daemons'
+gem 'delayed_job_web'
+gem 'whenever'
 
 # APIs
 gem 'newrelic_rpm'
 gem 'honeybadger'
 gem 'cindy' # Sendy API
+gem 'appsignal'
 
 
 group :test do
@@ -100,6 +106,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'
+  gem 'phashion'
 end
 
 group :development, :test do

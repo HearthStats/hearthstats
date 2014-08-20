@@ -9,10 +9,14 @@
   div.deck-slot
     div.row.slot-row
       -(1..9).each do |i|
+        - deck = @active_decks.where(slot: i)[0]
         div.col-xs-4
-          div.slot-id #{t('.slot')} ##{i}
-          - deckName = @active_decks.where(slot: i)[0].name unless @active_decks.where(slot: i)[0].nil?
-          = select_tag( "#{i}", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, deckName), class: "slot-decks", :prompt => "-- #{t('.select_deck')} --")
+          div.slot-id 
+            |#{t('.slot')} ##{i}
+            span.deleted_deck = link_to t('.deleted_deck'), delete_active_deck_path(deck.id),
+              method: :post unless deck.nil?
+          = select_tag( "#{i}", options_for_select(@my_decks.map{ |d| [d.name,
+            d.id, {:class => Klass::LIST[d.klass_id]}]}, deck.try(:id)), class: "slot-decks", :prompt => "-- #{t('.select_deck')} --")
     = submit_tag t(".submit"), :class => "btn btn-primary"
 javascript:
   app.UI.initDeckSelector("select.slot-decks");

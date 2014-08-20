@@ -266,8 +266,8 @@ fr:
       title: Construits
     dashboard: "tableau de bord"
     deck:
-      my_active_deck: "Mon deck actif"
-      my_deck: "Mon deck"
+      my_active_deck: "Mes decks actif"
+      my_deck: "Mes decks"
       new_deck: "Nouveau deck"
       public_deck_list: "List des decks publics"
       title: Deck

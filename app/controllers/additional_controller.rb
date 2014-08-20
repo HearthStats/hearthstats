@@ -4,20 +4,14 @@ class AdditionalController < ApplicationController
   end
 
   def uploader
-  end
 
-  def uploader_download_win
-    version = HTTParty.get(
-      "http://raw.github.com/HearthStats/HearthStats.net-Uploader/master/src/version"
-    )
-    redirect_to("https://github.com/HearthStats/HearthStats.net-Uploader/releases/download/v" + version + "/HearthStats.net.Uploader.v" + version + ".zip")
-  end
-
-  def uploader_download_osx
-    version = HTTParty.get(
-      "http://raw.github.com/HearthStats/HearthStats.net-Uploader/master/src/version-osx"
-    )
-    redirect_to("https://github.com/HearthStats/HearthStats.net-Uploader/releases/download/v" + version + "-osx/HearthStats.net.Uploader.v" + version + "-osx.zip")
+    @urls = Rails.cache.fetch('uploader_url', expires_in: 2.days) do
+      urls = Hash.new
+      git_response = HTTParty.get('https://api.github.com/repos/HearthStats/HearthStats.net-Uploader/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})
+      urls["osx"] = git_response[0]["assets"][0]["browser_download_url"]
+      urls["windows"] = git_response[0]["assets"][1]["browser_download_url"]
+      urls
+    end
   end
 
   def aboutus
@@ -54,7 +48,7 @@ class AdditionalController < ApplicationController
               'img'        => ['alt', 'src', 'title']
             }
           )
-          
+
           items << [entry.title, entry.url, sanitized_summary , entry.published]
         end
 

@@ -1,23 +1,23 @@
 .select2-container .select2-choice{
-	margin-right: 10px;
+  margin-right: 10px;
   padding-top: 10px;
   height: 60px;
   overflow: hidden;
   font-size: 24px;
   width: 100%;
   .select2-chosen{
-  	height: 60px;
-  	padding-top: 5px;
+    height: 60px;
+    padding-top: 5px;
   }
 }
 .quickentry {
-	.select2-container .select2-choice{
-	  padding-top: 0px;
-	  height: 34px;
-		overflow: hidden;
-	  font-size: 14px;
-	  .select2-chosen{
-	  	height: 50px;
-	  }
-	}
+  .select2-container .select2-choice{
+    padding-top: 0px;
+    height: 34px;
+    overflow: hidden;
+    font-size: 14px;
+    .select2-chosen{
+      height: 50px;
+    }
+  }
 }

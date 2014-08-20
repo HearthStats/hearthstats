@@ -21,7 +21,8 @@
       div.modal-content
         div.modal-header
           button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-          h4 class="modal-title" #{t('.arena_run_with')} #{get_name(arena, "Klass")} #{t('.on')} #{arena.created_at}
+          h4 class="modal-title" #{t('.arena_run_with')}
+          #{Klass::LIST[arena.klass_id]} #{t('.on')} #{arena.created_at}
         div.modal-body
           =render 'arenagames', arenas: arena.matches
           div class="portlet box red"
@@ -51,7 +52,7 @@ div class="portlet box green"
         tr
           td
             - if !arena.klass_id.nil?
-              = link_to get_name(arena, "Klass"), race_dashboards_path(:race => Klass.find(arena.klass_id))
+              = Klass::LIST[arena.klass_id]
             - else
               | null
           td

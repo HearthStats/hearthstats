@@ -12,17 +12,17 @@ div class="row"
   div class="col-md-12"
     div class="margin-top-10"
       div.row
-        - @featured_streams.each do |s|
-          - if s[0] == 'Online'
+        - @featured_streams.each do |stream|
+          - if stream.status == 'Online'
             div class="mix-grid"
               div class="col-md-3 col-sm-4 mix"
                 div class="mix-inner"
-                  div.streamer-badge class="#{s[0]}" = s[0]
-                  img src="#{s[1]['logo']}" class="img-responsive"
+                  div.streamer-badge class="#{stream.status}" = stream.status
+                  img src="#{stream.details['stream']['channel']['logo']}" class="img-responsive"
                   div class="mix-details"
-                    h4 = s[1]["display_name"]
-                    div = s[1]["status"]
-                    a class="mix-link" href="#{s[1]['url']}" target="_none"
+                    h4 = stream.details['stream']['channel']["display_name"]
+                    div = stream.details['stream']['channel']["status"]
+                    a class="mix-link" href="#{stream.details['stream']['channel']['url']}" target="_none"
                       i class="fa fa-link"
 
 h3 Top Streams

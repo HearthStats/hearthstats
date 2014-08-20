@@ -1,5 +1,5 @@
 class ConstructedsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :win_rates
 
   def index
     params[:q]     ||= {}
@@ -9,19 +9,18 @@ class ConstructedsController < ApplicationController
     params[:sort]  ||= 'created_at'
     params[:order] ||= 'desc'
 
-    @q = current_user.matches.where(mode_id: [2,3]).ransack(params[:q])
+    @q = current_user.matches.includes(:rank).includes(:deck).where(mode_id: [2,3]).ransack(params[:q])
     @matches = @q.result.limit(params[:items])
     unless params[:days] == "all"
-      @matches = @matches.where('created_at >= ?', params[:days].to_i.days.ago)
+      @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
     @matches = @matches.order("#{params[:sort]} #{params[:order]}")
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
 
     @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
 
-    @constructeds = current_user.matches.where(mode_id: [2,3])
-    @lastentry    = @constructeds.last
-    @my_decks     = get_my_decks
+    @last_deck = current_user.matches.where(mode_id: [2,3]).last.try(:deck)
+    @my_decks = get_my_decks
 
     respond_to do |format|
       format.html
@@ -40,7 +39,7 @@ class ConstructedsController < ApplicationController
 
   def new
     @my_decks = get_my_decks
-    
+
     if @my_decks.blank?
       redirect_to new_deck_path, notice: "Please create a deck first."
     else
@@ -55,6 +54,53 @@ class ConstructedsController < ApplicationController
     @my_decks = get_my_decks
   end
 
+  def quick_create
+    if params[:deckname].nil?
+      redirect_to new_constructed_path, alert: 'Please create a deck first.'
+      return
+    end
+
+    deck = Deck.where(name: params[:deckname], user_id: current_user.id ).first
+    unless deck
+      redirect_to new_constructed_path, alert: 'Unknown deck'
+      return
+    end
+
+    # Find mode_id
+    rank = params[:other].try(:[], :rank)
+    if rank == "Ranked"
+      mode_id = 3
+    elsif rank == "Casual"
+      mode_id = 2
+    else
+      redirect_to constructeds_path, alert: 'Mode Error'
+      return
+    end
+
+    @constructed = Match.new(params[:match])
+    @constructed.mode_id = mode_id
+    @constructed.coin = params[:other][:gofirst].to_i.zero?
+
+    @constructed.klass_id = deck.klass_id
+    @constructed.user_id = current_user.id
+    if params[:win].present?
+      @constructed.result_id = 1
+    elsif params[:defeat].present?
+      @constructed.result_id = 2
+    elsif params[:draw].present?
+      @constructed.result_id = 3
+    end
+    respond_to do |format|
+      if @constructed.save
+        MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
+        delete_deck_cache!(deck)
+        format.js
+      else
+      end
+    end
+  end
+
+
   def create
     if params[:deckname].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.'
@@ -66,7 +112,7 @@ class ConstructedsController < ApplicationController
       redirect_to new_constructed_path, alert: 'Unknown deck'
       return
     end
-    
+
     # Find mode_id
     rank = params[:other].try(:[], :rank)
     if rank == "Ranked"
@@ -77,7 +123,7 @@ class ConstructedsController < ApplicationController
       redirect_to constructeds_path, alert: 'Mode Error'
       return
     end
-    
+
     @constructed = Match.new(params[:match])
     @constructed.mode_id = mode_id
     @constructed.coin = params[:other][:gofirst].to_i.zero?
@@ -109,7 +155,7 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Match.find(params[:id])
-    deck = @constructed.deck
+    deck = Deck.where(user_id: current_user.id, name: params[:deckname])[0]
     matchdeck = @constructed.match_deck
     matchdeck.deck_id = deck.id
     matchdeck.save!
@@ -160,14 +206,37 @@ class ConstructedsController < ApplicationController
       @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
 
-    personal_matches    = @matches.where(user_id: current_user.id)
-    @personal_win_rates = Match.winrate_per_class(personal_matches)
-    @global_win_rates   = Match.winrate_per_class(@matches)
+    # Personal Stats
+    @personal_matches    = @matches.where(user_id: current_user.id)
+    @personal_win_rates = Match.winrate_per_class(@personal_matches)
+    @num_matches_personal = Match.matches_per_class(@personal_matches)
 
-    @num_matches_global   = Match.matches_per_class(@matches)
-    @num_matches_personal = Match.matches_per_class(personal_matches)
+    # Global Stats
+    global_stats = Rails.cache.fetch('con_global_stats', expires_in: 12.hours) do
+      [ Match.matches_per_class(@matches),
+        Match.winrate_per_class(@matches) ]
+    end
+    @num_matches_global   = global_stats[0]
+    @global_win_rates   =  global_stats[1]
 
     @classes = Klass.list
+  end
+
+  def win_rates
+    win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}") do
+      matches = Match.where('created_at >= ?', 2.weeks.ago).
+        where(klass_id: params[:klass_id]).group_by_day(:created_at)
+      wins = matches.where(result_id: 1).count
+      tot = matches.count
+      data =  Hash.new
+      wins.zip(tot).map do |x, y|
+        wr =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
+        wr = 0 if wr.NaN?
+        data[x[0]] = wr
+      end
+      data
+    end
+    render json: win_rate
   end
 
   private
