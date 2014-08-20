@@ -170,10 +170,11 @@ class DecksController < ApplicationController
       @deck.is_public = false
     end
     unless params[:deck_text].blank?
-      begin
-        @deck.cardstring = text_to_deck(params[:deck_text])
-      rescue
-        redirect_to new_deck_path, alert: 'Deck list process error' and return
+      text2deck = text_to_deck(params[:deck_text])
+      if !text2deck.errors.empty?
+        redirect_to new_deck_path(klass: @deck.klass_id), alert: text2deck.errors and return
+      else 
+        @deck.cardstring = text2deck.cardstring
       end
     end
     respond_to do |format|
@@ -299,17 +300,25 @@ class DecksController < ApplicationController
     Deck.where(user_id: current_user.id).order(:klass_id, :name).all
   end
 
+  Text2Deck = Struct.new(:cardstring, :errors)
   def text_to_deck(text)
     text_array = text.split("\r\n")
     card_array = Array.new
+    err = Array.new
     text_array.each do |line|
       qty = /^([1-2])/.match(line)[1]
       name = /^[1-2] (.*)/.match(line)[1]
-      card_id = Card.where("lower(name) =?", name.downcase).first.id
+      begin
+        card_id = Card.where("lower(name) =?", name.downcase).first.id
+      rescue
+        err << ("Problem with line '" + line + "'")
+        next
+      end
       card_array << card_id.to_s + "_" + qty.to_s
+
     end
 
-    return card_array.join(',')
+    Text2Deck.new(card_array.join(','), err.join('<br>'))
   end
 
   def sort_by
