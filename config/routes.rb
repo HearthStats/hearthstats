@@ -25,6 +25,7 @@ Hearthstats::Application.routes.draw do
       post 'regtourny'
       post 'createtourny'
       get 'calendar'
+      get 'blind_draft'
     end
   end
 
