@@ -1,6 +1,7 @@
 [![HearthStats](https://s3-us-west-2.amazonaws.com/hearthstats/assets/PNG/full_colour/full_colour_inline.png)](http://hearthstats.net)
 [![Build Status](http://img.shields.io/travis/HearthStats/hearthstats.svg?style=flat)](https://travis-ci.org/HearthStats/hearthstats)
 [![Coverage Status](https://img.shields.io/coveralls/HearthStats/hearthstats.svg?style=flat)](https://coveralls.io/r/HearthStats/hearthstats?branch=master)
+[ ![Codeship Status for HearthStats/hearthstats](https://www.codeship.io/projects/a6452ed0-c0ea-0130-fa87-62f4270e40c7/status?branch=master)](https://www.codeship.io/projects/4580)
 
 ***
 
