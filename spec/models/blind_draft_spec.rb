@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Deck do
+describe BlindDraft do
   let (:user) { build :user }
   let (:blind_draft) { build :blind_draft}
 

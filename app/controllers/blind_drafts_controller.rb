@@ -31,11 +31,11 @@ class BlindDraftsController < ApplicationController
   end
 
   def reveal_card
-    card = BlindDraftCard.find(params[:draft_card])
-    card.revealed = true
+    card = BlindDraftCard.find(params[:blind_draft_card])
 
     respond_to do |format|
-      if card.save
+      if card.update_attribute(:revealed, true)
+        sync_update card
         format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
       else
         format.html { render action: "draft" }
@@ -45,10 +45,11 @@ class BlindDraftsController < ApplicationController
 
   def pick_card
     card = BlindDraftCard.find(params[:draft_card])
-    card.user_id = params[:player_id]
 
     respond_to do |format|
-      if card.save
+      if card.update_attribute(:user_id, params[:player_id])
+        sync_update card
+        sync_update card.blind_draft
         format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
       else
         format.html { render action: "draft" }

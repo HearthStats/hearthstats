@@ -1,8 +1,7 @@
 .row
   .col-md-9
     = @blind_draft.blind_draft_cards.each_slice(6) do |nine_cards|
-      - nine_cards.each do |card|
-        = render partial: 'card_block',
-          locals: { draft_card: card, p1: @blind_draft.player1_id, p2: @blind_draft.player2_id }
+      - nine_cards.each do |blind_draft_card|
+        = sync partial: 'card_block', resource: blind_draft_card
   .col-md-3
-        = render partial: 'draft_details'
+        = sync partial: 'draft_details', resource: @blind_draft
