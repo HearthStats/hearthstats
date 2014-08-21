@@ -1,11 +1,11 @@
 #draft-details.row
-  div id="tlkio" data-channel="HearthStats-Blind-Draft-#{@blind_draft.id}" style="width:100%;height:400px;"
+  div id="tlkio" data-channel="HearthStats-Blind-Draft-#{blind_draft.id}" style="width:100%;height:400px;"
     script async="" src="http://tlk.io/embed.js" type="text/javascript"
   .col-md-12
     h3 
       |Cards Left:&nbsp;
       span#cards-left = blind_draft.blind_draft_cards.where(user_id:nil).count
-  .col-md-6
+  .col-md-6.col-sm-6.col-xs-6
     h4 Player 1 Cards
     table#player-1-cards
       thead
@@ -13,7 +13,7 @@
         - blind_draft.player1_cards.each do |draft_card|
           tr
             td = draft_card.card.name
-  .col-md-6
+  .col-md-6.col-sm-6.col-xs-6
     h4 Player 2 Cards
     table#player-2-cards
       thead
