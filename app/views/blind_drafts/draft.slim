@@ -2,21 +2,7 @@
   .col-md-9
     = @blind_draft.blind_draft_cards.each_slice(6) do |nine_cards|
       - nine_cards.each do |card|
-        = render partial: 'card_block', 
+        = render partial: 'card_block',
           locals: { draft_card: card, p1: @blind_draft.player1_id, p2: @blind_draft.player2_id }
   .col-md-3
-    #draft-details.row
-      .col-md-12
-        h3 
-          |Cards Left:&nbsp;
-          span#cards-left = @blind_draft.blind_draft_cards.where(user_id:nil).count
-      .col-md-6
-        h4 Player 1 Cards
-        table#player-1-cards
-          thead
-          tbody
-      .col-md-6
-        h4 Player 2 Cards
-        table#player-2-cards
-          thead
-          tbody
+        = render partial: 'draft_details'

@@ -44,7 +44,16 @@ class BlindDraftsController < ApplicationController
   end
 
   def pick_card
+    card = BlindDraftCard.find(params[:draft_card])
+    card.user_id = params[:player_id]
 
+    respond_to do |format|
+      if card.save
+        format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
+      else
+        format.html { render action: "draft" }
+      end
+    end
   end
 
 end

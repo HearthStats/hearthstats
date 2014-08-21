@@ -1,0 +1,21 @@
+#draft-details.row
+  .col-md-12
+    h3 
+      |Cards Left:&nbsp;
+      span#cards-left = @blind_draft.blind_draft_cards.where(user_id:nil).count
+  .col-md-6
+    h4 Player 1 Cards
+    table#player-1-cards
+      thead
+      tbody
+        - @blind_draft.player1_cards.each do |draft_card|
+          tr
+            td = draft_card.card.name
+  .col-md-6
+    h4 Player 2 Cards
+    table#player-2-cards
+      thead
+      tbody
+        - @blind_draft.player2_cards.each do |draft_card|
+          tr
+            td = draft_card.card.name

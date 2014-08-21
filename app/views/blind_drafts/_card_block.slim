@@ -1,12 +1,17 @@
 div class="facedown-card" id="#{draft_card.card.id}" data-name="#{draft_card.card.name.parameterize}"
-  div.card-picked
-    - if draft_card.revealed
-      img class="blind-card-image" src="https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{draft_card.card.name.parameterize}.png"
-    - else
-      = link_to reveal_card_blind_draft_path(draft_card: draft_card), method: :update do
-        = image_tag("blind_draft/card-back.png", class: "blind-card-image")
+  div.card-picked class="#{'picked-overlay' if !draft_card.user_id.nil?}"
+  - if draft_card.revealed
+    img class="blind-card-image" src="https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{draft_card.card.name.parameterize}.png"
+  - else
+    = link_to reveal_card_blind_draft_path(draft_card: draft_card), method: :update do
+      = image_tag("blind_draft/card-back.png", class: "blind-card-image")
   div.user-select
-    = link_to "Player 1", pick_card_blind_draft_path(user_id: p1),
-      class: "player1-select"
-    = link_to "Player 2", pick_card_blind_draft_path(user_id: p2),
-      class: "player2-select"
+    - if draft_card.user_id.nil?
+      = link_to "Player 1", pick_card_blind_draft_path(player_id: p1,
+        draft_card: draft_card),
+        class: "player1-select", method: :update
+      = link_to "Player 2", pick_card_blind_draft_path(player_id: p2,
+        draft_card: draft_card),
+        class: "player2-select", method: :update
+    - else
+      div.player-select Picked!

@@ -11,6 +11,8 @@ class BlindDraft < ActiveRecord::Base
 
   after_create :create_card_associations
 
+  ### SCOPES:
+
   ### INSTANCE METHODS:
 
   def create_card_associations
@@ -21,6 +23,20 @@ class BlindDraft < ActiveRecord::Base
     card_pool.each do |card|
       BlindDraftCard.create(blind_draft_id: self.id, card_id: card.id)
     end
+  end
+
+  def player1_cards
+    find_player_cards(self.player1_id)
+  end
+
+  def player2_cards
+    find_player_cards(self.player2_id)
+  end
+
+  def find_player_cards(player_id)
+    self.blind_draft_cards
+        .where(blind_draft_cards: { user_id: player_id})
+        .includes(:card)
   end
 
 end
