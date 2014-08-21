@@ -28,6 +28,7 @@ class BlindDraftsController < ApplicationController
 
   def draft
     @blind_draft = BlindDraft.find(params[:id])
+    authenticate_drafters
   end
 
   def reveal_card
@@ -57,4 +58,11 @@ class BlindDraftsController < ApplicationController
     end
   end
 
+  private
+
+    def authenticate_drafters
+      if current_user.id != @blind_draft.player1_id && current_user.id != @blind_draft.player2_id
+        redirect_to blind_drafts_path, alert: "You are not a member of that draft"
+      end
+    end
 end

@@ -1,7 +1,17 @@
 .row
-  .col-md-9
+  .col-md-9.col-sm-9
     = @blind_draft.blind_draft_cards.each_slice(6) do |nine_cards|
       - nine_cards.each do |blind_draft_card|
         = sync partial: 'card_block', resource: blind_draft_card
   .col-md-3
-        = sync partial: 'draft_details', resource: @blind_draft
+    = sync partial: 'draft_details', resource: @blind_draft
+javascript:
+  if ($(window).width() > 768){
+    $(window).scroll(function() {  
+      var styledDiv = $('#draft-details'),
+          targetScroll = $('#player-1-cards').position().top,
+          currentScroll = $('html').scrollTop() || $('body').scrollTop();
+
+      styledDiv.toggleClass('fixedPos', currentScroll - 130 >= targetScroll);
+    });
+  }

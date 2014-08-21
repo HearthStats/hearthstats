@@ -6,14 +6,17 @@ div class="facedown-card" id="#{blind_draft_card.card.id}" data-name="#{blind_dr
     = link_to reveal_card_blind_draft_path(blind_draft_card: blind_draft_card), method: :update do
       = image_tag("blind_draft/card-back.png", class: "blind-card-image")
   div.user-select
-    - if blind_draft_card.user_id.nil?
-      = link_to "Player 1", 
-        pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player1_id,
-        draft_card: blind_draft_card),
-        class: "player1-select", method: :update
-      = link_to "Player 2", 
-        pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player2_id,
-        draft_card: blind_draft_card),
-        class: "player2-select", method: :update
+    - if blind_draft_card.revealed
+      - if blind_draft_card.user_id.nil?
+        = link_to "Player 1", 
+          pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player1_id,
+          draft_card: blind_draft_card),
+          class: "player1-select", method: :update
+        = link_to "Player 2", 
+          pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player2_id,
+          draft_card: blind_draft_card),
+          class: "player2-select", method: :update
+      - else
+        div.player-select Picked!
     - else
-      div.player-select Picked!
+      div &nbsp;
