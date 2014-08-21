@@ -1,0 +1,14 @@
+= form_for(@blind_draft) do |f|
+  .row
+    .col-md-12
+      .form-group
+        = f.label t('.player1-id')
+        = f.number_field :player1_id, class: 'form-control'
+      .form-group
+        = f.label t('.player2-id')
+        = f.number_field :player2_id, class: 'form-control'
+      .form-group
+        = f.label t('.card-cap')
+        = f.number_field :card_cap, class: 'form-control'
+      .form-group
+        = f.submit class: 'btn green'

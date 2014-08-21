@@ -1,0 +1,49 @@
+// Place all the styles related to the tournys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.blind-card-image{
+  height: 224px;
+  width: 150px;
+}
+.user-select{
+}
+.facedown-card{
+  display: inline-block;
+  position: relative;
+}
+.fixedPos{
+  position: fixed;
+  top: 70px;
+  right: 105px;
+}
+
+.picked-overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-image: url('http://storymag.tetherinc.com/issue-one/_media/img/sketches/X.png');
+    z-index:9999;
+    color: white;
+    font-size: 16px;
+}
+
+.picked-player{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0,0,0,0.65);
+}
+.player1-select{
+  background: blue;
+}
+.player2-select{
+  background: green;
+}
+span.red{
+  color: #e74c3c;
+}
+span.yellow{
+  color: #f1c40f;
+}

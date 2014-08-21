@@ -84,6 +84,7 @@ gem 'ransack' # the new meta_search
 gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
+gem 'sync'
 
 # Background
 gem 'delayed_job_active_record'
@@ -96,13 +97,14 @@ gem 'newrelic_rpm'
 gem 'honeybadger'
 gem 'cindy' # Sendy API
 gem 'appsignal'
-
+gem 'pusher'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
   gem 'email_spec', '>= 1.4.0'
   gem 'launchy', '>= 2.1.2'
   gem 'capybara', '>= 2.0.2'
+  gem 'capybara-screenshot'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'

@@ -157,6 +157,12 @@ en:
       none: none
       reset_filters: Reset Filters
 
+  blind_drafts:
+    new:  
+      player1-id: Player 1 ID
+      player2-id: Player 2 ID
+      card-cap: Number of Neutral Cards
+
   arenas:
     index:
       title: Recent Games

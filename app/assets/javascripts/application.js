@@ -16,4 +16,5 @@
 //= require select2
 //= require social-share-button
 //= require redactor-rails
+//= require sync
 //= require_tree .

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140819152744) do
+ActiveRecord::Schema.define(:version => 20140821004408) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(:version => 20140819152744) do
 
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
+
+  create_table "blind_draft_cards", :force => true do |t|
+    t.integer "user_id"
+    t.integer "card_id"
+    t.integer "blind_draft_id"
+    t.boolean "revealed"
+  end
+
+  create_table "blind_drafts", :force => true do |t|
+    t.string  "cardstring"
+    t.integer "player1_id"
+    t.integer "player2_id"
+    t.integer "card_cap"
+  end
 
   create_table "card_sets", :force => true do |t|
     t.string "name"
