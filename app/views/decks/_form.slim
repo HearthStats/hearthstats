@@ -2,7 +2,6 @@
   div class="btn blue btn-sm deck-text-trigger" = t('.toggle_text_import')
 
 small You may have to refresh the page if nothing works.
-
 = form_for(@deck) do |f|
   = f.hidden_field :cardstring
   - if @deck.errors.any?

@@ -22,11 +22,15 @@ class TourniesController < ApplicationController
     @decks = @decks.order("#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
 
-    unless current_user.nil?
+    if current_user
       unique_deck_ids = @decks.map(&:unique_deck_id)
       @user_decks = current_user.decks.where("unique_deck_id IN (?)", unique_deck_ids)
     end
 
+  end
+
+  def blind_draft
+    @card_pool = Card.where(collectible: true, klass_id: nil).sample(54)
   end
 
   def signup

@@ -82,8 +82,6 @@ class UniqueDeck < ActiveRecord::Base
       end
 
       sum += cost
-      p card.name
-      p cost
     end
     
     sum
