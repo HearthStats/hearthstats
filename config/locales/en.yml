@@ -431,6 +431,8 @@ en:
     help:
       title: Help
       help_text: "Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems."
+    contest_video:
+      title: Video Contest
 
 
   streams:
