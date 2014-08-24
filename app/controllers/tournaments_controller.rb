@@ -20,8 +20,10 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    @pairs = TournPair.where(tournament_id: 1)
+    @pairs = TournPair.where(tournament_id: params[:id])
     @num_columns = Math.log2(@pairs.length + 1).ceil
+    @tourn_format = Tournament.find(params[:id]).bracket_format
+    @num_pods = @pairs.last.pos
   end
 
 end
