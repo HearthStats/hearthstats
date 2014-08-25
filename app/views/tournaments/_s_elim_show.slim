@@ -7,9 +7,6 @@ table
           table
             - pairs.where(roundof: (2**column)).each do |pair|
               tr 
-                p
-                  |Pair id: 
-                  = pair.id
                 p 
                   |Pair:&nbsp;
                   span = pair.p1_id

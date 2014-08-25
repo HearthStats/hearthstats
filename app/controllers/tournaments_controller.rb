@@ -12,9 +12,9 @@ class TournamentsController < ApplicationController
     respond_to do |format|
       if @tournament.save
         format.html  { redirect_to(@tournament,
-                      :notice => 'Tournament was successfully created.') }
+                       notice: 'Tournament was successfully created.') }
       else
-        format.html  { render :action => "new" }
+        format.html  { render action: "new" }
       end
     end
   end

@@ -26,7 +26,7 @@ class AdditionalController < ApplicationController
 
   def contest_video
   end
-  
+
   def news
     require 'feedjira'
     @items = Rails.cache.fetch("news", expires_in: 2.hours) do

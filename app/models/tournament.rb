@@ -28,10 +28,10 @@ class Tournament < ActiveRecord::Base
       pairings = pod_list.combination(2).to_a
       pairings.each do |pairing|
         new_pair = self.tourn_pairs.build(tournament_id: self.id, 
-                            pos: pod,
-                            p1_id: pairing[0].id,
-                            p2_id: pairing[1].id,
-                            undecided: -1)
+                                          pos: pod,
+                                          p1_id: pairing[0].id,
+                                          p2_id: pairing[1].id,
+                                          undecided: -1)
         pair_list.push(new_pair)
       end
     end
@@ -42,7 +42,7 @@ class Tournament < ActiveRecord::Base
 
   def initiate_brackets
     @user_list = TournUser.where(tournament_id: self.id)
-    format = self.bracket_format
+    format = bracket_format
 
     if @user_list.length < 4
       return
@@ -64,11 +64,11 @@ class Tournament < ActiveRecord::Base
       pair = base_pairs.fetch(base_pair_pointer)
       new_pair_pos = pair.pos*2 + extend_left_flag
       new_pair = self.tourn_pairs.build(tournament_id: self.id, 
-                                  pos: new_pair_pos,
-                                  roundof: (pair.roundof * 2),
-                                  p1_id: extend_left_flag.zero? ? pair.p1_id : pair.p2_id,
-                                  p2_id: user.id,
-                                  undecided: -1)
+                                        pos: new_pair_pos,
+                                        roundof: (pair.roundof * 2),
+                                        p1_id: extend_left_flag.zero? ? pair.p1_id : pair.p2_id,
+                                        p2_id: user.id,
+                                        undecided: -1)
 
       pair_list.insert(base_pair_offset + base_pair_pointer, new_pair)
 
@@ -100,8 +100,8 @@ class Tournament < ActiveRecord::Base
     while !p_queue.empty? do
       undecided = -1
       current = p_queue.shift
-      left = final_pair_list.find { |x| (x.roundof == (current.roundof * 2) && x.pos == current.pos*2) }
-      right = final_pair_list.find { |y| (y.roundof == (current.roundof * 2) && y.pos == (current.pos*2 + 1)) }
+      left = final_pair_list.find { |x| (x.roundof == (current.roundof * 2) && x.pos == current.pos * 2) }
+      right = final_pair_list.find { |y| (y.roundof == (current.roundof * 2) && y.pos == (current.pos * 2 + 1)) }
       if !left.nil?
         TournPair.update(current.id, p1_id: left.id)
         p_queue.push(left)
@@ -147,18 +147,18 @@ class Tournament < ActiveRecord::Base
         end
 
         left = self.tourn_pairs.build(tournament_id: self.id, 
-                                  pos: (pair.pos*2),
-                                  roundof: (pair.roundof * 2),
-                                  p1_id: left_user1_id,
-                                  p2_id: left_user2_id,
-                                  undecided: left_user1_id.nil? ? 2 : -1)
+                                      pos: (pair.pos * 2),
+                                      roundof: (pair.roundof * 2),
+                                      p1_id: left_user1_id,
+                                      p2_id: left_user2_id,
+                                      undecided: left_user1_id.nil? ? 2 : -1)
 
         right = self.tourn_pairs.build(tournament_id: self.id, 
-                                  pos: (pair.pos*2 + 1),
-                                  roundof: (pair.roundof * 2),
-                                  p1_id: right_user1_id,
-                                  p2_id: right_user2_id,
-                                  undecided: right_user1_id.nil? ? 2 : -1)
+                                      pos: (pair.pos * 2 + 1),
+                                      roundof: (pair.roundof * 2),
+                                      p1_id: right_user1_id,
+                                      p2_id: right_user2_id,
+                                      undecided: right_user1_id.nil? ? 2 : -1)
 
         pair_list.push(left)
         pair_list.push(right)

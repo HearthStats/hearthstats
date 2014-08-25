@@ -5,6 +5,8 @@ table
       - (1..num_pods).each do |column|
         td
           table
+            tr 
+              span = column
             - pairs.where(pos: column).each do |pair|
               tr 
                 p 
