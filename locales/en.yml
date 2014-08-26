@@ -1,0 +1,645 @@
+en:
+  activemodel:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  activerecord:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  additional:
+    aboutus:
+      a_huge_thanks_to: A huge thanks to
+      built_suggestions_text: HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
+      charles_text_1: Charles put in some amazing great work on the OSx uploader
+      charles_text_2: Charles deserves a lot of appreciation for coming out of nowhere and doing some open source work
+      charles_text_3: You can find more about Charles
+      donate_text: If you like what I'm doing, toss me a few coins.
+      eckert_text: J Eckert contributed a lot to styling and colors
+      founded_by_text: This site was founded by Jeffrey Tong with love.
+      here: here
+      others_contributors: Contributors
+      rackspace_text: I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!
+      thanks_jerome_text: Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
+      title: About Us
+      you_can_follow_twitter: You can follow me on Twitter
+    changelog:
+      all_time_in_utc: All time in UTC
+      title: Changelog
+    contactus:
+      contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
+      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      fadein_text_1: I'm really bored so your emails are welcomed.
+      fadein_text_2: Please just send me an email! It could be about anything!
+      fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
+      title: Contact Info
+    help:
+      help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
+      title: Help
+    news:
+      posted: Posted
+      read_more: Read More
+      subtitle: " the latest in Hearthstone news"
+      suggestions_for_news: Suggestions for news sources are welcome
+      title: Hearthstone News
+    uploader:
+      click_to_reveal: Click to reveal
+      do_not_share: do not share this with anyone else
+      download_for: Download for
+      download_java_here: Download Java Here
+      features:
+        feat_1: Support for both Windows and OSx
+        feat_2: Automatically tracks constructed and arena matches
+        feat_3: Tracks your class and your opponent's class
+        feat_4: Tracks your rank level for ranked matches
+        feat_5: Tracks your opponent's name
+        feat_6: Tracks number of rounds played and match duration
+        feat_7: Add notes to your matches directly from the uploader
+      features_title: Features
+      header_text: Why enter your matches manually when you can let our uploader take care of everything for you? This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, monitoring, or network modification of any kind. The project is and always will be open source so that you can do your own builds and see exactly what's happening within the program.
+      help_and_support: Help and Support
+      instructions: Instructions
+      instructions_osx:
+        inst_osx_1: Download from the link above
+        inst_osx_2: Unzip the file
+        inst_osx_3: Drag the file to your Applications folder
+        inst_osx_4: "<b>Right Click</b> the file then click open"
+        inst_osx_5: Enter your userkey from the uploader page or the profile page
+        inst_osx_6: Open up your game and play away!
+      instructions_win:
+        inst_win_1: Download from the link above
+        inst_win_2: Unzip the file
+        inst_win_3: Click to open up the app
+        inst_win_4: Enter your userkey from the uploader page or the profile page
+        inst_win_5: Open up your game and play away!
+      known_issues: Known issues
+      please_have_installed: Please make sure you have Java 7+ installed.
+      project_source_on_github: Project source on Github
+      title: Official Uploader
+      title:官方上传器 header_text: 
+      user_key: User Key
+  arena_runs:
+    new:
+      continue: Continue
+      first_arena_of_day: First Arena of the day? Let's get started!
+      get_auto_uploader: Get the Auto Uploader
+      going_hardcore: Wow, going hardcore today? %{runs} already, well good luck!
+      keep_it_going: Only %{runs}? Keep it going!
+      section: Arena
+      title: New Arena Run
+      your_class: Your class
+  arenas:
+    index:
+      arena_run_with: arena run with
+      close: Close
+      continue_arena_run: Continue Arena Run
+      description: " recent arena games"
+      new_arena_run: New Arena Run
+      notes: Notes
+      options: Options
+      prizes: Prizes
+      recent_arena_games: Recent Arena Games
+      section: Arena
+      time_played: 
+      timee_played: Time Played
+      title: Recent Games
+      'true': true
+      win_loss: Win/Loss
+      your_class: Your Class
+    matches:
+      recent_arena_matches: Recent Arena Matches
+      section: Arena
+      subtitle: " recent matches games"
+      title: Recent Matches
+    new:
+      arena_run_results: Arena Run Results
+      back: Back
+      create_entry: Create entry
+      defeat: Defeat
+      draw: Draw
+      end_run: End Run
+      opponent_class: Opponent's Class
+      options: Options
+      played_first: Played First
+      played_second: Played Second
+      result: Result
+      retire: Retire
+      section: Arena
+      sure_want_retire: Are you sure you want to retire early from this Arena Run?
+      title: New Arena Match
+      win: Win
+    stats:
+      arena_games_played: Arena Games Played
+      arena_runs_played: Arena Runs Played
+      detailed_class_status: Detailed Class Status
+      dist_desc: Times achieved vs Number of wins in arena run
+      distribution_graph: Distribution Graph
+      longest_average_runs: Longest Average Runs
+      most_played: Most Played
+      no_games: No games
+      note: NOTE!
+      overall_arena_stats: Overall Arena Stats
+      overall_win_rate: Overall Win Rate
+      page_being_designed: Page is still being designed
+      section: Arena
+      subtitle: " detailed arena game stats"
+      title: Statistics
+      total_dust_amount: Total Dust Amount
+      total_gold_amount: Total Gold Amount
+  cards:
+    index:
+      any_class: any class
+      any_race: any race
+      any_type: any type
+      ascending: Ascending
+      attack: Attack
+      descending: Descending
+      filter_by: Filter by
+      health_dur: Health/Dur.
+      mana_cost: Mana Cost
+      name: Name
+      none: none
+      not_found: No cards were found matching your criteria
+      reset_filters: Reset Filters
+      sort_by: Sort by
+      text_contains: Text contains
+      title: Card Database
+  constructeds:
+    filter:
+      apply: Apply
+      coin?: Coin?
+      per_page: per page
+      reset: Reset
+    form:
+      add_defeat: Add Defeat
+      add_draw: Add Draw
+      add_win: Add Win
+      casual: Casual
+      deck_name: Deck name
+      first_turn: first turn
+      opponent_class: Opponent class
+      ranked: Ranked
+      second_turn: second turn
+      this_match_is: This match is
+      you_played_on_the: You played on the
+    index:
+      description: " recent constructed games"
+      new_constructed: New Constructed
+      section: Constructed
+      title: Recent Games
+    new:
+      get_the_auto_uploader: Get the Auto Uploader
+      section: Constructed
+      title: New Constructed
+    newform:
+      add_defeat: Add Defeat
+      add_draw: Add Draw
+      add_win: Add Win
+      casual: Casual
+      deck_name: Deck name
+      first_turn: first turn
+      opponent_class: Opponent class
+      ranked: Ranked
+      second_turn: second turn
+      this_match_is: This match is
+      you_played_on_the: You played on the
+    quickentry:
+      add_defeat: Add Defeat
+      add_draw: Add Draw
+      add_win: Add Win
+      casual: Casual
+      coin: Coin
+      no_coin: No Coin
+      quick_entry: Quick Entry
+      ranked: Ranked
+    stats:
+      all_time: all time
+      any_mode: any mode
+      casual: casual
+      days: days
+      description: " constructed game stats"
+      filter_by: Filter by
+      first_or_second: first or second
+      going_first: going first
+      going_second: going second
+      hours: hours
+      last: last
+      ranked: ranked
+      section: Constructed
+      title: Statistics
+    winratechart:
+      constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
+  dashboards:
+    index:
+      against: against
+      arena_win_rate: Arena Win Rate
+      arena_win_rates: Arena Win Rates
+      constructed_coin_win_rates: Constructed Win Coin Rate
+      constructed_win_rates: Constructed Win Rate
+      games_recorded: Games Recorded
+      global_stats: Global Stats
+      global_win_rates: Global Win Rates
+      hearthstats_news: HearthStats News
+      news:
+        ability_to_rank: Ability to rank/casual added for Constructed Games.
+        donation_link: Donation link added at
+        huge_update: Huge update with lots of features.
+        notes_feature: Notes feature added!
+      personal_win_rate: Personal Win Rate
+      read_more: Read More
+      recent_activities: Recent Activities
+      subtitle: " statistics for the current season"
+      title: Dashboard
+      view_more: View More
+      with: with
+  date:
+    abbr_day_names: 
+    abbr_month_names: 
+    day_names: 
+    formats:
+      default: 
+      long: 
+      short: 
+    month_names: 
+    order: 
+  datetime:
+    distance_in_words:
+      about_x_hours: 
+      about_x_months: 
+      about_x_years: 
+      almost_x_years: 
+      half_a_minute: 
+      less_than_x_minutes: 
+      less_than_x_seconds: 
+      over_x_years: 
+      x_days: 
+      x_minutes: 
+      x_months: 
+      x_seconds: 
+    prompts:
+      day: 
+      hour: 
+      minute: 
+      month: 
+      second: 
+      year: 
+  decks:
+    active_decks:
+      select_deck: Select Deck
+      slot: Slot
+      submit: Submit
+      subtitle: " all active constructed decks"
+      title: Active Deck
+    form:
+      card_limit: Max Card Limit
+      class: Class
+      count: Count
+      deck_limit: Max Deck Limit
+      decklist_etc: " Decklist, etc"
+      legend: Only one legendary allowed per deck.
+      name: Name
+      no_more: No More In Deck
+      notes: Notes
+      search: Search
+      this_deck_public: Make Deck Public
+    index:
+      my_decks: My Decks
+      new_deck: New Deck
+      subtitle: " all of my constructed decks"
+      title: My Decks
+    new:
+      section: Decks
+      title: New Deck
+    new_splash:
+      title: New Deck Class Selection
+    public:
+      new_deck: New Deck
+      public_decks: Public Decks
+      subtitle: " all public constructed decks"
+      title: Public Deck List
+  errors:
+    format: 
+    messages:
+      accepted: 
+      blank: 
+      confirmation: 
+      empty: 
+      equal_to: 
+      even: 
+      exclusion: 
+      greater_than: 
+      greater_than_or_equal_to: 
+      inclusion: 
+      invalid: 
+      less_than: 
+      less_than_or_equal_to: 
+      not_a_number: 
+      not_an_integer: 
+      odd: 
+      present: 
+      record_invalid: 
+      restrict_dependent_destroy: 
+      taken: 
+      too_long: 
+      too_short: 
+      wrong_length: 
+    template:
+      body: 
+      header: 
+  helpers:
+    select:
+      prompt: 
+    submit:
+      create: 
+      submit: 
+      update: 
+  menu:
+    Tournaments:
+      Calendar: 
+      past_winners: 
+      register: 
+      title: 
+    arena:
+      continue_arena_run: Continue Arena Run
+      new_arena_run: New Arena Run
+      recent_arena_matches: Recent Arena Matches
+      recent_arena_runs: Recent Arena Runs
+      statistics: Statistics
+      title: Arena
+    card_database: Card Database
+    constructed:
+      new_match: New Match
+      recent_matches: Recent Matches
+      statistics: Statistics
+      title: Constructed
+    dashboard: Dashboard
+    deck:
+      my_active_deck: My Active Deck
+      my_deck: My Decks
+      new_deck: New Deck
+      public_deck_list: Public Deck List
+      title: Deck
+    extra:
+      about_us: About Us
+      change_log: Change Log
+      contact_info: Contact Info
+      march_report: 
+      may_report: May Report
+      official_uploader: Official Uploader
+      title: Extra
+    help: Help
+    news: News
+    streams: Streams
+    tournaments:
+      Calendar: Calendar
+      past_winners: Past Winners
+      register: Register
+      title: Tournaments
+  number:
+    currency:
+      format:
+        delimiter: 
+        format: 
+        precision: 
+        separator: 
+        significant: 
+        strip_insignificant_zeros: 
+        unit: 
+    format:
+      delimiter: 
+      precision: 
+      separator: 
+      significant: 
+      strip_insignificant_zeros: 
+    human:
+      decimal_units:
+        format: 
+        units:
+          billion: 
+          million: 
+          quadrillion: 
+          thousand: 
+          trillion: 
+          unit: 
+      format:
+        delimiter: 
+        precision: 
+        significant: 
+        strip_insignificant_zeros: 
+      storage_units:
+        format: 
+        units:
+          byte: 
+          gb: 
+          kb: 
+          mb: 
+          tb: 
+    percentage:
+      format:
+        delimiter: 
+    precision:
+      format:
+        delimiter: 
+  shared:
+    arena: arena
+    arena_win_rate: Arena Win Rate
+    arenarun: arenarun
+    back: Back
+    best_arena_class: Best Arena Class
+    best_deck: Best Deck
+    class: Class
+    create: Create
+    create_deck: Create a Deck
+    deck: Deck
+    deckbuilder:
+      add_a_card: Add a Card
+      attack_distribution: Attack distribution
+      card_list: Card List
+      health_distribution: Health distribution
+      left_click_add_right_remove: Left-click to add. Right-click to remove.
+      mana_curve: Mana curve
+      mechanics: Mechanics
+      of_30_cards: of 30 cards
+      optional_deck_will_be_created_if: Optional (Deck will be created if you leave this blank)
+      this_deck_is_incomplete: This Deck is Incomplete
+      toggle_text_import: Toggle Text Import
+      type_distribution: Type distribution
+    deckslist:
+      any_class: any class
+      apply: Apply
+      asc: Asc
+      class: Class
+      created: Created
+      desc: Desc
+      filter: Filter
+      found_matching_your_criteria: found matching your criteria
+      listed_by: Listed By
+      losses: Losses
+      matches: Matches
+      minions: Minions
+      name: Name
+      per_page: per page
+      popularity: Popularity
+      show: Show
+      sort_by: Sort by
+      spells: Spells
+      stats_are_for_all_users: stats are for all users that have played the deck in the last 30 days, not just the original author
+      stats_are_for_your_personal: stats are for for your personal play using each deck
+      tools: Tools
+      users: Users
+      weapons: Weapons
+      win_rate: Win Rate
+      wins: Wins
+    delete: delete
+    edit: edit
+    error: erro
+    filter:
+      all_time: All time
+      apply: Apply
+      coin?: Coin?
+      created_at: Created
+      duration: Duration
+      last_24_hours: Last 24 hours
+      last_days: Last %{num} days
+      matches_in_this_list: matches in this list
+      numturns: Rounds
+      per_page: per page
+      reset: Reset
+      sort: sort
+      win_rate_over: win rate over
+    footer:
+      about: About
+      copyright_text: Copyright 2014 HearthStats. Hearthstone is a registered trademark of Blizzard Entertainment.
+      faq: FAQ
+      open_positions: Open Positions
+      privacy_policy: Privacy Policy
+      support: Support
+    header:
+      change_to: Change to
+      click_message_to_dismiss: Click on the message to dismiss
+      guest: Guest
+      my_profile: My Profile
+      new_messages: new messages
+      register_now_login: Register Now / Login
+      sign_out: Sign Out
+      you_have: You have
+    matchlist:
+      all_time: 
+      any_class: any class
+      apply: 
+      ascending: ascending
+      coin: Coin
+      coin?: 
+      created: Created
+      days: 
+      descending: descending
+      duration: 
+      filter: Filter
+      last: 
+      last_24_hours: 
+      matches_in_this_list: 
+      mode: Mode
+      no_coin: No Coin
+      opponent: Opponent
+      opponent_class: Opponent Class
+      opponent_name: Opponent Name
+      options: Options
+      per_page: 
+      rank: Rank
+      reset: 
+      result: Result
+      rounds: Rounds
+      show: Show
+      sort: 
+      win_rate_over: 
+      your: Your
+    new_arena_game: New Arena Game
+    notes: Notes
+    prohibited_this_being_save: 'prohibited this %{resource} from being saved:'
+    ranked_win_rate: Ranked Win Rate
+    run: run
+    show: show
+    update: Update
+    view_more: View More
+  streams:
+    index:
+      subtitle: " find all your favourite streams in one place"
+      title: Streams
+  support:
+    array:
+      last_word_connector: 
+      two_words_connector: 
+      words_connector: 
+  time:
+    am: 
+    formats:
+      default: 
+      long: 
+      short: 
+    pm: 
+  tournies:
+    index:
+      section: Tournaments
+      subtitle: " Register for our newest tournaments/leagues"
+      title: Sign Up
+  will_paginate:
+    next_label: 
+    page_entries_info:
+      multi_page: 
+      multi_page_html: 
+      single_page: 
+      single_page_html: 
+    page_gap: 
+    previous_label: 

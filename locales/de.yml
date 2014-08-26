@@ -1,0 +1,645 @@
+de:
+  activemodel:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  activerecord:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  additional:
+    aboutus:
+      a_huge_thanks_to: Ein großes Danke an
+      built_suggestions_text: HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
+      charles_text_1: Charles put in some amazing great work on the OSx uploader
+      charles_text_2: Charles deserves a lot of appreciation for coming out of nowhere and doing some open source work
+      charles_text_3: You can find more about Charles
+      donate_text: If you like what I'm doing, toss me a few coins.
+      eckert_text: J Eckert contributed a lot to styling and colors
+      founded_by_text: Diese Seite wurde mit Liebe gegründet von Jeffrey Tong.
+      here: here
+      others_contributors: Others Contributors
+      rackspace_text: I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!
+      thanks_jerome_text: Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
+      title: "Über uns"
+      you_can_follow_twitter: Du kannst mir auf Twitter folgen
+    changelog:
+      all_time_in_utc: Die Ganze Zeit in UTC
+      title: Changelog
+    contactus:
+      contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
+      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      fadein_text_1: I'm really bored so your emails are welcomed.
+      fadein_text_2: Please just send me an email! It could be about anything!
+      fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
+      title: Contact Info
+    help:
+      help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
+      title: Help
+    news:
+      posted: gepostet
+      read_more: Mehr lesen
+      subtitle: " die letzen Hearthstone news"
+      suggestions_for_news: Vorschläge für Newsquellen sind willkommen
+      title: Hearthstone News
+    uploader:
+      click_to_reveal: Klicken zum Anzeigen
+      do_not_share: Teile den Benutzerschlüssel mit niemanden
+      download_for: Download für
+      download_java_here: hier kannst du Java Downloaden
+      features:
+        feat_1: Support for both Windows and OSx
+        feat_2: Zeichnet automatisch gewertete Spiele und Arena-Runden auf
+        feat_3: Zeichnet deine und die Gegnerklasse auf
+        feat_4: Zeichnet deinen Rang für gewertete Spiele auf
+        feat_5: Zeichnet den Gegnernamen auf
+        feat_6: Zeichnet die Dauer des Spiels und die Anzahl der Runden auf
+        feat_7: der Uploader fügt Notizen zum Spiel automatisch hinzu
+      features_title: Features
+      header_text: "| Warum Spiele manuell eintragen, wenn du den Uploader alles erledigen lassen kannst?? &nbsp;| Dieses open source Benutzerwerkezug wertet Screenshots von deinem Hearthstone Fenster aus. Es fängt keine Daten ab, &nbsp;| . Dieses Projekt wird immer Open Source bleiben, &nbsp;| so dass du deine eigenen Versionen erstellen kannst, und immer verfolgen kannst, was mit dem Tool passiert."
+      help_and_support: Hilfe und Support
+      instructions: Anleitung
+      instructions_osx:
+        inst_osx_1: Download vom obigen Link
+        inst_osx_2: Entpacke die Datei
+        inst_osx_3: Ziehe den Pfeil in dein Anwendungsverzeichnis
+        inst_osx_4: "<b>Rechts Klick</b> auf die Datei, dann öffne diese"
+        inst_osx_5: Gib deinen Benutzerschlüssel von deiner Profilseite ein
+        inst_osx_6: "Öffne dein Spiel und leg los"
+      instructions_win:
+        inst_win_1: Download vom obigen Link
+        inst_win_2: Entpacke die Datei
+        inst_win_3: Klick um die Anwendung zu starten
+        inst_win_4: Gib deinen Benutzerschlüssel von deiner Profilseite ein
+        inst_win_5: "Öffne dein Spiel und leg los"
+      known_issues: Bekannte Proleme
+      please_have_installed: Bitte stelle sicher, dass Java 7+ installiert ist.
+      project_source_on_github: Projekt Quellcode auf Github
+      title: Offizieller Uploader
+      title:官方上传器 header_text: 
+      user_key: Benutzerschlüssel
+  arena_runs:
+    new:
+      continue: fortsetzen
+      first_arena_of_day: Erste Arena Runde heute? Lass uns beginnen!
+      get_auto_uploader: hol dir den Auto Uploader
+      going_hardcore: Wow, heute läufts richtig gut? %{runs} schon, weiterhin viel Erfolg!
+      keep_it_going: Nur %{runs}? Weiter gehts!
+      section: Arena
+      title: Neue Arena Runde
+      your_class: Deine Klasse
+  arenas:
+    index:
+      arena_run_with: Arena Runde mit
+      close: schließen
+      continue_arena_run: Arena Runde fortsetzen
+      description: " letzte Arena Spiele"
+      new_arena_run: Neuer Arena Runde
+      notes: Notizen
+      options: Optionen
+      prizes: Belohnung
+      recent_arena_games: aktuelle Arena Spiele
+      section: Arena
+      time_played: 
+      timee_played: Zeit gespielt
+      title: letzte Spiele
+      'true': true
+      win_loss: Win/Loss
+      your_class: Deine Klasse
+    matches:
+      recent_arena_matches: aktuelle Arena Spiele
+      section: Arena
+      subtitle: " letzte Spiele"
+      title: letzte Spiele
+    new:
+      arena_run_results: Arena Runde Ergebnisse
+      back: zurück
+      create_entry: Erstelle Eintrag
+      defeat: Verloren
+      draw: Unentschieden
+      end_run: Runde beenden
+      opponent_class: Gegner Klasse
+      options: Optionen
+      played_first: zuerst gespielt
+      played_second: als 2tes gespielt
+      result: Ergebniss
+      retire: Retire
+      section: Arena
+      sure_want_retire: Bist du dir sicher die Arena Runde vorzeitig abzubrechen?
+      title: Neues Arena Spiel
+      win: Win
+    stats:
+      arena_games_played: Arena Spiele gespielt
+      arena_runs_played: Arena Runden gespielt
+      detailed_class_status: Detailierte Klassenstatus
+      dist_desc: 
+      distribution_graph: 
+      longest_average_runs: Längste durchschnittliche Runden
+      most_played: am meisten gespielt
+      no_games: keine Spiele
+      note: NOTE!
+      overall_arena_stats: "Über alles Arena Stats"
+      overall_win_rate: "Über alles Win Rate"
+      page_being_designed: Seite wird noch designed
+      section: Arena
+      subtitle: " detailierte Arena Spiel-Statisken"
+      title: Statistiken
+      total_dust_amount: Gesamt erspielter Staub
+      total_gold_amount: Gesamtes erspieltes Gold
+  cards:
+    index:
+      any_class: jede Klasse
+      any_race: jede Rasse
+      any_type: jeder Typ
+      ascending: aufsteigend
+      attack: Angriff
+      descending: absteigend
+      filter_by: gefiltert nach
+      health_dur: Gesundheit/Ausdauer
+      mana_cost: Mana Kosten
+      name: Name
+      none: keine
+      not_found: Keine Karten gefunden, die deine Kriterien erfüllen
+      reset_filters: Filter zurücksetzen
+      sort_by: Sortiert nach
+      text_contains: Text enthält
+      title: Karten Datenbank
+  constructeds:
+    filter:
+      apply: 
+      coin?: 
+      per_page: 
+      reset: 
+    form:
+      add_defeat: 
+      add_draw: 
+      add_win: 
+      casual: 
+      deck_name: 
+      first_turn: 
+      opponent_class: 
+      ranked: 
+      second_turn: 
+      this_match_is: 
+      you_played_on_the: 
+    index:
+      description: " letzte gewertet Spiele"
+      new_constructed: neues gewertetes
+      section: Gewertet
+      title: letzte Spiele
+    new:
+      get_the_auto_uploader: hol dir den Auto Uploader
+      section: Gewertet
+      title: Neues gewertetes
+    newform:
+      add_defeat: Niederlage hinzufügen
+      add_draw: Unentschieden hinzufügen
+      add_win: Sieg hinzufügen
+      casual: Casual
+      deck_name: Deck Name
+      first_turn: ersten zug
+      opponent_class: Gegner Klasse
+      ranked: Ranked
+      second_turn: zweiten zug
+      this_match_is: Dieses Spiel ist
+      you_played_on_the: Du hattest den
+    quickentry:
+      add_defeat: Niederlage hinzufügen
+      add_draw: Unentschieden hinzufügen
+      add_win: Sieg hinzufügen
+      casual: ungewertet
+      coin: Münze
+      no_coin: keine Münze
+      quick_entry: Schnelleintrag
+      ranked: gewertet
+    stats:
+      all_time: gesamte Zeit
+      any_mode: jeder Modus
+      casual: Ungewertet
+      days: Tage
+      description: " Gewertete Spiele Statistiken"
+      filter_by: gefiltert nach
+      first_or_second: Erster oder Zweiter
+      going_first: als erster
+      going_second: als zweiter
+      hours: Stunden
+      last: letzte
+      ranked: Gewertet
+      section: Gewertet
+      title: Statistiken
+    winratechart:
+      constructed_win_rate_title: Gewertete Sieg Rate pro Klasse (Persönlich vs. Global)
+  dashboards:
+    index:
+      against: gegen
+      arena_win_rate: Arena Sieg Rate
+      arena_win_rates: Arena Sieg Rate
+      constructed_coin_win_rates: gewertete Sieg Rate mit Münze
+      constructed_win_rates: gewertete Sieg Rate
+      games_recorded: aufgezeichnete Spiele
+      global_stats: Globale Statistiken
+      global_win_rates: globale Sieg Rate
+      hearthstats_news: HearthStats News
+      news:
+        ability_to_rank: Möglichkeit für rank/casual hinzugefügt für Constructed Games.
+        donation_link: SpendenLink hinzugefügt
+        huge_update: Großes Update mit vielen Features.
+        notes_feature: Notizen-Feature hinzugefügt
+      personal_win_rate: Persönliche Sieg Rate
+      read_more: Mehr lesen
+      recent_activities: Letzte Aktivitäten
+      subtitle: " Statistiken für die aktuelle Season"
+      title: Dashboard
+      view_more: Mehr zeigen
+      with: mit
+  date:
+    abbr_day_names: 
+    abbr_month_names: 
+    day_names: 
+    formats:
+      default: 
+      long: 
+      short: 
+    month_names: 
+    order: 
+  datetime:
+    distance_in_words:
+      about_x_hours: 
+      about_x_months: 
+      about_x_years: 
+      almost_x_years: 
+      half_a_minute: 
+      less_than_x_minutes: 
+      less_than_x_seconds: 
+      over_x_years: 
+      x_days: 
+      x_minutes: 
+      x_months: 
+      x_seconds: 
+    prompts:
+      day: 
+      hour: 
+      minute: 
+      month: 
+      second: 
+      year: 
+  decks:
+    active_decks:
+      select_deck: Deck auswählen
+      slot: Position
+      submit: "Übermitteln"
+      subtitle: " alle aktiven gewertet-Decks"
+      title: Aktives Deck
+    form:
+      card_limit: 
+      class: Klasse
+      count: 
+      deck_limit: 
+      decklist_etc: " Deckliste, etc"
+      legend: 
+      name: Name
+      no_more: 
+      notes: Notizen
+      search: 
+      this_deck_public: Dieses Deck ist öffentlich
+    index:
+      my_decks: Meine Decks
+      new_deck: Neues Deck
+      subtitle: " alle von meinen gewertet-Decks"
+      title: Meine Decks
+    new:
+      section: Decks
+      title: Neues Deck
+    new_splash:
+      title: 
+    public:
+      new_deck: Neues Deck
+      public_decks: "Öffentliche Decks"
+      subtitle: " alle öffentlichen gewertet-Decks"
+      title: "Öffentliche Deck List"
+  errors:
+    format: 
+    messages:
+      accepted: 
+      blank: 
+      confirmation: 
+      empty: 
+      equal_to: 
+      even: 
+      exclusion: 
+      greater_than: 
+      greater_than_or_equal_to: 
+      inclusion: 
+      invalid: 
+      less_than: 
+      less_than_or_equal_to: 
+      not_a_number: 
+      not_an_integer: 
+      odd: 
+      present: 
+      record_invalid: 
+      restrict_dependent_destroy: 
+      taken: 
+      too_long: 
+      too_short: 
+      wrong_length: 
+    template:
+      body: 
+      header: 
+  helpers:
+    select:
+      prompt: 
+    submit:
+      create: 
+      submit: 
+      update: 
+  menu:
+    Tournaments:
+      Calendar: 
+      past_winners: 
+      register: 
+      title: 
+    arena:
+      continue_arena_run: Arena Runde fortsetzen
+      new_arena_run: Neue Arena Runde
+      recent_arena_matches: aktuelle Arena Spiele
+      recent_arena_runs: Aktuelle Arena Runde
+      statistics: Statistiken
+      title: Arena
+    card_database: Karten Datenbank
+    constructed:
+      new_match: Neues Spiel
+      recent_matches: aktuelle gewertete Spiele
+      statistics: Statistiken
+      title: gewertet
+    dashboard: Dashboard
+    deck:
+      my_active_deck: Mein aktives Deck
+      my_deck: Mein Deck
+      new_deck: Neues Deck
+      public_deck_list: "Öffentliche Deck Liste"
+      title: Deck
+    extra:
+      about_us: "Über uns"
+      change_log: "Änderungen"
+      contact_info: Kontakt Info
+      march_report: März Report
+      may_report: 
+      official_uploader: Offizieller Uploader
+      title: Extras
+    help: Hilfe
+    news: News
+    streams: Streams
+    tournaments:
+      Calendar: Kalender
+      past_winners: Letzte Sieger
+      register: Registrieren
+      title: Turniere
+  number:
+    currency:
+      format:
+        delimiter: 
+        format: 
+        precision: 
+        separator: 
+        significant: 
+        strip_insignificant_zeros: 
+        unit: 
+    format:
+      delimiter: 
+      precision: 
+      separator: 
+      significant: 
+      strip_insignificant_zeros: 
+    human:
+      decimal_units:
+        format: 
+        units:
+          billion: 
+          million: 
+          quadrillion: 
+          thousand: 
+          trillion: 
+          unit: 
+      format:
+        delimiter: 
+        precision: 
+        significant: 
+        strip_insignificant_zeros: 
+      storage_units:
+        format: 
+        units:
+          byte: 
+          gb: 
+          kb: 
+          mb: 
+          tb: 
+    percentage:
+      format:
+        delimiter: 
+    precision:
+      format:
+        delimiter: 
+  shared:
+    arena: Arena
+    arena_win_rate: Arena Sieg Rate
+    arenarun: Arenarun
+    back: Zurück
+    best_arena_class: Beste Arena Klasse
+    best_deck: Bestes Deck
+    class: Klasse
+    create: Erstelle
+    create_deck: erstelle ein Deck
+    deck: Deck
+    deckbuilder:
+      add_a_card: Füge eine Karte hinzu
+      attack_distribution: Angriffsverteilung
+      card_list: Kartenliste
+      health_distribution: Gesundheitsverteilung
+      left_click_add_right_remove: Linksklick zum hinzufügen. Rechtsklick zum entfernen.
+      mana_curve: Mana Kurve
+      mechanics: Mechaniken
+      of_30_cards: von 30 Karten
+      optional_deck_will_be_created_if: Optional (Deck wird erstellt wenn nichts eingetragen wird)
+      this_deck_is_incomplete: Das Deck ist unvollständig
+      toggle_text_import: Zeige Text Import
+      type_distribution: Typverteilung
+    deckslist:
+      any_class: jede Klasse
+      apply: Anwenden
+      asc: Aufsteigend
+      class: Klasse
+      created: Erstellt
+      desc: Absteigend
+      filter: Filter
+      found_matching_your_criteria: Ergebnisse die deine Kriterien erfüllen
+      listed_by: Sortiert nach
+      losses: Verloren
+      matches: Matches
+      minions: Minions
+      name: Name
+      per_page: pro Seite
+      popularity: Beliebtheit
+      show: zeige
+      sort_by: Sortiert nach
+      spells: Zauber
+      stats_are_for_all_users: Statistiken sind für alle, die in den letzen 30 Tage dieses Deck gespielt haben.
+      stats_are_for_your_personal: Statisken für deine Nutzung des Decks
+      tools: Tools
+      users: Benutzer
+      weapons: Waffen
+      win_rate: Sieg Rate
+      wins: Siege
+    delete: löschen
+    edit: edit
+    error: Fehler
+    filter:
+      all_time: 
+      apply: 
+      coin?: 
+      created_at: 
+      duration: 
+      last_24_hours: 
+      last_days: 
+      matches_in_this_list: 
+      numturns: 
+      per_page: 
+      reset: 
+      sort: 
+      win_rate_over: 
+    footer:
+      about: "Über uns"
+      copyright_text: Copyright 2014 HearthStats. Hearthstone ist eine registrierte Handelsmarke von Blizzard Entertainment.
+      faq: FAQ
+      open_positions: Freie Stellen
+      privacy_policy: Datenschutzerklärung
+      support: Hilfe
+    header:
+      change_to: "Ändere zu"
+      click_message_to_dismiss: Klick zum Ausblenden auf die Nachricht
+      guest: Gast
+      my_profile: Mein Profil
+      new_messages: neue Nachrichten
+      register_now_login: Registrieren/Login
+      sign_out: Logout
+      you_have: Du hast
+    matchlist:
+      all_time: gesamte Zeit
+      any_class: jede Klasse
+      apply: Anwenden
+      ascending: aufsteigend
+      coin: Münze
+      coin?: Münze?
+      created: erstellt
+      days: Tage
+      descending: absteigend
+      duration: Dauer
+      filter: Filter
+      last: letzte
+      last_24_hours: letze 24 Stunden
+      matches_in_this_list: Spiele in dieser Liste
+      mode: Modus
+      no_coin: keine Münze
+      opponent: Gegner
+      opponent_class: Gegner Klasse
+      opponent_name: Gegner Name
+      options: Optionen
+      per_page: pro Seite
+      rank: Rang
+      reset: Reset
+      result: Ergebnisse
+      rounds: Runden
+      show: Zeige
+      sort: sortiert
+      win_rate_over: Sieg Rate gegen
+      your: Deine
+    new_arena_game: Neues Arena Match
+    notes: Notizen
+    prohibited_this_being_save: 'Fehler beim speichern von: %{resource} '
+    ranked_win_rate: Gewertet Sieg Rate
+    run: starte
+    show: zeige
+    update: Aktualisiere
+    view_more: zeige mehr
+  streams:
+    index:
+      subtitle: " finde alle deine favorisierten Streams an einem Platz"
+      title: Streams
+  support:
+    array:
+      last_word_connector: 
+      two_words_connector: 
+      words_connector: 
+  time:
+    am: 
+    formats:
+      default: 
+      long: 
+      short: 
+    pm: 
+  tournies:
+    index:
+      section: Turniere
+      subtitle: " Registrier dich für unsere neuesten Turniere"
+      title: Anmelden
+  will_paginate:
+    next_label: 
+    page_entries_info:
+      multi_page: 
+      multi_page_html: 
+      single_page: 
+      single_page_html: 
+    page_gap: 
+    previous_label: 
