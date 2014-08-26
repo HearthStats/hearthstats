@@ -17,6 +17,8 @@ div class="facedown-card" id="#{blind_draft_card.card.id}" data-name="#{blind_dr
           draft_card: blind_draft_card),
           class: "player2-select", method: :update
       - else
-        div.player-select Picked!
+        div.player-select 
+          = blind_draft_card.user.name 
+          |&nbsp;Picked!
     - else
       div &nbsp;

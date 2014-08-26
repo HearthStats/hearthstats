@@ -158,6 +158,19 @@ en:
       reset_filters: Reset Filters
 
   blind_drafts:
+    index:
+      title: Blind Drafts
+      subtitle: ' start a new game'
+      new_draft: New Blind Draft
+      draft_id: Draft ID
+      player1: Player 1 Name
+      player2: Player 2 Name
+      complete: Draft Complete?
+      go_to: Go To Draft
+      draft: Draft
+    draft:
+      title: Drafting Blind Draft
+      subtitle: ' draft your deck'
     new:  
       player1-id: Player 1 ID
       player2-id: Player 2 ID

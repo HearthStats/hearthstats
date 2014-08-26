@@ -2,7 +2,7 @@ class BlindDraftsController < ApplicationController
   before_filter :authenticate_user!, except: :show
 
   def index
-
+    @blind_drafts = current_user.blind_drafts
   end
 
   def new

@@ -10,7 +10,7 @@ FactoryGirl.define do
     # The cards that are created will match the cardstring
     after(:create) do |blind_draft, evaluator|
       evaluator.cardstring.split(',').each do |id|
-        card  = create(:card, id: id)
+        card  = Card.exists?(id) ? Card.find(id) : create(:card, id: id)
 
         create_list(:blind_draft_card, 1, card: card, blind_draft: blind_draft)
       end
