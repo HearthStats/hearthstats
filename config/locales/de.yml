@@ -1,4 +1,5 @@
 de:
+<<<<<<< HEAD
   activemodel:
     errors:
       format: 
@@ -228,9 +229,169 @@ de:
     index:
       arena_run_with: Arena Runde mit
       close: schließen
+=======
+  shared:
+    header:
+      guest: Gast
+      my_profile: Mein Profil
+      sign_out: Logout
+      register_now_login: Registrieren/Login
+      you_have: Du hast
+      new_messages: neue Nachrichten
+      click_message_to_dismiss: Klick zum Ausblenden auf die Nachricht
+      change_to: "Ändere zu"
+    footer:
+      about: "Über uns"
+      faq: FAQ
+      open_positions: Freie Stellen
+      support: Hilfe
+      privacy_policy: Datenschutzerklärung
+      copyright_text: Copyright 2014 HearthStats. Hearthstone ist eine registrierte Handelsmarke von Blizzard Entertainment.
+    arena_win_rate: Arena Sieg Rate
+    ranked_win_rate: Gewertet Sieg Rate
+    best_deck: Bestes Deck
+    best_arena_class: Beste Arena Klasse
+    create_deck: erstelle ein Deck
+    new_arena_game: Neues Arena Match
+    view_more: zeige mehr
+    edit: edit
+    delete: löschen
+    notes: Notizen
+    run: starte
+    error: Fehler
+    prohibited_this_being_save: 'Fehler beim speichern von: %{resource} '
+    arenarun: Arenarun
+    show: zeige
+    arena: Arena
+    class: Klasse
+    deck: Deck
+    create: Erstelle
+    update: Aktualisiere
+    deckbuilder:
+      card_list: Kartenliste
+      optional_deck_will_be_created_if: Optional (Deck wird erstellt wenn nichts eingetragen wird)
+      toggle_text_import: Zeige Text Import
+      add_a_card: Füge eine Karte hinzu
+      of_30_cards: von 30 Karten
+      this_deck_is_incomplete: Das Deck ist unvollständig
+      left_click_add_right_remove: Linksklick zum hinzufügen. Rechtsklick zum entfernen.
+      mana_curve: Mana Kurve
+      attack_distribution: Angriffsverteilung
+      health_distribution: Gesundheitsverteilung
+      type_distribution: Typverteilung
+      mechanics: Mechaniken
+    back: Zurück
+    deckslist:
+      filter: Filter
+      any_class: jede Klasse
+      show: zeige
+      per_page: pro Seite
+      sort_by: Sortiert nach
+      created: Erstellt
+      losses: Verloren
+      matches: Matches
+      minions: Minions
+      name: Name
+      spells: Zauber
+      popularity: Beliebtheit
+      weapons: Waffen
+      win_rate: Sieg Rate
+      wins: Siege
+      asc: Aufsteigend
+      desc: Absteigend
+      apply: Anwenden
+      found_matching_your_criteria: Ergebnisse die deine Kriterien erfüllen
+      class: Klasse
+      users: Benutzer
+      listed_by: Sortiert nach
+      tools: Tools
+      stats_are_for_all_users: Statistiken sind für alle, die in den letzen 30 Tage dieses Deck gespielt haben.
+      stats_are_for_your_personal: Statisken für deine Nutzung des Decks
+    matchlist:
+      filter: Filter
+      any_class: jede Klasse
+      coin?: Münze?
+      coin: Münze
+      no_coin: keine Münze
+      opponent: Gegner
+      apply: Anwenden
+      reset: Reset
+      show: Zeige
+      per_page: pro Seite
+      all_time: gesamte Zeit
+      last_24_hours: letze 24 Stunden
+      last: letzte
+      days: Tage
+      sort: sortiert
+      created: erstellt
+      duration: Dauer
+      rounds: Runden
+      ascending: aufsteigend
+      descending: absteigend
+      win_rate_over: Sieg Rate gegen
+      matches_in_this_list: Spiele in dieser Liste
+      your: Deine
+      opponent_class: Gegner Klasse
+      result: Ergebnisse
+      rank: Rang
+      mode: Modus
+      opponent_name: Gegner Name
+      options: Optionen
+  dashboards:
+    index:
+      title: Dashboard
+      subtitle: " Statistiken für die aktuelle Season"
+      global_win_rates: globale Sieg Rate
+      arena_win_rates: Arena Sieg Rate
+      games_recorded: aufgezeichnete Spiele
+      constructed_win_rates: gewertete Sieg Rate
+      hearthstats_news: HearthStats News
+      read_more: Mehr lesen
+      view_more: Mehr zeigen
+      news:
+        huge_update: Großes Update mit vielen Features.
+        ability_to_rank: Möglichkeit für rank/casual hinzugefügt für Constructed Games.
+        donation_link: SpendenLink hinzugefügt
+        notes_feature: Notizen-Feature hinzugefügt
+      personal_win_rate: Persönliche Sieg Rate
+      constructed_coin_win_rates: gewertete Sieg Rate mit Münze
+      recent_activities: Letzte Aktivitäten
+      against: gegen
+      with: mit
+      global_stats: Globale Statistiken
+      arena_win_rate: Arena Sieg Rate
+  cards:
+    index:
+      title: Karten Datenbank
+      not_found: Keine Karten gefunden, die deine Kriterien erfüllen
+      text_contains: Text enthält
+      filter_by: gefiltert nach
+      sort_by: Sortiert nach
+      any_type: jeder Typ
+      any_race: jede Rasse
+      any_class: jede Klasse
+      ascending: aufsteigend
+      descending: absteigend
+      attack: Angriff
+      health_dur: Gesundheit/Ausdauer
+      mana_cost: Mana Kosten
+      name: Name
+      none: keine
+      reset_filters: Filter zurücksetzen
+  arenas:
+    index:
+      title: letzte Spiele
+      description: " letzte Arena Spiele"
+      section: Arena
+>>>>>>> added league page
       continue_arena_run: Arena Runde fortsetzen
       description: " letzte Arena Spiele"
       new_arena_run: Neuer Arena Runde
+<<<<<<< HEAD
+=======
+      arena_run_with: Arena Runde mit
+      true: true
+>>>>>>> added league page
       notes: Notizen
       'on': 
       options: Optionen
@@ -239,12 +400,19 @@ de:
       section: Arena
       time_played: 
       timee_played: Zeit gespielt
+<<<<<<< HEAD
       title: letzte Spiele
       'true': true
       win_loss: Win/Loss
       your_class: Deine Klasse
     matches:
       recent_arena_matches: aktuelle Arena Spiele
+=======
+      options: Optionen
+      'true': true
+    new:
+      title: Neues Arena Spiel
+>>>>>>> added league page
       section: Arena
       subtitle: " letzte Spiele"
       title: letzte Spiele
@@ -259,13 +427,32 @@ de:
       options: Optionen
       played_first: zuerst gespielt
       played_second: als 2tes gespielt
+<<<<<<< HEAD
       result: Ergebniss
       retire: Retire
+=======
+    matches:
+      title: letzte Spiele
+      subtitle: " letzte Spiele"
+>>>>>>> added league page
       section: Arena
       sure_want_retire: Bist du dir sicher die Arena Runde vorzeitig abzubrechen?
       title: Neues Arena Spiel
       win: Win
     stats:
+<<<<<<< HEAD
+=======
+      title: Statistiken
+      subtitle: " detailierte Arena Spiel-Statisken"
+      section: Arena
+      note: NOTE!
+      page_being_designed: Seite wird noch designed
+      overall_arena_stats: "Über alles Arena Stats"
+      overall_win_rate: "Über alles Win Rate"
+      total_gold_amount: Gesamtes erspieltes Gold
+      total_dust_amount: Gesamt erspielter Staub
+      arena_runs_played: Arena Runden gespielt
+>>>>>>> added league page
       arena_games_played: Arena Spiele gespielt
       arena_runs_played: Arena Runden gespielt
       average_length: 
@@ -275,6 +462,7 @@ de:
       longest_average_runs: Längste durchschnittliche Runden
       most_played: am meisten gespielt
       no_games: keine Spiele
+<<<<<<< HEAD
       note: NOTE!
       overall_arena_stats: "Über alles Arena Stats"
       overall_win_rate: "Über alles Win Rate"
@@ -302,6 +490,10 @@ de:
       sort_by: Sortiert nach
       text_contains: Text enthält
       title: Karten Datenbank
+=======
+      detailed_class_status: Detailierte Klassenstatus
+      average_length: 
+>>>>>>> added league page
   constructeds:
     filter:
       apply: 
@@ -321,12 +513,24 @@ de:
       this_match_is: 
       you_played_on_the: 
     index:
+<<<<<<< HEAD
       description: " letzte gewertet Spiele"
+=======
+      title: letzte Spiele
+      description: " letzte gewertet Spiele"
+      section: Gewertet
+>>>>>>> added league page
       new_constructed: neues gewertetes
       section: Gewertet
       title: letzte Spiele
     new:
       get_the_auto_uploader: hol dir den Auto Uploader
+<<<<<<< HEAD
+=======
+    stats:
+      title: Statistiken
+      description: " Gewertete Spiele Statistiken"
+>>>>>>> added league page
       section: Gewertet
       title: Neues gewertetes
     newform:
@@ -380,6 +584,7 @@ de:
       ranked: 
     winratechart:
       constructed_win_rate_title: Gewertete Sieg Rate pro Klasse (Persönlich vs. Global)
+<<<<<<< HEAD
   dashboards:
     index:
       against: gegen
@@ -434,6 +639,32 @@ de:
       month: 
       second: 
       year: 
+=======
+    newform:
+      you_played_on_the: Du hattest den
+      first_turn: ersten zug
+      second_turn: zweiten zug
+      this_match_is: Dieses Spiel ist
+      ranked: Ranked
+      casual: Casual
+      deck_name: Deck Name
+      opponent_class: Gegner Klasse
+      add_win: Sieg hinzufügen
+      add_defeat: Niederlage hinzufügen
+      add_draw: Unentschieden hinzufügen
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
+>>>>>>> added league page
   decks:
     active_decks:
       deleted_deck: 
@@ -484,6 +715,7 @@ de:
       name: Name
       no_more: 
       notes: Notizen
+<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
@@ -494,6 +726,12 @@ de:
       new_deck: Neues Deck
       subtitle: " alle von meinen gewertet-Decks"
       title: Meine Decks
+=======
+      decklist_etc: " Deckliste, etc"
+      this_deck_public: Dieses Deck ist öffentlich
+      controls: 
+      tags: 
+>>>>>>> added league page
     new:
       section: Decks
       title: Neues Deck
@@ -501,6 +739,7 @@ de:
       section: 
       title: 
     public:
+<<<<<<< HEAD
       new_deck: Neues Deck
       public_decks: "Öffentliche Decks"
       subtitle: " alle öffentlichen gewertet-Decks"
@@ -688,6 +927,135 @@ de:
       edit: 
       new: 
       save: 
+=======
+      title: "Öffentliche Deck List"
+      subtitle: " alle öffentlichen gewertet-Decks"
+      new_deck: Neues Deck
+      public_decks: "Öffentliche Decks"
+    active_decks:
+      title: Aktives Deck
+      subtitle: " alle aktiven gewertet-Decks"
+      slot: Position
+      select_deck: Deck auswählen
+      submit: "Übermitteln"
+      deleted_deck: 
+    index:
+      title: Meine Decks
+      subtitle: " alle von meinen gewertet-Decks"
+      new_deck: Neues Deck
+      my_decks: Meine Decks
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+  arena_runs:
+    new:
+      title: Neue Arena Runde
+      section: Arena
+      first_arena_of_day: Erste Arena Runde heute? Lass uns beginnen!
+      keep_it_going: Nur %{runs}? Weiter gehts!
+      going_hardcore: Wow, heute läufts richtig gut? %{runs} schon, weiterhin viel Erfolg!
+      your_class: Deine Klasse
+      continue: fortsetzen
+      get_auto_uploader: hol dir den Auto Uploader
+  additional:
+    news:
+      title: Hearthstone News
+      subtitle: " die letzen Hearthstone news"
+      suggestions_for_news: Vorschläge für Newsquellen sind willkommen
+      posted: gepostet
+      read_more: Mehr lesen
+    uploader:
+      title: Offizieller Uploader
+      header_text: "| Warum Spiele manuell eintragen, wenn du den Uploader alles erledigen lassen kannst?? &nbsp;| Dieses open source Benutzerwerkezug wertet Screenshots von deinem Hearthstone Fenster aus. Es fängt keine Daten ab, &nbsp;| . Dieses Projekt wird immer Open Source bleiben, &nbsp;| so dass du deine eigenen Versionen erstellen kannst, und immer verfolgen kannst, was mit dem Tool passiert."
+      download_for: Download für
+      user_key: Benutzerschlüssel
+      do_not_share: Teile den Benutzerschlüssel mit niemanden
+      click_to_reveal: Klicken zum Anzeigen
+      instructions: Anleitung
+      please_have_installed: Bitte stelle sicher, dass Java 7+ installiert ist.
+      download_java_here: hier kannst du Java Downloaden
+      instructions_osx:
+        inst_osx_1: Download vom obigen Link
+        inst_osx_2: Entpacke die Datei
+        inst_osx_3: Ziehe den Pfeil in dein Anwendungsverzeichnis
+        inst_osx_4: "<b>Rechts Klick</b> auf die Datei, dann öffne diese"
+        inst_osx_5: Gib deinen Benutzerschlüssel von deiner Profilseite ein
+        inst_osx_6: "Öffne dein Spiel und leg los"
+      instructions_win:
+        inst_win_1: Download vom obigen Link
+        inst_win_2: Entpacke die Datei
+        inst_win_3: Klick um die Anwendung zu starten
+        inst_win_4: Gib deinen Benutzerschlüssel von deiner Profilseite ein
+        inst_win_5: "Öffne dein Spiel und leg los"
+      features_title: Features
+      features:
+        feat_1: Support for both Windows and OSx
+        feat_2: Zeichnet automatisch gewertete Spiele und Arena-Runden auf
+        feat_3: Zeichnet deine und die Gegnerklasse auf
+        feat_4: Zeichnet deinen Rang für gewertete Spiele auf
+        feat_5: Zeichnet den Gegnernamen auf
+        feat_6: Zeichnet die Dauer des Spiels und die Anzahl der Runden auf
+        feat_7: der Uploader fügt Notizen zum Spiel automatisch hinzu
+      help_and_support: Hilfe und Support
+      known_issues: Bekannte Proleme
+      project_source_on_github: Projekt Quellcode auf Github
+      tutorial_video: 
+    changelog:
+      title: Changelog
+      all_time_in_utc: Die Ganze Zeit in UTC
+    aboutus:
+      title: "Über uns"
+      founded_by_text: Diese Seite wurde mit Liebe gegründet von Jeffrey Tong.
+      you_can_follow_twitter: Du kannst mir auf Twitter folgen
+      a_huge_thanks_to: Ein großes Danke an
+      thanks_jerome_text: Jerome definitely helped push HearthStats to the next level and helped motivate me to work much harder. Thanks a ton!
+      built_suggestions_text: HearthStats was built from suggestions of everyone in the community. And it will continue to be a tool used/made by the Hearthstone community.
+      others_contributors: Others Contributors
+      charles_text_1: Charles put in some amazing great work on the OSx uploader
+      charles_text_2: Charles deserves a lot of appreciation for coming out of nowhere and doing some open source work
+      charles_text_3: You can find more about Charles
+      here: here
+      eckert_text: J Eckert contributed a lot to styling and colors
+      donate_text: If you like what I'm doing, toss me a few coins.
+      rackspace_text: I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!
+    contactus:
+      title: Contact Info
+      contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
+      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      fadein_text_1: I'm really bored so your emails are welcomed.
+      fadein_text_2: Please just send me an email! It could be about anything!
+      fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
+    help:
+      title: Help
+      help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
+  streams:
+    index:
+      title: Streams
+      subtitle: " finde alle deine favorisierten Streams an einem Platz"
+  tournies:
+    index:
+      title: Anmelden
+      subtitle: " Registrier dich für unsere neuesten Turniere"
+      section: Turniere
+>>>>>>> added league page
   menu:
     Tournaments:
       Calendar: 
@@ -709,10 +1077,17 @@ de:
       title: gewertet
     dashboard: Dashboard
     deck:
+<<<<<<< HEAD
+=======
+      title: Deck
+      public_deck_list: "Öffentliche Deck Liste"
+      my_deck: Mein Deck
+>>>>>>> added league page
       my_active_deck: Mein aktives Deck
       my_deck: Mein Deck
       new_deck: Neues Deck
       other_versions: 
+<<<<<<< HEAD
       public_deck_list: "Öffentliche Deck Liste"
       title: Deck
     extra:
@@ -725,12 +1100,15 @@ de:
       official_uploader: Offizieller Uploader
       title: Extras
     help: Hilfe
+=======
+>>>>>>> added league page
     news: News
     streams: Streams
     tournaments:
       Calendar: Kalender
       past_winners: Letzte Sieger
       recent: 
+<<<<<<< HEAD
       register: Registrieren
       title: Turniere
   number:
@@ -928,6 +1306,86 @@ de:
     show: zeige
     update: Aktualisiere
     view_more: zeige mehr
+=======
+    extra:
+      title: Extras
+      official_uploader: Offizieller Uploader
+      march_report: März Report
+      change_log: "Änderungen"
+      about_us: "Über uns"
+      contact_info: Kontakt Info
+      june_report: 
+    help: Hilfe
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    messages:
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+>>>>>>> added league page
   social_share_button:
     baidu: 
     delicious: 
@@ -945,6 +1403,7 @@ de:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
   streams:
     index:
       subtitle: " finde alle deine favorisierten Streams an einem Platz"
@@ -983,3 +1442,5 @@ de:
       single_page_html: 
     page_gap: 
     previous_label: 
+=======
+>>>>>>> added league page
