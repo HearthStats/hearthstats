@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Tournament_id: 1
+  roundof: 1
+  pos: 1
+  p1_id: 1
+  p2_id: 1
+  winners: false
+  winner_id: 1
+
+two:
+  Tournament_id: 1
+  roundof: 1
+  pos: 1
+  p1_id: 1
+  p2_id: 1
+  winners: false
+  winner_id: 1

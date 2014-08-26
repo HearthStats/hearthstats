@@ -1,0 +1,7 @@
+- case @tourn_format
+- when 0
+  = render partial: "group_show", locals: {pairs: @pairs, num_pods: @num_pods}
+- when 1
+  = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
+- else
+  = puts "Oops... error in displaying tournament"

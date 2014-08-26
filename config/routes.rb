@@ -43,6 +43,7 @@ Hearthstats::Application.routes.draw do
   match "/privacy", to: "additional#privacy"
   match "/news", to: "additional#news"
   match "/openings", to: "additional#openings"
+  match "/contest", to: "additional#contest_video"
 
   #apps
   match "/uploader", to: "additional#uploader"
@@ -126,6 +127,7 @@ Hearthstats::Application.routes.draw do
     end
   end
 
+  resources :tournaments
 
   resources :arenas do
     collection do

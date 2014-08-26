@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: MyString
+  creator_id: 1
+  bracket_format: 1
+  num_players: 1
+
+two:
+  id: 1
+  name: MyString
+  creator_id: 1
+  bracket_format: 1
+  num_players: 1
