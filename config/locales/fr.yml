@@ -70,6 +70,10 @@ fr:
       project_source_on_github: les sources du projet sont sur Github
       title: L'uploader officiel
       user_key: Clé utilisateur
+<<<<<<< HEAD
+=======
+      tutorial_video: 
+>>>>>>> added league page
   arena_runs:
     new:
       continue: Continue
@@ -97,6 +101,10 @@ fr:
       true: true
       win_loss: Vict / Def
       your_class: Votre classe
+<<<<<<< HEAD
+=======
+      'true': true
+>>>>>>> added league page
     matches:
       recent_arena_matches: Recent Arena Matches
       section: Arène
@@ -135,6 +143,10 @@ fr:
       title: Statistiques
       total_dust_amount: Total de poussière ammassé
       total_gold_amount: Total d'or gagné
+<<<<<<< HEAD
+=======
+      average_length: 
+>>>>>>> added league page
   cards:
     index:
       any_class: Toute classe
@@ -201,6 +213,21 @@ fr:
       title: Statistiques
     winratechart:
       constructed_win_rate_title: Taux de victoires par classe (personnel contre Globale)
+<<<<<<< HEAD
+=======
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
+>>>>>>> added league page
   dashboards:
     index:
       against: contre
@@ -231,12 +258,21 @@ fr:
       submit: Soumettre
       subtitle: " Tous les decks construits actifs"
       title: Deck actif
+<<<<<<< HEAD
+=======
+      deleted_deck: 
+>>>>>>> added league page
     form:
       class: Classe
       decklist_etc: " Decklist, etc"
       name: Nom
       notes: Notes
       this_deck_public: Ce deck est public
+<<<<<<< HEAD
+=======
+      controls: 
+      tags: 
+>>>>>>> added league page
     index:
       my_decks: Mes decks
       new_deck: Nouveau deck
@@ -250,6 +286,30 @@ fr:
       public_decks: Decks publics
       subtitle: " tous les decks construits publics"
       title: Liste des deck publics
+<<<<<<< HEAD
+=======
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+>>>>>>> added league page
   menu:
     arena:
       continue_arena_run: Continuer session d'arène
@@ -271,6 +331,7 @@ fr:
       new_deck: Nouveau deck
       public_deck_list: List des decks publics
       title: Deck
+      other_versions: 
     extra:
       about_us: A propos
       change_log: Change Log
@@ -278,6 +339,7 @@ fr:
       march_report: rapport du mois de mars
       official_uploader: Uploader officiel
       title: Extra
+      june_report: 
     help: Aide
     news: News
     streams: Streams
@@ -286,6 +348,7 @@ fr:
       past_winners: Gagnants passés
       register: Enregistrement
       title: Tournois
+      recent: 
   shared:
     arena: arène
     arena_win_rate: Pourcentage de victoires Arène
@@ -402,6 +465,7 @@ fr:
       section: Tournois
       subtitle: " Inscrition pour nos nouveaux tournois ou leagues"
       title: Inscription
+<<<<<<< HEAD
   activerecord:
     attributes:
       deck:
@@ -414,3 +478,91 @@ fr:
         Klasse: 
         Nombre: 
         Notas: 
+=======
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    messages:
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
+>>>>>>> added league page

@@ -164,6 +164,7 @@ es:
       prizes: Premios
       timee_played: Tiempo Jugado
       options: Opciones
+      'true': en
     new:
       title: Nuevo Partido de Arena
       section: Arena
@@ -202,6 +203,10 @@ es:
       longest_average_runs: Promedios mas Largos
       no_games: Ningún juego
       detailed_class_status: Estado de Clase Detallado
+<<<<<<< HEAD
+=======
+      average_length: 
+>>>>>>> added league page
   constructeds:
     quickentry:
       quick_entry: Entrada Rápida
@@ -250,6 +255,21 @@ es:
       add_win: Añadir Victoria
       add_defeat: Añadir Derrota
       add_draw: Añadir Empate
+<<<<<<< HEAD
+=======
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
+>>>>>>> added league page
   decks:
     form:
       name: Nombre
@@ -257,6 +277,8 @@ es:
       notes: Notas
       decklist_etc: " Listado del mazo, etc"
       this_deck_public: Este Mazo es Público
+      controls: 
+      tags: 
     new:
       title: Nuevo Mazo
       section: Mazos
@@ -271,11 +293,36 @@ es:
       slot: Posición
       select_deck: Seleccionar Mazo
       submit: Enviar
+      deleted_deck: 
     index:
       title: Mis Mazos
       subtitle: " todos mis mazos"
       new_deck: Nuevo Mazo
       my_decks: Mis Mazos
+<<<<<<< HEAD
+=======
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+>>>>>>> added league page
   arena_runs:
     new:
       title: Nueva Arena
@@ -328,6 +375,7 @@ es:
       help_and_support: Ayuda y Soporte
       known_issues: Problemas conocidos
       project_source_on_github: Código fuente del proyecto en Github
+      tutorial_video: 
     changelog:
       title: Registro de cambios
       all_time_in_utc: Todas los relojes muestran la hora en UTC/GMT
@@ -387,6 +435,7 @@ es:
       my_deck: Mi Mazo
       my_active_deck: Mi Mazo Activo
       new_deck: Nuevo Mazo
+      other_versions: 
     news: Noticias
     streams: Streams
     tournaments:
@@ -394,6 +443,7 @@ es:
       register: Inscripción
       Calendar: Calendario
       past_winners: Ultimos Ganadores
+      recent: 
     extra:
       title: Extra
       official_uploader: Cargador Oficial
@@ -401,7 +451,9 @@ es:
       change_log: Registro de Cambios
       about_us: Quienes Somos
       contact_info: Contáctanos
+      june_report: 
     help: Ayuda
+<<<<<<< HEAD
   activerecord:
     attributes:
       deck:
@@ -414,3 +466,91 @@ es:
         Klasse: 
         Nombre: 
         Notas: 
+=======
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    messages:
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
+>>>>>>> added league page

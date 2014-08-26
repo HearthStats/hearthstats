@@ -164,6 +164,7 @@ de:
       prizes: Belohnung
       timee_played: Zeit gespielt
       options: Optionen
+      'true': true
     new:
       title: Neues Arena Spiel
       section: Arena
@@ -202,6 +203,10 @@ de:
       longest_average_runs: Längste durchschnittliche Runden
       no_games: keine Spiele
       detailed_class_status: Detailierte Klassenstatus
+<<<<<<< HEAD
+=======
+      average_length: 
+>>>>>>> added league page
   constructeds:
     quickentry:
       quick_entry: Schnelleintrag
@@ -250,6 +255,21 @@ de:
       add_win: Sieg hinzufügen
       add_defeat: Niederlage hinzufügen
       add_draw: Unentschieden hinzufügen
+<<<<<<< HEAD
+=======
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
+>>>>>>> added league page
   decks:
     form:
       name: Name
@@ -257,6 +277,8 @@ de:
       notes: Notizen
       decklist_etc: " Deckliste, etc"
       this_deck_public: Dieses Deck ist öffentlich
+      controls: 
+      tags: 
     new:
       title: Neues Deck
       section: Decks
@@ -271,11 +293,39 @@ de:
       slot: Position
       select_deck: Deck auswählen
       submit: "Übermitteln"
+<<<<<<< HEAD
+=======
+      deleted_deck: 
+>>>>>>> added league page
     index:
       title: Meine Decks
       subtitle: " alle von meinen gewertet-Decks"
       new_deck: Neues Deck
       my_decks: Meine Decks
+<<<<<<< HEAD
+=======
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+>>>>>>> added league page
   arena_runs:
     new:
       title: Neue Arena Runde
@@ -328,6 +378,7 @@ de:
       help_and_support: Hilfe und Support
       known_issues: Bekannte Proleme
       project_source_on_github: Projekt Quellcode auf Github
+      tutorial_video: 
     changelog:
       title: Changelog
       all_time_in_utc: Die Ganze Zeit in UTC
@@ -387,6 +438,7 @@ de:
       my_deck: Mein Deck
       my_active_deck: Mein aktives Deck
       new_deck: Neues Deck
+      other_versions: 
     news: News
     streams: Streams
     tournaments:
@@ -394,6 +446,7 @@ de:
       register: Registrieren
       Calendar: Kalender
       past_winners: Letzte Sieger
+      recent: 
     extra:
       title: Extras
       official_uploader: Offizieller Uploader
@@ -401,7 +454,9 @@ de:
       change_log: "Änderungen"
       about_us: "Über uns"
       contact_info: Kontakt Info
+      june_report: 
     help: Hilfe
+<<<<<<< HEAD
   activerecord:
     attributes:
       deck:
@@ -414,3 +469,91 @@ de:
         Klasse: 
         Nombre: 
         Notas: 
+=======
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    messages:
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
+>>>>>>> added league page

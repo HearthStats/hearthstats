@@ -164,6 +164,7 @@ pt-BR:
       prizes: Prêmios
       timee_played: Duração
       options: Opções
+      'true': em
     new:
       title: Nova Partida em Arena
       section: Arena
@@ -202,6 +203,10 @@ pt-BR:
       longest_average_runs: Maior média de jogadas
       no_games: Sem jogos
       detailed_class_status: Status Detalhado de Classe
+<<<<<<< HEAD
+=======
+      average_length: 
+>>>>>>> added league page
   constructeds:
     quickentry:
       quick_entry: Preenchimento Rápido
@@ -250,6 +255,21 @@ pt-BR:
       add_win: Deu Vitória
       add_defeat: Deu Derrota
       add_draw: Deu Empate
+<<<<<<< HEAD
+=======
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
+>>>>>>> added league page
   decks:
     form:
       name: Nome
@@ -257,6 +277,8 @@ pt-BR:
       notes: Notas
       decklist_etc: " Lista de decks, etc"
       this_deck_public: Esse Deck é Público
+      controls: 
+      tags: 
     new:
       title: Novo Deck
       section: Decks
@@ -271,11 +293,36 @@ pt-BR:
       slot: Campo
       select_deck: Selecione o Deck
       submit: Enviar
+      deleted_deck: 
     index:
       title: Meus Decks
       subtitle: " todos os meus decks constructeds"
       new_deck: Novo Deck
       my_decks: Meus Decks
+<<<<<<< HEAD
+=======
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+>>>>>>> added league page
   arena_runs:
     new:
       title: Nova Série de Jogadas em Arena
@@ -328,6 +375,7 @@ pt-BR:
       help_and_support: Ajuda e Suporte
       known_issues: Problemas conhecidos
       project_source_on_github: Código Aberto do Projeto no Github
+      tutorial_video: 
     changelog:
       title: Changelog
       all_time_in_utc: Todos as datas estão em UTC
@@ -387,6 +435,7 @@ pt-BR:
       my_deck: Meu Deck
       my_active_deck: Meu Deck Ativo
       new_deck: Novo Deck
+      other_versions: 
     news: Notícias
     streams: Ao Vivo
     tournaments:
@@ -394,6 +443,10 @@ pt-BR:
       register: Registrar
       Calendar: Calendário
       past_winners: "Últimos Vencedores"
+<<<<<<< HEAD
+=======
+      recent: 
+>>>>>>> added league page
     extra:
       title: Extra
       official_uploader: Uploader Oficial
@@ -401,6 +454,7 @@ pt-BR:
       change_log: Change Log
       about_us: Sobre
       contact_info: Contato
+      june_report: 
     help: Ajuda
   date:
     abbr_day_names:
@@ -500,7 +554,11 @@ pt-BR:
       year: Ano
   errors:
     format: "%{attribute} %{message}"
+<<<<<<< HEAD
     messages: &1
+=======
+    messages:
+>>>>>>> added league page
       accepted: deve ser aceito
       blank: não pode ficar em branco
       present: deve ficar em branco
@@ -526,7 +584,17 @@ pt-BR:
       too_long: "é muito longo (máximo: %{count} caracteres)"
       too_short: "é muito curto (mínimo: %{count} caracteres)"
       wrong_length: não possui o tamanho esperado (%{count} caracteres)
+<<<<<<< HEAD
     template: &2
+=======
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+    template:
+>>>>>>> added league page
       body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
         one: 'Não foi possível gravar %{model}: 1 erro'
@@ -538,11 +606,27 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+<<<<<<< HEAD
     label:
       deck:
         Klasse: 
         Nombre: 
         Notas: 
+=======
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+>>>>>>> added league page
   number:
     currency:
       format:
@@ -576,7 +660,7 @@ pt-BR:
           trillion:
             one: trilhão
             other: trilhões
-          unit: ''
+          unit: 
       format:
         delimiter: "."
         precision: 2
@@ -604,11 +688,12 @@ pt-BR:
       two_words_connector: " e "
       words_connector: ", "
   time:
-    am: ''
+    am: 
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
+<<<<<<< HEAD
     pm: ''
   activemodel:
     errors:
@@ -625,6 +710,77 @@ pt-BR:
         Klasse: 
         Nombre: 
         Notas: 
+=======
+    pm: 
+  activemodel:
+    errors:
+      format: "%{attribute} %{message}"
+      messages:
+        accepted: deve ser aceito
+        blank: não pode ficar em branco
+        present: deve ficar em branco
+        confirmation: não é igual a %{attribute}
+        empty: não pode ficar vazio
+        equal_to: deve ser igual a %{count}
+        even: deve ser par
+        exclusion: não está disponível
+        greater_than: deve ser maior que %{count}
+        greater_than_or_equal_to: deve ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: não é válido
+        less_than: deve ser menor que %{count}
+        less_than_or_equal_to: deve ser menor ou igual a %{count}
+        not_a_number: não é um número
+        not_an_integer: não é um número inteiro
+        odd: deve ser ímpar
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          one: Não é possível excluir o registro pois existe um %{record} dependente
+          many: Não é possível excluir o registro pois existem %{record} dependentes
+        taken: já está em uso
+        too_long: "é muito longo (máximo: %{count} caracteres)"
+        too_short: "é muito curto (mínimo: %{count} caracteres)"
+        wrong_length: não possui o tamanho esperado (%{count} caracteres)
+      template:
+        body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+        header:
+          one: 'Não foi possível gravar %{model}: 1 erro'
+          other: 'Não foi possível gravar %{model}: %{count} erros.'
+  activerecord:
+    errors:
+      format: "%{attribute} %{message}"
+      messages:
+        accepted: deve ser aceito
+        blank: não pode ficar em branco
+        present: deve ficar em branco
+        confirmation: não é igual a %{attribute}
+        empty: não pode ficar vazio
+        equal_to: deve ser igual a %{count}
+        even: deve ser par
+        exclusion: não está disponível
+        greater_than: deve ser maior que %{count}
+        greater_than_or_equal_to: deve ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: não é válido
+        less_than: deve ser menor que %{count}
+        less_than_or_equal_to: deve ser menor ou igual a %{count}
+        not_a_number: não é um número
+        not_an_integer: não é um número inteiro
+        odd: deve ser ímpar
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          one: Não é possível excluir o registro pois existe um %{record} dependente
+          many: Não é possível excluir o registro pois existem %{record} dependentes
+        taken: já está em uso
+        too_long: "é muito longo (máximo: %{count} caracteres)"
+        too_short: "é muito curto (mínimo: %{count} caracteres)"
+        wrong_length: não possui o tamanho esperado (%{count} caracteres)
+      template:
+        body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+        header:
+          one: 'Não foi possível gravar %{model}: 1 erro'
+          other: 'Não foi possível gravar %{model}: %{count} erros.'
+>>>>>>> added league page
   will_paginate:
     next_label: Próximos &#8594;
     page_entries_info:
@@ -640,3 +796,70 @@ pt-BR:
         zero: Nenhum %{model} encontrado
     page_gap: "&hellip;"
     previous_label: "&#8592; Anteriores"
+<<<<<<< HEAD
+=======
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
+>>>>>>> added league page

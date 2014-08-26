@@ -106,6 +106,23 @@ pl:
       mode: Tryb
       opponent_name: Nazwa przeciwnika
       options: Opcje
+<<<<<<< HEAD
+=======
+    filter:
+      all_time: 
+      apply: 
+      coin?: 
+      created_at: 
+      duration: 
+      last_24_hours: 
+      last_days: 
+      matches_in_this_list: 
+      numturns: 
+      per_page: 
+      reset: 
+      sort: 
+      win_rate_over: 
+>>>>>>> added league page
   dashboards:
     index:
       title: Panel główny
@@ -164,6 +181,8 @@ pl:
       prizes: Nagroda
       timee_played: Czas
       options: Opcje
+      time_played: 
+      'true': na
     new:
       title: Nowa bitwa na Arenie
       section: Arena
@@ -202,6 +221,12 @@ pl:
       longest_average_runs: Największa średnia na Arenie
       no_games: Brak gier
       detailed_class_status: Szczegółowe zestawienie klas
+<<<<<<< HEAD
+=======
+      average_length: 
+      dist_desc: 
+      distribution_graph: 
+>>>>>>> added league page
   constructeds:
     quickentry:
       quick_entry: Szybki wpis
@@ -262,6 +287,26 @@ pl:
       add_win: Dodaj Zwycięstwo
       add_defeat: Dodaj Porażkę
       add_draw: Dodaj Remis
+<<<<<<< HEAD
+=======
+    filter:
+      apply: 
+      coin?: 
+      per_page: 
+      reset: 
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
+>>>>>>> added league page
   decks:
     form:
       name: Nazwa
@@ -269,6 +314,14 @@ pl:
       notes: Notatki
       decklist_etc: " Lista talii, itd."
       this_deck_public: Talia jest ogólnodostępna
+      card_limit: 
+      controls: 
+      count: 
+      deck_limit: 
+      legend: 
+      no_more: 
+      search: 
+      tags: 
     new:
       title: Nowa talia
       section: Talie
@@ -283,11 +336,38 @@ pl:
       slot: Miejsce
       select_deck: Wybierz talię
       submit: Zatwierdź
+      deleted_deck: 
     index:
       title: Moje talie
       subtitle: " wszystkie moje talie"
       new_deck: Nowa talia
       my_decks: Moje talie
+<<<<<<< HEAD
+=======
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+    new_splash:
+      title: 
+>>>>>>> added league page
   arena_runs:
     new:
       title: Nowa Arena
@@ -340,6 +420,11 @@ pl:
       help_and_support: Pomoc i wsparcie
       known_issues: Znane problemy
       project_source_on_github: "Źródło projektu na Github"
+<<<<<<< HEAD
+=======
+      title:官方上传器 header_text: 
+      tutorial_video: 
+>>>>>>> added league page
     changelog:
       title: Lista zmian
       all_time_in_utc: Czas w UTC
@@ -399,6 +484,7 @@ pl:
       my_deck: Moje talie
       my_active_deck: Moja aktualna talia
       new_deck: Nowa talia
+      other_versions: 
     news: Nowości
     streams: Streamy
     tournaments:
@@ -406,6 +492,7 @@ pl:
       register: Zarejestruj się
       Calendar: Kalendarz
       past_winners: Niedawni zwycięzcy
+      recent: 
     extra:
       title: Extra
       official_uploader: Oficjalny Uploader
@@ -413,7 +500,10 @@ pl:
       change_log: Lista zmian
       about_us: O Nas
       contact_info: Kontakt
+      june_report: 
+      may_report: 
     help: Pomoc
+<<<<<<< HEAD
   activerecord:
     attributes:
       deck:
@@ -426,3 +516,286 @@ pl:
         Klasse: 
         Nombre: 
         Notas: 
+=======
+    Tournaments:
+      Calendar: 
+      past_winners: 
+      register: 
+      title: 
+  activemodel:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_an_integer: 
+        not_a_number: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  activerecord:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_an_integer: 
+        not_a_number: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  date:
+    abbr_day_names: 
+    abbr_month_names: 
+    day_names: 
+    formats:
+      default: 
+      long: 
+      short: 
+    month_names: 
+    order: 
+  datetime:
+    distance_in_words:
+      about_x_hours: 
+      about_x_months: 
+      about_x_years: 
+      almost_x_years: 
+      half_a_minute: 
+      less_than_x_minutes: 
+      less_than_x_seconds: 
+      over_x_years: 
+      x_days: 
+      x_minutes: 
+      x_months: 
+      x_seconds: 
+    prompts:
+      day: 
+      hour: 
+      minute: 
+      month: 
+      second: 
+      year: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    format: 
+    messages:
+      accepted: 
+      already_confirmed: 
+      blank: 
+      confirmation: 
+      confirmation_period_expired: 
+      empty: 
+      equal_to: 
+      even: 
+      exclusion: 
+      expired: 
+      greater_than: 
+      greater_than_or_equal_to: 
+      inclusion: 
+      invalid: 
+      less_than: 
+      less_than_or_equal_to: 
+      not_an_integer: 
+      not_a_number: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+      odd: 
+      present: 
+      record_invalid: 
+      restrict_dependent_destroy: 
+      taken: 
+      too_long: 
+      too_short: 
+      wrong_length: 
+    template:
+      body: 
+      header: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    select:
+      prompt: 
+    submit:
+      create: 
+      submit: 
+      update: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  number:
+    currency:
+      format:
+        delimiter: 
+        format: 
+        precision: 
+        separator: 
+        significant: 
+        strip_insignificant_zeros: 
+        unit: 
+    format:
+      delimiter: 
+      precision: 
+      separator: 
+      significant: 
+      strip_insignificant_zeros: 
+    human:
+      decimal_units:
+        format: 
+        units:
+          billion: 
+          million: 
+          quadrillion: 
+          thousand: 
+          trillion: 
+          unit: 
+      format:
+        delimiter: 
+        precision: 
+        significant: 
+        strip_insignificant_zeros: 
+      storage_units:
+        format: 
+        units:
+          byte: 
+          gb: 
+          kb: 
+          mb: 
+          tb: 
+    percentage:
+      format:
+        delimiter: 
+    precision:
+      format:
+        delimiter: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
+  support:
+    array:
+      last_word_connector: 
+      two_words_connector: 
+      words_connector: 
+  time:
+    am: 
+    formats:
+      default: 
+      long: 
+      short: 
+    pm: 
+  will_paginate:
+    next_label: 
+    page_entries_info:
+      multi_page: 
+      multi_page_html: 
+      single_page: 
+      single_page_html: 
+    page_gap: 
+    previous_label: 
+>>>>>>> added league page
