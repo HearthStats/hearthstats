@@ -30,6 +30,7 @@ fr:
         body: 
         header: 
   activerecord:
+<<<<<<< HEAD
     attributes:
       arena_run:
         Dust Earned: 
@@ -103,6 +104,8 @@ fr:
         password: 
         password_confirmation: 
         reset_password_token: 
+=======
+>>>>>>> added localeapp back into system
     errors:
       format: 
       messages:
@@ -132,6 +135,7 @@ fr:
       template:
         body: 
         header: 
+<<<<<<< HEAD
     models:
       arena_run: 
       deck: 
@@ -139,6 +143,8 @@ fr:
       tournament: 
       unique_deck: 
       user: 
+=======
+>>>>>>> added localeapp back into system
   additional:
     aboutus:
       a_huge_thanks_to: Un énorme merci à
@@ -157,7 +163,10 @@ fr:
       you_can_follow_twitter: Vous pouvez me suivre sur Twitter
     changelog:
       all_time_in_utc: All time in UTC
+<<<<<<< HEAD
       changelog: 
+=======
+>>>>>>> added localeapp back into system
       title: Changelog
     contactus:
       contact_email_text: N'hesitez pas à m'envoyer un email à <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>pour toutes questions
@@ -169,8 +178,11 @@ fr:
     help:
       help_text: Veuillez visiter <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> pour toute suggestion ou problèmes.
       title: Aide
+<<<<<<< HEAD
     league:
       title: 
+=======
+>>>>>>> added localeapp back into system
     news:
       posted: Postées
       read_more: Lire plus
@@ -212,7 +224,10 @@ fr:
       project_source_on_github: les sources du projet sont sur Github
       title: L'uploader officiel
       title:官方上传器 header_text: 
+<<<<<<< HEAD
       tutorial_video: 
+=======
+>>>>>>> added localeapp back into system
       user_key: Clé utilisateur
   arena_runs:
     new:
@@ -232,7 +247,10 @@ fr:
       description: " Parties d'arène récentes"
       new_arena_run: Nouvelle session d'arène
       notes: Notes
+<<<<<<< HEAD
       'on': 
+=======
+>>>>>>> added localeapp back into system
       options: Options
       prizes: Prix
       recent_arena_games: Partie d'Arène récentes
@@ -268,7 +286,10 @@ fr:
     stats:
       arena_games_played: Parties d'arène jouées
       arena_runs_played: Tours d'arène joués
+<<<<<<< HEAD
       average_length: 
+=======
+>>>>>>> added localeapp back into system
       detailed_class_status: Satuts de classe détaillé
       dist_desc: 
       distribution_graph: 
@@ -365,6 +386,7 @@ fr:
       ranked: classé
       section: construits
       title: Statistiques
+<<<<<<< HEAD
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -378,6 +400,8 @@ fr:
       last_24_hours: 
       last_days: 
       ranked: 
+=======
+>>>>>>> added localeapp back into system
     winratechart:
       constructed_win_rate_title: Taux de victoires par classe (personnel contre Globale)
   dashboards:
@@ -436,12 +460,16 @@ fr:
       year: 
   decks:
     active_decks:
+<<<<<<< HEAD
       deleted_deck: 
+=======
+>>>>>>> added localeapp back into system
       select_deck: Selection Deck
       slot: Slot
       submit: Soumettre
       subtitle: " Tous les decks construits actifs"
       title: Deck actif
+<<<<<<< HEAD
     decklist:
       attack_distribution: 
       card_list: 
@@ -477,6 +505,11 @@ fr:
       card_limit: 
       class: Classe
       controls: 
+=======
+    form:
+      card_limit: 
+      class: Classe
+>>>>>>> added localeapp back into system
       count: 
       deck_limit: 
       decklist_etc: " Decklist, etc"
@@ -484,11 +517,16 @@ fr:
       name: Nom
       no_more: 
       notes: Notes
+<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
       this_deck_public: Ce deck est public
       toggle_text_import: 
+=======
+      search: 
+      this_deck_public: Ce deck est public
+>>>>>>> added localeapp back into system
     index:
       my_decks: Mes decks
       new_deck: Nouveau deck
@@ -498,13 +536,17 @@ fr:
       section: decks
       title: nouveau deck
     new_splash:
+<<<<<<< HEAD
       section: 
+=======
+>>>>>>> added localeapp back into system
       title: 
     public:
       new_deck: nouveau deck
       public_decks: Decks publics
       subtitle: " tous les decks construits publics"
       title: Liste des deck publics
+<<<<<<< HEAD
     public_decklist:
       class: 
       listed_by: 
@@ -566,19 +608,29 @@ fr:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+=======
+>>>>>>> added localeapp back into system
   errors:
     format: 
     messages:
       accepted: 
+<<<<<<< HEAD
       already_confirmed: 
       blank: 
       confirmation: 
       confirmation_period_expired: 
+=======
+      blank: 
+      confirmation: 
+>>>>>>> added localeapp back into system
       empty: 
       equal_to: 
       even: 
       exclusion: 
+<<<<<<< HEAD
       expired: 
+=======
+>>>>>>> added localeapp back into system
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -587,9 +639,12 @@ fr:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
+=======
+>>>>>>> added localeapp back into system
       odd: 
       present: 
       record_invalid: 
@@ -602,6 +657,7 @@ fr:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
     actions: 
     label:
       arena_run:
@@ -677,17 +733,22 @@ fr:
       destroy: 
       edit: 
       new: 
+=======
+>>>>>>> added localeapp back into system
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+<<<<<<< HEAD
     titles:
       delete: 
       edit: 
       new: 
       save: 
+=======
+>>>>>>> added localeapp back into system
   menu:
     Tournaments:
       Calendar: 
@@ -709,17 +770,26 @@ fr:
       title: Construits
     dashboard: tableau de bord
     deck:
+<<<<<<< HEAD
       my_active_deck: Mes decks actif
       my_deck: Mes decks
       new_deck: Nouveau deck
       other_versions: 
+=======
+      my_active_deck: Mon deck actif
+      my_deck: Mon deck
+      new_deck: Nouveau deck
+>>>>>>> added localeapp back into system
       public_deck_list: List des decks publics
       title: Deck
     extra:
       about_us: A propos
       change_log: Change Log
       contact_info: Contact Info
+<<<<<<< HEAD
       june_report: 
+=======
+>>>>>>> added localeapp back into system
       march_report: rapport du mois de mars
       may_report: 
       official_uploader: Uploader officiel
@@ -730,7 +800,10 @@ fr:
     tournaments:
       Calendar: Calendrier
       past_winners: Gagnants passés
+<<<<<<< HEAD
       recent: 
+=======
+>>>>>>> added localeapp back into system
       register: Enregistrement
       title: Tournois
   number:
@@ -828,6 +901,7 @@ fr:
       weapons: Armes
       win_rate: Pourcentage de victoires
       wins: Victoires
+<<<<<<< HEAD
     deckslist_no_filter:
       class: 
       losses: 
@@ -839,12 +913,15 @@ fr:
       weapons: 
       win_rate: 
       wins: 
+=======
+>>>>>>> added localeapp back into system
     delete: Supprimer
     edit: "éditer"
     error: erreur
     filter:
       all_time: 
       apply: 
+<<<<<<< HEAD
       ascending: 
       coin?: 
       created_at: 
@@ -852,16 +929,26 @@ fr:
       duration: 
       filter: 
       for: 
+=======
+      coin?: 
+      created_at: 
+      duration: 
+>>>>>>> added localeapp back into system
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+<<<<<<< HEAD
       opponent: 
       per_page: 
       reset: 
       shared:
         notes: 
       show: 
+=======
+      per_page: 
+      reset: 
+>>>>>>> added localeapp back into system
       sort: 
       win_rate_over: 
     footer:
@@ -910,6 +997,7 @@ fr:
       sort: Trier
       win_rate_over: win rate over
       your: Votre
+<<<<<<< HEAD
     matchlist_no_filter:
       coin: 
       created: 
@@ -920,6 +1008,8 @@ fr:
       result: 
       rounds: 
       your: 
+=======
+>>>>>>> added localeapp back into system
     new_arena_game: Nouvelle Arène
     notes: Notes
     prohibited_this_being_save: 'Vous ne pouvez pas sauvegarder : %{resource}'
@@ -928,6 +1018,7 @@ fr:
     show: Voir
     update: Mise à jour
     view_more: Voir plus
+<<<<<<< HEAD
   social_share_button:
     baidu: 
     delicious: 
@@ -945,6 +1036,8 @@ fr:
     tumblr: 
     twitter: 
     weibo: 
+=======
+>>>>>>> added localeapp back into system
   streams:
     index:
       subtitle: " Rechercher tous vos streams favoris ici"
@@ -961,19 +1054,25 @@ fr:
       long: 
       short: 
     pm: 
+<<<<<<< HEAD
   tournaments:
     form:
       format: 
       invite_only: 
       num_decks: 
       num_pods: 
+=======
+>>>>>>> added localeapp back into system
   tournies:
     index:
       section: Tournois
       subtitle: " Inscrition pour nos nouveaux tournois ou leagues"
       title: Inscription
+<<<<<<< HEAD
     show:
       decks: 
+=======
+>>>>>>> added localeapp back into system
   will_paginate:
     next_label: 
     page_entries_info:

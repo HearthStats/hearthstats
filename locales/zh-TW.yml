@@ -30,6 +30,7 @@ zh-TW:
         body: 
         header: 
   activerecord:
+<<<<<<< HEAD
     attributes:
       arena_run:
         Dust Earned: 
@@ -103,6 +104,8 @@ zh-TW:
         password: 
         password_confirmation: 
         reset_password_token: 
+=======
+>>>>>>> added localeapp back into system
     errors:
       format: 
       messages:
@@ -132,6 +135,7 @@ zh-TW:
       template:
         body: 
         header: 
+<<<<<<< HEAD
     models:
       arena_run: 
       deck: 
@@ -139,6 +143,8 @@ zh-TW:
       tournament: 
       unique_deck: 
       user: 
+=======
+>>>>>>> added localeapp back into system
   additional:
     aboutus:
       a_huge_thanks_to: "非常感謝"
@@ -157,7 +163,10 @@ zh-TW:
       you_can_follow_twitter: "你可以從 Twitter推特來跟隨我"
     changelog:
       all_time_in_utc: UTC中的所有時間
+<<<<<<< HEAD
       changelog: 
+=======
+>>>>>>> added localeapp back into system
       title: "更新日誌"
     contactus:
       contact_email_text: "請寫電郵給我<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>任何問題皆可."
@@ -169,8 +178,11 @@ zh-TW:
     help:
       help_text: "請參觀 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> 任何建議或問題皆可."
       title: "幫助"
+<<<<<<< HEAD
     league:
       title: 
+=======
+>>>>>>> added localeapp back into system
     news:
       posted: "公告"
       read_more: "閱讀更多"
@@ -212,7 +224,10 @@ zh-TW:
       project_source_on_github: Github上的程式源碼
       title: "官方上傳器"
       title:官方上传器 header_text: 
+<<<<<<< HEAD
       tutorial_video: 
+=======
+>>>>>>> added localeapp back into system
       user_key: "用戶密鑰"
   arena_runs:
     new:
@@ -232,7 +247,10 @@ zh-TW:
       description: " 近期競技場賽事"
       new_arena_run: "新增競技場賽事"
       notes: "註記"
+<<<<<<< HEAD
       'on': 
+=======
+>>>>>>> added localeapp back into system
       options: "選項"
       prizes: "獎勵"
       recent_arena_games: "近期競技場比賽"
@@ -268,7 +286,10 @@ zh-TW:
     stats:
       arena_games_played: "競技場比賽次數"
       arena_runs_played: "競技場賽事次數"
+<<<<<<< HEAD
       average_length: 
+=======
+>>>>>>> added localeapp back into system
       detailed_class_status: "詳細職業狀態"
       dist_desc: 
       distribution_graph: 
@@ -365,6 +386,7 @@ zh-TW:
       ranked: "排名賽"
       section: "構組套牌"
       title: "統計數據"
+<<<<<<< HEAD
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -378,6 +400,8 @@ zh-TW:
       last_24_hours: 
       last_days: 
       ranked: 
+=======
+>>>>>>> added localeapp back into system
     winratechart:
       constructed_win_rate_title: "每個職業的構組套牌勝率(個人 vs. 全球)"
   dashboards:
@@ -436,12 +460,16 @@ zh-TW:
       year: 
   decks:
     active_decks:
+<<<<<<< HEAD
       deleted_deck: 
+=======
+>>>>>>> added localeapp back into system
       select_deck: "選擇套牌"
       slot: "插槽"
       submit: "提交"
       subtitle: " 所有激活的構組套牌"
       title: "激活套牌"
+<<<<<<< HEAD
     decklist:
       attack_distribution: 
       card_list: 
@@ -477,6 +505,11 @@ zh-TW:
       card_limit: 
       class: "職業"
       controls: 
+=======
+    form:
+      card_limit: 
+      class: "職業"
+>>>>>>> added localeapp back into system
       count: 
       deck_limit: 
       decklist_etc: " 套牌列表, 例如"
@@ -484,11 +517,16 @@ zh-TW:
       name: "名字"
       no_more: 
       notes: "註記"
+<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
       this_deck_public: "此套牌公開"
       toggle_text_import: 
+=======
+      search: 
+      this_deck_public: "此套牌公開"
+>>>>>>> added localeapp back into system
     index:
       my_decks: "我的套牌"
       new_deck: "新套牌"
@@ -498,13 +536,17 @@ zh-TW:
       section: "套牌"
       title: "新套牌"
     new_splash:
+<<<<<<< HEAD
       section: 
+=======
+>>>>>>> added localeapp back into system
       title: 
     public:
       new_deck: "新套牌"
       public_decks: "公開的套牌"
       subtitle: " 所有公開的構組套牌列表"
       title: "公開的套牌列表"
+<<<<<<< HEAD
     public_decklist:
       class: 
       listed_by: 
@@ -566,19 +608,29 @@ zh-TW:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+=======
+>>>>>>> added localeapp back into system
   errors:
     format: 
     messages:
       accepted: 
+<<<<<<< HEAD
       already_confirmed: 
       blank: 
       confirmation: 
       confirmation_period_expired: 
+=======
+      blank: 
+      confirmation: 
+>>>>>>> added localeapp back into system
       empty: 
       equal_to: 
       even: 
       exclusion: 
+<<<<<<< HEAD
       expired: 
+=======
+>>>>>>> added localeapp back into system
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -587,9 +639,12 @@ zh-TW:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
+=======
+>>>>>>> added localeapp back into system
       odd: 
       present: 
       record_invalid: 
@@ -602,6 +657,7 @@ zh-TW:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
     actions: 
     label:
       arena_run:
@@ -677,17 +733,22 @@ zh-TW:
       destroy: 
       edit: 
       new: 
+=======
+>>>>>>> added localeapp back into system
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+<<<<<<< HEAD
     titles:
       delete: 
       edit: 
       new: 
       save: 
+=======
+>>>>>>> added localeapp back into system
   menu:
     Tournaments:
       Calendar: 
@@ -712,14 +773,20 @@ zh-TW:
       my_active_deck: "我的激活套牌"
       my_deck: "我的套牌"
       new_deck: "新增套牌"
+<<<<<<< HEAD
       other_versions: 
+=======
+>>>>>>> added localeapp back into system
       public_deck_list: "公開的套牌列表"
       title: "套牌"
     extra:
       about_us: "關於我們"
       change_log: "更新日誌"
       contact_info: "聯絡資訊"
+<<<<<<< HEAD
       june_report: 
+=======
+>>>>>>> added localeapp back into system
       march_report: "三月的報告"
       may_report: 
       official_uploader: "官方上傳器"
@@ -730,7 +797,10 @@ zh-TW:
     tournaments:
       Calendar: "日曆"
       past_winners: "過去勝利者"
+<<<<<<< HEAD
       recent: 
+=======
+>>>>>>> added localeapp back into system
       register: "註冊"
       title: "錦標賽"
   number:
@@ -828,6 +898,7 @@ zh-TW:
       weapons: "武器"
       win_rate: "勝率"
       wins: "勝場數"
+<<<<<<< HEAD
     deckslist_no_filter:
       class: 
       losses: 
@@ -839,12 +910,15 @@ zh-TW:
       weapons: 
       win_rate: 
       wins: 
+=======
+>>>>>>> added localeapp back into system
     delete: "刪除"
     edit: "編輯"
     error: "錯誤"
     filter:
       all_time: 
       apply: 
+<<<<<<< HEAD
       ascending: 
       coin?: 
       created_at: 
@@ -852,16 +926,26 @@ zh-TW:
       duration: 
       filter: 
       for: 
+=======
+      coin?: 
+      created_at: 
+      duration: 
+>>>>>>> added localeapp back into system
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+<<<<<<< HEAD
       opponent: 
       per_page: 
       reset: 
       shared:
         notes: 
       show: 
+=======
+      per_page: 
+      reset: 
+>>>>>>> added localeapp back into system
       sort: 
       win_rate_over: 
     footer:
@@ -910,6 +994,7 @@ zh-TW:
       sort: "種類"
       win_rate_over: "勝率約"
       your: "你的"
+<<<<<<< HEAD
     matchlist_no_filter:
       coin: 
       created: 
@@ -920,6 +1005,8 @@ zh-TW:
       result: 
       rounds: 
       your: 
+=======
+>>>>>>> added localeapp back into system
     new_arena_game: "新競技場賽事"
     notes: "註記"
     prohibited_this_being_save: "被禁止此 %{resource} 從儲存:"
@@ -928,6 +1015,7 @@ zh-TW:
     show: "展示"
     update: "更新"
     view_more: "觀看更多"
+<<<<<<< HEAD
   social_share_button:
     baidu: "百度收藏"
     delicious: Delicious
@@ -945,6 +1033,8 @@ zh-TW:
     tumblr: Tumblr
     twitter: Twitter
     weibo: "新浪微博"
+=======
+>>>>>>> added localeapp back into system
   streams:
     index:
       subtitle: " 在一個地方發現所有你喜愛的實況"
@@ -961,19 +1051,25 @@ zh-TW:
       long: 
       short: 
     pm: 
+<<<<<<< HEAD
   tournaments:
     form:
       format: 
       invite_only: 
       num_decks: 
       num_pods: 
+=======
+>>>>>>> added localeapp back into system
   tournies:
     index:
       section: "錦標賽"
       subtitle: " 為我們最新錦標賽和聯盟賽進行註冊"
       title: "登入"
+<<<<<<< HEAD
     show:
       decks: 
+=======
+>>>>>>> added localeapp back into system
   will_paginate:
     next_label: 
     page_entries_info:

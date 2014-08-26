@@ -30,6 +30,7 @@ fi:
         body: 
         header: 
   activerecord:
+<<<<<<< HEAD
     attributes:
       arena_run:
         Dust Earned: 
@@ -103,6 +104,8 @@ fi:
         password: 
         password_confirmation: 
         reset_password_token: 
+=======
+>>>>>>> added localeapp back into system
     errors:
       format: 
       messages:
@@ -132,6 +135,7 @@ fi:
       template:
         body: 
         header: 
+<<<<<<< HEAD
     models:
       arena_run: 
       deck: 
@@ -139,6 +143,8 @@ fi:
       tournament: 
       unique_deck: 
       user: 
+=======
+>>>>>>> added localeapp back into system
   additional:
     aboutus:
       a_huge_thanks_to: 'Iso kiitos seuraaville:'
@@ -157,7 +163,10 @@ fi:
       you_can_follow_twitter: Voit seurata minua Twitterissä
     changelog:
       all_time_in_utc: Kaikki ajat UTC:nä
+<<<<<<< HEAD
       changelog: 
+=======
+>>>>>>> added localeapp back into system
       title: Muutosloki
     contactus:
       contact_email_text: Voit vapaasti lähettää kysymyksiä sähköpostiini<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net</a>.
@@ -169,8 +178,11 @@ fi:
     help:
       help_text: Ole hyvä ja käy osoitteessa <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> antaaksesi ehdotuksia ja ongelmia.
       title: Apua
+<<<<<<< HEAD
     league:
       title: 
+=======
+>>>>>>> added localeapp back into system
     news:
       posted: Lähetetty
       read_more: Lue lisää
@@ -212,7 +224,10 @@ fi:
       project_source_on_github: 
       title: 
       title:官方上传器 header_text: 
+<<<<<<< HEAD
       tutorial_video: 
+=======
+>>>>>>> added localeapp back into system
       user_key: 
   arena_runs:
     new:
@@ -232,7 +247,10 @@ fi:
       description: 
       new_arena_run: 
       notes: 
+<<<<<<< HEAD
       'on': 
+=======
+>>>>>>> added localeapp back into system
       options: 
       prizes: 
       recent_arena_games: 
@@ -268,7 +286,10 @@ fi:
     stats:
       arena_games_played: 
       arena_runs_played: 
+<<<<<<< HEAD
       average_length: 
+=======
+>>>>>>> added localeapp back into system
       detailed_class_status: 
       dist_desc: 
       distribution_graph: 
@@ -365,6 +386,7 @@ fi:
       ranked: 
       section: 
       title: 
+<<<<<<< HEAD
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -378,6 +400,8 @@ fi:
       last_24_hours: 
       last_days: 
       ranked: 
+=======
+>>>>>>> added localeapp back into system
     winratechart:
       constructed_win_rate_title: 
   dashboards:
@@ -436,12 +460,16 @@ fi:
       year: 
   decks:
     active_decks:
+<<<<<<< HEAD
       deleted_deck: 
+=======
+>>>>>>> added localeapp back into system
       select_deck: 
       slot: 
       submit: 
       subtitle: 
       title: 
+<<<<<<< HEAD
     decklist:
       attack_distribution: 
       card_list: 
@@ -477,6 +505,11 @@ fi:
       card_limit: 
       class: 
       controls: 
+=======
+    form:
+      card_limit: 
+      class: 
+>>>>>>> added localeapp back into system
       count: 
       deck_limit: 
       decklist_etc: 
@@ -484,11 +517,16 @@ fi:
       name: 
       no_more: 
       notes: 
+<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
       this_deck_public: 
       toggle_text_import: 
+=======
+      search: 
+      this_deck_public: 
+>>>>>>> added localeapp back into system
     index:
       my_decks: 
       new_deck: 
@@ -498,13 +536,17 @@ fi:
       section: 
       title: 
     new_splash:
+<<<<<<< HEAD
       section: 
+=======
+>>>>>>> added localeapp back into system
       title: 
     public:
       new_deck: 
       public_decks: 
       subtitle: 
       title: 
+<<<<<<< HEAD
     public_decklist:
       class: 
       listed_by: 
@@ -566,19 +608,29 @@ fi:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+=======
+>>>>>>> added localeapp back into system
   errors:
     format: 
     messages:
       accepted: 
+<<<<<<< HEAD
       already_confirmed: 
       blank: 
       confirmation: 
       confirmation_period_expired: 
+=======
+      blank: 
+      confirmation: 
+>>>>>>> added localeapp back into system
       empty: 
       equal_to: 
       even: 
       exclusion: 
+<<<<<<< HEAD
       expired: 
+=======
+>>>>>>> added localeapp back into system
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -587,9 +639,12 @@ fi:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
+=======
+>>>>>>> added localeapp back into system
       odd: 
       present: 
       record_invalid: 
@@ -602,6 +657,7 @@ fi:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
     actions: 
     label:
       arena_run:
@@ -677,17 +733,22 @@ fi:
       destroy: 
       edit: 
       new: 
+=======
+>>>>>>> added localeapp back into system
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+<<<<<<< HEAD
     titles:
       delete: 
       edit: 
       new: 
       save: 
+=======
+>>>>>>> added localeapp back into system
   menu:
     Tournaments:
       Calendar: 
@@ -712,14 +773,20 @@ fi:
       my_active_deck: 
       my_deck: 
       new_deck: 
+<<<<<<< HEAD
       other_versions: 
+=======
+>>>>>>> added localeapp back into system
       public_deck_list: 
       title: 
     extra:
       about_us: 
       change_log: 
       contact_info: 
+<<<<<<< HEAD
       june_report: 
+=======
+>>>>>>> added localeapp back into system
       march_report: 
       may_report: 
       official_uploader: 
@@ -730,7 +797,10 @@ fi:
     tournaments:
       Calendar: 
       past_winners: 
+<<<<<<< HEAD
       recent: 
+=======
+>>>>>>> added localeapp back into system
       register: 
       title: 
   number:
@@ -828,6 +898,7 @@ fi:
       weapons: 
       win_rate: 
       wins: 
+<<<<<<< HEAD
     deckslist_no_filter:
       class: 
       losses: 
@@ -839,12 +910,15 @@ fi:
       weapons: 
       win_rate: 
       wins: 
+=======
+>>>>>>> added localeapp back into system
     delete: 
     edit: 
     error: 
     filter:
       all_time: 
       apply: 
+<<<<<<< HEAD
       ascending: 
       coin?: 
       created_at: 
@@ -852,16 +926,26 @@ fi:
       duration: 
       filter: 
       for: 
+=======
+      coin?: 
+      created_at: 
+      duration: 
+>>>>>>> added localeapp back into system
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+<<<<<<< HEAD
       opponent: 
       per_page: 
       reset: 
       shared:
         notes: 
       show: 
+=======
+      per_page: 
+      reset: 
+>>>>>>> added localeapp back into system
       sort: 
       win_rate_over: 
     footer:
@@ -910,6 +994,7 @@ fi:
       sort: 
       win_rate_over: 
       your: 
+<<<<<<< HEAD
     matchlist_no_filter:
       coin: 
       created: 
@@ -920,6 +1005,8 @@ fi:
       result: 
       rounds: 
       your: 
+=======
+>>>>>>> added localeapp back into system
     new_arena_game: 
     notes: 
     prohibited_this_being_save: 
@@ -928,6 +1015,7 @@ fi:
     show: 
     update: 
     view_more: 
+<<<<<<< HEAD
   social_share_button:
     baidu: 
     delicious: 
@@ -945,6 +1033,8 @@ fi:
     tumblr: 
     twitter: 
     weibo: 
+=======
+>>>>>>> added localeapp back into system
   streams:
     index:
       subtitle: 
@@ -961,19 +1051,25 @@ fi:
       long: 
       short: 
     pm: 
+<<<<<<< HEAD
   tournaments:
     form:
       format: 
       invite_only: 
       num_decks: 
       num_pods: 
+=======
+>>>>>>> added localeapp back into system
   tournies:
     index:
       section: 
       subtitle: 
       title: 
+<<<<<<< HEAD
     show:
       decks: 
+=======
+>>>>>>> added localeapp back into system
   will_paginate:
     next_label: 
     page_entries_info:

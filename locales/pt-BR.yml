@@ -34,6 +34,7 @@ pt-BR:
           one: 'Não foi possível gravar %{model}: 1 erro'
           other: 'Não foi possível gravar %{model}: %{count} erros.'
   activerecord:
+<<<<<<< HEAD
     attributes:
       arena_run:
         Dust Earned: 
@@ -107,6 +108,8 @@ pt-BR:
         password: 
         password_confirmation: 
         reset_password_token: 
+=======
+>>>>>>> added localeapp back into system
     errors:
       format: "%{attribute} %{message}"
       messages:
@@ -140,6 +143,7 @@ pt-BR:
         header:
           one: 'Não foi possível gravar %{model}: 1 erro'
           other: 'Não foi possível gravar %{model}: %{count} erros.'
+<<<<<<< HEAD
     models:
       arena_run: 
       deck: 
@@ -147,6 +151,8 @@ pt-BR:
       tournament: 
       unique_deck: 
       user: 
+=======
+>>>>>>> added localeapp back into system
   additional:
     aboutus:
       a_huge_thanks_to: Um grande abraços para
@@ -165,7 +171,10 @@ pt-BR:
       you_can_follow_twitter: Você pode me seguir no Twitter
     changelog:
       all_time_in_utc: Todos as datas estão em UTC
+<<<<<<< HEAD
       changelog: 
+=======
+>>>>>>> added localeapp back into system
       title: Changelog
     contactus:
       contact_email_text: Sinta-se a vontade para me mandar um email em <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a> para qualquer coisa.
@@ -177,8 +186,11 @@ pt-BR:
     help:
       help_text: Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas.
       title: Ajuda
+<<<<<<< HEAD
     league:
       title: 
+=======
+>>>>>>> added localeapp back into system
     news:
       posted: Postado
       read_more: Leia Mais
@@ -220,7 +232,10 @@ pt-BR:
       project_source_on_github: Código Aberto do Projeto no Github
       title: Uploader Oficial
       title:官方上传器 header_text: 
+<<<<<<< HEAD
       tutorial_video: 
+=======
+>>>>>>> added localeapp back into system
       user_key: Chave do Usuário
   arena_runs:
     new:
@@ -240,7 +255,10 @@ pt-BR:
       description: " partidas recentes em arena"
       new_arena_run: Nova Série de Partidas em Arena
       notes: Notas
+<<<<<<< HEAD
       'on': 
+=======
+>>>>>>> added localeapp back into system
       options: Opções
       prizes: Prêmios
       recent_arena_games: Partidas Recentes em Arena
@@ -276,7 +294,10 @@ pt-BR:
     stats:
       arena_games_played: Jogos em Arena
       arena_runs_played: Jogadas em Arena
+<<<<<<< HEAD
       average_length: 
+=======
+>>>>>>> added localeapp back into system
       detailed_class_status: Status Detalhado de Classe
       dist_desc: 
       distribution_graph: 
@@ -373,6 +394,7 @@ pt-BR:
       ranked: rankeado
       section: Constructed
       title: Estatísticas
+<<<<<<< HEAD
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -386,6 +408,8 @@ pt-BR:
       last_24_hours: 
       last_days: 
       ranked: 
+=======
+>>>>>>> added localeapp back into system
     winratechart:
       constructed_win_rate_title: Taxa de Vitórias em Constructed por Classe (Pessoal vs Global)
   dashboards:
@@ -509,12 +533,16 @@ pt-BR:
       year: Ano
   decks:
     active_decks:
+<<<<<<< HEAD
       deleted_deck: 
+=======
+>>>>>>> added localeapp back into system
       select_deck: Selecione o Deck
       slot: Campo
       submit: Enviar
       subtitle: " todos os decks constructed ativos"
       title: Decks Atívos
+<<<<<<< HEAD
     decklist:
       attack_distribution: 
       card_list: 
@@ -550,6 +578,11 @@ pt-BR:
       card_limit: 
       class: Classe
       controls: 
+=======
+    form:
+      card_limit: 
+      class: Classe
+>>>>>>> added localeapp back into system
       count: 
       deck_limit: 
       decklist_etc: " Lista de decks, etc"
@@ -557,11 +590,16 @@ pt-BR:
       name: Nome
       no_more: 
       notes: Notas
+<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
       this_deck_public: Esse Deck é Público
       toggle_text_import: 
+=======
+      search: 
+      this_deck_public: Esse Deck é Público
+>>>>>>> added localeapp back into system
     index:
       my_decks: Meus Decks
       new_deck: Novo Deck
@@ -571,13 +609,17 @@ pt-BR:
       section: Decks
       title: Novo Deck
     new_splash:
+<<<<<<< HEAD
       section: 
+=======
+>>>>>>> added localeapp back into system
       title: 
     public:
       new_deck: Novo Deck
       public_decks: Decks Públicos
       subtitle: " todos os decks constructed públicos"
       title: Lista de Decks Públicos
+<<<<<<< HEAD
     public_decklist:
       class: 
       listed_by: 
@@ -639,19 +681,29 @@ pt-BR:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+=======
+>>>>>>> added localeapp back into system
   errors:
     format: "%{attribute} %{message}"
     messages:
       accepted: deve ser aceito
+<<<<<<< HEAD
       already_confirmed: 
       blank: não pode ficar em branco
       confirmation: não é igual a %{attribute}
       confirmation_period_expired: 
+=======
+      blank: não pode ficar em branco
+      confirmation: não é igual a %{attribute}
+>>>>>>> added localeapp back into system
       empty: não pode ficar vazio
       equal_to: deve ser igual a %{count}
       even: deve ser par
       exclusion: não está disponível
+<<<<<<< HEAD
       expired: 
+=======
+>>>>>>> added localeapp back into system
       greater_than: deve ser maior que %{count}
       greater_than_or_equal_to: deve ser maior ou igual a %{count}
       inclusion: não está incluído na lista
@@ -660,9 +712,12 @@ pt-BR:
       less_than_or_equal_to: deve ser menor ou igual a %{count}
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
+=======
+>>>>>>> added localeapp back into system
       odd: deve ser ímpar
       present: deve ficar em branco
       record_invalid: 'A validação falhou: %{errors}'
@@ -679,6 +734,7 @@ pt-BR:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
+<<<<<<< HEAD
     actions: 
     label:
       arena_run:
@@ -754,17 +810,22 @@ pt-BR:
       destroy: 
       edit: 
       new: 
+=======
+>>>>>>> added localeapp back into system
     select:
       prompt: Por favor selecione
     submit:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+<<<<<<< HEAD
     titles:
       delete: 
       edit: 
       new: 
       save: 
+=======
+>>>>>>> added localeapp back into system
   menu:
     Tournaments:
       Calendar: 
@@ -789,14 +850,20 @@ pt-BR:
       my_active_deck: Meu Deck Ativo
       my_deck: Meu Deck
       new_deck: Novo Deck
+<<<<<<< HEAD
       other_versions: 
+=======
+>>>>>>> added localeapp back into system
       public_deck_list: Lista de Deck Publica
       title: Deck
     extra:
       about_us: Sobre
       change_log: Change Log
       contact_info: Contato
+<<<<<<< HEAD
       june_report: 
+=======
+>>>>>>> added localeapp back into system
       march_report: Relatório de Março
       may_report: 
       official_uploader: Uploader Oficial
@@ -807,7 +874,10 @@ pt-BR:
     tournaments:
       Calendar: Calendário
       past_winners: "Últimos Vencedores"
+<<<<<<< HEAD
       recent: 
+=======
+>>>>>>> added localeapp back into system
       register: Registrar
       title: Torneios
   number:
@@ -915,6 +985,7 @@ pt-BR:
       weapons: Armas
       win_rate: Taxa de Vitórias
       wins: Vitórias
+<<<<<<< HEAD
     deckslist_no_filter:
       class: 
       losses: 
@@ -926,12 +997,15 @@ pt-BR:
       weapons: 
       win_rate: 
       wins: 
+=======
+>>>>>>> added localeapp back into system
     delete: Deletar
     edit: Editar
     error: erro
     filter:
       all_time: 
       apply: 
+<<<<<<< HEAD
       ascending: 
       coin?: 
       created_at: 
@@ -939,16 +1013,26 @@ pt-BR:
       duration: 
       filter: 
       for: 
+=======
+      coin?: 
+      created_at: 
+      duration: 
+>>>>>>> added localeapp back into system
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+<<<<<<< HEAD
       opponent: 
       per_page: 
       reset: 
       shared:
         notes: 
       show: 
+=======
+      per_page: 
+      reset: 
+>>>>>>> added localeapp back into system
       sort: 
       win_rate_over: 
     footer:
@@ -997,6 +1081,7 @@ pt-BR:
       sort: ordem
       win_rate_over: taxa de vitória sobre
       your: Sua
+<<<<<<< HEAD
     matchlist_no_filter:
       coin: 
       created: 
@@ -1007,6 +1092,8 @@ pt-BR:
       result: 
       rounds: 
       your: 
+=======
+>>>>>>> added localeapp back into system
     new_arena_game: Nova Partida em Arena
     notes: Notas
     prohibited_this_being_save: 'impediram que este(a) %{resource} fosse salvo(a):'
@@ -1015,6 +1102,7 @@ pt-BR:
     show: exibir
     update: Atualizar
     view_more: Ver Mais
+<<<<<<< HEAD
   social_share_button:
     baidu: 
     delicious: 
@@ -1032,6 +1120,8 @@ pt-BR:
     tumblr: 
     twitter: 
     weibo: 
+=======
+>>>>>>> added localeapp back into system
   streams:
     index:
       subtitle: " encontre todos os seus jogos ao vivo favoritos em um só lugar"
@@ -1048,19 +1138,25 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: 
+<<<<<<< HEAD
   tournaments:
     form:
       format: 
       invite_only: 
       num_decks: 
       num_pods: 
+=======
+>>>>>>> added localeapp back into system
   tournies:
     index:
       section: Torneios
       subtitle: " Cadastre-se para os nosso Torneios/Ligas"
       title: Cadastre-se
+<<<<<<< HEAD
     show:
       decks: 
+=======
+>>>>>>> added localeapp back into system
   will_paginate:
     next_label: Próximos &#8594;
     page_entries_info:
