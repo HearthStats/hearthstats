@@ -98,6 +98,7 @@ gem 'honeybadger'
 gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'pusher'
+gem 'localeapp'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
