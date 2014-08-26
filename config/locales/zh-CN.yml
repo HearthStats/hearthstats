@@ -1,404 +1,530 @@
----
 zh-CN:
   additional:
     aboutus:
-      a_huge_thanks_to: 非常感谢
-      built_suggestions_text: "HearthStats 的建置是得力于社群中的每一个人的建议.而它将持续成为炉石战记社群的工具，以及持续被他们创造."
-      charles_text_1: "Charles 在 OSx 上传器的令人惊艳的工作"
-      charles_text_2: "Charles 在开放原始码的工作上值得多数的掌声"
+      a_huge_thanks_to: "非常感谢"
+      built_suggestions_text: HearthStats 的建置是得力于社群中的每一个人的建议.而它将持续成为炉石战记社群的工具，以及持续被他们创造.
+      charles_text_1: Charles 在 OSx 上传器的令人惊艳的工作
+      charles_text_2: Charles 在开放原始码的工作上值得多数的掌声
       charles_text_3: "在此你可以找到更多关于 Charles 的信息"
       donate_text: "如果你喜欢我做的, 赏我几个铜板吧."
-      eckert_text: "J Eckert 贡献许多在风格和配色方面"
+      eckert_text: J Eckert 贡献许多在风格和配色方面
       founded_by_text: "此网站由 Jeffrey Tong 用爱建置."
-      here: 此
-      others_contributors: 其它贡献
+      here: "此"
+      others_contributors: "其它贡献"
       rackspace_text: "我非常感谢 Rackspace提供主机! 如果你需要云端主机或任何事，找他们帮忙就对了!"
-      thanks_jerome_text: "Jerome 无疑地大力帮助 HearthStats 走向下一个阶段，以及帮助我更努力工作. 非常感谢!"
-      title: 关于我们
+      thanks_jerome_text: Jerome 无疑地大力帮助 HearthStats 走向下一个阶段，以及帮助我更努力工作. 非常感谢!
+      title: "关于我们"
       you_can_follow_twitter: "你可以从 Twitter推特来跟随我"
     changelog:
       all_time_in_utc: UTC中的所有时间
-      title: 更新日志
+      title: "更新日志"
     contactus:
       contact_email_text: "请写电邮给我<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>任何问题皆可."
       contact_email_text_2: "你也可以在Twitter推特上跟随我: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
-      fadein_text_1: 我实在很无聊，所以请你写信给我.
+      fadein_text_1: "我实在很无聊，所以请你写信给我."
       fadein_text_2: "请寄电邮给我! 它可以是任何事!"
       fadein_text_3: "我的屁股越来越痛... 看看我为了做这个网站所忍受的痛苦!"
-      title: 联络信息
+      title: "联络信息"
     help:
       help_text: "请参观 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> 任何建议或问题皆可."
-      title: 帮助
+      title: "帮助"
     news:
-      posted: 公告
-      read_more: 阅读更多
+      posted: "公告"
+      read_more: "阅读更多"
       subtitle: " 炉石最新新闻"
-      suggestions_for_news: 欢迎关于新闻来源的建议
-      title: 炉石新闻
+      suggestions_for_news: "欢迎关于新闻来源的建议"
+      title: "炉石新闻"
     uploader:
-      click_to_reveal: 按键以显示
-      do_not_share: 不要和任何人分享
-      download_for: 下载
+      click_to_reveal: "按键以显示"
+      do_not_share: "不要和任何人分享"
+      download_for: "下载"
       download_java_here: "在此下载 Java"
       features:
         feat_1: "支持Windows 和 OSx 系统"
-        feat_2: 自动追踪构组套牌和竞技场赛事
-        feat_3: 追踪你的职业和对手职业
-        feat_4: 追踪你的排名赛等级
-        feat_5: 追踪对手名字
-        feat_6: 追踪回合数和赛事持续时间
-        feat_7: 直接从上传器中注记你的比赛
-      features_title: 特点
-      help_and_support: 帮助和支援
-      instructions: 说明
+        feat_2: "自动追踪构组套牌和竞技场赛事"
+        feat_3: "追踪你的职业和对手职业"
+        feat_4: "追踪你的排名赛等级"
+        feat_5: "追踪对手名字"
+        feat_6: "追踪回合数和赛事持续时间"
+        feat_7: "直接从上传器中注记你的比赛"
+      features_title: "特点"
+      help_and_support: "帮助和支援"
+      instructions: "说明"
       instructions_osx:
-        inst_osx_1: 从连结处下载
-        inst_osx_2: 解压缩该档案
-        inst_osx_3: 拖曳档案到你的应用程序文件夹
+        inst_osx_1: "从连结处下载"
+        inst_osx_2: "解压缩该档案"
+        inst_osx_3: "拖曳档案到你的应用程序文件夹"
         inst_osx_4: "<b>右键单击</b> 程序即会开启"
-        inst_osx_5: 输入你从上传器页面或从个人资料页面得到的用户密钥
-        inst_osx_6: 开启你的游戏并进行赛事!
+        inst_osx_5: "输入你从上传器页面或从个人资料页面得到的用户密钥"
+        inst_osx_6: "开启你的游戏并进行赛事!"
       instructions_win:
-        inst_win_1: 从连结处下载
-        inst_win_2: 解压缩该档案
-        inst_win_3: 按左键以开启应用程序
-        inst_win_4: 输入你从上传器页面或从个人资料页面得到的用户密钥
-        inst_win_5: 开启你的游戏并进行赛事!
-      known_issues: 已知议题
+        inst_win_1: "从连结处下载"
+        inst_win_2: "解压缩该档案"
+        inst_win_3: "按左键以开启应用程序"
+        inst_win_4: "输入你从上传器页面或从个人资料页面得到的用户密钥"
+        inst_win_5: "开启你的游戏并进行赛事!"
+      known_issues: "已知议题"
       please_have_installed: "请确认你拥有 Java 7+ 的程序已安装."
       project_source_on_github: Github上的程序源码
-      ? "title:官方上传器 header_text"
-      : "如果可以让我们的战绩上传器替你照料你的任何事，为什么还要自己手动输入战绩呢? 此开放原始码的实用程序对你的炉石窗口使用屏幕撷取分析. 它并不会导致封包监听,屏幕监控, 或任何种类的网络变更. 此程序将永远是开放原始码，因此你可以做你自己的模块，以便察看它究竟会发生什么事."
-      user_key: 用户密钥
+      title:官方上传器 header_text: "如果可以让我们的战绩上传器替你照料你的任何事，为什么还要自己手动输入战绩呢? 此开放原始码的实用程序对你的炉石窗口使用屏幕撷取分析. 它并不会导致封包监听,屏幕监控, 或任何种类的网络变更. 此程序将永远是开放原始码，因此你可以做你自己的模块，以便察看它究竟会发生什么事."
+      user_key: "用户密钥"
+      tutorial_video: 
   arena_runs:
     new:
-      continue: 继续
+      continue: "继续"
       first_arena_of_day: "第一天打竞技场? 让我们开始吧!"
-      get_auto_uploader: 开启自动上传战积功能
+      get_auto_uploader: "开启自动上传战积功能"
       going_hardcore: "哇, 很煎熬的一天? 已经%{runs} , 祝你好运!"
       keep_it_going: "只有 %{runs}? 持续前进!"
-      section: 竞技场
-      title: 新竞技场赛事
-      your_class: 你的职业
+      section: "竞技场"
+      title: "新竞技场赛事"
+      your_class: "你的职业"
   arenas:
     index:
-      arena_run_with: 竞技场赛事
-      close: 关闭
-      continue_arena_run: 继续竞技场赛事
+      arena_run_with: "竞技场赛事"
+      close: "关闭"
+      continue_arena_run: "继续竞技场赛事"
       description: " 近期竞技场赛事"
-      new_arena_run: 新增竞技场赛事
-      notes: 注记
-      options: 选项
-      prizes: 奖励
-      recent_arena_games: 近期竞技场比赛
-      section: 竞技场
-      time_played: 赛事时间
-      title: 近期赛事
-      true: 开启
-      win_loss: 胜/负
-      your_class: 你的职业
+      new_arena_run: "新增竞技场赛事"
+      notes: "注记"
+      options: "选项"
+      prizes: "奖励"
+      recent_arena_games: "近期竞技场比赛"
+      section: "竞技场"
+      time_played: "赛事时间"
+      title: "近期赛事"
+      true: "开启"
+      win_loss: "胜/负"
+      your_class: "你的职业"
+      'true': "开启"
     matches:
-      recent_arena_matches: 近期竞技场比赛
-      section: 竞技场
+      recent_arena_matches: "近期竞技场比赛"
+      section: "竞技场"
       subtitle: " 近期赛事"
-      title: 近期赛事
+      title: "近期赛事"
     new:
-      arena_run_results: 竞技场赛事结果
-      back: 返回
-      create_entry: 创造条目
-      defeat: 击败
-      draw: 平手
-      end_run: 结束回合
-      opponent_class: 对手职业
-      options: 选项
-      played_first: 先手
-      played_second: 后手
-      result: 结果
-      retire: 退出比赛
-      section: 竞技场
-      sure_want_retire: 你确定提前退出竞技场赛事?
-      title: 新竞技场赛事
-      win: 胜
+      arena_run_results: "竞技场赛事结果"
+      back: "返回"
+      create_entry: "创造条目"
+      defeat: "击败"
+      draw: "平手"
+      end_run: "结束回合"
+      opponent_class: "对手职业"
+      options: "选项"
+      played_first: "先手"
+      played_second: "后手"
+      result: "结果"
+      retire: "退出比赛"
+      section: "竞技场"
+      sure_want_retire: "你确定提前退出竞技场赛事?"
+      title: "新竞技场赛事"
+      win: "胜"
     stats:
-      arena_games_played: 竞技场比赛次数
-      arena_runs_played: 竞技场赛事次数
-      detailed_class_status: 详细职业状态
-      longest_average_runs: 最长的平均赛事
-      most_played: 最多使用的职业
-      no_games: 没有比赛
-      note: 注记!
-      overall_arena_stats: 总体竞技场统计
-      overall_win_rate: 总体胜率
-      page_being_designed: 页面仍在设计中
-      section: 竞技场
+      arena_games_played: "竞技场比赛次数"
+      arena_runs_played: "竞技场赛事次数"
+      detailed_class_status: "详细职业状态"
+      longest_average_runs: "最长的平均赛事"
+      most_played: "最多使用的职业"
+      no_games: "没有比赛"
+      note: "注记!"
+      overall_arena_stats: "总体竞技场统计"
+      overall_win_rate: "总体胜率"
+      page_being_designed: "页面仍在设计中"
+      section: "竞技场"
       subtitle: " 详细的竞技场赛事统计数据"
-      title: 统计数据
-      total_dust_amount: 魔尘总和
-      total_gold_amount: 金币总和
+      title: "统计数据"
+      total_dust_amount: "魔尘总和"
+      total_gold_amount: "金币总和"
+      average_length: 
   cards:
     index:
-      any_class: 任何职业
-      any_race: 任何种族
-      any_type: 任何类别
-      ascending: 升序
-      attack: 攻击力
-      descending: 降序
-      filter_by: 筛选
-      health_dur: 血量/持久度.
-      mana_cost: 魔力粍费
-      name: 名字
-      none: 无
-      not_found: 没有卡片存在符合你的条件.
-      reset_filters: 重置筛选标准
-      sort_by: 依种类
-      text_contains: 包含文字描述
-      title: 卡片数据库
+      any_class: "任何职业"
+      any_race: "任何种族"
+      any_type: "任何类别"
+      ascending: "升序"
+      attack: "攻击力"
+      descending: "降序"
+      filter_by: "筛选"
+      health_dur: "血量/持久度."
+      mana_cost: "魔力粍费"
+      name: "名字"
+      none: "无"
+      not_found: "没有卡片存在符合你的条件."
+      reset_filters: "重置筛选标准"
+      sort_by: "依种类"
+      text_contains: "包含文字描述"
+      title: "卡片数据库"
   constructeds:
     index:
       description: " 近期构组比赛"
-      new_constructed: 新构组套牌
-      section: 构组套牌
-      title: 近期比赛
+      new_constructed: "新构组套牌"
+      section: "构组套牌"
+      title: "近期比赛"
     new:
-      get_the_auto_uploader: 开启自动上传战积功能
-      section: 构组套牌
-      title: 新构组套牌
+      get_the_auto_uploader: "开启自动上传战积功能"
+      section: "构组套牌"
+      title: "新构组套牌"
     newform:
-      add_defeat: 新增败场
-      add_draw: 新增平手
-      add_win: 新增胜场
-      casual: 休闲
-      deck_name: 套牌名字
-      first_turn: 第一回合
-      opponent_class: 对手职业
-      ranked: 排名赛
-      second_turn: 第二回合
-      this_match_is: 此比赛是
-      you_played_on_the: 施放
+      add_defeat: "新增败场"
+      add_draw: "新增平手"
+      add_win: "新增胜场"
+      casual: "休闲"
+      deck_name: "套牌名字"
+      first_turn: "第一回合"
+      opponent_class: "对手职业"
+      ranked: "排名赛"
+      second_turn: "第二回合"
+      this_match_is: "此比赛是"
+      you_played_on_the: "施放"
     quickentry:
-      add_defeat: 新增败场
-      add_draw: 新增平手
-      add_win: 新增胜场
-      casual: 休闲
-      coin: 硬币
-      no_coin: 无硬币
-      quick_entry: 快速入口
-      ranked: 排名赛
+      add_defeat: "新增败场"
+      add_draw: "新增平手"
+      add_win: "新增胜场"
+      casual: "休闲"
+      coin: "硬币"
+      no_coin: "无硬币"
+      quick_entry: "快速入口"
+      ranked: "排名赛"
     stats:
-      all_time: 所有时间
-      any_mode: 任何模式
-      casual: 休闲
-      days: 天
+      all_time: "所有时间"
+      any_mode: "任何模式"
+      casual: "休闲"
+      days: "天"
       description: " 构组比赛统计"
-      filter_by: 筛选
-      first_or_second: 第一或第二
-      going_first: 去到第一
-      going_second: 去到第二
-      hours: 小时
-      last: 最后
-      ranked: 排名赛
-      section: 构组套牌
-      title: 统计数据
+      filter_by: "筛选"
+      first_or_second: "第一或第二"
+      going_first: "去到第一"
+      going_second: "去到第二"
+      hours: "小时"
+      last: "最后"
+      ranked: "排名赛"
+      section: "构组套牌"
+      title: "统计数据"
     winratechart:
       constructed_win_rate_title: "每个职业的构组套牌胜率(个人 vs. 全球)"
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
   dashboards:
     index:
-      against: 对抗
-      arena_win_rate: 竞技场胜率
-      arena_win_rates: 竞技场胜率
-      constructed_coin_win_rates: 拥有硬币的构组套牌胜率.
-      constructed_win_rates: 构组套牌胜率
-      games_recorded: 赛事记录
-      global_stats: 全球统计
-      global_win_rates: 全球胜率
-      hearthstats_news: "HearthStats 新闻"
+      against: "对抗"
+      arena_win_rate: "竞技场胜率"
+      arena_win_rates: "竞技场胜率"
+      constructed_coin_win_rates: "拥有硬币的构组套牌胜率."
+      constructed_win_rates: "构组套牌胜率"
+      games_recorded: "赛事记录"
+      global_stats: "全球统计"
+      global_win_rates: "全球胜率"
+      hearthstats_news: HearthStats 新闻
       news:
-        ability_to_rank: 构组赛事新增的选项，排名模式或休闲模式.
-        donation_link: 新增的捐款连结
-        huge_update: 多数特点的大量更新.
-        notes_feature: 新增注记特点
-      personal_win_rate: 个人胜率
-      read_more: 阅读更多
-      recent_activities: 近期活动
+        ability_to_rank: "构组赛事新增的选项，排名模式或休闲模式."
+        donation_link: "新增的捐款连结"
+        huge_update: "多数特点的大量更新."
+        notes_feature: "新增注记特点"
+      personal_win_rate: "个人胜率"
+      read_more: "阅读更多"
+      recent_activities: "近期活动"
       subtitle: " 当前赛季的统计"
-      title: 仪表板
-      view_more: 观看更多
-      with: 与
+      title: "仪表板"
+      view_more: "观看更多"
+      with: "与"
   decks:
     active_decks:
-      select_deck: 选择套牌
-      slot: 插槽
-      submit: 提交
+      select_deck: "选择套牌"
+      slot: "插槽"
+      submit: "提交"
       subtitle: " 所有激活的构组套牌"
-      title: 激活套牌
+      title: "激活套牌"
+      deleted_deck: 
     form:
-      class: 职业
+      class: "职业"
       decklist_etc: " 套牌列表, 例如"
-      name: 名字
-      notes: 注记
-      this_deck_public: 此套牌公开
+      name: "名字"
+      notes: "注记"
+      this_deck_public: "此套牌公开"
+      controls: 
+      tags: 
     index:
-      my_decks: 我的套牌
-      new_deck: 新套牌
+      my_decks: "我的套牌"
+      new_deck: "新套牌"
       subtitle: " 我的所有构组套牌"
-      title: 我的套牌
+      title: "我的套牌"
     new:
-      section: 套牌
-      title: 新套牌
+      section: "套牌"
+      title: "新套牌"
     public:
-      new_deck: 新套牌
-      public_decks: 公开的套牌
+      new_deck: "新套牌"
+      public_decks: "公开的套牌"
       subtitle: " 所有公开的构组套牌列表"
-      title: 公开的套牌列表
+      title: "公开的套牌列表"
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
   menu:
     arena:
-      continue_arena_run: 继续竞技场赛事
-      new_arena_run: 新竞技场赛事
-      recent_arena_matches: 近期竞技场比赛
-      recent_arena_runs: 近期竞技场赛事
-      statistics: 统计数据
-      title: 竞技场
-    card_database: 卡片数据库
+      continue_arena_run: "继续竞技场赛事"
+      new_arena_run: "新竞技场赛事"
+      recent_arena_matches: "近期竞技场比赛"
+      recent_arena_runs: "近期竞技场赛事"
+      statistics: "统计数据"
+      title: "竞技场"
+    card_database: "卡片数据库"
     constructed:
-      new_match: 新增比赛
-      recent_matches: 近期比赛
-      statistics: 统计数据
-      title: 构组套牌
-    dashboard: 仪表板
+      new_match: "新增比赛"
+      recent_matches: "近期比赛"
+      statistics: "统计数据"
+      title: "构组套牌"
+    dashboard: "仪表板"
     deck:
-      my_active_deck: 我的激活套牌
-      my_deck: 我的套牌
-      new_deck: 新增套牌
-      public_deck_list: 公开的套牌列表
-      title: 套牌
+      my_active_deck: "我的激活套牌"
+      my_deck: "我的套牌"
+      new_deck: "新增套牌"
+      public_deck_list: "公开的套牌列表"
+      title: "套牌"
+      other_versions: 
     extra:
-      about_us: 关于我们
-      change_log: 更新日志
-      contact_info: 联络信息
-      march_report: 三月的报告
-      official_uploader: 官方上传器
-      title: 额外
-    help: 帮助
-    news: 新闻
-    streams: 实况
+      about_us: "关于我们"
+      change_log: "更新日志"
+      contact_info: "联络信息"
+      march_report: "三月的报告"
+      official_uploader: "官方上传器"
+      title: "额外"
+      june_report: 
+    help: "帮助"
+    news: "新闻"
+    streams: "实况"
     tournaments:
-      Calendar: 日历
-      past_winners: 过去胜利者
-      register: 注册
-      title: 锦标赛
+      Calendar: "日历"
+      past_winners: "过去胜利者"
+      register: "注册"
+      title: "锦标赛"
+      recent: 
   shared:
-    arena: 竞技场
-    arena_win_rate: 竞技场胜率
-    arenarun: 竞技场赛事
-    back: 返回
+    arena: "竞技场"
+    arena_win_rate: "竞技场胜率"
+    arenarun: "竞技场赛事"
+    back: "返回"
     best_arena_class: "最佳 竞技场 职业"
-    best_deck: 最佳牌组
-    class: 职业
-    create: 创造
-    create_deck: 创造牌组
-    deck: 套牌
+    best_deck: "最佳牌组"
+    class: "职业"
+    create: "创造"
+    create_deck: "创造牌组"
+    deck: "套牌"
     deckbuilder:
-      add_a_card: 增加一张卡牌
-      attack_distribution: 攻击力分布表
-      card_list: 套牌列表
-      health_distribution: 血量分布表
+      add_a_card: "增加一张卡牌"
+      attack_distribution: "攻击力分布表"
+      card_list: "套牌列表"
+      health_distribution: "血量分布表"
       left_click_add_right_remove: "按左键以增加. 右键单击以移除."
-      mana_curve: 魔力曲线
-      mechanics: 机械
+      mana_curve: "魔力曲线"
+      mechanics: "机械"
       of_30_cards: 30张卡牌的
       optional_deck_will_be_created_if: "自选 (如果你留空，套牌将被创造)"
-      this_deck_is_incomplete: 此套牌不完整
-      toggle_text_import: 切换文字输入
-      type_distribution: 种类分布表
+      this_deck_is_incomplete: "此套牌不完整"
+      toggle_text_import: "切换文字输入"
+      type_distribution: "种类分布表"
     deckslist:
-      any_class: 任何职业
-      apply: 应用
-      asc: 升序
-      class: 职业
-      created: 被创造
-      desc: 降序
-      filter: 筛选
-      found_matching_your_criteria: 找到符合你的条件
-      listed_by: 列表
-      losses: 败场数
-      matches: 赛事
-      minions: 手下
-      name: 名字
-      per_page: 每页
-      popularity: 受欢迎度
-      show: 展示
-      sort_by: 依种类
-      spells: 咒语
+      any_class: "任何职业"
+      apply: "应用"
+      asc: "升序"
+      class: "职业"
+      created: "被创造"
+      desc: "降序"
+      filter: "筛选"
+      found_matching_your_criteria: "找到符合你的条件"
+      listed_by: "列表"
+      losses: "败场数"
+      matches: "赛事"
+      minions: "手下"
+      name: "名字"
+      per_page: "每页"
+      popularity: "受欢迎度"
+      show: "展示"
+      sort_by: "依种类"
+      spells: "咒语"
       stats_are_for_all_users: "统计包含在过去30天中玩过此套牌的所有玩家, 不仅只原本的作者"
-      stats_are_for_your_personal: 你个人使用每一套牌的统计
-      tools: 工具
-      users: 使用者
-      weapons: 武器
-      win_rate: 胜率
-      wins: 胜场数
-    delete: 删除
-    edit: 编辑
-    error: 错误
+      stats_are_for_your_personal: "你个人使用每一套牌的统计"
+      tools: "工具"
+      users: "使用者"
+      weapons: "武器"
+      win_rate: "胜率"
+      wins: "胜场数"
+    delete: "删除"
+    edit: "编辑"
+    error: "错误"
     footer:
-      about: 关于
+      about: "关于"
       copyright_text: "版权归2014 HearthStats所有. 炉石战记是暴风雪娱乐公司的注册商标."
-      faq: 问与答
-      open_positions: 公开位置
-      privacy_policy: 隐私政策
-      support: 支援
+      faq: "问与答"
+      open_positions: "公开位置"
+      privacy_policy: "隐私政策"
+      support: "支援"
     header:
-      change_to: 转换
-      click_message_to_dismiss: 忽略讯息
-      guest: 来宾
-      my_profile: 个人资料
-      new_messages: 新讯息
+      change_to: "转换"
+      click_message_to_dismiss: "忽略讯息"
+      guest: "来宾"
+      my_profile: "个人资料"
+      new_messages: "新讯息"
       register_now_login: "现在注册/ 登入"
-      sign_out: 注销
-      you_have: 你有
+      sign_out: "注销"
+      you_have: "你有"
     matchlist:
-      all_time: 所有时间
-      any_class: 任何职业
-      apply: 应用
-      ascending: 升序
-      coin: 硬币
-      coin?: 硬币?
-      created: 被创造
-      days: 日
-      descending: 降序
-      duration: 持续时间
-      filter: 筛选
-      last: 最后
-      last_24_hours: 过去24小时
-      matches_in_this_list: 列表中的赛事
-      mode: 模式
-      no_coin: 无硬币
-      opponent: 对手
-      opponent_class: 对手职业
-      opponent_name: 对手名字
-      options: 选项
-      per_page: 每页
-      rank: 排名赛
-      reset: 重置
-      result: 结果
-      rounds: 回合数
-      show: 展示
-      sort: 种类
-      win_rate_over: 胜率约
-      your: 你的
-    new_arena_game: 新竞技场赛事
-    notes: 注记
+      all_time: "所有时间"
+      any_class: "任何职业"
+      apply: "应用"
+      ascending: "升序"
+      coin: "硬币"
+      coin?: "硬币?"
+      created: "被创造"
+      days: "日"
+      descending: "降序"
+      duration: "持续时间"
+      filter: "筛选"
+      last: "最后"
+      last_24_hours: "过去24小时"
+      matches_in_this_list: "列表中的赛事"
+      mode: "模式"
+      no_coin: "无硬币"
+      opponent: "对手"
+      opponent_class: "对手职业"
+      opponent_name: "对手名字"
+      options: "选项"
+      per_page: "每页"
+      rank: "排名赛"
+      reset: "重置"
+      result: "结果"
+      rounds: "回合数"
+      show: "展示"
+      sort: "种类"
+      win_rate_over: "胜率约"
+      your: "你的"
+    new_arena_game: "新竞技场赛事"
+    notes: "注记"
     prohibited_this_being_save: "被禁止此 %{resource} 从储存:"
-    ranked_win_rate: 排名赛胜率
-    run: 运作
-    show: 展示
-    update: 更新
-    view_more: 观看更多
+    ranked_win_rate: "排名赛胜率"
+    run: "运作"
+    show: "展示"
+    update: "更新"
+    view_more: "观看更多"
   streams:
     index:
       subtitle: " 在一个地方发现所有你喜爱的实况"
-      title: 实况
+      title: "实况"
   tournies:
     index:
-      section: 锦标赛
+      section: "锦标赛"
       subtitle: " 为我们最新锦标赛和联盟赛进行注册"
-      title: 登入
+      title: "登入"
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    messages:
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  social_share_button:
+    baidu: "百度收藏"
+    delicious: Delicious
+    douban: "豆瓣"
+    email: Email
+    facebook: Facebook
+    google_bookmark: Google 收藏
+    google_plus: Google+
+    kaixin001: "开心网"
+    plurk: Plurk
+    qq: QQ空间
+    renren: "人人网"
+    share_to: "分享到%{name}"
+    tqq: "腾讯微博"
+    tumblr: Tumblr
+    twitter: Twitter
+    weibo: "新浪微博"

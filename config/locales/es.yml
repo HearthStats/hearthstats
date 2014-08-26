@@ -1,6 +1,4 @@
-# encoding: utf-8
 es:
-
   shared:
     header:
       guest: Invitado
@@ -24,14 +22,13 @@ es:
     best_arena_class: Mejor Clase en Arena
     create_deck: Crear un Mazo
     new_arena_game: Nueva Arena
-    best_deck: Mejor Mazo
     view_more: Ver Más
     edit: editar
     delete: borrar
     notes: Notas
     run: correr
     error: error
-    prohibited_this_being_save: "este %{resource} se prohibió de ser guardado:"
+    prohibited_this_being_save: 'este %{resource} se prohibió de ser guardado:'
     arenarun: arenarun
     show: mostrar
     arena: arena
@@ -41,7 +38,7 @@ es:
     update: Actualizar
     deckbuilder:
       card_list: Lista de Cartas
-      optional_deck_will_be_created_if: 'Opcional (Mazo será creado si dejas esto en blanco)'
+      optional_deck_will_be_created_if: Opcional (Mazo será creado si dejas esto en blanco)
       toggle_text_import: Activar/Desactivar Importación de Texto
       add_a_card: Añadir una Carta
       of_30_cards: de 30 cartas
@@ -77,9 +74,8 @@ es:
       users: Usuarios
       listed_by: Enumerado Por
       tools: Herramientas
-      stats_are_for_all_users: 'estadísticas son para todos los usuarios que han jugado con el mazo en los últimos 30 días, no solo el autor original'
-      stats_are_for_your_personal: 'estadísticas son para tu uso personal usando cada mazo'
-
+      stats_are_for_all_users: estadísticas son para todos los usuarios que han jugado con el mazo en los últimos 30 días, no solo el autor original
+      stats_are_for_your_personal: estadísticas son para tu uso personal usando cada mazo
     matchlist:
       filter: Filtro
       any_class: cualquier clase
@@ -93,15 +89,15 @@ es:
       per_page: por página
       all_time: Todos
       last_24_hours: Ultimas 24 horas
-      last: último
+      last: "último"
       days: días
       sort: ordenar
-      created: creado
+      created: Creado
       duration: Duración
-      rounds: rondas
+      rounds: Rondas
       ascending: ascendiendo
       descending: descendiendo
-      win_rate_over: índice de victorias sobre
+      win_rate_over: "índice de victorias sobre"
       matches_in_this_list: resultados encontrados en esta lista
       your: Tu
       opponent_class: Clase del Oponente
@@ -109,15 +105,11 @@ es:
       rank: Rango
       mode: Modo
       opponent_name: Nombre del Oponente
-      rounds: Rondas
-      created: Creado
       options: Opciones
-
-
   dashboards:
     index:
       title: Panel
-      subtitle: ' estadísticas para la temporada actual'
+      subtitle: " estadísticas para la temporada actual"
       global_win_rates: Proporción Global de Victorias
       arena_win_rates: Proporción de Victorias en Arena
       games_recorded: Juegos Grabados
@@ -131,14 +123,12 @@ es:
         donation_link: Enlace de Donaciones agregado a
         notes_feature: Opción de Notas agregado!
       personal_win_rate: Proporción Personal de Victorias
-      constructed_win_rates: Proporción de Victorias en Clasificado
       constructed_coin_win_rates: Proporción de Victorias en Clasificado con la Moneda
       recent_activities: Actividades Recientes
       against: contra
       with: con
       global_stats: Estadísticas Globales
       arena_win_rate: Proporción de Victorias en Arena
-
   cards:
     index:
       title: Base de Datos de Cartas
@@ -157,16 +147,15 @@ es:
       name: Nombre
       none: ninguno
       reset_filters: Restablecer Filtros
-
   arenas:
     index:
       title: Juegos Recientes
-      description: ' juegos recientes en arena'
+      description: " juegos recientes en arena"
       section: Arena
       continue_arena_run: Continuar Arena
       new_arena_run: Nueva Arena
       arena_run_with: arena con
-      on: en
+      true: en
       notes: Notas
       close: Cerrar
       recent_arena_games: Juegos recientes de arena
@@ -175,6 +164,7 @@ es:
       prizes: Premios
       timee_played: Tiempo Jugado
       options: Opciones
+      'true': en
     new:
       title: Nuevo Partido de Arena
       section: Arena
@@ -194,12 +184,12 @@ es:
       played_second: Jugó Segundo
     matches:
       title: Partidos Recientes
-      subtitle: ' partidos recientes'
+      subtitle: " partidos recientes"
       section: Arena
       recent_arena_matches: Partidos Recientes de Arena
     stats:
       title: Estadísticas
-      subtitle: ' estadísticas detalladas de arena'
+      subtitle: " estadísticas detalladas de arena"
       section: Arena
       note: NOTA!
       page_being_designed: Esta página todavía esta en construcción
@@ -213,7 +203,7 @@ es:
       longest_average_runs: Promedios mas Largos
       no_games: Ningún juego
       detailed_class_status: Estado de Clase Detallado
-
+      average_length: 
   constructeds:
     quickentry:
       quick_entry: Entrada Rápida
@@ -225,9 +215,9 @@ es:
       add_defeat: Agregar Derrota
       add_draw: Agregar Empate
     index:
-      title: 'Juegos Recientes'
-      description: ' juegos recientes en modo Construído'
-      section: 'Construido'
+      title: Juegos Recientes
+      description: " juegos recientes en modo Construído"
+      section: Construido
       new_constructed: Nuevo Construído
     new:
       title: Nuevo Construído
@@ -235,10 +225,10 @@ es:
       get_the_auto_uploader: Descargar el Cargador Automático
     stats:
       title: Estadísticas
-      description: ' estadísticas de juegos en modo Construído'
+      description: " estadísticas de juegos en modo Construído"
       section: Construído
       filter_by: Filtrar por
-      last: último
+      last: "último"
       hours: horas
       days: días
       all_time: todos
@@ -262,52 +252,82 @@ es:
       add_win: Añadir Victoria
       add_defeat: Añadir Derrota
       add_draw: Añadir Empate
-
-
-
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
   decks:
     form:
       name: Nombre
       class: Clase
       notes: Notas
-      decklist_etc: ' Listado del mazo, etc'
+      decklist_etc: " Listado del mazo, etc"
       this_deck_public: Este Mazo es Público
+      controls: 
+      tags: 
     new:
       title: Nuevo Mazo
       section: Mazos
     public:
       title: Listado de Mazos Públicos
-      subtitle: ' todos los mazos públicos'
+      subtitle: " todos los mazos públicos"
       new_deck: Nuevo Mazo
       public_decks: Mazos Públicos
     active_decks:
       title: Mazo Activo
-      subtitle: ' todos los mazos activos'
+      subtitle: " todos los mazos activos"
       slot: Posición
       select_deck: Seleccionar Mazo
       submit: Enviar
+      deleted_deck: 
     index:
       title: Mis Mazos
-      subtitle: ' todos mis mazos'
+      subtitle: " todos mis mazos"
       new_deck: Nuevo Mazo
       my_decks: Mis Mazos
-
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
   arena_runs:
     new:
       title: Nueva Arena
       section: Arena
       first_arena_of_day: Primera Arena de hoy? Empezemos!
-      keep_it_going: "Solo %{runs}? Sigue adelante!"
-      going_hardcore: "Wow, estás dándole duro hoy? %{runs} ya, buena suerte!"
+      keep_it_going: Solo %{runs}? Sigue adelante!
+      going_hardcore: Wow, estás dándole duro hoy? %{runs} ya, buena suerte!
       your_class: Tu clase
       continue: Continuar
       get_auto_uploader: Descargar el Cargador Automático
-
-
   additional:
     news:
       title: Noticias de Hearthstone
-      subtitle: ' las últimas noticias en Hearthstone'
+      subtitle: " las últimas noticias en Hearthstone"
       suggestions_for_news: Sugerencias para fuentes de noticias son bienvenidas
       posted: Publicado
       read_more: Leer Más
@@ -346,6 +366,7 @@ es:
       help_and_support: Ayuda y Soporte
       known_issues: Problemas conocidos
       project_source_on_github: Código fuente del proyecto en Github
+      tutorial_video: 
     changelog:
       title: Registro de cambios
       all_time_in_utc: Todas los relojes muestran la hora en UTC/GMT
@@ -362,33 +383,27 @@ es:
       charles_text_3: Puedes encontrar más información sobre Charles
       here: aquí
       eckert_text: J Eckert contribuyó mucho con estilos y colores
-      donate_text:  "Si te gusta lo que hago, envíame unas cuantas monedas."
-      rackspace_text: "Me gustaría agradecer a Rackspace por proveer un servicio de hosting excepcional! Si necesitas cloud hosting, definitivamente échales una mirada!"
+      donate_text: Si te gusta lo que hago, envíame unas cuantas monedas.
+      rackspace_text: Me gustaría agradecer a Rackspace por proveer un servicio de hosting excepcional! Si necesitas cloud hosting, definitivamente échales una mirada!
     contactus:
       title: Contáctanos
-      contact_email_text: "Puedes enviarme me email a<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>si tienes preguntas"
-      contact_email_text_2: "También puedes seguirnos en Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      contact_email_text: Puedes enviarme me email a<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>si tienes preguntas
+      contact_email_text_2: 'También puedes seguirnos en Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: Estoy bien aburrido así que sus emails son bienvenidos.
       fadein_text_2: Por favor envíame un email! Puede tratarse de cualquier cosa!
       fadein_text_3: Mi trasero me está empezando a doler... Miren todo lo que tengo que sufrir para hacer este sitio para ustedes!
     help:
       title: Ayuda
-      help_text: "Visita <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para cualquier problema o sugerencia."
-
-
+      help_text: Visita <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para cualquier problema o sugerencia.
   streams:
     index:
       title: Transmisiones (Streams)
-      subtitle: ' encuentra todos tus streams favoritos aquí'
-
+      subtitle: " encuentra todos tus streams favoritos aquí"
   tournies:
     index:
       title: Inscripción
-      subtitle: ' Inscríbete para nuestros últimos torneos/ligas'
-      section: 'Torneos'
-
-
-
+      subtitle: " Inscríbete para nuestros últimos torneos/ligas"
+      section: Torneos
   menu:
     dashboard: Panel
     card_database: Base de Datos de Cartas
@@ -410,6 +425,7 @@ es:
       my_deck: Mi Mazo
       my_active_deck: Mi Mazo Activo
       new_deck: Nuevo Mazo
+      other_versions: 
     news: Noticias
     streams: Streams
     tournaments:
@@ -417,6 +433,7 @@ es:
       register: Inscripción
       Calendar: Calendario
       past_winners: Ultimos Ganadores
+      recent: 
     extra:
       title: Extra
       official_uploader: Cargador Oficial
@@ -424,4 +441,91 @@ es:
       change_log: Registro de Cambios
       about_us: Quienes Somos
       contact_info: Contáctanos
+      june_report: 
     help: Ayuda
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    messages:
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 

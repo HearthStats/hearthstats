@@ -1,0 +1,135 @@
+script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"
+- set_meta_tags :title => t('.title'),
+  :description => 'The HearthStats League',
+  :keywords => 'league, hsl, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, t('.title'))
+
+.row.margin-bottom-30
+  .col-md-6
+    p We’ve gathered 16 of the best Hearthstone players on the planet to compete for their share of the <b>$5000</b> prize pool, and we’ve assembled a crack team of casters to live stream the tournament and our special show matches to make this event truly Legendary.
+    h4 The Rules
+    p The players will be broken up into four groups and each player will play a best of 3 series against each other player in their group. The two competitors with the best match win-loss records from each group will advance to the single elimination Top 8. Each group’s matches will air live Monday through Thursday, September 15th through 18th, one group per day. Keep your eyes open for the announcement of the groups!
+    p Top 8 matches will be best of 5 and every match will be broadcast on Friday the 19th.
+    p The finals will be a best of 7 showdown, broadcast on Saturday September 20th.
+    blockquote class="hero"
+      p Watch it LIVE: September 15th - 20th on <a href="http://twitch.tv/Hearthstats">Twitch.tv</a> - <b>5 PM PST</b>
+  .col-md-6
+    img src="http://i.imgur.com/YeUf1Oz.jpg" width="100%"
+.headline
+  h3 Meet the Players
+.row.thumbnails
+  .col-md-3
+    .meet-our-team
+      h3 Reynad
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Kisstafer
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 KitKatz
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Rdu
+      .team-info
+        p Achievements
+.row.thumbnails
+  .col-md-3
+    .meet-our-team
+      h3 Kolento
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Alchemixt
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Brad
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Dart
+      .team-info
+        p Achievements
+.row.thumbnails
+  .col-md-3
+    .meet-our-team
+      h3 Massan
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 ThijsNL
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Savjz
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 StrifeCro
+      .team-info
+        p Achievements
+.row.thumbnails
+  .col-md-3
+    .meet-our-team
+      h3 Amaz
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Ek0p
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Gaara
+      .team-info
+        p Achievements
+  .col-md-3
+    .meet-our-team
+      h3 Gnimsh
+      .team-info
+        p Achievements
+
+/       .col-md-6
+/         h4 The Casters
+/         ul
+/           li Frodan
+/           li Reckful
+/           li Hyped
+/           li Kripparian
+/           li ThatsAdmirable
+/ li Plus Special Guests All Week
+/ img src='https://s3.amazonaws.com/uploads.hipchat.com/108446/829693/ebvxKnbd6Qg54IH/Untitled-1.jpg' width='100%'
+
+h4 Bonus Content!
+p All week we will be providing our viewers with amazing bonus content between matches. We will announce details as they approach, but show matches will include:
+ul
+  li Heads-Up Hearthstone Rotisserie Draft!
+  li Jeoparino!
+  li The First Ever Hearthstone Back-Draft where two players draft the WORST arena deck they can and then swap decks with their opponent to play the match!
+h4 BIG NEWS!
+p Hearthstats.net is also proud to announce that the Hearthstats.net Invitational is only the beginning and we will be starting open qualification for our brand new HearthStats.net League (HSL). The HSL will be a multiple tier league with a minimum $5000 prize given out to the top tier league EVERY SEASON!
+p The top four competitors from the Invitational will be the first players in the HSL’s top tier:  THE CHAMPIONS LEAGUE!
+p The remaining competitors will be moved into our second tier to compete for a chance to re-qualify for the Champions League in what will be known as:
+h4 THE CHALLENGER LEAGUE!
+p The challenger league will be made up of 40 players, all competing for a Challenger League prize pool and a shot at the big time in the Champions League. We can hear you doing the math in your head and wondering who the rest of the Challenger League will be made up of. We were thinking…
+b YOU!
+p We will be running 8-man (or woman), single elimination, HearthStats.net League Qualifiers (HSLQ’s) with each HSLQ granting its winner qualification for the Challenger League. Think you’ve got what it takes to outplay your opponents, make it to the big time, and show your skills to the world? We will be announcing HSLQ sign-ups in the next few weeks, so get ready.
+javascript:
+  $(document).ready(function(){
+    $('.team-info').each(function(){
+      $(this).css("background", randomColor({luminosity: 'light'}));
+    });
+  });

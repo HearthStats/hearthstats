@@ -406,6 +406,8 @@ en:
     changelog:
       title: Changelog
       all_time_in_utc: All time in UTC
+    league:
+      title: HearthStats Invitational
     aboutus:
       title: About Us
       founded_by_text: This site was founded by Jeffrey Tong with love.

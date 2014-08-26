@@ -43,6 +43,7 @@ Hearthstats::Application.routes.draw do
   match "/privacy", to: "additional#privacy"
   match "/news", to: "additional#news"
   match "/openings", to: "additional#openings"
+  match "/league", to: "additional#league"
 
   #apps
   match "/uploader", to: "additional#uploader"

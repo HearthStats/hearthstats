@@ -1,6 +1,4 @@
-# encoding: utf-8
 pt-BR:
-
   shared:
     header:
       guest: Convidado
@@ -24,14 +22,13 @@ pt-BR:
     best_arena_class: Melhor Classe em Arena
     create_deck: Criar um Deck
     new_arena_game: Nova Partida em Arena
-    best_deck: Melhor Deck
     view_more: Ver Mais
     edit: Editar
     delete: Deletar
     notes: Notas
     run: série
     error: erro
-    prohibited_this_being_save: "impediram que este(a) %{resource} fosse salvo(a):"
+    prohibited_this_being_save: 'impediram que este(a) %{resource} fosse salvo(a):'
     arenarun: Série de Jogadas em Arena
     show: exibir
     arena: arena
@@ -41,7 +38,7 @@ pt-BR:
     update: Atualizar
     deckbuilder:
       card_list: Lista de Cartas
-      optional_deck_will_be_created_if: 'Opcional (Deck vai ser criado se você deixar em branco)'
+      optional_deck_will_be_created_if: Opcional (Deck vai ser criado se você deixar em branco)
       toggle_text_import: Alternar Importação de Texto
       add_a_card: Adicionar uma carta
       of_30_cards: de 30 cartas
@@ -77,9 +74,8 @@ pt-BR:
       users: Usuários
       listed_by: Listado por
       tools: Ferramentss
-      stats_are_for_all_users: 'estatísticas são para todos usuários que tenham jogado o deck nos últimos 30 dias, não somente o autor original'
-      stats_are_for_your_personal: 'estatísticas são para o seu jogo pessoal usando cada deck'
-
+      stats_are_for_all_users: estatísticas são para todos usuários que tenham jogado o deck nos últimos 30 dias, não somente o autor original
+      stats_are_for_your_personal: estatísticas são para o seu jogo pessoal usando cada deck
     matchlist:
       filter: Filtro
       any_class: qualquer classe
@@ -92,13 +88,13 @@ pt-BR:
       show: Exibir
       per_page: por página
       all_time: Tudo
-      last_24_hours: Últimas 24 horas
-      last: últimos
+      last_24_hours: "Últimas 24 horas"
+      last: "últimos"
       days: dias
       sort: ordem
-      created: criado
+      created: Criado
       duration: Duração
-      rounds: rounds
+      rounds: Rounds
       ascending: crescente
       descending: decrescente
       win_rate_over: taxa de vitória sobre
@@ -109,19 +105,15 @@ pt-BR:
       rank: Ranking
       mode: Modo
       opponent_name: Nome do Oponente
-      rounds: Rounds
-      created: Criado
       options: Opções
-
-
   dashboards:
     index:
       title: Dashboard
-      subtitle: ' estatísticas para a atual temporada'
+      subtitle: " estatísticas para a atual temporada"
       global_win_rates: Taxa Global de Vitórias
       arena_win_rates: Taxa de Vitórias em Arena
       games_recorded: Partidas Gravadas
-      constructed_win_rates: Taxa de Vitórias em Constructeds
+      constructed_win_rates: Taxa de Vitória Constructed
       hearthstats_news: Notícias da HearthStats
       read_more: Leia Mais
       view_more: Veja Mais
@@ -131,14 +123,12 @@ pt-BR:
         donation_link: Links de doação adicionados
         notes_feature: Funcionalidade de notas adicionada
       personal_win_rate: Taxa de Vitória Pessoal
-      constructed_win_rates: Taxa de Vitória Constructed
       constructed_coin_win_rates: Taxa de Vitória de Moedas Constructed
       recent_activities: Atividades Recentes
       against: contra
       with: com
       global_stats: Status Globais
       arena_win_rate: Taxa de Vitórias em Arena
-
   cards:
     index:
       title: Banco de Cartas
@@ -157,16 +147,15 @@ pt-BR:
       name: Nome
       none: nenhum
       reset_filters: zerar filtros
-
   arenas:
     index:
       title: Partidas Recentes
-      description: ' partidas recentes em arena'
+      description: " partidas recentes em arena"
       section: Arena
       continue_arena_run: Continuar Série de Partidas Arenas
       new_arena_run: Nova Série de Partidas em Arena
       arena_run_with: série de partidas em arena com
-      on: em
+      true: em
       notes: Notas
       close: Fechar
       recent_arena_games: Partidas Recentes em Arena
@@ -175,6 +164,7 @@ pt-BR:
       prizes: Prêmios
       timee_played: Duração
       options: Opções
+      'true': em
     new:
       title: Nova Partida em Arena
       section: Arena
@@ -194,12 +184,12 @@ pt-BR:
       played_second: Jogado Segundo
     matches:
       title: Partidas Recentes
-      subtitle: ' partídas recentes'
+      subtitle: " partídas recentes"
       section: Arena
       recent_arena_matches: Partidas Recentes em Arena
     stats:
       title: Estatísticas
-      subtitle: ' estatísticas detalhadas de jogos em Arena'
+      subtitle: " estatísticas detalhadas de jogos em Arena"
       section: Arena
       note: NOTA!
       page_being_designed: A página ainda está sendo desenvolvida
@@ -213,7 +203,7 @@ pt-BR:
       longest_average_runs: Maior média de jogadas
       no_games: Sem jogos
       detailed_class_status: Status Detalhado de Classe
-
+      average_length: 
   constructeds:
     quickentry:
       quick_entry: Preenchimento Rápido
@@ -225,9 +215,9 @@ pt-BR:
       add_defeat: Adicionar Derrota
       add_draw: Adicionar Empate
     index:
-      title: 'Jogos Recentes'
-      description: ' jogos recentes constructed'
-      section: 'Constructed'
+      title: Jogos Recentes
+      description: " jogos recentes constructed"
+      section: Constructed
       new_constructed: Novo Constructed
     new:
       title: Novo Constructed
@@ -235,10 +225,10 @@ pt-BR:
       get_the_auto_uploader: Baixar o Auto Uploader
     stats:
       title: Estatísticas
-      description: ' de jogos constructed'
+      description: " de jogos constructed"
       section: Constructed
       filter_by: Filtrar por
-      last: últimos
+      last: "últimos"
       hours: horas
       days: dias
       all_time: Tudo
@@ -262,52 +252,82 @@ pt-BR:
       add_win: Deu Vitória
       add_defeat: Deu Derrota
       add_draw: Deu Empate
-
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
   decks:
     form:
       name: Nome
       class: Classe
       notes: Notas
-      decklist_etc: ' Lista de decks, etc'
+      decklist_etc: " Lista de decks, etc"
       this_deck_public: Esse Deck é Público
+      controls: 
+      tags: 
     new:
       title: Novo Deck
       section: Decks
     public:
       title: Lista de Decks Públicos
-      subtitle: ' todos os decks constructed públicos'
+      subtitle: " todos os decks constructed públicos"
       new_deck: Novo Deck
       public_decks: Decks Públicos
     active_decks:
       title: Decks Atívos
-      subtitle: ' todos os decks constructed ativos'
+      subtitle: " todos os decks constructed ativos"
       slot: Campo
       select_deck: Selecione o Deck
       submit: Enviar
+      deleted_deck: 
     index:
       title: Meus Decks
-      subtitle: ' todos os meus decks constructeds'
+      subtitle: " todos os meus decks constructeds"
       new_deck: Novo Deck
       my_decks: Meus Decks
-
-
-
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
   arena_runs:
     new:
       title: Nova Série de Jogadas em Arena
       section: Arena
       first_arena_of_day: Primeira série do dia? Vamos começar!
-      keep_it_going: "Só %{runs}? Vamo que vamo!"
-      going_hardcore: "Wow, jogando pra valer hoje hein? %{runs} já, então boa sorte!"
+      keep_it_going: Só %{runs}? Vamo que vamo!
+      going_hardcore: Wow, jogando pra valer hoje hein? %{runs} já, então boa sorte!
       your_class: Sua Classe
       continue: Continuar
       get_auto_uploader: Baixar o Auto Uploader
-
-
   additional:
     news:
       title: Notícias Hearthstone
-      subtitle: ' as últimas sobre Hearthstone'
+      subtitle: " as últimas sobre Hearthstone"
       suggestions_for_news: Sugestões de novas fontes de notícias são bem vindas
       posted: Postado
       read_more: Leia Mais
@@ -325,7 +345,7 @@ pt-BR:
         inst_osx_1: Faça o Download do link emcima
         inst_osx_2: Descompacte o arquivo
         inst_osx_3: Mova para a pasta Applications
-        inst_osx_4: <b>Clique com o botão direito</b> sobre o arquivo e depois clique em Abrir (open)
+        inst_osx_4: "<b>Clique com o botão direito</b> sobre o arquivo e depois clique em Abrir (open)"
         inst_osx_5: Digite sua Chave do Usuário mostrada acima
         inst_osx_6: Inicie o jogo e jogue!
       instructions_win:
@@ -346,6 +366,7 @@ pt-BR:
       help_and_support: Ajuda e Suporte
       known_issues: Problemas conhecidos
       project_source_on_github: Código Aberto do Projeto no Github
+      tutorial_video: 
     changelog:
       title: Changelog
       all_time_in_utc: Todos as datas estão em UTC
@@ -362,32 +383,27 @@ pt-BR:
       charles_text_3: Você pode ler mais sobre o Charles
       here: aqui
       eckert_text: J Eckert contribuiu bastante para a estilização e cores
-      donate_text:  "Se você gosta do que euestou fazendo, doe uns trocados."
-      rackspace_text: "Gostaria de agradecer também o Rackspace por proporcionar um excelente serviço de hospedagem! Se vocês precisarem de algo, definitivamente vale a pena dar uma olhada lá."
+      donate_text: Se você gosta do que euestou fazendo, doe uns trocados.
+      rackspace_text: Gostaria de agradecer também o Rackspace por proporcionar um excelente serviço de hospedagem! Se vocês precisarem de algo, definitivamente vale a pena dar uma olhada lá.
     contactus:
       title: Contato
-      contact_email_text: "Sinta-se a vontade para me mandar um email em <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a> para qualquer coisa."
-      contact_email_text_2: "Você também pode me seguir no Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      contact_email_text: Sinta-se a vontade para me mandar um email em <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a> para qualquer coisa.
+      contact_email_text_2: 'Você também pode me seguir no Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: Eu estou realmente entediado então mande emails.
       fadein_text_2: Por favor! Pode ser sobre qualquer coisa!
       fadein_text_3: Minha bunda já ta doendo aqui. Olha só tudo que eu to passando para desenvolver esse site para voces...
     help:
       title: Ajuda
-      help_text: "Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas."
-
-
+      help_text: Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas.
   streams:
     index:
       title: Ao Vivo
-      subtitle: ' encontre todos os seus jogos ao vivo favoritos em um só lugar'
-
+      subtitle: " encontre todos os seus jogos ao vivo favoritos em um só lugar"
   tournies:
     index:
       title: Cadastre-se
-      subtitle: ' Cadastre-se para os nosso Torneios/Ligas'
-      section: 'Torneios'
-
-
+      subtitle: " Cadastre-se para os nosso Torneios/Ligas"
+      section: Torneios
   menu:
     dashboard: Dashboard
     card_database: Banco de Cartas
@@ -409,13 +425,15 @@ pt-BR:
       my_deck: Meu Deck
       my_active_deck: Meu Deck Ativo
       new_deck: Novo Deck
+      other_versions: 
     news: Notícias
     streams: Ao Vivo
     tournaments:
       title: Torneios
       register: Registrar
       Calendar: Calendário
-      past_winners: Últimos Vencedores
+      past_winners: "Últimos Vencedores"
+      recent: 
     extra:
       title: Extra
       official_uploader: Uploader Oficial
@@ -423,10 +441,8 @@ pt-BR:
       change_log: Change Log
       about_us: Sobre
       contact_info: Contato
+      june_report: 
     help: Ajuda
-
-
-
   date:
     abbr_day_names:
     - Dom
@@ -437,7 +453,7 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
-    -
+    - 
     - Jan
     - Fev
     - Mar
@@ -459,11 +475,11 @@ pt-BR:
     - Sexta
     - Sábado
     formats:
-      default: ! '%d/%m/%Y'
-      long: ! '%d de %B de %Y'
-      short: ! '%d de %B'
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
     month_names:
-    -
+    - 
     - Janeiro
     - Fevereiro
     - Março
@@ -506,16 +522,16 @@ pt-BR:
         other: mais de %{count} anos
       x_days:
         one: 1 dia
-        other: ! '%{count} dias'
+        other: "%{count} dias"
       x_minutes:
         one: 1 minuto
-        other: ! '%{count} minutos'
+        other: "%{count} minutos"
       x_months:
         one: 1 mês
-        other: ! '%{count} meses'
+        other: "%{count} meses"
       x_seconds:
         one: 1 segundo
-        other: ! '%{count} segundos'
+        other: "%{count} segundos"
     prompts:
       day: Dia
       hour: Hora
@@ -523,8 +539,8 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
-  errors: &errors
-    format: ! '%{attribute} %{message}'
+  errors:
+    format: "%{attribute} %{message}"
     messages:
       accepted: deve ser aceito
       blank: não pode ficar em branco
@@ -543,19 +559,25 @@ pt-BR:
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
       odd: deve ser ímpar
-      record_invalid: ! 'A validação falhou: %{errors}'
+      record_invalid: 'A validação falhou: %{errors}'
       restrict_dependent_destroy:
-        one: "Não é possível excluir o registro pois existe um %{record} dependente"
-        many: "Não é possível excluir o registro pois existem %{record} dependentes"
+        one: Não é possível excluir o registro pois existe um %{record} dependente
+        many: Não é possível excluir o registro pois existem %{record} dependentes
       taken: já está em uso
-      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
-      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+      too_long: "é muito longo (máximo: %{count} caracteres)"
+      too_short: "é muito curto (mínimo: %{count} caracteres)"
       wrong_length: não possui o tamanho esperado (%{count} caracteres)
+      already_confirmed: 
+      confirmation_period_expired: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
     template:
-      body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
-        one: ! 'Não foi possível gravar %{model}: 1 erro'
-        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
+        one: 'Não foi possível gravar %{model}: 1 erro'
+        other: 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
     select:
       prompt: Por favor selecione
@@ -563,25 +585,38 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
   number:
     currency:
       format:
-        delimiter: .
-        format: ! '%u %n'
+        delimiter: "."
+        format: "%u %n"
         precision: 2
-        separator: ! ','
+        separator: ","
         significant: false
         strip_insignificant_zeros: false
         unit: R$
     format:
-      delimiter: .
+      delimiter: "."
       precision: 3
-      separator: ! ','
+      separator: ","
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           billion:
             one: bilhão
@@ -596,14 +631,14 @@ pt-BR:
           trillion:
             one: trilhão
             other: trilhões
-          unit: ''
+          unit: 
       format:
-        delimiter: .
+        delimiter: "."
         precision: 2
         significant: true
         strip_insignificant_zeros: true
       storage_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           byte:
             one: Byte
@@ -614,37 +649,95 @@ pt-BR:
           tb: TB
     percentage:
       format:
-        delimiter: .
+        delimiter: "."
     precision:
       format:
-        delimiter: .
+        delimiter: "."
   support:
     array:
-      last_word_connector: ! ' e '
-      two_words_connector: ! ' e '
-      words_connector: ! ', '
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
   time:
-    am: ''
+    am: 
     formats:
-      default: ! '%a, %d de %B de %Y, %H:%M:%S %z'
-      long: ! '%d de %B de %Y, %H:%M'
-      short: ! '%d de %B, %H:%M'
-    pm: ''
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+      default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %B, %H:%M"
+    pm: 
   activemodel:
     errors:
-      <<: *errors
+      format: "%{attribute} %{message}"
+      messages:
+        accepted: deve ser aceito
+        blank: não pode ficar em branco
+        present: deve ficar em branco
+        confirmation: não é igual a %{attribute}
+        empty: não pode ficar vazio
+        equal_to: deve ser igual a %{count}
+        even: deve ser par
+        exclusion: não está disponível
+        greater_than: deve ser maior que %{count}
+        greater_than_or_equal_to: deve ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: não é válido
+        less_than: deve ser menor que %{count}
+        less_than_or_equal_to: deve ser menor ou igual a %{count}
+        not_a_number: não é um número
+        not_an_integer: não é um número inteiro
+        odd: deve ser ímpar
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          one: Não é possível excluir o registro pois existe um %{record} dependente
+          many: Não é possível excluir o registro pois existem %{record} dependentes
+        taken: já está em uso
+        too_long: "é muito longo (máximo: %{count} caracteres)"
+        too_short: "é muito curto (mínimo: %{count} caracteres)"
+        wrong_length: não possui o tamanho esperado (%{count} caracteres)
+      template:
+        body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+        header:
+          one: 'Não foi possível gravar %{model}: 1 erro'
+          other: 'Não foi possível gravar %{model}: %{count} erros.'
   activerecord:
     errors:
-      <<: *errors
-
-
+      format: "%{attribute} %{message}"
+      messages:
+        accepted: deve ser aceito
+        blank: não pode ficar em branco
+        present: deve ficar em branco
+        confirmation: não é igual a %{attribute}
+        empty: não pode ficar vazio
+        equal_to: deve ser igual a %{count}
+        even: deve ser par
+        exclusion: não está disponível
+        greater_than: deve ser maior que %{count}
+        greater_than_or_equal_to: deve ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: não é válido
+        less_than: deve ser menor que %{count}
+        less_than_or_equal_to: deve ser menor ou igual a %{count}
+        not_a_number: não é um número
+        not_an_integer: não é um número inteiro
+        odd: deve ser ímpar
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          one: Não é possível excluir o registro pois existe um %{record} dependente
+          many: Não é possível excluir o registro pois existem %{record} dependentes
+        taken: já está em uso
+        too_long: "é muito longo (máximo: %{count} caracteres)"
+        too_short: "é muito curto (mínimo: %{count} caracteres)"
+        wrong_length: não possui o tamanho esperado (%{count} caracteres)
+      template:
+        body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+        header:
+          one: 'Não foi possível gravar %{model}: 1 erro'
+          other: 'Não foi possível gravar %{model}: %{count} erros.'
   will_paginate:
     next_label: Próximos &#8594;
     page_entries_info:
       multi_page: Exibindo %{model} %{from} - %{to} de %{count} no total
-      multi_page_html: Exibindo %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b>
-        no total
+      multi_page_html: Exibindo %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> no total
       single_page:
         one: Exibindo 1 %{model}
         other: Exibindo todos os %{count} %{model}
@@ -653,5 +746,69 @@ pt-BR:
         one: Exibindo <b>1</b> %{model}
         other: Exibindo <b>todos os&nbsp;%{count}</b> %{model}
         zero: Nenhum %{model} encontrado
-    page_gap: '&hellip;'
-    previous_label: '&#8592; Anteriores'
+    page_gap: "&hellip;"
+    previous_label: "&#8592; Anteriores"
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      updated: 
+      update_needs_confirmation: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
