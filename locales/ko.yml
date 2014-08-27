@@ -359,6 +359,13 @@ ko:
       submit: "제출"
       subtitle: " 모든 활성화된 제작덱들"
       title: "활성화 덱"
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 

@@ -359,6 +359,13 @@ fi:
       submit: 
       subtitle: 
       title: 
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 

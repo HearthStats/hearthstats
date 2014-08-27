@@ -432,6 +432,13 @@ pt-BR:
       submit: Enviar
       subtitle: " todos os decks constructed ativos"
       title: Decks Atívos
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 

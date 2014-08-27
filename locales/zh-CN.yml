@@ -359,6 +359,13 @@ zh-CN:
       submit: "提交"
       subtitle: " 所有激活的构组套牌"
       title: "激活套牌"
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 
