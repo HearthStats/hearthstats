@@ -30,6 +30,43 @@ en:
         body: 
         header: 
   activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: Dust earned
+        Gold Earned: Gold earned
+        gold: Gold
+      deck:
+        Class: Class
+        Classe: 
+        Klasse: 
+        Name: Name
+        Nom: 
+        Notes: Notes
+        Notizen: 
+        Tags: Tags
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: Deck name
+        Deck name: Deck name
+        Notes: Notes
+        Opponent Class: 
+        Opponent Name: Opponent name
+        Opponent class: Opponent class
+        Opponent's Class: Opponent's class
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        avatar: Avatar
+        name: Name
+        time_zone: Time zone
+      profile/Battle:
+        net ID: Net id
+      user:
+        email: Email
+        password: Password
     errors:
       format: 
       messages:
@@ -59,6 +96,10 @@ en:
       template:
         body: 
         header: 
+    models:
+      arena_run: Arena run
+      deck: Deck
+      user: User
   additional:
     aboutus:
       a_huge_thanks_to: A huge thanks to
@@ -151,6 +192,7 @@ en:
       description: " recent arena games"
       new_arena_run: New Arena Run
       notes: Notes
+      'on': 'on'
       options: Options
       prizes: Prizes
       recent_arena_games: Recent Arena Games
@@ -293,6 +335,7 @@ en:
       filter_by: Filter by
       first_or_second: first or second
       hours: hours
+      last_24_hours: last 24 hours
       last_days: Last %{num} days
       ranked: Ranked
     winratechart:
@@ -366,6 +409,8 @@ en:
       mana_curve: Mana Curve
       mechanics: Mechanics
       type_distribution: Type Distribution
+    editform:
+      toggle_text_import: 
     filter:
       ascending: Ascending
       created_after: Created After
@@ -401,9 +446,11 @@ en:
       name: Name
       no_more: No More In Deck
       notes: Notes
+      other_versions: 
       search: Search
       tags: Tags
       this_deck_public: Make Deck Public
+      toggle_text_import: 
     index:
       my_decks: My Decks
       new_deck: New Deck
@@ -413,6 +460,7 @@ en:
       section: Decks
       title: New Deck
     new_splash:
+      section: 
       title: New Deck Class Selection
     public:
       new_deck: New Deck
@@ -519,6 +567,41 @@ en:
       header: 
   helpers:
     actions: Actions
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Class: 
+        Classe: Classes
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: Opponent Class
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: User ID
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        Battle:
+          net ID: 
+        avatar: 
+        name: 
+        time_zone: 
+      user:
+        email: 
     links:
       back: Back
       cancel: Cancel
@@ -541,8 +624,8 @@ en:
     Tournaments:
       Calendar: 
       past_winners: 
-      register: 
-      title: 
+      register: Register
+      title: Title
     arena:
       continue_arena_run: Continue Arena Run
       new_arena_run: New Arena Run
@@ -694,15 +777,23 @@ en:
     filter:
       all_time: All time
       apply: Apply
+      ascending: Ascending
       coin?: Coin?
       created_at: Created
+      descending: Descending
       duration: Duration
+      filter: Filter
+      for: For
       last_24_hours: Last 24 hours
       last_days: Last %{num} days
       matches_in_this_list: matches in this list
       numturns: Rounds
+      opponent: Opponent
       per_page: per page
       reset: Reset
+      shared:
+        notes: Notes
+      show: Show
       sort: sort
       win_rate_over: win rate over
     footer:
@@ -751,6 +842,16 @@ en:
       sort: Sort
       win_rate_over: Win Rate Over
       your: Your
+    matchlist_no_filter:
+      coin: Coin
+      created: Created
+      duration: Duration
+      opponent_class: Opponent Class
+      opponent_name: Opponent Name
+      options: Options
+      result: Result
+      rounds: Rounds
+      your: Your
     new_arena_game: New Arena Game
     notes: Notes
     prohibited_this_being_save: 'prohibited this %{resource} from being saved:'
@@ -797,6 +898,8 @@ en:
       section: Tournaments
       subtitle: " Check out recent tournament deck lists!"
       title: Recent Tournaments
+    show:
+      decks: 
   will_paginate:
     next_label: 
     page_entries_info:

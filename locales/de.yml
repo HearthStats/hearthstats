@@ -30,6 +30,43 @@ de:
         body: 
         header: 
   activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+        gold: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        avatar: 
+        name: 
+        time_zone: 
+      profile/Battle:
+        net ID: 
+      user:
+        email: 
+        password: 
     errors:
       format: 
       messages:
@@ -59,6 +96,10 @@ de:
       template:
         body: 
         header: 
+    models:
+      arena_run: 
+      deck: 
+      user: 
   additional:
     aboutus:
       a_huge_thanks_to: Ein großes Danke an
@@ -151,6 +192,7 @@ de:
       description: " letzte Arena Spiele"
       new_arena_run: Neuer Arena Runde
       notes: Notizen
+      'on': 
       options: Optionen
       prizes: Belohnung
       recent_arena_games: aktuelle Arena Spiele
@@ -293,6 +335,7 @@ de:
       filter_by: 
       first_or_second: 
       hours: 
+      last_24_hours: 
       last_days: 
       ranked: 
     winratechart:
@@ -366,6 +409,8 @@ de:
       mana_curve: 
       mechanics: 
       type_distribution: 
+    editform:
+      toggle_text_import: 
     filter:
       ascending: 
       created_after: 
@@ -399,9 +444,11 @@ de:
       name: Name
       no_more: 
       notes: Notizen
+      other_versions: 
       search: 
       tags: 
       this_deck_public: Dieses Deck ist öffentlich
+      toggle_text_import: 
     index:
       my_decks: Meine Decks
       new_deck: Neues Deck
@@ -411,6 +458,7 @@ de:
       section: Decks
       title: Neues Deck
     new_splash:
+      section: 
       title: 
     public:
       new_deck: Neues Deck
@@ -515,6 +563,41 @@ de:
       header: 
   helpers:
     actions: 
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        Battle:
+          net ID: 
+        avatar: 
+        name: 
+        time_zone: 
+      user:
+        email: 
     links:
       back: 
       cancel: 
@@ -690,15 +773,23 @@ de:
     filter:
       all_time: 
       apply: 
+      ascending: 
       coin?: 
       created_at: 
+      descending: 
       duration: 
+      filter: 
+      for: 
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+      opponent: 
       per_page: 
       reset: 
+      shared:
+        notes: 
+      show: 
       sort: 
       win_rate_over: 
     footer:
@@ -747,6 +838,16 @@ de:
       sort: sortiert
       win_rate_over: Sieg Rate gegen
       your: Deine
+    matchlist_no_filter:
+      coin: 
+      created: 
+      duration: 
+      opponent_class: 
+      opponent_name: 
+      options: 
+      result: 
+      rounds: 
+      your: 
     new_arena_game: Neues Arena Match
     notes: Notizen
     prohibited_this_being_save: 'Fehler beim speichern von: %{resource} '
@@ -793,6 +894,8 @@ de:
       section: Turniere
       subtitle: " Registrier dich für unsere neuesten Turniere"
       title: Anmelden
+    show:
+      decks: 
   will_paginate:
     next_label: 
     page_entries_info:

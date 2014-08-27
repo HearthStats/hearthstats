@@ -36,6 +36,43 @@ es:
         body: 
         header: 
   activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+        gold: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        avatar: 
+        name: 
+        time_zone: 
+      profile/Battle:
+        net ID: 
+      user:
+        email: 
+        password: 
     errors:
       format: 
       messages:
@@ -65,6 +102,10 @@ es:
       template:
         body: 
         header: 
+    models:
+      arena_run: 
+      deck: 
+      user: 
   additional:
     aboutus:
       a_huge_thanks_to: Muchas gracias a
@@ -157,6 +198,7 @@ es:
       description: " juegos recientes en arena"
       new_arena_run: Nueva Arena
       notes: Notas
+      'on': 
       options: Opciones
       prizes: Premios
       recent_arena_games: Juegos recientes de arena
@@ -299,6 +341,7 @@ es:
       filter_by: 
       first_or_second: 
       hours: 
+      last_24_hours: 
       last_days: 
       ranked: 
     winratechart:
@@ -372,6 +415,8 @@ es:
       mana_curve: 
       mechanics: 
       type_distribution: 
+    editform:
+      toggle_text_import: 
     filter:
       ascending: 
       created_after: 
@@ -405,9 +450,11 @@ es:
       name: Nombre
       no_more: 
       notes: Notas
+      other_versions: 
       search: 
       tags: 
       this_deck_public: Este Mazo es Público
+      toggle_text_import: 
     index:
       my_decks: Mis Mazos
       new_deck: Nuevo Mazo
@@ -417,6 +464,7 @@ es:
       section: Mazos
       title: Nuevo Mazo
     new_splash:
+      section: 
       title: 
     public:
       new_deck: Nuevo Mazo
@@ -521,6 +569,41 @@ es:
       header: 
   helpers:
     actions: 
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        Battle:
+          net ID: 
+        avatar: 
+        name: 
+        time_zone: 
+      user:
+        email: 
     links:
       back: 
       cancel: 
@@ -696,15 +779,23 @@ es:
     filter:
       all_time: 
       apply: 
+      ascending: 
       coin?: 
       created_at: 
+      descending: 
       duration: 
+      filter: 
+      for: 
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+      opponent: 
       per_page: 
       reset: 
+      shared:
+        notes: 
+      show: 
       sort: 
       win_rate_over: 
     footer:
@@ -753,6 +844,16 @@ es:
       sort: ordenar
       win_rate_over: "índice de victorias sobre"
       your: Tu
+    matchlist_no_filter:
+      coin: 
+      created: 
+      duration: 
+      opponent_class: 
+      opponent_name: 
+      options: 
+      result: 
+      rounds: 
+      your: 
     new_arena_game: Nueva Arena
     notes: Notas
     prohibited_this_being_save: 'este %{resource} se prohibió de ser guardado:'
@@ -799,6 +900,8 @@ es:
       section: Torneos
       subtitle: " Inscríbete para nuestros últimos torneos/ligas"
       title: Inscripción
+    show:
+      decks: 
   will_paginate:
     next_label: 
     page_entries_info:
