@@ -45,7 +45,10 @@ ru-RU:
         Nazwa: 
         Nom: 
         Nombre: 
+<<<<<<< HEAD
         Nome: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notas: 
         Notatki: 
         Notes: 
@@ -58,15 +61,22 @@ ru-RU:
         "이름": 
         "직업": 
       match:
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
+=======
+        Classe de votre adversaire: 
+>>>>>>> removed weird caching in con#getwr
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -140,8 +150,11 @@ ru-RU:
       arena_run: 
       deck: 
       match: 
+<<<<<<< HEAD
       tournament: 
       unique_deck: 
+=======
+>>>>>>> removed weird caching in con#getwr
       user: 
 =======
 >>>>>>> added localeapp back into system
@@ -164,9 +177,13 @@ ru-RU:
     changelog:
       all_time_in_utc: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       changelog: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      changelog: 
+>>>>>>> removed weird caching in con#getwr
       title: 
     contactus:
       contact_email_text: 
@@ -733,7 +750,10 @@ ru-RU:
         Nazwa: 
         Nom: 
         Nombre: 
+<<<<<<< HEAD
         Nome: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notas: 
         Notatki: 
         Notes: 
@@ -746,15 +766,22 @@ ru-RU:
         "이름": 
         "직업": 
       match:
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
+=======
+        Classe de votre adversaire: 
+>>>>>>> removed weird caching in con#getwr
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notes: 
         Opponent Class: 
         Opponent Name: 

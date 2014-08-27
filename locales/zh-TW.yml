@@ -45,7 +45,10 @@ zh-TW:
         Nazwa: 
         Nom: 
         Nombre: 
+<<<<<<< HEAD
         Nome: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notas: 
         Notatki: 
         Notes: 
@@ -58,15 +61,22 @@ zh-TW:
         "이름": 
         "직업": 
       match:
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
+=======
+        Classe de votre adversaire: 
+>>>>>>> removed weird caching in con#getwr
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -140,8 +150,11 @@ zh-TW:
       arena_run: 
       deck: 
       match: 
+<<<<<<< HEAD
       tournament: 
       unique_deck: 
+=======
+>>>>>>> removed weird caching in con#getwr
       user: 
 =======
 >>>>>>> added localeapp back into system
@@ -164,9 +177,13 @@ zh-TW:
     changelog:
       all_time_in_utc: UTC中的所有時間
 <<<<<<< HEAD
+<<<<<<< HEAD
       changelog: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      changelog: 
+>>>>>>> removed weird caching in con#getwr
       title: "更新日誌"
     contactus:
       contact_email_text: "請寫電郵給我<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>任何問題皆可."
@@ -736,7 +753,10 @@ zh-TW:
         Nazwa: 
         Nom: 
         Nombre: 
+<<<<<<< HEAD
         Nome: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notas: 
         Notatki: 
         Notes: 
@@ -749,15 +769,22 @@ zh-TW:
         "이름": 
         "직업": 
       match:
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
+=======
+        Classe de votre adversaire: 
+>>>>>>> removed weird caching in con#getwr
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
+=======
+>>>>>>> removed weird caching in con#getwr
         Notes: 
         Opponent Class: 
         Opponent Name: 
