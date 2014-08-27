@@ -206,8 +206,6 @@ GEM
     hike (1.2.3)
     hipchat (1.1.0)
       httparty
-    honeybadger (1.11.2)
-      json
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -484,7 +482,6 @@ DEPENDENCIES
   guard-rspec
   guard-zeus
   hipchat
-  honeybadger
   httparty
   imgkit
   impressionist

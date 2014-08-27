@@ -93,7 +93,6 @@ gem 'whenever'
 
 # APIs
 gem 'newrelic_rpm'
-gem 'honeybadger'
 gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'localeapp'
