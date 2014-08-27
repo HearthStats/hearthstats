@@ -40,7 +40,11 @@ zh-CN:
         Classe: 
         Klasse: 
         Name: 
+        Nazwa: 
         Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
         Notes: 
         Notizen: 
         Tags: 
@@ -48,13 +52,19 @@ zh-CN:
         "職業": 
         "註記": 
       match:
+        Classe de votre adversaire: 
         Deck Name: 
         Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
         Notes: 
         Opponent Class: 
         Opponent Name: 
         Opponent class: 
         Opponent's Class: 
+        klass_id: 
+        oppclass_id: 
+        result_id: 
         user_id: 
         "套牌名字": 
         "對手職業": 
@@ -99,6 +109,7 @@ zh-CN:
     models:
       arena_run: 
       deck: 
+      match: 
       user: 
   additional:
     aboutus:
@@ -118,6 +129,7 @@ zh-CN:
       you_can_follow_twitter: "你可以从 Twitter推特来跟随我"
     changelog:
       all_time_in_utc: UTC中的所有时间
+      changelog: 
       title: "更新日志"
     contactus:
       contact_email_text: "请写电邮给我<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>任何问题皆可."
@@ -572,7 +584,11 @@ zh-CN:
         Classe: 
         Klasse: 
         Name: 
+        Nazwa: 
         Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
         Notes: 
         Notizen: 
         Tags: 
@@ -580,8 +596,11 @@ zh-CN:
         "職業": 
         "註記": 
       match:
+        Classe de votre adversaire: 
         Deck Name: 
         Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
         Notes: 
         Opponent Class: 
         Opponent Name: 
