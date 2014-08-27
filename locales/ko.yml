@@ -88,6 +88,8 @@ ko:
     help:
       help_text: "제안이나 문제가 있으시면 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a>를 방문해주세요."
       title: "도움말"
+    league:
+      title: 
     news:
       posted: Posted
       read_more: "더 일기"
@@ -129,6 +131,7 @@ ko:
       project_source_on_github: Github 의 프로젝트 소스
       title: "공식 업로더"
       title:官方上传器 header_text: 
+      tutorial_video: 
       user_key: "사용자 키"
   arena_runs:
     new:
@@ -183,6 +186,7 @@ ko:
     stats:
       arena_games_played: "총 투기장 경기"
       arena_runs_played: "총 투기장 플레이"
+      average_length: 
       detailed_class_status: "세부적인 직업별 통계"
       dist_desc: 
       distribution_graph: 
@@ -279,6 +283,18 @@ ko:
       ranked: "등급전"
       section: "제작덱 경기"
       title: "통계"
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
     winratechart:
       constructed_win_rate_title: "직업별 제작덱 승률 (개인 vs 전체)"
   dashboards:
@@ -337,14 +353,38 @@ ko:
       year: 
   decks:
     active_decks:
+      deleted_deck: 
       select_deck: "덱 선택"
       slot: "슬롯"
       submit: "제출"
       subtitle: " 모든 활성화된 제작덱들"
       title: "활성화 덱"
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      deck_name: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
     form:
       card_limit: 
       class: "직업"
+      controls: 
       count: 
       deck_limit: 
       decklist_etc: " 덱 목록, 기타"
@@ -353,6 +393,7 @@ ko:
       no_more: 
       notes: "노트"
       search: 
+      tags: 
       this_deck_public: "이 덱은 공개 덱입니다."
     index:
       my_decks: "나의 덱들"
@@ -369,16 +410,80 @@ ko:
       public_decks: "공개 덱들"
       subtitle: " 모든 공개 제작덱들"
       title: "공개 덱 목록"
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
   errors:
     format: 
     messages:
       accepted: 
+      already_confirmed: 
       blank: 
       confirmation: 
+      confirmation_period_expired: 
       empty: 
       equal_to: 
       even: 
       exclusion: 
+      expired: 
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -387,6 +492,9 @@ ko:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+      not_found: 
+      not_locked: 
+      not_saved: 
       odd: 
       present: 
       record_invalid: 
@@ -399,12 +507,25 @@ ko:
       body: 
       header: 
   helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
   menu:
     Tournaments:
       Calendar: 
@@ -429,12 +550,14 @@ ko:
       my_active_deck: "나의 활성화 덱"
       my_deck: "나의 덱"
       new_deck: "새로운 덱"
+      other_versions: 
       public_deck_list: "공개 덱 목록"
       title: "덱"
     extra:
       about_us: HearthStats 소개
       change_log: "업데이트 기록"
       contact_info: "연락처"
+      june_report: 
       march_report: "월별 보고서"
       may_report: 
       official_uploader: "공식 업로더"
@@ -445,6 +568,7 @@ ko:
     tournaments:
       Calendar: "달력"
       past_winners: "지난 우승자"
+      recent: 
       register: "등록"
       title: "토너먼트"
   number:
@@ -542,6 +666,17 @@ ko:
       weapons: "무기"
       win_rate: "승률"
       wins: "승"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
     delete: "삭제"
     edit: "수정"
     error: "오류"
@@ -613,6 +748,23 @@ ko:
     show: "보기"
     update: "갱신"
     view_more: "더 보기"
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
   streams:
     index:
       subtitle: " 한 곳에서 좋아하는 모든 스트림을 찾으세요"

@@ -88,6 +88,8 @@ fr:
     help:
       help_text: Veuillez visiter <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> pour toute suggestion ou problèmes.
       title: Aide
+    league:
+      title: 
     news:
       posted: Postées
       read_more: Lire plus
@@ -129,6 +131,7 @@ fr:
       project_source_on_github: les sources du projet sont sur Github
       title: L'uploader officiel
       title:官方上传器 header_text: 
+      tutorial_video: 
       user_key: Clé utilisateur
   arena_runs:
     new:
@@ -183,6 +186,7 @@ fr:
     stats:
       arena_games_played: Parties d'arène jouées
       arena_runs_played: Tours d'arène joués
+      average_length: 
       detailed_class_status: Satuts de classe détaillé
       dist_desc: 
       distribution_graph: 
@@ -279,6 +283,18 @@ fr:
       ranked: classé
       section: construits
       title: Statistiques
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
     winratechart:
       constructed_win_rate_title: Taux de victoires par classe (personnel contre Globale)
   dashboards:
@@ -337,14 +353,38 @@ fr:
       year: 
   decks:
     active_decks:
+      deleted_deck: 
       select_deck: Selection Deck
       slot: Slot
       submit: Soumettre
       subtitle: " Tous les decks construits actifs"
       title: Deck actif
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      deck_name: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
     form:
       card_limit: 
       class: Classe
+      controls: 
       count: 
       deck_limit: 
       decklist_etc: " Decklist, etc"
@@ -353,6 +393,7 @@ fr:
       no_more: 
       notes: Notes
       search: 
+      tags: 
       this_deck_public: Ce deck est public
     index:
       my_decks: Mes decks
@@ -369,16 +410,80 @@ fr:
       public_decks: Decks publics
       subtitle: " tous les decks construits publics"
       title: Liste des deck publics
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
   errors:
     format: 
     messages:
       accepted: 
+      already_confirmed: 
       blank: 
       confirmation: 
+      confirmation_period_expired: 
       empty: 
       equal_to: 
       even: 
       exclusion: 
+      expired: 
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -387,6 +492,9 @@ fr:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+      not_found: 
+      not_locked: 
+      not_saved: 
       odd: 
       present: 
       record_invalid: 
@@ -399,12 +507,25 @@ fr:
       body: 
       header: 
   helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
   menu:
     Tournaments:
       Calendar: 
@@ -426,15 +547,17 @@ fr:
       title: Construits
     dashboard: tableau de bord
     deck:
-      my_active_deck: Mon deck actif
-      my_deck: Mon deck
+      my_active_deck: Mes decks actif
+      my_deck: Mes decks
       new_deck: Nouveau deck
+      other_versions: 
       public_deck_list: List des decks publics
       title: Deck
     extra:
       about_us: A propos
       change_log: Change Log
       contact_info: Contact Info
+      june_report: 
       march_report: rapport du mois de mars
       may_report: 
       official_uploader: Uploader officiel
@@ -445,6 +568,7 @@ fr:
     tournaments:
       Calendar: Calendrier
       past_winners: Gagnants passés
+      recent: 
       register: Enregistrement
       title: Tournois
   number:
@@ -542,6 +666,17 @@ fr:
       weapons: Armes
       win_rate: Pourcentage de victoires
       wins: Victoires
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
     delete: Supprimer
     edit: "éditer"
     error: erreur
@@ -613,6 +748,23 @@ fr:
     show: Voir
     update: Mise à jour
     view_more: Voir plus
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
   streams:
     index:
       subtitle: " Rechercher tous vos streams favoris ici"

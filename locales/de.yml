@@ -88,6 +88,8 @@ de:
     help:
       help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
       title: Help
+    league:
+      title: 
     news:
       posted: gepostet
       read_more: Mehr lesen
@@ -129,6 +131,7 @@ de:
       project_source_on_github: Projekt Quellcode auf Github
       title: Offizieller Uploader
       title:官方上传器 header_text: 
+      tutorial_video: 
       user_key: Benutzerschlüssel
   arena_runs:
     new:
@@ -183,6 +186,7 @@ de:
     stats:
       arena_games_played: Arena Spiele gespielt
       arena_runs_played: Arena Runden gespielt
+      average_length: 
       detailed_class_status: Detailierte Klassenstatus
       dist_desc: 
       distribution_graph: 
@@ -279,6 +283,18 @@ de:
       ranked: Gewertet
       section: Gewertet
       title: Statistiken
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
     winratechart:
       constructed_win_rate_title: Gewertete Sieg Rate pro Klasse (Persönlich vs. Global)
   dashboards:
@@ -337,14 +353,38 @@ de:
       year: 
   decks:
     active_decks:
+      deleted_deck: 
       select_deck: Deck auswählen
       slot: Position
       submit: "Übermitteln"
       subtitle: " alle aktiven gewertet-Decks"
       title: Aktives Deck
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      deck_name: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
     form:
       card_limit: 
       class: Klasse
+      controls: 
       count: 
       deck_limit: 
       decklist_etc: " Deckliste, etc"
@@ -353,6 +393,7 @@ de:
       no_more: 
       notes: Notizen
       search: 
+      tags: 
       this_deck_public: Dieses Deck ist öffentlich
     index:
       my_decks: Meine Decks
@@ -369,16 +410,80 @@ de:
       public_decks: "Öffentliche Decks"
       subtitle: " alle öffentlichen gewertet-Decks"
       title: "Öffentliche Deck List"
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
   errors:
     format: 
     messages:
       accepted: 
+      already_confirmed: 
       blank: 
       confirmation: 
+      confirmation_period_expired: 
       empty: 
       equal_to: 
       even: 
       exclusion: 
+      expired: 
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -387,6 +492,9 @@ de:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+      not_found: 
+      not_locked: 
+      not_saved: 
       odd: 
       present: 
       record_invalid: 
@@ -399,12 +507,25 @@ de:
       body: 
       header: 
   helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
   menu:
     Tournaments:
       Calendar: 
@@ -429,12 +550,14 @@ de:
       my_active_deck: Mein aktives Deck
       my_deck: Mein Deck
       new_deck: Neues Deck
+      other_versions: 
       public_deck_list: "Öffentliche Deck Liste"
       title: Deck
     extra:
       about_us: "Über uns"
       change_log: "Änderungen"
       contact_info: Kontakt Info
+      june_report: 
       march_report: März Report
       may_report: 
       official_uploader: Offizieller Uploader
@@ -445,6 +568,7 @@ de:
     tournaments:
       Calendar: Kalender
       past_winners: Letzte Sieger
+      recent: 
       register: Registrieren
       title: Turniere
   number:
@@ -542,6 +666,17 @@ de:
       weapons: Waffen
       win_rate: Sieg Rate
       wins: Siege
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
     delete: löschen
     edit: edit
     error: Fehler
@@ -613,6 +748,23 @@ de:
     show: zeige
     update: Aktualisiere
     view_more: zeige mehr
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
   streams:
     index:
       subtitle: " finde alle deine favorisierten Streams an einem Platz"

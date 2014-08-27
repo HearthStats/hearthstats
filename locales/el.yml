@@ -88,6 +88,8 @@ el:
     help:
       help_text: "Παρακαλούμε επισκεφθείτε <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> για τυχόν προτάσεις ή προβλήματα."
       title: Help
+    league:
+      title: 
     news:
       posted: "Αναρτημένο"
       read_more: "Διαβάστε περισσότερα"
@@ -129,6 +131,7 @@ el:
       project_source_on_github: "Προέλευση του έργου στο Github"
       title: "Επίσημος Uploader"
       title:官方上传器 header_text: 
+      tutorial_video: 
       user_key: "Κλειδί Χρήστη"
   arena_runs:
     new:
@@ -183,6 +186,7 @@ el:
     stats:
       arena_games_played: "Παιχνίδια Αρένας"
       arena_runs_played: "Προσπάθειες Αρένας"
+      average_length: 
       detailed_class_status: "Αναλυτική Κατάσταση Κλάσης"
       dist_desc: 
       distribution_graph: 
@@ -279,6 +283,18 @@ el:
       ranked: "Κατάταξης"
       section: "Κατασκευασμένο"
       title: "Στατιστικά"
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
     winratechart:
       constructed_win_rate_title: "Συχνότητα νικών κατασκευασμένης τράπουλας ανα κλάση (Προσωπικό VS Παγκόσμιο)"
   dashboards:
@@ -337,14 +353,38 @@ el:
       year: 
   decks:
     active_decks:
+      deleted_deck: 
       select_deck: "Επιλογή τράπουλας"
       slot: Slot
       submit: "Υποβολή"
       subtitle: " όλα οι ενεργές κατασκευασμένες τράπουλες"
       title: "Ενεργή τράπουλα"
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      deck_name: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
     form:
       card_limit: 
       class: "Κλάση"
+      controls: 
       count: 
       deck_limit: 
       decklist_etc: " Λίστα τραπουλών, κλπ"
@@ -353,6 +393,7 @@ el:
       no_more: 
       notes: "Σημειώσεις"
       search: 
+      tags: 
       this_deck_public: "Αυτή η τράπουλα είναι δημόσια"
     index:
       my_decks: "Οι τράπουλές μου"
@@ -369,16 +410,80 @@ el:
       public_decks: "Δημόσιες τράπουλες"
       subtitle: " όλες οι δημόσιες τράπουλές"
       title: "Δημόσια λίστα τραπουλών"
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
   errors:
     format: 
     messages:
       accepted: 
+      already_confirmed: 
       blank: 
       confirmation: 
+      confirmation_period_expired: 
       empty: 
       equal_to: 
       even: 
       exclusion: 
+      expired: 
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -387,6 +492,9 @@ el:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
+      not_found: 
+      not_locked: 
+      not_saved: 
       odd: 
       present: 
       record_invalid: 
@@ -399,12 +507,25 @@ el:
       body: 
       header: 
   helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
   menu:
     Tournaments:
       Calendar: "Ημερολόγιο"
@@ -429,12 +550,14 @@ el:
       my_active_deck: "Η ενεργή μου τράπουλα"
       my_deck: "Η τραπουλά μου"
       new_deck: "Νέα τράπουλα"
+      other_versions: 
       public_deck_list: "Δημόσια λίστα τραπουλών"
       title: "Τράπουλα"
     extra:
       about_us: "Σχετικά με εμάς"
       change_log: "Καταγραφή αλλαγών"
       contact_info: "Πληροφορίες Επικοινωνίας"
+      june_report: 
       march_report: "Αναφορά αγώνα"
       may_report: 
       official_uploader: "Επίσημος Uploader"
@@ -445,6 +568,7 @@ el:
     tournaments:
       Calendar: 
       past_winners: 
+      recent: 
       register: 
       title: 
   number:
@@ -542,6 +666,17 @@ el:
       weapons: "Όπλα"
       win_rate: "Συχνότητα νίκης"
       wins: "Νίκες"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
     delete: "Διαγραφή"
     edit: "Επεξεργασία"
     error: "Σφάλμα"
@@ -613,6 +748,23 @@ el:
     show: "Εμφάνηση"
     update: "Ενημέρωση"
     view_more: "Δείτε περισσότερα"
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
   streams:
     index:
       subtitle: "βρείτε όλα τα αγαπημένα σας streams σε ένα μέρος"

@@ -96,6 +96,8 @@ pt-BR:
     help:
       help_text: Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas.
       title: Ajuda
+    league:
+      title: 
     news:
       posted: Postado
       read_more: Leia Mais
@@ -137,6 +139,7 @@ pt-BR:
       project_source_on_github: Código Aberto do Projeto no Github
       title: Uploader Oficial
       title:官方上传器 header_text: 
+      tutorial_video: 
       user_key: Chave do Usuário
   arena_runs:
     new:
@@ -191,6 +194,7 @@ pt-BR:
     stats:
       arena_games_played: Jogos em Arena
       arena_runs_played: Jogadas em Arena
+      average_length: 
       detailed_class_status: Status Detalhado de Classe
       dist_desc: 
       distribution_graph: 
@@ -287,6 +291,18 @@ pt-BR:
       ranked: rankeado
       section: Constructed
       title: Estatísticas
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_days: 
+      ranked: 
     winratechart:
       constructed_win_rate_title: Taxa de Vitórias em Constructed por Classe (Pessoal vs Global)
   dashboards:
@@ -410,14 +426,38 @@ pt-BR:
       year: Ano
   decks:
     active_decks:
+      deleted_deck: 
       select_deck: Selecione o Deck
       slot: Campo
       submit: Enviar
       subtitle: " todos os decks constructed ativos"
       title: Decks Atívos
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      deck_name: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
     form:
       card_limit: 
       class: Classe
+      controls: 
       count: 
       deck_limit: 
       decklist_etc: " Lista de decks, etc"
@@ -426,6 +466,7 @@ pt-BR:
       no_more: 
       notes: Notas
       search: 
+      tags: 
       this_deck_public: Esse Deck é Público
     index:
       my_decks: Meus Decks
@@ -442,16 +483,80 @@ pt-BR:
       public_decks: Decks Públicos
       subtitle: " todos os decks constructed públicos"
       title: Lista de Decks Públicos
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
   errors:
     format: "%{attribute} %{message}"
     messages:
       accepted: deve ser aceito
+      already_confirmed: 
       blank: não pode ficar em branco
       confirmation: não é igual a %{attribute}
+      confirmation_period_expired: 
       empty: não pode ficar vazio
       equal_to: deve ser igual a %{count}
       even: deve ser par
       exclusion: não está disponível
+      expired: 
       greater_than: deve ser maior que %{count}
       greater_than_or_equal_to: deve ser maior ou igual a %{count}
       inclusion: não está incluído na lista
@@ -460,6 +565,9 @@ pt-BR:
       less_than_or_equal_to: deve ser menor ou igual a %{count}
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
+      not_found: 
+      not_locked: 
+      not_saved: 
       odd: deve ser ímpar
       present: deve ficar em branco
       record_invalid: 'A validação falhou: %{errors}'
@@ -476,12 +584,25 @@ pt-BR:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
+    actions: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
     select:
       prompt: Por favor selecione
     submit:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
   menu:
     Tournaments:
       Calendar: 
@@ -506,12 +627,14 @@ pt-BR:
       my_active_deck: Meu Deck Ativo
       my_deck: Meu Deck
       new_deck: Novo Deck
+      other_versions: 
       public_deck_list: Lista de Deck Publica
       title: Deck
     extra:
       about_us: Sobre
       change_log: Change Log
       contact_info: Contato
+      june_report: 
       march_report: Relatório de Março
       may_report: 
       official_uploader: Uploader Oficial
@@ -522,6 +645,7 @@ pt-BR:
     tournaments:
       Calendar: Calendário
       past_winners: "Últimos Vencedores"
+      recent: 
       register: Registrar
       title: Torneios
   number:
@@ -629,6 +753,17 @@ pt-BR:
       weapons: Armas
       win_rate: Taxa de Vitórias
       wins: Vitórias
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
     delete: Deletar
     edit: Editar
     error: erro
@@ -700,6 +835,23 @@ pt-BR:
     show: exibir
     update: Atualizar
     view_more: Ver Mais
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
   streams:
     index:
       subtitle: " encontre todos os seus jogos ao vivo favoritos em um só lugar"

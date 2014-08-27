@@ -69,6 +69,8 @@ zh-CN:
       title:官方上传器 header_text: "如果可以让我们的战绩上传器替你照料你的任何事，为什么还要自己手动输入战绩呢? 此开放原始码的实用程序对你的炉石窗口使用屏幕撷取分析. 它并不会导致封包监听,屏幕监控, 或任何种类的网络变更. 此程序将永远是开放原始码，因此你可以做你自己的模块，以便察看它究竟会发生什么事."
       user_key: "用户密钥"
       tutorial_video: 
+    league:
+      title: 
   arena_runs:
     new:
       continue: "继续"
@@ -287,6 +289,21 @@ zh-CN:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
   menu:
     arena:
       continue_arena_run: "继续竞技场赛事"
@@ -433,6 +450,17 @@ zh-CN:
     show: "展示"
     update: "更新"
     view_more: "观看更多"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   streams:
     index:
       subtitle: " 在一个地方发现所有你喜爱的实况"
