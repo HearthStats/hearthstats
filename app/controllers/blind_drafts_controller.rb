@@ -15,6 +15,8 @@ class BlindDraftsController < ApplicationController
 
   def create
     @blind_draft = BlindDraft.new(params[:blind_draft])
+    klass_string = Klass.list.sample(5).join(",")
+    @blind_draft.klass_string = klass_string
     respond_to do |format|
       if @blind_draft.save
         format.html { redirect_to draft_blind_draft_path(@blind_draft), 
@@ -38,6 +40,7 @@ class BlindDraftsController < ApplicationController
       if card.update_attribute(:revealed, true)
         sync_update card
         format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
+        format.js
       else
         format.html { render action: "draft" }
       end
@@ -52,6 +55,7 @@ class BlindDraftsController < ApplicationController
         sync_update card
         sync_update card.blind_draft
         format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
+        format.js
       else
         format.html { render action: "draft" }
       end

@@ -31,8 +31,8 @@ Hearthstats::Application.routes.draw do
 
   resources :blind_drafts do
     member do
-      post 'reveal_card'
-      post 'pick_card'
+      put 'reveal_card'
+      put 'pick_card'
       get 'draft'
     end
   end
