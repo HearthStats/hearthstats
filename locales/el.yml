@@ -179,10 +179,15 @@ el:
       help_text: "Παρακαλούμε επισκεφθείτε <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> για τυχόν προτάσεις ή προβλήματα."
       title: Help
 <<<<<<< HEAD
+<<<<<<< HEAD
     league:
       title: 
 =======
 >>>>>>> added localeapp back into system
+=======
+    league:
+      title: 
+>>>>>>> locale changes:
     news:
       posted: "Αναρτημένο"
       read_more: "Διαβάστε περισσότερα"
@@ -225,9 +230,13 @@ el:
       title: "Επίσημος Uploader"
       title:官方上传器 header_text: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       tutorial_video: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      tutorial_video: 
+>>>>>>> locale changes:
       user_key: "Κλειδί Χρήστη"
   arena_runs:
     new:
@@ -287,9 +296,13 @@ el:
       arena_games_played: "Παιχνίδια Αρένας"
       arena_runs_played: "Προσπάθειες Αρένας"
 <<<<<<< HEAD
+<<<<<<< HEAD
       average_length: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      average_length: 
+>>>>>>> locale changes:
       detailed_class_status: "Αναλυτική Κατάσταση Κλάσης"
       dist_desc: 
       distribution_graph: 
@@ -387,6 +400,9 @@ el:
       section: "Κατασκευασμένο"
       title: "Στατιστικά"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -397,11 +413,16 @@ el:
       filter_by: 
       first_or_second: 
       hours: 
+<<<<<<< HEAD
       last_24_hours: 
       last_days: 
       ranked: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      last_days: 
+      ranked: 
+>>>>>>> locale changes:
     winratechart:
       constructed_win_rate_title: "Συχνότητα νικών κατασκευασμένης τράπουλας ανα κλάση (Προσωπικό VS Παγκόσμιο)"
   dashboards:
@@ -461,14 +482,19 @@ el:
   decks:
     active_decks:
 <<<<<<< HEAD
+<<<<<<< HEAD
       deleted_deck: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      deleted_deck: 
+>>>>>>> locale changes:
       select_deck: "Επιλογή τράπουλας"
       slot: Slot
       submit: "Υποβολή"
       subtitle: " όλα οι ενεργές κατασκευασμένες τράπουλες"
       title: "Ενεργή τράπουλα"
+<<<<<<< HEAD
 <<<<<<< HEAD
     decklist:
       attack_distribution: 
@@ -479,6 +505,8 @@ el:
       type_distribution: 
     editform:
       toggle_text_import: 
+=======
+>>>>>>> locale changes:
     filter:
       ascending: 
       created_after: 
@@ -501,6 +529,7 @@ el:
       show: 
       sort_by: 
       winrate: 
+<<<<<<< HEAD
     form:
       card_limit: 
       class: "Κλάση"
@@ -510,6 +539,12 @@ el:
       card_limit: 
       class: "Κλάση"
 >>>>>>> added localeapp back into system
+=======
+    form:
+      card_limit: 
+      class: "Κλάση"
+      controls: 
+>>>>>>> locale changes:
       count: 
       deck_limit: 
       decklist_etc: " Λίστα τραπουλών, κλπ"
@@ -547,6 +582,9 @@ el:
       subtitle: " όλες οι δημόσιες τράπουλές"
       title: "Δημόσια λίστα τραπουλών"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     public_decklist:
       class: 
       listed_by: 
@@ -608,29 +646,42 @@ el:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   errors:
     format: 
     messages:
       accepted: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
       already_confirmed: 
       blank: 
       confirmation: 
       confirmation_period_expired: 
+<<<<<<< HEAD
 =======
       blank: 
       confirmation: 
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
       empty: 
       equal_to: 
       even: 
       exclusion: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       expired: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      expired: 
+>>>>>>> locale changes:
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -640,11 +691,17 @@ el:
       not_a_number: 
       not_an_integer: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      not_found: 
+      not_locked: 
+      not_saved: 
+>>>>>>> locale changes:
       odd: 
       present: 
       record_invalid: 
@@ -657,6 +714,7 @@ el:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
 <<<<<<< HEAD
     actions: 
     label:
@@ -726,6 +784,9 @@ el:
         email: 
         password: 
         password_confirmation: 
+=======
+    actions: 
+>>>>>>> locale changes:
     links:
       back: 
       cancel: 
@@ -733,8 +794,11 @@ el:
       destroy: 
       edit: 
       new: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     select:
       prompt: 
     submit:
@@ -742,13 +806,19 @@ el:
       submit: 
       update: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     titles:
       delete: 
       edit: 
       new: 
       save: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   menu:
     Tournaments:
       Calendar: "Ημερολόγιο"
@@ -774,9 +844,13 @@ el:
       my_deck: "Η τραπουλά μου"
       new_deck: "Νέα τράπουλα"
 <<<<<<< HEAD
+<<<<<<< HEAD
       other_versions: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      other_versions: 
+>>>>>>> locale changes:
       public_deck_list: "Δημόσια λίστα τραπουλών"
       title: "Τράπουλα"
     extra:
@@ -784,9 +858,13 @@ el:
       change_log: "Καταγραφή αλλαγών"
       contact_info: "Πληροφορίες Επικοινωνίας"
 <<<<<<< HEAD
+<<<<<<< HEAD
       june_report: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      june_report: 
+>>>>>>> locale changes:
       march_report: "Αναφορά αγώνα"
       may_report: 
       official_uploader: "Επίσημος Uploader"
@@ -798,9 +876,13 @@ el:
       Calendar: 
       past_winners: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       recent: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      recent: 
+>>>>>>> locale changes:
       register: 
       title: 
   number:
@@ -899,6 +981,9 @@ el:
       win_rate: "Συχνότητα νίκης"
       wins: "Νίκες"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     deckslist_no_filter:
       class: 
       losses: 
@@ -910,8 +995,11 @@ el:
       weapons: 
       win_rate: 
       wins: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     delete: "Διαγραφή"
     edit: "Επεξεργασία"
     error: "Σφάλμα"
@@ -1016,6 +1104,9 @@ el:
     update: "Ενημέρωση"
     view_more: "Δείτε περισσότερα"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
   social_share_button:
     baidu: 
     delicious: 
@@ -1033,8 +1124,11 @@ el:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   streams:
     index:
       subtitle: "βρείτε όλα τα αγαπημένα σας streams σε ένα μέρος"

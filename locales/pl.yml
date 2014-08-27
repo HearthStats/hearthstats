@@ -30,6 +30,7 @@ pl:
         body: 
         header: 
   activerecord:
+<<<<<<< HEAD
     attributes:
       arena_run:
         Dust Earned: 
@@ -103,6 +104,8 @@ pl:
         password: 
         password_confirmation: 
         reset_password_token: 
+=======
+>>>>>>> locale changes:
     errors:
       format: 
       messages:
@@ -132,6 +135,7 @@ pl:
       template:
         body: 
         header: 
+<<<<<<< HEAD
     models:
       arena_run: 
       deck: 
@@ -139,6 +143,8 @@ pl:
       tournament: 
       unique_deck: 
       user: 
+=======
+>>>>>>> locale changes:
   additional:
     aboutus:
       a_huge_thanks_to: Wielkie podziękowania dla
@@ -157,7 +163,10 @@ pl:
       you_can_follow_twitter: Możesz mnie śledzić na Twitterze
     changelog:
       all_time_in_utc: Czas w UTC
+<<<<<<< HEAD
       changelog: 
+=======
+>>>>>>> locale changes:
       title: Lista zmian
     contactus:
       contact_email_text: "Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań."
@@ -232,7 +241,10 @@ pl:
       description: " ostatnie gry na Arenie"
       new_arena_run: Nowa Arena
       notes: Notatki
+<<<<<<< HEAD
       'on': 
+=======
+>>>>>>> locale changes:
       options: Opcje
       prizes: Nagroda
       recent_arena_games: Ostatnie gry na Arenie
@@ -375,7 +387,10 @@ pl:
       filter_by: 
       first_or_second: 
       hours: 
+<<<<<<< HEAD
       last_24_hours: 
+=======
+>>>>>>> locale changes:
       last_days: 
       ranked: 
     winratechart:
@@ -442,6 +457,7 @@ pl:
       submit: Zatwierdź
       subtitle: " wszystkie aktywne talie"
       title: Aktywna talia
+<<<<<<< HEAD
     decklist:
       attack_distribution: 
       card_list: 
@@ -451,6 +467,8 @@ pl:
       type_distribution: 
     editform:
       toggle_text_import: 
+=======
+>>>>>>> locale changes:
     filter:
       ascending: 
       created_after: 
@@ -484,11 +502,17 @@ pl:
       name: Nazwa
       no_more: 
       notes: Notatki
+<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
       this_deck_public: Talia jest ogólnodostępna
       toggle_text_import: 
+=======
+      search: 
+      tags: 
+      this_deck_public: Talia jest ogólnodostępna
+>>>>>>> locale changes:
     index:
       my_decks: Moje talie
       new_deck: Nowa talia
@@ -498,7 +522,10 @@ pl:
       section: Talie
       title: Nowa talia
     new_splash:
+<<<<<<< HEAD
       section: 
+=======
+>>>>>>> locale changes:
       title: 
     public:
       new_deck: Nowa talia
@@ -603,6 +630,7 @@ pl:
       header: 
   helpers:
     actions: 
+<<<<<<< HEAD
     label:
       arena_run:
         Dust Earned: 
@@ -670,6 +698,8 @@ pl:
         email: 
         password: 
         password_confirmation: 
+=======
+>>>>>>> locale changes:
     links:
       back: 
       cancel: 
@@ -845,6 +875,7 @@ pl:
     filter:
       all_time: 
       apply: 
+<<<<<<< HEAD
       ascending: 
       coin?: 
       created_at: 
@@ -852,16 +883,26 @@ pl:
       duration: 
       filter: 
       for: 
+=======
+      coin?: 
+      created_at: 
+      duration: 
+>>>>>>> locale changes:
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+<<<<<<< HEAD
       opponent: 
       per_page: 
       reset: 
       shared:
         notes: 
       show: 
+=======
+      per_page: 
+      reset: 
+>>>>>>> locale changes:
       sort: 
       win_rate_over: 
     footer:
@@ -910,6 +951,7 @@ pl:
       sort: sortuj po
       win_rate_over: wskaźnik zwycięstw w ponad
       your: Twoja
+<<<<<<< HEAD
     matchlist_no_filter:
       coin: 
       created: 
@@ -920,6 +962,8 @@ pl:
       result: 
       rounds: 
       your: 
+=======
+>>>>>>> locale changes:
     new_arena_game: Nowa gra na Arenie
     notes: Notatki
     prohibited_this_being_save: 'nie można %{resource} zapisać:'
@@ -961,19 +1005,25 @@ pl:
       long: 
       short: 
     pm: 
+<<<<<<< HEAD
   tournaments:
     form:
       format: 
       invite_only: 
       num_decks: 
       num_pods: 
+=======
+>>>>>>> locale changes:
   tournies:
     index:
       section: Turnieje
       subtitle: " Zarejestruj się do naszych najnowszych turniejów"
       title: Zarejestruj się
+<<<<<<< HEAD
     show:
       decks: 
+=======
+>>>>>>> locale changes:
   will_paginate:
     next_label: 
     page_entries_info:

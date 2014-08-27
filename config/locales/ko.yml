@@ -260,6 +260,17 @@ ko:
       mode: "모드"
       opponent_name: "상대방 이름"
       options: "옵션"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   dashboards:
     index:
       title: "대시보드"
@@ -468,6 +479,21 @@ ko:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
   arena_runs:
     new:
       title: "새로운 투기장"
@@ -561,6 +587,7 @@ ko:
       title: "연락처"
     help:
       help_text: "제안이나 문제가 있으시면 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a>를 방문해주세요."
+<<<<<<< HEAD
       title: "도움말"
     league:
       title: 
@@ -618,6 +645,15 @@ ko:
       title: "새로운 투기장"
       your_class: "당신 직업"
   arenas:
+=======
+    league:
+      title: 
+  streams:
+    index:
+      title: "스트림"
+      subtitle: " 한 곳에서 좋아하는 모든 스트림을 찾으세요"
+  tournies:
+>>>>>>> locale changes:
     index:
       arena_run_with: arena run with
       close: "닫기"

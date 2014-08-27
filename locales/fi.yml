@@ -179,10 +179,15 @@ fi:
       help_text: Ole hyvä ja käy osoitteessa <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> antaaksesi ehdotuksia ja ongelmia.
       title: Apua
 <<<<<<< HEAD
+<<<<<<< HEAD
     league:
       title: 
 =======
 >>>>>>> added localeapp back into system
+=======
+    league:
+      title: 
+>>>>>>> locale changes:
     news:
       posted: Lähetetty
       read_more: Lue lisää
@@ -225,9 +230,13 @@ fi:
       title: 
       title:官方上传器 header_text: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       tutorial_video: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      tutorial_video: 
+>>>>>>> locale changes:
       user_key: 
   arena_runs:
     new:
@@ -287,9 +296,13 @@ fi:
       arena_games_played: 
       arena_runs_played: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       average_length: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      average_length: 
+>>>>>>> locale changes:
       detailed_class_status: 
       dist_desc: 
       distribution_graph: 
@@ -387,6 +400,9 @@ fi:
       section: 
       title: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -397,11 +413,16 @@ fi:
       filter_by: 
       first_or_second: 
       hours: 
+<<<<<<< HEAD
       last_24_hours: 
       last_days: 
       ranked: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      last_days: 
+      ranked: 
+>>>>>>> locale changes:
     winratechart:
       constructed_win_rate_title: 
   dashboards:
@@ -461,14 +482,19 @@ fi:
   decks:
     active_decks:
 <<<<<<< HEAD
+<<<<<<< HEAD
       deleted_deck: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      deleted_deck: 
+>>>>>>> locale changes:
       select_deck: 
       slot: 
       submit: 
       subtitle: 
       title: 
+<<<<<<< HEAD
 <<<<<<< HEAD
     decklist:
       attack_distribution: 
@@ -479,6 +505,8 @@ fi:
       type_distribution: 
     editform:
       toggle_text_import: 
+=======
+>>>>>>> locale changes:
     filter:
       ascending: 
       created_after: 
@@ -505,11 +533,14 @@ fi:
       card_limit: 
       class: 
       controls: 
+<<<<<<< HEAD
 =======
     form:
       card_limit: 
       class: 
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
       count: 
       deck_limit: 
       decklist_etc: 
@@ -547,6 +578,9 @@ fi:
       subtitle: 
       title: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     public_decklist:
       class: 
       listed_by: 
@@ -608,12 +642,16 @@ fi:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   errors:
     format: 
     messages:
       accepted: 
+<<<<<<< HEAD
 <<<<<<< HEAD
       already_confirmed: 
       blank: 
@@ -623,14 +661,24 @@ fi:
       blank: 
       confirmation: 
 >>>>>>> added localeapp back into system
+=======
+      already_confirmed: 
+      blank: 
+      confirmation: 
+      confirmation_period_expired: 
+>>>>>>> locale changes:
       empty: 
       equal_to: 
       even: 
       exclusion: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       expired: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      expired: 
+>>>>>>> locale changes:
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -640,11 +688,17 @@ fi:
       not_a_number: 
       not_an_integer: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      not_found: 
+      not_locked: 
+      not_saved: 
+>>>>>>> locale changes:
       odd: 
       present: 
       record_invalid: 
@@ -657,6 +711,7 @@ fi:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
 <<<<<<< HEAD
     actions: 
     label:
@@ -726,6 +781,9 @@ fi:
         email: 
         password: 
         password_confirmation: 
+=======
+    actions: 
+>>>>>>> locale changes:
     links:
       back: 
       cancel: 
@@ -733,8 +791,11 @@ fi:
       destroy: 
       edit: 
       new: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     select:
       prompt: 
     submit:
@@ -742,13 +803,19 @@ fi:
       submit: 
       update: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     titles:
       delete: 
       edit: 
       new: 
       save: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   menu:
     Tournaments:
       Calendar: 
@@ -774,9 +841,13 @@ fi:
       my_deck: 
       new_deck: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       other_versions: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      other_versions: 
+>>>>>>> locale changes:
       public_deck_list: 
       title: 
     extra:
@@ -784,9 +855,13 @@ fi:
       change_log: 
       contact_info: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       june_report: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      june_report: 
+>>>>>>> locale changes:
       march_report: 
       may_report: 
       official_uploader: 
@@ -798,9 +873,13 @@ fi:
       Calendar: 
       past_winners: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       recent: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      recent: 
+>>>>>>> locale changes:
       register: 
       title: 
   number:
@@ -899,6 +978,9 @@ fi:
       win_rate: 
       wins: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     deckslist_no_filter:
       class: 
       losses: 
@@ -910,8 +992,11 @@ fi:
       weapons: 
       win_rate: 
       wins: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     delete: 
     edit: 
     error: 
@@ -1016,6 +1101,9 @@ fi:
     update: 
     view_more: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
   social_share_button:
     baidu: 
     delicious: 
@@ -1033,8 +1121,11 @@ fi:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   streams:
     index:
       subtitle: 

@@ -345,6 +345,17 @@ pt-BR:
       mode: Modo
       opponent_name: Nome do Oponente
       options: Opções
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   dashboards:
     index:
       title: Dashboard
@@ -687,6 +698,21 @@ pt-BR:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
   arena_runs:
     new:
       title: Nova Série de Jogadas em Arena
@@ -768,6 +794,8 @@ pt-BR:
     help:
       title: Ajuda
       help_text: Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas.
+    league:
+      title: 
   streams:
     index:
       title: Ao Vivo

@@ -343,6 +343,17 @@ es:
       mode: Modo
       opponent_name: Nombre del Oponente
       options: Opciones
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   dashboards:
     index:
       title: Panel
@@ -974,6 +985,21 @@ es:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
   arena_runs:
     new:
       title: Nueva Arena
@@ -1055,6 +1081,8 @@ es:
     help:
       title: Ayuda
       help_text: Visita <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para cualquier problema o sugerencia.
+    league:
+      title: 
   streams:
     index:
       title: Transmisiones (Streams)

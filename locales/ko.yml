@@ -179,10 +179,15 @@ ko:
       help_text: "제안이나 문제가 있으시면 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a>를 방문해주세요."
       title: "도움말"
 <<<<<<< HEAD
+<<<<<<< HEAD
     league:
       title: 
 =======
 >>>>>>> added localeapp back into system
+=======
+    league:
+      title: 
+>>>>>>> locale changes:
     news:
       posted: Posted
       read_more: "더 일기"
@@ -225,9 +230,13 @@ ko:
       title: "공식 업로더"
       title:官方上传器 header_text: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       tutorial_video: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      tutorial_video: 
+>>>>>>> locale changes:
       user_key: "사용자 키"
   arena_runs:
     new:
@@ -287,9 +296,13 @@ ko:
       arena_games_played: "총 투기장 경기"
       arena_runs_played: "총 투기장 플레이"
 <<<<<<< HEAD
+<<<<<<< HEAD
       average_length: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      average_length: 
+>>>>>>> locale changes:
       detailed_class_status: "세부적인 직업별 통계"
       dist_desc: 
       distribution_graph: 
@@ -387,6 +400,9 @@ ko:
       section: "제작덱 경기"
       title: "통계"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -397,11 +413,16 @@ ko:
       filter_by: 
       first_or_second: 
       hours: 
+<<<<<<< HEAD
       last_24_hours: 
       last_days: 
       ranked: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      last_days: 
+      ranked: 
+>>>>>>> locale changes:
     winratechart:
       constructed_win_rate_title: "직업별 제작덱 승률 (개인 vs 전체)"
   dashboards:
@@ -461,14 +482,19 @@ ko:
   decks:
     active_decks:
 <<<<<<< HEAD
+<<<<<<< HEAD
       deleted_deck: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      deleted_deck: 
+>>>>>>> locale changes:
       select_deck: "덱 선택"
       slot: "슬롯"
       submit: "제출"
       subtitle: " 모든 활성화된 제작덱들"
       title: "활성화 덱"
+<<<<<<< HEAD
 <<<<<<< HEAD
     decklist:
       attack_distribution: 
@@ -479,6 +505,8 @@ ko:
       type_distribution: 
     editform:
       toggle_text_import: 
+=======
+>>>>>>> locale changes:
     filter:
       ascending: 
       created_after: 
@@ -501,6 +529,7 @@ ko:
       show: 
       sort_by: 
       winrate: 
+<<<<<<< HEAD
     form:
       card_limit: 
       class: "직업"
@@ -510,6 +539,12 @@ ko:
       card_limit: 
       class: "직업"
 >>>>>>> added localeapp back into system
+=======
+    form:
+      card_limit: 
+      class: "직업"
+      controls: 
+>>>>>>> locale changes:
       count: 
       deck_limit: 
       decklist_etc: " 덱 목록, 기타"
@@ -547,6 +582,9 @@ ko:
       subtitle: " 모든 공개 제작덱들"
       title: "공개 덱 목록"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     public_decklist:
       class: 
       listed_by: 
@@ -608,29 +646,42 @@ ko:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   errors:
     format: 
     messages:
       accepted: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
       already_confirmed: 
       blank: 
       confirmation: 
       confirmation_period_expired: 
+<<<<<<< HEAD
 =======
       blank: 
       confirmation: 
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
       empty: 
       equal_to: 
       even: 
       exclusion: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       expired: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      expired: 
+>>>>>>> locale changes:
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -640,11 +691,17 @@ ko:
       not_a_number: 
       not_an_integer: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       not_found: 
       not_locked: 
       not_saved: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      not_found: 
+      not_locked: 
+      not_saved: 
+>>>>>>> locale changes:
       odd: 
       present: 
       record_invalid: 
@@ -657,6 +714,7 @@ ko:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
 <<<<<<< HEAD
     actions: 
     label:
@@ -726,6 +784,9 @@ ko:
         email: 
         password: 
         password_confirmation: 
+=======
+    actions: 
+>>>>>>> locale changes:
     links:
       back: 
       cancel: 
@@ -733,8 +794,11 @@ ko:
       destroy: 
       edit: 
       new: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     select:
       prompt: 
     submit:
@@ -742,13 +806,19 @@ ko:
       submit: 
       update: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     titles:
       delete: 
       edit: 
       new: 
       save: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   menu:
     Tournaments:
       Calendar: 
@@ -774,9 +844,13 @@ ko:
       my_deck: "나의 덱"
       new_deck: "새로운 덱"
 <<<<<<< HEAD
+<<<<<<< HEAD
       other_versions: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      other_versions: 
+>>>>>>> locale changes:
       public_deck_list: "공개 덱 목록"
       title: "덱"
     extra:
@@ -784,9 +858,13 @@ ko:
       change_log: "업데이트 기록"
       contact_info: "연락처"
 <<<<<<< HEAD
+<<<<<<< HEAD
       june_report: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      june_report: 
+>>>>>>> locale changes:
       march_report: "월별 보고서"
       may_report: 
       official_uploader: "공식 업로더"
@@ -798,9 +876,13 @@ ko:
       Calendar: "달력"
       past_winners: "지난 우승자"
 <<<<<<< HEAD
+<<<<<<< HEAD
       recent: 
 =======
 >>>>>>> added localeapp back into system
+=======
+      recent: 
+>>>>>>> locale changes:
       register: "등록"
       title: "토너먼트"
   number:
@@ -899,6 +981,9 @@ ko:
       win_rate: "승률"
       wins: "승"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     deckslist_no_filter:
       class: 
       losses: 
@@ -910,8 +995,11 @@ ko:
       weapons: 
       win_rate: 
       wins: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     delete: "삭제"
     edit: "수정"
     error: "오류"
@@ -1016,6 +1104,9 @@ ko:
     update: "갱신"
     view_more: "더 보기"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
   social_share_button:
     baidu: 
     delicious: 
@@ -1033,8 +1124,11 @@ ko:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   streams:
     index:
       subtitle: " 한 곳에서 좋아하는 모든 스트림을 찾으세요"

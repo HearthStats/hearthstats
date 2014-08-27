@@ -179,10 +179,15 @@ en:
       help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
       title: Help
 <<<<<<< HEAD
+<<<<<<< HEAD
     league:
       title: HearthStats Invitational
 =======
 >>>>>>> added localeapp back into system
+=======
+    league:
+      title: HearthStats Invitational
+>>>>>>> locale changes:
     news:
       posted: Posted
       read_more: Read More
@@ -225,9 +230,13 @@ en:
       title: Official Uploader
       title:官方上传器 header_text: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       tutorial_video: Tutorial Video
 =======
 >>>>>>> added localeapp back into system
+=======
+      tutorial_video: Tutorial Video
+>>>>>>> locale changes:
       user_key: User Key
   arena_runs:
     new:
@@ -256,10 +265,14 @@ en:
       recent_arena_games: Recent Arena Games
       section: Arena
 <<<<<<< HEAD
+<<<<<<< HEAD
       time_played: Time Played
 =======
       time_played: 
 >>>>>>> added localeapp back into system
+=======
+      time_played: Time Played
+>>>>>>> locale changes:
       timee_played: Time Played
       title: Recent Games
       'true': true
@@ -291,9 +304,13 @@ en:
       arena_games_played: Arena Games Played
       arena_runs_played: Arena Runs Played
 <<<<<<< HEAD
+<<<<<<< HEAD
       average_length: Average Run Length
 =======
 >>>>>>> added localeapp back into system
+=======
+      average_length: Average Run Length
+>>>>>>> locale changes:
       detailed_class_status: Detailed Class Status
       dist_desc: Times achieved vs Number of wins in arena run
       distribution_graph: Distribution Graph
@@ -312,10 +329,14 @@ en:
   cards:
     index:
 <<<<<<< HEAD
+<<<<<<< HEAD
       any_class: Any class
 =======
       any_class: any class
 >>>>>>> added localeapp back into system
+=======
+      any_class: Any class
+>>>>>>> locale changes:
       any_race: any race
       any_type: any type
       ascending: Ascending
@@ -344,6 +365,7 @@ en:
       casual: Casual
       deck_name: Deck name
 <<<<<<< HEAD
+<<<<<<< HEAD
       first_turn: First turn
       opponent_class: Opponent class
       ranked: Ranked
@@ -354,6 +376,12 @@ en:
       ranked: Ranked
       second_turn: second turn
 >>>>>>> added localeapp back into system
+=======
+      first_turn: First turn
+      opponent_class: Opponent class
+      ranked: Ranked
+      second_turn: Second turn
+>>>>>>> locale changes:
       this_match_is: This match is
       you_played_on_the: You played on the
     index:
@@ -372,6 +400,7 @@ en:
       casual: Casual
       deck_name: Deck name
 <<<<<<< HEAD
+<<<<<<< HEAD
       first_turn: First turn
       opponent_class: Opponent class
       ranked: Ranked
@@ -382,6 +411,12 @@ en:
       ranked: Ranked
       second_turn: second turn
 >>>>>>> added localeapp back into system
+=======
+      first_turn: First turn
+      opponent_class: Opponent class
+      ranked: Ranked
+      second_turn: Second turn
+>>>>>>> locale changes:
       this_match_is: This match is
       you_played_on_the: You played on the
     quickentry:
@@ -409,6 +444,9 @@ en:
       section: Constructed
       title: Statistics
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     stats_filter:
       all_mode: All Mode
       all_seasons: All Seasons
@@ -419,11 +457,16 @@ en:
       filter_by: Filter by
       first_or_second: first or second
       hours: hours
+<<<<<<< HEAD
       last_24_hours: last 24 hours
       last_days: Last %{num} days
       ranked: Ranked
 =======
 >>>>>>> added localeapp back into system
+=======
+      last_days: Last %{num} days
+      ranked: Ranked
+>>>>>>> locale changes:
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
   dashboards:
@@ -483,14 +526,19 @@ en:
   decks:
     active_decks:
 <<<<<<< HEAD
+<<<<<<< HEAD
       deleted_deck: Deleted Deck
 =======
 >>>>>>> added localeapp back into system
+=======
+      deleted_deck: Deleted Deck
+>>>>>>> locale changes:
       select_deck: Select Deck
       slot: Slot
       submit: Submit
       subtitle: " all active constructed decks"
       title: Active Deck
+<<<<<<< HEAD
 <<<<<<< HEAD
     decklist:
       attack_distribution: Attack distribution
@@ -501,6 +549,8 @@ en:
       type_distribution: Type Distribution
     editform:
       toggle_text_import: Toggle Text Import
+=======
+>>>>>>> locale changes:
     filter:
       ascending: Ascending
       created_after: Created After
@@ -529,11 +579,14 @@ en:
       card_limit: Max Card Limit
       class: Class
       controls: Controls
+<<<<<<< HEAD
 =======
     form:
       card_limit: Max Card Limit
       class: Class
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
       count: Count
       deck_limit: Max Deck Limit
       decklist_etc: " Decklist, etc"
@@ -549,6 +602,7 @@ en:
       toggle_text_import: Toggle Text Import
 =======
       search: Search
+      tags: Tags
       this_deck_public: Make Deck Public
 >>>>>>> added localeapp back into system
     index:
@@ -571,6 +625,9 @@ en:
       subtitle: " all public constructed decks"
       title: Public Deck List
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     public_decklist:
       class: Class
       listed_by: Listed By
@@ -632,29 +689,42 @@ en:
       send_instructions: You will receive an email with instructions about how to unlock your account in a few minutes.
       send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   errors:
     format: 
     messages:
       accepted: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
       already_confirmed: was already confirmed, please try signing in
       blank: 
       confirmation: 
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+<<<<<<< HEAD
 =======
       blank: 
       confirmation: 
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
       empty: 
       equal_to: 
       even: 
       exclusion: 
 <<<<<<< HEAD
+<<<<<<< HEAD
       expired: has expired, please request a new one
 =======
 >>>>>>> added localeapp back into system
+=======
+      expired: has expired, please request a new one
+>>>>>>> locale changes:
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -664,13 +734,19 @@ en:
       not_a_number: 
       not_an_integer: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
       not_found: not found
       not_locked: was not locked
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
       odd: 
       present: 
       record_invalid: 
@@ -683,6 +759,7 @@ en:
       body: 
       header: 
   helpers:
+<<<<<<< HEAD
 <<<<<<< HEAD
     actions: Actions
     label:
@@ -752,6 +829,9 @@ en:
         email: 
         password: 
         password_confirmation: 
+=======
+    actions: Actions
+>>>>>>> locale changes:
     links:
       back: Back
       cancel: Cancel
@@ -759,8 +839,11 @@ en:
       destroy: Delete
       edit: Edit
       new: New
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
     select:
       prompt: 
     submit:
@@ -768,13 +851,19 @@ en:
       submit: 
       update: 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     titles:
       delete: Delete %{model}
       edit: Edit %{model}
       new: New %{model}
       save: Save %{model}
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   menu:
     Tournaments:
       Calendar: 
@@ -805,9 +894,13 @@ en:
       my_deck: My Decks
       new_deck: New Deck
 <<<<<<< HEAD
+<<<<<<< HEAD
       other_versions: View Other Versions
 =======
 >>>>>>> added localeapp back into system
+=======
+      other_versions: View Other Versions
+>>>>>>> locale changes:
       public_deck_list: Public Deck List
       title: Deck
     extra:
@@ -815,9 +908,13 @@ en:
       change_log: Change Log
       contact_info: Contact Info
 <<<<<<< HEAD
+<<<<<<< HEAD
       june_report: June Report
 =======
 >>>>>>> added localeapp back into system
+=======
+      june_report: June Report
+>>>>>>> locale changes:
       march_report: 
       may_report: May Report
       official_uploader: Official Uploader
@@ -829,9 +926,13 @@ en:
       Calendar: Calendar
       past_winners: Past Winners
 <<<<<<< HEAD
+<<<<<<< HEAD
       recent: Recent Tournaments
 =======
 >>>>>>> added localeapp back into system
+=======
+      recent: Recent Tournaments
+>>>>>>> locale changes:
       register: Register
       title: Tournaments
   number:
@@ -896,10 +997,14 @@ en:
       card_list: Card List
       health_distribution: Health distribution
 <<<<<<< HEAD
+<<<<<<< HEAD
       left_click_add_right_remove: Left-click to add. Click and hold to remove.
 =======
       left_click_add_right_remove: Left-click to add. Right-click to remove.
 >>>>>>> added localeapp back into system
+=======
+      left_click_add_right_remove: Left-click to add. Click and hold to remove.
+>>>>>>> locale changes:
       mana_curve: Mana curve
       mechanics: Mechanics
       of_30_cards: of 30 cards
@@ -909,10 +1014,14 @@ en:
       type_distribution: Type distribution
     deckslist:
 <<<<<<< HEAD
+<<<<<<< HEAD
       any_class: Any class
 =======
       any_class: any class
 >>>>>>> added localeapp back into system
+=======
+      any_class: Any class
+>>>>>>> locale changes:
       apply: Apply
       asc: Asc
       class: Class
@@ -932,16 +1041,23 @@ en:
       spells: Spells
       stats_are_for_all_users: stats are for all users that have played the deck in the last 30 days, not just the original author
 <<<<<<< HEAD
+<<<<<<< HEAD
       stats_are_for_your_personal: stats are for your personal play using each deck
 =======
       stats_are_for_your_personal: stats are for for your personal play using each deck
 >>>>>>> added localeapp back into system
+=======
+      stats_are_for_your_personal: stats are for your personal play using each deck
+>>>>>>> locale changes:
       tools: Tools
       users: Users
       weapons: Weapons
       win_rate: Win Rate
       wins: Wins
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
     deckslist_no_filter:
       class: Class
       losses: Losses
@@ -956,6 +1072,7 @@ en:
     delete: Delete
     edit: Edit
     error: error
+<<<<<<< HEAD
     filter:
       all_time: All time
       apply: Apply
@@ -970,6 +1087,8 @@ en:
     delete: delete
     edit: edit
     error: erro
+=======
+>>>>>>> locale changes:
     filter:
       all_time: All time
       apply: Apply
@@ -1012,6 +1131,7 @@ en:
       you_have: You have
     matchlist:
 <<<<<<< HEAD
+<<<<<<< HEAD
       all_time: All Time
       any_class: Any class
       apply: Apply
@@ -1030,24 +1150,36 @@ en:
       all_time: 
       any_class: any class
       apply: 
+=======
+      all_time: All Time
+      any_class: Any class
+      apply: Apply
+>>>>>>> locale changes:
       ascending: ascending
       coin: Coin
-      coin?: 
+      coin?: Coin?
       created: Created
-      days: 
+      days: Days
       descending: descending
-      duration: 
+      duration: Duratio
       filter: Filter
+<<<<<<< HEAD
       last: 
       last_24_hours: 
       matches_in_this_list: 
 >>>>>>> added localeapp back into system
+=======
+      last: Last
+      last_24_hours: Last 25 Hours
+      matches_in_this_list: Matches in this list
+>>>>>>> locale changes:
       mode: Mode
       no_coin: No Coin
       opponent: Opponent
       opponent_class: Opponent Class
       opponent_name: Opponent Name
       options: Options
+<<<<<<< HEAD
 <<<<<<< HEAD
       per_page: per page
       rank: Rank
@@ -1069,14 +1201,22 @@ en:
       rounds: Rounds
 =======
       per_page: 
+=======
+      per_page: per page
+>>>>>>> locale changes:
       rank: Rank
-      reset: 
+      reset: Reset
       result: Result
       rounds: Rounds
       show: Show
+<<<<<<< HEAD
       sort: 
       win_rate_over: 
 >>>>>>> added localeapp back into system
+=======
+      sort: Sort
+      win_rate_over: Win Rate Over
+>>>>>>> locale changes:
       your: Your
     new_arena_game: New Arena Game
     notes: Notes
@@ -1087,6 +1227,9 @@ en:
     update: Update
     view_more: View More
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> locale changes:
   social_share_button:
     baidu: Baidu.com
     delicious: Delicious
@@ -1104,8 +1247,11 @@ en:
     tumblr: Tumblr
     twitter: Twitter
     weibo: Sina Weibo
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> locale changes:
   streams:
     index:
       subtitle: " find all your favourite streams in one place"
@@ -1140,9 +1286,14 @@ en:
   tournies:
     index:
       section: Tournaments
+<<<<<<< HEAD
       subtitle: " Register for our newest tournaments/leagues"
       title: Sign Up
 >>>>>>> added localeapp back into system
+=======
+      subtitle: " Check out recent tournament deck lists!"
+      title: Recent Tournaments
+>>>>>>> locale changes:
   will_paginate:
     next_label: 
     page_entries_info:

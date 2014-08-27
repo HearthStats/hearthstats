@@ -260,6 +260,17 @@ zh-TW:
       mode: "模式"
       opponent_name: "對手名字"
       options: "選項"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   dashboards:
     index:
       title: "儀錶板"
@@ -468,6 +479,21 @@ zh-TW:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
   arena_runs:
     new:
       title: "新競技場賽事"
@@ -561,6 +587,7 @@ zh-TW:
       title: "聯絡資訊"
     help:
       help_text: "請參觀 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> 任何建議或問題皆可."
+<<<<<<< HEAD
       title: "幫助"
     league:
       title: 
@@ -618,6 +645,15 @@ zh-TW:
       title: "新競技場賽事"
       your_class: "你的職業"
   arenas:
+=======
+    league:
+      title: 
+  streams:
+    index:
+      title: "實況"
+      subtitle: " 在一個地方發現所有你喜愛的實況"
+  tournies:
+>>>>>>> locale changes:
     index:
       arena_run_with: "競技場賽事"
       close: "關閉"

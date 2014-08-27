@@ -214,6 +214,7 @@ fi:
       title: 
       title:官方上传器 header_text: 
       tutorial_video: 
+<<<<<<< HEAD
       user_key: 
   arena_runs:
     new:
@@ -225,6 +226,10 @@ fi:
       section: 
       title: 
       your_class: 
+=======
+    league:
+      title: 
+>>>>>>> locale changes:
   arenas:
     index:
       arena_run_with: 
@@ -494,6 +499,7 @@ fi:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
     form:
 <<<<<<< HEAD
       card_limit: 
@@ -544,7 +550,24 @@ fi:
 =======
       controls: 
       tags: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
   devise:
     confirmations:
       confirmed: 
@@ -1001,6 +1024,7 @@ fi:
     twitter: 
     weibo: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   streams:
     index:
       subtitle: 
@@ -1041,3 +1065,17 @@ fi:
     previous_label: 
 =======
 >>>>>>> added league page
+=======
+  shared:
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
