@@ -349,6 +349,14 @@ en:
       add_defeat: Add Defeat
       add_draw: Add Draw
   decks:
+    decklist:
+      attack_distribution: Attack distribution
+      card_list: Card List
+      health_distribution: Hearth Distribution
+      mana_curve: Mana Curve
+      mechanics: Mechanics
+      of_30_cards: of 30 cards
+      type_distribution: Type Distribution
     filter:
       ascending: Ascending
       descending: Descending

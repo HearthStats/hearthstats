@@ -360,7 +360,17 @@ zh-TW:
       weapons: 
       win_rate: 
       wins: 
+<<<<<<< HEAD
 >>>>>>> locale changes:
+=======
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
+>>>>>>> updated localeapp to notify in prod [skip ci]
   arena_runs:
     new:
       title: "新競技場賽事"

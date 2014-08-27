@@ -359,6 +359,13 @@ el:
       submit: "Υποβολή"
       subtitle: " όλα οι ενεργές κατασκευασμένες τράπουλες"
       title: "Ενεργή τράπουλα"
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 

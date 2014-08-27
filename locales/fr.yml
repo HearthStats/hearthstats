@@ -359,6 +359,13 @@ fr:
       submit: Soumettre
       subtitle: " Tous les decks construits actifs"
       title: Deck actif
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 

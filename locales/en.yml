@@ -359,6 +359,13 @@ en:
       submit: Submit
       subtitle: " all active constructed decks"
       title: Active Deck
+    decklist:
+      attack_distribution: Attack distribution
+      card_list: Card List
+      health_distribution: Hearth Distribution
+      mana_curve: Mana Curve
+      mechanics: Mechanics
+      type_distribution: Type Distribution
     filter:
       ascending: Ascending
       created_after: Created After

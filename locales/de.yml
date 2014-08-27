@@ -359,6 +359,13 @@ de:
       submit: "Übermitteln"
       subtitle: " alle aktiven gewertet-Decks"
       title: Aktives Deck
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
     filter:
       ascending: 
       created_after: 
