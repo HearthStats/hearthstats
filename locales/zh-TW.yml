@@ -30,6 +30,43 @@ zh-TW:
         body: 
         header: 
   activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+        gold: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        avatar: 
+        name: 
+        time_zone: 
+      profile/Battle:
+        net ID: 
+      user:
+        email: 
+        password: 
     errors:
       format: 
       messages:
@@ -59,6 +96,10 @@ zh-TW:
       template:
         body: 
         header: 
+    models:
+      arena_run: 
+      deck: 
+      user: 
   additional:
     aboutus:
       a_huge_thanks_to: "非常感謝"
@@ -151,6 +192,7 @@ zh-TW:
       description: " 近期競技場賽事"
       new_arena_run: "新增競技場賽事"
       notes: "註記"
+      'on': 
       options: "選項"
       prizes: "獎勵"
       recent_arena_games: "近期競技場比賽"
@@ -293,6 +335,7 @@ zh-TW:
       filter_by: 
       first_or_second: 
       hours: 
+      last_24_hours: 
       last_days: 
       ranked: 
     winratechart:
@@ -366,6 +409,8 @@ zh-TW:
       mana_curve: 
       mechanics: 
       type_distribution: 
+    editform:
+      toggle_text_import: 
     filter:
       ascending: 
       created_after: 
@@ -399,9 +444,11 @@ zh-TW:
       name: "名字"
       no_more: 
       notes: "註記"
+      other_versions: 
       search: 
       tags: 
       this_deck_public: "此套牌公開"
+      toggle_text_import: 
     index:
       my_decks: "我的套牌"
       new_deck: "新套牌"
@@ -411,6 +458,7 @@ zh-TW:
       section: "套牌"
       title: "新套牌"
     new_splash:
+      section: 
       title: 
     public:
       new_deck: "新套牌"
@@ -515,6 +563,41 @@ zh-TW:
       header: 
   helpers:
     actions: 
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nom: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Deck Name: 
+        Deck name: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        Battle:
+          net ID: 
+        avatar: 
+        name: 
+        time_zone: 
+      user:
+        email: 
     links:
       back: 
       cancel: 
@@ -690,15 +773,23 @@ zh-TW:
     filter:
       all_time: 
       apply: 
+      ascending: 
       coin?: 
       created_at: 
+      descending: 
       duration: 
+      filter: 
+      for: 
       last_24_hours: 
       last_days: 
       matches_in_this_list: 
       numturns: 
+      opponent: 
       per_page: 
       reset: 
+      shared:
+        notes: 
+      show: 
       sort: 
       win_rate_over: 
     footer:
@@ -747,6 +838,16 @@ zh-TW:
       sort: "種類"
       win_rate_over: "勝率約"
       your: "你的"
+    matchlist_no_filter:
+      coin: 
+      created: 
+      duration: 
+      opponent_class: 
+      opponent_name: 
+      options: 
+      result: 
+      rounds: 
+      your: 
     new_arena_game: "新競技場賽事"
     notes: "註記"
     prohibited_this_being_save: "被禁止此 %{resource} 從儲存:"
@@ -793,6 +894,8 @@ zh-TW:
       section: "錦標賽"
       subtitle: " 為我們最新錦標賽和聯盟賽進行註冊"
       title: "登入"
+    show:
+      decks: 
   will_paginate:
     next_label: 
     page_entries_info:
