@@ -40,7 +40,11 @@ ru-RU:
         Classe: 
         Klasse: 
         Name: 
+        Nazwa: 
         Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
         Notes: 
         Notizen: 
         Tags: 
@@ -48,13 +52,19 @@ ru-RU:
         "職業": 
         "註記": 
       match:
+        Classe de votre adversaire: 
         Deck Name: 
         Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
         Notes: 
         Opponent Class: 
         Opponent Name: 
         Opponent class: 
         Opponent's Class: 
+        klass_id: 
+        oppclass_id: 
+        result_id: 
         user_id: 
         "套牌名字": 
         "對手職業": 
@@ -99,6 +109,7 @@ ru-RU:
     models:
       arena_run: 
       deck: 
+      match: 
       user: 
   additional:
     aboutus:
@@ -118,6 +129,7 @@ ru-RU:
       you_can_follow_twitter: 
     changelog:
       all_time_in_utc: 
+      changelog: 
       title: 
     contactus:
       contact_email_text: 
@@ -572,7 +584,11 @@ ru-RU:
         Classe: 
         Klasse: 
         Name: 
+        Nazwa: 
         Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
         Notes: 
         Notizen: 
         Tags: 
@@ -580,8 +596,11 @@ ru-RU:
         "職業": 
         "註記": 
       match:
+        Classe de votre adversaire: 
         Deck Name: 
         Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
         Notes: 
         Opponent Class: 
         Opponent Name: 

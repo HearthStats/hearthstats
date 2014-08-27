@@ -40,7 +40,11 @@ en:
         Classe: 
         Klasse: 
         Name: Name
+        Nazwa: 
         Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
         Notes: Notes
         Notizen: 
         Tags: Tags
@@ -48,13 +52,19 @@ en:
         "職業": 
         "註記": 
       match:
+        Classe de votre adversaire: 
         Deck Name: Deck name
         Deck name: Deck name
+        Gegner Klasse: 
+        Nom du deck: 
         Notes: Notes
         Opponent Class: 
         Opponent Name: Opponent name
         Opponent class: Opponent class
         Opponent's Class: Opponent's class
+        klass_id: Klass
+        oppclass_id: Oppclass
+        result_id: Result
         user_id: 
         "套牌名字": 
         "對手職業": 
@@ -99,6 +109,7 @@ en:
     models:
       arena_run: Arena run
       deck: Deck
+      match: Match
       user: User
   additional:
     aboutus:
@@ -118,6 +129,7 @@ en:
       you_can_follow_twitter: You can follow me on Twitter
     changelog:
       all_time_in_utc: All time in UTC
+      changelog: 
       title: Changelog
     contactus:
       contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
@@ -410,7 +422,7 @@ en:
       mechanics: Mechanics
       type_distribution: Type Distribution
     editform:
-      toggle_text_import: 
+      toggle_text_import: Toggle Text Import
     filter:
       ascending: Ascending
       created_after: Created After
@@ -446,7 +458,7 @@ en:
       name: Name
       no_more: No More In Deck
       notes: Notes
-      other_versions: 
+      other_versions: Other Versions
       search: Search
       tags: Tags
       this_deck_public: Make Deck Public
@@ -576,7 +588,11 @@ en:
         Classe: Classes
         Klasse: 
         Name: 
+        Nazwa: 
         Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
         Notes: 
         Notizen: 
         Tags: 
@@ -584,8 +600,11 @@ en:
         "職業": 
         "註記": 
       match:
+        Classe de votre adversaire: 
         Deck Name: 
         Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
         Notes: 
         Opponent Class: Opponent Class
         Opponent Name: 
