@@ -106,6 +106,17 @@ el:
       mode: "Τρόπος"
       opponent_name: "Όνομα αντιπάλου"
       options: "Επιλογές"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   dashboards:
     index:
       title: "Ταμπλό"
@@ -331,7 +342,25 @@ el:
       show: 
       sort_by: 
       winrate: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
   arena_runs:
     new:
       title: "Νέα προσπάθεια Αρένας"
@@ -420,6 +449,8 @@ el:
     help:
       title: Help
       help_text: "Παρακαλούμε επισκεφθείτε <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> για τυχόν προτάσεις ή προβλήματα."
+    league:
+      title: 
   streams:
     index:
       title: Streams

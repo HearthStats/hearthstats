@@ -122,7 +122,21 @@ pl:
       reset: 
       sort: 
       win_rate_over: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
   dashboards:
     index:
       title: Panel główny
@@ -365,9 +379,27 @@ pl:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
     new_splash:
       title: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
   arena_runs:
     new:
       title: Nowa Arena
@@ -454,6 +486,8 @@ pl:
     help:
       title: Pomoc
       help_text: Odwiedź <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> w razie jakichkolwiek pytań lub sugestii.
+    league:
+      title: 
   streams:
     index:
       title: Streamy

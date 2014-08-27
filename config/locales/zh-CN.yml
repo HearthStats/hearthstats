@@ -75,7 +75,12 @@ zh-CN:
 <<<<<<< HEAD
 =======
       tutorial_video: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    league:
+      title: 
+>>>>>>> locale changes:
   arena_runs:
     new:
       continue: "继续"
@@ -308,7 +313,25 @@ zh-CN:
       show: 
       sort_by: 
       winrate: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
   menu:
     arena:
       continue_arena_run: "继续竞技场赛事"
@@ -464,6 +487,17 @@ zh-CN:
     show: "展示"
     update: "更新"
     view_more: "观看更多"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   streams:
     index:
       subtitle: " 在一个地方发现所有你喜爱的实况"

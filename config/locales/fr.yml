@@ -73,7 +73,12 @@ fr:
 <<<<<<< HEAD
 =======
       tutorial_video: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    league:
+      title: 
+>>>>>>> locale changes:
   arena_runs:
     new:
       continue: Continue
@@ -309,7 +314,25 @@ fr:
       show: 
       sort_by: 
       winrate: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+      deck_name: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:
   menu:
     arena:
       continue_arena_run: Continuer session d'arène
@@ -456,6 +479,17 @@ fr:
     show: Voir
     update: Mise à jour
     view_more: Voir plus
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
   streams:
     index:
       subtitle: " Rechercher tous vos streams favoris ici"

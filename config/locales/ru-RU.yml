@@ -19,6 +19,8 @@ ru-RU:
   additional:
     uploader:
       tutorial_video: 
+    league:
+      title: 
   arenas:
     stats:
       average_length: 
@@ -59,9 +61,24 @@ ru-RU:
       show: 
       sort_by: 
       winrate: 
+      deck_name: 
     form:
       controls: 
       tags: 
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
   devise:
     confirmations:
       confirmed: 
@@ -155,4 +172,19 @@ ru-RU:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+  shared:
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
+>>>>>>> locale changes:

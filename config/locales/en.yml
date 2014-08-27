@@ -50,6 +50,32 @@ en:
       type_distribution: Type distribution
       mechanics: Mechanics
     back: Back
+    public_decklist:
+      any_class: any class
+      apply: Apply
+      asc: Asc
+      class: Class
+      created: Created
+      desc: Desc
+      filter: Filter
+      found_matching_your_criteria: found matching your criteria
+      listed_by: Listed By
+      losses: Losses
+      matches: Matches
+      minions: Minions
+      name: Name
+      per_page: per page
+      popularity: Popularity
+      show: Show
+      sort_by: Sort by
+      spells: Spells
+      stats_are_for_all_users: stats are for all users that have played the deck in the last 30 days, not just the original author
+      stats_are_for_your_personal: stats are for for your personal play using each deck
+      tools: Tools
+      users: Users
+      weapons: Weapons
+      win_rate: Win Rate
+      wins: Wins
     deckslist:
       filter: Filter
       any_class: Any class
@@ -94,6 +120,18 @@ en:
       rounds: Rounds
       created: Created
       options: Options
+      all_time: All Time
+      apply: Apply
+      coin?: Coin?
+      days: Days
+      duration: Duratio
+      last: Last
+      last_24_hours: Last 25 Hours
+      matches_in_this_list: Matches in this list
+      per_page: per page
+      reset: Reset
+      sort: Sort
+      win_rate_over: Win Rate Over
     filter:
       coin?: Coin?
       apply: Apply
@@ -108,6 +146,20 @@ en:
       numturns: Rounds
       win_rate_over: win rate over
       matches_in_this_list: matches in this list
+<<<<<<< HEAD
+=======
+    deckslist_no_filter:
+      class: Class
+      losses: Losses
+      matches: Matches
+      minions: Minions
+      name: Name
+      spells: Spells
+      tools: Tools
+      weapons: Weapons
+      win_rate: Win Rate
+      wins: Wins
+>>>>>>> locale changes:
   dashboards:
     index:
       title: Dashboard
@@ -149,6 +201,7 @@ en:
       name: Name
       none: none
       reset_filters: Reset Filters
+<<<<<<< HEAD
   blind_drafts:
     index:
       title: Blind Drafts
@@ -167,6 +220,8 @@ en:
       player1-id: Player 1 ID
       player2-id: Player 2 ID
       card-cap: Number of Neutral Cards
+=======
+>>>>>>> locale changes:
   arenas:
     index:
       title: Recent Games
@@ -184,6 +239,7 @@ en:
       prizes: Prizes
       timee_played: Time Played
       options: Options
+      time_played: Time Played
     new:
       title: New Arena Match
       section: Arena
@@ -316,6 +372,7 @@ en:
       num_weapons: Weapons
       winrate: Winrate
       num_wins: Wins
+      deck_name: Name
     form:
       name: Name
       class: Class
@@ -352,6 +409,23 @@ en:
       subtitle: " all of my constructed decks"
       new_deck: New Deck
       my_decks: My Decks
+<<<<<<< HEAD
+=======
+    public_decklist:
+      class: Class
+      listed_by: Listed By
+      losses: Losses
+      matches: Matches
+      minions: Minions
+      name: Name
+      spells: Spells
+      stats_are_for_all_users: Stats are for all users
+      tools: Tools
+      users: Users
+      weapons: Weapons
+      win_rate: Win Rate
+      wins: Wins
+>>>>>>> locale changes:
   arena_runs:
     new:
       title: New Arena Run
