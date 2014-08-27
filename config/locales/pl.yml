@@ -1037,6 +1037,13 @@ pl:
       weapons: 
       win_rate: 
       wins: 
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
   arena_runs:
     new:
       title: Nowa Arena

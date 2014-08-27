@@ -496,6 +496,9 @@ ko:
       title: "활성화 덱"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     decklist:
       attack_distribution: 
       card_list: 
@@ -503,10 +506,13 @@ ko:
       mana_curve: 
       mechanics: 
       type_distribution: 
+<<<<<<< HEAD
     editform:
       toggle_text_import: 
 =======
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     filter:
       ascending: 
       created_after: 

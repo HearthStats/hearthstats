@@ -713,6 +713,13 @@ pt-BR:
       weapons: 
       win_rate: 
       wins: 
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
   arena_runs:
     new:
       title: Nova Série de Jogadas em Arena

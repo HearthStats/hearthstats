@@ -547,6 +547,7 @@ ru-RU:
       weapons: 
       win_rate: 
       wins: 
+<<<<<<< HEAD
 =======
       controls: 
       tags: 
@@ -568,6 +569,15 @@ ru-RU:
       win_rate: 
       wins: 
 >>>>>>> locale changes:
+=======
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
+>>>>>>> updated localeapp to notify in prod [skip ci]
   devise:
     confirmations:
       confirmed: 

@@ -569,6 +569,9 @@ pt-BR:
       title: Decks Atívos
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     decklist:
       attack_distribution: 
       card_list: 
@@ -576,10 +579,13 @@ pt-BR:
       mana_curve: 
       mechanics: 
       type_distribution: 
+<<<<<<< HEAD
     editform:
       toggle_text_import: 
 =======
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     filter:
       ascending: 
       created_after: 

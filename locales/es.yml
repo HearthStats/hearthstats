@@ -502,6 +502,9 @@ es:
       title: Mazo Activo
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     decklist:
       attack_distribution: 
       card_list: 
@@ -509,10 +512,13 @@ es:
       mana_curve: 
       mechanics: 
       type_distribution: 
+<<<<<<< HEAD
     editform:
       toggle_text_import: 
 =======
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     filter:
       ascending: 
       created_after: 

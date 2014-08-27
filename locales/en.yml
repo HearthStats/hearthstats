@@ -540,6 +540,9 @@ en:
       title: Active Deck
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     decklist:
       attack_distribution: Attack distribution
       card_list: Card List
@@ -547,10 +550,13 @@ en:
       mana_curve: Mana Curve
       mechanics: Mechanics
       type_distribution: Type Distribution
+<<<<<<< HEAD
     editform:
       toggle_text_import: Toggle Text Import
 =======
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     filter:
       ascending: Ascending
       created_after: Created After

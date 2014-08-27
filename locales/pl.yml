@@ -458,6 +458,9 @@ pl:
       subtitle: " wszystkie aktywne talie"
       title: Aktywna talia
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     decklist:
       attack_distribution: 
       card_list: 
@@ -465,10 +468,13 @@ pl:
       mana_curve: 
       mechanics: 
       type_distribution: 
+<<<<<<< HEAD
     editform:
       toggle_text_import: 
 =======
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to notify in prod [skip ci]
     filter:
       ascending: 
       created_after: 
