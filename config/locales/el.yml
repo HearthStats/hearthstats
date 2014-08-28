@@ -1479,7 +1479,31 @@ el:
       edit: 
       new: 
       save: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    label:
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Gegner Klasse: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+      user:
+        current_password: 
+        password: 
+        password_confirmation: 
+>>>>>>> added deck creation and show constructeds api
   social_share_button:
     baidu: 
     delicious: 
@@ -1497,6 +1521,7 @@ el:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
 <<<<<<< HEAD
   streams:
     index:
@@ -1538,3 +1563,32 @@ el:
     previous_label: 
 =======
 >>>>>>> added league page
+=======
+  activerecord:
+    attributes:
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Gegner Klasse: 
+        klass_id: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+        oppclass_id: 
+        result_id: 
+      user:
+        current_password: 
+        password_confirmation: 
+        reset_password_token: 
+    models:
+      match: 
+>>>>>>> added deck creation and show constructeds api

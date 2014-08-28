@@ -70,7 +70,7 @@ task :fix_blizz_id=> :environment do
   Card.find(117).update_attribute(:blizz_id, "EX1_014")
   Card.find(46).update_attribute(:blizz_id, "CS2_008")
   Card.all.each do |card|
-    if letter?(card.blizz_id)
+    if letter?(card.blizz_id.last)
       p card.id 
       wrong_blizz_id = card.blizz_id.split("")
       corrected_blizz_id = wrong_blizz_id

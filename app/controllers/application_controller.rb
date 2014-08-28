@@ -44,7 +44,6 @@ class ApplicationController < ActionController::Base
 
     card_array.sort_by! { |card| card[0] }
     card_array.map! { |card| card.join("_") }
-
     Text2Deck.new(card_array.join(','), err.join('<br>'))
   end
 

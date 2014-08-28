@@ -1228,6 +1228,27 @@ zh-CN:
       edit: 
       new: 
       save: 
+    label:
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Gegner Klasse: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+      user:
+        current_password: 
+        password: 
+        password_confirmation: 
   social_share_button:
     baidu: "百度收藏"
     delicious: Delicious
@@ -1245,4 +1266,34 @@ zh-CN:
     tumblr: Tumblr
     twitter: Twitter
     weibo: "新浪微博"
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+  activerecord:
+    attributes:
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Gegner Klasse: 
+        klass_id: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+        oppclass_id: 
+        result_id: 
+      user:
+        current_password: 
+        password_confirmation: 
+        reset_password_token: 
+    models:
+      match: 
+>>>>>>> added deck creation and show constructeds api

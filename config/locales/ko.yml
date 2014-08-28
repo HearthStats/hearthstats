@@ -681,6 +681,7 @@ ko:
       your_class: "당신 직업"
     matches:
       recent_arena_matches: "최근 투기장 경기"
+<<<<<<< HEAD
       section: "투기장"
       subtitle: " 최근 게임"
       title: "최근 경기"
@@ -1386,6 +1387,8 @@ ko:
       continue_arena_run: "투기장 플레이 계속"
       new_arena_run: "새로운 투기장 플레이"
       recent_arena_matches: "최근 투기장 경기"
+=======
+>>>>>>> added deck creation and show constructeds api
       statistics: "통계"
     constructed:
       title: "제작덱 경기"
@@ -1485,7 +1488,31 @@ ko:
       edit: 
       new: 
       save: 
+<<<<<<< HEAD
 >>>>>>> added league page
+=======
+    label:
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Gegner Klasse: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+      user:
+        current_password: 
+        password: 
+        password_confirmation: 
+>>>>>>> added deck creation and show constructeds api
   social_share_button:
     baidu: 
     delicious: 
@@ -1503,6 +1530,7 @@ ko:
     tumblr: 
     twitter: 
     weibo: 
+<<<<<<< HEAD
 <<<<<<< HEAD
   streams:
     index:
@@ -1544,3 +1572,32 @@ ko:
     previous_label: 
 =======
 >>>>>>> added league page
+=======
+  activerecord:
+    attributes:
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Gegner Klasse: 
+        klass_id: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+        oppclass_id: 
+        result_id: 
+      user:
+        current_password: 
+        password_confirmation: 
+        reset_password_token: 
+    models:
+      match: 
+>>>>>>> added deck creation and show constructeds api
