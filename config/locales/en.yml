@@ -371,6 +371,7 @@ en:
       deck_limit: Max Deck Limit
       no_more: No More In Deck
       legend: Only one legendary allowed per deck.
+      other_versions: Other Versions
     new:
       title: New Deck
       section: Decks
@@ -407,6 +408,8 @@ en:
       weapons: Weapons
       win_rate: Win Rate
       wins: Wins
+    editform:
+      toggle_text_import: Toggle Text Import
   arena_runs:
     new:
       title: New Arena Run
@@ -537,3 +540,101 @@ en:
       about_us: About Us
       contact_info: Contact Info
     help: Help
+  activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: Dust earned
+        gold: Gold
+        Gold Earned: Gold earned
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Class: Class
+        Name: Name
+        Nazwa: 
+        Nome: 
+        Notatki: 
+        Notes: Notes
+        Tags: Tags
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Deck name: Deck name
+        Deck Name: Deck name
+        Gegner Klasse: 
+        klass_id: Klass
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+        Notes: Notes
+        oppclass_id: Oppclass
+        Opponent class: Opponent class
+        Opponent Class: Opponent class
+        Opponent Name: Opponent name
+        Opponent's Class: Opponent's class
+        result_id: Result
+        user_id: User
+      profile:
+        avatar: Avatar
+        name: Name
+        time_zone: Time zone
+      profile/Battle:
+        net ID: Net id
+      user:
+        current_password: Current password
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        reset_password_token: Reset password token
+    models:
+      arena_run: Arena run
+      deck: Deck
+      match: Match
+      user: User
+  helpers:
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        "노트": 
+        "이름": 
+        "직업": 
+        Clase: 
+        Class: 
+        Name: 
+        Nazwa: 
+        Nome: 
+        Notatki: 
+        Notes: 
+        Tags: 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Deck name: 
+        Deck Name: 
+        Gegner Klasse: 
+        Nombre del mazo: 
+        Nom du deck: 
+        Nome do Deck: 
+        Notes: 
+        Opponent class: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent's Class: 
+        user_id: 
+      profile:
+        avatar: 
+        Battle:
+          net ID: 
+        name: 
+        time_zone: 
+      user:
+        current_password: 
+        email: 
+        password: 
+        password_confirmation: 

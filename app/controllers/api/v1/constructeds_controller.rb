@@ -4,7 +4,8 @@ class Api::V1::ConstructedsController < ApplicationController
   respond_to :json
 
   def show
-    render json: "hello"
+    @user = User.where(userkey: params[:userkey])[0]
+    render json: @user.matches.where(mode_id: [2,3])
   end
 
   def new
