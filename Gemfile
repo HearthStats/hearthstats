@@ -17,6 +17,7 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
   gem 'awesome_print', :require => false
+  gem 'localeapp', require: false
 end
 
 group :assets do
@@ -85,21 +86,17 @@ gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
 gem 'sync'
+
+# Background
+gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'delayed_job_web'
+gem 'whenever'
 
-group :development, :production do
-
-  # Background
-  gem 'delayed_job_active_record'
-  gem 'daemons'
-  gem 'whenever'
-
-  # APIs
-  gem 'newrelic_rpm'
-  gem 'cindy' # Sendy API
-  gem 'appsignal'
-  gem 'localeapp', require: false
-end
+# APIs
+gem 'newrelic_rpm'
+gem 'cindy' # Sendy API
+gem 'appsignal'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
