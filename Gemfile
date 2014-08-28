@@ -17,7 +17,6 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
   gem 'awesome_print', :require => false
-  gem 'localeapp', require: false
 end
 
 group :assets do
@@ -97,6 +96,8 @@ gem 'whenever'
 gem 'newrelic_rpm'
 gem 'cindy' # Sendy API
 gem 'appsignal'
+gem 'localeapp'
+
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
