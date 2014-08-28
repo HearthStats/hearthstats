@@ -1,0 +1,926 @@
+el:
+  activemodel:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+        gold: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nazwa: 
+        Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Classe de votre adversaire: 
+        Deck Name: 
+        Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        klass_id: 
+        oppclass_id: 
+        result_id: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        avatar: 
+        name: 
+        time_zone: 
+      profile/Battle:
+        net ID: 
+      user:
+        email: 
+        password: 
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+    models:
+      arena_run: 
+      deck: 
+      match: 
+      user: 
+  additional:
+    aboutus:
+      a_huge_thanks_to: "Ένα μεγάλο ευχαριστώ σε"
+      built_suggestions_text: "Το HearthStats χτίστηκε από τις προτάσεις του καθενός στην κοινότητα. Και θα συνεχίσει να είναι ένα εργαλείο που χρησιμοποιείται / φτιάχτηκε από την κοινότητα Hearthstone."
+      charles_text_1: Charles έκαλε απίστευτα μεγάλη δουλεία στον OSx uploader
+      charles_text_2: "Ο Charles αξίζει πολλή εκτίμηση για το ότι ήρθε από το πουθενά και έκανε κάποια εργασία ανοιχτού κώδικα."
+      charles_text_3: "Μπορείτε να βρείτε περισσότερες πληροφορίες σχετικά με τον Charles"
+      donate_text: "Αν σας αρέσει αυτό που κάνω, ρίξε με λίγα κέρματα."
+      eckert_text: "Ο J Eckert συνέβαλε πολύ στο στυλ και στα χρώματα."
+      founded_by_text: "Αυτή η ιστοσελίδα ιδρύθηκε από τον Jeffrey Tong με αγάπη."
+      here: "εδώ"
+      others_contributors: "άλλοι συντελεστές"
+      rackspace_text: "Θα ήθελα να ευχαριστήσω την Rackspace για την παροχή τέτοιας τρομερής φιλοξενίας! Αν ποτέ χρειαστείτε cloud hosting ή κάθε είδους φιλοξενία, να τους ελέγξετε σίγουρα έξω!"
+      thanks_jerome_text: Jerome σίγουρα βοήθησε να ανεβάσουμε το HearthStats στο επόμενο επίπεδο και με στήριξε τα κίνητρα μου για να δουλεύψω πολύ σκληρότερα. Ευχαριστώ πολύ!
+      title: "Σχετικά με εμάς"
+      you_can_follow_twitter: "Μπορείτε να με ακολουθήσετε στο Twitter"
+    changelog:
+      all_time_in_utc: "Όλες οι ώρες σε UTC"
+      changelog: 
+      title: "Καταγραφή αλλαγών"
+    contactus:
+      contact_email_text: "Μη διστάσετε να μου στείλετε email στο <a href='mailto:jeff@hearthstats.net'>jeff@hearthstats.net</a> για τυχόν απορίες."
+      contact_email_text_2: "Μπορείτε επίσης να μας ακολουθήσετε στο Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: "Βαριέμαι τόσο πόλυ, οπότε τα email σας είναι ευπρόσδεκτα."
+      fadein_text_2: "Παρακαλώ να μου στείλετε ένα email! Θα μπορούσε να είναι για τα πάντα!"
+      fadein_text_3: "Ο πισινός μου έχει ανοίξει πληγές. Κοιτάξτε τον πόνο που αντέχω για την κατασκευή αυτού του ιστότοπου για εσάς!"
+      title: "Επικοινωνία"
+    help:
+      help_text: "Παρακαλούμε επισκεφθείτε <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> για τυχόν προτάσεις ή προβλήματα."
+      title: Help
+    league:
+      title: 
+    news:
+      posted: "Αναρτημένο"
+      read_more: "Διαβάστε περισσότερα"
+      subtitle: " Τα πιο πρόσφατα νέα του Hearthstone"
+      suggestions_for_news: "Οι προτάσεις για νέες πηγές είναι ευπρόσδεκτες"
+      title: "Νέα του Hearthstone"
+    uploader:
+      click_to_reveal: "Κάντε κλικ για να αποκαλύψετε"
+      do_not_share: "δεν μοιράζονται με κανέναν άλλο"
+      download_for: "Λήψη για"
+      download_java_here: "Κατεβάστε την Java από εδώ"
+      features:
+        feat_1: "Υποστήριξη για Windows και OSx"
+        feat_2: "Εντοπίζει αυτόματα και τα Κατασκευασμένα και τους αγώνες στην Αρένα."
+        feat_3: "Παρακολουθεί την κλάση σας και την κλάση του αντιπάλου."
+        feat_4: "Παρακολουθεί το βαθμολογικό σας επίπεδο για τους αγώνες κατάταξης"
+        feat_5: "Παρακολουθεί το όνομα του αντιπάλου σας"
+        feat_6: "Παρακολουθεί τον αριθμό γύρων που παιχτήκαν και τη διάρκεια του αγώνα"
+        feat_7: "Δυνατότητα προσθήκης σημειώσεων κατευθείαν από τον uploader"
+      features_title: Features
+      header_text: "| Γιατί να εισάγετε τα αποτελέσματα σας χειροκίνητα ενώ μπορείτε να αφήσετε τον uploader μας να τακτοποιήσεις τα πάντα για εσάς; &nbsp;| Αυτό το βοηθητικό πρόγραμμα ανοιχτού κώδικα χρησιμοποιεί την σάρωση οθόνης ,συλλαμβάνει το παράθυρό σας του Hearthstone. Δεν κάνει υποκλοπή πακέτων, | παρακολούθηση, ή τροποποίησης του δικτύου οποιουδήποτε είδους. Το έργο είναι και θα είναι πάντα ανοικτή πηγή, ώστε να μπορείτε | να κάνετε τη δική σας εφαρμογή και να μπορείτε να δείτε τι ακριβώς συμβαίνει στο πλαίσιο του προγράμματος."
+      help_and_support: "Βοήθεια και Υποστήριξη"
+      instructions: "Οδηγίες"
+      instructions_osx:
+        inst_osx_1: "Κατέβασέ το από τον παραπάνω σύνδεσμο"
+        inst_osx_2: "Αποσυμπιέστε το αρχείο"
+        inst_osx_3: "Σύρετε το αρχείο στο φάκελο Applications σας"
+        inst_osx_4: "<b>Δεξί κλικ</b> στο αρχείο, στη συνέχεια, κάντε κλικ στο Άνοιγμα"
+        inst_osx_5: "Εισάγετε το κλειδί χρήστη σας από τη σελίδα του uploader ή τη σελίδα προφίλ"
+        inst_osx_6: "Ανοίξτε το παιχνίδι σας και παίξετε!"
+      instructions_win:
+        inst_win_1: "Κατέβασέ το από τον παραπάνω σύνδεσμο"
+        inst_win_2: "Αποσυμπιέστε το αρχείο"
+        inst_win_3: "Κάντε κλικ για να ανοίξει η εφαρμογή"
+        inst_win_4: "Εισάγετε το κλειδί χρήστη σας από τη σελίδα του uploader ή τη σελίδα προφίλ"
+        inst_win_5: "Ανοίξτε το παιχνίδι σας και παίξετε!"
+      known_issues: "Γνωστά θέματα"
+      please_have_installed: "Παρακαλώ βεβαιωθείτε ότι έχετε την Java 7+ εγκατεστημένη."
+      project_source_on_github: "Προέλευση του έργου στο Github"
+      title: "Επίσημος Uploader"
+      title:官方上传器 header_text: 
+      tutorial_video: 
+      user_key: "Κλειδί Χρήστη"
+  arena_runs:
+    new:
+      continue: "Συνέχεια"
+      first_arena_of_day: "Πρώτη Αρένα της ημέρας; Ας ξεκκινήσουμε!"
+      get_auto_uploader: "Λήψη του αυτόματου Uploader"
+      going_hardcore: "Ουάου, το πήρες πατριωτικά σημερα ε; Κι'όλας σημέιωσες %{runs} προσπάθειες, Καλή τύχη! "
+      keep_it_going: "Μόνο %{runs} προσπάθειες; Συνέχισε!"
+      section: "Αρένα"
+      title: "Νέα προσπάθεια Αρένας"
+      your_class: "Η κλάση σου"
+  arenas:
+    index:
+      arena_run_with: "Προσπάθεια Αρένας με"
+      close: "Κλείσιμο"
+      continue_arena_run: "Συνέχεια προσπάθειας Αρένας"
+      description: " πρόσφατα παιχνίδια στην Αρένα"
+      new_arena_run: "Νέα προσπάθεια Αρένας"
+      notes: "Σημειώσεις"
+      'on': 
+      options: "Επιλογές"
+      prizes: "Βραβεία"
+      recent_arena_games: "Πρόσφατα παιχνίδια Αρένας"
+      section: "Αρένα"
+      time_played: 
+      timee_played: "Χρόνος παιχνιδιού"
+      title: "Πρόσφατα Παιχνίδια"
+      'true': "Ανοιχτό"
+      win_loss: "Νίκη/Ήττα"
+      your_class: "Η κλάση σου"
+    matches:
+      recent_arena_matches: "Πρόσφατοι αγώνες Αρένας"
+      section: "Αρένα"
+      subtitle: " Πρόσφατοι αγώνες"
+      title: "Πρόσφατοι αγώνες"
+    new:
+      arena_run_results: "Αποτελέσματα αγώνα Αρένας"
+      back: "Πίσω"
+      create_entry: "Δημιουργία εγγραφής"
+      defeat: "Ήττα"
+      draw: "Ισοπαλία"
+      end_run: "Τέλος αγώνα"
+      opponent_class: "Κλάση αντιπάλου"
+      options: "Επιλογές"
+      played_first: "Έπεξες πρώτος"
+      played_second: "Έπεξες δεύτερος"
+      result: "Αποτέλεσμα"
+      retire: "Εγκατάληψη"
+      section: "Αρένα"
+      sure_want_retire: "Είστε σίγουρος ότι θέλετε να εγκαταλήψετε νωρίς την Αρένα;"
+      title: "Νέος αγώνας Αρένας"
+      win: "Νίκη"
+    stats:
+      arena_games_played: "Παιχνίδια Αρένας"
+      arena_runs_played: "Προσπάθειες Αρένας"
+      average_length: 
+      detailed_class_status: "Αναλυτική Κατάσταση Κλάσης"
+      dist_desc: 
+      distribution_graph: 
+      longest_average_runs: "Μεγαλύτερη μέση προσπάθεια"
+      most_played: "Πιο πολύ παιγμένα"
+      no_games: "Δεν υπάρχουν παιχνίδια"
+      note: "Σημείωση!"
+      overall_arena_stats: "Συνολικά στατιστικά Αρένας"
+      overall_win_rate: "Συνολική συχνότητα Νικών"
+      page_being_designed: "Η σελίδα σχεδιάζεται"
+      section: "Αρένα"
+      subtitle: " λεπτομερής αναφορά παιχνιδιών Αρένας"
+      title: "Στατιστικά"
+      total_dust_amount: "Συνολικό ποσό Σκόνης"
+      total_gold_amount: "Συνολικό ποσό Χρυσού"
+  cards:
+    index:
+      any_class: "οποιαδήποτε κλάση"
+      any_race: "οποιαδήποτε φυλή"
+      any_type: "οποιδήποτε τύπο"
+      ascending: "Αύξουσα"
+      attack: "Επίθεση"
+      descending: "Φθίνουσα"
+      filter_by: "Φιλτράρισμα ανα"
+      health_dur: "Ζωή/Αντοχή"
+      mana_cost: "Κόστος Mana"
+      name: "Όνομα"
+      none: "κανένα"
+      not_found: "Δεν βρέθηκαν οι κάρτες που αναζητήσατε."
+      reset_filters: "Επαναφορά φίλτρων"
+      sort_by: "Ταξινόμηση ανα"
+      text_contains: "περιέχει κείμενο"
+      title: "Βάση Δεδομένων καρτών"
+  constructeds:
+    filter:
+      apply: 
+      coin?: 
+      per_page: 
+      reset: 
+    form:
+      add_defeat: 
+      add_draw: 
+      add_win: 
+      casual: 
+      deck_name: 
+      first_turn: 
+      opponent_class: 
+      ranked: 
+      second_turn: 
+      this_match_is: 
+      you_played_on_the: 
+    index:
+      description: " πρόσφατα κατασκευασμένα παιχνίδια"
+      new_constructed: "Νέο Κατασκευασμένο"
+      section: "Κατασκευασμένα"
+      title: "Πρόσφατα Παιχνίδια"
+    new:
+      get_the_auto_uploader: "Λήψη του Auto Uploader"
+      section: "Κατασκευασμένο"
+      title: "Νέο Κατασκευασμένο"
+    newform:
+      add_defeat: "Προσθήκη Ήττας"
+      add_draw: "Προσθήκη Ισοπαλίας"
+      add_win: "Προσθήκη Νίκης"
+      casual: "Ανέμελος"
+      deck_name: "Ονομασία Τράπουλας"
+      first_turn: "πρώτο γύρο."
+      opponent_class: "Κλάση αντιπάλου"
+      ranked: "Κατάταξης"
+      second_turn: "δεύτερο γύρο."
+      this_match_is: "Ο αγώνας αυτός είναι"
+      you_played_on_the: "Έπαιξες στον"
+    quickentry:
+      add_defeat: "Προσθήκη Ήττας"
+      add_draw: "Προσθήκη Ισοπαλίας"
+      add_win: "Προσθήκη Νίκης"
+      casual: "Ανέμελο"
+      coin: "Νόμισμα"
+      no_coin: "Χωρίς Νόμισμα"
+      quick_entry: "Γρήγορη είσοδος"
+      ranked: "Κατάταξης"
+    stats:
+      all_time: all time
+      any_mode: "Οποιοδήποτε λειτουργία"
+      casual: "Ανέμελο"
+      days: "Μέρες"
+      description: " Στατιστικά κατασκευασμένων παιχνιδιών"
+      filter_by: "Φίλτρο ανα"
+      first_or_second: "Πρώτος ή δεύτερος"
+      going_first: "Παίζεις πρώτος"
+      going_second: "Παίζεις δεύτερος"
+      hours: "Ώρες"
+      last: "Τελευταίος"
+      ranked: "Κατάταξης"
+      section: "Κατασκευασμένο"
+      title: "Στατιστικά"
+    stats_filter:
+      all_mode: 
+      all_seasons: 
+      all_time: 
+      casual: 
+      coin?: 
+      days: 
+      filter_by: 
+      first_or_second: 
+      hours: 
+      last_24_hours: 
+      last_days: 
+      ranked: 
+    winratechart:
+      constructed_win_rate_title: "Συχνότητα νικών κατασκευασμένης τράπουλας ανα κλάση (Προσωπικό VS Παγκόσμιο)"
+  dashboards:
+    index:
+      against: "εναντία"
+      arena_win_rate: "Συχνότητα νίκης στην Αρένα"
+      arena_win_rates: "Συχνότητα νικών στην Αρένα"
+      constructed_coin_win_rates: "Συχνότητα νικών κατασκευασμένων με νόμισμα"
+      constructed_win_rates: "Συχνότητα νικών κατασκευασμένων"
+      games_recorded: "Εγγεγραμμένα παιχνίδια"
+      global_stats: "Παγκόσμια στατιστικά"
+      global_win_rates: "Παγκόσμια συχνότητα νικών"
+      hearthstats_news: "Νέα του HearthStats"
+      news:
+        ability_to_rank: Ικανότητα προσθήκης στα "Κατασκευασμένα" παιχνίδια για Βαθμόλογημένα/Ανέμελα.
+        donation_link: "Σύνδεσμος δωρεάς προσθέθηκε στο"
+        huge_update: "Τεράστια ενημέρωση με πολλά νέα στοιχεία."
+        notes_feature: "Προσθέθηκε δυνατότητα σημειώσεων!"
+      personal_win_rate: "Προσωπική συχνότητα νικών"
+      read_more: "Διαβάστε περισσότερα"
+      recent_activities: "Πρόσφατες δραστηριότητες"
+      subtitle: " στατιστικά στοιχεία για την τρέχουσα περίοδο"
+      title: "Ταμπλό"
+      view_more: "ΔΕΙΤΕ ΠΕΡΙΣΣΟΤΕΡΑ"
+      with: "με"
+  date:
+    abbr_day_names: 
+    abbr_month_names: 
+    day_names: 
+    formats:
+      default: 
+      long: 
+      short: 
+    month_names: 
+    order: 
+  datetime:
+    distance_in_words:
+      about_x_hours: 
+      about_x_months: 
+      about_x_years: 
+      almost_x_years: 
+      half_a_minute: 
+      less_than_x_minutes: 
+      less_than_x_seconds: 
+      over_x_years: 
+      x_days: 
+      x_minutes: 
+      x_months: 
+      x_seconds: 
+    prompts:
+      day: 
+      hour: 
+      minute: 
+      month: 
+      second: 
+      year: 
+  decks:
+    active_decks:
+      deleted_deck: 
+      select_deck: "Επιλογή τράπουλας"
+      slot: Slot
+      submit: "Υποβολή"
+      subtitle: " όλα οι ενεργές κατασκευασμένες τράπουλες"
+      title: "Ενεργή τράπουλα"
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
+    editform:
+      toggle_text_import: 
+    filter:
+      ascending: 
+      created_after: 
+      created_at: 
+      deck_name: 
+      decks_found: 
+      descending: 
+      filter: 
+      klass: 
+      min_games: 
+      name: 
+      num_losses: 
+      num_matches: 
+      num_minions: 
+      num_spells: 
+      num_users: 
+      num_weapons: 
+      num_wins: 
+      per_page: 
+      show: 
+      sort_by: 
+      winrate: 
+    form:
+      card_limit: 
+      class: "Κλάση"
+      controls: 
+      count: 
+      deck_limit: 
+      decklist_etc: " Λίστα τραπουλών, κλπ"
+      legend: 
+      name: "Όνομα"
+      no_more: 
+      notes: "Σημειώσεις"
+      other_versions: 
+      search: 
+      tags: 
+      this_deck_public: "Αυτή η τράπουλα είναι δημόσια"
+      toggle_text_import: 
+    index:
+      my_decks: "Οι τράπουλές μου"
+      new_deck: "Νέα τράπουλα"
+      subtitle: " όλες οι κατασκευασμένες μου τράπουλες"
+      title: "Οι τράπουλές μου"
+    new:
+      section: "Τράπουλες"
+      title: "Νέα τράπουλα"
+    new_splash:
+      section: 
+      title: 
+    public:
+      new_deck: "Νέα τράπουλα"
+      public_decks: "Δημόσιες τράπουλες"
+      subtitle: " όλες οι δημόσιες τράπουλές"
+      title: "Δημόσια λίστα τραπουλών"
+    public_decklist:
+      class: 
+      listed_by: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      stats_are_for_all_users: 
+      tools: 
+      users: 
+      weapons: 
+      win_rate: 
+      wins: 
+  devise:
+    confirmations:
+      confirmed: 
+      confirmed_and_signed_in: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      not_found_in_database: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      no_token: 
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
+  errors:
+    format: 
+    messages:
+      accepted: 
+      already_confirmed: 
+      blank: 
+      confirmation: 
+      confirmation_period_expired: 
+      empty: 
+      equal_to: 
+      even: 
+      exclusion: 
+      expired: 
+      greater_than: 
+      greater_than_or_equal_to: 
+      inclusion: 
+      invalid: 
+      less_than: 
+      less_than_or_equal_to: 
+      not_a_number: 
+      not_an_integer: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+      odd: 
+      present: 
+      record_invalid: 
+      restrict_dependent_destroy: 
+      taken: 
+      too_long: 
+      too_short: 
+      wrong_length: 
+    template:
+      body: 
+      header: 
+  helpers:
+    actions: 
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nazwa: 
+        Nom: 
+        Nombre: 
+        Notas: 
+        Notatki: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+      match:
+        Classe de votre adversaire: 
+        Deck Name: 
+        Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        Battle:
+          net ID: 
+        avatar: 
+        name: 
+        time_zone: 
+      user:
+        email: 
+    links:
+      back: 
+      cancel: 
+      confirm: 
+      destroy: 
+      edit: 
+      new: 
+    select:
+      prompt: 
+    submit:
+      create: 
+      submit: 
+      update: 
+    titles:
+      delete: 
+      edit: 
+      new: 
+      save: 
+  menu:
+    Tournaments:
+      Calendar: "Ημερολόγιο"
+      past_winners: "Προηγούμενοι Νικιτές"
+      register: "Εγγραφή"
+      title: "Τουρνουά"
+    arena:
+      continue_arena_run: "Συνέχεια προσπάθειας Αρένας"
+      new_arena_run: "Νέα προσπάθεια Αρένας"
+      recent_arena_matches: "Πρόσφατα παιχνίδια Αρένας"
+      recent_arena_runs: "Πρόσφατες προσπάθειες Αρένα"
+      statistics: "Στατιστικά"
+      title: "Αρένα"
+    card_database: "Βάση δεδομένων καρτών"
+    constructed:
+      new_match: "Νέο παιχνίδι"
+      recent_matches: "Πρόσφατα παιχνίδια"
+      statistics: "Στατιστικά"
+      title: "Κατασκευασμένο"
+    dashboard: "Ταμπλό"
+    deck:
+      my_active_deck: "Η ενεργή μου τράπουλα"
+      my_deck: "Η τραπουλά μου"
+      new_deck: "Νέα τράπουλα"
+      other_versions: 
+      public_deck_list: "Δημόσια λίστα τραπουλών"
+      title: "Τράπουλα"
+    extra:
+      about_us: "Σχετικά με εμάς"
+      change_log: "Καταγραφή αλλαγών"
+      contact_info: "Πληροφορίες Επικοινωνίας"
+      june_report: 
+      march_report: "Αναφορά αγώνα"
+      may_report: 
+      official_uploader: "Επίσημος Uploader"
+      title: "Έξτρα"
+    help: "Βοήθεια"
+    news: "Νέα"
+    streams: Streams
+    tournaments:
+      Calendar: 
+      past_winners: 
+      recent: 
+      register: 
+      title: 
+  number:
+    currency:
+      format:
+        delimiter: 
+        format: 
+        precision: 
+        separator: 
+        significant: 
+        strip_insignificant_zeros: 
+        unit: 
+    format:
+      delimiter: 
+      precision: 
+      separator: 
+      significant: 
+      strip_insignificant_zeros: 
+    human:
+      decimal_units:
+        format: 
+        units:
+          billion: 
+          million: 
+          quadrillion: 
+          thousand: 
+          trillion: 
+          unit: 
+      format:
+        delimiter: 
+        precision: 
+        significant: 
+        strip_insignificant_zeros: 
+      storage_units:
+        format: 
+        units:
+          byte: 
+          gb: 
+          kb: 
+          mb: 
+          tb: 
+    percentage:
+      format:
+        delimiter: 
+    precision:
+      format:
+        delimiter: 
+  shared:
+    arena: "Αρένα"
+    arena_win_rate: "Συχνότητα νικών στην Αρένα"
+    arenarun: "Αγώνας αρένας"
+    back: "Πίσω"
+    best_arena_class: "Καλύτερη κλάση στην Αρένα"
+    best_deck: "Καλύτερη τράπουλα"
+    class: "Κλάση"
+    create: "Δημιουργία"
+    create_deck: "Δημιουργήστε μια τράπουλα"
+    deck: "Τράπουλα"
+    deckbuilder:
+      add_a_card: "Προσθήκη κάρτας"
+      attack_distribution: "Κατανομή επίθεσης"
+      card_list: "Λίστα καρτών"
+      health_distribution: "Κατανομή ζωής"
+      left_click_add_right_remove: "Αριστερό κλίκ για προσθήκη. Δεξί κλίκ για αφαίρεση."
+      mana_curve: "Καμπύλη Mana"
+      mechanics: "Μηχανικές"
+      of_30_cards: "από 30 κάρτες"
+      optional_deck_will_be_created_if: "Προαιρετικό (Η τράπουλα θα δημιουργηθεί αν το αφήσετε κενό)"
+      this_deck_is_incomplete: "Αυτή η τράπουλα είναι ελλειπής."
+      toggle_text_import: "Εναλλαγή εισαγωγής κειμένου"
+      type_distribution: "Κατανομή τύπου"
+    deckslist:
+      any_class: "Οποιαδήποτε κλάση"
+      apply: "Εφαρμογή"
+      asc: "Αύξουσα"
+      class: "Κλάση"
+      created: "Δημιουργήθηκε"
+      desc: "Φθίνουσα"
+      filter: "Φίλτρο"
+      found_matching_your_criteria: "Βρέθηκαν να ταιριάζουν τα κριτήρια σας."
+      listed_by: "Εισηγμένες Με"
+      losses: "Ήττες"
+      matches: "Αγώνες"
+      minions: "Τσιράκια"
+      name: "Όνομα"
+      per_page: "ανα σελίδα"
+      popularity: "Δημοφιλές"
+      show: "Εμφάνηση"
+      sort_by: "Ταξινόμηση ανα"
+      spells: "Ξόρκια"
+      stats_are_for_all_users: "Τα στατιστικά είναι για όλους τους χρήστες που έχουν παίξει αυτή τη τράπουλα τις τελευταίες 30 ημέρες, όχι μόνο του αρχικού δημιουργού"
+      stats_are_for_your_personal: "Τα στατιστικά είναι για την προσωπική σας χρήση της τράπουλας"
+      tools: "Εργαλεία"
+      users: "Χρήστες"
+      weapons: "Όπλα"
+      win_rate: "Συχνότητα νίκης"
+      wins: "Νίκες"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
+    delete: "Διαγραφή"
+    edit: "Επεξεργασία"
+    error: "Σφάλμα"
+    filter:
+      all_time: 
+      apply: 
+      ascending: 
+      coin?: 
+      created_at: 
+      descending: 
+      duration: 
+      filter: 
+      for: 
+      last_24_hours: 
+      last_days: 
+      matches_in_this_list: 
+      numturns: 
+      opponent: 
+      per_page: 
+      reset: 
+      shared:
+        notes: 
+      show: 
+      sort: 
+      win_rate_over: 
+    footer:
+      about: "Περί"
+      copyright_text: Copyright 2014 HearthStats. Το Hearthstone είναι σήμα κατατεθέν της Blizzard Entertainment.
+      faq: "Συνήθεις ερωτήσεις"
+      open_positions: "Ανοιχτές θέσεις"
+      privacy_policy: "πολιτική προστασίας προσωπικών δεδομένων"
+      support: "Υποστήρηξη"
+    header:
+      change_to: "Αλλαγή σε"
+      click_message_to_dismiss: "Πατήστε στο μήνυμα για απόκρυψη"
+      guest: "Επισκέπτης"
+      my_profile: "Προφίλ"
+      new_messages: "νέα μηνύματα"
+      register_now_login: "Εγγραφή / Είσοδος"
+      sign_out: "Έξοδος"
+      you_have: "Έχετε"
+    matchlist:
+      all_time: "Όλα"
+      any_class: "οποιαδήποτε κλάση"
+      apply: "Εφαρμογή"
+      ascending: "Αύξουσα"
+      coin: "Νόμισμα"
+      coin?: "Νόμισμα;"
+      created: "Δημιουργήθηκε"
+      days: "μέρες"
+      descending: "Φθίνουσα"
+      duration: "Διάρκεια"
+      filter: "Φίλτρο"
+      last: "τελευταίο"
+      last_24_hours: "Τελευταίες 24 ώρες"
+      matches_in_this_list: "αγώνες σε αυτή τη λίστα"
+      mode: "Τρόπος"
+      no_coin: "Χωρίς Νόμισμα"
+      opponent: "Αντίπαλος"
+      opponent_class: "Αντίπαλη κλάση"
+      opponent_name: "Όνομα αντιπάλου"
+      options: "Επιλογές"
+      per_page: "ανα σελίδα"
+      rank: "Βαθμός"
+      reset: "Επαναφορά"
+      result: "Αποτέλεσμα"
+      rounds: "Γύροι"
+      show: "Εμφάνηση"
+      sort: "ταξινόμηση"
+      win_rate_over: "Συχνότητα νικών πάνω από"
+      your: "δικό σου"
+    matchlist_no_filter:
+      coin: 
+      created: 
+      duration: 
+      opponent_class: 
+      opponent_name: 
+      options: 
+      result: 
+      rounds: 
+      your: 
+    new_arena_game: "Νέο παιχνίδι αρένας"
+    notes: "Σημειώσεις"
+    prohibited_this_being_save: 
+    ranked_win_rate: "Συχνότητα νικών στα παιχνίδια κατάταξης"
+    run: "Εκτέλεση"
+    show: "Εμφάνηση"
+    update: "Ενημέρωση"
+    view_more: "Δείτε περισσότερα"
+  social_share_button:
+    baidu: 
+    delicious: 
+    douban: 
+    email: 
+    facebook: 
+    google_bookmark: 
+    google_plus: 
+    kaixin001: 
+    plurk: 
+    qq: 
+    renren: 
+    share_to: 
+    tqq: 
+    tumblr: 
+    twitter: 
+    weibo: 
+  streams:
+    index:
+      subtitle: "βρείτε όλα τα αγαπημένα σας streams σε ένα μέρος"
+      title: Streams
+  support:
+    array:
+      last_word_connector: 
+      two_words_connector: 
+      words_connector: 
+  time:
+    am: 
+    formats:
+      default: 
+      long: 
+      short: 
+    pm: 
+  tournies:
+    index:
+      section: "Τουρνουά"
+      subtitle: " Εγγραφήτε στο νεότερο μας Τουρνουά/Πρωταθλήμα"
+      title: "Εγγραφή"
+    show:
+      decks: 
+  will_paginate:
+    next_label: 
+    page_entries_info:
+      multi_page: 
+      multi_page_html: 
+      single_page: 
+      single_page_html: 
+    page_gap: 
+    previous_label: 

@@ -2,7 +2,6 @@
   div class="btn blue btn-sm deck-text-trigger" = t('.toggle_text_import')
 
 small You may have to refresh the page if nothing works.
-
 = form_for(@deck) do |f|
   = f.hidden_field :cardstring
   - if @deck.errors.any?
@@ -48,7 +47,7 @@ small You may have to refresh the page if nothing works.
         #deckbuilder-list
           .form-group
             label =t("decks.form.search")
-            input type="text" class="fuzzy-search form-control"
+            input type="text" class="search form-control"
           ul.list.card-list
             - Card.where(collectible: true, klass_id: [params[:klass],nil]).order(:mana).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
@@ -189,7 +188,6 @@ javascript:
     valueNames: ['name'],
     page: 6,
     plugins: [
-      ListFuzzySearch(),
       ListPagination({})
     ]
   });

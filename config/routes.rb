@@ -25,6 +25,7 @@ Hearthstats::Application.routes.draw do
       post 'regtourny'
       post 'createtourny'
       get 'calendar'
+      get 'blind_draft'
     end
   end
 
@@ -43,6 +44,7 @@ Hearthstats::Application.routes.draw do
   match "/news", to: "additional#news"
   match "/openings", to: "additional#openings"
   match "/contest", to: "additional#contest_video"
+  match "/league", to: "additional#league"
 
   #apps
   match "/uploader", to: "additional#uploader"

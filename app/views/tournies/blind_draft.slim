@@ -1,0 +1,79 @@
+.row
+  .col-md-9
+    table#blind_pool
+      thead
+      tbody
+        = @card_pool.each_slice(6) do |nine_cards|
+          tr
+            - nine_cards.each do |card|
+              td class="facedown-card" id="#{card.id}" data-name="#{card.name.parameterize}"
+                div.card-picked
+                img class="blind-card-image" src="http://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/c/c4/Card_back-Default.png/150px-Card_back-Default.png"
+                div.user-select
+                  span.player1 Player 1 
+                  span.player2 Player 2 
+  .col-md-3
+    #draft-details.row
+      .col-md-12
+        h3 
+          |Cards Left:&nbsp;
+          span#cards-left 54
+      .col-md-6
+        h4 Player 1 Cards
+        table#player-1-cards
+          thead
+          tbody
+      .col-md-6
+        h4 Player 2 Cards
+        table#player-2-cards
+          thead
+          tbody
+      
+javascript:
+  var playerNum = 1;
+  var cardsLeft = 54;
+  $(".facedown-card").one('click', function() {
+    cardName = $(this).data("name");
+    $(this).find("img").attr('src',"https://s3-us-west-2.amazonaws.com/hearthstats/cards/" + cardName + ".png")
+    $(this).find('.user-select').fadeIn();
+  });
+
+  $(".player1").on('click', function(){
+    processClick(1, $(this));
+  });
+
+  $(".player2").on('click', function(){
+    processClick(2, $(this));
+  });
+
+  var processClick = function(player, element){
+    cardName = element.parent().parent().data("name");
+    cardID = element.parent().parent().attr("id");
+    element.parent().fadeOut();
+    $('#player-' + player +'-cards > tbody:last').append('<tr><td data-card_id=' + cardID + '>' + cardName + '<td></tr>');
+    element.parent().siblings('.card-picked').addClass('picked-overlay');
+    element.parent().siblings('.card-picked').html("<div class='picked-player'>Player " + player + "</div>");
+    playerNum = (player == 1 ? 2 : 1);
+    updatecardsLeft();
+  }
+
+  var updatecardsLeft = function(){
+    cardsLeft--;
+    $('#cards-left').text(cardsLeft);
+    if (cardsLeft < 30){
+      $('#cards-left').addClass("yellow");
+    }
+    if (cardsLeft < 10){
+      $('#cards-left').addClass("red");
+    }
+  }
+
+  $(window).scroll(function() {  
+    var styledDiv = $('#draft-details'),
+        targetScroll = $('#player-1-cards').position().top,
+        currentScroll = $('html').scrollTop() || $('body').scrollTop();
+
+    styledDiv.toggleClass('fixedPos', currentScroll - 130 >= targetScroll);
+  });
+
+

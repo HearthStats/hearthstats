@@ -14,6 +14,9 @@ class AdditionalController < ApplicationController
     end
   end
 
+  def league
+
+  end
   def aboutus
   end
 

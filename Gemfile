@@ -85,20 +85,24 @@ gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
 
-# Background
-gem 'delayed_job_active_record'
-gem 'daemons'
-gem 'delayed_job_web'
-gem 'whenever'
+group :development, :production do
 
-# APIs
-gem 'newrelic_rpm'
-gem 'honeybadger'
-gem 'cindy' # Sendy API
-gem 'appsignal'
+  # Background
+  gem 'delayed_job_active_record'
+  gem 'daemons'
+  gem 'delayed_job_web'
+  gem 'whenever'
 
-# DB
-gem 'activerecord-import'
+  # DB
+  gem 'activerecord-import'
+  
+  # APIs
+  gem 'newrelic_rpm'
+  gem 'cindy' # Sendy API
+  gem 'appsignal'
+  gem 'localeapp'
+end
+
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
   gem 'email_spec', '>= 1.4.0'
