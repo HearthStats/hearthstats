@@ -23,6 +23,27 @@ class ApplicationController < ActionController::Base
     resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
     resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
   end
+  
+  Text2Deck = Struct.new(:cardstring, :errors)
+  def text_to_deck(text)
+    text_array = text.split("\r\n")
+    card_array = Array.new
+    err = Array.new
+    text_array.each do |line|
+      qty = /^([1-2])/.match(line)[1]
+      name = /^[1-2] (.*)/.match(line)[1]
+      begin
+        card_id = Card.where("lower(name) =?", name.downcase).first.id
+      rescue
+        err << ("Problem with line '" + line + "'")
+        next
+      end
+      card_array << card_id.to_s + "_" + qty.to_s
+
+    end
+
+    Text2Deck.new(card_array.join(','), err.join('<br>'))
+  end
 
   def get_win_rate(matches, strout = false )
     tot_games = matches.count

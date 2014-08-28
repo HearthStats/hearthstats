@@ -184,6 +184,7 @@ Hearthstats::Application.routes.draw do
       post "decks/activate"
       post "decks/slots"
       get "users/premium"
+      post "decks/create"
     end
 
     namespace :v2 do
