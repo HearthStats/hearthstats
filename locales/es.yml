@@ -42,6 +42,7 @@ es:
         Gold Earned: 
         gold: 
       deck:
+        Clase: 
         Class: 
         Classe: 
         Klasse: 
@@ -49,6 +50,7 @@ es:
         Nazwa: 
         Nom: 
         Nombre: 
+        Nome: 
         Notas: 
         Notatki: 
         Notes: 
@@ -57,12 +59,19 @@ es:
         "名字": 
         "職業": 
         "註記": 
+        "노트": 
+        "이름": 
+        "직업": 
       match:
+        Clase del oponente: 
         Classe de votre adversaire: 
+        Classe do oponente: 
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
+        Nombre del mazo: 
+        Nome do Deck: 
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -81,8 +90,11 @@ es:
       profile/Battle:
         net ID: 
       user:
+        current_password: 
         email: 
         password: 
+        password_confirmation: 
+        reset_password_token: 
     errors:
       format: 
       messages:
@@ -586,6 +598,7 @@ es:
         Dust Earned: 
         Gold Earned: 
       deck:
+        Clase: 
         Class: 
         Classe: 
         Klasse: 
@@ -593,6 +606,7 @@ es:
         Nazwa: 
         Nom: 
         Nombre: 
+        Nome: 
         Notas: 
         Notatki: 
         Notes: 
@@ -601,12 +615,19 @@ es:
         "名字": 
         "職業": 
         "註記": 
+        "노트": 
+        "이름": 
+        "직업": 
       match:
+        Clase del oponente: 
         Classe de votre adversaire: 
+        Classe do oponente: 
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
+        Nombre del mazo: 
+        Nome do Deck: 
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -622,7 +643,10 @@ es:
         name: 
         time_zone: 
       user:
+        current_password: 
         email: 
+        password: 
+        password_confirmation: 
     links:
       back: 
       cancel: 
