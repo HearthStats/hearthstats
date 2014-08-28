@@ -17,6 +17,7 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
   gem 'awesome_print', :require => false
+  gem 'localeapp', require: false
 end
 
 group :assets do
@@ -98,7 +99,6 @@ gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'daemons'
 gem 'whenever'
-
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'
