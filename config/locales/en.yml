@@ -396,11 +396,13 @@ en:
       no_more: No More In Deck
       legend: Only one legendary allowed per deck.
       other_versions: Other Versions
+      toggle_text_import: Toggle Text Import
     new:
       title: New Deck
       section: Decks
     new_splash:
       title: New Deck Class Selection
+      section: Deck
     public:
       title: Public Deck List
       subtitle: " all public constructed decks"
@@ -536,6 +538,8 @@ en:
       title: Recent Tournaments
       subtitle: " Check out recent tournament deck lists!"
       section: Tournaments
+    show:
+      decks: Decks
   menu:
     dashboard: Dashboard
     card_database: Card Database
@@ -690,7 +694,7 @@ en:
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
-        Deck name: 
+        Deck name: Deck Name
         Deck Name: 
         Gegner Klasse: 
         Nombre del mazo: 
