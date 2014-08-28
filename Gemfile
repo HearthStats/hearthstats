@@ -84,13 +84,13 @@ gem 'ransack' # the new meta_search
 gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
+gem 'delayed_job_web'
 
 group :development, :production do
 
   # Background
   gem 'delayed_job_active_record'
   gem 'daemons'
-  gem 'delayed_job_web'
   gem 'whenever'
 
   # APIs
