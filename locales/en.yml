@@ -46,9 +46,13 @@ en:
         Nom: 
         Nombre: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nome: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nome: 
+>>>>>>> updated localeapp to pass tests
         Notas: 
         Notatki: 
         Notes: Notes
@@ -62,21 +66,32 @@ en:
         "직업": 
       match:
 <<<<<<< HEAD
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
 =======
         Classe de votre adversaire: 
 >>>>>>> removed weird caching in con#getwr
+=======
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+>>>>>>> updated localeapp to pass tests
         Deck Name: Deck name
         Deck name: Deck name
         Gegner Klasse: 
         Nom du deck: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nombre del mazo: 
+        Nome do Deck: 
+>>>>>>> updated localeapp to pass tests
         Notes: Notes
         Opponent Class: Opponent class
         Opponent Name: Opponent name
@@ -86,10 +101,14 @@ en:
         oppclass_id: Oppclass
         result_id: Result
 <<<<<<< HEAD
+<<<<<<< HEAD
         user_id: User
 =======
         user_id: 
 >>>>>>> removed weird caching in con#getwr
+=======
+        user_id: User
+>>>>>>> updated localeapp to pass tests
         "套牌名字": 
         "對手職業": 
       profile:
@@ -118,8 +137,11 @@ en:
         password: Password
         password_confirmation: Password confirmation
         reset_password_token: Reset password token
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> updated localeapp to pass tests
     errors:
       format: 
       messages:
@@ -638,7 +660,11 @@ en:
       search: Search
       tags: Tags
       this_deck_public: Make Deck Public
+<<<<<<< HEAD
 >>>>>>> added localeapp back into system
+=======
+      toggle_text_import: Toggle Text Import
+>>>>>>> updated localeapp to pass tests
     index:
       my_decks: My Decks
       new_deck: New Deck
@@ -649,9 +675,13 @@ en:
       title: New Deck
     new_splash:
 <<<<<<< HEAD
+<<<<<<< HEAD
       section: Deck
 =======
 >>>>>>> added localeapp back into system
+=======
+      section: Deck
+>>>>>>> updated localeapp to pass tests
       title: New Deck Class Selection
     public:
       new_deck: New Deck
@@ -810,9 +840,13 @@ en:
         Nom: 
         Nombre: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nome: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nome: 
+>>>>>>> updated localeapp to pass tests
         Notas: 
         Notatki: 
         Notes: 
@@ -826,21 +860,32 @@ en:
         "직업": 
       match:
 <<<<<<< HEAD
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
 =======
         Classe de votre adversaire: 
 >>>>>>> removed weird caching in con#getwr
+=======
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+>>>>>>> updated localeapp to pass tests
         Deck Name: 
-        Deck name: 
+        Deck name: Deck Name
         Gegner Klasse: 
         Nom du deck: 
+<<<<<<< HEAD
 <<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nombre del mazo: 
+        Nome do Deck: 
+>>>>>>> updated localeapp to pass tests
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -873,9 +918,12 @@ en:
         email: 
         password: 
         password_confirmation: 
+<<<<<<< HEAD
 =======
     actions: Actions
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to pass tests
     links:
       back: Back
       cancel: Cancel
@@ -1326,6 +1374,7 @@ en:
       title: Recent Tournaments
     show:
       decks: Decks
+<<<<<<< HEAD
 =======
   tournies:
     index:
@@ -1338,6 +1387,8 @@ en:
       subtitle: " Check out recent tournament deck lists!"
       title: Recent Tournaments
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to pass tests
   will_paginate:
     next_label: 
     page_entries_info:

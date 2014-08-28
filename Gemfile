@@ -100,7 +100,7 @@ gem 'pusher'
   gem 'newrelic_rpm'
   gem 'cindy' # Sendy API
   gem 'appsignal'
-  gem 'localeapp'
+  gem 'localeapp', require: false
 end
 
 group :test do

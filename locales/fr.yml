@@ -46,9 +46,13 @@ fr:
         Nom: 
         Nombre: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nome: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nome: 
+>>>>>>> updated localeapp to pass tests
         Notas: 
         Notatki: 
         Notes: 
@@ -62,21 +66,32 @@ fr:
         "직업": 
       match:
 <<<<<<< HEAD
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
 =======
         Classe de votre adversaire: 
 >>>>>>> removed weird caching in con#getwr
+=======
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+>>>>>>> updated localeapp to pass tests
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nombre del mazo: 
+        Nome do Deck: 
+>>>>>>> updated localeapp to pass tests
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -114,8 +129,11 @@ fr:
         password: 
         password_confirmation: 
         reset_password_token: 
+<<<<<<< HEAD
 =======
 >>>>>>> added localeapp back into system
+=======
+>>>>>>> updated localeapp to pass tests
     errors:
       format: 
       messages:
@@ -755,9 +773,13 @@ fr:
         Nom: 
         Nombre: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nome: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nome: 
+>>>>>>> updated localeapp to pass tests
         Notas: 
         Notatki: 
         Notes: 
@@ -771,21 +793,32 @@ fr:
         "직업": 
       match:
 <<<<<<< HEAD
+<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
 =======
         Classe de votre adversaire: 
 >>>>>>> removed weird caching in con#getwr
+=======
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+>>>>>>> updated localeapp to pass tests
         Deck Name: 
         Deck name: 
         Gegner Klasse: 
         Nom du deck: 
 <<<<<<< HEAD
+<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
 =======
 >>>>>>> removed weird caching in con#getwr
+=======
+        Nombre del mazo: 
+        Nome do Deck: 
+>>>>>>> updated localeapp to pass tests
         Notes: 
         Opponent Class: 
         Opponent Name: 
@@ -818,9 +851,12 @@ fr:
         email: 
         password: 
         password_confirmation: 
+<<<<<<< HEAD
 =======
     actions: 
 >>>>>>> locale changes:
+=======
+>>>>>>> updated localeapp to pass tests
     links:
       back: 
       cancel: 

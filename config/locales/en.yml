@@ -447,11 +447,13 @@ en:
       no_more: No More In Deck
       legend: Only one legendary allowed per deck.
       other_versions: Other Versions
+      toggle_text_import: Toggle Text Import
     new:
       title: New Deck
       section: Decks
     new_splash:
       title: New Deck Class Selection
+      section: Deck
     public:
       title: Public Deck List
       subtitle: " all public constructed decks"
@@ -632,8 +634,26 @@ en:
 >>>>>>> added league page
     index:
 <<<<<<< HEAD
+<<<<<<< HEAD
       arena_run_with: arena run with
       close: Close
+=======
+      title: Streams
+      subtitle: " find all your favourite streams in one place"
+  tournies:
+    index:
+      title: Recent Tournaments
+      subtitle: " Check out recent tournament deck lists!"
+      section: Tournaments
+    show:
+      decks: Decks
+  menu:
+    dashboard: Dashboard
+    card_database: Card Database
+    arena:
+      title: Arena
+      recent_arena_runs: Recent Arena Runs
+>>>>>>> updated localeapp to pass tests
       continue_arena_run: Continue Arena Run
       description: " recent arena games"
       new_arena_run: New Arena Run
@@ -651,6 +671,7 @@ en:
       your_class: Your Class
     matches:
       recent_arena_matches: Recent Arena Matches
+<<<<<<< HEAD
 <<<<<<< HEAD
       section: Arena
       subtitle: " recent matches games"
@@ -984,6 +1005,8 @@ en:
   helpers:
     actions: Actions
 =======
+=======
+>>>>>>> updated localeapp to pass tests
       statistics: Statistics
     constructed:
       title: Constructed
@@ -1068,12 +1091,16 @@ en:
       match: Match
       user: User
   helpers:
+<<<<<<< HEAD
 >>>>>>> added deck creation and show constructeds api
+=======
+>>>>>>> updated localeapp to pass tests
     label:
       arena_run:
         Dust Earned: 
         Gold Earned: 
       deck:
+<<<<<<< HEAD
 <<<<<<< HEAD
         Clase: 
         Class: 
@@ -1089,6 +1116,8 @@ en:
         Notes: 
         Notizen: 
 =======
+=======
+>>>>>>> updated localeapp to pass tests
         "노트": 
         "이름": 
         "직업": 
@@ -1099,12 +1128,16 @@ en:
         Nome: 
         Notatki: 
         Notes: 
+<<<<<<< HEAD
 >>>>>>> added deck creation and show constructeds api
+=======
+>>>>>>> updated localeapp to pass tests
         Tags: 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
+<<<<<<< HEAD
 <<<<<<< HEAD
         Deck Name: 
         Deck name: 
@@ -1139,6 +1172,9 @@ en:
             num_pods: 
 =======
         Deck name: 
+=======
+        Deck name: Deck Name
+>>>>>>> updated localeapp to pass tests
         Deck Name: 
         Gegner Klasse: 
         Nombre del mazo: 
