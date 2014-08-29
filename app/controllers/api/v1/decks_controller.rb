@@ -7,6 +7,10 @@ class Api::V1::DecksController < ApplicationController
   respond_to :json
 
   def show
+    
+  end
+
+  def list
     user = User.where(userkey: params[:userkey])[0]
     begin
       decks = Deck.where(user_id: user.id)
