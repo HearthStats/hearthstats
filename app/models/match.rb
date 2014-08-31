@@ -1,6 +1,6 @@
 class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
-                  :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
+                  :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id, :match_id
 
   RESULTS_LIST = {
     1 => 'Victory',
