@@ -63,6 +63,12 @@ task :fix_blizz_id=> :environment do
   # Stupid Cold Bloooooood
   # Fix cold blood blizz_id
   Card.find(196).update_attribute(:blizz_id, "CS2_073")
+  Card.find(109).update_attribute(:blizz_id, "NEW1_029")
+  Card.find(203).update_attribute(:blizz_id, "NEW1_040")
+  Card.find(356).update_attribute(:blizz_id, "EX1_614")
+  Card.find(296).update_attribute(:blizz_id, "EX1_100")
+  Card.find(117).update_attribute(:blizz_id, "EX1_014")
+  Card.find(46).update_attribute(:blizz_id, "CS2_008")
   Card.all.each do |card|
     if letter?(card.blizz_id.last)
       p card.id 
