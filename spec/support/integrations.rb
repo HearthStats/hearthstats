@@ -1,3 +1,3 @@
 RSpec.configure do |config|
-  config.include SessionsHelper
+  config.include ::SessionsHelper
 end
