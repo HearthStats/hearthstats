@@ -33,6 +33,7 @@ class Api::V1::DecksController < ApplicationController
       deck = Deck.new(@req[:deck])
       deck.user_id = @user.id
       deck.cardstring = text2deck.cardstring
+      deck.save
       api_response =  { status: "success", data: deck }
     end
 
