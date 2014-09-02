@@ -333,7 +333,7 @@ form{
 
 }
 .tab.active {
-  background-color: #24292D;
+  background-color: #F47422;
 }
 
 .all-decks-arrow-icon {
@@ -365,7 +365,7 @@ form{
   color: #24292D;
 }
 .stream-tabs .active {
-  background-color: #AFB2B7;
+  background-color: #F47422;
 }
 .stream-container{
   padding: 10px;

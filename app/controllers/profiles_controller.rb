@@ -41,8 +41,6 @@ class ProfilesController < ApplicationController
 
     @profiletitle = @profile.name.blank? ? "User" : @profile.name
 
-    classes = klasses_hash.map { |a| a[0] }
-
     @recent_matches = matches.last(6).reverse
 
     # Overall win rates
@@ -55,22 +53,22 @@ class ProfilesController < ApplicationController
     @arenawins = Match.winrate_per_day(arena_matches, 10)
 
     # Determine Constructed Class Win Rates
-
     @classconrate = Array.new
-    (1..9).each_with_index do |c,i|
-      totalwins = 0
-      totalgames = 0
-      totalwins = matches.where( mode_id: 3,  klass_id: c, result_id: 1 ).count
-      totalgames = matches.where( mode_id: 3, klass_id: c ).count
-      if totalgames == 0
-        @classconrate[i] = [0,"#{classes[i]}<br/>0 Games"]
-      else
-        @classconrate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
-      end
-
+    matches = con_matches.group(:klass_id)
+    wins = matches.where(result_id: 1).count
+    tot_games = matches.count
+    wins.each_pair do |klass_id, win|
+      @classconrate << [ (win.to_f/tot_games[klass_id] * 100).round(2), "#{Klass::LIST[klass_id]}<br/>#{tot_games[klass_id]} Games"]
     end
 
-    arena_class
+    # Determine Arena Class Win Rates
+    @classarenarate = Array.new
+    matches = arena_matches.group(:klass_id)
+    wins = matches.where(result_id: 1).count
+    tot_games = matches.count
+    wins.each_pair do |klass_id, win|
+      @classarenarate << [ (win.to_f/tot_games[klass_id] * 100).round(2), "#{Klass::LIST[klass_id]}<br/>#{tot_games[klass_id]} Games"]
+    end
 
     # User's Highest Winning Decks
     @topdeck = Deck.bestuserdeck(@user.id)
@@ -106,20 +104,5 @@ class ProfilesController < ApplicationController
   private
 
   def arena_class
-    classes = klasses_hash.map { |a| a[0] }
-    # Determine Arena Class Win Rates
-    @classarenarate = Array.new
-    (1..Klass.all.count).each_with_index do |c,i|
-      totalwins = 0
-      totalgames = 0
-      totalwins = Match.where( mode_id: 1, klass_id: c, result_id: 1, user_id: @user.id ).count
-      totalgames = Match.where( mode_id: 1, klass_id: c, user_id: @user.id ).count
-      if totalgames == 0
-        @classarenarate[i] = [0,"#{classes[i]}<br/>0 Games"]
-      else
-        @classarenarate[i] = [((totalwins.to_f / totalgames)*100).round(2), "#{classes[i]}<br/>#{totalgames} Games"]
-      end
-    end
-
   end
 end
