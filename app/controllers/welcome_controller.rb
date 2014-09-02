@@ -85,8 +85,8 @@ class WelcomeController < ApplicationController
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(klass_id: klasses_hash[c], result_id: 1).count + mode_matches.where(oppclass_id: klasses_hash[c], result_id: 2).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count + mode_matches.where(oppclass_id: klasses_hash[c]).count
+      totalwins = mode_matches.where(klass_id: klasses_hash[c], result_id: 1).count
+      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count
       if totalgames == 0
         @classarenarate[c] = 0
       else
@@ -106,8 +106,7 @@ class WelcomeController < ApplicationController
       totalwins = 0
       totalgames = 0
       totalwins = mode_matches.where(result_id: 1, klass_id: klasses_hash[c]).count
-      totalwins = totalwins + mode_matches.where(oppclass_id: klasses_hash[c], result_id: 2).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count + mode_matches.where(oppclass_id: klasses_hash[c]).count
+      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count
       if totalgames == 0
         @classconrate[c] = 0
       else
@@ -139,8 +138,8 @@ class WelcomeController < ApplicationController
     classcombos.each_with_index do |combo, i |
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]], result_id: 1).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]], result_id: 2).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]],result_id: [1,2]).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]],result_id: [1,2]).count
+      totalwins = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]], result_id: 1).count
+      totalgames = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]]).count
       @userarenarate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
     end
     # Determine mode_matches Class Win Rates
@@ -152,9 +151,8 @@ class WelcomeController < ApplicationController
       totalgames = 0
 
       totalwins = mode_matches.where(oppclass_id: klasses_hash[combo[1]], result_id: 1, klass_id: klasses_hash[combo[0]]).count
-      totalwins = totalwins + mode_matches.where(oppclass_id: klasses_hash[combo[0]], result_id: 2, klass_id: klasses_hash[combo[1]]).count
 
-      totalgames = mode_matches.where(oppclass_id: klasses_hash[combo[0]], klass_id: klasses_hash[combo[1]], result_id: [1,2]).count + mode_matches.where(oppclass_id: klasses_hash[combo[1]], klass_id: klasses_hash[combo[0]], result_id: [1,2]).count
+      totalgames = mode_matches.where(oppclass_id: klasses_hash[combo[0]], klass_id: klasses_hash[combo[1]], result_id: [1,2]).count 
 
       @conrate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
     end
@@ -195,6 +193,10 @@ class WelcomeController < ApplicationController
     render file: "#{Rails.root}/public/reports/july_report.html", layout: 'fullpage'
   end
 
+  def aug_report
+    render file: "#{Rails.root}/public/reports/aug_report.html", layout: 'fullpage'
+  end
+
   def novreport
     render layout: 'fullpage'
   end
@@ -205,7 +207,7 @@ class WelcomeController < ApplicationController
       wins = Array.new(days1, 0)
       wins[0] = 0
       (1..days1).each do |i|
-        wins[i] = mode_matches.where(klass: race, result_id: true).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + mode_matches.where(oppclass_id: race, result_id: false).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+        wins[i] = mode_matches.where(klass: race, result_id: 1).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
       end
       return wins
     end
@@ -214,7 +216,7 @@ class WelcomeController < ApplicationController
       wins = Array.new(days1, 0)
       wins[0] = 0
       (1..days1).each do |i|
-        wins[i] = mode_matches.joins(:deck).where(:result_id => true, 'decks.race' => race).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + mode_matches.where(oppclass_id: race, result_id: false).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+        wins[i] = mode_matches.joins(:deck).where(:result_id => 1, 'decks.race' => race).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
       end
       return wins
     end

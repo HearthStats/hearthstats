@@ -59,6 +59,7 @@ Hearthstats::Application.routes.draw do
   match "/may", to: "welcome#may_report"
   match "/june", to: "welcome#june_report"
   match "/july", to: "welcome#july_report"
+  match "/aug", to: "welcome#aug_report"
   match "/gen_report", to: "welcome#generate_report"
   get "welcome/ranked_test"
   get "welcome/select_klass"
