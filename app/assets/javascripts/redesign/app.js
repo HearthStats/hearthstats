@@ -577,23 +577,6 @@ var App = function () {
         });
     }
 
-    // Handles Bootstrap Popovers
-
-    // last popep popover
-    var lastPopedPopover;
-
-    var handlePopovers = function () {
-        jQuery('.popovers').popover();
-
-        // close last poped popover
-
-        $(document).on('click.bs.popover.data-api', function (e) {
-            if (lastPopedPopover) {
-                lastPopedPopover.popover('hide');
-            }
-        });
-    }
-
     // Handles scrollable contents using jQuery SlimScroll plugin.
     var handleScrollers = function () {
         $('.scroller').each(function () {
@@ -879,7 +862,6 @@ var App = function () {
             handleDropdowns(); // handle dropdowns
             handleTabs(); // handle tabs
             handleTooltips(); // handle bootstrap tooltips
-            handlePopovers(); // handles bootstrap popovers
             handleAccordions(); //handles accordions
             handleModals(); // handle modals
             handleFullScreenMode(); // handles full screen
@@ -890,7 +872,6 @@ var App = function () {
             handleSelect2(); // handle custom Select2 dropdowns
             handleDropdowns(); // handle dropdowns
             handleTooltips(); // handle bootstrap tooltips
-            handlePopovers(); // handles bootstrap popovers
             handleAccordions(); //handles accordions
             handleUniform(); // hanfle custom radio & checkboxes
             handleDropdownHover() // handles dropdown hover

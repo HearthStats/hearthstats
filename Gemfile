@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.18'
 gem 'rake'
 
 group :development do
@@ -55,7 +55,7 @@ gem 'social-share-button'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'figaro'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0.0'
 # gem 'turbolinks'
 # gem 'jquery-turbolinks' # Fixes JS for turbolinks
 # gem 'nprogress-rails' # Progress bar for turbolinks
