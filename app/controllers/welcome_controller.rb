@@ -31,7 +31,6 @@ class WelcomeController < ApplicationController
 
   def select_klass
     @klass = params[:klass_id]
-    p @klass
     respond_to do |format|
       format.js
     end

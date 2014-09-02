@@ -9,7 +9,9 @@
   <meta name="MobileOptimized" content="320">
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    params[:controller] %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "page_specific/#{params[:controller]}"  %>
   <%= csrf_meta_tags %>
   <%= display_meta_tags :site => 'HearthStats' %>
   <!-- FAVICON-->
