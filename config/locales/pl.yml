@@ -28,7 +28,7 @@ pl:
     notes: Notatki
     run: Rozgrywka
     error: błąd
-    prohibited_this_being_save: 'nie można %{resource} zapisać:'
+    prohibited_this_being_save: ! 'nie można %{resource} zapisać:'
     arenarun: Gra na Arenie
     show: Pokaż
     arena: Arena
@@ -134,7 +134,7 @@ pl:
   dashboards:
     index:
       title: Panel główny
-      subtitle: " statystki z obecnego sezonu"
+      subtitle: ! ' statystki z obecnego sezonu'
       global_win_rates: Globalny wskaźnik zwycięstw
       arena_win_rates: Wskaźnik zwycięstw z Areny
       games_recorded: Zarejestrowanych gier
@@ -170,12 +170,12 @@ pl:
       health_dur: Zdrowie/Wytrzymałość
       mana_cost: Koszt many
       name: Nazwa
-      none: "żadna"
+      none: żadna
       reset_filters: Resetuj filtry
   arenas:
     index:
       title: Ostatnie gry
-      description: " ostatnie gry na Arenie"
+      description: ! ' ostatnie gry na Arenie'
       section: Arena
       continue_arena_run: Kontynuuj Areny
       new_arena_run: Nowa Arena
@@ -210,12 +210,12 @@ pl:
       played_second: Grasz jako drugi
     matches:
       title: Ostatnie bitwy
-      subtitle: " ostatnie bitwy"
+      subtitle: ! ' ostatnie bitwy'
       section: Arena
       recent_arena_matches: Ostatnie bitwy na Arenach
     stats:
       title: Statystyki
-      subtitle: " szczegółowe statystyki z Areny"
+      subtitle: ! ' szczegółowe statystyki z Areny'
       section: Arena
       note: UWAGA!
       page_being_designed: Strona jest w ciągłym doskonaleniu
@@ -244,7 +244,7 @@ pl:
       add_draw: Dodaj Remis
     index:
       title: Ostatnie gry
-      description: " ostatnie gry w Trybie Pojedynku"
+      description: ! ' ostatnie gry w Trybie Pojedynku'
       section: Tryb Pojedynku
       new_constructed: Nowy Pojedynek
     new:
@@ -253,7 +253,7 @@ pl:
       get_the_auto_uploader: Pobierz Auto Uploader
     stats:
       title: Statystyki
-      description: " statystyki dla Trybu Pojedynku"
+      description: ! ' statystyki dla Trybu Pojedynku'
       section: Tryb Pojedynku
       filter_by: Sortuj po
       last: ostatnie
@@ -272,7 +272,7 @@ pl:
       you_played_on_the: Grasz jako
       first_turn: pierwszy
       second_turn: drugi
-      this_match_is: 'Tryb tej gry to:'
+      this_match_is: ! 'Tryb tej gry to:'
       ranked: Ranking
       casual: Rozrywka
       deck_name: Nazwa talii
@@ -284,7 +284,7 @@ pl:
       you_played_on_the: Grasz jako
       first_turn: pierwszy
       second_turn: drugi
-      this_match_is: 'Tryb tej gry to:'
+      this_match_is: ! 'Tryb tej gry to:'
       ranked: Ranking
       casual: Rozrywka
       deck_name: Nazwa talii
@@ -314,7 +314,7 @@ pl:
       name: Nazwa
       class: Klasa
       notes: Notatki
-      decklist_etc: " Lista talii, itd."
+      decklist_etc: ! ' Lista talii, itd.'
       this_deck_public: Talia jest ogólnodostępna
       card_limit: 
       controls: 
@@ -329,19 +329,19 @@ pl:
       section: Talie
     public:
       title: Ogólnodostępna lista talii
-      subtitle: " wszystkie ogólnodostępne talie"
+      subtitle: ! ' wszystkie ogólnodostępne talie'
       new_deck: Nowa talia
       public_decks: Ogólnodostępne talie
     active_decks:
       title: Aktywna talia
-      subtitle: " wszystkie aktywne talie"
+      subtitle: ! ' wszystkie aktywne talie'
       slot: Miejsce
       select_deck: Wybierz talię
       submit: Zatwierdź
       deleted_deck: 
     index:
       title: Moje talie
-      subtitle: " wszystkie moje talie"
+      subtitle: ! ' wszystkie moje talie'
       new_deck: Nowa talia
       my_decks: Moje talie
     filter:
@@ -402,7 +402,7 @@ pl:
   additional:
     news:
       title: Nowości Hearthstone
-      subtitle: " ostatnie nowości w Hearthstone"
+      subtitle: ! ' ostatnie nowości w Hearthstone'
       suggestions_for_news: Sugestie dotyczące źródeł informacji są mile widziane
       posted: Opublikowano
       read_more: Czytaj więcej
@@ -420,7 +420,7 @@ pl:
         inst_osx_1: Pobierz z linku powyżej
         inst_osx_2: Rozpakuj plik
         inst_osx_3: Przeciągnij plik do folderu Aplikacje
-        inst_osx_4: "<b>Wciśnij Prawy Przycisk Myszy</b> na pliku i wybierz Otwórz"
+        inst_osx_4: <b>Wciśnij Prawy Przycisk Myszy</b> na pliku i wybierz Otwórz
         inst_osx_5: Wprowadź swój Klucz Użytkownika ze strony Uploadera lub ze swojego profilu
         inst_osx_6: Uruchom grę i graj!
       instructions_win:
@@ -440,7 +440,7 @@ pl:
         feat_7: Możesz dodać komentarz do swoich gier bezpośrednio z Uploadera
       help_and_support: Pomoc i wsparcie
       known_issues: Znane problemy
-      project_source_on_github: "Źródło projektu na Github"
+      project_source_on_github: Źródło projektu na Github
       title:官方上传器 header_text: 
       tutorial_video: 
     changelog:
@@ -463,8 +463,8 @@ pl:
       rackspace_text: Chciałbym podziękować Rackspace za zapewnienie niesamowitego hostingu! Jeżeli kiedykolwiek będziesz potrzebował hostingu opartego na chmurze albo jakiegokolwiek - zdecydowanie spradź ich!
     contactus:
       title: Kontakt
-      contact_email_text: "Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań."
-      contact_email_text_2: 'Możesz też śledzić nas na Twitterze: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text: Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań.
+      contact_email_text_2: ! 'Możesz też śledzić nas na Twitterze: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: Trochę się nudzę, więc Twoje e-maile są bardzo mile widziane.
       fadein_text_2: Proszę, prześlij mi jakiegoś maila! To może być cokolwiek!
       fadein_text_3: Tyłek aż mnie boli... tyle bólu mnie kosztuje zrobienie tej strony dla Was!
@@ -476,11 +476,11 @@ pl:
   streams:
     index:
       title: Streamy
-      subtitle: " znajdź wszystkie swoje ulubione streamy w jednym miejscu"
+      subtitle: ! ' znajdź wszystkie swoje ulubione streamy w jednym miejscu'
   tournies:
     index:
       title: Zarejestruj się
-      subtitle: " Zarejestruj się do naszych najnowszych turniejów"
+      subtitle: ! ' Zarejestruj się do naszych najnowszych turniejów'
       section: Turnieje
   menu:
     dashboard: Panel główny
@@ -587,6 +587,16 @@ pl:
       template:
         body: 
         header: 
+    attributes:
+      deck:
+        직업: 
+      match:
+        Clase del oponente: 
+        Nombre del mazo: 
+      unique_deck:
+        cardstring: 
+    models:
+      unique_deck: 
   date:
     abbr_day_names: 
     abbr_month_names: 
@@ -720,6 +730,12 @@ pl:
       edit: 
       new: 
       save: 
+    label:
+      deck:
+        직업: 
+      match:
+        Clase del oponente: 
+        Nombre del mazo: 
   number:
     currency:
       format:

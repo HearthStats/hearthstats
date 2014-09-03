@@ -4,4 +4,7 @@
       = f.label t('tournaments.form.name')
       = f.text_field :name, class: 'form-control'
     .form-group
+      = f.label t('tournaments.form.desc')
+      = f.text_area :desc, class: 'redactor form-control'
+    .form-group
       = f.submit class: 'btn btn-block green'

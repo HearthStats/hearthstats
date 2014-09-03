@@ -138,6 +138,12 @@ fi:
       edit: 
       new: 
       save: 
+    label:
+      deck:
+        직업: 
+      match:
+        Clase del oponente: 
+        Nombre del mazo: 
   menu:
     deck:
       other_versions: 
@@ -174,3 +180,14 @@ fi:
       weapons: 
       win_rate: 
       wins: 
+  activerecord:
+    attributes:
+      deck:
+        직업: 
+      match:
+        Clase del oponente: 
+        Nombre del mazo: 
+      unique_deck:
+        cardstring: 
+    models:
+      unique_deck: 

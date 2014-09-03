@@ -1,7 +1,42 @@
-- case @tourn_format
-- when 0
-  = render partial: "group_show", locals: {pairs: @pairs, num_pods: @num_pods}
-- when 1
-  = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
-- else
-  = puts "Oops... error in displaying tournament"
+- set_meta_tags title: @tournament.name,
+                description: @tournament.name,
+                keywords: '#{@tournament.name}, new, entry, tournament, hearthstats, hearthstone'
+- provide(:title, @tournament.name)
+- provide(:section, t('.section'))
+div.col
+  div.row
+    div.col-md-6
+      p
+        |Format:&nbsp;
+        = @format
+      p
+        |Player Limit:&nbsp;
+        = @tournament.num_players
+        - if !@tournament.started?
+          p = text_field_tag 'code'
+          div id="tour_join" class="btn btn-block green"
+            = @user_action
+    div.col-md-6
+      p
+        = @tournament.desc
+  div.row
+    div id='tourn_content_panel'
+      - if @tournament.started?
+        - case @tournament.bracket_format
+        - when 0
+          = render partial: "group_show", locals: {pairs: @pairs, num_pods: @tournament.num_pods}
+        - when 1
+          = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
+        - else
+          |Oops... error in displaying tournament
+
+javascript:
+
+  $(document).ready(function(){
+
+    $("#tour_join").click(function(){
+      $("#tourn_content_panel").empty();
+      $("#tourn_content_panel").html("#{escape_javascript(render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }) }");
+    });
+
+  });

@@ -20,10 +20,39 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    @pairs = TournPair.where(tournament_id: params[:id])
-    @num_columns = Math.log2(@pairs.length + 1).ceil
-    @tourn_format = Tournament.find(params[:id]).bracket_format
-    @num_pods = @pairs.last.pos
+    @tournament = Tournament.find(params[:id])
+    if @tournament.started?
+      @pairs = TournPair.where(tournament_id: params[:id])
+      @num_columns = Math.log2(@pairs.length + 1).ceil
+    end
+    @format = Tournament.format_to_s(@tournament.bracket_format)
+    user_entry = TournUser.where(user_id: current_user.id, tournament_id: params[:id])
+    @user_action = user_entry.empty? ? "Join" : "Quit"
+    @user_decks = Deck.where(user_id: current_user.id) #optimize
+  end
+
+  def submit_deck
+    tournament = Tournament.find(params[:id])
+    tourn_user = TournUser.where(user_id: current_user.id, tournament_id: tournament.id).first
+    chosen_deck_ids = []
+    (1..tournament.num_decks).each do |deck_num|
+      deck_id = params["deck_#{deck_num}"]
+      chosen_deck_ids.push(deck_id)
+      deck = Deck.find(deck_id)
+      if deck.unique_deck_id.nil?
+        redirect_to(@tournament, alert: 'Invalid Deck: #{deck.name}')
+        return
+      end
+    end
+
+    chosen_deck_ids.each do |deck_id|
+      if !deck_id.nil?
+        TournDeck.create(deck_id: deck_id, 
+                         tournament_id: params[:id],
+                         tourn_user_id: tourn_user.id)
+        Deck.update(deck_id, is_tour_deck: true)
+      end
+    end
   end
 
 end

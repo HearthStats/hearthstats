@@ -128,7 +128,9 @@ Hearthstats::Application.routes.draw do
     end
   end
 
-  resources :tournaments
+  resources :tournaments do
+    post :submit_deck, on: :member
+  end
 
   resources :arenas do
     collection do

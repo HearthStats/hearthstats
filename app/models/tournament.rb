@@ -1,16 +1,44 @@
 class Tournament < ActiveRecord::Base
-  attr_accessible :bracket_format, :creator_id, :id, :name, :num_players
+  attr_accessible :bracket_format, :creator_id, :id, :name, :num_players, 
+                  :desc, :is_private, :num_pods, :started, :num_decks
 
   ##
   # bracket_format
+  # 0: Group
+  # 1: Single Elimination
+  # 2: Double Elimination
   #
   has_many :tourn_users
   has_many :users, through: :tourn_users
   has_many :tourn_pairs
   has_many :tourn_decks
   has_many :decks, through: :tourn_decks
+
   ### CLASS METHODS:
+  def self.format_to_s(format)
+    case format
+    when 0
+      return "Group"
+    when 1
+      return "Single Elimination"
+    end
+  end
   ### INSTANCE METHODS:
+  def start_tournament
+    case self.bracket_format
+    when 0
+      initiate_groups(self.num_pods)
+    when 1
+      initiate_brackets
+    end
+
+    Tournament.update(self.id, started: true)
+  end
+
+  def started?
+    self.started
+  end
+
   def get_num_pairings_in_pod(pod_number)
     self.tourn_pairs.select{ |p| p.pos == pod_number}.count if self.bracket_format == 0
   end
@@ -21,6 +49,7 @@ class Tournament < ActiveRecord::Base
     num_residual_users = user_list.count % num_pods
     num_users_per_pod = (user_list.count / num_pods).floor
     pair_list = Array.new
+
     (1..num_pods).each do |pod|
       pod_size = num_users_per_pod + (num_residual_users.quo(num_pods)).ceil
       pod_list = user_list.shift(pod_size)
@@ -87,7 +116,6 @@ class Tournament < ActiveRecord::Base
     TournPair.import pair_list
 
     update_undecided_pair_ids
-
   end
 
   private

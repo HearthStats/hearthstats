@@ -1,0 +1,26 @@
+p
+  |Choose&nbsp;
+  span id="count_display" = count
+  |&nbsp;more decks
+= hidden_field_tag 'num_decks', count
+div.col
+  div.row
+    div.col-md-6
+      = form_tag(submit_deck_tournament_path, remote: true)
+        ul class="no-bullet"
+          - decks.each_with_index do |deck, index|
+            li class="deck_choice"
+              label
+                = check_box_tag "deck_#{index}", deck.id
+                = deck.name
+        = submit_tag 'Submit and Enter'
+
+javascript:
+
+  $(document).ready(function(){
+    $(".deck_choice").click(function(){
+      var checked = $( "input:checked" ).length
+      $("#count_display").text($("#num_decks").val()-checked);
+      //$(this).css({"border-style":"solid","border-color":"red"});
+    });
+  });
