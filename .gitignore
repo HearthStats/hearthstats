@@ -66,6 +66,7 @@ console
 
 # Ignore application configuration
 /config/application.yml
+/config/newrelic.yml
 
 # Ignore Honeybadger
 /initializers/honeybadger.rb
@@ -82,4 +83,4 @@ zeus.json
 # Screw gitignore
 .DS_Store
 
-/tags/
+tags
