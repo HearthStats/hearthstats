@@ -91,39 +91,39 @@ class DecksController < ApplicationController
 
   def public_show
     @deck = Deck.find(params[:id])
-    unique = @deck.unique_deck
-    if unique.nil?
-      redirect_to deck_path(@deck) and return
-    end
-    impressionist(unique)
-
-    @card_array = @deck.card_array_from_cardstring
-    @matches    = unique.matches
-
-    # Win rates vs each class
-    @deckrate = Array.new
-    i = 0
-    Klass.order("name").each do |c|
-      wins = @matches.where(oppclass_id: c.id, result_id: 1).count
-      totgames = @matches.where(oppclass_id: c.id).count
-      if totgames == 0
-        @deckrate[i] = [0,"#{c.name}<br/>0 Games"]
-      else
-        @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{c.name}<br/>#{totgames} Games"]
-      end
-      i = i + 1
-    end
-
-    # Going first vs 2nd
-    @firstrate = get_win_rate(@matches.where(coin: false), true)
-    @secrate = get_win_rate(@matches.where(coin: true), true)
-
-    #calculate deck winrate
-
-    @winrate = @matches.count > 0 ? get_win_rate(@matches) : 0
-
+    # unique = @deck.unique_deck
+    # if unique.nil?
+    #   redirect_to deck_path(@deck) and return
+    # end
+    # impressionist(unique)
+    #
+    # @card_array = @deck.card_array_from_cardstring
+    # @matches    = unique.matches
+    #
+    # # Win rates vs each class
+    # @deckrate = Array.new
+    # i = 0
+    # Klass.order("name").each do |c|
+    #   wins = @matches.where(oppclass_id: c.id, result_id: 1).count
+    #   totgames = @matches.where(oppclass_id: c.id).count
+    #   if totgames == 0
+    #     @deckrate[i] = [0,"#{c.name}<br/>0 Games"]
+    #   else
+    #     @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{c.name}<br/>#{totgames} Games"]
+    #   end
+    #   i = i + 1
+    # end
+    #
+    # # Going first vs 2nd
+    # @firstrate = get_win_rate(@matches.where(coin: false), true)
+    # @secrate = get_win_rate(@matches.where(coin: true), true)
+    #
+    # #calculate deck winrate
+    #
+    # @winrate = @matches.count > 0 ? get_win_rate(@matches) : 0
+    #
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to @deck }
     end
   end
 
