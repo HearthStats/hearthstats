@@ -74,7 +74,7 @@ class WelcomeController < ApplicationController
       {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
       {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
 
-    matches = Match.where(season_id: season)
+    matches = Match.where(season_id: season).joins(:season, :arena_run, :match_run)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
@@ -84,8 +84,8 @@ class WelcomeController < ApplicationController
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(klass_id: klasses_hash[c], result_id: 1).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count
+      totalwins = mode_matches.where(klass_id: klasses_hash[c], result_id: 1).count + mode_matches.where(oppclass_id: klasses_hash[c], result_id: 2).count
+      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count + mode_matches.where(oppclass_id: klasses_hash[c]).count
       if totalgames == 0
         @classarenarate[c] = 0
       else
@@ -105,7 +105,8 @@ class WelcomeController < ApplicationController
       totalwins = 0
       totalgames = 0
       totalwins = mode_matches.where(result_id: 1, klass_id: klasses_hash[c]).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count
+      totalwins = totalwins + mode_matches.where(oppclass_id: klasses_hash[c], result_id: 2).count
+      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count + mode_matches.where(oppclass_id: klasses_hash[c]).count
       if totalgames == 0
         @classconrate[c] = 0
       else
@@ -137,8 +138,8 @@ class WelcomeController < ApplicationController
     classcombos.each_with_index do |combo, i |
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]], result_id: 1).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]]).count
+      totalwins = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]], result_id: 1).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]], result_id: 2).count
+      totalgames = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]],result_id: [1,2]).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]],result_id: [1,2]).count
       @userarenarate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
     end
     # Determine mode_matches Class Win Rates
@@ -150,8 +151,9 @@ class WelcomeController < ApplicationController
       totalgames = 0
 
       totalwins = mode_matches.where(oppclass_id: klasses_hash[combo[1]], result_id: 1, klass_id: klasses_hash[combo[0]]).count
+      totalwins = totalwins + mode_matches.where(oppclass_id: klasses_hash[combo[0]], result_id: 2, klass_id: klasses_hash[combo[1]]).count
 
-      totalgames = mode_matches.where(oppclass_id: klasses_hash[combo[0]], klass_id: klasses_hash[combo[1]], result_id: [1,2]).count 
+      totalgames = mode_matches.where(oppclass_id: klasses_hash[combo[0]], klass_id: klasses_hash[combo[1]], result_id: [1,2]).count + mode_matches.where(oppclass_id: klasses_hash[combo[1]], klass_id: klasses_hash[combo[0]], result_id: [1,2]).count
 
       @conrate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
     end
@@ -161,14 +163,14 @@ class WelcomeController < ApplicationController
     classes.each_with_index do |c,i|
       run_count = Array.new(13,0)
       tot_games = ArenaRun.where(klass_id: i+1).count
-      ArenaRun.where(klass_id: i+1).each do |ar|
+      ArenaRun.where(klass_id: i+1).joins(:matches).each do |ar|
         run_count[ar.matches.where(result_id: 1).count] += 1 unless ar.matches.where(result_id: 1).count > 12
       end
       run_percent = run_count.map { |e| e.to_f / tot_games }
       @arena_runs << [c, run_count, run_percent]
     end
-    html = render_to_string(layout: 'fullpage')
-    File.open("#{Rails.root}/public/reports/#{Time.now.strftime('%d_%m_%Y')}.html", 'w') {|f| f.write(html) }
+    # html = render_to_string(layout: 'fullpage')
+    # File.open("#{Rails.root}/public/reports/#{Time.now.strftime('%d_%m_%Y')}.html", 'w') {|f| f.write(html) }
     render layout: 'fullpage'
   end
 
