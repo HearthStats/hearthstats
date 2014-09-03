@@ -81,3 +81,5 @@ zeus.json
 
 # Screw gitignore
 .DS_Store
+
+/tags/
