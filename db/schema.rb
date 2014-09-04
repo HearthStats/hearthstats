@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140904013212) do
+ActiveRecord::Schema.define(:version => 20140904184801) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -297,6 +297,9 @@ ActiveRecord::Schema.define(:version => 20140904013212) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "match_unique_decks", ["match_id"], :name => "index_match_unique_decks_on_match_id"
+  add_index "match_unique_decks", ["unique_deck_id"], :name => "index_match_unique_decks_on_unique_deck_id"
 
   create_table "matches", :force => true do |t|
     t.integer  "user_id"
