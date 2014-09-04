@@ -38,9 +38,12 @@ class ApplicationController < ActionController::Base
         err << ("Problem with line '" + line + "'")
         next
       end
-      card_array << card_id.to_s + "_" + qty.to_s
+      card_array << [card_id, qty]
 
     end
+
+    card_array.sort_by! { |card| card[0] }
+    card_array.map! { |card| card.join("_") }
 
     Text2Deck.new(card_array.join(','), err.join('<br>'))
   end
