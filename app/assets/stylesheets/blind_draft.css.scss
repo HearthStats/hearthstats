@@ -6,7 +6,6 @@
   width: 150px;
 }
 .user-select{
-  display: none;
 }
 .facedown-card{
   display: inline-block;
@@ -14,8 +13,8 @@
 }
 .fixedPos{
   position: fixed;
-  top: 70px;
-  right: 105px;
+  top: 50px;
+  right: 25px;
 }
 
 .picked-overlay {
@@ -24,10 +23,14 @@
     left:0;
     right:0;
     bottom:0;
-    background-image: url('http://storymag.tetherinc.com/issue-one/_media/img/sketches/X.png');
-    z-index:9999;
+    background: url('http://storymag.tetherinc.com/issue-one/_media/img/sketches/X.png');
+    z-index:300;
     color: white;
     font-size: 16px;
+}
+
+.last-picked{
+  background: rgba(230, 126, 34, 0.5);
 }
 
 .picked-player{
@@ -37,9 +40,31 @@
   background: rgba(0,0,0,0.65);
 }
 
+.user-select{
+  a {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    color: white;
+  }
+}
+.player1-select{
+  background: #9b59b6;
+}
+.player2-select{
+  background: #3498db;
+}
 span.red{
   color: #e74c3c;
 }
 span.yellow{
   color: #f1c40f;
+}
+
+.draft-klasses-cont{
+  text-align: center;
+  .draft-klass{
+    padding: 5px;
+    font-weight: bold;
+  }
 }

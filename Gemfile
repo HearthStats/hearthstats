@@ -84,9 +84,9 @@ gem 'ransack' # the new meta_search
 gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
+gem 'sync'
 
 group :development, :production do
-
   # Background
   gem 'delayed_job_active_record'
   gem 'daemons'
@@ -98,9 +98,11 @@ group :development, :production do
   
   # APIs
   gem 'newrelic_rpm'
+  gem 'honeybadger'
   gem 'cindy' # Sendy API
   gem 'appsignal'
   gem 'localeapp'
+  gem 'pusher'
 end
 
 group :test do
@@ -108,6 +110,7 @@ group :test do
   gem 'email_spec', '>= 1.4.0'
   gem 'launchy', '>= 2.1.2'
   gem 'capybara', '>= 2.0.2'
+  gem 'capybara-screenshot'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'

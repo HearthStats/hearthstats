@@ -8,9 +8,9 @@ de:
       you_have: Du hast
       new_messages: neue Nachrichten
       click_message_to_dismiss: Klick zum Ausblenden auf die Nachricht
-      change_to: Ändere zu
+      change_to: "Ändere zu"
     footer:
-      about: Über uns
+      about: "Über uns"
       faq: FAQ
       open_positions: Freie Stellen
       support: Hilfe
@@ -28,7 +28,7 @@ de:
     notes: Notizen
     run: starte
     error: Fehler
-    prohibited_this_being_save: ! 'Fehler beim speichern von: %{resource} '
+    prohibited_this_being_save: 'Fehler beim speichern von: %{resource} '
     arenarun: Arenarun
     show: zeige
     arena: Arena
@@ -120,7 +120,7 @@ de:
   dashboards:
     index:
       title: Dashboard
-      subtitle: ! ' Statistiken für die aktuelle Season'
+      subtitle: " Statistiken für die aktuelle Season"
       global_win_rates: globale Sieg Rate
       arena_win_rates: Arena Sieg Rate
       games_recorded: aufgezeichnete Spiele
@@ -161,7 +161,7 @@ de:
   arenas:
     index:
       title: letzte Spiele
-      description: ! ' letzte Arena Spiele'
+      description: " letzte Arena Spiele"
       section: Arena
       continue_arena_run: Arena Runde fortsetzen
       new_arena_run: Neuer Arena Runde
@@ -195,17 +195,17 @@ de:
       played_second: als 2tes gespielt
     matches:
       title: letzte Spiele
-      subtitle: ! ' letzte Spiele'
+      subtitle: " letzte Spiele"
       section: Arena
       recent_arena_matches: aktuelle Arena Spiele
     stats:
       title: Statistiken
-      subtitle: ! ' detailierte Arena Spiel-Statisken'
+      subtitle: " detailierte Arena Spiel-Statisken"
       section: Arena
       note: NOTE!
       page_being_designed: Seite wird noch designed
-      overall_arena_stats: Über alles Arena Stats
-      overall_win_rate: Über alles Win Rate
+      overall_arena_stats: "Über alles Arena Stats"
+      overall_win_rate: "Über alles Win Rate"
       total_gold_amount: Gesamtes erspieltes Gold
       total_dust_amount: Gesamt erspielter Staub
       arena_runs_played: Arena Runden gespielt
@@ -227,7 +227,7 @@ de:
       add_draw: Unentschieden hinzufügen
     index:
       title: letzte Spiele
-      description: ! ' letzte gewertet Spiele'
+      description: " letzte gewertet Spiele"
       section: Gewertet
       new_constructed: neues gewertetes
     new:
@@ -236,7 +236,7 @@ de:
       get_the_auto_uploader: hol dir den Auto Uploader
     stats:
       title: Statistiken
-      description: ! ' Gewertete Spiele Statistiken'
+      description: " Gewertete Spiele Statistiken"
       section: Gewertet
       filter_by: gefiltert nach
       last: letzte
@@ -280,7 +280,7 @@ de:
       name: Name
       class: Klasse
       notes: Notizen
-      decklist_etc: ! ' Deckliste, etc'
+      decklist_etc: " Deckliste, etc"
       this_deck_public: Dieses Deck ist öffentlich
       controls: 
       tags: 
@@ -288,20 +288,19 @@ de:
       title: Neues Deck
       section: Decks
     public:
-      title: Öffentliche Deck List
-      subtitle: ! ' alle öffentlichen gewertet-Decks'
+      title: "Öffentliche Deck List"
+      subtitle: " alle öffentlichen gewertet-Decks"
       new_deck: Neues Deck
-      public_decks: Öffentliche Decks
+      public_decks: "Öffentliche Decks"
     active_decks:
       title: Aktives Deck
-      subtitle: ! ' alle aktiven gewertet-Decks'
+      subtitle: " alle aktiven gewertet-Decks"
       slot: Position
       select_deck: Deck auswählen
-      submit: Übermitteln
-      deleted_deck: 
+      submit: "Übermitteln"
     index:
       title: Meine Decks
-      subtitle: ! ' alle von meinen gewertet-Decks'
+      subtitle: " alle von meinen gewertet-Decks"
       new_deck: Neues Deck
       my_decks: Meine Decks
     filter:
@@ -360,7 +359,7 @@ de:
   additional:
     news:
       title: Hearthstone News
-      subtitle: ! ' die letzen Hearthstone news'
+      subtitle: " die letzen Hearthstone news"
       suggestions_for_news: Vorschläge für Newsquellen sind willkommen
       posted: gepostet
       read_more: Mehr lesen
@@ -378,15 +377,15 @@ de:
         inst_osx_1: Download vom obigen Link
         inst_osx_2: Entpacke die Datei
         inst_osx_3: Ziehe den Pfeil in dein Anwendungsverzeichnis
-        inst_osx_4: <b>Rechts Klick</b> auf die Datei, dann öffne diese
+        inst_osx_4: "<b>Rechts Klick</b> auf die Datei, dann öffne diese"
         inst_osx_5: Gib deinen Benutzerschlüssel von deiner Profilseite ein
-        inst_osx_6: Öffne dein Spiel und leg los
+        inst_osx_6: "Öffne dein Spiel und leg los"
       instructions_win:
         inst_win_1: Download vom obigen Link
         inst_win_2: Entpacke die Datei
         inst_win_3: Klick um die Anwendung zu starten
         inst_win_4: Gib deinen Benutzerschlüssel von deiner Profilseite ein
-        inst_win_5: Öffne dein Spiel und leg los
+        inst_win_5: "Öffne dein Spiel und leg los"
       features_title: Features
       features:
         feat_1: Support for both Windows and OSx
@@ -403,8 +402,9 @@ de:
     changelog:
       title: Changelog
       all_time_in_utc: Die Ganze Zeit in UTC
+      changelog: 
     aboutus:
-      title: Über uns
+      title: "Über uns"
       founded_by_text: Diese Seite wurde mit Liebe gegründet von Jeffrey Tong.
       you_can_follow_twitter: Du kannst mir auf Twitter folgen
       a_huge_thanks_to: Ein großes Danke an
@@ -421,7 +421,7 @@ de:
     contactus:
       title: Contact Info
       contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
-      contact_email_text_2: ! 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: I'm really bored so your emails are welcomed.
       fadein_text_2: Please just send me an email! It could be about anything!
       fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
@@ -433,11 +433,11 @@ de:
   streams:
     index:
       title: Streams
-      subtitle: ! ' finde alle deine favorisierten Streams an einem Platz'
+      subtitle: " finde alle deine favorisierten Streams an einem Platz"
   tournies:
     index:
       title: Anmelden
-      subtitle: ! ' Registrier dich für unsere neuesten Turniere'
+      subtitle: " Registrier dich für unsere neuesten Turniere"
       section: Turniere
   menu:
     dashboard: Dashboard
@@ -456,7 +456,7 @@ de:
       statistics: Statistiken
     deck:
       title: Deck
-      public_deck_list: Öffentliche Deck Liste
+      public_deck_list: "Öffentliche Deck Liste"
       my_deck: Mein Deck
       my_active_deck: Mein aktives Deck
       new_deck: Neues Deck
@@ -473,111 +473,20 @@ de:
       title: Extras
       official_uploader: Offizieller Uploader
       march_report: März Report
-      change_log: Änderungen
-      about_us: Über uns
+      change_log: "Änderungen"
+      about_us: "Über uns"
       contact_info: Kontakt Info
       june_report: 
     help: Hilfe
-  devise:
-    confirmations:
-      confirmed: 
-      confirmed_and_signed_in: 
-      send_instructions: 
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      invalid_token: 
-      locked: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
-    mailer:
-      confirmation_instructions:
-        subject: 
-      reset_password_instructions:
-        subject: 
-      unlock_instructions:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      updated: 
-      update_needs_confirmation: 
-    sessions:
-      signed_in: 
-      signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
-  errors:
-    messages:
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: 
-      not_locked: 
-      not_saved: 
-  helpers:
-    actions: 
-    links:
-      back: 
-      cancel: 
-      confirm: 
-      destroy: 
-      edit: 
-      new: 
-    titles:
-      delete: 
-      edit: 
-      new: 
-      save: 
-    label:
-      deck:
-        직업: 
-      match:
-        Clase del oponente: 
-        Nombre del mazo: 
-  social_share_button:
-    baidu: 
-    delicious: 
-    douban: 
-    email: 
-    facebook: 
-    google_bookmark: 
-    google_plus: 
-    kaixin001: 
-    plurk: 
-    qq: 
-    renren: 
-    share_to: 
-    tqq: 
-    tumblr: 
-    twitter: 
-    weibo: 
   activerecord:
     attributes:
       deck:
-        직업: 
-      match:
-        Clase del oponente: 
-        Nombre del mazo: 
-      unique_deck:
-        cardstring: 
-    models:
-      unique_deck: 
+        Klasse: 
+        Nombre: 
+        Notas: 
+  helpers:
+    label:
+      deck:
+        Klasse: 
+        Nombre: 
+        Notas: 

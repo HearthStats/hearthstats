@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
   ### CLASS METHODS:
   ### INSTANCE METHODS:
 
+  def blind_drafts
+    BlindDraft.where("player1_id = #{self.id} OR player2_id = #{self.id}")
+  end
+
   def get_userkey
     update_attribute(:userkey, SecureRandom.hex) if userkey.nil?
 
@@ -41,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    return "You should add method :name in your Messageable model"
+    profile.name
   end
 
   def mailboxer_email(object)
@@ -49,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def is_new?
-    Match.where(user_id: id).count == 0
+    matches.count == 0
   end
 
   def gen_sig_pic

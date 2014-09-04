@@ -29,6 +29,14 @@ Hearthstats::Application.routes.draw do
     end
   end
 
+  resources :blind_drafts do
+    member do
+      put 'reveal_card'
+      put 'pick_card'
+      get 'draft'
+    end
+  end
+  
   # Notifications
 
   post "notifications/note_read"

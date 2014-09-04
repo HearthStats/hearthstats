@@ -90,6 +90,25 @@ ActiveRecord::Schema.define(:version => 20140902155031) do
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
 
+  create_table "blind_draft_cards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.integer  "blind_draft_id"
+    t.boolean  "revealed",       :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blind_drafts", :force => true do |t|
+    t.string   "cardstring"
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.integer  "card_cap"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "klass_string"
+  end
+
   create_table "card_sets", :force => true do |t|
     t.string "name"
     t.text   "notes"

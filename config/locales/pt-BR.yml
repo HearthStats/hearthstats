@@ -88,8 +88,8 @@ pt-BR:
       show: Exibir
       per_page: por página
       all_time: Tudo
-      last_24_hours: Últimas 24 horas
-      last: últimos
+      last_24_hours: "Últimas 24 horas"
+      last: "últimos"
       days: dias
       sort: ordem
       created: Criado
@@ -120,7 +120,7 @@ pt-BR:
   dashboards:
     index:
       title: Dashboard
-      subtitle: ! ' estatísticas para a atual temporada'
+      subtitle: " estatísticas para a atual temporada"
       global_win_rates: Taxa Global de Vitórias
       arena_win_rates: Taxa de Vitórias em Arena
       games_recorded: Partidas Gravadas
@@ -161,7 +161,7 @@ pt-BR:
   arenas:
     index:
       title: Partidas Recentes
-      description: ! ' partidas recentes em arena'
+      description: " partidas recentes em arena"
       section: Arena
       continue_arena_run: Continuar Série de Partidas Arenas
       new_arena_run: Nova Série de Partidas em Arena
@@ -175,7 +175,6 @@ pt-BR:
       prizes: Prêmios
       timee_played: Duração
       options: Opções
-      'true': em
     new:
       title: Nova Partida em Arena
       section: Arena
@@ -195,12 +194,12 @@ pt-BR:
       played_second: Jogado Segundo
     matches:
       title: Partidas Recentes
-      subtitle: ! ' partídas recentes'
+      subtitle: " partídas recentes"
       section: Arena
       recent_arena_matches: Partidas Recentes em Arena
     stats:
       title: Estatísticas
-      subtitle: ! ' estatísticas detalhadas de jogos em Arena'
+      subtitle: " estatísticas detalhadas de jogos em Arena"
       section: Arena
       note: NOTA!
       page_being_designed: A página ainda está sendo desenvolvida
@@ -227,7 +226,7 @@ pt-BR:
       add_draw: Adicionar Empate
     index:
       title: Jogos Recentes
-      description: ! ' jogos recentes constructed'
+      description: " jogos recentes constructed"
       section: Constructed
       new_constructed: Novo Constructed
     new:
@@ -236,10 +235,10 @@ pt-BR:
       get_the_auto_uploader: Baixar o Auto Uploader
     stats:
       title: Estatísticas
-      description: ! ' de jogos constructed'
+      description: " de jogos constructed"
       section: Constructed
       filter_by: Filtrar por
-      last: últimos
+      last: "últimos"
       hours: horas
       days: dias
       all_time: Tudo
@@ -280,7 +279,7 @@ pt-BR:
       name: Nome
       class: Classe
       notes: Notas
-      decklist_etc: ! ' Lista de decks, etc'
+      decklist_etc: " Lista de decks, etc"
       this_deck_public: Esse Deck é Público
       controls: 
       tags: 
@@ -289,19 +288,19 @@ pt-BR:
       section: Decks
     public:
       title: Lista de Decks Públicos
-      subtitle: ! ' todos os decks constructed públicos'
+      subtitle: " todos os decks constructed públicos"
       new_deck: Novo Deck
       public_decks: Decks Públicos
     active_decks:
       title: Decks Atívos
-      subtitle: ! ' todos os decks constructed ativos'
+      subtitle: " todos os decks constructed ativos"
       slot: Campo
       select_deck: Selecione o Deck
       submit: Enviar
       deleted_deck: 
     index:
       title: Meus Decks
-      subtitle: ! ' todos os meus decks constructeds'
+      subtitle: " todos os meus decks constructeds"
       new_deck: Novo Deck
       my_decks: Meus Decks
     filter:
@@ -360,7 +359,7 @@ pt-BR:
   additional:
     news:
       title: Notícias Hearthstone
-      subtitle: ! ' as últimas sobre Hearthstone'
+      subtitle: " as últimas sobre Hearthstone"
       suggestions_for_news: Sugestões de novas fontes de notícias são bem vindas
       posted: Postado
       read_more: Leia Mais
@@ -378,7 +377,7 @@ pt-BR:
         inst_osx_1: Faça o Download do link emcima
         inst_osx_2: Descompacte o arquivo
         inst_osx_3: Mova para a pasta Applications
-        inst_osx_4: <b>Clique com o botão direito</b> sobre o arquivo e depois clique em Abrir (open)
+        inst_osx_4: "<b>Clique com o botão direito</b> sobre o arquivo e depois clique em Abrir (open)"
         inst_osx_5: Digite sua Chave do Usuário mostrada acima
         inst_osx_6: Inicie o jogo e jogue!
       instructions_win:
@@ -403,6 +402,7 @@ pt-BR:
     changelog:
       title: Changelog
       all_time_in_utc: Todos as datas estão em UTC
+      changelog: 
     aboutus:
       title: Sobre
       founded_by_text: Esse site foi criado por Jeffrey Tong com amor.
@@ -421,7 +421,7 @@ pt-BR:
     contactus:
       title: Contato
       contact_email_text: Sinta-se a vontade para me mandar um email em <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a> para qualquer coisa.
-      contact_email_text_2: ! 'Você também pode me seguir no Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text_2: 'Você também pode me seguir no Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: Eu estou realmente entediado então mande emails.
       fadein_text_2: Por favor! Pode ser sobre qualquer coisa!
       fadein_text_3: Minha bunda já ta doendo aqui. Olha só tudo que eu to passando para desenvolver esse site para voces...
@@ -433,11 +433,11 @@ pt-BR:
   streams:
     index:
       title: Ao Vivo
-      subtitle: ! ' encontre todos os seus jogos ao vivo favoritos em um só lugar'
+      subtitle: " encontre todos os seus jogos ao vivo favoritos em um só lugar"
   tournies:
     index:
       title: Cadastre-se
-      subtitle: ! ' Cadastre-se para os nosso Torneios/Ligas'
+      subtitle: " Cadastre-se para os nosso Torneios/Ligas"
       section: Torneios
   menu:
     dashboard: Dashboard
@@ -510,9 +510,9 @@ pt-BR:
     - Sexta
     - Sábado
     formats:
-      default: ! '%d/%m/%Y'
-      long: ! '%d de %B de %Y'
-      short: ! '%d de %B'
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
     month_names:
     - 
     - Janeiro
@@ -557,16 +557,16 @@ pt-BR:
         other: mais de %{count} anos
       x_days:
         one: 1 dia
-        other: ! '%{count} dias'
+        other: "%{count} dias"
       x_minutes:
         one: 1 minuto
-        other: ! '%{count} minutos'
+        other: "%{count} minutos"
       x_months:
         one: 1 mês
-        other: ! '%{count} meses'
+        other: "%{count} meses"
       x_seconds:
         one: 1 segundo
-        other: ! '%{count} segundos'
+        other: "%{count} segundos"
     prompts:
       day: Dia
       hour: Hora
@@ -594,13 +594,13 @@ pt-BR:
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
       odd: deve ser ímpar
-      record_invalid: ! 'A validação falhou: %{errors}'
+      record_invalid: 'A validação falhou: %{errors}'
       restrict_dependent_destroy:
         one: Não é possível excluir o registro pois existe um %{record} dependente
         many: Não é possível excluir o registro pois existem %{record} dependentes
       taken: já está em uso
-      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
-      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+      too_long: "é muito longo (máximo: %{count} caracteres)"
+      too_short: "é muito curto (mínimo: %{count} caracteres)"
       wrong_length: não possui o tamanho esperado (%{count} caracteres)
       already_confirmed: 
       confirmation_period_expired: 
@@ -611,8 +611,8 @@ pt-BR:
     template:
       body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
-        one: ! 'Não foi possível gravar %{model}: 1 erro'
-        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
+        one: 'Não foi possível gravar %{model}: 1 erro'
+        other: 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
     select:
       prompt: Por favor selecione
@@ -620,44 +620,30 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
-    actions: 
-    links:
-      back: 
-      cancel: 
-      confirm: 
-      destroy: 
-      edit: 
-      new: 
-    titles:
-      delete: 
-      edit: 
-      new: 
-      save: 
     label:
       deck:
-        직업: 
-      match:
-        Clase del oponente: 
-        Nombre del mazo: 
+        Klasse: 
+        Nombre: 
+        Notas: 
   number:
     currency:
       format:
-        delimiter: .
-        format: ! '%u %n'
+        delimiter: "."
+        format: "%u %n"
         precision: 2
-        separator: ! ','
+        separator: ","
         significant: false
         strip_insignificant_zeros: false
         unit: R$
     format:
-      delimiter: .
+      delimiter: "."
       precision: 3
-      separator: ! ','
+      separator: ","
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           billion:
             one: bilhão
@@ -674,12 +660,12 @@ pt-BR:
             other: trilhões
           unit: 
       format:
-        delimiter: .
+        delimiter: "."
         precision: 2
         significant: true
         strip_insignificant_zeros: true
       storage_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           byte:
             one: Byte
@@ -690,15 +676,15 @@ pt-BR:
           tb: TB
     percentage:
       format:
-        delimiter: .
+        delimiter: "."
     precision:
       format:
-        delimiter: .
+        delimiter: "."
   support:
     array:
-      last_word_connector: ! ' e '
-      two_words_connector: ! ' e '
-      words_connector: ! ', '
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
   time:
     am: 
     formats:

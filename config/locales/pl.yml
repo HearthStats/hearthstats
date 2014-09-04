@@ -134,7 +134,7 @@ pl:
   dashboards:
     index:
       title: Panel główny
-      subtitle: ! ' statystki z obecnego sezonu'
+      subtitle: " statystki z obecnego sezonu"
       global_win_rates: Globalny wskaźnik zwycięstw
       arena_win_rates: Wskaźnik zwycięstw z Areny
       games_recorded: Zarejestrowanych gier
@@ -170,12 +170,12 @@ pl:
       health_dur: Zdrowie/Wytrzymałość
       mana_cost: Koszt many
       name: Nazwa
-      none: żadna
+      none: "żadna"
       reset_filters: Resetuj filtry
   arenas:
     index:
       title: Ostatnie gry
-      description: ! ' ostatnie gry na Arenie'
+      description: " ostatnie gry na Arenie"
       section: Arena
       continue_arena_run: Kontynuuj Areny
       new_arena_run: Nowa Arena
@@ -210,12 +210,12 @@ pl:
       played_second: Grasz jako drugi
     matches:
       title: Ostatnie bitwy
-      subtitle: ! ' ostatnie bitwy'
+      subtitle: " ostatnie bitwy"
       section: Arena
       recent_arena_matches: Ostatnie bitwy na Arenach
     stats:
       title: Statystyki
-      subtitle: ! ' szczegółowe statystyki z Areny'
+      subtitle: " szczegółowe statystyki z Areny"
       section: Arena
       note: UWAGA!
       page_being_designed: Strona jest w ciągłym doskonaleniu
@@ -244,7 +244,7 @@ pl:
       add_draw: Dodaj Remis
     index:
       title: Ostatnie gry
-      description: ! ' ostatnie gry w Trybie Pojedynku'
+      description: " ostatnie gry w Trybie Pojedynku"
       section: Tryb Pojedynku
       new_constructed: Nowy Pojedynek
     new:
@@ -253,7 +253,7 @@ pl:
       get_the_auto_uploader: Pobierz Auto Uploader
     stats:
       title: Statystyki
-      description: ! ' statystyki dla Trybu Pojedynku'
+      description: " statystyki dla Trybu Pojedynku"
       section: Tryb Pojedynku
       filter_by: Sortuj po
       last: ostatnie
@@ -272,7 +272,7 @@ pl:
       you_played_on_the: Grasz jako
       first_turn: pierwszy
       second_turn: drugi
-      this_match_is: ! 'Tryb tej gry to:'
+      this_match_is: 'Tryb tej gry to:'
       ranked: Ranking
       casual: Rozrywka
       deck_name: Nazwa talii
@@ -284,7 +284,7 @@ pl:
       you_played_on_the: Grasz jako
       first_turn: pierwszy
       second_turn: drugi
-      this_match_is: ! 'Tryb tej gry to:'
+      this_match_is: 'Tryb tej gry to:'
       ranked: Ranking
       casual: Rozrywka
       deck_name: Nazwa talii
@@ -314,7 +314,7 @@ pl:
       name: Nazwa
       class: Klasa
       notes: Notatki
-      decklist_etc: ! ' Lista talii, itd.'
+      decklist_etc: " Lista talii, itd."
       this_deck_public: Talia jest ogólnodostępna
       card_limit: 
       controls: 
@@ -329,19 +329,19 @@ pl:
       section: Talie
     public:
       title: Ogólnodostępna lista talii
-      subtitle: ! ' wszystkie ogólnodostępne talie'
+      subtitle: " wszystkie ogólnodostępne talie"
       new_deck: Nowa talia
       public_decks: Ogólnodostępne talie
     active_decks:
       title: Aktywna talia
-      subtitle: ! ' wszystkie aktywne talie'
+      subtitle: " wszystkie aktywne talie"
       slot: Miejsce
       select_deck: Wybierz talię
       submit: Zatwierdź
       deleted_deck: 
     index:
       title: Moje talie
-      subtitle: ! ' wszystkie moje talie'
+      subtitle: " wszystkie moje talie"
       new_deck: Nowa talia
       my_decks: Moje talie
     filter:
@@ -402,7 +402,7 @@ pl:
   additional:
     news:
       title: Nowości Hearthstone
-      subtitle: ! ' ostatnie nowości w Hearthstone'
+      subtitle: " ostatnie nowości w Hearthstone"
       suggestions_for_news: Sugestie dotyczące źródeł informacji są mile widziane
       posted: Opublikowano
       read_more: Czytaj więcej
@@ -420,7 +420,7 @@ pl:
         inst_osx_1: Pobierz z linku powyżej
         inst_osx_2: Rozpakuj plik
         inst_osx_3: Przeciągnij plik do folderu Aplikacje
-        inst_osx_4: <b>Wciśnij Prawy Przycisk Myszy</b> na pliku i wybierz Otwórz
+        inst_osx_4: "<b>Wciśnij Prawy Przycisk Myszy</b> na pliku i wybierz Otwórz"
         inst_osx_5: Wprowadź swój Klucz Użytkownika ze strony Uploadera lub ze swojego profilu
         inst_osx_6: Uruchom grę i graj!
       instructions_win:
@@ -440,12 +440,11 @@ pl:
         feat_7: Możesz dodać komentarz do swoich gier bezpośrednio z Uploadera
       help_and_support: Pomoc i wsparcie
       known_issues: Znane problemy
-      project_source_on_github: Źródło projektu na Github
-      title:官方上传器 header_text: 
-      tutorial_video: 
+      project_source_on_github: "Źródło projektu na Github"
     changelog:
       title: Lista zmian
       all_time_in_utc: Czas w UTC
+      changelog: 
     aboutus:
       title: O nas
       founded_by_text: Ta strona została założona przez Jeffreya Tong z miłości.
@@ -463,8 +462,8 @@ pl:
       rackspace_text: Chciałbym podziękować Rackspace za zapewnienie niesamowitego hostingu! Jeżeli kiedykolwiek będziesz potrzebował hostingu opartego na chmurze albo jakiegokolwiek - zdecydowanie spradź ich!
     contactus:
       title: Kontakt
-      contact_email_text: Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań.
-      contact_email_text_2: ! 'Możesz też śledzić nas na Twitterze: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text: "Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań."
+      contact_email_text_2: 'Możesz też śledzić nas na Twitterze: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: Trochę się nudzę, więc Twoje e-maile są bardzo mile widziane.
       fadein_text_2: Proszę, prześlij mi jakiegoś maila! To może być cokolwiek!
       fadein_text_3: Tyłek aż mnie boli... tyle bólu mnie kosztuje zrobienie tej strony dla Was!
@@ -476,11 +475,11 @@ pl:
   streams:
     index:
       title: Streamy
-      subtitle: ! ' znajdź wszystkie swoje ulubione streamy w jednym miejscu'
+      subtitle: " znajdź wszystkie swoje ulubione streamy w jednym miejscu"
   tournies:
     index:
       title: Zarejestruj się
-      subtitle: ! ' Zarejestruj się do naszych najnowszych turniejów'
+      subtitle: " Zarejestruj się do naszych najnowszych turniejów"
       section: Turnieje
   menu:
     dashboard: Panel główny
@@ -522,300 +521,15 @@ pl:
       june_report: 
       may_report: 
     help: Pomoc
-    Tournaments:
-      Calendar: 
-      past_winners: 
-      register: 
-      title: 
-  activemodel:
-    errors:
-      format: 
-      messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
-        greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
-        less_than: 
-        less_than_or_equal_to: 
-        not_an_integer: 
-        not_a_number: 
-        odd: 
-        present: 
-        record_invalid: 
-        restrict_dependent_destroy: 
-        taken: 
-        too_long: 
-        too_short: 
-        wrong_length: 
-      template:
-        body: 
-        header: 
   activerecord:
-    errors:
-      format: 
-      messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
-        greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
-        less_than: 
-        less_than_or_equal_to: 
-        not_an_integer: 
-        not_a_number: 
-        odd: 
-        present: 
-        record_invalid: 
-        restrict_dependent_destroy: 
-        taken: 
-        too_long: 
-        too_short: 
-        wrong_length: 
-      template:
-        body: 
-        header: 
     attributes:
       deck:
-        직업: 
-      match:
-        Clase del oponente: 
-        Nombre del mazo: 
-      unique_deck:
-        cardstring: 
-    models:
-      unique_deck: 
-  date:
-    abbr_day_names: 
-    abbr_month_names: 
-    day_names: 
-    formats:
-      default: 
-      long: 
-      short: 
-    month_names: 
-    order: 
-  datetime:
-    distance_in_words:
-      about_x_hours: 
-      about_x_months: 
-      about_x_years: 
-      almost_x_years: 
-      half_a_minute: 
-      less_than_x_minutes: 
-      less_than_x_seconds: 
-      over_x_years: 
-      x_days: 
-      x_minutes: 
-      x_months: 
-      x_seconds: 
-    prompts:
-      day: 
-      hour: 
-      minute: 
-      month: 
-      second: 
-      year: 
-  devise:
-    confirmations:
-      confirmed: 
-      confirmed_and_signed_in: 
-      send_instructions: 
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      invalid_token: 
-      locked: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
-    mailer:
-      confirmation_instructions:
-        subject: 
-      reset_password_instructions:
-        subject: 
-      unlock_instructions:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      updated: 
-      update_needs_confirmation: 
-    sessions:
-      signed_in: 
-      signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
-  errors:
-    format: 
-    messages:
-      accepted: 
-      already_confirmed: 
-      blank: 
-      confirmation: 
-      confirmation_period_expired: 
-      empty: 
-      equal_to: 
-      even: 
-      exclusion: 
-      expired: 
-      greater_than: 
-      greater_than_or_equal_to: 
-      inclusion: 
-      invalid: 
-      less_than: 
-      less_than_or_equal_to: 
-      not_an_integer: 
-      not_a_number: 
-      not_found: 
-      not_locked: 
-      not_saved: 
-      odd: 
-      present: 
-      record_invalid: 
-      restrict_dependent_destroy: 
-      taken: 
-      too_long: 
-      too_short: 
-      wrong_length: 
-    template:
-      body: 
-      header: 
+        Klasse: 
+        Nombre: 
+        Notas: 
   helpers:
-    actions: 
-    links:
-      back: 
-      cancel: 
-      confirm: 
-      destroy: 
-      edit: 
-      new: 
-    select:
-      prompt: 
-    submit:
-      create: 
-      submit: 
-      update: 
-    titles:
-      delete: 
-      edit: 
-      new: 
-      save: 
     label:
       deck:
-        직업: 
-      match:
-        Clase del oponente: 
-        Nombre del mazo: 
-  number:
-    currency:
-      format:
-        delimiter: 
-        format: 
-        precision: 
-        separator: 
-        significant: 
-        strip_insignificant_zeros: 
-        unit: 
-    format:
-      delimiter: 
-      precision: 
-      separator: 
-      significant: 
-      strip_insignificant_zeros: 
-    human:
-      decimal_units:
-        format: 
-        units:
-          billion: 
-          million: 
-          quadrillion: 
-          thousand: 
-          trillion: 
-          unit: 
-      format:
-        delimiter: 
-        precision: 
-        significant: 
-        strip_insignificant_zeros: 
-      storage_units:
-        format: 
-        units:
-          byte: 
-          gb: 
-          kb: 
-          mb: 
-          tb: 
-    percentage:
-      format:
-        delimiter: 
-    precision:
-      format:
-        delimiter: 
-  social_share_button:
-    baidu: 
-    delicious: 
-    douban: 
-    email: 
-    facebook: 
-    google_bookmark: 
-    google_plus: 
-    kaixin001: 
-    plurk: 
-    qq: 
-    renren: 
-    share_to: 
-    tqq: 
-    tumblr: 
-    twitter: 
-    weibo: 
-  support:
-    array:
-      last_word_connector: 
-      two_words_connector: 
-      words_connector: 
-  time:
-    am: 
-    formats:
-      default: 
-      long: 
-      short: 
-    pm: 
-  will_paginate:
-    next_label: 
-    page_entries_info:
-      multi_page: 
-      multi_page_html: 
-      single_page: 
-      single_page_html: 
-    page_gap: 
-    previous_label: 
+        Klasse: 
+        Nombre: 
+        Notas: 

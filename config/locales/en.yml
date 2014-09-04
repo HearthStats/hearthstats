@@ -160,7 +160,7 @@ en:
   dashboards:
     index:
       title: Dashboard
-      subtitle: ! ' statistics for the current season'
+      subtitle: " statistics for the current season"
       global_win_rates: Global Win Rates
       arena_win_rates: Arena Win Rates
       games_recorded: Games Recorded
@@ -198,10 +198,28 @@ en:
       name: Name
       none: none
       reset_filters: Reset Filters
+  blind_drafts:
+    index:
+      title: Blind Drafts
+      subtitle: " start a new game"
+      new_draft: New Blind Draft
+      draft_id: Draft ID
+      player1: Player 1 Name
+      player2: Player 2 Name
+      complete: Draft Complete?
+      go_to: Go To Draft
+      draft: Draft
+    draft:
+      title: Drafting Blind Draft
+      subtitle: " draft your deck"
+    new:
+      player1-id: Player 1 ID
+      player2-id: Player 2 ID
+      card-cap: Number of Neutral Cards
   arenas:
     index:
       title: Recent Games
-      description: ! ' recent arena games'
+      description: " recent arena games"
       section: Arena
       continue_arena_run: Continue Arena Run
       new_arena_run: New Arena Run
@@ -235,12 +253,12 @@ en:
       played_second: Played Second
     matches:
       title: Recent Matches
-      subtitle: ! ' recent matches games'
+      subtitle: " recent matches games"
       section: Arena
       recent_arena_matches: Recent Arena Matches
     stats:
       title: Statistics
-      subtitle: ! ' detailed arena game stats'
+      subtitle: " detailed arena game stats"
       section: Arena
       note: NOTE!
       page_being_designed: Page is still being designed
@@ -274,7 +292,7 @@ en:
       add_draw: Add Draw
     index:
       title: Recent Games
-      description: ! ' recent constructed games'
+      description: " recent constructed games"
       section: Constructed
       new_constructed: New Constructed
     new:
@@ -283,7 +301,7 @@ en:
       get_the_auto_uploader: Get the Auto Uploader
     stats:
       title: Statistics
-      description: ! ' constructed game stats'
+      description: " constructed game stats"
       section: Constructed
       last: last
     stats_filter:
@@ -345,7 +363,7 @@ en:
       klass: Class
       decks_found:
         one: 1 deck found matching your criteria
-        other: ! '%{count} decks found matching your criteria'
+        other: "%{count} decks found matching your criteria"
       created_at: Created
       num_losses: Losses
       num_matches: Matches
@@ -362,7 +380,7 @@ en:
       class: Class
       notes: Notes
       tags: Tags
-      decklist_etc: ! ' Decklist, etc'
+      decklist_etc: " Decklist, etc"
       this_deck_public: Make Deck Public
       search: Search
       count: Count
@@ -380,19 +398,19 @@ en:
       section: Deck
     public:
       title: Public Deck List
-      subtitle: ! ' all public constructed decks'
+      subtitle: " all public constructed decks"
       new_deck: New Deck
       public_decks: Public Decks
     active_decks:
       title: Active Deck
-      subtitle: ! ' all active constructed decks'
+      subtitle: " all active constructed decks"
       slot: Slot
       deleted_deck: Deleted Deck
       select_deck: Select Deck
       submit: Submit
     index:
       title: My Decks
-      subtitle: ! ' all of my constructed decks'
+      subtitle: ! " all of my constructed decks"
       new_deck: New Deck
       my_decks: My Decks
     public_decklist:
@@ -422,7 +440,7 @@ en:
   additional:
     news:
       title: Hearthstone News
-      subtitle: ! ' the latest in Hearthstone news'
+      subtitle: " the latest in Hearthstone news"
       suggestions_for_news: Suggestions for news sources are welcome
       posted: Posted
       read_more: Read More
@@ -441,7 +459,7 @@ en:
         inst_osx_1: Download from the link above
         inst_osx_2: Unzip the file
         inst_osx_3: Drag the file to your Applications folder
-        inst_osx_4: <b>Right Click</b> the file then click open
+        inst_osx_4: "<b>Right Click</b> the file then click open"
         inst_osx_5: Enter your userkey from the uploader page or the profile page
         inst_osx_6: Open up your game and play away!
       instructions_win:
@@ -486,7 +504,7 @@ en:
     contactus:
       title: Contact Info
       contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
-      contact_email_text_2: ! 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: I'm really bored so your emails are welcomed.
       fadein_text_2: Please just send me an email! It could be about anything!
       fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
@@ -557,27 +575,23 @@ en:
     attributes:
       arena_run:
         Dust Earned: Dust earned
+        gold: Gold
         Gold Earned: Gold earned
       deck:
-        직업: 
         Class: Class
+        Klasse: 
         Name: Name
+        Nombre: 
+        Notas: 
         Notes: Notes
         Tags: Tags
       match:
-        Clase del oponente: 
         Deck name: Deck name
         Deck Name: Deck name
-        Nombre del mazo: 
         Notes: Notes
         Opponent class: Opponent class
-        Opponent Class: Opponent class
         Opponent Name: Opponent name
         Opponent's Class: Opponent's class
-        result_id: Result
-        user_id: User
-        klass_id: Klass
-        oppclass_id: Oppclass
       profile:
         avatar: Avatar
         name: Name
@@ -603,22 +617,20 @@ en:
         Dust Earned: 
         Gold Earned: 
       deck:
-        직업: 
         Class: 
+        Klasse: 
         Name: 
+        Nombre: 
+        Notas: 
         Notes: 
         Tags: 
       match:
-        Clase del oponente: 
         Deck name: 
         Deck Name: 
-        Nombre del mazo: 
         Notes: 
         Opponent class: 
-        Opponent Class: 
         Opponent Name: 
         Opponent's Class: 
-        user_id: 
       profile:
         avatar: 
         Battle:
