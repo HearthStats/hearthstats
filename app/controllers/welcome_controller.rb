@@ -66,7 +66,7 @@ class WelcomeController < ApplicationController
     # if !current_user.is_admin?
     #   redirect_to root_path, alert: "Y U NO ADMIN" and return
     # end
-    season = 8
+    season = 9
 
     get_ranked_graph_data(season)
 
