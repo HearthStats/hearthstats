@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140827181334) do
+ActiveRecord::Schema.define(:version => 20140904013212) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(:version => 20140827181334) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "arena_run_cards", ["arena_run_id"], :name => "index_arena_run_cards_on_arena_run_id"
+  add_index "arena_run_cards", ["card_id"], :name => "index_arena_run_cards_on_card_id"
 
   create_table "arena_runs", :force => true do |t|
     t.integer  "user_id"
@@ -130,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20140827181334) do
     t.string  "blizz_id"
   end
 
+  add_index "cards", ["name"], :name => "index_cards_on_name"
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
   create_table "comments", :force => true do |t|
@@ -175,6 +179,8 @@ ActiveRecord::Schema.define(:version => 20140827181334) do
     t.datetime "updated_at", :null => false
     t.string   "cardstring"
   end
+
+  add_index "deck_versions", ["deck_id"], :name => "index_deck_versions_on_deck_id"
 
   create_table "decks", :force => true do |t|
     t.string   "name"
@@ -367,6 +373,7 @@ ActiveRecord::Schema.define(:version => 20140827181334) do
     t.datetime "sig_pic_updated_at"
   end
 
+  add_index "profiles", ["name"], :name => "index_profiles_on_name"
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "races", :force => true do |t|
@@ -513,6 +520,9 @@ ActiveRecord::Schema.define(:version => 20140827181334) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "unique_deck_cards", ["card_id"], :name => "index_unique_deck_cards_on_card_id"
+  add_index "unique_deck_cards", ["unique_deck_id"], :name => "index_unique_deck_cards_on_unique_deck_id"
 
   create_table "unique_decks", :force => true do |t|
     t.string   "cardstring"
