@@ -16,7 +16,7 @@ class MatchDeck < ActiveRecord::Base
   def set_unique_deck
     if !self.deck.nil? && !self.deck.unique_deck.nil?
       self.match.unique_deck = self.deck.unique_deck
-      self.match.save()
+      self.match.save
     end
   end
 
