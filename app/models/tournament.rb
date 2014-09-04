@@ -1,5 +1,5 @@
 class Tournament < ActiveRecord::Base
-  attr_accessible :bracket_format, :creator_id, :id, :name, :num_players, 
+  attr_accessible :bracket_format, :creator_id, :id, :name, :num_players,
                   :desc, :is_private, :num_pods, :started, :num_decks
 
   ##
@@ -56,7 +56,7 @@ class Tournament < ActiveRecord::Base
       num_residual_users -= 1 if num_residual_users.nonzero?
       pairings = pod_list.combination(2).to_a
       pairings.each do |pairing|
-        new_pair = self.tourn_pairs.build(tournament_id: self.id, 
+        new_pair = self.tourn_pairs.build(tournament_id: self.id,
                                           pos: pod,
                                           p1_id: pairing[0].id,
                                           p2_id: pairing[1].id,
@@ -66,7 +66,6 @@ class Tournament < ActiveRecord::Base
     end
 
     TournPair.import pair_list
-
   end
 
   def initiate_brackets
@@ -76,7 +75,7 @@ class Tournament < ActiveRecord::Base
     if @user_list.length < 4
       return
     end
-    
+
     @user_list = @user_list.shuffle
     depth = Math.log2(@user_list.length).floor
     #the list of pairings we want to save eventually
@@ -92,7 +91,7 @@ class Tournament < ActiveRecord::Base
     @user_list.each do |user|
       pair = base_pairs.fetch(base_pair_pointer)
       new_pair_pos = pair.pos*2 + extend_left_flag
-      new_pair = self.tourn_pairs.build(tournament_id: self.id, 
+      new_pair = self.tourn_pairs.build(tournament_id: self.id,
                                         pos: new_pair_pos,
                                         roundof: (pair.roundof * 2),
                                         p1_id: extend_left_flag.zero? ? pair.p1_id : pair.p2_id,
@@ -119,12 +118,13 @@ class Tournament < ActiveRecord::Base
   end
 
   private
+
   def update_undecided_pair_ids
     final_pair_list = TournPair.where(tournament_id: self.id)
     root = final_pair_list.select { |p| (!p.nil? && p.roundof == 2 && p.pos == 0) }
     p_queue = []
     p_queue.push(root[0]) # roundof: 2, pos: 0
-    
+
     while !p_queue.empty? do
       undecided = -1
       current = p_queue.shift
@@ -147,7 +147,6 @@ class Tournament < ActiveRecord::Base
   end
 
   def bfs_populate(depth)
-
     queue = Array.new
     root = self.tourn_pairs.build(tournament_id: self.id, 
                                   pos: 0,
@@ -174,14 +173,14 @@ class Tournament < ActiveRecord::Base
           right_user2_id = @user_list.shift.id
         end
 
-        left = self.tourn_pairs.build(tournament_id: self.id, 
+        left = self.tourn_pairs.build(tournament_id: self.id,
                                       pos: (pair.pos * 2),
                                       roundof: (pair.roundof * 2),
                                       p1_id: left_user1_id,
                                       p2_id: left_user2_id,
                                       undecided: left_user1_id.nil? ? 2 : -1)
 
-        right = self.tourn_pairs.build(tournament_id: self.id, 
+        right = self.tourn_pairs.build(tournament_id: self.id,
                                       pos: (pair.pos * 2 + 1),
                                       roundof: (pair.roundof * 2),
                                       p1_id: right_user1_id,
@@ -203,5 +202,4 @@ class Tournament < ActiveRecord::Base
     puts pair_list.count
     pair_list
   end
-
 end
