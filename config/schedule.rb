@@ -20,6 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 set :output, "/var/www/hearthstats/current/log/cron_log.log"
+env :PATH, ENV['PATH']
 
 every 5.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:welcome_cache"
