@@ -35,16 +35,17 @@ class TournamentsController < ApplicationController
     tournament = Tournament.find(params[:id])
     tourn_user = TournUser.where(user_id: current_user.id, tournament_id: tournament.id).first
     chosen_deck_ids = []
-    (1..tournament.num_decks).each do |deck_num|
+    (0..tournament.num_decks).each do |deck_num|
       deck_id = params["deck_#{deck_num}"]
-      chosen_deck_ids.push(deck_id)
-      deck = Deck.find(deck_id)
-      if deck.unique_deck_id.nil?
-        redirect_to(@tournament, alert: 'Invalid Deck: #{deck.name}')
-        return
+      if !deck_id.nil?
+        chosen_deck_ids.push(deck_id)
+        deck = Deck.find(deck_id)
+        if deck.unique_deck_id.nil?
+          redirect_to(@tournament, alert: 'Invalid Deck: #{deck.name}')
+          return
+        end
       end
     end
-
     chosen_deck_ids.each do |deck_id|
       if !deck_id.nil?
         TournDeck.create(deck_id: deck_id, 
@@ -53,6 +54,7 @@ class TournamentsController < ApplicationController
         Deck.update(deck_id, is_tour_deck: true)
       end
     end
+    render nothing: true
   end
 
 end

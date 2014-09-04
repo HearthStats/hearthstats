@@ -6,7 +6,7 @@ p
 div.col
   div.row
     div.col-md-6
-      = form_tag(submit_deck_tournament_path, remote: true)
+      = form_tag(submit_deck_tournament_path)
         ul class="no-bullet"
           - decks.each_with_index do |deck, index|
             li class="deck_choice"
