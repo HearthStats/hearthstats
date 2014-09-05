@@ -83,7 +83,6 @@ gem 'ransack' # the new meta_search
 gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
-
 # Background
 gem 'delayed_job_active_record'
 gem 'daemons'
