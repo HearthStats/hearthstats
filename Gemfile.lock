@@ -14,17 +14,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activeadmin (0.6.3)
-      arbre (~> 1.0)
-      bourbon (>= 1.0.0, < 4)
-      devise (>= 1.5.4, < 4, != 2.2.2, != 2.2.1, != 2.2.0, != 2.1.2, != 2.1.1, != 2.1.0, != 2.0.4, != 2.0.3, != 2.0.2, != 2.0.1, != 2.0.0)
-      formtastic (~> 2.0)
-      inherited_resources (~> 1.3)
-      jquery-rails (>= 1.0.0, < 3)
-      kaminari (~> 0.13, != 0.15.0)
-      meta_search (~> 1.0)
-      rails (>= 3.0.0, < 4)
-      sass (~> 3.1)
     activemodel (3.2.18)
       activesupport (= 3.2.18)
       builder (~> 3.0.0)
@@ -47,8 +36,6 @@ GEM
       activesupport (>= 3.0)
       rack
       thread_safe
-    arbre (1.0.1)
-      activesupport (>= 3.0.0)
     arel (3.0.3)
     awesome_print (1.2.0)
     aws-sdk (1.41.0)
@@ -60,9 +47,6 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bourbon (3.2.3)
-      sass (~> 3.2)
-      thor
     builder (3.0.4)
     cancancan (1.9.2)
     capistrano (2.14.2)
@@ -187,8 +171,6 @@ GEM
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
     formatador (0.2.5)
-    formtastic (2.2.1)
-      actionpack (>= 3.0)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     gli (2.12.0)
@@ -209,9 +191,6 @@ GEM
     guard-zeus (2.0.0)
       guard (~> 2.0)
       zeus (~> 0)
-    has_scope (0.6.0.rc)
-      actionpack (>= 3.2, < 5)
-      activesupport (>= 3.2, < 5)
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
@@ -226,9 +205,6 @@ GEM
     impressionist (1.5.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
-    inherited_resources (1.4.1)
-      has_scope (~> 0.6.0.rc)
-      responders (~> 1.0.0.rc)
     journey (1.0.4)
     jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
@@ -355,8 +331,6 @@ GEM
       devise
       mime-types
       orm_adapter
-    responders (1.0.0)
-      railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.2)
@@ -465,7 +439,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin
   acts-as-taggable-on
   appsignal
   awesome_print

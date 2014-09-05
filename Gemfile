@@ -75,7 +75,6 @@ gem 'unf'
 gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
 gem 'imgkit'
 gem 'thin'
-gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
