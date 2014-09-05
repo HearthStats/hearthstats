@@ -2,8 +2,6 @@ Hearthstats::Application.routes.draw do
 
   # Gem routes
   #
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   match '/s/:id' => "shortener/shortened_urls#show"
 
   # Delayed_job_web
