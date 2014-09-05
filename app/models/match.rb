@@ -32,7 +32,7 @@ class Match < ActiveRecord::Base
   belongs_to :result, class_name: 'MatchResult', foreign_key: 'result_id'
 
   belongs_to :mode
-  belongs_to :user
+  belongs_to :user, touch: true
 
   belongs_to :klass, class_name: 'Klass', foreign_key: 'klass_id'
   belongs_to :oppclass, class_name: 'Klass', foreign_key: 'oppclass_id'
