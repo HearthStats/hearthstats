@@ -66,7 +66,7 @@ class WelcomeController < ApplicationController
     # if !current_user.is_admin?
     #   redirect_to root_path, alert: "Y U NO ADMIN" and return
     # end
-    season = 9
+    season = 6
 
     get_ranked_graph_data(season)
 
@@ -74,7 +74,7 @@ class WelcomeController < ApplicationController
       {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
       {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
 
-    matches = Match.where(season_id: season).joins(:season, :arena_run, :match_run)
+    matches = Match.where(season_id: season)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
@@ -169,8 +169,8 @@ class WelcomeController < ApplicationController
       run_percent = run_count.map { |e| e.to_f / tot_games }
       @arena_runs << [c, run_count, run_percent]
     end
-    # html = render_to_string(layout: 'fullpage')
-    # File.open("#{Rails.root}/public/reports/#{Time.now.strftime('%d_%m_%Y')}.html", 'w') {|f| f.write(html) }
+    html = render_to_string(layout: 'fullpage')
+    File.open("#{Rails.root}/public/reports/#{Time.now.strftime('%d_%m_%Y')}.html", 'w') {|f| f.write(html) }
     render layout: 'fullpage'
   end
 
