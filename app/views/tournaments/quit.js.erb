@@ -1,0 +1,6 @@
+$("#toggle_tournament").fadeOut(function() {
+  $("#toggle_tournament").empty();
+  $("#toggle_tournament").html("<%= escape_javascript(render partial: 'join', locals: {is_private: @tournament.is_private}) %>");
+  toastr.info("Successfully quit this tournament.")
+  $("#toggle_tournament").fadeIn();
+});

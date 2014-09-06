@@ -1,6 +1,6 @@
 class Tournament < ActiveRecord::Base
   attr_accessible :bracket_format, :creator_id, :id, :name, :num_players,
-                  :desc, :is_private, :num_pods, :started, :num_decks
+                  :desc, :is_private, :num_pods, :started, :num_decks, :code
 
   ##
   # bracket_format
@@ -8,6 +8,9 @@ class Tournament < ActiveRecord::Base
   # 1: Single Elimination
   # 2: Double Elimination
   #
+
+  validates_uniqueness_of :code
+
   has_many :tourn_users
   has_many :users, through: :tourn_users
   has_many :tourn_pairs

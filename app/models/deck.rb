@@ -31,6 +31,9 @@ class Deck < ActiveRecord::Base
     Deck.where(user_id: user_id).order("user_winrate DESC").first
   end
 
+  def self.playable_decks(user_id)
+    Deck.where(user_id: user_id).where("unique_deck_id IS NOT NULL")
+  end
   ### INSTANCE METHODS:
 
   def deactivate_deck

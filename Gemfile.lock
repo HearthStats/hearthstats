@@ -510,6 +510,7 @@ DEPENDENCIES
   guard-rspec
   guard-zeus
   hipchat
+  honeybadger
   httparty
   imgkit
   impressionist

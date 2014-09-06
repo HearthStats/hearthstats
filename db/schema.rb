@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140902155031) do
+ActiveRecord::Schema.define(:version => 20140904212557) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -534,13 +534,14 @@ ActiveRecord::Schema.define(:version => 20140902155031) do
     t.integer  "creator_id"
     t.integer  "bracket_format"
     t.integer  "num_players"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "desc"
-    t.boolean  "is_private"
+    t.boolean  "is_private",     :default => false
     t.integer  "num_pods"
     t.boolean  "started"
     t.integer  "num_decks"
+    t.string   "code"
   end
 
   create_table "tournies", :force => true do |t|

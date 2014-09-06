@@ -12,10 +12,12 @@ div.col
       p
         |Player Limit:&nbsp;
         = @tournament.num_players
+      div id='toggle_tournament'
         - if !@tournament.started?
-          p = text_field_tag 'code'
-          div id="tour_join" class="btn btn-block green"
-            = @user_action
+          - if !@joined
+            = render partial: "join", locals: {is_private: @tournament.is_private}
+          - else
+            = render partial: "quit"
     div.col-md-6
       p
         = @tournament.desc
@@ -29,14 +31,13 @@ div.col
           = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
         - else
           |Oops... error in displaying tournament
+      - if @joined
+        - if !@submitted
+          = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
+        - else
+          p You have already submitted your decks.
 
 javascript:
 
   $(document).ready(function(){
-
-    $("#tour_join").click(function(){
-      $("#tourn_content_panel").empty();
-      $("#tourn_content_panel").html("#{escape_javascript(render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }) }");
-    });
-
   });

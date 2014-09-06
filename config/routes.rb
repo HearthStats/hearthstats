@@ -36,7 +36,7 @@ Hearthstats::Application.routes.draw do
       get 'draft'
     end
   end
-  
+
   # Notifications
 
   post "notifications/note_read"
@@ -138,6 +138,8 @@ Hearthstats::Application.routes.draw do
 
   resources :tournaments do
     post :submit_deck, on: :member
+    post :join, on: :member
+    post :quit, on: :member
   end
 
   resources :arenas do
