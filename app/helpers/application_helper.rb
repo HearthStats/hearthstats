@@ -26,6 +26,14 @@ module ApplicationHelper
     Klass::LIST.invert
   end
 
+  def unread_message
+    current_user.receipts.where(is_read: false)
+  end
+
+  def user_messages
+    Notification.find(current_user.receipts.map(&:notification_id))
+  end
+
   def get_name(match, table)
     id = match.send table.downcase + "_id"
     table = "Klass" if table == "Oppclass"

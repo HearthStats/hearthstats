@@ -26,15 +26,12 @@ class Api::V1::DecksController < ApplicationController
 
   def create
 
-    text2deck = text_to_deck(@req[:deck_text])
-    if !text2deck.errors.empty?
-      api_response = { status: "error", data: text2deck.errors }
-    else 
-      deck = Deck.new(@req[:deck])
-      deck.user_id = @user.id
-      deck.cardstring = text2deck.cardstring
-      deck.save
+    deck = Deck.new(@req[:deck])
+    deck.user_id = @user.id
+    if deck.save
       api_response =  { status: "success", data: deck }
+    else
+      api_response = { status: "error" }
     end
 
     render json: api_response
