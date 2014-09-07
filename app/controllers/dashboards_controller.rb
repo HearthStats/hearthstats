@@ -30,7 +30,7 @@ class DashboardsController < ApplicationController
       conoverallrate = overall_win_rate(3)
       # Determine Arena Class Win Rates
       arenaoverallrate = overall_win_rate(1)
-      matches = Match.where(season_id: current_season)
+      matches = Match.where('created_at >= ?', 1.day.ago)
       @global = Hash.new
       @global[:arena] = get_win_rate(matches.where(mode_id: 1))
       @global[:con] = get_win_rate(matches.where(mode_id: 3))
