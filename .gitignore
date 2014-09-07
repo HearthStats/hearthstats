@@ -83,4 +83,7 @@ zeus.json
 # Screw gitignore
 .DS_Store
 
+# Ignore vagrant directory
+.vagrant
+
 tags
