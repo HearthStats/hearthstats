@@ -96,6 +96,7 @@ gem 'newrelic_rpm'
 gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'localeapp'
+gem 'skylight'
 
 
 group :test do
