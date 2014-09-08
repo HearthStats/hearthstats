@@ -1,5 +1,4 @@
 pt-BR:
-<<<<<<< HEAD
   activemodel:
     errors:
       format: "%{attribute} %{message}"
@@ -55,12 +54,7 @@ pt-BR:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -80,8 +74,6 @@ pt-BR:
         oppclass_id: 
         result_id: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         avatar: 
         name: 
@@ -90,11 +82,20 @@ pt-BR:
         net ID: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
+        code: 
+        name: 
+        num_pods: 
       tournament/en, tournaments/form:
         format: 
         invite_only: 
@@ -237,180 +238,9 @@ pt-BR:
     index:
       arena_run_with: série de partidas em arena com
       close: Fechar
-=======
-  shared:
-    header:
-      guest: Convidado
-      my_profile: Meu Perfil
-      sign_out: Sair
-      register_now_login: Cadastre-se / Login
-      you_have: Você tem
-      new_messages: novas mensagens
-      click_message_to_dismiss: Clique na mensagem para dispensar
-      change_to: Alterar para
-    footer:
-      about: Sobre
-      faq: FAQ
-      open_positions: Posições Abertas
-      support: Suporte
-      privacy_policy: Política de Privacidade
-      copyright_text: Copyright 2014 HearthStats. Hearthstone é uma marca registrada da Blizzard Entertainment.
-    arena_win_rate: Taxa de Vitórias em Arena
-    ranked_win_rate: Taxa de Vitórias Rankeada
-    best_deck: Melhor Deck
-    best_arena_class: Melhor Classe em Arena
-    create_deck: Criar um Deck
-    new_arena_game: Nova Partida em Arena
-    view_more: Ver Mais
-    edit: Editar
-    delete: Deletar
-    notes: Notas
-    run: série
-    error: erro
-    prohibited_this_being_save: 'impediram que este(a) %{resource} fosse salvo(a):'
-    arenarun: Série de Jogadas em Arena
-    show: exibir
-    arena: arena
-    class: Classe
-    deck: Deck
-    create: Criar
-    update: Atualizar
-    deckbuilder:
-      card_list: Lista de Cartas
-      optional_deck_will_be_created_if: Opcional (Deck vai ser criado se você deixar em branco)
-      toggle_text_import: Alternar Importação de Texto
-      add_a_card: Adicionar uma carta
-      of_30_cards: de 30 cartas
-      this_deck_is_incomplete: Esse Deck Está Incompleto
-      left_click_add_right_remove: Clique com o botão esquerdo para adicionar. Com o direito para remover.
-      mana_curve: Curva de Mana
-      attack_distribution: Distribuição do Ataque
-      health_distribution: Distribuição da Vida
-      type_distribution: Distribuição do Tipo
-      mechanics: Mecânicos
-    back: Voltar
-    deckslist:
-      filter: Filtro
-      any_class: qualquer classe
-      show: Mostrar
-      per_page: por página
-      sort_by: Ordenar por
-      created: Criado
-      losses: Perdidos
-      matches: Partidas
-      minions: Minions
-      name: Nome
-      spells: Feitiços
-      popularity: Popularidade
-      weapons: Armas
-      win_rate: Taxa de Vitórias
-      wins: Vitórias
-      asc: Ascendente
-      desc: Descendente
-      apply: Aplicar
-      found_matching_your_criteria: encontrados que batem com os critérios
-      class: Classe
-      users: Usuários
-      listed_by: Listado por
-      tools: Ferramentss
-      stats_are_for_all_users: estatísticas são para todos usuários que tenham jogado o deck nos últimos 30 dias, não somente o autor original
-      stats_are_for_your_personal: estatísticas são para o seu jogo pessoal usando cada deck
-    matchlist:
-      filter: Filtro
-      any_class: qualquer classe
-      coin?: moeda?
-      coin: Moeda
-      no_coin: Sem Moeda
-      opponent: Oponente
-      apply: Enviar
-      reset: Resetar
-      show: Exibir
-      per_page: por página
-      all_time: Tudo
-      last_24_hours: "Últimas 24 horas"
-      last: "últimos"
-      days: dias
-      sort: ordem
-      created: Criado
-      duration: Duração
-      rounds: Rounds
-      ascending: crescente
-      descending: decrescente
-      win_rate_over: taxa de vitória sobre
-      matches_in_this_list: partidas nessa lista
-      your: Sua
-      opponent_class: Classe do Oponente
-      result: Resultado
-      rank: Ranking
-      mode: Modo
-      opponent_name: Nome do Oponente
-      options: Opções
-    deckslist_no_filter:
-      class: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      tools: 
-      weapons: 
-      win_rate: 
-      wins: 
-  dashboards:
-    index:
-      title: Dashboard
-      subtitle: " estatísticas para a atual temporada"
-      global_win_rates: Taxa Global de Vitórias
-      arena_win_rates: Taxa de Vitórias em Arena
-      games_recorded: Partidas Gravadas
-      constructed_win_rates: Taxa de Vitória Constructed
-      hearthstats_news: Notícias da HearthStats
-      read_more: Leia Mais
-      view_more: Veja Mais
-      news:
-        huge_update: Grande atualização com várias funcionalidades
-        ability_to_rank: Abilidade de rankear adicionado aos Constructed Games
-        donation_link: Links de doação adicionados
-        notes_feature: Funcionalidade de notas adicionada
-      personal_win_rate: Taxa de Vitória Pessoal
-      constructed_coin_win_rates: Taxa de Vitória de Moedas Constructed
-      recent_activities: Atividades Recentes
-      against: contra
-      with: com
-      global_stats: Status Globais
-      arena_win_rate: Taxa de Vitórias em Arena
-  cards:
-    index:
-      title: Banco de Cartas
-      not_found: Nenhuma carta foi encontrada com estes critérios
-      text_contains: Texto contém
-      filter_by: Filtrar por
-      sort_by: Ordenar por
-      any_type: qualquer tipo
-      any_race: qualquer raça
-      any_class: qualque classe
-      ascending: Crescente
-      descending: Decrescente
-      attack: Ataque
-      health_dur: Vida
-      mana_cost: Custo de Mana
-      name: Nome
-      none: nenhum
-      reset_filters: zerar filtros
-  arenas:
-    index:
-      title: Partidas Recentes
-      description: " partidas recentes em arena"
-      section: Arena
->>>>>>> added league page
       continue_arena_run: Continuar Série de Partidas Arenas
       description: " partidas recentes em arena"
       new_arena_run: Nova Série de Partidas em Arena
-<<<<<<< HEAD
-=======
-      arena_run_with: série de partidas em arena com
-      true: em
->>>>>>> added league page
       notes: Notas
       'on': 
       options: Opções
@@ -419,19 +249,12 @@ pt-BR:
       section: Arena
       time_played: 
       timee_played: Duração
-<<<<<<< HEAD
       title: Partidas Recentes
       'true': em
       win_loss: Vitória/Derrota
       your_class: Sua Classe
     matches:
       recent_arena_matches: Partidas Recentes em Arena
-=======
-      options: Opções
-      'true': em
-    new:
-      title: Nova Partida em Arena
->>>>>>> added league page
       section: Arena
       subtitle: " partídas recentes"
       title: Partidas Recentes
@@ -446,20 +269,13 @@ pt-BR:
       options: Opções
       played_first: Jogado Primeiro
       played_second: Jogado Segundo
-<<<<<<< HEAD
       result: Resultado
       retire: Retirar-se
-=======
-    matches:
-      title: Partidas Recentes
-      subtitle: " partídas recentes"
->>>>>>> added league page
       section: Arena
       sure_want_retire: Voce tem certeza que deseja se retirar antes dessa série de partidas em arena?
       title: Nova Partida em Arena
       win: Vitória
     stats:
-<<<<<<< HEAD
       arena_games_played: Jogos em Arena
       arena_runs_played: Jogadas em Arena
       average_length: 
@@ -469,11 +285,6 @@ pt-BR:
       longest_average_runs: Maior média de jogadas
       most_played: Mais Jogado
       no_games: Sem jogos
-=======
-      title: Estatísticas
-      subtitle: " estatísticas detalhadas de jogos em Arena"
-      section: Arena
->>>>>>> added league page
       note: NOTA!
       overall_arena_stats: Visão geral
       overall_win_rate: Taxa de Vitória Global
@@ -482,7 +293,6 @@ pt-BR:
       subtitle: " estatísticas detalhadas de jogos em Arena"
       title: Estatísticas
       total_dust_amount: Quantidade de Dust Total
-<<<<<<< HEAD
       total_gold_amount: Quantidade de Gold Total
   cards:
     index:
@@ -502,15 +312,6 @@ pt-BR:
       sort_by: Ordenar por
       text_contains: Texto contém
       title: Banco de Cartas
-=======
-      arena_runs_played: Jogadas em Arena
-      arena_games_played: Jogos em Arena
-      most_played: Mais Jogado
-      longest_average_runs: Maior média de jogadas
-      no_games: Sem jogos
-      detailed_class_status: Status Detalhado de Classe
-      average_length: 
->>>>>>> added league page
   constructeds:
     filter:
       apply: 
@@ -530,40 +331,14 @@ pt-BR:
       this_match_is: 
       you_played_on_the: 
     index:
-<<<<<<< HEAD
       description: " jogos recentes constructed"
-=======
-      title: Jogos Recentes
-      description: " jogos recentes constructed"
-      section: Constructed
->>>>>>> added league page
       new_constructed: Novo Constructed
       section: Constructed
       title: Jogos Recentes
     new:
       get_the_auto_uploader: Baixar o Auto Uploader
-<<<<<<< HEAD
       section: Constructed
       title: Novo Constructed
-=======
-    stats:
-      title: Estatísticas
-      description: " de jogos constructed"
-      section: Constructed
-      filter_by: Filtrar por
-      last: "últimos"
-      hours: horas
-      days: dias
-      all_time: Tudo
-      first_or_second: primeiro ou segundo
-      going_first: indo primeiro
-      going_second: indo segundo
-      any_mode: qualquer modo
-      casual: casual
-      ranked: rankeado
-    winratechart:
-      constructed_win_rate_title: Taxa de Vitórias em Constructed por Classe (Pessoal vs Global)
->>>>>>> added league page
     newform:
       add_defeat: Deu Derrota
       add_draw: Deu Empate
@@ -572,7 +347,6 @@ pt-BR:
       deck_name: Nome do Deck
       first_turn: primeiro turno
       opponent_class: Classe do oponente
-<<<<<<< HEAD
       ranked: Rankeada
       second_turn: segundo turno
       this_match_is: Essa partida é
@@ -601,11 +375,6 @@ pt-BR:
       ranked: rankeado
       section: Constructed
       title: Estatísticas
-=======
-      add_win: Deu Vitória
-      add_defeat: Deu Derrota
-      add_draw: Deu Empate
->>>>>>> added league page
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -616,7 +385,6 @@ pt-BR:
       filter_by: 
       first_or_second: 
       hours: 
-<<<<<<< HEAD
       last_24_hours: 
       last_days: 
       ranked: 
@@ -645,213 +413,6 @@ pt-BR:
       title: Dashboard
       view_more: Veja Mais
       with: com
-=======
-      last_days: 
-      ranked: 
-  decks:
-    form:
-      name: Nome
-      class: Classe
-      notes: Notas
-      decklist_etc: " Lista de decks, etc"
-      this_deck_public: Esse Deck é Público
-      controls: 
-      tags: 
-    new:
-      title: Novo Deck
-      section: Decks
-    public:
-      title: Lista de Decks Públicos
-      subtitle: " todos os decks constructed públicos"
-      new_deck: Novo Deck
-      public_decks: Decks Públicos
-    active_decks:
-      title: Decks Atívos
-      subtitle: " todos os decks constructed ativos"
-      slot: Campo
-      select_deck: Selecione o Deck
-      submit: Enviar
-      deleted_deck: 
-    index:
-      title: Meus Decks
-      subtitle: " todos os meus decks constructeds"
-      new_deck: Novo Deck
-      my_decks: Meus Decks
-    filter:
-      ascending: 
-      created_after: 
-      created_at: 
-      decks_found: 
-      descending: 
-      filter: 
-      klass: 
-      min_games: 
-      name: 
-      num_losses: 
-      num_matches: 
-      num_minions: 
-      num_spells: 
-      num_users: 
-      num_weapons: 
-      num_wins: 
-      per_page: 
-      show: 
-      sort_by: 
-      winrate: 
-      deck_name: 
-    public_decklist:
-      class: 
-      listed_by: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      stats_are_for_all_users: 
-      tools: 
-      users: 
-      weapons: 
-      win_rate: 
-      wins: 
-    decklist:
-      attack_distribution: 
-      card_list: 
-      health_distribution: 
-      mana_curve: 
-      mechanics: 
-      type_distribution: 
-  arena_runs:
-    new:
-      title: Nova Série de Jogadas em Arena
-      section: Arena
-      first_arena_of_day: Primeira série do dia? Vamos começar!
-      keep_it_going: Só %{runs}? Vamo que vamo!
-      going_hardcore: Wow, jogando pra valer hoje hein? %{runs} já, então boa sorte!
-      your_class: Sua Classe
-      continue: Continuar
-      get_auto_uploader: Baixar o Auto Uploader
-  additional:
-    news:
-      title: Notícias Hearthstone
-      subtitle: " as últimas sobre Hearthstone"
-      suggestions_for_news: Sugestões de novas fontes de notícias são bem vindas
-      posted: Postado
-      read_more: Leia Mais
-    uploader:
-      title: Uploader Oficial
-      header_text: "| Porque digiar cada partida manualmente se você pode deixar nosso uploader cuidar de tudo para você? &nbsp;| Essa ferramenta open source utiliza de captura de tela para analisar sua janela do Hearthstone. Não faz packet sniffing, &nbsp;| monitoramento, ou mudanças na rede de nenhum tipo. O projeto é e sempre será de código aberto para que você &nbsp;| possa saber como compilar e ver exatamente o que está acontecendo no programa."
-      download_for: Download para
-      user_key: Chave do Usuário
-      do_not_share: não divulgue isso para ninguém
-      click_to_reveal: Clique para revelar
-      instructions: Instruções
-      please_have_installed: Por favor certifique-se de ter o Java 7+ instalado.
-      download_java_here: Download do Java aqui
-      instructions_osx:
-        inst_osx_1: Faça o Download do link emcima
-        inst_osx_2: Descompacte o arquivo
-        inst_osx_3: Mova para a pasta Applications
-        inst_osx_4: "<b>Clique com o botão direito</b> sobre o arquivo e depois clique em Abrir (open)"
-        inst_osx_5: Digite sua Chave do Usuário mostrada acima
-        inst_osx_6: Inicie o jogo e jogue!
-      instructions_win:
-        inst_win_1: Faça o Download do link emcima
-        inst_win_2: Descompacte o arquivo
-        inst_win_3: Abra o arquivo
-        inst_win_4: Utilize a sua chave do Usuário mostrada acimaEnter your userkey from the uploader page or the profile page
-        inst_win_5: Inicie o jogo e jogue!
-      features_title: Funcionalidades
-      features:
-        feat_1: Suporte para ambos Windows e OSx
-        feat_2: Monitore automaticamente seus jogos constructed e arena
-        feat_3: Monitore sua classe e a classe de seu oponente
-        feat_4: Monitore o seu ranking para partidas rankeadas
-        feat_5: Monitore o nome do seus oponentes
-        feat_6: Monitore o número de rodadas e a duração de cada partida
-        feat_7: Adicione notas para a suas partidas diretamente do Uploader
-      help_and_support: Ajuda e Suporte
-      known_issues: Problemas conhecidos
-      project_source_on_github: Código Aberto do Projeto no Github
-      tutorial_video: 
-    changelog:
-      title: Changelog
-      all_time_in_utc: Todos as datas estão em UTC
-    aboutus:
-      title: Sobre
-      founded_by_text: Esse site foi criado por Jeffrey Tong com amor.
-      you_can_follow_twitter: Você pode me seguir no Twitter
-      a_huge_thanks_to: Um grande abraços para
-      thanks_jerome_text: Jerome definitivalemte ajudou o HearthStats e me motivou a trabalhar melhor. Obrigado demais!
-      built_suggestions_text: HearthStats foi criado com sugestões de toda a comunidade e continuará sendo uma ferramenta feita por/para ela.
-      others_contributors: Outros contribuintes
-      charles_text_1: Charles fez um excelente trabalho no OsX Uploader
-      charles_text_2: Charles merece muito respeito por ter surgido do nada e feito um grande trabalho open source
-      charles_text_3: Você pode ler mais sobre o Charles
-      here: aqui
-      eckert_text: J Eckert contribuiu bastante para a estilização e cores
-      donate_text: Se você gosta do que euestou fazendo, doe uns trocados.
-      rackspace_text: Gostaria de agradecer também o Rackspace por proporcionar um excelente serviço de hospedagem! Se vocês precisarem de algo, definitivamente vale a pena dar uma olhada lá.
-    contactus:
-      title: Contato
-      contact_email_text: Sinta-se a vontade para me mandar um email em <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a> para qualquer coisa.
-      contact_email_text_2: 'Você também pode me seguir no Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
-      fadein_text_1: Eu estou realmente entediado então mande emails.
-      fadein_text_2: Por favor! Pode ser sobre qualquer coisa!
-      fadein_text_3: Minha bunda já ta doendo aqui. Olha só tudo que eu to passando para desenvolver esse site para voces...
-    help:
-      title: Ajuda
-      help_text: Por favor visite <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> para quaisquer sugestões ou problemas.
-    league:
-      title: 
-  streams:
-    index:
-      title: Ao Vivo
-      subtitle: " encontre todos os seus jogos ao vivo favoritos em um só lugar"
-  tournies:
-    index:
-      title: Cadastre-se
-      subtitle: " Cadastre-se para os nosso Torneios/Ligas"
-      section: Torneios
-  menu:
-    dashboard: Dashboard
-    card_database: Banco de Cartas
-    arena:
-      title: Arena
-      recent_arena_runs: Arenas Recentes
-      continue_arena_run: Continuar a Arena
-      new_arena_run: Nova Arena
-      recent_arena_matches: Partidas recentes em Arena
-      statistics: Estatísticas
-    constructed:
-      title: Constructed
-      recent_matches: Partidas Recentes
-      new_match: Nova Partida
-      statistics: Estatísticas
-    deck:
-      title: Deck
-      public_deck_list: Lista de Deck Publica
-      my_deck: Meu Deck
-      my_active_deck: Meu Deck Ativo
-      new_deck: Novo Deck
-      other_versions: 
-    news: Notícias
-    streams: Ao Vivo
-    tournaments:
-      title: Torneios
-      register: Registrar
-      Calendar: Calendário
-      past_winners: "Últimos Vencedores"
-      recent: 
-    extra:
-      title: Extra
-      official_uploader: Uploader Oficial
-      march_report: Relatório de Março
-      change_log: Change Log
-      about_us: Sobre
-      contact_info: Contato
-      june_report: 
-    help: Ajuda
->>>>>>> added league page
   date:
     abbr_day_names:
     - Dom
@@ -948,7 +509,6 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
-<<<<<<< HEAD
   decks:
     active_decks:
       deleted_deck: 
@@ -1081,8 +641,6 @@ pt-BR:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
-=======
->>>>>>> added league page
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -1108,28 +666,15 @@ pt-BR:
       not_locked: 
       not_saved: 
       odd: deve ser ímpar
-<<<<<<< HEAD
       present: deve ficar em branco
       record_invalid: 'A validação falhou: %{errors}'
       restrict_dependent_destroy:
         many: Não é possível excluir o registro pois existem %{record} dependentes
         one: Não é possível excluir o registro pois existe um %{record} dependente
-=======
-      record_invalid: 'A validação falhou: %{errors}'
-      restrict_dependent_destroy:
-        one: Não é possível excluir o registro pois existe um %{record} dependente
-        many: Não é possível excluir o registro pois existem %{record} dependentes
->>>>>>> added league page
       taken: já está em uso
       too_long: "é muito longo (máximo: %{count} caracteres)"
       too_short: "é muito curto (mínimo: %{count} caracteres)"
       wrong_length: não possui o tamanho esperado (%{count} caracteres)
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: 
-      not_locked: 
-      not_saved: 
     template:
       body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
@@ -1156,12 +701,7 @@ pt-BR:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -1178,8 +718,6 @@ pt-BR:
         Opponent class: 
         Opponent's Class: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         Battle:
           net ID: 
@@ -1188,11 +726,17 @@ pt-BR:
         time_zone: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
         en, tournaments:
           form:
             format: 
@@ -1217,24 +761,11 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
-<<<<<<< HEAD
-=======
-    actions: 
-    links:
-      back: 
-      cancel: 
-      confirm: 
-      destroy: 
-      edit: 
-      new: 
->>>>>>> added league page
     titles:
       delete: 
       edit: 
       new: 
       save: 
-<<<<<<< HEAD
-<<<<<<< HEAD
   menu:
     Tournaments:
       Calendar: 
@@ -1280,31 +811,6 @@ pt-BR:
       recent: 
       register: Registrar
       title: Torneios
-=======
->>>>>>> added league page
-=======
-    label:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-      user:
-        current_password: 
-        password: 
-        password_confirmation: 
->>>>>>> added deck creation and show constructeds api
   number:
     currency:
       format:
@@ -1360,7 +866,6 @@ pt-BR:
     precision:
       format:
         delimiter: "."
-<<<<<<< HEAD
   shared:
     arena: arena
     arena_win_rate: Taxa de Vitórias em Arena
@@ -1532,8 +1037,6 @@ pt-BR:
     index:
       subtitle: " encontre todos os seus jogos ao vivo favoritos em um só lugar"
       title: Ao Vivo
-=======
->>>>>>> added league page
   support:
     array:
       last_word_connector: " e "
@@ -1546,7 +1049,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: 
-<<<<<<< HEAD
   tournaments:
     form:
       format: 
@@ -1560,105 +1062,6 @@ pt-BR:
       title: Cadastre-se
     show:
       decks: 
-=======
-  activemodel:
-    errors:
-      format: "%{attribute} %{message}"
-      messages:
-        accepted: deve ser aceito
-        blank: não pode ficar em branco
-        present: deve ficar em branco
-        confirmation: não é igual a %{attribute}
-        empty: não pode ficar vazio
-        equal_to: deve ser igual a %{count}
-        even: deve ser par
-        exclusion: não está disponível
-        greater_than: deve ser maior que %{count}
-        greater_than_or_equal_to: deve ser maior ou igual a %{count}
-        inclusion: não está incluído na lista
-        invalid: não é válido
-        less_than: deve ser menor que %{count}
-        less_than_or_equal_to: deve ser menor ou igual a %{count}
-        not_a_number: não é um número
-        not_an_integer: não é um número inteiro
-        odd: deve ser ímpar
-        record_invalid: 'A validação falhou: %{errors}'
-        restrict_dependent_destroy:
-          one: Não é possível excluir o registro pois existe um %{record} dependente
-          many: Não é possível excluir o registro pois existem %{record} dependentes
-        taken: já está em uso
-        too_long: "é muito longo (máximo: %{count} caracteres)"
-        too_short: "é muito curto (mínimo: %{count} caracteres)"
-        wrong_length: não possui o tamanho esperado (%{count} caracteres)
-      template:
-        body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
-        header:
-          one: 'Não foi possível gravar %{model}: 1 erro'
-          other: 'Não foi possível gravar %{model}: %{count} erros.'
-  activerecord:
-    errors:
-      format: "%{attribute} %{message}"
-      messages:
-        accepted: deve ser aceito
-        blank: não pode ficar em branco
-        present: deve ficar em branco
-        confirmation: não é igual a %{attribute}
-        empty: não pode ficar vazio
-        equal_to: deve ser igual a %{count}
-        even: deve ser par
-        exclusion: não está disponível
-        greater_than: deve ser maior que %{count}
-        greater_than_or_equal_to: deve ser maior ou igual a %{count}
-        inclusion: não está incluído na lista
-        invalid: não é válido
-        less_than: deve ser menor que %{count}
-        less_than_or_equal_to: deve ser menor ou igual a %{count}
-        not_a_number: não é um número
-        not_an_integer: não é um número inteiro
-        odd: deve ser ímpar
-        record_invalid: 'A validação falhou: %{errors}'
-        restrict_dependent_destroy:
-          one: Não é possível excluir o registro pois existe um %{record} dependente
-          many: Não é possível excluir o registro pois existem %{record} dependentes
-        taken: já está em uso
-        too_long: "é muito longo (máximo: %{count} caracteres)"
-        too_short: "é muito curto (mínimo: %{count} caracteres)"
-        wrong_length: não possui o tamanho esperado (%{count} caracteres)
-      template:
-        body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
-        header:
-          one: 'Não foi possível gravar %{model}: 1 erro'
-          other: 'Não foi possível gravar %{model}: %{count} erros.'
-<<<<<<< HEAD
->>>>>>> added league page
-=======
-    attributes:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        klass_id: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-        oppclass_id: 
-        result_id: 
-      user:
-        current_password: 
-        password_confirmation: 
-        reset_password_token: 
-    models:
-      match: 
->>>>>>> added deck creation and show constructeds api
   will_paginate:
     next_label: Próximos &#8594;
     page_entries_info:
@@ -1674,70 +1077,3 @@ pt-BR:
         zero: Nenhum %{model} encontrado
     page_gap: "&hellip;"
     previous_label: "&#8592; Anteriores"
-<<<<<<< HEAD
-=======
-  devise:
-    confirmations:
-      confirmed: 
-      confirmed_and_signed_in: 
-      send_instructions: 
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      invalid_token: 
-      locked: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
-    mailer:
-      confirmation_instructions:
-        subject: 
-      reset_password_instructions:
-        subject: 
-      unlock_instructions:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      updated: 
-      update_needs_confirmation: 
-    sessions:
-      signed_in: 
-      signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
-  social_share_button:
-    baidu: 
-    delicious: 
-    douban: 
-    email: 
-    facebook: 
-    google_bookmark: 
-    google_plus: 
-    kaixin001: 
-    plurk: 
-    qq: 
-    renren: 
-    share_to: 
-    tqq: 
-    tumblr: 
-    twitter: 
-    weibo: 
->>>>>>> added league page

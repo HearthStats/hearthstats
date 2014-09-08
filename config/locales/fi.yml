@@ -1,5 +1,4 @@
 fi:
-<<<<<<< HEAD
   activemodel:
     errors:
       format: 
@@ -51,12 +50,7 @@ fi:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -76,8 +70,6 @@ fi:
         oppclass_id: 
         result_id: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         avatar: 
         name: 
@@ -86,11 +78,20 @@ fi:
         net ID: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
+        code: 
+        name: 
+        num_pods: 
       tournament/en, tournaments/form:
         format: 
         invite_only: 
@@ -214,7 +215,6 @@ fi:
       title: 
       title:官方上传器 header_text: 
       tutorial_video: 
-<<<<<<< HEAD
       user_key: 
   arena_runs:
     new:
@@ -226,10 +226,6 @@ fi:
       section: 
       title: 
       your_class: 
-=======
-    league:
-      title: 
->>>>>>> locale changes:
   arenas:
     index:
       arena_run_with: 
@@ -371,15 +367,6 @@ fi:
       ranked: 
       section: 
       title: 
-=======
-  additional:
-    uploader:
-      tutorial_video: 
-  arenas:
-    stats:
-      average_length: 
-  constructeds:
->>>>>>> added league page
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -390,7 +377,6 @@ fi:
       filter_by: 
       first_or_second: 
       hours: 
-<<<<<<< HEAD
       last_24_hours: 
       last_days: 
       ranked: 
@@ -467,21 +453,11 @@ fi:
       type_distribution: 
     editform:
       toggle_text_import: 
-=======
-      last_days: 
-      ranked: 
-  decks:
-    active_decks:
-      deleted_deck: 
->>>>>>> added league page
     filter:
       ascending: 
       created_after: 
       created_at: 
-<<<<<<< HEAD
       deck_name: 
-=======
->>>>>>> added league page
       decks_found: 
       descending: 
       filter: 
@@ -499,9 +475,7 @@ fi:
       show: 
       sort_by: 
       winrate: 
-      deck_name: 
     form:
-<<<<<<< HEAD
       card_limit: 
       class: 
       controls: 
@@ -547,37 +521,6 @@ fi:
       weapons: 
       win_rate: 
       wins: 
-<<<<<<< HEAD
-=======
-      controls: 
-      tags: 
-<<<<<<< HEAD
->>>>>>> added league page
-=======
-    public_decklist:
-      class: 
-      listed_by: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      stats_are_for_all_users: 
-      tools: 
-      users: 
-      weapons: 
-      win_rate: 
-      wins: 
->>>>>>> locale changes:
-=======
-    decklist:
-      attack_distribution: 
-      card_list: 
-      health_distribution: 
-      mana_curve: 
-      mechanics: 
-      type_distribution: 
->>>>>>> updated localeapp to notify in prod [skip ci]
   devise:
     confirmations:
       confirmed: 
@@ -616,13 +559,8 @@ fi:
       signed_up_but_inactive: 
       signed_up_but_locked: 
       signed_up_but_unconfirmed: 
-<<<<<<< HEAD
       update_needs_confirmation: 
       updated: 
-=======
-      updated: 
-      update_needs_confirmation: 
->>>>>>> added league page
     sessions:
       signed_in: 
       signed_out: 
@@ -631,7 +569,6 @@ fi:
       send_paranoid_instructions: 
       unlocked: 
   errors:
-<<<<<<< HEAD
     format: 
     messages:
       accepted: 
@@ -687,12 +624,7 @@ fi:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -709,8 +641,6 @@ fi:
         Opponent class: 
         Opponent's Class: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         Battle:
           net ID: 
@@ -719,11 +649,17 @@ fi:
         time_zone: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
         en, tournaments:
           form:
             format: 
@@ -735,17 +671,6 @@ fi:
         email: 
         password: 
         password_confirmation: 
-=======
-    messages:
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: 
-      not_locked: 
-      not_saved: 
-  helpers:
-    actions: 
->>>>>>> added league page
     links:
       back: 
       cancel: 
@@ -753,43 +678,18 @@ fi:
       destroy: 
       edit: 
       new: 
-<<<<<<< HEAD
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
-=======
->>>>>>> added league page
     titles:
       delete: 
       edit: 
       new: 
       save: 
-    label:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-      user:
-        current_password: 
-        password: 
-        password_confirmation: 
   menu:
-<<<<<<< HEAD
     Tournaments:
       Calendar: 
       past_winners: 
@@ -1029,14 +929,6 @@ fi:
     show: 
     update: 
     view_more: 
-=======
-    deck:
-      other_versions: 
-    extra:
-      june_report: 
-    tournaments:
-      recent: 
->>>>>>> added league page
   social_share_button:
     baidu: 
     delicious: 
@@ -1054,8 +946,6 @@ fi:
     tumblr: 
     twitter: 
     weibo: 
-<<<<<<< HEAD
-<<<<<<< HEAD
   streams:
     index:
       subtitle: 
@@ -1094,49 +984,3 @@ fi:
       single_page_html: 
     page_gap: 
     previous_label: 
-=======
->>>>>>> added league page
-=======
-  shared:
-    deckslist_no_filter:
-      class: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      tools: 
-      weapons: 
-      win_rate: 
-      wins: 
-<<<<<<< HEAD
->>>>>>> locale changes:
-=======
-  activerecord:
-    attributes:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        klass_id: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-        oppclass_id: 
-        result_id: 
-      user:
-        current_password: 
-        password_confirmation: 
-        reset_password_token: 
-    models:
-      match: 
->>>>>>> added deck creation and show constructeds api

@@ -30,7 +30,6 @@ en:
         body: 
         header: 
   activerecord:
-<<<<<<< HEAD
     attributes:
       arena_run:
         Dust Earned: Dust earned
@@ -45,53 +44,23 @@ en:
         Nazwa: 
         Nom: 
         Nombre: 
-<<<<<<< HEAD
-<<<<<<< HEAD
         Nome: 
-=======
->>>>>>> removed weird caching in con#getwr
-=======
-        Nome: 
->>>>>>> updated localeapp to pass tests
         Notas: 
         Notatki: 
         Notes: Notes
         Notizen: 
         Tags: Tags
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
-<<<<<<< HEAD
-<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
-=======
-        Classe de votre adversaire: 
->>>>>>> removed weird caching in con#getwr
-=======
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
->>>>>>> updated localeapp to pass tests
         Deck Name: Deck name
         Deck name: Deck name
         Gegner Klasse: 
         Nom du deck: 
-<<<<<<< HEAD
-<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
-=======
->>>>>>> removed weird caching in con#getwr
-=======
-        Nombre del mazo: 
-        Nome do Deck: 
->>>>>>> updated localeapp to pass tests
         Notes: Notes
         Opponent Class: Opponent class
         Opponent Name: Opponent name
@@ -100,17 +69,7 @@ en:
         klass_id: Klass
         oppclass_id: Oppclass
         result_id: Result
-<<<<<<< HEAD
-<<<<<<< HEAD
         user_id: User
-=======
-        user_id: 
->>>>>>> removed weird caching in con#getwr
-=======
-        user_id: User
->>>>>>> updated localeapp to pass tests
-        "套牌名字": 
-        "對手職業": 
       profile:
         avatar: Avatar
         name: Name
@@ -119,11 +78,20 @@ en:
         net ID: Net id
       tournament:
         Description: Description
+        Format: Format
         Invite Only: Invite only
+        Invite only: Invite only
+        Maximum number of players: Maximum number of players
         Name: Name
         Number of Players: Number of players
         Number of decks: Number of decks
+        Number of players: Number of players
+        Number of pods: Number of pods
         Tournament Format: Tournament format
+        Tournament format: Tournament format
+        code: Code
+        name: Name
+        num_pods: Num pods
       tournament/en, tournaments/form:
         format: Format
         invite_only: Invite only
@@ -137,11 +105,6 @@ en:
         password: Password
         password_confirmation: Password confirmation
         reset_password_token: Reset password token
-<<<<<<< HEAD
-=======
->>>>>>> added localeapp back into system
-=======
->>>>>>> updated localeapp to pass tests
     errors:
       format: 
       messages:
@@ -171,19 +134,13 @@ en:
       template:
         body: 
         header: 
-<<<<<<< HEAD
     models:
       arena_run: Arena run
       deck: Deck
       match: Match
-<<<<<<< HEAD
       tournament: Tournament
       unique_deck: Unique deck
-=======
->>>>>>> removed weird caching in con#getwr
       user: User
-=======
->>>>>>> added localeapp back into system
   additional:
     aboutus:
       a_huge_thanks_to: A huge thanks to
@@ -202,14 +159,7 @@ en:
       you_can_follow_twitter: You can follow me on Twitter
     changelog:
       all_time_in_utc: All time in UTC
-<<<<<<< HEAD
-<<<<<<< HEAD
       changelog: Change Log
-=======
->>>>>>> added localeapp back into system
-=======
-      changelog: 
->>>>>>> removed weird caching in con#getwr
       title: Changelog
     contactus:
       contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
@@ -221,16 +171,8 @@ en:
     help:
       help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
       title: Help
-<<<<<<< HEAD
-<<<<<<< HEAD
     league:
       title: HearthStats Invitational
-=======
->>>>>>> added localeapp back into system
-=======
-    league:
-      title: HearthStats Invitational
->>>>>>> locale changes:
     news:
       posted: Posted
       read_more: Read More
@@ -272,14 +214,7 @@ en:
       project_source_on_github: Project source on Github
       title: Official Uploader
       title:官方上传器 header_text: 
-<<<<<<< HEAD
-<<<<<<< HEAD
       tutorial_video: Tutorial Video
-=======
->>>>>>> added localeapp back into system
-=======
-      tutorial_video: Tutorial Video
->>>>>>> locale changes:
       user_key: User Key
   arena_runs:
     new:
@@ -299,23 +234,12 @@ en:
       description: " recent arena games"
       new_arena_run: New Arena Run
       notes: Notes
-<<<<<<< HEAD
       'on': 'on'
-=======
->>>>>>> added localeapp back into system
       options: Options
       prizes: Prizes
       recent_arena_games: Recent Arena Games
       section: Arena
-<<<<<<< HEAD
-<<<<<<< HEAD
       time_played: Time Played
-=======
-      time_played: 
->>>>>>> added localeapp back into system
-=======
-      time_played: Time Played
->>>>>>> locale changes:
       timee_played: Time Played
       title: Recent Games
       'true': true
@@ -346,14 +270,7 @@ en:
     stats:
       arena_games_played: Arena Games Played
       arena_runs_played: Arena Runs Played
-<<<<<<< HEAD
-<<<<<<< HEAD
       average_length: Average Run Length
-=======
->>>>>>> added localeapp back into system
-=======
-      average_length: Average Run Length
->>>>>>> locale changes:
       detailed_class_status: Detailed Class Status
       dist_desc: Times achieved vs Number of wins in arena run
       distribution_graph: Distribution Graph
@@ -371,15 +288,7 @@ en:
       total_gold_amount: Total Gold Amount
   cards:
     index:
-<<<<<<< HEAD
-<<<<<<< HEAD
       any_class: Any class
-=======
-      any_class: any class
->>>>>>> added localeapp back into system
-=======
-      any_class: Any class
->>>>>>> locale changes:
       any_race: any race
       any_type: any type
       ascending: Ascending
@@ -407,24 +316,10 @@ en:
       add_win: Add Win
       casual: Casual
       deck_name: Deck name
-<<<<<<< HEAD
-<<<<<<< HEAD
       first_turn: First turn
       opponent_class: Opponent class
       ranked: Ranked
       second_turn: Second turn
-=======
-      first_turn: first turn
-      opponent_class: Opponent class
-      ranked: Ranked
-      second_turn: second turn
->>>>>>> added localeapp back into system
-=======
-      first_turn: First turn
-      opponent_class: Opponent class
-      ranked: Ranked
-      second_turn: Second turn
->>>>>>> locale changes:
       this_match_is: This match is
       you_played_on_the: You played on the
     index:
@@ -442,24 +337,10 @@ en:
       add_win: Add Win
       casual: Casual
       deck_name: Deck name
-<<<<<<< HEAD
-<<<<<<< HEAD
       first_turn: First turn
       opponent_class: Opponent class
       ranked: Ranked
       second_turn: Second turn
-=======
-      first_turn: first turn
-      opponent_class: Opponent class
-      ranked: Ranked
-      second_turn: second turn
->>>>>>> added localeapp back into system
-=======
-      first_turn: First turn
-      opponent_class: Opponent class
-      ranked: Ranked
-      second_turn: Second turn
->>>>>>> locale changes:
       this_match_is: This match is
       you_played_on_the: You played on the
     quickentry:
@@ -486,10 +367,6 @@ en:
       ranked: ranked
       section: Constructed
       title: Statistics
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
     stats_filter:
       all_mode: All Mode
       all_seasons: All Seasons
@@ -500,16 +377,9 @@ en:
       filter_by: Filter by
       first_or_second: first or second
       hours: hours
-<<<<<<< HEAD
       last_24_hours: last 24 hours
       last_days: Last %{num} days
       ranked: Ranked
-=======
->>>>>>> added localeapp back into system
-=======
-      last_days: Last %{num} days
-      ranked: Ranked
->>>>>>> locale changes:
     winratechart:
       constructed_win_rate_title: Constructed Win Rates Per Class (Personal vs. Global)
   dashboards:
@@ -568,24 +438,12 @@ en:
       year: 
   decks:
     active_decks:
-<<<<<<< HEAD
-<<<<<<< HEAD
       deleted_deck: Deleted Deck
-=======
->>>>>>> added localeapp back into system
-=======
-      deleted_deck: Deleted Deck
->>>>>>> locale changes:
       select_deck: Select Deck
       slot: Slot
       submit: Submit
       subtitle: " all active constructed decks"
       title: Active Deck
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> updated localeapp to notify in prod [skip ci]
     decklist:
       attack_distribution: Attack distribution
       card_list: Card List
@@ -593,16 +451,8 @@ en:
       mana_curve: Mana Curve
       mechanics: Mechanics
       type_distribution: Type Distribution
-<<<<<<< HEAD
     editform:
       toggle_text_import: Toggle Text Import
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
-=======
->>>>>>> updated localeapp to notify in prod [skip ci]
-=======
->>>>>>> removed weird caching in con#getwr
     filter:
       ascending: Ascending
       created_after: Created After
@@ -631,14 +481,6 @@ en:
       card_limit: Max Card Limit
       class: Class
       controls: Controls
-<<<<<<< HEAD
-=======
-    form:
-      card_limit: Max Card Limit
-      class: Class
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
       count: Count
       deck_limit: Max Deck Limit
       decklist_etc: " Decklist, etc"
@@ -646,25 +488,11 @@ en:
       name: Name
       no_more: No More In Deck
       notes: Notes
-<<<<<<< HEAD
-<<<<<<< HEAD
       other_versions: Other Versions
       search: Search
       tags: Tags
       this_deck_public: Make Deck Public
       toggle_text_import: Toggle Text Import
-=======
-=======
-      other_versions: Other Versions
->>>>>>> removed weird caching in con#getwr
-      search: Search
-      tags: Tags
-      this_deck_public: Make Deck Public
-<<<<<<< HEAD
->>>>>>> added localeapp back into system
-=======
-      toggle_text_import: Toggle Text Import
->>>>>>> updated localeapp to pass tests
     index:
       my_decks: My Decks
       new_deck: New Deck
@@ -674,24 +502,13 @@ en:
       section: Decks
       title: New Deck
     new_splash:
-<<<<<<< HEAD
-<<<<<<< HEAD
       section: Deck
-=======
->>>>>>> added localeapp back into system
-=======
-      section: Deck
->>>>>>> updated localeapp to pass tests
       title: New Deck Class Selection
     public:
       new_deck: New Deck
       public_decks: Public Decks
       subtitle: " all public constructed decks"
       title: Public Deck List
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
     public_decklist:
       class: Class
       listed_by: Listed By
@@ -753,42 +570,19 @@ en:
       send_instructions: You will receive an email with instructions about how to unlock your account in a few minutes.
       send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
-<<<<<<< HEAD
-=======
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
   errors:
     format: 
     messages:
       accepted: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
       already_confirmed: was already confirmed, please try signing in
       blank: 
       confirmation: 
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
-<<<<<<< HEAD
-=======
-      blank: 
-      confirmation: 
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
       empty: 
       equal_to: 
       even: 
       exclusion: 
-<<<<<<< HEAD
-<<<<<<< HEAD
       expired: has expired, please request a new one
-=======
->>>>>>> added localeapp back into system
-=======
-      expired: has expired, please request a new one
->>>>>>> locale changes:
       greater_than: 
       greater_than_or_equal_to: 
       inclusion: 
@@ -797,20 +591,11 @@ en:
       less_than_or_equal_to: 
       not_a_number: 
       not_an_integer: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
       not_found: not found
       not_locked: was not locked
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
-<<<<<<< HEAD
-=======
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
       odd: 
       present: 
       record_invalid: 
@@ -823,8 +608,6 @@ en:
       body: 
       header: 
   helpers:
-<<<<<<< HEAD
-<<<<<<< HEAD
     actions: Actions
     label:
       arena_run:
@@ -839,61 +622,29 @@ en:
         Nazwa: 
         Nom: 
         Nombre: 
-<<<<<<< HEAD
-<<<<<<< HEAD
         Nome: 
-=======
->>>>>>> removed weird caching in con#getwr
-=======
-        Nome: 
->>>>>>> updated localeapp to pass tests
         Notas: 
         Notatki: 
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
-<<<<<<< HEAD
-<<<<<<< HEAD
         Clase del oponente: 
         Classe de votre adversaire: 
         Classe do oponente: 
-=======
-        Classe de votre adversaire: 
->>>>>>> removed weird caching in con#getwr
-=======
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
->>>>>>> updated localeapp to pass tests
         Deck Name: 
-        Deck name: Deck Name
+        Deck name: 
         Gegner Klasse: 
         Nom du deck: 
-<<<<<<< HEAD
-<<<<<<< HEAD
         Nombre del mazo: 
         Nome do Deck: 
-=======
->>>>>>> removed weird caching in con#getwr
-=======
-        Nombre del mazo: 
-        Nome do Deck: 
->>>>>>> updated localeapp to pass tests
         Notes: 
         Opponent Class: 
         Opponent Name: 
         Opponent class: 
         Opponent's Class: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         Battle:
           net ID: 
@@ -902,11 +653,17 @@ en:
         time_zone: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
         en, tournaments:
           form:
             format: 
@@ -918,12 +675,6 @@ en:
         email: 
         password: 
         password_confirmation: 
-<<<<<<< HEAD
-=======
-    actions: Actions
->>>>>>> locale changes:
-=======
->>>>>>> updated localeapp to pass tests
     links:
       back: Back
       cancel: Cancel
@@ -931,42 +682,23 @@ en:
       destroy: Delete
       edit: Edit
       new: New
-<<<<<<< HEAD
-=======
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
     select:
       prompt: 
     submit:
       create: 
       submit: 
       update: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
     titles:
       delete: Delete %{model}
       edit: Edit %{model}
       new: New %{model}
       save: Save %{model}
-<<<<<<< HEAD
-=======
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
   menu:
     Tournaments:
       Calendar: 
       past_winners: 
-<<<<<<< HEAD
       register: Register
       title: Title
-=======
-      register: 
-      title: 
->>>>>>> added localeapp back into system
     arena:
       continue_arena_run: Continue Arena Run
       new_arena_run: New Arena Run
@@ -985,28 +717,14 @@ en:
       my_active_deck: My Active Deck
       my_deck: My Decks
       new_deck: New Deck
-<<<<<<< HEAD
-<<<<<<< HEAD
       other_versions: View Other Versions
-=======
->>>>>>> added localeapp back into system
-=======
-      other_versions: View Other Versions
->>>>>>> locale changes:
       public_deck_list: Public Deck List
       title: Deck
     extra:
       about_us: About Us
       change_log: Change Log
       contact_info: Contact Info
-<<<<<<< HEAD
-<<<<<<< HEAD
       june_report: June Report
-=======
->>>>>>> added localeapp back into system
-=======
-      june_report: June Report
->>>>>>> locale changes:
       march_report: 
       may_report: May Report
       official_uploader: Official Uploader
@@ -1017,14 +735,7 @@ en:
     tournaments:
       Calendar: Calendar
       past_winners: Past Winners
-<<<<<<< HEAD
-<<<<<<< HEAD
       recent: Recent Tournaments
-=======
->>>>>>> added localeapp back into system
-=======
-      recent: Recent Tournaments
->>>>>>> locale changes:
       register: Register
       title: Tournaments
   number:
@@ -1088,15 +799,7 @@ en:
       attack_distribution: Attack distribution
       card_list: Card List
       health_distribution: Health distribution
-<<<<<<< HEAD
-<<<<<<< HEAD
       left_click_add_right_remove: Left-click to add. Click and hold to remove.
-=======
-      left_click_add_right_remove: Left-click to add. Right-click to remove.
->>>>>>> added localeapp back into system
-=======
-      left_click_add_right_remove: Left-click to add. Click and hold to remove.
->>>>>>> locale changes:
       mana_curve: Mana curve
       mechanics: Mechanics
       of_30_cards: of 30 cards
@@ -1105,15 +808,7 @@ en:
       toggle_text_import: Toggle Text Import
       type_distribution: Type distribution
     deckslist:
-<<<<<<< HEAD
-<<<<<<< HEAD
       any_class: Any class
-=======
-      any_class: any class
->>>>>>> added localeapp back into system
-=======
-      any_class: Any class
->>>>>>> locale changes:
       apply: Apply
       asc: Asc
       class: Class
@@ -1132,24 +827,12 @@ en:
       sort_by: Sort by
       spells: Spells
       stats_are_for_all_users: stats are for all users that have played the deck in the last 30 days, not just the original author
-<<<<<<< HEAD
-<<<<<<< HEAD
       stats_are_for_your_personal: stats are for your personal play using each deck
-=======
-      stats_are_for_your_personal: stats are for for your personal play using each deck
->>>>>>> added localeapp back into system
-=======
-      stats_are_for_your_personal: stats are for your personal play using each deck
->>>>>>> locale changes:
       tools: Tools
       users: Users
       weapons: Weapons
       win_rate: Win Rate
       wins: Wins
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
     deckslist_no_filter:
       class: Class
       losses: Losses
@@ -1164,7 +847,6 @@ en:
     delete: Delete
     edit: Edit
     error: error
-<<<<<<< HEAD
     filter:
       all_time: All time
       apply: Apply
@@ -1175,34 +857,16 @@ en:
       duration: Duration
       filter: Filter
       for: For
-=======
-    delete: delete
-    edit: edit
-    error: erro
-=======
->>>>>>> locale changes:
-    filter:
-      all_time: All time
-      apply: Apply
-      coin?: Coin?
-      created_at: Created
-      duration: Duration
->>>>>>> added localeapp back into system
       last_24_hours: Last 24 hours
       last_days: Last %{num} days
       matches_in_this_list: matches in this list
       numturns: Rounds
-<<<<<<< HEAD
       opponent: Opponent
       per_page: per page
       reset: Reset
       shared:
         notes: Notes
       show: Show
-=======
-      per_page: per page
-      reset: Reset
->>>>>>> added localeapp back into system
       sort: sort
       win_rate_over: win rate over
     footer:
@@ -1222,8 +886,6 @@ en:
       sign_out: Sign Out
       you_have: You have
     matchlist:
-<<<<<<< HEAD
-<<<<<<< HEAD
       all_time: All Time
       any_class: Any class
       apply: Apply
@@ -1238,41 +900,12 @@ en:
       last: Last
       last_24_hours: Last 25 Hours
       matches_in_this_list: Matches in this list
-=======
-      all_time: 
-      any_class: any class
-      apply: 
-=======
-      all_time: All Time
-      any_class: Any class
-      apply: Apply
->>>>>>> locale changes:
-      ascending: ascending
-      coin: Coin
-      coin?: Coin?
-      created: Created
-      days: Days
-      descending: descending
-      duration: Duratio
-      filter: Filter
-<<<<<<< HEAD
-      last: 
-      last_24_hours: 
-      matches_in_this_list: 
->>>>>>> added localeapp back into system
-=======
-      last: Last
-      last_24_hours: Last 25 Hours
-      matches_in_this_list: Matches in this list
->>>>>>> locale changes:
       mode: Mode
       no_coin: No Coin
       opponent: Opponent
       opponent_class: Opponent Class
       opponent_name: Opponent Name
       options: Options
-<<<<<<< HEAD
-<<<<<<< HEAD
       per_page: per page
       rank: Rank
       reset: Reset
@@ -1291,24 +924,6 @@ en:
       options: Options
       result: Result
       rounds: Rounds
-=======
-      per_page: 
-=======
-      per_page: per page
->>>>>>> locale changes:
-      rank: Rank
-      reset: Reset
-      result: Result
-      rounds: Rounds
-      show: Show
-<<<<<<< HEAD
-      sort: 
-      win_rate_over: 
->>>>>>> added localeapp back into system
-=======
-      sort: Sort
-      win_rate_over: Win Rate Over
->>>>>>> locale changes:
       your: Your
     new_arena_game: New Arena Game
     notes: Notes
@@ -1318,10 +933,6 @@ en:
     show: show
     update: Update
     view_more: View More
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> locale changes:
   social_share_button:
     baidu: Baidu.com
     delicious: Delicious
@@ -1339,11 +950,6 @@ en:
     tumblr: Tumblr
     twitter: Twitter
     weibo: Sina Weibo
-<<<<<<< HEAD
-=======
->>>>>>> added localeapp back into system
-=======
->>>>>>> locale changes:
   streams:
     index:
       subtitle: " find all your favourite streams in one place"
@@ -1360,13 +966,12 @@ en:
       long: 
       short: 
     pm: 
-<<<<<<< HEAD
   tournaments:
     form:
-      format: 
-      invite_only: 
-      num_decks: 
-      num_pods: 
+      format: Format
+      invite_only: Invite only
+      num_decks: Number of decks
+      num_pods: Number of pods
   tournies:
     index:
       section: Tournaments
@@ -1374,21 +979,6 @@ en:
       title: Recent Tournaments
     show:
       decks: Decks
-<<<<<<< HEAD
-=======
-  tournies:
-    index:
-      section: Tournaments
-<<<<<<< HEAD
-      subtitle: " Register for our newest tournaments/leagues"
-      title: Sign Up
->>>>>>> added localeapp back into system
-=======
-      subtitle: " Check out recent tournament deck lists!"
-      title: Recent Tournaments
->>>>>>> locale changes:
-=======
->>>>>>> updated localeapp to pass tests
   will_paginate:
     next_label: 
     page_entries_info:

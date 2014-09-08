@@ -92,7 +92,6 @@ gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'localeapp'
 gem 'skylight'
-
 gem 'pusher'
 
 # Background

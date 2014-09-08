@@ -1,5 +1,4 @@
 pl:
-<<<<<<< HEAD
   activemodel:
     errors:
       format: 
@@ -51,12 +50,7 @@ pl:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -76,8 +70,6 @@ pl:
         oppclass_id: 
         result_id: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         avatar: 
         name: 
@@ -86,11 +78,20 @@ pl:
         net ID: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
+        code: 
+        name: 
+        num_pods: 
       tournament/en, tournaments/form:
         format: 
         invite_only: 
@@ -229,194 +230,9 @@ pl:
     index:
       arena_run_with: arena z
       close: Zamknij
-=======
-  shared:
-    header:
-      guest: Gość
-      my_profile: Mój profil
-      sign_out: Wypisz się
-      register_now_login: Zarejestruj się / Logowanie
-      you_have: Masz
-      new_messages: nowe wiadomości
-      click_message_to_dismiss: Kliknij na wiadomość, by usunąć
-      change_to: Zmień na
-    footer:
-      about: O Nas
-      faq: FAQ
-      open_positions: Dołącz do Nas
-      support: Wsparcie
-      privacy_policy: Polityka prywatności
-      copyright_text: Copyright 2014 HearthStats. Hearthstone jest zastrzeżonym znakiem towarowym należącym do Blizzard Entertainment.
-    arena_win_rate: Arena - wskaźnik zwycięstw
-    ranked_win_rate: Gra rankingowa - wskaźnik zwycięstw
-    best_deck: Najlepsza talia
-    best_arena_class: Najlepsza klasa na Arenie
-    create_deck: Tworzenie talii
-    new_arena_game: Nowa gra na Arenie
-    view_more: Pokaż więcej
-    edit: Edytuj
-    delete: Usuń
-    notes: Notatki
-    run: Rozgrywka
-    error: błąd
-    prohibited_this_being_save: 'nie można %{resource} zapisać:'
-    arenarun: Gra na Arenie
-    show: Pokaż
-    arena: Arena
-    class: Klasa
-    deck: Talia
-    create: Utwórz
-    update: Modyfikuj
-    deckbuilder:
-      card_list: Lista kart
-      optional_deck_will_be_created_if: Opcjonalnie (Talia będzie utworzona, gdy zostawisz to pole puste)
-      toggle_text_import: Przełącz w tryb tekstowy
-      add_a_card: Dodaj kartę
-      of_30_cards: z 30 kart
-      this_deck_is_incomplete: Talia jest niekompletna
-      left_click_add_right_remove: Kliknij lewym przyciskiem, by dodać. Kliknij prawym przyciskiem, by usunąć.
-      mana_curve: Krzywa many
-      attack_distribution: Rozkład ataku
-      health_distribution: Rozkład zdrowia
-      type_distribution: Rozkład wg. typu
-      mechanics: Mechanika
-    back: Cofnij
-    deckslist:
-      filter: Filtr
-      any_class: dowolna klasa
-      show: Pokaż
-      per_page: na stronę
-      sort_by: sortuj po
-      created: data utworzenia
-      losses: liczba porażek
-      matches: liczba gier
-      minions: stronnicy
-      name: nazwa
-      spells: zaklęcia
-      popularity: popularność
-      weapons: bronie
-      win_rate: wskaźnik zwycięstw
-      wins: liczba zwycięstw
-      asc: rosnąco
-      desc: malejąco
-      apply: Zatwierdź
-      found_matching_your_criteria: odpowiada kryteriom wyboru
-      class: Klasa
-      users: Użytkownicy
-      listed_by: Utworzone przez
-      tools: Narzędzia
-      stats_are_for_all_users: Prezentowane statystyki dotyczą wszystkich użytkowników (nie tylko autora talii), którzy grali określoną talią w przeciągu ostatnich 30 dni.
-      stats_are_for_your_personal: Prezentowane statystyki dotyczą gier dla każdej z Twoich talii.
-    matchlist:
-      filter: Filtr
-      any_class: każda klasa
-      coin?: Moneta?
-      coin: Moneta
-      no_coin: Bez monety
-      opponent: Przeciwnik
-      apply: Zatwierdź
-      reset: Resetuj
-      show: Pokaż
-      per_page: na stronę
-      all_time: Cały okres
-      last_24_hours: ostatnie 24 godz.
-      last: ostatnie
-      days: dni
-      sort: sortuj po
-      created: Data utworzenia
-      duration: Czas
-      rounds: Rundy
-      ascending: rosnąco
-      descending: malejąco
-      win_rate_over: wskaźnik zwycięstw w ponad
-      matches_in_this_list: rozgrywkach na liście
-      your: Twoja
-      opponent_class: Klasa przeciwnika
-      result: Wynik
-      rank: Ranga
-      mode: Tryb
-      opponent_name: Nazwa przeciwnika
-      options: Opcje
-    filter:
-      all_time: 
-      apply: 
-      coin?: 
-      created_at: 
-      duration: 
-      last_24_hours: 
-      last_days: 
-      matches_in_this_list: 
-      numturns: 
-      per_page: 
-      reset: 
-      sort: 
-      win_rate_over: 
-    deckslist_no_filter:
-      class: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      tools: 
-      weapons: 
-      win_rate: 
-      wins: 
-  dashboards:
-    index:
-      title: Panel główny
-      subtitle: " statystki z obecnego sezonu"
-      global_win_rates: Globalny wskaźnik zwycięstw
-      arena_win_rates: Wskaźnik zwycięstw z Areny
-      games_recorded: Zarejestrowanych gier
-      constructed_win_rates: Wskaźnik zwycięstw Tryb Pojedynku
-      hearthstats_news: Nowości HearthStats
-      read_more: Czytaj więcej
-      view_more: Pokaż więcej
-      news:
-        huge_update: Duża aktualizacja z wieloma funkcjami.
-        ability_to_rank: Możliwość rozróżnienia gier w trybie rankingowym/rozrywkowym.
-        donation_link: Link do dotacji dodany
-        notes_feature: Dodano funkcję notatek!
-      personal_win_rate: Twój wskaźnik zwycięstw
-      constructed_coin_win_rates: Wskaźnik zwycięstw Tryb Pojedynku z Monetą
-      recent_activities: Ostatnie aktywności
-      against: przeciwko
-      with: z
-      global_stats: Statystyki globalne
-      arena_win_rate: Wskaźnik zwycięstw z Areny
-  cards:
-    index:
-      title: Baza kart
-      not_found: Nie znaleziono kart pasujących do kryteriów wyszukiwania
-      text_contains: Tekst zawiera
-      filter_by: Filtruj po
-      sort_by: Sortuj po
-      any_type: każdy typ
-      any_race: każda rasa
-      any_class: każda klasa
-      ascending: Rosnąco
-      descending: Malejąco
-      attack: Atak
-      health_dur: Zdrowie/Wytrzymałość
-      mana_cost: Koszt many
-      name: Nazwa
-      none: "żadna"
-      reset_filters: Resetuj filtry
-  arenas:
-    index:
-      title: Ostatnie gry
-      description: " ostatnie gry na Arenie"
-      section: Arena
->>>>>>> added league page
       continue_arena_run: Kontynuuj Areny
       description: " ostatnie gry na Arenie"
       new_arena_run: Nowa Arena
-<<<<<<< HEAD
-=======
-      arena_run_with: arena z
-      true: na
->>>>>>> added league page
       notes: Notatki
       'on': 
       options: Opcje
@@ -425,7 +241,6 @@ pl:
       section: Arena
       time_played: 
       timee_played: Czas
-<<<<<<< HEAD
       title: Ostatnie gry
       'true': na
       win_loss: Zwycięstwo/Porażka
@@ -439,18 +254,6 @@ pl:
       arena_run_results: Wyniki bitew na Arenie
       back: Cofnij
       create_entry: Stwórz wpis
-=======
-      options: Opcje
-      time_played: 
-      'true': na
-    new:
-      title: Nowa bitwa na Arenie
-      section: Arena
-      retire: Zrezygnuj
-      sure_want_retire: Czy jesteś pewnien, że chcesz zrezygnować wcześniej z Areny?
-      opponent_class: Klasa przeciwnika
-      win: Zwycięstwo
->>>>>>> added league page
       defeat: Porażka
       draw: Remis
       end_run: Zakończ Arenę
@@ -458,20 +261,13 @@ pl:
       options: Opcje
       played_first: Grasz jako pierwszy
       played_second: Grasz jako drugi
-<<<<<<< HEAD
       result: Wynik
       retire: Zrezygnuj
-=======
-    matches:
-      title: Ostatnie bitwy
-      subtitle: " ostatnie bitwy"
->>>>>>> added league page
       section: Arena
       sure_want_retire: Czy jesteś pewnien, że chcesz zrezygnować wcześniej z Areny?
       title: Nowa bitwa na Arenie
       win: Zwycięstwo
     stats:
-<<<<<<< HEAD
       arena_games_played: Rozegrano bitew na Arenach
       arena_runs_played: Rozegrano liczbę Aren
       average_length: 
@@ -481,11 +277,6 @@ pl:
       longest_average_runs: Największa średnia na Arenie
       most_played: Najbardziej grywalny
       no_games: Brak gier
-=======
-      title: Statystyki
-      subtitle: " szczegółowe statystyki z Areny"
-      section: Arena
->>>>>>> added league page
       note: UWAGA!
       overall_arena_stats: Całkowite statystyki z Areny
       overall_win_rate: Całkowity wskaźnik zwycięstw
@@ -494,7 +285,6 @@ pl:
       subtitle: " szczegółowe statystyki z Areny"
       title: Statystyki
       total_dust_amount: Całkowita ilość pyłu
-<<<<<<< HEAD
       total_gold_amount: Całkowite złoto zgromadzone
   cards:
     index:
@@ -514,17 +304,6 @@ pl:
       sort_by: Sortuj po
       text_contains: Tekst zawiera
       title: Baza kart
-=======
-      arena_runs_played: Rozegrano liczbę Aren
-      arena_games_played: Rozegrano bitew na Arenach
-      most_played: Najbardziej grywalny
-      longest_average_runs: Największa średnia na Arenie
-      no_games: Brak gier
-      detailed_class_status: Szczegółowe zestawienie klas
-      average_length: 
-      dist_desc: 
-      distribution_graph: 
->>>>>>> added league page
   constructeds:
     filter:
       apply: 
@@ -544,62 +323,18 @@ pl:
       this_match_is: 'Tryb tej gry to:'
       you_played_on_the: Grasz jako
     index:
-<<<<<<< HEAD
       description: " ostatnie gry w Trybie Pojedynku"
-=======
-      title: Ostatnie gry
-      description: " ostatnie gry w Trybie Pojedynku"
-      section: Tryb Pojedynku
->>>>>>> added league page
       new_constructed: Nowy Pojedynek
       section: Tryb Pojedynku
       title: Ostatnie gry
     new:
       get_the_auto_uploader: Pobierz Auto Uploader
-<<<<<<< HEAD
       section: Tryb Pojedynku
       title: Nowa gra w Trybie Pojedynku
     newform:
       add_defeat: Dodaj Porażkę
       add_draw: Dodaj Remis
       add_win: Dodaj Zwycięstwo
-=======
-    stats:
-      title: Statystyki
-      description: " statystyki dla Trybu Pojedynku"
-      section: Tryb Pojedynku
-      filter_by: Sortuj po
-      last: ostatnie
-      hours: godziny
-      days: dni
-      all_time: cały okres
-      first_or_second: pierwszy czy drugi
-      going_first: jako pierwszy
-      going_second: jako drugi
-      any_mode: każdy rodzaj
-      casual: rozrywka
-      ranked: ranking
-    winratechart:
-      constructed_win_rate_title: Tryb Pojedynku - Wskaźnik zwycięstw wg. klasy (Twój vs. Globalny)
-    newform:
-      you_played_on_the: Grasz jako
-      first_turn: pierwszy
-      second_turn: drugi
-      this_match_is: 'Tryb tej gry to:'
-      ranked: Ranking
-      casual: Rozrywka
-      deck_name: Nazwa talii
-      opponent_class: Klasa przeciwnika
-      add_win: Dodaj Zwycięstwo
-      add_defeat: Dodaj Porażkę
-      add_draw: Dodaj Remis
-    form:
-      you_played_on_the: Grasz jako
-      first_turn: pierwszy
-      second_turn: drugi
-      this_match_is: 'Tryb tej gry to:'
-      ranked: Ranking
->>>>>>> added league page
       casual: Rozrywka
       deck_name: Nazwa talii
       first_turn: pierwszy
@@ -611,7 +346,6 @@ pl:
     quickentry:
       add_defeat: Dodaj Porażkę
       add_draw: Dodaj Remis
-<<<<<<< HEAD
       add_win: Dodaj Zwycięstwo
       casual: Rozrywkowa
       coin: Moneta
@@ -633,13 +367,6 @@ pl:
       ranked: ranking
       section: Tryb Pojedynku
       title: Statystyki
-=======
-    filter:
-      apply: 
-      coin?: 
-      per_page: 
-      reset: 
->>>>>>> added league page
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -650,7 +377,6 @@ pl:
       filter_by: 
       first_or_second: 
       hours: 
-<<<<<<< HEAD
       last_24_hours: 
       last_days: 
       ranked: 
@@ -710,10 +436,6 @@ pl:
       month: 
       second: 
       year: 
-=======
-      last_days: 
-      ranked: 
->>>>>>> added league page
   decks:
     active_decks:
       deleted_deck: 
@@ -764,7 +486,6 @@ pl:
       name: Nazwa
       no_more: 
       notes: Notatki
-<<<<<<< HEAD
       other_versions: 
       search: 
       tags: 
@@ -775,18 +496,6 @@ pl:
       new_deck: Nowa talia
       subtitle: " wszystkie moje talie"
       title: Moje talie
-=======
-      decklist_etc: " Lista talii, itd."
-      this_deck_public: Talia jest ogólnodostępna
-      card_limit: 
-      controls: 
-      count: 
-      deck_limit: 
-      legend: 
-      no_more: 
-      search: 
-      tags: 
->>>>>>> added league page
     new:
       section: Talie
       title: Nowa talia
@@ -794,7 +503,6 @@ pl:
       section: 
       title: 
     public:
-<<<<<<< HEAD
       new_deck: Nowa talia
       public_decks: Ogólnodostępne talie
       subtitle: " wszystkie ogólnodostępne talie"
@@ -916,12 +624,7 @@ pl:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
         "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -938,8 +641,6 @@ pl:
         Opponent class: 
         Opponent's Class: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         Battle:
           net ID: 
@@ -948,11 +649,17 @@ pl:
         time_zone: 
       tournament:
         Description: 
+        Format: 
         Invite Only: 
+        Invite only: 
+        Maximum number of players: 
         Name: 
         Number of Players: 
         Number of decks: 
+        Number of players: 
+        Number of pods: 
         Tournament Format: 
+        Tournament format: 
         en, tournaments:
           form:
             format: 
@@ -982,162 +689,6 @@ pl:
       edit: 
       new: 
       save: 
-=======
-      title: Ogólnodostępna lista talii
-      subtitle: " wszystkie ogólnodostępne talie"
-      new_deck: Nowa talia
-      public_decks: Ogólnodostępne talie
-    active_decks:
-      title: Aktywna talia
-      subtitle: " wszystkie aktywne talie"
-      slot: Miejsce
-      select_deck: Wybierz talię
-      submit: Zatwierdź
-      deleted_deck: 
-    index:
-      title: Moje talie
-      subtitle: " wszystkie moje talie"
-      new_deck: Nowa talia
-      my_decks: Moje talie
-    filter:
-      ascending: 
-      created_after: 
-      created_at: 
-      decks_found: 
-      descending: 
-      filter: 
-      klass: 
-      min_games: 
-      name: 
-      num_losses: 
-      num_matches: 
-      num_minions: 
-      num_spells: 
-      num_users: 
-      num_weapons: 
-      num_wins: 
-      per_page: 
-      show: 
-      sort_by: 
-      winrate: 
-      deck_name: 
-    new_splash:
-      title: 
-    public_decklist:
-      class: 
-      listed_by: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      stats_are_for_all_users: 
-      tools: 
-      users: 
-      weapons: 
-      win_rate: 
-      wins: 
-    decklist:
-      attack_distribution: 
-      card_list: 
-      health_distribution: 
-      mana_curve: 
-      mechanics: 
-      type_distribution: 
-  arena_runs:
-    new:
-      title: Nowa Arena
-      section: Arena
-      first_arena_of_day: Pierwsza Arena dzisiaj? Zaczynajmy!
-      keep_it_going: Tylko %{runs}? Idźmy dalej!
-      going_hardcore: Wow, ostro dzisiaj jedziesz? %{runs} , cóż... powodzenia!
-      your_class: Twoja klasa
-      continue: Kontynuuj
-      get_auto_uploader: Pobierz Auto Uploader
-  additional:
-    news:
-      title: Nowości Hearthstone
-      subtitle: " ostatnie nowości w Hearthstone"
-      suggestions_for_news: Sugestie dotyczące źródeł informacji są mile widziane
-      posted: Opublikowano
-      read_more: Czytaj więcej
-    uploader:
-      title: Oficjalny Uploader
-      header_text: Po co wpisywać każdą grę ręcznie, skoro Uploader może to wszystko zrobić za Ciebie? Uploader działa na zasadzie analizy przechwytywania ekraniu i jest oprogramowaniem otwartym. To w żadnym wypadku nie jest oprogramowanie szpiegujące, modyfikujące ani monitorujące Twoją sieć, czy komputer. Projekt ten jest i zawsze będzie oprogramowaniem otwartym, więc będziesz mógł w każdej chwili tworzyć jego własne konstrukcje i obserwować co dokładnie się w nim dzieje.
-      download_for: Pobierz z
-      user_key: Klucz Użytkownika
-      do_not_share: nie dziel się nim z nikim
-      click_to_reveal: Kliknij, by ujawnić
-      instructions: Instrukcje
-      please_have_installed: Upewnij się, czy masz zainstalowaną Java 7+.
-      download_java_here: Pobierz Java stąd
-      instructions_osx:
-        inst_osx_1: Pobierz z linku powyżej
-        inst_osx_2: Rozpakuj plik
-        inst_osx_3: Przeciągnij plik do folderu Aplikacje
-        inst_osx_4: "<b>Wciśnij Prawy Przycisk Myszy</b> na pliku i wybierz Otwórz"
-        inst_osx_5: Wprowadź swój Klucz Użytkownika ze strony Uploadera lub ze swojego profilu
-        inst_osx_6: Uruchom grę i graj!
-      instructions_win:
-        inst_win_1: Pobierz z linku powyżej
-        inst_win_2: Rozpakuj plik
-        inst_win_3: Kliknij, by otworzyć aplikację
-        inst_win_4: Wprowadź swój Klucz Użytkownika ze strony Uploadera lub ze swojego profilu
-        inst_win_5: Uruchom grę i graj!
-      features_title: Funkcje
-      features:
-        feat_1: Wsparcie zarówno dla Windows jak i Mac OS X
-        feat_2: Automatycznie rozpoznaje gry w Trybie Pojedynku i Areny
-        feat_3: Rozpoznaje Twoją klasę oraz klasę przeciwnika
-        feat_4: Rozpoznaje Twój ranking w Trybie Pojedynku
-        feat_5: Rozpoznaje imię przeciwnika
-        feat_6: Rozpoznaje ilość rozegranych rund oraz ich czas całej gry
-        feat_7: Możesz dodać komentarz do swoich gier bezpośrednio z Uploadera
-      help_and_support: Pomoc i wsparcie
-      known_issues: Znane problemy
-      project_source_on_github: "Źródło projektu na Github"
-      title:官方上传器 header_text: 
-      tutorial_video: 
-    changelog:
-      title: Lista zmian
-      all_time_in_utc: Czas w UTC
-    aboutus:
-      title: O nas
-      founded_by_text: Ta strona została założona przez Jeffreya Tong z miłości.
-      you_can_follow_twitter: Możesz mnie śledzić na Twitterze
-      a_huge_thanks_to: Wielkie podziękowania dla
-      thanks_jerome_text: Jerome zdecydowanie pomógł w rozwoju HearthStats oraz wzmógł moją motywację do tego, by pracować jeszcze więcej. Wielkie dzięki!
-      built_suggestions_text: HearthStats został stworzony dzięki sugestiom całej społeczności i będzie w dalszym ciągu narzędziem używanym oraz tworzonym właśnie przez społeczność fanów Hearthstone.
-      others_contributors: Pozostali współtworzyciele
-      charles_text_1: Charles dokonał wspaniałego wkładu w pracę nad Uploaderem pod Mac OSx
-      charles_text_2: Charles zasługuje na wielkie uznanie za objawienie się i pracę nad otwartym oprogramowaniem
-      charles_text_3: Możesz znaleźć więcej informacji Charlsie
-      here: tutaj
-      eckert_text: J Eckert znacznie przyczynił się do kolorystyki oraz wyglądu
-      donate_text: Jeżeli lubisz to co robię, daj parę groszy, proszę.
-      rackspace_text: Chciałbym podziękować Rackspace za zapewnienie niesamowitego hostingu! Jeżeli kiedykolwiek będziesz potrzebował hostingu opartego na chmurze albo jakiegokolwiek - zdecydowanie spradź ich!
-    contactus:
-      title: Kontakt
-      contact_email_text: "Śmiało pisz do mnie na e-mail<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>w razie jakichkolwiek pytań."
-      contact_email_text_2: 'Możesz też śledzić nas na Twitterze: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
-      fadein_text_1: Trochę się nudzę, więc Twoje e-maile są bardzo mile widziane.
-      fadein_text_2: Proszę, prześlij mi jakiegoś maila! To może być cokolwiek!
-      fadein_text_3: Tyłek aż mnie boli... tyle bólu mnie kosztuje zrobienie tej strony dla Was!
-    help:
-      title: Pomoc
-      help_text: Odwiedź <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> w razie jakichkolwiek pytań lub sugestii.
-    league:
-      title: 
-  streams:
-    index:
-      title: Streamy
-      subtitle: " znajdź wszystkie swoje ulubione streamy w jednym miejscu"
-  tournies:
-    index:
-      title: Zarejestruj się
-      subtitle: " Zarejestruj się do naszych najnowszych turniejów"
-      section: Turnieje
->>>>>>> added league page
   menu:
     Tournaments:
       Calendar: 
@@ -1163,7 +714,6 @@ pl:
       my_deck: Moje talie
       new_deck: Nowa talia
       other_versions: 
-<<<<<<< HEAD
       public_deck_list: Ogólnodostępne talie
       title: Talia
     extra:
@@ -1176,277 +726,14 @@ pl:
       official_uploader: Oficjalny Uploader
       title: Extra
     help: Pomoc
-=======
->>>>>>> added league page
     news: Nowości
     streams: Streamy
     tournaments:
       Calendar: Kalendarz
       past_winners: Niedawni zwycięzcy
       recent: 
-<<<<<<< HEAD
       register: Zarejestruj się
       title: Turnieje
-=======
-    extra:
-      title: Extra
-      official_uploader: Oficjalny Uploader
-      march_report: Raport z marca
-      change_log: Lista zmian
-      about_us: O Nas
-      contact_info: Kontakt
-      june_report: 
-      may_report: 
-    help: Pomoc
-    Tournaments:
-      Calendar: 
-      past_winners: 
-      register: 
-      title: 
-  activemodel:
-    errors:
-      format: 
-      messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
-        greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
-        less_than: 
-        less_than_or_equal_to: 
-        not_an_integer: 
-        not_a_number: 
-        odd: 
-        present: 
-        record_invalid: 
-        restrict_dependent_destroy: 
-        taken: 
-        too_long: 
-        too_short: 
-        wrong_length: 
-      template:
-        body: 
-        header: 
-  activerecord:
-    errors:
-      format: 
-      messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
-        greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
-        less_than: 
-        less_than_or_equal_to: 
-        not_an_integer: 
-        not_a_number: 
-        odd: 
-        present: 
-        record_invalid: 
-        restrict_dependent_destroy: 
-        taken: 
-        too_long: 
-        too_short: 
-        wrong_length: 
-      template:
-        body: 
-        header: 
-    attributes:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        klass_id: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-        oppclass_id: 
-        result_id: 
-      user:
-        current_password: 
-        password_confirmation: 
-        reset_password_token: 
-    models:
-      match: 
-  date:
-    abbr_day_names: 
-    abbr_month_names: 
-    day_names: 
-    formats:
-      default: 
-      long: 
-      short: 
-    month_names: 
-    order: 
-  datetime:
-    distance_in_words:
-      about_x_hours: 
-      about_x_months: 
-      about_x_years: 
-      almost_x_years: 
-      half_a_minute: 
-      less_than_x_minutes: 
-      less_than_x_seconds: 
-      over_x_years: 
-      x_days: 
-      x_minutes: 
-      x_months: 
-      x_seconds: 
-    prompts:
-      day: 
-      hour: 
-      minute: 
-      month: 
-      second: 
-      year: 
-  devise:
-    confirmations:
-      confirmed: 
-      confirmed_and_signed_in: 
-      send_instructions: 
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      invalid_token: 
-      locked: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
-    mailer:
-      confirmation_instructions:
-        subject: 
-      reset_password_instructions:
-        subject: 
-      unlock_instructions:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      updated: 
-      update_needs_confirmation: 
-    sessions:
-      signed_in: 
-      signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
-  errors:
-    format: 
-    messages:
-      accepted: 
-      already_confirmed: 
-      blank: 
-      confirmation: 
-      confirmation_period_expired: 
-      empty: 
-      equal_to: 
-      even: 
-      exclusion: 
-      expired: 
-      greater_than: 
-      greater_than_or_equal_to: 
-      inclusion: 
-      invalid: 
-      less_than: 
-      less_than_or_equal_to: 
-      not_an_integer: 
-      not_a_number: 
-      not_found: 
-      not_locked: 
-      not_saved: 
-      odd: 
-      present: 
-      record_invalid: 
-      restrict_dependent_destroy: 
-      taken: 
-      too_long: 
-      too_short: 
-      wrong_length: 
-    template:
-      body: 
-      header: 
-  helpers:
-    actions: 
-    links:
-      back: 
-      cancel: 
-      confirm: 
-      destroy: 
-      edit: 
-      new: 
-    select:
-      prompt: 
-    submit:
-      create: 
-      submit: 
-      update: 
-    titles:
-      delete: 
-      edit: 
-      new: 
-      save: 
-<<<<<<< HEAD
->>>>>>> added league page
-=======
-    label:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-      user:
-        current_password: 
-        password: 
-        password_confirmation: 
->>>>>>> added deck creation and show constructeds api
   number:
     currency:
       format:
@@ -1492,7 +779,6 @@ pl:
     precision:
       format:
         delimiter: 
-<<<<<<< HEAD
   shared:
     arena: Arena
     arena_win_rate: Arena - wskaźnik zwycięstw
@@ -1643,8 +929,6 @@ pl:
     show: Pokaż
     update: Modyfikuj
     view_more: Pokaż więcej
-=======
->>>>>>> added league page
   social_share_button:
     baidu: 
     delicious: 
@@ -1662,13 +946,10 @@ pl:
     tumblr: 
     twitter: 
     weibo: 
-<<<<<<< HEAD
   streams:
     index:
       subtitle: " znajdź wszystkie swoje ulubione streamy w jednym miejscu"
       title: Streamy
-=======
->>>>>>> added league page
   support:
     array:
       last_word_connector: 
@@ -1681,7 +962,6 @@ pl:
       long: 
       short: 
     pm: 
-<<<<<<< HEAD
   tournaments:
     form:
       format: 
@@ -1695,8 +975,6 @@ pl:
       title: Zarejestruj się
     show:
       decks: 
-=======
->>>>>>> added league page
   will_paginate:
     next_label: 
     page_entries_info:
