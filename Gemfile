@@ -14,6 +14,7 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'pry'
   gem 'seed_dump'
+  gem 'spring'
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
   gem 'awesome_print', :require => false
