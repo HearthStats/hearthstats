@@ -1,34 +1,4 @@
 en:
-  activemodel:
-    errors:
-      format: 
-      messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
-        greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
-        less_than: 
-        less_than_or_equal_to: 
-        not_a_number: 
-        not_an_integer: 
-        odd: 
-        present: 
-        record_invalid: 
-        restrict_dependent_destroy: 
-        taken: 
-        too_long: 
-        too_short: 
-        wrong_length: 
-      template:
-        body: 
-        header: 
   activerecord:
     attributes:
       arena_run:
@@ -50,12 +20,6 @@ en:
         Notes: Notes
         Notizen: 
         Tags: Tags
-        "名字": 
-        "職業": 
-        "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -70,13 +34,11 @@ en:
         Opponent Class: Opponent class
         Opponent Name: Opponent name
         Opponent class: Opponent class
-        Opponent's Class: Opponent's class
+        Opponent's Class: "Opponent's class"
         klass_id: Klass
         oppclass_id: Oppclass
         result_id: Result
         user_id: User
-        "套牌名字": 
-        "對手職業": 
       profile:
         avatar: Avatar
         name: Name
@@ -103,35 +65,6 @@ en:
         password: Password
         password_confirmation: Password confirmation
         reset_password_token: Reset password token
-    errors:
-      format: 
-      messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
-        greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
-        less_than: 
-        less_than_or_equal_to: 
-        not_a_number: 
-        not_an_integer: 
-        odd: 
-        present: 
-        record_invalid: 
-        restrict_dependent_destroy: 
-        taken: 
-        too_long: 
-        too_short: 
-        wrong_length: 
-      template:
-        body: 
-        header: 
     models:
       arena_run: Arena run
       deck: Deck
@@ -191,7 +124,7 @@ en:
         feat_6: Tracks number of rounds played and match duration
         feat_7: Add notes to your matches directly from the uploader
       features_title: Features
-      header_text: Why enter your matches manually when you can let our uploader take care of everything for you? This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, monitoring, or network modification of any kind. The project is and always will be open source so that you can do your own builds and see exactly what's happening within the program.
+      header_text: "Why enter your matches manually when you can let our uploader take care of everything for you? This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, monitoring, or network modification of any kind. The project is and always will be open source so that you can do your own builds and see exactly what's happening within the program."
       help_and_support: Help and Support
       instructions: Instructions
       instructions_osx:
@@ -403,37 +336,6 @@ en:
       title: Dashboard
       view_more: View More
       with: with
-  date:
-    abbr_day_names: 
-    abbr_month_names: 
-    day_names: 
-    formats:
-      default: 
-      long: 
-      short: 
-    month_names: 
-    order: 
-  datetime:
-    distance_in_words:
-      about_x_hours: 
-      about_x_months: 
-      about_x_years: 
-      almost_x_years: 
-      half_a_minute: 
-      less_than_x_minutes: 
-      less_than_x_seconds: 
-      over_x_years: 
-      x_days: 
-      x_minutes: 
-      x_months: 
-      x_seconds: 
-    prompts:
-      day: 
-      hour: 
-      minute: 
-      month: 
-      second: 
-      year: 
   decks:
     active_decks:
       deleted_deck: Deleted Deck
@@ -626,12 +528,6 @@ en:
         Notes: 
         Notizen: 
         Tags: 
-        "名字": 
-        "職業": 
-        "註記": 
-        "노트": 
-        "이름": 
-        "직업": 
       match:
         Clase del oponente: 
         Classe de votre adversaire: 
@@ -648,8 +544,6 @@ en:
         Opponent class: 
         Opponent's Class: 
         user_id: 
-        "套牌名字": 
-        "對手職業": 
       profile:
         Battle:
           net ID: 
@@ -723,7 +617,7 @@ en:
       about_us: About Us
       change_log: Change Log
       contact_info: Contact Info
-      june_report: June Report
+      aug_report: August Report
       march_report: 
       may_report: May Report
       official_uploader: Official Uploader
@@ -953,18 +847,6 @@ en:
     index:
       subtitle: " find all your favourite streams in one place"
       title: Streams
-  support:
-    array:
-      last_word_connector: 
-      two_words_connector: 
-      words_connector: 
-  time:
-    am: 
-    formats:
-      default: 
-      long: 
-      short: 
-    pm: 
   tournaments:
     form:
       format: 
@@ -978,12 +860,3 @@ en:
       title: Recent Tournaments
     show:
       decks: Decks
-  will_paginate:
-    next_label: 
-    page_entries_info:
-      multi_page: 
-      multi_page_html: 
-      single_page: 
-      single_page_html: 
-    page_gap: 
-    previous_label: 
