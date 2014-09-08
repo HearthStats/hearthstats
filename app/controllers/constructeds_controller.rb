@@ -242,7 +242,7 @@ class ConstructedsController < ApplicationController
       Deck.where(user_id: current_user.id)
         .all
         .compact
-        .sort_by{|d| "#{d.klass.name} #{d.name}"}
+        .sort_by{|d| "#{d.klass.try(:name)} #{d.name}"}
     end
   end
 
