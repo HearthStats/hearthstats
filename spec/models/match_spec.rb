@@ -47,7 +47,7 @@ describe Match do
         Match.top_winrates_with_class.should == [0, 0, 0, 0, 0, 0, 0, 0, 0]
       end
 
-      it 'calculates the winrate per class' do
+      it 'calculates the winrate' do
         klass = create :klass
         win   = create :match, klass: klass, result_id: 1
         loss  = create :match, klass: klass, result_id: 0
