@@ -83,6 +83,20 @@ zh-CN:
         time_zone: 
       profile/Battle:
         net ID: 
+      tournament:
+        Description: 
+        Invite Only: 
+        Name: 
+        Number of Players: 
+        Number of decks: 
+        Tournament Format: 
+      tournament/en, tournaments/form:
+        format: 
+        invite_only: 
+        num_decks: 
+        num_pods: 
+      unique_deck:
+        cardstring: 
       user:
         current_password: 
         email: 
@@ -122,6 +136,8 @@ zh-CN:
       arena_run: 
       deck: 
       match: 
+      tournament: 
+      unique_deck: 
       user: 
   additional:
     aboutus:
@@ -636,6 +652,19 @@ zh-CN:
         avatar: 
         name: 
         time_zone: 
+      tournament:
+        Description: 
+        Invite Only: 
+        Name: 
+        Number of Players: 
+        Number of decks: 
+        Tournament Format: 
+        en, tournaments:
+          form:
+            format: 
+            invite_only: 
+            num_decks: 
+            num_pods: 
       user:
         current_password: 
         email: 
@@ -932,6 +961,12 @@ zh-CN:
       long: 
       short: 
     pm: 
+  tournaments:
+    form:
+      format: 
+      invite_only: 
+      num_decks: 
+      num_pods: 
   tournies:
     index:
       section: "锦标赛"

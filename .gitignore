@@ -72,6 +72,8 @@ console
 /initializers/honeybadger.rb
 
 .localeapp
+/locales/*
+/config/locales/*
 .powrc
 .ruby-version
 

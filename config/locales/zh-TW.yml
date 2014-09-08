@@ -1,276 +1,370 @@
 zh-TW:
-  shared:
-    header:
-      guest: "來賓"
-      my_profile: "個人資料"
-      sign_out: "登出"
-      register_now_login: "現在註冊/ 登入"
-      you_have: "你有"
-      new_messages: "新訊息"
-      click_message_to_dismiss: "忽略訊息"
-      change_to: "轉換"
-    footer:
-      about: "關於"
-      faq: "問與答"
-      open_positions: "公開位置"
-      support: "支援"
-      privacy_policy: "隱私政策"
-      copyright_text: "版權歸2014 HearthStats所有. 爐石戰記是暴風雪娛樂公司的註冊商標."
-    arena_win_rate: "競技場勝率"
-    ranked_win_rate: "排名賽勝率"
-    best_deck: "最佳牌組"
-    best_arena_class: "最佳 競技場 職業"
-    create_deck: "創造牌組"
-    new_arena_game: "新競技場賽事"
-    view_more: "觀看更多"
-    edit: "編輯"
-    delete: "刪除"
-    notes: "註記"
-    run: "運作"
-    error: "錯誤"
-    prohibited_this_being_save: "被禁止此 %{resource} 從儲存:"
-    arenarun: "競技場賽事"
-    show: "展示"
-    arena: "競技場"
-    class: "職業"
-    deck: "套牌"
-    create: "創造"
-    update: "更新"
-    deckbuilder:
-      card_list: "套牌列表"
-      optional_deck_will_be_created_if: "自選 (如果你留空，套牌將被創造)"
-      toggle_text_import: "切換文字輸入"
-      add_a_card: "增加一張卡牌"
-      of_30_cards: 30張卡牌的
-      this_deck_is_incomplete: "此套牌不完整"
-      left_click_add_right_remove: "按左鍵以增加. 按右鍵以移除."
-      mana_curve: "魔力曲線"
-      attack_distribution: "攻擊力分佈表"
-      health_distribution: "血量分佈表"
-      type_distribution: "種類分佈表"
-      mechanics: "機械"
-    back: "返回"
-    deckslist:
-      filter: "篩選"
-      any_class: "任何職業"
-      show: "展示"
-      per_page: "每頁"
-      sort_by: "依種類"
-      created: "被創造"
-      losses: "敗場數"
-      matches: "賽事"
-      minions: "手下"
-      name: "名字"
-      spells: "咒語"
-      popularity: "受歡迎度"
-      weapons: "武器"
-      win_rate: "勝率"
-      wins: "勝場數"
-      asc: "升序"
-      desc: "降序"
-      apply: "應用"
-      found_matching_your_criteria: "找到符合你的條件"
-      class: "職業"
-      users: "使用者"
-      listed_by: "列表"
-      tools: "工具"
-      stats_are_for_all_users: "統計包含在過去30天中玩過此套牌的所有玩家, 不僅只原本的作者"
-      stats_are_for_your_personal: "你個人使用每一套牌的統計"
-    matchlist:
-      filter: "篩選"
-      any_class: "任何職業"
-      coin?: "硬幣?"
-      coin: "硬幣"
-      no_coin: "無硬幣"
-      opponent: "對手"
-      apply: "應用"
-      reset: "重置"
-      show: "展示"
-      per_page: "每頁"
-      all_time: "所有時間"
-      last_24_hours: "過去24小時"
-      last: "最後"
-      days: "日"
-      sort: "種類"
-      created: "被創造"
-      duration: "持續時間"
-      rounds: "回合數"
-      ascending: "升序"
-      descending: "降序"
-      win_rate_over: "勝率約"
-      matches_in_this_list: "列表中的賽事"
-      your: "你的"
-      opponent_class: "對手職業"
-      result: "結果"
-      rank: "排名賽"
-      mode: "模式"
-      opponent_name: "對手名字"
-      options: "選項"
-    deckslist_no_filter:
-      class: 
-      losses: 
-      matches: 
-      minions: 
-      name: 
-      spells: 
-      tools: 
-      weapons: 
-      win_rate: 
-      wins: 
-  dashboards:
-    index:
-      title: "儀錶板"
-      subtitle: " 當前賽季的統計"
-      global_win_rates: "全球勝率"
-      arena_win_rates: "競技場勝率"
-      games_recorded: "賽事記錄"
-      constructed_win_rates: "構組套牌勝率"
-      hearthstats_news: HearthStats 新聞
+  activemodel:
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+  activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+        gold: 
+      deck:
+        Clase: 
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nazwa: 
+        Nom: 
+        Nombre: 
+        Nome: 
+        Notas: 
+        Notatki: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+        "노트": 
+        "이름": 
+        "직업": 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Deck Name: 
+        Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
+        Nombre del mazo: 
+        Nome do Deck: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        klass_id: 
+        oppclass_id: 
+        result_id: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        avatar: 
+        name: 
+        time_zone: 
+      profile/Battle:
+        net ID: 
+      tournament:
+        Description: 
+        Invite Only: 
+        Name: 
+        Number of Players: 
+        Number of decks: 
+        Tournament Format: 
+      tournament/en, tournaments/form:
+        format: 
+        invite_only: 
+        num_decks: 
+        num_pods: 
+      unique_deck:
+        cardstring: 
+      user:
+        current_password: 
+        email: 
+        password: 
+        password_confirmation: 
+        reset_password_token: 
+    errors:
+      format: 
+      messages:
+        accepted: 
+        blank: 
+        confirmation: 
+        empty: 
+        equal_to: 
+        even: 
+        exclusion: 
+        greater_than: 
+        greater_than_or_equal_to: 
+        inclusion: 
+        invalid: 
+        less_than: 
+        less_than_or_equal_to: 
+        not_a_number: 
+        not_an_integer: 
+        odd: 
+        present: 
+        record_invalid: 
+        restrict_dependent_destroy: 
+        taken: 
+        too_long: 
+        too_short: 
+        wrong_length: 
+      template:
+        body: 
+        header: 
+    models:
+      arena_run: 
+      deck: 
+      match: 
+      tournament: 
+      unique_deck: 
+      user: 
+  additional:
+    aboutus:
+      a_huge_thanks_to: "非常感謝"
+      built_suggestions_text: HearthStats 的建置是得力於社群中的每一個人的建議.而它將持續成為爐石戰記社群的工具，以及持續被他們創造.
+      charles_text_1: Charles 在 OSx 上傳器的令人驚艷的工作
+      charles_text_2: Charles 在開放原始碼的工作上值得多數的掌聲
+      charles_text_3: "在此你可以找到更多關於 Charles 的資訊"
+      donate_text: "如果你喜歡我做的, 賞我幾個銅板吧."
+      eckert_text: J Eckert 貢獻許多在風格和配色方面
+      founded_by_text: "此網站由 Jeffrey Tong 用愛建置."
+      here: "此"
+      others_contributors: "其它貢獻"
+      rackspace_text: "我非常感謝 Rackspace提供主機! 如果你需要雲端主機或任何事，找他們幫忙就對了!"
+      thanks_jerome_text: Jerome 無疑地大力幫助 HearthStats 走向下一個階段，以及幫助我更努力工作. 非常感謝!
+      title: "關於我們"
+      you_can_follow_twitter: "你可以從 Twitter推特來跟隨我"
+    changelog:
+      all_time_in_utc: UTC中的所有時間
+      changelog: 
+      title: "更新日誌"
+    contactus:
+      contact_email_text: "請寫電郵給我<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>任何問題皆可."
+      contact_email_text_2: "你也可以在Twitter推特上跟隨我: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      fadein_text_1: "我實在很無聊，所以請你寫信給我."
+      fadein_text_2: "請寄電郵給我! 它可以是任何事!"
+      fadein_text_3: "我的屁股越來越痛... 看看我為了做這個網站所忍受的痛苦!"
+      title: "聯絡資訊"
+    help:
+      help_text: "請參觀 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> 任何建議或問題皆可."
+      title: "幫助"
+    league:
+      title: 
+    news:
+      posted: "公告"
       read_more: "閱讀更多"
-      view_more: "觀看更多"
-      news:
-        huge_update: "多數特點的大量更新."
-        ability_to_rank: "構組賽事新增的選項，排名模式或休閒模式."
-        donation_link: "新增的捐款連結"
-        notes_feature: "新增註記特點"
-      personal_win_rate: "個人勝率"
-      constructed_coin_win_rates: "擁有硬幣的構組套牌勝率."
-      recent_activities: "近期活動"
-      against: "對抗"
-      with: "與"
-      global_stats: "全球統計"
-      arena_win_rate: "競技場勝率"
+      subtitle: " 爐石最新新聞"
+      suggestions_for_news: "歡迎關於新聞來源的建議"
+      title: "爐石新聞"
+    uploader:
+      click_to_reveal: "按鍵以顯示"
+      do_not_share: "不要和任何人分享"
+      download_for: "下載"
+      download_java_here: "在此下載 Java"
+      features:
+        feat_1: "支援Windows 和 OSx 系統"
+        feat_2: "自動追蹤構組套牌和競技場賽事"
+        feat_3: "追蹤你的職業和對手職業"
+        feat_4: "追蹤你的排名賽等級"
+        feat_5: "追蹤對手名字"
+        feat_6: "追蹤回合數和賽事持續時間"
+        feat_7: "直接從上傳器中註記你的比賽"
+      features_title: "特點"
+      header_text: "如果可以讓我們的戰績上傳器替你照料你的任何事，為什麼還要自己手動輸入戰績呢? 此開放原始碼的實用程式對你的爐石視窗使用螢幕擷取分析. 它並不會導致封包監聽, 螢幕監控, 或任何種類的網路變更. 此程式將永遠是開放原始碼，因此你可以做你自己的模組，以便察看它究竟會發生什麼事."
+      help_and_support: "幫助和支援"
+      instructions: "說明"
+      instructions_osx:
+        inst_osx_1: "從連結處下載"
+        inst_osx_2: "解壓縮該檔案"
+        inst_osx_3: "拖曳檔案到你的應用程式資料夾"
+        inst_osx_4: "<b>按右鍵</b> 程式即會開啟"
+        inst_osx_5: "輸入你從上傳器頁面或從個人資料頁面得到的用戶密鑰"
+        inst_osx_6: "開啟你的遊戲並進行賽事!"
+      instructions_win:
+        inst_win_1: "從連結處下載"
+        inst_win_2: "解壓縮該檔案"
+        inst_win_3: "按左鍵以開啟應用程式"
+        inst_win_4: "輸入你從上傳器頁面或從個人資料頁面得到的用戶密鑰"
+        inst_win_5: "開啟你的遊戲並進行賽事!"
+      known_issues: "已知議題"
+      please_have_installed: "請確認你擁有 Java 7+ 的程式已安裝."
+      project_source_on_github: Github上的程式源碼
+      title: "官方上傳器"
+      title:官方上传器 header_text: 
+      tutorial_video: 
+      user_key: "用戶密鑰"
+  arena_runs:
+    new:
+      continue: "繼續"
+      first_arena_of_day: "第一天打競技場? 讓我們開始吧!"
+      get_auto_uploader: "開啟自動上傳戰積功能"
+      going_hardcore: "哇, 很煎熬的一天? 已經%{runs} , 祝你好運!"
+      keep_it_going: "只有 %{runs}? 持續前進!"
+      section: "競技場"
+      title: "新競技場賽事"
+      your_class: "你的職業"
+  arenas:
+    index:
+      arena_run_with: "競技場賽事"
+      close: "關閉"
+      continue_arena_run: "繼續競技場賽事"
+      description: " 近期競技場賽事"
+      new_arena_run: "新增競技場賽事"
+      notes: "註記"
+      'on': 
+      options: "選項"
+      prizes: "獎勵"
+      recent_arena_games: "近期競技場比賽"
+      section: "競技場"
+      time_played: "賽事時間"
+      timee_played: 
+      title: "近期賽事"
+      'true': "開啟"
+      win_loss: "勝/負"
+      your_class: "你的職業"
+    matches:
+      recent_arena_matches: "近期競技場比賽"
+      section: "競技場"
+      subtitle: " 近期賽事"
+      title: "近期賽事"
+    new:
+      arena_run_results: "競技場賽事結果"
+      back: "返回"
+      create_entry: "創造條目"
+      defeat: "擊敗"
+      draw: "平手"
+      end_run: "結束回合"
+      opponent_class: "對手職業"
+      options: "選項"
+      played_first: "先手"
+      played_second: "後手"
+      result: "結果"
+      retire: "退出比賽"
+      section: "競技場"
+      sure_want_retire: "你確定提前退出競技場賽事?"
+      title: "新競技場賽事"
+      win: "勝"
+    stats:
+      arena_games_played: "競技場比賽次數"
+      arena_runs_played: "競技場賽事次數"
+      average_length: 
+      detailed_class_status: "詳細職業狀態"
+      dist_desc: 
+      distribution_graph: 
+      longest_average_runs: "最長的平均賽事"
+      most_played: "最多使用的職業"
+      no_games: "沒有比賽"
+      note: "註記!"
+      overall_arena_stats: "總體競技場統計"
+      overall_win_rate: "總體勝率"
+      page_being_designed: "頁面仍在設計中"
+      section: "競技場"
+      subtitle: " 詳細的競技場賽事統計數據"
+      title: "統計數據"
+      total_dust_amount: "魔塵總和"
+      total_gold_amount: "金幣總和"
   cards:
     index:
-      title: "卡片資料庫"
-      not_found: "沒有卡片存在符合你的條件."
-      text_contains: "包含文字描述"
-      filter_by: "篩選"
-      sort_by: "依種類"
-      any_type: "任何類別"
-      any_race: "任何種族"
       any_class: "任何職業"
+      any_race: "任何種族"
+      any_type: "任何類別"
       ascending: "升序"
-      descending: "降序"
       attack: "攻擊力"
+      descending: "降序"
+      filter_by: "篩選"
       health_dur: "血量/持久度."
       mana_cost: "魔力粍費"
       name: "名字"
       none: "無"
+      not_found: "沒有卡片存在符合你的條件."
       reset_filters: "重置篩選標準"
-  arenas:
-    index:
-      title: "近期賽事"
-      description: " 近期競技場賽事"
-      section: "競技場"
-      continue_arena_run: "繼續競技場賽事"
-      new_arena_run: "新增競技場賽事"
-      arena_run_with: "競技場賽事"
-      true: "開啟"
-      notes: "註記"
-      close: "關閉"
-      recent_arena_games: "近期競技場比賽"
-      your_class: "你的職業"
-      win_loss: "勝/負"
-      prizes: "獎勵"
-      time_played: "賽事時間"
-      options: "選項"
-<<<<<<< HEAD
-=======
-      'true': "開啟"
->>>>>>> added league page
-    new:
-      title: "新競技場賽事"
-      section: "競技場"
-      retire: "退出比賽"
-      sure_want_retire: "你確定提前退出競技場賽事?"
-      opponent_class: "對手職業"
-      win: "勝"
-      defeat: "擊敗"
-      draw: "平手"
-      back: "返回"
-      end_run: "結束回合"
-      create_entry: "創造條目"
-      arena_run_results: "競技場賽事結果"
-      result: "結果"
-      options: "選項"
-      played_first: "先手"
-      played_second: "後手"
-    matches:
-      title: "近期賽事"
-      subtitle: " 近期賽事"
-      section: "競技場"
-      recent_arena_matches: "近期競技場比賽"
-    stats:
-      title: "統計數據"
-      subtitle: " 詳細的競技場賽事統計數據"
-      section: "競技場"
-      note: "註記!"
-      page_being_designed: "頁面仍在設計中"
-      overall_arena_stats: "總體競技場統計"
-      overall_win_rate: "總體勝率"
-      total_gold_amount: "金幣總和"
-      total_dust_amount: "魔塵總和"
-      arena_runs_played: "競技場賽事次數"
-      arena_games_played: "競技場比賽次數"
-      most_played: "最多使用的職業"
-      longest_average_runs: "最長的平均賽事"
-      no_games: "沒有比賽"
-      detailed_class_status: "詳細職業狀態"
-<<<<<<< HEAD
-=======
-      average_length: 
->>>>>>> added league page
+      sort_by: "依種類"
+      text_contains: "包含文字描述"
+      title: "卡片資料庫"
   constructeds:
-    quickentry:
-      quick_entry: "快速入口"
-      ranked: "排名賽"
-      casual: "休閒"
-      no_coin: "無硬幣"
-      coin: "硬幣"
-      add_win: "新增勝場"
+    filter:
+      apply: 
+      coin?: 
+      per_page: 
+      reset: 
+    form:
+      add_defeat: 
+      add_draw: 
+      add_win: 
+      casual: 
+      deck_name: 
+      first_turn: 
+      opponent_class: 
+      ranked: 
+      second_turn: 
+      this_match_is: 
+      you_played_on_the: 
+    index:
+      description: " 近期構組比賽"
+      new_constructed: "新構組套牌"
+      section: "構組套牌"
+      title: "近期比賽"
+    new:
+      get_the_auto_uploader: "開啟自動上傳戰積功能"
+      section: "構組套牌"
+      title: "新構組套牌"
+    newform:
       add_defeat: "新增敗場"
       add_draw: "新增平手"
-    index:
-      title: "近期比賽"
-      description: " 近期構組比賽"
-      section: "構組套牌"
-      new_constructed: "新構組套牌"
-    new:
-      title: "新構組套牌"
-      section: "構組套牌"
-      get_the_auto_uploader: "開啟自動上傳戰積功能"
+      add_win: "新增勝場"
+      casual: "休閒"
+      deck_name: "套牌名字"
+      first_turn: "第一回合"
+      opponent_class: "對手職業"
+      ranked: "排名賽"
+      second_turn: "第二回合"
+      this_match_is: "此比賽是"
+      you_played_on_the: "施放"
+    quickentry:
+      add_defeat: "新增敗場"
+      add_draw: "新增平手"
+      add_win: "新增勝場"
+      casual: "休閒"
+      coin: "硬幣"
+      no_coin: "無硬幣"
+      quick_entry: "快速入口"
+      ranked: "排名賽"
     stats:
-      title: "統計數據"
-      description: " 構組比賽統計"
-      section: "構組套牌"
-      filter_by: "篩選"
-      last: "最後"
-      hours: "小時"
-      days: "天"
       all_time: "所有時間"
+      any_mode: "任何模式"
+      casual: "休閒"
+      days: "天"
+      description: " 構組比賽統計"
+      filter_by: "篩選"
       first_or_second: "第一或第二"
       going_first: "去到第一"
       going_second: "去到第二"
-      any_mode: "任何模式"
-      casual: "休閒"
+      hours: "小時"
+      last: "最後"
       ranked: "排名賽"
-    winratechart:
-      constructed_win_rate_title: "每個職業的構組套牌勝率(個人 vs. 全球)"
-    newform:
-      you_played_on_the: "施放"
-      first_turn: "第一回合"
-      second_turn: "第二回合"
-      this_match_is: "此比賽是"
-      ranked: "排名賽"
-      casual: "休閒"
-      deck_name: "套牌名字"
-      opponent_class: "對手職業"
-      add_win: "新增勝場"
-      add_defeat: "新增敗場"
-      add_draw: "新增平手"
-<<<<<<< HEAD
-=======
+      section: "構組套牌"
+      title: "統計數據"
     stats_filter:
       all_mode: 
       all_seasons: 
@@ -281,50 +375,87 @@ zh-TW:
       filter_by: 
       first_or_second: 
       hours: 
+      last_24_hours: 
       last_days: 
       ranked: 
->>>>>>> added league page
-  decks:
-    form:
-      name: "名字"
-      class: "職業"
-      notes: "註記"
-      decklist_etc: " 套牌列表, 例如"
-      this_deck_public: "此套牌公開"
-<<<<<<< HEAD
-=======
-      controls: 
-      tags: 
->>>>>>> added league page
-    new:
-      title: "新套牌"
-      section: "套牌"
-    public:
-      title: "公開的套牌列表"
-      subtitle: " 所有公開的構組套牌列表"
-      new_deck: "新套牌"
-      public_decks: "公開的套牌"
-    active_decks:
-      title: "激活套牌"
-      subtitle: " 所有激活的構組套牌"
-      slot: "插槽"
-      select_deck: "選擇套牌"
-      submit: "提交"
-<<<<<<< HEAD
-=======
-      deleted_deck: 
->>>>>>> added league page
+    winratechart:
+      constructed_win_rate_title: "每個職業的構組套牌勝率(個人 vs. 全球)"
+  dashboards:
     index:
-      title: "我的套牌"
-      subtitle: " 我的所有構組套牌"
-      new_deck: "新套牌"
-      my_decks: "我的套牌"
-<<<<<<< HEAD
-=======
+      against: "對抗"
+      arena_win_rate: "競技場勝率"
+      arena_win_rates: "競技場勝率"
+      constructed_coin_win_rates: "擁有硬幣的構組套牌勝率."
+      constructed_win_rates: "構組套牌勝率"
+      games_recorded: "賽事記錄"
+      global_stats: "全球統計"
+      global_win_rates: "全球勝率"
+      hearthstats_news: HearthStats 新聞
+      news:
+        ability_to_rank: "構組賽事新增的選項，排名模式或休閒模式."
+        donation_link: "新增的捐款連結"
+        huge_update: "多數特點的大量更新."
+        notes_feature: "新增註記特點"
+      personal_win_rate: "個人勝率"
+      read_more: "閱讀更多"
+      recent_activities: "近期活動"
+      subtitle: " 當前賽季的統計"
+      title: "儀錶板"
+      view_more: "觀看更多"
+      with: "與"
+  date:
+    abbr_day_names: 
+    abbr_month_names: 
+    day_names: 
+    formats:
+      default: 
+      long: 
+      short: 
+    month_names: 
+    order: 
+  datetime:
+    distance_in_words:
+      about_x_hours: 
+      about_x_months: 
+      about_x_years: 
+      almost_x_years: 
+      half_a_minute: 
+      less_than_x_minutes: 
+      less_than_x_seconds: 
+      over_x_years: 
+      x_days: 
+      x_minutes: 
+      x_months: 
+      x_seconds: 
+    prompts:
+      day: 
+      hour: 
+      minute: 
+      month: 
+      second: 
+      year: 
+  decks:
+    active_decks:
+      deleted_deck: 
+      select_deck: "選擇套牌"
+      slot: "插槽"
+      submit: "提交"
+      subtitle: " 所有激活的構組套牌"
+      title: "激活套牌"
+    decklist:
+      attack_distribution: 
+      card_list: 
+      health_distribution: 
+      mana_curve: 
+      mechanics: 
+      type_distribution: 
+    editform:
+      toggle_text_import: 
     filter:
       ascending: 
       created_after: 
       created_at: 
+      deck_name: 
       decks_found: 
       descending: 
       filter: 
@@ -342,10 +473,38 @@ zh-TW:
       show: 
       sort_by: 
       winrate: 
-<<<<<<< HEAD
->>>>>>> added league page
-=======
-      deck_name: 
+    form:
+      card_limit: 
+      class: "職業"
+      controls: 
+      count: 
+      deck_limit: 
+      decklist_etc: " 套牌列表, 例如"
+      legend: 
+      name: "名字"
+      no_more: 
+      notes: "註記"
+      other_versions: 
+      search: 
+      tags: 
+      this_deck_public: "此套牌公開"
+      toggle_text_import: 
+    index:
+      my_decks: "我的套牌"
+      new_deck: "新套牌"
+      subtitle: " 我的所有構組套牌"
+      title: "我的套牌"
+    new:
+      section: "套牌"
+      title: "新套牌"
+    new_splash:
+      section: 
+      title: 
+    public:
+      new_deck: "新套牌"
+      public_decks: "公開的套牌"
+      subtitle: " 所有公開的構組套牌列表"
+      title: "公開的套牌列表"
     public_decklist:
       class: 
       listed_by: 
@@ -360,173 +519,6 @@ zh-TW:
       weapons: 
       win_rate: 
       wins: 
-<<<<<<< HEAD
->>>>>>> locale changes:
-=======
-    decklist:
-      attack_distribution: 
-      card_list: 
-      health_distribution: 
-      mana_curve: 
-      mechanics: 
-      type_distribution: 
->>>>>>> updated localeapp to notify in prod [skip ci]
-  arena_runs:
-    new:
-      title: "新競技場賽事"
-      section: "競技場"
-      first_arena_of_day: "第一天打競技場? 讓我們開始吧!"
-      keep_it_going: "只有 %{runs}? 持續前進!"
-      going_hardcore: "哇, 很煎熬的一天? 已經%{runs} , 祝你好運!"
-      your_class: "你的職業"
-      continue: "繼續"
-      get_auto_uploader: "開啟自動上傳戰積功能"
-  additional:
-    news:
-      title: "爐石新聞"
-      subtitle: " 爐石最新新聞"
-      suggestions_for_news: "歡迎關於新聞來源的建議"
-      posted: "公告"
-      read_more: "閱讀更多"
-    uploader:
-      title: "官方上傳器"
-      header_text: "如果可以讓我們的戰績上傳器替你照料你的任何事，為什麼還要自己手動輸入戰績呢? 此開放原始碼的實用程式對你的爐石視窗使用螢幕擷取分析. 它並不會導致封包監聽, 螢幕監控, 或任何種類的網路變更. 此程式將永遠是開放原始碼，因此你可以做你自己的模組，以便察看它究竟會發生什麼事."
-      download_for: "下載"
-      user_key: "用戶密鑰"
-      do_not_share: "不要和任何人分享"
-      click_to_reveal: "按鍵以顯示"
-      instructions: "說明"
-      please_have_installed: "請確認你擁有 Java 7+ 的程式已安裝."
-      download_java_here: "在此下載 Java"
-      instructions_osx:
-        inst_osx_1: "從連結處下載"
-        inst_osx_2: "解壓縮該檔案"
-        inst_osx_3: "拖曳檔案到你的應用程式資料夾"
-        inst_osx_4: "<b>按右鍵</b> 程式即會開啟"
-        inst_osx_5: "輸入你從上傳器頁面或從個人資料頁面得到的用戶密鑰"
-        inst_osx_6: "開啟你的遊戲並進行賽事!"
-      instructions_win:
-        inst_win_1: "從連結處下載"
-        inst_win_2: "解壓縮該檔案"
-        inst_win_3: "按左鍵以開啟應用程式"
-        inst_win_4: "輸入你從上傳器頁面或從個人資料頁面得到的用戶密鑰"
-        inst_win_5: "開啟你的遊戲並進行賽事!"
-      features_title: "特點"
-      features:
-        feat_1: "支援Windows 和 OSx 系統"
-        feat_2: "自動追蹤構組套牌和競技場賽事"
-        feat_3: "追蹤你的職業和對手職業"
-        feat_4: "追蹤你的排名賽等級"
-        feat_5: "追蹤對手名字"
-        feat_6: "追蹤回合數和賽事持續時間"
-        feat_7: "直接從上傳器中註記你的比賽"
-      help_and_support: "幫助和支援"
-      known_issues: "已知議題"
-      project_source_on_github: Github上的程式源碼
-      tutorial_video: 
-    changelog:
-      title: "更新日誌"
-      all_time_in_utc: UTC中的所有時間
-<<<<<<< HEAD
-      changelog: 
-=======
->>>>>>> added league page
-    aboutus:
-      title: "關於我們"
-      founded_by_text: "此網站由 Jeffrey Tong 用愛建置."
-      you_can_follow_twitter: "你可以從 Twitter推特來跟隨我"
-      a_huge_thanks_to: "非常感謝"
-      thanks_jerome_text: Jerome 無疑地大力幫助 HearthStats 走向下一個階段，以及幫助我更努力工作. 非常感謝!
-      built_suggestions_text: HearthStats 的建置是得力於社群中的每一個人的建議.而它將持續成為爐石戰記社群的工具，以及持續被他們創造.
-      others_contributors: "其它貢獻"
-      charles_text_1: Charles 在 OSx 上傳器的令人驚艷的工作
-      charles_text_2: Charles 在開放原始碼的工作上值得多數的掌聲
-      charles_text_3: "在此你可以找到更多關於 Charles 的資訊"
-      here: "此"
-      eckert_text: J Eckert 貢獻許多在風格和配色方面
-      donate_text: "如果你喜歡我做的, 賞我幾個銅板吧."
-      rackspace_text: "我非常感謝 Rackspace提供主機! 如果你需要雲端主機或任何事，找他們幫忙就對了!"
-    contactus:
-      title: "聯絡資訊"
-      contact_email_text: "請寫電郵給我<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>任何問題皆可."
-      contact_email_text_2: "你也可以在Twitter推特上跟隨我: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
-      fadein_text_1: "我實在很無聊，所以請你寫信給我."
-      fadein_text_2: "請寄電郵給我! 它可以是任何事!"
-      fadein_text_3: "我的屁股越來越痛... 看看我為了做這個網站所忍受的痛苦!"
-    help:
-      title: "幫助"
-      help_text: "請參觀 <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> 任何建議或問題皆可."
-    league:
-      title: 
-  streams:
-    index:
-      title: "實況"
-      subtitle: " 在一個地方發現所有你喜愛的實況"
-  tournies:
-    index:
-      title: "登入"
-      subtitle: " 為我們最新錦標賽和聯盟賽進行註冊"
-      section: "錦標賽"
-  menu:
-    dashboard: "儀錶板"
-    card_database: "卡片資料庫"
-    arena:
-      title: "競技場"
-      recent_arena_runs: "近期競技場賽事"
-      continue_arena_run: "繼續競技場賽事"
-      new_arena_run: "新競技場賽事"
-      recent_arena_matches: "近期競技場比賽"
-      statistics: "統計數據"
-    constructed:
-      title: "構組套牌"
-      recent_matches: "近期比賽"
-      new_match: "新增比賽"
-      statistics: "統計數據"
-    deck:
-      title: "套牌"
-      public_deck_list: "公開的套牌列表"
-      my_deck: "我的套牌"
-      my_active_deck: "我的激活套牌"
-      new_deck: "新增套牌"
-<<<<<<< HEAD
-=======
-      other_versions: 
->>>>>>> added league page
-    news: "新聞"
-    streams: "實況"
-    tournaments:
-      title: "錦標賽"
-      register: "註冊"
-      Calendar: "日曆"
-      past_winners: "過去勝利者"
-<<<<<<< HEAD
-=======
-      recent: 
->>>>>>> added league page
-    extra:
-      title: "額外"
-      official_uploader: "官方上傳器"
-      march_report: "三月的報告"
-      change_log: "更新日誌"
-      about_us: "關於我們"
-      contact_info: "聯絡資訊"
-<<<<<<< HEAD
-    help: "幫助"
-  activerecord:
-    attributes:
-      deck:
-        Klasse: 
-        Nombre: 
-        Notas: 
-  helpers:
-    label:
-      deck:
-        Klasse: 
-        Nombre: 
-        Notas: 
-=======
-      june_report: 
-    help: "幫助"
   devise:
     confirmations:
       confirmed: 
@@ -565,8 +557,8 @@ zh-TW:
       signed_up_but_inactive: 
       signed_up_but_locked: 
       signed_up_but_unconfirmed: 
-      updated: 
       update_needs_confirmation: 
+      updated: 
     sessions:
       signed_in: 
       signed_out: 
@@ -575,15 +567,109 @@ zh-TW:
       send_paranoid_instructions: 
       unlocked: 
   errors:
+    format: 
     messages:
+      accepted: 
       already_confirmed: 
+      blank: 
+      confirmation: 
       confirmation_period_expired: 
+      empty: 
+      equal_to: 
+      even: 
+      exclusion: 
       expired: 
+      greater_than: 
+      greater_than_or_equal_to: 
+      inclusion: 
+      invalid: 
+      less_than: 
+      less_than_or_equal_to: 
+      not_a_number: 
+      not_an_integer: 
       not_found: 
       not_locked: 
       not_saved: 
+      odd: 
+      present: 
+      record_invalid: 
+      restrict_dependent_destroy: 
+      taken: 
+      too_long: 
+      too_short: 
+      wrong_length: 
+    template:
+      body: 
+      header: 
   helpers:
     actions: 
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Clase: 
+        Class: 
+        Classe: 
+        Klasse: 
+        Name: 
+        Nazwa: 
+        Nom: 
+        Nombre: 
+        Nome: 
+        Notas: 
+        Notatki: 
+        Notes: 
+        Notizen: 
+        Tags: 
+        "名字": 
+        "職業": 
+        "註記": 
+        "노트": 
+        "이름": 
+        "직업": 
+      match:
+        Clase del oponente: 
+        Classe de votre adversaire: 
+        Classe do oponente: 
+        Deck Name: 
+        Deck name: 
+        Gegner Klasse: 
+        Nom du deck: 
+        Nombre del mazo: 
+        Nome do Deck: 
+        Notes: 
+        Opponent Class: 
+        Opponent Name: 
+        Opponent class: 
+        Opponent's Class: 
+        user_id: 
+        "套牌名字": 
+        "對手職業": 
+      profile:
+        Battle:
+          net ID: 
+        avatar: 
+        name: 
+        time_zone: 
+      tournament:
+        Description: 
+        Invite Only: 
+        Name: 
+        Number of Players: 
+        Number of decks: 
+        Tournament Format: 
+        en, tournaments:
+          form:
+            format: 
+            invite_only: 
+            num_decks: 
+            num_pods: 
+      user:
+        current_password: 
+        email: 
+        password: 
+        password_confirmation: 
     links:
       back: 
       cancel: 
@@ -591,32 +677,257 @@ zh-TW:
       destroy: 
       edit: 
       new: 
+    select:
+      prompt: 
+    submit:
+      create: 
+      submit: 
+      update: 
     titles:
       delete: 
       edit: 
       new: 
       save: 
-    label:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-      user:
-        current_password: 
-        password: 
-        password_confirmation: 
+  menu:
+    Tournaments:
+      Calendar: 
+      past_winners: 
+      register: 
+      title: 
+    arena:
+      continue_arena_run: "繼續競技場賽事"
+      new_arena_run: "新競技場賽事"
+      recent_arena_matches: "近期競技場比賽"
+      recent_arena_runs: "近期競技場賽事"
+      statistics: "統計數據"
+      title: "競技場"
+    card_database: "卡片資料庫"
+    constructed:
+      new_match: "新增比賽"
+      recent_matches: "近期比賽"
+      statistics: "統計數據"
+      title: "構組套牌"
+    dashboard: "儀錶板"
+    deck:
+      my_active_deck: "我的激活套牌"
+      my_deck: "我的套牌"
+      new_deck: "新增套牌"
+      other_versions: 
+      public_deck_list: "公開的套牌列表"
+      title: "套牌"
+    extra:
+      about_us: "關於我們"
+      change_log: "更新日誌"
+      contact_info: "聯絡資訊"
+      june_report: 
+      march_report: "三月的報告"
+      may_report: 
+      official_uploader: "官方上傳器"
+      title: "額外"
+    help: "幫助"
+    news: "新聞"
+    streams: "實況"
+    tournaments:
+      Calendar: "日曆"
+      past_winners: "過去勝利者"
+      recent: 
+      register: "註冊"
+      title: "錦標賽"
+  number:
+    currency:
+      format:
+        delimiter: 
+        format: 
+        precision: 
+        separator: 
+        significant: 
+        strip_insignificant_zeros: 
+        unit: 
+    format:
+      delimiter: 
+      precision: 
+      separator: 
+      significant: 
+      strip_insignificant_zeros: 
+    human:
+      decimal_units:
+        format: 
+        units:
+          billion: 
+          million: 
+          quadrillion: 
+          thousand: 
+          trillion: 
+          unit: 
+      format:
+        delimiter: 
+        precision: 
+        significant: 
+        strip_insignificant_zeros: 
+      storage_units:
+        format: 
+        units:
+          byte: 
+          gb: 
+          kb: 
+          mb: 
+          tb: 
+    percentage:
+      format:
+        delimiter: 
+    precision:
+      format:
+        delimiter: 
+  shared:
+    arena: "競技場"
+    arena_win_rate: "競技場勝率"
+    arenarun: "競技場賽事"
+    back: "返回"
+    best_arena_class: "最佳 競技場 職業"
+    best_deck: "最佳牌組"
+    class: "職業"
+    create: "創造"
+    create_deck: "創造牌組"
+    deck: "套牌"
+    deckbuilder:
+      add_a_card: "增加一張卡牌"
+      attack_distribution: "攻擊力分佈表"
+      card_list: "套牌列表"
+      health_distribution: "血量分佈表"
+      left_click_add_right_remove: "按左鍵以增加. 按右鍵以移除."
+      mana_curve: "魔力曲線"
+      mechanics: "機械"
+      of_30_cards: 30張卡牌的
+      optional_deck_will_be_created_if: "自選 (如果你留空，套牌將被創造)"
+      this_deck_is_incomplete: "此套牌不完整"
+      toggle_text_import: "切換文字輸入"
+      type_distribution: "種類分佈表"
+    deckslist:
+      any_class: "任何職業"
+      apply: "應用"
+      asc: "升序"
+      class: "職業"
+      created: "被創造"
+      desc: "降序"
+      filter: "篩選"
+      found_matching_your_criteria: "找到符合你的條件"
+      listed_by: "列表"
+      losses: "敗場數"
+      matches: "賽事"
+      minions: "手下"
+      name: "名字"
+      per_page: "每頁"
+      popularity: "受歡迎度"
+      show: "展示"
+      sort_by: "依種類"
+      spells: "咒語"
+      stats_are_for_all_users: "統計包含在過去30天中玩過此套牌的所有玩家, 不僅只原本的作者"
+      stats_are_for_your_personal: "你個人使用每一套牌的統計"
+      tools: "工具"
+      users: "使用者"
+      weapons: "武器"
+      win_rate: "勝率"
+      wins: "勝場數"
+    deckslist_no_filter:
+      class: 
+      losses: 
+      matches: 
+      minions: 
+      name: 
+      spells: 
+      tools: 
+      weapons: 
+      win_rate: 
+      wins: 
+    delete: "刪除"
+    edit: "編輯"
+    error: "錯誤"
+    filter:
+      all_time: 
+      apply: 
+      ascending: 
+      coin?: 
+      created_at: 
+      descending: 
+      duration: 
+      filter: 
+      for: 
+      last_24_hours: 
+      last_days: 
+      matches_in_this_list: 
+      numturns: 
+      opponent: 
+      per_page: 
+      reset: 
+      shared:
+        notes: 
+      show: 
+      sort: 
+      win_rate_over: 
+    footer:
+      about: "關於"
+      copyright_text: "版權歸2014 HearthStats所有. 爐石戰記是暴風雪娛樂公司的註冊商標."
+      faq: "問與答"
+      open_positions: "公開位置"
+      privacy_policy: "隱私政策"
+      support: "支援"
+    header:
+      change_to: "轉換"
+      click_message_to_dismiss: "忽略訊息"
+      guest: "來賓"
+      my_profile: "個人資料"
+      new_messages: "新訊息"
+      register_now_login: "現在註冊/ 登入"
+      sign_out: "登出"
+      you_have: "你有"
+    matchlist:
+      all_time: "所有時間"
+      any_class: "任何職業"
+      apply: "應用"
+      ascending: "升序"
+      coin: "硬幣"
+      coin?: "硬幣?"
+      created: "被創造"
+      days: "日"
+      descending: "降序"
+      duration: "持續時間"
+      filter: "篩選"
+      last: "最後"
+      last_24_hours: "過去24小時"
+      matches_in_this_list: "列表中的賽事"
+      mode: "模式"
+      no_coin: "無硬幣"
+      opponent: "對手"
+      opponent_class: "對手職業"
+      opponent_name: "對手名字"
+      options: "選項"
+      per_page: "每頁"
+      rank: "排名賽"
+      reset: "重置"
+      result: "結果"
+      rounds: "回合數"
+      show: "展示"
+      sort: "種類"
+      win_rate_over: "勝率約"
+      your: "你的"
+    matchlist_no_filter:
+      coin: 
+      created: 
+      duration: 
+      opponent_class: 
+      opponent_name: 
+      options: 
+      result: 
+      rounds: 
+      your: 
+    new_arena_game: "新競技場賽事"
+    notes: "註記"
+    prohibited_this_being_save: "被禁止此 %{resource} 從儲存:"
+    ranked_win_rate: "排名賽勝率"
+    run: "運作"
+    show: "展示"
+    update: "更新"
+    view_more: "觀看更多"
   social_share_button:
     baidu: "百度收藏"
     delicious: Delicious
@@ -634,34 +945,41 @@ zh-TW:
     tumblr: Tumblr
     twitter: Twitter
     weibo: "新浪微博"
-<<<<<<< HEAD
->>>>>>> added league page
-=======
-  activerecord:
-    attributes:
-      deck:
-        "노트": 
-        "이름": 
-        "직업": 
-        Clase: 
-        Nazwa: 
-        Nome: 
-        Notatki: 
-      match:
-        Clase del oponente: 
-        Classe de votre adversaire: 
-        Classe do oponente: 
-        Gegner Klasse: 
-        klass_id: 
-        Nombre del mazo: 
-        Nom du deck: 
-        Nome do Deck: 
-        oppclass_id: 
-        result_id: 
-      user:
-        current_password: 
-        password_confirmation: 
-        reset_password_token: 
-    models:
-      match: 
->>>>>>> added deck creation and show constructeds api
+  streams:
+    index:
+      subtitle: " 在一個地方發現所有你喜愛的實況"
+      title: "實況"
+  support:
+    array:
+      last_word_connector: 
+      two_words_connector: 
+      words_connector: 
+  time:
+    am: 
+    formats:
+      default: 
+      long: 
+      short: 
+    pm: 
+  tournaments:
+    form:
+      format: 
+      invite_only: 
+      num_decks: 
+      num_pods: 
+  tournies:
+    index:
+      section: "錦標賽"
+      subtitle: " 為我們最新錦標賽和聯盟賽進行註冊"
+      title: "登入"
+    show:
+      decks: 
+  will_paginate:
+    next_label: 
+    page_entries_info:
+      multi_page: 
+      multi_page_html: 
+      single_page: 
+      single_page_html: 
+    page_gap: 
+    previous_label: 

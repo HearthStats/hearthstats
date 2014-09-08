@@ -87,6 +87,20 @@ pt-BR:
         time_zone: 
       profile/Battle:
         net ID: 
+      tournament:
+        Description: 
+        Invite Only: 
+        Name: 
+        Number of Players: 
+        Number of decks: 
+        Tournament Format: 
+      tournament/en, tournaments/form:
+        format: 
+        invite_only: 
+        num_decks: 
+        num_pods: 
+      unique_deck:
+        cardstring: 
       user:
         current_password: 
         email: 
@@ -130,6 +144,8 @@ pt-BR:
       arena_run: 
       deck: 
       match: 
+      tournament: 
+      unique_deck: 
       user: 
   additional:
     aboutus:
@@ -713,6 +729,19 @@ pt-BR:
         avatar: 
         name: 
         time_zone: 
+      tournament:
+        Description: 
+        Invite Only: 
+        Name: 
+        Number of Players: 
+        Number of decks: 
+        Tournament Format: 
+        en, tournaments:
+          form:
+            format: 
+            invite_only: 
+            num_decks: 
+            num_pods: 
       user:
         current_password: 
         email: 
@@ -1019,6 +1048,12 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: 
+  tournaments:
+    form:
+      format: 
+      invite_only: 
+      num_decks: 
+      num_pods: 
   tournies:
     index:
       section: Torneios
