@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
 
   ### VALIDATIONS:
   
-  # validates :userkey, :uniqueness => true
-  
+  validates :userkey, uniqueness: true, allow_nil: true
+
   ### ASSOCIATIONS:
 
   has_one :profile,       dependent: :destroy
