@@ -13,39 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20140904192534) do
 
-  create_table "active_admin_comments", :force => true do |t|
-    t.string   "resource_id",   :null => false
-    t.string   "resource_type", :null => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "namespace"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
-
-  create_table "admin_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
-
-  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
-  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
-
   create_table "annoucements", :force => true do |t|
     t.string   "description"
     t.datetime "created_at",  :null => false
@@ -64,14 +31,14 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
   add_index "arena_run_cards", ["card_id"], :name => "index_arena_run_cards_on_card_id"
 
   create_table "arena_runs", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "gold",       :default => 0
-    t.integer  "dust",       :default => 0
-    t.boolean  "complete",   :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "user_id",    :limit => 255
+    t.integer  "gold",                      :default => 0
+    t.integer  "dust",                      :default => 0
+    t.boolean  "complete",                  :default => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.text     "notes"
-    t.string   "patch",      :default => "current"
+    t.string   "patch",                     :default => "current"
     t.integer  "klass_id"
   end
 
@@ -92,25 +59,6 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
 
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
-
-  create_table "blind_draft_cards", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "card_id"
-    t.integer  "blind_draft_id"
-    t.boolean  "revealed",       :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "blind_drafts", :force => true do |t|
-    t.string   "cardstring"
-    t.integer  "player1_id"
-    t.integer  "player2_id"
-    t.integer  "card_cap"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "klass_string"
-  end
 
   create_table "card_sets", :force => true do |t|
     t.string "name"
@@ -174,9 +122,9 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
   create_table "deck_versions", :force => true do |t|
     t.integer  "deck_id"
     t.text     "notes"
-    t.integer  "version"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "version",    :limit => 255
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "cardstring"
   end
 
@@ -244,7 +192,7 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "klasses", :force => true do |t|
@@ -577,9 +525,5 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
-
-  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end
