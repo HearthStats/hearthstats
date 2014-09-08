@@ -18,6 +18,7 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
   gem 'awesome_print', :require => false
+  gem 'active_record_query_trace'
 end
 
 group :assets do

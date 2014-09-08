@@ -171,6 +171,26 @@ class Match < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
+  def deck
+    match_deck.try(:deck)
+  end
+
+  def rank
+    match_rank.try(:rank)
+  end
+
+  def klass
+    Klass.all_klasses.find{|k| k.id == klass_id }
+  end
+
+  def oppclass
+    Klass.all_klasses.find{|k| k.id == oppclass_id }
+  end
+
+  def mode
+    Mode.all_modes.find{|m| m.id == mode_id}
+  end
+
   def set_season_patch
     self.season_id ||= Season.last.try(:id)
     self.patch_id  ||= Patch.last.try(:id)

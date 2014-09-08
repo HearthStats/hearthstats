@@ -1,7 +1,7 @@
 module ConstructedsHelper
   def klass_collection_for_select
     collection = [["- #{t('shared.matchlist.any_class')} -", '']]
-    Klass.all.map { |k| collection << [k.name, k.id ]}
+    Klass.all_klasses.map { |k| collection << [k.name, k.id ]}
 
     collection
   end

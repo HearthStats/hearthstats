@@ -71,6 +71,10 @@ class Deck < ActiveRecord::Base
     Klass::LIST[klass_id]
   end
 
+  def klass
+    Klass.all_klasses.find{|k| k.id == klass_id }
+  end
+
   def num_users
     return self.unique_deck.nil? ? 0 : self.unique_deck.num_users
   end
