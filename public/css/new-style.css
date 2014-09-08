@@ -87,6 +87,12 @@ p {
 }
 
 /* LOGIN FORM */
+.login-form{
+  display: inline;
+}
+.button_to, .button_to > div{
+  display: inline;
+}
 .top-login{
   text-align: right;
 }
