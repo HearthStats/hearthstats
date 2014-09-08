@@ -18,14 +18,14 @@ class CreatesEverything < ActiveRecord::Migration
     add_index "arena_run_cards", ["card_id"], :name => "index_arena_run_cards_on_card_id"
 
     create_table "arena_runs", :force => true do |t|
-      t.integer  "user_id",    :limit => 255
-      t.integer  "gold",                      :default => 0
-      t.integer  "dust",                      :default => 0
-      t.boolean  "complete",                  :default => false
-      t.datetime "created_at",                                       :null => false
-      t.datetime "updated_at",                                       :null => false
+      t.integer  "user_id"
+      t.integer  "gold",       :default => 0
+      t.integer  "dust",       :default => 0
+      t.boolean  "complete",   :default => false
+      t.datetime "created_at",                        :null => false
+      t.datetime "updated_at",                        :null => false
       t.text     "notes"
-      t.string   "patch",                     :default => "current"
+      t.string   "patch",      :default => "current"
       t.integer  "klass_id"
     end
 
@@ -109,9 +109,9 @@ class CreatesEverything < ActiveRecord::Migration
     create_table "deck_versions", :force => true do |t|
       t.integer  "deck_id"
       t.text     "notes"
-      t.integer  "version",    :limit => 255
-      t.datetime "created_at",                :null => false
-      t.datetime "updated_at",                :null => false
+      t.integer  "version"
+      t.datetime "created_at", :null => false
+      t.datetime "updated_at", :null => false
       t.string   "cardstring"
     end
 
@@ -179,7 +179,7 @@ class CreatesEverything < ActiveRecord::Migration
     add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
     add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
     add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
-    add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
+    add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
     add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
     create_table "klasses", :force => true do |t|
@@ -512,5 +512,9 @@ class CreatesEverything < ActiveRecord::Migration
     end
 
     add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+    add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
+
+    add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
   end
 end
