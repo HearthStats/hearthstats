@@ -30,6 +30,6 @@
     &nbsp; - &nbsp;
 
     <strong><%= number_to_percentage(@winrate, precision: 2) %></strong> <%= t('.win_rate_over') %>
-    <strong><%= number_with_delimiter(@matches.count, :delimiter => ',') %></strong> <%= t('.matches_in_this_list') %>
+    <strong><%= number_with_delimiter(@matches.size, :delimiter => ',') %></strong> <%= t('.matches_in_this_list') %>
  </p>
 <% end %>

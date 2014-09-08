@@ -9,17 +9,21 @@ class ConstructedsController < ApplicationController
     params[:sort]  ||= 'created_at'
     params[:order] ||= 'desc'
 
-    @q = current_user.matches.includes(:rank).includes(:deck).where(mode_id: [2,3]).ransack(params[:q])
+    @q = current_user.matches
+      .preload(:match_rank => :rank)
+      .preload(:match_deck => :deck)
+      .where(mode_id: [2,3]).ransack(params[:q])
+
     @matches = @q.result.limit(params[:items])
     unless params[:days] == "all"
       @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
     end
-    @matches = @matches.order("#{params[:sort]} #{params[:order]}")
+    @matches = @matches.order("#{params[:sort]} #{params[:order]}").all # triggers the query!
     @matches = @matches.paginate(page: params[:page], per_page: params[:items])
 
-    @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
+    @winrate = @matches.size > 0 ? (@matches.select{|m| m.result_id == 1}.count.to_f / @matches.size) * 100 : 0
 
-    @last_deck = current_user.matches.where(mode_id: [2,3]).last.try(:deck)
+    @last_deck = current_user.matches.where(mode_id: [2,3]).preload(:match_deck => :deck).last.try(:match_deck).try(:deck)
     @my_decks = get_my_decks
 
     respond_to do |format|
@@ -234,9 +238,12 @@ class ConstructedsController < ApplicationController
   end
 
   def get_my_decks
-    Deck.joins(:klass)
-        .where(user_id: current_user.id)
-        .order("klasses.name, decks.name").all.compact
+    @get_my_decks ||= begin
+      Deck.where(user_id: current_user.id)
+        .all
+        .compact
+        .sort_by{|d| "#{d.klass.name} #{d.name}"}
+    end
   end
 
 end

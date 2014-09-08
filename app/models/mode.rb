@@ -5,4 +5,7 @@ class Mode < ActiveRecord::Base
 
   has_many :matches
 
+  def self.all_modes
+    @all_modes ||= Mode.all
+  end
 end
