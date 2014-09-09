@@ -43,7 +43,7 @@
 .user-select{
   a {
     display: inline-block;
-    width: 50%;
+    width: 100%;
     text-align: center;
     color: white;
   }
@@ -66,5 +66,11 @@ span.yellow{
   .draft-klass{
     padding: 5px;
     font-weight: bold;
+  }
+}
+table{
+  .drafting{
+    background-color: #2ecc71 !important;
+    color: white;
   }
 }
