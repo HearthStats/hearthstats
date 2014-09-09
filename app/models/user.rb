@@ -31,8 +31,11 @@ class User < ActiveRecord::Base
   ### CLASS METHODS:
   
   def self.find_user(identity)
-    user = User.find(identity)
+    user = User.find(identity.to_i)
+    rescue
     user = User.find_by_email(identity) if user.nil?
+
+    user
   end
 
   ### INSTANCE METHODS:

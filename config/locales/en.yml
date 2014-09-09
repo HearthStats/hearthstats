@@ -169,6 +169,8 @@ en:
       player1-id: Player 1 ID
       opponent_identity: Opponenet HearthStats ID or Email
       card-cap: Number of Neutral Cards
+      public_match: Make Public?
+      public_desc: This allows anyone to join your draft and you will recieve a notice when someone joins
   arenas:
     index:
       title: Recent Games
