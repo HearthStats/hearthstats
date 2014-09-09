@@ -1,5 +1,5 @@
 class BlindDraft < ActiveRecord::Base
-  attr_accessible :cardstring, :player1_id, :player2_id, :card_cap
+  attr_accessible :cardstring, :player1_id, :player2_id, :card_cap, :public
 
   ### ASSOCIATIONS:
 

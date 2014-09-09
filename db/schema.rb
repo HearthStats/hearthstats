@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140904192534) do
+ActiveRecord::Schema.define(:version => 20140909204719) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "admin_users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "annoucements", :force => true do |t|
     t.string   "description"
@@ -59,6 +92,26 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
 
   add_index "arenas", ["arena_run_id"], :name => "index_arenas_on_arena_run_id"
   add_index "arenas", ["user_id"], :name => "index_arenas_on_user_id"
+
+  create_table "blind_draft_cards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.integer  "blind_draft_id"
+    t.boolean  "revealed",       :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blind_drafts", :force => true do |t|
+    t.string   "cardstring"
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.integer  "card_cap"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "klass_string"
+    t.boolean  "public",       :default => false
+  end
 
   create_table "card_sets", :force => true do |t|
     t.string "name"
@@ -446,6 +499,56 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "tourn_decks", :force => true do |t|
+    t.integer  "tournament_id"
+    t.integer  "tourn_user_id"
+    t.integer  "deck_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "tourn_matches", :force => true do |t|
+    t.integer  "tourn_pair_id"
+    t.integer  "p1_tourndeck_id"
+    t.integer  "p2_tourndeck_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "tourn_pairs", :force => true do |t|
+    t.integer  "tournament_id"
+    t.integer  "roundof"
+    t.integer  "pos"
+    t.integer  "p1_id"
+    t.integer  "p2_id"
+    t.boolean  "winners"
+    t.integer  "winner_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
+    t.integer  "undecided"
+  end
+
+  create_table "tourn_users", :force => true do |t|
+    t.integer "tournament_id"
+    t.integer "user_id"
+  end
+
+  add_index "tourn_users", ["user_id"], :name => "index_tourn_users_on_user_id"
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_date"
+    t.integer  "creator_id"
+    t.integer  "bracket_format"
+    t.integer  "num_players"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "tournies", :force => true do |t|
     t.integer  "challonge_id"
     t.integer  "status",        :default => 0
@@ -512,6 +615,8 @@ ActiveRecord::Schema.define(:version => 20140904192534) do
     t.string   "userkey"
     t.integer  "subscription_id"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

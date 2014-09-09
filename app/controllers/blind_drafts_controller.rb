@@ -15,10 +15,12 @@ class BlindDraftsController < ApplicationController
 
   def create
     @blind_draft = BlindDraft.new(params[:blind_draft])
+    @blind_draft.player2_id = User.find_user(params[:opponent]).try(:id)
     klass_string = Klass.list.sample(5).join(",")
     @blind_draft.klass_string = klass_string
     respond_to do |format|
-      if @blind_draft.save
+      if @blind_draft.player2_id.nil? && @blind_draft.public == true
+        @blind_draft.save
         format.html { redirect_to draft_blind_draft_path(@blind_draft), 
                       notice: "Blind Draft Successfully created." }
       else
@@ -35,6 +37,9 @@ class BlindDraftsController < ApplicationController
 
   def draft
     @blind_draft = BlindDraft.find(params[:id])
+    if @blind_draft.player2_id.nil?
+      redirect_to blind_drafts_path, alert: "Waiting on a player to join the draft" and return
+    end
     authenticate_drafters
   end
 

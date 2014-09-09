@@ -23,7 +23,7 @@
             - @blind_drafts.each do |draft|
               tr
                 td = draft.player1.name
-                td = draft.player2.name
+                td = draft.player2.nil? ? 'Waiting for player' : draft.player2.name
                 - if draft.blind_draft_cards.where(user_id:nil).empty?
                   td Draft Complete
                 - else
