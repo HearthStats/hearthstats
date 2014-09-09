@@ -1,8 +1,8 @@
 class BlindDraftsController < ApplicationController
-  before_filter :authenticate_user!, except: :show
+  before_filter :authenticate_user!
 
   def index
-    @blind_drafts = current_user.blind_drafts
+    @blind_drafts = current_user.blind_drafts.order(:created_at).reverse
   end
 
   def new
@@ -26,6 +26,11 @@ class BlindDraftsController < ApplicationController
       end
     end
 
+  end
+
+  def show
+    @blind_draft = BlindDraft.find(params[:id])
+    authenticate_drafters
   end
 
   def draft
@@ -65,7 +70,7 @@ class BlindDraftsController < ApplicationController
   private
 
     def authenticate_drafters
-      if current_user.id != @blind_draft.player1_id && current_user.id != @blind_draft.player2_id
+      unless [ @blind_draft.player1_id ,@blind_draft.player2_id ].include? current_user.id || current_user.has_role?(:caster)
         redirect_to blind_drafts_path, alert: "You are not a member of that draft"
       end
     end

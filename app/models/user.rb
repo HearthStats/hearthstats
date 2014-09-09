@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
   belongs_to :subscription
 
   ### CLASS METHODS:
+  
+  def self.find_user(identity)
+    user = User.find(identity)
+    user = User.find_by_email(identity) if user.nil?
+  end
+
   ### INSTANCE METHODS:
 
   def blind_drafts

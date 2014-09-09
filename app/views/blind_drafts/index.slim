@@ -6,26 +6,39 @@
 - content_for :actions do
   = link_to t('.new_draft'), new_blind_draft_path, class: "btn blue"
 
+.row
+  .col-md-8
+    div class="portlet box yellow"
+      div class="portlet-title"
+        div class="caption"
+          | #{t('.my_drafts')}
+      div class="portlet-body flip-scroll"
+        table.table.table-bordered.table-striped.flip-content
+          thead
+            th = t('.player1')
+            th = t('.player2')
+            th = t('.complete')
+            th = t('.go_to')
+          tbody
+            - @blind_drafts.each do |draft|
+              tr
+                td = draft.player1.name
+                td = draft.player2.name
+                - if draft.blind_draft_cards.where(user_id:nil).empty?
+                  td Draft Complete
+                - else
+                  td.drafting Drafting
 
-div class="portlet box yellow"
-  div class="portlet-title"
-    div class="caption"
-      | #{t('.my_drafts')}
-  div class="portlet-body flip-scroll"
-    table.table.table-bordered.table-striped.flip-content
-      thead
-        th = t('.draft_id')
-        th = t('.player1')
-        th = t('.player2')
-        th = t('.complete')
-        th = t('.go_to')
-      tbody
-        - @blind_drafts.each do |draft|
-          tr
-            td = draft.id
-            td = draft.player1.name
-            td = draft.player2.name
-            td = draft.blind_draft_cards.where(user_id:nil).empty?
-            td 
-              = link_to draft_blind_draft_path(draft), class: "btn btn-xs green" do
-                i.fa.fa-external-link = t('.draft')
+                td 
+                  = link_to draft_blind_draft_path(draft), class: "btn btn-xs blue" do
+                    i.fa.fa-external-link = t('.draft')
+  .col-md-4
+    div class="portlet box yellow"
+      div class="portlet-title"
+        div class="caption"
+          | #{t('.live_drafts')}
+      div class="portlet-body flip-scroll"
+        table.table.table-bordered.table-striped.flip-content
+          thead
+            th = t('.host')
+            th = t('.join')
