@@ -39,7 +39,6 @@ class BlindDraftsController < ApplicationController
     respond_to do |format|
       if card.update_attribute(:revealed, true)
         sync_update card
-        format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
         format.js
       else
         format.html { render action: "draft" }
