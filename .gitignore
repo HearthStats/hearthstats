@@ -65,7 +65,6 @@ console
 
 # Ignore application configuration
 /config/application.yml
-/config/newrelic.yml
 
 # Ignore Honeybadger
 /initializers/honeybadger.rb
