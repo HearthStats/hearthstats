@@ -3,10 +3,10 @@
 <%= search_form_for @q, url: path, html: { class: 'data-turboform' } do |f| %>
   <p>
     <%= t('.filter') %>
-    <%= f.select :klass_id_eq, klass_collection_for_select %>
+    <%= f.select :klass_id_in, klass_collection_for_select %>
     vs.
-    <%= f.select :oppclass_id_eq, klass_collection_for_select %>
-    <%= f.select :coin_eq, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']] %>
+    <%= f.select :oppclass_id_in, klass_collection_for_select %>
+    <%= f.select :coin_in, [["- #{t('.coin?')} -", ''], ['true', 'true'], ['false', 'false']] %>
     &nbsp;
     <%= t('.opponent') %>:
     <%= f.text_field :oppname_cont, { size: 8 } %>
@@ -22,7 +22,7 @@
     <%= t('.show') %>
     <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]) %>
     <%= t('.for') %>
-    <%= select_tag :days, options_for_select(days_options_for_select, params[:days]) %>
+    <%= f.select :created_at_gteq, options_for_select(created_at_gteq_options_for_select) %>
     <%= t('.sort') %>
     <%= select_tag :sort, options_for_select(%w(created_at duration numturns).map { |a| [t(".#{a}"), a]}, params[:sort]) %>
     <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'], [t('.descending'), 'desc']], params[:order]) %>
