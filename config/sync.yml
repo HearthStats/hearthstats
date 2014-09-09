@@ -23,6 +23,14 @@ test:
   adapter: "Pusher"
   async: true
 
+staging:
+  adapter_javascript_url: "http://js.pusher.com/2.0/pusher.min.js" 
+  app_id: <%= ENV['PUSHER_APP_ID'] %>
+  api_key: <%= ENV['PUSHER_KEY'] %>
+  auth_token: <%= ENV['PUSHER_SECRET'] %>
+  adapter: "Pusher"
+  async: true
+
 beta:
   adapter_javascript_url: "http://js.pusher.com/2.0/pusher.min.js" 
   app_id: <%= ENV['PUSHER_APP_ID'] %>
