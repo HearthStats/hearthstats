@@ -23,7 +23,6 @@ Hearthstats::Application.routes.draw do
       post 'regtourny'
       post 'createtourny'
       get 'calendar'
-      get 'blind_draft'
     end
   end
 
@@ -32,6 +31,7 @@ Hearthstats::Application.routes.draw do
       put 'reveal_card'
       put 'pick_card'
       get 'draft'
+      post 'end_draft'
     end
   end
   

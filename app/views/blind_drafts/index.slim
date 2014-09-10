@@ -24,7 +24,7 @@
               tr
                 td = draft.player1.name
                 td = draft.player2.nil? ? 'Waiting for player' : draft.player2.name
-                - if draft.blind_draft_cards.where(user_id:nil).empty?
+                - if draft.complete
                   td Draft Complete
                 - else
                   td.drafting Drafting
@@ -33,7 +33,7 @@
                   = link_to draft_blind_draft_path(draft), class: "btn btn-xs blue" do
                     i.fa.fa-external-link = t('.draft')
   .col-md-4
-    div class="portlet box yellow"
+    div class="portlet box green"
       div class="portlet-title"
         div class="caption"
           | #{t('.live_drafts')}
@@ -42,3 +42,4 @@
           thead
             th = t('.host')
             th = t('.join')
+        b Coming Soon yellow

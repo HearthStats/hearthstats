@@ -15,6 +15,8 @@
         h4 Classes Pool
         - @blind_draft.klass_string.split(",").each do |klass|
           span.draft-klass = klass
+        = link_to 'End Draft', end_draft_blind_draft_path, method: :post,
+          class: 'btn btn-block red'
         hr
       /div id="tlkio" data-channel="HearthStats-Blind-Draft-#{@blind_draft.id}" style="width:100%;height:400px;"
       /  script async="" src="http://tlk.io/embed.js" type="text/javascript"
