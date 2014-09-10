@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe BlindDraftsController do
   let(:user) { create :user }
-  let(:blind_draft) { create :blind_draft, player1_id: user.id }
+  let(:blind_draft) { create :blind_draft, player2_id: user.id }
 
   before do
     sign_in user
