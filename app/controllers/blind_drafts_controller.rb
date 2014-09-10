@@ -19,7 +19,7 @@ class BlindDraftsController < ApplicationController
     klass_string = Klass.list.sample(5).join(",")
     @blind_draft.klass_string = klass_string
     respond_to do |format|
-      if @blind_draft.player2_id.nil? && @blind_draft.public == true
+      if @blind_draft.player2_id || (@blind_draft.player2_id.nil? && @blind_draft.public == true)
         @blind_draft.save
         format.html { redirect_to draft_blind_draft_path(@blind_draft), 
                       notice: "Blind Draft Successfully created." }
@@ -30,16 +30,30 @@ class BlindDraftsController < ApplicationController
 
   end
 
-  def show
-    @blind_draft = BlindDraft.find(params[:id])
-    authenticate_drafters
-  end
-
   def draft
     @blind_draft = BlindDraft.find(params[:id])
     if @blind_draft.player2_id.nil?
       redirect_to blind_drafts_path, alert: "Waiting on a player to join the draft" and return
     end
+    authenticate_drafters
+  end
+
+  def end_draft
+    @blind_draft = BlindDraft.find(params[:id])
+    @blind_draft.complete = true
+    if @blind_draft.save
+      redirect_to blind_draft_path(@blind_draft), notice: "Draft Completed"
+    else
+      redirect_to draft_blind_draft_path(@blind_draft), alert: "Could not complete draft"
+    end
+  end
+
+  def show
+    @blind_draft = BlindDraft.find(params[:id])
+    player1_deck = @blind_draft.player1_cards.map { |b_card| [b_card.card,1] }
+    @player1_deck = player1_deck.sort_by { |card| card[0].mana }
+    player2_deck = @blind_draft.player2_cards.map { |b_card| [b_card.card,1] }
+    @player2_deck = player2_deck.sort_by { |card| card[0].mana }
     authenticate_drafters
   end
 

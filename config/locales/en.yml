@@ -165,6 +165,9 @@ en:
     draft:
       title: Drafting Blind Draft
       subtitle: " draft your deck"
+    show:
+      title: Draft Details
+      subtitle: " drafted cards"
     new:
       player1-id: Player 1 ID
       opponent_identity: Opponenet HearthStats ID or Email
