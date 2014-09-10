@@ -70,7 +70,6 @@ console
 /initializers/honeybadger.rb
 
 .powrc
-.ruby-version
 
 # Zeus!
 
