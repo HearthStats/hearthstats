@@ -9,12 +9,12 @@ div class="facedown-card" id="#{blind_draft_card.card.id}" data-name="#{blind_dr
   div.user-select
     - if blind_draft_card.revealed
       - if blind_draft_card.user_id.nil?
-        /= link_to "Player 1", 
-        /  pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player1_id,
-        /  draft_card: blind_draft_card),
-        /  class: "player1-select", remote: true,  method: :put
-        = link_to "Pick", 
-          pick_card_blind_draft_path(player_id: current_user.id,
+        = link_to "Player 1", 
+         pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player1_id,
+         draft_card: blind_draft_card),
+         class: "player1-select", remote: true,  method: :put
+        = link_to "Player 2", 
+          pick_card_blind_draft_path(player_id: blind_draft_card.blind_draft.player2_id,
           draft_card: blind_draft_card),
           class: "player2-select", remote: true,  method: :put
       - else
