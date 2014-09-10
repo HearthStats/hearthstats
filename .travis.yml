@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.1.2
 before_script:
   - mysql -e 'create database hs_test;'
   - cp config/database.travis.yml config/database.yml
