@@ -39,6 +39,7 @@ gem 'devise'
 gem 'devise-token_authenticatable'
 gem 'cancancan'
 gem 'rolify'
+gem 'carrierwave' # Upload files needed for redactor
 
 # storage
 gem 'fog'
@@ -67,7 +68,6 @@ gem 'feedjira', :require => false # Parse rss feeds
 gem 'lograge' # Minify log outputs
 gem 'redactor-rails' # WYSIWYG editor
 gem 'rmagick' # Upload images needed for redactor
-gem 'carrierwave' # Upload files needed for redactor
 gem 'mini_magick' # Upload images needed for redactor
 gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
