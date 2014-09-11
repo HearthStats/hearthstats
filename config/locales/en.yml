@@ -370,6 +370,8 @@ en:
       continue: Continue
       get_auto_uploader: Get the Auto Uploader
   additional:
+    league:
+      title: HearthStats League
     news:
       title: Hearthstone News
       subtitle: " the latest in Hearthstone news"
