@@ -7,7 +7,7 @@ $(document).ready(function(){
   (function($) {
     $.fn.goTo = function() {
       $('html, body').animate({
-        scrollTop: $(this).offset().top + 'px'
+        scrollTop: $(this).offset().top - 50 + 'px'
       }, 'fast');
       return this; // for chaining...
     }
