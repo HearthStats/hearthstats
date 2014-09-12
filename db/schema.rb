@@ -616,8 +616,6 @@ ActiveRecord::Schema.define(:version => 20140909211549) do
     t.string   "userkey"
     t.integer  "subscription_id"
     t.string   "authentication_token"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
