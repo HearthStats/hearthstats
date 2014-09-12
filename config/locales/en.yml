@@ -210,13 +210,20 @@ en:
       complete: Draft Complete?
       go_to: Go To Draft
       draft: Draft
+      live_drafts: Live Drafts
+      join: Join
     draft:
       title: Drafting Blind Draft
-      subtitle: ! ' draft your deck'
+      subtitle: " draft your deck"
+    show:
+      title: Draft Details
+      subtitle: " drafted cards"
     new:
       player1-id: Player 1 ID
-      player2-id: Player 2 ID
+      opponent_identity: Opponenet HearthStats ID or Email
       card-cap: Number of Neutral Cards
+      public_match: Make Public?
+      public_desc: This allows anyone to join your draft and you will recieve a notice when someone joins
   arenas:
     index:
       title: Recent Games
@@ -607,7 +614,7 @@ en:
         name: Name
         time_zone: Time zone
       profile/Battle:
-        net ID: Net id
+        net ID: BNet id
       user:
         current_password: Current password
         email: Email

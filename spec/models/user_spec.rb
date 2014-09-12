@@ -4,7 +4,17 @@ describe User do
   let(:user) { build :user }
 
   describe 'class methods' do
+    describe '#find_user' do
+      it 'should return user from HSnet ID' do
+        user = create :user
+        User.find_user(user.id).should == user
+      end
 
+      it 'should return user from email' do
+        user = create :user
+        User.find_user(user.email).should == user
+      end
+    end
   end
 
   describe 'instance methods' do

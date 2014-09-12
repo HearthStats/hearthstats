@@ -2,8 +2,6 @@ Hearthstats::Application.routes.draw do
 
   # Gem routes
   #
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   match '/s/:id' => "shortener/shortened_urls#show"
 
   # Delayed_job_web
@@ -25,7 +23,6 @@ Hearthstats::Application.routes.draw do
       post 'regtourny'
       post 'createtourny'
       get 'calendar'
-      get 'blind_draft'
     end
   end
 
@@ -34,6 +31,7 @@ Hearthstats::Application.routes.draw do
       put 'reveal_card'
       put 'pick_card'
       get 'draft'
+      post 'end_draft'
     end
   end
 
@@ -68,6 +66,7 @@ Hearthstats::Application.routes.draw do
   match "/may", to: "welcome#may_report"
   match "/june", to: "welcome#june_report"
   match "/july", to: "welcome#july_report"
+  match "/aug", to: "welcome#aug_report"
   match "/gen_report", to: "welcome#generate_report"
   get "welcome/ranked_test"
   get "welcome/select_klass"
@@ -193,6 +192,7 @@ Hearthstats::Application.routes.draw do
       post "decks/activate"
       post "decks/slots"
       get "users/premium"
+      post "decks/create"
     end
 
     namespace :v2 do

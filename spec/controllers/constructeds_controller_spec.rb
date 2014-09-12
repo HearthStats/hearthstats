@@ -31,6 +31,6 @@ describe ConstructedsController do
     deck = create :deck, name: 'to_legendary_and_beyond!', user_id: user.id
     post :create, deckname: 'to_legendary_and_beyond!', other: { rank: "Ranked" }
 
-    assigns(:my_decks).should == []
+    assigns(:my_decks).should == [Deck.first]
   end
 end

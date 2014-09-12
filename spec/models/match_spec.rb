@@ -41,6 +41,20 @@ describe Match do
         Match.matches_per_class.should == { "Druid"=>1, "Hunter"=>0, "Mage"=>1, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0 }
       end
     end
+
+    describe '#top_winrates_with_class' do
+      it 'inits all classes to 0' do
+        Match.top_winrates_with_class.should == [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      end
+
+      it 'calculates the winrate per class' do
+        klass = create :klass
+        win   = create :match, klass: klass, result_id: 1
+        loss  = create :match, klass: klass, result_id: 0
+
+        Match.top_winrates_with_class.should == [["Druid", 50.0], 0, 0, 0, 0, 0, 0, 0, 0]
+      end
+    end
   end
 
   describe "instance methods" do

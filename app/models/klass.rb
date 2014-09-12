@@ -24,6 +24,10 @@ class Klass < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.all_klasses
+    @all_klasses ||= Klass.all # this can be cached somewhere
+  end
+
   def self.list
     LIST.values
   end

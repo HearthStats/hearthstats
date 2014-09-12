@@ -10,6 +10,7 @@
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "page_specific/#{params[:controller]}"  %>
   <%= csrf_meta_tags %>
   <%= display_meta_tags :site => 'HearthStats' %>
   <!-- FAVICON-->
@@ -30,8 +31,8 @@
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
   <%= javascript_include_tag "//code.highcharts.com/highcharts.js" %>
   <%= javascript_include_tag Sync.adapter_javascript_url %>
-  <script src="http://code.highcharts.com/modules/exporting.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
+  <script src="//code.highcharts.com/modules/exporting.js"></script>
+  <link href='//fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
 
 </head>
 <% if signed_in? %>

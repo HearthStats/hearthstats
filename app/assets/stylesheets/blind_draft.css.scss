@@ -68,3 +68,58 @@ span.yellow{
     font-weight: bold;
   }
 }
+.show-classes{
+  font-size: 18px;
+  .draft-klass{
+    padding: 10px;
+    color: white;
+    font-weight: 100;
+  }
+}
+h3{
+  text-align: center;
+}
+table{
+  .drafting{
+    background-color: #2ecc71 !important;
+    color: white;
+  }
+}
+
+/*Class Colors*/
+
+.Druid {
+  background-color: #FF7D0A;
+}
+
+.Hunter {
+  background-color: #ABD473;
+}
+
+.Mage {
+  background-color: #69CCF0;
+}
+
+.Paladin {
+  background-color: #F58CBA;
+}
+
+.Priest {
+  background-color: #999999;
+}
+
+.Rogue {
+  background-color: #f1c40f;
+}
+
+.Shaman {
+  background-color: #0070DE;
+}
+
+.Warlock {
+  background-color: #9482C9;
+}
+
+.Warrior {
+  background-color: #C79C6E;
+}

@@ -21,9 +21,10 @@ namespace :cron do
     Rails.cache.delete('wel#arena_top')
     Rails.cache.write('wel#arena_top', arena_top)
     p "Arena top classes preheated"
+    con_top = Match.where('created_at >= ?', 2.weeks.ago).where(mode_id: 3).top_winrates_with_class.shift(5)
     Rails.cache.delete('wel#con_top')
-    p "Con top classes preheated"
     Rails.cache.write('wel#con_top', con_top)
+    p "Con top classes preheated"
   end
 
   task :expire_top_decks => :environment do

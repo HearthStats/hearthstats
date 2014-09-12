@@ -13,7 +13,7 @@
   <meta name="description" content="HearthStats makes Hearthstone win/loss tracking simple. HearthStats will provide statistical feedback on your results to help you improve your game.">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- OG Meta -->
-  <meta property="og:image" content="http://www.hearthstats.net/assets/hearthstatslogo.png">
+  <meta property="og:image" content="/favicon-196x196.png">
   <meta property="og:url" content="http://hearthstats.net/">
   <meta property="og:title" content="HearthStats | Hearthstone Statistics and Tracking">
   <meta property="og:description" content="HearthStats makes Hearthstone win/loss tracking simple. HearthStats will provide statistical feedback on your results to help you improve your game.">
@@ -47,8 +47,8 @@
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
   <!-- Google Webfont -->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -77,6 +77,8 @@
             <%= f.check_box :remember_me, checked: true,  class: "hide" %>
             <%= f.submit "Login", class: "login-button" %>
           <% end %>
+          <%= button_to "Register", new_user_registration_path, method: :get, class: "login-button" %>
+
         </div>
       </div>
 
@@ -338,12 +340,12 @@
     <section class="report">
 
       <h2>Stat Report</h2>
-      <%= image_tag('report_pic/julybgx300.png') %>
+      <%= image_tag('report_pic/augbgx300.jpg') %>
       <div class="tracker-desc">
         View this month's global stats from the whole Hearthstats community! See the most popular class, highest win rate and more!
       </div>
       <div class="actions">
-        <%= link_to "View", '/july' , class: "button success expand report-btn" %>
+        <%= link_to "View", '/aug' , class: "button success expand report-btn" %>
       </div>
     </section>
 

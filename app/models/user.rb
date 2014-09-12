@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey, :subscription_id, :authentication_token
 
   ### VALIDATIONS:
-
-  # validates :userkey, :uniqueness => true
+  validates :userkey, uniqueness: true, allow_nil: true
 
   ### ASSOCIATIONS:
 
@@ -32,6 +31,15 @@ class User < ActiveRecord::Base
   has_many :tourn_users
 
   ### CLASS METHODS:
+
+  def self.find_user(identity)
+    user = User.find(identity.to_i)
+    rescue
+    user = User.find_by_email(identity) if user.nil?
+
+    user
+  end
+
   ### INSTANCE METHODS:
 
   def blind_drafts

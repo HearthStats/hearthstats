@@ -24,6 +24,19 @@ class Api::V1::DecksController < ApplicationController
     render json: api_response
   end
 
+  def create
+
+    deck = Deck.new(@req[:deck])
+    deck.user_id = @user.id
+    if deck.save
+      api_response =  { status: "success", data: deck }
+    else
+      api_response = { status: "error" }
+    end
+
+    render json: api_response
+  end
+
   def find
     deck = Deck.find(params[:deck_id])
     card_array = deck.cardstring.split(",")

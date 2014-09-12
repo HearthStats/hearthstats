@@ -1,12 +1,16 @@
 = form_for(@blind_draft) do |f|
+  = f.hidden_field :player1_id, value: current_user.id
   .row
     .col-md-12
       .form-group
-        = f.label t('.player1-id')
-        = f.number_field :player1_id, class: 'form-control'
-      .form-group
-        = f.label t('.player2-id')
-        = f.number_field :player2_id, class: 'form-control'
+        = f.label t('.public_match')
+        |&nbsp;
+        = f.check_box :public, id: 'public_match'
+        p
+          small = t('.public_desc')
+      .form-group#opponent
+        = f.label t('.opponent_identity')
+        = text_field_tag :opponent,'', class: 'form-control'
       .form-group
         = f.label t('.card-cap')
         = f.number_field :card_cap, class: 'form-control'

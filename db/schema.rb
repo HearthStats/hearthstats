@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.datetime "updated_at",   :null => false
   end
 
+  add_index "arena_run_cards", ["arena_run_id"], :name => "index_arena_run_cards_on_arena_run_id"
+  add_index "arena_run_cards", ["card_id"], :name => "index_arena_run_cards_on_card_id"
+
   create_table "arena_runs", :force => true do |t|
     t.integer  "user_id",    :limit => 255
     t.integer  "gold",                      :default => 0
@@ -107,6 +110,8 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "klass_string"
+    t.boolean  "public",       :default => false
+    t.boolean  "complete",     :default => false
   end
 
   create_table "card_sets", :force => true do |t|
@@ -130,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.string  "blizz_id"
   end
 
+  add_index "cards", ["name"], :name => "index_cards_on_name"
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
   create_table "comments", :force => true do |t|
@@ -175,6 +181,8 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.datetime "updated_at",                :null => false
     t.string   "cardstring"
   end
+
+  add_index "deck_versions", ["deck_id"], :name => "index_deck_versions_on_deck_id"
 
   create_table "decks", :force => true do |t|
     t.string   "name"
@@ -293,6 +301,9 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "match_unique_decks", ["match_id"], :name => "index_match_unique_decks_on_match_id"
+  add_index "match_unique_decks", ["unique_deck_id"], :name => "index_match_unique_decks_on_unique_deck_id"
+
   create_table "matches", :force => true do |t|
     t.integer  "user_id"
     t.integer  "klass_id"
@@ -368,6 +379,7 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.datetime "sig_pic_updated_at"
   end
 
+  add_index "profiles", ["name"], :name => "index_profiles_on_name"
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "races", :force => true do |t|
@@ -571,6 +583,9 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "unique_deck_cards", ["card_id"], :name => "index_unique_deck_cards_on_card_id"
+  add_index "unique_deck_cards", ["unique_deck_id"], :name => "index_unique_deck_cards_on_unique_deck_id"
+
   create_table "unique_decks", :force => true do |t|
     t.string   "cardstring"
     t.integer  "klass_id"
@@ -608,11 +623,14 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.string   "userkey"
     t.integer  "subscription_id"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["tourny_id"], :name => "index_users_on_tourny_id"
+  add_index "users", ["userkey"], :name => "index_users_on_userkey"
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"

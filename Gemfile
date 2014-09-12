@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.18'
 gem 'rake'
 
 group :development do
@@ -14,6 +14,7 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'pry'
   gem 'seed_dump'
+  gem 'spring'
   gem 'rack-mini-profiler'
   gem 'guard-zeus'
   gem 'awesome_print', :require => false
@@ -25,7 +26,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'turbo-sprockets-rails3'
-  gem 'asset_sync'
+  # gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -55,7 +56,7 @@ gem 'social-share-button'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'figaro'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0.0'
 # gem 'turbolinks'
 # gem 'jquery-turbolinks' # Fixes JS for turbolinks
 # gem 'nprogress-rails' # Progress bar for turbolinks
@@ -75,7 +76,6 @@ gem 'unf'
 gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
 gem 'imgkit'
 gem 'thin'
-gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
@@ -86,24 +86,21 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'sync'
 
-group :development, :production do
-  # Background
-  gem 'delayed_job_active_record'
-  gem 'daemons'
-  gem 'delayed_job_web'
-  gem 'whenever'
+# DB
+gem 'activerecord-import'
 
-  # DB
-  gem 'activerecord-import'
-  
-  # APIs
-  gem 'newrelic_rpm'
-  gem 'honeybadger'
-  gem 'cindy' # Sendy API
-  gem 'appsignal'
-  gem 'localeapp'
-  gem 'pusher'
-end
+# APIs
+gem 'newrelic_rpm'
+gem 'cindy' # Sendy API
+gem 'appsignal'
+gem 'skylight'
+gem 'pusher'
+
+# Background
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+gem 'daemons'
+gem 'whenever'
 
 group :test do
   gem 'rspec-rails', '>= 2.12.2'

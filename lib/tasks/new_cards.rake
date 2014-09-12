@@ -59,4 +59,51 @@ task :add_blizz_id=> :environment do
   puts counter.to_s + " Cards Modified"
 end
 
+task :fix_blizz_id=> :environment do
+  # Stupid Cold Bloooooood
+  # Fix cold blood blizz_id
+  Card.find(196).update_attribute(:blizz_id, "CS2_073")
+  Card.find(109).update_attribute(:blizz_id, "NEW1_029")
+  Card.find(203).update_attribute(:blizz_id, "NEW1_040")
+  Card.find(356).update_attribute(:blizz_id, "EX1_614")
+  Card.find(296).update_attribute(:blizz_id, "EX1_100")
+  Card.find(117).update_attribute(:blizz_id, "EX1_014")
+  Card.find(46).update_attribute(:blizz_id, "CS2_008")
+  Card.all.each do |card|
+    if letter?(card.blizz_id.last)
+      p card.id 
+      wrong_blizz_id = card.blizz_id.split("")
+      corrected_blizz_id = wrong_blizz_id
+      wrong_blizz_id.reverse.each do |char|
+        if numeric?(char)
+          break
+        else
+          corrected_blizz_id.pop
+        end
+      end
+      card.blizz_id = corrected_blizz_id.join
+      card.save
+    end
+  end
+end
 
+task :scrape_card_images=> :environment do
+  require 'mechanize'
+  Card.all.each do |card|
+    begin
+      link = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/#{card.blizz_id}.png"
+      agent.get(link).save_as "/Users/trigun0x2/Dropbox/Projects/cards/#{card.name.parameterize}.png"
+    rescue
+      puts card.name
+    end
+  end
+  p "Big Bro, The job is done."
+end
+
+def letter?(lookAhead)
+  lookAhead =~ /[[:alpha:]]/
+end
+
+def numeric?(lookAhead)
+  lookAhead =~ /[[:digit:]]/
+end
