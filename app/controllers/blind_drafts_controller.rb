@@ -42,7 +42,7 @@ class BlindDraftsController < ApplicationController
   def end_draft
     @blind_draft = BlindDraft.find(params[:id])
     @blind_draft.complete = true
-    if @blind_draft.save
+    if @blind_draft.save!
       redirect_to blind_draft_path(@blind_draft), notice: "Draft Completed"
     else
       redirect_to draft_blind_draft_path(@blind_draft), alert: "Could not complete draft"
