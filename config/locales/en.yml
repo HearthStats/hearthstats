@@ -157,10 +157,11 @@ en:
       weapons: Weapons
       win_rate: Win Rate
       wins: Wins
+    prohibited_this_being_saved: 
   dashboards:
     index:
       title: Dashboard
-      subtitle: " statistics for the current season"
+      subtitle: ! ' statistics for the current season'
       global_win_rates: Global Win Rates
       arena_win_rates: Arena Win Rates
       games_recorded: Games Recorded
@@ -201,7 +202,7 @@ en:
   blind_drafts:
     index:
       title: Blind Drafts
-      subtitle: " start a new game"
+      subtitle: ! ' start a new game'
       new_draft: New Blind Draft
       draft_id: Draft ID
       player1: Player 1 Name
@@ -211,7 +212,7 @@ en:
       draft: Draft
     draft:
       title: Drafting Blind Draft
-      subtitle: " draft your deck"
+      subtitle: ! ' draft your deck'
     new:
       player1-id: Player 1 ID
       player2-id: Player 2 ID
@@ -219,7 +220,7 @@ en:
   arenas:
     index:
       title: Recent Games
-      description: " recent arena games"
+      description: ! ' recent arena games'
       section: Arena
       continue_arena_run: Continue Arena Run
       new_arena_run: New Arena Run
@@ -253,12 +254,12 @@ en:
       played_second: Played Second
     matches:
       title: Recent Matches
-      subtitle: " recent matches games"
+      subtitle: ! ' recent matches games'
       section: Arena
       recent_arena_matches: Recent Arena Matches
     stats:
       title: Statistics
-      subtitle: " detailed arena game stats"
+      subtitle: ! ' detailed arena game stats'
       section: Arena
       note: NOTE!
       page_being_designed: Page is still being designed
@@ -292,7 +293,7 @@ en:
       add_draw: Add Draw
     index:
       title: Recent Games
-      description: " recent constructed games"
+      description: ! ' recent constructed games'
       section: Constructed
       new_constructed: New Constructed
     new:
@@ -301,7 +302,7 @@ en:
       get_the_auto_uploader: Get the Auto Uploader
     stats:
       title: Statistics
-      description: " constructed game stats"
+      description: ! ' constructed game stats'
       section: Constructed
       last: last
     stats_filter:
@@ -363,7 +364,7 @@ en:
       klass: Class
       decks_found:
         one: 1 deck found matching your criteria
-        other: "%{count} decks found matching your criteria"
+        other: ! '%{count} decks found matching your criteria'
       created_at: Created
       num_losses: Losses
       num_matches: Matches
@@ -380,7 +381,7 @@ en:
       class: Class
       notes: Notes
       tags: Tags
-      decklist_etc: " Decklist, etc"
+      decklist_etc: ! ' Decklist, etc'
       this_deck_public: Make Deck Public
       search: Search
       count: Count
@@ -398,19 +399,19 @@ en:
       section: Deck
     public:
       title: Public Deck List
-      subtitle: " all public constructed decks"
+      subtitle: ! ' all public constructed decks'
       new_deck: New Deck
       public_decks: Public Decks
     active_decks:
       title: Active Deck
-      subtitle: " all active constructed decks"
+      subtitle: ! ' all active constructed decks'
       slot: Slot
       deleted_deck: Deleted Deck
       select_deck: Select Deck
       submit: Submit
     index:
       title: My Decks
-      subtitle: ! " all of my constructed decks"
+      subtitle: ! ' all of my constructed decks'
       new_deck: New Deck
       my_decks: My Decks
     public_decklist:
@@ -440,7 +441,7 @@ en:
   additional:
     news:
       title: Hearthstone News
-      subtitle: " the latest in Hearthstone news"
+      subtitle: ! ' the latest in Hearthstone news'
       suggestions_for_news: Suggestions for news sources are welcome
       posted: Posted
       read_more: Read More
@@ -459,7 +460,7 @@ en:
         inst_osx_1: Download from the link above
         inst_osx_2: Unzip the file
         inst_osx_3: Drag the file to your Applications folder
-        inst_osx_4: "<b>Right Click</b> the file then click open"
+        inst_osx_4: <b>Right Click</b> the file then click open
         inst_osx_5: Enter your userkey from the uploader page or the profile page
         inst_osx_6: Open up your game and play away!
       instructions_win:
@@ -504,7 +505,7 @@ en:
     contactus:
       title: Contact Info
       contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
-      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text_2: ! 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: I'm really bored so your emails are welcomed.
       fadein_text_2: Please just send me an email! It could be about anything!
       fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
@@ -528,11 +529,19 @@ en:
     new:
       title: New Tournament
       section: Tournaments
-      desc: Description
     show:
+      section: Tournaments
+    admin:
       section: Tournaments
     form:
       name: Name
+      desc: Description
+      num_players: Maximum number of players
+      format: Format
+      invite_only: Invite only
+      num_decks: Number of decks
+      num_pods: Number of pods
+      passcode: 
   menu:
     dashboard: Dashboard
     card_database: Card Database
@@ -570,6 +579,7 @@ en:
       change_log: Change Log
       about_us: About Us
       contact_info: Contact Info
+      aug_report: 
     help: Help
   activerecord:
     attributes:
@@ -606,11 +616,34 @@ en:
         reset_password_token: Reset password token
       unique_deck:
         cardstring: Cardstring
+      tournament:
+        Description: Description
+        Name: Name
+        Number of Players: Number of players
+        Tournament Format: Tournament format
+        Invite Only: Invite only
+        Number of decks: Number of decks
+        code: Code
+        Invite only: Invite only
+        Number of players: Number of players
+        Number of pods: Number of pods
+        Tournament format: Tournament format
+        Format: Format
+        Maximum number of players: Maximum number of players
+        name: Name
+        num_pods: Num pods
+      tournament/en, tournaments/form:
+        format: Format
+        invite_only: Invite only
+        num_decks: Num decks
+        num_pods: Num pods
+        passcode: Passcode
     models:
       deck: Deck
       match: Match
       user: User
       unique_deck: Unique deck
+      tournament: Tournament
   helpers:
     label:
       arena_run:
@@ -642,3 +675,23 @@ en:
         email: 
         password: 
         password_confirmation: 
+      tournament:
+        Description: 
+        Name: 
+        Number of Players: 
+        en, tournaments:
+          form:
+            format: 
+            invite_only: 
+            num_decks: 
+            num_pods: 
+            passcode: 
+        Tournament Format: 
+        Invite Only: 
+        Number of decks: 
+        Invite only: 
+        Number of players: 
+        Number of pods: 
+        Tournament format: 
+        Format: 
+        Maximum number of players: 

@@ -1,6 +1,6 @@
 class Tournament < ActiveRecord::Base
-  attr_accessible :bracket_format, :creator_id, :id, :name, :num_players,
-                  :desc, :is_private, :num_pods, :started, :num_decks, :code
+  attr_accessible :bracket_format, :admin_ids, :id, :name, :num_players,
+                  :desc, :is_private, :num_pods, :started, :num_decks, :code, :best_of
 
   ##
   # bracket_format
@@ -9,7 +9,14 @@ class Tournament < ActiveRecord::Base
   # 2: Double Elimination
   #
 
-  validates_uniqueness_of :code
+  validates_uniqueness_of :code, allow_nil: true
+  validates :name, presence: true
+  validates :num_decks, presence: true
+  validates :best_of, presence: true
+  validates :num_pods, presence: true, if: :is_group_stage?
+  validates :code, presence: true, if: :invite_only?
+
+  ### ASSOCIATIONS:
 
   has_many :tourn_users
   has_many :users, through: :tourn_users
@@ -18,14 +25,23 @@ class Tournament < ActiveRecord::Base
   has_many :decks, through: :tourn_decks
 
   ### CLASS METHODS:
+  def self.all_formats
+    [['Single Elimination', 1],['Group Stage', 0]]
+  end
+
   def self.format_to_s(format)
+    if format.is_a? String
+      format = Integer(format)
+    end
+
     case format
     when 0
-      return "Group"
+      return "Group Stage"
     when 1
       return "Single Elimination"
     end
   end
+
   ### INSTANCE METHODS:
   def start_tournament
     case self.bracket_format
@@ -34,8 +50,6 @@ class Tournament < ActiveRecord::Base
     when 1
       initiate_brackets
     end
-
-    Tournament.update(self.id, started: true)
   end
 
   def started?
@@ -118,6 +132,14 @@ class Tournament < ActiveRecord::Base
     TournPair.import pair_list
 
     update_undecided_pair_ids
+  end
+
+  def is_group_stage?
+    Tournament.format_to_s(self.bracket_format) === "Group Stage"
+  end
+
+  def invite_only?
+    self.is_private == true
   end
 
   private

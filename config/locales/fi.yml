@@ -5,6 +5,29 @@ fi:
         Klasse: 
         Nombre: 
         Notas: 
+      tournament:
+        Description: 
+        Name: 
+        Number of Players: 
+        Tournament Format: 
+        Invite Only: 
+        Number of decks: 
+        code: 
+        Invite only: 
+        Number of players: 
+        Number of pods: 
+        Tournament format: 
+        Format: 
+        Maximum number of players: 
+        name: 
+        num_pods: 
+      tournament/en, tournaments/form:
+        format: 
+        invite_only: 
+        num_decks: 
+        passcode: 
+    models:
+      tournament: 
   additional:
     changelog:
       changelog: 
@@ -14,3 +37,37 @@ fi:
         Klasse: 
         Nombre: 
         Notas: 
+      tournament:
+        Description: 
+        Name: 
+        Number of Players: 
+        en, tournaments:
+          form:
+            format: 
+            invite_only: 
+            num_decks: 
+            num_pods: 
+            passcode: 
+        Tournament Format: 
+        Invite Only: 
+        Number of decks: 
+        Invite only: 
+        Number of players: 
+        Number of pods: 
+        Tournament format: 
+        Format: 
+        Maximum number of players: 
+  tournaments:
+    form:
+      format: 
+      invite_only: 
+      num_decks: 
+      num_pods: 
+      passcode: 
+    admin:
+      section: 
+  shared:
+    prohibited_this_being_saved: 
+  menu:
+    extra:
+      aug_report: 

@@ -2,6 +2,14 @@ ul.no-bullet {
     list-style-type: none;
 }
 
-.hidden_notice {
+.hidden {
+  display: none;
+}
+
+#tourn_num_pods {
+  display: none;
+}
+
+#tourn_passcode {
   display: none;
 }

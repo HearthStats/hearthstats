@@ -140,6 +140,9 @@ Hearthstats::Application.routes.draw do
     post :submit_deck, on: :member
     post :join, on: :member
     post :quit, on: :member
+    post :admin, on: :member
+    post :start, on: :member
+    post :match, on: :member
   end
 
   resources :arenas do

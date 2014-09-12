@@ -3,6 +3,10 @@
                 keywords: '#{@tournament.name}, new, entry, tournament, hearthstats, hearthstone'
 - provide(:title, @tournament.name)
 - provide(:section, t('.section'))
+
+- content_for :actions do
+  - if (!current_user.nil? && (current_user.has_role? :tourn_admin, @tournament))
+    = link_to 'Admin Settings', admin_tournament_path(@tournament), class: "btn retirebut btn-primary", method: :post
 div.col
   div.row
     div.col-md-6
@@ -12,6 +16,9 @@ div.col
       p
         |Player Limit:&nbsp;
         = @tournament.num_players
+      p
+        |Number of decks to use: &nbsp;
+        = @tournament.num_decks
       div id='toggle_tournament'
         - if !@tournament.started?
           - if !@joined
@@ -20,8 +27,11 @@ div.col
             = render partial: "quit"
     div.col-md-6
       p
-        = @tournament.desc
+        = raw @tournament.desc
   div.row
+    div id='pending_matches'
+      - if @tournament.started? and @total_pairs > 0
+        = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
     div id='tourn_content_panel'
       - if @tournament.started?
         - case @tournament.bracket_format
@@ -31,13 +41,9 @@ div.col
           = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
         - else
           |Oops... error in displaying tournament
-      - if @joined
-        - if !@submitted
-          = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
-        - else
-          p You have already submitted your decks.
-
-javascript:
-
-  $(document).ready(function(){
-  });
+      - else
+        - if @joined
+          - if !@submitted
+            = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
+          - else
+            p You have already submitted your decks.

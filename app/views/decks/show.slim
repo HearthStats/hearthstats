@@ -30,8 +30,8 @@ div.row
         - else
           = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
       - if @deck.unique_deck
-        p 
-          b Total Dust Cost: 
+        p
+          b Total Dust Cost:
           = @deck.unique_deck.mana_cost
       p
         b Class: &nbsp;

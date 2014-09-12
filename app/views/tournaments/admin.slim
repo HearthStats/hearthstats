@@ -1,0 +1,16 @@
+- set_meta_tags title: @tournament.name,
+                description: @tournament.name,
+                keywords: '#{@tournament.name}, new, entry, tournament, hearthstats, hearthstone'
+- provide(:title, @tournament.name)
+- provide(:section, t('.section'))
+
+= link_to 'Start Tournament', start_tournament_path, class:"btn btn-block green", method: :post
+
+div.row
+  div.col-dm-6
+  - @players.each do |player|
+    tr
+      = player.name
+  div.col-dm-6
+    = label_tag 'Description'
+    = text_area_tag 'desc'

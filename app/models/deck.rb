@@ -18,6 +18,7 @@ class Deck < ActiveRecord::Base
   has_many :match_deck
   has_many :deck_versions
   has_many :constructeds
+  has_many :tourn_decks
 
   ### CALLBACKS:
 

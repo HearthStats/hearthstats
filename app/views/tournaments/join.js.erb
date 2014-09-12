@@ -1,9 +1,9 @@
-<% if @code_error %>
+<% if @tournament.is_private and @code_error %>
   alert("Incorrect tournament code");
 <% else %>
   $("#tourn_content_panel").empty();
   $("#toggle_tournament").empty();
   $("#toggle_tournament").html("<%= escape_javascript(render partial: 'quit') %>");
   $("#tourn_content_panel").html("<%= escape_javascript(render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks })%>");
-  $(".hidden_notice").show();
+  $(".hidden").show();
 <% end %>

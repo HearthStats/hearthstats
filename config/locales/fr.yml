@@ -21,7 +21,7 @@ fr:
       changelog: 
     contactus:
       contact_email_text: N'hesitez pas à m'envoyer un email à <a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>pour toutes questions
-      contact_email_text_2: 'Vous pouvez aussi nous suivre sur twitter : <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
+      contact_email_text_2: ! 'Vous pouvez aussi nous suivre sur twitter : <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: Je m'ennuie tellement que vos mails seront les bienvenus.
       fadein_text_2: S'il vous plait juste une mail! ça peut-être a propos de n'importe quoi mais un mail !!
       fadein_text_3: Mes fesses commencent à devenir douloureuses... Regarder la douleur que j'endure pour faire ce site pour vous les gars!
@@ -32,7 +32,7 @@ fr:
     news:
       posted: Postées
       read_more: Lire plus
-      subtitle: " Les dernières news Hearthstone"
+      subtitle: ! ' Les dernières news Hearthstone'
       suggestions_for_news: Toutespour de nouvelles sources d'informations Heartstone sont les bienvenues
       title: Les news Hearthstone
     uploader:
@@ -49,14 +49,14 @@ fr:
         feat_6: Enregistre le nombre de tours joué ainsi que le temps de jeu
         feat_7: Vous pouvez ajouter des notes à vos parties directement à partir de l'uploader
       features_title: Caractériqtiques
-      header_text: "| Pourquoi entrer manuellement le resultat de chaque partie quand vous pouvez laisser l'Uploader gérer seul cette tâche pour vous?  | Cet utilitaire open source utilise l'analyse de capture d'écran de votre fenêtre Heartstone. Il n'analyse pas le traffic réseau ni ne sniffe  paquets réseaux. Le projet est et restera open source pour que vous puissiez créer votre propre build et que vous puissiez toujours controler ce qui se passe quand notre logiciel est lancé,  | "
+      header_text: ! '| Pourquoi entrer manuellement le resultat de chaque partie quand vous pouvez laisser l''Uploader gérer seul cette tâche pour vous?  | Cet utilitaire open source utilise l''analyse de capture d''écran de votre fenêtre Heartstone. Il n''analyse pas le traffic réseau ni ne sniffe  paquets réseaux. Le projet est et restera open source pour que vous puissiez créer votre propre build et que vous puissiez toujours controler ce qui se passe quand notre logiciel est lancé,  | '
       help_and_support: Aide et support
       instructions: Instructions
       instructions_osx:
         inst_osx_1: Télécharger avec le lien ci-dessous
         inst_osx_2: Décomprésser l'archive
         inst_osx_3: Copier les fichiers extraits dans votre dossier d'applications
-        inst_osx_4: "<b>Clic droit</b> sur le fichier et cliquez sur ouvrir"
+        inst_osx_4: <b>Clic droit</b> sur le fichier et cliquez sur ouvrir
         inst_osx_5: Entrer la clé utilisateur disponible sur la page de l'uploader ou de votre profil
         inst_osx_6: Ouvrir de nouveau votre jeu et vous pouvez jouer!
       instructions_win:
@@ -88,7 +88,7 @@ fr:
       arena_run_with: arena run with
       close: Fermer
       continue_arena_run: Continue une session d'Arène
-      description: " Parties d'arène récentes"
+      description: ! ' Parties d''arène récentes'
       new_arena_run: Nouvelle session d'arène
       notes: Notes
       options: Options
@@ -103,14 +103,14 @@ fr:
     matches:
       recent_arena_matches: Recent Arena Matches
       section: Arène
-      subtitle: " Les parties jouées récemment"
+      subtitle: ! ' Les parties jouées récemment'
       title: Matchs recents
     new:
       arena_run_results: Résultats de votre session
       back: Retour
       create_entry: Créer une entrée
       defeat: Defaite
-      draw: "égalité"
+      draw: égalité
       end_run: Fin du tour
       opponent_class: Classe de votre adversaire
       options: Options
@@ -119,7 +119,7 @@ fr:
       result: Resultat
       retire: abandonner
       section: Arène
-      sure_want_retire: "Êtes vous surs de vouloir abandonner aussi precipitemment durant cette session d'Arène?"
+      sure_want_retire: Êtes vous surs de vouloir abandonner aussi precipitemment durant cette session d'Arène?
       title: Nouvealle session d'arène
       win: Victoire
     stats:
@@ -159,7 +159,7 @@ fr:
       title: Listes des cartes
   constructeds:
     index:
-      description: " Parties classées récentes"
+      description: ! ' Parties classées récentes'
       new_constructed: Nouveau deck construit
       section: Classée
       title: Parties récentes
@@ -193,11 +193,11 @@ fr:
       any_mode: Tous les modes
       casual: non classé
       days: jours
-      description: " les statistiques des decks construits"
+      description: ! ' les statistiques des decks construits'
       filter_by: Filtrer par
       first_or_second: premier ou second
-      going_first: "être premier"
-      going_second: "être second"
+      going_first: être premier
+      going_second: être second
       hours: heures
       last: dernière
       ranked: classé
@@ -236,7 +236,7 @@ fr:
       personal_win_rate: Taux de victoire personnel
       read_more: Lire plus
       recent_activities: Activités recentes
-      subtitle: " statistiques pour la saison en cours"
+      subtitle: ! ' statistiques pour la saison en cours'
       title: Tableaux de bord
       view_more: Voir plus
       with: avec
@@ -245,7 +245,7 @@ fr:
       select_deck: Selection Deck
       slot: Slot
       submit: Soumettre
-      subtitle: " Tous les decks construits actifs"
+      subtitle: ! ' Tous les decks construits actifs'
       title: Deck actif
       deleted_deck: 
     form:
@@ -259,7 +259,7 @@ fr:
     index:
       my_decks: Mes decks
       new_deck: Nouveau deck
-      subtitle: " Tous mes decks construits"
+      subtitle: ! ' Tous mes decks construits'
       title: Mes decks
     new:
       section: decks
@@ -267,7 +267,7 @@ fr:
     public:
       new_deck: nouveau deck
       public_decks: Decks publics
-      subtitle: " tous les decks construits publics"
+      subtitle: ! ' tous les decks construits publics'
       title: Liste des deck publics
     filter:
       ascending: 
@@ -342,6 +342,7 @@ fr:
       official_uploader: Uploader officiel
       title: Extra
       june_report: 
+      aug_report: 
     help: Aide
     news: News
     streams: Streams
@@ -402,7 +403,7 @@ fr:
       win_rate: Pourcentage de victoires
       wins: Victoires
     delete: Supprimer
-    edit: "éditer"
+    edit: éditer
     error: erreur
     footer:
       about: A propos
@@ -469,6 +470,7 @@ fr:
       weapons: 
       win_rate: 
       wins: 
+    prohibited_this_being_saved: 
   streams:
     index:
       subtitle: ! ' Rechercher tous vos streams favoris ici'
@@ -484,9 +486,61 @@ fr:
         Klasse: 
         Nombre: 
         Notas: 
+      tournament:
+        Description: 
+        Name: 
+        Number of Players: 
+        Tournament Format: 
+        Invite Only: 
+        Number of decks: 
+        code: 
+        Invite only: 
+        Number of players: 
+        Number of pods: 
+        Tournament format: 
+        Format: 
+        Maximum number of players: 
+        name: 
+        num_pods: 
+      tournament/en, tournaments/form:
+        format: 
+        invite_only: 
+        num_decks: 
+        passcode: 
+    models:
+      tournament: 
   helpers:
     label:
       deck:
         Klasse: 
         Nombre: 
         Notas: 
+      tournament:
+        Description: 
+        Name: 
+        Number of Players: 
+        en, tournaments:
+          form:
+            format: 
+            invite_only: 
+            num_decks: 
+            num_pods: 
+            passcode: 
+        Tournament Format: 
+        Invite Only: 
+        Number of decks: 
+        Invite only: 
+        Number of players: 
+        Number of pods: 
+        Tournament format: 
+        Format: 
+        Maximum number of players: 
+  tournaments:
+    form:
+      format: 
+      invite_only: 
+      num_decks: 
+      num_pods: 
+      passcode: 
+    admin:
+      section: 

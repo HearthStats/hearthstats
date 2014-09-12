@@ -1,10 +1,55 @@
 = form_for(@tournament) do |f|
+  - if @tournament.errors.any?
+    div#error_explanation
+      h4
+        |Some of your input is invalid:
+      ul
+        - @tournament.errors.full_messages.each do |msg|
+          li = msg
   .form_body
     .form-group
       = f.label t('tournaments.form.name')
       = f.text_field :name, class: 'form-control'
     .form-group
+      = f.label t('tournaments.form.format')
+      = f.select :bracket_format, options_for_select(@formats), class: 'form-control'
+    .form-group id="tourn_num_pods"
+      = f.label t('tournaments.form.num_pods')
+      = f.number_field :num_pods, class: 'form-control'
+    .form-group
+      = f.label t('tournaments.form.num_pods')
+      = f.number_field :best_of, class: 'form-control'
+    .form-group
+      = f.label t('tournaments.form.num_players')
+      = f.number_field :num_players, class: 'form-control'
+    .form-group
+      = f.label t('tournaments.form.num_decks')
+      = f.number_field :num_decks, class: 'form-control'
+    .form-group
+      = f.label t('tournaments.form.invite_only')
+      = f.check_box :is_private, class: 'form-control'
+    .form-group id="tourn_passcode"
+      = f.label t('tournaments.form.passcode')
+      = f.text_field :code, class: 'form-control'
+    .form-group
       = f.label t('tournaments.form.desc')
       = f.text_area :desc, class: 'redactor form-control'
     .form-group
       = f.submit class: 'btn btn-block green'
+
+javascript:
+
+  $(document).ready(function(){
+    if($("#tournament_is_private").is(':checked')) {
+      $("#tourn_passcode").slideDown();
+    }
+    if($("#tournament_bracket_format").val() == 0) {
+      $("#tourn_num_pods").slideDown();
+    }
+    $("#tournament_bracket_format").change(function(){
+      $("#tourn_num_pods").slideToggle();
+    });
+    $("#tournament_is_private").click(function(){
+      $("#tourn_passcode").slideToggle();
+    });
+  });

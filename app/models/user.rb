@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey, :subscription_id, :authentication_token
 
   ### VALIDATIONS:
-  
+
   # validates :userkey, :uniqueness => true
-  
+
   ### ASSOCIATIONS:
 
   has_one :profile,       dependent: :destroy
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   belongs_to :subscription
 
   has_many :tournaments, through: :tourn_users
-  has_many :tourn_user
+  has_many :tourn_users
 
   ### CLASS METHODS:
   ### INSTANCE METHODS:

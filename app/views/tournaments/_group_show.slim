@@ -5,11 +5,11 @@ table
       - (1..num_pods).each do |column|
         td
           table
-            tr 
+            tr
               span = column
             - pairs.where(pos: column).each do |pair|
-              tr 
-                p 
+              tr
+                p
                   |Pair:&nbsp;
                   span = pair.p1_id
                   |&nbsp;V.S.&nbsp;
