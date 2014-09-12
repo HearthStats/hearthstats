@@ -104,6 +104,11 @@
       </a>
       <ul class="sub-menu">
         <li >
+          <%= link_to '/league' do %>
+            HearthStats League
+          <% end %>
+        </li>
+        <li >
           <%= link_to tournies_path do %>
             <%= t('menu.tournaments.recent') %>
           <% end %>
