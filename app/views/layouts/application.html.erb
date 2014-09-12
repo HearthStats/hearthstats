@@ -9,6 +9,7 @@
   <meta name="MobileOptimized" content="320">
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag Sync.adapter_javascript_url %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "page_specific/#{params[:controller]}"  %>
   <%= csrf_meta_tags %>
