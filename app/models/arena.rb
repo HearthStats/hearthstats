@@ -15,15 +15,14 @@ class Arena < ActiveRecord::Base
     matches = Match.where(user_id: userid, season_id: Season.last.num, mode_id: 1)
     wins = matches.where(result_id: true).count
     totgames = matches.count
-    
-    if totgames == 0 # let's not try to divide by zero
-      "N/A"
-    else
-      winrate = wins.to_f / totgames
-      winrate = number_to_percentage(winrate*100, precision: 2)
 
-      winrate
-    end
+    # let's try not to divide by zero  
+    return "N/A" if totgames == 0
+
+    winrate = wins.to_f / totgames
+    winrate = number_to_percentage(winrate * 100, precision: 2)
+
+    winrate
 
   end
 
