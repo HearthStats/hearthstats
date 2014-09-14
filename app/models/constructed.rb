@@ -22,6 +22,5 @@ class Constructed < ActiveRecord::Base
     winrate = number_to_percentage(winrate * 100, precision: 2)
 
     winrate
-
   end
 end
