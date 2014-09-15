@@ -1,6 +1,6 @@
 class Tournament < ActiveRecord::Base
   attr_accessible :bracket_format, :admin_ids, :id, :name, :num_players,
-                  :desc, :is_private, :num_pods, :started, :num_decks, :code, :best_of
+                  :desc, :is_private, :num_pods, :started, :num_decks, :code, :best_of, :creator_id
 
   ##
   # bracket_format
@@ -9,7 +9,7 @@ class Tournament < ActiveRecord::Base
   # 2: Double Elimination
   #
 
-  validates_uniqueness_of :code, allow_nil: true
+  ##validates_uniqueness_of :code, allow_nil: true
   validates :name, presence: true
   validates :num_decks, presence: true
   validates :best_of, presence: true

@@ -64,14 +64,14 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
   add_index "arena_run_cards", ["card_id"], :name => "index_arena_run_cards_on_card_id"
 
   create_table "arena_runs", :force => true do |t|
-    t.integer  "user_id",    :limit => 255
-    t.integer  "gold",                      :default => 0
-    t.integer  "dust",                      :default => 0
-    t.boolean  "complete",                  :default => false
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
+    t.integer  "user_id"
+    t.integer  "gold",       :default => 0
+    t.integer  "dust",       :default => 0
+    t.boolean  "complete",   :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.text     "notes"
-    t.string   "patch",                     :default => "current"
+    t.string   "patch",      :default => "current"
     t.integer  "klass_id"
   end
 
@@ -176,9 +176,9 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
   create_table "deck_versions", :force => true do |t|
     t.integer  "deck_id"
     t.text     "notes"
-    t.integer  "version",    :limit => 255
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "version"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "cardstring"
   end
 
@@ -201,7 +201,6 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.integer  "user_num_losses"
     t.float    "user_winrate"
     t.boolean  "is_public"
-    t.boolean  "is_tour_deck"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
@@ -623,8 +622,6 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.string   "userkey"
     t.integer  "subscription_id"
     t.string   "authentication_token"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

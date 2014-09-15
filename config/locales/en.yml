@@ -548,7 +548,12 @@ en:
       invite_only: Invite only
       num_decks: Number of decks
       num_pods: Number of pods
-      passcode: 
+      passcode: Passcode
+      best_of: Best of
+  tourn_matches:
+    new:
+      title: Submit Match
+      section: Tournament
   menu:
     dashboard: Dashboard
     card_database: Card Database

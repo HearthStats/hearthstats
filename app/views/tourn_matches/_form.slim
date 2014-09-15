@@ -1,0 +1,21 @@
+= form_for(@tourn_match) do |f|
+  - if @tourn_match.errors.any?
+    div#error_explanation
+      h4
+        |Some of your input is invalid:
+      ul
+        - @tourn_match.errors.full_messages.each do |msg|
+          li = msg
+  .form_body
+    .form-group
+      = f.label t('tourn_matches.form.deck')
+      = f.select :deck, options_for_select(@decks), class: 'form-control'
+    .form-group
+      = f.check_box :result, class: 'btn-lg form-control'
+    .form-group
+      = f.label t('tourn_matches.form.result')
+      = f.hidden_field :result_id, class: 'form-control'
+    .form-group
+      = f.check_box :coin, class: 'btn-lg form-control'
+    .form-group
+      = f.submit class: 'btn btn-block green'
