@@ -18,7 +18,7 @@ Hearthstats::Application.routes.draw do
   # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
     collection do
-      get 'signup'
+      post 'signup'
       get 'past'
       post 'regtourny'
       post 'createtourny'

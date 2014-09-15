@@ -29,11 +29,27 @@ class TourniesController < ApplicationController
 
   end
 
-  def blind_draft
-    @card_pool = Card.where(collectible: true, klass_id: nil).sample(54)
-  end
-
   def signup
+    if params["region"] == "North America"
+      tourn_id = 1
+    elsif params["region"] == "Europe"
+      tourn_id = 2
+    end
+
+    if TournUser.where(tournament_id: tourn_id).count > 20
+      redirect_to '/league', alert: "Tournament full!"
+    end
+
+    if current_user.nil?
+      redirect_to '/league', alert: "You need a Hearthstats account to sign up!"
+    end
+
+    tourn_user = TournUser.new(user_id: current_user.id, tournament_id: tourn_id)
+    if tourn_user.save
+      redirect_to '/league', notice: "Successfully signed up! Congrats!"
+    else
+      redirect_to '/league', alert: "Error signing up for the tournament"
+    end
   end
 
   def past
