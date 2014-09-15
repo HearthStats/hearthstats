@@ -17,11 +17,20 @@
           h4 class="modal-title" Welcome to HearthStats
         div.modal-body
           p Here's a quick video to get you started with HearthStats and its basic features.
-          iframe width="480" height="360" src="//www.youtube.com/embed/IEkRqygequU?start=19" frameborder="0" allowfullscreen
+          iframe width="480" height="360" frameborder="0" allowfullscreen
         div.modal-footer
           button type="button" class="btn default" data-dismiss="modal" Close
+
   javascript:
     $(document).ready(function () {
+      var src = "http://www.youtube.com/embed/IEkRqygequU?start=19"
       $('.modal').modal('show')
+      $('.modal iframe').attr('src', src)
+
     });
+
+    $('.modal button').click(function () {
+      $('.modal iframe').removeAttr('src');
+    });
+
 = render 'form'
