@@ -15,6 +15,13 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
       p Watch it LIVE: September 15th - 20th on <a href="http://twitch.tv/Hearthstats">Twitch.tv</a> - <b>5 PM PST</b>
   .col-md-6
     img src="http://i.imgur.com/YeUf1Oz.jpg" width="100%"
+- unless TournUser.where(tournament_id: 1).count > 20 && TournUser.where(tournament_id: 2).count > 20
+  .row
+    .col-md-12
+      h3 Registration Open!
+      = form_tag('/tournies/signup', class: 'tourny-signup')
+        = select_tag("region", options_for_select([["North America"], ["Europe"]]))
+        = submit_tag "Join Tournament", class: "join-tourny"
 .headline
   h3 Meet the Players
 .row.thumbnails
