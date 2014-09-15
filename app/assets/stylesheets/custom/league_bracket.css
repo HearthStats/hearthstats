@@ -1,0 +1,17 @@
+.bracket_tables {
+  border: 1px solid black;
+  margin: 20px;
+}
+
+th.bracket_col {
+  width: 90px;
+}
+
+tr.bracket_content {
+  background-color: #E6E6F0;
+}
+
+tr.header_dark {
+  background-color: #3d3d3d;
+  color: #ffffff;
+}

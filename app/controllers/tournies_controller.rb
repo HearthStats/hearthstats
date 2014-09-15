@@ -40,6 +40,9 @@ class TourniesController < ApplicationController
       redirect_to '/league', alert: "Tournament full!"
     end
 
+    if current_user.nil?
+      redirect_to '/league', alert: "You need a Hearthstats account to sign up!"
+    end
 
     tourn_user = TournUser.new(user_id: current_user.id, tournament_id: tourn_id)
     if tourn_user.save

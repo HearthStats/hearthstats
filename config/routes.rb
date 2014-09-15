@@ -23,6 +23,7 @@ Hearthstats::Application.routes.draw do
       post 'regtourny'
       post 'createtourny'
       get 'calendar'
+      get 'blind_draft'
     end
   end
 
@@ -34,7 +35,7 @@ Hearthstats::Application.routes.draw do
       post 'end_draft'
     end
   end
-  
+
   # Notifications
 
   post "notifications/note_read"
@@ -49,6 +50,7 @@ Hearthstats::Application.routes.draw do
   match "/privacy", to: "additional#privacy"
   match "/news", to: "additional#news"
   match "/openings", to: "additional#openings"
+  match "/contest", to: "additional#contest_video"
   match "/league", to: "additional#league"
 
   #apps

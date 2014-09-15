@@ -7,3 +7,25 @@
 .player-img img{
   top: 50%;
 }
+
+.league_center {
+  text-align: center;
+}
+
+.league_shout {
+  font-size: 16px;
+  text-align:center;
+}
+
+#region, .join-tourny {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#region {
+  height: 44px;
+  width: 160px;
+  font-size: 16px;
+  margin-top: 4px;
+  text-align: center;
+}

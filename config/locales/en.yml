@@ -442,7 +442,9 @@ en:
       fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
     help:
       title: Help
-      help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
+      help_text: "Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems."
+    contest_video:
+      title: Video Contest
   streams:
     index:
       title: Streams

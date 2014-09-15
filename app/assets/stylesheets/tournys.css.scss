@@ -5,6 +5,9 @@
   height: 224px;
   width: 150px;
 }
+.user-select{
+  display: none;
+}
 .facedown-card{
   display: inline-block;
   position: relative;
@@ -45,4 +48,5 @@ span.yellow{
   width: 500px;
   text-align: center;
   margin: auto;
+  padding-bottom: 20px;
 }
