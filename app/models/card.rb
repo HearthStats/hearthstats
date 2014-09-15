@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   attr_accessible :name, :hearthhead_id, :description, :card_set_id,
     :rarity_id, :type_id, :klass_id, :race_id, :mana, :health, :attack,
-    :collectible, :race_id, :blizz_id
+    :collectible, :race_id, :blizz_id, :patch_id
 
   ### ASSOCIATIONS:
 
@@ -11,6 +11,10 @@ class Card < ActiveRecord::Base
 
   has_many :unique_decks, through: :unique_deck_card
   has_many :unique_deck_card
+
+  has_many :blind_drafts, through: :blind_draft_card
+  has_many :blind_draft_card
+
 
   ### VALIDATIONS:
 

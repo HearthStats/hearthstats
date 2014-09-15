@@ -99,7 +99,7 @@
 .deckbuilderWrapper .cardWrapper .image {
   width:250px;
   position:absolute;
-  top:-48px;
+  top:-90px;
   left:30px;
   z-index:1;
 }
@@ -195,4 +195,8 @@ table.decklist td.winrate {
     background-color: #428bca;
     border-color: #428bca;
   }
+}
+
+.message_unread a{
+  background-color: #ecf0f1 !important;
 }

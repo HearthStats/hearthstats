@@ -1,0 +1,9 @@
+.player-img{
+  max-height: 200px !important;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.player-img img{
+  top: 50%;
+}

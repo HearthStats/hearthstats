@@ -60,7 +60,7 @@ small You may have to refresh the page if nothing works.
         #deckbuilder-list
           .form-group
             label =t("decks.form.search")
-            input type="text" class="fuzzy-search form-control"
+            input type="text" class="search form-control"
           ul.list.card-list
             - Card.where(collectible: true, klass_id: [@deck.klass_id ,nil]).order(:mana).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
@@ -246,7 +246,6 @@ javascript:
     valueNames: ['name'],
     page: 6,
     plugins: [
-      ListFuzzySearch(),
       ListPagination({})
     ]
   });

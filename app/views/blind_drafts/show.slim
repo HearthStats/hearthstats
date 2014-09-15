@@ -1,0 +1,19 @@
+- set_meta_tags :title => t('.title'),
+  :description => 'Blind Draft',
+  :keywords => 'blind, draft, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+
+.row
+  .col-md-12.draft-klasses-cont.show-classes
+    h2 Classes Pool
+    - @blind_draft.klass_string.split(",").each do |klass|
+      span.draft-klass class="#{klass}" = klass
+  .col-md-6
+    h3 #{@blind_draft.player1.name}'s Cards
+    .deckbuilderWrapper
+      = render 'decks/card_list',  :cards=> @player1_deck, :enabled => false
+  .col-md-6
+    h3 #{@blind_draft.player2.name}'s Cards
+    .deckbuilderWrapper
+      = render 'decks/card_list',  :cards=> @player2_deck, :enabled => false

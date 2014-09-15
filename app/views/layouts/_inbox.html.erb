@@ -2,31 +2,29 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
     data-close-others="true">
   <i class="fa fa-envelope"></i>
-  <% receipts = current_user.receipts.where(is_read: false) %>
-  <% notes = Notification.find(receipts.map(&:notification_id)) %>
-  <% unless notes.count == 0 %>
-    <span class="badge inbox-count"><%= notes.count %></span>
+  <% unless unread_message.count == 0 %>
+    <span class="badge inbox-count"><%= unread_message.count %></span>
   <% end %>
   </a>
   <ul class="dropdown-menu extended inbox">
     <li>
-      <p><%= t('shared.header.you_have')%> <span class="new-msg-count"><%= notes.count %></span> <%= t('shared.header.new_messages')%></p>
+      <p><%= t('shared.header.you_have')%> <span class="new-msg-count"><%= unread_message.count %></span> <%= t('shared.header.new_messages')%></p>
     </li>
     <li>
       <ul class="dropdown-menu-list scroller" style="height: 250px;">
-        <% notes.each do |note| %>
-          <li class="note-<%= note.id %>">
+        <% user_messages.last(5).reverse.each do |note| %>
+          <li class="<%= note.is_unread?(current_user) ? 'message_unread' : 'message_read' %>">
             <%= link_to notifications_note_read_path(note_id: note.id), method: :post, :remote => true do %>
-            <span class="photo">
-              <%= image_tag("hslogo-thumb.jpg") %>
-            </span>
-            <span class="subject">
-            <span class="from">HS Robot</span>
-            <span class="time"><%= time_ago_in_words(note.created_at) %> ago</span>
-            </span>
-            <span class="message">
-              <%= note.body %>
-            </span>
+              <span class="photo">
+                <%= image_tag("hslogo-thumb.jpg") %>
+              </span>
+              <span class="subject">
+              <span class="from">HS Robot</span>
+              <span class="time"><%= time_ago_in_words(note.created_at) %> ago</span>
+              </span>
+              <span class="message">
+                <%= note.body %>
+              </span>
             <% end %>
           </li>
         <% end %>

@@ -1,0 +1,126 @@
+// Place all the styles related to the tournys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.blind-card-image{
+  height: 224px;
+  width: 150px;
+}
+.user-select{
+  padding-bottom: 10px;
+}
+.facedown-card{
+  display: inline-block;
+  position: relative;
+}
+.fixedPos{
+  position: fixed;
+  top: 50px;
+  right: 25px;
+}
+
+.picked-overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: url('http://storymag.tetherinc.com/issue-one/_media/img/sketches/X.png');
+    z-index:300;
+    color: white;
+    font-size: 16px;
+}
+
+.last-picked{
+  background: rgba(230, 126, 34, 0.5);
+}
+
+.picked-player{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.user-select{
+  a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+}
+.player1-select{
+  background: #9b59b6;
+}
+.player2-select{
+  background: #3498db;
+}
+span.red{
+  color: #e74c3c;
+}
+span.yellow{
+  color: #f1c40f;
+}
+
+.draft-klasses-cont{
+  text-align: center;
+  .draft-klass{
+    padding: 5px;
+    font-weight: bold;
+  }
+}
+.show-classes{
+  font-size: 18px;
+  .draft-klass{
+    padding: 10px;
+    color: white;
+    font-weight: 100;
+  }
+}
+h3{
+  text-align: center;
+}
+table{
+  .drafting{
+    background-color: #2ecc71 !important;
+    color: white;
+  }
+}
+
+/*Class Colors*/
+
+.Druid {
+  background-color: #FF7D0A;
+}
+
+.Hunter {
+  background-color: #ABD473;
+}
+
+.Mage {
+  background-color: #69CCF0;
+}
+
+.Paladin {
+  background-color: #F58CBA;
+}
+
+.Priest {
+  background-color: #999999;
+}
+
+.Rogue {
+  background-color: #f1c40f;
+}
+
+.Shaman {
+  background-color: #0070DE;
+}
+
+.Warlock {
+  background-color: #9482C9;
+}
+
+.Warrior {
+  background-color: #C79C6E;
+}

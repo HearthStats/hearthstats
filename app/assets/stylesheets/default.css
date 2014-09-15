@@ -43,7 +43,7 @@ Hor menu
 .header .hor-menu ul.nav li.active > a,
 .header .hor-menu ul.nav li.active > a:hover {
   color: #fff;
-  background: #e02222 !important;
+  background: #F47422 !important;
 }
 
 .header .hor-menu .dropdown-menu {
@@ -105,7 +105,7 @@ ul.page-sidebar-menu > li:hover > a {
   background: #303030;
 }
 ul.page-sidebar-menu > li.active > a {
-  background: #e02222 !important;
+  background: #F47422 !important;
   border-top-color: transparent !important;
   color: #ffffff;
 }

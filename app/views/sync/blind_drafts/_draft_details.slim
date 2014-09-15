@@ -1,0 +1,30 @@
+#draft-details.row
+  .row
+    .col-md-12
+      h3 
+        = blind_draft.blind_draft_cards.where(user_id:nil).count.even? ? blind_draft.player1.name : blind_draft.player2.name
+        |&nbsp;Drafting
+      h4
+        |Cards Left:&nbsp;
+        span#cards-left = blind_draft.blind_draft_cards.where(user_id:nil).count
+  .row
+    .col-md-6.col-sm-6.col-xs-6
+      h4 #{blind_draft.player1.name} Cards
+      small Player 1
+      table#player-1-cards
+        thead
+        tbody
+          - blind_draft.player1_cards.joins(:card).order('cards.mana').each do |draft_card|
+            tr class="#{ 'last-picked' if draft_card.id == blind_draft.blind_draft_cards.order(:updated_at).last.id} "
+              td = draft_card.card.mana
+              td = draft_card.card.name
+    .col-md-6.col-sm-6.col-xs-6
+      h4 #{blind_draft.player2.name} Cards
+      small Player 2
+      table#player-2-cards
+        thead
+        tbody
+          - blind_draft.player2_cards.joins(:card).order('cards.mana').each do |draft_card|
+            tr class="#{ 'last-picked' if draft_card.id == blind_draft.blind_draft_cards.order(:updated_at).last.id} "
+              td = draft_card.card.mana
+              td = draft_card.card.name

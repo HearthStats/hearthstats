@@ -1,26 +1,27 @@
 class ConstructedsController < ApplicationController
+  include SearchHelper
+
   before_filter :authenticate_user!, except: :win_rates
 
   def index
-    params[:q]     ||= {}
-    params[:items] ||= 20
-    params[:days]  ||= 30
-    params[:page]  ||= 1
-    params[:sort]  ||= 'created_at'
-    params[:order] ||= 'desc'
+    params.reverse_merge!(default_options)
+    search_params = default_params.merge(params[:q].reject{|k,v| v.blank?})
 
-    @q = current_user.matches.includes(:rank).includes(:deck).where(mode_id: [2,3]).ransack(params[:q])
-    @matches = @q.result.limit(params[:items])
-    unless params[:days] == "all"
-      @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
-    end
-    @matches = @matches.order("#{params[:sort]} #{params[:order]}")
-    @matches = @matches.paginate(page: params[:page], per_page: params[:items])
+    @q = current_user.matches.ransack(params[:q]) # form needs ransack raw data
+    @matches = current_user.matches
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
+      .preload(:match_rank => :rank, :match_deck => :deck)
+      .ransack(search_params).result
+      .limit(params[:items])
+      .order("#{params[:sort]} #{params[:order]}").all
+      .paginate(page: params[:page], per_page: params[:items])
 
-    @winrate = @matches.present? ? (@matches.where(result_id: 1).count.to_f / @matches.count) * 100 : 0
+    @winrate = calculate_winrate(@matches)
 
-    @last_deck = current_user.matches.where(mode_id: [2,3]).last.try(:deck)
     @my_decks = get_my_decks
+    @last_deck = current_user.matches
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
+      .preload(:match_deck => :deck).last.try(:deck)
 
     respond_to do |format|
       format.html
@@ -223,19 +224,7 @@ class ConstructedsController < ApplicationController
   end
 
   def win_rates
-    win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}") do
-      matches = Match.where('created_at >= ?', 2.weeks.ago).
-        where(klass_id: params[:klass_id]).group_by_day(:created_at)
-      wins = matches.where(result_id: 1).count
-      tot = matches.count
-      data =  Hash.new
-      wins.zip(tot).map do |x, y|
-        wr =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
-        wr = 0 if wr.NaN?
-        data[x[0]] = wr
-      end
-      data
-    end
+    win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}")
     render json: win_rate
   end
 
@@ -246,9 +235,9 @@ class ConstructedsController < ApplicationController
   end
 
   def get_my_decks
-    Deck.joins(:klass)
-        .where(user_id: current_user.id)
-        .order("klasses.name, decks.name").all.compact
+    Deck.where(user_id: current_user.id)
+      .all
+      .compact
+      .sort_by{|d| "#{d.klass.try(:name)} #{d.name}"}
   end
-
 end

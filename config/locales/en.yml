@@ -1,6 +1,4 @@
-# encoding: utf-8
 en:
-
   shared:
     header:
       guest: Guest
@@ -24,14 +22,13 @@ en:
     best_arena_class: Best Arena Class
     create_deck: Create a Deck
     new_arena_game: New Arena Game
-    best_deck: Best Deck
     view_more: View More
     edit: Edit
     delete: Delete
     notes: Notes
     run: run
     error: error
-    prohibited_this_being_save: "prohibited this %{resource} from being saved:"
+    prohibited_this_being_save: 'prohibited this %{resource} from being saved:'
     arenarun: arenarun
     show: show
     arena: arena
@@ -41,7 +38,7 @@ en:
     update: Update
     deckbuilder:
       card_list: Card List
-      optional_deck_will_be_created_if: 'Optional (Deck will be created if you leave this blank)'
+      optional_deck_will_be_created_if: Optional (Deck will be created if you leave this blank)
       toggle_text_import: Toggle Text Import
       add_a_card: Add a Card
       of_30_cards: of 30 cards
@@ -77,9 +74,8 @@ en:
       users: Users
       listed_by: Listed By
       tools: Tools
-      stats_are_for_all_users: 'stats are for all users that have played the deck in the last 30 days, not just the original author'
-      stats_are_for_your_personal: 'stats are for your personal play using each deck'
-
+      stats_are_for_all_users: stats are for all users that have played the deck in the last 30 days, not just the original author
+      stats_are_for_your_personal: stats are for your personal play using each deck
     matchlist:
       filter: Filter
       any_class: Any class
@@ -112,15 +108,14 @@ en:
       numturns: Rounds
       win_rate_over: win rate over
       matches_in_this_list: matches in this list
-
   dashboards:
     index:
       title: Dashboard
-      subtitle: ' statistics for the current season'
+      subtitle: " statistics for the current season"
       global_win_rates: Global Win Rates
       arena_win_rates: Arena Win Rates
       games_recorded: Games Recorded
-      constructed_win_rates: Constructed Win Rates
+      constructed_win_rates: Constructed Win Rate
       hearthstats_news: HearthStats News
       read_more: Read More
       view_more: View More
@@ -130,14 +125,12 @@ en:
         donation_link: Donation link added at
         notes_feature: Notes feature added!
       personal_win_rate: Personal Win Rate
-      constructed_win_rates: Constructed Win Rate
       constructed_coin_win_rates: Constructed Win Coin Rate
       recent_activities: Recent Activities
       against: against
       with: with
       global_stats: Global Stats
       arena_win_rate: Arena Win Rate
-
   cards:
     index:
       title: Card Database
@@ -156,16 +149,40 @@ en:
       name: Name
       none: none
       reset_filters: Reset Filters
-
+  blind_drafts:
+    index:
+      title: Blind Drafts
+      subtitle: " start a new game"
+      new_draft: New Blind Draft
+      draft_id: Draft ID
+      player1: Player 1 Name
+      player2: Player 2 Name
+      complete: Draft Complete?
+      go_to: Go To Draft
+      draft: Draft
+      live_drafts: Live Drafts
+      join: Join
+    draft:
+      title: Drafting Blind Draft
+      subtitle: " draft your deck"
+    show:
+      title: Draft Details
+      subtitle: " drafted cards"
+    new:
+      player1-id: Player 1 ID
+      opponent_identity: Opponenet HearthStats ID or Email
+      card-cap: Number of Neutral Cards
+      public_match: Make Public?
+      public_desc: This allows anyone to join your draft and you will recieve a notice when someone joins
   arenas:
     index:
       title: Recent Games
-      description: ' recent arena games'
+      description: " recent arena games"
       section: Arena
       continue_arena_run: Continue Arena Run
       new_arena_run: New Arena Run
       arena_run_with: arena run with
-      on: on
+      true: true
       notes: Notes
       close: Close
       recent_arena_games: Recent Arena Games
@@ -193,12 +210,12 @@ en:
       played_second: Played Second
     matches:
       title: Recent Matches
-      subtitle: ' recent matches games'
+      subtitle: " recent matches games"
       section: Arena
       recent_arena_matches: Recent Arena Matches
     stats:
       title: Statistics
-      subtitle: ' detailed arena game stats'
+      subtitle: " detailed arena game stats"
       section: Arena
       note: NOTE!
       page_being_designed: Page is still being designed
@@ -215,7 +232,6 @@ en:
       detailed_class_status: Detailed Class Status
       distribution_graph: Distribution Graph
       dist_desc: Times achieved vs Number of wins in arena run
-
   constructeds:
     filter:
       coin?: Coin?
@@ -232,9 +248,9 @@ en:
       add_defeat: Add Defeat
       add_draw: Add Draw
     index:
-      title: 'Recent Games'
-      description: ' recent constructed games'
-      section: 'Constructed'
+      title: Recent Games
+      description: " recent constructed games"
+      section: Constructed
       new_constructed: New Constructed
     new:
       title: New Constructed
@@ -242,10 +258,9 @@ en:
       get_the_auto_uploader: Get the Auto Uploader
     stats:
       title: Statistics
-      description: ' constructed game stats'
+      description: " constructed game stats"
       section: Constructed
       last: last
-
     stats_filter:
       hours: hours
       days: days
@@ -284,9 +299,6 @@ en:
       add_win: Add Win
       add_defeat: Add Defeat
       add_draw: Add Draw
-
-
-
   decks:
     filter:
       ascending: Ascending
@@ -300,7 +312,7 @@ en:
       klass: Class
       decks_found:
         one: 1 deck found matching your criteria
-        other: '%{count} decks found matching your criteria'
+        other: "%{count} decks found matching your criteria"
       created_at: Created
       num_losses: Losses
       num_matches: Matches
@@ -309,14 +321,14 @@ en:
       num_spells: Spells
       num_users: Popularity
       num_weapons: Weapons
-      winrate : Winrate
+      winrate: Winrate
       num_wins: Wins
     form:
       name: Name
       class: Class
       notes: Notes
       tags: Tags
-      decklist_etc: ' Decklist, etc'
+      decklist_etc: " Decklist, etc"
       this_deck_public: Make Deck Public
       search: Search
       count: Count
@@ -332,44 +344,43 @@ en:
       title: New Deck Class Selection
     public:
       title: Public Deck List
-      subtitle: ' all public constructed decks'
+      subtitle: " all public constructed decks"
       new_deck: New Deck
       public_decks: Public Decks
     active_decks:
       title: Active Deck
-      subtitle: ' all active constructed decks'
+      subtitle: " all active constructed decks"
       slot: Slot
       deleted_deck: Deleted Deck
       select_deck: Select Deck
       submit: Submit
     index:
       title: My Decks
-      subtitle: ' all of my constructed decks'
+      subtitle: " all of my constructed decks"
       new_deck: New Deck
       my_decks: My Decks
-
   arena_runs:
     new:
       title: New Arena Run
       section: Arena
       first_arena_of_day: First Arena of the day? Let's get started!
-      keep_it_going: "Only %{runs}? Keep it going!"
-      going_hardcore: "Wow, going hardcore today? %{runs} already, well good luck!"
+      keep_it_going: Only %{runs}? Keep it going!
+      going_hardcore: Wow, going hardcore today? %{runs} already, well good luck!
       your_class: Your class
       continue: Continue
       get_auto_uploader: Get the Auto Uploader
-
-
   additional:
+    league:
+      title: HearthStats League
     news:
       title: Hearthstone News
-      subtitle: ' the latest in Hearthstone news'
+      subtitle: " the latest in Hearthstone news"
       suggestions_for_news: Suggestions for news sources are welcome
       posted: Posted
       read_more: Read More
     uploader:
       title: Official Uploader
-      header_text: "Why enter your matches manually when you can let our uploader take care of everything for you? This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, monitoring, or network modification of any kind. The project is and always will be open source so that you can do your own builds and see exactly what's happening within the program."
+      header_text: Why enter your matches manually when you can let our uploader take care of everything for you? This open source utility uses screen capture analysis of your Hearthstone window. It does not do packet sniffing, monitoring, or network modification of any kind. The project is and always will be open source so that you can do your own builds and see exactly what's happening within the program.
       download_for: Download for
       user_key: User Key
       do_not_share: do not share this with anyone else
@@ -382,7 +393,7 @@ en:
         inst_osx_1: Download from the link above
         inst_osx_2: Unzip the file
         inst_osx_3: Drag the file to your Applications folder
-        inst_osx_4: <b>Right Click</b> the file then click open
+        inst_osx_4: "<b>Right Click</b> the file then click open"
         inst_osx_5: Enter your userkey from the uploader page or the profile page
         inst_osx_6: Open up your game and play away!
       instructions_win:
@@ -406,6 +417,7 @@ en:
     changelog:
       title: Changelog
       all_time_in_utc: All time in UTC
+      changelog: 
     aboutus:
       title: About Us
       founded_by_text: This site was founded by Jeffrey Tong with love.
@@ -419,12 +431,12 @@ en:
       charles_text_3: You can find more about Charles
       here: here
       eckert_text: J Eckert contributed a lot to styling and colors
-      donate_text:  "If you like what I'm doing, toss me a few coins."
-      rackspace_text: "I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!"
+      donate_text: If you like what I'm doing, toss me a few coins.
+      rackspace_text: I would like to thank Rackspace for provide such awesome hosting! If you ever need cloud hosting or any kind, definitely check them out!
     contactus:
       title: Contact Info
-      contact_email_text: "Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions."
-      contact_email_text_2: "You can also follow us on Twitter: <a href='https://twitter.com/hearthstats' class='twitter-follow-button' data-show-count='false' data-lang='en'> @hearthstats</a>"
+      contact_email_text: Feel free to email me at<a href='mailto:jeff@hearthstats.net'> jeff@hearthstats.net </a>for any questions.
+      contact_email_text_2: 'You can also follow us on Twitter: <a href=''https://twitter.com/hearthstats'' class=''twitter-follow-button'' data-show-count=''false'' data-lang=''en''> @hearthstats</a>'
       fadein_text_1: I'm really bored so your emails are welcomed.
       fadein_text_2: Please just send me an email! It could be about anything!
       fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
@@ -433,21 +445,15 @@ en:
       help_text: "Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems."
     contest_video:
       title: Video Contest
-
-
   streams:
     index:
       title: Streams
-      subtitle: ' find all your favourite streams in one place'
-
+      subtitle: " find all your favourite streams in one place"
   tournies:
     index:
       title: Recent Tournaments
-      subtitle: ' Check out recent tournament deck lists!'
-      section: 'Tournaments'
-
-
-
+      subtitle: " Check out recent tournament deck lists!"
+      section: Tournaments
   menu:
     dashboard: Dashboard
     card_database: Card Database
@@ -486,3 +492,65 @@ en:
       about_us: About Us
       contact_info: Contact Info
     help: Help
+  activerecord:
+    attributes:
+      arena_run:
+        Dust Earned: Dust earned
+        gold: Gold
+        Gold Earned: Gold earned
+      deck:
+        Class: Class
+        Klasse: 
+        Name: Name
+        Nombre: 
+        Notas: 
+        Notes: Notes
+        Tags: Tags
+      match:
+        Deck name: Deck name
+        Deck Name: Deck name
+        Notes: Notes
+        Opponent class: Opponent class
+        Opponent Name: Opponent name
+        Opponent's Class: Opponent's class
+      profile:
+        avatar: Avatar
+        name: Name
+        time_zone: Time zone
+      profile/Battle:
+        net ID: BNet id
+      user:
+        email: Email
+        password: Password
+    models:
+      arena_run: Arena run
+      deck: Deck
+      user: User
+  helpers:
+    label:
+      arena_run:
+        Dust Earned: 
+        Gold Earned: 
+      deck:
+        Class: 
+        Klasse: 
+        Name: 
+        Nombre: 
+        Notas: 
+        Notes: 
+        Tags: 
+      match:
+        Deck name: 
+        Deck Name: 
+        Notes: 
+        Opponent class: 
+        Opponent Name: 
+        Opponent's Class: 
+      profile:
+        avatar: 
+        Battle:
+          net ID: 
+        name: 
+        time_zone: 
+      user:
+        email: 

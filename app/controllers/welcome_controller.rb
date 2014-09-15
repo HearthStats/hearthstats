@@ -31,7 +31,6 @@ class WelcomeController < ApplicationController
 
   def select_klass
     @klass = params[:klass_id]
-    p @klass
     respond_to do |format|
       format.js
     end
@@ -64,10 +63,10 @@ class WelcomeController < ApplicationController
   end
 
   def generate_report
-    if !current_user.is_admin?
-      redirect_to root_path, alert: "Y U NO ADMIN" and return
-    end
-    season = 8
+    # if !current_user.is_admin?
+    #   redirect_to root_path, alert: "Y U NO ADMIN" and return
+    # end
+    season = 6
 
     get_ranked_graph_data(season)
 
@@ -75,7 +74,7 @@ class WelcomeController < ApplicationController
       {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
       {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
 
-    matches = Match.where(season_id: 7)
+    matches = Match.where(season_id: season)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
@@ -164,7 +163,7 @@ class WelcomeController < ApplicationController
     classes.each_with_index do |c,i|
       run_count = Array.new(13,0)
       tot_games = ArenaRun.where(klass_id: i+1).count
-      ArenaRun.where(klass_id: i+1).each do |ar|
+      ArenaRun.where(klass_id: i+1).includes(:matches).each do |ar|
         run_count[ar.matches.where(result_id: 1).count] += 1 unless ar.matches.where(result_id: 1).count > 12
       end
       run_percent = run_count.map { |e| e.to_f / tot_games }
@@ -195,6 +194,10 @@ class WelcomeController < ApplicationController
     render file: "#{Rails.root}/public/reports/july_report.html", layout: 'fullpage'
   end
 
+  def aug_report
+    render file: "#{Rails.root}/public/reports/aug_report.html", layout: 'fullpage'
+  end
+
   def novreport
     render layout: 'fullpage'
   end
@@ -205,7 +208,7 @@ class WelcomeController < ApplicationController
       wins = Array.new(days1, 0)
       wins[0] = 0
       (1..days1).each do |i|
-        wins[i] = mode_matches.where(klass: race, result_id: true).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + mode_matches.where(oppclass_id: race, result_id: false).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+        wins[i] = mode_matches.where(klass: race, result_id: 1).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
       end
       return wins
     end
@@ -214,7 +217,7 @@ class WelcomeController < ApplicationController
       wins = Array.new(days1, 0)
       wins[0] = 0
       (1..days1).each do |i|
-        wins[i] = mode_matches.joins(:deck).where(:result_id => true, 'decks.race' => race).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count + mode_matches.where(oppclass_id: race, result_id: false).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+        wins[i] = mode_matches.joins(:deck).where(:result_id => 1, 'decks.race' => race).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
       end
       return wins
     end
@@ -260,8 +263,12 @@ class WelcomeController < ApplicationController
     end
 
     def get_top_streamers
-      top_streams = Rails.cache.fetch("top_streams", expires_in: 30.minutes) do
-        HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
+      begin
+        top_streams = Rails.cache.fetch("top_streams", expires_in: 30.minutes) do
+          HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
+        end
+      rescue
+        top_streams = []
       end
 
       top_streams

@@ -33,7 +33,6 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
-config/initializers/secret_token.rb
 
 # Deployment
 /config/deploy.rb
@@ -49,7 +48,6 @@ config/initializers/secret_token.rb
 *.pydevproject
 .project
 .metadata
-bin/**
 tmp/**
 tmp/**/*
 *.tmp
@@ -70,9 +68,7 @@ console
 # Ignore Honeybadger
 /initializers/honeybadger.rb
 
-.localeapp
 .powrc
-.ruby-version
 
 # Zeus!
 
@@ -81,3 +77,8 @@ zeus.json
 
 # Screw gitignore
 .DS_Store
+
+# Ignore vagrant directory
+.vagrant
+
+tags

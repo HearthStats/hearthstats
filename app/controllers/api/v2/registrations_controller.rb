@@ -1,7 +1,7 @@
 class Api::V2::RegistrationsController < ApplicationController
   respond_to :json
-  def create
 
+  def create
     user = User.new(params[:user])
     if user.save
       render json: user.as_json(auth_token: user.authentication_token, email: user.email), status: :created

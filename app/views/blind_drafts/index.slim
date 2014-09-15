@@ -1,0 +1,45 @@
+- set_meta_tags :title => t('.title'),
+  :description => 'Blind Draft',
+  :keywords => 'blind, draft, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+- content_for :actions do
+  = link_to t('.new_draft'), new_blind_draft_path, class: "btn blue"
+
+.row
+  .col-md-8
+    div class="portlet box yellow"
+      div class="portlet-title"
+        div class="caption"
+          | #{t('.my_drafts')}
+      div class="portlet-body flip-scroll"
+        table.table.table-bordered.table-striped.flip-content
+          thead
+            th = t('.player1')
+            th = t('.player2')
+            th = t('.complete')
+            th = t('.go_to')
+          tbody
+            - @blind_drafts.each do |draft|
+              tr
+                td = draft.player1.name
+                td = draft.player2.nil? ? 'Waiting for player' : draft.player2.name
+                - if draft.complete
+                  td Draft Complete
+                - else
+                  td.drafting Drafting
+
+                td 
+                  = link_to draft_blind_draft_path(draft), class: "btn btn-xs blue" do
+                    i.fa.fa-external-link = t('.draft')
+  .col-md-4
+    div class="portlet box green"
+      div class="portlet-title"
+        div class="caption"
+          | #{t('.live_drafts')}
+      div class="portlet-body flip-scroll"
+        table.table.table-bordered.table-striped.flip-content
+          thead
+            th = t('.host')
+            th = t('.join')
+        b Coming Soon

@@ -12,8 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui/datepicker
+//= require jquery-ui/tooltip
+//= require jquery-ui/effect-fade
 //= require select2
 //= require social-share-button
 //= require redactor-rails
-//= require_tree .
+//= require sync
+//= require 'redesign/app.js'
+//= require 'plugins/jquery.slimscroll.min.js'
+//= require 'plugins/jquery.cookie.min.js'
+//= require 'plugins/toastr.min.js'
+//= require 'site_wide/sidebaractive.js'
+//= require 'plugins/bootstrap.min.js'
+//= require 'site_wide/ga.js'
+//= require 'site_wide/ad.js'

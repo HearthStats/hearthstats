@@ -1,0 +1,16 @@
+ru-RU:
+  activerecord:
+    attributes:
+      deck:
+        Klasse: 
+        Nombre: 
+        Notas: 
+  additional:
+    changelog:
+      changelog: 
+  helpers:
+    label:
+      deck:
+        Klasse: 
+        Nombre: 
+        Notas: 

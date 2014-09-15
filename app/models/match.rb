@@ -32,7 +32,7 @@ class Match < ActiveRecord::Base
   belongs_to :result, class_name: 'MatchResult', foreign_key: 'result_id'
 
   belongs_to :mode
-  belongs_to :user
+  belongs_to :user, touch: true
 
   belongs_to :klass, class_name: 'Klass', foreign_key: 'klass_id'
   belongs_to :oppclass, class_name: 'Klass', foreign_key: 'oppclass_id'
@@ -145,10 +145,9 @@ class Match < ActiveRecord::Base
     winrate_per_class
   end
 
-  def self.top_winrates_with_class(matches = Match)
-    total = matches.joins(:klass).group("klasses.id").count
-    wins  = matches.joins(:klass).group("klasses.id").where("matches.result_id = 1").count
-
+  def self.top_winrates_with_class
+    total = Match.group("klass_id").count
+    wins  = Match.group("klass_id").where("result_id = ?", 1).count
     winrate_per_class = Array.new(9, 0)
 
     total.each do |klass_id, count|
@@ -170,6 +169,34 @@ class Match < ActiveRecord::Base
   end
 
   ### INSTANCE METHODS:
+
+  def deck
+    match_deck.try(:deck)
+  end
+
+  def rank
+    match_rank.try(:rank)
+  end
+
+  def klass
+    Klass.all_klasses.find{|k| k.id == klass_id }
+  end
+
+  def oppclass
+    Klass.all_klasses.find{|k| k.id == oppclass_id }
+  end
+
+  def mode
+    Mode.all_modes.find{|m| m.id == mode_id}
+  end
+
+  def loss?
+    result_id == 0
+  end
+
+  def win?
+    result_id == 1
+  end
 
   def set_season_patch
     self.season_id ||= Season.last.try(:id)

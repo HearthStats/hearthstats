@@ -3,6 +3,10 @@ class Api::V2::SessionsController < ApplicationController
   before_filter :ensure_params_exist
   respond_to :json
 
+  def new
+    super
+  end
+  
   def create
     resource = User.find_for_database_authentication(email: params[:user_login][:email])
     return invalid_login_attempt unless resource

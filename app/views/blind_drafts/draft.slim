@@ -1,0 +1,33 @@
+- set_meta_tags :title => t('.title'),
+  :description => 'Blind Draft',
+  :keywords => 'blind, draft, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+
+.row
+  .col-md-9.col-sm-9
+    = @blind_draft.blind_draft_cards.each_slice(6) do |nine_cards|
+      - nine_cards.each do |blind_draft_card|
+        = sync partial: 'card_block', resource: blind_draft_card
+  .col-md-3.col-sm-3
+    #draft-details
+      .draft-klasses-cont
+        h4 Classes Pool
+        - @blind_draft.klass_string.split(",").each do |klass|
+          span.draft-klass = klass
+        = link_to 'End Draft', end_draft_blind_draft_path, method: :post,
+          class: 'btn btn-block red'
+        hr
+      /div id="tlkio" data-channel="HearthStats-Blind-Draft-#{@blind_draft.id}" style="width:100%;height:400px;"
+      /  script async="" src="http://tlk.io/embed.js" type="text/javascript"
+      = sync partial: 'draft_details', resource: @blind_draft
+javascript:
+  if ($(window).width() > 768){
+    $(window).scroll(function() {  
+      var styledDiv = $('#draft-details'),
+          targetScroll = $('#player-1-cards').position().top,
+          currentScroll = $('html').scrollTop() || $('body').scrollTop();
+
+      styledDiv.toggleClass('fixedPos', currentScroll - 130 >= targetScroll);
+    });
+  }
