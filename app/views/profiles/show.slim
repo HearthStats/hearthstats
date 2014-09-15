@@ -76,12 +76,12 @@ div class="row profile"
                         li
                           span class="sale-info"
                             |Arena Win Rate
-                          span class="sale-num" #{number_to_percentage(Arena.overall_win_rate(@user.id)*100, precision: 2)}
+                          span class="sale-num" #{(Arena.overall_win_rate(@user.id))}
 
                         li
                           span class="sale-info"
                             |Ranked Win Rate
-                          span class="sale-num" #{number_to_percentage(Constructed.overall_win_rate(@user.id)*100, precision: 2)}
+                          span class="sale-num" #{Constructed.overall_win_rate(@user.id)}
 
                         li
                           span class="sale-info" Top Deck
