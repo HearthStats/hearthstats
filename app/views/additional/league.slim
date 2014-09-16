@@ -17,21 +17,21 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
       p Watch it LIVE: September 15th - 20th on <a href="http://twitch.tv/Hearthstats">Twitch.tv</a> - <b>5 PM PST</b>
   .col-md-6
     img src="http://i.imgur.com/YeUf1Oz.jpg" width="100%"
-- unless TournUser.where(tournament_id: 1).count > 20 && TournUser.where(tournament_id: 2).count > 20 && current_user.nil?
-  .row
-    .col-md-12
-      h2 class='league_center'
-        |Registration open for qualifiers!
-      - if current_user.nil?
-        p class="league_shout"
-          |You need a Hearthstats account to sign up for the league.
-      - elsif !TournUser.where(tournament_id: 1, user_id: current_user.id).empty? or !TournUser.where(tournament_id: 2, user_id: current_user.id).empty?
-        p class="league_shout"
-          |You've already signed up for the league.
-      - else
-        = form_tag('/tournies/signup', class: 'tourny-signup')
-          = select_tag("region", options_for_select([["North America"], ["Europe"]]))
-          = submit_tag "Join Tournament", class: "join-tourny btn btn-lg blue"
+/ - unless TournUser.where(tournament_id: 1).count > 20 && TournUser.where(tournament_id: 2).count > 20 && current_user.nil?
+.row
+  .col-md-12
+    h2 class='league_center'
+      |Registrations not yet open for today
+/       - if current_user.nil?
+/         p class="league_shout"
+/           |You need a Hearthstats account to sign up for the league.
+/       - elsif !TournUser.where(tournament_id: 1, user_id: current_user.id).empty? or !TournUser.where(tournament_id: 2, user_id: current_user.id).empty?
+/         p class="league_shout"
+/           |You've already signed up for the league.
+/       - else
+/         = form_tag('/tournies/signup', class: 'tourny-signup')
+/           = select_tag("region", options_for_select([["North America"], ["Europe"]]))
+/           = submit_tag "Join Tournament", class: "join-tourny btn btn-lg blue"
 .row
   .col-md-3
     h3 Group A
