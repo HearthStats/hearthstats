@@ -33,6 +33,8 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
           = select_tag("region", options_for_select([["North America"], ["Europe"]]))
           = submit_tag "Join Tournament", class: "join-tourny btn btn-lg blue"
 .row
+  .col-md-12
+    .center Players are ranked in order. Hightlighted players advance.
   .col-md-3
     h3 Group A
     table class="bracket_tables pure-table pure-table-horizontal"
@@ -69,22 +71,25 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
           |Wins
         th class="bracket_col"
           |Losses
-      tr class="bracket_content"
+      tr class="bracket_content advanced"
         td Savjz
-        td 3
-        td 3
-      tr class="bracket_content"
-        td Kisstafer
         td 4
+        td 4
+      tr class="bracket_content advanced"
+        td Kisstafer
+        td 5
         td 4
       tr class="bracket_content"
         td RDU
         td 5
-        td 3
+        td 5
       tr class="bracket_content"
         td Gaara
         td 0
         td 0
+    .center 
+      small A full tie breaker was played
+
   .col-md-3
     h3 Group C
     table class="bracket_tables pure-table pure-table-horizontal"
