@@ -36,7 +36,7 @@ class TourniesController < ApplicationController
       tourn_id = 2
     end
 
-    if TournUser.where(tournament_id: tourn_id).count > 20
+    if TournUser.where(tournament_id: tourn_id).count > 40
       redirect_to '/league', alert: "Tournament full!"
     end
 
