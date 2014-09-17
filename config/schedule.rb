@@ -24,16 +24,24 @@ env :PATH, ENV['PATH']
 
 every 1.day do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake sig_pic:update"
+  command "echo '--------------------------'"
+  command "echo 'Sigs Update'"
 end
 
 every 5.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:welcome_cache"
+  command "echo '--------------------------'"
+  command "echo 'Welcome Cache'"
 end
 
 every 2.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_top_decks"
+  command "echo '--------------------------'"
+  command "echo 'Expire Top Decks'"
 end
 
 every 5.minutes do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_recent_decks"
+  command "echo '--------------------------'"
+  command "echo 'Expire Recent Decks'"
 end
