@@ -37,11 +37,11 @@ class TourniesController < ApplicationController
     end
 
     if TournUser.where(tournament_id: tourn_id).count > 40
-      redirect_to '/league', alert: "Tournament full!"
+      redirect_to '/league', alert: "Tournament full!" and return
     end
 
     if current_user.nil?
-      redirect_to '/league', alert: "You need a Hearthstats account to sign up!"
+      redirect_to '/league', alert: "You need a Hearthstats account to sign up!" and return
     end
 
     tourn_user = TournUser.new(user_id: current_user.id, tournament_id: tourn_id)
