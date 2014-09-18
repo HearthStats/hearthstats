@@ -75,7 +75,7 @@ class BlindDraftsController < ApplicationController
     card = BlindDraftCard.find(params[:draft_card])
 
     respond_to do |format|
-      if card.update_attribute(:user_id, current_user.id)
+      if card.update_attribute(:user_id, params[:player_id])
         sync_update card
         sync_update card.blind_draft
         format.html { redirect_to draft_blind_draft_path(card.blind_draft) }
