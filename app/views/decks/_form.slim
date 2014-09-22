@@ -50,7 +50,7 @@
           ul.list.card-list
             - Card.where(collectible: true, klass_id: [params[:klass],nil]).order(:mana).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
-                img.deckbuilder-img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{card.name.parameterize}.png'
+                = image_tag "cards/#{card.name.parameterize}.png", class: "deckbuilder-img"
                 p.name.hidden = card.name
                 .deckbuilder-actions
                   .add Add
