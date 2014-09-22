@@ -1,0 +1,17 @@
+table.tablesorter thead tr .header {
+  background-image: image-url("table_sorter/bg.gif") !important;
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+table.tablesorter tbody tr.odd td {
+  background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+  background-image: image-url("table_sorter/asc.gif") !important;
+}
+table.tablesorter thead tr .headerSortDown {
+  background-image: image-url("table_sorter/desc.gif") !important;
+}

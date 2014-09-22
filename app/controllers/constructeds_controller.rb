@@ -13,7 +13,7 @@ class ConstructedsController < ApplicationController
       .preload(:match_rank => :rank, :match_deck => :deck)
       .ransack(search_params).result
       .limit(params[:items])
-      .order("#{params[:sort]} #{params[:order]}").all
+      .order("#{params[:sort]} #{params[:order]}")
       .paginate(page: params[:page], per_page: params[:items])
 
     @winrate = calculate_winrate(@matches)

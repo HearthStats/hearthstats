@@ -325,12 +325,16 @@ en:
       num_wins: Wins
     form:
       name: Name
+      mana: Mana
       class: Class
       notes: Notes
       tags: Tags
       decklist_etc: " Decklist, etc"
       this_deck_public: Make Deck Public
       search: Search
+      filters: Filters
+      class-cards-only: Class Cards Only
+      mana-filters: Mana Filters
       count: Count
       controls: Controls
       card_limit: Max Card Limit

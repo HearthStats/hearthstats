@@ -19,7 +19,7 @@ class Constructed < ActiveRecord::Base
     return "N/A" if totgames == 0
 
     winrate = wins.to_f / totgames
-    winrate = number_to_percentage(winrate * 100, precision: 2)
+    winrate = winrate
 
     winrate
   end

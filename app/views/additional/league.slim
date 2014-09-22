@@ -17,22 +17,24 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
       p Watch it LIVE: September 15th - 20th on <a href="http://twitch.tv/Hearthstats">Twitch.tv</a> - <b>5 PM PST</b>
   .col-md-6
     img src="http://i.imgur.com/YeUf1Oz.jpg" width="100%"
-- unless TournUser.where(tournament_id: 1).count > 20 && TournUser.where(tournament_id: 2).count > 20 && current_user.nil?
-  .row
-    .col-md-12
-      h2 class='league_center'
-        |Registration open for qualifiers!
-      - if current_user.nil?
-        p class="league_shout"
-          |You need a Hearthstats account to sign up for the league.
-      - elsif !TournUser.where(tournament_id: 1, user_id: current_user.id).empty? or !TournUser.where(tournament_id: 2, user_id: current_user.id).empty?
-        p class="league_shout"
-          |You've already signed up for the league.
-      - else
-        = form_tag('/tournies/signup', class: 'tourny-signup')
-          = select_tag("region", options_for_select([["North America"], ["Europe"]]))
-          = submit_tag "Join Tournament", class: "join-tourny btn btn-lg blue"
+/ - unless TournUser.where(tournament_id: 1).count > 20 && TournUser.where(tournament_id: 2).count > 20 && current_user.nil?
 .row
+  .col-md-12
+    h2 class='league_center'
+      |Registrations Full!
+      / - if current_user.nil?
+      /   p class="league_shout"
+      /     |You need a Hearthstats account to sign up for the league.
+      / - elsif !TournUser.where(tournament_id: 1, user_id: current_user.id).empty? or !TournUser.where(tournament_id: 2, user_id: current_user.id).empty?
+      /   p class="league_shout"
+      /     |You've already signed up for the league.
+      / - else
+      /   = form_tag('/tournies/signup', class: 'tourny-signup')
+      /     = select_tag("region", options_for_select([["North America"], ["Europe"]]))
+      /     = submit_tag "Join Tournament", class: "join-tourny btn btn-lg blue"
+.row
+  .col-md-12
+    .center Players are ranked in order. Hightlighted players advance.
   .col-md-3
     h3 Group A
     table class="bracket_tables pure-table pure-table-horizontal"
@@ -69,22 +71,21 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
           |Wins
         th class="bracket_col"
           |Losses
-      tr class="bracket_content"
+      tr class="bracket_content advanced"
         td Savjz
-        td 0
-        td 0
-      tr class="bracket_content"
+        td 4
+        td 4
+      tr class="bracket_content advanced"
         td Kisstafer
-        td 0
-        td 0
+        td 5
+        td 4
       tr class="bracket_content"
         td RDU
-        td 0
-        td 0
-      tr class="bracket_content"
-        td Gaara
-        td 0
-        td 0
+        td 5
+        td 5
+    .center 
+      small A full tie breaker was played
+
   .col-md-3
     h3 Group C
     table class="bracket_tables pure-table pure-table-horizontal"
@@ -95,22 +96,22 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
           |Wins
         th class="bracket_col"
           |Losses
+      tr class="bracket_content advanced"
+        td Gaara
+        td 5
+        td 3
+      tr class="bracket_content advanced"
+        td Ek0p
+        td 5
+        td 4
       tr class="bracket_content"
         td Dart
-        td 0
-        td 0
-      tr class="bracket_content"
-        td Ek0p
-        td 0
-        td 0
-      tr class="bracket_content"
-        td Kolento
-        td 0
-        td 0
+        td 3
+        td 5
       tr class="bracket_content"
         td Alchemixt
-        td 0
-        td 0
+        td 3
+        td 5
   .col-md-3
     h3 Group D
     table class="bracket_tables pure-table pure-table-horizontal"
@@ -121,23 +122,22 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
           |Wins
         th class="bracket_col"
           |Losses
-      tr class="bracket_content"
-        td Kitkatz
-        td 0
-        td 0
+      tr class="bracket_content advanced"
+        td Gnimsh
+        td 5
+        td 3
+      tr class="bracket_content advanced"
+        td Reynad
+        td 5
+        td 3
       tr class="bracket_content"
         td Strifecro
-        td 0
-        td 0
+        td 4
+        td 5
       tr class="bracket_content"
-        td Gnimsh
-        td 0
-        td 0
-      tr class="bracket_content"
-        td Reynad
-        td 0
-        td 0
-
+        td Kitkatz
+        td 2
+        td 5
 .headline
   h2 class="league_center"
     |Meet the Players
