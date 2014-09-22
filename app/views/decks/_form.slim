@@ -1,6 +1,6 @@
 - content_for :actions do
   div class="btn blue btn-sm deck-text-trigger" = t('.toggle_text_import')
-  
+
 = form_for(@deck) do |f|
   = f.hidden_field :cardstring
   - if @deck.errors.any?
@@ -47,11 +47,22 @@
           .form-group
             label =t("decks.form.search")
             input type="text" class="search form-control"
+          div.card-list-filters.row
+            .col-md-3
+              label.filter-label =t("decks.form.filters")
+              span.class-cards.btn.btn-sm.blue.filter =t("decks.form.class-cards-only")
+            .col-md-9
+              label.filter-label =t("decks.form.mana-filters")
+              -(0..9).each do |mana|
+                span.mana-filter.btn.btn-sm.blue.filter data-mana="#{mana}" = mana
+              span.mana-filter.btn.btn-sm.blue.filter data-mana="10" >10
           ul.list.card-list
             - Card.where(collectible: true, klass_id: [params[:klass],nil]).order(:mana).each do |card|
-              li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}"
+              li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}" data-mana="#{card.mana}"
                 = image_tag "cards/#{card.name.parameterize}.png", class: "deckbuilder-img"
                 p.name.hidden = card.name
+                p.mana.hidden = card.mana
+                p.klass.hidden = card.klass_id
                 .deckbuilder-actions
                   .add Add
                   .remove Remove
@@ -59,10 +70,12 @@
           ul.pagination
     .col-sm-12.col-md-3.col-lg-3
       .total-card-count 0 of 30
-      table#deck-list
+      table#deck-list.tablesorter
         thead
+          th.card-mana =t("decks.form.mana")
           th =t("decks.form.name")
           th =t("decks.form.count")
+          th =t("decks.form.controls")
         tbody
 
 
@@ -70,34 +83,32 @@ javascript:
 
   var DeckBuilder = new function(){
     var cardArray = [];
-    var cardName = [];
     var totalCardCount = 0;
     var allCards = gon.cards;
 
-    this.addCard = function(id, name, leg){
+    this.addCard = function(card){
+      console.log(card);
       if (totalCardCount >= 30){
         this._errorNotification("deck-max");
         return;
       }
-      leg = typeof leg !== 'undefined' ? leg : false;
-      id = parseInt(id)
-      cardCount = cardArray[id]
+      leg = typeof card.leg !== 'undefined' ? card.leg : false;
+      cardCount = cardArray[card.id]
       if (cardCount == undefined ){
-        cardArray[id] = 1;
-        cardName[id] = name
+        cardArray[card.id] = 1;
         totalCardCount = totalCardCount + 1;
       }else if( cardCount == 1 ){
         if (leg == true){
           this._errorNotification("legend");
           return
         }else{
-          cardArray[id] = 2;
+          cardArray[card.id] = 2;
           totalCardCount = totalCardCount + 1;
         }
       }else{
         this._errorNotification("max");
       }
-      this._addCardToTable(id);
+      this._addCardToTable(card);
       this.createCardString();
       $('#deck-list').tablesorter( {sortList: [[0,0]]} );
     };
@@ -105,6 +116,7 @@ javascript:
     this.removeCard = function(id){
       id = parseInt(id)
       cardCount = cardArray[id]
+      console.log(cardCount);
       if (cardCount == 2 ){
         cardArray[id] = 1
         totalCardCount = totalCardCount - 1;
@@ -138,19 +150,19 @@ javascript:
       }
     };
 
-    this._addCardToTable = function(i){
-      if (cardArray[i] == 1){
-        $("#deck-list").append("<tr id="+i+"><td>"+cardName[i]+"</td><td class='card-count'>"+cardArray[i]+"</tr>");
-      } else if (cardArray[i] == 2){
-        $("#deck-list tr#"+i+" .card-count").text("2");
+    this._addCardToTable = function(card){
+      if (cardArray[card.id] == 1){
+        $("#deck-list").append("<tr id="+card.id+"><td class='card-mana'>"+card.mana+"</td><td>"+card.name+"</td><td class='card-count'>"+cardArray[card.id]+"</td><td><div class='quick-add'>+</div><div class='quick-remove'>-</div></td></tr>");
+      } else if (cardArray[card.id] == 2){
+        $("#deck-list tr#"+card.id+" .card-count").text("2");
       }
     };
 
-    this._removeCardToTable = function(i){
-      if (cardArray[i] == 1){
-        $("#deck-list tr#"+i+" .card-count").text("1");
-      } else if (cardArray[i] == undefined){
-        $("#deck-list tr#"+i).fadeOut();
+    this._removeCardToTable = function(id){
+      if (cardArray[id] == 1){
+        $("#deck-list tr#"+id+" .card-count").text("1");
+      } else if (cardArray[id] == undefined){
+        $("#deck-list tr#"+id).fadeOut();
       }
       cardCount = cardCount - 1;
     };
@@ -168,13 +180,30 @@ javascript:
   }
 
   $(".add").click(function(){
-    id = $(this).parent().parent().attr('id');
+    id = parseInt($(this).parent().parent().attr('id'));
     name = $(this).parent().parent().data('name')
+    mana = $(this).parent().parent().data('mana')
     leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
-    DeckBuilder.addCard(id, name, leg);
+    var card = { id: id, name: name, mana: mana, leg: leg };
+    DeckBuilder.addCard(card);
   });
 
   $(".remove").click(function(){
+    id = $(this).parent().parent().attr('id');
+    DeckBuilder.removeCard(id);
+  });
+
+  $("#deck-list tbody").on( "click",".quick-add", function(){
+    id = $(this).parent().parent().attr('id');
+    name = $(this).parent().parent().data('name')
+    mana = $(this).parent().parent().data('mana')
+    leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
+    var card = { id: id, name: name, mana: mana, leg: leg };
+    DeckBuilder.addCard(card);
+    console.log("asd");
+  });
+
+  $("#deck-list tbody").on( "click",".quick-remove", function(){
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
   });
@@ -184,9 +213,35 @@ javascript:
   });
 
   var monkeyList = new List('deckbuilder-list', {
-    valueNames: ['name'],
+    valueNames: ['name','mana', 'klass'],
     page: 6,
     plugins: [
       ListPagination({})
     ]
+  });
+  $('.class-cards').click(function(){
+    monkeyList.filter();
+    monkeyList.search();
+    monkeyList.search("#{params[:klass]}", ["klass"]);
+    $(".filter").removeClass("active");
+    $(this).addClass("active");
+  });
+  $('.mana-filter').click(function(){
+    monkeyList.filter();
+    monkeyList.search();
+    mana = $(this).data('mana');
+    if (mana == 10){
+      monkeyList.filter(function(item) {
+       if (item.values().mana > 9) {
+           return true;
+       } else {
+           return false;
+       }
+      });
+    }else{
+      monkeyList.search(mana, ["mana"]);
+    }
+    
+    $(".filter").removeClass("active");
+    $(this).addClass("active");
   });
