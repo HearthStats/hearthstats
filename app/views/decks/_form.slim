@@ -84,8 +84,25 @@ javascript:
   var DeckBuilder = new function(){
     var cardArray = [];
     var totalCardCount = 0;
+    var deck = gon.deck;
     var allCards = gon.cards;
 
+    this.drawCards = function(){
+      if ( deck.cardstring.length === 0 ) return;
+      deckCards = deck.cardstring.split(",");
+      deckCards.forEach(function(card){
+        id = parseInt(card.split("_")[0]);
+        quantity = parseInt(card.split("_")[1]);
+        cardArray[id] = quantity;
+        var card = { id: id, name: allCards[id-1].name, mana: allCards[id-1].mana };
+        DeckBuilder._drawCardToTable(card)
+        totalCardCount = totalCardCount + quantity;
+      });
+
+      DeckBuilder.createCardString();
+      $('#deck_klass_id').val(deck.klass_id);
+
+    }
     this.addCard = function(card){
       console.log(card);
       if (totalCardCount >= 30){
@@ -167,6 +184,14 @@ javascript:
       cardCount = cardCount - 1;
     };
 
+    this._drawCardToTable = function(card){
+      if (cardArray[card.id] == 1){
+        $("#deck-list").append("<tr id="+card.id+"><td>"+card.mana+"</td><td>"+card.name+"</td><td class='card-count'>"+cardArray[card.id]+"</td><td><div class='quick-add'>+</div><div class='quick-remove'>-</div></td></tr>");
+      } else if (cardArray[card.id] == 2){
+        $("#deck-list").append("<tr id="+card.id+"><td>"+card.mana+"</td><td>"+card.name+"</td><td class='card-count'>2</td><td><div class='quick-add'>+</div><div class='quick-remove'>-</div></td></tr>");
+      }
+    };
+
     this.createCardString = function(){
       var _cardString = [];
       for (i = 0; i < cardArray.length; ++i) {
@@ -238,6 +263,14 @@ javascript:
            return false;
        }
       });
+    }else if(mana == 0) {
+      monkeyList.filter(function(item) {
+       if (item.values().mana == 0) {
+           return true;
+       } else {
+           return false;
+       }
+      });
     }else{
       monkeyList.search(mana, ["mana"]);
     }
@@ -245,3 +278,8 @@ javascript:
     $(".filter").removeClass("active");
     $(this).addClass("active");
   });
+
+- if params[:action] == "edit"
+  javascript:
+    DeckBuilder.drawCards();
+  
