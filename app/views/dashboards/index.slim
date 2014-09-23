@@ -41,25 +41,9 @@ div.row
   div.col-md-6.col-sm-6
     div.portlet.box.blue
       div.portlet-title
-        div.caption= t '.hearthstats_news'
+        div.caption= t '.hearthstats_tweets'
       div.portlet-body
-        div class="scroller" style="height: 329px;" data-always-visible="1" data-rail-visible="0"
-          ul.feeds
-            - @announcements.each do |ann|
-              li
-                div.col1
-                  div.cont
-                    div.cont-col1
-                      div.label.label-sm.label-success
-                        i.fa.fa-bullhorn
-                    div.cont-col2
-                      div.desc
-                        = raw ann.description
-                div.col2
-                  - if current_user.guest?
-                    div.date = ann.created_at
-                  - else
-                    div.date = ann.created_at.in_time_zone(current_user.profile.time_zone).strftime("%b %d, %Y %H:%M")
+        =render 'shared/tweets'
 div class="clearfix"
 
 javascript:
