@@ -53,6 +53,7 @@
               span.class-cards.btn.btn-sm.blue.filter =t("decks.form.class-cards-only")
             .col-md-9
               label.filter-label =t("decks.form.mana-filters")
+              span.all-mana-filter.btn.btn-sm.blue.filter All
               -(0..9).each do |mana|
                 span.mana-filter.btn.btn-sm.blue.filter data-mana="#{mana}" = mana
               span.mana-filter.btn.btn-sm.blue.filter data-mana="10" >10
@@ -243,6 +244,11 @@ javascript:
     plugins: [
       ListPagination({})
     ]
+  });
+  $('.all-mana-filter').click(function(){
+    monkeyList.filter();
+    monkeyList.search();
+    $(".filter").removeClass("active");
   });
   $('.class-cards').click(function(){
     monkeyList.filter();
