@@ -50,6 +50,7 @@ gem 'paperclip'
 # frontend
 gem 'slim-rails'
 gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 gem 'taps'
 gem 'nokogiri'
 gem 'social-share-button'
