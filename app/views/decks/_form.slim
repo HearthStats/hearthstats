@@ -17,6 +17,10 @@
       .form-body
         h3 Deck Details
         .form-group
+          = f.label t('decks.form.class')
+          |: &nbsp;
+          = @deck.klass.try(:name)
+        .form-group
           = f.label t('decks.form.name')
           = f.text_field :name, class: 'form-control'
           = f.hidden_field :klass_id, value: "#{params[:klass]}"
@@ -24,6 +28,7 @@
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20
         .form-group
+          = f.label t('decks.form.tags')
           input name="tags" id="tags" width="100%"
           .div
             small Tags separated by commas
@@ -34,6 +39,14 @@
             = t("decks.form.this_deck_public")
         .form-group
           = f.submit class: 'btn btn-block green'
+        - if params[:action] == 'edit'
+          .form-group
+            = link_to 'Create New Deck Version', version_deck_path(@deck),class: 'btn btn-block yellow', method: :post
+          .form-group
+            label = t("decks.form.other_versions")
+            div
+              - @deck.deck_versions.each do |version|
+                  = link_to "v#{version.version}", deck_path(@deck, version: version.version), class: "btn blue btn-sm btn-version"
     .col-sm-12.col-md-7.col-lg-6
       .form-body
         h3 Deck Builder
@@ -53,11 +66,12 @@
               span.class-cards.btn.btn-sm.blue.filter =t("decks.form.class-cards-only")
             .col-md-9
               label.filter-label =t("decks.form.mana-filters")
+              span.all-mana-filter.btn.btn-sm.blue.filter All
               -(0..9).each do |mana|
                 span.mana-filter.btn.btn-sm.blue.filter data-mana="#{mana}" = mana
               span.mana-filter.btn.btn-sm.blue.filter data-mana="10" >10
           ul.list.card-list
-            - Card.where(collectible: true, klass_id: [params[:klass],nil]).order(:mana).each do |card|
+            - Card.where(collectible: true, klass_id: [@deck.klass_id,nil]).order(:mana).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}" data-mana="#{card.mana}"
                 = image_tag "cards/#{card.name.parameterize}.png", class: "deckbuilder-img"
                 p.name.hidden = card.name
@@ -244,10 +258,15 @@ javascript:
       ListPagination({})
     ]
   });
+  $('.all-mana-filter').click(function(){
+    monkeyList.filter();
+    monkeyList.search();
+    $(".filter").removeClass("active");
+  });
   $('.class-cards').click(function(){
     monkeyList.filter();
     monkeyList.search();
-    monkeyList.search("#{params[:klass]}", ["klass"]);
+    monkeyList.search("#{@deck.klass_id}", ["klass"]);
     $(".filter").removeClass("active");
     $(this).addClass("active");
   });

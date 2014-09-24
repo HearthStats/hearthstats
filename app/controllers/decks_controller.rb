@@ -140,6 +140,7 @@ class DecksController < ApplicationController
     end
     gon.cards = Card.where(klass_id: [nil, params[:klass]])
     @deck = Deck.new
+    @deck.klass_id = params[:klass]
     @deck.is_public = true
     respond_to do |format|
       format.html # new.html.erb
