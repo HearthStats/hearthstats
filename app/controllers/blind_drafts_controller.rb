@@ -78,7 +78,7 @@ class BlindDraftsController < ApplicationController
     player2_deck = @blind_draft.player2_cards.map { |b_card| [b_card.card,1] }
     @player2_deck = player2_deck.sort_by { |card| card[0].mana }
     current_player_cards = @blind_draft.find_player_cards(current_user.id)
-    @cardstring = current_player_cards.map {|b_card| b_card.card.id}.join(",")
+    @cardstring = current_player_cards.map {|b_card| b_card.card.id.to_s + "_1"}.join(",")
   end
 
   def create_deck
@@ -88,7 +88,7 @@ class BlindDraftsController < ApplicationController
                     klass_id:   klass_id,
                     cardstring: params[:cardstring],
                     user_id:    current_user.id)
-    if deck.save!
+    if deck.save
       redirect_to deck_path(deck), notice: "Deck created"
     else
       redirect_to blind_draft_path(blind_draft), alert: "Deck could not be created"
