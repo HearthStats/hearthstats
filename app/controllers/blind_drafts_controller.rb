@@ -84,10 +84,10 @@ class BlindDraftsController < ApplicationController
   def create_deck
     blind_draft = BlindDraft.find(params[:id])
     klass_id = Klass::LIST.invert[params[:klass]]
-    deck = Deck.new(name:  "Blind Draft ##{blind_draft.id}",
-             klass_id:     klass_id,
-             cardstring:   params[:cardstring],
-             user_id:      current_user.id)
+    deck = Deck.new(name:       "Blind Draft ##{blind_draft.id}",
+                    klass_id:   klass_id,
+                    cardstring: params[:cardstring],
+                    user_id:    current_user.id)
     if deck.save
       redirect_to blind_draft_path(blind_draft), notice: "Deck created"
     else
