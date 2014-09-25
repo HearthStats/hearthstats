@@ -325,7 +325,7 @@ ActiveRecord::Schema.define(:version => 20140923194532) do
   add_index "matches", ["mode_id"], :name => "index_matches_on_mode_id"
   add_index "matches", ["oppclass_id"], :name => "index_matches_on_oppclass_id"
   add_index "matches", ["result_id"], :name => "index_matches_on_result_id"
-  add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
+  add_index "matches", ["user_id", "mode_id", "klass_id", "oppclass_id", "coin", "created_at"], :name => "index_for_search"
 
   create_table "modes", :force => true do |t|
     t.string "name"

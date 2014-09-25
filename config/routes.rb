@@ -18,7 +18,7 @@ Hearthstats::Application.routes.draw do
   # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
     collection do
-      get 'signup'
+      post 'signup'
       get 'past'
       post 'regtourny'
       post 'createtourny'
@@ -28,10 +28,11 @@ Hearthstats::Application.routes.draw do
 
   resources :blind_drafts do
     member do
-      put 'reveal_card'
-      put 'pick_card'
-      get 'draft'
-      post 'end_draft'
+      put "reveal_card"
+      put "pick_card"
+      put "new_card"
+      get "draft"
+      post "end_draft"
     end
   end
 

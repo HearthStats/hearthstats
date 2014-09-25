@@ -1,3 +1,5 @@
+head
+  link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css"
 script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"
 - set_meta_tags :title => t('.title'),
   :description => 'The HearthStats League',
@@ -15,92 +17,276 @@ script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.j
       p Watch it LIVE: September 15th - 20th on <a href="http://twitch.tv/Hearthstats">Twitch.tv</a> - <b>5 PM PST</b>
   .col-md-6
     img src="http://i.imgur.com/YeUf1Oz.jpg" width="100%"
+/ - unless TournUser.where(tournament_id: 1).count > 20 && TournUser.where(tournament_id: 2).count > 20 && current_user.nil?
+.row
+  .col-md-12
+    h2 class='league_center'
+      |Registrations Full!
+      / - if current_user.nil?
+      /   p class="league_shout"
+      /     |You need a Hearthstats account to sign up for the league.
+      / - elsif !TournUser.where(tournament_id: 1, user_id: current_user.id).empty? or !TournUser.where(tournament_id: 2, user_id: current_user.id).empty?
+      /   p class="league_shout"
+      /     |You've already signed up for the league.
+      / - else
+      /   = form_tag('/tournies/signup', class: 'tourny-signup')
+      /     = select_tag("region", options_for_select([["North America"], ["Europe"]]))
+      /     = submit_tag "Join Tournament", class: "join-tourny btn btn-lg blue"
+.row
+  .col-md-12
+    .center Players are ranked in order. Hightlighted players advance.
+  .col-md-3
+    h3 Group A
+    table class="bracket_tables pure-table pure-table-horizontal"
+      tr class="header_dark"
+        th class="bracket_col"
+          |Player
+        th class="bracket_col"
+          |Wins
+        th class="bracket_col"
+          |Losses
+      tr class="bracket_content"
+        td Amaz
+        td 0
+        td 0
+      tr class="bracket_content"
+        td Massan
+        td 0
+        td 0
+      tr class="bracket_content"
+        td Thijs
+        td 0
+        td 0
+      tr class="bracket_content"
+        td Firebat
+        td 0
+        td 0
+  .col-md-3
+    h3 Group B
+    table class="bracket_tables pure-table pure-table-horizontal"
+      tr class="header_dark"
+        th class="bracket_col"
+          |Player
+        th class="bracket_col"
+          |Wins
+        th class="bracket_col"
+          |Losses
+      tr class="bracket_content advanced"
+        td Savjz
+        td 4
+        td 4
+      tr class="bracket_content advanced"
+        td Kisstafer
+        td 5
+        td 4
+      tr class="bracket_content"
+        td RDU
+        td 5
+        td 5
+    .center 
+      small A full tie breaker was played
+
+  .col-md-3
+    h3 Group C
+    table class="bracket_tables pure-table pure-table-horizontal"
+      tr class="header_dark"
+        th class="bracket_players"
+          |Player
+        th class="bracket_col"
+          |Wins
+        th class="bracket_col"
+          |Losses
+      tr class="bracket_content advanced"
+        td Gaara
+        td 5
+        td 3
+      tr class="bracket_content advanced"
+        td Ek0p
+        td 5
+        td 4
+      tr class="bracket_content"
+        td Dart
+        td 3
+        td 5
+      tr class="bracket_content"
+        td Alchemixt
+        td 3
+        td 5
+  .col-md-3
+    h3 Group D
+    table class="bracket_tables pure-table pure-table-horizontal"
+      tr class="header_dark"
+        th class="bracket_col"
+          |Player
+        th class="bracket_col"
+          |Wins
+        th class="bracket_col"
+          |Losses
+      tr class="bracket_content advanced"
+        td Gnimsh
+        td 5
+        td 3
+      tr class="bracket_content advanced"
+        td Reynad
+        td 5
+        td 3
+      tr class="bracket_content"
+        td Strifecro
+        td 4
+        td 5
+      tr class="bracket_content"
+        td Kitkatz
+        td 2
+        td 5
 .headline
-  h3 Meet the Players
+  h2 class="league_center"
+    |Meet the Players
 .row.thumbnails
   .col-md-3
     .meet-our-team
       h3 Reynad
       .team-info
         p Achievements
+        ul
+          li 2x NESL King of the Hill Champion
+          li DreamHack Summer 2014 3rd place
+          li Lord of the Arena 1st place
   .col-md-3
     .meet-our-team
       h3 Kisstafer
       .team-info
         p Achievements
+        ul
+          li #3 ESL current Rankings
+          li Finished 1st place twice in 2p.com open
+          li Finished 1st place twice NESL Hearthstone cup
   .col-md-3
     .meet-our-team
       h3 KitKatz
       .team-info
         p Achievements
+        ul
+          li Chat Lethal Invitational 1st place
+          li NESL King of the Hill 2nd place
+          li Tavern Takeover 2 3rd  place
   .col-md-3
     .meet-our-team
       h3 Rdu
       .team-info
         p Achievements
+        ul
+          li DreamHack Viagame Hearthstone Championship 2014 1st place
+          li HyperX Invitational 1st place
+          li Eastern European Comic Con Hearthstone BenQ Championship 1st place
 .row.thumbnails
   .col-md-3
     .meet-our-team
       h3 Kolento
       .team-info
         p Achievements
+        ul
+          li Numericable M-House Cup 2nd place
+          li ZOTAC Cup #15 1st place
+
   .col-md-3
     .meet-our-team
       h3 Alchemixt
       .team-info
         p Achievements
+        ul
+          li 4x IHearthU King of the Hill Winner
+          li DKMR Invitational 1st Place
+          li WEC Qualifier
   .col-md-3
     .meet-our-team
       h3 Brad
       .team-info
         p Achievements
+        ul
+          li Legend every season
+          li NESL Community Cup Winner
+          li ZOTAC NA
   .col-md-3
     .meet-our-team
       h3 Dart
       .team-info
         p Achievements
+        ul
+          li Hearth Wars Winner
+          li NESL King of the Hill Winner
 .row.thumbnails
   .col-md-3
     .meet-our-team
-      h3 Massan
+      h3 MaSsan
       .team-info
         p Achievements
+        ul
+          li Top 8 IEM Shenzhen
+
   .col-md-3
     .meet-our-team
       h3 ThijsNL
       .team-info
         p Achievements
+        ul
+          li 9x IHearthU King of the Hill Champion
+          li 5x ZOTAC Winner
+          li Top 8 DreamHack Summer 2014
   .col-md-3
     .meet-our-team
       h3 Savjz
       .team-info
         p Achievements
+        ul
+          li OGN Invitational 1st place
+          li Winner of EU vs CH qualifier
+          li Winner of Assembly Summer
   .col-md-3
     .meet-our-team
       h3 StrifeCro
       .team-info
         p Achievements
+        ul
+          li SeatStory Cup 1st place
+          li Tavern Takeover 2 1st place
 .row.thumbnails
   .col-md-3
     .meet-our-team
       h3 Amaz
       .team-info
         p Achievements
+        ul
+          li Numericable M-House Cup 1st place
+          li VGVN Liquid Open 1st place
+          li IEM Seazon IX Shenzhen 1st place
   .col-md-3
     .meet-our-team
       h3 Ek0p
       .team-info
         p Achievements
+        ul
+          li TakeTV Hearthstone Invitational 1st place
+          li DreamHack Valencia 2014 2nd place
+          li Top 8 DreamHack Summer 2014
+
   .col-md-3
     .meet-our-team
       h3 Gaara
       .team-info
         p Achievements
+        ul
+          li DreamHack Bucharest 2014 1st place
+          li ZOTAC Cup Winner
+          li Prismatic Cup Winner
   .col-md-3
     .meet-our-team
       h3 Gnimsh
       .team-info
         p Achievements
+        ul
+          li IEM Season VIII – Katowice 1st place
+          li SeatStory Cup 2nd place
+          li TakeTV Hearthstone Invitational 2nd place
 
 /       .col-md-6
 /         h4 The Casters

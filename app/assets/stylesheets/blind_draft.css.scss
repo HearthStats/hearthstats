@@ -6,6 +6,7 @@
   width: 150px;
 }
 .user-select{
+  padding-bottom: 10px;
 }
 .facedown-card{
   display: inline-block;
@@ -43,7 +44,7 @@
 .user-select{
   a {
     display: inline-block;
-    width: 50%;
+    width: 100%;
     text-align: center;
     color: white;
   }
@@ -54,6 +55,13 @@
 .player2-select{
   background: #3498db;
 }
+.blind_draft-new_card{
+  position: absolute;
+  top: 15px;
+  right: 13px;
+  font-size: 20px;
+}
+
 span.red{
   color: #e74c3c;
 }

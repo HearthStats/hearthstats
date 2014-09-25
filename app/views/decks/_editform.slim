@@ -1,8 +1,6 @@
 - content_for :actions do
   div class="btn blue btn-sm deck-text-trigger" = t('.toggle_text_import')
 
-small You may have to refresh the page if nothing works.
-
 = form_for(@deck) do |f|
   = f.hidden_field :cardstring, value: @deck.cardstring
   - if @deck.errors.any?
@@ -228,14 +226,13 @@ javascript:
     id = $(this).parent().parent().attr('id');
     name = $(this).parent().parent().data('name')
     leg = $(this).parent().parent().data('rarity') == '5' ? true : false;
+    console.log(name);
     DeckBuilder.addCard(id, name, leg);
-    console.log("ad");
   });
 
   $(".quick-remove").click(function(){
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
-    console.log("ad");
   });
 
   $('#tags').tagsInput({

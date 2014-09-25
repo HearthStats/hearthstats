@@ -48,7 +48,6 @@ pickle-email-*.html
 *.pydevproject
 .project
 .metadata
-bin/**
 tmp/**
 tmp/**/*
 *.tmp

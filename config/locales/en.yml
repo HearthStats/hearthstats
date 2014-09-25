@@ -166,7 +166,7 @@ en:
       arena_win_rates: Arena Win Rates
       games_recorded: Games Recorded
       constructed_win_rates: Constructed Win Rate
-      hearthstats_news: HearthStats News
+      hearthstats_tweets: HearthStats Tweets
       read_more: Read More
       view_more: View More
       news:
@@ -220,8 +220,8 @@ en:
       subtitle: " drafted cards"
     new:
       player1-id: Player 1 ID
-      opponent_identity: Opponenet HearthStats ID or Email
-      card-cap: Number of Neutral Cards
+      opponent_identity: "Opponent HearthStats ID or Email. (Your ID: %{user_id})"
+      card-cap: "Number of Neutral Cards (Recommended: 54)"
       public_match: Make Public?
       public_desc: This allows anyone to join your draft and you will recieve a notice when someone joins
   arenas:
@@ -385,12 +385,16 @@ en:
       deck_name: Name
     form:
       name: Name
+      mana: Mana
       class: Class
       notes: Notes
       tags: Tags
       decklist_etc: ! ' Decklist, etc'
       this_deck_public: Make Deck Public
       search: Search
+      filters: Filters
+      class-cards-only: Class Cards Only
+      mana-filters: Mana Filters
       count: Count
       controls: Controls
       card_limit: Max Card Limit
@@ -446,6 +450,8 @@ en:
       continue: Continue
       get_auto_uploader: Get the Auto Uploader
   additional:
+    league:
+      title: HearthStats League
     news:
       title: Hearthstone News
       subtitle: ! ' the latest in Hearthstone news'
@@ -518,7 +524,7 @@ en:
       fadein_text_3: My butt is getting sore... Look at the pain I endure to make this site for you guys!
     help:
       title: Help
-      help_text: Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems.
+      help_text: "Please visit <a href='http://hearthstats.uservoice.com/'>http://hearthstats.uservoice.com/</a> for any suggestions or problems."
     contest_video:
       title: Video Contest
   streams:
@@ -582,6 +588,10 @@ en:
       my_active_deck: My Active Deck
       new_deck: New Deck
       other_versions: View Other Versions
+    blind_draft:
+      title: Blind Draft
+      all_drafts: All Blind Drafts
+      new: New Blind Draft
     news: News
     streams: Streams
     tournaments:

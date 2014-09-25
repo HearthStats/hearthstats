@@ -193,6 +193,14 @@ class Match < ActiveRecord::Base
     Mode.all_modes.find{|m| m.id == mode_id}
   end
 
+  def loss?
+    result_id == 0
+  end
+
+  def win?
+    result_id == 1
+  end
+
   def set_season_patch
     self.season_id ||= Season.last.try(:id)
     self.patch_id  ||= Patch.last.try(:id)

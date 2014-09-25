@@ -1,30 +1,27 @@
 class ConstructedsController < ApplicationController
+  include SearchHelper
+
   before_filter :authenticate_user!, except: :win_rates
 
   def index
-    params[:q]     ||= {}
-    params[:items] ||= 20
-    params[:days]  ||= 30
-    params[:page]  ||= 1
-    params[:sort]  ||= 'created_at'
-    params[:order] ||= 'desc'
+    params.reverse_merge!(default_options)
+    search_params = default_params.merge(params[:q].reject{|k,v| v.blank?})
 
-    @q = current_user.matches
-      .preload(:match_rank => :rank)
-      .preload(:match_deck => :deck)
-      .where(mode_id: [2,3]).ransack(params[:q])
+    @q = current_user.matches.ransack(params[:q]) # form needs ransack raw data
+    @matches = current_user.matches
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
+      .preload(:match_rank => :rank, :match_deck => :deck)
+      .ransack(search_params).result
+      .limit(params[:items])
+      .order("#{params[:sort]} #{params[:order]}")
+      .paginate(page: params[:page], per_page: params[:items])
 
-    @matches = @q.result.limit(params[:items])
-    unless params[:days] == "all"
-      @matches = @matches.where('matches.created_at >= ?', params[:days].to_i.days.ago)
-    end
-    @matches = @matches.order("#{params[:sort]} #{params[:order]}").all # triggers the query!
-    @matches = @matches.paginate(page: params[:page], per_page: params[:items])
+    @winrate = calculate_winrate(@matches)
 
-    @winrate = @matches.size > 0 ? (@matches.select{|m| m.result_id == 1}.count.to_f / @matches.size) * 100 : 0
-
-    @last_deck = current_user.matches.where(mode_id: [2,3]).preload(:match_deck => :deck).last.try(:match_deck).try(:deck)
     @my_decks = get_my_decks
+    @last_deck = current_user.matches
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
+      .preload(:match_deck => :deck).last.try(:deck)
 
     respond_to do |format|
       format.html
@@ -238,12 +235,9 @@ class ConstructedsController < ApplicationController
   end
 
   def get_my_decks
-    @get_my_decks ||= begin
-      Deck.where(user_id: current_user.id)
-        .all
-        .compact
-        .sort_by{|d| "#{d.klass.try(:name)} #{d.name}"}
-    end
+    Deck.where(user_id: current_user.id)
+      .all
+      .compact
+      .sort_by{|d| "#{d.klass.try(:name)} #{d.name}"}
   end
-
 end
