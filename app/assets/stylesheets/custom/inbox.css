@@ -3,3 +3,42 @@
   font-style: italic;
   color: #bdc3c7;
 }
+.dropdown-menu{
+  width: 500px !important;
+  font-family: 'Open Sans', sans-serif !important;
+  border: none !important;
+}
+
+.dropdown-menu-list a{
+  display: inline !important;
+}
+.note-new-message{
+  padding: 10px 15px 10px 15px;
+  border-bottom: #F2EEEF solid 1px;
+  background-color: #F47422;
+  color: white;
+}
+.note-cont{
+  padding: 20px 15px 20px 15px;
+  border-bottom: #F2EEEF solid 1px;
+}
+.note-mark_as_read{
+  color: #2ecc71;
+  padding-right: 15px;
+}
+.note-mark_as_read:hover{
+  text-decoration: none;
+  color: #3498db;
+}
+.note-body{
+  float: left;
+}
+.note-link{
+  float: right;
+}
+.note-goto{
+  color: #F47422;
+}
+.note-goto:hover{
+  color: #3498db;
+}

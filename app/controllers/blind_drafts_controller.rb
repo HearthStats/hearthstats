@@ -23,6 +23,9 @@ class BlindDraftsController < ApplicationController
     respond_to do |format|
       if @blind_draft.player2_id || (@blind_draft.player2_id.nil? && @blind_draft.public == true)
         @blind_draft.save
+        @blind_draft.player2.notify("Blind Draft Challenge",
+        "You have been invited to a Blind Draft by #{@blind_draft.player2.name}",
+        @blind_draft)
         format.html { redirect_to draft_blind_draft_path(@blind_draft), 
                       notice: "Blind Draft Successfully created." }
       else
@@ -67,10 +70,29 @@ class BlindDraftsController < ApplicationController
 
   def show
     @blind_draft = BlindDraft.find(params[:id])
+    unless @blind_draft.complete
+      redirect_to draft_blind_draft_path(@blind_draft) and return
+    end
     player1_deck = @blind_draft.player1_cards.map { |b_card| [b_card.card,1] }
     @player1_deck = player1_deck.sort_by { |card| card[0].mana }
     player2_deck = @blind_draft.player2_cards.map { |b_card| [b_card.card,1] }
     @player2_deck = player2_deck.sort_by { |card| card[0].mana }
+    current_player_cards = @blind_draft.find_player_cards(current_user.id)
+    @cardstring = current_player_cards.map(&:id).join(",")
+  end
+
+  def create_deck
+    blind_draft = BlindDraft.find(params[:id])
+    klass_id = Klass::LIST.invert[params[:klass]]
+    deck = Deck.new(name:  "Blind Draft ##{blind_draft.id}",
+             klass_id:     klass_id,
+             cardstring:   params[:cardstring],
+             user_id:      current_user.id)
+    if deck.save
+      redirect_to blind_draft_path(blind_draft), notice: "Deck created"
+    else
+      redirect_to blind_draft_path(blind_draft), alert: "Deck could not be created"
+    end
   end
 
   def reveal_card

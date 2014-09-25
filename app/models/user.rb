@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    profile.name
+    profile.name.nil? ? email : profile.name
   end
 
   def mailboxer_email(object)

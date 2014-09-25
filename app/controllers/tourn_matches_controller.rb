@@ -35,23 +35,27 @@ class TournMatchesController < ApplicationController
     @tournament = Tournament.find(params[:t_id])
     respond_to do |format|
       if t_match.save
-        format.html { redirect_to(@tournament, notice: 'Match submitted') }
         opp_t_matches = TournMatch.where(tourn_pair_id: t_pair_id).where("tourn_user_id != ?", t_user_id)
-        opp_cur_match = opp_t_matches.where(round: round)
-        if opp_cur_match.count > 0
-          resolve_match(t_match, opp_t_match, params[:t_id])
-        end
+        opp_cur_match = opp_t_matches.where(round: round).first
+        if !opp_cur_match.nil?
+          conflict = resolve_match(t_match, opp_cur_match, params[:t_id])
 
-        matches_to_win = (@tournament.best_of / 2).ceil
-        if opp_t_matches.count > t_matches.count
-          matches_eval_list = opp_t_matches
-        end
-
-        if t_matches.count >= matches_to_win
-          winner_id = determine_winner(matches_eval_list, matches_to_win, opp_cur_match.tourn_user_id)
-          if winner_id != 0
-            TournPair.update(t_pair_id, winner_id: winner_id)
+          matches_to_win = (@tournament.best_of.to_i / 2.0).ceil
+          if opp_t_matches.count > t_matches.count
+            matches_eval_list = opp_t_matches
           end
+
+          if t_matches.count >= matches_to_win
+            winner_id = determine_winner(matches_eval_list, matches_to_win, opp_cur_match.tourn_user_id)
+            if winner_id != 0
+              TournPair.update(t_pair_id, winner_id: winner_id)
+            end
+          end
+        end
+        if conflict
+          format.html { redirect_to(@tournament, notice: "Your report conflicts with your opponent's, tournament admin has been notified") }
+        else
+          format.html { redirect_to(@tournament, notice: 'Match submitted') }
         end
       else
         format.html { render action: "new" }
@@ -63,26 +67,27 @@ class TournMatchesController < ApplicationController
     id_sum = t_match.result_id.to_i + opp_t_match.result_id.to_i
     # sum of 3 means a win and a loss was picked
     # a sum of 6 means both players picked draw
-    if id_sum != 3 and id_sum != 6
-      flash[:notice] = "Your report conflicts with your opponent's, tournament admin has been notified"
+    if id_sum != 1 and id_sum != 4
       tourny = Tournament.find(t_id)
       admins = User.with_role(:tourn_admin, tourny)
       user = TournUser.find(t_match.tourn_user_id).user
-      opp = TournUser.find(opp_name.tourn_user_id).user
+      opp = TournUser.find(opp_t_match.tourn_user_id).user
       admins.each do |admin|
         admin.notify( "Conflict notice",
-                      "Conflict on the match " + t_match.round + " report " +
+                      "Conflict on the match " + t_match.round.to_s + " report " +
                       "between " + user.profile.name + "(" + user.email + ")" +
                       " and " + opp.profile.name + "(" + opp.email + ")" )
       end
+      return true
     end
+    return false
   end
 
   def determine_winner(match_list, matches_to_win, other_user_id)
+    cur_user_wins = 0
+    other_user_wins = 0
     match_list.each do |match|
-      cur_user_wins = 0
-      other_user_wins = 0
-      if match.result_id == 0
+      if match.result_id.to_i == 0
         cur_user_wins += 1
         if cur_user_wins == matches_to_win
           return match.tourn_user_id

@@ -120,7 +120,7 @@ class TournamentsController < ApplicationController
         TournDeck.create(deck_id: deck_id,
                          tournament_id: params[:id],
                          tourn_user_id: tourn_user.id)
-        Deck.update(deck_id, is_tour_deck: true)
+        Deck.update(deck_id, is_tourn_deck: true)
       end
     end
 

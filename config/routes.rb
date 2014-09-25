@@ -33,6 +33,7 @@ Hearthstats::Application.routes.draw do
       put "new_card"
       get "draft"
       post "end_draft"
+      post "create_deck"
     end
   end
 

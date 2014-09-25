@@ -25,6 +25,14 @@ class BlindDraft < ActiveRecord::Base
     end
   end
 
+  def player1
+    User.find(player1_id)
+  end
+
+  def player2
+    User.find(player2_id)
+  end
+
   def player1_cards
     find_player_cards(self.player1_id)
   end

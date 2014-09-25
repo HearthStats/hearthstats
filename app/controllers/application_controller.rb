@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def opinio_after_create_path(resource)
-    resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name )
+    resource.user.notify( "New Comment", "New comment on " + resource.class.name + " " + resource.name, resource )
     resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
   end
   
