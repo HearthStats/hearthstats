@@ -1,5 +1,6 @@
 class Deck < ActiveRecord::Base
-  attr_accessible :loses, :name, :wins, :notes, :cardstring, :klass_id, :is_public
+  attr_accessible :loses, :name, :wins, :notes, :cardstring, 
+                  :klass_id, :is_public, :user_id
 
   acts_as_taggable
   is_impressionable

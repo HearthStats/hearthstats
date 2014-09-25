@@ -7,8 +7,12 @@
 .row
   .col-md-12.draft-klasses-cont.show-classes
     h2 Classes Pool
+    div.klass_pool-desc Pick your class and a deck will be created
     - @blind_draft.klass_string.split(",").each do |klass|
-      span.draft-klass class="#{klass}" = klass
+      = link_to klass, 
+        create_deck_blind_draft_path(klass: klass, cardstring: @cardstring),
+        class: "#{klass} draft-klass",
+        method: :post
   .col-md-6
     h3 #{@blind_draft.player1.name}'s Cards
     .deckbuilderWrapper
