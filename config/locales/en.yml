@@ -170,8 +170,8 @@ en:
       subtitle: " drafted cards"
     new:
       player1-id: Player 1 ID
-      opponent_identity: Opponenet HearthStats ID or Email
-      card-cap: Number of Neutral Cards
+      opponent_identity: "Opponent HearthStats ID or Email. (Your ID: %{user_id})"
+      card-cap: "Number of Neutral Cards (Recommended: 54)"
       public_match: Make Public?
       public_desc: This allows anyone to join your draft and you will recieve a notice when someone joins
   arenas:
@@ -480,6 +480,10 @@ en:
       my_active_deck: My Active Deck
       new_deck: New Deck
       other_versions: View Other Versions
+    blind_draft:
+      title: Blind Draft
+      all_drafts: All Blind Drafts
+      new: New Blind Draft
     news: News
     streams: Streams
     tournaments:

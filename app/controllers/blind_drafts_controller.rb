@@ -49,6 +49,22 @@ class BlindDraftsController < ApplicationController
     end
   end
 
+  def new_card
+    blind_card           = BlindDraftCard.find(params[:blind_draft_card])
+    blind_draft          = BlindDraft.find(params[:id])
+    blind_draft_card_ids = blind_draft.cards.map(&:id)
+    left_over_cards      = Card.where(klass_id: nil, collectible: true).map(&:id) \
+      - blind_draft_card_ids
+    blind_card.card_id = left_over_cards.sample
+    respond_to do |format|
+      if blind_card.save
+        sync_update blind_card
+        format.html { redirect_to draft_blind_draft_path(blind_draft) }
+        format.js
+      end
+    end
+  end
+
   def show
     @blind_draft = BlindDraft.find(params[:id])
     player1_deck = @blind_draft.player1_cards.map { |b_card| [b_card.card,1] }
