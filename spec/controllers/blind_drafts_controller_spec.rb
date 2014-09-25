@@ -46,8 +46,8 @@ describe BlindDraftsController do
 
     it "should reduce available card count by 1" do
       post :pick_card, 
-        draft_card: blind_draft.blind_draft_cards.first.id,
-        id: blind_draft.id
+        draft_card:  blind_draft.blind_draft_cards.first.id,
+        id:          blind_draft.id
       card_count = blind_draft.blind_draft_cards.where(user_id: nil).count
       card_count.should equal (blind_draft.card_cap - 1)
     end

@@ -28,11 +28,11 @@ Hearthstats::Application.routes.draw do
 
   resources :blind_drafts do
     member do
-      put 'reveal_card'
-      put 'pick_card'
-      put 'new_card'
-      get 'draft'
-      post 'end_draft'
+      put "reveal_card"
+      put "pick_card"
+      put "new_card"
+      get "draft"
+      post "end_draft"
     end
   end
 
