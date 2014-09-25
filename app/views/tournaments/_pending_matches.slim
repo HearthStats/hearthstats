@@ -1,7 +1,9 @@
 h4 Pending Matches
 - my_lpairs.each do |pair|
-  - match_label = "vs. " << pair.p2_name
-  = link_to match_label, new_tourn_match_path(t_id: params[:id], pair_id: pair.id, pos: 0), class: "btn retirebut btn-primary"
+  - if pair.winner_id.nil?
+    - match_label = "vs. " << pair.p2_name
+    = link_to match_label, new_tourn_match_path(t_id: params[:id], pair_id: pair.id, pos: 0), class: "btn retirebut btn-primary"
 - my_rpairs.each do |pair|
-  - match_label = "vs. " << pair.p1_name
-  = link_to match_label, new_tourn_match_path(t_id: params[:id], pair_id: pair.id, pos: 1), class: "btn retirebut btn-primary"
+  - if pair.winner_id.nil?
+    - match_label = "vs. " << pair.p1_name
+    = link_to match_label, new_tourn_match_path(t_id: params[:id], pair_id: pair.id, pos: 1), class: "btn retirebut btn-primary"

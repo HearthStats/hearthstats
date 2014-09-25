@@ -9,13 +9,32 @@
   .form_body
     .form-group
       = f.label t('tourn_matches.form.deck')
-      = f.select :deck, options_for_select(@decks), class: 'form-control'
+      = select_tag("deckname", options_for_select(@deck_names), class: 'form-control')
+      - @decks.each do |deck|
+        = hidden_field_tag deck.deck.name, deck.id
     .form-group
-      = f.check_box :result, class: 'btn-lg form-control'
+      p id='result' class="btn green"
+        |Win
+      = hidden_field_tag 'result_id', 0
     .form-group
-      = f.label t('tourn_matches.form.result')
-      = f.hidden_field :result_id, class: 'form-control'
-    .form-group
-      = f.check_box :coin, class: 'btn-lg form-control'
+      input name="coin" rel="toggle-btn" type="checkbox" on="#{t('.no_coin')}" off="#{t('.coin')}"
     .form-group
       = f.submit class: 'btn btn-block green'
+    = hidden_field_tag 't_id', @t_id
+    = hidden_field_tag 't_pair_id', @t_pair_id
+    = hidden_field_tag 't_user_id', @t_user_id
+
+javascript:
+  var result_list = {};
+  result_list[0] = 'Win';
+  result_list[1] = 'Loss';
+  result_list[2] = 'Draw';
+
+  $(document).ready(function(){
+    $("#result").click(function(){
+      var result_id = $("#result_id").val();
+      result_id = (result_id + 1) % 3
+      $("#result_id").val(result_id);
+      $("#result").text(result_list[result_id]);
+    });
+  });

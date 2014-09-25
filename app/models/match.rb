@@ -11,7 +11,8 @@ class Match < ActiveRecord::Base
   MODES_LIST = {
     1 => 'Arena',
     2 => 'Casual',
-    3 => 'Ranked'
+    3 => 'Ranked',
+    4 => 'Tournament'
   }
 
   ### ASSOCIATIONS:
@@ -41,6 +42,8 @@ class Match < ActiveRecord::Base
 
   belongs_to :season
   belongs_to :patch
+
+  belongs_to :tourn_match
 
   ### SCOPES:
 

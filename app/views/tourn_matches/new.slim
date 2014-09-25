@@ -5,9 +5,10 @@
 - provide(:section, t('.section'))
 
 h2
-  |vs.
-  = @name
+  |vs.&nbsp;
+  = @opp_name
 .row
   div.col-md-6
     = render 'form'
   div.col-md-6
+    = render partial: 'reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}

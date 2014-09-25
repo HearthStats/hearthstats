@@ -20,7 +20,7 @@ div.col
         |Number of decks to use: &nbsp;
         = @tournament.num_decks
       div id='toggle_tournament'
-        - if !@tournament.started?
+        - if !@tournament.started? and !current_user.nil?
           - if !@joined
             = render partial: "join", locals: {is_private: @tournament.is_private}
           - else
@@ -29,9 +29,10 @@ div.col
       p
         = raw @tournament.desc
   div.row
-    div id='pending_matches'
-      - if @tournament.started? and @total_pairs > 0
-        = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
+    - if !current_user.nil?
+      div id='pending_matches'
+        - if @tournament.started? and @total_pairs > 0
+          = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
     div id='tourn_content_panel'
       - if @tournament.started?
         - case @tournament.bracket_format

@@ -27,8 +27,11 @@ class TournamentsController < ApplicationController
   def show
     @tournament = Tournament.find(params[:id])
     @format = Tournament.format_to_s(@tournament.bracket_format)
-    user_entry = TournUser.where(user_id: current_user.id, tournament_id: params[:id])
-    @joined = !user_entry.empty?
+    @joined = false
+    if !current_user.nil?
+      user_entry = TournUser.where(user_id: current_user.id, tournament_id: params[:id])
+      @joined = !user_entry.empty?
+    end
 
     if @tournament.started?
       @pairs = TournPair.where(tournament_id: params[:id])
