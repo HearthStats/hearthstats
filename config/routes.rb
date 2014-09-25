@@ -30,6 +30,7 @@ Hearthstats::Application.routes.draw do
     member do
       put 'reveal_card'
       put 'pick_card'
+      put 'new_card'
       get 'draft'
       post 'end_draft'
     end

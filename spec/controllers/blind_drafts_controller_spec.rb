@@ -22,7 +22,7 @@ describe BlindDraftsController do
     end
   end
 
-  describe "POST reveal_card" do
+  describe "PUT reveal_card" do
     it "should redirect back to draft" do
       post :reveal_card, blind_draft_card: blind_draft.blind_draft_cards.first.id, 
         id: blind_draft.id
@@ -36,7 +36,7 @@ describe BlindDraftsController do
     end
   end
 
-  describe "POST pick_card" do
+  describe "PUT pick_card" do
     it "should redirect back to draft" do
       post :pick_card, 
         draft_card: blind_draft.blind_draft_cards.first.id,
@@ -50,6 +50,18 @@ describe BlindDraftsController do
         id: blind_draft.id
       card_count = blind_draft.blind_draft_cards.where(user_id: nil).count
       card_count.should equal (blind_draft.card_cap - 1)
+    end
+  end
+
+  describe "PUT new_card" do
+    it "should change the card_id" do
+      old_card_id = blind_draft.blind_draft_cards.first.card_id
+      put :new_card,
+        blind_draft_card: blind_draft.blind_draft_cards.first.id,
+        id: blind_draft.id
+      new_card_id = blind_draft.blind_draft_cards.first.card_id
+
+      old_card_id.should_not equal new_card_id
     end
   end
 

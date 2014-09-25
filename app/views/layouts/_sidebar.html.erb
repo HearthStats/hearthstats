@@ -84,7 +84,22 @@
         </li>
       </ul>
     </li>
-   <li class="news">
+    <li class="blind_draft">
+     <a href="javascript:;">
+      <i class="fa fa-eye-slash"></i>
+      <span class="title"><%= t('menu.blind_draft.title')  %></span>
+      <span class="arrow "></span>
+      </a>
+      <ul class="sub-menu">
+        <li class="all_drafts">
+          <%= link_to t('menu.blind_draft.all_drafts'), blind_drafts_path %>
+        </li>
+        <li class="new">
+          <%= link_to t('menu.blind_draft.new'), new_blind_draft_path%>
+        </li>
+      </ul>
+    </li>
+    <li class="news">
       <a href="/news">
       <i class="fa fa-rss"></i>
       <span class="title"><%= t('menu.news')  %></span>
