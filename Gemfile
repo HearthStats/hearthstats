@@ -103,7 +103,7 @@ gem 'daemons'
 gem 'whenever'
 
 group :test do
-  gem 'rspec-rails', '>= 2.12.2'
+  gem 'rspec-rails', '~> 2.12.2'
   gem 'email_spec', '>= 1.4.0'
   gem 'launchy', '>= 2.1.2'
   gem 'capybara', '>= 2.0.2'

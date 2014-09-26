@@ -27,9 +27,8 @@ class UniqueDeck < ActiveRecord::Base
   ### CLASS METHODS
 
   def self.update_stats(id)
-    if unique_deck == UniqueDeck.find(id)
-      unique_deck.update_stats!
-    end
+    unique_deck = UniqueDeck.find(id)
+    unique_deck.update_stats! if unique_deck
   end
 
   def self.create_from_deck(deck)

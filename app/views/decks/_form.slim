@@ -19,11 +19,12 @@
         .form-group
           = f.label t('decks.form.class')
           |: &nbsp;
-          = @deck.klass.try(:name)
+          .div
+            = f.select :klass_id, options_for_select(klasses_hash.to_a,
+              @deck.klass_id), class: 'form-control'
         .form-group
           = f.label t('decks.form.name')
           = f.text_field :name, class: 'form-control'
-          = f.hidden_field :klass_id, value: "#{params[:klass]}"
         .form-group
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 40, :cols => 20

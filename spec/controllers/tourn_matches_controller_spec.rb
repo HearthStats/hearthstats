@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TournMatchController do
+describe TournMatchesController do
 
   describe "GET new" do
     it "returns http success" do
