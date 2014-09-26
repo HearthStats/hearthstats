@@ -27,7 +27,7 @@ class UniqueDeck < ActiveRecord::Base
   ### CLASS METHODS
 
   def self.update_stats(id)
-    if unique_deck = UniqueDeck.find_by_id(id)
+    if unique_deck == UniqueDeck.find(id)
       unique_deck.update_stats!
     end
   end
@@ -65,9 +65,7 @@ class UniqueDeck < ActiveRecord::Base
   def get_mana_cost
     sum = 0
     self.cards.each do |card|
-      if card.card_set_id == 3
-        next
-      end
+      next if card.card_set_id == 3
       cost = case card.rarity_id
       when 1
         0
