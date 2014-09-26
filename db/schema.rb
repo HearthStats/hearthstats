@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140911221551) do
+ActiveRecord::Schema.define(:version => 20140925211324) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
     t.integer  "user_num_losses"
     t.float    "user_winrate"
     t.boolean  "is_public"
+    t.boolean  "is_tourn_deck"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
@@ -525,11 +526,13 @@ ActiveRecord::Schema.define(:version => 20140911221551) do
 
   create_table "tourn_matches", :force => true do |t|
     t.integer  "tourn_pair_id"
-    t.integer  "p2_tourndeck_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "p1_match"
-    t.integer  "p2_match"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "result_id"
+    t.integer  "tourn_user_id"
+    t.boolean  "coin"
+    t.integer  "round"
+    t.integer  "tourn_deck_id"
   end
 
   create_table "tourn_pairs", :force => true do |t|
