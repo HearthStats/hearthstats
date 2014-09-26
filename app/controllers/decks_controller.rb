@@ -3,7 +3,10 @@ class DecksController < ApplicationController
   caches_action :public_show, expires_in: 1.day
 
   def index
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: current_user.id)
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").
+      order(:created_at).
+      where(user_id: current_user.id).
+      reverse
 
     respond_to do |format|
       format.html # index.html.erb
