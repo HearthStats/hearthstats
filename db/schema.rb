@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140925211324) do
+ActiveRecord::Schema.define(:version => 20140911221551) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -138,6 +138,21 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
   add_index "cards", ["name"], :name => "index_cards_on_name"
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
+  create_table "chat_messages", :force => true do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "chat_messages", ["chat_id"], :name => "index_chat_messages_on_chat_id"
+  add_index "chat_messages", ["user_id"], :name => "index_chat_messages_on_user_id"
+
+  create_table "chats", :force => true do |t|
+    t.string "title"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
     t.integer  "commentable_id",   :null => false
@@ -201,7 +216,6 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.integer  "user_num_losses"
     t.float    "user_winrate"
     t.boolean  "is_public"
-    t.boolean  "is_tourn_deck"
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
@@ -247,7 +261,7 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "klasses", :force => true do |t|
@@ -511,13 +525,11 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
 
   create_table "tourn_matches", :force => true do |t|
     t.integer  "tourn_pair_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "result_id"
-    t.integer  "tourn_user_id"
-    t.boolean  "coin"
-    t.integer  "round"
-    t.integer  "tourn_deck_id"
+    t.integer  "p2_tourndeck_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "p1_match"
+    t.integer  "p2_match"
   end
 
   create_table "tourn_pairs", :force => true do |t|
@@ -546,6 +558,8 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
+    t.datetime "start_date"
+    t.integer  "creator_id"
     t.integer  "bracket_format"
     t.integer  "num_players"
     t.datetime "created_at",                        :null => false
@@ -556,7 +570,6 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.boolean  "started",        :default => false
     t.integer  "num_decks",      :default => 3
     t.string   "code"
-    t.integer  "creator_id"
     t.integer  "best_of"
   end
 
@@ -626,6 +639,8 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.string   "userkey"
     t.integer  "subscription_id"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -639,5 +654,9 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
+
+  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end
