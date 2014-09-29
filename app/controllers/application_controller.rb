@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   layout :layout
   before_filter :set_locale_from_url
 
+  def current_user_allow?(role_array)
+    return false if current_user.nil?
+    current_user.has_permission(role_array)
+  end
 
   def default_url_options(options={})
     if current_user && !current_user.guest? && !current_user.profile.nil?

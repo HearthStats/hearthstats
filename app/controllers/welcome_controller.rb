@@ -57,18 +57,27 @@ class WelcomeController < ApplicationController
   end
 
   def get_ranked_graph_data(season)
-    ranked_wr_count = get_klass_ranked_wr(season)
+    ranked_wr_count = Match.get_klass_ranked_wr(season.begin, season.end)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
   end
 
-  def generate_report
-    # if !current_user.is_admin?
-    #   redirect_to root_path, alert: "Y U NO ADMIN" and return
-    # end
-    season = 6
+  def liquid_data
+    unless current_user_allow?([:plat, :admin])
+      redirect_to root_path and return
+    end
+    klass_ranked_wr = Match.get_klass_ranked_wr(Season.last.begin, 
+                                                Season.last.end)
+    render json: klass_ranked_wr
+  end
 
-    get_ranked_graph_data(season)
+  def generate_report
+    if !current_user.is_admin?
+      redirect_to root_path, alert: "y u no admin" and return
+    end
+    season = current_season
+
+    get_ranked_graph_data(Season.last)
 
     @prev_global = [
       {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
@@ -228,38 +237,6 @@ class WelcomeController < ApplicationController
       session[:guest_user_id] = u.id
 
       u
-    end
-
-    def get_klass_ranked_wr(season)
-      ranked_stats_array = Array.new
-      ranked_count_array = Hash.new
-      Klass.all.each do |klass|
-        winrate = get_rank_wr_array_for_klass(klass, season)
-        ranked_stats_array << winrate.win_rate_array
-        ranked_count_array[klass.name] = winrate.win_counts
-      end
-
-      [ranked_stats_array, ranked_count_array]
-    end
-
-    Winrate = Struct.new(:win_rate_array, :win_counts)
-    def get_rank_wr_array_for_klass(klass, season)
-      klass_wr = Array.new
-      match_count = Array.new
-      Rank.all.each do |rank|
-        matches = rank.matches.where(klass_id: klass.id, season_id: season)
-        id = rank.id
-        if rank.id == 26
-          id = 0
-          klass_wr.unshift([id, get_win_rate(matches)])
-          match_count.unshift(matches.length)
-        else
-          klass_wr << [id, get_win_rate(matches)]
-          match_count << matches.length
-        end
-      end
-
-      output = Winrate.new(klass_wr, match_count)
     end
 
     def get_top_streamers

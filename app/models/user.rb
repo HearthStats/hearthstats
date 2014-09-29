@@ -42,6 +42,13 @@ class User < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
+  def has_permission(role_array)
+    role_array.each do |role|
+      return false if !self.has_role? role
+    end
+    true
+  end
+
   def blind_drafts
     BlindDraft.where("player1_id = #{self.id} OR player2_id = #{self.id}")
   end
@@ -57,7 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def mailboxer_email(object)
-    nil
+    email
   end
 
   def is_new?
