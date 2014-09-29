@@ -87,10 +87,10 @@ class Match < ActiveRecord::Base
       id = rank.id
       if rank.id == 26
         id = 0
-        klass_wr.unshift([id, get_win_rate(matches)])
+        klass_wr.unshift([id, self.get_win_rate(matches)])
         match_count.unshift(matches.length)
       else
-        klass_wr << [id, get_win_rate(matches)]
+        klass_wr << [id, self.get_win_rate(matches)]
         match_count << matches.length
       end
     end
@@ -116,6 +116,18 @@ class Match < ActiveRecord::Base
 
   def self.results_list
     RESULTS_LIST.values
+  end
+
+  def self.get_win_rate(matches, strout = false )
+    tot_games = matches.count
+    return "N/A" if tot_games == 0
+
+    wins = matches.where(result_id: 1).count
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
+    win_rate = win_rate.to_s + "%" if strout
+
+    win_rate
   end
 
   def self.search(field, query = nil)
@@ -244,5 +256,6 @@ class Match < ActiveRecord::Base
       deck.update_user_stats!
     end
   end
+
 
 end
