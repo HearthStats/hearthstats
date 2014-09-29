@@ -44,9 +44,9 @@ class User < ActiveRecord::Base
 
   def has_permission(role_array)
     role_array.each do |role|
-      return false if !self.has_role? role
+      return true if self.has_role? role
     end
-    true
+    false
   end
 
   def blind_drafts
