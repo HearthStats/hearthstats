@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
     current_user.has_permission(role_array)
   end
 
+  def authenticate_subs!
+    unless current_user.has_permission(sub_plans)
+      redirect_to premiums_path, alert: "Oops! That's a subscriber only feature"
+    end
+  end
   def default_url_options(options={})
     if current_user && !current_user.guest? && !current_user.profile.nil?
       { locale: current_user.profile.locale || I18n.default_locale }

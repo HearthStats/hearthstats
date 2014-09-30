@@ -23,7 +23,7 @@
             - @blind_drafts.each do |draft|
               tr
                 td = draft.player1.name
-                td = draft.player2.nil? ? 'Waiting for player' : draft.player2.name
+                td = draft.player2_id.nil? ? 'Waiting for player' : draft.player2.name
                 - if draft.complete
                   td Draft Complete
                 - else

@@ -14,6 +14,10 @@ module ApplicationHelper
     ['ceciltv', 'rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
   end
 
+  def sub_plans
+    [:early_sub, :gold, :admin]
+  end
+
   def current_season
     Season.current
   end

@@ -21,6 +21,7 @@ class PremiumsController < ApplicationController
       current_user.subscription_id = 1
       current_user.customer_id = customer.id
       current_user.save!
+      current_user.add_role :early_sub
     end
 
     customer = Stripe::Customer.retrieve(current_user.customer_id)
