@@ -39,7 +39,6 @@ gem 'devise'
 gem 'devise-token_authenticatable'
 gem 'cancancan'
 gem 'rolify'
-gem 'carrierwave' # Upload files needed for redactor
 
 # storage
 gem 'fog'
@@ -66,9 +65,6 @@ gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
 gem 'feedjira', :require => false # Parse rss feeds
 gem 'lograge' # Minify log outputs
-gem 'redactor-rails' # WYSIWYG editor
-gem 'rmagick' # Upload images needed for redactor
-gem 'mini_magick' # Upload images needed for redactor
 gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
@@ -85,6 +81,8 @@ gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
 gem 'sync'
+gem 'announcements'
+gem 'bootstrap-wysihtml5-rails'
 
 # DB
 gem 'activerecord-import'

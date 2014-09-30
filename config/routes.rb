@@ -8,7 +8,6 @@ Hearthstats::Application.routes.draw do
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   opinio_model
-  mount RedactorRails::Engine => '/redactor_rails'
 
   get "cards/index"
   get "streams/index"

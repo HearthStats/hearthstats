@@ -17,7 +17,7 @@
 //= require jquery-ui/effect-fade
 //= require select2
 //= require social-share-button
-//= require redactor-rails
+//= require bootstrap-wysihtml5
 //= require sync
 //= require 'redesign/app.js'
 //= require 'plugins/jquery.slimscroll.min.js'
