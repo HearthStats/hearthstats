@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require announcements
 //= require jquery-ui/datepicker
 //= require jquery-ui/tooltip
 //= require jquery-ui/effect-fade
