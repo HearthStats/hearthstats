@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140925211324) do
+ActiveRecord::Schema.define(:version => 20140930182124) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -640,10 +640,11 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.integer  "tourny_id"
     t.boolean  "guest"
     t.string   "userkey"
-    t.integer  "subscription_id"
     t.string   "authentication_token"
     t.string   "provider"
     t.string   "uid"
+    t.integer  "subscription_id"
+    t.string   "customer_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

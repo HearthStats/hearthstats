@@ -95,6 +95,7 @@ gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'skylight'
 gem 'pusher'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background
 gem 'delayed_job_active_record'
