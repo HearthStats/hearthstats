@@ -66,8 +66,8 @@ class WelcomeController < ApplicationController
     unless current_user_allow?([:plat, :admin])
       redirect_to root_path and return
     end
-    klass_ranked_wr = Match.get_klass_ranked_wr(Season.last.begin, 
-                                                Season.last.end)
+    klass_ranked_wr = Match.get_klass_ranked_wr(1.week.ago, 
+                                                DateTime.now)
     render json: klass_ranked_wr
   end
 
