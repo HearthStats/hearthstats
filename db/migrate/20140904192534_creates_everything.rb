@@ -365,17 +365,6 @@ class CreatesEverything < ActiveRecord::Migration
     add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
     add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
 
-    create_table "roles", :force => true do |t|
-      t.string   "name"
-      t.integer  "resource_id"
-      t.string   "resource_type"
-      t.datetime "created_at",    :null => false
-      t.datetime "updated_at",    :null => false
-    end
-
-    add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
-    add_index "roles", ["name"], :name => "index_roles_on_name"
-
     create_table "seasons", :force => true do |t|
       t.integer  "num"
       t.datetime "created_at", :null => false
@@ -505,13 +494,6 @@ class CreatesEverything < ActiveRecord::Migration
     add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
     add_index "users", ["tourny_id"], :name => "index_users_on_tourny_id"
     add_index "users", ["userkey"], :name => "index_users_on_userkey"
-
-    create_table "users_roles", :id => false, :force => true do |t|
-      t.integer "user_id"
-      t.integer "role_id"
-    end
-
-    add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
     add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
 
