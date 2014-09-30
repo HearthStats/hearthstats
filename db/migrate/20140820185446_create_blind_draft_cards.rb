@@ -5,7 +5,7 @@ class CreateBlindDraftCards < ActiveRecord::Migration
       t.integer :card_id
       t.integer :blind_draft_id
       t.boolean :revealed, default: false
-      add_timestamps
+      t.timestamps
     end
 
   end

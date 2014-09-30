@@ -6,7 +6,7 @@ class CreateBlindDraft < ActiveRecord::Migration
       t.integer :player2_id
       t.integer :card_cap
       t.string :klass_string
-      add_timestamps
+      t.timestamps
     end
   end
 
