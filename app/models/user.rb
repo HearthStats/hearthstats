@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   def subscribed?
     !subscription_id.nil?
   end
+  
   def has_permission(role_array)
     role_array.each do |role|
       return true if self.has_role? role
