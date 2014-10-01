@@ -15,80 +15,113 @@
     = link_to("Copy to My Decks", copy_deck_path(@deck), class: 'btn retirebut green', :rel => "tooltip", :title => "Make your own copy of this deck")
   = link_to 'Back', decks_path, class: "btn retirebut dark"
 
-
-div.share
-  | Share this deck: &nbsp;
-  = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
 div.row
-  div.col-md-6
-    div.col-md-6
-      h3.deck_title Stats
-      div
-        |Created by:&nbsp;
-        -if @deck.user.profile.nil?
-          | Anonymous
-        - else
-          = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
-      - if @deck.unique_deck
-        p
-          b Total Dust Cost:
-          = @deck.unique_deck.mana_cost
-      p
-        b Class: &nbsp;
-        - if @deck.klass.nil?
-        - else
-          = @deck.klass.name
-        | &nbsp; &nbsp;
-        b.victory Wins: &nbsp;
-        = @deck.matches.where(result_id: 1).count
-        | &nbsp; &nbsp;
-        b.defeat Losses: &nbsp;
-        = @deck.matches.where(result_id: 2).count
-        | &nbsp; &nbsp;
-        b.draw Draws: &nbsp;
-        = @deck.matches.where(result_id: 3).count
-
-      div.turnrates
-        div.winrates.total title="Overall win rate with this deck"
-          |Win Rate
-          br
-          | #{number_to_percentage(@winrate, precision: 2)}
-        div.winrates.firstrate title="Percentage of games won when playing first"
-          |No Coin
-          br
-          | #{@firstrate}
-        div.winrates.secrate title="Percentage of games won when playing second"
-          |Coin
-          br
-          | #{@secrate}
-    div.col-md-6.deck-notes
-      div.version
+  .col-md-3
+    div class="deckbuilderWrapper"
+      div style="position:relative;"
+        div class="deckBuilderCardsWrapper"
+          - if params[:version]
+            - cache(@deck) do
+              = render 'decks/card_list', cards: @card_array
+          - else
+            = render 'decks/card_list', cards: @card_array
+        img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"
+    div.version
+      h4 Share
+      = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
+      - unless @deck.deck_versions.empty?
         h3 Versions
         .curr-version
-          - if params[:version].nil?
-            = link_to "Newest Version", deck_path(@deck), class: "btn btn-md green active"
-          - else
-            = link_to "Newest Version", deck_path(@deck), class: "btn btn-md green"
+          - if !params[:version].nil?
+            = link_to "Newest Version", deck_path(@deck), class: "btn btn-md btn-block green active"
         - @deck.deck_versions.each do |version|
           - if params[:version].to_i == version.version
             = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version active"
           - else
             = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version"
-      h3 Tags
-      - @deck.tag_list.each do |tag|
-        div.btn.default.btn-xs.green-stripe = tag
+      - unless @deck.tag_list.empty?
+        h3 Tags
+        - @deck.tag_list.each do |tag|
+          div.btn.default.btn-xs.green-stripe = tag
+  .col-md-9
+    div.deck-details.row
+      .col-md-4
+        div class="col-md-4 col-sm-4 col-xs-4"
+          div class="easy-pie-chart"
+            div.win-count
+              -if @deck.user.profile.nil?
+                span Anonymous
+              - else
+                span = link_to @deck.user.profile.name, '/profiles/' + @deck.user.id.to_s
+            span class="title" href="#" = t 'decks.show.creator'
+        div class="col-md-4 col-sm-4 col-xs-4"
+          div class="easy-pie-chart"
+            div.win-count
+              span 
+                img src="/assets/Icons/Classes/#{Klass::LIST[@deck.klass_id]}_Icon.gif" alt="<%= deck.class_name %>"
+            span class="title" href="#"
+              - if !@deck.klass.nil?
+                = Klass::LIST[@deck.klass_id]
+        div class="col-md-4 col-sm-4 col-xs-4"
+          div class="easy-pie-chart"
+            div.win-count
+              span = @deck.unique_deck.mana_cost
+            span class="title" href="#" = t 'decks.show.crafting_cost'
+      .col-md-8
+        div class="col-md-2 col-sm-2 col-xs-4"
+          div class="easy-pie-chart"
+            div.win-count
+              span = @deck.matches.where(result_id: 1).count
+            span class="title" href="#" = t 'decks.show.wins'
+        div class="col-md-2 col-sm-2 col-xs-4"
+          div class="easy-pie-chart"
+            div.win-count
+              span = @deck.matches.where(result_id: 2).count
+            span class="title" href="#" = t 'decks.show.losses'
+        div class="col-md-2 col-sm-2 col-xs-4"
+          div class="easy-pie-chart"
+            div.win-count
+              span = @deck.matches.where(result_id: 3).count
+            span class="title" href="#" = t 'decks.show.draws'
+        div class="col-md-2 col-sm-2 col-xs-4"
+          div class="easy-pie-chart"
+            div class="win_rate overall" data-percent="#{number_to_percentage(@winrate, precision: 2)}" 
+              span = number_to_percentage(@winrate, precision: 1)
+            span class="title" href="#" = t 'decks.show.overall_win_rate'
+        div class="col-md-2 col-sm-2 col-xs-4"
+          div class="easy-pie-chart"
+            div class="win_rate no_coin" data-percent="#{number_to_percentage(@firstrate, precision: 2)}" 
+              span = @firstrate
+            span class="title" href="#" = t 'decks.show.no_coin_win_rate'
+        div class="col-md-2 col-sm-2 col-xs-4"
+          div class="easy-pie-chart"
+            div class="win_rate coin" data-percent="#{number_to_percentage(@secrate, precision: 2)}" 
+              span = @secrate
+            span class="title" href="#" = t 'decks.show.coin_win_rate'
+    = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
+    div class="deckbuilderWrapper"
+      div class="deckBuilderStats" 
+        .inline-graph
+          div = t('.mana_curve')
+          div id="manaCurveChart" class="deckBuilderCurveChart"
+        .inline-graph
+          div = t('.attack_distribution')
+          div id="attackCurveChart" class="deckBuilderCurveChart"
+        .inline-graph
+          div = t('.health_distribution')
+          div id="healthCurveChart" class="deckBuilderCurveChart"
+        .inline-graph
+          p = t('.type_distribution')
+          div id="typeChart"
+        .inline-graph
+          p = t('.mechanics')
+          div id="mechanicsChart"
+    - unless @deck.notes.empty?
       h3 Notes
       = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img),
-        attributes: %w(style src)
-    div.deck-show-graph
-      = render 'profiles/classwinratesgraph', height: 300, railsdata: @deckrate.transpose, chartname: "Deck"
+      attributes: %w(style src)
+      
     .comments
       = render_comments_form @deck unless current_user && current_user.guest
       = render_comments @deck, :page => params[:page], :limit => 5
-  div.col-md-6
-    = render 'decklist',  :deck => @deck, :enabled => false
-javascript:
-  if(DeckBuilder) {
-    DeckBuilder.setCardString('#{@deck.cardstring}');
-    DeckBuilder.render();
-  }
+= render 'decks/deck_js', enabled: false

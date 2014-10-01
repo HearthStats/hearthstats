@@ -1,0 +1,134 @@
+/* deck builder */
+.deckbuilderWrapper {
+}
+.deckbuilderWrapper .cardListHeader,
+.deckbuilderWrapper.enabled .deckBuilderTools {
+  display:block;
+}
+.deckbuilderWrapper .deckBuilderTools,
+.deckbuilderWrapper.enabled .cardListHeader {
+  display:none;
+}
+.deckbuilderWrapper .deckBuilderCardsWrapper {
+  margin-bottom:1em;
+}
+.deckbuilderWrapper .cardWrapper {
+  width:218px;
+  overflow:hidden;
+  position:relative;
+  height:35px;
+  line-height:28px;
+  padding:2px;
+  display:block;
+  font-size:12px;
+  color:#fff;
+  font-weight:bold;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  line-height:38px;
+}
+.deckbuilderWrapper.enabled .cardWrapper {
+  cursor:pointer;
+}
+.deckbuilderWrapper .cardWrapper .mana {
+  font-size:16px;
+  width:24px;
+  text-align:center;
+  position:absolute;
+  top:0;
+  left:2px;
+  z-index:5;
+  height:100%;
+}
+.deckbuilderWrapper .cardWrapper .name {
+  position:absolute;
+  top:0;
+  left:38px;
+  z-index:5;
+}
+.deckbuilderWrapper .cardWrapper .bg {
+  background-image:url(/assets/deckbuilder_card.png);
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:3;
+  width:100%;
+  height:100%;
+}
+.deckbuilderWrapper .cardWrapper.two .bg {
+  background-image:url(/assets/deckbuilder_card_2.png);
+}
+.deckbuilderWrapper .cardWrapper.legendary .bg {
+  background-image:url(/assets/deckbuilder_card_legendary.png);
+}
+.deckbuilderWrapper .cardWrapper .image {
+  width:250px;
+  position:absolute;
+  top:-90px;
+  left:30px;
+  z-index:1;
+}
+.deckbuilderWrapper .preloadCardBg {
+  background: url(/assets/deckbuilder_card.png) no-repeat -9999px -9999px;
+}
+.deckbuilderWrapper .preloadCardBg_2 {
+  background: url(/assets/deckbuilder_card_2.png) no-repeat -9999px -9999px;
+}
+.deckbuilderWrapper .preloadCardBg_legendary {
+  background: url(/assets/deckbuilder_card_legendary.png) no-repeat -9999px -9999px;
+}
+.deckbuilderWrapper .deckBuilderMissingCards {
+  margin:1em auto;
+  padding:2em 1em;
+  text-align:center;
+}
+.deckbuilderWrapper .deckBuilderCurveChart,
+.deckbuilderWrapper #mechanicsChart {
+  width:200px;
+  height:230px;
+  margin:auto;
+  margin-bottom:2em;
+}
+.deckbuilderWrapper #typeChart {
+  width:200px;
+  height:230px;
+  margin:auto;
+  margin-bottom:2em;
+}
+#flotTooltip {
+  position: absolute;
+  display: none;
+  border: 1px solid #333;
+  padding: 2px;
+  background-color: #fee;
+  color:#000;
+  opacity: 0.90;
+}
+
+/* deck lists */
+table.decklist td.class img {
+  height:24px;
+  width:24px;
+}
+table.decklist th.class,
+table.decklist td.class,
+table.decklist th.minions,
+table.decklist td.minions,
+table.decklist th.spells,
+table.decklist td.spells,
+table.decklist th.weapons,
+table.decklist td.weapons,
+table.decklist th.matches,
+table.decklist td.matches,
+table.decklist th.wins,
+table.decklist td.wins,
+table.decklist th.losses,
+table.decklist td.losses,
+table.decklist th.num_users,
+table.decklist td.num_users,
+table.decklist th.winrate,
+table.decklist td.winrate {
+  text-align:center;
+}
+.inline-graph{
+  display: inline-block;
+}

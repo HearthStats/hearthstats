@@ -31,7 +31,12 @@
 
                 td 
                   = link_to draft_blind_draft_path(draft), class: "btn btn-xs blue" do
-                    i.fa.fa-external-link = t('.draft')
+                    i.fa.fa-external-link 
+                      |&nbsp;
+                      - if draft.complete
+                        = t('.show')
+                      - else
+                        = t('.draft')
   .col-md-4
     div class="portlet box green"
       div class="portlet-title"

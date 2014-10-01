@@ -45,6 +45,7 @@ class DecksController < ApplicationController
   def show
     @deck = Deck.find(params[:id])
     impressionist(@deck)
+    gon.cardstring = @deck.cardstring
 
     if !params[:version].nil?
       cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].try(:cardstring)
@@ -85,6 +86,7 @@ class DecksController < ApplicationController
       @secrate = deck_cache_stats[2]
       @winrate = deck_cache_stats[3]
     end
+
 
     respond_to do |format|
       format.html # show.html.erb
