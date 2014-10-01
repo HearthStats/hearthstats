@@ -8,9 +8,11 @@ div class="portlet quick_con_entry"
     = form_for Match.new, url: {controller: "constructeds",
       action: "create"} do |f|
       - unless @last_deck.nil?
-        = select_tag "deckname", options_for_select(@my_decks.map{ |d| [d.name,d.name, {:class => Klass::LIST[d.klass_id]}]}, @last_deck.name)
+        = select_tag "deck_id", options_for_select(@my_decks.map{ |d| [d.name,
+          d.id, {:class => Klass::LIST[d.klass_id]}]}, @last_deck.id)
       - else
-        = select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => Klass::LIST[d.klass_id]}]}))
+        = select_tag("deck_id", options_for_select(@my_decks.map{ |d| [d.name,
+          d.id, {:class => Klass::LIST[d.klass_id]}]}))
       | vs.
       = f.select :oppclass_id, options_for_select(klasses_hash.to_a), class: 'quick_input'
       input name="other[rank]" rel="toggle-btn" on="#{t('.ranked')}" off="#{t('.casual')}" onValue="Ranked" offValue="Casual"
@@ -21,4 +23,4 @@ div class="portlet quick_con_entry"
 
 javascript:
   app.UI.initClassSelector('#match_oppclass_id');
-  app.UI.initDeckSelector("#deckname");
+  app.UI.initDeckSelector("#deck_id");
