@@ -46,11 +46,8 @@
     <% if signed_in? %>
       <%= render 'layouts/sidebar' %>
     <% end %>
-    <div class="page-content">
+    <div class="page-content" id="no-margin-cont">
       <%= announce Announcement.newest, :hide_message => "Hide" %>
-      <!-- BEGIN PAGE HEADER -->
-      <%= render 'layouts/breadcrumbs' %>
-      <!-- END PAGE HEADER -->
       <%= yield %>
       <%= render 'layouts/foot_ads' %>
     </div>

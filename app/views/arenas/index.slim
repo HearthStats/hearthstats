@@ -21,8 +21,8 @@
       div.modal-content
         div.modal-header
           button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-          h4 class="modal-title" #{t('.arena_run_with')}
-          #{Klass::LIST[arena.klass_id]} #{t('.on')} #{arena.created_at}
+          h4 class="modal-title" 
+            |#{t('.arena_run_with')} #{Klass::LIST[arena.klass_id]} #{t('.on')} #{arena.created_at}
         div.modal-body
           =render 'arenagames', arenas: arena.matches
           div class="portlet box red"

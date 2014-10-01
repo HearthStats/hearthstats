@@ -1,0 +1,17 @@
+/ = link_to "Gold", new_premium_path(plan: "gold")
+/ = link_to "Platinum", new_premium_path(plan: "plat")
+
+- if current_user.nil?
+  b Please sign in to purchase premium
+- elsif current_user && !current_user.subscribed?
+  = form_tag premiums_path do
+    article
+      lable.amount
+      span Amount: $4.99 USD
+    script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
+- else
+  p 
+    b Thank you for being an early supporter!
+  p 
+    b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
+  p = link_to 'Cancel Subscription', cancel_premiums_path

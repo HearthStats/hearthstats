@@ -198,7 +198,7 @@ en:
       your_class: Your class
   arenas:
     index:
-      arena_run_with: arena run with
+      arena_run_with: Arena Run with
       close: Close
       continue_arena_run: Continue Arena Run
       description: " recent arena games"

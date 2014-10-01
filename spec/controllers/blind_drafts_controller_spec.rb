@@ -5,6 +5,7 @@ describe BlindDraftsController do
   let(:blind_draft) { create :blind_draft, player2_id: user.id }
 
   before do
+    user.add_role :admin
     sign_in user
   end
 

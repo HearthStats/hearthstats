@@ -10,8 +10,6 @@ class DashboardsController < ApplicationController
       redirect_to edit_profile_path(current_user), alert: 'Please add a username' and return
     end
 
-    @announcements = Annoucement.order('created_at DESC').take(6)
-
     # Get all user's matches from this season
     matches = Match.where(user_id: current_user.id, season_id: current_season)
     @arenawins = Match.winrate_per_day(matches.where(mode_id: 1), 10)

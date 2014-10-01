@@ -5,9 +5,26 @@ javascript:
       chart: {
           renderTo: '#{chartname}',
           type: 'column',
-          backgroundColor: '#ffffff',
           height: '#{height}',
+          events: {
+            load: function(){
+                setTimeout(function() {
+                    chart.setSize($("##{chartname}").width(), $("##{chartname}").height());
+                }, 1);
+            }
+        }
       },
+      colors: [
+        '#f39c12',
+        '#ABD473',
+        '#69CCF0',
+        '#F58CBA',
+        '#999999',
+        '#f1c40f',
+        '#0070DE',
+        '#9482C9',
+        '#A57A4D'
+      ],
       title: {
           text: '#{chartname} Win Rates'
       },
@@ -41,6 +58,11 @@ javascript:
               dataLabels: {
                   enabled: true
               }
+          },
+          series: {
+            states: {
+              hover: false
+            }
           }
       },
       legend: {
@@ -52,17 +74,6 @@ javascript:
       series: [{
           name: '#{chartname}',
           data: #{railsdata[0].to_json},
-      }],
-      colors: [
-        '#FF7D0A',
-        '#ABD473',
-        '#69CCF0',
-        '#F58CBA',
-        '#999999',
-        '#f1c40f',
-        '#0070DE',
-        '#9482C9',
-        '#A57A4D'
-      ]
+      }]
   });
 

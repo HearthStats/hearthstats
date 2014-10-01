@@ -4,6 +4,9 @@ class CreateBlindDraft < ActiveRecord::Migration
       t.string :cardstring
       t.integer :player1_id
       t.integer :player2_id
+      t.integer :card_cap
+      t.string :klass_string
+      t.timestamps
     end
   end
 

@@ -39,7 +39,6 @@ gem 'devise'
 gem 'devise-token_authenticatable'
 gem 'cancancan'
 gem 'rolify'
-gem 'carrierwave' # Upload files needed for redactor
 
 # storage
 gem 'fog'
@@ -66,15 +65,11 @@ gem 'friendly_id' # Better urls for deck
 gem 'impressionist' # Track number of times profiles/decks are viewed
 gem 'feedjira', :require => false # Parse rss feeds
 gem 'lograge' # Minify log outputs
-gem 'redactor-rails' # WYSIWYG editor
-gem 'rmagick' # Upload images needed for redactor
-gem 'mini_magick' # Upload images needed for redactor
 gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
 gem 'unf'
 gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
-gem 'imgkit'
 gem 'thin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
@@ -85,6 +80,9 @@ gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
 gem 'sync'
+gem 'announcements'
+gem 'bootstrap-wysihtml5-rails'
+gem 'rmagick'
 
 # DB
 gem 'activerecord-import'
@@ -95,6 +93,7 @@ gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'skylight'
 gem 'pusher'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background
 gem 'delayed_job_active_record'
@@ -103,7 +102,7 @@ gem 'daemons'
 gem 'whenever'
 
 group :test do
-  gem 'rspec-rails', '>= 2.12.2'
+  gem 'rspec-rails', '~> 2.12.2'
   gem 'email_spec', '>= 1.4.0'
   gem 'launchy', '>= 2.1.2'
   gem 'capybara', '>= 2.0.2'
