@@ -1,12 +1,18 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe TournMatchesController do
+# describe TournMatchesController do
+#   let(:user) { create :user }
 
-  describe "GET new" do
-    it "returns http success" do
-      get 'new'
-      response.should be_success
-    end
-  end
+#   before do
+#     user.add_role :admin
+#     sign_in user
+#   end
 
-end
+#   describe "GET new" do
+#     it "returns http success" do
+#       get :new
+#       response.should be_success
+#     end
+#   end
+
+# end

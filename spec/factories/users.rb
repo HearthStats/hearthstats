@@ -6,5 +6,13 @@ FactoryGirl.define do
     password { Faker::Internet.password(6) }
 
     association :profile
+
+    factory :admin do
+        after(:create) {|user| user.add_role(:admin)}
+    end
+
+    factory :early_sub do
+        after(:create) {|user| user.add_role(:early_sub)}
+    end
   end
 end

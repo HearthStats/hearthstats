@@ -70,7 +70,6 @@ gem 'select2-rails'
 gem 'opinio' # Comment system
 gem 'unf'
 gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
-gem 'imgkit'
 gem 'thin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
@@ -83,6 +82,7 @@ gem 'groupdate'
 gem 'sync'
 gem 'announcements'
 gem 'bootstrap-wysihtml5-rails'
+gem 'rmagick'
 
 # DB
 gem 'activerecord-import'

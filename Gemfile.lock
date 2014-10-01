@@ -227,7 +227,6 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.4.0)
     i18n (0.6.11)
-    imgkit (1.4.1)
     impressionist (1.5.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
@@ -352,6 +351,7 @@ GEM
     rest-client (1.6.8)
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
+    rmagick (2.13.3)
     rolify (3.4.1)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
@@ -496,7 +496,6 @@ DEPENDENCIES
   guard-zeus
   hipchat
   httparty
-  imgkit
   impressionist
   jquery-rails
   jquery-ui-rails (~> 5.0.0)
@@ -519,6 +518,7 @@ DEPENDENCIES
   rake
   ransack
   rb-fsevent
+  rmagick
   rolify
   rspec-rails (~> 2.12.2)
   sanitize
