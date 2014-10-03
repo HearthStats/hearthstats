@@ -24,7 +24,7 @@ describe ConstructedsController do
 
     post :create, deckname: 'to_legendary_and_beyond!'
 
-    response.should redirect_to constructeds_path
+    response.should redirect_to new_constructed_path
   end
 
   it 'sets @my_decks when the match can not be saved' do
