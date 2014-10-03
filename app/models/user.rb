@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def mailboxer_email(object)
-    if user.no_email == true
+    if no_email == true
       nil
     else
       email
