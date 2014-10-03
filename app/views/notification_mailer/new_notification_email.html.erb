@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body style="margin:0">
+
+    <div style="background:#222222;color:#0f2105;display:block;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;font-size:16px;min-height:100%;margin:0;padding:0;width:100%" bgcolor="#222222">
+
+<table cellpadding="0" cellspacing="0" height="auto" style="background:#222222;border-collapse:collapse;border-spacing:0;border:none;margin:0;padding:0" width="100%" bgcolor="#222222">
+<tbody><tr valign="top" style="background:#222222" bgcolor="#222222">
+<td style="background:#222222;font-size:1px" bgcolor="#222222">
+&nbsp;
+</td>
+<td style="background:#222222;padding:40px 20px 20px" bgcolor="#222222">
+<table align="center" cellpadding="0" cellspacing="0" width="500" style="background:#222222;color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px;margin-left:auto;margin-right:auto" bgcolor="#222222">
+<tbody><tr>
+<td style="padding-bottom:10px;padding-left:20px;padding-right:20px">
+<a href="http://hearthstats.net" style="color:#00a0ff;text-decoration:none" target="_blank"><img alt="HearthStats" border="0" src="http://localhost:3000/assets/logo_v2/orange_inline.png" height="50" style="display:block" class="CToWUd">
+</a>
+</td>
+</tr>
+<tr>
+<td style="padding:20px">
+<div style="background:white;border-radius:6px;border:1px solid #d9d9de;padding:20px">
+<h2 style="color:#0f2105;font-size:18px;font-weight:normal;line-height:24px;margin:0">
+You have a new notification: 
+</h2>
+<p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px"><%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %></p>
+
+<p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px"><%= raw @notification.body %></p>
+
+<p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
+  <%= link_to @notification.object do %>To go to the notification, 
+  Click Here<% end %></p>
+
+</div>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+<td style="background:#222222;font-size:1px" bgcolor="#222222">
+&nbsp;
+</td>
+</tr>
+<tr valign="top" style="background:#222222" bgcolor="#222222">
+<td style="background:#222222;font-size:1px" bgcolor="#222222">
+&nbsp;
+</td>
+<td align="center" style="padding:20px 20px 40px">
+<table cellpadding="0" cellspacing="0" width="460" style="background:#222222" bgcolor="#222222">
+<tbody><tr>
+<td style="color:#828587;display:block;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;font-size:12px;line-height:14px">
+<p style="color:white;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
+<a href="http://hearthstats.net" style="color:#00a0ff;text-decoration:none" target="_blank">View this message on HearthStats</a>
+</p>
+<p style="color:white;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
+<a href="http://hearthstats.net/profile" style="color:#00a0ff;text-decoration:none" target="_blank">Change email notifications on HearthStats</a>
+</p>
+
+</td>
+</tr>
+</tbody></table>
+</td>
+<td style="background:#222222;font-size:1px" bgcolor="#222222">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="background:#222222;font-size:1px" bgcolor="#222222">
+&nbsp;
+</td>
+<td align="center" style="padding:20px 20px 40px">
+</td>
+<td style="background:#222222;font-size:1px" bgcolor="#222222">
+&nbsp;
+</td>
+</tr>
+</tbody></table>
+
+<div class="yj6qo"></div><div class="adL">
+</div></div>
+  </body>
+</html>

@@ -13,10 +13,11 @@ group :development do
   gem 'quiet_assets', '>= 1.0.1'
   gem 'rb-fsevent', :require => false
   gem 'pry'
-  gem 'seed_dump'
   gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'guard-spring'
+  gem 'seed_dump'
   gem 'rack-mini-profiler'
-  gem 'guard-zeus'
   gem 'awesome_print', :require => false
 end
 

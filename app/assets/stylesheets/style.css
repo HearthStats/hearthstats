@@ -1575,7 +1575,6 @@ Box portlet
 }
 
 .portlet.box.blue {
-   border: 1px solid #b4cef8;
    border-top: 0;
 }
 
@@ -1584,7 +1583,6 @@ Box portlet
 }
 
 .portlet.box.red {
-   border: 1px solid #ef8476;
    border-top: 0;
 }
 
@@ -1593,16 +1591,14 @@ Box portlet
 }
 
 .portlet.box.yellow {
-   border: 1px solid #fccb7e;
    border-top: 0;
 }
 
 .portlet.box.green > .portlet-title {
-  background-color: #35aa47;
+  background-color: #27ae60;
 }
 
 .portlet.box.green {
-   border: 1px solid #77e588;
    border-top: 0;
 }
 
@@ -1611,7 +1607,6 @@ Box portlet
 }
 
 .portlet.box.purple {
-   border: 1px solid #af5cc1;
    border-top: 0;
 }
 
@@ -1620,7 +1615,6 @@ Box portlet
 }
 
 .portlet.box.grey {
-   border: 1px solid #9d9c9c;
    border-top: 0;
 }
 
@@ -1629,7 +1623,6 @@ Box portlet
 }
 
 .portlet.box.light-grey {
-   border: 1px solid #bbb;
    border-top: 0;
 }
 
@@ -1638,7 +1631,6 @@ Box portlet
 }
 
 .portlet.box.Druid {
-   border: 1px solid #FF7D0A;
    border-top: 0;
 }
 .portlet.box.Hunter > .portlet-title {
@@ -1646,7 +1638,6 @@ Box portlet
 }
 
 .portlet.box.Hunter {
-   border: 1px solid #ABD473;
    border-top: 0;
 }
 
@@ -1655,7 +1646,6 @@ Box portlet
 }
 
 .portlet.box.Mage {
-   border: 1px solid #69CCF0;
    border-top: 0;
 }
 
@@ -1664,7 +1654,6 @@ Box portlet
 }
 
 .portlet.box.Paladin {
-   border: 1px solid #F58CBA;
    border-top: 0;
 }
 
@@ -1673,7 +1662,6 @@ Box portlet
 }
 
 .portlet.box.Priest {
-   border: 1px solid #999999;
    border-top: 0;
 }
 
@@ -1682,7 +1670,6 @@ Box portlet
 }
 
 .portlet.box.Rogue {
-   border: 1px solid #f1c40f;
    border-top: 0;
 }
 
@@ -1691,7 +1678,6 @@ Box portlet
 }
 
 .portlet.box.Shaman {
-   border: 1px solid #0070DE;
    border-top: 0;
 }
 
@@ -1700,7 +1686,6 @@ Box portlet
 }
 
 .portlet.box.Warlock {
-   border: 1px solid #9482C9;
    border-top: 0;
 }
 
@@ -1709,7 +1694,6 @@ Box portlet
 }
 
 .portlet.box.Warrior {
-   border: 1px solid #A57A4D;
    border-top: 0;
 }
 
@@ -2320,7 +2304,6 @@ Chats
 }
 
 .chat-form {
-  padding: 10px;
   overflow: hidden;
   clear: both;
 }

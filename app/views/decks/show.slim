@@ -65,7 +65,7 @@ div.row
         div class="col-md-4 col-sm-4 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.unique_deck.mana_cost
+              span = @deck.unique_deck.try(:mana_cost)
             span class="title" href="#" = t 'decks.show.crafting_cost'
       .col-md-8
         div class="col-md-2 col-sm-2 col-xs-4"
@@ -116,7 +116,7 @@ div.row
         .inline-graph
           p = t('.mechanics')
           div id="mechanicsChart"
-    - unless @deck.notes.empty?
+    - unless @deck.notes.blank?
       h3 Notes
       = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img),
       attributes: %w(style src)

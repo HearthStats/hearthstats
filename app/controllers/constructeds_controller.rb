@@ -103,12 +103,12 @@ class ConstructedsController < ApplicationController
 
 
   def create
-    if params[:deckname].nil?
+    if params[:deck_id].nil?
       redirect_to new_constructed_path, alert: 'Please create a deck first.'
       return
     end
 
-    deck = Deck.where(name: params[:deckname], user_id: current_user.id ).first
+    deck = Deck.find(params[:deck_id])
     unless deck
       redirect_to new_constructed_path, alert: 'Unknown deck'
       return
@@ -156,7 +156,7 @@ class ConstructedsController < ApplicationController
   # PUT /constructeds/1.json
   def update
     @constructed = Match.find(params[:id])
-    deck = Deck.where(user_id: current_user.id, name: params[:deckname])[0]
+    deck = Deck.find(params[:deck_id])
     matchdeck = @constructed.match_deck
     matchdeck.deck_id = deck.id
     matchdeck.save!

@@ -3,7 +3,7 @@ $(function() {
     $('.hide_announcement, .close').click(function() {
         var a_id = $(this).data("announcementid");
         createCookie("announcement_" + a_id, "hidden", 45);
-        $(this).parent().slideUp();
+        $(this).parent().fadeOut();
     });
 
     function createCookie(name, value, days) {
