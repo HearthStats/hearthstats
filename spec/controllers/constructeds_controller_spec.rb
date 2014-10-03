@@ -22,14 +22,14 @@ describe ConstructedsController do
   it 'redirects to index if the other param is not present' do
     deck = create :deck, name: 'to_legendary_and_beyond!', user_id: user.id
 
-    post :create, deckname: 'to_legendary_and_beyond!'
+    post :create, deck_id: deck.id
 
-    response.should redirect_to new_constructed_path
+    response.should redirect_to constructeds_path
   end
 
   it 'sets @my_decks when the match can not be saved' do
     deck = create :deck, name: 'to_legendary_and_beyond!', user_id: user.id
-    post :create, deckname: 'to_legendary_and_beyond!', other: { rank: "Ranked" }
+    post :create, deck_id: deck.id, other: { rank: "Ranked" }
 
     assigns(:my_decks).should == [Deck.first]
   end

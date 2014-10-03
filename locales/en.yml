@@ -1,4 +1,7 @@
 en:
+  mailboxer:
+    notification_mailer:
+      subject: 'tests %{subject}'
   activemodel:
     errors:
       format: 

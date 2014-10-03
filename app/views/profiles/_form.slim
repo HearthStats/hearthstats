@@ -17,14 +17,18 @@
     .form-group
       = f.label "Battle.net ID", class: "control-label col-md-3"
       .col-md-3
-        =f.text_field :bnetid
+        = f.text_field :bnetid
       .col-md-3
         |#
-        =f.number_field :bnetnum
+        = f.number_field :bnetnum
     .form-group
       = f.label :avatar, class: "control-label col-md-3"
       .col-md-3
         = f.file_field :avatar
+    .form-group
+      label class="control-label col-md-3" Opt out of email notifications
+      .col-md-3
+        = check_box_tag :no_email, 1, current_user.no_email
 
     = link_to 'Back', "/profiles/#{current_user.id}", class: "btn btn-lg dark"
     = f.submit "Update Profile", class: "btn btn-lg btn-primary"

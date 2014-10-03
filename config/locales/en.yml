@@ -1,4 +1,10 @@
 en:
+  mailboxer:
+    notification_mailer:
+      subject: 'HearthStats new notification: %{subject}'
+    message_mailer:
+      subject_new: 'Hey, you receive a new message about %{subject}'
+      subject_reply: 'Hey, you receive a new reply about %{subject}'
   shared:
     header:
       guest: Guest
