@@ -31,8 +31,8 @@
       <p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px"><%= raw @notification.body %></p>
 
       <p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
-        <%= link_to @notification.object do %>To go to the notification, 
-        Click Here<% end %></p>
+        <a href=<%= root_url + url_for(@notification.object)%> >To go to the notification, 
+        Click Here</a></p>
 
       </div>
       </td>
