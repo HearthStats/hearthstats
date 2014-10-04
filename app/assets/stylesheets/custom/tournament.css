@@ -1,5 +1,5 @@
 ul.no-bullet {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .hidden {
@@ -12,4 +12,9 @@ ul.no-bullet {
 
 #tourn_passcode {
   display: none;
+}
+
+#tourn_user_list {
+  height: 150px;
+  overflow: scroll;
 }

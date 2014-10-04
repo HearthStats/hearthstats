@@ -37,8 +37,12 @@
         <% if !current_user.nil? %>
           <td class="tools">
             <%if !current_user.nil? && current_user.id == deck.user_id %>
-              <%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
-              <%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
+              <% if !deck.is_tourn_deck %>
+                <%= link_to("Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+                <%= link_to("Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
+              <% else %>
+                <p>Tournament deck</p>
+              <% end %>
             <% else %>
               <%
                 user_copy = deck.get_user_copy(current_user)

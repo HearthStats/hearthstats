@@ -546,6 +546,8 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
+    t.datetime "start_date"
+    t.integer  "creator_id"
     t.integer  "bracket_format"
     t.integer  "num_players"
     t.datetime "created_at",                        :null => false
@@ -556,7 +558,6 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.boolean  "started",        :default => false
     t.integer  "num_decks",      :default => 3
     t.string   "code"
-    t.integer  "creator_id"
     t.integer  "best_of"
   end
 

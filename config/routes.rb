@@ -143,6 +143,7 @@ Hearthstats::Application.routes.draw do
     post :quit, on: :member
     post :admin, on: :member
     post :start, on: :member
+    post :remove_player, on: :member
   end
 
   resources :tourn_matches do

@@ -4,13 +4,22 @@
 - provide(:title, @tournament.name)
 - provide(:section, t('.section'))
 
-= link_to 'Start Tournament', start_tournament_path, class:"btn btn-block green", method: :post
-
 div.row
-  div.col-dm-6
-  - @players.each do |player|
-    tr
-      = player.name
-  div.col-dm-6
+  div.col-md-6
+    div id="tourn_user_list"
+      table
+        - @players.each do |player|
+          tr id="player_#{player.id}"
+            td
+              = player.user.name
+            td
+              = link_to 'remove', { action: "remove_player", player_id: player.id }, class: "btn btn-block red", method: :post, remote: true
+    = link_to 'Start Tournament', start_tournament_path, class:"btn btn-block green", method: :post
+  div.col-md-6
     = label_tag 'Description'
     = text_area_tag 'desc'
+
+javascript:
+  $(".remove").click(function(){
+    $(this).parent().remove();
+  });

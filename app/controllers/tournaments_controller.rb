@@ -9,21 +9,6 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def match
-    pair = TournPair.find(params[:pair_id])
-    @tournament = Tournament.find(params[:id])
-    p1 = TournUser.find(pair.p1_id)
-    p2 = TournUser.find(pair.p2_id)
-    @p1_decks = TournDeck.where(tourn_user_id: p1.id)
-    @p2_decks = TournDeck.where(tourn_user_id: p2.id)
-    raise
-    ## deck_submission
-    ## screenshot
-    respond_to do |format|
-      format.html
-    end
-  end
-
   def show
     @tournament = Tournament.find(params[:id])
     @format = Tournament.format_to_s(@tournament.bracket_format)
@@ -54,9 +39,9 @@ class TournamentsController < ApplicationController
   def admin
     @tournament = Tournament.find(params[:id])
     if !current_user.has_role? :tourn_admin, @tournament
-      redirect_to(@tournament, alert: 'You are not an admin of this tournament')
+      redirect_to(@tournament, alert: 'You are not an admin of this tournament') and return
     end
-    @players = @tournament.users
+    @players = @tournament.tourn_users
   end
 
 ### ACTIONS WITH NO PAGE
@@ -94,10 +79,20 @@ class TournamentsController < ApplicationController
     respond_to do |format|
       @code_error = (@tournament.code != params[:code])
       if !@tournament.is_private or !@code_error
+        if not_full?(@tournament)
           TournUser.create(user_id: current_user.id, tournament_id: params[:id])
+        else
+          redirect_to(@torunament, notice: 'Tournament is full') and return
+        end
       end
       format.js
     end
+  end
+
+  def not_full?(tournament)
+    max_players = tournament.num_players
+    cur_player_count = TournUser.where(tournament_id: tournament.id).count
+    max_players > cur_player_count
   end
 
   def quit
@@ -120,10 +115,18 @@ class TournamentsController < ApplicationController
         TournDeck.create(deck_id: deck_id,
                          tournament_id: params[:id],
                          tourn_user_id: tourn_user.id)
-        Deck.update(deck_id, is_tourn_deck: true)
+        Deck.update(deck_id, is_tourn_deck: true, is_public: false)
       end
     end
 
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def remove_player
+    @player_id = params[:player_id]
+    TournUser.delete(@player_id)
     respond_to do |format|
       format.js
     end
