@@ -34,7 +34,7 @@ class Deck < ActiveRecord::Base
   end
 
   def self.playable_decks(user_id)
-    Deck.where(user_id: user_id).where("unique_deck_id IS NOT NULL")
+    Deck.where(user_id: user_id, is_tourn_deck: false).where("unique_deck_id IS NOT NULL")
   end
   ### INSTANCE METHODS:
 

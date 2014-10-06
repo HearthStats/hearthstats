@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140925211324) do
+ActiveRecord::Schema.define(:version => 20141006153329) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -186,8 +186,8 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
 
   create_table "decks", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "user_id"
     t.string   "slug"
     t.text     "notes"
@@ -201,7 +201,7 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.integer  "user_num_losses"
     t.float    "user_winrate"
     t.boolean  "is_public"
-    t.boolean  "is_tourn_deck"
+    t.boolean  "is_tourn_deck",    :default => false
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
@@ -546,8 +546,6 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
-    t.datetime "start_date"
-    t.integer  "creator_id"
     t.integer  "bracket_format"
     t.integer  "num_players"
     t.datetime "created_at",                        :null => false
@@ -558,6 +556,7 @@ ActiveRecord::Schema.define(:version => 20140925211324) do
     t.boolean  "started",        :default => false
     t.integer  "num_decks",      :default => 3
     t.string   "code"
+    t.integer  "creator_id"
     t.integer  "best_of"
   end
 

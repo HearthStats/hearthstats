@@ -24,6 +24,10 @@ class TournamentsController < ApplicationController
       if @joined
         @my_lpairings = @pairs.where(p1_id: user_entry.first.id)
         @my_rpairings = @pairs.where(p2_id: user_entry.first.id)
+        if @tournament.bracket_format > 0
+          @my_lpairings = @my_lpairings.select {|pair| pair.undecided == -1}
+          @my_rpairings = @my_rpairings.select {|pair| pair.undecided == -1}
+        end
         @total_pairs = @my_lpairings.length + @my_rpairings.length
       end
     else
@@ -62,13 +66,16 @@ class TournamentsController < ApplicationController
 
   def start
     @tournament = Tournament.find(params[:id])
-    @tournament.started = true
-    @tournament.start_tournament
-    respond_to do |format|
-      if @tournament.save
-        format.html { redirect_to(@tournament, notice: 'Tournament has started') }
-      else
-        format.html { render action: "admin"}
+    if !@tournament.started
+      @tournament.started = true
+      @tournament.start_tournament
+      respond_to do |format|
+        if @tournament.save
+          @tournament.update_undecided_pair_ids
+          format.html { redirect_to(@tournament, notice: 'Tournament has started') }
+        else
+          format.html { render action: "admin"}
+        end
       end
     end
   end
@@ -79,10 +86,9 @@ class TournamentsController < ApplicationController
     respond_to do |format|
       @code_error = (@tournament.code != params[:code])
       if !@tournament.is_private or !@code_error
-        if not_full?(@tournament)
+        @not_full = not_full?(@tournament)
+        if @not_full
           TournUser.create(user_id: current_user.id, tournament_id: params[:id])
-        else
-          redirect_to(@torunament, notice: 'Tournament is full') and return
         end
       end
       format.js
