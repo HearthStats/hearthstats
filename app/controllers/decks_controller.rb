@@ -45,6 +45,7 @@ class DecksController < ApplicationController
   def show
     @deck = Deck.find(params[:id])
     impressionist(@deck)
+    gon.cardstring = @deck.cardstring
 
     if !params[:version].nil?
       cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].try(:cardstring)
@@ -85,6 +86,7 @@ class DecksController < ApplicationController
       @secrate = deck_cache_stats[2]
       @winrate = deck_cache_stats[3]
     end
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -164,6 +166,25 @@ class DecksController < ApplicationController
     gon.deck = @deck
     gon.cards = Card.all
     canedit(@deck)
+  end
+
+  def merge
+    @decks = Deck.find(params["deck_merge"])
+  end
+
+  def submit_merge
+    master = Deck.find(params[:master])
+    slaves = Deck.find(params[:slaves])
+
+    slaves.each do |deck|
+      deck.match_deck.each do |match_deck|
+        match_deck.update_attribute(:deck_id, master.id)
+      end
+      deck.update_user_stats!
+      deck.destroy
+    end
+    master.update_user_stats!
+    redirect_to decks_path
   end
 
   def create

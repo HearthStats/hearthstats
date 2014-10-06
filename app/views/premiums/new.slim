@@ -1,0 +1,5 @@
+= form_tag premiums_path do
+  article
+    lable.amount
+    span Amount: $4.99 USD
+  script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"

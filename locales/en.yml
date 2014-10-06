@@ -1,4 +1,7 @@
 en:
+  mailboxer:
+    notification_mailer:
+      subject: 'tests %{subject}'
   activemodel:
     errors:
       format: 
@@ -198,7 +201,7 @@ en:
       your_class: Your class
   arenas:
     index:
-      arena_run_with: arena run with
+      arena_run_with: Arena Run with
       close: Close
       continue_arena_run: Continue Arena Run
       description: " recent arena games"
@@ -466,6 +469,8 @@ en:
     index:
       my_decks: My Decks
       new_deck: New Deck
+      enable_merge: Enable Merge Mode
+      merge: Merge
       subtitle: " all of my constructed decks"
       title: My Decks
     new:

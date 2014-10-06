@@ -16,6 +16,11 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = User.find(current_user.id).profile
+    if params[:no_email].to_i == 1
+      current_user.update_attribute(:no_email, true)
+    else
+      current_user.update_attribute(:no_email, false)
+    end
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

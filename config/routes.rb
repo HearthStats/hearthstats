@@ -8,13 +8,14 @@ Hearthstats::Application.routes.draw do
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   opinio_model
-  mount RedactorRails::Engine => '/redactor_rails'
 
   get "cards/index"
   get "streams/index"
 
   resources :teams
-
+  resources :premiums do
+    get 'cancel', on: :collection
+  end
   # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
     collection do
@@ -70,6 +71,7 @@ Hearthstats::Application.routes.draw do
   match "/july", to: "welcome#july_report"
   match "/aug", to: "welcome#aug_report"
   match "/gen_report", to: "welcome#generate_report"
+  match "/liquid", to: "welcome#liquid_data"
   get "welcome/ranked_test"
   get "welcome/select_klass"
 
@@ -101,6 +103,8 @@ Hearthstats::Application.routes.draw do
     collection do
       get 'active_decks'
       get 'public'
+      get 'merge'
+      post 'submit_merge'
       get 'new_splash'
       post 'submit_active_decks'
       get 'copy'

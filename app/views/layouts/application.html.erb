@@ -47,6 +47,9 @@
       <%= render 'layouts/sidebar' %>
     <% end %>
     <div class="page-content">
+      <% if signed_in? %>
+        <%= announce Announcement.newest, :hide_message => "Hide" %>
+      <% end %>
       <!-- BEGIN PAGE HEADER -->
       <%= render 'layouts/breadcrumbs' %>
       <!-- END PAGE HEADER -->

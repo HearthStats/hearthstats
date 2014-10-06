@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe BlindDraft do
-  let (:user) { build :user }
+  let (:user) { FactoryGirl.create(:admin) }
   let (:blind_draft) { build :blind_draft}
 
   describe '#find_player_cards' do

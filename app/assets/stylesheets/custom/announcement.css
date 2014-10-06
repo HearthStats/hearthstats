@@ -1,0 +1,17 @@
+.info {
+    background: #3498db;
+    color: white;
+    padding: 0.8em;
+    /*border: 2px solid #FCB03C;*/
+    margin: -25px -25px 0px -20px;
+}
+
+.info a{
+  color: #2ecc71;
+}
+
+.hide_announcement {
+    cursor: pointer;
+    float: right;
+    margin-right: 20px;
+}

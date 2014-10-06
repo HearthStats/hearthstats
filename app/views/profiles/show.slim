@@ -24,7 +24,7 @@ div class="row profile"
                     = image_tag @profile.avatar.url(:medium),
                       class: "img-responsive center", alt: ""
                   - else
-                    = image_tag("hearthstatslogo.svg", class: "img-responsive center", alt: "")
+                    = image_tag("new_logo/full_colour/full_colour_mark.png", class: "img-responsive center", alt: "")
                   - if profile_owner?
                     = link_to 'Edit Profile', edit_profile_path, class: "profile-edit"
                 - if profile_owner?
@@ -129,4 +129,4 @@ div class="row profile"
           div class="row profile-decks"
             div class="col-md-12"
               h2 #{@profiletitle}'s Decks
-              = render :template => 'shared/deckslist_no_filter', :locals => { :global => false }
+              = render partial: 'decks/deck_list_no_filter', :locals => { :global => false }

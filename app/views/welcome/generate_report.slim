@@ -75,11 +75,9 @@ div.main
               -else
                 tr
                   td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
-                  td
-                    #{number_to_percentage(c[1]*100, precision: 2)}
+                  td #{number_to_percentage(c[1]*100, precision: 2)}
                   td #{number_to_percentage((c[1]*100-@prev_global[0][c[0]]), precision: 2)}
-                  td
-                    #{@arenatot[c[0]]} Games
+                  td #{@arenatot[c[0]]} Games
 
               -counter = counter + 1
         div.col-md-6.con
@@ -92,10 +90,10 @@ div.main
                 tr
                   td #{counter}. #{image_tag("Icons/Classes/#{c[0]}_Icon.gif", height: "24", width: "24")} #{c[0]}
                   td
-                    #{number_to_percentage(c[1]*100, precision: 2)}
+                    |#{number_to_percentage(c[1]*100, precision: 2)}
                   td #{number_to_percentage((c[1]*100-@prev_global[1][c[0]]), precision: 2)}
                   td
-                    #{@contot[c[0]]} Games
+                    |#{@contot[c[0]]} Games
               -counter = counter + 1
   section.page2.global-rates
     div.page_container

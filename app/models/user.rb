@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,:token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :guest, :userkey, :subscription_id, :authentication_token
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :guest, :userkey, :subscription_id, :authentication_token, :no_email
 
   ### VALIDATIONS:
   validates :userkey, uniqueness: true, allow_nil: true
@@ -42,6 +43,17 @@ class User < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
+  def subscribed?
+    !subscription_id.nil?
+  end
+
+  def has_permission(role_array)
+    role_array.each do |role|
+      return true if self.has_role? role
+    end
+    false
+  end
+
   def blind_drafts
     BlindDraft.where("player1_id = #{self.id} OR player2_id = #{self.id}")
   end
@@ -57,7 +69,11 @@ class User < ActiveRecord::Base
   end
 
   def mailboxer_email(object)
-    nil
+    if no_email == true
+      nil
+    else
+      email
+    end
   end
 
   def is_new?

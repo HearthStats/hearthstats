@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
   layout :layout
   before_filter :set_locale_from_url
 
+  def current_user_allow?(role_array)
+    return false if current_user.nil?
+    current_user.has_permission(role_array)
+  end
+
+  def authenticate_subs!
+    unless current_user.has_permission(sub_plans)
+      redirect_to premiums_path, alert: "Oops! That's a subscriber only feature"
+    end
+  end
 
   def default_url_options(options={})
     if current_user && !current_user.guest? && !current_user.profile.nil?
@@ -23,7 +33,7 @@ class ApplicationController < ActionController::Base
     resource.user.notify("New Comment", "New comment on " + resource.class.name + " " + resource.name, resource)
     resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
   end
-  
+
   Text2Deck = Struct.new(:cardstring, :errors)
   def text_to_deck(text)
     text_array = text.split("\r\n")

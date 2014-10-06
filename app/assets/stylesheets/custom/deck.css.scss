@@ -216,3 +216,27 @@ th .header{
     margin-right: 5px;
   }
 }
+.win-count{
+  height: 75px;
+  padding-top: 28px;
+  text-align: center;
+  margin: auto;
+}
+.easy-pie-chart{
+  span{}
+}
+.merge-boxes{
+  display: none;
+}
+#decklist thead tr th:first-child{
+  display: none;
+}
+#merge-button{
+  display: none;
+}
+#merge-toggle{
+  color: white;
+}
+.merge-decks{
+  margin: 10px;
+}

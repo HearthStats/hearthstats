@@ -1,16 +1,12 @@
 class Announcement < ActiveRecord::Base
-  attr_accessible :body
-
-  ### VALIDATIONS:
 
   validates_presence_of :body
-
-  ### CLASS METHODS:
-
+  attr_accessible :heading, :body
+  
   def self.newest
-    Announcement.last
+  	Announcement.last
   end
-
+  
   def self.newest_private
     Announcement.where("type is null").order("id desc").first
   end
@@ -18,5 +14,5 @@ class Announcement < ActiveRecord::Base
   def self.newest_public
     Announcement.where("type = 'public'").order("id desc").first
   end
-
+  
 end

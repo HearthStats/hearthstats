@@ -100,13 +100,6 @@ class Api::V1::MatchesController < ApplicationController
           if deck.nil?
             deck = create_new_deck(user, req[:slot], userclass)
             message = "No deck set for slot #{req[:slot]}. New #{userclass.name} deck created and assigned to #{req[:slot]}."
-          elsif deck.klass_id != userclass.id
-            # Check if correct slot
-            deck.active = false
-            deck.slot = nil
-            deck.save!
-            message = "The '#{deck.name}' deck in slot #{req[:slot]} was #{deck.klass.name}. A new #{userclass.name} deck created and assigned in its place."
-            deck = create_new_deck(user, req[:slot], userclass)
           end
           MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
           delete_deck_cache!(deck)

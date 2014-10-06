@@ -46,9 +46,9 @@
             <%= f.label t(".deck_name") %>
             <br />
             <% if @lastentry %>
-              <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]}, @lastentry.deck.name)) %>
+              <%= select_tag("deck_id", options_for_select(@my_decks.map{ |d| [d.name, d.id, {:class => Klass::LIST[d.klass_id]}]}, @lastentry.deck.id)) %>
             <% else %>
-              <%= select_tag("deckname", options_for_select(@my_decks.map{ |d| [d.name, d.name, {:class => get_name(d,"Klass")}]})) %>
+              <%= select_tag("deck_id", options_for_select(@my_decks.map{ |d| [d.name, d.id, {:class => Klass::LIST[d.klass_id]}]})) %>
             <% end %>
           </div>
         </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group">
           <%= f.label "Notes" %>
-          <%= f.text_area :notes, :class => "redactor form-control", :cols => 120 %>
+          <%= f.text_area :notes, :class => "redactor form-control",:rows => 10, :cols => 120 %>
         </div>
       </div>
     </div>
@@ -94,5 +94,5 @@
 <% end %>
 <script type="text/javascript">
   app.UI.initClassSelector('#match_oppclass_id');
-  app.UI.initDeckSelector("#deckname")
+  app.UI.initDeckSelector("#deck_id")
 </script>

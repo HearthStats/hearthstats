@@ -65,6 +65,39 @@ class Match < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.get_klass_ranked_wr(beginning, endday)
+    ranked_stats_array = Array.new
+    ranked_count_array = Hash.new
+    Klass::LIST.each do |klass|
+      winrate = self.get_rank_wr_array_for_klass(klass[0], beginning, endday)
+      ranked_stats_array << winrate.win_rate_array
+      ranked_count_array[klass[1]] = winrate.win_counts
+    end
+
+    [ranked_stats_array, ranked_count_array]
+  end
+
+  Winrate = Struct.new(:win_rate_array, :win_counts)
+  def self.get_rank_wr_array_for_klass(klass_id, beginning, endday)
+    klass_wr = Array.new
+    match_count = Array.new
+    Rank.all.each do |rank|
+      matches = rank.matches.where(klass_id: klass_id, 
+                                   created_at: beginning..endday)
+      id = rank.id
+      if rank.id == 26
+        id = 0
+        klass_wr.unshift([id, self.get_win_rate(matches)])
+        match_count.unshift(matches.length)
+      else
+        klass_wr << [id, self.get_win_rate(matches)]
+        match_count << matches.length
+      end
+    end
+
+    Winrate.new(klass_wr, match_count)
+  end
+
   def self.winrate_per_day(all_matches, before_days)
     matches = all_matches
       .where("created_at >= ?", before_days.days.ago.beginning_of_day)
@@ -83,6 +116,18 @@ class Match < ActiveRecord::Base
 
   def self.results_list
     RESULTS_LIST.values
+  end
+
+  def self.get_win_rate(matches, strout = false )
+    tot_games = matches.count
+    return "N/A" if tot_games == 0
+
+    wins = matches.where(result_id: 1).count
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
+    win_rate = win_rate.to_s + "%" if strout
+
+    win_rate
   end
 
   def self.search(field, query = nil)
@@ -211,5 +256,6 @@ class Match < ActiveRecord::Base
       deck.update_user_stats!
     end
   end
+
 
 end

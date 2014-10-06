@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 2c6f4caa99916c33d3f9af57f66422ff5ea913cf
+  specs:
+    stripe (1.15.0)
+      json (~> 1.8.1)
+      mime-types (>= 1.25, < 3.0)
+      rest-client (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,6 +40,9 @@ GEM
     acts-as-taggable-on (3.4.1)
       activerecord (>= 3.2, < 5)
     addressable (2.3.6)
+    announcements (0.2.0)
+      jquery-rails
+      rails (>= 3.1.0)
     appsignal (0.10.6)
       rack
       thread_safe
@@ -48,6 +60,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-wysihtml5-rails (0.3.2.100)
+      railties (>= 3.0)
     builder (3.0.4)
     cancancan (1.9.2)
     capistrano (2.14.2)
@@ -58,13 +72,13 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano_rsync_with_remote_cache (2.4.0)
       capistrano (>= 2.1.0)
-    capybara (2.4.1)
+    capybara (2.4.3)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-screenshot (0.3.22)
+    capybara-screenshot (1.0.1)
       capybara (>= 1.0, < 3)
       colored
       launchy
@@ -101,7 +115,7 @@ GEM
     dalli (2.7.2)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
-    delayed_job (4.0.3)
+    delayed_job (4.0.4)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.2)
       activerecord (>= 3.0, < 4.2)
@@ -118,7 +132,7 @@ GEM
       warden (~> 1.2.3)
     devise-token_authenticatable (0.2.0)
       devise (~> 3.3.0)
-    diff-lcs (1.2.5)
+    diff-lcs (1.1.3)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -132,7 +146,7 @@ GEM
       mail (~> 2.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.39.5)
+    excon (0.39.6)
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -149,10 +163,9 @@ GEM
       curb (~> 0.8)
       loofah (~> 2.0)
       sax-machine (~> 1.0)
-    ffi (1.9.3)
-    figaro (0.7.0)
-      bundler (~> 1.0)
-      rails (>= 3, < 5)
+    ffi (1.9.5)
+    figaro (1.0.0)
+      thor (~> 0.14)
     fog (1.23.0)
       fog-brightbox
       fog-core (~> 1.23)
@@ -160,7 +173,7 @@ GEM
       fog-softlayer
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.5.0)
+    fog-brightbox (0.5.1)
       fog-core (~> 1.22)
       fog-json
       inflecto
@@ -194,12 +207,12 @@ GEM
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
-    guard-rspec (4.3.1)
-      guard (~> 2.1)
-      rspec (>= 2.14, < 4.0)
-    guard-zeus (2.0.0)
-      guard (~> 2.0)
-      zeus (~> 0)
+    guard-rspec (2.5.4)
+      guard (>= 1.1)
+      rspec (~> 2.11)
+    guard-spring (0.0.4)
+      guard
+      spring
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
@@ -212,7 +225,6 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.4.0)
     i18n (0.6.11)
-    imgkit (1.4.1)
     impressionist (1.5.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
@@ -257,8 +269,6 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.2)
     mime-types (1.25.1)
-    mini_magick (3.8.1)
-      subexec (~> 0.2.1)
     mini_portile (0.6.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
@@ -335,46 +345,37 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redactor-rails (0.4.5)
-      devise
-      mime-types
-      orm_adapter
     request_store (1.1.0)
     rest-client (1.6.8)
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
     rmagick (2.13.3)
     rolify (3.4.1)
-    rspec (3.1.0)
-      rspec-core (~> 3.1.0)
-      rspec-expectations (~> 3.1.0)
-      rspec-mocks (~> 3.1.0)
-    rspec-core (3.1.2)
-      rspec-support (~> 3.1.0)
-    rspec-expectations (3.1.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.1.0)
-    rspec-mocks (3.1.0)
-      rspec-support (~> 3.1.0)
-    rspec-rails (3.1.0)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.0)
+    rspec-rails (2.12.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.1.0)
-      rspec-expectations (~> 3.1.0)
-      rspec-mocks (~> 3.1.0)
-      rspec-support (~> 3.1.0)
-    rspec-support (3.1.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     sanitize (3.0.2)
       crass (~> 0.2.0)
       nokogiri (>= 1.4.4)
       nokogumbo (= 1.1.12)
-    sass (3.4.3)
+    sass (3.4.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sax-machine (1.0.0)
+    sax-machine (1.0.2)
     seed_dump (3.1.0)
       activerecord
       activesupport
@@ -399,17 +400,18 @@ GEM
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
     slop (3.6.0)
-    social-share-button (0.1.7)
+    social-share-button (0.1.8)
       coffee-rails
       sass-rails
     spring (1.1.3)
+    spring-commands-rspec (1.0.2)
+      spring (>= 0.9.1)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.9)
-    subexec (0.2.3)
     sync (0.3.1)
       em-http-request
     taps (0.3.24)
@@ -450,25 +452,24 @@ GEM
       will_paginate (>= 3.0.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    zeus (0.15.1)
-      method_source (>= 0.6.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts-as-taggable-on
+  announcements
   appsignal
   awesome_print
   aws-sdk
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
+  bootstrap-wysihtml5-rails
   cancancan
   capistrano (~> 2.14.2)
   capistrano_rsync_with_remote_cache
   capybara (>= 2.0.2)
   capybara-screenshot
-  carrierwave
   chartkick
   cindy
   coffee-rails (~> 3.2.1)
@@ -489,10 +490,9 @@ DEPENDENCIES
   gon
   groupdate
   guard-rspec
-  guard-zeus
+  guard-spring
   hipchat
   httparty
-  imgkit
   impressionist
   jquery-rails
   jquery-ui-rails (~> 5.0.0)
@@ -501,7 +501,6 @@ DEPENDENCIES
   mailboxer (~> 0.11.0)
   meta-tags
   meta_search (>= 1.1.0.pre)
-  mini_magick
   mysql2
   newrelic_rpm
   nokogiri
@@ -516,10 +515,9 @@ DEPENDENCIES
   rake
   ransack
   rb-fsevent
-  redactor-rails
   rmagick
   rolify
-  rspec-rails (>= 2.12.2)
+  rspec-rails (~> 2.12.2)
   sanitize
   sass-rails (~> 3.2.3)
   seed_dump
@@ -530,7 +528,9 @@ DEPENDENCIES
   slim-rails
   social-share-button
   spring
+  spring-commands-rspec
   sqlite3
+  stripe!
   sync
   taps
   thin
