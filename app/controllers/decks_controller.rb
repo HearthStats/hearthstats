@@ -168,6 +168,25 @@ class DecksController < ApplicationController
     canedit(@deck)
   end
 
+  def merge
+    @decks = Deck.find(params["deck_merge"])
+  end
+
+  def submit_merge
+    master = Deck.find(params[:master])
+    slaves = Deck.find(params[:slaves])
+
+    slaves.each do |deck|
+      deck.match_deck.each do |match_deck|
+        match_deck.update_attribute(:deck_id, master.id)
+      end
+      deck.update_user_stats!
+      deck.destroy
+    end
+    master.update_user_stats!
+    redirect_to decks_path
+  end
+
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id

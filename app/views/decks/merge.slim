@@ -1,0 +1,13 @@
+- set_meta_tags :title => 'Merge Decks',
+  :description => 'Merge exccessive decks',
+  :keywords => 'decks, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, t('.title'))
+- provide(:subtitle, t('.subtitle'))
+
+h3 = t('.which_deck')
+small = t('.other_decks')
+div
+  - @decks.each do |deck|
+    = link_to deck.name,
+      submit_merge_decks_path(slaves: (params["deck_merge"] - [deck.id.to_s]),
+      master:deck.id), method: :post, class: "btn btn-lg default merge-decks"

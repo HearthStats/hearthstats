@@ -225,3 +225,18 @@ th .header{
 .easy-pie-chart{
   span{}
 }
+.merge-boxes{
+  display: none;
+}
+#decklist thead tr th:first-child{
+  display: none;
+}
+#merge-button{
+  display: none;
+}
+#merge-toggle{
+  color: white;
+}
+.merge-decks{
+  margin: 10px;
+}

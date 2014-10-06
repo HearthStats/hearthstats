@@ -1,0 +1,32 @@
+table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#decklist
+  thead
+    tr
+      th = t('.name')
+      th.class = t('.class')
+      th.minions = t('.minions')
+      th.spells = t('.spells')
+      th.weapons = t('.weapons')
+      th.matches = t('.matches')
+      th.wins = t('.wins')
+      th.losses = t('.losses')
+      th.winrate = t('.win_rate')
+      - if signed_in?
+        th.tools = t('.tools')
+  tbody
+    - @decks.each do |deck|
+      tr
+        td.name    = link_to deck.name, deck
+        td.class
+          img[ src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif"
+            alt = "#{deck.class_name}"]
+        td.minions = deck.num_minions
+        td.spells  = deck.num_spells
+        td.weapons = deck.num_weapons
+        td.matches = deck.matches.count
+        td.wins    = deck.user_num_wins
+        td.losses  = deck.user_num_losses
+        td.winrate = number_to_percentage(deck.user_winrate, precision: 1)
+        - if signed_in?
+          td.tools
+            = link_to(" Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o')
+            = link_to(" Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' })

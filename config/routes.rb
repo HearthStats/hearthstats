@@ -103,6 +103,8 @@ Hearthstats::Application.routes.draw do
     collection do
       get 'active_decks'
       get 'public'
+      get 'merge'
+      post 'submit_merge'
       get 'new_splash'
       post 'submit_active_decks'
       get 'copy'
