@@ -469,6 +469,8 @@ en:
     index:
       my_decks: My Decks
       new_deck: New Deck
+      enable_merge: Enable Merge Mode
+      merge: Merge
       subtitle: " all of my constructed decks"
       title: My Decks
     new:

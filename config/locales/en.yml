@@ -430,7 +430,24 @@ en:
       title: My Decks
       subtitle: ! ' all of my constructed decks'
       new_deck: New Deck
+      enable_merge: Enable Merge Mode
+      merge: Merge
       my_decks: My Decks
+      name: Name
+      class: Class
+      minions: Minions
+      spells: Spells
+      weapons: Weapons
+      matches: Matches
+      wins: Wins
+      losses: Losses
+      win_rate: Win Rate
+      tools: Tools
+    merge:
+      title: Merge Decks
+      subtitle: Select which deck to keep
+      which_deck: Which deck should be kept?
+      other_decks: All other decks will be deleted
     public_decklist:
       class: Class
       listed_by: Listed By
