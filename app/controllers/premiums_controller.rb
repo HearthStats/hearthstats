@@ -41,5 +41,6 @@ class PremiumsController < ApplicationController
     rescue Stripe::StripeError => e
       logger.error "Stripe Error: " + e.message
       errors.add :base, "Unable to cancel your subscription. #{e.message}."
+    redirect_to premiums_path
   end
 end

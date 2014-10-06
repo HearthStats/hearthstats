@@ -1,14 +1,33 @@
 / = link_to "Gold", new_premium_path(plan: "gold")
 / = link_to "Platinum", new_premium_path(plan: "plat")
+- if signed_in?
+  .row
+    .col-md-12
+      .portlet
+        .portlet-title
+          .caption
+            i.fa.fa-cogs
+            |Pricing Tables
+        .portlet-body
+          .row.margin-bottom-40
+            = form_tag premiums_path do
+              .col-md-3
+                .pricing.hover-effect
+                  .pricing-head
+                    h3 
+                      |Early Supporter
+                      span details
+                    h4 
+                      |<i>$</i>5<i>.49</i>
+                      span Per Month
+                  ul.pricing-content.list-unstyled
+                    li
+                      li.fa.fa-tags
+                      |Jeff so pro
+                  .pricing-footer
+                    p Lorem ipsum...
+                    script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
 
-- if current_user.nil?
-  b Please sign in to purchase premium
-- elsif current_user && !current_user.subscribed?
-  = form_tag premiums_path do
-    article
-      lable.amount
-      span Amount: $4.99 USD
-    script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
 - else
   p 
     b Thank you for being an early supporter!
