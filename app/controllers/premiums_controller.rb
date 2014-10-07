@@ -10,44 +10,50 @@ class PremiumsController < ApplicationController
 
   def create
     @amount = 499
-    if current_user.customer_id.nil?
-      customer = Stripe::Customer.create(
-        email: current_user.email,
-        card: params[:stripeToken],
-        plan: "early"
-      )
-      current_user.subscription_id = 1
-      current_user.customer_id = customer.id
-      current_user.save!
-      current_user.add_role :early_sub
-    else
-      customer = Stripe::Customer.retrieve(current_user.customer_id)
-      if params[:stripeToken].present?
-        customer.card = params[:stripeToken]
+    begin
+      if current_user.customer_id.nil?
+        customer = Stripe::Customer.create(
+          email: current_user.email,
+          card: params[:stripeToken],
+          plan: "early"
+        )
+        current_user.subscription_id = 1
+        current_user.customer_id = customer.id
+        current_user.save!
+        current_user.add_role :early_sub
+      else
+        customer = Stripe::Customer.retrieve(current_user.customer_id)
+        if params[:stripeToken].present?
+          customer.card = params[:stripeToken]
+        end
+        current_user.subscription_id = 1
+        customer.plan = "early"
+        current_user.add_role :early_sub
+        current_user.save
+        customer.save
       end
-      current_user.subscription_id = 1
-      customer.plan = "early"
-      current_user.add_role :early_sub
-      current_user.save
-      customer.save
+    rescue Stripe::CardError => e
     end
+    redirect_to premiums_path, alert: e
 
-    redirect_to premiums_path
   end
 
   def show
   end
 
   def cancel
-    customer = Stripe::Customer.retrieve(current_user.customer_id)
-    unless customer.nil? || customer.respond_to?("deleted")
-      subscription = customer.subscriptions.data[0]
-      if subscription.status == "active"
-        customer.cancel_subscription
-        current_user.subscription_id = nil
-        current_user.remove_role :early_sub
-        current_user.save!
+    begin
+      customer = Stripe::Customer.retrieve(current_user.customer_id)
+      unless customer.nil? || customer.respond_to?("deleted")
+        subscription = customer.subscriptions.data[0]
+        if subscription.status == "active"
+          customer.cancel_subscription
+          current_user.subscription_id = nil
+          current_user.remove_role :early_sub
+          current_user.save!
+        end
       end
+    rescue Stripe::CardError => e
     end
     redirect_to premiums_path
   end
