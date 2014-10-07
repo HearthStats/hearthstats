@@ -82,7 +82,13 @@
                     |Support a great site and community
                 .pricing-footer
                   p Early Supporter is a very limited time package that we are very excited about. You will get first access to features such as <b>replays</b>, <b>custom reports</b>, and much much more.
-                  script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
+                  = form_tag premiums_path do
+                    script [src="https://checkout.stripe.com/checkout.js" 
+                      class="stripe-button" 
+                      data-key="#{ Rails.configuration.stripe[:publishable_key] }" 
+                      data-description="Early Supporter" 
+                      data-amount="499"
+                      data-image="/assets/new_logo/full_colour/full_colour_mark.png"]
             .col-md-4.plat
               .pricing.hover-effect
                 .pricing-head
@@ -123,8 +129,12 @@
                     |Coming Soon...
 
 - else
-  p 
-    b Thank you for being an early supporter!
-  p 
-    b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
-  p = link_to 'Cancel Subscription', cancel_premiums_path
+  h3 Thank you for being an early supporter!
+  .center
+    small Feel free to email jeff@heartstats.net for ANY questions!
+    div
+      img src="http://img1.wikia.nocookie.net/__cb20130821093610/the-house-of-anubis/images/2/25/ThankYou.gif"
+
+    p 
+      b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
+    p = link_to 'Cancel Subscription', cancel_premiums_path, class: "btn red", method: :post

@@ -84,6 +84,12 @@
         </li>
       </ul>
     </li>
+    <li class="premium">
+      <a href="/premiums">
+      <i class="fa fa-star"></i>
+      <span class="title"><%= t('menu.prem')  %></span>
+      </a>
+    </li>
     <% if current_user.has_permission(sub_plans) %>
       <li class="blind_draft">
       <a href="javascript:;">

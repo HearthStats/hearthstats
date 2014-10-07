@@ -20,6 +20,16 @@ class PremiumsController < ApplicationController
       current_user.customer_id = customer.id
       current_user.save!
       current_user.add_role :early_sub
+    else
+      customer = Stripe::Customer.retrieve(current_user.customer_id)
+      if params[:stripeToken].present?
+        customer.card = params[:stripeToken]
+      end
+      current_user.subscription_id = 1
+      customer.plan = "early"
+      current_user.add_role :early_sub
+      current_user.save
+      customer.save
     end
 
     redirect_to premiums_path
@@ -35,12 +45,10 @@ class PremiumsController < ApplicationController
       if subscription.status == "active"
         customer.cancel_subscription
         current_user.subscription_id = nil
+        current_user.remove_role :early_sub
         current_user.save!
       end
     end
-    rescue Stripe::StripeError => e
-      logger.error "Stripe Error: " + e.message
-      errors.add :base, "Unable to cancel your subscription. #{e.message}."
     redirect_to premiums_path
   end
 end

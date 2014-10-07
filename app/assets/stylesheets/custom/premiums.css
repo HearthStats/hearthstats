@@ -1,0 +1,29 @@
+.btn-stripe {
+    color: #fff;
+  background: #008cdd;
+  background-image: -webkit-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
+  background-image: -moz-linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);
+  background-image: -ms-linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+  background-image: -o-linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+  background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);     
+  background: linear-gradient(top, #7dc5ee, #008cdd 85%, #30a2e4);      
+  text-shadow: 0 1px 1px rgba(0,0,0,0.53);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -o-box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  -ms-border-radius: 17px;
+  -o-border-radius: 17px;
+  border-radius: 17px;
+  border-color: #008cdd;
+}
+.btn-stripe:hover {
+  color: #fff;
+  background-position: 0;
+}
+.btn-stripe:active {
+  background: #008cdd;
+}
