@@ -1,5 +1,5 @@
 class PremiumsController < ApplicationController
-  before_filter :ssl_page
+  force_ssl if: :ssl_configured?
   def index
     if current_user.nil?
       redirect_to new_user_registration_path, alert: "You must sign up before purchasing premium subscription"
@@ -59,9 +59,7 @@ class PremiumsController < ApplicationController
     redirect_to premiums_path
   end
 
-  def ssl_page
-    if Rails.env.production? 
-      redirect_to :protocol => 'https://'
-    end
+  def ssl_configured?
+    !Rails.env.development?
   end
 end
