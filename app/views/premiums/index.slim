@@ -10,23 +10,56 @@
             |Pricing Tables
         .portlet-body
           .row.margin-bottom-40
-            = form_tag premiums_path do
-              .col-md-3
-                .pricing.hover-effect
-                  .pricing-head
-                    h3 
-                      |Early Supporter
-                      span details
-                    h4 
-                      |<i>$</i>5<i>.49</i>
-                      span Per Month
-                  ul.pricing-content.list-unstyled
-                    li
-                      li.fa.fa-tags
-                      |Jeff so pro
-                  .pricing-footer
-                    p Lorem ipsum...
-                    script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
+            .col-md-4
+              .pricing.hover-effect.pricing-active
+                .pricing-head.pricing-head-active
+                  h3 
+                    |Early Supporter
+                    span details
+                  h4 
+                    |<i>$</i>4<i>.99</i>
+                    span Per Month
+                ul.pricing-content.list-unstyled
+                  li
+                    li.fa.fa-tags
+                    |Jeff so pro
+                .pricing-footer
+                  p Lorem ipsum...
+                  script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
+            .col-md-4
+              .pricing.hover-effect
+                .pricing-head
+                  h3 
+                    |Gold
+                    span details
+                  h4 
+                    |TBA
+                    span Per Month
+                ul.pricing-content.list-unstyled
+                  li
+                    li.fa.fa-tags
+                    |Jeff so pro
+                .pricing-footer
+                  p Lorem ipsum...
+                  a.btn.yellow-crusta href="#"
+                    |Coming Soon...
+            .col-md-4
+              .pricing.hover-effect
+                .pricing-head
+                  h3 
+                    |Platinum
+                    span details
+                  h4 
+                    |TBA
+                    span Per Month
+                ul.pricing-content.list-unstyled
+                  li
+                    li.fa.fa-tags
+                    |Jeff so pro
+                .pricing-footer
+                  p Lorem ipsum...
+                  a.btn.yellow-crusta href="#"
+                    |Coming Soon...
 
 - else
   p 

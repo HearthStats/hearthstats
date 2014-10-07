@@ -8,11 +8,11 @@ body {
 }
 
 .page-lock {
-   top: 50%;
-   left: 50%;
-   position: absolute;
-   margin-top: -140px;
-   margin-left: -260px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin-top: -140px;
+  margin-left: -260px;
 }
 
 .page-lock .page-logo {
@@ -20,9 +20,9 @@ body {
 }
 
 .page-lock .page-body {
-   width: 500px;
-   padding: 10px;
-   background: url(bg-white-lock.png) repeat;
+  width: 500px;
+  padding: 10px;
+  background: url(../img/bg-white-lock.png) repeat;
 }
 
 .page-lock .page-body:after,
@@ -36,11 +36,11 @@ body {
   clear: both;
 }
 
-.page-lock .page-footer {
-   margin-top: 10px;
-   text-align: left !important;
-   font-size: 12px;
-   color: #eaeaea;
+.page-lock .page-footer-custom {
+  margin-top: 10px;
+  text-align: left !important;
+  font-size: 12px;
+  color: #eaeaea;
 }
 
 .page-lock img.page-lock-img {
@@ -98,15 +98,15 @@ body {
 /*Responsive*/
 @media (max-width: 768px) {
   .page-lock {
-     top:0px;
-     width: 280px;
-     margin-top: 20px;
-     margin-left: -140px;
+    top: 0px;
+    width: 280px;
+    margin-top: 20px;
+    margin-left: -140px;
   }
 
   .page-lock .page-body {
     padding: 10px;
-      text-align: center;
+    text-align: center;
     width: 280px;
   }
 
@@ -117,6 +117,7 @@ body {
     text-align: center;
     margin-bottom: 15px;
   }
+
   .page-lock .page-lock-info {
     float: none !important;
     width: 260px;

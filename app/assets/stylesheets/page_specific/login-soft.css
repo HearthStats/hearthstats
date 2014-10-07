@@ -1,7 +1,6 @@
 /***
 Login page
 ***/
-
 /* logo page */
 .login {
   background-color: #666 !important;
@@ -9,14 +8,13 @@ Login page
 
 .login .logo {
   margin: 0 auto;
-  margin-top:60px;
+  margin-top: 60px;
   padding: 15px;
   text-align: center;
 }
 
-
 .login .content {
-  background: url(/assets/bg-white-lock.png) repeat;
+  background: url(../img/bg-white-lock.png) repeat;
   width: 360px;
   margin: 0 auto;
   margin-bottom: 0px;
@@ -28,7 +26,8 @@ Login page
 .login .content h3 {
   color: #eee;
 }
-.login .content h4  {
+
+.login .content h4 {
   color: #eee;
 }
 
@@ -39,8 +38,8 @@ Login page
 
 .login .content .login-form,
 .login .content .forget-form {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .login .content .form-control {
@@ -116,8 +115,8 @@ Login page
   position: relative;
   color: #ccc;
   z-index: 1;
-  top:1px;
-  margin: 4px 4px 0px 3px;
+  top: 1px;
+  margin: 4px 4px 0px -1px;
   width: 16px;
   height: 16px;
   font-size: 16px;
@@ -142,7 +141,7 @@ Login page
   margin: 0 auto;
   padding: 10px;
   color: #eee;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 @media (max-width: 480px) {
@@ -150,7 +149,7 @@ Login page
   Login page
   ***/
   .login .logo {
-    margin-top:10px;
+    margin-top: 10px;
   }
 
   .login .content {
