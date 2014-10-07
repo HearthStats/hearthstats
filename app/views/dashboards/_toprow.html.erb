@@ -27,7 +27,7 @@
                   <div class="cont">
                     <div class="cont-col1">
                       <% if entry.mode.name == "Arena" %>
-                        <div class="label label-sm label-<%=entry.klass.name%>">
+                        <div class="label label-sm <%=entry.klass.name%>">
                           <%=image_tag("swords.svg", height: 17, width: 17) %>
                         </div>
                       <% elsif entry.mode.name == "Ranked" %>
