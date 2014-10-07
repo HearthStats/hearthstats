@@ -44,12 +44,14 @@ class Tournament < ActiveRecord::Base
 
   ### INSTANCE METHODS:
   def start_tournament
+    success = false
     case self.bracket_format
     when 0
-      initiate_groups(self.num_pods)
+      success = initiate_groups(self.num_pods)
     when 1
-      initiate_brackets
+      success = initiate_brackets
     end
+    success
   end
 
   def started?
@@ -79,6 +81,8 @@ class Tournament < ActiveRecord::Base
                                           undecided: -1)
       end
     end
+    self.save
+    true
   end
 
   def initiate_brackets
@@ -110,7 +114,6 @@ class Tournament < ActiveRecord::Base
                                         p1_id: extend_left_flag.zero? ? pair.p1_id : pair.p2_id,
                                         p2_id: user.id,
                                         undecided: -1)
-
       if base_pair_pointer == base_pairs.count - 1  # extended right child of every base pair, now do left
         extend_left_flag = 0
         base_pair_pointer = -2      # reset it to wrap around to 0th position
@@ -121,6 +124,9 @@ class Tournament < ActiveRecord::Base
         base_pair_pointer %= (base_pairs.count - 1)    # wrap around into odd indices
       end
     end
+    self.save
+    update_undecided_pair_ids
+    true
   end
 
   def is_group_stage?
@@ -130,6 +136,8 @@ class Tournament < ActiveRecord::Base
   def invite_only?
     self.is_private == true
   end
+
+  private
 
   def update_undecided_pair_ids
     final_pair_list = TournPair.where(tournament_id: self.id)
@@ -156,8 +164,6 @@ class Tournament < ActiveRecord::Base
       TournPair.update(current.id, undecided: undecided)
     end
   end
-
-  private
 
   def bfs_populate(depth)
     queue = Array.new

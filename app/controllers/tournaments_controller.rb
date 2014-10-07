@@ -68,10 +68,8 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     if !@tournament.started
       @tournament.started = true
-      @tournament.start_tournament
       respond_to do |format|
-        if @tournament.save
-          @tournament.update_undecided_pair_ids
+        if @tournament.start_tournament
           format.html { redirect_to(@tournament, notice: 'Tournament has started') }
         else
           format.html { render action: "admin"}
