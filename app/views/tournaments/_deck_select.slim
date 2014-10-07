@@ -21,7 +21,12 @@ javascript:
   $(document).ready(function(){
     $(".deck_choice").click(function(){
       var checked = $( "input:checked" ).length
-      $("#count_display").text($("#num_decks").val()-checked);
-      //$(this).css({"border-style":"solid","border-color":"red"});
+      var count = $("#num_decks").val()
+      if (checked > count) {
+          event.preventDefault();
+          alert('You can only choose' + count + ' decks!');
+          checked -= 1;
+      }
+      $("#count_display").text(count-checked);
     });
   });

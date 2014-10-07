@@ -11,6 +11,10 @@ table
               tr
                 p
                   |Pair:&nbsp;
-                  span = pair.p1_id
+                  span = pair.p1_name
+                  - if pair.winner_id == pair.p1_id
+                    p *
                   |&nbsp;V.S.&nbsp;
-                  span = pair.p2_id
+                  span = pair.p2_name
+                  - if pair.winner_id == pair.p2_id
+                    p *

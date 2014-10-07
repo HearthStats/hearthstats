@@ -19,6 +19,7 @@ group :development do
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'awesome_print', :require => false
+  #gem 'active_record_query_trace'
 end
 
 group :assets do
@@ -84,9 +85,6 @@ gem 'sync'
 gem 'announcements'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rmagick'
-
-# DB
-gem 'activerecord-import'
 
 # APIs
 gem 'newrelic_rpm'

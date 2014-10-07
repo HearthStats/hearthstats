@@ -44,12 +44,14 @@ class Tournament < ActiveRecord::Base
 
   ### INSTANCE METHODS:
   def start_tournament
+    success = false
     case self.bracket_format
     when 0
-      initiate_groups(self.num_pods)
+      success = initiate_groups(self.num_pods)
     when 1
-      initiate_brackets
+      success = initiate_brackets
     end
+    success
   end
 
   def started?
@@ -65,7 +67,6 @@ class Tournament < ActiveRecord::Base
     user_list = user_list.shuffle
     num_residual_users = user_list.count % num_pods
     num_users_per_pod = (user_list.count / num_pods).floor
-    pair_list = Array.new
 
     (1..num_pods).each do |pod|
       pod_size = num_users_per_pod + (num_residual_users.quo(num_pods)).ceil
@@ -78,11 +79,10 @@ class Tournament < ActiveRecord::Base
                                           p1_id: pairing[0].id,
                                           p2_id: pairing[1].id,
                                           undecided: -1)
-        pair_list.push(new_pair)
       end
     end
-
-    TournPair.import pair_list
+    self.save
+    true
   end
 
   def initiate_brackets
@@ -114,9 +114,6 @@ class Tournament < ActiveRecord::Base
                                         p1_id: extend_left_flag.zero? ? pair.p1_id : pair.p2_id,
                                         p2_id: user.id,
                                         undecided: -1)
-
-      pair_list.insert(base_pair_offset + base_pair_pointer, new_pair)
-
       if base_pair_pointer == base_pairs.count - 1  # extended right child of every base pair, now do left
         extend_left_flag = 0
         base_pair_pointer = -2      # reset it to wrap around to 0th position
@@ -126,12 +123,10 @@ class Tournament < ActiveRecord::Base
       if base_pair_pointer != (base_pairs.count - 1)     # when the pointer is about to become the last index, we don't want it to wrap around
         base_pair_pointer %= (base_pairs.count - 1)    # wrap around into odd indices
       end
-
     end
-    pair_list.reject! { |p| p.nil? }
-    TournPair.import pair_list
-
+    self.save
     update_undecided_pair_ids
+    true
   end
 
   def is_group_stage?
@@ -149,7 +144,6 @@ class Tournament < ActiveRecord::Base
     root = final_pair_list.select { |p| (!p.nil? && p.roundof == 2 && p.pos == 0) }
     p_queue = []
     p_queue.push(root[0]) # roundof: 2, pos: 0
-
     while !p_queue.empty? do
       undecided = -1
       current = p_queue.shift
@@ -158,13 +152,13 @@ class Tournament < ActiveRecord::Base
       if !left.nil?
         TournPair.update(current.id, p1_id: left.id)
         p_queue.push(left)
-        undecided += 2
+        undecided += 1
       end
 
       if !right.nil?
         TournPair.update(current.id, p2_id: right.id)
         p_queue.push(right)
-        undecided += 1
+        undecided += 2
       end
 
       TournPair.update(current.id, undecided: undecided)
@@ -173,7 +167,7 @@ class Tournament < ActiveRecord::Base
 
   def bfs_populate(depth)
     queue = Array.new
-    root = self.tourn_pairs.build(tournament_id: self.id, 
+    root = self.tourn_pairs.build(tournament_id: self.id,
                                   pos: 0,
                                   roundof: 2,
                                   undecided: 2)
@@ -224,7 +218,6 @@ class Tournament < ActiveRecord::Base
       end
 
     end
-    puts pair_list.count
     pair_list
   end
 end

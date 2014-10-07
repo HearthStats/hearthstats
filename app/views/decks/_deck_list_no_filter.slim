@@ -26,7 +26,7 @@ table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#d
         td.wins    = deck.user_num_wins
         td.losses  = deck.user_num_losses
         td.winrate = number_to_percentage(deck.user_winrate, precision: 1)
-        - if signed_in?
+        - if signed_in? && !deck.is_tourn_deck
           td.tools
             = link_to(" Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o')
             = link_to(" Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' })

@@ -4,7 +4,7 @@ require 'awesome_print'
 describe Tournament do
 
   describe "single elim brackets" do
-    let(:tournament) { build :tournament, bracket_format: 1 }
+    let(:tournament) { build :tournament, bracket_format: 1, name: "test", num_decks: 3 }
     describe "#initiate_brackets" do
       # tests pick unique situations in bracket positioning, and
       # checks for:
@@ -17,7 +17,7 @@ describe Tournament do
         8.times do
           create :tourn_user, tournament_id: tournament.id
         end
-        tournament.initiate_brackets
+        tournament.start_tournament
         pairs = TournPair.where(tournament_id: tournament.id)
         pairs.count.should == 7
         confirm_top8_pairs(pairs)
@@ -29,7 +29,7 @@ describe Tournament do
         10.times do
           create :tourn_user, tournament_id: tournament.id
         end
-        tournament.initiate_brackets
+        tournament.start_tournament
         pairs = TournPair.where(tournament_id: tournament.id)
         pairs.count.should == 9
         r16_pairs = pairs.select { |p| p.roundof == 16 }
@@ -45,7 +45,7 @@ describe Tournament do
         13.times do
           create :tourn_user, tournament_id: tournament.id
         end
-        tournament.initiate_brackets
+        tournament.start_tournament
         pairs = TournPair.where(tournament_id: tournament.id)
         pairs.count.should == 12
         r16_pairs = pairs.select { |p| p.roundof == 16 }
@@ -62,14 +62,14 @@ describe Tournament do
   end # single elim
 
   describe "group stage" do
-    let(:tournament) { build :tournament, bracket_format: 0 }
+    let(:tournament) { build :tournament, bracket_format: 0, name: "test", num_decks: 3, num_pods: 4}
     describe "#initiate_groups" do
       it "creates pairings for round robin for 16 users in 4 pods" do
         # perfect number of users, no residual
         16.times do
           create :tourn_user, tournament_id: tournament.id
         end
-        tournament.initiate_groups(4)
+        tournament.start_tournament
         pairs = TournPair.where(tournament_id: tournament.id)
         pairs.count.should == 24
         tournament.get_num_pairings_in_pod(1).should == 6
@@ -83,7 +83,7 @@ describe Tournament do
         19.times do
           create :tourn_user, tournament_id: tournament.id
         end
-        tournament.initiate_groups(4)
+        tournament.start_tournament
         pairs = TournPair.where(tournament_id: tournament.id)
         pairs.count.should == 36
         tournament.get_num_pairings_in_pod(1).should == 10
@@ -110,7 +110,7 @@ describe Tournament do
       when -1
         user_list.push(pair.p1_id)
         user_list.push(pair.p2_id)
-      when 0
+      when 1
         user_list.push(pair.p1_id)
       end
     end

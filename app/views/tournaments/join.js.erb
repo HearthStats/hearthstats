@@ -1,5 +1,7 @@
 <% if @tournament.is_private and @code_error %>
   alert("Incorrect tournament code");
+<% elsif !@not_full %>
+  alert("Tournament is full")
 <% else %>
   $("#tourn_content_panel").empty();
   $("#toggle_tournament").empty();

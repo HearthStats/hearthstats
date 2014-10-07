@@ -33,21 +33,22 @@
           input name="tags" id="tags" width="100%"
           .div
             small Tags separated by commas
-        .form-group
-          span = f.check_box :is_public
-          label
-            |&nbsp;
-            = t("decks.form.this_deck_public")
-        .form-group
-          = f.submit class: 'btn btn-block green'
-        - if params[:action] == 'edit'
+        - if !@deck.is_tourn_deck
           .form-group
-            = link_to 'Create New Deck Version', version_deck_path(@deck),class: 'btn btn-block yellow', method: :post
+            span = f.check_box :is_public
+            label
+              |&nbsp;
+              = t("decks.form.this_deck_public")
           .form-group
-            label = t("decks.form.other_versions")
-            div
-              - @deck.deck_versions.each do |version|
-                  = link_to "v#{version.version}", deck_path(@deck, version: version.version), class: "btn blue btn-sm btn-version"
+            = f.submit class: 'btn btn-block green'
+          - if params[:action] == 'edit'
+            .form-group
+              = link_to 'Create New Deck Version', version_deck_path(@deck),class: 'btn btn-block yellow', method: :post
+            .form-group
+              label = t("decks.form.other_versions")
+              div
+                - @deck.deck_versions.each do |version|
+                    = link_to "v#{version.version}", deck_path(@deck, version: version.version), class: "btn blue btn-sm btn-version"
     .col-sm-12.col-md-7.col-lg-6
       .form-body
         h3 Deck Builder

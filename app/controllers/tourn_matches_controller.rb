@@ -49,6 +49,9 @@ class TournMatchesController < ApplicationController
             winner_id = determine_winner(matches_eval_list, matches_to_win, opp_cur_match.tourn_user_id)
             if winner_id != 0
               TournPair.update(t_pair_id, winner_id: winner_id)
+              if @tournament.bracket_format == 1
+                advance_winner(winner_id, t_pair_id)
+              end
             end
           end
         end
@@ -102,4 +105,21 @@ class TournMatchesController < ApplicationController
     return 0
   end
 
+  def advance_winner(winner_id, cur_pair_id)
+    next_t_pair = TournPair.where(tournament_id: @tournament.id, p1_id: cur_pair_id).first
+    if next_t_pair.nil?
+      next_t_pair = TournPair.where(tournament_id: @tournament.id, p2_id: cur_pair_id).first
+      TournPair.update(next_t_pair.id, p2_id: winner_id)
+    else
+      TournPair.update(next_t_pair.id, p1_id: winner_id)
+    end
+
+    if next_t_pair.undecided < 2 # if one player is already decided
+      TournPair.update(next_t_pair.id, undecided: -1)  # then both players are decided
+    end
+
+    if next_t_pair.nil?
+      raise
+    end
+  end
 end

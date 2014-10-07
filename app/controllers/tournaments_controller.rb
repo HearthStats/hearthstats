@@ -9,21 +9,6 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def match
-    pair = TournPair.find(params[:pair_id])
-    @tournament = Tournament.find(params[:id])
-    p1 = TournUser.find(pair.p1_id)
-    p2 = TournUser.find(pair.p2_id)
-    @p1_decks = TournDeck.where(tourn_user_id: p1.id)
-    @p2_decks = TournDeck.where(tourn_user_id: p2.id)
-    raise
-    ## deck_submission
-    ## screenshot
-    respond_to do |format|
-      format.html
-    end
-  end
-
   def show
     @tournament = Tournament.find(params[:id])
     @format = Tournament.format_to_s(@tournament.bracket_format)
@@ -39,6 +24,10 @@ class TournamentsController < ApplicationController
       if @joined
         @my_lpairings = @pairs.where(p1_id: user_entry.first.id)
         @my_rpairings = @pairs.where(p2_id: user_entry.first.id)
+        if @tournament.bracket_format > 0
+          @my_lpairings = @my_lpairings.select {|pair| pair.undecided == -1}
+          @my_rpairings = @my_rpairings.select {|pair| pair.undecided == -1}
+        end
         @total_pairs = @my_lpairings.length + @my_rpairings.length
       end
     else
@@ -54,9 +43,9 @@ class TournamentsController < ApplicationController
   def admin
     @tournament = Tournament.find(params[:id])
     if !current_user.has_role? :tourn_admin, @tournament
-      redirect_to(@tournament, alert: 'You are not an admin of this tournament')
+      redirect_to(@tournament, alert: 'You are not an admin of this tournament') and return
     end
-    @players = @tournament.users
+    @players = @tournament.tourn_users
   end
 
 ### ACTIONS WITH NO PAGE
@@ -77,13 +66,14 @@ class TournamentsController < ApplicationController
 
   def start
     @tournament = Tournament.find(params[:id])
-    @tournament.started = true
-    @tournament.start_tournament
-    respond_to do |format|
-      if @tournament.save
-        format.html { redirect_to(@tournament, notice: 'Tournament has started') }
-      else
-        format.html { render action: "admin"}
+    if !@tournament.started
+      @tournament.started = true
+      respond_to do |format|
+        if @tournament.start_tournament
+          format.html { redirect_to(@tournament, notice: 'Tournament has started') }
+        else
+          format.html { render action: "admin"}
+        end
       end
     end
   end
@@ -94,10 +84,19 @@ class TournamentsController < ApplicationController
     respond_to do |format|
       @code_error = (@tournament.code != params[:code])
       if !@tournament.is_private or !@code_error
+        @not_full = not_full?(@tournament)
+        if @not_full
           TournUser.create(user_id: current_user.id, tournament_id: params[:id])
+        end
       end
       format.js
     end
+  end
+
+  def not_full?(tournament)
+    max_players = tournament.num_players
+    cur_player_count = TournUser.where(tournament_id: tournament.id).count
+    max_players > cur_player_count
   end
 
   def quit
@@ -120,10 +119,18 @@ class TournamentsController < ApplicationController
         TournDeck.create(deck_id: deck_id,
                          tournament_id: params[:id],
                          tourn_user_id: tourn_user.id)
-        Deck.update(deck_id, is_tourn_deck: true)
+        Deck.update(deck_id, is_tourn_deck: true, is_public: false)
       end
     end
 
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def remove_player
+    @player_id = params[:player_id]
+    TournUser.delete(@player_id)
     respond_to do |format|
       format.js
     end

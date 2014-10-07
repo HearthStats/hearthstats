@@ -214,6 +214,9 @@ class DecksController < ApplicationController
 
   def update
     @deck = Deck.find(params[:id])
+    if @deck.is_tourn_deck
+      render action: "index" and return
+    end
     @deck.constructeds.update_all(deckname: params[:deck]['name'])
     expire_fragment(@deck)
     respond_to do |format|
