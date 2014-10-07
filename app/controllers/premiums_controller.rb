@@ -1,4 +1,5 @@
 class PremiumsController < ApplicationController
+  before_filter :ssl_page
   def index
     if current_user.nil?
       redirect_to new_user_registration_path, alert: "You must sign up before purchasing premium subscription"
@@ -56,5 +57,11 @@ class PremiumsController < ApplicationController
     rescue Stripe::CardError => e
     end
     redirect_to premiums_path
+  end
+
+  def ssl_page
+    if Rails.env.production? 
+      redirect_to :protocol => 'https://'
+    end
   end
 end
