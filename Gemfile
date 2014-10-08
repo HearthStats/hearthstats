@@ -13,6 +13,7 @@ group :development do
   gem 'quiet_assets', '>= 1.0.1'
   gem 'rb-fsevent', :require => false
   gem 'pry'
+  gem 'pry-byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'guard-spring'

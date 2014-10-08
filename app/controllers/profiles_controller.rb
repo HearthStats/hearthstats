@@ -54,8 +54,8 @@ class ProfilesController < ApplicationController
     con_matches = matches.where(mode_id: 3)
     @overallcon = get_win_rate(con_matches, true)
 
-    @conwins   = Match.winrate_per_day(con_matches, 10)
-    @arenawins = Match.winrate_per_day(arena_matches, 10)
+    @conwins   = Match.winrate_per_day_cumulative(con_matches, 10)
+    @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
 
     # Determine Constructed Class Win Rates
     @classconrate = Array.new

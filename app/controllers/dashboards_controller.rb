@@ -12,8 +12,8 @@ class DashboardsController < ApplicationController
 
     # Get all user's matches from this season
     matches = Match.where(user_id: current_user.id, season_id: current_season)
-    @arenawins = Match.winrate_per_day(matches.where(mode_id: 1), 10)
-    @conwins   = Match.winrate_per_day(matches.where(mode_id: 3), 10)
+    @arenawins = Match.winrate_per_day_cumulative(matches.where(mode_id: 1), 10)
+    @conwins   = Match.winrate_per_day_cumulative(matches.where(mode_id: 3), 10)
     arena_matches = matches.where(mode_id: 1)
     @arena_wr = get_win_rate(arena_matches, true)
     con_matches = matches.where(mode_id: 3)
