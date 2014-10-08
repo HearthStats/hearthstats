@@ -75,13 +75,13 @@ class WelcomeController < ApplicationController
     if !current_user.is_admin?
       redirect_to root_path, alert: "y u no admin" and return
     end
-    season = current_season
+    season = 10
 
     get_ranked_graph_data(Season.last)
 
     @prev_global = [
-      {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
-      {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
+      {"Warlock" => 44.22, "Druid" => 49.73, "Shaman" => 51.56, "Rogue" => 53.60, "Warrior" => 45.60, "Paladin" => 51.79, "Mage" => 53.06, "Hunter" => 44.45, "Priest" => 42.52},
+      {"Warlock" => 52.56, "Druid" => 50.97, "Shaman" => 51.15, "Rogue" => 49.41, "Warrior" => 50.92, "Paladin" => 48.42, "Mage" => 47.54, "Hunter" => 48.57, "Priest" => 44.80}]
 
     matches = Match.where(season_id: season)
     # Determine match Class Win Rates
