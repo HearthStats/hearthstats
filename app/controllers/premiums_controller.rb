@@ -2,7 +2,7 @@ class PremiumsController < ApplicationController
   force_ssl if: :ssl_configured?
   def index
     if !signed_in?
-      redirect_to new_user_registration_path, 
+      redirect_to new_user_session_path, 
         alert: "Please sign in before purchasing"
     end
   end
