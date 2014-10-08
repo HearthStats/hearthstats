@@ -78,8 +78,8 @@ class TournMatchesController < ApplicationController
       admins.each do |admin|
         admin.notify( "Conflict notice",
                       "Conflict on the match " + t_match.round.to_s + " report " +
-                      "between " + user.profile.name + "(" + user.email + ")" +
-                      " and " + opp.profile.name + "(" + opp.email + ")" )
+                      "between " + user.profile.name + "(" + user.id + ")" +
+                      " and " + opp.profile.name + "(" + opp.id + ")" )
       end
       return true
     end
