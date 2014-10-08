@@ -398,6 +398,19 @@
   ga('create', 'UA-45442103-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+<% if notice || alert %>
+  <% if notice %>
+    <script>
+        toastr.success("<%= raw notice %>");
+    </script>
+  <% elsif alert %>
+    <script>
+        toastr.error("<%= raw alert %>");
+    </script>
+  <% end %>
+<% end %>
+
 <!-- BEGIN CPMSTAR TWO-SIDED ASYNCHRONOUS SITESKIN CODE 20130626 -->
 <script type="text/javascript">
 var cpmstar_siteskin_settings = {

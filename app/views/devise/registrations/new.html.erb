@@ -110,6 +110,17 @@
       </script>
     <% end %>
   <% end %>
+  <% if notice || alert %>
+    <% if notice %>
+      <script>
+          toastr.success("<%= raw notice %>");
+      </script>
+    <% elsif alert %>
+      <script>
+          toastr.error("<%= raw alert %>");
+      </script>
+    <% end %>
+  <% end %>
   <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
