@@ -45,6 +45,23 @@ class Tournament < ActiveRecord::Base
   ### INSTANCE METHODS:
   def start_tournament
     success = false
+    self.started = true
+    no_deck_players = []
+    # check if all decks are submitted
+    self.tourn_users.each do |player|
+      if !player.decks_submitted?
+        no_deck_players.push(player.user.name + "(" + player.id.to_s + ")")
+      end
+    end
+    if !no_deck_players.empty?
+      message = "Following players have not submitted decks: " + no_deck_players.join(",")
+      admins = User.with_role(:tourn_admin, self)
+      admins.each do |admin|
+        admin.notify("Decks not submitted", message)
+      end
+      return false
+    end
+
     case self.bracket_format
     when 0
       success = initiate_groups(self.num_pods)
