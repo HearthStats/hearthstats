@@ -66,24 +66,27 @@ class WelcomeController < ApplicationController
     unless current_user_allow?([:plat, :admin])
       redirect_to root_path and return
     end
-    klass_ranked_wr = Match.get_klass_ranked_wr(1.week.ago, 
+    klass_ranked_wr = Match.get_klass_ranked_wr(2.weeks.ago, 
                                                 DateTime.now)
     render json: klass_ranked_wr
   end
 
   def generate_report
-    if !current_user.is_admin?
-      redirect_to root_path, alert: "y u no admin" and return
-    end
+    # if !current_user.is_admin?
+    #   redirect_to root_path, alert: "y u no admin" and return
+    # end
     season = 10
 
-    get_ranked_graph_data(Season.last)
+    ranked_wr_count = Match.get_klass_ranked_wr(2.weeks.ago, 
+                                                DateTime.now)
+    @ranked_winrates = ranked_wr_count[0]
+    gon.counts = ranked_wr_count[1]
 
     @prev_global = [
       {"Warlock" => 44.22, "Druid" => 49.73, "Shaman" => 51.56, "Rogue" => 53.60, "Warrior" => 45.60, "Paladin" => 51.79, "Mage" => 53.06, "Hunter" => 44.45, "Priest" => 42.52},
       {"Warlock" => 52.56, "Druid" => 50.97, "Shaman" => 51.15, "Rogue" => 49.41, "Warrior" => 50.92, "Paladin" => 48.42, "Mage" => 47.54, "Hunter" => 48.57, "Priest" => 44.80}]
 
-    matches = Match.where(season_id: season)
+    matches = Match.where("created_at > ?", 2.weeks.ago)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
