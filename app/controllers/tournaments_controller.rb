@@ -111,9 +111,9 @@ class TournamentsController < ApplicationController
   def submit_deck
     tournament = Tournament.find(params[:id])
     tourn_user = TournUser.where(user_id: current_user.id, tournament_id: tournament.id).first
-    chosen_deck_ids = []
-    (0..tournament.num_decks).each do |deck_num|
-      deck_id = params["deck_#{deck_num}"]
+    deck_count = Deck.playable_decks(current_user.id).count
+    (1..deck_count).each do |deck_num|
+      deck_id = params["deck_#{deck_num-1}"]
       if !deck_id.nil?
         TournDeck.create(deck_id: deck_id,
                          tournament_id: params[:id],
