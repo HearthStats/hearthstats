@@ -70,6 +70,7 @@ Hearthstats::Application.routes.draw do
   match "/june", to: "welcome#june_report"
   match "/july", to: "welcome#july_report"
   match "/aug", to: "welcome#aug_report"
+  match "/sept", to: "welcome#sept_report"
   match "/gen_report", to: "welcome#generate_report"
   match "/liquid", to: "welcome#liquid_data"
   get "welcome/ranked_test"
