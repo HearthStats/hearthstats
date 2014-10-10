@@ -28,23 +28,26 @@ div.col
     div.col-md-6
       p
         = raw @tournament.desc
-  div.row
-    - if !current_user.nil?
-      div id='pending_matches'
-        - if @tournament.started? and @total_pairs > 0
-          = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
-    div id='tourn_content_panel'
-      - if @tournament.started?
-        - case @tournament.bracket_format
-        - when 0
-          = render partial: "group_show", locals: {pairs: @pairs, num_pods: @tournament.num_pods}
-        - when 1
-          = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
-        - else
-          |Oops... error in displaying tournament
+- if !current_user.nil? and @tournament.started? and @total_pairs > 0
+  div id='pending_matches'
+    = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
+div id='tourn_content_panel'
+  - if @tournament.started?
+    - case @tournament.bracket_format
+    - when 0
+      = render partial: "group_show", locals: {pairs: @pairs, num_pods: @tournament.num_pods}
+    - when 1
+      = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
+    - else
+      |Oops... error in displaying tournament
+  - else
+    - if @joined
+      - if !@submitted
+        = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
       - else
-        - if @joined
-          - if !@submitted
-            = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
-          - else
-            p You have already submitted your decks.
+        h4 Submitted decks
+        - @submitted_decks.each do |deck|
+          div.row-md-6
+            img[ src = "/assets/Icons/Classes/#{deck.deck.class_name}_Icon.gif"
+              alt = "#{deck.deck.class_name}"]
+            = link_to deck.deck.name, deck.deck

@@ -14,7 +14,7 @@ div.row id="deck_select_panel"
             label
               = check_box_tag "deck_#{index}", deck.id
               = deck.name
-      = submit_tag 'Submit and Enter'
+      = submit_tag 'Not enough decks...', class: 'btn btn-md blue', disabled: true
 
 javascript:
 
@@ -28,5 +28,13 @@ javascript:
           checked -= 1;
       }
       $("#count_display").text(count-checked);
+
+      if(checked == count) {
+        $('input[type="submit"]').removeAttr('disabled');
+        $('input[type="submit"]').val('Submit and Enter')
+      } else {
+        $('input[type="submit"]').prop('disabled', true)
+        $('input[type="submit"]').val('Not enough decks...')
+      }
     });
   });

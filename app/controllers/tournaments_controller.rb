@@ -35,6 +35,8 @@ class TournamentsController < ApplicationController
         @submitted = user_entry.first.decks_submitted?
         if !@submitted
           @user_decks = Deck.playable_decks(current_user.id)
+        else
+          @submitted_decks = TournDeck.where(tournament_id: params[:id], tourn_user_id: user_entry.first.id)
         end
       end
     end
