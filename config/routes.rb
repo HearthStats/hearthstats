@@ -182,7 +182,7 @@ Hearthstats::Application.routes.draw do
   # HearthStats API
   namespace :api do
     namespace :v1 do
-      # resources :cards
+      resources :cards
       get "arenas/show"
       post "arenas/new"
 
