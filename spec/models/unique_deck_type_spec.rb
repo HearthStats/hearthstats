@@ -11,5 +11,12 @@ describe UniqueDeckType do
         type_id.should == 1
       end
     end
+
+    describe "#match_type" do
+      it "returns 'true' if matched" do
+        matched? = UniqueDeckType.match_type(unique_deck.cardstring, unique_deck_type)
+        matched?.should == true
+      end
+    end
   end
 end
