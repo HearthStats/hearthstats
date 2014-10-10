@@ -1,17 +1,139 @@
-/ = link_to "Gold", new_premium_path(plan: "gold")
-/ = link_to "Platinum", new_premium_path(plan: "plat")
+- if current_user.subscription_id.nil?
+  .row
+    .col-md-12
+      .portlet
+        .portlet-title
+          .caption
+            i.fa.fa-cogs
+            |Pricing Tables
+        .portlet-body
+          b All charges are handled through Stripe
+          .row.margin-bottom-40
+            .col-md-4.gold
+              .pricing.hover-effect
+                .pricing-head
+                  h3 
+                    |Gold
+                    span details
+                  h4 
+                    |TBD
+                    span Per Month
+                ul.pricing-content.list-unstyled
+                  li
+                    i.fa.fa-star
+                    |Gold sticker badge on signature
+                  li
+                    i.fa.fa-remove
+                    |No more ads!
+                  li
+                    i.fa.fa-area-chart
+                    |Limited custom generated reports (coming soon)
+                  li
+                    i.fa.fa-sitemap
+                    |Priority access to tournaments (tournaments)
+                  li
+                    i.fa.fa-gift
+                    |Frequent raffles for pro player sessions and other gifts
+                  li
+                    i.fa.fa-plus-square
+                    |More benefits coming soon
+                  li
+                    i.fa.fa-child
+                    |Support a great site and community
+                .pricing-footer
+                  p Coming soon...
+                  a.btn.yellow-crusta href="#"
+                    |Coming Soon...
+            .col-md-4.early-supporter
+              .pricing.hover-effect.pricing-active
+                .pricing-head.pricing-head-active
+                  h3 
+                    |Early Supporter
+                    span details
+                  h4 
+                    |<i>$</i>4<i>.99</i>
+                    span Per Month
+                ul.pricing-content.list-unstyled
+                  li
+                    i.fa.fa-star
+                    |Early Supporter sticker badge on signature
+                  li
+                    i.fa.fa-remove
+                    |No more ads!
+                  li
+                    i.fa.fa-code-fork
+                    |Early access to new features
+                  li
+                    i.fa.fa-area-chart
+                    |Unlimted custom generated reports (coming soon)
+                  li
+                    i.fa.fa-sitemap
+                    |Priority access to tournaments
 
-- if current_user.nil?
-  b Please sign in to purchase premium
-- elsif current_user && !current_user.subscribed?
-  = form_tag premiums_path do
-    article
-      lable.amount
-      span Amount: $4.99 USD
-    script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ Rails.configuration.stripe[:publishable_key] }" data-description="A month's subscription" data-amount="499"
+                  li
+                    i.fa.fa-gift
+                    |Frequent raffles for pro player sessions and other gifts
+                  li
+                    i.fa.fa-plus-square
+                    |More benefits coming soon
+                  li
+                    i.fa.fa-child
+                    |Support a great site and community
+                .pricing-footer
+                  p Early Supporter is a very limited time package that we are very excited about. You will get first access to features such as <b>replays</b>, <b>custom reports</b>, and much much more.
+                  = form_tag premiums_path do
+                    script [src="https://checkout.stripe.com/checkout.js" 
+                      class="stripe-button" 
+                      data-key="#{ Rails.configuration.stripe[:publishable_key] }" 
+                      data-description="Early Supporter" 
+                      data-amount="499"
+                      data-image="/assets/new_logo/full_colour/full_colour_mark.png"]
+            .col-md-4.plat
+              .pricing.hover-effect
+                .pricing-head
+                  h3 
+                    |Platinum
+                    span details
+                  h4 
+                    |TBD
+                    span Per Month
+                ul.pricing-content.list-unstyled
+                  li
+                    i.fa.fa-star
+                    |Platinum sticker badge on signature
+                  li
+                    i.fa.fa-remove
+                    |No more ads!
+                  li
+                    i.fa.fa-code-fork
+                    |Early access to new features
+                  li
+                    i.fa.fa-area-chart
+                    |Unlimted custom generated reports (coming soon)
+                  li
+                    i.fa.fa-sitemap
+                    |Priority access to tournaments
+                  li
+                    i.fa.fa-gift
+                    |Frequent raffles for pro player sessions and other gifts
+                  li
+                    i.fa.fa-plus-square
+                    |More benefits coming soon
+                  li
+                    i.fa.fa-child
+                    |Support a great site and community
+                .pricing-footer
+                  p Coming soon...
+                  a.btn.yellow-crusta href="#"
+                    |Coming Soon...
+
 - else
-  p 
-    b Thank you for being an early supporter!
-  p 
-    b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
-  p = link_to 'Cancel Subscription', cancel_premiums_path
+  h3 Thank you for being an early supporter!
+  .center
+    small Feel free to email jeff@heartstats.net for ANY questions!
+    div
+      img src="http://img1.wikia.nocookie.net/__cb20130821093610/the-house-of-anubis/images/2/25/ThankYou.gif"
+
+    p 
+      b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
+    p = link_to 'Cancel Subscription', cancel_premiums_path, class: "btn red", method: :post

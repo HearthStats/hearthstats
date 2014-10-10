@@ -1,6 +1,5 @@
 class TournamentsController < ApplicationController
 
-### PAGES
   def new
     @tournament = Tournament.new
     @formats = Tournament.all_formats

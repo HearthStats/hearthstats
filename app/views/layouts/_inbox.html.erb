@@ -3,7 +3,7 @@
     data-close-others="true">
   <i class="fa fa-envelope"></i>
   <% unless unread_message.count == 0 %>
-    <span class="badge inbox-count"><%= unread_message.count %></span>
+    <span class="badge badge-danger"><%= unread_message.count %></span>
   <% end %>
   </a>
   <ul class="dropdown-menu inbox">

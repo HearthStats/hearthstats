@@ -66,24 +66,27 @@ class WelcomeController < ApplicationController
     unless current_user_allow?([:plat, :admin])
       redirect_to root_path and return
     end
-    klass_ranked_wr = Match.get_klass_ranked_wr(1.week.ago, 
+    klass_ranked_wr = Match.get_klass_ranked_wr(2.weeks.ago, 
                                                 DateTime.now)
     render json: klass_ranked_wr
   end
 
   def generate_report
-    if !current_user.is_admin?
-      redirect_to root_path, alert: "y u no admin" and return
-    end
-    season = current_season
+    # if !current_user.is_admin?
+    #   redirect_to root_path, alert: "y u no admin" and return
+    # end
+    season = 10
 
-    get_ranked_graph_data(Season.last)
+    ranked_wr_count = Match.get_klass_ranked_wr(2.weeks.ago, 
+                                                DateTime.now)
+    @ranked_winrates = ranked_wr_count[0]
+    gon.counts = ranked_wr_count[1]
 
     @prev_global = [
-      {"Warlock" => 44.25, "Druid" => 48.95, "Shaman" => 51.14, "Rogue" => 53.44, "Warrior" => 46.15, "Paladin" => 51.02, "Mage" => 53.29, "Hunter" => 45.23, "Priest" => 43.76},
-      {"Warlock" => 52.33, "Druid" => 51.97, "Shaman" => 50.86, "Rogue" => 49.58, "Warrior" => 49.38, "Paladin" => 48.94, "Mage" => 47.99, "Hunter" => 47.07, "Priest" => 45.50}]
+      {"Warlock" => 44.22, "Druid" => 49.73, "Shaman" => 51.56, "Rogue" => 53.60, "Warrior" => 45.60, "Paladin" => 51.79, "Mage" => 53.06, "Hunter" => 44.45, "Priest" => 42.52},
+      {"Warlock" => 52.56, "Druid" => 50.97, "Shaman" => 51.15, "Rogue" => 49.41, "Warrior" => 50.92, "Paladin" => 48.42, "Mage" => 47.54, "Hunter" => 48.57, "Priest" => 44.80}]
 
-    matches = Match.where(season_id: season)
+    matches = Match.where("created_at > ?", 2.weeks.ago)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
@@ -205,6 +208,14 @@ class WelcomeController < ApplicationController
 
   def aug_report
     render file: "#{Rails.root}/public/reports/aug_report.html", layout: 'fullpage'
+  end
+
+  def sept_report
+    render file: "#{Rails.root}/public/reports/sept_report.html", layout: 'fullpage'
+  end
+
+  def sept_post_report
+    render file: "#{Rails.root}/public/reports/sept_post_nerf.html", layout: 'fullpage'
   end
 
   def novreport

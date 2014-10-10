@@ -175,11 +175,6 @@ en:
       hearthstats_tweets: HearthStats Tweets
       read_more: Read More
       view_more: View More
-      news:
-        huge_update: Huge update with lots of features.
-        ability_to_rank: Ability to rank/casual added for Constructed Games.
-        donation_link: Donation link added at
-        notes_feature: Notes feature added!
       personal_win_rate: Personal Win Rate
       constructed_coin_win_rates: Constructed Win Coin Rate
       recent_activities: Recent Activities
@@ -616,6 +611,7 @@ en:
       all_drafts: All Blind Drafts
       new: New Blind Draft
     news: News
+    prem: Premium
     streams: Streams
     tournaments:
       title: Tournaments
@@ -630,7 +626,7 @@ en:
       change_log: Change Log
       about_us: About Us
       contact_info: Contact Info
-      aug_report: 
+      sept_report: September Report
     help: Help
   activerecord:
     attributes:

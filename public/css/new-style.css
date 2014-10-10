@@ -436,6 +436,7 @@ form{
   margin: auto;
   display: block;
   padding-top: 54px;
+  max-width: 100%;
 }
 .tracker-desc{
   font-size: 12px;

@@ -114,6 +114,32 @@ class Match < ActiveRecord::Base
     winrate
   end
 
+  def self.winrate_per_day_cumulative(all_matches, before_days)
+    matches = all_matches
+      .where("created_at >= ?", before_days.days.ago.beginning_of_day)
+      .group_by_day(:created_at)
+    wins = matches.where(result_id: 1).count
+    tot = matches.count
+    prev_wr = 0
+    winrate = Array.new
+    tot.each do |day, num_of_games|
+      if wins[day] == nil
+        today_wr = prev_wr
+      else
+        wr = ((wins[day].to_f/num_of_games rescue 0)*100).round(2)
+        wr = prev_wr if wr.nan?
+        if prev_wr == nil
+          today_wr = wr
+        else
+          today_wr = (wr + prev_wr)/2
+        end
+        prev_wr = wr
+      end
+      winrate << [day.to_time.to_i*1000, today_wr]
+    end
+
+    winrate
+  end
   def self.results_list
     RESULTS_LIST.values
   end
@@ -214,6 +240,10 @@ class Match < ActiveRecord::Base
     end
 
     matches_per_class
+  end
+
+  def self.number_to_percent(num)
+    (num*100).round(2).to_s + "%"
   end
 
   ### INSTANCE METHODS:

@@ -9,7 +9,6 @@
   <meta name="MobileOptimized" content="320">
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag Sync.adapter_javascript_url %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "page_specific/#{params[:controller]}"  %>
   <%= csrf_meta_tags %>
@@ -32,6 +31,7 @@
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
   <%= javascript_include_tag "//code.highcharts.com/highcharts.js" %>
   <script src="//code.highcharts.com/modules/exporting.js"></script>
+  <script type="text/javascript" src="//js.pusher.com/2.0/pusher.min.js"></script>
   <link href='//fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
 
 </head>

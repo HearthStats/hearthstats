@@ -14,7 +14,7 @@ Hearthstats::Application.routes.draw do
 
   resources :teams
   resources :premiums do
-    get 'cancel', on: :collection
+    post 'cancel', on: :collection
   end
   # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
@@ -54,7 +54,7 @@ Hearthstats::Application.routes.draw do
   match "/openings", to: "additional#openings"
   match "/contest", to: "additional#contest_video"
   match "/league", to: "additional#league"
-
+  match "/ad_frame", to: "additional#ads"
   #apps
   match "/uploader", to: "additional#uploader"
   match "/uploader/download/win", to: "additional#uploader_download_win"
@@ -70,6 +70,8 @@ Hearthstats::Application.routes.draw do
   match "/june", to: "welcome#june_report"
   match "/july", to: "welcome#july_report"
   match "/aug", to: "welcome#aug_report"
+  match "/sept", to: "welcome#sept_report"
+  match "/sept_post", to: "welcome#sept_post_report"
   match "/gen_report", to: "welcome#generate_report"
   match "/liquid", to: "welcome#liquid_data"
   get "welcome/ranked_test"

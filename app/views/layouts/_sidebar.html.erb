@@ -84,6 +84,12 @@
         </li>
       </ul>
     </li>
+    <li class="premium">
+      <a href="/premiums">
+      <i class="fa fa-star"></i>
+      <span class="title"><%= t('menu.prem')  %></span>
+      </a>
+    </li>
     <% if current_user.has_permission(sub_plans) %>
       <li class="blind_draft">
       <a href="javascript:;">
@@ -154,8 +160,8 @@
           <% end %>
         </li>
         <li class="dec">
-          <%= link_to "/aug" do %>
-            <%= t('menu.extra.aug_report') %>
+          <%= link_to "/sept" do %>
+            <%= t('menu.extra.sept_report') %>
           <% end %>
         </li>
         <li class="changelog">

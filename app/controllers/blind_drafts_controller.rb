@@ -1,6 +1,6 @@
 class BlindDraftsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :authenticate_subs!
+  before_filter :authenticate_subs!, only: [:new, :create]
   before_filter :authenticate_drafters_or_caster, :only => [:draft, :show]
   before_filter :authenticate_drafters, :only => [:end_draft, :pick_card, :reveal_card]
 
