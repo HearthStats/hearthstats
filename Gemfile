@@ -107,7 +107,6 @@ group :test do
   gem 'capybara', '>= 2.0.2'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'guard-rspec'
   gem 'phashion'
 end

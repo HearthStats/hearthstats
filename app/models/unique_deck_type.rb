@@ -13,12 +13,9 @@ class UniqueDeckType < ActiveRecord::Base
   ### CLASS METHODS:
 
   def self.find_type(unique_deck)
-    puts unique_deck.inspect
     klass_types = where(klass_id: unique_deck.klass_id)
-    puts UniqueDeckType.count
     return nil if klass_types.count == 0
     klass_types.each do |deck_type|
-      puts inspect deck_type
       return deck_type.id if match_type(unique_deck.cardstring, deck_type)
     end
   end
