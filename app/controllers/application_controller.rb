@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
   layout :layout
   before_filter :set_locale_from_url
-
+  before_filter :set_cache_headers
+   
   def current_user_allow?(role_array)
     return false if current_user.nil?
     current_user.has_permission(role_array)
@@ -74,6 +75,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+  
   def set_locale_from_url
     I18n.locale = params[:locale] || I18n.default_locale
   end
