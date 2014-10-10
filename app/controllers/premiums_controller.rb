@@ -1,4 +1,5 @@
 class PremiumsController < ApplicationController
+  force_ssl if: :ssl_configured?
   def index
     if !signed_in?
       redirect_to new_user_session_path, 
@@ -57,5 +58,9 @@ class PremiumsController < ApplicationController
     rescue Stripe::CardError => e
     end
     redirect_to premiums_path
+  end
+
+  def ssl_configured?
+    request.ssl? || Rails.env.production?
   end
 end
