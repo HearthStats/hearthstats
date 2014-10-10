@@ -54,7 +54,6 @@ Hearthstats::Application.routes.draw do
   match "/openings", to: "additional#openings"
   match "/contest", to: "additional#contest_video"
   match "/league", to: "additional#league"
-  # match "/ad_frame", to: "additional#ads"
 
   #apps
   match "/uploader", to: "additional#uploader"
