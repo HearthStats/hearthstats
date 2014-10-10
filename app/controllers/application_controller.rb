@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   layout :layout
   before_filter :set_locale_from_url
   before_filter do
-    if request.ssl?
+    if request.ssl? && params[:controller] != "premiums"
       redirect_to :protocol => 'http://', :status => :moved_permanently
     end
   end
