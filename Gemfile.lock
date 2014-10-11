@@ -311,6 +311,11 @@ GEM
     pry-byebug (2.0.0)
       byebug (~> 3.4)
       pry (~> 0.10)
+    public_activity (1.4.2)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     pusher (0.14.1)
       httpclient (~> 2.3)
       multi_json (~> 1.0)
@@ -515,6 +520,7 @@ DEPENDENCIES
   phashion
   pry
   pry-byebug
+  public_activity
   pusher
   quiet_assets (>= 1.0.1)
   rack-mini-profiler

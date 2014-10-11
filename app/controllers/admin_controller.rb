@@ -30,6 +30,17 @@ class AdminController < ApplicationController
     end
   end
 
+  def toggle_sub
+    current_user.subscription_id =
+      current_user.subscription_id.nil? ? 1 : nil
+
+    if current_user.save
+      redirect_to request.referer
+    else
+      redirect_to request.referer, alert: "Prem status not changed"
+    end
+  end
+
   private
 
   def admin_user?

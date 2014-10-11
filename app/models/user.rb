@@ -112,6 +112,10 @@ class User < ActiveRecord::Base
     p "Sig for #{self.id} updated, view it at: #{self.profile.shortened_urls}"
   end
 
+  def is_admin?
+    has_role? :admin
+  end
+
   ### PRIVATE METHODS:
 
   private
@@ -150,7 +154,4 @@ class User < ActiveRecord::Base
     rank
   end
 
-  def is_admin?
-    has_role? :admin
-  end
 end

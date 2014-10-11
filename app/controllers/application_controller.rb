@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
+  include PublicActivity::StoreController
 
   layout :layout
   before_filter :set_locale_from_url
@@ -11,8 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_subs!
-    unless current_user.has_permission(sub_plans)
-      redirect_to premiums_path, alert: "Oops! That's a subscriber only feature"
+    unless current_user.subscribed?
+      redirect_to premiums_path, alert: "Oops! That's a premium only feature"
     end
   end
 

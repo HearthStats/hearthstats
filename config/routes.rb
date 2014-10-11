@@ -83,6 +83,7 @@ Hearthstats::Application.routes.draw do
   get "admin/export_con"
   match "admin/ann", to: "admin#ann"
   post "admin/anncreate"
+  post "admin/toggle_sub"
 
   get "welcome/index"
   get "welcome/demo_user"
@@ -96,7 +97,9 @@ Hearthstats::Application.routes.draw do
   end
 
   resources :profiles do
-    get 'sig'
+    member do
+      get 'activities'
+    end
     post 'set_locale', on: :collection
   end
 
