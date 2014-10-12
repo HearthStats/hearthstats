@@ -8,7 +8,7 @@ class ProfileImage
   QUICKSAND_FONT = "#{Rails.root}/lib/assets/fonts/quicksand.ttf"
   QUICKSAND_BOLD_FONT = "#{Rails.root}/lib/assets/fonts/quicksand_bold.ttf"
   TEMPLATE_PATH = "#{Rails.root}/lib/assets/images/profile_template.png"
-  BADGES_PATH = "#{Rails.root}/lib/assets/images/badges/"
+  BADGES_DIR_PATH = "#{Rails.root}/lib/assets/images/badges/"
 
   def initialize(user)
     user.assert_valid_keys(:name, :const_win_rate, :arena_win_rate, :ranking, :legend, :badges)
@@ -24,10 +24,10 @@ class ProfileImage
 
   def add_badges
     user[:badges].sample(4).each_with_index do |badge, i|
-      badge_image = ImageList.new(BADGES_PATH + badge + '.png')
+      badge_image = ImageList.new(BADGES_DIR_PATH + badge + '.png')
       badge_image.resize_to_fit!(25)
-      #refactor
-      image.composite!(badge_image, (232.3 + ((i)*28)), 52, Magick::OverCompositeOp)
+      x_position = (232.3 + ((i)*28))
+      image.composite!(badge_image, x_position, 52, Magick::OverCompositeOp)
     end
   end
 
