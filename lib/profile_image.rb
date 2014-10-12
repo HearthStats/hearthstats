@@ -8,17 +8,28 @@ class ProfileImage
   QUICKSAND_FONT = "#{Rails.root}/lib/assets/fonts/quicksand.ttf"
   QUICKSAND_BOLD_FONT = "#{Rails.root}/lib/assets/fonts/quicksand_bold.ttf"
   TEMPLATE_PATH = "#{Rails.root}/lib/assets/images/profile_template.png"
+  BADGES_PATH = "#{Rails.root}/lib/assets/images/badges/"
 
   def initialize(user)
-    user.assert_valid_keys(:name, :const_win_rate, :arena_win_rate, :ranking, :legend)
+    user.assert_valid_keys(:name, :const_win_rate, :arena_win_rate, :ranking, :legend, :badges)
     self.user = user
     self.image = ImageList.new(TEMPLATE_PATH)
     add_username
     add_win_stats
     add_ranking
+    add_badges
   end
 
   protected
+
+  def add_badges
+    user[:badges].sample(4).each_with_index do |badge, i|
+      badge_image = ImageList.new(BADGES_PATH + badge + '.png')
+      badge_image.resize_to_fit!(25)
+      #refactor
+      image.composite!(badge_image, (232.3 + ((i)*28)), 52, Magick::OverCompositeOp)
+    end
+  end
 
   def add_username
     username = Draw.new
@@ -33,7 +44,7 @@ class ProfileImage
 
   def add_win_stats
     const_win_rate = Draw.new
-    image.annotate(const_win_rate, 0,0,288,60.8, user[:const_win_rate]) do
+    image.annotate(const_win_rate, 0,0,203,61.2, user[:const_win_rate]) do
       self.font = QUICKSAND_FONT
       self.gravity = Magick::CenterGravity
       self.align = Magick::LeftAlign
@@ -42,7 +53,7 @@ class ProfileImage
     end
 
     arena_win_rate = Draw.new
-    image.annotate(arena_win_rate, 0,0,288,72, user[:arena_win_rate]) do
+    image.annotate(arena_win_rate, 0,0,203,73, user[:arena_win_rate]) do
       self.font = QUICKSAND_FONT
       self.gravity = Magick::CenterGravity
       self.align = Magick::LeftAlign
