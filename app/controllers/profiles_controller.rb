@@ -97,7 +97,7 @@ class ProfilesController < ApplicationController
 
   def activities
     @activities = PublicActivity::Activity.order("created_at DESC").
-      where(owner_type: "User", owner_id: current_user).all
+      where(owner_type: "User", owner_id: User.find(params[:id])).all
     respond_to do |format|
       format.html
     end
