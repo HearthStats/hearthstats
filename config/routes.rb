@@ -54,7 +54,7 @@ Hearthstats::Application.routes.draw do
   match "/openings", to: "additional#openings"
   match "/contest", to: "additional#contest_video"
   match "/league", to: "additional#league"
-  match "/ad_frame", to: "additional#ads"
+
   #apps
   match "/uploader", to: "additional#uploader"
   match "/uploader/download/win", to: "additional#uploader_download_win"
@@ -83,6 +83,7 @@ Hearthstats::Application.routes.draw do
   get "admin/export_con"
   match "admin/ann", to: "admin#ann"
   post "admin/anncreate"
+  post "admin/toggle_sub"
 
   get "welcome/index"
   get "welcome/demo_user"
@@ -96,7 +97,9 @@ Hearthstats::Application.routes.draw do
   end
 
   resources :profiles do
-    get 'sig'
+    member do
+      get 'activities'
+    end
     post 'set_locale', on: :collection
   end
 
@@ -138,22 +141,20 @@ Hearthstats::Application.routes.draw do
     end
   end
 
-  resources :cards do
-    collection do
+  resources :cards
+
+  resources :tournaments do
+    member do
+      post :submit_deck
+      post :join
+      post :quit
+      get :admin
+      post :start
+      post :remove_player
     end
   end
 
-  resources :tournaments do
-    post :submit_deck, on: :member
-    post :join, on: :member
-    post :quit, on: :member
-    post :admin, on: :member
-    post :start, on: :member
-    post :remove_player, on: :member
-  end
-
-  resources :tourn_matches do
-  end
+  resources :tourn_matches
 
   resources :arenas do
     collection do

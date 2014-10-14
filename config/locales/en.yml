@@ -549,6 +549,9 @@ en:
     index:
       title: Streams
       subtitle: ! ' find all your favourite streams in one place'
+  profiles:
+    activities:
+      title: '%{user} Recent Activities'
   tournies:
     index:
       title: Recent Tournaments

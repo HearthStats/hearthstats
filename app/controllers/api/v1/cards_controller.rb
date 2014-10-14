@@ -1,4 +1,5 @@
 class Api::V1::CardsController < ApplicationController
+  before_filter :validate_userkey
 
   def index
     @cards = Card.all

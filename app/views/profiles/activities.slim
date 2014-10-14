@@ -1,0 +1,6 @@
+- set_meta_tags :title => t('.title'),
+  :description => "User activities",
+  :keywords => 'activities, timeline, hearthstats, hearthstone, match, tracking, win, loss'
+- provide(:title, t('.title', user: "#{Profile.find(params[:id]).try(:name)}'s"))
+
+= render_activity(@activities, :layout => "layouts/activity_wrapper")

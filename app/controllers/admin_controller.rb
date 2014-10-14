@@ -30,11 +30,15 @@ class AdminController < ApplicationController
     end
   end
 
-  private
+  def toggle_sub
+    current_user.subscription_id =
+      current_user.subscription_id.nil? ? 1 : nil
 
-  def admin_user?
-    if !current_user.is_admin?
-      redirect_to root_path, alert: "Y U NO ADMIN"
+    if current_user.save
+      redirect_to request.referer
+    else
+      redirect_to request.referer, alert: "Prem status not changed"
     end
   end
+
 end

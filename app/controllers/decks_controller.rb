@@ -217,13 +217,11 @@ class DecksController < ApplicationController
     if @deck.is_tourn_deck
       render action: "index" and return
     end
-    @deck.constructeds.update_all(deckname: params[:deck]['name'])
     expire_fragment(@deck)
+    @deck.tag_list = params[:tags]
     respond_to do |format|
       if @deck.update_attributes(params[:deck])
-        @deck.tag_list = params[:tags]
-        @deck.save
-        unless params[:deck_text].blank?
+        if !params[:deck_text].blank?
           text2deck = text_to_deck(params[:deck_text])
           if !text2deck.errors.empty?
             redirect_to new_deck_path(klass: @deck.klass_id), alert: text2deck.errors and return

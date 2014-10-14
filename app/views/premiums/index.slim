@@ -129,11 +129,24 @@
 
 - else
   h3 Thank you for being an early supporter!
+  .row
+    .col-md-6
+      .center
+        small Feel free to email <b>jeff@heartstats.net</b> for ANY questions!
+        div
+          img src="http://img1.wikia.nocookie.net/__cb20130821093610/the-house-of-anubis/images/2/25/ThankYou.gif"
+    .col-md-6
+      b Premium Features Links
+      ul
+        li 
+          a href="/blind_drafts" Blind Draft Game Mode
+          ul
+            li Play an awesome online draft with a friend where you take turns picking up facedown cards until you build the best deck you can!
+        li
+          = link_to "Activity Feed", activities_profile_path(current_user.profile)
+          ul
+            li A history of your activities on HearthStats, includes comments, edits to decks, and much more to come.
   .center
-    small Feel free to email jeff@heartstats.net for ANY questions!
-    div
-      img src="http://img1.wikia.nocookie.net/__cb20130821093610/the-house-of-anubis/images/2/25/ThankYou.gif"
-
     p 
       b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
     p = link_to 'Cancel Subscription', cancel_premiums_path, class: "btn red", method: :post

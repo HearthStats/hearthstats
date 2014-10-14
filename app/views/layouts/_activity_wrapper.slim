@@ -1,0 +1,13 @@
+.activity
+  .date-time = time_ago_in_words a.created_at
+  .title
+    - if a.owner
+      =' link_to a.owner.profile.name, a.owner.profile
+    - else
+      ' someone
+    = content_for :action
+  .details
+    .avatar
+      = image_tag a.owner.profile.avatar.url, width: "30", height: "30"
+    .body
+      = yield

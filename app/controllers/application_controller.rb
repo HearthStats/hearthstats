@@ -1,18 +1,27 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
+  include PublicActivity::StoreController
 
   layout :layout
   before_filter :set_locale_from_url
-
+   
+  # Permission Methods
+  
   def current_user_allow?(role_array)
     return false if current_user.nil?
     current_user.has_permission(role_array)
   end
 
   def authenticate_subs!
-    unless current_user.has_permission(sub_plans)
-      redirect_to premiums_path, alert: "Oops! That's a subscriber only feature"
+    unless current_user.subscribed?
+      redirect_to premiums_path, alert: "Oops! That's a premium only feature"
+    end
+  end
+
+  def admin_user?
+    if !current_user.is_admin?
+      redirect_to root_path, alert: "Y U NO ADMIN"
     end
   end
 
@@ -73,7 +82,7 @@ class ApplicationController < ActionController::Base
 
 
   private
-
+  
   def set_locale_from_url
     I18n.locale = params[:locale] || I18n.default_locale
   end
