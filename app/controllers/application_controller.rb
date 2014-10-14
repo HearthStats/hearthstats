@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   layout :layout
   before_filter :set_locale_from_url
    
+  # Permission Methods
+  
   def current_user_allow?(role_array)
     return false if current_user.nil?
     current_user.has_permission(role_array)
@@ -14,6 +16,12 @@ class ApplicationController < ActionController::Base
   def authenticate_subs!
     unless current_user.subscribed?
       redirect_to premiums_path, alert: "Oops! That's a premium only feature"
+    end
+  end
+
+  def admin_user?
+    if !current_user.is_admin?
+      redirect_to root_path, alert: "Y U NO ADMIN"
     end
   end
 

@@ -41,11 +41,4 @@ class AdminController < ApplicationController
     end
   end
 
-  private
-
-  def admin_user?
-    if !current_user.is_admin?
-      redirect_to root_path, alert: "Y U NO ADMIN"
-    end
-  end
 end

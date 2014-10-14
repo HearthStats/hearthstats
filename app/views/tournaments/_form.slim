@@ -7,30 +7,42 @@
         - @tournament.errors.full_messages.each do |msg|
           li = msg
   .form_body
-    .form-group
-      = f.label t('tournaments.form.name')
-      = f.text_field :name, class: 'form-control'
-    .form-group
-      = f.label t('tournaments.form.format')
-      = f.select :bracket_format, options_for_select(@formats), class: 'form-control'
-    .form-group id="tourn_num_pods"
-      = f.label t('tournaments.form.num_pods')
-      = f.number_field :num_pods, class: 'form-control'
-    .form-group
-      = f.label t('tournaments.form.best_of')
-      = f.number_field :best_of, class: 'form-control'
-    .form-group
-      = f.label t('tournaments.form.num_players')
-      = f.number_field :num_players, class: 'form-control'
-    .form-group
-      = f.label t('tournaments.form.num_decks')
-      = f.number_field :num_decks, class: 'form-control'
-    .form-group
-      = f.label t('tournaments.form.invite_only')
-      = f.check_box :is_private, class: 'form-control'
-    .form-group id="tourn_passcode"
-      = f.label t('tournaments.form.passcode')
-      = f.text_field :code, class: 'form-control'
+    .row
+      .col-md-12
+        .form-group
+          = f.label t('tournaments.form.name')
+          = f.text_field :name, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = f.label t('tournaments.form.format'), class: "control-label"
+          = f.select :bracket_format, options_for_select(@formats),{}, { class: 'form-control' }
+      .col-md-6
+        .form-group id="tourn_num_pods"
+          = f.label t('tournaments.form.num_pods')
+          = f.number_field :num_pods, class: 'form-control'
+    .row
+      .col-md-6
+        .form-group
+          = f.label t('tournaments.form.best_of')
+          = f.number_field :best_of, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label t('tournaments.form.num_players')
+          = f.number_field :num_players, class: 'form-control'
+    .row
+      .col-md-3
+        .form-group
+          = f.label t('tournaments.form.invite_only')
+          = f.check_box :is_private, class: 'form-control'
+      .col-md-3
+        .form-group id="tourn_passcode"
+          = f.label t('tournaments.form.passcode')
+          = f.text_field :code, class: 'form-control'
+      .col-md-6
+        .form-group
+          = f.label t('tournaments.form.num_decks')
+          = f.number_field :num_decks, class: 'form-control'
     .form-group
       = f.label t('tournaments.form.desc')
       = f.text_area :desc, class: 'redactor form-control'
