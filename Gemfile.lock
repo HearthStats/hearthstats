@@ -63,6 +63,7 @@ GEM
     bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
     builder (3.0.4)
+    bust_rails_etags (0.0.5)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -477,6 +478,7 @@ DEPENDENCIES
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
   bootstrap-wysihtml5-rails
+  bust_rails_etags
   cancancan
   capistrano (~> 2.14.2)
   capistrano_rsync_with_remote_cache

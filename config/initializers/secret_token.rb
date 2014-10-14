@@ -4,5 +4,5 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Hearthstats::Application.config.secret_token = '30d562bdab53ea27f9f1bb6a7eecd0fc4876fde7d610e6fd71bb6b62e2d0eb408392e8b263dd18d942dc0ab430e3c730fec86a6f6b75ac69ddf3f6549678b3b0'
+Hearthstats::Application.config.secret_token = 'ec061f5ba1404ea0dfa985a1412e5cebed872df9fbfc70fca1b1bc83d2ccbd75046574b747661e6f14aa7026fecc31c0be97709a0b2e6421d0448b86ff0893cf'
 #ActiveRecordQueryTrace.enabled = true
