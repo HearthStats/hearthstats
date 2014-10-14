@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   layout :layout
   before_filter :set_locale_from_url
-   
+
   # Permission Methods
-  
+
   def current_user_allow?(role_array)
     return false if current_user.nil?
     current_user.has_permission(role_array)

@@ -1,7 +1,8 @@
 class TournamentsController < ApplicationController
 
+  before_filter :admin_user?, only: [:new, :create]
+
   def new
-    admin_user?
     @tournament = Tournament.new
     @formats = Tournament.all_formats
     respond_to do |format|
@@ -53,7 +54,6 @@ class TournamentsController < ApplicationController
   ### ACTIONS WITH NO PAGE
 
   def create
-    admin_user?
     params[:tournament][:creator_id] = current_user.id
     @tournament = Tournament.new(params[:tournament])
     @formats = Tournament.all_formats
