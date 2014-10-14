@@ -127,7 +127,7 @@ class TournamentsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js
+      format.html { redirect_to(tournament, notice: 'Decks Submitted') }
     end
   end
 

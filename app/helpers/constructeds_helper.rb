@@ -12,6 +12,7 @@ module ConstructedsHelper
 
   def created_at_gteq_options_for_select
     options = [["- #{t('.all_time')} -", '1']]
+    options << [t('.current_season'), Season.last.begin.to_s(:db)]
     options << [t('.last_24_hours'), 1.days.ago.to_s(:db)]
     [7, 30, 90].each { |num| options << [t('.last_days', num: num), num.days.ago.to_s(:db)] }
 

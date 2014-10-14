@@ -144,16 +144,17 @@ Hearthstats::Application.routes.draw do
   resources :cards
 
   resources :tournaments do
-    post :submit_deck, on: :member
-    post :join, on: :member
-    post :quit, on: :member
-    post :admin, on: :member
-    post :start, on: :member
-    post :remove_player, on: :member
+    member do
+      post :submit_deck
+      post :join
+      post :quit
+      get :admin
+      post :start
+      post :remove_player
+    end
   end
 
-  resources :tourn_matches do
-  end
+  resources :tourn_matches
 
   resources :arenas do
     collection do

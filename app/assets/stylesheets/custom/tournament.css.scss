@@ -1,0 +1,41 @@
+@import 'vendor/css3-mixins.scss';
+ul.no-bullet {
+  list-style-type: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#tourn_num_pods {
+  display: none;
+}
+
+#tourn_passcode {
+  display: none;
+}
+
+#tourn_user_list {
+  height: 150px;
+  overflow: scroll;
+}
+.submitted-decks{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: black;
+  padding: 10px;
+  @include transition(all, .2s, ease-in); 
+}
+.submitted-decks:hover{
+  background-color: #ecf0f1;
+  color: black;
+}
+.submitted-decks img{
+  width: 50px;
+  display: block;
+  margin: auto;
+}
+.submitted-deck_name{
+  padding-top: 15px;
+}
