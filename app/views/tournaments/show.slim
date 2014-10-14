@@ -38,7 +38,7 @@ div.col
     div.col-md-7
       p
         = raw @tournament.desc
-- if !current_user.nil? and @tournament.started? and @total_pairs > 0
+- if !current_user.nil? && @tournament.started? && @tournament.is_user_competing(current_user.id) && @total_pairs > 0
   div id='pending_matches'
     = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
 div id='tourn_content_panel'

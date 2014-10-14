@@ -75,6 +75,16 @@ class Tournament < ActiveRecord::Base
     self.started
   end
 
+  def is_user_competing(user_id)
+    t_users = TournUser.where(tournament_id: id)
+    t_users.each do |t_user|
+      if t_user.user_id == user_id
+        return true
+      end
+    end
+    false
+  end
+
   def get_num_pairings_in_pod(pod_number)
     self.tourn_pairs.select{ |p| p.pos == pod_number}.count if self.bracket_format == 0
   end
