@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :tournaments, through: :tourn_users
   has_many :tourn_users
 
+  after_create :create_profile
+
   ### CLASS METHODS:
 
   def self.find_user(identity)
@@ -42,6 +44,10 @@ class User < ActiveRecord::Base
   end
 
   ### INSTANCE METHODS:
+
+  def create_profile
+    Profile.create(user_id: id)
+  end
 
   def subscribed?
     !subscription_id.nil?

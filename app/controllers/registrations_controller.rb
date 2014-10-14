@@ -8,9 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
     super
 
     if resource.save
-      # Create Profile
-      Profile.create(user_id:resource.id)
-
       begin
         c = Cindy.new "23.253.53.117", "cGF9DlbzfS0jBooMv5N3"
         c.subscribe "aQOe0RrtTXddPhL9p28929MA", resource.email
