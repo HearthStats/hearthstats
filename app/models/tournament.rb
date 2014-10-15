@@ -164,7 +164,32 @@ class Tournament < ActiveRecord::Base
     self.is_private == true
   end
 
+  def find_winner_id
+    TournPair.where(tournament_id: id, roundof: 2).first.winner_id
+  end
+
+  def find_pod_winner_id(pod)
+    pairs = TournPair.where(tournament_id:self.id, pos: pod)
+    num_players = solve_players(pairs.count)
+    scores = Hash.new
+    scores.default = 0
+    pairs.each do |pair|
+      if pair.winner_id.nil?
+        return -1     # returns -1 if unresolved pairings
+      else
+        scores[pair.winner_id] += 1
+      end
+    end
+    scores = scores.sort_by{ |player, score| score }.reverse
+    scores.first.first
+  end
+
   private
+
+  def solve_players(num_pairs)
+    c = num_pairs*2*(-1)
+    (1 - Math.sqrt(1 - 4*c)) / 2
+  end
 
   def update_undecided_pair_ids
     final_pair_list = TournPair.where(tournament_id: self.id)
