@@ -5528,16 +5528,16 @@ Green Default
 /* Button */
 .green.btn {
   color: white;
-  background-color: #35aa47;
+  background-color: #2ecc71;
   border-color: "";
 }
 .green.btn:hover, .green.btn:focus, .green.btn:active, .green.btn.active {
   color: white;
-  background-color: #2b8b3a;
+  background-color: #27ae60;
 }
 .open .green.btn.dropdown-toggle {
   color: white;
-  background-color: #2b8b3a;
+  background-color: #27ae60;
 }
 .green.btn:active, .green.btn.active {
   background-image: none;
