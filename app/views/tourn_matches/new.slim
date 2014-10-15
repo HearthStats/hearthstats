@@ -11,6 +11,6 @@
       = render 'form'
     div.col-md-6
       = render partial: 'reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
-  .comments.row
+  .comments.row.match-details
     = render_comments_form @pair unless current_user && current_user.guest
     = render_comments @pair, :page => params[:page], :limit => 5
