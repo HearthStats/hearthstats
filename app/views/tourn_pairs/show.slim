@@ -1,0 +1,17 @@
+- set_meta_tags title: t('.title'),
+                description: t('.title'),
+                keywords: 'tournament, new, entry, match, hearthstats, hearthstone'
+.tourn_match-new
+  .match-players
+    =' current_user.name
+    'vs.
+    = @opp_name
+  .row.match-details
+    div.col-md-6
+      = render 'tourn_matches/form'
+    div.col-md-6
+      = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
+  .row.match-comments
+    .col-md-12
+      = render_comments_form @pair unless current_user && current_user.guest
+      = render_comments @pair, :page => params[:page], :limit => 5
