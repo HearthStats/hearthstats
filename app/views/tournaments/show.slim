@@ -29,17 +29,11 @@ div.col
             = render partial: "join", locals: {is_private: @tournament.is_private}
           - else
             = render partial: "quit"
-      - if !@tournament.started? && @joined
-        - if !@submitted
-          = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
-        - else
-          h3 Submitted decks
-          - @submitted_decks.each do |tourn_deck|
-            = link_to tourn_deck.deck, class: "submitted-decks"
-              img[src = "/assets/Icons/Classes/#{tourn_deck.deck.class_name}_Icon.gif"
-                alt = "#{tourn_deck.deck.class_name}"]
-              .submitted-deck_name = tourn_deck.deck.name
-    div.col-md-7
+      - if !@winner_id.nil?
+        p
+          |Winner:&nbsp;
+          = TournUser.find(winner_id).user.name
+    div.col-md-6
       p
         = raw @tournament.desc
 div id='tourn_content_panel'

@@ -194,6 +194,7 @@ class Tournament < ActiveRecord::Base
 
   def find_pod_winner_id(pod)
     pairs = TournPair.where(tournament_id:self.id, pos: pod)
+    num_players = solve_players(pairs.count)
     scores = Hash.new
     scores.default = 0
     pairs.each do |pair|
