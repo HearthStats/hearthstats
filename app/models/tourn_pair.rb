@@ -18,4 +18,94 @@ class TournPair < ActiveRecord::Base
   def p2_name
     TournUser.find(self.p2_id).user.name
   end
+
+  def get_p1_wins
+    TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p1_id).count
+  end
+
+  def get_p2_wins
+    TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p2_id).count
+  end
+
+  def confirm_match(t_matches, matches_to_win)
+    tournament = Tournament.find(self.tournament_id)
+    opp_t_matches = TournMatch.where(tourn_pair_id: id).where("tourn_user_id != ?", t_matches.first.tourn_user_id)
+    round = t_matches.count
+    opp_cur_match = opp_t_matches.where(round: round).first
+    matches_eval_list = t_matches
+    if !opp_cur_match.nil?
+      conflict = resolve_match(t_matches.last, opp_cur_match)
+      if opp_t_matches.count > t_matches.count
+        matches_eval_list = opp_t_matches
+      end
+      winner_id = determine_winner(matches_eval_list, matches_to_win, opp_cur_match.tourn_user_id)
+      if winner_id != 0
+        TournPair.update(id, winner_id: winner_id)
+        if tournament.bracket_format == 1 && self.roundof != 2
+          advance_winner(winner_id)
+        end
+      end
+    end
+  end
+
+  def resolve_match(t_match, opp_t_match)
+    id_sum = t_match.result_id.to_i + opp_t_match.result_id.to_i
+    # sum of 3 means a win and a loss was picked
+    # a sum of 6 means both players picked draw
+    if id_sum != 1 and id_sum != 4
+      tourny = Tournament.find(self.tournament_id)
+      admins = User.with_role(:tourn_admin, tourny)
+      user = TournUser.find(t_match.tourn_user_id).user
+      opp = TournUser.find(opp_t_match.tourn_user_id).user
+      admins.each do |admin|
+        admin.notify( "Conflict notice",
+                      "Conflict on the match " + t_match.round.to_s + " report " +
+                      "between " + user.profile.name + "(" + user.id + ")" +
+                      " and " + opp.profile.name + "(" + opp.id + ")" )
+      end
+      return true
+    end
+    false
+  end
+
+  def determine_winner(match_list, matches_to_win, other_user_id)
+    cur_user_wins = 0
+    other_user_wins = 0
+    match_list.each do |match|
+      if match.result_id.to_i == 0
+        cur_user_wins += 1
+        if cur_user_wins == matches_to_win
+          return match.tourn_user_id
+        end
+      else
+        other_user_wins += 1
+        if other_user_wins == matches_to_win
+          return other_user_id
+        end
+      end
+    end
+    return 0
+  end
+
+  def get_parent_pair
+    parent_pair = TournPair.where(tournament_id: @tournament.id, p1_id: id).first
+    if parent_pair.nil?
+      parent_pair = TournPair.where(tournament_id: @tournament.id, p2_id: id).first
+    end
+    parent_pair
+  end
+
+  def advance_winner(winner_id)
+    parent_pair = get_parent_pair
+    if parent_pair.p1_id == id
+      TournPair.update(parent_pair.id, p1_id: winner_id)
+    else
+      TournPair.update(parent_pair.id, p2_id: winner_id)
+    end
+
+    if parent_pair.undecided < 2 # if one player is already decided
+      TournPair.update(parent_pair.id, undecided: -1)  # then both players are decided
+    end
+  end
+
 end
