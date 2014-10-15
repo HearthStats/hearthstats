@@ -39,7 +39,13 @@ class ApplicationController < ActionController::Base
   end
 
   def opinio_after_create_path(resource)
-    resource.user.notify("New Comment", "New comment on " + resource.class.name + " " + resource.name, resource)
+    if params["commentable_type"] == "TournPair"
+      resource.users.each do |user|
+        user.notify("New Comment", "New comment on a " + resource.tournament.name + " tournament match.", resource)
+      end
+    else
+      resource.user.notify("New Comment", "New comment on " + resource.class.name + " " + resource.name, resource)
+    end
     resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
   end
 

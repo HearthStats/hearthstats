@@ -1,14 +1,16 @@
 - set_meta_tags title: t('.title'),
                 description: t('.title'),
                 keywords: 'tournament, new, entry, match, hearthstats, hearthstone'
-- provide(:title, t('.title'))
-- provide(:section, t('.section'))
-
-h2
-  |vs.&nbsp;
-  = @opp_name
-.row
-  div.col-md-6
-    = render 'form'
-  div.col-md-6
-    = render partial: 'reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
+.tourn_match-new
+  .match-players
+    =' current_user.name
+    'vs.
+    = @opp_name
+  .row.match-details
+    div.col-md-6
+      = render 'form'
+    div.col-md-6
+      = render partial: 'reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
+  .comments.row
+    = render_comments_form @pair unless current_user && current_user.guest
+    = render_comments @pair, :page => params[:page], :limit => 5

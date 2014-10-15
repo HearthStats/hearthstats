@@ -5,17 +5,18 @@ class TournMatchesController < ApplicationController
     @t_id = params[:t_id]
     @t_pair_id = params[:pair_id]
     @t_user_id = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first.id
-    pair = TournPair.find(@t_pair_id)
+    @pair = TournPair.find(@t_pair_id)
     if params[:pos] == 0
-      @opp_name = pair.p2_name
-      @opp = TournUser.find(pair.p2_id)
+      @opp_name = @pair.p2_name
+      @opp = TournUser.find(@pair.p2_id)
     else
-      @opp_name = pair.p1_name
-      @opp = TournUser.find(pair.p1_id)
+      @opp_name = @pair.p1_name
+      @opp = TournUser.find(@pair.p1_id)
     end
     @decks = TournDeck.where(tournament_id: @t_id, tourn_user_id: @t_user_id)
     @deck_names = @decks.map{|d| d.deck.name}
     @t_match_reports = TournMatch.where(tourn_pair_id: @t_pair_id)
+    render layout: "no_breadcrumbs"
   end
 
   def create
@@ -38,9 +39,9 @@ class TournMatchesController < ApplicationController
         t_pair = TournPair.find(t_pair_id)
         conflict = t_pair.confirm_match(t_matches, matches_to_win)
         if conflict
-          format.html { redirect_to(@tournament, notice: "Your report conflicts with your opponent's, tournament admin has been notified") }
+          format.html { redirect_to(request.referrer, notice: "Your report conflicts with your opponent's, tournament admin has been notified") }
         else
-          format.html { redirect_to(@tournament, notice: 'Match submitted') }
+          format.html { redirect_to(request.referrer, notice: 'Match submitted') }
         end
       else
         format.html { render action: "new" }

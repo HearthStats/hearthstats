@@ -154,7 +154,11 @@ Hearthstats::Application.routes.draw do
     end
   end
 
-  resources :tourn_matches
+  resources :tourn_matches do
+    opinio
+  end
+
+  resources :tourn_pairs
 
   resources :arenas do
     collection do
