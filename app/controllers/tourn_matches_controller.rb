@@ -5,13 +5,13 @@ class TournMatchesController < ApplicationController
     @t_id = params[:t_id]
     @t_pair_id = params[:pair_id]
     @t_user_id = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first.id
-    pair = TournPair.find(@t_pair_id)
+    @pair = TournPair.find(@t_pair_id)
     if params[:pos] == 0
-      @opp_name = pair.p2_name
-      @opp = TournUser.find(pair.p2_id)
+      @opp_name = @pair.p2_name
+      @opp = TournUser.find(@pair.p2_id)
     else
-      @opp_name = pair.p1_name
-      @opp = TournUser.find(pair.p1_id)
+      @opp_name = @pair.p1_name
+      @opp = TournUser.find(@pair.p1_id)
     end
     @decks = TournDeck.where(tournament_id: @t_id, tourn_user_id: @t_user_id)
     @deck_names = @decks.map{|d| d.deck.name}
