@@ -4,8 +4,11 @@ class TournMatchesController < ApplicationController
     @tourn_match = TournMatch.new
     @t_id = params[:t_id]
     @t_pair_id = params[:pair_id]
-    @t_user_id = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first.id
     pair = TournPair.find(@t_pair_id)
+    if !pair.winner_id.nil?
+      redirect_to Tournament.find(@t_id)
+    end
+    @t_user_id = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first.id
     if params[:pos] == 0
       @opp_name = pair.p2_name
       @opp = TournUser.find(pair.p2_id)
@@ -24,15 +27,18 @@ class TournMatchesController < ApplicationController
     t_pair_id = params[:t_pair_id]
     t_matches = TournMatch.where(tourn_pair_id: t_pair_id,
                                  tourn_user_id: t_user_id)
+    @tournament = Tournament.find(params[:t_id])
     matches_eval_list = t_matches
     round = t_matches.count + 1
+    if t_deck_id.nil?
+      redirect_to(@tournament, alert: "You have submitted enough matches!")
+    end
     t_match = TournMatch.new(tourn_user_id: t_user_id,
                              tourn_deck_id: t_deck_id,
                              tourn_pair_id: t_pair_id,
                              result_id: params[:result_id].to_i,
                              coin: !params[:coin].to_i.zero?,
                              round: round)
-    @tournament = Tournament.find(params[:t_id])
     respond_to do |format|
       if t_match.save
         opp_t_matches = TournMatch.where(tourn_pair_id: t_pair_id).where("tourn_user_id != ?", t_user_id)
@@ -55,6 +61,7 @@ class TournMatchesController < ApplicationController
             end
           end
         end
+
         if conflict
           format.html { redirect_to(@tournament, notice: "Your report conflicts with your opponent's, tournament admin has been notified") }
         else

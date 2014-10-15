@@ -10,4 +10,15 @@ class TournUser < ActiveRecord::Base
     !decks.empty?
   end
 
+  def get_score
+    pairs = TournPair.where("tournament_id = ? AND (p1_id = ? OR p2_id = ?)", self.tournament_id, self.id, self.id)
+    score = 0
+    pairs.each do |pair|
+      if pair.winner_id == self.id
+        score += 1
+      end
+    end
+    score
+  end
+
 end

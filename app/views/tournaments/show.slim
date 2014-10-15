@@ -25,6 +25,10 @@ div.col
             = render partial: "join", locals: {is_private: @tournament.is_private}
           - else
             = render partial: "quit"
+      - if !@winner_id.nil?
+        p
+          |Winner:&nbsp;
+          = TournUser.find(winner_id).user.name
     div.col-md-6
       p
         = raw @tournament.desc
