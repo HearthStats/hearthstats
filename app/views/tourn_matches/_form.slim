@@ -12,29 +12,30 @@
       = select_tag("deckname", options_for_select(@deck_names), class: 'form-control')
       - @decks.each do |deck|
         = hidden_field_tag deck.deck.name, deck.id
-    .form-group
-      p id='result' class="btn green"
-        |Win
-      = hidden_field_tag 'result_id', 0
-    .form-group
-      input name="coin" rel="toggle-btn" type="checkbox" on="#{t('.no_coin')}" off="#{t('.coin')}"
-    .form-group
-      = f.submit class: 'btn btn-block green'
+    .row
+      .col-md-6
+        .form-group
+          p id='result' class="btn Win"
+            |Win
+          = hidden_field_tag 'result_id', 0
+      .col-md-6
+        .form-group
+          input name="coin" rel="toggle-btn" type="checkbox" on="#{t('.no_coin')}" off="#{t('.coin')}"
+      .col-md-12
+        .form-group
+          = f.submit class: 'btn btn-block green'
     = hidden_field_tag 't_id', @t_id
     = hidden_field_tag 't_pair_id', @t_pair_id
     = hidden_field_tag 't_user_id', @t_user_id
 
 javascript:
-  var result_list = {};
-  result_list[0] = 'Win';
-  result_list[1] = 'Loss';
-  result_list[2] = 'Draw';
-
   $(document).ready(function(){
+    RESULT_ARRAY = ["Win", "Loss", "Draw"]
     $("#result").click(function(){
       var result_id = $("#result_id").val();
       result_id = (result_id + 1) % 3
       $("#result_id").val(result_id);
-      $("#result").text(result_list[result_id]);
+      $("#result").text(RESULT_ARRAY[result_id]);
+      $("#result").attr("class", "btn " + RESULT_ARRAY[result_id])
     });
   });

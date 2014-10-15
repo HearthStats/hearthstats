@@ -14,6 +14,7 @@ module Hearthstats
     # Shorten log files
     config.lograge.enabled = true
 
+    config.middleware.use Rack::SslEnforcer, :hsts => { :expires => 500, :subdomains => false }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

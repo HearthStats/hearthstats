@@ -39,3 +39,20 @@ ul.no-bullet {
 .submitted-deck_name{
   padding-top: 15px;
 }
+
+/* TOURN MATCHES*/
+#new_tourn_match .btn{
+  color: white;
+}
+
+#new_tourn_match .Win{
+  background-color: #35aa47;
+}
+
+#new_tourn_match .Loss{
+  background-color: #e74c3c;
+}
+
+#new_tourn_match .Draw{
+  background-color: #f1c40f;
+}
