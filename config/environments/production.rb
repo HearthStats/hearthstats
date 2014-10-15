@@ -31,7 +31,8 @@ Hearthstats::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
 
-  config.middleware.use Rack::SslEnforcer, :hsts => { :expires => 1, :subdomains => false }
+  config.middleware.use Rack::SslEnforcer, only: %r{your_regex_condition}, strict: true
+  config.middleware.use Rack::SslEnforcer, only: %r{your_regex_condition}, :hsts => { :expires => 1, :subdomains => false }
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
