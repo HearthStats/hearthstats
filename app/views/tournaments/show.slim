@@ -7,6 +7,9 @@
 - content_for :actions do
   - if (!current_user.nil? && (current_user.has_role? :tourn_admin, @tournament))
     = link_to 'Admin Settings', admin_tournament_path(@tournament), class: "btn retirebut btn-primary"
+- if !current_user.nil? && @tournament.started? && @tournament.is_user_competing(current_user.id) && @total_pairs > 0
+  div id='pending_matches'
+    = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
 div.col
   div.row
     div.col-md-5
@@ -38,9 +41,6 @@ div.col
     div.col-md-7
       p
         = raw @tournament.desc
-- if !current_user.nil? && @tournament.started? && @tournament.is_user_competing(current_user.id) && @total_pairs > 0
-  div id='pending_matches'
-    = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
 div id='tourn_content_panel'
   - if @tournament.started?
     - case @tournament.bracket_format

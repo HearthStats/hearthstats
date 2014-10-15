@@ -56,3 +56,33 @@ ul.no-bullet {
 #new_tourn_match .Draw{
   background-color: #f1c40f;
 }
+#pending_matches{
+  margin-bottom: 20px;
+  h3{
+    text-align: left;
+    margin-top: 0;
+  }
+}
+.tourn-match{
+  margin-right: 10px;
+}
+.tourn-pair{
+  padding: 8px;
+  span{
+    padding: 5px;
+  }
+  .in-progress{
+    background-color: #ecf0f1;
+  }
+  .winner{
+    background-color: #2ecc71;
+    color: white;
+  }
+  .loser{
+    background-color: #e74c3c;
+    color: white;
+  }
+}
+.group-bracket{
+  text-align: center;
+}
