@@ -4,8 +4,11 @@ class TournMatchesController < ApplicationController
     @tourn_match = TournMatch.new
     @t_id = params[:t_id]
     @t_pair_id = params[:pair_id]
+    pair = TournPair.find(@t_pair_id)
+    if !pair.winner_id.nil?
+      redirect_to Tournament.find(@t_id) and return
+    end
     @t_user_id = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first.id
-    @pair = TournPair.find(@t_pair_id)
     if params[:pos] == 0
       @opp_name = @pair.p2_name
       @opp = TournUser.find(@pair.p2_id)
@@ -26,6 +29,9 @@ class TournMatchesController < ApplicationController
     t_matches = TournMatch.where(tourn_pair_id: t_pair_id,
                                  tourn_user_id: t_user_id)
     round = t_matches.count + 1
+    if t_deck_id.nil?
+      redirect_to(@tournament, alert: "You have submitted enough matches!")
+    end
     t_match = TournMatch.new(tourn_user_id: t_user_id,
                              tourn_deck_id: t_deck_id,
                              tourn_pair_id: t_pair_id,

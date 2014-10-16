@@ -20,12 +20,12 @@ class TournPair < ActiveRecord::Base
     TournUser.find(self.p2_id).user.name
   end
 
-  def get_p1_wins
-    TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p1_id).count
+  def get_p1_score
+    TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p1_id).count + TournMatch.where(tourn_pair_id: id, result_id: 2, tourn_user_id: self.p1_id).count * 0.5
   end
 
-  def get_p2_wins
-    TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p2_id).count
+  def get_p2_score
+    TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p2_id).count + TournMatch.where(tourn_pair_id: id, result_id: 2, tourn_user_id: self.p2_id).count * 0.5
   end
 
   def confirm_match(t_matches, matches_to_win)

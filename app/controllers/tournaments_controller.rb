@@ -20,6 +20,9 @@ class TournamentsController < ApplicationController
     end
 
     if @tournament.started?
+      if @tournament.bracket_format != 0
+        @winner_id = @tournament.find_winner_id
+      end
       @pairs = TournPair.where(tournament_id: params[:id])
       @num_columns = Math.log2(@pairs.length + 1).ceil
       if @joined
