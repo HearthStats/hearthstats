@@ -43,17 +43,18 @@ div class="row profile"
                     = image_tag @profile.sig_pic.url,
                     class: "img-responsive center"
                     small Note sig is only generated for active users
-                  div.embed-link
-                    label Image Link
-                    input type='text' value="#{sig_pic_url}" class="form-control"
-                    label HTML Image
-                    input type='text' value="<a href='#{request.original_url}'><img src='#{sig_pic_url}'/></a>"  class="form-control"
+                  - if profile_owner?
+                    div.embed-link
+                      label Image Link
+                      input type='text' value="#{sig_pic_url}" class="form-control"
+                      label HTML Image
+                      input type='text' value="<a href='#{request.original_url}'><img src='#{sig_pic_url}'/></a>"  class="form-control"
 
-                    label Markdown (reddit)
-                    input type='text' value="[![Profile Image](#{sig_pic_url})](#{request.original_url})"  class="form-control"
+                      label Markdown (reddit)
+                      input type='text' value="[![Profile Image](#{sig_pic_url})](#{request.original_url})"  class="form-control"
 
-                    label BBCode
-                    input type='text' value="[URL=#{request.original_url}][IMG]#{sig_pic_url}[/IMG][/URL]" class="form-control"
+                      label BBCode
+                      input type='text' value="[URL=#{request.original_url}][IMG]#{sig_pic_url}[/IMG][/URL]" class="form-control"
 
             div class="col-md-9"
               div class="row"
@@ -76,12 +77,12 @@ div class="row profile"
                         li
                           span class="sale-info"
                             |Arena Win Rate
-                          span class="sale-num" #{number_to_percentage(Arena.overall_win_rate(@user.id)*100, precision: 2)}
+                          span class="sale-num" = Arena.overall_win_rate(@user.id)
 
                         li
                           span class="sale-info"
                             |Ranked Win Rate
-                          span class="sale-num" #{number_to_percentage(Constructed.overall_win_rate(@user.id)*100, precision: 2)}
+                          span class="sale-num"= Constructed.overall_win_rate(@user.id)
 
                         li
                           span class="sale-info" Top Deck

@@ -1,7 +1,6 @@
 /***
 News Page
 ***/
-
 .news-page {
   padding-bottom: 20px;
 }
@@ -68,14 +67,14 @@ News Page
   margin-left: 3px;
 }
 
-
 .news-blocks a.news-block-btn:hover {
   text-decoration: none;
 }
 
-.news-blocks img {
-    max-width: 100%;
-    height: auto;
+.news-blocks img.news-block-img {
+  width: 70px;
+  height: 70px;
+  margin: 5px 0px 0 10px;
 }
 
 .news-blocks .news-block-tags {
@@ -137,5 +136,3 @@ News Page
 .blog-tag-data .blog-tag-data-inner {
   text-align: right;
 }
-
-

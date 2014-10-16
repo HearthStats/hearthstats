@@ -1,26 +1,24 @@
-/*
+/* 
 Search Page
 ***/
-
 /* general search form */
 .search-form-default {
-  margin-bottom:25px;
-  background:#f0f6fa;
-  padding:12px 14px;
+  margin-bottom: 25px;
+  background: #f0f6fa;
+  padding: 12px 14px;
 }
 
 /*search classic*/
-
 .search-classic {
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 .search-classic h4 {
-  margin-bottom:3px;
+  margin-bottom: 3px;
 }
 
 .overflow-hidden {
-  overflow:hidden;
+  overflow: hidden;
 }
 
 /*Booking Offer*/
@@ -35,7 +33,7 @@ Search Page
   color: #fff;
   padding: 15px;
   position: absolute;
-  background: url(bg-opacity.png);
+  background: url(../../img/bg-opacity.png);
 }
 
 .booking-offer .booking-offer-in em {
@@ -139,11 +137,7 @@ Search Page
   line-height: 20px;
 }
 
-
-
-
 @media (max-width: 768px) {
-
   .booking-results,
   .search-classic {
     margin-top: 0;
@@ -155,5 +149,4 @@ Search Page
     border-bottom: 1px solid #ddd;
     margin: 15px 0;
   }
-
 }

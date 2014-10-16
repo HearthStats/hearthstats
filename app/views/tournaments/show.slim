@@ -6,18 +6,22 @@
 
 - content_for :actions do
   - if (!current_user.nil? && (current_user.has_role? :tourn_admin, @tournament))
-    = link_to 'Admin Settings', admin_tournament_path(@tournament), class: "btn retirebut btn-primary", method: :post
+    = link_to 'Admin Settings', admin_tournament_path(@tournament), class: "btn retirebut btn-primary"
+- if !current_user.nil? && @tournament.started? && @tournament.is_user_competing(current_user.id) && @total_pairs > 0
+  div id='pending_matches'
+    = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
+  hr
 div.col
   div.row
-    div.col-md-6
+    div.col-md-5
       p
-        |Format:&nbsp;
+        b Format:&nbsp;
         = @format
       p
-        |Player Limit:&nbsp;
+        b Player Limit:&nbsp;
         = @tournament.num_players
       p
-        |Number of decks to use: &nbsp;
+        b Number of decks to use: &nbsp;
         = @tournament.num_decks
       div id='toggle_tournament'
         - if !@tournament.started? and !current_user.nil?
@@ -25,16 +29,19 @@ div.col
             = render partial: "join", locals: {is_private: @tournament.is_private}
           - else
             = render partial: "quit"
-      - if !@winner_id.nil?
-        p
-          |Winner:&nbsp;
-          = TournUser.find(winner_id).user.name
-    div.col-md-6
+      - if !@tournament.started? && @joined
+        - if !@submitted
+          = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
+        - else
+          h3 Submitted decks
+          - @submitted_decks.each do |tourn_deck|
+            = link_to tourn_deck.deck, class: "submitted-decks"
+              img[src = "/assets/Icons/Classes/#{tourn_deck.deck.class_name}_Icon.gif"
+                alt = "#{tourn_deck.deck.class_name}"]
+              .submitted-deck_name = tourn_deck.deck.name
+    div.col-md-7
       p
         = raw @tournament.desc
-- if !current_user.nil? and @tournament.started? and @total_pairs > 0
-  div id='pending_matches'
-    = render partial: "pending_matches", locals: {my_lpairs: @my_lpairings, my_rpairs: @my_rpairings}
 div id='tourn_content_panel'
   - if @tournament.started?
     - case @tournament.bracket_format
@@ -44,14 +51,3 @@ div id='tourn_content_panel'
       = render partial: "s_elim_show", locals: {pairs: @pairs, num_columns: @num_columns}
     - else
       |Oops... error in displaying tournament
-  - else
-    - if @joined
-      - if !@submitted
-        = render partial: 'deck_select', locals: { decks: @user_decks, count: @tournament.num_decks }
-      - else
-        h4 Submitted decks
-        - @submitted_decks.each do |deck|
-          div.row-md-6
-            img[ src = "/assets/Icons/Classes/#{deck.deck.class_name}_Icon.gif"
-              alt = "#{deck.deck.class_name}"]
-            = link_to deck.deck.name, deck.deck

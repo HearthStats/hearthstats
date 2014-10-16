@@ -63,6 +63,10 @@ GEM
     bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
     builder (3.0.4)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     cancancan (1.9.2)
     capistrano (2.14.2)
       highline
@@ -108,6 +112,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colored (1.2)
+    columnize (0.8.9)
     cookiejar (0.3.2)
     crass (0.2.1)
     curb (0.8.6)
@@ -115,6 +120,7 @@ GEM
     dalli (2.7.2)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     delayed_job (4.0.4)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.2)
@@ -216,8 +222,6 @@ GEM
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
-    hipchat (1.3.0)
-      httparty
     hitimes (1.2.2)
     http_parser.rb (0.6.0)
     httparty (0.13.1)
@@ -304,6 +308,14 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+    public_activity (1.4.2)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     pusher (0.14.1)
       httpclient (~> 2.3)
       multi_json (~> 1.0)
@@ -317,6 +329,7 @@ GEM
       rack (>= 1.1.3)
     rack-ssl (1.3.4)
       rack
+    rack-ssl-enforcer (0.2.8)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (3.2.18)
@@ -491,7 +504,6 @@ DEPENDENCIES
   groupdate
   guard-rspec
   guard-spring
-  hipchat
   httparty
   impressionist
   jquery-rails
@@ -508,9 +520,12 @@ DEPENDENCIES
   paperclip
   phashion
   pry
+  pry-byebug
+  public_activity
   pusher
   quiet_assets (>= 1.0.1)
   rack-mini-profiler
+  rack-ssl-enforcer
   rails (= 3.2.18)
   rake
   ransack

@@ -248,6 +248,8 @@ javascript:
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
   });
+  
+  $('#deck-list').tablesorter();
 
   $('#tags').tagsInput({
     'width':'100%'

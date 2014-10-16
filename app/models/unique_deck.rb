@@ -80,7 +80,7 @@ class UniqueDeck < ActiveRecord::Base
 
       sum += cost
     end
-    
+
     sum
   end
 
@@ -91,5 +91,13 @@ class UniqueDeck < ActiveRecord::Base
         unique_deck_cards.create(card_id: id)
       end
     end
+
+    self.unique_deck_type_id = UniqueDeckType.find_type(self)
+    self.save
+  end
+
+  def set_type
+    self.unique_deck_type_id = UniqueDeckType.find_type(self)
+    self.save
   end
 end

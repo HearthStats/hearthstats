@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  # before_filter :authenticate_subs!, only: :activities
 
   def index
     authenticate_user!
@@ -54,8 +55,8 @@ class ProfilesController < ApplicationController
     con_matches = matches.where(mode_id: 3)
     @overallcon = get_win_rate(con_matches, true)
 
-    @conwins   = Match.winrate_per_day(con_matches, 10)
-    @arenawins = Match.winrate_per_day(arena_matches, 10)
+    @conwins   = Match.winrate_per_day_cumulative(con_matches, 10)
+    @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
 
     # Determine Constructed Class Win Rates
     @classconrate = Array.new
@@ -81,18 +82,6 @@ class ProfilesController < ApplicationController
 
   end
 
-  def sig
-    @user = User.find(params[:profile_id])
-    matches = Match.where(user_id: @user.id, season_id: current_season)
-    # Overall win rates
-    arena_matches = matches.where(mode_id: 1)
-    @overallarena= get_win_rate(arena_matches, true)
-    con_matches = matches.where(mode_id: 3)
-    @overallcon = get_win_rate(con_matches, true)
-
-    render layout: false
-  end
-
   def set_locale
     if current_user.try(:guest?) || current_user.nil?
       redirect_to root_path, alert: "Guests cannot change languages" and return
@@ -103,6 +92,14 @@ class ProfilesController < ApplicationController
     profile.save!
     respond_to do |format|
       format.html { redirect_to root_path }
+    end
+  end
+
+  def activities
+    @activities = PublicActivity::Activity.order("created_at DESC").
+      where(owner_type: "User", owner_id: User.find(params[:id])).all
+    respond_to do |format|
+      format.html
     end
   end
 

@@ -1,0 +1,143 @@
+@import 'vendor/css3-mixins.scss';
+ul.no-bullet {
+  list-style-type: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#tourn_num_pods {
+  display: none;
+}
+
+#tourn_passcode {
+  display: none;
+}
+
+#tourn_user_list {
+  height: 150px;
+  overflow: scroll;
+}
+.submitted-decks{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: black;
+  padding: 10px;
+  @include transition(all, .2s, ease-in); 
+}
+.submitted-decks:hover{
+  background-color: #ecf0f1;
+  color: black;
+}
+.submitted-decks img{
+  width: 50px;
+  display: block;
+  margin: auto;
+}
+.submitted-deck_name{
+  padding-top: 15px;
+}
+
+/* TOURN MATCHES*/
+#new_tourn_match .btn{
+  color: white;
+}
+
+#new_tourn_match .Win{
+  background-color: #2ecc71;
+}
+#new_tourn_match .Win:hover{
+  background-color: #27ae60;
+}
+#new_tourn_match .Loss{
+  background-color: #e74c3c;
+}
+#new_tourn_match .Loss:hover{
+  background-color:#c0392b;
+}
+#new_tourn_match .Draw{
+  background-color: #f1c40f;
+}
+#new_tourn_match .Draw:hover{
+  background-color: #f39c12;
+}
+#pending_matches{
+  margin-bottom: 20px;
+  h3{
+    text-align: left;
+    margin-top: 0;
+  }
+}
+.tourn-match{
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.tourn-pair{
+  padding: 8px;
+  span{
+    padding: 5px;
+  }
+  .in-progress{
+    background-color: #ecf0f1;
+  }
+  .winner{
+    background-color: #2ecc71;
+    color: white;
+  }
+  .loser{
+    background-color: #e74c3c;
+    color: white;
+  }
+}
+.group-bracket{
+  text-align: center;
+}
+
+// TOURN MATCH NEW
+
+.tourn_match-new{
+  background-color: #2ecc71;
+  min-height: 760px;
+  color: white;
+  .match-players{
+    padding-top: 20px;
+    font-size: 30px;
+    font-family: 'Lato', serif;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 922px){
+    .match-players{
+      padding-top: 150px;
+      font-size: 65px;
+      font-family: 'Lato', serif;
+      text-transform: uppercase;
+      text-align: center;
+      color: white;
+    }
+  }
+  .match-entry{
+    background-color: #D571E8;
+    padding: 50px;
+    -webkit-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+    -moz-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+    box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+    .coin-toggle{
+      margin: 0;
+    }
+  }
+  .match-results{
+    background-color: #00BCFF;
+    padding: 50px;
+    -webkit-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+    -moz-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+    box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+  }
+  .match-details{
+    margin: auto;
+    width: 1000px;
+  }
+}

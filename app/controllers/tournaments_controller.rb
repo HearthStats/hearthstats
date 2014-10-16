@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
 
-### PAGES
+  before_filter :admin_user?, only: [:new, :create]
+
   def new
     @tournament = Tournament.new
     @formats = Tournament.all_formats
@@ -19,7 +20,9 @@ class TournamentsController < ApplicationController
     end
 
     if @tournament.started?
-      @winner_id = @tournament.find_winner_id
+      if @tournament.bracket_format != 0
+        @winner_id = @tournament.find_winner_id
+      end
       @pairs = TournPair.where(tournament_id: params[:id])
       @num_columns = Math.log2(@pairs.length + 1).ceil
       if @joined
@@ -51,7 +54,8 @@ class TournamentsController < ApplicationController
     @players = @tournament.tourn_users
   end
 
-### ACTIONS WITH NO PAGE
+  ### ACTIONS WITH NO PAGE
+
   def create
     params[:tournament][:creator_id] = current_user.id
     @tournament = Tournament.new(params[:tournament])
@@ -126,7 +130,7 @@ class TournamentsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js
+      format.html { redirect_to(tournament, notice: 'Decks Submitted') }
     end
   end
 

@@ -7,12 +7,14 @@ div.row id="deck_select_panel"
       span id="count_display" = count
       |&nbsp;more decks
     = hidden_field_tag 'num_decks', count
-    = form_tag(submit_deck_tournament_path, remote: true)
+    = form_tag(submit_deck_tournament_path)
       ul class="no-bullet"
         - decks.each_with_index do |deck, index|
           li class="deck_choice"
             label
               = check_box_tag "deck_#{index}", deck.id
+              img[src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif"
+                alt = "#{deck.class_name}" style="width:24px; margin: 0 5px;"]
               = deck.name
       = submit_tag 'Not enough decks...', class: 'btn btn-md blue', disabled: true
 

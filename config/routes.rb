@@ -14,7 +14,7 @@ Hearthstats::Application.routes.draw do
 
   resources :teams
   resources :premiums do
-    get 'cancel', on: :collection
+    post 'cancel', on: :collection
   end
   # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do
@@ -70,6 +70,8 @@ Hearthstats::Application.routes.draw do
   match "/june", to: "welcome#june_report"
   match "/july", to: "welcome#july_report"
   match "/aug", to: "welcome#aug_report"
+  match "/sept", to: "welcome#sept_report"
+  match "/sept_post", to: "welcome#sept_post_report"
   match "/gen_report", to: "welcome#generate_report"
   match "/liquid", to: "welcome#liquid_data"
   get "welcome/ranked_test"
@@ -81,6 +83,7 @@ Hearthstats::Application.routes.draw do
   get "admin/export_con"
   match "admin/ann", to: "admin#ann"
   post "admin/anncreate"
+  post "admin/toggle_sub"
 
   get "welcome/index"
   get "welcome/demo_user"
@@ -94,7 +97,9 @@ Hearthstats::Application.routes.draw do
   end
 
   resources :profiles do
-    get 'sig'
+    member do
+      get 'activities'
+    end
     post 'set_locale', on: :collection
   end
 
@@ -136,22 +141,24 @@ Hearthstats::Application.routes.draw do
     end
   end
 
-  resources :cards do
-    collection do
+  resources :cards
+
+  resources :tournaments do
+    member do
+      post :submit_deck
+      post :join
+      post :quit
+      get :admin
+      post :start
+      post :remove_player
     end
   end
 
-  resources :tournaments do
-    post :submit_deck, on: :member
-    post :join, on: :member
-    post :quit, on: :member
-    post :admin, on: :member
-    post :start, on: :member
-    post :remove_player, on: :member
+  resources :tourn_matches do
+    opinio
   end
 
-  resources :tourn_matches do
-  end
+  resources :tourn_pairs
 
   resources :arenas do
     collection do

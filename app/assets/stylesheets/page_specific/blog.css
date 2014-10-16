@@ -1,10 +1,9 @@
 /***
 Blog Page
 ***/
-
 /*--Block Article--*/
 .blog-page {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .blog-page h1 {
@@ -131,26 +130,26 @@ Blog & News Item Page
 ***/
 /*--Media Object--*/
 .blog-page .media img {
-    height: 54px;
-    position: relative;
-    top: 3px;
-    width: 54px;
+  height: 54px;
+  position: relative;
+  top: 3px;
+  width: 54px;
 }
 
 .blog-page h4.media-heading {
-    position: relative;
+  position: relative;
 }
 
 .blog-page h4.media-heading span {
-    color: #777777;
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    top: 3px;
+  color: #777777;
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 3px;
 }
 
 .blog-page h4.media-heading span a {
-    color: #78cff8;
+  color: #78cff8;
 }
 
 /*Post Comment*/

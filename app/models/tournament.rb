@@ -75,6 +75,16 @@ class Tournament < ActiveRecord::Base
     self.started
   end
 
+  def is_user_competing(user_id)
+    t_users = TournUser.where(tournament_id: id)
+    t_users.each do |t_user|
+      if t_user.user_id == user_id
+        return true
+      end
+    end
+    false
+  end
+
   def get_num_pairings_in_pod(pod_number)
     self.tourn_pairs.select{ |p| p.pos == pod_number}.count if self.bracket_format == 0
   end
@@ -100,6 +110,30 @@ class Tournament < ActiveRecord::Base
     end
     self.save
     true
+  end
+
+  def initiate_pod(pod, player_emails_string)
+    player_emails = player_emails_string.split(",")
+    user_list = []
+    invalid_emails = []
+    player_emails.each do |email|
+      user = User.where(email: email).first
+      if !user.nil?
+        t_user = TournUser.where(tournament_id: id, user_id: user.id).first
+        user_list.push(t_user)
+      else
+        invalid_emails.push(email)
+      end
+    end
+    pairings = user_list.combination(2).to_a
+    pairings.each do |pairing|
+      new_pair = TournPair.create(tournament_id: id,
+                                  pos: pod,
+                                  p1_id: pairing[0].id,
+                                  p2_id: pairing[1].id,
+                                  undecided: -1)
+    end
+    invalid_emails
   end
 
   def initiate_brackets
@@ -160,7 +194,6 @@ class Tournament < ActiveRecord::Base
 
   def find_pod_winner_id(pod)
     pairs = TournPair.where(tournament_id:self.id, pos: pod)
-    num_players = solve_players(pairs.count)
     scores = Hash.new
     scores.default = 0
     pairs.each do |pair|
@@ -172,6 +205,28 @@ class Tournament < ActiveRecord::Base
     end
     scores = scores.sort_by{ |player, score| score }.reverse
     scores.first.first
+  end
+
+  def get_pod_standings(pod)
+    players = Hash.new
+    pairs = TournPair.where(tournament_id: id, pos: pod)
+    pairs.each do |pair|
+      if !players.has_key?(pair.p1_id)
+        user = TournUser.find(pair.p1_id)
+        players[pair.p1_id] = {id: user.id, name: user.user.name, score: pair.get_p1_score}
+      else
+        players[pair.p1_id][:score] += pair.get_p1_score
+      end
+
+      if !players.has_key?(pair.p2_id)
+        user = TournUser.find(pair.p2_id)
+        players[pair.p2_id] = {id: user.id, name: user.user.name, score: pair.get_p2_score}
+      else
+        players[pair.p2_id][:score] += pair.get_p2_score
+      end
+    end
+    players = players.values
+    players.sort_by { |ps| ps[:score] }.reverse
   end
 
   private

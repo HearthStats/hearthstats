@@ -11,7 +11,7 @@ class Arena < ActiveRecord::Base
   def self.overall_win_rate(userid)
     # returns a winrate percentage if the user has played any Arena games.
     # otherwise returns "N/A"
-    
+
     matches = Match.where(user_id: userid, season_id: Season.last.num, mode_id: 1)
     wins = matches.where(result_id: true).count
     totgames = matches.count
@@ -20,7 +20,7 @@ class Arena < ActiveRecord::Base
     return "N/A" if totgames == 0
 
     winrate = wins.to_f / totgames
-    winrate = winrate
+    winrate = Match.number_to_percent(winrate)
 
     winrate
   end

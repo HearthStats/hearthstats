@@ -3,6 +3,10 @@ class AdditionalController < ApplicationController
   def contactus
   end
 
+  def ads
+    render layout: false
+  end
+
   def uploader
 
     @urls = Rails.cache.fetch('uploader_url', expires_in: 2.days) do

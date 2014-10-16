@@ -5,6 +5,8 @@ class Deck < ActiveRecord::Base
   acts_as_taggable
   is_impressionable
   opinio_subjectum
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| model.user }
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -34,7 +36,7 @@ class Deck < ActiveRecord::Base
   end
 
   def self.playable_decks(user_id)
-    Deck.where("user_id = ? AND (is_tourn_deck = ? OR is_tourn_deck = ?)", user_id, false, nil).where("unique_deck_id IS NOT NULL")
+    Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
   end
   ### INSTANCE METHODS:
 

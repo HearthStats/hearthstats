@@ -1,0 +1,26 @@
+.admin-control-wrapper{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  padding: 0 25px;
+  background-color: #2ecc71;
+  color: white;
+  transition: all 0.5s ease;
+  a{
+    color: white;
+    text-decoration: underline;
+  }
+  .info-block{
+    padding-right: 20px;
+    b{
+      padding-right: 5px;
+    }
+  }
+}
+.admin-control-wrapper:hover{
+  height: 200px;
+  padding: 25px;
+
+}

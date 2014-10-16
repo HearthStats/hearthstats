@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141006153329) do
+ActiveRecord::Schema.define(:version => 20141011064328) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(:version => 20141006153329) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "activities", :force => true do |t|
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "key"
+    t.text     "parameters"
+    t.integer  "recipient_id"
+    t.string   "recipient_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "activities", ["owner_id", "owner_type"], :name => "index_activities_on_owner_id_and_owner_type"
+  add_index "activities", ["recipient_id", "recipient_type"], :name => "index_activities_on_recipient_id_and_recipient_type"
+  add_index "activities", ["trackable_id", "trackable_type"], :name => "index_activities_on_trackable_id_and_trackable_type"
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -537,8 +554,6 @@ ActiveRecord::Schema.define(:version => 20141006153329) do
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
-    t.datetime "start_date"
-    t.integer  "creator_id"
     t.integer  "bracket_format"
     t.integer  "num_players"
     t.datetime "created_at",                        :null => false
@@ -549,6 +564,7 @@ ActiveRecord::Schema.define(:version => 20141006153329) do
     t.boolean  "started",        :default => false
     t.integer  "num_decks",      :default => 3
     t.string   "code"
+    t.integer  "creator_id"
     t.integer  "best_of"
   end
 
@@ -581,6 +597,15 @@ ActiveRecord::Schema.define(:version => 20141006153329) do
   add_index "unique_deck_cards", ["card_id"], :name => "index_unique_deck_cards_on_card_id"
   add_index "unique_deck_cards", ["unique_deck_id"], :name => "index_unique_deck_cards_on_unique_deck_id"
 
+  create_table "unique_deck_types", :force => true do |t|
+    t.string   "match_string"
+    t.integer  "archtype_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "klass_id"
+    t.string   "name"
+  end
+
   create_table "unique_decks", :force => true do |t|
     t.string   "cardstring"
     t.integer  "klass_id"
@@ -591,11 +616,12 @@ ActiveRecord::Schema.define(:version => 20141006153329) do
     t.integer  "num_spells"
     t.integer  "num_weapons"
     t.datetime "last_played"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.float    "winrate"
     t.integer  "num_users"
     t.integer  "mana_cost"
+    t.integer  "unique_deck_type_id"
   end
 
   add_index "unique_decks", ["cardstring"], :name => "index_unique_decks_on_cardstring"

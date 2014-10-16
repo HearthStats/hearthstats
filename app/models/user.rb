@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :tournaments, through: :tourn_users
   has_many :tourn_users
 
+  after_create :create_profile
+
   ### CLASS METHODS:
 
   def self.find_user(identity)
@@ -42,6 +44,10 @@ class User < ActiveRecord::Base
   end
 
   ### INSTANCE METHODS:
+
+  def create_profile
+    Profile.create(user_id: id)
+  end
 
   def subscribed?
     !subscription_id.nil?
@@ -112,6 +118,10 @@ class User < ActiveRecord::Base
     p "Sig for #{self.id} updated, view it at: #{self.profile.shortened_urls}"
   end
 
+  def is_admin?
+    has_role? :admin
+  end
+
   ### PRIVATE METHODS:
 
   private
@@ -150,7 +160,4 @@ class User < ActiveRecord::Base
     rank
   end
 
-  def is_admin?
-    has_role? :admin
-  end
 end

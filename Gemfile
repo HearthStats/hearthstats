@@ -9,10 +9,10 @@ group :development do
   gem 'sqlite3'
   gem 'capistrano', '~> 2.14.2'
   gem 'capistrano_rsync_with_remote_cache'
-  gem 'hipchat'
   gem 'quiet_assets', '>= 1.0.1'
   gem 'rb-fsevent', :require => false
   gem 'pry'
+  gem 'pry-byebug'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'guard-spring'
@@ -85,6 +85,8 @@ gem 'sync'
 gem 'announcements'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rmagick'
+gem 'public_activity'
+gem 'rack-ssl-enforcer'
 
 # APIs
 gem 'newrelic_rpm'
@@ -107,11 +109,11 @@ group :test do
   gem 'capybara', '>= 2.0.2'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'guard-rspec'
   gem 'phashion'
 end
 
 group :development, :test do
   gem 'database_cleaner'
+  gem 'faker'
 end

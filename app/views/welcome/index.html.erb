@@ -97,7 +97,7 @@
           <li><%= link_to public_decks_path do %>Decks<% end %></li>
           <li><%= link_to streams_index_path do %>Streams<% end %></li>
           <li><%= link_to news_path do %>News<% end %></li>
-          <li><%= link_to '/aug' do %>Stat Report<% end %></li>
+          <li><%= link_to '/sept' do %>Stat Report<% end %></li>
           <li><%= link_to uploader_path do %>Stat Tracker<% end %></li>
           <li><%= link_to contactus_path do %>Contact<% end %></li>
         </ul>
@@ -121,7 +121,7 @@
               <div id="klass-title"><img src="/assets/Icons/Classes/Druid_Icon.gif",
                 id="klass-img" /><span id="klass-name">Druid</span></div>
               <div id="klass_chart" >
-                <%= line_chart win_rates_constructeds_path(:klass_id => 1), max: 100, height: "200px"%>
+                <%= line_chart win_rates_constructeds_path(:klass_id => 1), min:30, max: 70, height: "200px"%>
               </div>
             </div>
             <div class="graph-klass-selector">
@@ -333,18 +333,18 @@
     </section>
 
     <section class="sidead">
-      <iframe src="http://ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"  height="250" id="side1"></iframe>
+      <iframe src="//ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"  height="250" id="side2"></iframe>
     </section>
 
     <section class="report">
 
       <h2>Stat Report</h2>
-      <%= image_tag('report_pic/augbgx300.jpg') %>
+      <%= image_tag('report_pic/septbgx300.jpg') %>
       <div class="tracker-desc">
         View this month's global stats from the whole Hearthstats community! See the most popular class, highest win rate and more!
       </div>
       <div class="actions">
-        <%= link_to "View", '/aug' , class: "button success expand report-btn" %>
+        <%= link_to "View", '/sept' , class: "button success expand report-btn" %>
       </div>
     </section>
 
@@ -360,7 +360,7 @@
    </section>
 
    <section class="sidead">
-      <iframe src="http://ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"  height="250" id="side2"></iframe>
+      <iframe src="//ib.adnxs.com/tt?id=2248887&referrer=hss.io" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true"  height="250" id="side2"></iframe>
     </section>
   </div>
 
@@ -390,5 +390,17 @@
   ga('create', 'UA-45442103-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+<% if notice || alert %>
+  <% if notice %>
+    <script>
+        toastr.success("<%= raw notice %>");
+    </script>
+  <% elsif alert %>
+    <script>
+        toastr.error("<%= raw alert %>");
+    </script>
+  <% end %>
+<% end %>
 </body>
 </html>

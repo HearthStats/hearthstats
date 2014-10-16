@@ -17,7 +17,8 @@ describe ProfileImage do
       const_win_rate: "32.2%",
       arena_win_rate: "69%",
       ranking: 9,
-      legend: true
+      legend: true,
+      badges: ['badge_1']
     }
     imagelist = ProfileImage.new(user_hash).image
     file = Tempfile.new('image.png')

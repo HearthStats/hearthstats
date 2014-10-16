@@ -309,10 +309,6 @@ form.custom .custom.disabled { background-color: #dddddd; }
 
 .pull-ten { right: 83.33333%; }
 
-img, object, embed { max-width: 100%; height: auto; }
-
-object, embed { height: 100%; }
-
 img { -ms-interpolation-mode: bicubic; }
 
 #map_canvas img, .map_canvas img { max-width: none!important; }

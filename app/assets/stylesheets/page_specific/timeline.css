@@ -24,6 +24,18 @@ Timeline UI Base
   position: relative;
 }
 
+/*Remove timeline line for last entry*/
+.timeline > li.timeline-noline:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: #fff;
+  left: 20%;
+  margin-left: -10px;
+}
+
 /* The date/time */
 .timeline > li .timeline-time {
   display: block;
@@ -51,7 +63,6 @@ Timeline UI Base
 }
 
 /* Right content */
-
 .timeline > li .timeline-body {
   margin: 0 0 15px 25%;
   color: #fff;
@@ -64,7 +75,7 @@ Timeline UI Base
 .timeline > li .timeline-body h2 {
   margin-top: 0px;
   padding: 0 0 5px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 24px;
 }
 
@@ -85,7 +96,6 @@ Timeline UI Base
 .timeline > li .timeline-body img.pull-right {
   margin-left: 10px;
 }
-
 
 .timeline > li .timeline-body a.nav-link {
   display: inline-block;
@@ -131,14 +141,14 @@ Timeline UI Base
   clear: both;
 }
 
-.timeline >li .timeline-footer:after,
-.timeline >li .timeline-footer:before {
+.timeline > li .timeline-footer:after,
+.timeline > li .timeline-footer:before {
   content: "";
   display: table;
   line-height: 0;
 }
 
-.timeline >li .timeline-footer:after {
+.timeline > li .timeline-footer:after {
   clear: both;
 }
 
@@ -167,8 +177,8 @@ Timeline UI Base
   padding-right: 1px;
   padding-left: 2px;
   -webkit-border-radius: 30px !important;
-     -moz-border-radius: 30px !important;
-      border-radius: 30px !important;
+  -moz-border-radius: 30px !important;
+  border-radius: 30px !important;
 }
 
 .timeline > li .timeline-icon > i {
@@ -181,11 +191,11 @@ Timeline UI Base
 }
 
 .timeline li.timeline-red .timeline-body {
-   background: #e02222;
+  background: #e02222;
 }
 
 .timeline li.timeline-red .timeline-time span.time {
-   color: #e02222;
+  color: #e02222;
 }
 
 /* Yellow */
@@ -194,11 +204,11 @@ Timeline UI Base
 }
 
 .timeline li.timeline-yellow .timeline-body {
-   background: #ffb848;
+  background: #ffb848;
 }
 
 .timeline li.timeline-yellow .timeline-time span.time {
-   color: #ffb848;
+  color: #ffb848;
 }
 
 /* Green */
@@ -207,11 +217,11 @@ Timeline UI Base
 }
 
 .timeline li.timeline-green .timeline-body {
-   background: #35aa47;
+  background: #35aa47;
 }
 
 .timeline li.timeline-green .timeline-time span.time {
-   color: #35aa47;
+  color: #35aa47;
 }
 
 /* Blue */
@@ -220,11 +230,11 @@ Timeline UI Base
 }
 
 .timeline li.timeline-blue .timeline-body {
-   background: #4b8df8;
+  background: #4b8df8;
 }
 
 .timeline li.timeline-blue .timeline-time span.time {
-   color: #4b8df8;
+  color: #4b8df8;
 }
 
 /* Purple */
@@ -233,11 +243,11 @@ Timeline UI Base
 }
 
 .timeline li.timeline-purple .timeline-body {
-   background: #852b99;
+  background: #852b99;
 }
 
 .timeline li.timeline-purple .timeline-time span.time {
-   color: #852b99;
+  color: #852b99;
 }
 
 /* Grey */
@@ -246,11 +256,11 @@ Timeline UI Base
 }
 
 .timeline li.timeline-grey .timeline-body {
-   background: #555555;
+  background: #555555;
 }
 
 .timeline li.timeline-grey .timeline-time span.time {
-   color: #555555;
+  color: #555555;
 }
 
 @media (max-width: 767px) {
@@ -291,8 +301,6 @@ Timeline UI Base
   }
 
   /*colors*/
-
-
   .timeline li.timeline-red .timeline-body:after {
     border-right-color: transparent;
     border-bottom-color: #e02222;
@@ -323,4 +331,3 @@ Timeline UI Base
     border-bottom-color: #555555;
   }
 }
-
