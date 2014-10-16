@@ -1,4 +1,6 @@
 = form_tag(join_tournament_path, remote: true)
-              - if is_private
-                = text_field_tag 'code'
-              = submit_tag 'Join', id: "tour_join", class: "btn btn-block green"
+  - if is_private
+    .form-group
+      label Tournament Passcode:
+      = text_field_tag 'code',"", class: "form-control"
+  = submit_tag 'Join', id: "tour_join", class: "btn btn-block green"
