@@ -5,6 +5,12 @@ class Mode < ActiveRecord::Base
   CASUAL = 2
   RANKED = 3
 
+  LIST = {
+    1 => 'Arena',
+    2 => 'Casual',
+    3 => 'Ranked',
+    4 => 'Tournament'
+  }
   ### ASSOCIATIONS:
 
   has_many :matches

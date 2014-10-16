@@ -28,7 +28,7 @@
     .form-group
       label class="control-label col-md-3" Opt out of email notifications
       .col-md-3
-        = check_box_tag :no_email, 1, current_user.no_email
+        = check_box_tag :no_email, 1, current_user.no_email, class: "form-control"
 
     .form-group
       label class="control-label col-md-3"
