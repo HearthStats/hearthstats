@@ -27,3 +27,9 @@
 .btn-stripe:active {
   background: #008cdd;
 }
+
+.class-selection{
+  display: inline-block;
+  padding: 10px 20px 10px 0;
+  text-align: center;
+}

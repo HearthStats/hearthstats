@@ -1,0 +1,42 @@
+= form_tag gen_report_premiums_path, method: :get, class: "form-horizontal form-bordered"
+  .form-body
+    .form-group
+      label.control-label.col-md-3 Game Mode
+      .col-md-3
+        = select_tag "mode", options_for_select(["Ranked", "Arena", "Casual"]),
+        class: "form-control"
+    .form-group
+      label.control-label.col-md-3 Date Range
+      .col-md-3
+        label Start
+        = text_field_tag :start_date, Time.now, class: "form-control"
+      .col-md-3
+        label End
+        = text_field_tag :end_date, Time.now, class: "form-control"
+    .form-group
+      label.control-label.col-md-3 Coin?
+      .col-md-3
+        .class-selection
+          = check_box_tag :coin, 1, true
+          .name
+            'Coin
+        .class-selection
+          = check_box_tag :no_coin, 1, true
+          .name
+            'No Coin
+    .form-group
+      label.control-label.col-md-3 Classes
+      .col-md-9
+        - Klass.list.each do |klass|
+          .class-selection
+            .class-image
+              img [src="/assets/Icons/Classes/#{klass}_Icon.gif"
+              alt="#{klass}" width="24px"]
+            .class-checkbox
+              = check_box_tag klass, 1, true
+              .name
+                = klass
+    .form-group
+      label.col-md-3
+      .col-md-3
+        = submit_tag "Generate Report", class: "btn btn-lg green"
