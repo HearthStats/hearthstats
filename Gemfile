@@ -86,7 +86,7 @@ gem 'announcements'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rmagick'
 gem 'public_activity'
-gem 'rack-ssl-enforcer'
+# gem 'rack-ssl-enforcer'
 
 # APIs
 gem 'newrelic_rpm'

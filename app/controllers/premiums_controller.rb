@@ -48,15 +48,18 @@ class PremiumsController < ApplicationController
   def gen_report
     mode_id = Mode::LIST.invert[params[:mode]]
     coin = [ params[:coin].to_i == 1, params[:no_coin].to_i == 0 ]
-    klass_ids = []
+    user_klass_ids = []
+    opp_klass_ids = []
     Klass::LIST.each do |klass|
-      klass_ids << klass[0] if params[klass[1]].to_i == 1
+      user_klass_ids << klass[0] if params["user" + klass[1]].to_i == 1
+      opp_klass_ids << klass[0] if params["opp" + klass[1]].to_i == 1
     end
     @matches = Match.where(user_id: current_user)
-      .where(mode_id: mode_id)
-      .where(created_at: params[:start_date].to_date.beginning_of_day..params[:end_date].to_date.end_of_day)
-      .where(coin: coin)
-      .where(klass_id: klass_ids)
+                    .where(mode_id: mode_id)
+                    .where(created_at: params[:start_date].to_date.beginning_of_day..params[:end_date].to_date.end_of_day)
+                    .where(coin: coin)
+                    .where(klass_id: user_klass_ids)
+                    .where(oppclass_id: opp_klass_ids)
   end
 
   def cancel

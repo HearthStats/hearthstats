@@ -25,7 +25,7 @@
           .name
             'No Coin
     .form-group
-      label.control-label.col-md-3 Classes
+      label.control-label.col-md-3 User Classes
       .col-md-9
         - Klass.list.each do |klass|
           .class-selection
@@ -33,7 +33,19 @@
               img [src="/assets/Icons/Classes/#{klass}_Icon.gif"
               alt="#{klass}" width="24px"]
             .class-checkbox
-              = check_box_tag klass, 1, true
+              = check_box_tag "user" + klass, 1, true
+              .name
+                = klass
+    .form-group
+      label.control-label.col-md-3 Opponent Classes
+      .col-md-9
+        - Klass.list.each do |klass|
+          .class-selection
+            .class-image
+              img [src="/assets/Icons/Classes/#{klass}_Icon.gif"
+              alt="#{klass}" width="24px"]
+            .class-checkbox
+              = check_box_tag "opp" + klass, 1, true
               .name
                 = klass
     .form-group
