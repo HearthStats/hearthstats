@@ -44,6 +44,9 @@ class DecksController < ApplicationController
 
   def show
     @deck = Deck.find(params[:id])
+    if !@deck.tourn_decks.empty? && current_user != @deck.user.id
+      redirect_to public_decks_path, alert: "Tournament decks can only be viewed by the owner." and return
+    end
     impressionist(@deck)
     gon.cardstring = @deck.cardstring
 

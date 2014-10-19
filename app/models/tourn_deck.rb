@@ -3,4 +3,5 @@ class TournDeck < ActiveRecord::Base
 
   belongs_to :tournament
   belongs_to :deck
+  belongs_to :tourn_user
 end

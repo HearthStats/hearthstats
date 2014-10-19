@@ -3,6 +3,7 @@ class TournUser < ActiveRecord::Base
 
   belongs_to :tournament
   belongs_to :user
+  has_many :tourn_deck
 
   ### INSTANCE METHODS
   def decks_submitted?
