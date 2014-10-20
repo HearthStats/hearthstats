@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    profile.name.nil? ? email : profile.name
+    profile.name.blank? ? email : profile.name
   end
 
   def mailboxer_email(object)
