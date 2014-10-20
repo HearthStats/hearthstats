@@ -12,6 +12,14 @@ class TournPair < ActiveRecord::Base
   ## 1: right player undecided
   ## 2: both players undecided
 
+  def p1
+    TournUser.find(self.p1_id).user
+  end
+
+  def p2
+    TournUser.find(self.p2_id).user
+  end
+
   def p1_name
     TournUser.find(self.p1_id).user.name
   end

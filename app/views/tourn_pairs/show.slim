@@ -3,9 +3,13 @@
                 keywords: 'tournament, new, entry, match, hearthstats, hearthstone'
 .tourn_match-new
   .match-players
-    =' @pair.p1_name
-    'vs.
-    = @pair.p2_name
+    p 
+      =' @pair.p1.name
+    small #{@pair.p1.profile.bnetid}##{@pair.p1.profile.bnetnum}
+    p vs.
+    p 
+      = @pair.p2.name
+    small #{@pair.p2.profile.bnetid}##{@pair.p2.profile.bnetnum}
   .row.match-details
     div.col-md-6
       = render 'tourn_matches/form'
@@ -13,5 +17,6 @@
       = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
   .row.match-comments
     .col-md-12
+      small User this area to discuss with your opponent
       = render_comments_form @pair unless current_user && current_user.guest
       = render_comments @pair, :page => params[:page], :limit => 5
