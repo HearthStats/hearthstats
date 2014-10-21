@@ -3,6 +3,7 @@ class TournMatch < ActiveRecord::Base
 
   has_many :decks, through: :tourn_decks
   has_many :matches
+  belongs_to :tourn_user
 
   RESULTS_LIST = {
     -1 => 'Undecided',
@@ -13,5 +14,9 @@ class TournMatch < ActiveRecord::Base
 
   def result_to_s(id)
     RESULTS_LIST[id]
+  end
+
+  def user
+    tourn_user.user
   end
 end

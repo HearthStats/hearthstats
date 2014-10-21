@@ -17,6 +17,6 @@
       = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
   .row.match-comments
     .col-md-12
-      small User this area to discuss with your opponent
+      small Use this area to discuss with your opponent
       = render_comments_form @pair unless current_user && current_user.guest
       = render_comments @pair, :page => params[:page], :limit => 5
