@@ -36,17 +36,21 @@ class TournPair < ActiveRecord::Base
     TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p2_id).count + TournMatch.where(tourn_pair_id: id, result_id: 2, tourn_user_id: self.p2_id).count * 0.5
   end
 
-  def confirm_match(t_matches, matches_to_win)
+  def confirm_match
+    matches_to_win = (tournament.best_of.to_i / 2.0).ceil
+    t_matches = tourn_matches
     tournament = Tournament.find(self.tournament_id)
     opp_t_matches = TournMatch.where(tourn_pair_id: id).where("tourn_user_id != ?", t_matches.first.tourn_user_id)
     round = t_matches.count
     opp_cur_match = opp_t_matches.where(round: round).first
     matches_eval_list = t_matches
+    p opp_cur_match
     if !opp_cur_match.nil?
       conflict = resolve_match(t_matches.last, opp_cur_match)
       if opp_t_matches.count > t_matches.count
         matches_eval_list = opp_t_matches
       end
+      p "determine winner"
       winner_id = determine_winner(matches_eval_list, matches_to_win, opp_cur_match.tourn_user_id)
       if winner_id != 0
         TournPair.update(id, winner_id: winner_id)

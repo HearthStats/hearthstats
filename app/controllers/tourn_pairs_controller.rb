@@ -1,6 +1,9 @@
 class TournPairsController < ApplicationController
   def show
     tourn_pair = TournPair.find(params[:id])
+    if ![ tourn_pair.p1.id, tourn_pair.p2.id ].include? current_user.id
+      redirect_to root_path, alert: "You are not part of that match" and return
+    end
     @t_id = tourn_pair.tournament.id
     @tourn_match = TournMatch.new
     @t_user_id = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first.id
