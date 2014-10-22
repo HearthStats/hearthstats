@@ -50,9 +50,13 @@ class PremiumsController < ApplicationController
     coin = [ params[:coin].to_i == 1, params[:no_coin].to_i == 0 ]
     user_klass_ids = []
     opp_klass_ids = []
+    modules_array = []
     Klass::LIST.each do |klass|
-      user_klass_ids << klass[0] if params["user" + klass[1]].to_i == 1
-      opp_klass_ids << klass[0] if params["opp" + klass[1]].to_i == 1
+      user_klass_ids << klass[0] if params["user"][klass[1]].to_i == 1
+      opp_klass_ids << klass[0] if params["opp"][klass[1]].to_i == 1
+    end
+    params["modules"].each do |mod|
+      modules_array << mod[0] if mod[1].to_i == 1
     end
     @matches = Match.where(user_id: current_user)
                     .where(mode_id: mode_id)
@@ -60,6 +64,14 @@ class PremiumsController < ApplicationController
                     .where(coin: coin)
                     .where(klass_id: user_klass_ids)
                     .where(oppclass_id: opp_klass_ids)
+    get_modules(modules_array)
+  end
+
+  def get_modules(modules)
+    graphs = GraphGenerator.new(@matches)
+    modules.each do |method|
+      graphs.send(method)
+    end
   end
 
   def cancel

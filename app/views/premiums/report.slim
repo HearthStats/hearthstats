@@ -33,7 +33,7 @@
               img [src="/assets/Icons/Classes/#{klass}_Icon.gif"
               alt="#{klass}" width="24px"]
             .class-checkbox
-              = check_box_tag "user" + klass, 1, true
+              = check_box_tag "user[#{klass}]", 1, true
               .name
                 = klass
     .form-group
@@ -45,9 +45,14 @@
               img [src="/assets/Icons/Classes/#{klass}_Icon.gif"
               alt="#{klass}" width="24px"]
             .class-checkbox
-              = check_box_tag "opp" + klass, 1, true
+              = check_box_tag "opp[#{klass}]", 1, true
               .name
                 = klass
+    .form-group
+      label.control-label.col-md-3 Modules
+      .col-md-9
+        .class-selection
+          = check_box_tag "modules[rank_wr]", 1, false
     .form-group
       label.col-md-3
       .col-md-3

@@ -57,7 +57,10 @@ class WelcomeController < ApplicationController
   end
 
   def get_ranked_graph_data(season)
-    ranked_wr_count = Match.get_klass_ranked_wr(season.begin, season.end)
+    ranked_wr_args = { :klasses_array => Klass::LIST,
+                       :beginday      => season.begin,
+                       :endday        => season.end}
+    ranked_wr_count = Match.get_klass_ranked_wr(ranked_wr_args)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
   end
