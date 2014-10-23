@@ -42,7 +42,7 @@ class TournMatchesController < ApplicationController
     respond_to do |format|
       if t_match.save
         t_pair = TournPair.find(t_pair_id)
-        conflict = t_pair.confirm_match
+        conflict = t_pair.confirm_match(t_matches)
         if conflict
           format.html { redirect_to(request.referrer, notice: "Your report conflicts with your opponent's, tournament admin has been notified") and return }
         else

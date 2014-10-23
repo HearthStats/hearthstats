@@ -64,11 +64,12 @@ class PremiumsController < ApplicationController
                     .where(coin: coin)
                     .where(klass_id: user_klass_ids)
                     .where(oppclass_id: opp_klass_ids)
-    get_modules(modules_array)
+                    .all
+    get_modules(Match.all, modules_array, user_klass_ids, opp_klass_ids)
   end
 
-  def get_modules(modules)
-    graphs = GraphGenerator.new(@matches)
+  def get_modules(matches, modules, user_klass_ids, opp_klass_ids)
+    graphs = GraphGenerator.new(matches, user_klass_ids, opp_klass_ids)
     modules.each do |method|
       graphs.send(method)
     end

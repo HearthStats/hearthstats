@@ -36,9 +36,8 @@ class TournPair < ActiveRecord::Base
     TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p2_id).count + TournMatch.where(tourn_pair_id: id, result_id: 2, tourn_user_id: self.p2_id).count * 0.5
   end
 
-  def confirm_match
+  def confirm_match(t_matches)
     matches_to_win = (tournament.best_of.to_i / 2.0).ceil
-    t_matches = tourn_matches
     tournament = Tournament.find(self.tournament_id)
     opp_t_matches = TournMatch.where(tourn_pair_id: id).where("tourn_user_id != ?", t_matches.first.tourn_user_id)
     round = t_matches.count
