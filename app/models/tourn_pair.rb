@@ -72,8 +72,8 @@ class TournPair < ActiveRecord::Base
       admins.each do |admin|
         admin.notify( "Conflict notice",
                       "Conflict on the match " + t_match.round.to_s + " report " +
-                      "between " + user.profile.name + "(" + user.id + ")" +
-                      " and " + opp.profile.name + "(" + opp.id + ")" )
+                      "between " + user.profile.name + "(" + user.id.to_s + ")" +
+                      " and " + opp.profile.name + "(" + opp.id.to_s + ")" )
       end
       return true
     end
