@@ -71,7 +71,7 @@ class PremiumsController < ApplicationController
   def get_modules(matches, modules, user_klass_ids, opp_klass_ids)
     graphs = GraphGenerator.new(matches, user_klass_ids, opp_klass_ids)
     modules.each do |method|
-      graphs.send(method)
+      instance_variable_set("@" + method, graphs.send(method))
     end
   end
 

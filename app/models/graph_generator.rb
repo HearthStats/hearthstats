@@ -9,7 +9,7 @@ class GraphGenerator
   end
 
 
-  def winrates
+  def klass_wrs
     klass_wrs = Hash.new
     @user_klass_ids.each do |klass|
       @opp_klass_ids.each do |opp_klass|
@@ -19,7 +19,7 @@ class GraphGenerator
         klass_wrs[klass][opp_klass] = calculate_winrate(_matches)
       end
     end
-    raise
+
     klass_wrs
   end
 
