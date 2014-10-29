@@ -1,0 +1,13 @@
+h4 Win Rate by Time of Day
+
+table.table
+  thead
+    th Time Of Day
+    th Number of Games Played
+    th Win Rate
+  tbody
+    - mod_data.each do |time_of_day, details|
+      tr
+        td = time_of_day.capitalize
+        td = details[0][0]
+        td = number_to_percentage(details[0][1], precision: 2)

@@ -1,3 +1,5 @@
 = @matches.count
 hr
-= render partial: 'klass_wrs', locals: { klass_wrs: @klass_wrs }
+- @modules_array.each do |mod|
+  = render partial: mod.dup, locals: { mod_data: instance_variable_get("@" + mod)}
+  hr

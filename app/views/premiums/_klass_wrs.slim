@@ -1,8 +1,9 @@
+h4 Classes Winrate Matrix
 table.table
   th
-    - klass_wrs.first.last.keys.each do |opp_klass_id|
+    -mod_data.first.last.keys.each do |opp_klass_id|
       td = Klass::LIST[opp_klass_id]
-  - klass_wrs.each do |user_klass|
+  -mod_data.each do |user_klass|
     tr
       td = Klass::LIST[user_klass.first]
       - user_klass.last.each do |opp_class_wr|
