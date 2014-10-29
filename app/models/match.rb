@@ -144,6 +144,7 @@ class Match < ActiveRecord::Base
 
     winrate
   end
+
   def self.results_list
     RESULTS_LIST.values
   end

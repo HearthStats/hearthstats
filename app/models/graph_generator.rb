@@ -21,7 +21,11 @@ class GraphGenerator
     day_wrs = Hash.new
     user_klass_ids.each do |klass|
       _matches = @matches.select { |match| match.klass_id == klass }
-      day_wrs[klass] = Match.winrate_per_day_cumulative(_matches, 10)
+      day_wr_klass = []
+      _matches.group_by {|m| m.created_at.beginning_of_day }.each do |day|
+        day_wr_klass << [ day[0].to_i * 1000,calculate_winrate(day[1]).round(2) ]
+      end
+      day_wrs[klass] =  day_wr_klass.sort_by { |q| q[0] }
     end
 
     day_wrs
