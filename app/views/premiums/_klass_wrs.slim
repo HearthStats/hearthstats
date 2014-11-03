@@ -1,0 +1,11 @@
+h4 Classes Winrate Matrix
+table.table
+  th
+    -mod_data.first.last.keys.each do |opp_klass_id|
+      td = Klass::LIST[opp_klass_id]
+  -mod_data.each do |user_klass|
+    tr
+      td = Klass::LIST[user_klass.first]
+      - user_klass.last.each do |opp_class_wr|
+        td = number_to_percentage(opp_class_wr.last, precision: 2)
+

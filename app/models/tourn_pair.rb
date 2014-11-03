@@ -59,17 +59,20 @@ class TournPair < ActiveRecord::Base
     result
   end
 
-  def confirm_match(t_matches, matches_to_win)
+  def confirm_match(t_matches)
     tournament = Tournament.find(self.tournament_id)
+    matches_to_win = (tournament.best_of.to_i / 2.0).ceil
     opp_t_matches = TournMatch.where(tourn_pair_id: id).where("tourn_user_id != ?", t_matches.first.tourn_user_id)
     round = t_matches.count
     opp_cur_match = opp_t_matches.where(round: round).first
     matches_eval_list = t_matches
+    p opp_cur_match
     if !opp_cur_match.nil?
       conflict = resolve_match(t_matches.last, opp_cur_match)
       if opp_t_matches.count > t_matches.count
         matches_eval_list = opp_t_matches
       end
+      p "determine winner"
       winner_id = determine_winner(matches_eval_list, matches_to_win, opp_cur_match.tourn_user_id)
       if winner_id != 0
         TournPair.update(id, winner_id: winner_id)
@@ -92,8 +95,8 @@ class TournPair < ActiveRecord::Base
       admins.each do |admin|
         admin.notify( "Conflict notice",
                       "Conflict on the match " + t_match.round.to_s + " report " +
-                      "between " + user.profile.name + "(" + user.id + ")" +
-                      " and " + opp.profile.name + "(" + opp.id + ")" )
+                      "between " + user.profile.name + "(" + user.id.to_s + ")" +
+                      " and " + opp.profile.name + "(" + opp.id.to_s + ")" )
       end
       return true
     end

@@ -65,11 +65,15 @@ class Match < ActiveRecord::Base
 
   ### CLASS METHODS:
 
-  def self.get_klass_ranked_wr(beginning, endday)
+  def self.get_klass_ranked_wr(args)
+    klasses_array = args[:klasses_array]
+    beginday    = args[:beginday]
+    endday      = args[:endday]
+    # klass_array = { 1 => "Druid", etc. }
     ranked_stats_array = Array.new
     ranked_count_array = Hash.new
-    Klass::LIST.each do |klass|
-      winrate = self.get_rank_wr_array_for_klass(klass[0], beginning, endday)
+    klasses_array.each do |klass|
+      winrate = self.get_rank_wr_array_for_klass(klass[0], beginday, endday)
       ranked_stats_array << winrate.win_rate_array
       ranked_count_array[klass[1]] = winrate.win_counts
     end
@@ -140,6 +144,7 @@ class Match < ActiveRecord::Base
 
     winrate
   end
+
   def self.results_list
     RESULTS_LIST.values
   end

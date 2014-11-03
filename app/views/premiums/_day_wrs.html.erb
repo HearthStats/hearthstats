@@ -1,0 +1,120 @@
+<h4>Klass Win Rates Per Day</h4>
+<div id="arena_distribution_loading">
+  <%= image_tag('loading.gif') %>
+</div>
+<div id="arena_distribution_content" class="display-none">
+  <div class="row">
+    <div class="col-md-10">
+      <div id="klass_wrs_per_day" class="chart" style="height: 300px"></div>
+      <div class="center">Number of wins in arena run</div>
+    </div>
+    <div class="col-md2 graph-selection-cont">
+      <div id="choices"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function () {
+
+  function showTooltip(x, y, realx, realy) {
+      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realy + '<\/div><\/div>').css({
+          position: 'absolute',
+          display: 'none',
+          top: y - 50,
+          width: 80,
+          left: x - 40,
+          border: '0px solid #ccc',
+          padding: '2px 6px',
+          'background-color': '#fff',
+      }).appendTo("body").fadeIn(200);
+  }
+
+  $('#arena_distribution_loading').hide();
+  $('#arena_distribution_content').show();
+  var datasets = {
+    <% mod_data.each do |klass| %>
+      "<%=Klass::LIST[klass[0]]%>": {
+          data: <%= klass[1] %>,
+          label: "<%=Klass::LIST[klass[0]]%>"
+      },
+    <% end %>
+  };
+
+  var i = 0;
+  $.each(datasets, function(key, val) {
+    val.color = i;
+    ++i;
+  });
+
+  // insert checkboxes
+  var choiceContainer = $("#choices");
+  $.each(datasets, function(key, val) {
+    choiceContainer.append("<br/><input type='checkbox' name='" + key +
+      "' checked='checked' id='id" + key + "'></input>" +
+      "<label for='id" + key + "'>"
+      + val.label + "</label>");
+  });
+
+  choiceContainer.find("input").click(plotAccordingToChoices);
+
+  function plotAccordingToChoices() {
+
+    data = [];
+
+    choiceContainer.find("input:checked").each(function () {
+      var key = $(this).attr("name");
+      if (key && datasets[key]) {
+        data.push(datasets[key]);
+      }
+    });
+
+    console.log(data);
+    if (data.length > 0) {
+      $.plot("#klass_wrs_per_day", data, {
+        yaxis: {
+          min: 0,
+          max: 100
+        },
+        grid: {
+          hoverable: true,
+          clickable: true,
+          tickColor: "#eee",
+          borderWidth: 0
+        },
+        colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+           "#F58CBA", "#999999", "#f1c40f",
+           "#0070DE", "#9482C9", "#A57A4D"],
+        xaxis: {
+           mode: "time", timeformat: "%m/%d/%y", minTickSize: [1, "day"]
+        },
+        legend: {
+         position: "ne"
+        }
+      });
+    }
+  }
+
+  plotAccordingToChoices();
+
+
+  var previousPoint = null;
+  $("#arena_distribution").bind("plothover", function (event, pos, item) {
+      if (item) {
+          if (previousPoint != item.dataIndex) {
+              previousPoint = item.dataIndex;
+
+              $("#tooltip").remove();
+              var x = item.datapoint[0].toFixed(2),
+                  y = item.datapoint[1].toFixed(2);
+
+              showTooltip(item.pageX, item.pageY, x, y);
+          }
+      } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+      }
+  });
+
+});
+</script>

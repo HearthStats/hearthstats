@@ -26,6 +26,6 @@
   = link_to 'Back to tournament', tournament_path(@pair.tournament_id), class: "btn edit_pair_button default"
   .row.match-comments
     .col-md-12
-      small Use this area to talk to your opponent
+      small Use this area to discuss with your opponent
       = render_comments_form @pair unless current_user && current_user.guest
       = render_comments @pair, :page => params[:page], :limit => 5

@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def featured_streamers
-    ['ceciltv', 'rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
+    ['fitzcairn', 'rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
   end
 
   def sub_plans

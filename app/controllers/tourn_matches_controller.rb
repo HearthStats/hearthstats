@@ -28,9 +28,10 @@ class TournMatchesController < ApplicationController
     t_pair_id = params[:t_pair_id]
     t_matches = TournMatch.where(tourn_pair_id: t_pair_id,
                                  tourn_user_id: t_user_id)
+    @tournament = Tournament.find(params[:t_id])
     round = t_matches.count + 1
-    if t_deck_id.nil?
-      redirect_to(@tournament, alert: "You have submitted enough matches!")
+    if round > @tournament.best_of
+      redirect_to(@tournament, alert: "You have submitted enough matches!") and return
     end
     t_match = TournMatch.new(tourn_user_id: t_user_id,
                              tourn_deck_id: t_deck_id,
@@ -38,17 +39,14 @@ class TournMatchesController < ApplicationController
                              result_id: params[:result_id].to_i,
                              coin: !params[:coin].to_i.zero?,
                              round: round)
-     @tournament = Tournament.find(params[:t_id])
-     matches_to_win = (@tournament.best_of.to_i / 2.0).ceil
     respond_to do |format|
       if t_match.save
-         t_pair = TournPair.find(t_pair_id)
-         conflict = t_pair.confirm_match(t_matches, matches_to_win)
-
+        t_pair = TournPair.find(t_pair_id)
+        conflict = t_pair.confirm_match(t_matches)
         if conflict
-          format.html { redirect_to(request.referrer, notice: "Your report conflicts with your opponent's, tournament admin has been notified") }
+          format.html { redirect_to(request.referrer, notice: "Your report conflicts with your opponent's, tournament admin has been notified") and return }
         else
-          format.html { redirect_to(request.referrer, notice: 'Match submitted') }
+          format.html { redirect_to(request.referrer, notice: 'Match submitted') and return }
         end
       else
         format.html { render action: "new" }
