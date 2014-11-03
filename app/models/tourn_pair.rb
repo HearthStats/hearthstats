@@ -39,8 +39,10 @@ class TournPair < ActiveRecord::Base
   def conflict?
     matches = TournMatch.where(tourn_pair_id: id)
     (matches.count / 2).times do |i|
-      puts i
       pair = matches.select{|match| match.round == (i+1)}
+      if pair.count != 2
+        return false
+      end
       total_result = pair[0].result_id + pair[1].result_id
       if total_result != 1 && total_result != 4
         return true
