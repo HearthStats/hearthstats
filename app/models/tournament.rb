@@ -22,6 +22,7 @@ class Tournament < ActiveRecord::Base
   has_many :users, through: :tourn_users
   has_many :tourn_pairs
   has_many :tourn_decks
+  has_many :tourn_matches, through: :tourn_pairs
   has_many :decks, through: :tourn_decks
 
   ### CLASS METHODS:

@@ -3,20 +3,29 @@
                 keywords: 'tournament, new, entry, match, hearthstats, hearthstone'
 .tourn_match-new
   .match-players
-    p 
+    p
       =' @pair.p1.name
     small #{@pair.p1.profile.bnetid}##{@pair.p1.profile.bnetnum}
     p vs.
-    p 
+    p
       = @pair.p2.name
     small #{@pair.p2.profile.bnetid}##{@pair.p2.profile.bnetnum}
   .row.match-details
     div.col-md-6
-      = render 'tourn_matches/form'
+      - if current_user.nil? || !@pair.is_a_player(current_user.id)
+        = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @pair.p1_id}
+      - else
+        = render 'tourn_matches/form'
     div.col-md-6
-      = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user_id}
+      - if current_user.nil? || !@pair.is_a_player(current_user.id)
+        = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @pair.p2_id}
+      - else
+        = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user.id}
+  - if !current_user.nil? && current_user.has_role?(:tourn_admin, @tournament)
+    = link_to 'Edit', edit_tourn_pair_path(@pair), class: "btn edit_pair_button blue"
+  = link_to 'Back to tournament', tournament_path(@pair.tournament_id), class: "btn edit_pair_button default"
   .row.match-comments
     .col-md-12
-      small User this area to discuss with your opponent
+      small Use this area to talk to your opponent
       = render_comments_form @pair unless current_user && current_user.guest
       = render_comments @pair, :page => params[:page], :limit => 5
