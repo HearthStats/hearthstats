@@ -150,7 +150,6 @@ Hearthstats::Application.routes.draw do
       post :submit_deck
       post :join
       post :quit
-      get :admin
       post :start
       post :remove_player
     end
@@ -160,7 +159,11 @@ Hearthstats::Application.routes.draw do
     opinio
   end
 
-  resources :tourn_pairs
+  resources :tourn_pairs do
+    member do
+      post :delete_match
+    end
+  end
 
   resources :arenas do
     collection do

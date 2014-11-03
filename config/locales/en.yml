@@ -470,6 +470,8 @@ en:
   additional:
     league:
       title: HearthStats League
+    conflicts:
+      title: Conflicts
     news:
       title: Hearthstone News
       subtitle: ! ' the latest in Hearthstone news'
@@ -587,6 +589,9 @@ en:
       lost: Lost
       no_coin: No Coin
       coin: Coin
+  tourn_pairs:
+    edit:
+      title: Edit Pair Matches
   menu:
     dashboard: Dashboard
     card_database: Card Database

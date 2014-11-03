@@ -46,14 +46,31 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def admin
+  def edit
     @tournament = Tournament.find(params[:id])
     if !current_user.has_role? :tourn_admin, @tournament
       redirect_to(@tournament, alert: 'You are not an admin of this tournament') and return
     end
-    @players = @tournament.tourn_users
+
+    if @tournament.started?
+      pairs = @tournament.tourn_pairs
+      @conflicts = []
+      pairs.each do |pair|
+        if pair.conflict?
+          @conflicts.push(pair)
+        end
+      end
+    else
+      @players = @tournament.tourn_users
+    end
   end
 
+  def update
+    @tournament = Tournament.find(params[:id])
+    @tournament.desc = params[:desc]
+    @tournament.save
+    redirect_to(@tournament, notice: 'Tournament settings updated')
+  end
   ### ACTIONS WITH NO PAGE
 
   def create

@@ -25,7 +25,7 @@ ul.no-bullet {
   text-align: center;
   color: black;
   padding: 10px;
-  @include transition(all, .2s, ease-in); 
+  @include transition(all, .2s, ease-in);
 }
 .submitted-decks:hover{
   background-color: #ecf0f1;
@@ -98,7 +98,7 @@ ul.no-bullet {
 // TOURN MATCH NEW
 
 .tourn_match-new{
-  background-color: #2ecc71;
+  background-color: #fff;
   min-height: 760px;
   color: white;
   padding-bottom: 30px;
@@ -118,19 +118,20 @@ ul.no-bullet {
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 40px;
+    color: #31363C;
   }
   @media (min-width: 922px){
     .match-players{
       padding-top: 150px;
-      font-size: 65px;
+      font-size: 50px;
       font-family: 'Lato', serif;
       text-transform: uppercase;
       text-align: center;
-      color: white;
+      color: #31363C;
     }
   }
   .match-entry{
-    background-color: #D571E8;
+    background-color: #F47422;
     padding: 50px;
     -webkit-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
     -moz-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
@@ -140,14 +141,80 @@ ul.no-bullet {
     }
   }
   .match-results{
-    background-color: #00BCFF;
+    background-color: #F47422;
     padding: 50px;
     -webkit-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
     -moz-box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
     box-shadow: 0px 0px 48px -3px rgba(0,0,0,0.66);
+    .score {
+      text-align: center;
+      font-size: 50px;
+    }
+    .name {
+      text-align: center;
+      font-size: 20px;
+    }
   }
   .match-details{
     margin: auto;
+    margin-bottom: 25px;
     width: 1000px;
+  }
+  .back-button{
+    margin: auto;
+    horizontal-align: right;
+  }
+}
+
+.edit_pair_button{
+  margin: auto;
+  display: block;
+  width: 970px;
+}
+
+.edit-pair{
+  margin: auto;
+  padding-top: 50px;
+  width: 50%;
+  display: block;
+  font-family: 'icomoon';
+  table {
+    background-color: white;
+  }
+  th{
+    padding: 10px;
+    color: #00A37A;
+    text-transform: capitalize;
+    font-weight: normal;
+  }
+  .player-info {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 0px;
+    color: #00A37A;
+    font-size: 20px;
+  }
+  .container-with-border {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 3px solid #00A37A;
+  }
+  .winner-text-field {
+    display: inline;
+    width: auto;
+  }
+  .winner-id-label{
+    display: inline;
+    color: #00A37A;
+    font-size: 20px;
+    margin-bottom: 0px;
+    vertical-align: middle;
+  }
+  .update-button {
+    display: inline;
   }
 }

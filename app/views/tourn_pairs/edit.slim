@@ -1,0 +1,59 @@
+- set_meta_tags title: t('.title'),
+                description: t('.title'),
+                keywords: 'tournament, new, entry, match, hearthstats, hearthstone'
+div.edit-pair
+  = form_for(@pair) do |f|
+    div.row.container-with-border
+      div
+        p.player-info
+          = @pair.p1.name + "(" + @pair.p1_id.to_s + ")"
+      hr
+      table
+        tr.
+          th Round
+          th Deck
+          th Result
+          th Options
+        - @p1_matches.each do |match|
+          tr
+            td
+              = text_field_tag "matches[match_#{match.id}][round]", match.round, class: "form-control"
+            td
+              = text_field_tag "matches[match_#{match.id}][deck]", match.tourn_deck_id, class: "form-control"
+            td
+              = text_field_tag "matches[match_#{match.id}][result]", match.result_id, class: "form-control"
+            td
+              = link_to "delete", delete_match_tourn_pair_path(match.id), method: :post, class: "match_delete btn red", remote: true
+    div.row.container-with-border
+      div
+        p.player-info
+          = @pair.p2.name + "(" + @pair.p2_id.to_s + ")"
+      hr
+      table
+        tr
+          th Round
+          th Deck
+          th Result
+          th Options
+        - @p2_matches.each do |match|
+          tr
+            td
+              = text_field_tag "matches[match_#{match.id}][round]", match.round, class: "form-control"
+            td
+              = text_field_tag "matches[match_#{match.id}][deck]", match.tourn_deck_id, class: "form-control"
+            td
+              = text_field_tag "matches[match_#{match.id}][result]", match.result_id, class: "form-control"
+            td
+              = link_to "delete", delete_match_tourn_pair_path(match.id), method: :post, class: "match_delete btn red", remote: true
+    div.row.container-with-border
+      p.winner-id-label
+        |Winner ID:&nbsp;
+      = text_field_tag "winner_id", @pair.winner_id, class: "form-control winner-text-field"
+      = submit_tag "Update all", class: "btn green update-button"
+
+javascript:
+  $(document).ready(function(){
+    $(".match_delete").click(function(){
+      $(this).closest('tr').remove();
+    });
+  });

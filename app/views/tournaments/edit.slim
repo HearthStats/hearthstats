@@ -16,9 +16,14 @@ div.row
               td class="player_remove"
                 = link_to 'remove', { action: "remove_player", player_id: player.id }, class: "btn btn-block red", method: :post, remote: true
       = link_to 'Start Tournament', start_tournament_path, class:"btn btn-block green", method: :post
+    - else
+      p Resolve Conflicts:
+      - @conflicts.each do |c|
+        = link_to c.p1_id.to_s + " vs. " + c.p2_id.to_s, tourn_pair_path(c), class: "btn btn-block red"
   div.col-md-6
-    p more options here
-
+    = form_for(@tournament) do |f|
+      = text_area_tag 'desc', @tournament.desc, class: "redactor form-control"
+      = submit_tag 'Update', class: "btn form-control blue", method: :post
 javascript:
   $(".player_remove").click(function(){
     $(this).parent().remove();

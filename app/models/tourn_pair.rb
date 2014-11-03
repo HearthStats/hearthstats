@@ -36,9 +36,32 @@ class TournPair < ActiveRecord::Base
     TournMatch.where(tourn_pair_id: id, result_id: 0, tourn_user_id: self.p2_id).count + TournMatch.where(tourn_pair_id: id, result_id: 2, tourn_user_id: self.p2_id).count * 0.5
   end
 
+  def conflict?
+    matches = TournMatch.where(tourn_pair_id: id)
+    (matches.count / 2).times do |i|
+      puts i
+      pair = matches.select{|match| match.round == (i+1)}
+      total_result = pair[0].result_id + pair[1].result_id
+      if total_result != 1 && total_result != 4
+        return true
+      end
+    end
+    false
+  end
+
+  def is_a_player(user_id)
+    p1 = TournUser.find(p1_id)
+    p2 = TournUser.find(p2_id)
+    result = false
+    if user_id == p1.user_id || user_id == p2.user_id
+      result = true
+    end
+    result
+  end
+
   def confirm_match(t_matches)
-    matches_to_win = (tournament.best_of.to_i / 2.0).ceil
     tournament = Tournament.find(self.tournament_id)
+    matches_to_win = (tournament.best_of.to_i / 2.0).ceil
     opp_t_matches = TournMatch.where(tourn_pair_id: id).where("tourn_user_id != ?", t_matches.first.tourn_user_id)
     round = t_matches.count
     opp_cur_match = opp_t_matches.where(round: round).first

@@ -26,9 +26,9 @@
         .col-md-12
           .form-group
             = f.submit class: 'btn btn-block green'
-      = hidden_field_tag 't_id', @t_id
-      = hidden_field_tag 't_pair_id', @t_pair_id
-      = hidden_field_tag 't_user_id', @t_user_id
+      = hidden_field_tag 't_id', @pair.tournament_id
+      = hidden_field_tag 't_pair_id', @pair.id
+      = hidden_field_tag 't_user_id', @t_user.id
 
 javascript:
   $(document).ready(function(){
