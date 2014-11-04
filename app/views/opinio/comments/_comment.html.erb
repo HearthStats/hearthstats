@@ -4,7 +4,8 @@
     <%= image_tag comment.owner.profile.avatar.url(:thumb),class: "avatar img-responsive" %>
     <div class="message">
       <span class="arrow"></span>
-      <a href="/profiles/<%= comment.owner.id %>" class= "name" ><%= comment.owner.profile.name %></a>
+      <a href="/profiles/<%= comment.owner.id %>" class= "name" ><%= comment.owner.profile.name %>
+        <% if comment.owner.has_role? :admin%><span class="admin">[Global Admin]</span><% end %></a>
       <span class="datetime">at <%= comment.created_at.strftime("%b %d, %Y %H:%M") %></span>
       <span class="body">
         <%= simple_format(comment.body) %>
