@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user?
-    if !current_user? && !current_user.is_admin?
+    if !current_user && !current_user.is_admin?
       redirect_to root_path, alert: "Y U NO ADMIN"
     end
   end

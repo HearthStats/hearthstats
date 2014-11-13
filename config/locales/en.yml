@@ -619,7 +619,11 @@ en:
       all_drafts: All Blind Drafts
       new: New Blind Draft
     news: News
-    prem: Premium
+    prem: 
+      title: Premium
+      report: Custom Reports
+      status: Premium Status
+      activity: Activity Feed
     streams: Streams
     tournaments:
       title: Tournaments

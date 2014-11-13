@@ -1,4 +1,5 @@
 class PremiumsController < ApplicationController
+  before_filter :authenticate_subs!, only: :report
   def index
     if !signed_in?
       redirect_to new_user_session_path, 

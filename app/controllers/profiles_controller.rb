@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  # before_filter :authenticate_subs!, only: :activities
+  before_filter :authenticate_subs!, only: :activities
 
   def index
     authenticate_user!
@@ -38,6 +38,11 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     if @user.guest
       return redirect_to root_url, alert: "Guests profiles cannot be accessed"
+    end
+
+    if current_user && !current_user.subscription_id.nil?
+      @activities = PublicActivity::Activity.order("created_at DESC").
+      where(owner_type: "User", owner_id: User.find(params[:id])).all
     end
 
     matches = Match.where(user_id: @user.id)

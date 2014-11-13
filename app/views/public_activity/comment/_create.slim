@@ -1,4 +1,4 @@
 - single_content_for :action do
   ' commented on
-  = link_to activity.trackable.commentable.name, activity.trackable.commentable 
+  = link_to activity.trackable.commentable.class.try(:name), activity.trackable.commentable 
 = activity.trackable.body

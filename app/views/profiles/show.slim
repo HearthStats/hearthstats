@@ -14,6 +14,9 @@ div class="row profile"
           a href="#overview" data-toggle="tab" Overview
         li class=""
           a href="#decks" data-toggle="tab" Decks
+        - if current_user && !current_user.subscription_id.nil?
+          li class=""
+            a href="#activities" data-toggle="tab" Activities
       div class="tab-content"
         div class="tab-pane active" id="overview"
           div class="row"
@@ -131,3 +134,8 @@ div class="row profile"
             div class="col-md-12"
               h2 #{@profiletitle}'s Decks
               = render partial: 'decks/deck_list_no_filter', :locals => { :global => false }
+        div class="tab-pane" id="activities"
+          div class="row"
+            div class="col-md-12"
+              h2 #{@profiletitle}'s Activity Feed
+              = render_activity(@activities, :layout => "layouts/activity_wrapper")

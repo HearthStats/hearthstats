@@ -85,16 +85,28 @@
       </ul>
     </li>
     <li class="premium">
-      <a href="/premiums">
-      <i class="fa fa-star"></i>
-      <span class="title"><%= t('menu.prem')  %></span>
+      <a href="javascript:;">
+        <i class="fa fa-star"></i>
+        <span class="title"><%= t('menu.prem.title') %></span>
+        <span class="arrow "></span>
       </a>
+      <ul class="sub-menu">
+        <li class="index">
+          <%= link_to t('menu.prem.status'), premiums_path %>
+        </li>
+        <li class="report">
+          <%= link_to t('menu.prem.report'), report_premiums_path %>
+        </li>
+        <li class="activity">
+          <%= link_to t('menu.prem.activity'), profiles_path %>
+        </li>
+      </ul>
     </li>
     <li class="blind_draft">
-    <a href="javascript:;">
-      <i class="fa fa-eye-slash"></i>
-      <span class="title"><%= t('menu.blind_draft.title')  %></span>
-      <span class="arrow "></span>
+      <a href="javascript:;">
+        <i class="fa fa-eye-slash"></i>
+        <span class="title"><%= t('menu.blind_draft.title') %></span>
+        <span class="arrow "></span>
       </a>
       <ul class="sub-menu">
         <li class="all_drafts">

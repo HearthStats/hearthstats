@@ -52,14 +52,18 @@
       label.control-label.col-md-3 Modules
       .col-md-9
         .class-selection
-          |klass_wrs
-          = check_box_tag "modules[klass_wrs]", 1, false
+          .class-image Klass Win Rate Matrix
+          .class-checkbox
+            = check_box_tag "modules[klass_wrs]", 1, false
         .class-selection
-          |time_wrs
-          = check_box_tag "modules[time_wrs]", 1, false
+          .class-image Win Rate Over Time
+          .class-checkbox
+            = check_box_tag "modules[time_wrs]", 1, false
         .class-selection
-          |day_wrs
-          = check_box_tag "modules[day_wrs]", 1, false
+          .class-image Win Rate Per Day
+          .class-checkbox
+            = check_box_tag "modules[day_wrs]", 1, false
+        p Email more module suggestions to <a href="mailto:jeff@hearthstats.net">jeff@hearthstats.net</a>
     .form-group
       label.col-md-3
       .col-md-3
