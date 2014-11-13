@@ -634,7 +634,7 @@ en:
       change_log: Change Log
       about_us: About Us
       contact_info: Contact Info
-      sept_report: September Report
+      oct_report: October Report
     help: Help
   activerecord:
     attributes:
