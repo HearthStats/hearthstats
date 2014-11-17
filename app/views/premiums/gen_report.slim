@@ -1,4 +1,6 @@
-= @matches.count
+b 
+  'Total matches found:
+  = @matches.count
 hr
 - @modules_array.each do |mod|
   = render partial: mod.dup, locals: { mod_data: instance_variable_get("@" + mod)}

@@ -1,5 +1,5 @@
 class UniqueDeckType < ActiveRecord::Base
-  attr_accessible :match_string, :archtype_id, :name
+  attr_accessible :match_string, :archtype_id, :name, :klass_id
 
   ARCHTYPES = {
     1 => "Aggro",

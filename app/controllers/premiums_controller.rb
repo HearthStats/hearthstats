@@ -66,7 +66,7 @@ class PremiumsController < ApplicationController
                     .where(klass_id: user_klass_ids)
                     .where(oppclass_id: opp_klass_ids)
                     .all
-    get_modules(Match.all, @modules_array, user_klass_ids, opp_klass_ids)
+    get_modules(@matches, @modules_array, user_klass_ids, opp_klass_ids)
   end
 
   def get_modules(matches, modules, user_klass_ids, opp_klass_ids)
