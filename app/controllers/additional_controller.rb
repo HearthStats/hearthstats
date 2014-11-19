@@ -37,7 +37,7 @@ class AdditionalController < ApplicationController
   def news
     require 'feedjira'
     @items = Rails.cache.fetch("news", expires_in: 2.hours) do
-      feeds_urls = ["http://hearthstone.blizzpro.com/feed/","http://us.battle.net/hearthstone/en/feed/news","http://www.liquidhearth.com/rss/news.xml", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss", "http://www.hearthitup.com/feed/"]
+      feeds_urls = ["http://hearthstone.blizzpro.com/feed/","http://us.battle.net/hearthstone/en/feed/news","http://www.liquidhearth.com/rss/news.xml", "http://ihearthu.com/feed/", "http://www.hearthpwn.com/news.rss"]
 
       feeds = Feedjira::Feed.fetch_and_parse(feeds_urls)
 
