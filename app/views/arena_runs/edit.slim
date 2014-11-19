@@ -13,24 +13,26 @@
         - @arenarun.errors.full_messages.each do |msg|
           li = msg
   div.row.arenarunend
-    div.col-md-6.center
-      = image_tag('Icons/gold.png', height: 40, alt: 'Gold Icon')
-      = f.label "Gold Earned"
-      .submit
-        = f.number_field :gold
-    div.col-md-6.center
-      = image_tag('Icons/dusticon.png', height: 40, alt: 'Dust Icon')
-      = f.label "Dust Earned"
-      .submit
-        = f.number_field :dust
-  div.row.arenaedit_notes
-    div.col-md-12
-      h3.center Notes
-      = f.text_area :notes, :class => "redactor", :rows => 10, :cols => 20
-  div.row
-    div.col-md-12.center
-      button type="submit" class = 'btn btn-success runit'
-        |Submit <i class='fa fa-check'></i>
+    div.col-md-2.form-body
+      .form-group
+        = f.label "Class"
+        .submit
+          = f.select :klass_id, options_for_select(klasses_hash.to_a,
+            @arenarun.klass_id), class: 'form-control'
+      .form-group
+        = f.label "Gold Earned"
+        .submit
+          = f.number_field :gold
+      .form-group
+        = f.label "Dust Earned"
+        .submit
+          = f.number_field :dust
+      .form-group
+        button type="submit" class = 'btn btn-success'
+          |Submit <i class='fa fa-check'></i>
+    div.col-md-10
+      = f.label "Notes"
+      = f.text_area :notes, :class => "redactor arena_text", :rows => 10
 div.row.arenaedit_notes.quick_con_entry
   h3 Add Match
   = form_for Match.new, url: {controller: "arenas", action: "quickentry", mode: "matches"} do |f|
