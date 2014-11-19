@@ -62,6 +62,7 @@
           <% unless match.notes.blank? %>
             <span class='btn default btn-xs blue fa fa-file-text-o' title="<%= Sanitize.clean(match.notes) %>" rel="tooltip" > <%=  t('shared.notes') %></span>
           <% end %>
+          <%= link_to(t('shared.replay'), replay_match_path(match), class: 'btn green btn-xs fa fa-camera') %>
         </td>
       </tr>
     <% end %>

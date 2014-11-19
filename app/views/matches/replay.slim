@@ -1,0 +1,8 @@
+h2 test
+- provide(:subtitle, " Match Views: #{ @match.impressionist_count }")
+.row
+  .col-md-6
+    = video_tag "https://s3.amazonaws.com/hearthstats-dev/prem-videos/20273/2014/11/02_14h00_Warlock_Win_VS_Priest.mp4", width: "100%", controls: true
+  .col-md-6
+    = render_comments_form @match unless current_user && current_user.guest
+    = render_comments @match, :page => params[:page], :limit => 5

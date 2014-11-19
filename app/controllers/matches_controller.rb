@@ -56,6 +56,10 @@ class MatchesController < ApplicationController
     end
   end
 
+  def replay
+    @match = Match.find(params[:id])
+  end
+
   def delete_all
     @matches = Match.where(user_id: current_user.id)
     @matches.delete_all

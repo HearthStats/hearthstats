@@ -2,6 +2,9 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
 
+  is_impressionable
+  opinio_subjectum
+
   RESULTS_LIST = {
     1 => 'Victory',
     2 => 'Defeat',
@@ -252,6 +255,10 @@ class Match < ActiveRecord::Base
   end
 
   ### INSTANCE METHODS:
+
+  def replay_url
+    
+  end
 
   def deck
     match_deck.try(:deck)

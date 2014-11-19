@@ -185,6 +185,8 @@ Hearthstats::Application.routes.draw do
 
   resources :matches do
     delete :delete_all, on: :collection
+    get :replay, on: :member
+    opinio
   end
 
   # See how all your routes lay out with "rake routes"
@@ -206,6 +208,7 @@ Hearthstats::Application.routes.draw do
       get "arena_runs/show"
       post "arena_runs/new"
       get "arena_runs/end"
+
 
       post "matches/new"
 
