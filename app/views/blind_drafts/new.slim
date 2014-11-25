@@ -2,17 +2,17 @@
   = f.hidden_field :player1_id, value: current_user.id
   .row
     .col-md-12
-      .form-group
-        = f.label t('.public_match')
-        |&nbsp;
-        = f.check_box :public, id: 'public_match'
-        p
-          small = t('.public_desc')
+      /.form-group
+      /  = f.label t('.public_match')
+      /  |&nbsp;
+      /  = f.check_box :public, id: 'public_match'
+      /  p
+      /    small = t('.public_desc')
       .form-group#opponent
         = f.label :opponent, t('.opponent_identity', user_id: current_user.id)
         = text_field_tag :opponent,'', class: 'form-control'
       .form-group
         = f.label :card_cap, t('.card-cap')
-        = f.number_field :card_cap, class: 'form-control'
+        = f.number_field :card_cap, value: "54", class: 'form-control'
       .form-group
         = f.submit class: 'btn green'

@@ -124,6 +124,14 @@ class BlindDraftsController < ApplicationController
     end
   end
 
+  def destroy
+    blind_draft = BlindDraft.find(params[:id])
+    blind_draft.destroy
+    respond_to do |format|
+      format.html { redirect_to blind_drafts_path, notice: "Blind Draft Deleted" }
+    end
+  end
+
   private
 
     def authenticate_drafters_or_caster

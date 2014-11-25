@@ -37,6 +37,10 @@
                         = t('.show')
                       - else
                         = t('.draft')
+                  = link_to draft, method: :delete, class: "btn btn-xs red " do
+                    i.fa.fa-times
+                      |&nbsp;
+                      = t('.delete')
   .col-md-4
     div class="portlet box green"
       div class="portlet-title"
