@@ -16,3 +16,11 @@
             span.in-progress = pair.p1_name
             |&nbsp;V.S.&nbsp;
             span.in-progress = pair.p2_name
+        - if current_user && current_user.is_admin?
+          .admin-stuff
+            b Pair ID
+            = pair.id
+            b TournUserID
+            = pair.p1_id
+            | vs.
+            = pair.p2_id
