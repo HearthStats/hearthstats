@@ -5,9 +5,6 @@ class TournPairsController < ApplicationController
     @tournament = Tournament.find(@pair.tournament_id)
     t_match_reports = TournMatch.where(tourn_pair_id: @pair.id)
     if !current_user.nil? && @pair.is_a_player(current_user.id)
-      if !@pair.winner_id.nil?
-        redirect_to @tournament, alert: 'This matchup has already been decided.' and return
-      end
       @t_id = @pair.tournament_id
       @t_user = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first
       @decks = TournDeck.where(tournament_id: @t_id, tourn_user_id: @t_user.id)
