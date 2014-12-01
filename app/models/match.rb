@@ -7,7 +7,7 @@ class Match < ActiveRecord::Base
 
   RESULTS_LIST = {
     1 => 'Win',
-    2 => 'Defeat',
+    2 => 'Loss',
     3 => 'Draw'
   }
 
