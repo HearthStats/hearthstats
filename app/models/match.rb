@@ -6,7 +6,7 @@ class Match < ActiveRecord::Base
   opinio_subjectum
 
   RESULTS_LIST = {
-    1 => 'Victory',
+    1 => 'Win',
     2 => 'Defeat',
     3 => 'Draw'
   }
