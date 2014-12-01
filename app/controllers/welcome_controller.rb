@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   def index
 
     # Global Stats
-    @arena_top = Rails.cache.read('wel#arena_top')
-    @con_top = Rails.cache.read('wel#con_top')
+    @arena_top = Rails.cache.read('wel#arena_top') || []
+    @con_top = Rails.cache.read('wel#con_top') || []
 
     # Decklists
     @recentdecks = Rails.cache.fetch('wel#recent_deck') do
@@ -25,6 +25,8 @@ class WelcomeController < ApplicationController
     # Streams
     # @featured_streams = Stream.get_featured_streamers
     @top_streams = get_top_streamers.first(6)
+
+    flash[:notice] = "Welcome back #{current_user.name}" if current_user
 
     render layout: false
   end

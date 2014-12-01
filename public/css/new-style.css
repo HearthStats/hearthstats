@@ -61,6 +61,18 @@ p {
 /* 2. HEADER STYLES
 /*-----------------------------------------------------------------------------------*/
 
+.notifications-wrapper{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+  z-index: 99999;
+}
+.notifications{
+  text-align: center;
+  margin: 15px auto;
+}
+
 .logo-cont{
 }
 .header-logo{
@@ -70,7 +82,6 @@ p {
 
 .top-bar {
 	background: #24292d;
-  height: 37px;
   margin-bottom: 0px;
 }
 
@@ -98,10 +109,10 @@ p {
 }
 .form-control{
   width: 30% !important;
+  height: 45px !important;
   margin: 0 !important;
   padding: 0 0 0 15px !important;
   padding-left: 10px;
-  height: 37px !important;
   vertical-align: top;
   display: inline-block !important;
   border-radius: 0 !important;
@@ -115,8 +126,8 @@ p {
 }
 
 .login-button{
-  height: 37px;
   width: 100px;
+  height: 45px;
   background-color: #F27F45;
   margin: 0 !important;
   padding: 0 !important;
@@ -135,6 +146,46 @@ p {
 }
 .login-button:hover{
   background-color: #f47422 !important;
+}
+.dashboard-button{
+  background-color: #F27F45;
+  margin: 0 !important;
+  padding: 0 20px !important;
+  border: none;
+  vertical-align: top;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block !important;
+  cursor: pointer;
+  webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+.dashboard-button:hover{
+  background-color: #f47422 !important;
+}
+.logout-button{
+  background-color: #e74c3c;
+  margin: 0 !important;
+  padding: 0 20px !important;
+  border: none;
+  vertical-align: top;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block !important;
+  cursor: pointer;
+  webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+.logout-button:hover{
+  background-color: #c0392b !important;
 }
 form{
   margin: 0;
@@ -195,6 +246,10 @@ form{
   color:#fff !important;
   font-family:Open Sans,Arial;
 }
+}
+.no-right-margin{
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* 2b. Social icons

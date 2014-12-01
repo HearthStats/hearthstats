@@ -52,6 +52,15 @@
 
 </head>
 <body>
+
+<!-- Notifications section -->
+
+<div class="notifications-wrapper">
+  <div class="notifications">
+    <%= notice %>
+  </div>
+</div>
+
 <!-- Header section -->
 <div class="header">
   <div class="top-bar">
@@ -66,19 +75,23 @@
         </ul>
       </div>
 
-      <div class="eight columns">
+      <div class="eight columns no-right-margin">
 
         <!-- Login menu -->
         <div class="top-login">
-          <%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
-            <%= f.email_field :email, :autofocus => true, :placeholder => "Email", class: "form-control"%>
-            <%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
+          <% if !current_user %>
+            <%= form_for(:user, :url => session_path(:user),  :html => {class: "login-form"}) do |f| %>
+              <%= f.email_field :email, :autofocus => true, :placeholder => "Email", height: "45px", class: "form-control"%>
+              <%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
 
-            <%= f.check_box :remember_me, checked: true,  class: "hide" %>
-            <%= f.submit "Login", class: "login-button" %>
+              <%= f.check_box :remember_me, checked: true,  class: "hide" %>
+              <%= f.submit "Login", class: "login-button" %>
+            <% end %>
+            <%= button_to "Register", new_user_registration_path, method: :get, class: "login-button" %>
+          <% else %>
+            <%= link_to "Launch Dashboard", dashboards_path, class: "dashboard-button" %>
+            <%= link_to "Logout", destroy_user_session_path, class: "logout-button" %>
           <% end %>
-          <%= button_to "Register", new_user_registration_path, method: :get, class: "login-button" %>
-
         </div>
       </div>
 
@@ -390,17 +403,5 @@
   ga('create', 'UA-45442103-1', 'auto');
   ga('send', 'pageview');
 </script>
-
-<% if notice || alert %>
-  <% if notice %>
-    <script>
-        toastr.success("<%= raw notice %>");
-    </script>
-  <% elsif alert %>
-    <script>
-        toastr.error("<%= raw alert %>");
-    </script>
-  <% end %>
-<% end %>
 </body>
 </html>

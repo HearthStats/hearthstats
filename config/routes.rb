@@ -175,13 +175,8 @@ Hearthstats::Application.routes.draw do
       get :matches
     end
   end
-  authenticated :user do
-    root to: 'dashboards#index'
-  end
 
-  devise_scope :user do
-    root to: "welcome#index"
-  end
+  root to: "welcome#index"
 
   resources :matches do
     delete :delete_all, on: :collection
