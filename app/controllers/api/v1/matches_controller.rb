@@ -43,7 +43,7 @@ class Api::V1::MatchesController < ApplicationController
     end
 
     # get result
-    result = MatchResult.where(name: req[:result])[0]
+    result = Match::RESULTS_LIST.invert[req[:result]]
     if result.nil?
       errors.push("Unknown result '" + (req[:result].nil? ? "[undetected]" : req[:result]) + "'.")
     end
@@ -58,7 +58,7 @@ class Api::V1::MatchesController < ApplicationController
       match.mode = mode
       match.klass = userclass
       match.oppclass = oppclass
-      match.result_id = result.id
+      match.result_id = result
       match.coin = req[:coin]
       match.oppname = req[:oppname]
       match.numturns = req[:numturns]
@@ -71,15 +71,17 @@ class Api::V1::MatchesController < ApplicationController
       if match.save
 
         if mode.name == "Arena"
-          submit_arena_match
+          submit_arena_match(match, userclass)
         else
-          submit_ranked_match
+          submit_ranked_match(match, userclass, ranklvl)
         end
 
         # Submit log file
-        s3 = AWS::S3.new
-        obj = s3.buckets['hearthstats'].objects["prem-logs/#{match.user_id}/#{match.id}"]
-        obj.write(req[:log])
+        if req[:log]
+          s3 = AWS::S3.new
+          obj = s3.buckets['hearthstats'].objects["prem-logs/#{match.user_id}/#{match.id}"]
+          obj.write(req[:log])
+        end
 
         render json: {status: "success", message: message,  data: match}
       else
@@ -107,14 +109,14 @@ class Api::V1::MatchesController < ApplicationController
     end
   end
 
-  def submit_arena_match
+  def submit_arena_match(match, userclass)
     # associate the match with an arena run
-    arena_run = ArenaRun.where(user_id: user.id, complete: false).last
+    arena_run = ArenaRun.where(user_id: @user.id, complete: false).last
     if arena_run.nil? || arena_run.klass_id != userclass.id
       if arena_run.nil?
         message = "New #{userclass.name} arena run created"
       end
-      arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
+      arena_run = ArenaRun.new(user_id: @user.id, klass_id: userclass.id)
       arena_run.save
       if arena_run.klass_id != userclass.id
         message = "Existing #{arena_run.klass.name} arena run did not match submitted #{userclass.name} match. New #{userclass.name} arena run created."
@@ -123,19 +125,19 @@ class Api::V1::MatchesController < ApplicationController
     # check for completed arena run
     if arena_run.num_losses >= 3 || arena_run.num_wins >= 12
       message = "Existing #{userclass.name} run already had #{arena_run.num_losses >= 3 ? "3 losses" : "12 wins"}. New #{match.klass.name} run created."
-      arena_run = ArenaRun.new(user_id: user.id, klass_id: match.klass.id)
+      arena_run = ArenaRun.new(user_id: @user.id, klass_id: match.klass.id)
       arena_run.save
     end
     MatchRun.new(match_id: match.id, arena_run_id: arena_run.id).save!
   end
 
-  def submit_ranked_match
+  def submit_ranked_match(match, userclass, ranklvl)
     # associate the match with its deck
-    deck = Deck.where(user_id: user.id, slot: req[:slot], active: true)[0]
+    deck = Deck.where(user_id: @user.id, slot: @req[:slot], active: true)[0]
     # Check if deck exists
     if deck.nil?
-      deck = create_new_deck(user, req[:slot], userclass)
-      message = "No deck set for slot #{req[:slot]}. New #{userclass.name} deck created and assigned to #{req[:slot]}."
+      deck = create_new_deck(@user, @req[:slot], userclass)
+      message = "No deck set for slot #{@req[:slot]}. New #{userclass.name} deck created and assigned to #{@req[:slot]}."
     end
     MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
     delete_deck_cache!(deck)

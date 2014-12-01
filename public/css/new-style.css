@@ -61,16 +61,15 @@ p {
 /* 2. HEADER STYLES
 /*-----------------------------------------------------------------------------------*/
 
-.notifications-wrapper{
+.notifications{
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 50%;
+  width: 200px;
   color: white;
-  z-index: 99999;
-}
-.notifications{
-  text-align: center;
-  margin: 15px auto;
+  z-index: 999;
+  margin-top: 10px;
+  transform: translate(-50%, 0);
 }
 
 .logo-cont{
@@ -143,6 +142,7 @@ p {
   -moz-transition: all 0.15s linear;
   -o-transition: all 0.15s linear;
   transition: all 0.15s linear;
+  z-index: 99999;
 }
 .login-button:hover{
   background-color: #f47422 !important;
@@ -163,6 +163,7 @@ p {
   -moz-transition: all 0.15s linear;
   -o-transition: all 0.15s linear;
   transition: all 0.15s linear;
+  z-index: 99999;
 }
 .dashboard-button:hover{
   background-color: #f47422 !important;
@@ -183,6 +184,7 @@ p {
   -moz-transition: all 0.15s linear;
   -o-transition: all 0.15s linear;
   transition: all 0.15s linear;
+  z-index: 99999;
 }
 .logout-button:hover{
   background-color: #c0392b !important;
