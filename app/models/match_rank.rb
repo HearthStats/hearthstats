@@ -1,5 +1,5 @@
 class MatchRank < ActiveRecord::Base
-  attr_accessible :rank_id, :match_id
+  attr_accessible :rank_id, :match_id, :legendary
 
   ### ASSOCIATIONS:
 

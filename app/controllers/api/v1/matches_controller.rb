@@ -73,7 +73,7 @@ class Api::V1::MatchesController < ApplicationController
         if mode.name == "Arena"
           submit_arena_match(match, userclass)
         else
-          submit_ranked_match(match, userclass, ranklvl)
+          submit_ranked_match(match, userclass, ranklvl, legend)
         end
 
         # Submit log file
@@ -131,7 +131,7 @@ class Api::V1::MatchesController < ApplicationController
     MatchRun.new(match_id: match.id, arena_run_id: arena_run.id).save!
   end
 
-  def submit_ranked_match(match, userclass, ranklvl)
+  def submit_ranked_match(match, userclass, ranklvl, legend)
     # associate the match with its deck
     deck = Deck.where(user_id: @user.id, slot: @req[:slot], active: true)[0]
     # Check if deck exists
