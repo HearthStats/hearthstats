@@ -42,18 +42,15 @@ form id="cardsFilter" method="get" class="data-turboform"
     | &nbsp;
     input type="button" value="#{t '.reset_filters'}" id="cardsFilterReset"
 
-javascript:
-  $('#cardsFilter select').change(function() {
-    $('#cardsFilter').submit();
-  });
-  $('#cardsFilterSubmit').hide();
-  $('#cardsFilterReset').click(function() {
-    document.location = "cards";
-  });
-
 - if @cards.count == 0
   div[class="ui-state-error" style="padding:1em"]= t('.not_found')
 
+javascript:
+  function imgError(image) {
+    image.onerror = "";
+    image.src = "/assets/cards/notfound.gif";
+    return true;
+  }
 - @cards.each do |card|
   div.cardWrapper
-    span = raw '<img src="' + card.getImageUrl() + '" title="' + card.name + '"/> '
+    span = raw '<img class="lazy-load" src="' + card.getImageUrl() + '" title="' + card.name + '" onError="imgError(this);"/> '
