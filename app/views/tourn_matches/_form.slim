@@ -25,7 +25,7 @@
         .cf
         .col-md-12
           .form-group
-            = f.submit class: 'btn btn-block green'
+            = f.submit "Submit Match", class: 'btn btn-block green'
       = hidden_field_tag 't_id', @pair.tournament_id
       = hidden_field_tag 't_pair_id', @pair.id
       = hidden_field_tag 't_user_id', @t_user.id
@@ -38,6 +38,11 @@ javascript:
       result_id = (result_id + 1) % 3
       $("#result_id").val(result_id);
       $("#result").text(RESULT_ARRAY[result_id]);
-      $("#result").attr("class", "btn btn-block " + RESULT_ARRAY[result_id])
+      $("#result").attr("class", "btn btn-block " + RESULT_ARRAY[result_id]);
+      $("#preview_result").text(RESULT_ARRAY[result_id]);
+    });
+
+    $( "#deckname" ).change(function() {
+      $("#preview_deck").text($("#deckname").val());
     });
   });

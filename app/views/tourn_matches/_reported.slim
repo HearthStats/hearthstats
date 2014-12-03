@@ -21,7 +21,21 @@
           td
             = Match.results_list[match.result_id]
           td
-            - if !TournMatch.where(tourn_pair_id: match.tourn_pair_id, round: match.round).where("tourn_user_id != ?", match.tourn_user_id).empty?
-              |yes
+            - opp_match = TournMatch.where(tourn_pair_id: match.tourn_pair_id, round: match.round).where("tourn_user_id != ?", match.tourn_user_id)
+            - if opp_match.empty?
+              |No
+            - elsif (opp_match.result_id + match.result_id) == 1 || (opp_match.result_id + match.result_id) == 4
+              |Conflict
             - else
-              |no
+              |Yes
+      - if !current_user.nil? && @pair.is_a_player(current_user.id)
+            tr.match-preview
+              td colspan="4"
+                b Preview:
+            tr.match-preview
+              td
+                = match_reports.where(tourn_user_id: t_user_id).count + 1
+              td id="preview_deck"
+                = TournDeck.find(match_reports.where(tourn_user_id: t_user_id).last.tourn_deck_id).deck.name
+              td colspan="2" id="preview_result"
+                |Victory
