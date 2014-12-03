@@ -32,6 +32,12 @@ class TournPairsController < ApplicationController
     TournMatch.delete(params[:id])
   end
 
+  def add_match
+    @pair = TournPair.find(params[:id])
+    TournMatch.create(tourn_pair_id: params[:id], tourn_user_id: params[:t_user_id], round: params[:count], result_id: 0)
+    redirect_to edit_tourn_pair_path(@pair), notice: 'Added match.'
+  end
+
   def update
     @pair = TournPair.find(params[:id])
     matches = params[:matches]

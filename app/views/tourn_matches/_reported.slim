@@ -24,7 +24,7 @@
             - opp_match = TournMatch.where(tourn_pair_id: match.tourn_pair_id, round: match.round).where("tourn_user_id != ?", match.tourn_user_id)
             - if opp_match.empty?
               |No
-            - elsif (opp_match.result_id + match.result_id) == 1 || (opp_match.result_id + match.result_id) == 4
+            - elsif (opp_match.first.result_id + match.result_id) != 1 || (opp_match.first.result_id + match.result_id) != 4
               |Conflict
             - else
               |Yes
