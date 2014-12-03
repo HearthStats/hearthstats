@@ -16,7 +16,8 @@
           td
             = match.round
           td
-            = TournDeck.find(match.tourn_deck_id).deck.name
+            - if !match.tourn_deck_id.nil?
+              = TournDeck.find(match.tourn_deck_id).deck.name
           td
             = Match.results_list[match.result_id]
           td
