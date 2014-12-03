@@ -3,7 +3,7 @@
     p.name
       = TournUser.find(t_user_id).user.name
     p.score
-      = match_reports.where(tourn_user_id: t_user_id, result_id: 0).count
+      = match_reports.where(result_id: 0).count
   - else
     table.table
       tr
@@ -11,7 +11,7 @@
         th Deck
         th Result
         th Confirmed
-      - match_reports.where(tourn_user_id: t_user_id).each do |match|
+      - match_reports.each_with_index do |match, i|
         tr
           td
             = match.round
@@ -21,21 +21,21 @@
           td
             = Match.results_list[match.result_id]
           td
-            - opp_match = TournMatch.where(tourn_pair_id: match.tourn_pair_id, round: match.round).where("tourn_user_id != ?", match.tourn_user_id)
-            - if opp_match.empty?
+            - if opp_matches[i].nil?
               |No
-            - elsif (opp_match.first.result_id + match.result_id) != 1 || (opp_match.first.result_id + match.result_id) != 4
+            - elsif match.conflict_with_opp?(opp_matches[i])
               |Conflict
             - else
               |Yes
       - if !current_user.nil? && @pair.is_a_player(current_user.id)
             tr.match-preview
               td colspan="4"
-                b Preview:
+                b Submit Preview:
             tr.match-preview
               td
-                = match_reports.where(tourn_user_id: t_user_id).count + 1
+                = match_reports.count + 1
               td id="preview_deck"
-                = TournDeck.find(match_reports.where(tourn_user_id: t_user_id).last.tourn_deck_id).deck.name
+                - if !match_reports.last.nil?
+                  = TournDeck.find(match_reports.last.tourn_deck_id).deck.name
               td colspan="2" id="preview_result"
                 |Victory
