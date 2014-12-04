@@ -35,7 +35,5 @@
               td
                 = match_reports.count + 1
               td id="preview_deck"
-                - if !match_reports.last.nil?
-                  = TournDeck.find(match_reports.last.tourn_deck_id).deck.name
               td colspan="2" id="preview_result"
                 |Victory
