@@ -23,7 +23,7 @@ class TournMatchesController < ApplicationController
   end
 
   def create
-    t_deck_id = params[params[:deckname]]
+    t_deck_id = params[params[:deckname].delete("[]")]
     t_user_id = params[:t_user_id]
     t_pair_id = params[:t_pair_id]
     t_matches = TournMatch.where(tourn_pair_id: t_pair_id,

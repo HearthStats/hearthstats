@@ -8,8 +8,8 @@ div.edit-pair
         p.player-info
           = @pair.p1.name + "(" + @pair.p1_id.to_s + ")"
       hr
-      table
-        tr.
+      table id="p1_match_table"
+        tr
           th Round
           th Deck
           th Result
@@ -24,6 +24,7 @@ div.edit-pair
               = text_field_tag "matches[match_#{match.id}][result]", match.result_id, class: "form-control"
             td
               = link_to "delete", delete_match_tourn_pair_path(match.id), method: :post, class: "match_delete btn red", remote: true
+      = link_to "add", add_match_tourn_pair_path(count: @p1_matches.count+1, t_user_id: @pair.p1_id), method: :post, class: "match_add_p1 btn green"
     div.row.container-with-border
       div
         p.player-info
@@ -45,6 +46,7 @@ div.edit-pair
               = text_field_tag "matches[match_#{match.id}][result]", match.result_id, class: "form-control"
             td
               = link_to "delete", delete_match_tourn_pair_path(match.id), method: :post, class: "match_delete btn red", remote: true
+      = link_to "add", add_match_tourn_pair_path(count: @p2_matches.count+1, t_user_id: @pair.p2_id), method: :post, class: "match_add_p2 btn green"
     div.row.container-with-border
       p.winner-id-label
         |Winner ID:&nbsp;

@@ -141,6 +141,16 @@ ul.no-bullet {
     .coin-toggle{
       margin: 0;
     }
+    .submit {
+      background-color: #F47422;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #FFF;
+    }
+    .submit:hover{
+      color: #F47422 !important;
+      background-color: #FFF;
+    }
   }
   .match-results{
     background-color: #F47422;
@@ -165,6 +175,10 @@ ul.no-bullet {
   .back-button{
     margin: auto;
     horizontal-align: right;
+  }
+  .match-preview{
+    background-color: #FFFFFF;
+    color: #F47422;
   }
 }
 

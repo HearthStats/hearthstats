@@ -13,14 +13,14 @@
   .row.match-details
     div.col-md-6
       - if current_user.nil? || !@pair.is_a_player(current_user.id)
-        = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @pair.p1_id}
+        = render partial: 'tourn_matches/reported', locals: {match_reports: @p1_matches, t_user_id: @pair.p1_id, opp_matches: @p2_matches}
       - else
         = render 'tourn_matches/form'
     div.col-md-6
       - if current_user.nil? || !@pair.is_a_player(current_user.id)
-        = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @pair.p2_id}
+        = render partial: 'tourn_matches/reported', locals: {match_reports: @p2_matches, t_user_id: @pair.p2_id, opp_matches: @p1_matches}
       - else
-        = render partial: 'tourn_matches/reported', locals: {match_reports: @t_match_reports, t_user_id: @t_user.id}
+        = render partial: 'tourn_matches/reported', locals: {match_reports: @user_matches, t_user_id: @t_user.id, opp_matches: @opp_matches}
   - if !current_user.nil? && current_user.has_role?(:tourn_admin, @tournament)
     = link_to 'Edit', edit_tourn_pair_path(@pair), class: "btn edit_pair_button blue"
   = link_to 'Back to tournament', tournament_path(@pair.tournament_id), class: "btn edit_pair_button default"

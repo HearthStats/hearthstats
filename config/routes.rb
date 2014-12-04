@@ -163,6 +163,7 @@ Hearthstats::Application.routes.draw do
   resources :tourn_pairs do
     member do
       post :delete_match
+      post :add_match
     end
   end
 

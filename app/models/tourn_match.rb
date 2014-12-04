@@ -19,4 +19,8 @@ class TournMatch < ActiveRecord::Base
   def user
     tourn_user.user
   end
+
+  def conflict_with_opp?(opp_match)
+    ![1,4].include? (opp_match.result_id + result_id)
+  end
 end
