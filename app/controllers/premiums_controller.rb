@@ -11,13 +11,13 @@ class PremiumsController < ApplicationController
   end
 
   def create
-    @amount = 499
+    @amount = 699
     begin
       if current_user.customer_id.nil?
         customer = Stripe::Customer.create(
           email: current_user.email,
           card: params[:stripeToken],
-          plan: "early"
+          plan: "gold"
         )
         current_user.subscription_id = 1
         current_user.customer_id = customer.id
@@ -29,7 +29,7 @@ class PremiumsController < ApplicationController
           customer.card = params[:stripeToken]
         end
         current_user.subscription_id = 1
-        customer.plan = "early"
+        customer.plan = "gold"
         current_user.add_role :early_sub
         current_user.save
         customer.save
