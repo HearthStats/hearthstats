@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :show
 
   # GET /matches/new
   # GET /matches/new.json
