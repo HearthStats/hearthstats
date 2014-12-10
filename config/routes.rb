@@ -141,6 +141,7 @@ Hearthstats::Application.routes.draw do
       get :stats
       post :quick_create
       get :win_rates
+      get :reset
     end
   end
 
@@ -173,6 +174,7 @@ Hearthstats::Application.routes.draw do
       get :stats
       post :quickentry
       get :matches
+      get :reset
     end
   end
 

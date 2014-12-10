@@ -228,6 +228,11 @@ class ConstructedsController < ApplicationController
     render json: win_rate
   end
 
+  def reset
+    current_user.matches.where(mode_id: [2,3]).delete_all
+    redirect_to constructeds_path, notice: "All constructed matches deleted"
+  end
+
   private
 
   def delete_deck_cache!(deck)

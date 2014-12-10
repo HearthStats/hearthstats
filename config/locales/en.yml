@@ -304,6 +304,7 @@ en:
       description: ! ' recent constructed games'
       section: Constructed
       new_constructed: New Constructed
+      reset: Reset
     new:
       title: New Constructed
       section: Constructed

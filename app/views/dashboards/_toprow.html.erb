@@ -67,26 +67,20 @@
       </div>
       <div class="portlet-body">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="easy-pie-chart">
               <div class="number transactions" data-percent=<%= @global[:arena] %>><span><%= @global[:arena] %></span>%</div>
               <span class="title" href="#"><%= t 'dashboards.index.arena_win_rate' %></span>
             </div>
           </div>
           <div class="margin-bottom-10 visible-sm"></div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="easy-pie-chart">
               <div class="number visits" data-percent=<%= @global[:con] %>><span><%= @global[:con] %></span>%</div>
               <span class="title"><%= t 'dashboards.index.constructed_win_rates' %></span>
             </div>
           </div>
           <div class="margin-bottom-10 visible-sm"></div>
-          <div class="col-md-4">
-            <div class="easy-pie-chart">
-              <div class="number bounce" data-percent=<%= @global[:coin] %>><span><%= @global[:coin] %></span>%</div>
-              <span class="title" href="#"><%= t 'dashboards.index.constructed_coin_win_rates' %></span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -171,6 +171,11 @@ class ArenasController < ApplicationController
     end
   end
 
+  def reset
+    current_user.arena_runs.delete_all
+    redirect_to arenas_path, notice: "All arena matches deleted"
+  end
+
   protected
 
   def distribution_array

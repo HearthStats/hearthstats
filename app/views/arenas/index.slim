@@ -14,6 +14,7 @@
       = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue"
   - else
     = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue"
+  = link_to t('.reset'), reset_arenas_path, class: "btn red", confirm: "This will delete all your arena runs and matches"
 
 - @arenaruns.each do |arena|
   div id="run#{arena.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="run#{arena.id}" aria-hidden="true"
