@@ -16,11 +16,11 @@ describe 'home page' do
     page.status_code.should be 200
   end
 
-  it 'should go to companion page' do
-    visit '/'
-    click_on 'Companion'
-    page.status_code.should be 200
-  end
+  # it 'should go to companion page' do
+  #   visit '/'
+  #   click_on 'Companion'
+  #   page.status_code.should be 200
+  # end
 
   it 'should go to login page' do
     visit '/'
