@@ -8,7 +8,6 @@ class AdditionalController < ApplicationController
   end
 
   def uploader
-
     @urls = Rails.cache.fetch('uploader_url', expires_in: 2.days) do
       urls = Hash.new
       git_response = HTTParty.get('https://api.github.com/repos/HearthStats/HearthStats.net-Uploader/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})

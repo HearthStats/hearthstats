@@ -19,7 +19,7 @@ describe 'home page' do
   it 'should go to companion page' do
     visit '/'
     click_on 'Companion'
-    page.should have_content('Official Uploader')
+    page.status_code.should be 200
   end
 
   it 'should go to login page' do
