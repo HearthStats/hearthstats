@@ -56,8 +56,25 @@ class MatchesController < ApplicationController
     end
   end
 
-  def replay
+  def show
     @match = Match.find(params[:id])
+    begin
+      @turns = []
+      @players = []
+      match_json = JSON.load(open("https://s3-us-west-2.amazonaws.com/hearthstats/prem-logs/#{@match.user_id}/#{@match.id}"))
+      @players[match_json["firstPlayer"]] = match_json["firstPlayerName"]
+      @players[match_json["secondPlayer"]] = match_json["secondPlayerName"]
+      match_json["turns"].each_with_index do |turn, turn_count|
+        turn_actions = []
+        turn["actions"].each do |action|
+          turn_actions << action
+        end
+        @turns << turn_actions
+      end
+
+      @turns.shift
+   rescue
+   end
   end
 
   def delete_all

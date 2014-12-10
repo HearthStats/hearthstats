@@ -1,0 +1,18 @@
+.turn-by-turn{
+	.turn-details{
+		background-color: #EEEEEE;
+		padding: 5px;
+		margin-bottom: 5px;
+		cursor: pointer;
+		.turn-number{
+			text-align: center;
+		}
+		.expand{
+			text-align: right;
+			color: #7f8c8d;
+		}
+	}
+	.action{
+		display: none;
+	}
+}

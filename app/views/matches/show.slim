@@ -1,0 +1,38 @@
+- set_meta_tags :title => "Viewing Match",
+  :description => "Match replay and log",
+  :keywords => "user, deck, statistics, hearthstats, hearthstone"
+- provide(:title, "Match ##{@match.id} Details")
+- provide(:subtitle, " Match Views: #{ @match.impressionist_count }")
+.row
+  .col-md-6
+    - if File.exist?("https://s3.amazonaws.com/hearthstats-dev/prem-videos/#{@match.user.id}/#{@match.id}.mp4")
+      = video_tag "https://s3.amazonaws.com/hearthstats-dev/prem-videos/#{@match.user.id}/#{@match.id}.mp4", width: "100%", controls: true
+    - else
+      .center
+        |No Replay Available. 
+        p <a href="/premiums">Please Subscribe for Video Replays </a>
+    - if @turns
+      h3 Turn By Turn
+      .turn-by-turn
+        - @turns.each_with_index do |turn, i|
+          .turn-details.row id="#{i}"
+            span.mana.col-md-4
+              |Mana Available:&nbsp;
+              = ((i.to_f+1)/2).ceil
+            span.turn-number.col-md-4
+              | Turn&nbsp;
+              = i + 1
+            span.expand.col-md-4
+              i class="fa fa-plus"
+          .action id="turn#{i}"
+            - turn.each do |action|
+              p
+                b.player = @players[action["player"]]
+                |&nbsp;
+                span.move = action["action"].humanize
+                |:&nbsp;
+                span.card = action["card"]
+
+  .col-md-6
+    = render_comments_form @match unless current_user && current_user.guest
+    = render_comments @match, :page => params[:page], :limit => 5
