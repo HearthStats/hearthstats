@@ -59,10 +59,7 @@
             <%= link_to(t('shared.edit'), edit_constructed_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
           <% end %>
           <%= link_to(t('shared.delete'), match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red fa fa-trash-o') %>
-          <% unless match.notes.blank? %>
-            <%= link_to(t('shared.view'), match, class: 'btn default btn-xs blue fa fa-trash-o') %>
-          <% end %>
-          <%= link_to(t('shared.replay'), replay_match_path(match), class: 'btn green btn-xs fa fa-camera') %>
+          <%= link_to(t('shared.view'), match, class: 'btn default btn-xs blue fa fa-trash-o') %>
         </td>
       </tr>
     <% end %>
