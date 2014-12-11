@@ -5,12 +5,9 @@
 - provide(:subtitle, " Match Views: #{ @match.impressionist_count }")
 .row
   .col-md-6
-    - if File.exist?("https://s3.amazonaws.com/hearthstats-dev/prem-videos/#{@match.user.id}/#{@match.id}.mp4")
-      = video_tag "https://s3.amazonaws.com/hearthstats-dev/prem-videos/#{@match.user.id}/#{@match.id}.mp4", width: "100%", controls: true
-    - else
-      .center
-        |No Replay Available. 
-        p <a href="/premiums">Please Subscribe for Video Replays </a>
+    = video_tag "https://s3.amazonaws.com/hearthstats-dev/prem-videos/#{@match.user.id}/#{@match.id}.mp4", width: "100%", controls: true
+    .center
+      p <a href="/premiums">Please Subscribe for Video Replays </a>
     - if @turns
       h3 Turn By Turn
       .turn-by-turn
