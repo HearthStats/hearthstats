@@ -5,7 +5,7 @@
 - provide(:subtitle, " Match Views: #{ @match.impressionist_count }")
 .row
   .col-md-6
-    = video_tag "https://s3.amazonaws.com/hearthstats-dev/prem-videos/#{@match.user.id}/#{@match.id}.mp4", width: "100%", controls: true
+    video src="https://s3.amazonaws.com/hearthstats/prem-videos/#{@match.user.id}/#{@match.id}.mp4" width="100%"controls="controls"
     .center
       p <a href="/premiums">Please Subscribe for Video Replays </a>
     - if @turns
