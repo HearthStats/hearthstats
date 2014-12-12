@@ -32,4 +32,11 @@ class UniqueDeckType < ActiveRecord::Base
 
     matched
   end
+
+  def self.find_from_log(args)
+    user = args[:user]
+    logfile = JSON.parse args[:log]
+    playerid = logfile["firstPlayer"] if logfile["firstPlayerName"] == user : log["secondPlayer"]
+
+  end
 end

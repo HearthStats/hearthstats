@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141011064328) do
+ActiveRecord::Schema.define(:version => 20141211190946) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,6 +162,21 @@ ActiveRecord::Schema.define(:version => 20141011064328) do
 
   add_index "cards", ["name"], :name => "index_cards_on_name"
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
+
+  create_table "chat_messages", :force => true do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "chat_messages", ["chat_id"], :name => "index_chat_messages_on_chat_id"
+  add_index "chat_messages", ["user_id"], :name => "index_chat_messages_on_user_id"
+
+  create_table "chats", :force => true do |t|
+    t.string "title"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
@@ -337,14 +352,15 @@ ActiveRecord::Schema.define(:version => 20141011064328) do
     t.integer  "mode_id"
     t.integer  "result_id"
     t.text     "notes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.boolean  "coin"
     t.integer  "numturns"
     t.integer  "duration"
     t.integer  "patch_id"
     t.integer  "season_id"
     t.boolean  "appsubmit"
+    t.integer  "opp_archtype_id"
   end
 
   add_index "matches", ["klass_id"], :name => "index_matches_on_klass_id"
@@ -643,8 +659,10 @@ ActiveRecord::Schema.define(:version => 20141011064328) do
     t.integer  "tourny_id"
     t.boolean  "guest"
     t.string   "userkey"
-    t.integer  "subscription_id"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "subscription_id"
     t.string   "customer_id"
     t.boolean  "no_email",               :default => false
   end

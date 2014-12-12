@@ -31,7 +31,7 @@
                 span.card = action["card"]
 
   .col-md-6
-    - if @match.notes
+    - if !@match.notes.empty?
       h3 Notes
       = raw @match.notes
     = render_comments_form @match unless current_user && current_user.guest

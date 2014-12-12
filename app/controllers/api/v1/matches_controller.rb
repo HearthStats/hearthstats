@@ -65,6 +65,7 @@ class Api::V1::MatchesController < ApplicationController
       match.duration = req[:duration]
       match.notes = req[:notes]
       match.appsubmit = true
+      match.opp_archtype_id = UniqueDeckType.find_from_log({:user => :opp, :log => req[:log]})
 
       message = "New #{mode.name} #{userclass.name} vs #{oppclass.name} match created"
 
@@ -89,6 +90,8 @@ class Api::V1::MatchesController < ApplicationController
       end
     end
   end
+  handle_asynchronously :new
+
   private
 
   def delete_deck_cache!(deck)
