@@ -8,7 +8,7 @@ class TournPairsController < ApplicationController
       @t_id = @pair.tournament_id
       @t_user = TournUser.where(tournament_id: @t_id, user_id: current_user.id).first
       @decks = TournDeck.where(tournament_id: @t_id, tourn_user_id: @t_user.id)
-      @deck_names = @decks.map{|d| d.deck.name}
+      @deck_names = @decks.map{|d| d.deck.try(:name)}
       @user_matches = t_match_reports.where(tourn_user_id: @t_user.id)
       @opp_matches = t_match_reports.where("tourn_user_id != ?", @t_user)
     else
