@@ -3,6 +3,14 @@ class Card < ActiveRecord::Base
                   :rarity_id, :type_id, :klass_id, :race_id, :mana, :health, :attack,
                   :collectible, :race_id, :blizz_id, :patch_id
 
+  RARITY = {
+    5 => "Legendary",
+    4 => "Epic",
+    3 => "Rare",
+    2 => "Common",
+    1 => "Free"
+  }
+
   ### ASSOCIATIONS:
 
   belongs_to :klass

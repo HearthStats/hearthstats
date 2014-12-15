@@ -29,11 +29,6 @@
           = f.label t('decks.form.notes')
           = f.text_area :notes, :class => 'redactor form-control', :rows => 10, :cols => 20
         .form-group
-          = f.label t('decks.form.tags')
-          input name="tags" id="tags" width="100%"
-          .div
-            small Tags separated by commas
-        .form-group
           span = f.check_box :is_public
           label
             |&nbsp;
@@ -80,6 +75,7 @@
                 p.race.hidden = card.race.to_s
                 p.mana.hidden = card.mana
                 p.klass.hidden = card.klass_id
+                p.rarity.hidden = Card::RARITY[card.rarity_id]
                 .deckbuilder-actions
                   .add Add
                   .remove Remove
@@ -257,7 +253,7 @@ javascript:
   });
 
   var monkeyList = new List('deckbuilder-list', {
-    valueNames: ['name','mana','klass','description','race'],
+    valueNames: ['name','mana','klass','description','race','rarity'],
     page: 6,
     plugins: [
       ListPagination({})
