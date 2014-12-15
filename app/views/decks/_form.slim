@@ -75,7 +75,9 @@
             - Card.where(collectible: true, klass_id: [@deck.klass_id,nil]).order(:mana).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}" data-mana="#{card.mana}"
                 = image_tag "cards/#{card.name.parameterize}.png", class: "deckbuilder-img"
-                p.name.hidden = card.name + card.description.to_s + card.race.to_s
+                p.name.hidden = card.name
+                p.description.hidden = card.description.to_s
+                p.race.hidden = card.race.to_s
                 p.mana.hidden = card.mana
                 p.klass.hidden = card.klass_id
                 .deckbuilder-actions
@@ -255,7 +257,7 @@ javascript:
   });
 
   var monkeyList = new List('deckbuilder-list', {
-    valueNames: ['name','mana', 'klass'],
+    valueNames: ['name','mana','klass','description','race'],
     page: 6,
     plugins: [
       ListPagination({})
@@ -264,6 +266,7 @@ javascript:
   $('.all-mana-filter').click(function(){
     monkeyList.filter();
     monkeyList.search();
+    $(".search").val('');
     $(".filter").removeClass("active");
   });
   $('.class-cards').click(function(){
@@ -301,6 +304,14 @@ javascript:
     $(this).addClass("active");
   });
 
+  
+  $('.search').on("keyup keypress", function(e) {
+    var code = e.keyCode || e.which; 
+    if (code  == 13) {               
+      e.preventDefault();
+      return false;
+    }
+  });
 - if params[:action] == "edit"
   javascript:
     DeckBuilder.drawCards();
