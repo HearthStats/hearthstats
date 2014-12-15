@@ -12,13 +12,14 @@ class UniqueDeckType < ActiveRecord::Base
 
   ### CLASS METHODS:
 
-  def self.find_type(unique_deck)
-    klass_types = where(klass_id: unique_deck.klass_id)
+  def self.find_type(klass_id, cardstring)
+    klass_types = where(klass_id: klass_id)
     return nil if klass_types.count == 0
     klass_types.each do |deck_type|
-      return deck_type.id if match_type(unique_deck.cardstring, deck_type)
+      return deck_type.id if match_type(cardstring, deck_type)
     end
   end
+
 
   def self.match_type(cardstring, deck_type)
     match_array = deck_type.match_string.split(",")
@@ -36,7 +37,20 @@ class UniqueDeckType < ActiveRecord::Base
   def self.find_from_log(args)
     user = args[:user]
     logfile = JSON.parse args[:log]
-    playerid = logfile["firstPlayer"] if logfile["firstPlayerName"] == user : log["secondPlayer"]
+    if logfile["firstPlayerName"] == user
+      playerid = logfile["firstPlayer"] 
+    else
+      playerid = logfile["secondPlayer"]
+    end
+    card_array = []
+    logfile["turns"][0]["actions"].each do |card|
+      if card["player"] == playerid
+        card_array << Card.find_by_name(card["card"]).id unless card["card"].nil?
+      end
+    end
+    opp_cardstring = card_array.join(",")
+    type = self.find_type(args[:klass_id], opp_cardstring)
 
+    return type.id
   end
 end
