@@ -1,11 +1,29 @@
 require "#{Rails.root}/app/helpers/application_helper"
 include ApplicationHelper
+
+task :reset_from_json => :environment do
+  require 'json'
+  sets = ["classic", "gvg", "basic", "naxx"]
+  sets.each do |set|
+    file = File.read(Rails.root.join('public', "#{set}.json"))
+    json = JSON.parse(file)
+
+    Card.all.each do |card|
+      json_card = json.select { |q| q["name"] == card.name }
+      if !json_card.empty?
+        if !json_card.first["race"].nil?
+          card.update_attribute(:race, json_card.first["race"])
+        end
+        card.update_attribute(:blizz_id, json_card.first["id"])
+        p json_card.first["name"]
+      end
+    end
+  end
+end
 task :NewCards => :environment do
 
   require 'json'
-
   file = File.read(Rails.root.join('public', 'naxx.json'))
-
   json = JSON.parse(file)
   rarity = {"Legendary" => 5, "Epic" => 4, "Rare" => 3, "Common" =>2, "Free" => 1}
   counter = 0

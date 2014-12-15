@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141211190946) do
+ActiveRecord::Schema.define(:version => 20141215054522) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,10 +158,26 @@ ActiveRecord::Schema.define(:version => 20141211190946) do
     t.boolean "collectible"
     t.integer "patch_id"
     t.string  "blizz_id"
+    t.string  "race"
   end
 
   add_index "cards", ["name"], :name => "index_cards_on_name"
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
+
+  create_table "chat_messages", :force => true do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "chat_messages", ["chat_id"], :name => "index_chat_messages_on_chat_id"
+  add_index "chat_messages", ["user_id"], :name => "index_chat_messages_on_user_id"
+
+  create_table "chats", :force => true do |t|
+    t.string "title"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
@@ -644,8 +660,10 @@ ActiveRecord::Schema.define(:version => 20141211190946) do
     t.integer  "tourny_id"
     t.boolean  "guest"
     t.string   "userkey"
-    t.integer  "subscription_id"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "subscription_id"
     t.string   "customer_id"
     t.boolean  "no_email",               :default => false
   end
