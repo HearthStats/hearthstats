@@ -45,12 +45,11 @@ class UniqueDeckType < ActiveRecord::Base
     card_array = []
     logfile["turns"][0]["actions"].each do |card|
       if card["player"] == playerid
-        card_array << Card.find_by_name(card["card"]).id unless card["card"].blank?
+        card_array << Card.find_by_name(card["card"]).try(:id) unless card["card"].blank?
       end
     end
     opp_cardstring = card_array.join(",")
-    type = self.find_type(args[:klass_id], opp_cardstring)
+    self.find_type(args[:klass_id], opp_cardstring)
 
-    return type.id
   end
 end
