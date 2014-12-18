@@ -230,6 +230,10 @@ class WelcomeController < ApplicationController
     render layout: 'fullpage'
   end
 
+  def gvgreport
+    render file: "#{Rails.root}/public/reports/gvg/index.html", layout: false
+  end
+
   private
 
     def cularenagames(race, days1)

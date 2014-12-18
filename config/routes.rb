@@ -76,7 +76,7 @@ Hearthstats::Application.routes.draw do
   match "/sept_post", to: "welcome#sept_post_report"
   match "/oct", to: "welcome#oct_report"
   match "/gen_report", to: "welcome#generate_report"
-  match "/liquid", to: "welcome#liquid_data"
+  match "/gvg", to: "welcome#gvgreport"
   get "welcome/ranked_test"
   get "welcome/select_klass"
 
