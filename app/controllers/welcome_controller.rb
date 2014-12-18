@@ -60,8 +60,8 @@ class WelcomeController < ApplicationController
 
   def get_ranked_graph_data(season)
     ranked_wr_args = { :klasses_array => Klass::LIST,
-                       :beginday      => season.begin,
-                       :endday        => season.end}
+                       :beginday      => 2.weeks.ago,
+                       :endday        => Time.zone.now.beginning_of_day}
     ranked_wr_count = Match.get_klass_ranked_wr(ranked_wr_args)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
@@ -90,7 +90,7 @@ class WelcomeController < ApplicationController
       {"Warlock" => 47.96, "Druid" => 47.35, "Shaman" => 51.28, "Rogue" => 52.21, "Warrior" => 46.63, "Paladin" => 50.45, "Mage" => 52.46, "Hunter" => 49.79, "Priest" => 47.64},
       {"Warlock" => 51.39, "Druid" => 49.15, "Shaman" => 48.84, "Rogue" => 46.06, "Warrior" => 49.28, "Paladin" => 47.20, "Mage" => 47.72, "Hunter" => 53.37, "Priest" => 49.31}]
 
-    matches = Match.where(season_id: season)
+    matches = Match.where("created_at > ?", 2.weeks.ago)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
