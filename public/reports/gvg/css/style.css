@@ -1,6 +1,4 @@
 /* ==== Google font ==== */
-@import url('//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Montserrat:700|Merriweather:400italic');
-
 
 body {
     width: 100%;
@@ -433,7 +431,7 @@ hr {
 .team-social .social-google a:hover{background: #333;}
 .team-social .social-vimeo a:hover{background: #71c6f3;}
 
-tr td:first-child {
+#class tr td:first-child {
   text-align: left;
 }
 /* ===========================
