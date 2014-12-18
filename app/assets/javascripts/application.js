@@ -19,7 +19,6 @@
 //= require select2
 //= require social-share-button
 //= require bootstrap-wysihtml5
-//= require sync
 //= require 'redesign/app.js'
 //= require 'plugins/jquery.slimscroll.min.js'
 //= require 'plugins/jquery.cookie.min.js'

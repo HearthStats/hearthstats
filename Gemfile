@@ -81,7 +81,6 @@ gem 'ransack' # the new meta_search
 gem 'shortener'
 gem 'chartkick'
 gem 'groupdate'
-gem 'sync'
 gem 'announcements'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rmagick'
@@ -93,7 +92,6 @@ gem 'newrelic_rpm'
 gem 'cindy' # Sendy API
 gem 'appsignal'
 gem 'skylight'
-gem 'pusher'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background

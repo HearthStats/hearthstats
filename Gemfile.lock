@@ -113,7 +113,6 @@ GEM
     coffee-script-source (1.8.0)
     colored (1.2)
     columnize (0.8.9)
-    cookiejar (0.3.2)
     crass (0.2.1)
     curb (0.8.6)
     daemons (1.1.9)
@@ -139,14 +138,6 @@ GEM
     devise-token_authenticatable (0.2.0)
       devise (~> 3.3.0)
     diff-lcs (1.1.3)
-    em-http-request (1.1.2)
-      addressable (>= 2.3.4)
-      cookiejar
-      em-socksify (>= 0.3)
-      eventmachine (>= 1.0.3)
-      http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.0)
-      eventmachine (>= 1.0.0.beta.4)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -223,7 +214,6 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     hitimes (1.2.2)
-    http_parser.rb (0.6.0)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -316,10 +306,6 @@ GEM
       activerecord (>= 3.0)
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
-    pusher (0.14.1)
-      httpclient (~> 2.3)
-      multi_json (~> 1.0)
-      signature (~> 0.1.6)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -396,7 +382,6 @@ GEM
     sequel (3.20.0)
     shortener (0.3.1)
       rails (>= 3.0.7)
-    signature (0.1.7)
     sinatra (1.0)
       rack (>= 1.0)
     sitemap_generator (5.0.5)
@@ -424,8 +409,6 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.9)
-    sync (0.3.1)
-      em-http-request
     taps (0.3.24)
       rack (>= 1.0.1)
       rest-client (>= 1.4.0, < 1.7.0)
@@ -521,7 +504,6 @@ DEPENDENCIES
   pry
   pry-byebug
   public_activity
-  pusher
   quiet_assets (>= 1.0.1)
   rack-mini-profiler
   rails (= 3.2.18)
@@ -544,7 +526,6 @@ DEPENDENCIES
   spring-commands-rspec
   sqlite3
   stripe!
-  sync
   taps
   thin
   turbo-sprockets-rails3
