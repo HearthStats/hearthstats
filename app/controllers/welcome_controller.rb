@@ -39,12 +39,6 @@ class WelcomeController < ApplicationController
   end
 
   def newsletter_sub
-    begin
-      c = Cindy.new "http://sendy.hearthstats.net", "cGF9DlbzfS0jBooMv5N3"
-      c.subscribe "6V763uDbDJuEja62CUwTlthQ", params[:email]
-    rescue Cindy::AlreadySubscribed => e
-    end
-
     respond_to do |format|
       format.html { redirect_to root_path, notice: "Newsletter Subscribed" }
     end
