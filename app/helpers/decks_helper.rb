@@ -14,4 +14,12 @@ module DecksHelper
 
     sort_array.map { |s| [t(".#{s}"), s] }
   end
+
+  def deck_export(card_array)
+    text_out = []
+    card_array.each do |card|
+      text_out << [card[1].to_s + " " + card[0].name]
+    end
+    text_out.join("\n")
+  end
 end

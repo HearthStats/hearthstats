@@ -2,7 +2,7 @@
   div class="btn blue btn-sm deck-text-trigger" = t('.toggle_text_import')
 
 = form_for(@deck) do |f|
-  = f.hidden_field :cardstring
+  = f.text_field :cardstring
   - if @deck.errors.any?
     div#error_explanation
       h2
