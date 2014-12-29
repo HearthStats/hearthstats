@@ -245,8 +245,6 @@ javascript:
     id = $(this).parent().parent().attr('id');
     DeckBuilder.removeCard(id);
   });
-  
-  $('#deck-list').tablesorter();
 
   $('#tags').tagsInput({
     'width':'100%'
@@ -311,3 +309,5 @@ javascript:
 - if params[:action] == "edit"
   javascript:
     DeckBuilder.drawCards();
+javascript:
+  $('#deck-list').tablesorter( {sortList: [[0,0]]} );
