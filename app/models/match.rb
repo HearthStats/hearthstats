@@ -135,7 +135,7 @@ class Match < ActiveRecord::Base
       else
         wr = ((wins[day].to_f/num_of_games rescue 0)*100).round(2)
         wr = prev_wr if wr.nan?
-        if prev_wr == nil
+        if prev_wr == 0
           today_wr = wr
         else
           today_wr = (wr + prev_wr)/2
