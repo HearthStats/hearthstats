@@ -22,27 +22,6 @@ class DashboardsController < ApplicationController
     @recent_entries = matches.last(10).reverse
     @topdeck = Deck.bestuserdeck(current_user.id)
     @toparena = Match.bestuserarena(current_user.id)
-    overall = Rails.cache.fetch("global")
-    if overall.nil?
-      # Determine Constructed Class Win Rates
-      conoverallrate = overall_win_rate(3)
-      # Determine Arena Class Win Rates
-      arenaoverallrate = overall_win_rate(1)
-      matches = Match.where('created_at >= ?', 1.day.ago)
-      @global = Hash.new
-      @global[:arena] = get_win_rate(matches.where(mode_id: 1))
-      @global[:con] = get_win_rate(matches.where(mode_id: 3))
-      @global[:coin] = get_win_rate(matches.where(coin: false))
-      Rails.cache.write("global", [conoverallrate,arenaoverallrate,@global], expires_in: 1.days)
-    else
-      conoverallrate = overall[0]
-      arenaoverallrate = overall[1]
-      @global = overall[2]
-    end
-    @classconrate = conoverallrate[1]
-    @contot = conoverallrate[0]
-    @classarenarate = arenaoverallrate[1]
-    @arenatot = arenaoverallrate[0]
   end
 
   def fullstats
