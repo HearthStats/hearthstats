@@ -4,6 +4,7 @@ class Mode < ActiveRecord::Base
   ARENA = 1
   CASUAL = 2
   RANKED = 3
+  FRIENDLY = 4
 
   LIST = {
     1 => 'Arena',

@@ -9,7 +9,7 @@ class ConstructedsController < ApplicationController
 
     @q = current_user.matches.ransack(params[:q]) # form needs ransack raw data
     @matches = current_user.matches
-      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED, Mode::FRIENDLY])
       .preload(:match_rank => :rank, :match_deck => :deck)
       .ransack(search_params).result
       .limit(params[:items])
