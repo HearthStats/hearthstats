@@ -32,6 +32,8 @@ class Match < ActiveRecord::Base
   has_one :match_rank
   has_one :rank, through: :match_rank
 
+  has_many :actions, dependent: :destroy
+
   belongs_to :match_result
   belongs_to :result, class_name: 'MatchResult', foreign_key: 'result_id'
 
