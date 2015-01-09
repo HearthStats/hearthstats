@@ -47,6 +47,9 @@ class PremiumsController < ApplicationController
   end
 
   def gen_report
+    if params["modules"].nil?
+      redirect_to report_premiums_path, alert: "Please select at least one module" and return
+    end
     mode_id = Mode::LIST.invert[params[:mode]]
     coin = [ params[:coin].to_i == 1, params[:no_coin].to_i == 0 ]
     user_klass_ids = []

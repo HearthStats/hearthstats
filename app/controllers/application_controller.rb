@@ -39,7 +39,10 @@ class ApplicationController < ActionController::Base
   end
 
   def opinio_after_create_path(resource)
-    if params["commentable_type"] == "TournPair"
+    case params["commentable_type"]
+    when "Match"
+      resource.user.notify("New Comment", "New comment on Match #" + resource.id.to_s, resource)
+    when "TournPair"
       resource.users.each do |user|
         user.notify("New Comment", "New comment on a " + resource.tournament.name + " tournament match.", resource)
       end
