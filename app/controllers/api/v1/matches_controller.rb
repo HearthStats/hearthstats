@@ -94,7 +94,6 @@ class Api::V1::MatchesController < ApplicationController
                         :user_id => user.id,
                         :match_id => match.id
                       })
-        parser.delay.parse!
 
         render json: {status: "success", message: message,  data: match}
       else

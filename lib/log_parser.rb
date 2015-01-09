@@ -3,6 +3,7 @@ class LogParser
   attr_accessor :args
   def initialize(args)
     @args = args
+    self.parse!
   end
 
   def parse!
