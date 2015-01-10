@@ -258,11 +258,12 @@ class WelcomeController < ApplicationController
 
     def get_top_streamers
       begin
-        top_streams = Rails.cache.fetch("top_streams", expires_in: 30.minutes) do
+        top_streams = Rails.cache.write("top_streams", expires_in: 30.minutes) do
           HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
         end
       rescue
       end
+      top_streams = [] if top_streams.nil? || top_streams == true
       top_streams
     end
 
