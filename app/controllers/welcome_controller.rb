@@ -263,7 +263,8 @@ class WelcomeController < ApplicationController
         end
       rescue
       end
-      top_streams = [] if top_streams.nil? || top_streams == true
+      top_streams = [] if top_streams.class != Array
+
       top_streams
     end
 
