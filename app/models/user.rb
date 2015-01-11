@@ -89,6 +89,8 @@ class User < ActiveRecord::Base
 
   def gen_sig_pic
     p self.id
+    badges = []
+    badges = ["badge_1"] if self.subscribed?
     if self.profile.nil?
       Profile.create(user_id: self.id)
       return
@@ -104,7 +106,8 @@ class User < ActiveRecord::Base
                 const_win_rate: con_wr,
                 arena_win_rate: arena_wr,
                 ranking: rank,
-                legend: false }
+                legend: false,
+                badges: badges }
     image = ProfileImage.new(pic_info).image.flatten_images
     temp_pic = Tempfile.new(["sig_pic-#{self.id}", '.png'])
     image.write(temp_pic.path)
