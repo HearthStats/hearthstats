@@ -51,7 +51,7 @@ class Deck < ActiveRecord::Base
       next if (rating).nan?
       ratings_array << [deck, rating]
     end
-
+    [] and return if ratings_array.empty?
     ratings_array.sort_by! {|deck| deck[1]}.last[0]
   end
 
