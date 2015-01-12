@@ -47,7 +47,9 @@ class Deck < ActiveRecord::Base
     match_count = decks.where(archived: false).map {|deck| deck.matches.count}.sum
     decks.each do |deck|
       deck_matches = deck.matches.count
-      ratings_array << [deck, deck_matches.to_f/match_count * deck.user_winrate.to_i]
+      rating = deck_matches.to_f/match_count * deck.user_winrate.to_i
+      next if (rating).nan?
+      ratings_array << [deck, rating]
     end
 
     ratings_array.sort_by! {|deck| deck[1]}.last[0]
