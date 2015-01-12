@@ -32,6 +32,15 @@ class Deck < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.archive_unused(user_obj)
+    decks = user_obj.decks.includes(:matches)
+      .merge(Match.where("matches.created_at >= ?", 1.week.ago))
+    decks = decks + user_obj.decks.where(user_num_matches: nil)
+    decks.uniq.each do |deck|
+      deck.archive! if [false,nil].include? deck.active
+    end
+  end
+
   def self.bestuserdeck(user_id)
     Deck.where(user_id: user_id).order("user_winrate DESC").first
   end
@@ -45,6 +54,10 @@ class Deck < ActiveRecord::Base
     self.slot = nil
     self.active = false
     save
+  end
+
+  def archive!
+    self.update_attribute(:archived, true)
   end
 
   def active?

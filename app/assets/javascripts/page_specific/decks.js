@@ -16,6 +16,13 @@ $(document).ready(function(){
       $('.deck-text-box').slideDown();
     })
   })
+  $('[data-toggle="popover"]').popover({
+    trigger: "hover",
+    placement: "top"
+  })
+  $('#show-archived').click( function(){
+    $('.archived').slideToggle();
+  });
   $('.easy-pie-chart .win_rate.overall').easyPieChart({
     animate: 1000,
     size: 75,

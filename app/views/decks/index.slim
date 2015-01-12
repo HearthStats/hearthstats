@@ -7,7 +7,8 @@
 
 
 - content_for :actions do
-  span.btn.green#merge-toggle = t('.enable_merge')
+  span.btn.green#merge-toggle data-toggle="popover" data-content="Select and merge multiple deck's stats into the master deck" = t('.enable_merge')
+  span.btn.yellow#show-archived data-toggle="popover" data-content="Any decks not used within the last week are automatically archived" = t('.toggle_archived')
   = link_to t('.new_deck'), new_splash_decks_path, class: "btn blue"
 
 = form_tag merge_decks_path, method: :get
@@ -35,7 +36,7 @@
                 th.tools = t('.tools')
           tbody
             - @decks.each do |deck|
-              tr
+              tr class="#{'archived' if deck.archived}"
                 td.merge-boxes id="#{deck.id}" = check_box_tag "deck_merge[]", deck.id
                 td.name    = link_to deck.name, deck
                 td.class

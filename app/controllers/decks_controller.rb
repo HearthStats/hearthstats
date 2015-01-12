@@ -7,7 +7,7 @@ class DecksController < ApplicationController
       order(:created_at).
       where(user_id: current_user.id).
       reverse
-
+    Deck.archive_unused(current_user)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }

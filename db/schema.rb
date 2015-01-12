@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150108193122) do
+ActiveRecord::Schema.define(:version => 20150112161036) do
 
   create_table "actions", :force => true do |t|
     t.integer "time"
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(:version => 20150108193122) do
     t.float    "user_winrate"
     t.boolean  "is_public"
     t.boolean  "is_tourn_deck",    :default => false
+    t.boolean  "archived",         :default => false
   end
 
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
