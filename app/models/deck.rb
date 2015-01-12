@@ -42,7 +42,15 @@ class Deck < ActiveRecord::Base
   end
 
   def self.bestuserdeck(user_id)
-    Deck.where(user_id: user_id).order("user_winrate DESC").first
+    ratings_array = []
+    decks = User.find(user_id).decks
+    match_count = decks.where(archived: false).map {|deck| deck.matches.count}.sum
+    decks.each do |deck|
+      deck_matches = deck.matches.count
+      ratings_array << [deck, deck_matches.to_f/match_count * deck.user_winrate.to_i]
+    end
+
+    ratings_array.sort_by! {|deck| deck[1]}.last[0]
   end
 
   def self.playable_decks(user_id)
