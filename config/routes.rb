@@ -220,6 +220,7 @@ Hearthstats::Application.routes.draw do
 
     namespace :v2 do
       devise_for :users
+      get "users/premium"
       get "arenas/show"
       post "arenas/new"
 
