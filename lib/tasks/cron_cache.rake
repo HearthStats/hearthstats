@@ -40,4 +40,12 @@ namespace :cron do
   task :get_top_streamers => :environment do
     ActionController::Base.new.expire_fragement('top_streamers')
   end
+
+  task :get_top_archtypes => :environment do
+    # WIP
+    matches = Match.joins(:decks).joins(:unique_decks).where("created_at >= ?", 12.hour.ago).where(mode_id: 3)
+    matches.collect { |match| match.archtype_id }
+    Rails.cache.delete('dash#top_archtype')
+    Rails.cache.write('dash#top_archtype', top_archtypes)
+  end
 end

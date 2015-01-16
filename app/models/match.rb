@@ -258,8 +258,8 @@ class Match < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
-  def replay_url
-    
+  def archtype_id
+    deck.try(:unique_deck).try(:unique_deck_type_id)
   end
 
   def deck

@@ -12,6 +12,22 @@ div.row
       div.portlet-title
         div.caption= t '.global_win_rates'
       div.portlet-body
+        table.table
+          = Rails.cache.read('wel#con_top').each_with_index |c,i| do 
+            tr
+              td class="wr-rank" = i + 1 
+              td class="wr-class" = c[0]
+              td class="wr-wr" 
+                = c[1]
+                |%
+        table.table
+          = Rails.cache.read('wel#arena_top').each_with_index |c,i| do 
+            tr
+              td class="wr-rank" = i + 1 
+              td class="wr-class" = c[0]
+              td class="wr-wr" 
+                = c[1]
+                |%
   div.col-md-6.col-sm-6
     div.portlet.box.blue
       div.portlet-title
