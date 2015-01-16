@@ -262,9 +262,7 @@ class WelcomeController < ApplicationController
           HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
         end
       rescue
-        top_streams = []
       end
-
       top_streams
     end
 
