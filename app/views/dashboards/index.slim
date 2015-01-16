@@ -13,7 +13,7 @@ div.row
         div.caption= t '.global_win_rates'
       div.portlet-body
         table.table
-          = Rails.cache.read('wel#con_top').each_with_index |c,i| do 
+          = Rails.cache.read('wel#con_top').each_with_index do |c,i|
             tr
               td class="wr-rank" = i + 1 
               td class="wr-class" = c[0]
@@ -21,7 +21,7 @@ div.row
                 = c[1]
                 |%
         table.table
-          = Rails.cache.read('wel#arena_top').each_with_index |c,i| do 
+          = Rails.cache.read('wel#arena_top').each_with_index do |c,i|
             tr
               td class="wr-rank" = i + 1 
               td class="wr-class" = c[0]
