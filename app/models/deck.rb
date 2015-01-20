@@ -34,7 +34,7 @@ class Deck < ActiveRecord::Base
   def self.archive_unused(user_obj)
     decks = user_obj.decks.includes(:matches)
       .merge(Match.where("matches.created_at >= ?", 1.week.ago))
-    decks = decks + user_obj.decks.where(user_num_matches: nil)
+    decks = decks + user_obj.decks.where("created_at >= ?", 1.month.ago).where(user_num_matches: nil)
     decks.uniq.each do |deck|
       deck.archive! if [false,nil].include? deck.active
     end
