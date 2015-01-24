@@ -11,6 +11,7 @@
     - if @turns
       h3 Turn By Turn
       .turn-by-turn
+        span#open-all.btn.btn-block.green Expand All
         - @turns.each_with_index do |turn, i|
           .turn-details.row id="#{i}"
             span.mana.col-md-4
