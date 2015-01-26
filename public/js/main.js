@@ -107,4 +107,8 @@ $('.klass-link').eq(random).click();
   });
   $('#tab-container').easytabs();
   $('#stream-container').easytabs();
+
+  $('.dashboard-button').click(function(){
+    $('#loading-screen-cont').fadeIn();
+  });
 });
