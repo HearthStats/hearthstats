@@ -70,6 +70,23 @@ class Match < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.winrate_by_time(matches, timezone)
+    Time.zone = timezone
+    time_wr = {}
+    24.times.each do |time|
+      time_wr[time+1] = nil
+    end
+    hr_group = matches.group_by {|match| Time.zone.parse(match.created_at.to_s).hour}
+    hr_group.each do |hr|
+      wins = hr[1].select { |match| match.result_id == 1}.count
+      total = hr[1].count
+      wr = wins.to_f/total
+      time_wr[hr[0]] = wr*100
+    end
+
+    time_wr.sort
+  end
+  
   def self.get_klass_ranked_wr(args)
     klasses_array = args[:klasses_array]
     beginday    = args[:beginday]
