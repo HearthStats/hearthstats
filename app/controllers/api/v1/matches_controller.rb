@@ -29,7 +29,7 @@ class Api::V1::MatchesController < ApplicationController
         ranklvl = Rank.find(req[:ranklvl])
       end
       if ranklvl.nil?
-        errors.push("Unknown rank '" + req[:ranklvl].to_s + "'." + str)
+        errors.push("Unknown rank '" + req[:ranklvl].to_s + "'.")
       end
     end
 
