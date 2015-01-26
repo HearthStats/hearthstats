@@ -23,7 +23,7 @@ class Api::V1::MatchesController < ApplicationController
     #check for rank if ranked mode
     ranklvl = nil
     if !mode.nil? && mode.name == "Ranked" && !req[:ranklvl].nil?
-      ranklvl = Rank.find(req[:ranklvl])
+      ranklvl = req[:ranklvl]
       legend = req[:legend] if !req[:legend].nil?
       if ranklvl.nil?
         errors.push("Unknown rank '" + req[:ranklvl].to_s + "'.")
@@ -156,9 +156,9 @@ class Api::V1::MatchesController < ApplicationController
     delete_deck_cache!(deck)
     if !ranklvl.nil?
       if legend
-        MatchRank.new(match_id: match.id, rank_id: ranklvl.id, legendary: legend).save!
+        MatchRank.new(match_id: match.id, rank_id: ranklvl, legendary: legend).save!
       else
-        MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
+        MatchRank.new(match_id: match.id, rank_id: ranklvl).save!
       end
     end
   end
