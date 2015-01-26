@@ -23,8 +23,11 @@ class Api::V1::MatchesController < ApplicationController
     #check for rank if ranked mode
     ranklvl = nil
     if !mode.nil? && mode.name == "Ranked" && !req[:ranklvl].nil?
-      ranklvl = Rank.find(req[:ranklvl])
-      legend = req[:legend] if !req[:legend].nil?
+      if req[:ranklvl] == 0 || req[:legend]
+        legend = req[:legend]
+      else
+        ranklvl = Rank.find(req[:ranklvl])
+      end
       if ranklvl.nil?
         errors.push("Unknown rank '" + req[:ranklvl].to_s + "'." + str)
       end
