@@ -20,8 +20,7 @@ class ConstructedsController < ApplicationController
 
     @my_decks = get_my_decks
     @last_deck = current_user.matches
-      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
-      .preload(:match_deck => :deck).last.try(:deck)
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED]).last.try(:deck)
 
     respond_to do |format|
       format.html

@@ -10,9 +10,9 @@ class GraphGenerator
   (19..24).each { |time| TIME_SEGMENTS[time] = "night" }
 
   def initialize(matches, user_klass_ids, opp_klass_ids)
-    @matches = matches
-    @user_klass_ids = user_klass_ids
-    @opp_klass_ids = opp_klass_ids
+    @matches = matches || Match.where("created_at >= ?", 1.week.ago)
+    @user_klass_ids = user_klass_ids || Klass.all.pluck(:id)
+    @opp_klass_ids = opp_klass_ids || Klass.all.pluck(:id)
   end
 
   # KLASS
@@ -71,6 +71,17 @@ class GraphGenerator
     end
 
     klass_wrs
+  end
+
+  # WR by Rank/Class
+
+  def rank_wr
+    rank_wrs = Hash.new
+
+    grouped = @matches.where(appsubmit: true).preload(:rank)
+      .group_by { |match| match.rank }
+      .find_all { |rank| !rank[0].nil? }
+      .sort_by { |rank| rank[0].id }
   end
 
   def defaults

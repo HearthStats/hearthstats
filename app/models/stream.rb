@@ -1,5 +1,5 @@
 class Stream
-
+  FEATURED = {}
   ### CLASS METHODS:
 
   def self.get_featured_streamers

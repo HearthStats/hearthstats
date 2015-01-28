@@ -2,6 +2,9 @@ class AdminController < ApplicationController
   before_filter :authenticate_user!
   before_filter :admin_user?
 
+  def test_page
+  end
+
   def export_con
     matches = Match.where(season_id: current_season, mode_id: 3)
     respond_to do |format|
