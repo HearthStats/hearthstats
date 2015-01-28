@@ -74,15 +74,15 @@ class WelcomeController < ApplicationController
     # if !current_user.is_admin?
     #   redirect_to root_path, alert: "y u no admin" and return
     # end
-    season = 11
+    season = 14
     args = { :beginday => 1.year.ago, :endday => DateTime.now, :klasses_array => Klass::LIST }
     ranked_wr_count = Match.get_klass_ranked_wr(args)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
 
     @prev_global = [
-      {"Warlock" => 47.96, "Druid" => 47.35, "Shaman" => 51.28, "Rogue" => 52.21, "Warrior" => 46.63, "Paladin" => 50.45, "Mage" => 52.46, "Hunter" => 49.79, "Priest" => 47.64},
-      {"Warlock" => 51.39, "Druid" => 49.15, "Shaman" => 48.84, "Rogue" => 46.06, "Warrior" => 49.28, "Paladin" => 47.20, "Mage" => 47.72, "Hunter" => 53.37, "Priest" => 49.31}]
+      {"Warlock" => 48.96, "Druid" => 45.96, "Shaman" => 49.62, "Rogue" => 51.91, "Warrior" => 45.55, "Paladin" => 52.65, "Mage" => 53.27, "Hunter" => 45.11, "Priest" => 49.04},
+      {"Warlock" => 51.03, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}]
 
     matches = Match.where("created_at > ?", 2.weeks.ago)
     # Determine match Class Win Rates
