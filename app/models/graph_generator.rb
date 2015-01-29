@@ -9,10 +9,10 @@ class GraphGenerator
   (15..18).each { |time| TIME_SEGMENTS[time] = "afternoon" }
   (19..24).each { |time| TIME_SEGMENTS[time] = "night" }
 
-  def initialize(matches, user_klass_ids, opp_klass_ids)
-    @matches = matches || Match.where("created_at >= ?", 1.week.ago)
-    @user_klass_ids = user_klass_ids || Klass.all.pluck(:id)
-    @opp_klass_ids = opp_klass_ids || Klass.all.pluck(:id)
+  def initialize(args)
+    @matches = args[:matches] || Match.where("created_at >= ?", 1.week.ago).preload(:rank).all
+    @user_klass_ids = args[:user_klass_ids] || Klass.pluck(:id)
+    @opp_klass_ids = args[:opp_klass_ids] || Klass.pluck(:id)
   end
 
   # KLASS
@@ -78,10 +78,17 @@ class GraphGenerator
   def rank_wr
     rank_wrs = Hash.new
 
-    grouped = @matches.where(appsubmit: true).preload(:rank)
+    grouped = @matches
       .group_by { |match| match.rank }
       .find_all { |rank| !rank[0].nil? }
       .sort_by { |rank| rank[0].id }
+    grouped.each do |rank|
+      wins = rank[1].count{|m| m.result_id == 1}
+      tot = rank[1].count
+      rank_wrs[rank[0].id] = wins.to_f / tot
+    end
+
+    p rank_wrs
   end
 
   def defaults
