@@ -14,7 +14,8 @@ div.row
       div.portlet-body
         h3 Constructed
         table.table
-          - Rails.cache.read('wel#con_top').each_with_index do |c,i|
+          - con_top = Rails.cache.read('wel#con_top') || []
+          - con_top.each_with_index do |c,i|
             tr
               td class="wr-rank" = i + 1 
               td class="wr-class" = c[0]
@@ -23,7 +24,8 @@ div.row
                 |%
         h3 Arena
         table.table
-          - Rails.cache.read('wel#arena_top').each_with_index do |c,i|
+          - arena_top = Rails.cache.read('wel#arena_top') || []
+          - arena_top.each_with_index do |c,i|
             tr
               td class="wr-rank" = i + 1 
               td class="wr-class" = c[0]
