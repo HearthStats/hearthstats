@@ -88,12 +88,12 @@ class Api::V1::MatchesController < ApplicationController
           obj.write(req[:log])
         end
 
-        parser = LogParser.new({
-                        :txt_file => req[:log], 
-                        :username => user.name,
-                        :user_id => user.id,
-                        :match_id => match.id
-                      })
+        # parser = LogParser.new({
+        #                 :txt_file => req[:log], 
+        #                 :username => user.name,
+        #                 :user_id => user.id,
+        #                 :match_id => match.id
+        #               })
 
         render json: {status: "success", message: message,  data: match}
       else
