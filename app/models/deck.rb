@@ -31,6 +31,17 @@ class Deck < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.parse_hdt(json)
+    card_array = []
+    cards = Card.all
+    json[0].each do |card|
+      id = cards.select {|cardq| cardq.blizz_id == card["id"] }.id
+      card_array << id.to_s + "_" + card["count"].to_s
+    end
+
+    cards_array.join(",")
+  end
+
   def self.archive_unused(user_obj)
     decks = user_obj.decks.includes(:matches)
       .merge(Match.where("matches.created_at <= ?", 1.week.ago))

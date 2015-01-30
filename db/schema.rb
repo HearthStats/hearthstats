@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150112161036) do
+ActiveRecord::Schema.define(:version => 20150130192841) do
 
   create_table "actions", :force => true do |t|
     t.integer "time"
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20150112161036) do
     t.string  "race"
   end
 
+  add_index "cards", ["blizz_id"], :name => "index_cards_on_blizz_id"
   add_index "cards", ["name"], :name => "index_cards_on_name"
   add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
@@ -212,7 +213,7 @@ ActiveRecord::Schema.define(:version => 20150112161036) do
   create_table "deck_versions", :force => true do |t|
     t.integer  "deck_id"
     t.text     "notes"
-    t.integer  "version"
+    t.string   "version"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "cardstring"
