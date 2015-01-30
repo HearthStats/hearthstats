@@ -28,18 +28,19 @@ class Deck < ActiveRecord::Base
   before_save :normalize_name
   before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_stats
+  after_create :create_deck_version
 
   ### CLASS METHODS:
 
   def self.parse_hdt(json)
     card_array = []
     cards = Card.all
-    json[0].each do |card|
-      id = cards.select {|cardq| cardq.blizz_id == card["id"] }.id
+    json.each do |card|
+      id = cards.select {|cardq| cardq.blizz_id == card["id"] }[0].try(:id)
       card_array << id.to_s + "_" + card["count"].to_s
     end
 
-    cards_array.join(",")
+    card_array.join(",")
   end
 
   def self.archive_unused(user_obj)
@@ -69,6 +70,10 @@ class Deck < ActiveRecord::Base
     Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
   end
   ### INSTANCE METHODS:
+
+  def create_deck_version
+    DeckVersion.create(deck_id: self.id, version: "1.0", cardstring: self.cardstring)
+  end
 
   def deactivate_deck
     self.slot = nil
