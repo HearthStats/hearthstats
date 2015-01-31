@@ -37,6 +37,12 @@ class Api::V2::DecksController < ApplicationController
     render json: api_response
   end
 
+  def hdt_after
+    decks = Deck.where{(user_id == current_user.id) & (:created_at >= @req[:date].to_time)}
+
+    render json: { status: "success", data: decks}
+  end
+
   def find
     deck = Deck.find(params[:deck_id])
     card_array = deck.cardstring.split(",")
