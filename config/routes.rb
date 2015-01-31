@@ -234,15 +234,18 @@ Hearthstats::Application.routes.draw do
       get "arena_runs/end"
 
       post "matches/new"
-      post "matches/hdt_new"
       get "matches/query"
 
       get "decks/show"
       get "decks/find"
       post "decks/activate"
-      post "decks/hdt_create"
       post "decks/create"
       post "decks/slots"
+
+      # HDT APIs
+      post "decks/hdt_create"
+      post "decks/hdt_after"
+      post "matches/hdt_new"
     end
   end
 end

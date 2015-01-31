@@ -38,6 +38,7 @@ class Api::V2::DecksController < ApplicationController
   end
 
   def hdt_after
+    # Find decks created after the given time
     decks = Deck.where{(user_id == current_user.id) & (:created_at >= @req[:date].to_time)}
 
     render json: { status: "success", data: decks}
