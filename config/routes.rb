@@ -234,6 +234,7 @@ Hearthstats::Application.routes.draw do
       get "arena_runs/end"
 
       post "matches/new"
+      post "matches/hdt_new"
       get "matches/query"
 
       get "decks/show"

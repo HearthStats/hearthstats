@@ -77,13 +77,13 @@ class Api::V2::MatchesController < ApplicationController
     end
 
     # get user class
-    userclass = Klass.where(name: req[:class])[0]
+    userclass = Klass::LIST.invert[req[:class]]
     if userclass.nil?
       errors.push("Unknown user class '" + (req[:class].nil? ? "[undetected]" : req[:class]) + "'.")
     end
 
     # get opponent class
-    oppclass = Klass.where(name: req[:oppclass])[0]
+    oppclass = Klass::LIST.invert[req[:oppclass]]
     if oppclass.nil?
       errors.push("Unknown opponent class '" + (req[:oppclass].nil? ? "[undetected]" : req[:oppclass]) + "'.")
     end
@@ -102,8 +102,8 @@ class Api::V2::MatchesController < ApplicationController
       match = Match.new
       match.user_id = user.id
       match.mode = mode
-      match.klass = userclass
-      match.oppclass = oppclass
+      match.klass_id = userclass
+      match.oppclass_id = oppclass
       match.result_id = result
       match.coin = req[:coin]
       match.oppname = req[:oppname]
@@ -117,7 +117,7 @@ class Api::V2::MatchesController < ApplicationController
          :klass_id => oppclass}
       )
 
-      message = "New #{mode.name} #{userclass.name} vs #{oppclass.name} match created"
+      message = "New #{mode.name} #{req[:class]} vs #{req[:oppclass]} match created"
 
       if match.save
 
@@ -148,6 +148,86 @@ class Api::V2::MatchesController < ApplicationController
       end
     end
   end
+
+  def hdt_new
+
+    req = @req
+    user = current_user
+
+    errors = Array.new
+
+    # get deck
+    deck = Deck.find(req[:deck_id])
+    if deck.nil?
+      errors.push("Deck could not be found")
+    end
+
+    # get mode
+    mode = Mode.where(name: req[:mode])[0]
+    if mode.nil?
+      errors.push("Unknown game mode '" + (req[:mode].nil? ? "[undetected]" : req[:mode]) + "'.")
+    end
+
+    # get user class
+    userclass = deck.klass_id
+    if userclass.nil?
+      errors.push("Unknown user class '" + (req[:class].nil? ? "[undetected]" : req[:class]) + "'.")
+    end
+
+    # get opponent class
+    oppclass = Klass::LIST.invert[req[:oppclass]]
+    if oppclass.nil?
+      errors.push("Unknown opponent class '" + (req[:oppclass].nil? ? "[undetected]" : req[:oppclass]) + "'.")
+    end
+
+    # get result
+    result = Match::RESULTS_LIST.invert[req[:result]]
+    if result.nil?
+      errors.push("Unknown result '" + (req[:result].nil? ? "[undetected]" : req[:result]) + "'.")
+    end
+
+    if errors.count > 0
+      render json: {status: "fail", message: "MATCH NOT RECORDED. Errors detected: " + errors.join(" ")}
+    else
+
+      #create the match
+      match = Match.new
+      match.user_id = user.id
+      match.mode = mode
+      match.klass_id = userclass
+      match.oppclass_id = oppclass
+      match.result_id = result
+      match.coin = req[:coin]
+      match.oppname = req[:oppname]
+      match.numturns = req[:numturns]
+      match.duration = req[:duration]
+      match.notes = req[:notes]
+      match.appsubmit = true
+
+      message = "New #{mode.name} #{req[:class]} vs #{req[:oppclass]} match created"
+
+      if match.save
+        if mode.name == "Arena"
+          submit_arena_match(match, userclass)
+        else
+          MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+          delete_deck_cache!(deck)
+        end
+
+        # Submit log file
+        if req[:log]
+          s3 = AWS::S3.new
+          obj = s3.buckets['hearthstats'].objects["hdt-logs/#{match.user_id}/#{match.id}"]
+          obj.write(req[:log])
+        end
+
+        render json: {status: "success", message: message,  data: match}
+      else
+        render json: {status: "fail", message: match.errors.full_messages}
+      end
+    end
+  end
+
 
   private
 
