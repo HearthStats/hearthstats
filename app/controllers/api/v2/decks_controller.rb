@@ -1,6 +1,6 @@
 class Api::V2::DecksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, except: [:show]
+  before_filter :get_req, except: [:show, :hdt_after]
 
   respond_to :json
 
@@ -38,8 +38,8 @@ class Api::V2::DecksController < ApplicationController
   end
 
   def hdt_after
-    # Find decks created after the given time
-    decks = Deck.where{(user_id == current_user.id) & (:created_at >= @req[:date].to_time)}
+    req = ActiveSupport::JSON.decode(request.body)
+    decks = Deck.where{(user_id == my{current_user.id}) & (created_at >= req["date"].to_i)}
 
     render json: { status: "success", data: decks}
   end
