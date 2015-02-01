@@ -139,7 +139,7 @@ class ConstructedsController < ApplicationController
     end
     respond_to do |format|
       if @constructed.save
-        MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
+        MatchDeck.create(deck_id: deck.id, match_id: @constructed.id)
         delete_deck_cache!(deck)
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }

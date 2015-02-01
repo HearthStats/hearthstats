@@ -245,7 +245,9 @@ Hearthstats::Application.routes.draw do
       # HDT APIs
       post "decks/hdt_create"
       post "decks/hdt_after"
+      post "decks/create_version"
       post "matches/hdt_new"
+      post "matches/hdt_after"
     end
   end
 end

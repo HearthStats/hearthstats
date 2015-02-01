@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150130192841) do
+ActiveRecord::Schema.define(:version => 20150201223305) do
 
   create_table "actions", :force => true do |t|
     t.integer "time"
@@ -295,11 +295,13 @@ ActiveRecord::Schema.define(:version => 20150130192841) do
   create_table "match_decks", :force => true do |t|
     t.integer  "deck_id"
     t.integer  "match_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "deck_version_id"
   end
 
   add_index "match_decks", ["deck_id"], :name => "index_match_decks_on_deck_id"
+  add_index "match_decks", ["deck_version_id"], :name => "index_match_decks_on_deck_version_id"
   add_index "match_decks", ["match_id"], :name => "index_match_decks_on_match_id"
 
   create_table "match_ranks", :force => true do |t|

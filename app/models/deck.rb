@@ -32,7 +32,7 @@ class Deck < ActiveRecord::Base
 
   ### CLASS METHODS:
 
-  def self.parse_hdt(json)
+  def self.hdt_parse(json)
     card_array = []
     cards = Card.all
     json.each do |card|
@@ -70,6 +70,20 @@ class Deck < ActiveRecord::Base
     Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
   end
   ### INSTANCE METHODS:
+
+  def current_version
+    self.deck_versions.last.version
+  end
+
+  def cardstring_to_blizz
+    card_array = []
+    self.cardstring.split(",").each do |card|
+      blizz_id = Card.find(card.split("_")[0]).blizz_id if !card.split("_")[0].blank?
+      card_array << {"id" => blizz_id, "count" => card.split("_")[1]}
+    end
+
+    card_array
+  end
 
   def create_deck_version
     DeckVersion.create(deck_id: self.id, version: "1.0", cardstring: self.cardstring)

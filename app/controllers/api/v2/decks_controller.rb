@@ -22,7 +22,7 @@ class Api::V2::DecksController < ApplicationController
   end
 
   def hdt_create
-    card_string = Deck.parse_hdt(@req[:cards])
+    card_string = Deck.hdt_parse(@req[:cards])
     deck = Deck.new( name: @req[:name],
                      klass_id: Klass::LIST.invert[@req[:class]],
                      cardstring: card_string,
@@ -39,9 +39,28 @@ class Api::V2::DecksController < ApplicationController
 
   def hdt_after
     req = ActiveSupport::JSON.decode(request.body)
-    decks = Deck.where{(user_id == my{current_user.id}) & (created_at >= req["date"].to_i)}
+    decks = Deck.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
+    api_response = []
+    decks.each do |deck|
+      api_response << [deck, deck.cardstring_to_blizz]
+    end
 
-    render json: { status: "success", data: decks}
+    render json: { status: "success", data: api_response}
+  end
+
+  def create_version
+    deck = Deck.find(@req[:deck_id])
+    cardstring = Deck.hdt_parse(@req[:cards])
+    deck_version = DeckVersion.new(deck_id: deck.id, 
+                       version: @req[:version], 
+                       cardstring: cardstring)
+    if deck_version.save
+      api_response =  { status: "success", data: deck_version }
+    else
+      api_response = { status: "error" }
+    end
+
+    render json: api_response
   end
 
   def find

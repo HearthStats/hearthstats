@@ -1,6 +1,6 @@
 class Api::V2::MatchesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, except: [:query]
+  before_filter :get_req, except: [:query, :hdt_after]
 
   respond_to :json
 
@@ -210,7 +210,7 @@ class Api::V2::MatchesController < ApplicationController
         if mode.name == "Arena"
           submit_arena_match(match, userclass)
         else
-          MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+          MatchDeck.create(match_id: match.id, deck_id: deck.id)
           delete_deck_cache!(deck)
         end
 
@@ -226,6 +226,17 @@ class Api::V2::MatchesController < ApplicationController
         render json: {status: "fail", message: match.errors.full_messages}
       end
     end
+  end
+
+  def hdt_after
+    req = ActiveSupport::JSON.decode(request.body)
+    api_response = []
+    matches = Match.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
+    matches.joins(:match_deck).each do |match|
+      api_response << [match.match_deck.deck_id, match.match_deck.deck_version_id, match]
+    end
+
+    render json: { status: "success", data: api_response}
   end
 
 
@@ -279,7 +290,7 @@ class Api::V2::MatchesController < ApplicationController
       deck = create_new_deck(@user, @req[:slot], userclass)
       message = "No deck set for slot #{@req[:slot]}. New #{userclass.name} deck created and assigned to #{@req[:slot]}."
     end
-    MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+    MatchDeck.create(match_id: match.id, deck_id: deck.id)
     delete_deck_cache!(deck)
     if !ranklvl.nil?
       if legend
