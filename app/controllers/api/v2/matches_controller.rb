@@ -233,7 +233,10 @@ class Api::V2::MatchesController < ApplicationController
     api_response = []
     matches = Match.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
     matches.joins(:match_deck).each do |match|
-      api_response << [match.match_deck.deck_id, match.match_deck.deck_version_id, match]
+      api_response << { :deck_id => match.match_deck.deck_id,
+                        :deck_version_id => match.match_deck.deck_version_id, 
+                        :match => hdt_match_res(match)
+      }
     end
 
     render json: { status: "success", data: api_response}

@@ -71,7 +71,6 @@ gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
 gem 'unf'
-gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
 gem 'thin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'

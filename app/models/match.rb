@@ -15,7 +15,8 @@ class Match < ActiveRecord::Base
     1 => 'Arena',
     2 => 'Casual',
     3 => 'Ranked',
-    4 => 'Tournament'
+    4 => 'Tournament',
+    4 => 'Friendly'
   }
 
   ### ASSOCIATIONS:

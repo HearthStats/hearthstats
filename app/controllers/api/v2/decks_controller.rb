@@ -50,14 +50,18 @@ class Api::V2::DecksController < ApplicationController
 
   def create_version
     deck = Deck.find(@req[:deck_id])
-    cardstring = Deck.hdt_parse(@req[:cards])
-    deck_version = DeckVersion.new(deck_id: deck.id, 
-                       version: @req[:version], 
-                       cardstring: cardstring)
-    if deck_version.save
-      api_response =  { status: "success", data: deck_version }
+    if deck.user_id == current_user.id
+      cardstring = Deck.hdt_parse(@req[:cards])
+      deck_version = DeckVersion.new(deck_id: deck.id, 
+                        version: @req[:version], 
+                        cardstring: cardstring)
+      if deck_version.save
+        api_response =  { status: "success", data: deck_version }
+      else
+        api_response = { status: "error" }
+      end
     else
-      api_response = { status: "error" }
+      api_response = { status: "error", data: "Deck does not belong to user" }
     end
 
     render json: api_response

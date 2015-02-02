@@ -38,20 +38,6 @@ class ApplicationController < ActionController::Base
     super(options, response_status)
   end
 
-  def opinio_after_create_path(resource)
-    case params["commentable_type"]
-    when "Match"
-      resource.user.notify("New Comment", "New comment on Match #" + resource.id.to_s, resource)
-    when "TournPair"
-      resource.users.each do |user|
-        user.notify("New Comment", "New comment on a " + resource.tournament.name + " tournament match.", resource)
-      end
-    else
-      resource.user.notify("New Comment", "New comment on " + resource.class.name + " " + resource.name, resource)
-    end
-    resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
-  end
-
   Text2Deck = Struct.new(:cardstring, :errors)
   def text_to_deck(text)
     text_array = text.split("\r\n")

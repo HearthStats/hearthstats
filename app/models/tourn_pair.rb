@@ -94,12 +94,6 @@ class TournPair < ActiveRecord::Base
       admins = User.with_role(:tourn_admin, tourny)
       user = TournUser.find(t_match.tourn_user_id).user
       opp = TournUser.find(opp_t_match.tourn_user_id).user
-      admins.each do |admin|
-        admin.notify( "Conflict notice",
-                      "Conflict on the match " + t_match.round.to_s + " report " +
-                      "between " + user.profile.name + "(" + user.id.to_s + ")" +
-                      " and " + opp.profile.name + "(" + opp.id.to_s + ")" )
-      end
       return true
     end
     false

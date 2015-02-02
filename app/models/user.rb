@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   rolify
-  extend Mailboxer::Models::Messageable::ActiveRecord
-  acts_as_messageable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
