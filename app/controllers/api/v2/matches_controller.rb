@@ -235,7 +235,7 @@ class Api::V2::MatchesController < ApplicationController
     matches.joins(:match_deck).each do |match|
       api_response << { :deck_id => match.match_deck.deck_id,
                         :deck_version_id => match.match_deck.deck_version_id, 
-                        :match => hdt_match_res(match)
+                        :match => match
       }
     end
 
