@@ -194,7 +194,7 @@ Hearthstats::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   # HearthStats API
-  namespace :api do
+  namespace :api, defaults:{format: 'json'} do
     namespace :v1 do
       resources :cards
       get "arenas/show"

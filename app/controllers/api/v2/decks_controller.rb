@@ -47,7 +47,7 @@ class Api::V2::DecksController < ApplicationController
       }
     end
 
-    render json: { status: "success", data: api_response}
+    render json: { status: "success", data: api_response }
   end
 
   def create_version
