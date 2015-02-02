@@ -42,7 +42,9 @@ class Api::V2::DecksController < ApplicationController
     decks = Deck.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
     api_response = []
     decks.each do |deck|
-      api_response << [deck, deck.cardstring_to_blizz]
+      api_response << { :deck => deck,
+                        :cards => deck.cardstring_to_blizz
+      }
     end
 
     render json: { status: "success", data: api_response}
