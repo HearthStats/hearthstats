@@ -209,6 +209,7 @@ Hearthstats::Application.routes.draw do
 
 
       post "matches/new"
+      post "matches/delete"
 
       get "decks/show"
       get "decks/find"
@@ -235,19 +236,23 @@ Hearthstats::Application.routes.draw do
 
       post "matches/new"
       get "matches/query"
+      post "matches/delete"
 
       get "decks/show"
       get "decks/find"
       post "decks/activate"
       post "decks/create"
       post "decks/slots"
+      post "decks/delete"
 
       # HDT APIs
       post "decks/hdt_create"
       post "decks/hdt_after"
       post "decks/create_version"
+      post "deck_versions/hdt_after"
       post "matches/hdt_new"
       post "matches/hdt_after"
+      post "matches/move"
     end
   end
 end

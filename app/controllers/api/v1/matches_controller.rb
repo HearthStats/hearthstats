@@ -102,7 +102,28 @@ class Api::V1::MatchesController < ApplicationController
     end
   end
 
+  def delete
+    unless match_belongs_to_user(@user, @req[:match_id])
+      response = {status: "fail", message: "At least one or more of the matches do not belong to the user"}
+    else
+      Match.find(@req[:match_id]).map(&:destroy)
+      response = {status: "success", message: "Matches deleted"}
+    end
+    render json: response
+  end
+
   private
+
+  def match_belongs_to_user?(user, match_ids)
+    user_match_ids = user.matches.pluck(:id)
+
+
+    array_subset?(match_ids, user_match_ids)
+  end
+
+  def array_subset?(child, parent)
+    parent.length - (parent - child).length == child.length
+  end
 
   def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
