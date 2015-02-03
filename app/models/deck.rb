@@ -5,8 +5,6 @@ class Deck < ActiveRecord::Base
   acts_as_taggable
   is_impressionable
   opinio_subjectum
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| model.user }
 
   extend FriendlyId
   friendly_id :name, use: :slugged

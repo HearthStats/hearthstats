@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150201223305) do
-
-  create_table "actions", :force => true do |t|
-    t.integer "time"
-    t.string  "action"
-    t.string  "card"
-    t.integer "card_id"
-    t.integer "user_id"
-    t.integer "match_id"
-    t.integer "deck_id"
-  end
+ActiveRecord::Schema.define(:version => 20150203221341) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -686,9 +676,5 @@ ActiveRecord::Schema.define(:version => 20150201223305) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
-
-  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end

@@ -2,9 +2,6 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
 
-  is_impressionable
-  opinio_subjectum
-
   RESULTS_LIST = {
     1 => 'Win',
     2 => 'Loss',
@@ -32,8 +29,6 @@ class Match < ActiveRecord::Base
 
   has_one :match_rank
   has_one :rank, through: :match_rank
-
-  has_many :actions, dependent: :destroy
 
   belongs_to :match_result
   belongs_to :result, class_name: 'MatchResult', foreign_key: 'result_id'
@@ -142,30 +137,32 @@ class Match < ActiveRecord::Base
   end
 
   def self.winrate_per_day_cumulative(all_matches, before_days)
-    matches = all_matches
-      .where("created_at >= ?", before_days.days.ago.beginning_of_day)
-      .group_by_day(:created_at)
-    wins = matches.where(result_id: 1).count
-    tot = matches.count
-    prev_wr = 0
-    winrate = Array.new
-    tot.each do |day, num_of_games|
-      if wins[day] == nil
-        today_wr = prev_wr
-      else
-        wr = ((wins[day].to_f/num_of_games rescue 0)*100).round(2)
-        wr = prev_wr if wr.nan?
-        if prev_wr == 0
-          today_wr = wr
-        else
-          today_wr = (wr + prev_wr)/2
-        end
-        prev_wr = wr
-      end
-      winrate << [day.to_time.to_i*1000, today_wr]
-    end
+    # matches = all_matches
+    #   .where("created_at >= ?", before_days.days.ago.beginning_of_day)
+    #   .group_by_day(:created_at)
+    # wins = matches.where(result_id: 1).count
+    # tot = matches.count
+    # prev_wr = 0
+    # winrate = Array.new
+    # tot.each do |day, num_of_games|
+    #   if wins[day] == nil
+    #     today_wr = prev_wr
+    #   else
+    #     wr = ((wins[day].to_f/num_of_games rescue 0)*100).round(2)
+    #     wr = prev_wr if wr.nan?
+    #     if prev_wr == 0
+    #       today_wr = wr
+    #     else
+    #       today_wr = (wr + prev_wr)/2
+    #     end
+    #     prev_wr = wr
+    #   end
+    #   winrate << [day.to_time.to_i*1000, today_wr]
 
-    winrate
+    # end
+
+    # winrate
+    []
   end
 
   def self.results_list

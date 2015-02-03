@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
-  include PublicActivity::StoreController
 
   layout :layout
   before_filter :set_locale_from_url
