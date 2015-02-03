@@ -1,15 +1,30 @@
+<<<<<<< HEAD
 GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 2c6f4caa99916c33d3f9af57f66422ff5ea913cf
   specs:
     stripe (1.15.0)
+=======
+<<<<<<< Updated upstream
+=======
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 085ad6cfb303f9e470d161f1b62370e746702432
+  specs:
+    stripe (1.18.0)
+>>>>>>> merge conflicts
       json (~> 1.8.1)
       mime-types (>= 1.25, < 3.0)
       rest-client (~> 1.4)
 
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.3.0)
     actionmailer (3.2.18)
       actionpack (= 3.2.18)
       mail (~> 2.5.4)
@@ -37,8 +52,15 @@ GEM
     activesupport (3.2.18)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+<<<<<<< HEAD
     acts-as-taggable-on (3.4.1)
       activerecord (>= 3.2, < 5)
+=======
+<<<<<<< Updated upstream
+    acts-as-taggable-on (3.2.5)
+      actionpack (>= 3, < 5)
+      activerecord (>= 3, < 5)
+>>>>>>> merge conflicts
     addressable (2.3.6)
     announcements (0.2.0)
       jquery-rails
@@ -54,20 +76,58 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
+<<<<<<< HEAD
     better_errors (2.0.0)
+=======
+    better_errors (1.1.0)
+=======
+    acts-as-taggable-on (3.4.3)
+      activerecord (>= 3.2, < 5)
+    addressable (2.3.6)
+    announcements (0.2.0)
+      jquery-rails
+      rails (>= 3.1.0)
+    appsignal (0.11.3)
+      rack
+      thread_safe
+    arel (3.0.3)
+    awesome_print (1.6.1)
+    aws-sdk (1.61.0)
+      aws-sdk-v1 (= 1.61.0)
+    aws-sdk-v1 (1.61.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+    bcrypt (3.1.10)
+    better_errors (2.1.1)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+<<<<<<< HEAD
     bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
+=======
+<<<<<<< Updated upstream
+>>>>>>> merge conflicts
     builder (3.0.4)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
     cancancan (1.9.2)
+=======
+    bootstrap-wysihtml5-rails (0.3.3.4)
+      railties (>= 3.0)
+    builder (3.0.4)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
+    cancancan (1.10.1)
+>>>>>>> Stashed changes
     capistrano (2.14.2)
       highline
       net-scp (>= 1.0.0)
@@ -76,13 +136,29 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano_rsync_with_remote_cache (2.4.0)
       capistrano (>= 2.1.0)
+<<<<<<< HEAD
     capybara (2.4.3)
+=======
+<<<<<<< Updated upstream
+    capybara (2.2.1)
+=======
+    capybara (2.4.4)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+<<<<<<< HEAD
     capybara-screenshot (1.0.1)
+=======
+<<<<<<< Updated upstream
+    capybara-screenshot (0.3.21)
+=======
+    capybara-screenshot (1.0.4)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       capybara (>= 1.0, < 3)
       colored
       launchy
@@ -96,7 +172,7 @@ GEM
       hashie (~> 1.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.4)
+    cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (3.2.2)
@@ -105,35 +181,87 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
+<<<<<<< HEAD
     coffee-script-source (1.8.0)
     colored (1.2)
     columnize (0.8.9)
     crass (0.2.1)
     curb (0.8.6)
+=======
+<<<<<<< Updated upstream
+    coffee-script-source (1.7.0)
+    colorize (0.7.3)
+    cookiejar (0.3.2)
+    curb (0.8.5)
+=======
+    coffee-script-source (1.9.0)
+    colored (1.2)
+    columnize (0.9.0)
+    crass (1.0.1)
+    curb (0.8.6)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
     daemons (1.1.9)
     dalli (2.7.2)
-    database_cleaner (1.3.0)
+    database_cleaner (1.4.0)
     debug_inspector (0.0.2)
+<<<<<<< HEAD
     debugger-linecache (1.2.0)
     delayed_job (4.0.4)
+=======
+<<<<<<< Updated upstream
+    delayed_job (4.0.1)
+>>>>>>> merge conflicts
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.2)
       activerecord (>= 3.0, < 4.2)
+=======
+    debugger-linecache (1.2.0)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+>>>>>>> Stashed changes
       delayed_job (>= 3.0, < 4.1)
     delayed_job_web (1.2.5)
       activerecord (> 3.0.0)
       delayed_job (> 2.0.3)
       sinatra (>= 0.9.2)
+<<<<<<< HEAD
     devise (3.3.0)
+=======
+<<<<<<< Updated upstream
+    devise (3.2.4)
+=======
+    devise (3.4.1)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
+      responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+<<<<<<< HEAD
     devise-token_authenticatable (0.2.0)
       devise (~> 3.3.0)
     diff-lcs (1.1.3)
     email_spec (1.6.0)
+=======
+<<<<<<< Updated upstream
+    devise-token_authenticatable (0.1.0)
+      devise (~> 3.2.0)
+    diff-lcs (1.2.5)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
+    email_spec (1.5.0)
+>>>>>>> merge conflicts
       launchy (~> 2.1)
       mail (~> 2.2)
     erubis (2.7.0)
@@ -141,9 +269,22 @@ GEM
     excon (0.39.6)
     execjs (2.2.1)
     factory_girl (4.4.0)
+=======
+    devise-token_authenticatable (0.3.0)
+      devise (~> 3.4.0)
+    diff-lcs (1.1.3)
+    email_spec (1.6.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
+    erubis (2.7.0)
+    eventmachine (1.0.5)
+    excon (0.44.1)
+    execjs (2.2.2)
+    factory_girl (4.5.0)
+>>>>>>> Stashed changes
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.1)
-      factory_girl (~> 4.4.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
@@ -151,6 +292,7 @@ GEM
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
+<<<<<<< HEAD
     feedjira (1.4.0)
       curb (~> 0.8)
       loofah (~> 2.0)
@@ -159,6 +301,18 @@ GEM
     figaro (1.0.0)
       thor (~> 0.14)
     fog (1.23.0)
+=======
+<<<<<<< Updated upstream
+    feedjira (1.3.0)
+      curb (~> 0.8.1)
+      loofah (~> 2.0.0)
+      sax-machine (~> 0.2.1)
+    ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
+    fog (1.22.0)
+>>>>>>> merge conflicts
       fog-brightbox
       fog-core (~> 1.23)
       fog-json
@@ -168,34 +322,140 @@ GEM
     fog-brightbox (0.5.1)
       fog-core (~> 1.22)
       fog-json
+<<<<<<< HEAD
       inflecto
     fog-core (1.24.0)
+=======
+    fog-core (1.22.0)
+=======
+    feedjira (1.6.0)
+      curb (~> 0.8)
+      loofah (~> 2.0)
+      sax-machine (~> 1.0)
+    ffi (1.9.6)
+    figaro (1.1.0)
+      thor (~> 0.14)
+    fission (0.5.0)
+      CFPropertyList (~> 2.2)
+    fog (1.27.0)
+      fog-atmos
+      fog-aws (~> 0.0)
+      fog-brightbox (~> 0.4)
+      fog-core (~> 1.27, >= 1.27.3)
+      fog-ecloud
+      fog-json
+      fog-profitbricks
+      fog-radosgw (>= 0.0.2)
+      fog-sakuracloud (>= 0.0.4)
+      fog-serverlove
+      fog-softlayer
+      fog-storm_on_demand
+      fog-terremark
+      fog-vmfusion
+      fog-voxel
+      fog-xml (~> 0.1.1)
+      ipaddress (~> 0.5)
+      nokogiri (~> 1.5, >= 1.5.11)
+    fog-atmos (0.1.0)
+      fog-core
+      fog-xml
+    fog-aws (0.0.8)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-brightbox (0.7.1)
+      fog-core (~> 1.22)
+      fog-json
+      inflecto (~> 0.0.2)
+    fog-core (1.28.0)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
       mime-types
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
+    fog-ecloud (0.0.2)
+      fog-core
+      fog-xml
     fog-json (1.0.0)
       multi_json (~> 1.0)
+<<<<<<< HEAD
     fog-softlayer (0.3.17)
       fog-core
       fog-json
+=======
+<<<<<<< Updated upstream
+    foreigner (1.6.1)
+      activerecord (>= 3.0.0)
+>>>>>>> merge conflicts
     formatador (0.2.5)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     gon (5.2.0)
       actionpack (>= 2.3.0)
       json
+<<<<<<< HEAD
       multi_json
       request_store (>= 1.0.5)
     groupdate (2.3.0)
+=======
+    groupdate (2.2.1)
+=======
+    fog-profitbricks (0.0.1)
+      fog-core
+      fog-xml
+      nokogiri
+    fog-radosgw (0.0.3)
+      fog-core (>= 1.21.0)
+      fog-json
+      fog-xml (>= 0.0.1)
+    fog-sakuracloud (1.0.0)
+      fog-core
+      fog-json
+    fog-serverlove (0.1.1)
+      fog-core
+      fog-json
+    fog-softlayer (0.4.0)
+      fog-core
+      fog-json
+    fog-storm_on_demand (0.1.0)
+      fog-core
+      fog-json
+    fog-terremark (0.0.3)
+      fog-core
+      fog-xml
+    fog-vmfusion (0.0.1)
+      fission
+      fog-core
+    fog-voxel (0.0.2)
+      fog-core
+      fog-xml
+    fog-xml (0.1.1)
+      fog-core
+      nokogiri (~> 1.5, >= 1.5.11)
+    formatador (0.2.5)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
+    groupdate (2.4.0)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       activesupport (>= 3)
-    guard (2.6.1)
+    guard (2.11.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
       pry (>= 0.9.12)
+      shellany (~> 0.0)
       thor (>= 0.18.1)
     guard-rspec (2.5.4)
       guard (>= 1.1)
@@ -206,12 +466,31 @@ GEM
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
+<<<<<<< HEAD
     hitimes (1.2.2)
+=======
+<<<<<<< Updated upstream
+    hipchat (1.1.0)
+      httparty
+    http_parser.rb (0.6.0)
+>>>>>>> merge conflicts
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     httpclient (2.4.0)
     i18n (0.6.11)
+<<<<<<< HEAD
+=======
+    imgkit (1.4.1)
+=======
+    hitimes (1.2.2)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    httpclient (2.6.0.1)
+    i18n (0.7.0)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
     impressionist (1.5.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
@@ -221,19 +500,28 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (5.0.0)
+    jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
+<<<<<<< Updated upstream
     json (1.8.1)
+<<<<<<< HEAD
     kaminari (0.16.1)
+=======
+    kaminari (0.15.1)
+=======
+    json (1.8.2)
+    kaminari (0.16.2)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    launchy (2.4.2)
+    launchy (2.4.3)
       addressable (~> 2.3)
-    listen (2.7.9)
+    listen (2.8.5)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lograge (0.3.0)
+    lograge (0.3.1)
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
@@ -252,29 +540,63 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.2)
     mime-types (1.25.1)
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
+>>>>>>> merge conflicts
     mini_portile (0.6.0)
+=======
+    mini_portile (0.6.2)
+>>>>>>> Stashed changes
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
-    mysql2 (0.3.16)
+    mysql2 (0.3.17)
+    nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.1)
+    net-ssh (2.9.2)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+<<<<<<< HEAD
     newrelic_rpm (3.9.4.245)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     nokogumbo (1.1.12)
       nokogiri
+=======
+<<<<<<< Updated upstream
+    newrelic_rpm (3.8.1.221)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
+=======
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    nokogumbo (1.2.0)
+      nokogiri
+    notiffany (0.0.3)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
     opinio (0.6)
       jquery-rails
       kaminari
       rails (~> 3)
     orm_adapter (0.5.0)
+<<<<<<< HEAD
     paperclip (4.2.0)
+=======
+<<<<<<< Updated upstream
+    paperclip (4.1.1)
+=======
+    paperclip (4.2.1)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -287,10 +609,34 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+<<<<<<< HEAD
     pry-byebug (2.0.0)
+=======
+<<<<<<< Updated upstream
+    pusher (0.14.1)
+      httpclient (~> 2.3)
+      multi_json (~> 1.0)
+      signature (~> 0.1.6)
+    quiet_assets (1.0.2)
+=======
+    pry-byebug (3.0.0)
+>>>>>>> merge conflicts
       byebug (~> 3.4)
       pry (~> 0.10)
+<<<<<<< HEAD
+=======
+    public_activity (1.4.2)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
+<<<<<<< HEAD
+>>>>>>> merge conflicts
     quiet_assets (1.0.3)
+=======
+    quiet_assets (1.1.0)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
@@ -299,7 +645,7 @@ GEM
       rack (>= 1.1.3)
     rack-ssl (1.3.4)
       rack
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (3.2.18)
       actionmailer (= 3.2.18)
@@ -316,7 +662,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.3.2)
+    rake (10.4.2)
     ransack (1.2.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -327,12 +673,42 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+<<<<<<< HEAD
     request_store (1.1.0)
     rest-client (1.6.8)
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
     rmagick (2.13.3)
     rolify (3.4.1)
+=======
+<<<<<<< Updated upstream
+    redactor-rails (0.4.5)
+      devise
+      mime-types
+      orm_adapter
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rmagick (2.13.2)
+    rolify (3.4.0)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.8)
+    rspec-expectations (2.14.5)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.6)
+    rspec-rails (2.14.2)
+=======
+    request_store (1.1.0)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
+    rmagick (2.13.4)
+    rolify (3.5.2)
+>>>>>>> merge conflicts
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -342,9 +718,14 @@ GEM
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.12.0)
     rspec-rails (2.12.2)
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
+<<<<<<< HEAD
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
@@ -353,26 +734,68 @@ GEM
       nokogiri (>= 1.4.4)
       nokogumbo (= 1.1.12)
     sass (3.4.5)
+=======
+<<<<<<< Updated upstream
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    sanitize (2.1.0)
+      nokogiri (>= 1.4.4)
+    sass (3.3.7)
+=======
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    sanitize (3.1.0)
+      crass (~> 1.0.1)
+      nokogiri (>= 1.4.4)
+      nokogumbo (= 1.2.0)
+    sass (3.4.11)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+<<<<<<< HEAD
     sax-machine (1.0.2)
     seed_dump (3.1.0)
       activerecord
       activesupport
     select2-rails (3.5.9.1)
+=======
+<<<<<<< Updated upstream
+    sax-machine (0.2.1)
+      nokogiri (~> 1.6.0)
+    seed_dump (3.1.0)
+      activerecord
+      activesupport
+    select2-rails (3.5.7)
+=======
+    sax-machine (1.3.0)
+    seed_dump (3.1.0)
+      activerecord
+      activesupport
+    select2-rails (3.5.9.2)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       thor (~> 0.14)
     sequel (3.20.0)
+    shellany (0.0.1)
     shortener (0.3.1)
       rails (>= 3.0.7)
     sinatra (1.0)
       rack (>= 1.0)
     sitemap_generator (5.0.5)
       builder
-    skylight (0.3.20)
+    skylight (0.6.0)
       activesupport (>= 3.0.0)
+<<<<<<< HEAD
     slim (2.0.3)
+=======
+<<<<<<< Updated upstream
+    slim (2.0.2)
+>>>>>>> merge conflicts
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
     slim-rails (2.1.5)
@@ -388,25 +811,69 @@ GEM
     spring-commands-rspec (1.0.2)
       spring (>= 0.9.1)
     sprockets (2.2.2)
+=======
+    slim (3.0.2)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    slim-rails (3.0.1)
+      actionmailer (>= 3.1, < 5.0)
+      actionpack (>= 3.1, < 5.0)
+      activesupport (>= 3.1, < 5.0)
+      railties (>= 3.1, < 5.0)
+      slim (~> 3.0)
+    slop (3.6.0)
+    social-share-button (0.1.8)
+      coffee-rails
+      sass-rails
+    spring (1.2.0)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
+    sprockets (2.2.3)
+>>>>>>> Stashed changes
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+<<<<<<< Updated upstream
     sqlite3 (1.3.9)
+<<<<<<< HEAD
+=======
+    subexec (0.2.3)
+    sync (0.3.1)
+      em-http-request
+=======
+    sqlite3 (1.3.10)
+>>>>>>> merge conflicts
     squeel (1.0.18)
       activerecord (~> 3.0)
       activesupport (~> 3.0)
       polyamorous (~> 0.5.0)
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
     taps (0.3.24)
       rack (>= 1.0.1)
       rest-client (>= 1.4.0, < 1.7.0)
       sequel (~> 3.20.0)
       sinatra (~> 1.0.0)
+<<<<<<< HEAD
     temple (0.6.8)
+=======
+<<<<<<< Updated upstream
+    temple (0.6.7)
+>>>>>>> merge conflicts
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
+=======
+    temple (0.7.5)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
+>>>>>>> Stashed changes
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -418,8 +885,17 @@ GEM
     turbo-sprockets-rails3 (0.3.14)
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.2.0)
+<<<<<<< Updated upstream
     tzinfo (0.3.41)
+<<<<<<< HEAD
     uglifier (2.5.3)
+=======
+    uglifier (2.5.0)
+=======
+    tzinfo (0.3.43)
+    uglifier (2.7.0)
+>>>>>>> Stashed changes
+>>>>>>> merge conflicts
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
@@ -427,8 +903,7 @@ GEM
     unf_ext (0.0.6)
     warden (1.2.3)
       rack (>= 1.0)
-    whenever (0.9.2)
-      activesupport (>= 2.3.4)
+    whenever (0.9.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
@@ -483,7 +958,6 @@ DEPENDENCIES
   meta-tags
   meta_search (>= 1.1.0.pre)
   mysql2
-  newrelic_rpm
   nokogiri
   opinio
   paperclip
