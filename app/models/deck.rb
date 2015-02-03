@@ -70,7 +70,7 @@ class Deck < ActiveRecord::Base
   ### INSTANCE METHODS:
 
   def current_version
-    self.deck_versions.last.version
+    self.deck_versions.last.try(:version)
   end
 
   def cardstring_to_blizz
