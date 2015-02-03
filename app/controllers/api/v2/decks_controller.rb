@@ -26,9 +26,11 @@ class Api::V2::DecksController < ApplicationController
     deck = Deck.new( name: @req[:name],
                      klass_id: Klass::LIST.invert[@req[:class]],
                      cardstring: card_string,
-                     user_id: current_user.id
+                     user_id: current_user.id,
+                     notes: @req[:notes]
                    )
     if deck.save
+      deck.tag_list = @req[:tags]
       api_response =  { status: "success", data: deck }
     else
       api_response = { status: "error" }
