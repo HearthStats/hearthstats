@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 2c6f4caa99916c33d3f9af57f66422ff5ea913cf
@@ -21,6 +22,8 @@ GIT
 =======
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,6 +56,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
 <<<<<<< HEAD
+<<<<<<< HEAD
     acts-as-taggable-on (3.4.1)
       activerecord (>= 3.2, < 5)
 =======
@@ -81,12 +85,11 @@ GEM
 =======
     better_errors (1.1.0)
 =======
+=======
+>>>>>>> gemlock
     acts-as-taggable-on (3.4.3)
       activerecord (>= 3.2, < 5)
     addressable (2.3.6)
-    announcements (0.2.0)
-      jquery-rails
-      rails (>= 3.1.0)
     appsignal (0.11.3)
       rack
       thread_safe
@@ -99,13 +102,17 @@ GEM
       nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     better_errors (2.1.1)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+<<<<<<< HEAD
 <<<<<<< HEAD
     bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
@@ -121,13 +128,10 @@ GEM
 =======
     bootstrap-wysihtml5-rails (0.3.3.4)
       railties (>= 3.0)
+=======
+>>>>>>> gemlock
     builder (3.0.4)
-    byebug (3.5.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
     cancancan (1.10.1)
->>>>>>> Stashed changes
     capistrano (2.14.2)
       highline
       net-scp (>= 1.0.0)
@@ -137,6 +141,7 @@ GEM
     capistrano_rsync_with_remote_cache (2.4.0)
       capistrano (>= 2.1.0)
 <<<<<<< HEAD
+<<<<<<< HEAD
     capybara (2.4.3)
 =======
 <<<<<<< Updated upstream
@@ -145,11 +150,15 @@ GEM
     capybara (2.4.4)
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    capybara (2.4.4)
+>>>>>>> gemlock
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+<<<<<<< HEAD
 <<<<<<< HEAD
     capybara-screenshot (1.0.1)
 =======
@@ -162,6 +171,17 @@ GEM
       capybara (>= 1.0, < 3)
       colored
       launchy
+=======
+    capybara-screenshot (1.0.4)
+      capybara (>= 1.0, < 3)
+      colored
+      launchy
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+>>>>>>> gemlock
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chartkick (1.3.2)
@@ -182,6 +202,7 @@ GEM
       coffee-script-source
       execjs
 <<<<<<< HEAD
+<<<<<<< HEAD
     coffee-script-source (1.8.0)
     colored (1.2)
     columnize (0.8.9)
@@ -194,17 +215,23 @@ GEM
     cookiejar (0.3.2)
     curb (0.8.5)
 =======
+=======
+>>>>>>> gemlock
     coffee-script-source (1.9.0)
     colored (1.2)
-    columnize (0.9.0)
+    cookiejar (0.3.2)
     crass (1.0.1)
     curb (0.8.6)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
     daemons (1.1.9)
     dalli (2.7.2)
     database_cleaner (1.4.0)
     debug_inspector (0.0.2)
+<<<<<<< HEAD
 <<<<<<< HEAD
     debugger-linecache (1.2.0)
     delayed_job (4.0.4)
@@ -217,16 +244,18 @@ GEM
       activerecord (>= 3.0, < 4.2)
 =======
     debugger-linecache (1.2.0)
+=======
+>>>>>>> gemlock
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.0.3)
       activerecord (>= 3.0, < 5.0)
->>>>>>> Stashed changes
       delayed_job (>= 3.0, < 4.1)
     delayed_job_web (1.2.5)
       activerecord (> 3.0.0)
       delayed_job (> 2.0.3)
       sinatra (>= 0.9.2)
+<<<<<<< HEAD
 <<<<<<< HEAD
     devise (3.3.0)
 =======
@@ -236,12 +265,16 @@ GEM
     devise (3.4.1)
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    devise (3.4.1)
+>>>>>>> gemlock
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+<<<<<<< HEAD
 <<<<<<< HEAD
     devise-token_authenticatable (0.2.0)
       devise (~> 3.3.0)
@@ -251,6 +284,10 @@ GEM
 <<<<<<< Updated upstream
     devise-token_authenticatable (0.1.0)
       devise (~> 3.2.0)
+=======
+    devise-token_authenticatable (0.3.0)
+      devise (~> 3.4.0)
+>>>>>>> gemlock
     diff-lcs (1.2.5)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
@@ -260,6 +297,7 @@ GEM
       http_parser.rb (>= 0.6.0)
     em-socksify (0.3.0)
       eventmachine (>= 1.0.0.beta.4)
+<<<<<<< HEAD
     email_spec (1.5.0)
 >>>>>>> merge conflicts
       launchy (~> 2.1)
@@ -273,6 +311,8 @@ GEM
     devise-token_authenticatable (0.3.0)
       devise (~> 3.4.0)
     diff-lcs (1.1.3)
+=======
+>>>>>>> gemlock
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -281,7 +321,6 @@ GEM
     excon (0.44.1)
     execjs (2.2.2)
     factory_girl (4.5.0)
->>>>>>> Stashed changes
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
@@ -292,6 +331,7 @@ GEM
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
+<<<<<<< HEAD
 <<<<<<< HEAD
     feedjira (1.4.0)
       curb (~> 0.8)
@@ -328,6 +368,8 @@ GEM
 =======
     fog-core (1.22.0)
 =======
+=======
+>>>>>>> gemlock
     feedjira (1.6.0)
       curb (~> 0.8)
       loofah (~> 2.0)
@@ -369,8 +411,11 @@ GEM
       fog-json
       inflecto (~> 0.0.2)
     fog-core (1.28.0)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -382,6 +427,7 @@ GEM
       fog-xml
     fog-json (1.0.0)
       multi_json (~> 1.0)
+<<<<<<< HEAD
 <<<<<<< HEAD
     fog-softlayer (0.3.17)
       fog-core
@@ -404,6 +450,8 @@ GEM
 =======
     groupdate (2.2.1)
 =======
+=======
+>>>>>>> gemlock
     fog-profitbricks (0.0.1)
       fog-core
       fog-xml
@@ -436,6 +484,8 @@ GEM
     fog-xml (0.1.1)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    foreigner (1.6.1)
+      activerecord (>= 3.0.0)
     formatador (0.2.5)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
@@ -445,8 +495,11 @@ GEM
       multi_json
       request_store (>= 1.0.5)
     groupdate (2.4.0)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
       activesupport (>= 3)
     guard (2.11.1)
       formatador (>= 0.2.4)
@@ -457,6 +510,7 @@ GEM
       pry (>= 0.9.12)
       shellany (~> 0.0)
       thor (>= 0.18.1)
+<<<<<<< HEAD
     guard-rspec (2.5.4)
       guard (>= 1.1)
       rspec (~> 2.11)
@@ -483,14 +537,32 @@ GEM
 =======
     imgkit (1.4.1)
 =======
+=======
+    guard-rspec (4.3.1)
+      guard (~> 2.1)
+      rspec (>= 2.14, < 4.0)
+    guard-zeus (2.0.0)
+      guard (~> 2.0)
+      zeus (~> 0)
+    hashie (1.2.0)
+    highline (1.6.21)
+    hike (1.2.3)
+    hipchat (1.3.0)
+      httparty
+>>>>>>> gemlock
     hitimes (1.2.2)
+    http_parser.rb (0.6.0)
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     httpclient (2.6.0.1)
     i18n (0.7.0)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    imgkit (1.4.1)
+>>>>>>> gemlock
     impressionist (1.5.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
@@ -502,6 +574,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     json (1.8.1)
 <<<<<<< HEAD
@@ -513,6 +586,10 @@ GEM
     kaminari (0.16.2)
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    json (1.8.2)
+    kaminari (0.16.2)
+>>>>>>> gemlock
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     launchy (2.4.3)
@@ -541,6 +618,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< Updated upstream
     mini_magick (3.7.0)
@@ -548,8 +626,11 @@ GEM
 >>>>>>> merge conflicts
     mini_portile (0.6.0)
 =======
+=======
+    mini_magick (3.8.1)
+      subexec (~> 0.2.1)
+>>>>>>> gemlock
     mini_portile (0.6.2)
->>>>>>> Stashed changes
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
@@ -563,6 +644,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
 <<<<<<< HEAD
+<<<<<<< HEAD
     newrelic_rpm (3.9.4.245)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -574,6 +656,8 @@ GEM
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
 =======
+=======
+>>>>>>> gemlock
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     nokogumbo (1.2.0)
@@ -581,13 +665,17 @@ GEM
     notiffany (0.0.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
     opinio (0.6)
       jquery-rails
       kaminari
       rails (~> 3)
     orm_adapter (0.5.0)
+<<<<<<< HEAD
 <<<<<<< HEAD
     paperclip (4.2.0)
 =======
@@ -597,6 +685,9 @@ GEM
     paperclip (4.2.1)
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    paperclip (4.2.1)
+>>>>>>> gemlock
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -610,13 +701,17 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
 <<<<<<< HEAD
+<<<<<<< HEAD
     pry-byebug (2.0.0)
 =======
 <<<<<<< Updated upstream
+=======
+>>>>>>> gemlock
     pusher (0.14.1)
       httpclient (~> 2.3)
       multi_json (~> 1.0)
       signature (~> 0.1.6)
+<<<<<<< HEAD
     quiet_assets (1.0.2)
 =======
     pry-byebug (3.0.0)
@@ -637,6 +732,9 @@ GEM
     quiet_assets (1.1.0)
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    quiet_assets (1.1.0)
+>>>>>>> gemlock
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
@@ -674,6 +772,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
 <<<<<<< HEAD
+<<<<<<< HEAD
     request_store (1.1.0)
     rest-client (1.6.8)
       mime-types (~> 1.16)
@@ -682,24 +781,12 @@ GEM
     rolify (3.4.1)
 =======
 <<<<<<< Updated upstream
+=======
+>>>>>>> gemlock
     redactor-rails (0.4.5)
       devise
       mime-types
       orm_adapter
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
-    rmagick (2.13.2)
-    rolify (3.4.0)
-    rspec (2.14.1)
-      rspec-core (~> 2.14.0)
-      rspec-expectations (~> 2.14.0)
-      rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.8)
-    rspec-expectations (2.14.5)
-      diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.6)
-    rspec-rails (2.14.2)
-=======
     request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -708,6 +795,7 @@ GEM
       rdoc (>= 2.4.2)
     rmagick (2.13.4)
     rolify (3.5.2)
+<<<<<<< HEAD
 >>>>>>> merge conflicts
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
@@ -746,17 +834,43 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+=======
+    rspec (3.1.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+    rspec-core (3.1.4)
+      rspec-support (~> 3.1.0)
+    rspec-expectations (3.1.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.1.0)
+    rspec-mocks (3.1.2)
+      rspec-support (~> 3.1.0)
+    rspec-rails (3.1.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-support (3.1.1)
+>>>>>>> gemlock
     sanitize (3.1.0)
       crass (~> 1.0.1)
       nokogiri (>= 1.4.4)
       nokogumbo (= 1.2.0)
     sass (3.4.11)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+<<<<<<< HEAD
 <<<<<<< HEAD
     sax-machine (1.0.2)
     seed_dump (3.1.0)
@@ -772,13 +886,18 @@ GEM
       activesupport
     select2-rails (3.5.7)
 =======
+=======
+>>>>>>> gemlock
     sax-machine (1.3.0)
     seed_dump (3.1.0)
       activerecord
       activesupport
     select2-rails (3.5.9.2)
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+>>>>>>> gemlock
       thor (~> 0.14)
     sequel (3.20.0)
     shellany (0.0.1)
@@ -790,6 +909,7 @@ GEM
       builder
     skylight (0.6.0)
       activesupport (>= 3.0.0)
+<<<<<<< HEAD
 <<<<<<< HEAD
     slim (2.0.3)
 =======
@@ -812,6 +932,8 @@ GEM
       spring (>= 0.9.1)
     sprockets (2.2.2)
 =======
+=======
+>>>>>>> gemlock
     slim (3.0.2)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -826,14 +948,12 @@ GEM
       coffee-rails
       sass-rails
     spring (1.2.0)
-    spring-commands-rspec (1.0.4)
-      spring (>= 0.9.1)
     sprockets (2.2.3)
->>>>>>> Stashed changes
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     sqlite3 (1.3.9)
 <<<<<<< HEAD
@@ -852,11 +972,18 @@ GEM
 =======
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    sqlite3 (1.3.10)
+    subexec (0.2.3)
+    sync (0.3.1)
+      em-http-request
+>>>>>>> gemlock
     taps (0.3.24)
       rack (>= 1.0.1)
       rest-client (>= 1.4.0, < 1.7.0)
       sequel (~> 3.20.0)
       sinatra (~> 1.0.0)
+<<<<<<< HEAD
 <<<<<<< HEAD
     temple (0.6.8)
 =======
@@ -868,12 +995,13 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
 =======
+=======
+>>>>>>> gemlock
     temple (0.7.5)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
       rack (~> 1.0)
->>>>>>> Stashed changes
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -885,6 +1013,7 @@ GEM
     turbo-sprockets-rails3 (0.3.14)
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.2.0)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     tzinfo (0.3.41)
 <<<<<<< HEAD
@@ -896,6 +1025,10 @@ GEM
     uglifier (2.7.0)
 >>>>>>> Stashed changes
 >>>>>>> merge conflicts
+=======
+    tzinfo (0.3.43)
+    uglifier (2.7.0)
+>>>>>>> gemlock
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
