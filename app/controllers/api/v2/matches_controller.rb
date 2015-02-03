@@ -211,6 +211,7 @@ class Api::V2::MatchesController < ApplicationController
           submit_arena_match(match, userclass)
         else
           MatchDeck.create(match_id: match.id, deck_id: deck.id)
+          MatchRank.create(match_id: match.id, rank_id: req[:ranklvl].to_i)
           delete_deck_cache!(deck)
         end
 
@@ -235,7 +236,8 @@ class Api::V2::MatchesController < ApplicationController
     matches.joins(:match_deck).each do |match|
       api_response << { :deck_id => match.match_deck.deck_id,
                         :deck_version_id => match.match_deck.deck_version_id, 
-                        :match => match
+                        :match => match,
+                        :ranklvl => match.rank.try(:id)
       }
     end
 
