@@ -44,11 +44,31 @@ class Api::V2::DecksController < ApplicationController
     decks.each do |deck|
       api_response << { :deck => deck,
                         :versions => [ deck.deck_versions ],
+                        :current_version => deck.current_version,
                         :cards => deck.cardstring_to_blizz
       }
     end
 
     render json: { status: "success", data: api_response }
+  end
+
+  def hdt_edit
+    deck = Deck.find(@req[:deck_id])
+    if deck.user_id == current_user.id
+      cardstring = Deck.hdt_parse(@req[:cards])
+      deck.cardstring = cardstring
+      if deck.save
+        deck.deck_versions.last.update_attribute(:cardstring, cardstring)
+        api_response =  { status: "success", data: deck }
+      else
+        api_response = { status: "error" }
+      end
+    else
+      api_response = { status: "error", data: "Deck does not belong to user" }
+    end
+
+    render json: api_response
+
   end
 
   def create_version
@@ -59,6 +79,7 @@ class Api::V2::DecksController < ApplicationController
                         version: @req[:version], 
                         cardstring: cardstring)
       if deck_version.save
+        deck.update_attribute(:cardstring, cardstring)
         api_response =  { status: "success", data: deck_version }
       else
         api_response = { status: "error" }

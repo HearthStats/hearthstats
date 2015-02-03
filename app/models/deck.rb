@@ -115,6 +115,7 @@ class Deck < ActiveRecord::Base
   end
 
   def create_unique_deck
+    self.cardstring = cardstring.split(",").sort.join(",")
     self.unique_deck = UniqueDeck.create_from_deck(self) if num_cards == 30
   end
 

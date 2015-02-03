@@ -249,6 +249,7 @@ Hearthstats::Application.routes.draw do
       post "decks/hdt_create"
       post "decks/hdt_after"
       post "decks/create_version"
+      post "decks/hdt_edit"
       post "deck_versions/hdt_after"
       post "matches/hdt_new"
       post "matches/hdt_after"
