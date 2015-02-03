@@ -58,6 +58,8 @@ class Api::V2::DecksController < ApplicationController
       cardstring = Deck.hdt_parse(@req[:cards])
       deck.cardstring = cardstring
       deck.name = @req[:name]
+      deck.tag_list = @req[:tags]
+      deck.notes = @req[:notes]
       if deck.save
         deck.deck_versions.last.update_attribute(:cardstring, cardstring)
         api_response =  { status: "success", data: deck }
