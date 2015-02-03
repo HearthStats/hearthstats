@@ -461,8 +461,5 @@ class CreatesEverything < ActiveRecord::Migration
     add_index "users", ["tourny_id"], :name => "index_users_on_tourny_id"
     add_index "users", ["userkey"], :name => "index_users_on_userkey"
 
-    add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
-
-    add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
   end
 end
