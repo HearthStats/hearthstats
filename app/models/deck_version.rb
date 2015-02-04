@@ -8,7 +8,7 @@ class DeckVersion < ActiveRecord::Base
   before_save :sort_cardstring
 
   def sort_cardstring
-    self.cardstring = cardstring.split(",").sort.join(",")
+    self.cardstring = cardstring.split(",").sort.join(",") if self.cardstring
   end
 
   def cardstring_to_blizz
