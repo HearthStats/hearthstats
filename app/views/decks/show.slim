@@ -8,7 +8,7 @@
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Decks')
 - content_for :actions do
-  - if (signed_in? && current_user.id == @deck.user_id && !@deck.is_tourn_deck)
+  - if (signed_in? && current_user.id == @deck.user_id)
     = link_to 'Edit', edit_deck_path(@deck), class: "btn retirebut btn-primary"
     = " "
   - if (!current_user.nil? && current_user.id != @deck.user_id)

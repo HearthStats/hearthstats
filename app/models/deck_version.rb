@@ -5,6 +5,11 @@ class DeckVersion < ActiveRecord::Base
 
   belongs_to :deck
   belongs_to :unique_deck
+  before_save :sort_cardstring
+
+  def sort_cardstring
+    self.cardstring = cardstring.split(",").sort.join(",")
+  end
 
   def cardstring_to_blizz
     card_array = []

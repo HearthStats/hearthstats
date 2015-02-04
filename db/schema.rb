@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150203221341) do
+ActiveRecord::Schema.define(:version => 20150204195002) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -98,8 +98,10 @@ ActiveRecord::Schema.define(:version => 20150203221341) do
     t.text     "notes"
     t.string   "patch",      :default => "current"
     t.integer  "klass_id"
+    t.integer  "deck_id"
   end
 
+  add_index "arena_runs", ["deck_id"], :name => "index_arena_runs_on_deck_id"
   add_index "arena_runs", ["user_id"], :name => "index_arena_runs_on_user_id"
 
   create_table "arenas", :force => true do |t|
@@ -228,10 +230,11 @@ ActiveRecord::Schema.define(:version => 20150203221341) do
     t.integer  "user_num_losses"
     t.float    "user_winrate"
     t.boolean  "is_public"
-    t.boolean  "is_tourn_deck",    :default => false
     t.boolean  "archived",         :default => false
+    t.integer  "deck_type_id",     :default => 1
   end
 
+  add_index "decks", ["deck_type_id"], :name => "index_decks_on_deck_type_id"
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
   add_index "decks", ["unique_deck_id"], :name => "index_decks_on_unique_deck_id"

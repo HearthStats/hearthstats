@@ -17,7 +17,6 @@ class MatchDeck < ActiveRecord::Base
     if !self.deck.nil? && !self.deck.unique_deck.nil?
       self.match.unique_deck = self.deck.unique_deck
       self.match.save
-      self.deck_version_id = self.deck.deck_versions.last.id if self.deck.deck_versions.last
     end
   end
 

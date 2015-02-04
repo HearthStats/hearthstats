@@ -45,8 +45,10 @@ class Api::V2::DecksController < ApplicationController
     api_response = []
     decks.each do |deck|
       versions = deck.deck_versions
-      deck_versions = versions.map { |m| { :version => m.version,
-                           :cards => m.cardstring_to_blizz} }
+      deck_versions = versions.map { |m| { 
+                              :deck_version_id => m.id,
+                              :version => m.version,
+                              :cards => m.cardstring_to_blizz} }
       api_response << { :deck => deck,
                         :versions => deck_versions,
                         :current_version => deck.current_version,

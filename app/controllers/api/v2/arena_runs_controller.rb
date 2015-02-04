@@ -39,10 +39,10 @@ class Api::V2::ArenaRunsController < ApplicationController
 
   def new
     # Required params:
-    # params[:klass_id]
+    # params[:class], params[:cards]
 
-    userclass = Klass.where(name: @req[:class])[0]
-    if userclass.nil?
+    userclass_id = Klass::LIST.invert[@req[:class]]
+    if userclass_id.nil?
       return render json: {
         status:  "fail",
         message: "Unknown user class."
@@ -52,9 +52,18 @@ class Api::V2::ArenaRunsController < ApplicationController
     existing_runs.update_all(complete: true)
     arenarun = ArenaRun.new
     arenarun.user_id = current_user.id
-    arenarun.klass_id = userclass.id
+    arenarun.klass_id = userclass_id
 
     if arenarun.save!
+      deck = Deck.create(
+                  name: "Arena##{arenarun.id}",
+                  klass_id: userclass_id,
+                  cardstring: Deck.hdt_parse(@req[:cards]),
+                  user_id: current_user.id,
+                  archived: true,
+                  deck_type_id: 2
+                )
+      arenarun.update_attribute(:deck_id, deck.id)
       render json: {
         status: "success",
         data:   arenarun
@@ -73,7 +82,7 @@ class Api::V2::ArenaRunsController < ApplicationController
     # Optional params:
     # :notes, :gold, :dust
 
-    user = currnet_user
+    user = current_user
 
     arena_run = ArenaRun.where(user_id: user.id, complete: false).last
     if arena_run.nil?

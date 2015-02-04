@@ -210,7 +210,9 @@ class Api::V2::MatchesController < ApplicationController
         if mode.name == "Arena"
           submit_arena_match(current_user, match, userclass)
         else
-          MatchDeck.create(match_id: match.id, deck_id: deck.id)
+          MatchDeck.create(match_id: match.id, 
+                           deck_id: deck.id, 
+                           deck_version_id: req[:deck_version_id].to_i)
           MatchRank.create(match_id: match.id, rank_id: req[:ranklvl].to_i)
           delete_deck_cache!(deck)
         end
@@ -311,6 +313,7 @@ class Api::V2::MatchesController < ApplicationController
     end
     # check for completed arena run
     if arena_run.num_losses >= 3 || arena_run.num_wins >= 12
+      arena_run.update_attribute(:complete, true)
       message = "Existing #{userclass.name} run already had #{arena_run.num_losses >= 3 ? "3 losses" : "12 wins"}. New #{match.klass.name} run created."
       arena_run = ArenaRun.new(user_id: user.id, klass_id: match.klass.id)
       arena_run.save
@@ -326,7 +329,10 @@ class Api::V2::MatchesController < ApplicationController
       deck = create_new_deck(@user, @req[:slot], userclass)
       message = "No deck set for slot #{@req[:slot]}. New #{userclass.name} deck created and assigned to #{@req[:slot]}."
     end
-    MatchDeck.create(match_id: match.id, deck_id: deck.id)
+    MatchDeck.create(match_id: match.id, 
+                     deck_id: deck.id,
+                     deck_version_id: deck.current_version
+                    )
     delete_deck_cache!(deck)
     if !ranklvl.nil?
       if legend

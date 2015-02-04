@@ -173,7 +173,10 @@ class Api::V1::MatchesController < ApplicationController
       deck = create_new_deck(@user, @req[:slot], userclass)
       message = "No deck set for slot #{@req[:slot]}. New #{userclass.name} deck created and assigned to #{@req[:slot]}."
     end
-    MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+    MatchDeck.new(match_id: match.id, 
+                  deck_id: deck.id,
+                  deck_version_id: deck.current_version
+                 ).save!
     delete_deck_cache!(deck)
     if !ranklvl.nil?
       if legend

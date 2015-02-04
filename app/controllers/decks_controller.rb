@@ -166,7 +166,6 @@ class DecksController < ApplicationController
 
   def edit
     @deck = Deck.find(params[:id])
-    redirect_to decks_path, alert: "Tournament decks cannot be edited" and return if @deck.is_tourn_deck
     gon.deck = @deck
     gon.cards = Card.all
     canedit(@deck)
@@ -218,9 +217,6 @@ class DecksController < ApplicationController
 
   def update
     @deck = Deck.find(params[:id])
-    if @deck.is_tourn_deck
-      render action: "index" and return
-    end
     expire_fragment(@deck)
     @deck.tag_list = params[:tags]
     respond_to do |format|

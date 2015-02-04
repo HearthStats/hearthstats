@@ -1,6 +1,7 @@
 class Deck < ActiveRecord::Base
   attr_accessible :loses, :name, :wins, :notes, :cardstring,
-                  :klass_id, :is_public, :user_id, :is_tourn_deck
+                  :klass_id, :is_public, :user_id, :is_tourn_deck,
+                  :deck_type_id, :archived
 
   acts_as_taggable
   is_impressionable
@@ -9,6 +10,10 @@ class Deck < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  TYPES = {
+    1 => 'Constructed',
+    2 => 'Arena'
+  }
   ### ASSOCIATIONS:
 
   belongs_to :unique_deck
