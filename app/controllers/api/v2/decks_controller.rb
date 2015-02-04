@@ -44,9 +44,13 @@ class Api::V2::DecksController < ApplicationController
     decks = Deck.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
     api_response = []
     decks.each do |deck|
+      versions = deck.deck_versions
+      deck_versions = versions.map { |m| { :version => m.version,
+                           :cards => m.cardstring_to_blizz} }
       api_response << { :deck => deck,
-                        :versions => [ deck.deck_versions ],
+                        :versions => deck_versions,
                         :current_version => deck.current_version,
+                        :tags => deck.tag_list,
                         :cards => deck.cardstring_to_blizz
       }
     end

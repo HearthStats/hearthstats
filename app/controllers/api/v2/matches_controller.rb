@@ -122,7 +122,7 @@ class Api::V2::MatchesController < ApplicationController
       if match.save
 
         if mode.name == "Arena"
-          submit_arena_match(match, userclass)
+          submit_arena_match(current_user, match, userclass)
         else
           submit_ranked_match(match, userclass, ranklvl, legend)
         end
@@ -208,7 +208,7 @@ class Api::V2::MatchesController < ApplicationController
 
       if match.save
         if mode.name == "Arena"
-          submit_arena_match(match, userclass)
+          submit_arena_match(current_user, match, userclass)
         else
           MatchDeck.create(match_id: match.id, deck_id: deck.id)
           MatchRank.create(match_id: match.id, rank_id: req[:ranklvl].to_i)
@@ -296,14 +296,14 @@ class Api::V2::MatchesController < ApplicationController
     end
   end
 
-  def submit_arena_match(match, userclass)
+  def submit_arena_match(user, match, userclass)
     # associate the match with an arena run
-    arena_run = ArenaRun.where(user_id: @user.id, complete: false).last
+    arena_run = ArenaRun.where(user_id: user.id, complete: false).last
     if arena_run.nil? || arena_run.klass_id != userclass.id
       if arena_run.nil?
         message = "New #{userclass.name} arena run created"
       end
-      arena_run = ArenaRun.new(user_id: @user.id, klass_id: userclass.id)
+      arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
       arena_run.save
       if arena_run.klass_id != userclass.id
         message = "Existing #{arena_run.klass.name} arena run did not match submitted #{userclass.name} match. New #{userclass.name} arena run created."
@@ -312,7 +312,7 @@ class Api::V2::MatchesController < ApplicationController
     # check for completed arena run
     if arena_run.num_losses >= 3 || arena_run.num_wins >= 12
       message = "Existing #{userclass.name} run already had #{arena_run.num_losses >= 3 ? "3 losses" : "12 wins"}. New #{match.klass.name} run created."
-      arena_run = ArenaRun.new(user_id: @user.id, klass_id: match.klass.id)
+      arena_run = ArenaRun.new(user_id: user.id, klass_id: match.klass.id)
       arena_run.save
     end
     MatchRun.new(match_id: match.id, arena_run_id: arena_run.id).save!
