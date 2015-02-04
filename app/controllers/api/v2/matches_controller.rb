@@ -156,16 +156,20 @@ class Api::V2::MatchesController < ApplicationController
 
     errors = Array.new
 
-    # get deck
-    deck = Deck.find(req[:deck_id])
-    if deck.nil?
-      errors.push("Deck could not be found")
-    end
-
     # get mode
-    mode = Mode.where(name: req[:mode])[0]
+    mode = Mode::LIST.invert[req[:mode]]
     if mode.nil?
       errors.push("Unknown game mode '" + (req[:mode].nil? ? "[undetected]" : req[:mode]) + "'.")
+    end
+
+    if mode != 1
+      # get deck
+      deck = Deck.find(req[:deck_id])
+      if deck.nil?
+        errors.push("Deck could not be found")
+      end
+    else
+      deck = ArenaRun.find(req[:arena_run_id]).deck
     end
 
     # get user class
@@ -185,7 +189,7 @@ class Api::V2::MatchesController < ApplicationController
     if result.nil?
       errors.push("Unknown result '" + (req[:result].nil? ? "[undetected]" : req[:result]) + "'.")
     end
-
+t
     if errors.count > 0
       render json: {status: "fail", message: "MATCH NOT RECORDED. Errors detected: " + errors.join(" ")}
     else
@@ -193,7 +197,7 @@ class Api::V2::MatchesController < ApplicationController
       #create the match
       match = Match.new
       match.user_id = user.id
-      match.mode = mode
+      match.mode_id = mode
       match.klass_id = userclass
       match.oppclass_id = oppclass
       match.result_id = result
@@ -204,10 +208,10 @@ class Api::V2::MatchesController < ApplicationController
       match.notes = req[:notes]
       match.appsubmit = true
 
-      message = "New #{mode.name} #{req[:class]} vs #{req[:oppclass]} match created"
+      message = "New #{Match::MODES_LIST[mode]} #{req[:class]} vs #{req[:oppclass]} match created"
 
       if match.save
-        if mode.name == "Arena"
+        if mode == 1
           submit_arena_match(current_user, match, userclass)
         else
           MatchDeck.create(match_id: match.id, 
@@ -301,20 +305,20 @@ class Api::V2::MatchesController < ApplicationController
   def submit_arena_match(user, match, userclass)
     # associate the match with an arena run
     arena_run = ArenaRun.where(user_id: user.id, complete: false).last
-    if arena_run.nil? || arena_run.klass_id != userclass.id
+    if arena_run.nil? || arena_run.klass_id != userclass
       if arena_run.nil?
-        message = "New #{userclass.name} arena run created"
+        message = "New #{Klass::LIST[userclass]} arena run created"
       end
-      arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass.id)
+      arena_run = ArenaRun.new(user_id: user.id, klass_id: userclass)
       arena_run.save
-      if arena_run.klass_id != userclass.id
-        message = "Existing #{arena_run.klass.name} arena run did not match submitted #{userclass.name} match. New #{userclass.name} arena run created."
+      if arena_run.klass_id != userclass
+        message = "Existing #{arena_run.klass.name} arena run did not match submitted #{Klass::LIST[userclass]} match. New #{Klass::LIST[userclass]} arena run created."
       end
     end
     # check for completed arena run
     if arena_run.num_losses >= 3 || arena_run.num_wins >= 12
       arena_run.update_attribute(:complete, true)
-      message = "Existing #{userclass.name} run already had #{arena_run.num_losses >= 3 ? "3 losses" : "12 wins"}. New #{match.klass.name} run created."
+      message = "Existing #{Klass::LIST[userclass]} run already had #{arena_run.num_losses >= 3 ? "3 losses" : "12 wins"}. New #{match.klass.name} run created."
       arena_run = ArenaRun.new(user_id: user.id, klass_id: match.klass.id)
       arena_run.save
     end
@@ -327,7 +331,7 @@ class Api::V2::MatchesController < ApplicationController
     # Check if deck exists
     if deck.nil?
       deck = create_new_deck(@user, @req[:slot], userclass)
-      message = "No deck set for slot #{@req[:slot]}. New #{userclass.name} deck created and assigned to #{@req[:slot]}."
+      message = "No deck set for slot #{@req[:slot]}. New #{Klass::LIST[userclass]} deck created and assigned to #{@req[:slot]}."
     end
     MatchDeck.create(match_id: match.id, 
                      deck_id: deck.id,

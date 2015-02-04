@@ -1,9 +1,11 @@
 class ArenaRun < ActiveRecord::Base
-  attr_accessible :class, :gold, :dust, :completed, :user_id, :klass_id, :notes, :complete
+  attr_accessible :class, :gold, :dust, :completed,
+    :user_id, :klass_id, :notes, :complete, :deck_id
 
   ### ASSOCIATIONS:
 
   has_many :arenas
+  belongs_to :deck
   has_many :match_runs
   has_many :matches, through: :match_runs, dependent: :destroy
   belongs_to :klass
