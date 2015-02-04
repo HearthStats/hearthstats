@@ -41,11 +41,14 @@ class Api::V2::DecksController < ApplicationController
 
   def hdt_after
     req = ActiveSupport::JSON.decode(request.body)
-    decks = Deck.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
+    decks = Deck.where(deck_type_id: [nil, 1]).where{
+      (user_id == my{current_user.id}) &
+      (created_at >= DateTime.strptime(req["date"], '%s'))
+    }
     api_response = []
     decks.each do |deck|
       versions = deck.deck_versions
-      deck_versions = versions.map { |m| { 
+      deck_versions = versions.map { |m| {
                               :deck_version_id => m.id,
                               :version => m.version,
                               :cards => m.cardstring_to_blizz} }

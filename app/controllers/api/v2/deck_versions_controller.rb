@@ -6,7 +6,10 @@ class Api::V2::DeckVersionsController < ApplicationController
 
   def hdt_after
     req = ActiveSupport::JSON.decode(request.body)
-    deck_versions = Deck.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
+    deck_versions = Deck.where(deck_type_id: [nil, 1]).where{
+      (user_id == my{current_user.id}) & 
+      (created_at >= DateTime.strptime(req["date"], '%s'))
+    }
     api_response = []
     deck_versions.each do |deck|
       api_response << { :deck => deck,
