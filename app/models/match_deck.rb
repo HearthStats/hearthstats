@@ -1,5 +1,5 @@
 class MatchDeck < ActiveRecord::Base
-  attr_accessible :deck_id, :match_id
+  attr_accessible :deck_id, :match_id, :deck_version_id
 
   ### ASSOCIATIONS:
 
