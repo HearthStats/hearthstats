@@ -31,7 +31,8 @@ class Api::V2::DecksController < ApplicationController
                    )
     if deck.save
       deck.tag_list = @req[:tags]
-      api_response =  { status: "success", data: deck }
+      deck_info = { deck: deck, deck_versions: deck.deck_versions }
+      api_response =  { status: "success", data: deck_info }
     else
       api_response = { status: "error" }
     end
