@@ -79,6 +79,7 @@ class Deck < ActiveRecord::Base
   end
 
   def cardstring_to_blizz
+    return if self.cardstring.nil?
     card_array = []
     self.cardstring.split(",").each do |card|
       blizz_id = Card.find(card.split("_")[0]).blizz_id if !card.split("_")[0].blank?
