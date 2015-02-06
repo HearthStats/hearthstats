@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
-  attr_accessible :name, :hearthhead_id, :description, :card_set_id,
-                  :rarity_id, :type_id, :klass_id, :race_id, :mana, :health, :attack,
-                  :collectible, :race_id, :blizz_id, :patch_id
+  attr_accessible :name, :hearthhead_id, :description, :card_set,
+                  :rarity_id, :type_name, :klass_id, :mana, :health, :attack,
+                  :collectible, :blizz_id, :patch_id
 
   RARITY = {
     5 => "Legendary",
@@ -14,14 +14,15 @@ class Card < ActiveRecord::Base
   ### ASSOCIATIONS:
 
   belongs_to :klass
-  belongs_to :card_set
-  belongs_to :type
 
   has_many :unique_decks, through: :unique_deck_card
   has_many :unique_deck_card
 
   has_many :blind_drafts, through: :blind_draft_card
   has_many :blind_draft_card
+
+  has_many :mechanics, through: :card_mechanic
+  has_many :card_mechanic
 
 
   ### VALIDATIONS:

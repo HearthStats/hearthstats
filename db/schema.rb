@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150204195002) do
+ActiveRecord::Schema.define(:version => 20150206180058) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -141,6 +141,11 @@ ActiveRecord::Schema.define(:version => 20150204195002) do
     t.boolean  "complete",     :default => false
   end
 
+  create_table "card_mechanics", :force => true do |t|
+    t.integer "card_id"
+    t.integer "mechanic_id"
+  end
+
   create_table "card_sets", :force => true do |t|
     t.string "name"
     t.text   "notes"
@@ -151,21 +156,18 @@ ActiveRecord::Schema.define(:version => 20150204195002) do
     t.string  "description"
     t.integer "attack"
     t.integer "health"
-    t.integer "card_set_id"
     t.integer "rarity_id"
-    t.integer "type_id"
     t.integer "klass_id"
-    t.integer "race_id"
     t.integer "mana"
     t.boolean "collectible"
     t.integer "patch_id"
     t.string  "blizz_id"
-    t.string  "race"
+    t.string  "card_set"
+    t.string  "type_name"
   end
 
   add_index "cards", ["blizz_id"], :name => "index_cards_on_blizz_id"
   add_index "cards", ["name"], :name => "index_cards_on_name"
-  add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
@@ -361,6 +363,10 @@ ActiveRecord::Schema.define(:version => 20150204195002) do
   add_index "matches", ["oppclass_id"], :name => "index_matches_on_oppclass_id"
   add_index "matches", ["result_id"], :name => "index_matches_on_result_id"
   add_index "matches", ["user_id", "mode_id", "klass_id", "oppclass_id", "coin", "created_at"], :name => "index_for_search"
+
+  create_table "mechanics", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "modes", :force => true do |t|
     t.string "name"
