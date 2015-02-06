@@ -11,6 +11,12 @@ class Card < ActiveRecord::Base
     1 => "Free"
   }
 
+  TYPES = {
+    1 => "Minion",
+    2 => "Spell",
+    3 => "Weapon"
+  }
+
   ### ASSOCIATIONS:
 
   belongs_to :klass
