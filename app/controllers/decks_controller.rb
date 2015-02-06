@@ -43,7 +43,12 @@ class DecksController < ApplicationController
 
 
   def show
-    @deck = Deck.find(params[:id])
+    begin
+      @deck = Deck.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to public_decks_path, alert: "Deck cannot be found" and return
+    end
+
     if !@deck.tourn_decks.empty? && current_user != @deck.user
       redirect_to public_decks_path, alert: "Tournament decks can only be viewed by the owner." and return
     end
