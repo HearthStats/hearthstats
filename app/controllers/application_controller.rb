@@ -78,7 +78,11 @@ class ApplicationController < ActionController::Base
   private
   
   def set_locale_from_url
-    I18n.locale = params[:locale] || I18n.default_locale
+    begin
+      I18n.locale = params[:locale] || I18n.default_locale
+    rescue
+      I18n.locale = I18n.default_locale
+    end
   end
 
   # API Methods
