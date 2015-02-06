@@ -10,12 +10,15 @@ class CardImporter
       p "Parsing #{set[0]}"
       count = set[1].count
       set[1].each_with_index do |card, i|
+        next if !["Spell", "Minion", "Weapon"].include? card["type"]
         db_card = Card.find_by_name(card["name"])
         returned_card = db_card
         if db_card.nil?
           returned_card = create_card(card)
         elsif db_card.blizz_id.length > card["id"].length
           returned_card = update_card(card, db_card)
+        else
+          returned_card = update_specs(card, db_card)
         end
         returned_card.update_attribute(:card_set, set[0])
         percent = i.to_f/count*100

@@ -73,7 +73,7 @@ class Api::V2::DecksController < ApplicationController
       deck.tag_list = @req[:tags]
       deck.notes = @req[:notes]
       if deck.save
-        deck.deck_versions.last.update_attribute(:cardstring, cardstring) if deck.versions.last
+        deck.deck_versions.last.update_attribute(:cardstring, cardstring) if deck.deck_versions.last
         api_response =  { status: "success", data: deck }
       else
         api_response = { status: "error" }
