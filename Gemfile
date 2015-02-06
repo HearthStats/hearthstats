@@ -89,7 +89,6 @@ gem "squeel"
 # APIs
 gem 'cindy' # Sendy API
 gem 'appsignal'
-gem 'skylight'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background
