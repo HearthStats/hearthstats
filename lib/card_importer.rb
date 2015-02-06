@@ -11,12 +11,11 @@ class CardImporter
       count = set[1].count
       set[1].each_with_index do |card, i|
         db_card = Card.find_by_name(card["name"])
+        returned_card = db_card
         if db_card.nil?
           returned_card = create_card(card)
         elsif db_card.blizz_id.length > card["id"].length
           returned_card = update_card(card, db_card)
-        else
-          returned_card = update_specs(card, db_card)
         end
         returned_card.update_attribute(:card_set, set[0])
         percent = i.to_f/count*100
@@ -32,12 +31,9 @@ class CardImporter
     rarities = Card::RARITY.invert
     klasses = Klass::LIST.invert
     card_db.update_attributes(
-      name: card["name"].to_s,
-      description: card["text"].to_s,
       attack: card["attack"],
       health: card["health"],
       type_name: card["type"].to_s,
-      blizz_id: card["id"],
       rarity_id: rarities[card["rarity"]],
       klass_id: klasses[card["playerClass"]],
       mana: card["cost"],
@@ -51,7 +47,6 @@ class CardImporter
     rarities = Card::RARITY.invert
     klasses = Klass::LIST.invert
     card_db.update_attributes(
-      name: card["name"].to_s,
       description: card["text"].to_s,
       attack: card["attack"],
       health: card["health"],
