@@ -72,7 +72,6 @@
                 = image_tag "cards/#{card.name.parameterize}.png", class: "deckbuilder-img"
                 p.name.hidden = card.name
                 p.description.hidden = card.description.to_s
-                p.race.hidden = card.race.to_s
                 p.mana.hidden = card.mana
                 p.klass.hidden = card.klass_id
                 p.rarity.hidden = Card::RARITY[card.rarity_id]
