@@ -50,9 +50,9 @@ class UniqueDeck < ActiveRecord::Base
   end
 
   def update_stats
-    self.num_minions = cards.where(type_id: 1).count
-    self.num_spells  = cards.where(type_id: 2).count
-    self.num_weapons = cards.where(type_id: 3).count
+    self.num_minions = cards.where(type_name: "Minion").count
+    self.num_spells  = cards.where(type_name: "Spell").count
+    self.num_weapons = cards.where(type_name: "Weapon").count
     self.num_users   = decks.where(klass_id: klass_id).count
     self.num_matches = decks.sum(:user_num_matches)
     self.num_wins    = decks.sum(:user_num_wins)
@@ -64,7 +64,7 @@ class UniqueDeck < ActiveRecord::Base
   def get_mana_cost
     sum = 0
     self.cards.each do |card|
-      next if card.card_set_id == 3
+      next if card.card_set == "Basic"
       cost = case card.rarity_id
       when 1
         0
