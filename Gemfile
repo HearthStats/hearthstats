@@ -85,7 +85,6 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'rmagick'
 # gem 'rack-ssl-enforcer'
 gem "squeel"
-gem "siren", :require => false # Query JSON
 
 # APIs
 gem 'cindy' # Sendy API
