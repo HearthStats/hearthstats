@@ -151,7 +151,7 @@ class DecksController < ApplicationController
     if params[:klass].nil?
       redirect_to new_splash_decks_path, alert: "Please select a class" and return
     end
-    gon.cards = Card.where(klass_id: [nil, params[:klass]])
+    gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
     @deck.klass_id = params[:klass]
     @deck.is_public = true
