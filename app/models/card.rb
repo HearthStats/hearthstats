@@ -33,7 +33,7 @@ class Card < ActiveRecord::Base
 
   ### VALIDATIONS:
 
-  validates :name, uniqueness: true, presence: true
+  # validates :name, uniqueness: true, presence: true
 
   ### INSTANCE METHODS:
 

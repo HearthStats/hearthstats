@@ -1,5 +1,10 @@
 require 'httparty'
 class CardImporter
+
+  attr_reader :all_cards
+
+  GOOD_TYPES = ["Minion", "Spell", "Weapon"]
+
   def initialize(set)
     @set = set
     @all_cards = HTTParty.get("http://hearthstonejson.com/json/AllSets.json")
@@ -28,20 +33,38 @@ class CardImporter
     end
   end
 
+  def fix_missing_info
+    all_cards_flat = @all_cards.to_a.flatten
+    cards = Card.where{(rarity_id == nil) || (mana == nil)}
+    messed = []
+    cards.each do |card|
+      proper_card = all_cards_flat.find {|set_card| set_card["name"] == card.name && GOOD_TYPES.include?(set_card["type"])}
+      if proper_card.nil?
+        messed << card
+      else
+        update_card(proper_card, card)
+      end
+    end
+
+    messed
+  end
   private
 
   def update_specs(card, card_db)
     rarities = Card::RARITY.invert
     klasses = Klass::LIST.invert
-    card_db.update_attributes(
+    unless card_db.update_attributes(
       attack: card["attack"],
       health: card["health"],
       type_name: card["type"].to_s,
-      rarity_id: rarities[card["rarity"]],
-      klass_id: klasses[card["playerClass"]],
+      rarity_id: rarities[card["rarity"]].to_i,
+      klass_id: klasses[card["playerClass"]].to_i,
       mana: card["cost"],
       collectible: card["collectible"]
     )
+      Rails.logger.info(card_db.errors.messages.inspect)
+    end
+
     add_mechanics(card["mechanics"], card_db)
 
     card_db
@@ -49,8 +72,7 @@ class CardImporter
   def update_card(card, card_db)
     rarities = Card::RARITY.invert
     klasses = Klass::LIST.invert
-    card_db.update_attributes(
-      description: card["text"].to_s,
+    params = {description: card["text"].to_s,
       attack: card["attack"],
       health: card["health"],
       type_name: card["type"].to_s,
@@ -58,9 +80,10 @@ class CardImporter
       rarity_id: rarities[card["rarity"]],
       klass_id: klasses[card["playerClass"]],
       mana: card["cost"],
-      collectible: card["collectible"]
-    )
-    add_mechanics(card["mechanics"], card_db)
+      collectible: card["collectible"]}
+    unless card_db.update_attributes(params)
+      p card_db.errors.messages.inspect
+    end
 
     card_db
   end
