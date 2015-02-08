@@ -23,6 +23,7 @@ class DashboardsController < ApplicationController
     @topdeck = Deck.bestuserdeck(current_user.id)
     @toparena = Match.bestuserarena(current_user.id)
     gon.hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
+    raise
   end
 
   def fullstats
