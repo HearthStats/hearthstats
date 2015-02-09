@@ -213,11 +213,16 @@ t
       if match.save
         if mode == 1
           submit_arena_match(current_user, match, userclass)
-        else
+        elsif mode == 3
           MatchDeck.create(match_id: match.id, 
                            deck_id: deck.id, 
                            deck_version_id: req[:deck_version_id].to_i)
           MatchRank.create(match_id: match.id, rank_id: req[:ranklvl].to_i)
+          delete_deck_cache!(deck)
+        else
+          MatchDeck.create(match_id: match.id, 
+                           deck_id: deck.id, 
+                           deck_version_id: req[:deck_version_id].to_i)
           delete_deck_cache!(deck)
         end
 

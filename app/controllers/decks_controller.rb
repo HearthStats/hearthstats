@@ -56,7 +56,7 @@ class DecksController < ApplicationController
     gon.cardstring = @deck.cardstring
 
     if !params[:version].nil?
-      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].try(:cardstring)
+      cardstring = @deck.deck_versions.find {|d| d.version == params[:version]}.try(:cardstring)
       @deck.cardstring = cardstring
     end
 
@@ -235,6 +235,13 @@ class DecksController < ApplicationController
             @deck.save
           end
         end
+        if params["major_version"]
+          version_num = @deck.current_version.to_i + 1
+          version_deck(@deck, version_num)
+        elsif params["minor_version"]
+          version_num = @deck.current_version.to_i + 0.1
+          version_deck(@deck, version_num)
+        end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
       else
         format.html { render action: "edit" }
@@ -298,10 +305,10 @@ class DecksController < ApplicationController
   def version
     deck = Deck.find(params[:id])
     canedit(deck)
-    if version_deck(deck)
-      redirect_to edit_deck_path(deck), notice: "Previous deck version saved"
+    if version_deck(deck, params[:version])
+      redirect_to deck, notice: "Deck version saved"
     else
-      redirect_to edit_deck_path(deck), alert: "Deck version could not be saved"
+      redirect_to deck, alert: "Deck version could not be saved"
     end
   end
 
@@ -312,13 +319,7 @@ class DecksController < ApplicationController
 
   private
 
-  def version_deck(deck)
-    last_version = deck.deck_versions.last
-    if last_version.nil?
-      version = 1
-    else
-      version = last_version.version.to_i + 1
-    end
+  def version_deck(deck, version)
     version = DeckVersion.new( deck_id: deck.id, cardstring: deck.cardstring, version: version )
     if version.save
       return true

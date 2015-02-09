@@ -37,7 +37,10 @@
           = f.submit class: 'btn btn-block green'
         - if params[:action] == 'edit'
           .form-group
-            = link_to 'Create New Deck Version', version_deck_path(@deck),class: 'btn btn-block yellow', method: :post
+            = f.submit "Save as v#{@deck.current_version.to_i + 0.1}",
+              name: "minor_version", class: "btn yellow"
+            = f.submit "Save as v#{@deck.current_version.to_i + 1}",
+              name: "major_version", class: "btn green"
           .form-group
             label = t("decks.form.other_versions")
             div

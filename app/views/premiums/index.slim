@@ -83,7 +83,7 @@
                   = form_tag premiums_path do
                     script [src="https://checkout.stripe.com/checkout.js" 
                       class="stripe-button" 
-                      data-key="#{ Rails.configuration.stripe[:publishable_key] }" 
+                      data-key="#{ ENV[:publishable_key] }" 
                       data-description="Early Supporter" 
                       data-amount="699"
                       data-image="/assets/new_logo/full_colour/full_colour_mark.png"]

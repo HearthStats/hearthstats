@@ -19,7 +19,8 @@ class WelcomeController < ApplicationController
                 where("unique_decks.num_matches >= ?", 30).
                 sort_by { |deck| deck.unique_deck.winrate || 0 }.
                 last(7).
-                reverse
+                reverse.
+                to_a
     end
 
     # Streams
