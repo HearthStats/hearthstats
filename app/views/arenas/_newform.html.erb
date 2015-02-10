@@ -48,9 +48,9 @@
       <div class="arena_notes">
         <h3><%=t('shared.notes')%></h3>
         <% if @arenarun.matches.last %>
-          <%= f.text_area :notes, :class => "redactor", :rows => 10, :cols => 120, :value => @arenarun.matches.last.notes %>
+          <%= f.text_area :notes, :class => "redactor", :rows => 10, :value => @arenarun.matches.last.notes, style: "width: 100%;" %>
         <% else %>
-          <%= f.text_area :notes, :class => "redactor", :rows => 10, :cols => 120 %>
+          <%= f.text_area :notes, :class => "redactor", :rows => 10, style: "width: 100%;" %>
         <% end %>
       </div>
       <div class="portlet box green">
