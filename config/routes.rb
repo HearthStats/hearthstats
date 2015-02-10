@@ -86,6 +86,7 @@ Hearthstats::Application.routes.draw do
   get "admin/export_con"
   match "admin/ann", to: "admin#ann"
   post "admin/anncreate"
+  get "admin/test_page"
   post "admin/toggle_sub"
 
   get "welcome/index"
@@ -193,7 +194,7 @@ Hearthstats::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   # HearthStats API
-  namespace :api do
+  namespace :api, defaults:{format: 'json'} do
     namespace :v1 do
       resources :cards
       get "arenas/show"
@@ -208,6 +209,7 @@ Hearthstats::Application.routes.draw do
 
 
       post "matches/new"
+      post "matches/delete"
 
       get "decks/show"
       get "decks/find"
@@ -220,6 +222,8 @@ Hearthstats::Application.routes.draw do
 
     namespace :v2 do
       devise_for :users
+      resources :cards
+      get "users/premium"
       get "arenas/show"
       post "arenas/new"
 
@@ -232,11 +236,24 @@ Hearthstats::Application.routes.draw do
 
       post "matches/new"
       get "matches/query"
+      post "matches/delete"
 
       get "decks/show"
       get "decks/find"
       post "decks/activate"
+      post "decks/create"
       post "decks/slots"
+      post "decks/delete"
+
+      # HDT APIs
+      post "decks/hdt_create"
+      post "decks/hdt_after"
+      post "decks/create_version"
+      post "decks/hdt_edit"
+      post "deck_versions/hdt_after"
+      post "matches/hdt_new"
+      post "matches/hdt_after"
+      post "matches/move"
     end
   end
 end

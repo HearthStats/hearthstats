@@ -144,6 +144,7 @@ class Api::V1::DecksController < ApplicationController
     render json: response
 
   end
+  
   private
 
   def deck_belongs_to_user?(user, deck_ids)

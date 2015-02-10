@@ -1,9 +1,17 @@
 class Api::V1::CardsController < ApplicationController
-  before_filter :validate_userkey
+  # before_filter :validate_userkey
 
   def index
-    @cards = Card.all
-    render json: { status: "success", data: @cards }
+    @cards = Card.where("rarity_id is NOT NULL")
+    .where(type_name: ["minion", "weapon", "spell"])
+    .where("mana is NOT NULL")
+    response = @cards.map {|card| 
+      card_j = card.as_json
+      card_j["type_id"] = Card::TYPES.invert[card.type_name]
+
+      card_j
+    }
+    render json: { status: "success", data: response }
   end
 
   def show

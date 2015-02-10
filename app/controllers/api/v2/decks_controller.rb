@@ -1,6 +1,6 @@
 class Api::V2::DecksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, except: [:show]
+  before_filter :get_req, except: [:show, :hdt_after]
 
   respond_to :json
 
@@ -18,6 +18,91 @@ class Api::V2::DecksController < ApplicationController
         data:   decks
       }
     end
+    render json: api_response
+  end
+
+  def hdt_create
+    card_string = Deck.hdt_parse(@req[:cards])
+    deck = Deck.new( name: @req[:name],
+                     klass_id: Klass::LIST.invert[@req[:class]],
+                     cardstring: card_string,
+                     user_id: current_user.id,
+                     notes: @req[:notes]
+                   )
+    if deck.save
+      deck.tag_list = @req[:tags]
+      deck_info = { deck: deck, deck_versions: deck.deck_versions }
+      api_response =  { status: "success", data: deck_info }
+    else
+      api_response = { status: "error" }
+    end
+
+    render json: api_response
+  end
+
+  def hdt_after
+    req = ActiveSupport::JSON.decode(request.body)
+    decks = Deck.where(deck_type_id: [nil, 1]).where{
+      (user_id == my{current_user.id}) &
+      (created_at >= DateTime.strptime(req["date"], '%s'))
+    }
+    api_response = []
+    decks.each do |deck|
+      versions = deck.deck_versions
+      deck_versions = versions.map { |m| {
+                              :deck_version_id => m.id,
+                              :version => m.version,
+                              :cards => m.cardstring_to_blizz} }
+      api_response << { :deck => deck,
+                        :versions => deck_versions,
+                        :current_version => deck.current_version,
+                        :tags => deck.tag_list,
+                        :cards => deck.cardstring_to_blizz
+      }
+    end
+
+    render json: { status: "success", data: api_response }
+  end
+
+  def hdt_edit
+    deck = Deck.find(@req[:deck_id])
+    if deck.user_id == current_user.id
+      cardstring = Deck.hdt_parse(@req[:cards])
+      deck.cardstring = cardstring
+      deck.name = @req[:name]
+      deck.tag_list = @req[:tags]
+      deck.notes = @req[:notes]
+      if deck.save
+        deck.deck_versions.last.update_attribute(:cardstring, cardstring) if deck.deck_versions.last
+        api_response =  { status: "success", data: deck }
+      else
+        api_response = { status: "error" }
+      end
+    else
+      api_response = { status: "error", data: "Deck does not belong to user" }
+    end
+
+    render json: api_response
+
+  end
+
+  def create_version
+    deck = Deck.find(@req[:deck_id])
+    if deck.user_id == current_user.id
+      cardstring = Deck.hdt_parse(@req[:cards])
+      deck_version = DeckVersion.new(deck_id: deck.id, 
+                        version: @req[:version], 
+                        cardstring: cardstring)
+      if deck_version.save
+        deck.update_attribute(:cardstring, cardstring)
+        api_response =  { status: "success", data: deck_version }
+      else
+        api_response = { status: "error" }
+      end
+    else
+      api_response = { status: "error", data: "Deck does not belong to user" }
+    end
+
     render json: api_response
   end
 
@@ -99,7 +184,28 @@ class Api::V2::DecksController < ApplicationController
     end
   end
 
+  def delete
+    unless deck_belongs_to_user?(current_user, @req[:deck_id])
+      response = {status: "fail", message: "At least one or more of the decks do not belong to the user"}
+    else
+      Deck.find(@req[:deck_id]).map(&:destroy)
+      response = {status: "success", message: "Decks deleted"}
+    end
+    render json: response
+  end
+
   private
+
+  def deck_belongs_to_user?(user, deck_ids)
+    user_deck_ids = user.decks.pluck(:id)
+
+
+    array_subset?(deck_ids, user_deck_ids)
+  end
+
+  def array_subset?(child, parent)
+    parent.length - (parent - child).length == child.length
+  end
 
   def set_user_deck_slot(user, deck_id, slot)
     if deck_id.nil?

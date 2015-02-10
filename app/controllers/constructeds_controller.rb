@@ -9,7 +9,7 @@ class ConstructedsController < ApplicationController
 
     @q = current_user.matches.ransack(params[:q]) # form needs ransack raw data
     @matches = current_user.matches
-      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED, Mode::FRIENDLY])
       .preload(:match_rank => :rank, :match_deck => :deck)
       .ransack(search_params).result
       .limit(params[:items])
@@ -20,8 +20,7 @@ class ConstructedsController < ApplicationController
 
     @my_decks = get_my_decks
     @last_deck = current_user.matches
-      .where(mode_id: [Mode::CASUAL, Mode::RANKED])
-      .preload(:match_deck => :deck).last.try(:deck)
+      .where(mode_id: [Mode::CASUAL, Mode::RANKED]).last.try(:deck)
 
     respond_to do |format|
       format.html
@@ -140,7 +139,10 @@ class ConstructedsController < ApplicationController
     end
     respond_to do |format|
       if @constructed.save
-        MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
+        MatchDeck.create(deck_id: deck.id, 
+                         match_id: @constructed.id,
+                         deck_version_id: deck.current_version
+                        )
         delete_deck_cache!(deck)
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }

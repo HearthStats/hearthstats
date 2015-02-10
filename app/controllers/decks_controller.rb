@@ -7,7 +7,7 @@ class DecksController < ApplicationController
       order(:created_at).
       where(user_id: current_user.id).
       reverse
-
+    Deck.archive_unused(current_user)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @decks }
@@ -43,7 +43,12 @@ class DecksController < ApplicationController
 
 
   def show
-    @deck = Deck.find(params[:id])
+    begin
+      @deck = Deck.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to public_decks_path, alert: "Deck cannot be found" and return
+    end
+
     if !@deck.tourn_decks.empty? && current_user != @deck.user
       redirect_to public_decks_path, alert: "Tournament decks can only be viewed by the owner." and return
     end
@@ -51,7 +56,7 @@ class DecksController < ApplicationController
     gon.cardstring = @deck.cardstring
 
     if !params[:version].nil?
-      cardstring = @deck.deck_versions.select {|d| d.version == params[:version].to_i}[0].try(:cardstring)
+      cardstring = @deck.deck_versions.find {|d| d.version == params[:version]}.try(:cardstring)
       @deck.cardstring = cardstring
     end
 
@@ -146,7 +151,7 @@ class DecksController < ApplicationController
     if params[:klass].nil?
       redirect_to new_splash_decks_path, alert: "Please select a class" and return
     end
-    gon.cards = Card.where(klass_id: [nil, params[:klass]])
+    gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
     @deck.klass_id = params[:klass]
     @deck.is_public = true
@@ -166,7 +171,6 @@ class DecksController < ApplicationController
 
   def edit
     @deck = Deck.find(params[:id])
-    redirect_to decks_path, alert: "Tournament decks cannot be edited" and return if @deck.is_tourn_deck
     gon.deck = @deck
     gon.cards = Card.all
     canedit(@deck)
@@ -218,9 +222,6 @@ class DecksController < ApplicationController
 
   def update
     @deck = Deck.find(params[:id])
-    if @deck.is_tourn_deck
-      render action: "index" and return
-    end
     expire_fragment(@deck)
     @deck.tag_list = params[:tags]
     respond_to do |format|
@@ -233,6 +234,13 @@ class DecksController < ApplicationController
             @deck.cardstring = text2deck.cardstring
             @deck.save
           end
+        end
+        if params["major_version"]
+          version_num = @deck.current_version.to_i + 1
+          version_deck(@deck, version_num)
+        elsif params["minor_version"]
+          version_num = @deck.current_version.to_i + 0.1
+          version_deck(@deck, version_num)
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
       else
@@ -297,10 +305,10 @@ class DecksController < ApplicationController
   def version
     deck = Deck.find(params[:id])
     canedit(deck)
-    if version_deck(deck)
-      redirect_to edit_deck_path(deck), notice: "Previous deck version saved"
+    if version_deck(deck, params[:version])
+      redirect_to deck, notice: "Deck version saved"
     else
-      redirect_to edit_deck_path(deck), alert: "Deck version could not be saved"
+      redirect_to deck, alert: "Deck version could not be saved"
     end
   end
 
@@ -311,13 +319,7 @@ class DecksController < ApplicationController
 
   private
 
-  def version_deck(deck)
-    last_version = deck.deck_versions.last
-    if last_version.nil?
-      version = 1
-    else
-      version = last_version.version.to_i + 1
-    end
+  def version_deck(deck, version)
     version = DeckVersion.new( deck_id: deck.id, cardstring: deck.cardstring, version: version )
     if version.save
       return true

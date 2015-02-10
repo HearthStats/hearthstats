@@ -71,7 +71,6 @@ gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
 gem 'unf'
-gem 'mailboxer', '~> 0.11.0' # User notifications and mailing
 gem 'thin'
 gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
@@ -84,14 +83,12 @@ gem 'groupdate'
 gem 'announcements'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rmagick'
-gem 'public_activity'
 # gem 'rack-ssl-enforcer'
+gem "squeel"
 
 # APIs
-gem 'newrelic_rpm'
 gem 'cindy' # Sendy API
 gem 'appsignal'
-gem 'skylight'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background

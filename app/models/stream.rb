@@ -1,12 +1,5 @@
 class Stream
-
-  FEATURED =['ceciltv',
-             'rambunctiousrogue',
-             'kisstafer',
-             'bradhs',
-             'imd2',
-             'ihosty']
-
+  FEATURED = {}
   ### CLASS METHODS:
 
   def self.get_featured_streamers

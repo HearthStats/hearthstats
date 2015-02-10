@@ -1,5 +1,5 @@
 class MatchDeck < ActiveRecord::Base
-  attr_accessible :deck_id, :match_id
+  attr_accessible :deck_id, :match_id, :deck_version_id
 
   ### ASSOCIATIONS:
 
@@ -8,12 +8,12 @@ class MatchDeck < ActiveRecord::Base
 
   ### CALLBACKS:
 
-  before_save :set_unique_deck
+  before_save :set_unique_deck_and_version
   after_create :update_deck_user_stats
 
   ### INSTANCE METHODS:
 
-  def set_unique_deck
+  def set_unique_deck_and_version
     if !self.deck.nil? && !self.deck.unique_deck.nil?
       self.match.unique_deck = self.deck.unique_deck
       self.match.save

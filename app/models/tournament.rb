@@ -54,14 +54,6 @@ class Tournament < ActiveRecord::Base
         no_deck_players.push(player.user.name + "(" + player.id.to_s + ")")
       end
     end
-    if !no_deck_players.empty?
-      message = "Following players have not submitted decks: " + no_deck_players.join(",")
-      admins = User.with_role(:tourn_admin, self)
-      admins.each do |admin|
-        admin.notify("Decks not submitted", message)
-      end
-      return false
-    end
 
     case self.bracket_format
     when 0

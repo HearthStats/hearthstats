@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
-  include PublicActivity::StoreController
 
   layout :layout
   before_filter :set_locale_from_url
@@ -36,17 +35,6 @@ class ApplicationController < ActionController::Base
   def redirect_to(options = {}, response_status = {})
     ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
     super(options, response_status)
-  end
-
-  def opinio_after_create_path(resource)
-    if params["commentable_type"] == "TournPair"
-      resource.users.each do |user|
-        user.notify("New Comment", "New comment on a " + resource.tournament.name + " tournament match.", resource)
-      end
-    else
-      resource.user.notify("New Comment", "New comment on " + resource.class.name + " " + resource.name, resource)
-    end
-    resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
   end
 
   Text2Deck = Struct.new(:cardstring, :errors)
@@ -90,7 +78,11 @@ class ApplicationController < ActionController::Base
   private
   
   def set_locale_from_url
-    I18n.locale = params[:locale] || I18n.default_locale
+    begin
+      I18n.locale = params[:locale] || I18n.default_locale
+    rescue
+      I18n.locale = I18n.default_locale
+    end
   end
 
   # API Methods

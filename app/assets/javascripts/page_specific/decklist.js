@@ -4,7 +4,8 @@ $(document).ready(function(){
 
   $('#decklist').dataTable( {
     "aaSorting": [[ 4, "desc" ]],
-    "bPaginate": false
+    "bPaginate": false,
+    "bInfo" : false
   } );
 
   $("#merge-toggle").click(function(){

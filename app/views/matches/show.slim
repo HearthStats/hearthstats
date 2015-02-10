@@ -2,15 +2,16 @@
   :description => "Match replay and log",
   :keywords => "user, deck, statistics, hearthstats, hearthstone"
 - provide(:title, "Match ##{@match.id} Details")
-- provide(:subtitle, " Match Views: #{ @match.impressionist_count }")
 .row
   .col-md-6
     video src="https://s3-us-west-2.amazonaws.com/hearthstats/prem-videos/#{@match.user.id}/#{@match.id}.mp4" width="100%"controls="controls"
-    .center
-      p <a href="/premiums">Please Subscribe for Video Replays </a>
+    - if current_user && !current_user.subscribed?
+      .center
+        p <a href="/premiums">Please Subscribe for Video Replays </a>
     - if @turns
       h3 Turn By Turn
       .turn-by-turn
+        span#open-all.btn.btn-block.green Expand All
         - @turns.each_with_index do |turn, i|
           .turn-details.row id="#{i}"
             span.mana.col-md-4
@@ -34,5 +35,3 @@
     - if !@match.notes
       h3 Notes
       = raw @match.notes
-    = render_comments_form @match unless current_user && current_user.guest
-    = render_comments @match, :page => params[:page], :limit => 5

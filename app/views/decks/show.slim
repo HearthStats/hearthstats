@@ -8,13 +8,25 @@
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, 'Decks')
 - content_for :actions do
-  - if (!current_user.nil? && current_user.id == @deck.user_id && !@deck.is_tourn_deck)
+  - if (signed_in? && current_user.id == @deck.user_id)
     = link_to 'Edit', edit_deck_path(@deck), class: "btn retirebut btn-primary"
     = " "
   - if (!current_user.nil? && current_user.id != @deck.user_id)
     = link_to("Copy to My Decks", copy_deck_path(@deck), class: 'btn retirebut green', :rel => "tooltip", :title => "Make your own copy of this deck")
-  = link_to 'Back', decks_path, class: "btn retirebut dark"
+  a.showmore data-target="#export" data-toggle="modal" class="btn green" Export
+  = link_to 'Back', decks_path, class: "btn retirebut blue"
 
+div#export.modal.fade tabindex="-1" role="dialog" aria-labelledby="export" aria-hidden="true"
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+          h4 class="modal-title" 
+            |Deck Export
+        div.modal-body
+          textarea.export-text = deck_export(@card_array)
+        div.modal-footer
+          button type="button" class="btn default" data-dismiss="modal"=t('.close')
 div.row
   .col-md-3
     div class="deckbuilderWrapper"

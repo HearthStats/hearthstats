@@ -19,7 +19,8 @@ class WelcomeController < ApplicationController
                 where("unique_decks.num_matches >= ?", 30).
                 sort_by { |deck| deck.unique_deck.winrate || 0 }.
                 last(7).
-                reverse
+                reverse.
+                to_a
     end
 
     # Streams
@@ -74,15 +75,15 @@ class WelcomeController < ApplicationController
     # if !current_user.is_admin?
     #   redirect_to root_path, alert: "y u no admin" and return
     # end
-    season = 11
+    season = 14
     args = { :beginday => 1.year.ago, :endday => DateTime.now, :klasses_array => Klass::LIST }
     ranked_wr_count = Match.get_klass_ranked_wr(args)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
 
     @prev_global = [
-      {"Warlock" => 47.96, "Druid" => 47.35, "Shaman" => 51.28, "Rogue" => 52.21, "Warrior" => 46.63, "Paladin" => 50.45, "Mage" => 52.46, "Hunter" => 49.79, "Priest" => 47.64},
-      {"Warlock" => 51.39, "Druid" => 49.15, "Shaman" => 48.84, "Rogue" => 46.06, "Warrior" => 49.28, "Paladin" => 47.20, "Mage" => 47.72, "Hunter" => 53.37, "Priest" => 49.31}]
+      {"Warlock" => 48.96, "Druid" => 45.96, "Shaman" => 49.62, "Rogue" => 51.91, "Warrior" => 45.55, "Paladin" => 52.65, "Mage" => 53.27, "Hunter" => 45.11, "Priest" => 49.04},
+      {"Warlock" => 51.03, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}]
 
     matches = Match.where("created_at > ?", 2.weeks.ago)
     # Determine match Class Win Rates
@@ -258,12 +259,12 @@ class WelcomeController < ApplicationController
 
     def get_top_streamers
       begin
-        top_streams = Rails.cache.fetch("top_streams", expires_in: 30.minutes) do
+        top_streams = Rails.cache.write("top_streams", expires_in: 30.minutes) do
           HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
         end
       rescue
-        top_streams = []
       end
+      top_streams = [] if top_streams.class != Array
 
       top_streams
     end

@@ -37,7 +37,10 @@
           = f.submit class: 'btn btn-block green'
         - if params[:action] == 'edit'
           .form-group
-            = link_to 'Create New Deck Version', version_deck_path(@deck),class: 'btn btn-block yellow', method: :post
+            = f.submit "Save as v#{@deck.current_version.to_i + 0.1}",
+              name: "minor_version", class: "btn yellow"
+            = f.submit "Save as v#{@deck.current_version.to_i + 1}",
+              name: "major_version", class: "btn green"
           .form-group
             label = t("decks.form.other_versions")
             div
@@ -67,12 +70,11 @@
                 span.mana-filter.btn.btn-sm.blue.filter data-mana="#{mana}" = mana
               span.mana-filter.btn.btn-sm.blue.filter data-mana="10" >10
           ul.list.card-list
-            - Card.where(collectible: true, klass_id: [@deck.klass_id,nil]).order(:mana).each do |card|
+            - Card.where(collectible: true, klass_id: [@deck.klass_id,nil], type_name: Card::TYPES.values).order(:mana).each do |card|
               li id="#{card.id}" data-rarity="#{card.rarity_id}" data-name="#{card.name}" data-mana="#{card.mana}"
                 = image_tag "cards/#{card.name.parameterize}.png", class: "deckbuilder-img"
                 p.name.hidden = card.name
                 p.description.hidden = card.description.to_s
-                p.race.hidden = card.race.to_s
                 p.mana.hidden = card.mana
                 p.klass.hidden = card.klass_id
                 p.rarity.hidden = Card::RARITY[card.rarity_id]

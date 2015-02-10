@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   rolify
-  extend Mailboxer::Models::Messageable::ActiveRecord
-  acts_as_messageable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -25,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :matches,      dependent: :destroy
   has_many :team_users
   has_many :teams, through: :team_users
+  has_many :actions, dependent: :destroy
   belongs_to :tourny
   belongs_to :subscription
 
@@ -88,6 +87,8 @@ class User < ActiveRecord::Base
 
   def gen_sig_pic
     p self.id
+    badges = []
+    badges = ["badge_1"] if self.subscribed?
     if self.profile.nil?
       Profile.create(user_id: self.id)
       return
@@ -103,7 +104,8 @@ class User < ActiveRecord::Base
                 const_win_rate: con_wr,
                 arena_win_rate: arena_wr,
                 ranking: rank,
-                legend: false }
+                legend: false,
+                badges: badges }
     image = ProfileImage.new(pic_info).image.flatten_images
     temp_pic = Tempfile.new(["sig_pic-#{self.id}", '.png'])
     image.write(temp_pic.path)

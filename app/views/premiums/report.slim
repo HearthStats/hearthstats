@@ -9,7 +9,7 @@
       label.control-label.col-md-3 Date Range
       .col-md-3
         label Start
-        = text_field_tag :start_date, Time.now, class: "form-control"
+        = text_field_tag :start_date, 1.month.ago, class: "form-control"
       .col-md-3
         label End
         = text_field_tag :end_date, Time.now, class: "form-control"
@@ -54,7 +54,7 @@
         .class-selection
           .class-image Klass Win Rate Matrix
           .class-checkbox
-            = check_box_tag "modules[klass_wrs]", 1, false
+            = check_box_tag "modules[klass_wrs]", 1, true
         .class-selection
           .class-image Win Rate Over Time
           .class-checkbox

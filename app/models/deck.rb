@@ -1,16 +1,19 @@
 class Deck < ActiveRecord::Base
   attr_accessible :loses, :name, :wins, :notes, :cardstring,
-                  :klass_id, :is_public, :user_id, :is_tourn_deck
+                  :klass_id, :is_public, :user_id, :is_tourn_deck,
+                  :deck_type_id, :archived
 
   acts_as_taggable
   is_impressionable
   opinio_subjectum
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| model.user }
 
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  TYPES = {
+    1 => 'Constructed',
+    2 => 'Arena'
+  }
   ### ASSOCIATIONS:
 
   belongs_to :unique_deck
@@ -18,8 +21,8 @@ class Deck < ActiveRecord::Base
   belongs_to :user
 
   has_many :matches, through: :match_deck, dependent: :destroy, inverse_of: :deck
-  has_many :match_deck
-  has_many :deck_versions
+  has_many :match_deck, dependent: :destroy
+  has_many :deck_versions, dependent: :destroy
   has_many :constructeds
   has_many :tourn_decks
 
@@ -28,22 +31,76 @@ class Deck < ActiveRecord::Base
   before_save :normalize_name
   before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_stats
+  after_create :create_deck_version
 
   ### CLASS METHODS:
 
-  def self.bestuserdeck(user_id)
-    Deck.where(user_id: user_id).order("user_winrate DESC").first
+  def self.hdt_parse(json)
+    card_array = []
+    cards = Card.all
+    json.each do |card|
+      id = cards.select {|cardq| cardq.blizz_id == card["id"] }[0].try(:id)
+      card_array << id.to_s + "_" + card["count"].to_s
+    end
+
+    card_array.join(",")
   end
 
-  def self.playable_decks(user_id)
-    Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
+  def self.archive_unused(user_obj)
+    decks = user_obj.decks.includes(:matches)
+      .merge(Match.where("matches.created_at <= ?", 1.week.ago))
+    decks = decks + user_obj.decks.where("created_at <= ?", 1.month.ago).where(user_num_matches: nil)
+    decks.uniq.each do |deck|
+      deck.archive! and p deck.name + "archived." if [false,nil].include? deck.active
+    end
   end
+
+  def self.bestuserdeck(user_id)
+    ratings_array = []
+    decks = User.find(user_id).decks
+    match_count = decks.where(archived: false).map {|deck| deck.matches.count}.sum
+    decks.each do |deck|
+      deck_matches = deck.matches.count
+      rating = deck_matches.to_f/match_count * deck.user_winrate.to_i
+      next if (rating).nan?
+      ratings_array << [deck, rating]
+    end
+    [] and return if ratings_array.empty?
+    ratings_array.sort_by! {|deck| deck[1]}.last[0]
+  end
+
+  # def self.playable_decks(user_id)
+  #   Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
+  # end
   ### INSTANCE METHODS:
+
+  def current_version
+    self.deck_versions.last.try(:version)
+  end
+
+  def cardstring_to_blizz
+    return if self.cardstring.nil?
+    card_array = []
+    self.cardstring.split(",").each do |card|
+      blizz_id = Card.find(card.split("_")[0]).blizz_id if !card.split("_")[0].blank?
+      card_array << {"id" => blizz_id, "count" => card.split("_")[1]}
+    end
+
+    card_array
+  end
+
+  def create_deck_version
+    DeckVersion.create(deck_id: self.id, version: "1.0", cardstring: self.cardstring)
+  end
 
   def deactivate_deck
     self.slot = nil
     self.active = false
     save
+  end
+
+  def archive!
+    self.update_attribute(:archived, true)
   end
 
   def active?
@@ -62,6 +119,7 @@ class Deck < ActiveRecord::Base
   end
 
   def create_unique_deck
+    self.cardstring = cardstring.split(",").sort.join(",")
     self.unique_deck = UniqueDeck.create_from_deck(self) if num_cards == 30
   end
 

@@ -40,11 +40,6 @@ class ProfilesController < ApplicationController
       return redirect_to root_url, alert: "Guests profiles cannot be accessed"
     end
 
-    if current_user && !current_user.subscription_id.nil?
-      @activities = PublicActivity::Activity.order("created_at DESC").
-      where(owner_type: "User", owner_id: User.find(params[:id])).all
-    end
-
     matches = Match.where(user_id: @user.id)
     @userkey = @user.get_userkey
     @profile = @user.profile
@@ -82,7 +77,9 @@ class ProfilesController < ApplicationController
     end
 
     # User's Highest Winning Decks
-    @topdeck = Deck.bestuserdeck(@user.id)
+    Rails.cache.fetch("topdeck-#{@user.id}", expires_in: 1.day) do
+      @topdeck = Deck.bestuserdeck(@user.id)
+    end
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true)
 
   end
@@ -97,14 +94,6 @@ class ProfilesController < ApplicationController
     profile.save!
     respond_to do |format|
       format.html { redirect_to root_path }
-    end
-  end
-
-  def activities
-    @activities = PublicActivity::Activity.order("created_at DESC").
-      where(owner_type: "User", owner_id: User.find(params[:id])).all
-    respond_to do |format|
-      format.html
     end
   end
 

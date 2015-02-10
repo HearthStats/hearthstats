@@ -2,9 +2,6 @@ class Match < ActiveRecord::Base
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
 
-  is_impressionable
-  opinio_subjectum
-
   RESULTS_LIST = {
     1 => 'Win',
     2 => 'Loss',
@@ -15,7 +12,8 @@ class Match < ActiveRecord::Base
     1 => 'Arena',
     2 => 'Casual',
     3 => 'Ranked',
-    4 => 'Tournament'
+    4 => 'Tournament',
+    5 => 'Friendly'
   }
 
   ### ASSOCIATIONS:
@@ -68,6 +66,23 @@ class Match < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.winrate_by_time(matches, timezone)
+    Time.zone = timezone
+    time_wr = {}
+    24.times.each do |time|
+      time_wr[time+1] = nil
+    end
+    hr_group = matches.group_by {|match| Time.zone.parse(match.created_at.to_s).hour}
+    hr_group.each do |hr|
+      wins = hr[1].select { |match| match.result_id == 1}.count
+      total = hr[1].count
+      wr = wins.to_f/total
+      time_wr[hr[0]] = wr*100
+    end
+
+    time_wr.sort
+  end
+  
   def self.get_klass_ranked_wr(args)
     klasses_array = args[:klasses_array]
     beginday    = args[:beginday]
@@ -135,7 +150,7 @@ class Match < ActiveRecord::Base
       else
         wr = ((wins[day].to_f/num_of_games rescue 0)*100).round(2)
         wr = prev_wr if wr.nan?
-        if prev_wr == nil
+        if prev_wr == 0
           today_wr = wr
         else
           today_wr = (wr + prev_wr)/2
@@ -143,6 +158,7 @@ class Match < ActiveRecord::Base
         prev_wr = wr
       end
       winrate << [day.to_time.to_i*1000, today_wr]
+
     end
 
     winrate
@@ -256,8 +272,8 @@ class Match < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
-  def replay_url
-    
+  def archtype_id
+    deck.try(:unique_deck).try(:unique_deck_type_id)
   end
 
   def deck

@@ -23,10 +23,10 @@ class Api::V1::MatchesController < ApplicationController
     #check for rank if ranked mode
     ranklvl = nil
     if !mode.nil? && mode.name == "Ranked" && !req[:ranklvl].nil?
-      ranklvl = Rank.find(req[:ranklvl])
+      ranklvl = req[:ranklvl]
       legend = req[:legend] if !req[:legend].nil?
       if ranklvl.nil?
-        errors.push("Unknown rank '" + req[:ranklvl].to_s + "'." + str)
+        errors.push("Unknown rank '" + req[:ranklvl].to_s + "'.")
       end
     end
 
@@ -88,6 +88,13 @@ class Api::V1::MatchesController < ApplicationController
           obj.write(req[:log])
         end
 
+        # parser = LogParser.new({
+        #                 :txt_file => req[:log], 
+        #                 :username => user.name,
+        #                 :user_id => user.id,
+        #                 :match_id => match.id
+        #               })
+
         render json: {status: "success", message: message,  data: match}
       else
         render json: {status: "fail", message: match.errors.full_messages}
@@ -95,7 +102,28 @@ class Api::V1::MatchesController < ApplicationController
     end
   end
 
+  def delete
+    unless match_belongs_to_user(@user, @req[:match_id])
+      response = {status: "fail", message: "At least one or more of the matches do not belong to the user"}
+    else
+      Match.find(@req[:match_id]).map(&:destroy)
+      response = {status: "success", message: "Matches deleted"}
+    end
+    render json: response
+  end
+
   private
+
+  def match_belongs_to_user?(user, match_ids)
+    user_match_ids = user.matches.pluck(:id)
+
+
+    array_subset?(match_ids, user_match_ids)
+  end
+
+  def array_subset?(child, parent)
+    parent.length - (parent - child).length == child.length
+  end
 
   def delete_deck_cache!(deck)
     Rails.cache.delete('deck_stats' + deck.id.to_s)
@@ -145,13 +173,16 @@ class Api::V1::MatchesController < ApplicationController
       deck = create_new_deck(@user, @req[:slot], userclass)
       message = "No deck set for slot #{@req[:slot]}. New #{userclass.name} deck created and assigned to #{@req[:slot]}."
     end
-    MatchDeck.new(match_id: match.id, deck_id: deck.id).save!
+    MatchDeck.new(match_id: match.id, 
+                  deck_id: deck.id,
+                  deck_version_id: deck.current_version
+                 ).save!
     delete_deck_cache!(deck)
     if !ranklvl.nil?
       if legend
-        MatchRank.new(match_id: match.id, rank_id: ranklvl.id, legendary: legend).save!
+        MatchRank.new(match_id: match.id, rank_id: ranklvl, legendary: legend).save!
       else
-        MatchRank.new(match_id: match.id, rank_id: ranklvl.id).save!
+        MatchRank.new(match_id: match.id, rank_id: ranklvl).save!
       end
     end
   end

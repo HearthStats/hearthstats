@@ -46,7 +46,7 @@
             <%= f.label t(".deck_name") %>
             <br />
             <% if @lastentry %>
-              <%= select_tag("deck_id", options_for_select(@my_decks.map{ |d| [d.name, d.id, {:class => Klass::LIST[d.klass_id]}]}, @lastentry.deck.id)) %>
+              <%= select_tag("deck_id", options_for_select(@my_decks.map{ |d| [d.name, d.id, {:class => Klass::LIST[d.klass_id]}]}, @lastentry.deck.try(:id))) %>
             <% else %>
               <%= select_tag("deck_id", options_for_select(@my_decks.map{ |d| [d.name, d.id, {:class => Klass::LIST[d.klass_id]}]})) %>
             <% end %>

@@ -20,7 +20,7 @@ describe UniqueDeck do
       end
 
       it 'sets num_minions' do
-        card = create :card, type_id: 1
+        card = create :card, type_name: "Minion"
         create :unique_deck_card, card: card, unique_deck: unique_deck
         unique_deck.update_stats
 
@@ -28,7 +28,7 @@ describe UniqueDeck do
       end
 
       it 'sets num_spells' do
-        card = create :card, type_id: 2
+        card = create :card, type_name: "Spell"
         create :unique_deck_card, card: card, unique_deck: unique_deck
         unique_deck.update_stats
 
@@ -36,7 +36,7 @@ describe UniqueDeck do
       end
 
       it 'sets num_weapons' do
-        card = create :card, type_id: 3
+        card = create :card, type_name: "Weapon"
         create :unique_deck_card, card: card, unique_deck: unique_deck
         unique_deck.update_stats
 

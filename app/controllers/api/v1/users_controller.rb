@@ -3,6 +3,13 @@ class Api::V1::UsersController < ApplicationController
 
   def premium
     user = User.find_by_userkey(params[:userkey])
+    if user.nil?
+      api_response = {
+        status: "error",
+        message: "User cannot be found with userkey"
+      }
+      render json: api_response and return
+    end
     if user.subscription_id.nil?
       api_response = {
         status: "error",

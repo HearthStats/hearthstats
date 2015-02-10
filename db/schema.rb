@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141217192350) do
+ActiveRecord::Schema.define(:version => 20150206180058) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -98,8 +98,10 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
     t.text     "notes"
     t.string   "patch",      :default => "current"
     t.integer  "klass_id"
+    t.integer  "deck_id"
   end
 
+  add_index "arena_runs", ["deck_id"], :name => "index_arena_runs_on_deck_id"
   add_index "arena_runs", ["user_id"], :name => "index_arena_runs_on_user_id"
 
   create_table "arenas", :force => true do |t|
@@ -139,6 +141,11 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
     t.boolean  "complete",     :default => false
   end
 
+  create_table "card_mechanics", :force => true do |t|
+    t.integer "card_id"
+    t.integer "mechanic_id"
+  end
+
   create_table "card_sets", :force => true do |t|
     t.string "name"
     t.text   "notes"
@@ -149,20 +156,18 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
     t.string  "description"
     t.integer "attack"
     t.integer "health"
-    t.integer "card_set_id"
     t.integer "rarity_id"
-    t.integer "type_id"
     t.integer "klass_id"
-    t.integer "race_id"
     t.integer "mana"
     t.boolean "collectible"
     t.integer "patch_id"
     t.string  "blizz_id"
-    t.string  "race"
+    t.string  "card_set"
+    t.string  "type_name"
   end
 
+  add_index "cards", ["blizz_id"], :name => "index_cards_on_blizz_id"
   add_index "cards", ["name"], :name => "index_cards_on_name"
-  add_index "cards", ["type_id"], :name => "index_cards_on_type_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
@@ -202,7 +207,7 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
   create_table "deck_versions", :force => true do |t|
     t.integer  "deck_id"
     t.text     "notes"
-    t.integer  "version"
+    t.string   "version"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "cardstring"
@@ -227,9 +232,11 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
     t.integer  "user_num_losses"
     t.float    "user_winrate"
     t.boolean  "is_public"
-    t.boolean  "is_tourn_deck",    :default => false
+    t.boolean  "archived",         :default => false
+    t.integer  "deck_type_id",     :default => 1
   end
 
+  add_index "decks", ["deck_type_id"], :name => "index_decks_on_deck_type_id"
   add_index "decks", ["klass_id"], :name => "index_decks_on_klass_id"
   add_index "decks", ["slug"], :name => "index_decks_on_slug"
   add_index "decks", ["unique_deck_id"], :name => "index_decks_on_unique_deck_id"
@@ -283,11 +290,13 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
   create_table "match_decks", :force => true do |t|
     t.integer  "deck_id"
     t.integer  "match_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "deck_version_id"
   end
 
   add_index "match_decks", ["deck_id"], :name => "index_match_decks_on_deck_id"
+  add_index "match_decks", ["deck_version_id"], :name => "index_match_decks_on_deck_version_id"
   add_index "match_decks", ["match_id"], :name => "index_match_decks_on_match_id"
 
   create_table "match_ranks", :force => true do |t|
@@ -354,6 +363,10 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
   add_index "matches", ["oppclass_id"], :name => "index_matches_on_oppclass_id"
   add_index "matches", ["result_id"], :name => "index_matches_on_result_id"
   add_index "matches", ["user_id", "mode_id", "klass_id", "oppclass_id", "coin", "created_at"], :name => "index_for_search"
+
+  create_table "mechanics", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "modes", :force => true do |t|
     t.string "name"
@@ -672,9 +685,5 @@ ActiveRecord::Schema.define(:version => 20141217192350) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
-
-  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end

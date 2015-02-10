@@ -706,3 +706,184 @@ form{
 .Warrior {
   background-color: #C79C6E;
 }
+/*Loading screen*/
+#loading-screen-cont{
+  display: none;
+  position: fixed;
+  z-index: 9999999;
+  background-color: white;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+.loading{
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  text-align: center;
+  width: 200px;
+  margin-left: -100px;
+}
+/*Loading Bar*/
+#squaresWaveG{
+position:relative;
+width:83px;
+height:10px;
+margin:auto;
+}
+
+.squaresWaveG{
+position:absolute;
+top:0;
+background-color:#F47422;
+width:10px;
+height:10px;
+-moz-animation-name:bounce_squaresWaveG;
+-moz-animation-duration:1.3s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-webkit-animation-name:bounce_squaresWaveG;
+-webkit-animation-duration:1.3s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-ms-animation-name:bounce_squaresWaveG;
+-ms-animation-duration:1.3s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-o-animation-name:bounce_squaresWaveG;
+-o-animation-duration:1.3s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+animation-name:bounce_squaresWaveG;
+animation-duration:1.3s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+}
+
+#squaresWaveG_1{
+left:0;
+-moz-animation-delay:0.52s;
+-webkit-animation-delay:0.52s;
+-ms-animation-delay:0.52s;
+-o-animation-delay:0.52s;
+animation-delay:0.52s;
+}
+
+#squaresWaveG_2{
+left:11px;
+-moz-animation-delay:0.65s;
+-webkit-animation-delay:0.65s;
+-ms-animation-delay:0.65s;
+-o-animation-delay:0.65s;
+animation-delay:0.65s;
+}
+
+#squaresWaveG_3{
+left:22px;
+-moz-animation-delay:0.78s;
+-webkit-animation-delay:0.78s;
+-ms-animation-delay:0.78s;
+-o-animation-delay:0.78s;
+animation-delay:0.78s;
+}
+
+#squaresWaveG_4{
+left:33px;
+-moz-animation-delay:0.91s;
+-webkit-animation-delay:0.91s;
+-ms-animation-delay:0.91s;
+-o-animation-delay:0.91s;
+animation-delay:0.91s;
+}
+
+#squaresWaveG_5{
+left:44px;
+-moz-animation-delay:1.04s;
+-webkit-animation-delay:1.04s;
+-ms-animation-delay:1.04s;
+-o-animation-delay:1.04s;
+animation-delay:1.04s;
+}
+
+#squaresWaveG_6{
+left:55px;
+-moz-animation-delay:1.17s;
+-webkit-animation-delay:1.17s;
+-ms-animation-delay:1.17s;
+-o-animation-delay:1.17s;
+animation-delay:1.17s;
+}
+
+#squaresWaveG_7{
+left:66px;
+-moz-animation-delay:1.3s;
+-webkit-animation-delay:1.3s;
+-ms-animation-delay:1.3s;
+-o-animation-delay:1.3s;
+animation-delay:1.3s;
+}
+
+#squaresWaveG_8{
+left:77px;
+-moz-animation-delay:1.43s;
+-webkit-animation-delay:1.43s;
+-ms-animation-delay:1.43s;
+-o-animation-delay:1.43s;
+animation-delay:1.43s;
+}
+
+@-moz-keyframes bounce_squaresWaveG{
+0%{
+background-color:#F47422;
+}
+
+100%{
+background-color:#FFFFFF;
+}
+
+}
+
+@-webkit-keyframes bounce_squaresWaveG{
+0%{
+background-color:#F47422;
+}
+
+100%{
+background-color:#FFFFFF;
+}
+
+}
+
+@-ms-keyframes bounce_squaresWaveG{
+0%{
+background-color:#F47422;
+}
+
+100%{
+background-color:#FFFFFF;
+}
+
+}
+
+@-o-keyframes bounce_squaresWaveG{
+0%{
+background-color:#F47422;
+}
+
+100%{
+background-color:#FFFFFF;
+}
+
+}
+
+@keyframes bounce_squaresWaveG{
+0%{
+background-color:#F47422;
+}
+
+100%{
+background-color:#FFFFFF;
+}
+
+}

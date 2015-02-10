@@ -427,6 +427,7 @@ en:
       subtitle: ! ' all of my constructed decks'
       new_deck: New Deck
       enable_merge: Enable Merge Mode
+      toggle_archived: Show Archived Decks
       merge: Merge
       my_decks: My Decks
       name: Name
