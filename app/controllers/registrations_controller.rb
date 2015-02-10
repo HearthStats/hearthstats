@@ -13,7 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    unless current_user.current_id.nil?
+    unless current_user.id.nil?
       customer = Stripe::Customer.retrieve(current_user.customer_id)
       unless customer.nil? or customer.respond_to?('deleted')
         subscription = customer.subscriptions.data[0]
