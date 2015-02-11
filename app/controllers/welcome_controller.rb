@@ -76,16 +76,17 @@ class WelcomeController < ApplicationController
     #   redirect_to root_path, alert: "y u no admin" and return
     # end
     season = 14
-    args = { :beginday => 1.year.ago, :endday => DateTime.now, :klasses_array => Klass::LIST }
+    args = { :beginday => Season.find(season).begin, :endday => Season.find(season).end, :klasses_array => Klass::LIST }
     ranked_wr_count = Match.get_klass_ranked_wr(args)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
 
     @prev_global = [
       {"Warlock" => 48.96, "Druid" => 45.96, "Shaman" => 49.62, "Rogue" => 51.91, "Warrior" => 45.55, "Paladin" => 52.65, "Mage" => 53.27, "Hunter" => 45.11, "Priest" => 49.04},
-      {"Warlock" => 51.03, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}]
+      {"Warlock" => 51.09, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}
+    ]
 
-    matches = Match.where("created_at > ?", 2.weeks.ago)
+    matches = Match.where(season_id: season)
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
@@ -146,7 +147,7 @@ class WelcomeController < ApplicationController
     @userarenarate = Array.new
     @totarenagames = Hash.new
     mode_matches = matches.where(mode_id: 1)
-    classcombos.each_with_index do |combo, i |
+    classcombos.each_with_index do |combo, i|
       totalwins = 0
       totalgames = 0
       totalwins = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]], result_id: 1).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]], result_id: 2).count
@@ -157,7 +158,7 @@ class WelcomeController < ApplicationController
     @conrate = Array.new
     @totcongames = Hash.new
     mode_matches = matches.where(mode_id: 3)
-    classcombos.each_with_index do |combo, i |
+    classcombos.each_with_index do |combo, i|
       totalwins = 0
       totalgames = 0
 
