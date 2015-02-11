@@ -116,7 +116,7 @@ class WelcomeController < ApplicationController
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.select {|q| q.result_id == 1 && klass_id == q.klasses_hash[c]}.count
+      totalwins = mode_matches.select {|q| q.result_id == 1 && q.klass_id == klasses_hash[c]}.count
       totalwins = totalwins + mode_matches.select {|q| q.oppclass_id == klasses_hash[c] && q.result_id == 2}.count
       totalgames = mode_matches.select { |q| q.klass_id == klasses_hash[c]}.count + mode_matches.select { |q| q.oppclass_id == klasses_hash[c]}.count
       if totalgames == 0
