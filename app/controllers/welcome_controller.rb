@@ -75,7 +75,7 @@ class WelcomeController < ApplicationController
     # if !current_user.is_admin?
     #   redirect_to root_path, alert: "y u no admin" and return
     # end
-    season = 14
+    season = 6
     args = { :beginday => Season.find(season).begin, :endday => Season.find(season).end, :klasses_array => Klass::LIST }
     ranked_wr_count = Match.get_klass_ranked_wr(args)
     @ranked_winrates = ranked_wr_count[0]
@@ -86,18 +86,18 @@ class WelcomeController < ApplicationController
       {"Warlock" => 51.09, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}
     ]
 
-    matches = Match.where(season_id: season)
+    matches = Match.joins(:match_rank).where(season_id: season).all
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
     @classarenarate = Hash.new
     @arenatot = Hash.new
-    mode_matches = matches.where(mode_id: 1)
+    mode_matches = matches.select{|q| q.mode_id == 1}
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(klass_id: klasses_hash[c], result_id: 1).count + mode_matches.where(oppclass_id: klasses_hash[c], result_id: 2).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count + mode_matches.where(oppclass_id: klasses_hash[c]).count
+      totalwins = mode_matches.select {|q| q.klass_id == klasses_hash[c] && q.result_id == 1}.count + mode_matches.select {|q| q.oppclass_id == klasses_hash[c] && q.result_id == 2}.count
+      totalgames = mode_matches.select {|q| q.klass_id == klasses_hash[c]}.count + mode_matches.select { |q| q.oppclass_id == klasses_hash[c]}.count
       if totalgames == 0
         @classarenarate[c] = 0
       else
@@ -112,13 +112,13 @@ class WelcomeController < ApplicationController
 
     @classconrate = Hash.new
     @contot = Hash.new
-    mode_matches = matches.where(mode_id: 3)
+    mode_matches = matches.select {|q| q.mode_id == 3}
     classes.each do |c|
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(result_id: 1, klass_id: klasses_hash[c]).count
-      totalwins = totalwins + mode_matches.where(oppclass_id: klasses_hash[c], result_id: 2).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[c]).count + mode_matches.where(oppclass_id: klasses_hash[c]).count
+      totalwins = mode_matches.select {|q| q.result_id == 1 && klass_id == q.klasses_hash[c]}.count
+      totalwins = totalwins + mode_matches.select {|q| q.oppclass_id == klasses_hash[c] && q.result_id == 2}.count
+      totalgames = mode_matches.select { |q| q.klass_id == klasses_hash[c]}.count + mode_matches.select { |q| q.oppclass_id == klasses_hash[c]}.count
       if totalgames == 0
         @classconrate[c] = 0
       else
@@ -146,26 +146,26 @@ class WelcomeController < ApplicationController
     end
     @userarenarate = Array.new
     @totarenagames = Hash.new
-    mode_matches = matches.where(mode_id: 1)
+    mode_matches = matches.select { |q| q.mode_id == 1}
     classcombos.each_with_index do |combo, i|
       totalwins = 0
       totalgames = 0
-      totalwins = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]], result_id: 1).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]], result_id: 2).count
-      totalgames = mode_matches.where(klass_id: klasses_hash[combo[0]], oppclass_id: klasses_hash[combo[1]],result_id: [1,2]).count + mode_matches.where(klass_id: klasses_hash[combo[1]], oppclass_id: klasses_hash[combo[0]],result_id: [1,2]).count
+      totalwins = mode_matches.select { |q| q.klass_id == klasses_hash[combo[0]] && q.oppclass_id == klasses_hash[combo[1]] && q.result_id == 1}.count + mode_matches.select { |q| q.klass_id == klasses_hash[combo[1]] && q.oppclass_id == klasses_hash[combo[0]] && q.result_id == 2}.count
+      totalgames = mode_matches.select { |q| q.klass_id == klasses_hash[combo[0]] && q.oppclass_id == klasses_hash[combo[1]]}.count + mode_matches.select { |q| q.klass_id == klasses_hash[combo[1]] && q.oppclass_id == klasses_hash[combo[0]]}.count
       @userarenarate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
     end
     # Determine mode_matches Class Win Rates
     @conrate = Array.new
     @totcongames = Hash.new
-    mode_matches = matches.where(mode_id: 3)
+    mode_matches = matches.select {|q| q.mode_id == 3}
     classcombos.each_with_index do |combo, i|
       totalwins = 0
       totalgames = 0
 
-      totalwins = mode_matches.where(oppclass_id: klasses_hash[combo[1]], result_id: 1, klass_id: klasses_hash[combo[0]]).count
-      totalwins = totalwins + mode_matches.where(oppclass_id: klasses_hash[combo[0]], result_id: 2, klass_id: klasses_hash[combo[1]]).count
+      totalwins = mode_matches.select { |q| q.oppclass_id == klasses_hash[combo[1]] && q.result_id == 1 && q.klass_id == klasses_hash[combo[0]]}.count
+      totalwins = totalwins + mode_matches.select { |q| q.oppclass_id == klasses_hash[combo[0]] && q.result_id == 2 && q.klass_id == klasses_hash[combo[1]]}.count
 
-      totalgames = mode_matches.where(oppclass_id: klasses_hash[combo[0]], klass_id: klasses_hash[combo[1]], result_id: [1,2]).count + mode_matches.where(oppclass_id: klasses_hash[combo[1]], klass_id: klasses_hash[combo[0]], result_id: [1,2]).count
+      totalgames = mode_matches.select{ |q| q.oppclass_id == klasses_hash[combo[0]] && q.klass_id == klasses_hash[combo[1]]}.count + mode_matches.select {|q| q.oppclass_id == klasses_hash[combo[1]] && q.klass_id == klasses_hash[combo[0]]}.count
 
       @conrate << [ combo[0], [combo[1], (totalwins.to_f / totalgames)]]
     end
