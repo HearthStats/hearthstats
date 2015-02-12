@@ -25,6 +25,7 @@
 	// 	cardName = $(this).data("name");
 	// 	$(".count-img").attr("src", "/reports/gvg/img/cards/" + cardName + ".png")
 	// });
+	new WOW().init();
 
 	// Mode Matrix
 	$('.matrix-btn').click(function(){
