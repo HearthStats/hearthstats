@@ -13,9 +13,6 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'pry'
   gem 'pry-byebug'
-  gem 'spring'
-  gem 'spring-commands-rspec'
-  gem 'guard-spring'
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'awesome_print', :require => false
@@ -103,7 +100,6 @@ group :test do
   gem 'capybara', '>= 2.0.2'
   gem 'capybara-screenshot'
   gem 'factory_girl_rails'
-  gem 'guard-rspec'
   gem 'phashion'
 end
 
