@@ -2,6 +2,10 @@
 # encoding: utf-8
 module ApplicationHelper
 
+  def report_route
+    "/jan"
+  end
+
   def available_languages
     @available_languages || available_languages_list
   end
