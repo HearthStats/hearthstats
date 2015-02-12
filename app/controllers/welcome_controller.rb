@@ -75,8 +75,8 @@ class WelcomeController < ApplicationController
     # if !current_user.is_admin?
     #   redirect_to root_path, alert: "y u no admin" and return
     # end
-    season = 6
-    args = { :beginday => Season.find(season).begin, :endday => Season.find(season).end, :klasses_array => Klass::LIST }
+    season = Season.find(14)
+    args = { :beginday => season.begin, :endday => season.end, :klasses_array => Klass::LIST }
     ranked_wr_count = Match.get_klass_ranked_wr(args)
     @ranked_winrates = ranked_wr_count[0]
     gon.counts = ranked_wr_count[1]
@@ -86,7 +86,7 @@ class WelcomeController < ApplicationController
       {"Warlock" => 51.09, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}
     ]
 
-    matches = Match.where(season_id: season).all
+    matches = Match.where(season_id: season.id).all
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
@@ -174,7 +174,7 @@ class WelcomeController < ApplicationController
     @arena_runs = Array.new
     classes.each_with_index do |c,i|
       run_count = Array.new(13,0)
-      tot_games = ArenaRun.where(klass_id: i+1).count
+      tot_games = ArenaRun.where{(klass_id == i+1) & (created_at >= season.begin)}.count
       ArenaRun.where(klass_id: i+1).includes(:matches).each do |ar|
         run_count[ar.matches.where(result_id: 1).count] += 1 unless ar.matches.where(result_id: 1).count > 12
       end

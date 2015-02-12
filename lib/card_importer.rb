@@ -35,7 +35,7 @@ class CardImporter
 
   def fix_missing_info
     all_cards_flat = @all_cards.to_a.flatten
-    cards = Card.where{(rarity_id == nil) || (mana == nil)}
+    cards = Card.where{(rarity_id == nil) | (mana == nil)}
     messed = []
     cards.each do |card|
       proper_card = all_cards_flat.find {|set_card| set_card["name"] == card.name && GOOD_TYPES.include?(set_card["type"])}

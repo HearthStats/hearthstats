@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150206180058) do
+ActiveRecord::Schema.define(:version => 20150212042215) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -362,6 +362,7 @@ ActiveRecord::Schema.define(:version => 20150206180058) do
   add_index "matches", ["mode_id"], :name => "index_matches_on_mode_id"
   add_index "matches", ["oppclass_id"], :name => "index_matches_on_oppclass_id"
   add_index "matches", ["result_id"], :name => "index_matches_on_result_id"
+  add_index "matches", ["season_id"], :name => "index_matches_on_season_id"
   add_index "matches", ["user_id", "mode_id", "klass_id", "oppclass_id", "coin", "created_at"], :name => "index_for_search"
 
   create_table "mechanics", :force => true do |t|
