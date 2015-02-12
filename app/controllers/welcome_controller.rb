@@ -86,7 +86,7 @@ class WelcomeController < ApplicationController
       {"Warlock" => 51.09, "Druid" => 48.75, "Shaman" => 50.49, "Rogue" => 44.11, "Warrior" => 50.91, "Paladin" => 49.34, "Mage" => 48.76, "Hunter" => 53.99, "Priest" => 47.37}
     ]
 
-    matches = Match.joins(:match_rank).where(season_id: season).all
+    matches = Match.where(season_id: season).all
     # Determine match Class Win Rates
     @classes_array = Klass.list
     classes = Klass.list
