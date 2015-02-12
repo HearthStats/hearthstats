@@ -1,0 +1,9 @@
+#intro{
+  background: url(../img/jan_bg.jpg) no-repeat top center;
+}
+.details{
+  color: black;
+}
+.intro .slogan h2 {
+  font-family: 'Leckerli One', cursive;
+}

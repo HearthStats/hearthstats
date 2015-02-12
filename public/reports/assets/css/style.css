@@ -298,11 +298,12 @@ hr {
 /* ===========================
 --- Intro
 ============================ */
-
+section{
+  background-color: white;
+}
 .intro {
 	width:100%;
 	position:relative;
-	background: url(../img/bg1.jpg) no-repeat top center;
 }
 
 #intro.intro {
@@ -337,7 +338,6 @@ hr {
 	font-size: 80px;
 	line-height: 60px;
 	font-weight: 700;
-  font-family: 'Permanent Marker', cursive;
 	background-color: rgba(0, 0, 0, 0);
 	text-decoration: none;
 	text-transform: uppercase;
@@ -358,9 +358,14 @@ hr {
 }
 
 .intro .details{
-  padding-top: 10px;
-  color: #BDBDBD;
   font: 8px !important;
+}
+
+.award{
+  margin-bottom: 10px;
+}
+.award-note{
+  margin-bottom: 20px;
 }
 /* ===========================
 --- About

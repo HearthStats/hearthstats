@@ -17,6 +17,11 @@
 		});
 	});
 
+	$(".slogan").tubular({
+		videoId: 'RuqVnqNPyC0',
+		mute: true,
+		start: 100
+	});
 	// Honorable Mentions
 	// $(".honor-card-win").mouseover(function() {
 	// 	cardName = $(this).data("name");
