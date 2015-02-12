@@ -63,7 +63,7 @@ Hearthstats::Application.routes.draw do
   match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
-  match '/jan', to: redirect('/reports/jan/index.html')
+  match "/jan", to: "welcome#jan_report"
   match "/dec", to: "welcome#decreport"
   match "/nov", to: "welcome#novreport"
   match "/mar", to: redirect('/reports/mar/index.html')
