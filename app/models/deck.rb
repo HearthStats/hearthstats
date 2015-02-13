@@ -74,6 +74,17 @@ class Deck < ActiveRecord::Base
   # end
   ### INSTANCE METHODS:
 
+  def get_cards
+    return if self.cardstring.nil?
+    card_array = []
+    self.cardstring.split(",").each do |card|
+      db_card = Card.find(card.split("_")[0])if !card.split("_")[0].blank?
+      card_array << db_card
+    end
+
+    card_array.compact
+  end
+
   def current_version
     self.deck_versions.last.try(:version)
   end

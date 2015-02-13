@@ -61,10 +61,9 @@
   background-image:url(/assets/deckbuilder_card_legendary.png);
 }
 .deckbuilderWrapper .cardWrapper .image {
-  width:250px;
   position:absolute;
-  top:-90px;
-  left:30px;
+  top: 0;
+  right: 5px;
   z-index:1;
 }
 .deckbuilderWrapper .preloadCardBg {

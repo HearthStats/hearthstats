@@ -326,8 +326,8 @@
       var pointVals = {};
       for(var i = 0; i < _cards.length; i++) {
         var card = _cards[i];
-        pointVals[card.type_id] = pointVals[card.type_id] || 0;
-        pointVals[card.type_id] += card.qty;
+        pointVals[card.type_name] = pointVals[card.type_name] || 0;
+        pointVals[card.type_name] += card.qty;
       }
 
       var data = [];

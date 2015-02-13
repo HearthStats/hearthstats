@@ -53,7 +53,6 @@ class DecksController < ApplicationController
       redirect_to public_decks_path, alert: "Tournament decks can only be viewed by the owner." and return
     end
     impressionist(@deck)
-    gon.cardstring = @deck.cardstring
 
     if !params[:version].nil?
       cardstring = @deck.deck_versions.find {|d| d.version == params[:version]}.try(:cardstring)
@@ -95,6 +94,7 @@ class DecksController < ApplicationController
       @winrate = deck_cache_stats[3]
     end
 
+    gon.cardstring = @deck.cardstring
 
     respond_to do |format|
       format.html # show.html.erb

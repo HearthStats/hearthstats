@@ -10,8 +10,8 @@
           <% Card.order("name ASC").each do |card| %>
             <%= raw card.toJSONWithImage() %>,
           <% end %>
-        <% elsif !@deck.cards.nil? %>
-          <% @deck.cards.order("name ASC").each do |card| %>
+        <% elsif !@deck.cardstring.nil? %>
+          <% @deck.get_cards.sort_by {|q| q.name}.each do |card| %>
             <%= raw card.toJSONWithImage() %>,
           <% end %>
         <% end %>
@@ -292,14 +292,14 @@
         var pointVals = {};
         for(var i = 0; i < _cards.length; i++) {
           var card = _cards[i];
-          pointVals[card.type_id] = pointVals[card.type_id] || 0;
-          pointVals[card.type_id] += card.qty;
+          pointVals[card.type_name] = pointVals[card.type_name] || 0;
+          pointVals[card.type_name] += card.qty;
         }
 
         var data = [];
         for(var i = 0; i < types.length; i++) {
           var type = types[i];
-            data.push({ label: type.name,  data: pointVals[type.id]});
+            data.push({ label: type.name,  data: pointVals[type.name]});
         }
         $("#typeChart").html("");
         $.plot($("#typeChart"), data, {
