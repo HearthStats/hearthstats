@@ -72,7 +72,13 @@ class Deck < ActiveRecord::Base
   # def self.playable_decks(user_id)
   #   Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
   # end
+
   ### INSTANCE METHODS:
+
+  def rank_wr
+    grouped = self.matches.includes(:rank).group_by {|match| match.rank}
+    grouped.map {|rank| [rank[0], calculate_winrate(rank[1])]}
+  end
 
   def get_cards
     return if self.cardstring.nil?

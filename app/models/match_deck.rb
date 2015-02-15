@@ -8,20 +8,15 @@ class MatchDeck < ActiveRecord::Base
 
   ### CALLBACKS:
 
-  before_save :set_unique_deck_and_version
-  after_create :update_deck_user_stats
+  # before_save :set_unique_deck_and_version
 
   ### INSTANCE METHODS:
 
-  def set_unique_deck_and_version
-    if !self.deck.nil? && !self.deck.unique_deck.nil?
-      self.match.unique_deck = self.deck.unique_deck
-      self.match.save
-    end
-  end
-
-  def update_deck_user_stats
-    #update personal stats
-    deck.update_user_stats!
-  end
+  # I do not see the point of this method, so it is removed for now
+  # def set_unique_deck_and_version
+  #   if !self.deck.nil? && !self.deck.unique_deck.nil?
+  #     self.match.unique_deck = self.deck.unique_deck
+  #     self.match.save
+  #   end
+  # end
 end
