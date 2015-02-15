@@ -33,7 +33,7 @@ div.row
       div style="position:relative;"
         div class="deckBuilderCardsWrapper"
           - if params[:version]
-            - cache(@deck) do
+            - cache(@deck.id.to_s + params[:version]) do
               = render 'decks/card_list', cards: @card_array
           - else
             = render 'decks/card_list', cards: @card_array
