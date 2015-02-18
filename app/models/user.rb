@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
   has_many :matches,      dependent: :destroy
   has_many :team_users
   has_many :teams, through: :team_users
-  has_many :actions, dependent: :destroy
   belongs_to :tourny
   belongs_to :subscription
 
