@@ -11,9 +11,9 @@
     - if !ArenaRun.where(user_id: current_user.id).last.complete
       = link_to t('.continue_arena_run'), new_arena_path, class: "btn blue"
     - else
-      = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue"
+      = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue", id: "new_arena_run"
   - else
-    = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue"
+    = link_to t('.new_arena_run'), new_arena_run_path, class: "btn blue", id: "new_arena_run"
   = link_to t('.reset'), reset_arenas_path, class: "btn red", confirm: "This will delete all your arena runs and matches"
 
 - @arenaruns.each do |arena|

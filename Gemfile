@@ -14,8 +14,9 @@ group :development do
   gem 'pry'
   gem 'pry-byebug'
   gem 'seed_dump'
-  gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler' 
   gem 'awesome_print', :require => false
+  gem "selenium-webdriver", "~> 2.44.0"
   #gem 'active_record_query_trace'
 end
 
