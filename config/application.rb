@@ -13,6 +13,10 @@ module Hearthstats
   class Application < Rails::Application
     # Shorten log files
     config.lograge.enabled = true
+    # Use timestamp in log files
+    config.lograge.custom_options = lambda do |event|
+      {:time => event.time}
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
