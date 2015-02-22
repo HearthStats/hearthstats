@@ -3,20 +3,26 @@ class MatchDeck < ActiveRecord::Base
 
   ### ASSOCIATIONS:
 
-  belongs_to :deck
+   belongs_to :deck
   belongs_to :match, dependent: :destroy
 
   ### CALLBACKS:
 
-  # before_save :set_unique_deck_and_version
+  before_save :set_unique_deck_and_version
+  after_create :update_deck_user_stats
 
   ### INSTANCE METHODS:
 
-  # I do not see the point of this method, so it is removed for now
-  # def set_unique_deck_and_version
-  #   if !self.deck.nil? && !self.deck.unique_deck.nil?
-  #     self.match.unique_deck = self.deck.unique_deck
-  #     self.match.save
-  #   end
-  # end
+  def set_unique_deck_and_version
+    if !self.deck.nil? && !self.deck.unique_deck.nil?
+      self.match.unique_deck = self.deck.unique_deck
+      self.match.save
+    end
+  end
+
+  def update_deck_user_stats
+    #update personal stats
+    deck.update_user_stats!
+  end
+  
 end
