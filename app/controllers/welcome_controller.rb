@@ -11,18 +11,16 @@ class WelcomeController < ApplicationController
               joins(:unique_deck).
               last(7)
     end
-    @topdecks = []
-    # Rails.cache.fetch('wel#top_deck') do
-    #   Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
-    #             group(:unique_deck_id).
-    #             joins(:unique_deck).
-    #             joins(:user).
-    #             where("unique_decks.num_matches >= ?", 30).
-    #             sort_by { |deck| deck.unique_deck.winrate || 0 }.
-    #             last(7).
-    #             reverse.
-    #             to_a
-    # end
+    @topdecks =
+      Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
+                group(:unique_deck_id).
+                joins(:unique_deck).
+                joins(:user).
+                where("unique_decks.num_matches >= ?", 30).
+                sort_by { |deck| deck.unique_deck.winrate || 0 }.
+                last(7).
+                reverse.
+                to_a
 
     # Streams
     # @featured_streams = Stream.get_featured_streamers
