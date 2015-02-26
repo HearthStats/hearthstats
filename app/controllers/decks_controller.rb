@@ -83,18 +83,27 @@ class DecksController < ApplicationController
       @firstrate = get_win_rate(matches.where(coin: false), true)
       @secrate = get_win_rate(matches.where(coin: true), true)
 
-      #calculate deck winrate
+      # Win rate by rank
 
+      @rank_wr = @deck.
+        rank_wr.
+        select {|rank| !rank[0].nil?}.
+        map { |rank, wr| [rank.id, wr]}
+      #calculate deck winrate
       @winrate = matches.count > 0 ? get_win_rate(matches) : 0
-      Rails.cache.write("deck_stats" + @deck.id.to_s, [@deckrate,@firstrate,@secrate,@winrate], expires_in: 1.days)
+      Rails.cache.write("deck_stats" + @deck.id.to_s,
+                        [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
+                        expires_in: 1.days)
     else
       @deckrate = deck_cache_stats[0]
       @firstrate = deck_cache_stats[1]
       @secrate = deck_cache_stats[2]
       @winrate = deck_cache_stats[3]
+      @rank_wr = deck_cache_stats[4]
     end
 
     gon.cardstring = @deck.cardstring
+    gon.rank_wr = @rank_wr
 
     respond_to do |format|
       format.html # show.html.erb
