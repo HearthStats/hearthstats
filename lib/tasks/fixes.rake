@@ -10,3 +10,16 @@ task :ArenaIdFix => :environment do
   p i.to_s + " games fixed."
 end
 
+task :UniqueDeckStatsFix => :environment do
+  STDOUT.sync = true
+  unique_decks = Match.where{created_at >= Date.today.beginning_of_day}.
+    map{|e| e.unique_deck}.
+    uniq
+  tot = unique_decks.count
+  count = 0
+  unique_decks.each do |ud|
+    UniqueDeck.update_stats(ud.id)
+    count += 1
+    p count.to_f/tot * 100
+  end
+end

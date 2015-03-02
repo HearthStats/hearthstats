@@ -250,7 +250,10 @@ class Deck < ActiveRecord::Base
   private
 
   def update_unique_deck_stats
-    UniqueDeck.delay.update_stats(unique_deck_id) if unique_deck_id
+    p "Matches count" + matches.count.to_s
+    if matches.count.modulo(5) == 0
+      UniqueDeck.delay.update_stats(unique_deck_id) if unique_deck_id
+    end
   end
 
   def cardstring_as_array
