@@ -18,7 +18,7 @@ task :UniqueDeckStatsFix => :environment do
   tot = unique_decks.count
   count = 0
   unique_decks.each do |ud|
-    UniqueDeck.update_stats(ud.id)
+    UniqueDeck.update_stats(ud.id) if ud
     count += 1
     p count.to_f/tot * 100
   end
