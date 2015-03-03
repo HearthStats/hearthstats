@@ -24,7 +24,7 @@ class WelcomeController < ApplicationController
 
     # Streams
     # @featured_streams = Stream.get_featured_streamers
-    @top_streams = get_top_streamers.first(6)
+    # @top_streams = get_top_streamers.first(6)
 
     flash[:notice] = "Welcome back #{current_user.name}" if current_user
 

@@ -130,7 +130,7 @@ en:
       apply: Apply
       coin?: Coin?
       days: Days
-      duration: Duratio
+      duration: Duration
       last: Last
       last_24_hours: Last 25 Hours
       matches_in_this_list: Matches in this list
