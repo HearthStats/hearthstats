@@ -347,9 +347,9 @@ class DecksController < ApplicationController
     card_array = Array.new
     err = Array.new
     text_array.each do |line|
-      qty = /^([1-2])/.match(line)[1]
-      name = /^[1-2] (.*)/.match(line)[1]
       begin
+        qty = /^([1-2])/.match(line)[1]
+        name = /^[1-2] (.*)/.match(line)[1]
         card_id = Card.where("lower(name) =?", name.downcase).first.id
       rescue
         err << ("Problem with line '" + line + "'")
