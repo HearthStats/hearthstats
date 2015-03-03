@@ -9,7 +9,7 @@ module DecksHelper
                     num_spells
                     num_users
                     num_weapons
-                    winrate
+                    user_winrate
                     num_wins)
 
     sort_array.map { |s| [t(".#{s}"), s] }

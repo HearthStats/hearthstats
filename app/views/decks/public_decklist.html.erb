@@ -13,7 +13,6 @@
       <th class="wins"><%= t('.wins') %> *</th>
       <th class="losses"><%= t('.losses') %> *</th>
       <th class="winrate"><%= t('.win_rate') %> *</th>
-      <th class="num_users"><%= t('.users') %></th>
       <th class="author"><%= t('.listed_by') %></th>
       <% unless current_user.nil? %>
         <th class="tools"><%= t('.tools') %></th>
@@ -34,7 +33,6 @@
         <td class="losses"><%= unique_deck.num_losses %></td>
         <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
 
-        <td class="num_users"><%= number_with_delimiter(unique_deck.num_users, :delimiter => ',') %></td>
         <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
           <td class="author">[anonymous]</td>
         <% else %>
