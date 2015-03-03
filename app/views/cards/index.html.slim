@@ -13,30 +13,30 @@ form id="cardsFilter" method="get" class="data-turboform"
     | &nbsp; #{t '.filter_by'}: &nbsp;
     select name="class"
       option[value=""] - #{t '.any_class'} -
-      option[value="neutral" selected=("selected" if @classFilter == "neutral")] Neutral
+      option[value="neutral" selected=("selected" if @class_filter == "neutral")] Neutral
       - @classes.each do |c|
-        option[value="#{c.id}" selected=("selected" if @classFilter.to_f == c.id.to_f)] = c.name
+        option[value="#{c.id}" selected=("selected" if @class_filter.to_f == c.id.to_f)] = c.name
     | &nbsp;
     select name="type"
       option[value=""] - #{t '.any_type'} -
       - @types.each do |type|
-        option[value="#{type.id}" selected=("selected" if @typeFilter.to_f == type.id.to_f)] = type.name
+        option[value="#{type.name}" selected=("selected" if @type_filter == type.name)] = type.name
     | &nbsp;
     select name="race"
       option[value=""] - #{t '.any_race'} -
-      option[value="none" selected=("selected" if @raceFilter == "none")] #{t '.none'}
+      option[value="none" selected=("selected" if @race_filter == "none")] #{t '.none'}
       - @races.each do |race|
-        option[value="#{race.id}" selected=("selected" if @raceFilter.to_f == race.id.to_f)] = race.name
+        option[value="#{race.id}" selected=("selected" if @race_filter.o_f == race.id.to_f)] = race.name
     | &nbsp; #{t '.sort_by'}: &nbsp;
     select name="sort"
-      option[value="attack" selected=("selected" if @sortField == "attack")] #{t '.attack'}
-      option[value="health" selected=("selected" if @sortField == "health")] #{t '.health_dur'}
-      option[value="mana" selected=("selected" if @sortField == "mana")] #{t '.mana_cost'}
-      option[value="name" selected=("selected" if @sortField == "name")] #{t '.name'}
+      option[value="attack" selected=("selected" if @sort_field == "attack")] #{t '.attack'}
+      option[value="health" selected=("selected" if @sort_field == "health")] #{t '.health_dur'}
+      option[value="mana" selected=("selected" if @sort_field == "mana")] #{t '.mana_cost'}
+      option[value="name" selected=("selected" if @sort_field == "name")] #{t '.name'}
     | &nbsp;
     select name="order"
       option[value="asc"] #{t '.ascending'}
-      option[value="desc" selected=("selected" if @orderFilter == "desc")] #{t '.descending'}
+      option[value="desc" selected=("selected" if @order_filter == "desc")] #{t '.descending'}
     | &nbsp;
     input type="submit" value="Submit" id="cardsFilterSubmit"
     | &nbsp;
