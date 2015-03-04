@@ -235,42 +235,42 @@ class WelcomeController < ApplicationController
 
   private
 
-    def cularenagames(race, days1)
-      wins = Array.new(days1, 0)
-      wins[0] = 0
-      (1..days1).each do |i|
-        wins[i] = mode_matches.where(klass: race, result_id: 1).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+  def cularenagames(race, days1)
+    wins = Array.new(days1, 0)
+    wins[0] = 0
+    (1..days1).each do |i|
+      wins[i] = mode_matches.where(klass: race, result_id: 1).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+    end
+    return wins
+  end
+
+  def culcongames(race, days1)
+    wins = Array.new(days1, 0)
+    wins[0] = 0
+    (1..days1).each do |i|
+      wins[i] = mode_matches.joins(:deck).where(:result_id => 1, 'decks.race' => race).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
+    end
+    return wins
+  end
+
+  def create_guest_user
+    u = User.create(email: "guest_#{Time.now.to_i}#{rand(999)}@example.com", password: "demouser", guest: true)
+    u.save!(validate: false)
+    session[:guest_user_id] = u.id
+
+    u
+  end
+
+  def get_top_streamers
+    begin
+      top_streams = Rails.cache.write("top_streams", expires_in: 30.minutes) do
+        HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
       end
-      return wins
+    rescue
     end
+    top_streams = [] if top_streams.class != Array
 
-    def culcongames(race, days1)
-      wins = Array.new(days1, 0)
-      wins[0] = 0
-      (1..days1).each do |i|
-        wins[i] = mode_matches.joins(:deck).where(:result_id => 1, 'decks.race' => race).where(created_at: i.days.ago.beginning_of_day..i.days.ago.end_of_day).count
-      end
-      return wins
-    end
-
-    def create_guest_user
-      u = User.create(email: "guest_#{Time.now.to_i}#{rand(999)}@example.com", password: "demouser", guest: true)
-      u.save!(validate: false)
-      session[:guest_user_id] = u.id
-
-      u
-    end
-
-    def get_top_streamers
-      begin
-        top_streams = Rails.cache.write("top_streams", expires_in: 30.minutes) do
-          HTTParty.get('https://api.twitch.tv/kraken/search/streams?limit=50&q=hearthstone&client_id=5p5btpott5bcxwgk46azv8tkq49ccrv')['streams']
-        end
-      rescue
-      end
-      top_streams = [] if top_streams.class != Array
-
-      top_streams
-    end
+    top_streams
+  end
 
 end

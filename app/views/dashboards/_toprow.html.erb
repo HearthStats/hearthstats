@@ -26,24 +26,11 @@
                 <div class="col1">
                   <div class="cont">
                     <div class="cont-col1">
-                      <% if entry.mode.name == "Arena" %>
-                        <div class="label label-sm <%=entry.klass.name%>">
-                          <%=image_tag("swords.svg", height: 17, width: 17) %>
-                        </div>
-                      <% elsif entry.mode.name == "Ranked" %>
-                        <div class="label label-sm <%=entry.klass.name%>">
-                          <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
-                        </div>
-                      <% elsif entry.mode.name == "Casual" %>
-                        <div class="label label-sm <%=entry.klass.name%>">
-                          <%=image_tag("hammerwrench.svg", height: 17, width: 17) %>
-                        </div>
-                      <% end%>
-
+                      <img src="/assets/Icons/Classes/<%= Klass::LIST[entry.klass_id] %>_Icon.gif" height="27px" />
                     </div>
                     <div class="cont-col2">
                       <div class="desc">
-                        <%= Match::RESULTS_LIST[entry.result_id] %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.with' %> <%= entry.klass.name %>
+                        <%= entry.klass.name.capitalize %> <%= Match::RESULTS_LIST[entry.result_id].downcase %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.in' %> <%= Mode::LIST[entry.mode_id] %>
                       </div>
                     </div>
                   </div>

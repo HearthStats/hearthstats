@@ -273,6 +273,25 @@ class Match < ActiveRecord::Base
     (num*100).round(2).to_s + "%"
   end
 
+  def rank_class(hours_ago)
+    rank_klass = {}
+    matches = Match.where(mode_id: 3, appsubmit: true)
+      .where{created_at >= hours_ago.hours.ago}
+      .preload(:rank)
+      .all
+    rank_grouped = matches.group_by{|match| match.rank}
+      .select{|rank| !rank.nil?}
+      .sort_by{|rank| rank[0].id}
+    rank_grouped.each do |rank, rank_matches|
+      grouped = rank_matches.group_by{|match| match.klass_id}
+      klass_count = grouped.map{|klass, klass_matches| [klass, klass_matches.count]}
+        .sort_by{|klass, count| klass}
+      rank_klass[rank.id] = klass_count
+    end
+
+    rank_klass
+  end
+
   ### INSTANCE METHODS:
 
   def archtype_id
@@ -317,6 +336,5 @@ class Match < ActiveRecord::Base
       deck.update_user_stats!
     end
   end
-
 
 end
