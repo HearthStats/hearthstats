@@ -14,7 +14,6 @@ class DashboardsController < ApplicationController
     matches = Match.where(user_id: current_user.id, season_id: current_season).all
     arena_matches = matches.select { |match| match.mode_id == 1 }
     ranked_matches = matches.select { |match| match.mode_id == 3 }
-    
     @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
     @conwins   = Match.winrate_per_day_cumulative(ranked_matches, 10)
     @arena_wr = get_array_wr(arena_matches, true)
