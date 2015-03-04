@@ -77,8 +77,8 @@ class ProfilesController < ApplicationController
     end
 
     # User's Highest Winning Decks
-    Rails.cache.fetch("topdeck-#{@user.id}", expires_in: 1.day) do
-      @topdeck = Deck.bestuserdeck(@user.id)
+    @topdeck = Rails.cache.fetch("topdeck-#{@user.id}", expires_in: 1.day) do
+      Deck.bestuserdeck(@user.id)
     end
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true)
 

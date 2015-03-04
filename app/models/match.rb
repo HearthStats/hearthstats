@@ -137,11 +137,14 @@ class Match < ActiveRecord::Base
   end
 
   def self.winrate_per_day_cumulative(all_matches, before_days)
+    wins = {}
     matches = all_matches
-      .where("created_at >= ?", before_days.days.ago.beginning_of_day)
-      .group_by_day(:created_at)
-    wins = matches.where(result_id: 1).count
-    tot = matches.count
+      .select {|match| match.created_at >= before_days.days.ago.beginning_of_day}
+      .group_by(&:created_at)
+    matches.each do |date, day_matches|
+      wins[date] = day_matches.select{|match| match.result_id == 1}.count
+    end
+    tot = matches.map{|day| [day[0], day[1].count]}
     prev_wr = 0
     winrate = Array.new
     tot.each do |day, num_of_games|

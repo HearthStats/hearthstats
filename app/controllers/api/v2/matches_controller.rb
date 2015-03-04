@@ -164,8 +164,9 @@ class Api::V2::MatchesController < ApplicationController
 
     if mode != 1
       # get deck
-      deck = Deck.find(req[:deck_id])
-      if deck.nil?
+      begin
+        deck = Deck.find(req[:deck_id])
+      rescue
         errors.push("Deck could not be found")
       end
     else

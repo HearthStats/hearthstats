@@ -14,13 +14,16 @@ class DashboardsController < ApplicationController
     matches = Match.where(user_id: current_user.id, season_id: current_season).all
     arena_matches = matches.select { |match| match.mode_id == 1 }
     ranked_matches = matches.select { |match| match.mode_id == 3 }
-    @arenawins = Match.winrate_per_day_cumulative(matches.where(mode_id: 1), 10)
-    @conwins   = Match.winrate_per_day_cumulative(matches.where(mode_id: 3), 10)
+    @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
+    @conwins   = Match.winrate_per_day_cumulative(ranked_matches, 10)
     @arena_wr = get_array_wr(arena_matches, true)
     @con_wr = get_array_wr(ranked_matches, true)
 
     @recent_entries = matches.last(10).reverse
-    @topdeck = Deck.bestuserdeck(current_user.id)
+    topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
+      Deck.bestuserdeck(current_user.id).id
+    end
+    @topdeck = Deck.find(topdeck_id)
     @toparena = Match.bestuserarena(current_user.id)
     gon.hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
   end
