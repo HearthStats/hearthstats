@@ -140,7 +140,7 @@ class Match < ActiveRecord::Base
     wins = {}
     matches = all_matches
       .select {|match| match.created_at >= before_days.days.ago.beginning_of_day}
-      .group_by(&:created_at)
+      .group_by {|match| match.created_at.beginning_of_day}
     matches.each do |date, day_matches|
       wins[date] = day_matches.select{|match| match.result_id == 1}.count
     end
