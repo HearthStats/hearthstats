@@ -19,7 +19,7 @@ group :development do
   gem 'seed_dump'
   gem 'rack-mini-profiler'
   gem 'awesome_print', :require => false
-  #gem 'active_record_query_trace'
+  gem 'active_record_query_trace'
 end
 
 group :assets do

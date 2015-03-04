@@ -60,6 +60,18 @@ class ApplicationController < ActionController::Base
     Text2Deck.new(card_array.join(','), err.join('<br>'))
   end
 
+  def get_array_wr(matches, strout = false )
+    tot_games = matches.count
+    return "N/A" if tot_games == 0
+
+    wins = matches.select {|match| match.result_id == 1}.count
+    win_rate = wins.to_f / tot_games
+    win_rate = (win_rate * 100).round(2)
+    win_rate = win_rate.to_s + "%" if strout
+
+    win_rate
+  end
+
   def get_win_rate(matches, strout = false )
     tot_games = matches.count
     return "N/A" if tot_games == 0

@@ -43,6 +43,12 @@ class User < ActiveRecord::Base
 
   ### INSTANCE METHODS:
 
+  def reset
+    decks.destroy
+    matches.destroy
+    arena_runs.destroy
+  end
+
   def create_profile
     Profile.create(user_id: id)
   end

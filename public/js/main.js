@@ -10,9 +10,6 @@ $(document).ready(function(){
 //   var iframe = document.getElementById('side2');
 //   iframe.src = iframe.src;
 // },180000);
-
-// Set height because CSS is messed up
-$("#sidebar").height($("#main").parent().height());
  
 //================ Responsive menu ===================//
 

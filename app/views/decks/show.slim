@@ -40,7 +40,7 @@ div.row
         img id="deckBuilderFullCardView" style="display:none; position:absolute; z-index:2000;"
     div.version
       h4 Share
-      = social_share_button_tag("Check out my #{@deck.name} Hearthstone Deck")
+      = social_share_button_tag("Check out my #{truncate(@deck.name, length: 94)} Hearthstone Deck on @HearthStats")
       - unless @deck.deck_versions.empty?
         h3 Versions
         .curr-version

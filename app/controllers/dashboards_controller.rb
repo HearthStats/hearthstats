@@ -11,13 +11,13 @@ class DashboardsController < ApplicationController
     end
 
     # Get all user's matches from this season
-    matches = Match.where(user_id: current_user.id, season_id: current_season)
+    matches = Match.where(user_id: current_user.id, season_id: current_season).all
+    arena_matches = matches.select { |match| match.mode_id == 1 }
+    ranked_matches = matches.select { |match| match.mode_id == 3 }
     @arenawins = Match.winrate_per_day_cumulative(matches.where(mode_id: 1), 10)
     @conwins   = Match.winrate_per_day_cumulative(matches.where(mode_id: 3), 10)
-    arena_matches = matches.where(mode_id: 1)
-    @arena_wr = get_win_rate(arena_matches, true)
-    con_matches = matches.where(mode_id: 3)
-    @con_wr = get_win_rate(con_matches, true)
+    @arena_wr = get_array_wr(arena_matches, true)
+    @con_wr = get_array_wr(ranked_matches, true)
 
     @recent_entries = matches.last(10).reverse
     @topdeck = Deck.bestuserdeck(current_user.id)
