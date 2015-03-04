@@ -18,6 +18,7 @@ group :development do
   gem 'awesome_print', :require => false
   gem 'active_record_query_trace'
   gem "selenium-webdriver", "~> 2.44.0"
+  gem 'active_record_query_trace'
 end
 
 group :assets do
