@@ -421,7 +421,9 @@ form{
      -moz-box-shadow: inset 0 10px 6px -6px #777;
           box-shadow: inset 0 10px 6px -6px #777;
 }
-
+.rank-class{
+  margin-top: 30px;
+}
 .rank-class-name{
   text-align: left;
   width: 4%;
