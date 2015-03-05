@@ -410,6 +410,36 @@ form{
   float: right;
 }
 
+
+/*-----------------------------------------------------------------------------------*/
+/* 5. Rank Class
+/*-----------------------------------------------------------------------------------*/
+
+#rank-class{
+  padding:60px 0 60px 0;
+  -webkit-box-shadow: inset 0 10px 6px -6px #777;
+     -moz-box-shadow: inset 0 10px 6px -6px #777;
+          box-shadow: inset 0 10px 6px -6px #777;
+}
+
+.rank-class-name{
+  text-align: left;
+  width: 4%;
+  display: inline-block;
+  height: 30px;
+  vertical-align: top;
+  margin-top: 8px;
+}
+.rank-class-colors{
+  width: 90%;
+  display: inline-block;
+  height: 30px;
+}
+.rank-class-box{
+  float: right;
+  height: 30px;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /* 5. STREAMS STYLES
 /*-----------------------------------------------------------------------------------*/
@@ -890,21 +920,4 @@ background-color:#FFFFFF;
 /*MISC*/
 .top-banner{
   width: 100%;
-}
-.rank-class-name{
-  text-align: left;
-  width: 4%;
-  display: inline-block;
-  height: 30px;
-  vertical-align: top;
-  margin-top: 8px;
-}
-.rank-class-colors{
-  width: 90%;
-  display: inline-block;
-  height: 30px;
-}
-.rank-class-box{
-  float: right;
-  height: 30px;
 }
