@@ -102,6 +102,7 @@ $('.klass-link').eq(random).click();
       tablet: 660
     }
   });
+  $('.tooltip').tooltipster();
   $('#tab-container').easytabs();
   $('#stream-container').easytabs();
 

@@ -891,3 +891,20 @@ background-color:#FFFFFF;
 .top-banner{
   width: 100%;
 }
+.rank-class-name{
+  text-align: left;
+  width: 4%;
+  display: inline-block;
+  height: 30px;
+  vertical-align: top;
+  margin-top: 8px;
+}
+.rank-class-colors{
+  width: 90%;
+  display: inline-block;
+  height: 30px;
+}
+.rank-class-box{
+  float: right;
+  height: 30px;
+}
