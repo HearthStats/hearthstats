@@ -174,7 +174,7 @@ class Api::V2::MatchesController < ApplicationController
     end
 
     # get user class
-    userclass = deck.klass_id
+    userclass = deck.klass_id if deck
     if userclass.nil?
       errors.push("Unknown user class '" + (req[:class].nil? ? "[undetected]" : req[:class]) + "'.")
     end
