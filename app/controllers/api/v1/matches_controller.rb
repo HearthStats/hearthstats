@@ -83,7 +83,7 @@ class Api::V1::MatchesController < ApplicationController
 
         # Submit log file
         if req[:log]
-          s3 = AWS::S3.new
+          s3 = Aws::S3::Client.new(region:'us-west-2')
           obj = s3.buckets['hearthstats'].objects["prem-logs/#{match.user_id}/#{match.id}"]
           obj.write(req[:log])
         end
