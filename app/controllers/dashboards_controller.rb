@@ -23,9 +23,9 @@ class DashboardsController < ApplicationController
     topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
       best_deck = Deck.bestuserdeck(current_user.id)
       
-      return best_deck.id if !best_deck.nil?
+      best_deck.id if !best_deck.nil?
     end
-    @topdeck = Deck.find(topdeck_id)
+    @topdeck = Deck.find(topdeck_id) if topdeck_id
     @toparena = Match.bestuserarena(current_user.id)
     gon.hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
   end
