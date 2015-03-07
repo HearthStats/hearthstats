@@ -164,7 +164,7 @@ class Match < ActiveRecord::Base
 
     end
 
-    winrate
+    winrate.sort_by { |date, wr| date}
   end
 
   def self.results_list
