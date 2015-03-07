@@ -87,8 +87,14 @@ class Api::V2::DecksController < ApplicationController
   end
 
   def create_version
-    deck = Deck.find(@req[:deck_id])
-    if deck.user_id == current_user.id
+    begin
+      deck = Deck.find(@req[:deck_id])
+    rescue
+      api_response = { status: "error", data: "Deck not found" }
+      deck = nil
+    end
+    
+    if !!deck.nil? && deck.user_id == current_user.id
       cardstring = Deck.hdt_parse(@req[:cards])
       deck_version = DeckVersion.new(deck_id: deck.id, 
                         version: @req[:version], 
