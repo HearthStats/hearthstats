@@ -22,7 +22,8 @@ class DashboardsController < ApplicationController
     @recent_entries = matches.last(10).reverse
     topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
       best_deck = Deck.bestuserdeck(current_user.id)
-      best_deck.id if best_deck
+      
+      return best_deck.id if !best_deck.nil?
     end
     @topdeck = Deck.find(topdeck_id)
     @toparena = Match.bestuserarena(current_user.id)
