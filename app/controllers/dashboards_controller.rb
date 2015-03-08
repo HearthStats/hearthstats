@@ -22,10 +22,17 @@ class DashboardsController < ApplicationController
     @recent_entries = matches.last(10).reverse
     topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
       best_deck = Deck.bestuserdeck(current_user.id)
-      
-      best_deck.id if !best_deck.nil?
     end
-    @topdeck = Deck.find(topdeck_id) if topdeck_id
+
+    begin
+      @topdeck = Deck.find(topdeck_id)
+    rescue
+      Rails.cache.delete("topdeck-#{current_user.id}")
+      topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
+        best_deck = Deck.bestuserdeck(current_user.id)
+      end
+    end
+    
     @toparena = Match.bestuserarena(current_user.id)
     gon.hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
   end
