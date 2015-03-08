@@ -50,15 +50,11 @@ GEM
       thread_safe
     arel (3.0.3)
     awesome_print (1.6.1)
-    aws-sdk (2.0.23)
-      aws-sdk-resources (= 2.0.23)
-    aws-sdk-core (2.0.23)
-      builder (~> 3.0)
-      jmespath (~> 1.0)
-      multi_json (~> 1.0)
-      multi_xml (~> 0.5)
-    aws-sdk-resources (2.0.23)
-      aws-sdk-core (= 2.0.23)
+    aws-sdk (1.5.8)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -265,8 +261,6 @@ GEM
       nokogiri (~> 1.5)
     inflecto (0.0.2)
     ipaddress (0.8.0)
-    jmespath (1.0.2)
-      multi_json (~> 1.0)
     journey (1.0.4)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -464,6 +458,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.6)
+    uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.2.1)
@@ -484,7 +479,7 @@ DEPENDENCIES
   announcements
   appsignal
   awesome_print
-  aws-sdk
+  aws-sdk (~> 1.5.7)
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
   bootstrap-wysihtml5-rails
@@ -523,7 +518,7 @@ DEPENDENCIES
   mysql2
   nokogiri
   opinio
-  paperclip
+  paperclip (~> 4.2)
   phashion
   pry
   pry-byebug
