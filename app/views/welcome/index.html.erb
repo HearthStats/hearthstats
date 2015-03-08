@@ -317,6 +317,35 @@
         </div>
       </div>
     </section>
+
+    <!-- Rank by Class -->
+    <section id="rank-class">
+      <div class="row">
+        <div class="twelve columns top-wr">
+          <div class="content-head">
+            <h2>Class Percent by Rank</h2>
+            <div class="line"></div>
+          <div>
+          <div class="rank-class">
+            <% @rank_class.each do |rank, stats| %>
+              <div class="rank-class-row">
+                <span class="rank-class-name">
+                  <%= rank %>
+                </span>
+                <div class="rank-class-colors">
+                  <% stats.each do |klass, percent| %>
+                    <span class="<%= Klass::LIST[klass] %> rank-class-box tooltip" title="<%= Klass::LIST[klass] %>: <%= percent.round(2) %>%" style="width:<%= percent.round(2) %>%">
+                      &nbsp;
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>  
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
   <div class="five columns" id="sidebar">
     <section class="tracker">
