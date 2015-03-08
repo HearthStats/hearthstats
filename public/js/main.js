@@ -104,7 +104,6 @@ $('.klass-link').eq(random).click();
   });
   $('.tooltip').tooltipster();
   $('#tab-container').easytabs();
-  $('#stream-container').easytabs();
 
   $('.dashboard-button').click(function(){
     $('#loading-screen-cont').fadeIn();
