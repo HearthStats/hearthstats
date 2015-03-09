@@ -1,7 +1,8 @@
 class BlindDraftsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :authenticate_drafters_or_caster, :only => [:draft, :show]
-  before_filter :authenticate_drafters, :only => [:end_draft, :pick_card, :reveal_card]
+  before_filter :closed_redirect
+  # before_filter :authenticate_user!
+  # before_filter :authenticate_drafters_or_caster, :only => [:draft, :show]
+  # before_filter :authenticate_drafters, :only => [:end_draft, :pick_card, :reveal_card]
 
   def index
     @blind_drafts = current_user.blind_drafts.order(:created_at).reverse
@@ -134,17 +135,21 @@ class BlindDraftsController < ApplicationController
 
   private
 
-    def authenticate_drafters_or_caster
-      blind_draft = BlindDraft.find(params[:id])
-      unless current_user.has_role?(:caster) || ([ blind_draft.player1_id ,blind_draft.player2_id ].include? current_user.id)
-        redirect_to blind_drafts_path, alert: "You are not a member of that draft"
-      end
-    end
+  def closed_redirect
+    redirect_to root_path, alert: "Sadly Blind Draft is close due to lack of use. We would love to bring it back if you can show us there is love for this!"
+  end
 
-    def authenticate_drafters
-      blind_draft = BlindDraft.find(params[:id])
-      unless [ blind_draft.player1_id ,blind_draft.player2_id ].include? current_user.id
-        redirect_to blind_drafts_path, alert: "You are not a member of that draft"
-      end
+  def authenticate_drafters_or_caster
+    blind_draft = BlindDraft.find(params[:id])
+    unless current_user.has_role?(:caster) || ([ blind_draft.player1_id ,blind_draft.player2_id ].include? current_user.id)
+      redirect_to blind_drafts_path, alert: "You are not a member of that draft"
     end
+  end
+
+  def authenticate_drafters
+    blind_draft = BlindDraft.find(params[:id])
+    unless [ blind_draft.player1_id ,blind_draft.player2_id ].include? current_user.id
+      redirect_to blind_drafts_path, alert: "You are not a member of that draft"
+    end
+  end
 end

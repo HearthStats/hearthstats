@@ -100,8 +100,4 @@ class ProfilesController < ApplicationController
     end
   end
 
-  private
-
-  def arena_class
-  end
 end
