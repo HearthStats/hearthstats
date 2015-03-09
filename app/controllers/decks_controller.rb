@@ -111,7 +111,11 @@ class DecksController < ApplicationController
   end
 
   def public_show
-    @deck = Deck.find(params[:id])
+    begin
+      @deck = Deck.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to public_decks_path, alert: "Deck cannot be found" and return
+    end
     # unique = @deck.unique_deck
     # if unique.nil?
     #   redirect_to deck_path(@deck) and return
