@@ -94,7 +94,7 @@ class Api::V2::DecksController < ApplicationController
       deck = nil
     end
     
-    if !!deck.nil? && deck.user_id == current_user.id
+    if !deck.nil? && deck.user_id == current_user.id
       cardstring = Deck.hdt_parse(@req[:cards])
       deck_version = DeckVersion.new(deck_id: deck.id, 
                         version: @req[:version], 
