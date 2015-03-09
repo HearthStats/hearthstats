@@ -1,0 +1,7 @@
+h2 Unverified
+
+- @unverified.each do |unique_deck|
+  p
+    = unique_deck.name
+    | -
+    = Klass::LIST[unique_deck.klass_id]

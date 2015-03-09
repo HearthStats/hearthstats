@@ -214,6 +214,10 @@ class DecksController < ApplicationController
     if current_user.guest?
       @deck.is_public = false
     end
+    unless params[:new_archtype].blank?
+      archtype = UniqueDeckType.create(klass_id: @deck.klass_id, name: params[:new_archtype])
+      @deck.deck_type_id = archtype.id
+    end
     unless params[:deck_text].blank?
       text2deck = text_to_deck(params[:deck_text])
       if !text2deck.errors.empty?

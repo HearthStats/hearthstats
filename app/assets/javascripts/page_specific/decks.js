@@ -16,6 +16,11 @@ $(document).ready(function(){
       $('.deck-text-box').slideDown();
     })
   })
+  $('.create-archtype').click( function(){
+    $('.archtype-dropdown').slideUp( function(){
+      $('.new-archtype-input').slideDown();
+    })
+  })
   $('[data-toggle="popover"]').popover({
     trigger: "hover",
     placement: "top"

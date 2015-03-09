@@ -2,7 +2,11 @@ class AdminController < ApplicationController
   before_filter :authenticate_user!
   before_filter :admin_user?
 
-  def test_page
+  def index
+  end
+
+  def verify_archtypes
+    @unverified = UniqueDeckType.where(verified: false)
   end
 
   def export_con
