@@ -16,12 +16,27 @@
     .col-sm-12.col-md-12.col-lg-3
       .form-body
         h3 Deck Details
-        .form-group
-          = f.label t('decks.form.class')
-          |: &nbsp;
-          .div
-            = f.select :klass_id, options_for_select(klasses_hash.to_a,
-              @deck.klass_id), class: 'form-control'
+        .form-group.row
+          .col-md-6
+            = f.label t('decks.form.class')
+            |: &nbsp;
+            div
+              = f.select :klass_id, options_for_select(klasses_hash.to_a,
+                @deck.klass_id), class: 'form-control'
+          .col-md-6
+            = f.label t('decks.form.type')
+            |: &nbsp;
+            .archtype-dropdown
+              = f.select :deck_type_id,
+                options_for_select(UniqueDeckType.where(klass_id:@deck.klass_id, 
+                verified: true).map(&:name)), include_blank: true,
+                class: 'form-control'
+            .new-archtype
+              span.create-archtype Archtype Not Listed?
+              .new-archtype-input
+                |Name
+                = text_field_tag :new_archtype
+
         .form-group
           = f.label t('decks.form.name')
           = f.text_field :name, class: 'form-control'

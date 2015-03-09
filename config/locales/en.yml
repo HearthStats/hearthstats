@@ -389,6 +389,7 @@ en:
       name: Name
       mana: Mana
       class: Class
+      type: Archtype
       notes: Notes
       tags: Tags
       decklist_etc: ! ' Decklist, etc'

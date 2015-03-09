@@ -88,6 +88,8 @@ Hearthstats::Application.routes.draw do
   post "admin/anncreate"
   get "admin/test_page"
   post "admin/toggle_sub"
+  get "admin/index"
+  get "admin/verify_archtypes"
 
   get "welcome/index"
   get "welcome/demo_user"
