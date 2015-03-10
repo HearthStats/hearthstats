@@ -1,5 +1,5 @@
 Hearthstats::Application.configure do
-  ActiveRecordQueryTrace.enabled = true
+  ActiveRecordQueryTrace.enabled = false
   
   # Settings specified here will take precedence over those in config/application.rb
 
