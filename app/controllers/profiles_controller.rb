@@ -83,7 +83,7 @@ class ProfilesController < ApplicationController
     end
     
     @topdeck = Deck.find(topdeck_id) if topdeck_id
-    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true) || []
+    @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true).all
 
   end
 
