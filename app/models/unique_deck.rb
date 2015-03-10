@@ -92,10 +92,12 @@ class UniqueDeck < ActiveRecord::Base
       end
     end
 
+    self.unique_deck_type_id = UniqueDeckType.find_type(self.klass_id, self.cardstring)
     self.save
   end
 
   def set_type
+    self.unique_deck_type_id = UniqueDeckType.find_type(self.klass_id, self.cardstring)
     self.save
   end
 end
