@@ -13,7 +13,7 @@ table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#d
       - if signed_in?
         th.tools = t('.tools')
   tbody
-    - @decks.each do |deck|
+    - decks.each do |deck|
       tr
         td.name    = link_to deck.name, deck
         td.class

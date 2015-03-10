@@ -130,4 +130,4 @@ div class="row profile"
           div class="row profile-decks"
             div class="col-md-12"
               h2 #{@profiletitle}'s Decks
-              = render partial: 'decks/deck_list_no_filter', :locals => { :global => false }
+              = render partial: 'decks/deck_list_no_filter', :locals => { :global => false, decks: @decks }
