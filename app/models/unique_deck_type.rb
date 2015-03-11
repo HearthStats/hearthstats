@@ -22,7 +22,8 @@ class UniqueDeckType < ActiveRecord::Base
 
 
   def self.match_type(cardstring, deck_type)
-    match_array = deck_type.match_string.split(",") if deck_type.match_string
+    return nil if deck_type.match_string.nil?
+    match_array = deck_type.match_string.split(",")
     matched = true
     match_array.each do |card_id|
       has_card = cardstring.include? card_id
