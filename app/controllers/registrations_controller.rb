@@ -6,6 +6,14 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     destroy_guest
     super
+
+    if resource.save
+      begin
+        c = Cindy.new "http://news.hearthstats.net", "Ss8skJ2K3lXqc0sVYkl6"
+        c.subscribe "VD6WJfDFVH0ssLoGuuWaeg", resource.email
+      rescue
+      end
+    end
   end
 
   def update
