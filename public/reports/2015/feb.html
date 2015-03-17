@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="February 2015 report about win rates and most played cards in Hearthstone">
+  <meta name="author" content="OverStats Inc.">
+
+  <title>HearthStats | February 2015 Report</title>
+
+  <!-- FAVICON-->
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/reports/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Fonts -->
+  <link href="/reports/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/reports/assets/css/animate.css" rel="stylesheet" />
+  <!-- Squad theme CSS -->
+  <link href="/reports/assets/css/style.css" rel="stylesheet">
+  <link href="/reports/assets/color/default.css" rel="stylesheet">
+  <link href="/reports/2015/css/feb.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/reports/assets/css/responsive-tables.css">
+  <link href='//fonts.googleapis.com/css?family=Crafty+Girls|Walter+Turncoat' rel='stylesheet' type='text/css'>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div id="load"></div>
+  </div>
+
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+      <div class="slogan">
+        <img src="/reports/assets/img/full_colour_inline.png" class="hs-img">
+        <h2>February Report</h2>
+      </div>
+      <div class="page-scroll">
+        <a href="#awards" class="btn btn-circle">
+          <i class="fa fa-angle-double-down animated"></i>
+        </a>
+      </div>
+    </section>
+  <!-- /Section: intro -->
+
+  <!-- Section: about -->
+    <section id="awards" class="home-section text-center">
+    <div class="heading-about">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="section-heading">
+          <h2 class="award">Archtype Awards</h2>
+          <div class="award-note">
+            <small>Note: all award stats are for Constructed Only</small>
+          </div>
+          <i class="fa fa-2x fa-angle-down"></i>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="container">
+
+    <div class="row">
+      <div class="col-lg-2 col-lg-offset-5">
+        <hr class="marginbot-50">
+      </div>
+    </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3 col-md-3">
+        <div class="wow bounceInUp" data-wow-delay="0.2s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+            <h5>Mech Mage</h5>
+                        <p class="subtitle">Most Played</p>
+                        <div class="avatar"><img src="/assets/cards/snowchugger.png" alt="" class="img-responsive" /></div>
+                    </div>
+                </div>
+        </div>
+            </div>
+      <div class="col-xs-6 col-sm-3 col-md-3">
+        <div class="wow bounceInUp" data-wow-delay="0.5s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+            <h5>Aggro Hunter</h5>
+                        <p class="subtitle">Highest Win Rate</p>
+                        <div class="avatar"><img src="/assets/cards/undertaker.png" alt="" class="img-responsive" /></div>
+
+                    </div>
+                </div>
+        </div>
+            </div>
+      <div class="col-xs-6 col-sm-3 col-md-3">
+        <div class="wow bounceInUp" data-wow-delay="0.8s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+            <h5>Tempo Priest</h5>
+                        <p class="subtitle">Least Played</p>
+                        <div class="avatar"><img src="/assets/cards/dark-cultist.png" alt="" class="img-responsive" /></div>
+
+                    </div>
+                </div>
+        </div>
+            </div>
+      <div class="col-xs-6 col-sm-3 col-md-3">
+        <div class="wow bounceInUp" data-wow-delay="1s">
+                <div class="team boxed-grey">
+                    <div class="inner">
+            <h5>Miracle Rogue</h5>
+                        <p class="subtitle">Lowest Win Rate</p>
+                        <div class="avatar"><img src="/assets/cards/preparation.png" alt="" class="img-responsive" /></div>
+
+                    </div>
+                </div>
+        </div>
+            </div>
+        </div>    
+    </div>
+  </section>
+  <!-- /Section: about -->
+  
+
+  <!-- Section: honorable mentions -->
+    <section id="mentions" class="home-section text-center bg-gray">
+    <div class="heading-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="wow bounceInDown" data-wow-delay="0.4s">
+            <div class="section-heading">
+            <h2>Winrate by Rank</h2>
+            <i class="fa fa-2x fa-angle-down"></i>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 col-lg-offset-5">
+            <hr class="marginbot-50">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div id="ranked_wr" class="display-none">
+              <div class="row">
+                <div class="col-md-10">
+                  <div id="rank_distribution" class="chart" style="height: 600px"></div>
+                </div>
+                <div class="col-md2 graph-selection-cont">
+                  <div id="choices"></div>
+                </div>
+              </div>
+            </div>
+            <script>
+              $(document).ready(function () {
+                $('#ranked_wr').show();
+                var datasets = {
+                    "Druid": {
+                        data: [[1,51.03],[2,50.43],[3,50.0],[4,50.59],[5,51.06],[6,49.16],[7,55.27],[8,52.87],[9,52.01],[10,51.52],[11,51.88],[12,49.84],[13,49.44],[14,52.07],[15,52.75],[16,53.01],[17,54.26],[18,54.33],[19,53.39],[20,57.7],[21,68.0],[22,54.17],[23,80.0],[24,null],[25,null]],
+                        label: "Druid"
+                    },
+                    "Hunter": {
+                        data: [[1,51.9],[2,50.38],[3,51.85],[4,52.11],[5,52.1],[6,54.46],[7,51.74],[8,54.55],[9,54.16],[10,54.42],[11,55.36],[12,53.83],[13,57.47],[14,58.79],[15,55.24],[16,53.49],[17,56.37],[18,60.44],[19,58.47],[20,66.77],[21,65.79],[22,80.65],[23,85.71],[24,100.0],[25,60.0]],
+                        label: "Hunter"
+                    },
+                     "Mage": {
+                        data: [[1,43.08],[2,47.48],[3,52.77],[4,51.92],[5,49.65],[6,48.48],[7,50.18],[8,50.7],[9,51.68],[10,51.06],[11,49.15],[12,54.52],[13,50.73],[14,52.18],[15,51.62],[16,50.32],[17,51.44],[18,54.9],[19,59.17],[20,58.45],[21,71.88],[22,55.0],[23,80.0],[24,80.0],[25,60.0]],
+                        label: "Mage"
+                    },
+                    "Paladin": {
+                        data: [[1,44.14],[2,51.9],[3,50.0],[4,53.16],[5,52.96],[6,52.29],[7,53.43],[8,53.4],[9,56.52],[10,54.6],[11,52.67],[12,54.68],[13,50.97],[14,55.27],[15,55.36],[16,51.29],[17,58.71],[18,60.48],[19,51.16],[20,57.79],[21,62.5],[22,70.0],[23,83.33],[24,100.0],[25,75.0]],
+                        label: "Paladin"
+                    },
+                    "Priest": {
+                        data: [[1,0.0],[2,42.86],[3,49.21],[4,47.79],[5,49.54],[6,46.82],[7,51.57],[8,46.71],[9,46.11],[10,50.49],[11,48.04],[12,46.05],[13,46.93],[14,48.79],[15,50.53],[16,52.24],[17,47.6],[18,53.75],[19,53.86],[20,54.55],[21,73.91],[22,61.11],[23,58.33],[24,100.0],[25,71.43]],
+                        label: "Priest"
+                    },
+                    "Rogue": {
+                        data: [[1,59.26],[2,33.33],[3,47.14],[4,35.09],[5,48.53],[6,39.62],[7,48.19],[8,46.36],[9,47.88],[10,46.51],[11,47.71],[12,49.55],[13,47.76],[14,53.77],[15,51.61],[16,52.25],[17,44.81],[18,54.5],[19,55.89],[20,52.1],[21,85.71],[22,88.24],[23,80.0],[24,37.5],[25,70.0]],
+                        label: "Rogue"
+                    },
+                    "Shaman": {
+                        data: [[1,71.43],[2,32.35],[3,48.62],[4,57.52],[5,51.03],[6,46.53],[7,45.81],[8,47.52],[9,49.75],[10,47.58],[11,52.06],[12,47.17],[13,50.19],[14,47.0],[15,50.29],[16,57.84],[17,53.4],[18,54.55],[19,58.72],[20,63.69],[21,72.0],[22,76.92],[23,70.0],[24,75.0],[25,60.0]],
+                        label: "Shaman"
+                    },
+                    "Warlock": {
+                        data: [[1,52.63],[2,47.5],[3,48.25],[4,49.09],[5,46.9],[6,49.54],[7,51.65],[8,48.76],[9,49.82],[10,50.1],[11,43.56],[12,53.14],[13,51.48],[14,51.75],[15,51.76],[16,52.99],[17,54.78],[18,56.05],[19,63.81],[20,65.87],[21,69.23],[22,58.82],[23,64.71],[24,100.0],[25,75.0]],
+                        label: "Warlock"
+                    },
+                    "Warrior": {
+                        data: [[1,52.17],[2,40.43],[3,42.25],[4,51.38],[5,48.08],[6,48.89],[7,54.04],[8,47.71],[9,48.39],[10,50.88],[11,51.45],[12,51.07],[13,54.89],[14,52.52],[15,53.53],[16,57.14],[17,58.29],[18,54.42],[19,53.97],[20,59.6],[21,50.0],[22,65.22],[23,87.5],[24,100.0],[25,50.0]],
+                        label: "Warrior"
+                    }
+                  };
+                var i = 0;
+                  $.each(datasets, function(key, val) {
+                    val.color = i;
+                    ++i;
+                  });
+
+                  // insert checkboxes
+                  var choiceContainer = $("#choices");
+                  $.each(datasets, function(key, val) {
+                    choiceContainer.append("<br/><input type='checkbox' name='" + key +
+                      "' checked='checked' id='id" + key + "'></input>" +
+                      "<label for='id" + key + "'>"
+                      + val.label + "</label>");
+                  });
+
+                  choiceContainer.find("input").click(plotAccordingToChoices);
+
+                  function plotAccordingToChoices() {
+
+                    var data = [];
+
+                    choiceContainer.find("input:checked").each(function () {
+                      var key = $(this).attr("name");
+                      if (key && datasets[key]) {
+                        data.push(datasets[key]);
+                      }
+                    });
+
+                    if (data.length > 0) {
+                      $.plot("#rank_distribution", data, {
+                        series: {
+                          lines: {
+                            show: true,
+                            lineWidth: 2,
+                            fill: true,
+                            fillColor: {
+                                colors: [{
+                                        opacity: 0.05
+                                    }, {
+                                        opacity: 0.01
+                                    }
+                                ]
+                            }
+                          },
+                          points: {
+                            show: true
+                          },
+                          shadowSize: 2
+                        },
+                        yaxis: {
+                          min: 0
+                        },
+                        grid: {
+                          clickable: true,
+                          tickColor: "#eee",
+                          borderWidth: 0
+                        },
+                        colors: ["#FF7D0A", "#ABD473", "#69CCF0",
+                           "#F58CBA", "#999999", "#f1c40f",
+                           "#0070DE", "#9482C9", "#A57A4D"],
+                        xaxis: {
+                          tickSize: 1
+                        },
+                        legend: {
+                         position: "ne"
+                        }
+                      });
+                    }
+                  }
+
+                  plotAccordingToChoices();
+                  window.onresize = function(event) {
+                    plotAccordingToChoices();
+                  }
+
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Section: honorable mentions -->
+  
+  <!-- Section: class -->
+  <section id="class" class="home-section text-center">
+  
+    <div class="heading-about">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="wow bounceInDown" data-wow-delay="0.4s">
+          <div class="section-heading">
+          <h2>Class Win Rates</h2>
+          <i class="fa fa-2x fa-angle-down"></i>
+
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-lg-offset-5">
+        <hr class="marginbot-50">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="service-box">
+          <div class="service-desc">
+            <h5>Arena</h5>
+            <table class="table wow fadeInUp">
+              <thead>
+                <tr>
+                  <td>Class</td>
+                  <td>Win Rate</td>
+                  <td>Change</td>
+                  <td>Popularity</td>
+                </tr>
+              </thead>
+              <tbody><tr><td>1. <img alt="Paladin_icon" height="24" src="/assets/Icons/Classes/Paladin_Icon-b65a7a1634e32b9756697de8a361000d.gif" width="24" /> Paladin</td><td>53.44%</td><td>0.79%</td><td>2</td></tr><tr><td>2. <img alt="Mage_icon" height="24" src="/assets/Icons/Classes/Mage_Icon-b255891a7052706b44b04b75fc42d13c.gif" width="24" /> Mage</td><td>52.60%</td><td>-0.67%</td><td>1</td></tr><tr><td>3. <img alt="Rogue_icon" height="24" src="/assets/Icons/Classes/Rogue_Icon-59a76658bcbb6a690f91742381c24372.gif" width="24" /> Rogue</td><td>52.42%</td><td>0.51%</td><td>6</td></tr><tr><td>4. <img alt="Priest_icon" height="24" src="/assets/Icons/Classes/Priest_Icon-a72fb5ff4a03c38d10223008c5adae15.gif" width="24" /> Priest</td><td>49.00%</td><td>-0.04%</td><td>3</td></tr><tr><td>5. <img alt="Shaman_icon" height="24" src="/assets/Icons/Classes/Shaman_Icon-620aee74063e6a21d84f55c2bf10f8d9.gif" width="24" /> Shaman</td><td>48.49%</td><td>-1.13%</td><td>5</td></tr><tr><td>6. <img alt="Warlock_icon" height="24" src="/assets/Icons/Classes/Warlock_Icon-74faf858785d9904fd4b89cd7a173877.gif" width="24" /> Warlock</td><td>46.90%</td><td>-2.06%</td><td>8</td></tr><tr><td>7. <img alt="Druid_icon" height="24" src="/assets/Icons/Classes/Druid_Icon-c6908bedb54b42a0fbcf4974c464dad7.gif" width="24" /> Druid</td><td>46.56%</td><td>0.60%</td><td>4</td></tr><tr><td>8. <img alt="Hunter_icon" height="24" src="/assets/Icons/Classes/Hunter_Icon-b549d122d67771d0d0fe94495b4c2dee.gif" width="24" /> Hunter</td><td>45.06%</td><td>-0.05%</td><td>7</td></tr><tr><td>9. <img alt="Warrior_icon" height="24" src="/assets/Icons/Classes/Warrior_Icon-b98171c30a56ad950f5c2e5357681d82.gif" width="24" /> Warrior</td><td>43.94%</td><td>-1.61%</td><td>9</td></tr></tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+          </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="service-box">
+          <div class="service-desc">
+            <h5>Constructed</h5>
+            <table class="table wow fadeInUp">
+              <thead>
+                <tr>
+                  <td>Class</td>
+                  <td>Win Rate</td>
+                  <td>Change</td>
+                  <td>Popularity</td>
+                </tr>
+              </thead>
+              <tbody><tr><td>1. <img alt="Hunter_icon" height="24" src="/assets/Icons/Classes/Hunter_Icon-b549d122d67771d0d0fe94495b4c2dee.gif" width="24" /> Hunter</td><td>53.08%</td><td>-0.91%</td><td>52663 Games</td></tr><tr><td>2. <img alt="Paladin_icon" height="24" src="/assets/Icons/Classes/Paladin_Icon-b65a7a1634e32b9756697de8a361000d.gif" width="24" /> Paladin</td><td>51.32%</td><td>1.98%</td><td>32955 Games</td></tr><tr><td>3. <img alt="Druid_icon" height="24" src="/assets/Icons/Classes/Druid_Icon-c6908bedb54b42a0fbcf4974c464dad7.gif" width="24" /> Druid</td><td>50.20%</td><td>1.45%</td><td>37424 Games</td></tr><tr><td>4. <img alt="Warlock_icon" height="24" src="/assets/Icons/Classes/Warlock_Icon-74faf858785d9904fd4b89cd7a173877.gif" width="24" /> Warlock</td><td>49.97%</td><td>-1.12%</td><td>48691 Games</td></tr><tr><td>5. <img alt="Warrior_icon" height="24" src="/assets/Icons/Classes/Warrior_Icon-b98171c30a56ad950f5c2e5357681d82.gif" width="24" /> Warrior</td><td>49.39%</td><td>-1.52%</td><td>24551 Games</td></tr><tr><td>6. <img alt="Mage_icon" height="24" src="/assets/Icons/Classes/Mage_Icon-b255891a7052706b44b04b75fc42d13c.gif" width="24" /> Mage</td><td>49.20%</td><td>0.44%</td><td>46057 Games</td></tr><tr><td>7. <img alt="Shaman_icon" height="24" src="/assets/Icons/Classes/Shaman_Icon-620aee74063e6a21d84f55c2bf10f8d9.gif" width="24" /> Shaman</td><td>47.88%</td><td>-2.61%</td><td>15910 Games</td></tr><tr><td>8. <img alt="Rogue_icon" height="24" src="/assets/Icons/Classes/Rogue_Icon-59a76658bcbb6a690f91742381c24372.gif" width="24" /> Rogue</td><td>47.28%</td><td>3.17%</td><td>15989 Games</td></tr><tr><td>9. <img alt="Priest_icon" height="24" src="/assets/Icons/Classes/Priest_Icon-a72fb5ff4a03c38d10223008c5adae15.gif" width="24" /> Priest</td><td>46.51%</td><td>-0.86%</td><td>24730 Games</td></tr></tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+        </div>  
+      </div>
+  </section>
+  <!-- /Section: class -->
+
+
+  <!-- Section: matrix -->
+  <section id="matrix" class="home-section text-center bg-dark text-light">
+  
+    <div class="heading-about">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="wow bounceInDown" data-wow-delay="0.4s">
+          <div class="section-heading">
+          <h2>Class Win Rates</h2>
+          <i class="fa fa-2x fa-angle-down"></i>
+
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-lg-2 col-lg-offset-5">
+        <hr class="marginbot-50">
+      </div>
+    </div>
+    <div class="row">
+      <div class="btn-group mode-selection">
+        <button type="button" class="btn btn-default active matrix-btn" data-mode="arena">Arena</button>
+        <button type="button" class="btn btn-default matrix-btn" data-mode="constructed">Constructed</button>
+      </div>
+      <div class="col-md-12 matrix-cont">
+        <div class="arena mode-matrix">
+          <table class="table responsive">
+          <thead>
+            <tr><th class=""></th><td class="Druid">Druid</td><td class="Hunter">Hunter</td><td class="Mage">Mage</td><td class="Paladin">Paladin</td><td class="Priest">Priest</td><td class="Rogue">Rogue</td><td class="Shaman">Shaman</td><td class="Warlock">Warlock</td><td class="Warrior">Warrior</td></tr>
+          </thead>
+          <tbody><tr><td class="Druid">Druid</td><td>50.00%</td><td>52.63%</td><td>45.01%</td><td>46.01%</td><td>46.37%</td><td>44.68%</td><td>48.98%</td><td>38.29%</td><td>53.48%</td></tr><tr><td class="Hunter">Hunter</td><td>47.37%</td><td>50.00%</td><td>43.92%</td><td>37.98%</td><td>46.88%</td><td>47.41%</td><td>43.44%</td><td>53.54%</td><td>47.00%</td></tr><tr><td class="Mage">Mage</td><td>54.84%</td><td>56.08%</td><td>50.00%</td><td>50.48%</td><td>51.63%</td><td>52.97%</td><td>52.61%</td><td>56.59%</td><td>61.27%</td></tr><tr><td class="Paladin">Paladin</td><td>53.91%</td><td>62.02%</td><td>49.50%</td><td>50.00%</td><td>54.91%</td><td>49.07%</td><td>56.63%</td><td>59.24%</td><td>63.30%</td></tr><tr><td class="Priest">Priest</td><td>53.14%</td><td>53.12%</td><td>48.34%</td><td>45.06%</td><td>50.00%</td><td>42.03%</td><td>50.64%</td><td>53.05%</td><td>52.53%</td></tr><tr><td class="Rogue">Rogue</td><td>55.32%</td><td>52.59%</td><td>47.03%</td><td>50.93%</td><td>57.97%</td><td>50.00%</td><td>56.54%</td><td>58.00%</td><td>53.78%</td></tr><tr><td class="Shaman">Shaman</td><td>50.93%</td><td>56.56%</td><td>47.39%</td><td>43.37%</td><td>49.36%</td><td>43.46%</td><td>50.00%</td><td>51.80%</td><td>55.00%</td></tr><tr><td class="Warlock">Warlock</td><td>61.62%</td><td>46.46%</td><td>43.41%</td><td>40.76%</td><td>46.95%</td><td>42.00%</td><td>48.06%</td><td>50.00%</td><td>46.97%</td></tr><tr><td class="Warrior">Warrior</td><td>46.52%</td><td>53.00%</td><td>38.73%</td><td>36.70%</td><td>47.47%</td><td>46.22%</td><td>45.00%</td><td>53.03%</td><td>50.00%</td></tr></tbody>
+          </table>
+        </div>
+        <div class="constructed mode-matrix">
+          <table class="table responsive">
+            <thead>
+              <tr><th class=""></th><td class="Druid">Druid</td><td class="Hunter">Hunter</td><td class="Mage">Mage</td><td class="Paladin">Paladin</td><td class="Priest">Priest</td><td class="Rogue">Rogue</td><td class="Shaman">Shaman</td><td class="Warlock">Warlock</td><td class="Warrior">Warrior</td></tr>
+            </thead>
+            <tbody><tr><td class="Druid">Druid</td><td>50.00%</td><td>47.84%</td><td>49.67%</td><td>47.94%</td><td>50.27%</td><td>53.42%</td><td>50.00%</td><td>51.55%</td><td>55.17%</td></tr><tr><td class="Hunter">Hunter</td><td>52.15%</td><td>50.00%</td><td>54.29%</td><td>53.22%</td><td>52.99%</td><td>58.12%</td><td>56.03%</td><td>57.06%</td><td>47.01%</td></tr><tr><td class="Mage">Mage</td><td>50.29%</td><td>45.71%</td><td>50.00%</td><td>50.01%</td><td>51.71%</td><td>51.83%</td><td>52.35%</td><td>46.96%</td><td>49.84%</td></tr><tr><td class="Paladin">Paladin</td><td>51.99%</td><td>46.78%</td><td>49.97%</td><td>50.00%</td><td>54.03%</td><td>48.23%</td><td>57.29%</td><td>53.77%</td><td>55.38%</td></tr><tr><td class="Priest">Priest</td><td>49.59%</td><td>47.01%</td><td>48.21%</td><td>45.97%</td><td>50.00%</td><td>44.54%</td><td>47.61%</td><td>41.41%</td><td>45.40%</td></tr><tr><td class="Rogue">Rogue</td><td>46.58%</td><td>41.88%</td><td>48.17%</td><td>51.77%</td><td>55.46%</td><td>50.00%</td><td>50.00%</td><td>46.81%</td><td>40.16%</td></tr><tr><td class="Shaman">Shaman</td><td>50.00%</td><td>43.93%</td><td>47.65%</td><td>42.71%</td><td>52.39%</td><td>50.00%</td><td>50.00%</td><td>44.26%</td><td>59.07%</td></tr><tr><td class="Warlock">Warlock</td><td>48.38%</td><td>42.86%</td><td>53.04%</td><td>46.23%</td><td>58.59%</td><td>53.19%</td><td>55.74%</td><td>50.00%</td><td>51.93%</td></tr><tr><td class="Warrior">Warrior</td><td>44.83%</td><td>52.99%</td><td>50.14%</td><td>44.62%</td><td>54.60%</td><td>59.77%</td><td>40.93%</td><td>48.07%</td><td>50.00%</td></tr></tbody>
+          </table>
+        </div>
+      </div>  
+    </div>
+  </section>
+  <!-- /Section: matrix -->
+
+  <!-- Section: hearthsats -->
+  <section id="hearthstats" class="home-section text-center">
+    <div class="heading-contact">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="wow bounceInDown" data-wow-delay="0.4s">
+          <div class="section-heading">
+          <h2>Play Hard, Play Smart</h2>
+          <i class="fa fa-2x fa-angle-down"></i>
+
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="container wow zoomIn">
+
+    <div class="row">
+      <div class="col-lg-2 col-lg-offset-5">
+        <hr class="marginbot-50">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <img class="promo-image" src="/reports/assets/img/hearthstats_promo.jpg">
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="widget-contact">
+          <h5>Features</h5>
+          <ul>
+            <li>Automated Video Replays</li>
+            <li>Turn by turn logs</li>
+            <li>Compare decks</li>
+            <li>Generate custome reports</li>
+            <li>Frequent Giveaways</li>
+            <li>Much much more!</li>
+          </ul>
+          <a href="http://hearthstats.net/premiums" class="btn btn-success">Subscribe Now</a>
+          <address>
+            <strong>We're on social networks</strong><br>
+            <ul class="company-social">
+              <li class="social-facebook"><a href="https://www.facebook.com/HearthStats.net" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li class="social-twitter"><a href="https://twitter.com/hearthstats" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            </ul> 
+          </address>          
+        
+        </div>  
+      </div>
+    </div>  
+
+    </div>
+  </section>
+  <!-- /Section: hearthstats -->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="wow shake" data-wow-delay="0.4s">
+          <div class="page-scroll marginbot-30">
+            <a href="#intro" id="totop" class="btn btn-circle">
+              <i class="fa fa-angle-double-up animated"></i>
+            </a>
+          </div>
+          </div>
+          <p>&copy;Copyright 2014 - OverStats Inc. All rights reserved.</p>
+        </div>
+      </div>  
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Files -->
+  <script src="/reports/assets/js/bootstrap.min.js"></script>
+  <script src="/reports/assets/js/responsive-tables.js"> ></script>
+  <script src="/reports/assets/js/wow.min.js"> ></script>
+  <script src="/reports/assets/js/custom.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45442103-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+
+</html>

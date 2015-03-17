@@ -1,5 +1,8 @@
 class AdditionalController < ApplicationController
 
+  def reports
+  end
+
   def contactus
   end
 

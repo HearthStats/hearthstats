@@ -47,6 +47,7 @@ Hearthstats::Application.routes.draw do
   opinio_model controller: 'my_comments'
   # get "profile/edit"
 
+  match "/reports", to: "additional#reports"
   match "/contactus", to: "additional#contactus"
   match "/aboutus", to: "additional#aboutus"
   match "/help", to: "additional#help"
@@ -63,20 +64,12 @@ Hearthstats::Application.routes.draw do
   match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
-  match "/jan", to: "welcome#jan_report"
-  match "/dec", to: "welcome#decreport"
-  match "/nov", to: "welcome#novreport"
-  match "/mar", to: redirect('/reports/mar/index.html')
-  match "/apr", to: "welcome#april_report"
-  match "/may", to: "welcome#may_report"
-  match "/june", to: "welcome#june_report"
-  match "/july", to: "welcome#july_report"
-  match "/aug", to: "welcome#aug_report"
-  match "/sept", to: "welcome#sept_report"
-  match "/sept_post", to: "welcome#sept_post_report"
-  match "/oct", to: "welcome#oct_report"
-  match "/gen_report", to: "welcome#generate_report"
-  match "/gvg", to: "welcome#gvgreport"
+  Date::MONTHNAMES.dup[1..2].each do |month|
+    name = month[0..2].downcase
+    match "/#{name}", to: redirect("/reports/#{Time.now.year}/#{name}")
+  end
+
+  match '/reports/*path', to: redirect("/reports")
   get "welcome/ranked_test"
   get "welcome/select_klass"
 

@@ -1,0 +1,14 @@
+#intro{
+  background: url(../pics/feb_bg.jpg) no-repeat fixed center;
+}
+.intro .slogan{
+  margin-top: -140px;
+}
+.slogan img{
+  margin-bottom: 20px;
+}
+.intro .slogan h2 {
+  color: #27ae60;
+  text-shadow: none;
+  font-family: 'Walter Turncoat', cursive;
+}
