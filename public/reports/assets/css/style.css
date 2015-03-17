@@ -826,3 +826,11 @@ Parallax
 .service-desc .table tr td{
   text-align: center;
 }
+
+#choices{
+  text-align: left;
+}
+
+#choices input{
+  margin-right: 10px;
+}

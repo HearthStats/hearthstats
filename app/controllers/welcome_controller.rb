@@ -203,54 +203,6 @@ class WelcomeController < ApplicationController
     render layout: 'fullpage'
   end
 
-  def jan_report
-    render file: "#{Rails.root}/public/reports/2015/jan.html", layout: false
-  end
-
-  def decreport
-    render layout: 'fullpage'
-  end
-
-  def april_report
-    render file: "#{Rails.root}/public/reports/april_report.html", layout: 'fullpage'
-  end
-
-  def may_report
-    render file: "#{Rails.root}/public/reports/may_report.html", layout: 'fullpage'
-  end
-
-  def june_report
-    render file: "#{Rails.root}/public/reports/june_report.html", layout: 'fullpage'
-  end
-
-  def july_report
-    render file: "#{Rails.root}/public/reports/july_report.html", layout: 'fullpage'
-  end
-
-  def aug_report
-    render file: "#{Rails.root}/public/reports/aug_report.html", layout: 'fullpage'
-  end
-
-  def sept_report
-    render file: "#{Rails.root}/public/reports/sept_report.html", layout: 'fullpage'
-  end
-
-  def sept_post_report
-    render file: "#{Rails.root}/public/reports/sept_post_nerf.html", layout: 'fullpage'
-  end
-
-  def oct_report
-    render file: "#{Rails.root}/public/reports/oct_report.html", layout: 'fullpage'
-  end
-
-  def novreport
-    render layout: 'fullpage'
-  end
-
-  def gvgreport
-    render file: "#{Rails.root}/public/reports/gvg/index.html", layout: false
-  end
-
   private
 
   def cularenagames(race, days1)
