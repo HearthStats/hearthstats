@@ -81,7 +81,6 @@ class ProfilesController < ApplicationController
       deck = Deck.bestuserdeck(@user.id)
       return deck.id if deck
     end
-    
     @topdeck = Deck.find(topdeck_id) if topdeck_id
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").where(user_id: @user.id, is_public: true).all
 
