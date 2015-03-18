@@ -19,9 +19,9 @@ class DashboardsController < ApplicationController
     @arena_wr = get_array_wr(arena_matches, true)
     @con_wr = get_array_wr(ranked_matches, true)
 
-    @recent_entries = matches.last(10)
+    @recent_entries = matches.first(10)
     topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
-      best_deck = Deck.bestuserdeck(current_user.id)
+      Deck.bestuserdeck(current_user.id)
     end
 
     begin
@@ -29,7 +29,7 @@ class DashboardsController < ApplicationController
     rescue
       Rails.cache.delete("topdeck-#{current_user.id}")
       topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
-        best_deck = Deck.bestuserdeck(current_user.id)
+        Deck.bestuserdeck(current_user.id)
       end
     end
     @toparena = Match.bestuserarena(current_user.id)
