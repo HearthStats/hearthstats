@@ -94,7 +94,8 @@ class Deck < ActiveRecord::Base
   end
 
   def current_version
-    self.deck_versions.last.try(:version)
+    self.deck_versions.
+      last.try(:version)
   end
 
   def cardstring_to_blizz
