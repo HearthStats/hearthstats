@@ -256,7 +256,7 @@ class DecksController < ApplicationController
           version_num = @deck.current_version.to_i + 1
           version_deck(@deck, version_num)
         elsif params["minor_version"]
-          version_num = @deck.current_version.to_i + 0.1
+          version_num = (@deck.current_version.to_f + 0.1).round(1)
           version_deck(@deck, version_num)
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
