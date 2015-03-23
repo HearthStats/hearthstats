@@ -8,7 +8,12 @@ div class="row"
     - if current_user.nil? || current_user.subscription.nil?
       div.top-cont style="width: 728px; height: 90px; float:right; display:inline-block; padding: 0px; margin: 0px; background: url('#{public_url("assets/adblocked.png")}'); cursor: pointer;"
         div.top-advvv
-          iframe src="//ib.adnxs.com/tt?id=2248883&referrer=hss.io" frameborder="0" scrolling="no" id="topad" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" allowtransparency="true" width="728" height="90"
+          a href='http://en.hex.gameforge.com/landing.html?kid=c-94307-a3e07-1501-0070511bj' target='_blank'
+            object width='728' height='90'
+              param name='Hex' value='/ads/hex_728x90.swf'
+              embed src='/ads/hex_728x90.swf' width='728' height='90'
+            i style='display:block; height:90px; width:728px; position:relative;
+            z-index: 9; margin-top: -90px'
     div.cf
     ul class="page-breadcrumb breadcrumb"
       li
