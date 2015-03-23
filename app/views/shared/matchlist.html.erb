@@ -61,7 +61,7 @@
           <%= link_to(t('shared.delete'), match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'options-button btn default btn-xs red fa fa-trash-o') %>
           <%= link_to(t('shared.view'), match, class: 'options-button btn default btn-xs blue fa fa-trash-o') %>
           <% if !match.notes.blank? %>
-            <span class="options-button btn default btn-xs green fa fa-comment-o">Notes</span>
+            <%= link_to(t('shared.notes'), match, class: 'options-button btn default btn-xs green fa fa-comment-o') %>
           <% end %>
         </td>
       </tr>
