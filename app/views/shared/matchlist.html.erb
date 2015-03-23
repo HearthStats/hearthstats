@@ -54,12 +54,15 @@
         <% end %>
         <td class="cl-effect-3">
           <% if type == "Arena" %>
-            <%= link_to(t('shared.edit'), edit_arena_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+            <%= link_to(t('shared.edit'), edit_arena_path(match), class: 'options-button btn default btn-xs purple fa fa-pencil-square-o') %>
           <% else %>
-            <%= link_to(t('shared.edit'), edit_constructed_path(match), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
+            <%= link_to(t('shared.edit'), edit_constructed_path(match), class: 'options-button btn default btn-xs purple fa fa-pencil-square-o') %>
           <% end %>
-          <%= link_to(t('shared.delete'), match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn default btn-xs red fa fa-trash-o') %>
-          <%= link_to(t('shared.view'), match, class: 'btn default btn-xs blue fa fa-trash-o') %>
+          <%= link_to(t('shared.delete'), match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'options-button btn default btn-xs red fa fa-trash-o') %>
+          <%= link_to(t('shared.view'), match, class: 'options-button btn default btn-xs blue fa fa-trash-o') %>
+          <% if !match.notes.blank? %>
+            <span class="options-button btn default btn-xs green fa fa-comment-o">Notes</span>
+          <% end %>
         </td>
       </tr>
     <% end %>
