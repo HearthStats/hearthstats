@@ -21,7 +21,7 @@ class DashboardsController < ApplicationController
 
     @recent_entries = matches.sort_by{|m| m.created_at}.last(10).reverse
     topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
-      Deck.bestuserdeck(current_user.id)
+      Deck.bestuserdeck(current_user.id).id
     end
 
     begin
