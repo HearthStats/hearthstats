@@ -9,6 +9,26 @@ class AdminController < ApplicationController
     @unverified = UniqueDeckType.where(verified: false)
   end
 
+  def approve_archtype
+    archtype = UniqueDeckType.find(params[:ud_id])
+    archtype.verified = true
+    if archtype.save
+      redirect_to admin_verify_archtypes_path, notice: "Approved #{archtype.name}"
+    else
+      redirect_to admin_verify_archtypes_path, alert: "DIDN'T WORK YO: #{archtype.name}"
+    end
+  end
+
+  def disapprove_archtype
+    unverified = UniqueDeckType.where(verified: false)
+    unverified.each do |archtype|
+      Deck.where(deck_type_id: archtype.id).update_all(deck_type_id: nil)
+      archtype.destroy
+    end
+
+    redirect_to admin_verify_archtypes_path, notice: "BOOM ALL GONE"
+  end
+
   def export_con
     matches = Match.where(season_id: current_season, mode_id: 3)
     respond_to do |format|
