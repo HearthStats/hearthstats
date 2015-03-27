@@ -1,7 +1,19 @@
-h2 Unverified
+h2 Archtypes
 
-- @unverified.each do |unique_deck|
-  p
-    = unique_deck.name
-    | -
-    = Klass::LIST[unique_deck.klass_id]
+p = link_to "Disapprove All", admin_disapprove_archtype_path, method: :post
+.row
+  .col-md-6
+    h3 Unverified
+    - @unverified.each do |unique_deck|
+      p
+        = unique_deck.name
+        | -
+        = Klass::LIST[unique_deck.klass_id]
+        = link_to "Approve", admin_approve_archtype_path(ud_id: unique_deck.id), method: :post
+  .col-md-6
+    h3 Verified
+    - UniqueDeckType.where(verified: true).each do |unique_deck|
+      p
+        = unique_deck.name
+        | -
+        = Klass::LIST[unique_deck.klass_id]
