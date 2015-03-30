@@ -386,6 +386,8 @@ en:
       num_wins: Wins
       deck_name: Name
     form:
+      add: Add
+      remove: Remove
       name: Name
       mana: Mana
       class: Class
