@@ -1,4 +1,4 @@
-en:
+pt-BR:
   mailboxer:
     notification_mailer:
       subject: 'HearthStats nova notificação: %{subject}'

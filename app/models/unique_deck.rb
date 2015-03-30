@@ -32,7 +32,10 @@ class UniqueDeck < ActiveRecord::Base
   end
 
   def self.create_from_deck(deck)
-    unique_deck = create(cardstring: deck.cardstring, klass_id: deck.klass_id )
+    unique_deck = UniqueDeck.where(cardstring: deck.cardstring, klass_id: deck.klass_id).first
+    if unique_deck.nil?
+      unique_deck = create(cardstring: deck.cardstring, klass_id: deck.klass_id )
+    end
 
     unique_deck
   end
