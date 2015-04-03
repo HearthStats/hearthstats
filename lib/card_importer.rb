@@ -48,6 +48,20 @@ class CardImporter
 
     messed
   end
+
+  def scrape_images(set)
+    require 'mechanize'
+    agent = Mechanize.new
+    Card.where(card_set: set).each do |card|
+      begin
+        link = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/#{card.blizz_id}.png"
+        agent.get(link).save_as "/Users/trigun0x2/Dropbox/Projects/hearthstats/app/assets/images/cards/#{card.name.parameterize}.png"
+      rescue
+        puts card.name
+      end
+    end
+    p "Big Bro, The job is done."
+  end
   private
 
   def update_specs(card, card_db)
