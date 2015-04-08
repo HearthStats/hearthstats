@@ -51,7 +51,8 @@ class Deck < ActiveRecord::Base
       .merge(Match.where("matches.created_at <= ?", 1.week.ago))
     active_decks= active_decks + user_obj.decks.where("created_at <= ?", 2.weeks.ago)
     user_obj.decks.update_all(archived: true)
-    active_decks.map{ |deck| deck.update_attribute(:archived, false)}
+    active_ids = active_decks.uniq.map(&:id)
+    Deck.where(id: active_ids).update_all(archived: false)
   end
 
   def self.bestuserdeck(user_id)
