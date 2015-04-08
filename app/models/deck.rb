@@ -47,13 +47,10 @@ class Deck < ActiveRecord::Base
   end
 
   def self.archive_unused(user_obj)
-    archive_decks = user_obj.decks.includes(:matches)
+    active_decks = user_obj.decks.includes(:matches)
       .merge(Match.where("matches.created_at <= ?", 1.week.ago))
-    archive_decks = archive_decks + user_obj.decks.where("created_at <= ?", 1.month.ago).where(user_num_matches: nil)
-    active_decks = user_obj.decks - archive_decks
-    archive_decks.uniq.each do |deck|
-      deck.archive! and p deck.name + "archived." if [false,nil].include? deck.active
-    end
+    active_decks= active_decks + user_obj.decks.where("created_at <= ?", 2.weeks.ago)
+    user_obj.decks.update_all(archived: true)
     active_decks.map{ |deck| deck.update_attribute(:archived, false)}
   end
 
