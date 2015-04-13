@@ -9,8 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.save
       begin
-        c = Cindy.new "http://news.hearthstats.net", "Ss8skJ2K3lXqc0sVYkl6"
-        c.subscribe "VD6WJfDFVH0ssLoGuuWaeg", resource.email
+        c = Cindy.new "http://news.hearthstats.net", "bM0U7Pvc9xrWW3VEtnhC"
+        c.subscribe "Ntpx892i59vnutdwttp2zLIg", resource.email
       rescue
       end
     end
