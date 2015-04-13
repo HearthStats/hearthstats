@@ -7,6 +7,23 @@ class DeckVersion < ActiveRecord::Base
   belongs_to :unique_deck
   before_save :sort_cardstring
 
+  ### INSTANCE METHODS
+
+  def newer_version
+    all_versions = self.deck.deck_versions
+    current_version = self.version
+    minor = current_version.to_f + 0.1
+    major = current_version.to_i + 1
+    if has_version?(all_versions, minor.round(1).to_s)
+      p "asd"
+      has_version?(all_versions, minor.round(1).to_s)
+    elsif has_version?(all_versions, major.to_s)
+      has_version?(all_versions, major.to_s)
+    else
+      self
+    end
+  end
+
   def sort_cardstring
     self.cardstring = cardstring.split(",").sort.join(",") if self.cardstring
   end
@@ -20,5 +37,9 @@ class DeckVersion < ActiveRecord::Base
     end
 
     card_array
+  end
+
+  def has_version?(all_versions, version_string)
+    all_versions.find { |q| q.version == version_string }
   end
 end

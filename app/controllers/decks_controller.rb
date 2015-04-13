@@ -49,21 +49,24 @@ class DecksController < ApplicationController
       redirect_to public_decks_path, alert: "Deck cannot be found" and return
     end
 
-    if !@deck.tourn_decks.empty? && current_user != @deck.user
-      redirect_to public_decks_path, alert: "Tournament decks can only be viewed by the owner." and return
-    end
     impressionist(@deck)
 
     if !params[:version].nil?
-      cardstring = @deck.deck_versions.find {|d| d.version == params[:version]}.try(:cardstring)
-      @deck.cardstring = cardstring
+      deck_version = @deck.deck_versions.find {|d| d.version == params[:version]}
+      @deck.cardstring = deck_version.try(:cardstring)
     end
 
     @card_array = @deck.card_array_from_cardstring
 
-    deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s)
+    deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s + params[:version].to_s)
     if deck_cache_stats.nil?
-      matches = @deck.matches
+      if deck_version
+        newer_version = deck_version.newer_version
+        matches = @deck.matches.
+          where(created_at: deck_version.created_at..newer_version.created_at)
+      else
+        matches = @deck.matches
+      end
 
       # Win rates vs each class
       @deckrate = Array.new
