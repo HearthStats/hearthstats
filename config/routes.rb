@@ -17,6 +17,7 @@ Hearthstats::Application.routes.draw do
     post 'cancel', on: :collection
     get 'report', on: :collection
     get 'gen_report', on: :collection
+    get 'stats', on: :collection
   end
   # match '(*foo)' => 'additional#serverupgrade'
   resources :tournies do

@@ -1,5 +1,6 @@
 class PremiumsController < ApplicationController
   before_filter :authenticate_subs!, only: :report
+  include SearchHelper
   def index
     if !signed_in?
       redirect_to new_user_session_path, 
@@ -41,6 +42,19 @@ class PremiumsController < ApplicationController
   end
 
   def show
+  end
+
+  def stats
+    params.reverse_merge!(default_options)
+    search_params = default_params.merge(params[:q].reject{|k,v| v.blank?})
+
+    @q = current_user.matches.ransack(params[:q]) # form needs ransack raw data
+    @matches = current_user.matches
+      .preload(:match_rank => :rank, :match_deck => :deck)
+      .ransack(search_params).result
+      .limit(params[:items])
+      .order("#{params[:sort]} #{params[:order]}")
+      .paginate(page: params[:page], per_page: params[:items])
   end
 
   def report

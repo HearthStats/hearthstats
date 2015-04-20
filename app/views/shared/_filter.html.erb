@@ -1,8 +1,13 @@
 <% path = constructeds_path if params[:controller] == 'constructeds' %>
 <% path = matches_arenas_path if params[:controller] == 'arenas' %>
+<% path = stats_premiums_path if params[:controller] == 'premiums' %>
 <%= search_form_for @q, url: path, html: { class: 'data-turboform' } do |f| %>
   <p>
     <%= t('.filter') %>
+    <% if params[:controller] == 'premiums' %>
+      <%= f.select :mode_id_in, Match::MODES_LIST.invert.to_a
+        .insert(0,["- Mode -", '']) %>
+    <% end %>
     <%= f.select :klass_id_in, klass_collection_for_select %>
     vs.
     <%= f.select :oppclass_id_in, klass_collection_for_select %>
