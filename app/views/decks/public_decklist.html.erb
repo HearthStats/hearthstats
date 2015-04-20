@@ -1,6 +1,8 @@
 
 <%= render 'decks/filter' %>
 
+<p>* <em><%= t('.stats_are_for_all_users') %></em></p>
+
 <table class="decklist table table-bordered table-striped table-condensed flip-content">
   <thead>
     <tr>
@@ -58,6 +60,5 @@
     <% end%>
   </tbody>
 </table>
-<p>* <em><%= t('.stats_are_for_all_users') %></em></p>
 
 <%= will_paginate(@decks, renderer: WillPaginate::ActionView::LinkRenderer) %>

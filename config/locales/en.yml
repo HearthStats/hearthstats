@@ -22,6 +22,21 @@ en:
       support: Support
       privacy_policy: Privacy Policy
       copyright_text: Copyright 2014 HearthStats. Hearthstone is a registered trademark of Blizzard Entertainment.
+    filter:
+      mode: Mode
+      coin?: Coin?
+      apply: Apply
+      reset: Reset
+      per_page: per page
+      last_days: Last %{num} days
+      last_24_hours: Last 24 hours
+      all_time: All time
+      sort: sort
+      created_at: Created
+      duration: Duration
+      numturns: Rounds
+      win_rate_over: win rate over
+      matches_in_this_list: matches in this list
     arena_win_rate: Arena Win Rate
     ranked_win_rate: Ranked Win Rate
     best_deck: Best Deck
@@ -456,7 +471,7 @@ en:
       minions: Minions
       name: Name
       spells: Spells
-      stats_are_for_all_users: Stats are for all users
+      stats_are_for_all_users: Stats are for all users that have played the deck, not just the original author
       tools: Tools
       users: Users
       weapons: Weapons
