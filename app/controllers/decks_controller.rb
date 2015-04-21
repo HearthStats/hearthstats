@@ -119,39 +119,66 @@ class DecksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to public_decks_path, alert: "Deck cannot be found" and return
     end
-    # unique = @deck.unique_deck
-    # if unique.nil?
-    #   redirect_to deck_path(@deck) and return
-    # end
-    # impressionist(unique)
-    #
-    # @card_array = @deck.card_array_from_cardstring
-    # @matches    = unique.matches
-    #
-    # # Win rates vs each class
-    # @deckrate = Array.new
-    # i = 0
-    # Klass.order("name").each do |c|
-    #   wins = @matches.where(oppclass_id: c.id, result_id: 1).count
-    #   totgames = @matches.where(oppclass_id: c.id).count
-    #   if totgames == 0
-    #     @deckrate[i] = [0,"#{c.name}<br/>0 Games"]
-    #   else
-    #     @deckrate[i] = [((wins.to_f / totgames)*100).round(2), "#{c.name}<br/>#{totgames} Games"]
-    #   end
-    #   i = i + 1
-    # end
-    #
-    # # Going first vs 2nd
-    # @firstrate = get_win_rate(@matches.where(coin: false), true)
-    # @secrate = get_win_rate(@matches.where(coin: true), true)
-    #
-    # #calculate deck winrate
-    #
-    # @winrate = @matches.count > 0 ? get_win_rate(@matches) : 0
-    #
+
+    if !params[:version].nil?
+      deck_version = @deck.deck_versions.find {|d| d.version == params[:version]}
+      @deck.cardstring = deck_version.try(:cardstring)
+    end
+
+    @card_array = @deck.card_array_from_cardstring
+
+    deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s + params[:version].to_s)
+    if deck_cache_stats.nil?
+      matches = @deck.unique_deck.decks.map(&:matches).flatten
+
+      # Win rates vs each class
+      @deckrate = Array.new
+      scope = matches.group_by(&:oppclass_id)
+      total = {}
+      wins = {}
+      scope.each do |klass, klass_matches|
+        total[klass] = klass_matches.count
+        wins[klass] = klass_matches.select {|m| m.result_id == 1}.count
+      end
+
+      total.each do |klass_id, tot|
+        klass_name = Klass::LIST[klass_id]
+        if tot== 0
+          @deckrate << [0,"#{klass_name}<br/>0 Games"]
+        else
+          @deckrate << [((wins[klass_id].to_f / tot )*100).round(2), "#{klass_name}<br/>#{tot} Games"]
+        end
+      end
+      # Going first vs 2nd
+      first_matches = matches.select{ |match| match.coin == false }
+      sec_matches = matches.select{ |match| match.coin == true}
+      @firstrate = get_array_wr(first_matches, true)
+      @secrate = get_array_wr(sec_matches, true)
+
+      # Win rate by rank
+
+      @rank_wr = @deck.
+        rank_wr.
+        select {|rank| !rank[0].nil?}.
+        map { |rank, wr| [rank.id, wr]}
+      #calculate deck winrate
+      @winrate = matches.count > 0 ? get_array_wr(matches) : 0
+      Rails.cache.write("deck_stats" + @deck.id.to_s,
+                        [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
+                        expires_in: 1.days)
+    else
+      @deckrate = deck_cache_stats[0]
+      @firstrate = deck_cache_stats[1]
+      @secrate = deck_cache_stats[2]
+      @winrate = deck_cache_stats[3]
+      @rank_wr = deck_cache_stats[4]
+    end
+
+    gon.cardstring = @deck.cardstring
+    gon.rank_wr = @rank_wr
+
     respond_to do |format|
-      format.html { redirect_to @deck }
+      format.html # show.html.erb
     end
   end
 
