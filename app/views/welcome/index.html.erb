@@ -255,7 +255,7 @@
                           <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
                         <% end %>
                         <td class="show">
-                          <%= link_to deck_path(deck), :target => "_blank" do %>
+                          <%= link_to public_show_deck_path(deck), :target => "_blank" do %>
                             <div class="arrow">
                               <i class="fa icon-arrow-right arrow-icon"></i>
                             </div>
