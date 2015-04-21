@@ -47,10 +47,15 @@ div.row
           - if !params[:version].nil?
             = link_to "Newest Version", deck_path(@deck), class: "btn btn-md btn-block green active"
         - @deck.deck_versions.each do |version|
-          - if params[:version].to_i == version.version
-            = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version active"
+          - if params[:version] == version.version
+            = link_to "v#{version.version}", deck_path(@deck, version: version.version),
+              class: "btn blue btn-sm btn-version active"
           - else
-            = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version"
+            = link_to "v#{version.version}", deck_path(@deck, version: version.version),
+              class: "btn blue btn-sm btn-version",
+              rel: "tooltip",
+              data: { html: "true" },
+              title: @diff_hash[version.id]
       - unless @deck.tag_list.empty?
         h3 Tags
         - @deck.tag_list.each do |tag|
