@@ -120,14 +120,9 @@ class DecksController < ApplicationController
       redirect_to public_decks_path, alert: "Deck cannot be found" and return
     end
 
-    if !params[:version].nil?
-      deck_version = @deck.deck_versions.find {|d| d.version == params[:version]}
-      @deck.cardstring = deck_version.try(:cardstring)
-    end
-
     @card_array = @deck.card_array_from_cardstring
 
-    deck_cache_stats = Rails.cache.fetch("public_deck_stats" + @deck.id.to_s + params[:version].to_s)
+    deck_cache_stats = Rails.cache.fetch("public_deck_stats" + @deck.id.to_s)
     if deck_cache_stats.nil?
       matches = @deck.unique_deck.decks.map(&:matches).flatten
 
@@ -163,7 +158,7 @@ class DecksController < ApplicationController
         map { |rank, wr| [rank.id, wr]}
       #calculate deck winrate
       @winrate = matches.count > 0 ? get_array_wr(matches) : 0
-      Rails.cache.write("deck_stats" + @deck.id.to_s,
+      Rails.cache.write("public_deck_stats" + @deck.id.to_s,
                         [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
                         expires_in: 1.days)
     else

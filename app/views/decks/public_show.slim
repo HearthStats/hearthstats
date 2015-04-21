@@ -41,16 +41,6 @@ div.row
     div.version
       h4 Share
       = social_share_button_tag("Check out my #{truncate(@deck.name, length: 94)} Hearthstone Deck on @HearthStats")
-      - unless @deck.deck_versions.empty?
-        h3 Versions
-        .curr-version
-          - if !params[:version].nil?
-            = link_to "Newest Version", deck_path(@deck), class: "btn btn-md btn-block green active"
-        - @deck.deck_versions.each do |version|
-          - if params[:version].to_i == version.version
-            = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version active"
-          - else
-            = link_to "v#{version.version}", deck_path(@deck, version: version.version),class: "btn blue btn-sm btn-version"
       - unless @deck.tag_list.empty?
         h3 Tags
         - @deck.tag_list.each do |tag|
@@ -83,17 +73,17 @@ div.row
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.matches.where(result_id: 1).count
+              span = @deck.unique_deck.num_wins.to_i
             span class="title" href="#" = t 'decks.show.wins'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.matches.where(result_id: 2).count
+              span = @deck.unique_deck.num_losses.to_i
             span class="title" href="#" = t 'decks.show.losses'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.matches.where(result_id: 3).count
+              span = @deck.unique_deck.num_matches.to_i - ( @deck.unique_deck.num_wins.to_i + @deck.unique_deck.num_losses.to_i )
             span class="title" href="#" = t 'decks.show.draws'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
