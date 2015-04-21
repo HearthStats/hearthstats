@@ -1,6 +1,5 @@
 class DecksController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :public, :public_show]
-  caches_action :public_show, expires_in: 1.day
 
   def index
     @decks = Deck.joins("LEFT OUTER JOIN unique_decks ON decks.unique_deck_id = unique_decks.id").
