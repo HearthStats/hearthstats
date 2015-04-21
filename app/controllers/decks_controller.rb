@@ -50,8 +50,9 @@ class DecksController < ApplicationController
 
     impressionist(@deck)
 
+    all_versions = @deck.deck_versions
     if !params[:version].nil?
-      deck_version = @deck.deck_versions.find {|d| d.version == params[:version]}
+      deck_version = all_versions.find {|d| d.version == params[:version]}
       @deck.cardstring = deck_version.try(:cardstring)
     end
 
@@ -104,6 +105,14 @@ class DecksController < ApplicationController
       @rank_wr = deck_cache_stats[4]
     end
 
+    # Diff between versions
+    @diff_hash = {}
+    all_versions.each do |version|
+      version_array = cardstring_to_array(version.cardstring)
+      original_array = cardstring_to_array(@deck.cardstring)
+      diff_string = calculate_diff(original_array, version_array)
+      @diff_hash[version.id] = diff_string
+    end
     gon.cardstring = @deck.cardstring
     gon.rank_wr = @rank_wr
 
@@ -359,6 +368,39 @@ class DecksController < ApplicationController
   end
 
   private
+
+  def calculate_diff(original, version)
+    diff_arr = []
+    original.each do |card_id, count|
+      card = Card.find(card_id)
+      count_in_version = version[card_id]
+      count_diff = count.to_i - count_in_version.to_i
+      if count_diff > 0
+        diff_arr << "-#{count_diff} #{card.name}"
+      elsif count_diff < 0
+        diff_arr << "+#{count_diff.abs} #{card.name}"
+      end
+      version.delete(card_id)
+    end
+    version.each do |card_id, count|
+      card = Card.find(card_id)
+      diff_arr << "+#{count} #{card.name}"
+    end
+
+    diff_arr.join("<br/>")
+  end
+
+  def cardstring_to_array(cardstring)
+
+    card_arr = {}
+    cardstring.split(",").map do |card_data|
+      card_id, count = card_data.split('_').map(&:to_i)
+      card_arr[card_id] = count
+    end
+
+
+    card_arr
+  end
 
   def version_deck(deck, version)
     version = DeckVersion.new( deck_id: deck.id, cardstring: deck.cardstring, version: version )
