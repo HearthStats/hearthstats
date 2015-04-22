@@ -1,3 +1,4 @@
+link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'
 - set_meta_tags :title => "Viewing Match",
   :description => "Match replay and log",
   :keywords => "user, deck, statistics, hearthstats, hearthstone"
@@ -32,10 +33,15 @@
                 span.card = action["card"]
 
   .col-md-6
+    - if @match.rank
+      h3 Rank #{@match.rank.id.to_s}
+
     .versus-classes
       .versus-class-pic
-      .versus-class-text
+        = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.klass_id]}_full.png"
+      .versus-class-text VS
       .versus-class-pic
+        = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.oppclass_id]}_full.png"
     - if !@match.notes
       h3 Notes
       = raw @match.notes

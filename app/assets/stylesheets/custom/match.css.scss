@@ -16,4 +16,19 @@
 		display: none;
 	}
 }
-
+.versus-classes {
+  display: block;
+  text-align: center;
+}
+.versus-class-text {
+  font-family: 'Permanent Marker', cursive;
+  display: inline-block;
+  font-size: 60px;
+  padding: 0 20px;
+}
+.versus-class-pic {
+  display: inline-block;
+}
+.versus-class-pic img {
+  height: 250px;
+}
