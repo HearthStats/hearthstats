@@ -39,9 +39,16 @@ link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesh
     .versus-classes
       .versus-class-pic
         = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.klass_id]}_full.png"
-      .versus-class-text VS
+        - if @match.result_id == 1
+          .versus-class-winner Winner
+      .versus-class-text 
+        |VS
+        - if @match.result_id == 3
+          .versus-class-winner Draw
       .versus-class-pic
         = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.oppclass_id]}_full.png"
+        - if @match.result_id == 2
+          .versus-class-winner Winner
     - if !@match.notes
       h3 Notes
       = raw @match.notes
