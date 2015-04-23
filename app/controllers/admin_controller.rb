@@ -5,6 +5,10 @@ class AdminController < ApplicationController
   def index
   end
 
+  def adtest
+    render layout: false
+  end
+
   def verify_archtypes
     @unverified = UniqueDeckType.where(verified: false)
   end
