@@ -83,6 +83,7 @@ Hearthstats::Application.routes.draw do
   get "admin/test_page"
   post "admin/toggle_sub"
   get "admin/index"
+  get "admin/adtest"
   get "admin/verify_archtypes"
   post "admin/approve_archtype"
   post "admin/disapprove_archtype"
