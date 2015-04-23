@@ -32,6 +32,23 @@
   <%= javascript_include_tag "//code.highcharts.com/highcharts.js" %>
   <script src="//code.highcharts.com/modules/exporting.js"></script>
   <link href='//fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
+  <script type='text/javascript'>
+    (function() {
+      var useSSL = 'https:' == document.location.protocol;
+      var src = (useSSL ? 'https:' : 'http:') +
+          '//www.googletagservices.com/tag/js/gpt.js';
+      document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/42580283/728x90', [728, 90], 'div-gpt-ad-1429807340690-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.pubads().enableSyncRendering();
+      googletag.enableServices();
+    });
+  </script>
 </head>
 <% if signed_in? %>
   <body class="page-header-fixed">
