@@ -82,7 +82,7 @@ class Match < ActiveRecord::Base
 
     time_wr.sort
   end
-  
+
   def self.get_klass_ranked_wr(args)
     klasses_array = args[:klasses_array]
     beginday    = args[:beginday]
