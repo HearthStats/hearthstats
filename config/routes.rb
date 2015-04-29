@@ -99,6 +99,7 @@ Hearthstats::Application.routes.draw do
     end
   end
 
+  resources :u, :controller => "profiles"
   resources :profiles do
     member do
       get 'activities'
@@ -181,6 +182,7 @@ Hearthstats::Application.routes.draw do
 
   root to: "welcome#index"
 
+  resources :m, :controller => "matches"
   resources :matches do
     delete :delete_all, on: :collection
     get :replay, on: :member
