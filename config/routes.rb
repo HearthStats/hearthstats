@@ -106,6 +106,7 @@ Hearthstats::Application.routes.draw do
     post 'set_locale', on: :collection
   end
 
+  resources :d, :controller => "decks"
   resources :decks do
     opinio
     collection do
