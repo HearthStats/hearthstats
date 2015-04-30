@@ -38,7 +38,7 @@ link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesh
 
     .versus-classes
       .versus-class-pic
-        h3 #{(@players - [@match.oppname])[0]} 
+        h3 #{(@players - [@match.oppname]).compact[0]} 
         = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.klass_id]}_full.png"
         - if @match.result_id == 1
           .versus-class-winner Winner
