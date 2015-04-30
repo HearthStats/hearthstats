@@ -60,12 +60,17 @@ class DecksController < ApplicationController
 
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s + params[:version].to_s)
     if deck_cache_stats.nil?
+      matches = @deck.matches
       if deck_version
         newer_version = deck_version.newer_version
-        matches = @deck.matches.
-          where(created_at: deck_version.created_at..newer_version.created_at)
-      else
-        matches = @deck.matches
+        if newer_version == deck_version
+          matches = @deck.matches.
+            where{created_at >= deck_version.created_at}
+        else
+          matches = @deck.matches.
+            where(created_at: deck_version.created_at..newer_version.created_at)
+        end
+
       end
 
       # Win rates vs each class
