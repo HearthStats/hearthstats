@@ -99,7 +99,7 @@ class DecksController < ApplicationController
         map { |rank, wr| [rank.id, wr]}
       #calculate deck winrate
       @winrate = matches.count > 0 ? get_win_rate(matches) : 0
-      Rails.cache.write("deck_stats" + @deck.id.to_s,
+      Rails.cache.write("deck_stats" + @deck.id.to_s + params[:version],
                         [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
                         expires_in: 1.days)
     else
