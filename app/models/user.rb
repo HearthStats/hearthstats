@@ -123,6 +123,8 @@ class User < ActiveRecord::Base
     end
 
     p "Sig for #{self.id} updated, view it at: #{self.profile.shortened_urls}"
+    temp_pic.close
+    temp_pic.unlink
   end
 
   def is_admin?
