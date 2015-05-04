@@ -5,5 +5,6 @@ namespace :sig_pic do
     users.each do |user|
       user.gen_sig_pic
     end
+    p "Sig Pics Generation Finished"
   end
 end
