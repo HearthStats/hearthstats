@@ -108,4 +108,9 @@ $('.klass-link').eq(random).click();
   $('.dashboard-button').click(function(){
     $('#loading-screen-cont').fadeIn();
   });
+  
+  window.setInterval(function() {
+    var iframe = document.getElementById('footad');
+    iframe.src = iframe.src;
+  },60000);
 });
