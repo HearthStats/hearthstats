@@ -80,6 +80,7 @@ Hearthstats::Application.routes.draw do
   get "admin/export_con"
   match "admin/ann", to: "admin#ann"
   post "admin/anncreate"
+  post "admin/update_match_text"
   get "admin/test_page"
   post "admin/toggle_sub"
   get "admin/index"

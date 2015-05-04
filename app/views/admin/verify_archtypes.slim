@@ -17,3 +17,7 @@ p = link_to "Disapprove All", admin_disapprove_archtype_path, method: :post
         = unique_deck.name
         | -
         = Klass::LIST[unique_deck.klass_id]
+        | ::
+        = form_tag admin_update_match_text_path
+          = text_field_tag "match_string[#{unique_deck.id}]", unique_deck.match_string
+          = submit_tag "Update"

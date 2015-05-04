@@ -9,6 +9,18 @@ class AdminController < ApplicationController
     render layout: false
   end
 
+  def update_match_text
+    udt_id = params[:match_string].first[0].to_i
+    match_string = params[:match_string].first[1]
+    unique_deck_type = UniqueDeckType.find(udt_id)
+    unique_deck_type.match_string = match_string
+    if unique_deck_type.save
+      redirect_to admin_verify_archtypes_path, notice: "Updated #{unique_deck_type.name}"
+    else
+      redirect_to admin_verify_archtypes_path, alert: "Error Updating #{unique_deck_type.name}"
+    end
+  end
+
   def verify_archtypes
     @unverified = UniqueDeckType.where(verified: false)
   end
