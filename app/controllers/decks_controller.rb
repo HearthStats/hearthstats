@@ -99,7 +99,7 @@ class DecksController < ApplicationController
         map { |rank, wr| [rank.id, wr]}
       #calculate deck winrate
       @winrate = matches.count > 0 ? get_win_rate(matches) : 0
-      Rails.cache.write("deck_stats" + @deck.id.to_s + params[:version],
+      Rails.cache.write("deck_stats" + @deck.id.to_s + params[:version].to_s,
                         [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
                         expires_in: 1.days)
     else
@@ -252,10 +252,6 @@ class DecksController < ApplicationController
     if current_user.guest?
       @deck.is_public = false
     end
-    unless params[:new_archtype].blank?
-      archtype = UniqueDeckType.create(klass_id: @deck.klass_id, name: params[:new_archtype])
-      @deck.deck_type_id = archtype.id
-    end
     unless params[:deck_text].blank?
       text2deck = text_to_deck(params[:deck_text])
       if !text2deck.errors.empty?
@@ -268,6 +264,17 @@ class DecksController < ApplicationController
       if @deck.save
         @deck.tag_list.add(params[:tags], parse: true)
         @deck.save
+        unique_deck = @deck.unique_deck
+        if unique_deck && params[:unique_deck_type_id].present?
+          unique_deck.unique_deck_type_id = params[:unique_deck_type_id].to_i
+          unique_deck.save
+        elsif unique_deck && params[:new_archtype].present?
+          archtype = UniqueDeckType.create(klass_id: @deck.klass_id, name: params[:new_archtype])
+          unique_deck.unique_deck_type_id = archtype.id
+          unique_deck.save
+        elsif unique_deck
+          unique_deck.set_type
+        end
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
       else
         format.html { render action: "new" }

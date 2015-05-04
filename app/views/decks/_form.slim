@@ -27,9 +27,9 @@
             = f.label t('decks.form.type')
             |: &nbsp;
             .archtype-dropdown
-              = f.select :deck_type_id,
+              = select_tag :unique_deck_type_id,
                 options_for_select(UniqueDeckType.where(klass_id:@deck.klass_id, 
-                verified: true).map(&:name)), include_blank: true,
+                verified: true).map{|d|[d.name, d.id]}), include_blank: true,
                 class: 'form-control'
             .new-archtype
               span.create-archtype Archtype Not Listed?
