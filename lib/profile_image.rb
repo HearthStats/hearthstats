@@ -26,7 +26,7 @@ class ProfileImage
     user[:badges].sample(4).each_with_index do |badge, i|
       badge_image = ImageList.new(BADGES_DIR_PATH + badge + '.png')
       badge_image.resize_to_fit!(25)
-      x_position = (232.3 + ((i)*28))
+      x_position = (240.3 + ((i)*28))
       image.composite!(badge_image, x_position, 52, Magick::OverCompositeOp)
     end
   end
