@@ -104,12 +104,12 @@
 }
 
 /* deck lists */
-table.decklist td.class img {
+table.decklist td.name img {
   height:24px;
-  width:24px;
+  width:24px; 
 }
-table.decklist th.class,
-table.decklist td.class,
+table.decklist th.public-decklist-class,
+table.decklist td.public-decklist-class,
 table.decklist th.minions,
 table.decklist td.minions,
 table.decklist th.spells,
@@ -125,7 +125,9 @@ table.decklist td.losses,
 table.decklist th.num_users,
 table.decklist td.num_users,
 table.decklist th.winrate,
-table.decklist td.winrate {
+table.decklist td.winrate,
+table.decklist th.name,
+table.decklist th.author {
   text-align:center;
 }
 .inline-graph{
