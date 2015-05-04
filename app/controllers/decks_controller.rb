@@ -269,8 +269,13 @@ class DecksController < ApplicationController
           unique_deck.unique_deck_type_id = params[:unique_deck_type_id].to_i
           unique_deck.save
         elsif unique_deck && params[:new_archtype].present?
-          archtype = UniqueDeckType.create(klass_id: @deck.klass_id, name: params[:new_archtype])
-          unique_deck.unique_deck_type_id = archtype.id
+          found = UniqueDeckType.find_by_name(params[:new_archtype])
+          if found
+            unique_deck.unique_deck_type_id = found.id
+          else
+            archtype = UniqueDeckType.create(klass_id: @deck.klass_id, name: params[:new_archtype])
+            unique_deck.unique_deck_type_id = archtype.id
+          end
           unique_deck.save
         elsif unique_deck
           unique_deck.set_type
