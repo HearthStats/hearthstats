@@ -6,8 +6,8 @@
 <table class="decklist table table-bordered table-striped table-condensed flip-content">
   <thead>
     <tr>
-      <th><%= t('.name') %></th>
-      <th class="class"><%= t('.class') %></th>
+      <th class="public-decklist-class"><%= t('.class') %></th>
+      <th class="name"><%= t('.name') %></th>
       <th class="minions"><%= t('.minions') %></th>
       <th class="spells"><%= t('.spells') %></th>
       <th class="weapons"><%= t('.weapons') %></th>
@@ -25,8 +25,10 @@
     <% @decks.each do |deck| %>
       <% unique_deck = deck.unique_deck %>
       <tr>
-        <td class="name"><%= link_to deck.name, public_show_deck_path(deck) %></td>
-        <td class="class"><img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>"/></td>
+        <td class="public-decklist-class"></td>
+        <td class="name">
+          <img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>" title="<%= deck.class_name%>"/>
+          <%= link_to deck.name, public_show_deck_path(deck) %></td>
         <td class="minions"><%= unique_deck.num_minions %></td>
         <td class="spells"><%= unique_deck.num_spells %></td>
         <td class="weapons"><%= unique_deck.num_weapons %></td>
