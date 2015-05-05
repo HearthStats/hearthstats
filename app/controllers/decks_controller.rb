@@ -49,6 +49,7 @@ class DecksController < ApplicationController
     end
 
     impressionist(@deck)
+    commontator_thread_show(@deck)
 
     all_versions = @deck.deck_versions
     if !params[:version].nil?

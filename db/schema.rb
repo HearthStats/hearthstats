@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150309165102) do
+ActiveRecord::Schema.define(:version => 20150505143734) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -169,21 +169,6 @@ ActiveRecord::Schema.define(:version => 20150309165102) do
   add_index "cards", ["blizz_id"], :name => "index_cards_on_blizz_id"
   add_index "cards", ["name"], :name => "index_cards_on_name"
 
-  create_table "chat_messages", :force => true do |t|
-    t.integer  "chat_id"
-    t.integer  "user_id"
-    t.string   "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "chat_messages", ["chat_id"], :name => "index_chat_messages_on_chat_id"
-  add_index "chat_messages", ["user_id"], :name => "index_chat_messages_on_user_id"
-
-  create_table "chats", :force => true do |t|
-    t.string "title"
-  end
-
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
     t.integer  "commentable_id",   :null => false
@@ -192,6 +177,48 @@ ActiveRecord::Schema.define(:version => 20150309165102) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  create_table "commontator_comments", :force => true do |t|
+    t.string   "creator_type"
+    t.integer  "creator_id"
+    t.string   "editor_type"
+    t.integer  "editor_id"
+    t.integer  "thread_id",                        :null => false
+    t.text     "body",                             :null => false
+    t.datetime "deleted_at"
+    t.integer  "cached_votes_up",   :default => 0
+    t.integer  "cached_votes_down", :default => 0
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "commontator_comments", ["cached_votes_down"], :name => "index_commontator_comments_on_cached_votes_down"
+  add_index "commontator_comments", ["cached_votes_up"], :name => "index_commontator_comments_on_cached_votes_up"
+  add_index "commontator_comments", ["creator_id", "creator_type", "thread_id"], :name => "index_commontator_comments_on_c_id_and_c_type_and_t_id"
+  add_index "commontator_comments", ["thread_id", "created_at"], :name => "index_commontator_comments_on_thread_id_and_created_at"
+
+  create_table "commontator_subscriptions", :force => true do |t|
+    t.string   "subscriber_type", :null => false
+    t.integer  "subscriber_id",   :null => false
+    t.integer  "thread_id",       :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "commontator_subscriptions", ["subscriber_id", "subscriber_type", "thread_id"], :name => "index_commontator_subscriptions_on_s_id_and_s_type_and_t_id", :unique => true
+  add_index "commontator_subscriptions", ["thread_id"], :name => "index_commontator_subscriptions_on_thread_id"
+
+  create_table "commontator_threads", :force => true do |t|
+    t.string   "commontable_type"
+    t.integer  "commontable_id"
+    t.datetime "closed_at"
+    t.string   "closer_type"
+    t.integer  "closer_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "commontator_threads", ["commontable_id", "commontable_type"], :name => "index_commontator_threads_on_c_id_and_c_type", :unique => true
 
   create_table "constructeds", :force => true do |t|
     t.datetime "created_at",                        :null => false
@@ -685,10 +712,8 @@ ActiveRecord::Schema.define(:version => 20150309165102) do
     t.integer  "tourny_id"
     t.boolean  "guest"
     t.string   "userkey"
-    t.string   "authentication_token"
-    t.string   "provider"
-    t.string   "uid"
     t.integer  "subscription_id"
+    t.string   "authentication_token"
     t.string   "customer_id"
     t.boolean  "no_email",               :default => false
   end
@@ -704,5 +729,22 @@ ActiveRecord::Schema.define(:version => 20150309165102) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "votes", :force => true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], :name => "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
 end
