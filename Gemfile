@@ -72,7 +72,6 @@ gem 'commontator', '~> 4.10.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'unf'
 gem 'thin'
-gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon' # Easy Rails to JS Vars

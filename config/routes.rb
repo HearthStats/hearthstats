@@ -7,8 +7,6 @@ Hearthstats::Application.routes.draw do
   # Delayed_job_web
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
-  opinio_model
-
   get "cards/index"
   get "streams/index"
 
@@ -45,7 +43,6 @@ Hearthstats::Application.routes.draw do
 
   post "notifications/note_read"
 
-  opinio_model controller: 'my_comments'
   mount Commontator::Engine => '/comments'
   # get "profile/edit"
 
@@ -111,7 +108,6 @@ Hearthstats::Application.routes.draw do
 
   resources :d, :controller => "decks"
   resources :decks do
-    opinio
     collection do
       get 'active_decks'
       get 'public'
@@ -162,7 +158,6 @@ Hearthstats::Application.routes.draw do
   end
 
   resources :tourn_matches do
-    opinio
   end
 
   resources :tourn_pairs do
@@ -188,7 +183,6 @@ Hearthstats::Application.routes.draw do
   resources :matches do
     delete :delete_all, on: :collection
     get :replay, on: :member
-    opinio
   end
 
   # See how all your routes lay out with "rake routes"
