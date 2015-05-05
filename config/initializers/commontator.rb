@@ -36,7 +36,11 @@ Commontator.configure do |config|
   # Arguments: a user (acts_as_commontator)
   # Returns: the user's name (String)
   # Default: lambda { |user| I18n.t('commontator.anonymous') } (all users are anonymous)
+<<<<<<< HEAD
   config.user_name_proc = lambda { |user| user.profile.name || I18n.t('commontator.anonymous') }
+=======
+  config.user_name_proc = lambda { |user| I18n.t('commontator.anonymous') }
+>>>>>>> setup commontator
 
   # user_link_proc
   # Type: Proc
@@ -47,7 +51,11 @@ Commontator.configure do |config|
   # comments will become a hyperlink pointing to this path
   # The main application's routes can be accessed through the app_routes object
   # Default: lambda { |user, app_routes| '' } (no link)
+<<<<<<< HEAD
   config.user_link_proc = lambda { |user, app_routes| app_routes.profile_path(user.id) }
+=======
+  config.user_link_proc = lambda { |user, app_routes| '' }
+>>>>>>> setup commontator
 
   # user_avatar_proc
   # Type: Proc
