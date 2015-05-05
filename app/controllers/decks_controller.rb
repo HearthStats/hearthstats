@@ -135,6 +135,7 @@ class DecksController < ApplicationController
     end
 
     @card_array = @deck.card_array_from_cardstring
+    commontator_thread_show(@deck)
 
     deck_cache_stats = Rails.cache.fetch("public_deck_stats" + @deck.id.to_s)
     if deck_cache_stats.nil?
