@@ -1,6 +1,5 @@
 Hearthstats::Application.configure do
   ActiveRecordQueryTrace.enabled = false
-  ActionMailer::Base.delivery_method = :sendmail
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -44,22 +43,8 @@ Hearthstats::Application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025 }
+  config.action_mailer.smtp_settings = { address: "localhost", port: 1025, tls: true, ssl: false }
 
-  # config.after_initialize do
-  #   Bullet.enable = true
-  #   Bullet.alert = true
-  #   Bullet.bullet_logger = true
-  #   Bullet.console = true
-  #   Bullet.growl = true
-  #   Bullet.xmpp = { account:  'bullets_account@jabber.org',
-  #                   password: 'bullets_password_for_jabber',
-  #                   receiver: 'your_account@jabber.org',
-  #                   show_online_status: true }
-  #   Bullet.rails_logger = true
-  #   Bullet.airbrake = true
-  #   Bullet.add_footer = true
-  # end
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.paperclip_defaults = {
     storage: :s3,

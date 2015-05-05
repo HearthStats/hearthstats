@@ -6,7 +6,7 @@
 - else
   - provide(:title, @deck.name)
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
-- provide(:section, 'Decks')
+- provide(:section, link_to("Decks", decks_path))
 - content_for :actions do
   - if (signed_in? && current_user.id == @deck.user_id)
     = link_to 'Edit', edit_deck_path(@deck), class: "btn retirebut btn-primary"
