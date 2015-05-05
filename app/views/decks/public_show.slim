@@ -127,6 +127,5 @@ div.row
         = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img br),
         attributes: %w(style src)
     .comments
-      = render_comments_form @deck unless current_user && current_user.guest
-      = render_comments @deck, :page => params[:page], :limit => 5
+      = commontator_thread(@deck)
 = render 'decks/deck_js', enabled: false
