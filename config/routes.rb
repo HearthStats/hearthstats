@@ -46,6 +46,7 @@ Hearthstats::Application.routes.draw do
   post "notifications/note_read"
 
   opinio_model controller: 'my_comments'
+  mount Commontator::Engine => '/comments'
   # get "profile/edit"
 
   match "/reports", to: "additional#reports"
