@@ -29,15 +29,15 @@
       <h2 style="color:#0f2105;font-size:18px;font-weight:normal;line-height:24px;margin:0">
       New Comment on <%= @commontable_name %>
       </h2>
-
-      <p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px;background-color:#95a5a6;border-radius:5px;padding:10px;font-style:italic">
-      <%= @comment %>
-      </p>
-      <p style="color:#34495e;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
+      <p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
        <%= t 'commontator.email.comment_created.body',
           :creator_name => @creator_name,
           :commontable_name => @commontable_name %> 
       </p>
+      <p style="color:#34495e;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px;background-color:#95a5a6;border-radius:5px;padding:10px;font-style:italic">
+      <%= @comment.body %>
+      </p>
+      
       <p style="color:#0f2105;font-family:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif;line-height:24px">
         <%= t 'commontator.email.thread_link_html',
          :commontable_url => @commontable_url,
