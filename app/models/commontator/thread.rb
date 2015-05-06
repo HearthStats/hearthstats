@@ -95,6 +95,7 @@ module Commontator
     end
 
     def subscribe(subscriber)
+      return false if subscriber.no_email == true
       return false unless subscriber.is_commontator && !subscription_for(subscriber)
       subscription = Subscription.new
       subscription.subscriber = subscriber
