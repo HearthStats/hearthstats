@@ -1,5 +1,5 @@
 Hearthstats::Application.routes.draw do
-
+  
   # Gem routes
   #
   match '/s/:id' => "shortener/shortened_urls#show"

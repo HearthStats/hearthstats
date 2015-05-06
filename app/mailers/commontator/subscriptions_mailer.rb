@@ -6,10 +6,7 @@ module Commontator
       mail :to => @to,
            :bcc => @bcc,
            :from => @from,
-           :subject => t('commontator.email.comment_created.subject',
-                         :creator_name => @creator_name,
-                         :commontable_name => @commontable_name,
-                         :commontable_url => @commontable_url)
+           :subject => "HearthStats | New Comment on #{@commontable_name}"
     end
 
     protected
@@ -25,6 +22,10 @@ module Commontator
 
       @commontable_url = Commontator.commontable_url(@thread, main_app)
 
+      if @thread.commontable_type == "Deck"
+        deck_name = @thread.commontable.name
+        @commontable_name = deck_name
+      end
       params = Hash.new
       params[:comment] = @comment
       params[:thread] = @thread
@@ -37,7 +38,5 @@ module Commontator
       @bcc = recipients.collect{|s| Commontator.commontator_email(s, self)}
       @from = @thread.config.email_from_proc.call(@thread)
     end
-
-    
   end
 end
