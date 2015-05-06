@@ -34,7 +34,7 @@ module Commontator
       params[:commontable_name] = @commontable_name
       params[:commontable_url] = @commontable_url
 
-      @to = t('commontator.email.undisclosed_recipients')
+      @to = ""
       @bcc = recipients.collect{|s| Commontator.commontator_email(s, self)}
       @from = @thread.config.email_from_proc.call(@thread)
     end
