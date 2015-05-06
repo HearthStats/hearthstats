@@ -42,9 +42,9 @@ Hearthstats::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: "localhost", port: 1025, tls: true, ssl: false }
-
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = { address: "localhost", port: 1025, ssl: false, tls: false }
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.paperclip_defaults = {
     storage: :s3,
