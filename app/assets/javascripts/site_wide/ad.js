@@ -4,4 +4,4 @@
 // },150000);
 window.setInterval(function() {
   googletag.pubads().refresh([foot_ad,top_ad]);
-},30000);
+},60000);
