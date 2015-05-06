@@ -32,6 +32,7 @@ class Deck < ActiveRecord::Base
   before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_stats
   after_create :create_deck_version
+  after_create :subscribe_user_to_deck
 
   ### CLASS METHODS:
 
@@ -74,6 +75,10 @@ class Deck < ActiveRecord::Base
   # end
 
   ### INSTANCE METHODS:
+
+  def subscribe_user_to_deck
+    self.thread.subscribe(self.user)
+  end
 
   def rank_wr
     grouped = self.matches.includes(:rank).group_by {|match| match.rank}
