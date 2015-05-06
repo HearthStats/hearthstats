@@ -3,10 +3,11 @@ module Commontator
     def comment_created(comment, recipients)
       setup_variables(comment, recipients)
 
-      mail :to => @to,
-           :bcc => @bcc,
-           :from => @from,
-           :subject => "HearthStats | New Comment on #{@commontable_name}"
+      @to.each do |email|
+        mail :to => email,
+            :from => @from,
+            :subject => "HearthStats | New Comment on #{@commontable_name}"
+      end
     end
 
     protected
@@ -34,8 +35,7 @@ module Commontator
       params[:commontable_name] = @commontable_name
       params[:commontable_url] = @commontable_url
 
-      @to = ""
-      @bcc = recipients.collect{|s| Commontator.commontator_email(s, self)}
+      @to = recipients.collect{|s| Commontator.commontator_email(s, self)}
       @from = @thread.config.email_from_proc.call(@thread)
     end
   end
