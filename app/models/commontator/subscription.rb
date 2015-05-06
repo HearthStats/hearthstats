@@ -10,8 +10,11 @@ module Commontator
       recipients = comment.thread.subscribers.reject{|s| s == comment.creator}
       return if recipients.empty?
 
-      mail = SubscriptionsMailer.comment_created(comment, recipients)
-      mail.deliver
+      if Rails.env.development?
+        SubscriptionsMailer.comment_created(comment, recipients).deliver
+      else
+        SubscriptionsMailer.delay.comment_created(comment, recipients)
+      end
     end
 
     def unread_comments
