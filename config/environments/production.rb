@@ -72,17 +72,19 @@ Hearthstats::Application.configure do
   config.action_mailer.default_url_options = { host: 'www.hearthstats.net' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default charset: "utf-8"
-  config.action_mailer.sendmail_settings = {
-      address:   "smtp.mandrillapp.com",
-      port:      587,
-      tls:       true,
-      user_name: ENV['MANDRILL_EMAIL'],
-      password:  ENV['MANDRILL_KEY']
-    }
+  config.action_mailer.smtp_settings = {
+    address:   "smtp.mandrillapp.com",
+    port:      587,
+    enable_starttls_auto:       true,
+    user_name: ENV['MANDRILL_EMAIL'],
+    password:  ENV['MANDRILL_KEY'],
+    authentication: 'login',
+    domain: 'hearthstats.net'
+  }
 
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.paperclip_defaults = {
