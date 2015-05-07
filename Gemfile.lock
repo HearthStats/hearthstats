@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: 9f482022a648ab662c22177ba24fd2e2b6794c34
+  specs:
+    sentry-raven (0.13.1)
+      faraday (>= 0.7.6)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 1ee098bd2e8787c6426505648820c1159e52e77e
   specs:
@@ -559,6 +566,7 @@ DEPENDENCIES
   seed_dump
   select2-rails
   selenium-webdriver (~> 2.44.0)
+  sentry-raven!
   shortener
   sitemap_generator
   slim-rails
