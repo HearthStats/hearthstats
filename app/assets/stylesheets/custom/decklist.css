@@ -103,13 +103,21 @@
   opacity: 0.90;
 }
 
-/* deck lists */
-table.decklist td.name img {
-  height:24px;
-  width:24px; 
+/* deck lists */  
+/*table.decklist td.public-decklist-class,
+table.decklist th.public-decklist-class{
+  width: 100px;
 }
+table.decklist td.name{
+  font-size: 16px;  
+}
+table.decklist td.public-decklist-class img {
+  height:40px;
+  width:40px; 
+}
+
 table.decklist th.public-decklist-class,
-table.decklist td.public-decklist-class,
+table.decklist td.public-decklist-class, 
 table.decklist th.minions,
 table.decklist td.minions,
 table.decklist th.spells,
@@ -125,11 +133,142 @@ table.decklist td.losses,
 table.decklist th.num_users,
 table.decklist td.num_users,
 table.decklist th.winrate,
-table.decklist td.winrate,
-table.decklist th.name,
-table.decklist th.author {
+table.decklist td.winrate{
   text-align:center;
+  vertical-align: middle;
+  border-color: #fff;
+  border-bottom-color: #ccc;
+  border-top-color: #ccc;
 }
 .inline-graph{
   display: inline-block;
+} 
+
+table.decklist .deck-name{
+  white-space: pre-line;  
+}
+ 
+table.decklist td.name,
+table.decklist th.name,
+table.decklist th.author,
+table.decklist td.author,
+table.decklist td.tools {
+  border-color: #fff;
+  vertical-align: middle;
+  border-bottom-color: #ccc;
+  border-top-color: #ccc;
+}
+
+table.decklist td.author{ 
+  color: #666;
+}
+
+.featured-deck-img{
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
+a.featured-deck-name{
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px){
+  table.decklist td.name{
+  font-size: 13px;   
+}
+  table.decklist td.public-decklist-class img{ 
+    width: 20px;
+    height: 20px;
+  }
+  table.decklist td.public-decklist-class .klass-name{
+    display: none;
+  }
+  table.decklist th.name{
+    text-align: center;
+  }
+}
+table.decklist th.toggle,
+table.decklist td.toggle{
+  text-align: center;
+  border-color: #fff;
+  max-width: 20px;
+  border-bottom-color: #ccc;
+  border-top-color: #ccc;
+}
+.footable-row-detail-inner{ 
+  margin-left: 170px;
+} 
+.footable-row-detail-cell{
+  border-color: #fff;
+}*/
+
+.deck-section{ 
+  padding: 20px 10px; 
+  float: left;
+  width: 50%;  
+  min-height: 90px;  
+}
+.deck-section:hover{
+  background-color: #fafafa;
+}
+.public-deck-class img{
+  width: 50px;
+  height: 50px; 
+  margin: 0px 20px;
+}
+.public-deck-ident,
+.public-deck-class{
+  float: left; 
+  display: inline-block;
+}
+
+.public-deck-name{
+  font-size: 16px; 
+  margin: 0px;
+}
+.public-deck-author{
+  font-size: 13px; 
+  margin: 0px;
+}
+.win-rate, .num-matches{
+  float: right;  
+  text-align: center;
+}
+.win-rate{ 
+  margin-right: 5%;
+}
+
+.num-matches{
+  margin-right: 5%;
+}
+
+.win-percent{
+  font-size: 15px;
+}
+
+.user-option-buttons{
+  float: right;
+  margin-right: 2%;
+  width: 130px;
+  vertical-align: middle;
+}
+
+.user-option-buttons .btn{
+  padding: 8px;
+  padding-left padding-right: 12px;
+}
+
+@media (max-width: 1350px) {
+  .deck-section{   
+    clear: both;
+    width: 100%; 
+  }
+} 
+
+@media (max-width: 700px){ 
+  .num-matches{
+    display: none;
+  }
 }

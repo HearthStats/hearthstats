@@ -7,6 +7,7 @@
 //= require 'plugins/list.min.js'
 //= require 'plugins/list.pagination.min.js'
 //= require 'plugins/jquery.tablesorter.min.js'
+//= require 'plugins/jquery.mixitup.min.js'
 //= require 'plugins/jquery.dataTables.min.js'
 //= require 'page_specific/decklist.js'
 
