@@ -5,29 +5,33 @@
 - provide(:title, t('.title'))
 - provide(:subtitle, t('.subtitle'))
 
-/ h3 Featured Streamers
-/ .featured-streamers
-/   |Contact chris@hearthstats.net if you are interested in being a featured streamer.
-/ div class="row"
-/   div class="col-md-12"
-/     div class="margin-top-10"
-/       div.row
-/         - @featured_streams.each do |stream|
-/           - if stream.status == 'Online'
-/             div class="mix-grid"
-/               div class="col-md-3 col-sm-4 mix"
-/                 div class="mix-inner"
-/                   div.streamer-badge class="#{stream.status}" = stream.status
-/                   img src="#{stream.details['stream']['channel']['logo']}" class="img-responsive"
-/                   div class="mix-details"
-/                     h4 = stream.details['stream']['channel']["display_name"]
-/                     div = stream.details['stream']['channel']["status"]
-/                     a class="mix-link" href="#{stream.details['stream']['channel']['url']}" target="_none"
-/                       i class="fa fa-link"
+h3 Featured Streamers
+/.featured-streamers
+/  |Contact chris@hearthstats.net if you are interested in being a featured streamer.
+- q = Stream.get_featured_streamers
+div class="row"
+  div class="col-md-12"
+    div class="margin-top-10"
+      div.row
+        - q.each do |stream|
+          - if stream.status == 'Online'
+            div class="mix-grid"
+              div class="col-md-3 col-sm-4 mix"
+                div class="mix-inner"
+                  div.streamer-badge class="#{stream.status}" = stream.status
+                  img src="#{stream.details['stream']['preview']['large']}" class="img-responsive featured-streamer"
+                  div class="mix-details"
+                    h4 = stream.details['stream']['channel']["display_name"]
+                    div = stream.details['stream']['channel']["status"]
+                    div.
+                      a class="mix-link" href="#{stream.details['stream']['channel']['url']}" target="_none"
+                        i class="fa fa-link" 
+                      a class="mix-preview viewers"
+                        = stream.details['stream']['viewers']
 
 h3 Top Streams
 = will_paginate @streams, renderer: BootstrapPagination::Rails
-div class="row"
+div class="row top-streams"
   div class="col-md-12"
     div class="margin-top-10"
       div.row
