@@ -88,6 +88,7 @@ gem "squeel"
 # APIs
 gem 'cindy' # Sendy API
 gem 'appsignal'
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background
