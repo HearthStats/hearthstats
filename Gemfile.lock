@@ -53,9 +53,6 @@ GEM
     announcements (0.2.0)
       jquery-rails
       rails (>= 3.1.0)
-    appsignal (0.11.4)
-      rack
-      thread_safe
     arel (3.0.3)
     awesome_print (1.6.1)
     aws-sdk (1.5.8)
@@ -506,7 +503,6 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_votable (~> 0.10.0)
   announcements
-  appsignal
   awesome_print
   aws-sdk (~> 1.5.7)
   better_errors (>= 0.3.2)
