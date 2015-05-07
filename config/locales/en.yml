@@ -44,8 +44,9 @@ en:
     create_deck: Create a Deck
     new_arena_game: New Arena Game
     view_more: View More
-    edit: Edit
-    delete: Delete
+    edit: " Edit"
+    delete: " Delete"
+    view: " View"
     notes: Notes
     run: run
     error: error
