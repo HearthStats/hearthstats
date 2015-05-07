@@ -39,9 +39,9 @@
     </div>
   </div>
   <div class="form-group deck-filter-apply">
-    <%= f.submit 'Apply', id: 'deckListFilterSubmit', class: "btn blue" %>
-    <strong><%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong>
-  </div>
+    <%= f.submit 'Apply', id: 'deckListFilterSubmit', class: "btn green" %>
+    <strong>  <%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong>
+  </div >
 <% end %>
 <script type="text/javascript">
   $(document).ready(function(){

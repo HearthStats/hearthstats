@@ -14,10 +14,6 @@ module ApplicationHelper
     {'en' => 'English', 'fr' => 'French', 'zh-TW' => '繁體中文', 'zh-CN' => '簡體中文', 'de' => 'German', 'pt-BR' => 'Português', 'ko' => 'Korean', 'el' => 'Greek', 'es' => 'Spanish', 'pl' => 'Polish'}
   end
 
-  def featured_streamers
-    ['fitzcairn', 'rambunctiousrogue','kisstafer','bradhs','imd2','ihosty']
-  end
-
   def sub_plans
     [:early_sub, :gold, :admin]
   end

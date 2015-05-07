@@ -4,10 +4,15 @@
 .viewers{
   color: white !important;
 }
-.mix-details{
+.top-streams .mix-details{
   max-width: 320px !important;
 }
-
+h4.mix-details{
+	margin: auto !important;
+}
+.fs-details{
+	margin:auto !important;
+}
 .streamer-badge{
   position: absolute;
   left: 5px;

@@ -1070,6 +1070,7 @@ Footer
 .footer {
   padding: 8px 20px 5px 35px;
   font-size: 12px;
+  clear: both;
 }
 
 .footer:after,
