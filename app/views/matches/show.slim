@@ -39,7 +39,9 @@ link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' 
     .versus-classes
       .versus-class-pic
         - if @match.user.profile.name
-		  h3 #{@match.user.profile.name} 
+          h3 #{@match.user.profile.name} 
+        - else
+          h3 Anonymous
         = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.klass_id]}_full.png"
         - if @match.result_id == 1
           .versus-class-winner Winner
@@ -49,7 +51,9 @@ link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' 
           .versus-class-winner Draw
       .versus-class-pic
         - if @match.oppname
-		  h3 #{@match.oppname}
+          h3 #{@match.oppname}
+        - else
+          h3 Anonymous
         = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.oppclass_id]}_full.png"
         - if @match.result_id == 2
           .versus-class-winner Winner
