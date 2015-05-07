@@ -1,34 +1,35 @@
 <link rel="stylesheet" type="text/css" href=<%= public_url("css/footable.core.min.css")%> data-turbolinks-track />
 <%= render 'decks/filter' %>
 
-<!-- <h3>Featured Decks</h3> 
+<h3>Featured Decks</h3> 
 <div class="row public-decklist">
   <div class="col-md-12">
     <div class="margin-top-10">
       <div class="row">
-        <%## @featured_decks.each do |featured| %>
+        <% q = Deck.get_featured_decks %>
+        <% q.each do |featured| %>
           <div class="mix-grid">
             <div class="col-md-3 col-sm-4 mix">
-              <div class="mix-inner">
-                <img src="/assets/Icons/Classes/<%##= featured.class_name %>_Icon.gif" alt="<%##= featured.class_name %>" class="img-responsive featured-deck-img"/>
+              <div class="mix-inner <%= featured.class_name %>-bg-color">
+                <img src="/assets/Icons/Classes/<%= featured.class_name %>_Icon.gif" alt="<%= featured.class_name %>" class="img-responsive featured-deck-img"/>
                 <div class="mix-details">
-                  <h4><%##= link_to(featured.name, public_show_deck_path(featured), class: 'featured-deck-name') %></h4>
-                  <div>by 
-                    <%## if(featured.user.profile.nil? || featured.user.profile.name.nil?)%>
+                  <h4><%= link_to(truncate(featured.name, length:30), public_show_deck_path(featured), class: 'featured-deck-name') %></h4>
+                  <div>by: 
+                    <% if(featured.user.profile.nil? || featured.user.profile.name.nil?)%>
                       [anonymous]
-                    <%## else %>
-                      <%##= link_to(deck.user.profile.name, profile_path(deck.user_id))%>
-                    <%## end %>
+                    <% else %>
+                      <%= link_to(featured.user.profile.name, profile_path(featured.user_id))%>
+                    <% end %>
                   </div>  
                 </div>
               </div>
             </div>
           </div>
-        <%## end %>
+        <% end %>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <!-- <table class="decklist table table-bordered footable toggle-arrow toggle-small">
   <thead>
@@ -94,6 +95,8 @@
     <%# end %>
   </tbody>
 </table> -->
+
+
 <div class="public-decks">
   <div>
     <% @decks.each do |deck| %>
@@ -104,7 +107,7 @@
       </div>
       <div class="public-deck-ident">
         <div class="public-deck-name">
-          <%= link_to(deck.name, public_show_deck_path(deck)) %>
+          <%= link_to(truncate(deck.name, length: 30), public_show_deck_path(deck), class: 'name-tooltip', :rel => "tooltip", :title => "#{t('.minions')}: #{deck.num_minions.nil? ? "-": deck.num_minions}\n Spells: #{deck.num_spells.nil? ? "-": deck.num_spells} \n Weapons: #{deck.num_weapons.nil? ? "-": deck.num_weapons}") %>
         </div>
         <div class="public-deck-author">
           <% if(deck.user.profile.nil? || deck.user.profile.name.nil?)%>

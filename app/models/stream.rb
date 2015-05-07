@@ -1,5 +1,5 @@
 class Stream
-  FEATURED = ['reynad27', 'StrifeCro', 'Day9tv']
+  FEATURED = []
   ### CLASS METHODS:
 
   def self.get_featured_streamers
