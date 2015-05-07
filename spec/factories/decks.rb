@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :deck do
     factory :deck_with_unique_deck do
       association :unique_deck
+      user
       cardstring { unique_deck.cardstring }
     end
   end
