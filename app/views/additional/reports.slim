@@ -1,36 +1,7 @@
 h2 Most Recent
-
-- @reports.each do |year|
-  - year.each do |month|
-    = month.humanize
-table#all-reports
-  thead
-    tr
-      td Month
-      td 2015
-      td 2014
-  tbody
-    tr
-      td January
-    tr
-      td February
-    tr
-      td March
-    tr
-      td April
-    tr
-      td May
-    tr
-      td June
-    tr
-      td July
-    tr
-      td August
-    tr
-      td September
-    tr
-      td October
-    tr
-      td November
-    tr
-      td December
+- @reports.each do |year, monthes|
+  .report-year
+    h4 = year
+    - monthes.reverse.each do |month|
+      = link_to "/reports/#{year}/#{month}" do
+        img.report-preview src="/reports/#{year}/pics/#{month}_bgx300.jpg"

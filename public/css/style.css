@@ -393,7 +393,7 @@ p {
 /*-----------------------------------------------------------------------------------*/
 
 .page-head{
-	background:url(/images/bg.jpg) no-repeat center;
+	background:url(../assets/images/bg.jpg) no-repeat center;
 	padding:40px 0;
 }
 
