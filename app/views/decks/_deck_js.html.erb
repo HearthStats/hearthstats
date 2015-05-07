@@ -11,7 +11,7 @@
             <%= raw card.toJSONWithImage() %>,
           <% end %>
         <% elsif !@deck.cardstring.nil? %>
-          <% @deck.get_cards.sort_by {|q| q.name}.each do |card| %>
+          <% @card_array.map(&:first).sort_by {|q| q.name}.each do |card| %>
             <%= raw card.toJSONWithImage() %>,
           <% end %>
         <% end %>

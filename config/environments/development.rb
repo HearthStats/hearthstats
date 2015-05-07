@@ -1,5 +1,5 @@
 Hearthstats::Application.configure do
-  ActiveRecordQueryTrace.enabled = false
+  ActiveRecordQueryTrace.enabled = true
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -43,8 +43,13 @@ Hearthstats::Application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.sendmail_settings = { address: "localhost", port: 1025, ssl: false, tls: false }
+  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { 
+    address: "localhost", 
+    port: 1025 ,
+    enable_starttls_auto:       true,
+  }
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.paperclip_defaults = {
     storage: :s3,

@@ -32,7 +32,9 @@ class Deck < ActiveRecord::Base
   before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_stats
   after_create :create_deck_version
-  after_create :subscribe_user_to_deck
+  if !Rails.env.test?
+    after_create :subscribe_user_to_deck
+  end
 
   ### CLASS METHODS:
 
@@ -242,7 +244,7 @@ class Deck < ActiveRecord::Base
     cardstring_array = cardstring_as_array
 
     arr = []
-    cards = Card.where("id IN (?)", cardstring_array.map {|e| e[0]}).order("mana, name")
+    cards = Card.where("id IN (?)", cardstring_array.map {|e| e[0]}).order("mana, name").all
     cards.each do |card|
       element = cardstring_array.detect {|c| c[0].to_i == card.id }
       arr << [card, element[1]]
