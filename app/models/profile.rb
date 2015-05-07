@@ -9,7 +9,7 @@ class Profile < ActiveRecord::Base
 
   belongs_to :users
 
-  has_attached_file :avatar, :default_url => "/assets/new_logo/full_colour/full_colour_mark.png", styles:{
+  has_attached_file :avatar, :default_url => "/assets/avatar.jpg", styles:{
     thumb: '29x29>',
     square: '200x200#',
     medium: '300x300>'
