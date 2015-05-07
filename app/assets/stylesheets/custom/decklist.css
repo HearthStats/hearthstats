@@ -103,6 +103,10 @@
   opacity: 0.90;
 }
 
+.inline-graph{
+  display: inline-block;
+} 
+
 /* deck lists */  
 /*table.decklist td.public-decklist-class,
 table.decklist th.public-decklist-class{
@@ -140,9 +144,7 @@ table.decklist td.winrate{
   border-bottom-color: #ccc;
   border-top-color: #ccc;
 }
-.inline-graph{
-  display: inline-block;
-} 
+
 
 table.decklist .deck-name{
   white-space: pre-line;  
@@ -161,17 +163,6 @@ table.decklist td.tools {
 
 table.decklist td.author{ 
   color: #666;
-}
-
-.featured-deck-img{
-  width: 150px;
-  height: 150px;
-  margin: auto;
-}
-
-a.featured-deck-name{
-  color: #fff;
-  text-decoration: none;
 }
 
 @media (max-width: 768px){
@@ -204,11 +195,26 @@ table.decklist td.toggle{
   border-color: #fff;
 }*/
 
+/* featured decks */
+
+.featured-deck-img{
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+
+a.featured-deck-name{
+  color: #fff;
+  text-decoration: none;
+}
+
+/* public decklists */ 
 .deck-section{ 
   padding: 20px 10px; 
   float: left;
   width: 50%;  
   min-height: 90px;  
+  min-width: 400;
 }
 .deck-section:hover{
   background-color: #fafafa;
@@ -218,6 +224,10 @@ table.decklist td.toggle{
   height: 50px; 
   margin: 0px 20px;
 }
+
+.public-deck-ident{
+  max-width: 30%;
+}
 .public-deck-ident,
 .public-deck-class{
   float: left; 
@@ -225,8 +235,10 @@ table.decklist td.toggle{
 }
 
 .public-deck-name{
-  font-size: 16px; 
-  margin: 0px;
+  font-size: 16px;  
+}
+.name-tooltip{
+  white-space: pre-line;  
 }
 .public-deck-author{
   font-size: 13px; 
@@ -236,12 +248,12 @@ table.decklist td.toggle{
   float: right;  
   text-align: center;
 }
-.win-rate{ 
-  margin-right: 5%;
+.win-rate{  
+  margin-right: 2%;
 }
 
 .num-matches{
-  margin-right: 5%;
+  margin-right: 2%;
 }
 
 .win-percent{
@@ -251,7 +263,8 @@ table.decklist td.toggle{
 .user-option-buttons{
   float: right;
   margin-right: 2%;
-  width: 130px;
+  width: 130px; 
+  text-align: right;
   vertical-align: middle;
 }
 
@@ -271,4 +284,55 @@ table.decklist td.toggle{
   .num-matches{
     display: none;
   }
+}
+
+@media (max-width: 500px){  
+  .win-rate{
+    display: none;
+  }
+}
+
+@media (max-width: 450px){ 
+  .public-deck-class{
+    display: none;
+  }
+  .public-deck-ident{
+    max-width: 50%;
+  }
+}
+
+.Mage-bg-color{
+  background-color: #2581BC;
+}
+.Warlock-bg-color{
+  background-color: #4F2669;
+}
+.Shaman-bg-color{
+  background-color: #283273;
+}
+.Paladin-bg-color{
+  background-color: #FBD707;
+}
+.Hunter-bg-color{
+  background-color: #208D43;
+}
+.Rogue-bg-color{
+  background-color: #2F2C27;
+}
+.Warrior-bg-color{
+  background-color: #B32025;
+}
+.Druid-bg-color{
+  background-color: #613112;
+}
+.Priest-bg-color{
+  background-color: #A3B2B2;
+}
+
+.mix-details a{
+  color: #fff;
+  text-decoration: none;
+}
+.mix-details a:hover{
+  color: #fb9b5e;
 }

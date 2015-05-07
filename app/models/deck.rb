@@ -14,6 +14,9 @@ class Deck < ActiveRecord::Base
     1 => 'Constructed',
     2 => 'Arena'
   }
+
+  FEATURED_DECKS = [166,167,207]
+
   ### ASSOCIATIONS:
 
   belongs_to :unique_deck
@@ -37,6 +40,16 @@ class Deck < ActiveRecord::Base
   end
 
   ### CLASS METHODS:
+
+  # Featured Decks: 
+  def self.get_featured_decks
+    featured_decks = Array.new
+    FEATURED_DECKS.each do |fd|
+        featured_decks << Deck.find(fd)
+    end
+
+    featured_decks
+  end
 
   def self.hdt_parse(json)
     card_array = []
