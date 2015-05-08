@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href=<%= public_url("css/footable.core.min.css")%> data-turbolinks-track />
-<%= render 'decks/filter' %>
+
 
 <h3>Featured Decks</h3> 
 <div class="row public-decklist">
@@ -7,101 +7,38 @@
     <div class="margin-top-10">
       <div class="row">
         <% q = Deck.get_featured_decks %>
-        <% q.each do |featured| %>
-          <div class="mix-grid">
-            <div class="col-md-3 col-sm-4 mix">
-              <div class="mix-inner <%= featured.class_name %>-bg-color">
-                <img src="/assets/Icons/Classes/<%= featured.class_name %>_Icon.gif" alt="<%= featured.class_name %>" class="img-responsive featured-deck-img"/>
-                <div class="mix-details">
-                  <h4><%= link_to(truncate(featured.name, length:30), public_show_deck_path(featured), class: 'featured-deck-name') %></h4>
-                  <div>by: 
-                    <% if(featured.user.profile.nil? || featured.user.profile.name.nil?)%>
-                      [anonymous]
-                    <% else %>
-                      <%= link_to(featured.user.profile.name, profile_path(featured.user_id))%>
-                    <% end %>
-                  </div>  
-                </div>
-              </div>
-            </div>
+        <% q.each do |featured| %> 
+        <div class="mix-grid">
+          <div class="col-md-3 col-sm-6 col-xs-6 mix">
+            <a href="<%= public_show_deck_path(featured) %>">
+              <div class="<%= featured.class_name %>-bg-color featured-deck"> 
+                <img src="/assets/Icons/Classes/<%= featured.class_name%>_full_icon.gif" alt="<%= featured.class_name %>" class="featured-deck-img"/> 
+                <h4><%= truncate(featured.name, length:40) %></h4>
+                <p>
+                  <% if(featured.user.profile.nil? || featured.user.profile.name.nil?)%>
+                    by: [anonymous]
+                  <% else %>
+                    by: <%= featured.user.profile.name %>
+                  <% end %>
+                </p>
+              </div> 
+            </a>
           </div>
+        </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+<hr class="deck-separator">
 
-<!-- <table class="decklist table table-bordered footable toggle-arrow toggle-small">
-  <thead>
-    <tr>
-      <th class="toggle"></th>
-      <th class="public-decklist-class"><%#= t('.class') %></th>
-      <th class="name"><%#= t('.name') %></th>  
-      <th data-class="minions" data-hide="all" colspan="4">Extra Statistics</th>
-      <th class="winrate"><%#= t('.win_rate') %></th> 
-      <th class="matches"><%#= t('.matches') %></th> 
-      <th class="author"><%#= t('.listed_by') %></th> 
-      <%# unless current_user.nil? %>
-        <th class="tools"><%#= t('.tools') %></th>
-      <%# end %>
-    </tr>
-  </thead>
-  <tbody>
-    <%# @decks.each do |deck| %>
-      <%# unique_deck = deck.unique_deck %>
-      <tr>
-        <td class="toggle"> </td>
-        <td class="public-decklist-class"> <img src="/assets/Icons/Classes/<%#= deck.class_name %>_Icon.gif" alt="<%#= deck.class_name %>" title="<%#= deck.class_name %>"/>
-            
-        </td>
-        <td class="name">
-          <div class="deck-name"><%#= link_to(deck.name, public_show_deck_path(deck), class: 'default', :rel => "tooltip", :title => "#{t('.minions')}: #{deck.num_minions.nil? ? "-": deck.num_minions}\n Spells: #{deck.num_spells.nil? ? "-": deck.num_spells} \n Weapons: #{deck.num_weapons.nil? ? "-": deck.num_weapons}" ) %> </div></td> 
-        <td class="minions"><%#= deck.num_minions.nil? ? "-": deck.num_minions %></td>
-        <td class="spells"><%#= deck.num_spells.nil? ? "-": deck.num_spells %></td>
-        <td class="weapons"><%#= deck.num_weapons.nil? ? "-": deck.num_weapons %></td> 
-        <td class="Wins"><%#= deck.wins.nil? ? "-": deck.wins %></td>
-        <td class="winrate">
-          <%# if unique_deck.winrate.nil? %> -
-          <%# else %> <%#= number_to_percentage(unique_deck.winrate, precision: 1) %> <%# end %></td>
-        <td class="matches">
-          <%# if unique_deck.num_matches.nil? %> - 
-          <%# else %> <%#= unique_deck.num_matches %> <%# end %></td> 
-        <td class="author"> 
-            <%# if(deck.user.profile.nil? || deck.user.profile.name.nil?)%>
-              [anonymous]
-            <%# else %>
-              <%#= link_to(deck.user.profile.name, profile_path(deck.user_id))%>
-            <%# end %>
-          </span>
-        </td> 
-        
-
-        <%# unless current_user.nil? %>
-          <td class="tools">
-            <%# if current_user.try(:id) == deck.user_id %>
-              <%#= link_to("t('.edit')", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o') %>
-              <%#= link_to("t('.delete')", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' }) %>
-            <%# else %>
-              <%# user_copy = @user_decks.detect { |d| d.unique_deck_id == deck.unique_deck_id } %>
-              <%# if user_copy.nil? %>
-                <%#= link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs blue', :rel => "tooltip", :title => "Make your own copy of this deck") %>
-              <%# else %>
-                <%#= link_to("View", user_copy, :rel => "tooltip", :title => "View your copy of this deck", class: "btn default btn-xs green",) %>
-              <%# end %>
-            <%# end %>
-          </td>
-        <%# end %>
-      </tr>
-    <%# end %>
-  </tbody>
-</table> -->
-
+<%= render 'decks/filter' %>
 
 <div class="public-decks">
-  <div>
+  <div class="row">
     <% @decks.each do |deck| %>
     <% unique_deck = deck.unique_deck %>
-    <div class="deck-section"> 
+    <div class="deck-section col-md-6 col-sm-12"> 
       <div class="public-deck-class">
         <img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>" title="<%= deck.class_name %>"/>
       </div>
@@ -132,19 +69,26 @@
           <% end %>
         </div>
       <% end %>
-      <div class="win-rate">
-        <span class="win-percent"><% if unique_deck.winrate.nil? %> -
-        <% else %> <%= number_to_percentage(unique_deck.winrate, precision: 1) %> <% end %> </span>
+      <div class="last-updated">
+        Last Updated
         <br>
+        <span style="font-size: 15px">
+        <%= time_ago_in_words(deck.updated_at)%> ago
+        </span> 
+      </div>
+      <div class="win-rate">
         Winrate
+        <br>
+        <span class="win-percent"><% if unique_deck.winrate.nil? %> -
+        <% else %> <%= number_to_percentage(unique_deck.winrate, precision: 1) %> <% end %> </span> 
       </div>
       <div class="num-matches">
+        Matches
+        <br>
         <span class="win-percent">
           <% if unique_deck.num_matches.nil? %> - 
-          <% else %> <%= unique_deck.num_matches %> <% end %>
-          <br>
-        </span>
-        Matches
+          <% else %> <%= unique_deck.num_matches %> <% end %> 
+        </span> 
       </div>
 
     </div>

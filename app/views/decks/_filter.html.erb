@@ -17,8 +17,6 @@
       <%= t('.deck_name') %>
       <%= f.text_field :name_cont, class: "form-control" %>
     </div>
-  </div>
-  <div class="form-inline">
     <div class="form-group">
       <%= t('.show') %>
       <%= select_tag :items, options_for_select(items_per_page_for_select, params[:items]),
@@ -26,21 +24,23 @@
 
     </div>
     <div class="form-group">
+      <div class="form-group">
       <%= t('.sort_by') %>
       <%= select_tag :sort, options_for_select(sort_for_select, params[:sort]),
         { class: "form-control"} %>
-    </div>
-    <div class="form-group">
-      &nbsp;
-      <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'],
-                                                 [t('.descending'), 'desc']],
-      params[:order]),  { class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        &nbsp;
+        <%= select_tag :order, options_for_select([[t('.ascending'), 'asc'],
+                                                   [t('.descending'), 'desc']],
+        params[:order]),  { class: "form-control"} %>
 
+      </div>
     </div>
-  </div>
+  </div> 
   <div class="form-group deck-filter-apply">
     <%= f.submit 'Apply', id: 'deckListFilterSubmit', class: "btn green" %>
-    <strong>  <%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong>
+    <span style="margin: 10px"><strong>  <%= t('.decks_found', count: number_with_delimiter(@decks.total_entries, :delimiter => ','))%></strong></span>
   </div >
 <% end %>
 <script type="text/javascript">
