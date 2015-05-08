@@ -105,108 +105,8 @@
 
 .inline-graph{
   display: inline-block;
-} 
+}  
 
-/* deck lists */  
-/*table.decklist td.public-decklist-class,
-table.decklist th.public-decklist-class{
-  width: 100px;
-}
-table.decklist td.name{
-  font-size: 16px;  
-}
-table.decklist td.public-decklist-class img {
-  height:40px;
-  width:40px; 
-}
-
-table.decklist th.public-decklist-class,
-table.decklist td.public-decklist-class, 
-table.decklist th.minions,
-table.decklist td.minions,
-table.decklist th.spells,
-table.decklist td.spells,
-table.decklist th.weapons,
-table.decklist td.weapons,
-table.decklist th.matches,
-table.decklist td.matches,
-table.decklist th.wins,
-table.decklist td.wins,
-table.decklist th.losses,
-table.decklist td.losses,
-table.decklist th.num_users,
-table.decklist td.num_users,
-table.decklist th.winrate,
-table.decklist td.winrate{
-  text-align:center;
-  vertical-align: middle;
-  border-color: #fff;
-  border-bottom-color: #ccc;
-  border-top-color: #ccc;
-}
-
-
-table.decklist .deck-name{
-  white-space: pre-line;  
-}
- 
-table.decklist td.name,
-table.decklist th.name,
-table.decklist th.author,
-table.decklist td.author,
-table.decklist td.tools {
-  border-color: #fff;
-  vertical-align: middle;
-  border-bottom-color: #ccc;
-  border-top-color: #ccc;
-}
-
-table.decklist td.author{ 
-  color: #666;
-}
-
-@media (max-width: 768px){
-  table.decklist td.name{
-  font-size: 13px;   
-}
-  table.decklist td.public-decklist-class img{ 
-    width: 20px;
-    height: 20px;
-  }
-  table.decklist td.public-decklist-class .klass-name{
-    display: none;
-  }
-  table.decklist th.name{
-    text-align: center;
-  }
-}
-table.decklist th.toggle,
-table.decklist td.toggle{
-  text-align: center;
-  border-color: #fff;
-  max-width: 20px;
-  border-bottom-color: #ccc;
-  border-top-color: #ccc;
-}
-.footable-row-detail-inner{ 
-  margin-left: 170px;
-} 
-.footable-row-detail-cell{
-  border-color: #fff;
-}*/
-
-/* featured decks */
-
-.featured-deck-img{
-  width: 150px;
-  height: 150px;
-  margin: auto;
-}
-
-a.featured-deck-name{
-  color: #fff;
-  text-decoration: none;
-}
 
 /* public decklists */ 
 .deck-section{ 
@@ -244,7 +144,7 @@ a.featured-deck-name{
   font-size: 13px; 
   margin: 0px;
 }
-.win-rate, .num-matches{
+.win-rate, .num-matches, .last-updated{
   float: right;  
   text-align: center;
 }
@@ -257,10 +157,14 @@ a.featured-deck-name{
 }
 
 .win-percent{
-  font-size: 15px;
+  font-size: 16px;
+}
+.last-updated{
+  width: 180px;
 }
 
 .user-option-buttons{
+  display: none;
   float: right;
   margin-right: 2%;
   width: 130px; 
@@ -287,52 +191,75 @@ a.featured-deck-name{
 }
 
 @media (max-width: 500px){  
-  .win-rate{
+  .last-updated{
     display: none;
   }
 }
 
-@media (max-width: 450px){ 
-  .public-deck-class{
-    display: none;
-  }
-  .public-deck-ident{
-    max-width: 50%;
-  }
-}
+/* featured decks */
 
-.Mage-bg-color{
-  background-color: #2581BC;
+.featured-deck{
+  margin: 2%; 
+  max-height: 141px;
+  max-width: 357px;
 }
-.Warlock-bg-color{
-  background-color: #4F2669;
-}
-.Shaman-bg-color{
-  background-color: #283273;
-}
-.Paladin-bg-color{
-  background-color: #FBD707;
-}
-.Hunter-bg-color{
-  background-color: #208D43;
-}
-.Rogue-bg-color{
-  background-color: #2F2C27;
-}
-.Warrior-bg-color{
-  background-color: #B32025;
-}
-.Druid-bg-color{
-  background-color: #613112;
-}
-.Priest-bg-color{
-  background-color: #A3B2B2;
-}
-
-.mix-details a{
+.featured-deck a{ 
   color: #fff;
   text-decoration: none;
 }
-.mix-details a:hover{
-  color: #fb9b5e;
+.featured-deck h4{ 
+  display: inline;
+  font-size: 1vw;
+  color: #fff;
+  position: absolute;
+  z-index: 100;
+  bottom: 3%;
+  left: 5%; 
+  max-width: 60%;
+}
+
+.featured-deck p{ 
+  font-size: 0.6vw;
+  color: #fff;
+  position: absolute;
+  z-index: 100;
+  bottom: 3%;
+  right: 5%;
+  margin-left: 2%; 
+}
+
+@media(max-width: 991px){ 
+  .featured-deck h4{
+    font-size: 2vw;
+  }
+  .featured-deck p{
+    display:none;
+  }
+}
+.featured-deck img{ 
+  width: 100%;
+  height: 100%;
+}
+.featured-deck{
+  position:relative;
+  display:inline-block;
+}
+.featured-deck:after {
+  content:'';
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  display:inline-block;
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.deck-separator{
+  margin: 20px 10%;
+  width: 80%; 
 }

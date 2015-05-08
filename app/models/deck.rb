@@ -15,7 +15,7 @@ class Deck < ActiveRecord::Base
     2 => 'Arena'
   }
 
-  FEATURED_DECKS = [166,167,207]
+  FEATURED_DECKS = [166, 256, 257, 177]
 
   ### ASSOCIATIONS:
 
