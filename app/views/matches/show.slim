@@ -38,7 +38,7 @@ link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' 
 
     .versus-classes
       .versus-class-pic
-        - if @match.user.profile.name
+        - if @match.user.profile.name && @match.oppname
           h3 #{@match.user.profile.name} 
         - else
           h3 Anonymous
@@ -50,7 +50,7 @@ link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' 
         - if @match.result_id == 3
           .versus-class-winner Draw
       .versus-class-pic
-        - if @match.oppname
+        - if @match.user.profile.name && @match.oppname
           h3 #{@match.oppname}
         - else
           h3 Anonymous
