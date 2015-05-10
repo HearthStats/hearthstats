@@ -42,7 +42,7 @@ class Api::V2::DecksController < ApplicationController
 
   def hdt_after
     req = ActiveSupport::JSON.decode(request.body)
-    decks = Deck.where(deck_type_id: [nil, 1]).where{
+    decks = Deck.where(deck_type_id: [nil,0,1]).where{
       (user_id == my{current_user.id}) &
       (created_at >= DateTime.strptime(req["date"], '%s'))
     }
