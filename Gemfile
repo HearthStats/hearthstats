@@ -68,9 +68,10 @@ gem 'lograge' # Minify log outputs
 gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
 gem 'opinio' # Comment system
+gem 'commontator', '~> 4.10.0'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'unf'
 gem 'thin'
-gem 'meta_search',    '>= 1.1.0.pre' # For active admin
 gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon' # Easy Rails to JS Vars
@@ -86,7 +87,7 @@ gem "squeel"
 
 # APIs
 gem 'cindy' # Sendy API
-gem 'appsignal'
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Background

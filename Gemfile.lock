@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: 9f482022a648ab662c22177ba24fd2e2b6794c34
+  specs:
+    sentry-raven (0.13.1)
+      faraday (>= 0.7.6)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 1ee098bd2e8787c6426505648820c1159e52e77e
   specs:
@@ -41,13 +48,11 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (3.4.4)
       activerecord (>= 3.2, < 5)
+    acts_as_votable (0.10.0)
     addressable (2.3.7)
     announcements (0.2.0)
       jquery-rails
       rails (>= 3.1.0)
-    appsignal (0.11.4)
-      rack
-      thread_safe
     arel (3.0.3)
     awesome_print (1.6.1)
     aws-sdk (1.5.8)
@@ -111,6 +116,9 @@ GEM
     coffee-script-source (1.9.0)
     colored (1.2)
     columnize (0.9.0)
+    commontator (4.10.5)
+      jquery-rails
+      rails (>= 3.1)
     crass (1.0.1)
     curb (0.8.6)
     daemons (1.1.9)
@@ -302,11 +310,6 @@ GEM
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.0.0)
-    meta_search (1.1.3)
-      actionpack (~> 3.1)
-      activerecord (~> 3.1)
-      activesupport (~> 3.1)
-      polyamorous (~> 0.5.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.2)
@@ -498,8 +501,8 @@ PLATFORMS
 DEPENDENCIES
   active_record_query_trace
   acts-as-taggable-on
+  acts_as_votable (~> 0.10.0)
   announcements
-  appsignal
   awesome_print
   aws-sdk (~> 1.5.7)
   better_errors (>= 0.3.2)
@@ -513,6 +516,7 @@ DEPENDENCIES
   chartkick
   cindy
   coffee-rails (~> 3.2.1)
+  commontator (~> 4.10.0)
   daemons
   dalli
   database_cleaner
@@ -538,7 +542,6 @@ DEPENDENCIES
   mechanize
   meta-tags
   meta_request
-  meta_search (>= 1.1.0.pre)
   mysql2
   nokogiri
   opinio
@@ -559,6 +562,7 @@ DEPENDENCIES
   seed_dump
   select2-rails
   selenium-webdriver (~> 2.44.0)
+  sentry-raven!
   shortener
   sitemap_generator
   slim-rails
