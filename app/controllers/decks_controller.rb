@@ -133,13 +133,17 @@ class DecksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to public_decks_path, alert: "Deck cannot be found" and return
     end
+    if @deck.unique_deck.nil?
+      redirect_to deck_path(@deck) and return
+    end
 
     @card_array = @deck.card_array_from_cardstring
     commontator_thread_show(@deck)
 
     deck_cache_stats = Rails.cache.fetch("public_deck_stats" + @deck.id.to_s)
     if deck_cache_stats.nil?
-      matches = @deck.unique_deck.decks.map(&:matches).flatten
+      unique_deck = @deck.unique_deck
+      matches = unique_deck.decks.map(&:matches).flatten
 
       # Win rates vs each class
       @deckrate = Array.new
