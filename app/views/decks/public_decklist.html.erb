@@ -44,7 +44,7 @@
       </div>
       <div class="public-deck-ident">
         <div class="public-deck-name">
-          <%= link_to(truncate(deck.name, length: 30), public_show_deck_path(deck), class: 'name-tooltip', :rel => "tooltip", :title => "#{t('.minions')}: #{deck.num_minions.nil? ? "-": deck.num_minions}\n Spells: #{deck.num_spells.nil? ? "-": deck.num_spells} \n Weapons: #{deck.num_weapons.nil? ? "-": deck.num_weapons}") %>
+          <%= link_to(truncate(deck.name, length: 20), public_show_deck_path(deck), class: 'name-tooltip', :rel => "tooltip", :title => "#{t('.minions')}: #{deck.num_minions.nil? ? "-": deck.num_minions}\n Spells: #{deck.num_spells.nil? ? "-": deck.num_spells} \n Weapons: #{deck.num_weapons.nil? ? "-": deck.num_weapons}") %>
         </div>
         <div class="public-deck-author">
           <% if(deck.user.profile.nil? || deck.user.profile.name.nil?)%>
