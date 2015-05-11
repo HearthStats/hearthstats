@@ -57,6 +57,6 @@ link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' 
         = image_tag "/assets/Icons/Classes/full/#{Klass::LIST[@match.oppclass_id]}_full.png"
         - if @match.result_id == 2
           .versus-class-winner Winner
-    - if !@match.notes
+    - if @match.notes
       h3 Notes
       = raw @match.notes
