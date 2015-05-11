@@ -43,10 +43,6 @@ Hearthstats::Application.routes.draw do
 
   post "notifications/note_read"
 
-<<<<<<< HEAD
-=======
-  opinio_model controller: 'my_comments'
->>>>>>> setup commontator
   mount Commontator::Engine => '/comments'
   # get "profile/edit"
 
