@@ -107,13 +107,38 @@
   display: inline-block;
 }  
 
+table.decklist td.class img {
+  height:24px;
+  width:24px;
+}
+table.decklist th.class,
+table.decklist td.class,
+table.decklist th.minions,
+table.decklist td.minions,
+table.decklist th.spells,
+table.decklist td.spells,
+table.decklist th.weapons,
+table.decklist td.weapons,
+table.decklist th.matches,
+table.decklist td.matches,
+table.decklist th.wins,
+table.decklist td.wins,
+table.decklist th.losses,
+table.decklist td.losses,
+table.decklist th.num_users,
+table.decklist td.num_users,
+table.decklist th.winrate,
+table.decklist td.winrate {
+  text-align:center;
+}
 
 /* public decklists */ 
 .deck-section{ 
   padding: 20px 10px; 
   float: left;
   width: 50%;  
-  min-height: 90px;  
+  min-height: 90px;
+  max-height: 90px;  
   min-width: 400;
 }
 .deck-section:hover{
@@ -125,8 +150,8 @@
   margin: 0px 20px;
 }
 
-.public-deck-ident{
-  max-width: 30%;
+.public-deck-ident{   
+  max-width: 25%;
 }
 .public-deck-ident,
 .public-deck-class{
@@ -192,6 +217,12 @@
 
 @media (max-width: 500px){  
   .last-updated{
+    display: none;
+  }
+}
+
+@media (max-width: 400px){ 
+  .public-deck-author{
     display: none;
   }
 }
