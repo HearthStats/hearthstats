@@ -15,10 +15,11 @@ class Deck < ActiveRecord::Base
     2 => 'Arena'
   }
 
-  FEATURED_DECKS = ["brm-control-dragon-warrior--15", 
-    "greediest-warlock", 
-    "control--3236", 
-    "control-priest--1200"]
+  FEATURED_DECKS = []
+  # ["brm-control-dragon-warrior--15", 
+  #   "greediest-warlock", 
+  #   "control--3236", 
+  #   "control-priest--1200"]
 
   ### ASSOCIATIONS:
 
