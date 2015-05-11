@@ -12,7 +12,7 @@
           <div class="col-md-3 col-sm-6 col-xs-6 mix">
             <a href="<%= public_show_deck_path(featured) %>">
               <div class="<%= featured.class_name %>-bg-color featured-deck"> 
-                <img src="/assets/Icons/Classes/<%= featured.class_name%>_full_icon_<%= rand(2)+1 %>.gif" alt="<%= featured.class_name %>" class="featured-deck-img"/> 
+                <img src="/assets/Icons/Classes/<%= featured.class_name%>_full_icon_<%= rand(3)+1 %>.gif" alt="<%= featured.class_name %>" class="featured-deck-img"/> 
                 <h4><%= truncate(featured.name, length:40) %></h4>
                 <p>
                   <% if(featured.user.profile.nil? || featured.user.profile.name.nil?)%>
@@ -38,7 +38,7 @@
   <div class="row">
     <% @decks.each do |deck| %>
     <% unique_deck = deck.unique_deck %>
-    <div class="deck-section col-md-6 col-sm-12"> 
+    <div class="col-md-6 col-sm-12 deck-section"> 
       <div class="public-deck-class">
         <img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>" title="<%= deck.class_name %>"/>
       </div>
