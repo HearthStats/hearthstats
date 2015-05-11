@@ -12,6 +12,10 @@ p = link_to "Disapprove All", admin_disapprove_archtype_path, method: :post
         = link_to "Approve", admin_approve_archtype_path(ud_id: unique_deck.id), method: :post
   .col-md-6
     h3 Verified
+    b Archtypes
+    ul
+      - UniqueDeckType::ARCHTYPES.each do |aid, name|
+        li #{aid} - #{name}
     - UniqueDeckType.where(verified: true).each do |unique_deck|
       p
         b = unique_deck.name
