@@ -335,7 +335,7 @@
                 </span>
                 <div class="rank-class-colors">
                   <% stats.each do |klass, percent| %>
-                    <span class="<%= Klass::LIST[klass] %> rank-class-box tooltip" title="<%= Klass::LIST[klass] %>: <%= percent.round(2) %>%" style="width:<%= percent.round(2) %>%">
+                    <span class="<%= Klass::LIST[klass] %> rank-class-box tooltip" title="<%= Klass::LIST[klass] %>: <%= percent %>%" style="width:<%= percent %>%">
                       &nbsp;
                     </span>
                   <% end %>
