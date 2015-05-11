@@ -114,6 +114,7 @@ class DecksController < ApplicationController
     # Diff between versions
     @diff_hash = {}
     all_versions.each do |version|
+      next if version.cardstring.blank?
       version_array = cardstring_to_array(version.cardstring)
       original_array = cardstring_to_array(@deck.cardstring)
       diff_string = calculate_diff(original_array, version_array)
@@ -414,7 +415,6 @@ class DecksController < ApplicationController
   end
 
   def cardstring_to_array(cardstring)
-
     card_arr = {}
     cardstring.split(",").map do |card_data|
       card_id, count = card_data.split('_').map(&:to_i)
