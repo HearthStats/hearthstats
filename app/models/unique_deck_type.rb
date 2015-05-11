@@ -4,7 +4,9 @@ class UniqueDeckType < ActiveRecord::Base
   ARCHTYPES = {
     1 => "Aggro",
     2 => "Control",
-    3 => "Combo"
+    3 => "Combo",
+    4 => "Midrange",
+    5 => "Other"
   }
   ### ASSOCIATIONS:
 

@@ -14,10 +14,15 @@ p = link_to "Disapprove All", admin_disapprove_archtype_path, method: :post
     h3 Verified
     - UniqueDeckType.where(verified: true).each do |unique_deck|
       p
-        = unique_deck.name
+        b = unique_deck.name
         | -
-        = Klass::LIST[unique_deck.klass_id]
-        | ::
+        i = Klass::LIST[unique_deck.klass_id]
+        | :
         = form_tag admin_update_match_text_path
-          = text_field_tag "match_string[#{unique_deck.id}]", unique_deck.match_string
+          p
+            label Match String:
+            = text_field_tag "match_string[#{unique_deck.id}]", unique_deck.match_string
+          p
+            label Archtype:
+            = text_field_tag "archtype_id[#{unique_deck.id}]", unique_deck.archtype_id
           = submit_tag "Update"
