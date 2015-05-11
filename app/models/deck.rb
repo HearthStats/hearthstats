@@ -5,7 +5,7 @@ class Deck < ActiveRecord::Base
 
   acts_as_taggable
   is_impressionable
-  opinio_subjectum
+  acts_as_commontable
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -14,6 +14,12 @@ class Deck < ActiveRecord::Base
     1 => 'Constructed',
     2 => 'Arena'
   }
+
+  FEATURED_DECKS =  ["brm-control-dragon-warrior--15", 
+    "greediest-warlock", 
+    "control--3236", 
+    "control-priest--1200"]
+
   ### ASSOCIATIONS:
 
   belongs_to :unique_deck
@@ -32,8 +38,21 @@ class Deck < ActiveRecord::Base
   before_save :create_unique_deck, if: :cardstring_changed?
   after_save  :update_unique_deck_stats
   after_create :create_deck_version
+  if !Rails.env.test?
+    after_create :subscribe_user_to_deck
+  end
 
   ### CLASS METHODS:
+
+  # Featured Decks: 
+  def self.get_featured_decks
+    featured_decks = Array.new
+    FEATURED_DECKS.each do |fd|
+        featured_decks << Deck.find(fd)
+    end
+
+    featured_decks
+  end
 
   def self.hdt_parse(json)
     card_array = []
@@ -74,6 +93,10 @@ class Deck < ActiveRecord::Base
   # end
 
   ### INSTANCE METHODS:
+
+  def subscribe_user_to_deck
+    self.thread.subscribe(self.user)
+  end
 
   def rank_wr
     grouped = self.matches.includes(:rank).group_by {|match| match.rank}
@@ -237,7 +260,7 @@ class Deck < ActiveRecord::Base
     cardstring_array = cardstring_as_array
 
     arr = []
-    cards = Card.where("id IN (?)", cardstring_array.map {|e| e[0]}).order("mana, name")
+    cards = Card.where("id IN (?)", cardstring_array.map {|e| e[0]}).order("mana, name").all
     cards.each do |card|
       element = cardstring_array.detect {|c| c[0].to_i == card.id }
       arr << [card, element[1]]
