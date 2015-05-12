@@ -142,12 +142,14 @@ class ConstructedsController < ApplicationController
                          match_id: @constructed.id,
                          deck_version_id: deck.deck_versions.last.try(:id)
                         )
-        format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
-        format.json { render json: @constructed, status: :created, location: @constructed }
+        # format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
+        format.json { render json: @constructed, status: :created, location: @constructed } 
+        format.js
       else
         @my_decks = get_my_decks
-        format.html { render action: "new" }
+        # format.html { render action: "new" }
         format.json { render json: @constructed.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
