@@ -93,7 +93,6 @@ class ConstructedsController < ApplicationController
     respond_to do |format|
       if @constructed.save
         MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
-        delete_deck_cache!(deck)
         format.js
       else
       end
@@ -141,9 +140,8 @@ class ConstructedsController < ApplicationController
       if @constructed.save
         MatchDeck.create(deck_id: deck.id, 
                          match_id: @constructed.id,
-                         deck_version_id: deck.current_version.try(:id)
+                         deck_version_id: deck.deck_versions.last.try(:id)
                         )
-        delete_deck_cache!(deck)
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
       else
@@ -179,7 +177,6 @@ class ConstructedsController < ApplicationController
       if @constructed.update_attributes(params[:match])
         format.html { redirect_to constructeds_url, notice: 'Constructed was successfully updated.' }
         format.json { head :no_content }
-        delete_deck_cache!(deck)
       else
         format.html { render action: "edit" }
         format.json { render json: @constructed.errors, status: :unprocessable_entity }
