@@ -74,7 +74,7 @@
       <%= render 'layouts/breadcrumbs' %>
       <!-- END PAGE HEADER -->
       <%= yield %>
-      <%= render 'layouts/foot_ads' %>
+      <%= render 'layouts/foot_ads' unless Rails.env.development? %>
       <%= render 'layouts/admin_controls' if signed_in? && current_user.is_admin? %>
     </div>
   </div>
