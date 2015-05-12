@@ -55,7 +55,7 @@ class Api::V2::DecksController < ApplicationController
                               :cards => m.cardstring_to_blizz} }
       api_response << { :deck => deck,
                         :versions => deck_versions,
-                        :current_version => deck.current_version,
+                        :current_version => deck.current_version.try(:version),
                         :tags => deck.tag_list,
                         :cards => deck.cardstring_to_blizz
       }

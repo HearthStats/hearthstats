@@ -141,7 +141,7 @@ class ConstructedsController < ApplicationController
       if @constructed.save
         MatchDeck.create(deck_id: deck.id, 
                          match_id: @constructed.id,
-                         deck_version_id: deck.current_version
+                         deck_version_id: deck.
                         )
         delete_deck_cache!(deck)
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
