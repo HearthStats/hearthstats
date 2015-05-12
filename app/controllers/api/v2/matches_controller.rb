@@ -340,6 +340,7 @@ t
     MatchDeck.create(match_id: match.id, 
                      deck_id: deck.id,
                      deck_version_id: deck.deck_versions.last.try(:id)
+                    )
     if !ranklvl.nil?
       if legend
         MatchRank.new(match_id: match.id, rank_id: ranklvl, legendary: legend).save!
