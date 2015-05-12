@@ -219,12 +219,10 @@ t
                            deck_id: deck.id,
                            deck_version_id: req[:deck_version_id].to_i)
           MatchRank.create(match_id: match.id, rank_id: req[:ranklvl].to_i)
-          delete_deck_cache!(deck)
         else
           MatchDeck.create(match_id: match.id,
                            deck_id: deck.id,
                            deck_version_id: req[:deck_version_id].to_i)
-          delete_deck_cache!(deck)
         end
 
         # Submit log file
@@ -341,7 +339,7 @@ t
     end
     MatchDeck.create(match_id: match.id, 
                      deck_id: deck.id,
-                     deck_version_id: deck.current_version.try(:id)
+                     deck_version_id: deck.deck_versions.last.try(:id)
                     )
     delete_deck_cache!(deck)
     if !ranklvl.nil?
