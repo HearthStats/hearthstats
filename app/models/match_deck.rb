@@ -3,7 +3,7 @@ class MatchDeck < ActiveRecord::Base
 
   ### ASSOCIATIONS:
 
-   belongs_to :deck
+  belongs_to :deck
   belongs_to :match, dependent: :destroy
 
   ### CALLBACKS:

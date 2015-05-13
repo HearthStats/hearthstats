@@ -60,6 +60,7 @@ class Deck < ActiveRecord::Base
     cards = Card.all
     json.each do |card|
       id = cards.select {|cardq| cardq.blizz_id == card["id"] }[0].try(:id)
+      next if id.to_s == ""
       card_array << id.to_s + "_" + card["count"].to_s
     end
 

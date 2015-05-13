@@ -23,3 +23,22 @@ task :UniqueDeckStatsFix => :environment do
     p count.to_f/tot * 100
   end
 end
+
+task :FixDeckStrings => :environment do
+  Deck.where{created_at >= 1.month.ago}.find_each do |deck|
+    if deck.cardstring && /,_2|,_1/.match(deck.cardstring)
+      deck.update_attribute(:cardstring, deck.cardstring.gsub(%r{,_2|,_1},""))
+      p deck.name + "Updated"
+    end
+  end
+end
+
+task :match_deck_version_id => :environment do
+  MatchDeck.where(deck_version_id: 1).find_each do |md|
+    begin
+      md.deck_version_id = md.deck.deck_versions.last.id
+      md.save
+    rescue
+    end
+  end
+end
