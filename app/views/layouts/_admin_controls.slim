@@ -2,12 +2,18 @@
   .toggle-sub
     p.admin-info
       span.info-block
-        b SUB_ID:
-        = current_user.subscription_id
+        b Host:
+        = request.host
       span.info-block
         b Num users signed up in last hour:
         = User.where('created_at > ?', 1.hour.ago).count
       span.info-block
+        b Num matches in last hour:
+        = Match.where('created_at > ?', 1.hour.ago).count
+      span.info-block
         b Newest Deck:
         = link_to Deck.last.name, Deck.last
+      span.info-block
+        b SUB_ID:
+        = current_user.subscription_id
     p = link_to "Toggle SUB Mode", admin_toggle_sub_path, method: :post
