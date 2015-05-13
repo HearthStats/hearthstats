@@ -1,4 +1,3 @@
-console.log("hey what's up");
 <% if @arena.result_id == 1 %>
   var html = '<tr class=<%=@arena.id%> ><td><%= image_tag("Icons/Classes/#{ Klass::LIST[@arena.oppclass_id] }_Icon.gif", height: "24", width: "24")%>   <%= Klass::LIST[@arena.oppclass_id] %></td><td><span class="Victory">Victory</span></td><td><%= link_to "Delete", @arena, method: :delete , remote: true %></td></tr>'
   $(html).hide().appendTo('#arenagames > tbody:last').fadeIn(999);
