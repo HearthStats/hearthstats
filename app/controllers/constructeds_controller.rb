@@ -140,7 +140,7 @@ class ConstructedsController < ApplicationController
       if @constructed.save
         MatchDeck.create(deck_id: @deck.id, 
                          match_id: @constructed.id,
-                         deck_version_id: deck.deck_versions.last.try(:id)
+                         deck_version_id: @deck.deck_versions.last.try(:id)
                         )
         format.html { redirect_to constructeds_path, notice: 'Constructed was successfully created.' }
         format.json { render json: @constructed, status: :created, location: @constructed }
