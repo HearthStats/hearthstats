@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
       rank_percent = {}
       rank_class.each do |rank, counts|
         tot = counts.map{|w|w[1]}.reduce(:+)
-        percent = counts.map {|klass, count| [klass, count.to_f/tot*100.round_down(2)]}
+        percent = counts.map {|klass, count| [klass, (count.to_f/tot*100).round_down(2)]}
         rank_percent[rank] = percent
       end
 
