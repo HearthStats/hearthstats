@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
       rank_percent = {}
       rank_class.each do |rank, counts|
         tot = counts.map{|w|w[1]}.reduce(:+)
-        percent = counts.map {|klass, count| [klass, (count.to_f/tot*100).round_down(2)]}
+        percent = counts.map {|klass, count| [klass, round_down(count.to_f/tot*100, 2)]}
         rank_percent[rank] = percent
       end
 
@@ -251,7 +251,7 @@ class WelcomeController < ApplicationController
     top_streams
   end
 
-  def round_down n=0
-    n < 1 ? self.to_i.to_f : (self - 0.5 / 10**n).round(n)
+  def round_down(num, n)
+    n < 1 ? num.to_i.to_f : (num - 0.5 / 10**n).round(n)
   end
 end
