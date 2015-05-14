@@ -3,7 +3,7 @@
     p.admin-info
       span.info-block
         b Host:
-        = request.host
+        = `hostname`
       span.info-block
         b Num users signed up in last hour:
         = User.where('created_at > ?', 1.hour.ago).count
