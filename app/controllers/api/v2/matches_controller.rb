@@ -215,16 +215,14 @@ t
         if mode == 1
           submit_arena_match(current_user, match, userclass)
         elsif mode == 3
-          MatchDeck.create(match_id: match.id, 
-                           deck_id: deck.id, 
+          MatchDeck.create(match_id: match.id,
+                           deck_id: deck.id,
                            deck_version_id: req[:deck_version_id].to_i)
           MatchRank.create(match_id: match.id, rank_id: req[:ranklvl].to_i)
-          delete_deck_cache!(deck)
         else
-          MatchDeck.create(match_id: match.id, 
-                           deck_id: deck.id, 
+          MatchDeck.create(match_id: match.id,
+                           deck_id: deck.id,
                            deck_version_id: req[:deck_version_id].to_i)
-          delete_deck_cache!(deck)
         end
 
         # Submit log file
@@ -291,7 +289,7 @@ t
   end
 
   def delete_deck_cache!(deck)
-    Rails.cache.delete('deck_stats' + deck.id.to_s)
+    Rails.cache.delete('deck_stats' + deck.id.to_s + deck.current_version.try(:id).to_s)
   end
 
   def create_new_deck(user, slot, klass)
@@ -341,9 +339,8 @@ t
     end
     MatchDeck.create(match_id: match.id, 
                      deck_id: deck.id,
-                     deck_version_id: deck.current_version
+                     deck_version_id: deck.deck_versions.last.try(:id)
                     )
-    delete_deck_cache!(deck)
     if !ranklvl.nil?
       if legend
         MatchRank.new(match_id: match.id, rank_id: ranklvl, legendary: legend).save!

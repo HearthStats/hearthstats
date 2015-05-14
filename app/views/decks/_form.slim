@@ -52,9 +52,9 @@
           = f.submit class: 'btn btn-block green'
         - if params[:action] == 'edit'
           .form-group
-            = f.submit "Save as v#{(@deck.current_version.to_f + 0.1).round(1)}",
+            = f.submit "Save as v#{(@deck.current_version.try(:version).to_f + 0.1).round(1)}",
               name: "minor_version", class: "btn yellow"
-            = f.submit "Save as v#{@deck.current_version.to_i.round(1) + 1}",
+            = f.submit "Save as v#{@deck.current_version.try(:version).to_i.round(1) + 1}",
               name: "major_version", class: "btn green"
           .form-group
             label = t("decks.form.other_versions")
