@@ -1,5 +1,35 @@
-<h2>TripleLift</h2>
-<h3>Homepage</h3>
-<script src="http://ib.3lift.com/ttj?inv_code=hearthstats_main_feed"></script>
-<h3>Constructeds</h3>
-<script src="http://ib.3lift.com/ttj?inv_code=hearthstats_constructeds_feed"></script>
+<html>
+  <head>
+    <script type='text/javascript'>
+      var googletag = googletag || {};
+      googletag.cmd = googletag.cmd || [];
+      (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+          '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+      })();
+    </script>
+
+    <script type='text/javascript'>
+      googletag.cmd.push(function() {
+        googletag.defineOutOfPageSlot('/42580283/homepage_first_look', 'div-gpt-ad-1431716205366-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      });
+    </script>
+  </head>
+  <body>
+    <h3>Home Page Test</h3>
+    <!-- /42580283/homepage_first_look -->
+    <div id='div-gpt-ad-1431716205366-0'>
+    <script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1431716205366-0'); });
+    </script>
+    </div>
+  </body>
+</html>
