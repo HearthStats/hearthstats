@@ -12,14 +12,9 @@ class Deck < ActiveRecord::Base
 
   TYPES = {
     1 => 'Constructed',
-    2 => 'Arena'
+    2 => 'Arena',
+    3 => 'Featured'
   }
-
-  FEATURED_DECKS = []
-  # ["brm-control-dragon-warrior--15", 
-  #   "greediest-warlock", 
-  #   "control--3236", 
-  #   "control-priest--1200"]
 
   ### ASSOCIATIONS:
 
