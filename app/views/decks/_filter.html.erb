@@ -7,15 +7,15 @@
     </div>
     <div class="form-group">
       <%= t('.created_after') %>
-      <%= f.search_field :unique_deck_created_at_gteq, class: "form-control" %>
+      <%= f.search_field :unique_deck_created_at_gteq, class: "form-control", size: 15 %>
     </div>
     <div class="form-group">
       <%= t('.min_games') %>
-      <%= f.search_field :unique_deck_num_matches_gteq, class: "form-control" %>
+      <%= f.search_field :unique_deck_num_matches_gteq, class: "form-control", size: 6 %>
     </div>
     <div class="form-group">
       <%= t('.deck_name') %>
-      <%= f.text_field :name_cont, class: "form-control" %>
+      <%= f.text_field :name_cont, class: "form-control", size: 20 %>
     </div>
     <div class="form-group">
       <%= t('.show') %>
