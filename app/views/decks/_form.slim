@@ -29,7 +29,8 @@
             .archtype-dropdown
               = select_tag :unique_deck_type_id,
                 options_for_select(UniqueDeckType.where(klass_id:@deck.klass_id, 
-                verified: true).map{|d|[d.name, d.id]}), include_blank: true,
+                verified: true).map{|d|[d.name, d.id]},
+                @deck.unique_deck.try(:unique_deck_type).try(:id)), include_blank: true,
                 class: 'form-control'
             .new-archtype
               span.create-archtype Archtype Not Listed?

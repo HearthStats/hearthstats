@@ -16,8 +16,10 @@ class UniqueDeck < ActiveRecord::Base
   has_many :unique_deck_cards
   has_many :cards, through: :unique_deck_cards
 
-  ### CALLBACKS:
+  belongs_to :unique_deck_type
 
+  ### CALLBACKS:
+  before_save :check_unique_deck_type
   after_create :create_cards_from_cardstring, if: :cardstring
 
   ### VALIDATIONS:
@@ -47,6 +49,12 @@ class UniqueDeck < ActiveRecord::Base
   #   Match.where("id IN (#{all_matches.map(&:id).join(',')})")
   # end
   
+  def check_unique_deck_type
+    if self.unique_deck_type_id.blank?
+      self.set_type
+    end
+  end
+
   def update_stats!
     update_stats
     save
@@ -101,6 +109,5 @@ class UniqueDeck < ActiveRecord::Base
 
   def set_type
     self.unique_deck_type_id = UniqueDeckType.find_type(self.klass_id, self.cardstring)
-    self.save
   end
 end
