@@ -85,4 +85,29 @@ class AdminController < ApplicationController
     end
   end
 
+  def feature_decks
+    @not_featured = Deck.where(deck_type_id: 1)
+    @featured = Deck.where(deck_type_id: 3)
+  end
+
+  def approve_featured_deck
+    f_deck = Deck.find(params[:deck_id])
+    f_deck.deck_type_id = 3
+    if f_deck.save
+      redirect_to admin_feature_decks_path, notice: "Featured #{f_deck.name}"
+    else
+      redirect_to admin_feature_decks_path, alert: "DIDN'T WORK YO: #{f_deck.name}"
+    end
+  end
+
+  def unfeature_deck
+    f_deck = Deck.find(params[:deck_id])
+    f_deck.deck_type_id = 1
+    if f_deck.save
+      redirect_to admin_feature_decks_path, notice: "Unfeatured #{f_deck.name}"
+    else
+      redirect_to admin_feature_decks_path, alert:" DIDN'T WORK: #{f_deck.name}"
+    end
+  end
+
 end

@@ -8,6 +8,11 @@
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, link_to("Decks", decks_path))
 - content_for :actions do
+  - if !current_user.nil? && current_user.is_admin? 
+    - if @deck.deck_type_id != 3
+      = link_to("Feature this deck", admin_approve_featured_deck_path(deck_id: @deck.id), method: :post, class: "btn blue")
+    - else 
+      = link_to("Unfeature this deck", admin_unfeature_deck_path(deck_id: @deck.id), method: :post, class: "btn blue")
   - if (signed_in? && current_user.id == @deck.user_id)
     = link_to 'Edit', edit_deck_path(@deck), class: "btn retirebut btn-primary"
     = " "
@@ -139,7 +144,7 @@ div.row
     - unless @deck.notes.blank?
       #notes
         h3 Notes
-        = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img br),
+        = sanitize @deck.notes, tags: %w(table strong tr td span b p i hr a img br href),
         attributes: %w(style src href)
     .comments
       = commontator_thread(@deck)
