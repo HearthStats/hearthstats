@@ -84,6 +84,9 @@ Hearthstats::Application.routes.draw do
   get "admin/index"
   get "admin/adtest"
   get "admin/verify_archtypes"
+  get "admin/feature_decks"
+  post "admin/unfeature_deck"
+  post "admin/approve_featured_deck"
   post "admin/approve_archtype"
   post "admin/disapprove_archtype"
 
