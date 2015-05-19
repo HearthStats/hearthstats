@@ -48,4 +48,12 @@ namespace :cron do
     Rails.cache.delete('dash#top_archtype')
     Rails.cache.write('dash#top_archtype', top_archtypes)
   end
+
+  task :archetype_pop => :environment do
+    Rails.cache.delete('archetype_pop')
+    arche = UniqueDeckType.get_type_popularity(2)
+    Rails.cache.write('archetype_pop', arche)
+    ActionController::Base.new.expire_fragment('top_decks')
+  end
+
 end
