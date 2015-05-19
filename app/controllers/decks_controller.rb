@@ -285,7 +285,7 @@ class DecksController < ApplicationController
           end
           unique_deck.save
         elsif unique_deck
-          unique_deck.set_type
+          unique_deck.save
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
       else
