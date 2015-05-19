@@ -169,7 +169,7 @@ class ApplicationController < ActionController::Base
   end
 
   def public_url(file)
-    request.base_url + "/" + file
+    "//" + request.host_with_port + "/" + file
   end
 
 end
