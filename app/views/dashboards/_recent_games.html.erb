@@ -1,0 +1,23 @@
+<ul class="feeds">
+  <% @recent_entries.each do |entry| %>
+    <li id="<%= entry.mode.name %>">
+      <div class="col1">
+        <div class="cont">
+          <div class="cont-col1">
+            <img src="/assets/Icons/Classes/<%= Klass::LIST[entry.klass_id] %>_Icon.gif" height="27px" />
+          </div>
+          <div class="cont-col2">
+            <div class="desc">
+              <%= entry.klass.name.capitalize %> <%= Match::RESULTS_LIST[entry.result_id].downcase %> <%= t 'dashboards.index.against' %> <%= entry.oppclass.name %> <%= t 'dashboards.index.in' %> <%= Mode::LIST[entry.mode_id] %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col2">
+        <div class="date">
+          <%= time_ago_in_words(entry.created_at) %> ago
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
