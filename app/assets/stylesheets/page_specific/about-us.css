@@ -19,3 +19,46 @@ Anout Us Page
   overflow: hidden;
   background: #f5f5f5;
 }
+
+.jeff{
+  background: url('/assets/portraits/jeff_1.jpg');
+}
+
+.jeff:hover{
+  background: url('/assets/portraits/jeff_2.jpg');
+}
+
+.mich{
+  background: url('/assets/portraits/michelle_1.jpg');
+}
+
+.mich:hover{
+  background: url('/assets/portraits/michelle_2.jpg');
+}
+
+.dan{
+  background: url('/assets/portraits/dan_1.jpg');
+}
+
+.dan:hover{
+  background: url('/assets/portraits/dan_2.jpg');
+}
+
+.profile-img{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 150px;
+}
+
+.profile-img:hover{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.core-team{
+  text-align: center;
+}
