@@ -42,13 +42,7 @@ class Deck < ActiveRecord::Base
 
   # Featured Decks: 
   def self.get_featured_decks
-    featured_decks = Array.new
-    @f_decks = Deck.where(deck_type_id: 3)
-    @f_decks.each do |fd|
-      featured_decks << Deck.find(fd.id)
-    end
-
-    featured_decks
+    Deck.where(deck_type_id: 3)
   end
 
   def self.hdt_parse(json)

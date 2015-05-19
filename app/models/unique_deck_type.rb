@@ -14,6 +14,21 @@ class UniqueDeckType < ActiveRecord::Base
 
   ### CLASS METHODS:
 
+  def self.get_type_popularity(time_ago)
+    arche = {}
+    Match.where{created_at >= time_ago.hours.ago}.preload(:deck).preload(:unique_deck).find_each do |match|
+      next if match.try(:deck).try(:unique_deck).try(:unique_deck_type_id).nil?
+      match_arch = arche[match.try(:deck).try(:unique_deck).try(:unique_deck_type).try(:name)]
+      if match_arch.nil?
+        arche[match.try(:deck).try(:unique_deck).try(:unique_deck_type).try(:name)] = 1
+      else
+        arche[match.try(:deck).try(:unique_deck).try(:unique_deck_type).try(:name)] += 1
+      end
+    end
+
+    arche.reject {|name, count| count < 10 || name == nil}
+  end
+
   def self.find_type(klass_id, cardstring)
     klass_types = where(klass_id: klass_id)
     return nil if klass_types.count == 0
