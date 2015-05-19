@@ -1,6 +1,12 @@
 - set_meta_tags :title => 'Admin Panel'
 - provide(:title, 'Admin Panel')
-
+.analytics
+  .anal-mod
+    h3 User signups
+    = line_chart User.where{created_at >= 1.week.ago}.group_by_day(:created_at).count, width: "50%"
+  .anal-mod
+    h3 Matches Entered
+    = line_chart Match.where{created_at >= 1.week.ago}.group_by_day(:created_at).count, width: "50%"
 p = link_to "Verify New Archtypes"
-p = link_to "New Tourny", new_tourny_path
-p = link_to "Make Error", '/admin/test_excep'
+/p = link_to "New Tourny", new_tourny_path
+/p = link_to "Make Error", '/admin/test_excep'
