@@ -48,7 +48,7 @@ Anout Us Page
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 150px;
+  height: 200px;
 }
 
 .profile-img:hover{
@@ -57,4 +57,8 @@ Anout Us Page
   background-position: center;
   margin-right: auto;
   margin-left: auto;
+}
+
+.core-team, .co-ops{
+  text-align: center;
 }

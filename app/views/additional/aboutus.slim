@@ -6,21 +6,25 @@
   .col-md-6
     p
       h3 Core Team
-      .row
-        .col-md-4
+      .row.core-team
+        .col-md-12
           h4 Jeffrey Tong
           .profile-img.jeff
           p Founder</br> Twitter: <a href="http://twitter.com/trigun0x2"> @trigun0x2 </a> 
-        .col-md-4
-          h4 style="text-align: center;" Michelle Vo
-          .profile-img.mich
-          p Front-End Dev & Design</br> Co-op
-        .col-md-4
-          h4 style="text-align: center;" Daniel Liu
-          .profile-img.dan
-          p Business Development</br> Co-op
   .col-md-6
-    h3 Open Source Contributors
+    h3 Co-ops
+    .row.co-ops
+      .col-md-6
+        h4 Michelle Vo
+        .profile-img.mich
+        p Front-End Dev & Design
+      .col-md-6
+        h4 Daniel Liu
+        .profile-img.dan
+        p Business Development
+.row
+  h3 Open Source Contributors
+  .col-md-6
     ul
       li
         b Jerome Dane
@@ -37,6 +41,8 @@
         li= t('.charles_text_1')
         li= t('.charles_text_2')
         li #{t('.charles_text_3')} <a href="http://charlesgutjahr.com/">#{t('.here')}</a>
+  .col-md-6
+    ul
       li
         b Gerard Leijdekkers
       ul
