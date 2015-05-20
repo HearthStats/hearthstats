@@ -10,7 +10,7 @@ script src="//code.highcharts.com/modules/exporting.js"
 - provide(:subtitle, " Deck Views: #{ @deck.impressionist_count }")
 - provide(:section, link_to("Decks", decks_path))
 - content_for :actions do
-  - if !current_user.nil? && current_user.is_admin? 
+  - if !current_user.nil? && current_user.is_admin?
     - if @deck.deck_type_id != 3
       = link_to("Feature this deck", admin_approve_featured_deck_path(deck_id: @deck.id), method: :post, class: "btn blue")
     - else 
