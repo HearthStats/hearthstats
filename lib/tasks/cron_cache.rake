@@ -1,5 +1,6 @@
 namespace :cron do
   desc "Get new class graph data for homepage"
+  # NEEDS TO BE OPTIMIZED
   task :welcome_cache => :environment do
     matches = Match.where('created_at >= ?', 2.weeks.ago)
     Klass.list.each_with_index do |klass, i|

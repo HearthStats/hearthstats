@@ -1,6 +1,31 @@
 div id="#{chartname}"
 .cf
 javascript:
+  colors = [
+    '#f39c12',
+    '#ABD473',
+    '#69CCF0',
+    '#F58CBA',
+    '#999999',
+    '#f1c40f',
+    '#0070DE',
+    '#9482C9',
+    '#A57A4D'
+  ]
+  var data = []
+  raw_data = #{railsdata[0]}
+  klass_data = #{railsdata[2]}
+  console.log()
+  for (i=0; i < raw_data.length; i++){
+    console.log(colors)
+    data.push(
+      {
+      "x": i,
+      "y": raw_data[i],
+      "color": colors[klass_data[i]-1]
+      }
+    );
+  }
   var chart = new Highcharts.Chart({
       chart: {
           renderTo: '#{chartname}',
@@ -14,17 +39,6 @@ javascript:
             }
         }
       },
-      colors: [
-        '#f39c12',
-        '#ABD473',
-        '#69CCF0',
-        '#F58CBA',
-        '#999999',
-        '#f1c40f',
-        '#0070DE',
-        '#9482C9',
-        '#A57A4D'
-      ],
       title: {
           text: '#{chartname} Win Rates'
       },
@@ -73,7 +87,7 @@ javascript:
       },
       series: [{
           name: '#{chartname}',
-          data: #{railsdata[0].to_json}
+          data: data
       }]
   });
 
