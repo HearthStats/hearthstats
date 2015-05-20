@@ -88,6 +88,7 @@ class DecksController < ApplicationController
           @deckrate << [((wins[klass_id].to_f / tot )*100).round(2), "#{klass_name}<br/>#{tot} Games"]
         end
       end
+      
       # Going first vs 2nd
       @firstrate = get_win_rate(matches.where(coin: false), true)
       @secrate = get_win_rate(matches.where(coin: true), true)
