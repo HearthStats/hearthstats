@@ -6,11 +6,9 @@ class WelcomeController < ApplicationController
     @con_top = Rails.cache.read('wel#con_top') || []
 
     # Decklists
-    @recentdecks = Rails.cache.fetch('wel#recent_deck') do
-      Deck.where(is_public: true).
+    @recentdecks = Deck.where(is_public: true).
               joins(:unique_deck).
               last(7)
-    end
     @topdecks =
       # UniqueDeck.where('created_at >= ?', 1.year.ago)
       #           .where("num_matches >= ?", "0")
