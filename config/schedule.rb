@@ -45,9 +45,3 @@ every 2.hours do
   command "echo '--------------------------'"
   command "echo 'Refreshing Archetypes'"
 end
-
-every 5.minutes do
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_recent_decks"
-  command "echo '--------------------------'"
-  command "echo 'Expire Recent Decks'"
-end
