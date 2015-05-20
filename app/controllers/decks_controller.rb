@@ -78,6 +78,7 @@ class DecksController < ApplicationController
       @deckrate = []
       scope = matches.group(:oppclass_id)
       total = scope.count
+      total = total.sort_by{|klass_id, tot| klass_id}
       wins = scope.where(result_id: 1).count
 
       total.each do |klass_id, tot|
@@ -155,6 +156,7 @@ class DecksController < ApplicationController
         total[klass] = klass_matches.count
         wins[klass] = klass_matches.select {|m| m.result_id == 1}.count
       end
+      total = total.sort_by{|klass_id, tot| klass_id}
 
       total.each do |klass_id, tot|
         klass_name = Klass::LIST[klass_id]
