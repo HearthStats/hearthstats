@@ -294,51 +294,49 @@
                 </table>
               </div>
             <% end %>
-            <% cache('recent_decks') do %>
-              <div id="recent">
-                <table id="decklist" class="footable">
-                  <thead>
+            <div id="recent">
+              <table id="decklist" class="footable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th data-hide="phone,tablet">Minions</th>
+                    <th data-hide="phone,tablet">Spells</th>
+                    <th data-hide="phone,tablet">Weapons</th>
+                    <th data-hide="phone">Matches</th>
+                    <th>Win Rate</th>
+                    <th data-hide="phone,tablet">Posted By</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @recentdecks.each do |deck| %>
+                    <% unique_deck = deck.unique_deck %>
                     <tr>
-                      <th>Name</th>
-                      <th>Class</th>
-                      <th data-hide="phone,tablet">Minions</th>
-                      <th data-hide="phone,tablet">Spells</th>
-                      <th data-hide="phone,tablet">Weapons</th>
-                      <th data-hide="phone">Matches</th>
-                      <th>Win Rate</th>
-                      <th data-hide="phone,tablet">Posted By</th>
-                      <th>View</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @recentdecks.each do |deck| %>
-                      <% unique_deck = deck.unique_deck %>
-                      <tr>
-                        <td class="name"><%= deck.name %></td>
-                        <td class="class"><%= deck.class_name %></td>
-                        <td class="minions"><%= unique_deck.num_minions %></td>
-                        <td class="spells"><%= unique_deck.num_spells %></td>
-                        <td class="weapons"><%= unique_deck.num_weapons %></td>
-                        <td class="matches"><%= unique_deck.num_matches %></td>
-                        <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
-                        <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
-                          <td class="author">[anonymous]</td>
-                        <% else %>
-                          <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                      <td class="name"><%= deck.name %></td>
+                      <td class="class"><%= deck.class_name %></td>
+                      <td class="minions"><%= unique_deck.num_minions %></td>
+                      <td class="spells"><%= unique_deck.num_spells %></td>
+                      <td class="weapons"><%= unique_deck.num_weapons %></td>
+                      <td class="matches"><%= unique_deck.num_matches %></td>
+                      <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                      <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
+                        <td class="author">[anonymous]</td>
+                      <% else %>
+                        <td class="author"><%= link_to(deck.user.profile.name, profile_path(deck.user_id))%></td>
+                      <% end %>
+                      <td class="show">
+                        <%= link_to deck_path(deck), :target => "_blank" do %>
+                          <div class="arrow">
+                            <i class="icon-arrow-right arrow-icon"></i>
+                          </div>
                         <% end %>
-                        <td class="show">
-                          <%= link_to deck_path(deck), :target => "_blank" do %>
-                            <div class="arrow">
-                              <i class="icon-arrow-right arrow-icon"></i>
-                            </div>
-                          <% end %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
-            <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <%= link_to public_decks_path, class: 'all-decks' do %><span class="icon-arrow-right all-decks-arrow-icon"></span> All Decks<% end %>
