@@ -43,8 +43,11 @@ class Deck < ActiveRecord::Base
   # Featured Decks: 
   def self.get_featured_decks
 <<<<<<< HEAD
+<<<<<<< HEAD
     Deck.where(deck_type_id: 3)
 =======
+=======
+>>>>>>> undo changes
     featured_decks = Array.new
     @f_decks = Deck.where(deck_type_id: 3)
     @f_decks.each do |fd|
@@ -52,7 +55,10 @@ class Deck < ActiveRecord::Base
     end
 
     featured_decks
+<<<<<<< HEAD
 >>>>>>> featured deck admin controls
+=======
+>>>>>>> undo changes
   end
 
   def self.hdt_parse(json)
