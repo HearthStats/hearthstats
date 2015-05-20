@@ -1,0 +1,9 @@
+h2 Featured Decks
+
+.col-md-8
+	- @featured.each do |featured| 
+		p 
+			.col-md-6
+				= link_to(featured.name, public_show_deck_path(featured))
+			.col-md-6 
+				= link_to "Unfeature", admin_unfeature_deck_path(deck_id: featured.id), method: :post
