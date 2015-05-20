@@ -41,7 +41,6 @@ class Deck < ActiveRecord::Base
   ### CLASS METHODS:
 
   # Featured Decks: 
-  
   def self.get_featured_decks
     Deck.where(deck_type_id: 3)
   end
