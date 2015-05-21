@@ -80,7 +80,9 @@ class DashboardsController < ApplicationController
     expires_in 4.hour, public: true
   end
 
+  def prem_dash
 
+  end
   private
 
   def overall_win_rate(mode)

@@ -132,6 +132,7 @@ Hearthstats::Application.routes.draw do
 
   resources :dashboards do
     collection do
+      get 'prem_dash'
       get 'race'
       get 'fullstats'
     end
