@@ -19,11 +19,11 @@ p = link_to "Disapprove All", admin_disapprove_archtype_path, method: :post
           li #{aid} - #{name}
     - UniqueDeckType.where(verified: true).each do |unique_deck|
       p
-        b = unique_deck.name
-        | -
-        i = Klass::LIST[unique_deck.klass_id]
-        | :
         = form_tag admin_update_match_text_path
+          b = text_field_tag "udt_name[#{unique_deck.id}]", unique_deck.name
+          | -
+          i = Klass::LIST[unique_deck.klass_id]
+          | :
           p
             label Match String:
             = text_field_tag "match_string[#{unique_deck.id}]", unique_deck.match_string

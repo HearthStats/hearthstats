@@ -15,6 +15,7 @@ class AdminController < ApplicationController
     unique_deck_type = UniqueDeckType.find(udt_id)
     unique_deck_type.archtype_id = params[:archtype_id][udt_id.to_s].to_i
     unique_deck_type.match_string = match_string
+    unique_deck_type.name = params[:udt_name][udt_id.to_s]
     if unique_deck_type.save
       redirect_to admin_verify_archtypes_path, notice: "Updated #{unique_deck_type.name}"
     else
