@@ -145,6 +145,8 @@ Hearthstats::Application.routes.draw do
       get :stats
       post :quick_create
       get :win_rates
+      get :personal_wr
+      get :global_wr
       get :reset
     end
   end

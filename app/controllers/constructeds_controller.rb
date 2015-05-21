@@ -231,6 +231,16 @@ class ConstructedsController < ApplicationController
 
   # Graphing JSON calls
 
+  def personal_wr
+    wr = get_array_wr(current_user.matches.last(10))
+    render json: wr
+  end
+
+  def global_wr
+    wr = get_array_wr(Match.last(100))
+    render json: wr
+  end
+
   def win_rates
     win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}")
     render json: win_rate
