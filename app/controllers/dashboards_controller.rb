@@ -82,6 +82,7 @@ class DashboardsController < ApplicationController
 
   def prem_dash
 
+    render layout: "prem_dash"
   end
   private
 
