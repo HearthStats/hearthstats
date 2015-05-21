@@ -64,7 +64,7 @@ class ProfilesController < ApplicationController
     wins = matches.where(result_id: 1).count
     tot_games = matches.count
     wins.each_pair do |klass_id, win|
-      @classconrate << [ (win.to_f/tot_games[klass_id] * 100).round(2), "#{Klass::LIST[klass_id]}<br/>#{tot_games[klass_id]} Games"]
+      @classconrate << [ (win.to_f/tot_games[klass_id] * 100).round(2), "#{Klass::LIST[klass_id]}<br/>#{tot_games[klass_id]} Games", klass_id]
     end
 
     # Determine Arena Class Win Rates
@@ -73,7 +73,7 @@ class ProfilesController < ApplicationController
     wins = matches.where(result_id: 1).count
     tot_games = matches.count
     wins.each_pair do |klass_id, win|
-      @classarenarate << [ (win.to_f/tot_games[klass_id] * 100).round(2), "#{Klass::LIST[klass_id]}<br/>#{tot_games[klass_id]} Games"]
+      @classarenarate << [ (win.to_f/tot_games[klass_id] * 100).round(2), "#{Klass::LIST[klass_id]}<br/>#{tot_games[klass_id]} Games", klass_id]
     end
 
     # User's Highest Winning Decks
