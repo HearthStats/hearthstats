@@ -199,6 +199,10 @@ Hearthstats::Application.routes.draw do
 
   # HearthStats API
   namespace :api, defaults:{format: 'json'} do
+    namespace :stats do
+      post "constructeds/class_wr"
+      get "constructeds/global_wr"
+    end
     namespace :v1 do
       resources :cards
       get "arenas/show"
