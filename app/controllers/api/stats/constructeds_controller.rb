@@ -4,7 +4,7 @@ class Api::Stats::ConstructedsController < ApplicationController
   def class_wr
     classconrate = Rails.cache.fetch('api#stats#class_wr', expires_in: 5.seconds) do
       hours_ago = params[:hours_ago].to_i
-      con_matches = Match.where{created_at >= hours_ago.weeks.ago}
+      con_matches = Match.last(1000)
       classconrate = [["Class", "Winrate"]]
       grouped_matches = con_matches.group_by{|m| m.klass_id}
       wins = {}
