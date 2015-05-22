@@ -1,16 +1,19 @@
 .live-graph#personal-wr
 
 javascript:
-  var data = [[0,0]];
-  var wr_plot = $.plot("#personal-wr", data)
+  var personal_data = []
+  $.get( "/api/stats/constructeds/global_wr", function(new_data){
+    personal_data.push([0, new_data]);
+  })
+  var wr_plot = $.plot("#personal-wr", personal_data)
   var iter = 0;
   function update() {
-    $.get( "/constructeds/global_wr", function(new_data){
-      if (data.length == 10){
-        data.shift();
+    $.get( "/api/stats/constructeds/global_wr", function(new_data){
+      if (personal_data.length == 10){
+        personal_data.shift();
       }
-      data.push([iter, new_data]);
-      $.plot("#personal-wr", [data])
+      personal_data.push([iter, new_data]);
+      $.plot("#personal-wr", [personal_data])
       setTimeout(update, 5000);
       ++iter;
     })

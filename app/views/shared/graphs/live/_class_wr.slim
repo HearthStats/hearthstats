@@ -1,0 +1,38 @@
+.live-graph#class-wr
+javascript:
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(load_page_data);
+
+  function load_page_data(){
+    $.post('/api/stats/constructeds/class_wr',{ "hours_ago": 10},
+      function(data){
+        console.log(data);
+        drawChart(data);
+        setTimeout(load_page_data, 5000);
+      })
+  }
+  var options = {
+    legend: { position: 'none' },
+    animation:{
+      duration: 1000,
+      easing: 'in'
+    },
+    chart: {
+      title: 'Company Performance',
+      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+    }
+  };
+  var chart;
+  function drawChart(data) {
+    var class_data = google.visualization.arrayToDataTable(data);
+
+    
+    if (!chart){
+      chart = new google.visualization.ColumnChart(document.getElementById('class-wr'));
+    }
+
+    chart.draw(class_data, options);
+  }
+  function updateDrawing(){
+    console.log("asd");
+  }
