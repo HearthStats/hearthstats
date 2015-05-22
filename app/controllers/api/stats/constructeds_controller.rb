@@ -3,9 +3,8 @@ class Api::Stats::ConstructedsController < ApplicationController
 
   def class_wr
     classconrate = Rails.cache.fetch('api#stats#class_wr', expires_in: 5.seconds) do
-      hours_ago = params[:hours_ago].to_i
       con_matches = Match.last(1000)
-      classconrate = [["Class", "Winrate"]]
+      classconrate = [["Class", "Winrate", { role: 'style' }]]
       grouped_matches = con_matches.group_by{|m| m.klass_id}
       wins = {}
       tot_games = {}
@@ -15,10 +14,10 @@ class Api::Stats::ConstructedsController < ApplicationController
         tot_games[klass_id] = matches.count
       end
       wins.each_pair do |klass_id, win|
-        classconrate << [ Klass::LIST[klass_id], (win.to_f/tot_games[klass_id] * 100).round(2)]
+        classconrate << [ Klass::LIST[klass_id], (win.to_f/tot_games[klass_id] * 100).round(2), Klass::COLORS[klass_id]]
       end
-
-      classconrate
+      
+      classconrate.sort_by {|class_name, wr| class_name }
     end
     
     render json: classconrate
