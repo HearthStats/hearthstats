@@ -4,7 +4,7 @@ javascript:
   google.setOnLoadCallback(load_page_data);
 
   function load_page_data(){
-    $.post('/api/stats/constructeds/class_wr',{ "hours_ago": 10},
+    $.get('/api/stats/constructeds/class_wr',
       function(data){
         console.log(data);
         drawChart(data);

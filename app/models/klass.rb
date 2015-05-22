@@ -13,6 +13,18 @@ class Klass < ActiveRecord::Base
     9 => 'Warrior'
   }
 
+  COLORS = {
+    1 => '#FF7D0A',
+    2 => '#ABD473',
+    3 => '#69CCF0',
+    4 => '#F58CBA',
+    5 => '#999999',
+    6 => '#f1c40f',
+    7 => '#0070DE',
+    8 => '#9482C9',
+    9 => '#C79C6E' 
+  }
+
   ### ASSOCIATIONS:
 
   has_many :deck
