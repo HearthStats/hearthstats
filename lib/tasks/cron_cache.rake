@@ -2,29 +2,47 @@ namespace :cron do
   desc "Get new class graph data for homepage"
   # NEEDS TO BE OPTIMIZED
   task :welcome_cache => :environment do
-    matches = Match.where('created_at >= ?', 2.weeks.ago)
-    Klass.list.each_with_index do |klass, i|
-      klass_matches = matches.where(klass_id: i+1).group_by_day(:created_at)
-      wins = klass_matches.where(result_id: 1).count
-      tot = klass_matches.count
-      klass_wr =  Hash.new
-      wins.zip(tot).map do |x, y|
-        wr =  ((x[1].to_f/y[1] rescue 0)*100).round(2)
-        wr = 0 if wr.nan? || wr == Float::INFINITY
-        klass_wr[x[0]] = wr
+    matches = Match.where('created_at >= ?', 2.weeks.ago).all
+    con_matches = matches.select {|m| m.mode_id == 3}
+    arena_matches = matches.select {|m| m.mode_id == 1}
+    arena_top = []
+    con_top = []
+    Klass::LIST.each do |klass_id, class_name|
+      # Calculate klass_wr per day
+      klass_wr = {}
+      klass_con_matches = con_matches.select {|m| m.klass_id == klass_id }
+      con_day_matches = klass_con_matches.group_by {|m| m.created_at.beginning_of_day}
+      con_day_matches.each do |date, day_matches|
+        win_count = day_matches.select {|m| m.result_id == 1}.count
+        tot_games = day_matches.count
+        klass_wr[date] = (win_count.to_f/tot_games * 100).round(2)
       end
-      Rails.cache.delete("con#wr_rate-#{i+1}")
-      Rails.cache.write("con#wr_rate-#{i+1}", klass_wr)
-      p "Finished con#wr " + klass + " cache preheating"
+      Rails.cache.delete("con#wr_rate-#{klass_id}")
+      Rails.cache.write("con#wr_rate-#{klass_id}", klass_wr)
+      p "Finished con#wr " + class_name + " cache preheating"
+
+      # Calculate arena top wrs
+      klass_arena_matches = arena_matches.select {|m| m.klass_id == klass_id}
+      wins = klass_arena_matches.select{|m| m.result_id == 1}.count
+      total = klass_arena_matches.count
+      arena_top[klass_id - 1] = [class_name, (wins.to_f/total* 100).round(2)]
+
+      # Calculate constructed top wrs
+      klass_con_matches = con_matches.select {|m| m.klass_id == klass_id}
+      wins = klass_con_matches.select{|m| m.result_id == 1}.count
+      total = klass_con_matches.count
+      con_top[klass_id - 1] = [class_name, (wins.to_f/total* 100).round(2)]
     end
-    arena_top = Match.where('created_at >= ?', 2.weeks.ago).where(mode_id: 1).top_winrates_with_class.shift(5)
     Rails.cache.delete('wel#arena_top')
-    Rails.cache.write('wel#arena_top', arena_top)
+    p arena_top.inspect
+    sorted_arena = arena_top.sort_by {|name, wr| wr.nan? ? 0 : wr}.reverse.shift(5)
+    Rails.cache.write('wel#arena_top', sorted_arena)
     p "Arena top classes preheated"
 
-    con_top = Match.where('created_at >= ?', 2.weeks.ago).where(mode_id: 3).top_winrates_with_class.shift(5)
+    p con_top.inspect
     Rails.cache.delete('wel#con_top')
-    Rails.cache.write('wel#con_top', con_top)
+    sorted_con = con_top.sort_by {|name, wr| wr.nan? ? 0 : wr}.reverse.shift(5)
+    Rails.cache.write('wel#con_top', sorted_con)
     p "Con top classes preheated"
   end
 

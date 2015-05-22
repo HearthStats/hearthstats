@@ -11,7 +11,6 @@ class WelcomeController < ApplicationController
         joins(:unique_deck).
         last(7)
     end
-    
     @topdecks =
       # UniqueDeck.where('created_at >= ?', 1.year.ago)
       #           .where("num_matches >= ?", "0")
