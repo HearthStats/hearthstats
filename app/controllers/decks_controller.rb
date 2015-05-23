@@ -417,6 +417,7 @@ class DecksController < ApplicationController
   end
 
   def cardstring_to_array(cardstring)
+    return [] if cardstring.nil?
     card_arr = {}
     cardstring.split(",").map do |card_data|
       card_id, count = card_data.split('_').map(&:to_i)
