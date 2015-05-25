@@ -63,4 +63,6 @@ Hearthstats::Application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+  # config/environments/development.rb
+  config.react.variant = :development
 end

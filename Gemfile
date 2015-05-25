@@ -88,6 +88,7 @@ gem 'rmagick'
 gem "squeel"
 gem 'pusher'
 gem 'sync'
+gem 'react-rails', '~> 1.0'
 
 # APIs
 gem 'cindy' # Sendy API

@@ -29,3 +29,6 @@
 //= require 'site_wide/ad.js'
 //= require 'site_wide/wysiwyg.js'
 //= require sync
+//= require react
+//= require react_ujs
+//= require components
