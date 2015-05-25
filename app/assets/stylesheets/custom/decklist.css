@@ -107,6 +107,12 @@
   display: inline-block;
 }  
 
+.deckbuilderCards{ 
+  height: 800px;
+  width: 900px;
+  overflow: scroll;
+}
+
 table.decklist td.class img {
   height:24px;
   width:24px;

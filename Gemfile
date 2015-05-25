@@ -84,6 +84,7 @@ gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
 gem 'rmagick'
 # gem 'rack-ssl-enforcer'
 gem "squeel"
+gem 'react-rails', '~> 1.0'
 
 # APIs
 gem 'cindy' # Sendy API
