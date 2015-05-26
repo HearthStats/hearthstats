@@ -19,7 +19,7 @@
       div class="portlet-body flip-scroll"
         div.merge-button = submit_tag "Merge Decks", id: "merge-button", 
           class: "btn red"
-        table.decklist.table.table-bordered.table-striped.table-condensed.flip-content#decklist
+        table.decklist.table.table-bordered.table-condensed.flip-content#decklist
           thead
             tr
               th.merge-boxes = t('.merge')
@@ -48,7 +48,9 @@
                 td.matches = deck.matches.count.nil? ? "-": deck.matches.count
                 td.wins    = deck.user_num_wins.nil? ? "-": deck.user_num_wins
                 td.losses  = deck.user_num_losses.nil? ? "-": deck.user_num_losses
-                td.winrate = number_to_percentage(deck.user_winrate, precision: 1)
+                td.winrate 
+                  p.hidden = deck.user_winrate
+                  = number_to_percentage(deck.user_winrate, precision: 1)
                 - if signed_in?
                   td.tools
                     = link_to(" Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o')
