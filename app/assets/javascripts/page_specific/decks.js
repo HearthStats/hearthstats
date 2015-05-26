@@ -48,11 +48,5 @@ $(document).ready(function(){
     barColor: App.getLayoutColorCode('green')
   });
 
-  $(function(){
-    $('#decklist').tablesorter({
-      headers:{ 
-        9: { sorter: false }
-      }
-    }); 
-  });
+  $("#decklist").tablesorter();
 });
