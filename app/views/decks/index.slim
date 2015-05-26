@@ -19,7 +19,7 @@
       div class="portlet-body flip-scroll"
         div.merge-button = submit_tag "Merge Decks", id: "merge-button", 
           class: "btn red"
-        table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#decklist
+        table.decklist.table.table-bordered.table-striped.table-condensed.flip-content#decklist
           thead
             tr
               th.merge-boxes = t('.merge')
@@ -40,14 +40,14 @@
                 td.merge-boxes id="#{deck.id}" = check_box_tag "deck_merge[]", deck.id
                 td.name    = link_to deck.name, deck
                 td.class
-                  img[ src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif"
-                    alt = "#{deck.class_name}"]
-                td.minions = deck.num_minions
-                td.spells  = deck.num_spells
-                td.weapons = deck.num_weapons
-                td.matches = deck.matches.count
-                td.wins    = deck.user_num_wins
-                td.losses  = deck.user_num_losses
+                  img[ src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif" ]
+                  p.name.hidden = deck.class_name
+                td.minions = deck.num_minions.nil? ? "-": deck.num_minions
+                td.spells  = deck.num_spells.nil? ? "-": deck.num_spells
+                td.weapons = deck.num_weapons.nil? ? "-": deck.num_weapons
+                td.matches = deck.matches.count.nil? ? "-": deck.matches.count
+                td.wins    = deck.user_num_wins.nil? ? "-": deck.user_num_wins
+                td.losses  = deck.user_num_losses.nil? ? "-": deck.user_num_losses
                 td.winrate = number_to_percentage(deck.user_winrate, precision: 1)
                 - if signed_in?
                   td.tools

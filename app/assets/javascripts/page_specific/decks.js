@@ -47,4 +47,12 @@ $(document).ready(function(){
     lineWidth: 3,
     barColor: App.getLayoutColorCode('green')
   });
+
+  $(function(){
+    $('#decklist').tablesorter({
+      headers:{ 
+        9: { sorter: false }
+      }
+    }); 
+  });
 });
