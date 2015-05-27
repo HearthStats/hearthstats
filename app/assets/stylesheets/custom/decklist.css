@@ -107,9 +107,12 @@
   display: inline-block;
 }  
 
+.deckbuilder-img:hover{
+  height: 260px;
+  margin: 0px;
+}
 .deckbuilderCards{ 
   height: 800px;
-  width: 900px;
   overflow: scroll;
 }
 
