@@ -208,6 +208,7 @@ class DecksController < ApplicationController
   end
 
   def new
+    @all_cards = Card.all
     @cards = Card.where(collectible: true, type_name: Card::TYPES.values).order(:mana)
     if params[:klass].nil?
       redirect_to new_splash_decks_path, alert: "Please select a class" and return
