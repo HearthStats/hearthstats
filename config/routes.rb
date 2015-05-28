@@ -263,5 +263,39 @@ Hearthstats::Application.routes.draw do
       post "matches/hdt_after"
       post "matches/move"
     end
+
+    namespace :v3 do
+      devise_for :users
+      resources :cards
+      resources :matches
+      get "users/premium"
+      get "arenas/show"
+      post "arenas/new"
+
+      get "constructeds/show"
+      post "constructeds/new"
+
+      get "arena_runs/show"
+      post "arena_runs/new"
+      get "arena_runs/end"
+
+      get "matches/query"
+
+      get "decks/show"
+      get "decks/find"
+      post "decks/activate"
+      post "decks/create"
+      post "decks/slots"
+      post "decks/delete"
+
+      # HDT APIs
+      post "decks/hdt_create"
+      post "decks/hdt_after"
+      post "decks/create_version"
+      post "decks/hdt_edit"
+      post "deck_versions/hdt_after"
+      post "matches/after_date"
+      post "matches/move"
+    end
   end
 end
