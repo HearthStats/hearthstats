@@ -44,7 +44,7 @@ class Api::V3::ArenaRunsController < ApplicationController
     userclass_id = Klass::LIST.invert[@req[:class]]
     if userclass_id.nil?
       return render json: {
-        status:  "fail",
+        status:  422,
         message: "Unknown user class."
       }
     end
@@ -65,12 +65,12 @@ class Api::V3::ArenaRunsController < ApplicationController
                 )
       arenarun.update_attribute(:deck_id, deck.id)
       render json: {
-        status: "success",
+        status: 200,
         data:   arenarun
       }
     else
       render json: {
-        status:  "fail",
+        status:  422,
         message: arenarun.errors.full_messages
       }
     end
@@ -96,12 +96,12 @@ class Api::V3::ArenaRunsController < ApplicationController
 
     if arena_run.save!
       render json: {
-        status: "success",
+        status: 200,
         data:   arena_run
       }
     else
       render json: {
-        status:  "fail",
+        status:  422,
         message: arenarun.errors.full_messages
       }
     end
