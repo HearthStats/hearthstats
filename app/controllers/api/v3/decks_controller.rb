@@ -9,19 +9,19 @@ class Api::V3::DecksController < ApplicationController
       decks = Deck.where(user_id: current_user.id)
     rescue
       api_response = {
-        status:  "error",
+        status:  400,
         message: "Error getting user's decks"
       }
     else
       api_response = {
-        status: "success",
+        status: 200,
         data:   decks
       }
     end
     render json: api_response
   end
 
-  def hdt_create
+  def create
     card_string = Deck.hdt_parse(@req[:cards])
     deck = Deck.new( name: @req[:name],
                      klass_id: Klass::LIST.invert[@req[:class]],
@@ -32,15 +32,15 @@ class Api::V3::DecksController < ApplicationController
     if deck.save
       deck.tag_list = @req[:tags]
       deck_info = { deck: deck, deck_versions: deck.deck_versions }
-      api_response =  { status: "success", data: deck_info }
+      api_response =  { status: 200, data: deck_info }
     else
-      api_response = { status: "error" }
+      api_response = { status: 400 }
     end
 
     render json: api_response
   end
 
-  def hdt_after
+  def after_date
     req = ActiveSupport::JSON.decode(request.body)
     decks = Deck.where(deck_type_id: [nil,0,1,3]).where{
       (user_id == my{current_user.id}) &
@@ -61,10 +61,10 @@ class Api::V3::DecksController < ApplicationController
       }
     end
 
-    render json: { status: "success", data: api_response }
+    render json: { status: 200, data: api_response }
   end
 
-  def hdt_edit
+  def edit
     deck = Deck.find(@req[:deck_id])
     if deck.user_id == current_user.id
       cardstring = Deck.hdt_parse(@req[:cards])
@@ -74,12 +74,12 @@ class Api::V3::DecksController < ApplicationController
       deck.notes = @req[:notes]
       if deck.save
         deck.deck_versions.last.update_attribute(:cardstring, cardstring) if deck.deck_versions.last
-        api_response =  { status: "success", data: deck }
+        api_response =  { status: 200, data: deck }
       else
-        api_response = { status: "error" }
+        api_response = { status: 400 }
       end
     else
-      api_response = { status: "error", data: "Deck does not belong to user" }
+      api_response = { status: 400, data: "Deck does not belong to user" }
     end
 
     render json: api_response
@@ -90,7 +90,7 @@ class Api::V3::DecksController < ApplicationController
     begin
       deck = Deck.find(@req[:deck_id])
     rescue
-      api_response = { status: "error", data: "Deck not found" }
+      api_response = { status: 400, data: "Deck not found" }
       deck = nil
     end
     
@@ -101,12 +101,12 @@ class Api::V3::DecksController < ApplicationController
                         cardstring: cardstring)
       if deck_version.save
         deck.update_attribute(:cardstring, cardstring)
-        api_response =  { status: "success", data: deck_version }
+        api_response =  { status: 200, data: deck_version }
       else
-        api_response = { status: "error" }
+        api_response = { status: 400 }
       end
     else
-      api_response = { status: "error", data: "Deck does not belong to user" }
+      api_response = { status: 400, data: "Deck does not belong to user" }
     end
 
     render json: api_response
@@ -126,7 +126,7 @@ class Api::V3::DecksController < ApplicationController
     end
     if deck.is_public
       render json: {
-        status: "success",
+        status: 200,
         data: {
           deck:       deck,
           deck_array: res_array
@@ -134,7 +134,7 @@ class Api::V3::DecksController < ApplicationController
       }
     else
       render json: {
-        status:  "error",
+        status:  400,
         message: "Deck is private"
       }
     end
@@ -144,7 +144,7 @@ class Api::V3::DecksController < ApplicationController
     deck = Deck.find(@req[:deck_id])
     if deck.user.id != current_user.id
       render json: {
-        status:  "error",
+        status:  400,
         message: "Deck does not belong to this user."
       }
       return
@@ -152,7 +152,7 @@ class Api::V3::DecksController < ApplicationController
     deck.active = !deck.active
     deck.save!
     render json: {
-      status: "success",
+      status: 200,
       data:   deck
     }
   end
@@ -177,13 +177,13 @@ class Api::V3::DecksController < ApplicationController
 
     if errors.size > 0
       render json: {
-        status:  "fail",
+        status:  400,
         data:    "",
         message: errors.join(" ")
       }
     else
       render json: {
-        status:  "success",
+        status:  200,
         data:    "",
         message: "Deck slots updated"
       }
@@ -192,10 +192,10 @@ class Api::V3::DecksController < ApplicationController
 
   def delete
     unless deck_belongs_to_user?(current_user, @req[:deck_id])
-      response = {status: "fail", message: "At least one or more of the decks do not belong to the user"}
+      response = {status: 400, message: "At least one or more of the decks do not belong to the user"}
     else
       Deck.find(@req[:deck_id]).map(&:destroy)
-      response = {status: "success", message: "Decks deleted"}
+      response = {status: 200, message: "Decks deleted"}
     end
     render json: response
   end

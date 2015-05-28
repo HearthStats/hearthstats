@@ -53,7 +53,7 @@ class Api::V3::MatchesController < ApplicationController
     begin
       deck = Deck.find(_req[:deck_id])
     rescue ActiveRecord::RecordNotFound => e
-      render json: {status: 422, message: e.message} and return
+      render json: {status: 400, message: e.message} and return
     end
     match = parse_match(_req, deck)
     if match.save
@@ -66,18 +66,18 @@ class Api::V3::MatchesController < ApplicationController
       elsif match.mode_id == 1
         submit_arena_match(current_user, match, deck.klass_id)
       end
-      render json: {status: 201, data: match}
+      render json: {status: 200, data: match}
     else
-      render json: {status: 422, message: match.errors.full_messages}
+      render json: {status: 400, message: match.errors.full_messages}
     end
   end
 
-  def mult_create
+  def multi_create
     _req = @req
     begin
       deck = Deck.find(_req[:deck_id])
     rescue ActiveRecord::RecordNotFound => e
-      render json: {status: 422, message: e.message} and return
+      render json: {status: 400, message: e.message} and return
     end
     response = {}
     _req[:matches].each do |_match_params|
@@ -92,14 +92,13 @@ class Api::V3::MatchesController < ApplicationController
         elsif match.mode_id == 1
           submit_arena_match(current_user, match, deck.klass_id)
         end
-        response[match.id] = {status: 201, data: match}
+        response[match.id] = {status: 200, data: match}
       else
-        response[match.id] = {status: 422, data: match}
+        response[match.id] = {status: 400, data: match.errors.full_messages}
       end
-
-      render json: {status: 201,  data: response}
     end
 
+    render json: {status: 200,  data: response}
   end
 
   def after_date
@@ -119,17 +118,17 @@ class Api::V3::MatchesController < ApplicationController
 
   def destroy
     unless match_belongs_to_user?(current_user, @req[:match_id])
-      response = {status: 500, message: "At least one or more of the matches do not belong to the user"}
+      response = {status: 400, message: "At least one or more of the matches do not belong to the user"}
     else
       Match.find(@req[:match_id]).map(&:destroy)
-      response = {status: 204}
+      response = {status: 200}
     end
     render json: response
   end
 
   def move
     unless match_belongs_to_user?(current_user, @req[:match_id])
-      response = {status: 422, message: "At least one or more of the matches do not belong to the user"}
+      response = {status: 400, message: "At least one or more of the matches do not belong to the user"}
     else
       match_decks = Match.find(@req[:match_id]).map(&:match_deck)
       match_decks.map { |match_deck| match_deck.update_attribute(:deck_id, @req[:deck_id].to_i)}
@@ -190,10 +189,10 @@ class Api::V3::MatchesController < ApplicationController
 
   def parse_match(_params, deck)
     # Parse params to get variables
-    mode     = Mode::LIST.invert[_params[:mode]]
-    oppclass = Klass::LIST.invert[_params[:oppclass]]
-    result   = Match::RESULTS_LIST.invert[_params[:result]]
-    coin     = _params[:coin] == "false"
+    mode     = Mode::LIST.invert[_params["mode"]]
+    oppclass = Klass::LIST.invert[_params["oppclass"]]
+    result   = Match::RESULTS_LIST.invert[_params["result"]]
+    coin     = _params["coin"] == "false"
 
     # Create new match
     match             = Match.new
@@ -203,10 +202,10 @@ class Api::V3::MatchesController < ApplicationController
     match.result_id   = result
     match.coin        = coin
     match.oppclass_id = oppclass
-    match.oppname     = _params[:oppname]
-    match.numturns    = _params[:numturns]
-    match.duration    = _params[:duration]
-    match.notes       = _params[:notes]
+    match.oppname     = _params["oppname"]
+    match.numturns    = _params["numturns"]
+    match.duration    = _params["duration"]
+    match.notes       = _params["notes"]
     match.appsubmit   = true
 
     match

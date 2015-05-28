@@ -268,34 +268,20 @@ Hearthstats::Application.routes.draw do
       devise_for :users
       resources :cards
       resources :matches
+      resources :decks
       get "users/premium"
-      get "arenas/show"
-      post "arenas/new"
-
-      get "constructeds/show"
-      post "constructeds/new"
 
       get "arena_runs/show"
       post "arena_runs/new"
       get "arena_runs/end"
 
-      get "matches/query"
-
-      get "decks/show"
-      get "decks/find"
-      post "decks/activate"
-      post "decks/create"
-      post "decks/slots"
-      post "decks/delete"
-
-      # HDT APIs
-      post "decks/hdt_create"
-      post "decks/hdt_after"
+      post "decks/after_date"
       post "decks/create_version"
-      post "decks/hdt_edit"
+
       post "deck_versions/hdt_after"
       post "matches/after_date"
       post "matches/move"
+      post "matches/multi_create"
     end
   end
 end
