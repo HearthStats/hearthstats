@@ -267,21 +267,27 @@ Hearthstats::Application.routes.draw do
     namespace :v3 do
       devise_for :users
       resources :cards
-      resources :matches
-      resources :decks
+      resources :matches do
+        collection do
+          post "after_date"
+          post "move"
+          post "multi_create"
+        end
+      end
+      resources :decks do
+        collection do
+          get "find"
+          post "after_date"
+          post "create_version"
+        end
+      end
       get "users/premium"
 
       get "arena_runs/show"
       post "arena_runs/new"
       get "arena_runs/end"
 
-      post "decks/after_date"
-      post "decks/create_version"
-
       post "deck_versions/hdt_after"
-      post "matches/after_date"
-      post "matches/move"
-      post "matches/multi_create"
     end
   end
 end

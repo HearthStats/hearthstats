@@ -1,10 +1,10 @@
 class Api::V3::DecksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, except: [:show, :hdt_after]
+  before_filter :get_req, except: [:index, :show, :hdt_after]
 
   respond_to :json
 
-  def show
+  def index
     begin
       decks = Deck.where(user_id: current_user.id)
     rescue
@@ -112,85 +112,14 @@ class Api::V3::DecksController < ApplicationController
     render json: api_response
   end
 
-  def find
-    deck = Deck.find(params[:deck_id])
-    card_array = deck.cardstring.split(",")
-    res_array = Array.new
-    card_array.each do |card|
-      card_count = /_(\d*)/.match(card)[1]
-      card_id = /(\d*)_/.match(card)[1]
-      card = Card.find(card_id)
-      card_name = card.name
-      card_mana = card.mana
-      res_array << [card_name, card_count, card_mana]
-    end
-    if deck.is_public
-      render json: {
-        status: 200,
-        data: {
-          deck:       deck,
-          deck_array: res_array
-        }
-      }
-    else
-      render json: {
-        status:  400,
-        message: "Deck is private"
-      }
-    end
+  def show
+    deck = Deck.find(params[:id])
+    render json: {status: 200, data: deck}
+  rescue ActiveRecord::RecordNotFound=> e
+    render json: {status: 404, message: e.message }
   end
 
-  def activate
-    deck = Deck.find(@req[:deck_id])
-    if deck.user.id != current_user.id
-      render json: {
-        status:  400,
-        message: "Deck does not belong to this user."
-      }
-      return
-    end
-    deck.active = !deck.active
-    deck.save!
-    render json: {
-      status: 200,
-      data:   deck
-    }
-  end
-
-  def slots
-
-    Deck.where(user_id: current_user.id).each do |deck|
-      deck.slot = nil
-      deck.active = false
-      deck.save!
-    end
-
-    deckIds = [@req[:slot_1],@req[:slot_2],@req[:slot_3],@req[:slot_4],@req[:slot_5],@req[:slot_6],@req[:slot_7],@req[:slot_8],@req[:slot_9]]
-
-    errors = Array.new
-    (1..9).each do |i|
-      error = set_user_deck_slot(current_user, deckIds[i - 1], i)
-      if !error.nil?
-        errors.push(error)
-      end
-    end
-
-    if errors.size > 0
-      render json: {
-        status:  400,
-        data:    "",
-        message: errors.join(" ")
-      }
-    else
-      render json: {
-        status:  200,
-        data:    "",
-        message: "Deck slots updated"
-      }
-    end
-  end
-
-  def delete
+  def destroy
     unless deck_belongs_to_user?(current_user, @req[:deck_id])
       response = {status: 400, message: "At least one or more of the decks do not belong to the user"}
     else
