@@ -26,7 +26,7 @@ class DecksController < ApplicationController
     @q.unique_deck_created_at_gteq = 1.week.ago unless params[:q]
 
     @decks = @q.result
-    @decks = @decks.order("#{sort_by} #{direction}")
+    @decks = @decks.order("unique_decks.#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
 
     unless current_user.nil?
