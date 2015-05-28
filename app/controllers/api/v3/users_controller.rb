@@ -6,12 +6,12 @@ class Api::V3::UsersController < ApplicationController
     user = current_user
     if user.subscription_id.nil?
       api_response = {
-        status: "error",
+        status: 401,
         message: "User not is not premium"
       }
     else
       api_response = {
-        status: "success",
+        status: 200,
         user: user,
         aws_access_key: ENV['AWS_ACCESS_KEY_ID'],
         aws_secret_key: ENV['AWS_SECRET_ACCESS_KEY']
