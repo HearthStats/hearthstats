@@ -27,7 +27,13 @@ test:
   async: false
 
 production:
-  server: "http://example.com/faye"
+  server: "http://hearthstats.net/faye"
+  adapter_javascript_url: "http://localhost:9292/faye/faye.js"
+  adapter: "Faye"
+  auth_token: "3baf201f45d915f5fb170f2be81297354d847e44e81b3687e05afa18ba239973"
+  async: true
+staging:
+  server: "http://goat.hearthstats.net/faye"
   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
   adapter: "Faye"
   auth_token: "3baf201f45d915f5fb170f2be81297354d847e44e81b3687e05afa18ba239973"
