@@ -5,8 +5,7 @@ class CardImporter
 
   GOOD_TYPES = ["Minion", "Spell", "Weapon"]
 
-  def initialize(set)
-    @set = set
+  def initialize()
     @all_cards = HTTParty.get("http://hearthstonejson.com/json/AllSets.json")
   end
 
@@ -49,6 +48,21 @@ class CardImporter
     messed
   end
 
+  def patch_mechanics
+    all_cards_flat = @all_cards.to_a.flatten
+    fails = []
+    Card.all.each do |card|
+      proper_card = all_cards_flat.find {|set_card| set_card["name"] == card.name && GOOD_TYPES.include?(set_card["type"])}
+      if proper_card.nil?
+        fails << card.name
+        next
+      end
+      add_mechanics(proper_card["mechanics"], card)
+    end
+
+    p fails.inspect
+  end
+
   def scrape_images(set)
     require 'mechanize'
     agent = Mechanize.new
@@ -62,6 +76,7 @@ class CardImporter
     end
     p "Big Bro, The job is done."
   end
+
   private
 
   def update_specs(card, card_db)
@@ -130,6 +145,7 @@ class CardImporter
         if mech_db.nil?
           mech_db = Mechanic.create(name: mech)
         end
+        CardMechanic.create(card_id: card.id, mechanic_id: mech_db.id)
       end
     end
   end
