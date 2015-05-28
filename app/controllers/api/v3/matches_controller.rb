@@ -79,7 +79,7 @@ class Api::V3::MatchesController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
-    response = {}
+    response = []
     _req[:matches].each do |_match_params|
       match = parse_match(_match_params, deck)
       if match.save
@@ -92,9 +92,9 @@ class Api::V3::MatchesController < ApplicationController
         elsif match.mode_id == 1
           submit_arena_match(current_user, match, deck.klass_id)
         end
-        response[match.id] = {status: 200, data: match}
+        response << { "#{match.id}" => {status: 200, data: match}}
       else
-        response[match.id] = {status: 400, data: match.errors.full_messages}
+        response << { "error" => {status: 400, data: match.errors.full_messages}}
       end
     end
 
