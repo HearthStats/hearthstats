@@ -111,11 +111,20 @@
   height: 260px;
   margin: 0px;
 }
+.deckbuilder-img{
+  cursor:pointer;
+}
 .deckbuilderCards{ 
   height: 800px;
   overflow: scroll;
 }
+.deckbuilderFilter{
+  margin: 5px;
+}
 
+.manaFilters button{
+  width: 45px;
+}
 table.decklist td.class img {
   height:24px;
   width:24px;

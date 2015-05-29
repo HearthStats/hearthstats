@@ -10,6 +10,7 @@
 //= require 'plugins/jquery.mixitup.min.js'
 //= require 'plugins/jquery.dataTables.min.js'
 //= require 'page_specific/decklist.js'
+//= require 'plugins/jquery.lazyload.min.js'
 
 $(document).ready(function(){
   $('.deck-text-trigger').click( function(){
@@ -46,5 +47,9 @@ $(document).ready(function(){
     size: 75,
     lineWidth: 3,
     barColor: App.getLayoutColorCode('green')
+  });
+
+  $("img.lazy-load").lazyload({
+    theshold: 200
   });
 });
