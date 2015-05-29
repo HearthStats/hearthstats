@@ -26,7 +26,7 @@ class DecksController < ApplicationController
     @q.unique_deck_created_at_gteq = 1.week.ago unless params[:q]
 
     @decks = @q.result
-    @decks = @decks.order("unique_decks.#{sort_by} #{direction}")
+    @decks = @decks.order("#{sort_by} #{direction}")
     @decks = @decks.paginate(page: params[:page], per_page: params[:items])
 
     unless current_user.nil?
@@ -463,11 +463,9 @@ class DecksController < ApplicationController
   end
 
   def sort_by
-    return 'num_users' unless params[:sort]
-
     sort = (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
 
-    sort =  %w(created_at name).include?(sort) ? "decks.#{sort}" : sort
+    sort =  %w(created_at name).include?(sort) ? "decks.#{sort}" : "unique_decks.#{sort}"
   end
 
   def direction
