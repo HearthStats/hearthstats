@@ -23,9 +23,6 @@ class BlindDraftsController < ApplicationController
     respond_to do |format|
       if @blind_draft.player2_id || (@blind_draft.player2_id.nil? && @blind_draft.public == true)
         @blind_draft.save
-        @blind_draft.player2.notify("Blind Draft Challenge",
-        "You have been invited to a Blind Draft by #{@blind_draft.player2.name}",
-        @blind_draft)
         format.html { redirect_to draft_blind_draft_path(@blind_draft), 
                       notice: "Blind Draft Successfully created." }
       else

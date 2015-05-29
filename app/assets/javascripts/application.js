@@ -25,6 +25,7 @@
 //= require 'plugins/toastr.min.js'
 //= require 'site_wide/sidebaractive.js'
 //= require 'plugins/bootstrap.min.js'
+//= require sync
 //= require 'site_wide/ga.js'
 //= require 'site_wide/ad.js'
 //= require 'site_wide/wysiwyg.js'
