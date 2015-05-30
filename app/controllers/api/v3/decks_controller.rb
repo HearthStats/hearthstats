@@ -1,6 +1,6 @@
 class Api::V3::DecksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, except: [:index, :show, :hdt_after]
+  before_filter :get_req, except: [:index, :show, :after]
 
   respond_to :json
 
@@ -41,10 +41,10 @@ class Api::V3::DecksController < ApplicationController
   end
 
   def after_date
-    req = ActiveSupport::JSON.decode(request.body)
+    req = @req
     decks = Deck.where(deck_type_id: [nil,0,1,3]).where{
       (user_id == my{current_user.id}) &
-      (created_at >= DateTime.strptime(req["date"], '%s'))
+      (created_at >= DateTime.strptime(req[:date], '%s'))
     }
     api_response = []
     decks.each do |deck|
