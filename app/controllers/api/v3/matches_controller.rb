@@ -59,10 +59,10 @@ class Api::V3::MatchesController < ApplicationController
     if match.save
       MatchDeck.create(match_id: match.id,
                        deck_id: deck.id,
-                       deck_version_id: _req[:deck_version_id].to_i
+                       deck_version_id: _req["deck_version_id"].to_i
                       )
       if match.mode_id == 3
-        MatchRank.create(match_id: match.id, rank_id: _req[:ranklvl].to_i)
+        MatchRank.create(match_id: match.id, rank_id: _req["ranklvl"].to_i)
       elsif match.mode_id == 1
         submit_arena_match(current_user, match, deck.klass_id)
       end
@@ -82,13 +82,14 @@ class Api::V3::MatchesController < ApplicationController
     response = []
     _req[:matches].each do |_match_params|
       match = parse_match(_match_params, deck)
+
       if match.save
         MatchDeck.create(match_id: match.id,
                         deck_id: deck.id,
-                        deck_version_id: _match_params[:deck_version_id].to_i
+                        deck_version_id: _match_params["deck_version_id"].to_i
                         )
         if match.mode_id == 3
-          MatchRank.create(match_id: match.id, rank_id: _match_params[:ranklvl].to_i)
+          MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
         elsif match.mode_id == 1
           submit_arena_match(current_user, match, deck.klass_id)
         end
