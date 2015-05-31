@@ -1,6 +1,6 @@
 class Api::V3::MatchesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_req, except: [:query, :hdt_after]
+  before_filter :get_req, except: [:query]
 
   respond_to :json
 
@@ -102,9 +102,9 @@ class Api::V3::MatchesController < ApplicationController
   end
 
   def after_date
-    req = ActiveSupport::JSON.decode(request.body)
+    req = @req
     api_response = []
-    matches = Match.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req["date"], '%s'))}
+    matches = Match.where{(user_id == my{current_user.id}) & (created_at >= DateTime.strptime(req[:date], '%s'))}
     matches.joins(:match_deck).each do |match|
       api_response << { :deck_id => match.match_deck.deck_id,
                         :deck_version_id => match.match_deck.deck_version_id,
