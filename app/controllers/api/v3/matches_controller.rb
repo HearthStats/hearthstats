@@ -55,7 +55,7 @@ class Api::V3::MatchesController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
-    match = parse_match(_req, deck)
+    match = parse_single_match(_req, deck)
     if match.save
       MatchDeck.create(match_id: match.id,
                        deck_id: deck.id,
@@ -209,10 +209,34 @@ class Api::V3::MatchesController < ApplicationController
 
   def parse_match(_params, deck)
     # Parse params to get variables
+    mode     = Mode::LIST.invert[_params["mode"]]
+    oppclass = Klass::LIST.invert[_params["oppclass"]]
+    result   = Match::RESULTS_LIST.invert[_params["result"]]
+    coin     = _params["coin"] == "false"
+
+    # Create new match
+    match             = Match.new
+    match.user_id     = current_user.id
+    match.mode_id     = mode
+    match.klass_id    = deck.klass_id
+    match.result_id   = result
+    match.coin        = coin
+    match.oppclass_id = oppclass
+    match.oppname     = _params["oppname"]
+    match.numturns    = _params["numturns"]
+    match.duration    = _params["duration"]
+    match.notes       = _params["notes"]
+    match.appsubmit   = true
+
+    match
+  end
+
+  def parse_single_match(_params, deck)
+    # Parse params to get variables
     mode     = Mode::LIST.invert[_params[:mode]]
     oppclass = Klass::LIST.invert[_params[:oppclass]]
     result   = Match::RESULTS_LIST.invert[_params[:result]]
-    coin     = _params["coin"] == "false"
+    coin     = _params[:coin] == "false"
 
     # Create new match
     match             = Match.new
