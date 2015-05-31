@@ -126,6 +126,16 @@ class Api::V3::MatchesController < ApplicationController
     render json: response
   end
 
+  def delete
+    unless match_belongs_to_user?(current_user, @req[:match_id])
+      response = {status: 400, message: "At least one or more of the matches do not belong to the user"}
+    else
+      Match.find(@req[:match_id]).map(&:destroy)
+      response = {status: 200}
+    end
+    render json: response
+  end
+
   def destroy
     match = Match.find(params[:id])
     if match.destroy

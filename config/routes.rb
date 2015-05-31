@@ -273,6 +273,7 @@ Hearthstats::Application.routes.draw do
           post "move"
           post "multi_create"
           post "mult_destroy"
+          post "delete"
         end
       end
       resources :decks do
@@ -281,6 +282,7 @@ Hearthstats::Application.routes.draw do
           post "after_date"
           post "mult_destroy"
           post "create_version"
+          post "delete"
         end
       end
       get "users/premium"
