@@ -272,6 +272,7 @@ Hearthstats::Application.routes.draw do
           post "after_date"
           post "move"
           post "multi_create"
+          post "mult_destroy"
         end
       end
       resources :decks do
