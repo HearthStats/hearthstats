@@ -209,9 +209,9 @@ class Api::V3::MatchesController < ApplicationController
 
   def parse_match(_params, deck)
     # Parse params to get variables
-    mode     = Mode::LIST.invert[_params["mode"]]
-    oppclass = Klass::LIST.invert[_params["oppclass"]]
-    result   = Match::RESULTS_LIST.invert[_params["result"]]
+    mode     = Mode::LIST.invert[_params[:mode]]
+    oppclass = Klass::LIST.invert[_params[:oppclass]]
+    result   = Match::RESULTS_LIST.invert[_params[:result]]
     coin     = _params["coin"] == "false"
 
     # Create new match
@@ -222,10 +222,10 @@ class Api::V3::MatchesController < ApplicationController
     match.result_id   = result
     match.coin        = coin
     match.oppclass_id = oppclass
-    match.oppname     = _params["oppname"]
-    match.numturns    = _params["numturns"]
-    match.duration    = _params["duration"]
-    match.notes       = _params["notes"]
+    match.oppname     = _params[:oppname]
+    match.numturns    = _params[:numturns]
+    match.duration    = _params[:duration]
+    match.notes       = _params[:notes]
     match.appsubmit   = true
 
     match
