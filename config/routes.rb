@@ -279,6 +279,7 @@ Hearthstats::Application.routes.draw do
         collection do
           get "find"
           post "after_date"
+          post "mult_destroy"
           post "create_version"
         end
       end

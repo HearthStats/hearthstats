@@ -119,12 +119,22 @@ class Api::V3::DecksController < ApplicationController
     render json: {status: 404, message: e.message }
   end
 
-  def destroy
+  def multi_destroy
     unless deck_belongs_to_user?(current_user, @req[:deck_id])
       response = {status: 400, message: "At least one or more of the decks do not belong to the user"}
     else
       Deck.find(@req[:deck_id]).map(&:destroy)
       response = {status: 200, message: "Decks deleted"}
+    end
+    render json: response
+  end
+
+  def destroy
+    match = Deck.find(params[:id])
+    if match.destroy
+      response = {status: 200}
+    else
+      response = {status: 400}
     end
     render json: response
   end
