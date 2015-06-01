@@ -63,7 +63,7 @@ Hearthstats::Application.routes.draw do
   match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
-  Date::MONTHNAMES.dup[1..2].each do |month|
+  Date::MONTHNAMES.dup[1..12].each do |month|
     name = month[0..2].downcase
     match "/#{name}", to: redirect("/reports/#{Time.now.year}/#{name}")
   end
