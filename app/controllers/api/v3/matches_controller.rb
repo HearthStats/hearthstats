@@ -252,6 +252,9 @@ class Api::V3::MatchesController < ApplicationController
     match.duration    = _params[:duration]
     match.notes       = _params[:notes]
     match.appsubmit   = true
+    if _params[:created_at]
+      match.created_at  = _params[:created_at].to_time
+    end
 
     match
   end
