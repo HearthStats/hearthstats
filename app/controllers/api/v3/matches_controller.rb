@@ -139,6 +139,9 @@ class Api::V3::MatchesController < ApplicationController
 
   def destroy
     match = Match.find(params[:id])
+    if match.user_id != current_user.id
+      render json: {status: 401} and return
+    end
     if match.destroy
       response = {status: 200}
     else

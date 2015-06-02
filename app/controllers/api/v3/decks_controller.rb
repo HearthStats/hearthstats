@@ -140,8 +140,11 @@ class Api::V3::DecksController < ApplicationController
   end
 
   def destroy
-    match = Deck.find(params[:id])
-    if match.destroy
+    deck = Deck.find(params[:id])
+    if deck.user_id != current_user.id
+      render json: {status: 401} and return
+    end
+    if deck.destroy
       response = {status: 200}
     else
       response = {status: 400}
