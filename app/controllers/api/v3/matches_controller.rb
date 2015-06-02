@@ -50,25 +50,44 @@ class Api::V3::MatchesController < ApplicationController
 
   def create
     _req = @req
-    begin
-      deck = Deck.find(_req[:deck_id])
-    rescue ActiveRecord::RecordNotFound => e
-      render json: {status: 400, message: e.message} and return
-    end
-    match = parse_match(_req, deck)
-    if match.save
-      MatchDeck.create(match_id: match.id,
-                       deck_id: deck.id,
-                       deck_version_id: _req["deck_version_id"].to_i
-                      )
-      if match.mode_id == 3
-        MatchRank.create(match_id: match.id, rank_id: _req["ranklvl"].to_i)
-      elsif match.mode_id == 1
-        submit_arena_match(current_user, match, deck.klass_id)
+
+    if _req[:mode] == "Arena"
+      begin
+        arena_run = ArenaRun.find(_req[:arena_run_id])
+      rescue ActiveRecord::RecordNotFound => e
+        render json: {status: 400, message: e.message} and return
       end
-      render json: {status: 200, data: match}
+      deck = arena_run.deck
+      if deck.nil?
+        klass_id = Klass::LIST.invert[_req[:class]]
+      else
+        klass_id = deck.klass_id
+      end
+      match = parse_match(_req, klass_id)
+      if match.save
+        submit_arena_match(current_user, match, klass_id)
+        render json: {status: 200, data: match}
+      else
+        render json: {status: 400, message: match.errors.full_messages}
+      end
     else
-      render json: {status: 400, message: match.errors.full_messages}
+      begin
+        deck = Deck.find(_req[:deck_id])
+        klass_id = deck.klass_id
+      rescue ActiveRecord::RecordNotFound => e
+        render json: {status: 400, message: e.message} and return
+      end
+      match = parse_match(_req, klass_id)
+      if match.save
+        MatchDeck.create(match_id: match.id,
+                         deck_id: deck.id,
+                         deck_version_id: _req["deck_version_id"].to_i
+                        )
+        MatchRank.create(match_id: match.id, rank_id: _req["ranklvl"].to_i)
+        render json: {status: 200, data: match}
+      else
+        render json: {status: 400, message: match.errors.full_messages}
+      end
     end
   end
 
@@ -81,7 +100,7 @@ class Api::V3::MatchesController < ApplicationController
     end
     response = []
     _req[:matches].each do |_match_params|
-      match = parse_match(_match_params, deck)
+      match = parse_match(_match_params, deck.klass_id)
 
       if match.save
         MatchDeck.create(match_id: match.id,
@@ -91,7 +110,7 @@ class Api::V3::MatchesController < ApplicationController
         if match.mode_id == 3
           MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
         elsif match.mode_id == 1
-          submit_arena_match(current_user, match, deck.klass_id)
+          submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["class"]])
         end
         response << { status: 200, data: match }
       else
@@ -212,7 +231,7 @@ class Api::V3::MatchesController < ApplicationController
   end
 
 
-  def parse_match(_params, deck)
+  def parse_match(_params, klass_id)
     _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
     # Parse params to get variables
     mode     = Mode::LIST.invert[_params[:mode]]
@@ -224,7 +243,7 @@ class Api::V3::MatchesController < ApplicationController
     match             = Match.new
     match.user_id     = current_user.id
     match.mode_id     = mode
-    match.klass_id    = deck.klass_id
+    match.klass_id    = klass_id
     match.result_id   = result
     match.coin        = coin
     match.oppclass_id = oppclass
