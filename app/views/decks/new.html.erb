@@ -7,37 +7,5 @@
 <%= react_component 'DeckBuild', { cards: @cards, deck: @deck, allCards: @all_cards, type: "new"} %>
 <!-- <%= render 'form' %> -->
 <script>
-function init() {
-var imgDefer = document.getElementsByTagName('img');
-for (var i=0; i<imgDefer.length; i++) {
-if(imgDefer[i].getAttribute('data-src')) {
-imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
-} } }
-window.onload = init;
+$(".lazy-load").lazyload();
 </script>
-<script>
-$(document).ready(function(){
-    if ($(window).width() > 1200){
-      var fullCardImage = $('#deckBuilderFullCardView');
-
-      $('.card').mouseover(function(e) {
-        $this = $(this);
-        $('.card').fadeTo(0, .8);
-        $this.fadeTo(0, 1);
-        fullCardImage.attr('src', $('img', $this).attr('src'));
-        var top = $this.position().top;
-        if($this.parent().offset().top + top + fullCardImage.height() - $(document).scrollTop() > $(window).height())
-          top = $(window).height() - fullCardImage.height() - $this.parent().offset().top - 20 + $(document).scrollTop();
-        fullCardImage.css({
-          top: top + 'px',
-          left: ($this.position().left + 250) + 'px'
-        })
-        fullCardImage.stop( true, true ).fadeIn();
-      });
-      $('.card').mouseout(function() {
-        $('.card').fadeTo(0, 1);
-        fullCardImage.stop( true, true ).fadeOut();
-      });
-    }
-  })
- </script>

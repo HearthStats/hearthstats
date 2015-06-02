@@ -23,6 +23,8 @@ var DeckCard = React.createClass({
 		);
 	},
 	handleClick: function(event) {
-		this.props.click(event);
+		if(this.props.type=="edit"){
+			this.props.click(event);
+		}
 	}
 });

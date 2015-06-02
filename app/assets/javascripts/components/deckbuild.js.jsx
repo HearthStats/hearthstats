@@ -1,4 +1,5 @@
 var DeckBuild = React.createClass({
+	// props: all_cards, cards, klasses, archtypes, deck
 	getInitialState: function(){
 		return{
 			cardstring: "",
@@ -14,8 +15,7 @@ var DeckBuild = React.createClass({
   	if(this.state.klassSelected && !this.state.moveOn){ 
   		return(
 				<div>
-					<CardSelect allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} deck={this.props.deck} type={this.props.type} />
-					<button className="btn" onClick={this.handleCardsSelect}>Next</button>
+					<CardSelect cardstring={this.state.cardstring} allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
 				</div>
   		);
   	}
@@ -37,7 +37,7 @@ var DeckBuild = React.createClass({
 			);
 		} else{ 
 			return(
-				<DetailSelect /> );
+				<DetailSelect backButton={this.handleCardResubmit} archtype={this.props.archtypes} allCards={this.props.allCards} cardstring={this.state.cardstring} /> );
 		}
 	},
 	handleKlassSelect: function(klass_id){
@@ -56,6 +56,11 @@ var DeckBuild = React.createClass({
 		this.setState({
 			cardstring: new_cardstring, 
 			moveOn: true
+		});
+	},
+	handleCardResubmit: function(){
+		this.setState({
+			moveOn: false
 		});
 	}
 });

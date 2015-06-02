@@ -1,6 +1,6 @@
 var CardSelect = React.createClass({
-	// props: allCards, cards, deck, type
-	// return: cardstring, deckarray
+	// props: allCards, cards, deck, type, cardstring
+	// return: cardstring
 	getInitialState: function(){
 		var sortedCards = this.props.cards.sort(function(cardA, cardB){ 
 			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
@@ -32,7 +32,9 @@ var CardSelect = React.createClass({
 	// check if this is a create new or edit (so we can load previous cards)
 	componentWillMount: function(){
 		if(this.props.type == "edit"){
-			this.buildDeckArray();
+			this.buildDeckArray(this.props.deck.cardstring);
+		} else if(this.props.cardstring != ""){ 
+			this.buildDeckArray(this.props.cardstring);
 		}
 	},
 	render: function(){
@@ -75,6 +77,7 @@ var CardSelect = React.createClass({
 				 		<div className="deckbuilderCards">
 				 			{allcards}
 				 		</div>
+				 	<button className="btn" onClick={this.handleClick}> Next </button>
 				 	</div>
 				 	<div className="dCards col-md-4 col-sm-12"> 
 				 		<h2> YOUR DECK </h2>
@@ -89,11 +92,14 @@ var CardSelect = React.createClass({
 				</div>
 		);
 	},
+	handleClick: function(){
+		console.log(this._makeCardstring());
+		this.props.submitClick(this._makeCardstring());
+	},
 	// build deck array if this is an edit so we can load previous cards
-	buildDeckArray: function(){
-		console.log("building deck");
-		if(this.props.deck.cardstring.length == 0) return; 
-		deckCards = this.props.deck.cardstring.split(","); 
+	buildDeckArray: function(cardstring){
+		if(cardstring.length == 0) return; 
+		deckCards = cardstring.split(","); 
 		var newDecklistArray = [];
 		var newDeckArray = [];
 		var newQuant = 0;
@@ -185,7 +191,7 @@ var CardSelect = React.createClass({
 				quant = this.state.decklist[card.id];
 				printCard = true;
 			}
-			if(printCard == true){ return(<DeckCard card={card} qty={quant} click={this._removeCard(card.id)} />); }
+			if(printCard == true){ return(<DeckCard card={card} qty={quant} type="edit" click={this._removeCard(card.id)} />); }
 		}.bind(this)));
 	},
 
