@@ -200,8 +200,10 @@ class DecksController < ApplicationController
   end
 
   def new_splash
+    @all_cards = Card.all
+    @cards = Card.where(collectible: true)
     @klasses = Klass.all
-
+    @deck = Deck.new(params[:deck])
     respond_to do |format|
       format.html
     end
@@ -232,6 +234,7 @@ class DecksController < ApplicationController
   end
 
   def edit
+    @all_cards = Card.all
     @cards = Card.where(collectible: true)
     @deck = Deck.find(params[:id])
     gon.deck = @deck

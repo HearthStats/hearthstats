@@ -1,13 +1,15 @@
-var DeckBuild = React.createClass({
-  getInitialState: function(){ 
-  	var sortedCards = this.props.cards.sort(function(cardA, cardB){ 
-				if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
-				else{ 
-					if(cardA.name < cardB.name){ return -1; }
-					if(cardB.name < cardA.name){ return 1; }
-					else{ return 0; }
-				}
-			});
+var CardSelect = React.createClass({
+	// props: allCards, cards, deck, type
+	// return: cardstring, deckarray
+	getInitialState: function(){
+		var sortedCards = this.props.cards.sort(function(cardA, cardB){ 
+			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
+			else{ 
+				if(cardA.name < cardB.name){ return -1; }
+				if(cardB.name < cardA.name){ return 1; }
+				else{ return 0; }
+			}
+		});
 		return {
 			cards: this.filterCards(this.props.cards,this.props.deck, ["", -1, 0]),
 			deck: this.props.deck, 
@@ -27,7 +29,13 @@ var DeckBuild = React.createClass({
 			filterParams: ["", -1, 0]
 		}
 	},
-	render: function(){ 
+	// check if this is a create new or edit (so we can load previous cards)
+	componentWillMount: function(){
+		if(this.props.type == "edit"){
+			this.buildDeckArray();
+		}
+	},
+	render: function(){
 		// deck classs
 		var allcards = this.state.cards.map(function(card){
 			// only show cards that are neutral/class cards
@@ -38,51 +46,77 @@ var DeckBuild = React.createClass({
 				);
 			}
 		}.bind(this));
-		var arr = [-1,0,1,2,3,4,5,6,7,8,9,10]
-		var buttons = arr.map(function(ind){
-			num = ind.toString();
-			return(<button className="btn" value={num} id={num} onClick={this.filterMana}>{num}</button>);
-		});
-		return( 
-			<div className="row">
-			 	<div className="col-md-8 col-sm-12">
-			 		<h2> Choose your cards! </h2>
-			 		<div className="deckbuilderFilter">
-			 			<input type="text" id="search" name="search" placeholder=" Search" size="50" onChange={this.filterSearch} />
-			 		</div>
-			 		<div className="manaFilters">
-			 			<button className="btn grey" name="-1" value="-1" onClick={this.filterMana}>All</button>
-			 			<button className="btn grey" name="0" value="0" onClick={this.filterMana}>0</button>
-			 			<button className="btn grey" name="1" value="1" onClick={this.filterMana}>1</button>
-					 	<button className="btn grey" name="2" value="2" onClick={this.filterMana}>2</button>
-					 	<button className="btn grey" name="3" value="3" onClick={this.filterMana}>3</button>
-					 	<button className="btn grey" name="4" value="4" onClick={this.filterMana}>4</button>
-					 	<button className="btn grey" name="5" value="5" onClick={this.filterMana}>5</button>
-					 	<button className="btn grey" name="6" value="6" onClick={this.filterMana}>6</button>
-					 	<button className="btn grey" name="7" value="7" onClick={this.filterMana}>7</button>
-					 	<button className="btn grey" name="8" value="8" onClick={this.filterMana}>8</button>
-					 	<button className="btn grey" name="9" value="9" onClick={this.filterMana}>9</button>
-					 	<button className="btn grey" name="10" value="10" onClick={this.filterMana}>10+</button>
-			 		</div>
-			 		<div className="klassFilters">
-			 			<button className="btn blue" value="-1" onClick={this.filterKlass}>Class</button>
-			 			<button className="btn blue" value="1" onClick={this.filterKlass}>Neutral</button>
-			 			<button className="btn blue" value="0" onClick={this.filterKlass} autofocus>All</button>
-			 		</div>
-			 		<div className="deckbuilderCards">
-			 			{allcards}
-			 		</div>
-			 	</div>
-			 	<div className="dCards col-md-4 col-sm-12"> 
-			 		<h2> YOUR DECK </h2>
-			 		<p>{this.state.cardQuant} of 30</p>
-			 		<div className="deckbuilderWrapper deckBuilderCardsWrapper"> 
-			 			{this._drawCards()}
-			 		</div>
-			 		<button className="btn" onClick={this._clearCards}>Clear Cards!</button>
-			 	</div>
-			</div>
+		return(
+			<div id="cardSelect" className="row">
+				 	<div className="col-md-8 col-sm-12">
+				 		<h2> Choose your cards! </h2>
+				 		<div className="deckbuilderFilter">
+				 			<input type="text" id="search" name="search" placeholder=" Search" size="50" onChange={this.filterSearch} />
+				 		</div>
+				 		<div className="manaFilters">
+				 			<button className="btn grey" name="-1" value="-1" onClick={this.filterMana}>All</button>
+				 			<button className="btn grey" name="0" value="0" onClick={this.filterMana}>0</button>
+				 			<button className="btn grey" name="1" value="1" onClick={this.filterMana}>1</button>
+						 	<button className="btn grey" name="2" value="2" onClick={this.filterMana}>2</button>
+						 	<button className="btn grey" name="3" value="3" onClick={this.filterMana}>3</button>
+						 	<button className="btn grey" name="4" value="4" onClick={this.filterMana}>4</button>
+						 	<button className="btn grey" name="5" value="5" onClick={this.filterMana}>5</button>
+						 	<button className="btn grey" name="6" value="6" onClick={this.filterMana}>6</button>
+						 	<button className="btn grey" name="7" value="7" onClick={this.filterMana}>7</button>
+						 	<button className="btn grey" name="8" value="8" onClick={this.filterMana}>8</button>
+						 	<button className="btn grey" name="9" value="9" onClick={this.filterMana}>9</button>
+						 	<button className="btn grey" name="10" value="10" onClick={this.filterMana}>10+</button>
+				 		</div>
+				 		<div className="klassFilters">
+				 			<button className="btn blue" value="-1" onClick={this.filterKlass}>Class</button>
+				 			<button className="btn blue" value="1" onClick={this.filterKlass}>Neutral</button>
+				 			<button className="btn blue" value="0" onClick={this.filterKlass} autofocus>All</button>
+				 		</div>
+				 		<div className="deckbuilderCards">
+				 			{allcards}
+				 		</div>
+				 	</div>
+				 	<div className="dCards col-md-4 col-sm-12"> 
+				 		<h2> YOUR DECK </h2>
+				 		<p>{this.state.cardQuant} of 30</p>
+				 		<div className="deckbuilderWrapperWrapper">
+					 		<div className="deckbuilderWrapper deckBuilderCardsWrapper"> 
+					 			{this._drawCards()}
+					 		</div>
+					 	</div>
+				 		<button className="btn" onClick={this._clearCards}>Clear Cards!</button>
+				 	</div>
+				</div>
 		);
+	},
+	// build deck array if this is an edit so we can load previous cards
+	buildDeckArray: function(){
+		console.log("building deck");
+		if(this.props.deck.cardstring.length == 0) return; 
+		deckCards = this.props.deck.cardstring.split(","); 
+		var newDecklistArray = [];
+		var newDeckArray = [];
+		var newQuant = 0;
+		deckCards.forEach(function(card){
+			id = parseInt(card.split("_")[0]);
+			quantity = parseInt(card.split("_")[1]);
+			newDecklistArray[id] = quantity;
+			newDeckArray.push(this.props.allCards[id-1]);
+			newQuant = newQuant + quantity;
+		}.bind(this));
+		newDeckArray.sort(function(cardA, cardB){ 
+			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
+			else{ 
+				if(cardA.name < cardB.name){ return -1; }
+				if(cardB.name < cardA.name){ return 1; }
+			else{ return 0; }
+			}
+		});
+		this.setState({
+			deckArray: newDeckArray,
+			decklist: newDecklistArray,
+			cardQuant: newQuant
+		});
 	},
 	filterMana: function(btn){
 		var mana = parseInt(btn.target.value); 
@@ -94,7 +128,6 @@ var DeckBuild = React.createClass({
 		});
 	},
 	filterKlass: function(btn){
-		document.getElementsByName("")
 		var klassID = parseInt(btn.target.value);
 		var newFilterParams = this.state.filterParams.slice();
 		newFilterParams[2] = klassID;
@@ -127,8 +160,8 @@ var DeckBuild = React.createClass({
 				// check if card mana matches search
 				(((mana != -1 && mana != 10) && card.mana==mana) || (mana == 10 && card.mana > 9) || mana == -1) &&
 				// check if card class matches search
-				((klass==-1 && card.klass_id == deck.klass_id) || (klass==1 && card.klass_id == null) || 
-					(klass==0 && (card.klass_id == deck.klass_id || card.klass_id == null)))
+				((klass==-1 && card.klass_id == this.props.klass) || (klass==1 && card.klass_id == null) || 
+					(klass==0 && (card.klass_id == this.props.klass || card.klass_id == null)))
 			)
 		}.bind(this));
 	},
@@ -141,22 +174,16 @@ var DeckBuild = React.createClass({
 			})
 		);
 	},
+
 	_drawCards:function(){
 		var _cs = this._makeCardstring();
 		if(_cs.length === 0) { return; }
-		dc = _cs.split(",");
 		return(this.state.deckArray.map(function(card){
 			if(card == undefined){ return; }
 			printCard = false;
-			for(i = 0; i<dc.length; i++){
-				c = dc[i]; 
-				id = parseInt(c.split("_")[0]);
-				quantity = parseInt(c.split("_")[1]);
-				if(card.id == id){ 
-					printCard = true;
-					quant = quantity;
-					break;
-				}
+			if(this.state.decklist[card.id]!=undefined){ 
+				quant = this.state.decklist[card.id];
+				printCard = true;
 			}
 			if(printCard == true){ return(<DeckCard card={card} qty={quant} click={this._removeCard(card.id)} />); }
 		}.bind(this)));
@@ -254,5 +281,4 @@ var DeckBuild = React.createClass({
 			}
 		}.bind(this);
 	}
-
 });

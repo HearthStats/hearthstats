@@ -5,7 +5,7 @@ var Card = React.createClass({
 			cn = "si-7-agent";
 		}
 		return (
-			<img src={"/assets/cards/" + cn +".png"} data-original="/assets/blind_draft/card-back.png" className="deckbuilder-img lazy-load" onClick={this.handleClick}/>
+			<img src={"/assets/cards/" + cn +".png"} className="deckbuilder-img lazy-load" onClick={this.handleClick}/>
 		);
 	},
 	handleClick: function(event) {
