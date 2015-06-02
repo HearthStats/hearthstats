@@ -3,8 +3,10 @@
   :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss'
 = provide(:title, t('decks.new_splash.title'))
 = provide(:section, t('.section'))
-.classes-cont
-  - @klasses.each do |klass|
-    .splash-class-container
-      = link_to new_deck_path(klass: klass.id) do
-        = image_tag "/assets/Icons/Classes/full/#{klass.name}_full.png", width: '150px', class: 'splash-class'
+/ .classes-cont
+/   - @klasses.each do |klass|
+/     .splash-class-container
+/       = link_to new_deck_path(klass: klass.id) do
+/         = image_tag "/assets/Icons/Classes/full/#{klass.name}_full.png", width: '150px', class: 'splash-class'
+
+= react_component 'DeckBuild', {cards: @cards, deck: @deck, type: "new", allCards: @all_cards}

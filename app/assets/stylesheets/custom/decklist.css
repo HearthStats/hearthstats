@@ -106,16 +106,26 @@
 .inline-graph{
   display: inline-block;
 }  
-
+.deckbuilderWrapperWrapper{
+  position: relative;
+}
+.deckBuilderCardStyle{
+  ddisplay:none; 
+  position:absolute; 
+  z-index:2000;
+}
 .deckbuilder-img:hover{
-  height: 260px;
-  margin: 0px;
+  transform:scale(1.2);
+  -ms-transform:scale(1.2); /* IE 9 */
+  -moz-transform:scale(1.2); /* Firefox */
+  -webkit-transform:scale(1.2); /* Safari and Chrome */
+  -o-transform:scale(1.2); /* Opera */
 }
 .deckbuilder-img{
   cursor:pointer;
 }
 .deckbuilderCards{ 
-  height: 800px;
+  height: 500px;
   overflow: scroll;
 }
 .deckbuilderFilter{
@@ -304,7 +314,7 @@ table.decklist td.winrate {
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.20+ */
   background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */

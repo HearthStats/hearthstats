@@ -7,7 +7,7 @@ var DeckCard = React.createClass({
 		else if(this.props.card.rarity_id == 5){ wrapperClass = "legendary"; }
 		cardClass = cardClass + wrapperClass;
 		return (
-			<div onClick={this.handleClick} className={cardClass}>
+			<div onClick={this.handleClick} alt={cn} className={cardClass}>
 				<div className="mana">
 					{this.props.card.mana}
 				</div>
