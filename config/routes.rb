@@ -282,6 +282,7 @@ Hearthstats::Application.routes.draw do
           post "after_date"
           post "mult_destroy"
           post "create_version"
+          post "edit"
           post "delete"
         end
       end
