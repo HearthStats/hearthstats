@@ -27,6 +27,7 @@ class Deck < ActiveRecord::Base
   has_many :deck_versions, dependent: :destroy
   has_many :constructeds
   has_many :tourn_decks
+  has_one  :arena_runs
 
   ### CALLBACKS:
 
