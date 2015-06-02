@@ -83,7 +83,6 @@ class Api::V3::DecksController < ApplicationController
     end
 
     render json: api_response
-
   end
 
   def create_version
