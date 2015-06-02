@@ -203,6 +203,7 @@ class DecksController < ApplicationController
     @all_cards = Card.all
     @cards = Card.where(collectible: true)
     @klasses = Klass.all
+    @archtype = UniqueDeckType.where(verified: true)
     @deck = Deck.new(params[:deck])
     respond_to do |format|
       format.html
@@ -212,9 +213,9 @@ class DecksController < ApplicationController
   def new
     @all_cards = Card.all
     @cards = Card.where(collectible: true)
-    if params[:klass].nil?
-      redirect_to new_splash_decks_path, alert: "Please select a class" and return
-    end
+    # if params[:klass].nil?
+    #   redirect_to new_splash_decks_path, alert: "Please select a class" and return
+    # end
     gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
     @deck.klass_id = params[:klass]

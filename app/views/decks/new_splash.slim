@@ -9,4 +9,4 @@
 /       = link_to new_deck_path(klass: klass.id) do
 /         = image_tag "/assets/Icons/Classes/full/#{klass.name}_full.png", width: '150px', class: 'splash-class'
 
-= react_component 'DeckBuild', {cards: @cards, deck: @deck, type: "new", allCards: @all_cards}
+= react_component 'DeckBuild', {cards: @cards, deck: @deck, type: "new", allCards: @all_cards, archtypes: @archtypes}

@@ -220,7 +220,7 @@ Hearthstats::Application.routes.draw do
       get "users/premium"
       post "decks/create"
     end
-
+    
     namespace :v2 do
       devise_for :users
       resources :cards
@@ -243,6 +243,7 @@ Hearthstats::Application.routes.draw do
       get "decks/find"
       post "decks/activate"
       post "decks/create"
+      post "decks/new"
       post "decks/slots"
       post "decks/delete"
 
