@@ -258,7 +258,7 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
-    @deck.type_id = 1
+    @deck.deck_type_id = 1
     if current_user.guest?
       @deck.is_public = false
     end
