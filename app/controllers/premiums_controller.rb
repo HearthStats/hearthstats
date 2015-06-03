@@ -96,6 +96,11 @@ class PremiumsController < ApplicationController
     end
   end
 
+  def stripe_cancel
+    event_json = JSON.parse(request.body.read)
+    p event_json
+    render json: {status: 200, data: event_json}
+  end
   def cancel
     begin
       customer = Stripe::Customer.retrieve(current_user.customer_id)
@@ -103,9 +108,6 @@ class PremiumsController < ApplicationController
         subscription = customer.subscriptions.data[0]
         if subscription.status == "active"
           customer.cancel_subscription
-          current_user.subscription_id = nil
-          current_user.remove_role :early_sub
-          current_user.save!
         end
       end
     rescue Stripe::CardError => e
