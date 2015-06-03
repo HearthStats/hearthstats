@@ -14,6 +14,7 @@ Hearthstats::Application.routes.draw do
   resources :premiums do
     post 'cancel', on: :collection
     post 'stripe_cancel', on: :collection
+    post 'stripe_delete', on: :collection
     get 'report', on: :collection
     get 'gen_report', on: :collection
     get 'stats', on: :collection
