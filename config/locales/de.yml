@@ -484,6 +484,10 @@ de:
     help: Hilfe
   activerecord:
     attributes:
+      arena_run:
+        Dust Earned: Staub gesammelt
+        gold: Gold
+        Gold Earned: Gold gesammelt
       deck:
         Klasse: 
         Nombre: 
