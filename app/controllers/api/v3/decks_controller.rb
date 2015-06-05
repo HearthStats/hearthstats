@@ -85,6 +85,27 @@ class Api::V3::DecksController < ApplicationController
     render json: api_response
   end
 
+  def update
+    deck = Deck.find(@req[:deck_id])
+    if deck.user_id == current_user.id
+      cardstring = Deck.hdt_parse(@req[:cards])
+      deck.cardstring = cardstring
+      deck.name = @req[:name]
+      deck.tag_list = @req[:tags]
+      deck.notes = @req[:notes]
+      if deck.save
+        deck.deck_versions.last.update_attribute(:cardstring, cardstring) if deck.deck_versions.last
+        api_response =  { status: 200, data: deck }
+      else
+        api_response = { status: 400 }
+      end
+    else
+      api_response = { status: 400, data: "Deck does not belong to user" }
+    end
+
+    render json: api_response
+  end
+
   def create_version
     begin
       deck = Deck.find(@req[:deck_id])
