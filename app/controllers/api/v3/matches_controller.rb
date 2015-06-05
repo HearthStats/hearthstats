@@ -237,7 +237,7 @@ class Api::V3::MatchesController < ApplicationController
     mode     = Mode::LIST.invert[_params[:mode]]
     oppclass = Klass::LIST.invert[_params[:oppclass]]
     result   = Match::RESULTS_LIST.invert[_params[:result]]
-    coin     = _params[:coin] == "false"
+    coin     = _params[:coin] == "true"
 
     # Create new match
     match             = Match.new
