@@ -11,22 +11,24 @@ var CardSelect = React.createClass({
 			}
 		});
 		return {
-			cards: this.filterCards(this.props.cards,this.props.deck, ["", -1, 0]),
+			cards: this.filterCards(this.props.cards,this.props.deck, ["", -1, -1]),
 			deck: this.props.deck, 
 			cardQuant: 0,
 			decklist: [],
 			deckArray: [],
-
+			selectedMana: -1,
+			selectedCardType: -1,
+			textImport: false,
 			// filterParams: array
 			// [0]: Search
 			// [1]: Mana
 			// 		-1: All
 			//		10: 10+ 
 			// [2]: Class/Neutral/All
-			//		 0: All
-			//		-1: Class
+			//		-1: All
+			//		 0: Class
 			//		 1: Neutral
-			filterParams: ["", -1, 0]
+			filterParams: ["", -1, -1]
 		}
 	},
 	// check if this is a create new or edit (so we can load previous cards)
@@ -40,60 +42,100 @@ var CardSelect = React.createClass({
 	render: function(){
 		// deck classs
 		var allcards = this.state.cards.map(function(card){
+			var cName = "";
+			if((this.state.decklist[card.id]==1 && card.rarity_id == 5) || 
+					this.state.decklist[card.id]==2){
+				cName= "maxed"
+			}
 			// only show cards that are neutral/class cards
 			if(card.type_name != "Hero"){
 				return (
 					// render the card
-					<Card card={card} key={card.id} click={this._addCard(card)} />
+					<Card card={card} key={card.id} click={this._addCard(card)} cName={cName}/>
 				);
 			}
 		}.bind(this));
-		return(
-			<div id="cardSelect" className="row">
-				 	<div className="col-md-8 col-sm-12">
+		var btns = [];
+		for(var i=-1; i<11; i++){
+			bClassName = "btn grey"
+			var a = i;
+			if(a==-1){ a = "All"; }
+			if(a==10){ a = "10+"; }
+			if(this.state.selectedMana == i){ bClassName = "btn grey selected"} 
+			btns.push(<button className={bClassName} name={i} value={i} onClick={this.filterMana}>{a}</button>);
+		}
+		var cardTypes= ["All", "Class", "Neutral"]
+		var klassBtn = [];
+		for(var i=-1; i<2; i++){
+			bClassName = "btn blue"
+			if(this.state.selectedCardType == i){ bClassName += " kSelected" }
+			klassBtn.push(<button className={bClassName} name={i} value={i} onClick={this.filterKlass}>{cardTypes[i+1]}</button>);
+		}
+		if(!this.state.textImport){
+			return(
+				<div className="row">
+				 	<div className="col-sm-8 cardSelect">
 				 		<h2> Choose your cards! </h2>
-				 		<div className="deckbuilderFilter">
-				 			<input type="text" id="search" name="search" placeholder=" Search" size="50" onChange={this.filterSearch} />
+				 		<div id="filter"><div className="deckbuilderFilter filterParam">
+				 			<input type="text" id="search" name="search" placeholder=" Search" size="75" onChange={this.filterSearch} />
 				 		</div>
-				 		<div className="manaFilters">
-				 			<button className="btn grey" name="-1" value="-1" onClick={this.filterMana}>All</button>
-				 			<button className="btn grey" name="0" value="0" onClick={this.filterMana}>0</button>
-				 			<button className="btn grey" name="1" value="1" onClick={this.filterMana}>1</button>
-						 	<button className="btn grey" name="2" value="2" onClick={this.filterMana}>2</button>
-						 	<button className="btn grey" name="3" value="3" onClick={this.filterMana}>3</button>
-						 	<button className="btn grey" name="4" value="4" onClick={this.filterMana}>4</button>
-						 	<button className="btn grey" name="5" value="5" onClick={this.filterMana}>5</button>
-						 	<button className="btn grey" name="6" value="6" onClick={this.filterMana}>6</button>
-						 	<button className="btn grey" name="7" value="7" onClick={this.filterMana}>7</button>
-						 	<button className="btn grey" name="8" value="8" onClick={this.filterMana}>8</button>
-						 	<button className="btn grey" name="9" value="9" onClick={this.filterMana}>9</button>
-						 	<button className="btn grey" name="10" value="10" onClick={this.filterMana}>10+</button>
+				 		<div className="manaFilters filterParam">
+				 			{btns}
 				 		</div>
-				 		<div className="klassFilters">
-				 			<button className="btn blue" value="-1" onClick={this.filterKlass}>Class</button>
-				 			<button className="btn blue" value="1" onClick={this.filterKlass}>Neutral</button>
-				 			<button className="btn blue" value="0" onClick={this.filterKlass} autofocus>All</button>
-				 		</div>
+				 		<div className="klassFilters filterParam">
+				 			{klassBtn}
+				 		</div></div>
 				 		<div className="deckbuilderCards">
 				 			{allcards}
 				 		</div>
-				 	<button className="btn" onClick={this.handleClick}> Next </button>
+				 	<button className="btn green nextButton" onClick={this.handleClick}> Next </button>
+				 	<button className="btn grey nextButton" onClick={this.handleBack}> Back </button>
 				 	</div>
-				 	<div className="dCards col-md-4 col-sm-12"> 
-				 		<h2> YOUR DECK </h2>
-				 		<p>{this.state.cardQuant} of 30</p>
+				 	<div className="dCards col-sm-3"> 
+				 		<h2> Your Deck </h2>
 				 		<div className="deckbuilderWrapperWrapper">
-					 		<div className="deckbuilderWrapper deckBuilderCardsWrapper"> 
+					 		<div className="deckbuilderWrapper deckbuilderCardsWrapper"> 
 					 			{this._drawCards()}
 					 		</div>
 					 	</div>
-				 		<button className="btn" onClick={this._clearCards}>Clear Cards!</button>
+				 		<p>{this.state.cardQuant} of 30</p>
+				 		<button className="btn grey cardClear" onClick={this._clearCards}>Clear Cards!</button>
 				 	</div>
 				</div>
-		);
+			);
+		} else if(this.state.textImport){
+			return(
+				<div className="row">
+				 	<div className="col-sm-8">
+				 		<h2> Text Import! </h2>
+				 		<textarea rows="30" cols="70" className="notes" placeholder="Import your deck..."></textarea>
+					 	<button className="btn green nextButton" onClick={this.handleClick}> Next </button>
+					 	<button className="btn grey nextButton" onClick={this.handleBack}> Back </button>
+					</div>
+				 	<div className="dCards col-sm-3"> 
+				 		<h2> Your Deck </h2>
+				 		<div className="deckbuilderWrapperWrapper">
+					 		<div className="deckbuilderWrapper deckbuilderCardsWrapper"> 
+					 			{this._drawCards()}
+					 		</div>
+					 	</div>
+				 		<p>{this.state.cardQuant} of 30</p>
+				 		<button className="btn grey cardClear" onClick={this._clearCards}>Clear Cards!</button>
+				 	</div>
+				</div>
+			);
+		}
+	},
+	textImport: function(){
+		return function(event){this.setState({
+			textImport: !this.state.textImport
+		})
+		}.bind(this);
+	},
+	handleBack: function(){
+		this.props.submitBack();
 	},
 	handleClick: function(){
-		console.log(this._makeCardstring());
 		this.props.submitClick(this._makeCardstring());
 	},
 	// build deck array if this is an edit so we can load previous cards
@@ -129,6 +171,7 @@ var CardSelect = React.createClass({
 		var newFilterParams = this.state.filterParams.slice();
 		newFilterParams[1] = mana;
 		this.setState({
+			selectedMana: mana,
 			filterParams: newFilterParams,
 			cards: this.filterCards(this.props.cards, this.state.deck, newFilterParams)
 		});
@@ -138,6 +181,7 @@ var CardSelect = React.createClass({
 		var newFilterParams = this.state.filterParams.slice();
 		newFilterParams[2] = klassID;
 		this.setState({
+			selectedCardType: klassID,
 			filterParams: newFilterParams,
 			cards: this.filterCards(this.props.cards, this.state.deck, newFilterParams)
 		});
@@ -152,6 +196,7 @@ var CardSelect = React.createClass({
 		});
  		},
 	filterCards: function(cards, deck, filterParams){
+		this.updateButtons();
 		var rarityArray= ["Basic Free", "Common", "Rare", "Epic", "Legendary" ];
 		var search = filterParams[0]; 
 		var mana = filterParams[1];
@@ -166,10 +211,16 @@ var CardSelect = React.createClass({
 				// check if card mana matches search
 				(((mana != -1 && mana != 10) && card.mana==mana) || (mana == 10 && card.mana > 9) || mana == -1) &&
 				// check if card class matches search
-				((klass==-1 && card.klass_id == this.props.klass) || (klass==1 && card.klass_id == null) || 
-					(klass==0 && (card.klass_id == this.props.klass || card.klass_id == null)))
+				((klass==0 && card.klass_id == this.props.klass) || (klass==1 && card.klass_id == null) || 
+					(klass==-1 && (card.klass_id == this.props.klass || card.klass_id == null)))
 			)
 		}.bind(this));
+	},
+	updateButtons: function(){
+		return function(event){
+			if(this.state.selectedMana != "") {this.state.selectedMana.target.className += "selected"; }
+			if(this.state.selectedCardType != "") {this.state.selectedCardType.target.className += "selected";}
+		}.bind(this);
 	},
 	_clearCards:function(){
 		return(
@@ -220,8 +271,7 @@ var CardSelect = React.createClass({
 				if(this.props.allCards[card.id-1].rarity_id == 5){ 
 					toastr.error("You can only have one legendary!"); 
 					return; 
-				}
-				// set the deck to have 2 of the cards
+				}				// set the deck to have 2 of the cards
 				newDecklist[card.id] = 2;
 				var newDeckArray = this.state.deckArray.slice();
 				// set state to the new decklist
@@ -229,13 +279,13 @@ var CardSelect = React.createClass({
 					cardQuant: this.state.cardQuant + 1,
 					decklist: newDecklist,
 					deckArray: newDeckArray
-				})
+				});
 			}
 
 			// if deck does not already have that card
 			else if(newDecklist[card.id] == undefined){ 
 				// set the deck to have 1 of the card
-				newDecklist[card.id] = 1; 
+				newDecklist[card.id] = 1;
 				// copy the deckarray
 				newDeckArray = this.state.deckArray.slice();
 				// we only push a new card to the deckarray if there isn't already a card (cardstring takes care
@@ -255,8 +305,7 @@ var CardSelect = React.createClass({
 					decklist:newDecklist,
 					cardQuant: this.state.cardQuant + 1,
 					deckArray: newDeckArray
-				})
-				this._makeCardstring();
+				});
 			}
 			else{
 				toastr.error("Already 2 cards!");
@@ -272,7 +321,7 @@ var CardSelect = React.createClass({
 				this.setState({
 					cardQuant: this.state.cardQuant -1,
 					decklist: newDecklist
-				})
+				});
 			}
 			else if(newDecklist[card_id] == 2){ 
 				newDecklist[card_id] = 1; 
@@ -280,7 +329,7 @@ var CardSelect = React.createClass({
 				this.setState({
 					cardQuant: this.state.cardQuant - 1,
 					decklist: newDecklist
-				})
+				});
 			}
 			else{ 
 				toastr.error("No more cards!");

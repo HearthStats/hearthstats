@@ -1,0 +1,95 @@
+.splash-class{
+	width: 200px;
+	cursor: pointer;
+}
+.klassSelect{
+	margin: auto;
+}
+.glowingKlass{
+	-moz-box-shadow: 0 0 5px #fff;
+	-webkit-box-shadow: 0 0 5px #fff;
+	box-shadow: 0px 0px 5px #fff;
+}
+.selected{
+	background-color: #d1d1d1 !important;
+}
+.kSelected{
+	background-color: #216ae1 !important;
+}
+.deckbuilderFilter{ 
+	margin: 0px !important;
+	padding: 0;
+}
+.filterParam{
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+.nextButton{
+	margin-top: 5px;
+	float: right;
+}
+.filterParam{
+	min-width: 540px;
+}
+#filter{
+	min-width: 545px;
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom: 10px;
+	padding: 5px;
+	border-color: #d1d1d1;
+}
+.deckbuilderCards{
+	min-width: 545px;
+}
+.card .name{
+	-webkit-user-select: none; /* Chrome/Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
+}
+.vButton{
+	margin-top: 5px;
+	width: 50%;
+}
+.submitButton{
+	width: 100%;
+	margin: 0px;
+	margin-top: 5px;
+}
+.deckDetails{
+	width: 800px;
+	margin: auto;
+}
+.notes{
+	margin-left: 15px;
+}
+.centered{
+	text-align: center;
+}
+.deckbuilderCardsWrapper{
+	width: 300px;
+	height: 600px;
+	overflow: auto;
+}
+.textImport{
+	margin-top: 5px;
+	float: left;
+}
+.maxed{
+	-webkit-filter:brightness(50%);
+    -moz-filter:brightness(50%);
+    filter: url(#brightness); /* required for FF */
+    filter:brightness(50%);
+    cursor: default !important;
+}
+.maxed:hover{
+	  transform:scale(1) !important;
+  -ms-transform:scale(1) !important; /* IE 9 */
+  -moz-transform:scale(1) !important; /* Firefox */
+  -webkit-transform:scale(1) !important; /* Safari and Chrome */
+  -o-transform:scale(1) !important; /* Opera */
+}

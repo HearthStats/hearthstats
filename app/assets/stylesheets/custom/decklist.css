@@ -127,6 +127,7 @@
 .deckbuilderCards{ 
   height: 500px;
   overflow: scroll;
+  overflow-x: hidden;
 }
 .deckbuilderFilter{
   margin: 5px;
