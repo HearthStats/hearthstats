@@ -110,7 +110,7 @@ class Api::V3::MatchesController < ApplicationController
         if match.mode_id == 3
           MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
         elsif match.mode_id == 1
-          submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["class"]])
+          submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["@class"]])
         end
         response << { status: 200, data: match }
       else
