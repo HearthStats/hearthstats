@@ -9,13 +9,20 @@ var DeckBuild = React.createClass({
 			moveOn: false 
 		};
 	},
+	componentWillMount: function(){
+		if(this.props.type == "edit"){
+			this.setState({
+				chosenKlass: this.props.deck.klass_id
+			});
+		}
+	},
   render: function(){
   	// if class is already selected, move onto choosing cards 
   	// 		ie: already chosen class or deck is already created and just editing
   	if(this.state.klassSelected && !this.state.moveOn){ 
   		return(
 				<div>
-					<CardSelect cardstring={this.state.cardstring} allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
+					<CardSelect submitBack={this.goBackKlass} cardstring={this.state.cardstring} allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
 				</div>
   		);
   	}
@@ -23,34 +30,40 @@ var DeckBuild = React.createClass({
 			var klassArray = ["Druid,1","Hunter,2","Mage,3","Paladin,4","Priest,5","Rogue,6","Shaman,7","Warlock,8","Warrior,9"]
 			var x = klassArray.map(function(klass){
 				klass_ident = klass.split(",");
-				klass_name = klass_ident[0];
 				klass_id = klass_ident[1];
+				klass_name = klass_ident[0];
 				return(
-					<img src={"/assets/Icons/Classes/full/" + klass_name + "_full.png"} className={"splash-class"} onClick={this.handleKlassSelect(klass_id)} />
+					<img src={"/assets/Icons/Classes/full/" + klass_name + "_full.png"} id={klass_id} className={"splash-class"} onClick={this.handleKlassSelect(klass_id)} />
 				);
 			}.bind(this));
 			return(
 				<div>
-					{x}
-					<button className="btn" onClick={this.handleKlassSubmit}>Next</button>
+					<div className="row">
+						<div className="col-md-3"></div>
+						<div className="col-md-6 klassSelect">
+							{x}
+						</div>
+						<div className="col-md-3"></div>
+					</div>
 				</div>
 			);
 		} else{ 
 			return(
-				<DetailSelect backButton={this.handleCardResubmit} archtype={this.props.archtypes} allCards={this.props.allCards} cardstring={this.state.cardstring} /> );
+				<DetailSelect type={this.props.type} currentVersion={this.props.currentVersion} deck={this.props.deck} klass={this.state.chosenKlass} backButton={this.handleCardResubmit} archtype={this.props.archtypes} allCards={this.props.allCards} cardstring={this.state.cardstring} /> );
 		}
+	},
+	goBackKlass: function(){
+		this.setState({
+			klassSelected: false
+		});
 	},
 	handleKlassSelect: function(klass_id){
 		return function(event){
 			this.setState({
-				chosenKlass: klass_id
+				chosenKlass: klass_id,
+				klassSelected: true
 			})
 		}.bind(this);
-	},
-	handleKlassSubmit: function(){
-		this.setState({
-				klassSelected: true
-		});
 	},
 	handleCardsSelect: function(new_cardstring){
 		this.setState({

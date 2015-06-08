@@ -203,7 +203,7 @@ class DecksController < ApplicationController
     @all_cards = Card.all
     @cards = Card.where(collectible: true)
     @klasses = Klass.all
-    @archtype = UniqueDeckType.where(verified: true)
+    @archtypes = UniqueDeckType.where(verified: true)
     @deck = Deck.new(params[:deck])
     respond_to do |format|
       format.html
@@ -218,6 +218,7 @@ class DecksController < ApplicationController
     # end
     gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
+    @archtypes = UniqueDeckType.where(verified: true)
     @deck.klass_id = params[:klass]
     @deck.is_public = true
     respond_to do |format|
@@ -238,6 +239,8 @@ class DecksController < ApplicationController
     @all_cards = Card.all
     @cards = Card.where(collectible: true)
     @deck = Deck.find(params[:id])
+    @archtypes = UniqueDeckType.where(verified: true)
+    @currentVersion = @deck.current_version
     gon.deck = @deck
     gon.cards = Card.all
     canedit(@deck)
@@ -297,6 +300,7 @@ class DecksController < ApplicationController
           unique_deck.save
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
+        format.json { render json: @deck }
       else
         format.html { render action: "new" }
       end
@@ -326,6 +330,7 @@ class DecksController < ApplicationController
           version_deck(@deck, version_num)
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
+        format.json { render json: @deck }
       else
         format.html { render action: "edit" }
       end

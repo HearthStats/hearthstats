@@ -1,54 +1,178 @@
 var DetailSelect = React.createClass({
 	getInitialState: function(){
 		return{
+			klass: this.props.klass,
 			archtypes: this.props.archtype,
-			archtypeNotHere: true,
+			archtypeNotHere: false,
 			decklist: [],
-			deckArray: []
+			deckArray: [],
+			version: ""
 		};
 	},
 	componentWillMount: function(){
 		this.buildDeckArray();
+		if(this.props.type == "edit"){ 
+			this.setState({
+				klass: this.props.deck.klass_id
+			})
+		}
 	},
 	render: function(){
+		if(this.props.type=="edit"){ 
+			var action = "Update Deck"
+		} 
+		else if(this.props.type=="new"){
+			var action= "Create Deck"
+		}
 		return(
-			<div className="row">
-				<div className="col-md-6">
-					<h2>Deck Details</h2>
-					<form id="deckForm" ref="form" onSubmit={this.handleSubmit}>
-						<p><input type="hidden" name="cardstring" type="hidden" value={this.props.cardstring} /></p>
-						<p><input type="hidden" name="deck_klass_id" type="hidden" value={this.props.klass} /></p>
-						<p><label for="deckName">Name</label>
-							 <input type="text" id="deckName" name="deckName" size="30" /></p>
-						<p><label for="deckArchtype">Archtype</label>
-							 <input type="text" name="deckArchtype" id="deckArchtype" size="30" /></p>
-						<p><label for="deckNotes">Notes</label><textarea rows="10" cols="70" name="deckNotes" id="deckNotes"></textarea></p>
-						<p><button type="submit">Submit Deck</button></p>
-					</form>
-				</div>
-				<div className="col-md-6">
-					<div className="deckbuilderWrapperWrapper">
-					 		<div className="deckbuilderWrapper deckBuilderCardsWrapper"> 
-					 			{this._drawCards()}
-					 		</div>
-					 	</div>
+			<div>
+				<div className="row">
+					<h2 className="centered">Deck Details</h2>
+					<div className="row deckDetails">
+						<div className="col-md-8">
+							<form id="deckForm" ref="form" onSubmit={this.handleSubmit}>
+								<input type="hidden" name="deck[cardstring]" type="hidden" value={this.props.cardstring} />
+								<input type="hidden" name="deck[klass_id]" type="hidden" value={this.state.klass} />
+								{this.deckDetailLoad()}
+								<input type="checkbox" name="deck[is_public]" value="false" type="hidden" />
+								<input type="checkbox" name="deck[is_public]" value="true" checked>Make this deck public</input>
+								<div className="submitButtons">
+									<input className = "btn submitButton green" type="submit" value={action} />
+									{this.versionControl()}
+								</div>
+							</form>
+							<button className="btn nextButton" onClick={this.props.backButton}>Back</button>
+						</div>
+						<div className="col-md-4">
+							<div className="deckbuilderWrapperWrapper">
+							 		<div className="deckbuilderWrapper deckbuilderCardsWrapper"> 
+							 			{this._drawCards()}
+							 		</div>
+							 	</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
 		);
 	},
-	handleSubmit: function(event){
-		event.preventDefault();
-		var formData = $( this.refs.form.getDOMNode() ).serialize();
-		$.ajax({
-      data: formData,
-      url: '/api/v2/decks/new',
-      type: "POST",
-      dataType: "json",
-      success: function ( data ) {
-        console.log(data);
-      }
-    });
+	deckDetailLoad: function(){
+		if(this.props.type == "edit"){
+			return(
+				<div>
+					<div className="row">
+						<div className="col-md-6">
+							<div><label for="deckName">Name:</label></div>
+							<input type="text" id="deckName" ref="deckname" name="deck[name]" defaultValue={this.props.deck.name} size="30"/>
+						</div>
+						{this.displayArchtypes()}
+					</div>
+					<div className="row">
+						<div><label className="notes">Notes:</label></div>
+						<textarea rows="10" cols="70" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck...">{this.props.deck.notes}</textarea><br/>
+					</div>
+				</div>
+			);
+		} else{
+			return(
+				<div>
+					<div className="row">
+						<div className="col-md-6">
+							<div><label for="deckName">Name:</label></div>
+							<input type="text" id="deckName" ref="deckname" name="deck[name]" placeholder="Your deck name..." size="30"/>
+						</div>
+						{this.displayArchtypes()}
+					</div>
+					<div className="row">
+						<div><label className="notes">Notes:</label></div>
+						<textarea rows="10" cols="70" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
+					</div>
+				</div>
+			);
+		}
+	},
+	versionControl: function(){
+		if(this.props.type == "edit"){
+			var current_version = parseFloat(this.props.currentVersion.version);
+			return(
+				<div>
+					<input className="btn vButton yellow" onClick={this.setVersion("minor_version")} name="minor_version" value={"Save as v" + (current_version+0.1).toFixed(1)} type="submit" />
+					<input className="btn vButton green" onClick={this.setVersion("major_version")} name="major_version" value={"Save as v"+ (Math.floor(current_version)+1.0) } type="submit"/>
+				</div>
+			)
+		}
+	},
+	setVersion: function(version_type){
+		return function(event){
+			this.setState({
+				version: version_type
+			});
+		}.bind(this);
+	},
+	displayArchtypes: function(){
+		if(!this.state.archtypeNotHere){
+			var archtypes = this.props.archtype.map(function(archtype){
+				if(archtype.klass_id == this.props.klass){
+					return(
+						<option value={archtype.id} name="unique_deck_type_id">{archtype.name}</option>
+					);
+				}
+			}.bind(this));
+			return(
+				<div>
+					<div><label>Archtype:</label></div>
+					<select ref="archtypes">
+						<option value="" name="unique_deck_type_id"> </option>
+						{archtypes}
+					</select>
+					<button onClick={this.setNoArchtype}>Archtype Not Here</button>
+				</div>
+			);
+		}
+		else{
+			return(
+				<div>
+					<div><label>Archtype:</label></div>
+					<input type="text" ref="archtypes" name="new_archtype" size="30" placeholder="Your deck's archtype...">Archtype</input>
+				</div>
+			);
+		}
+	},
+	setNoArchtype: function(){
+		this.setState({
+			archtypeNotHere: true
+		});
+	},
+	handleSubmit: function(version){
+		var formData = $(this.refs.form.getDOMNode()).serialize();
+		if(this.props.type=="new"){
+			event.preventDefault();
+			$.ajax({
+	      data: formData,
+	      url: '/decks',
+	      type: "POST",
+	      dataType: "json",
+	      success: function ( data ) {
+	      	window.location.href = data.slug
+	      }
+	    })
+		} else{
+			event.preventDefault();
+			if(this.state.version != ""){ 
+				formData += "&";
+				formData += this.state.version;
+				formData += "= "
+			}
+			$.ajax({
+	      data: formData,
+	      url: '/decks/'+this.props.deck.id,
+	      type: "PUT",
+	      dataType: "json",
+	      success: function ( data ) {
+	      	window.location.href = '../' + data.slug
+	      }
+	    })			
+		}
 	},
 	buildDeckArray: function(){
 		if(this.props.cardstring.length == 0) return; 
