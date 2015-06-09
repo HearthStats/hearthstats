@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.18'
 gem 'rake'
+gem 'puma'
+gem 'foreman'
 
 group :development do
   gem 'better_errors', '>= 0.3.2'
