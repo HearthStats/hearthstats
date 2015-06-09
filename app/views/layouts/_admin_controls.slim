@@ -16,4 +16,6 @@
       span.info-block
         b SUB_ID:
         = current_user.subscription_id
+      span.info-block
+        = ENV['PUSHER_APP_ID']
     p = link_to "Toggle SUB Mode", admin_toggle_sub_path, method: :post
