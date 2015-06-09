@@ -71,6 +71,9 @@ var CardSelect = React.createClass({
 			if(this.state.selectedCardType == i){ bClassName += " kSelected" }
 			klassBtn.push(<button className={bClassName} name={i} value={i} onClick={this.filterKlass}>{cardTypes[i+1]}</button>);
 		}
+		var navBtns = [];
+		navBtns.push(<button className="btn green nextButton" onClick={this.handleClick}> Next </button>);
+		if(this.props.type=="new"){navBtns.push(<button className="btn grey nextButton" onClick={this.handleBack}> Back </button>);}
 		if(!this.state.textImport){
 			return(
 				<div className="row">
@@ -88,8 +91,7 @@ var CardSelect = React.createClass({
 				 		<div className="deckbuilderCards">
 				 			{allcards}
 				 		</div>
-				 	<button className="btn green nextButton" onClick={this.handleClick}> Next </button>
-				 	<button className="btn grey nextButton" onClick={this.handleBack}> Back </button>
+				  	{navBtns}
 				 	</div>
 				 	<div className="dCards col-sm-3"> 
 				 		<h2> Your Deck </h2>

@@ -35,7 +35,7 @@ var DetailSelect = React.createClass({
 								<input type="hidden" name="deck[klass_id]" type="hidden" value={this.state.klass} />
 								{this.deckDetailLoad()}
 								<input type="checkbox" name="deck[is_public]" value="false" type="hidden" />
-								<input type="checkbox" name="deck[is_public]" value="true" checked>Make this deck public</input>
+								<input type="checkbox" name="deck[is_public]" value="true">Make this deck public</input>
 								<div className="submitButtons">
 									<input className = "btn submitButton green" type="submit" value={action} />
 									{this.versionControl()}
