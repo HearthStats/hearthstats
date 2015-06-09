@@ -17,7 +17,7 @@ link href='//fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' 
           .turn-details.row id="#{i}"
             span.mana.col-md-4
               |Mana Available:&nbsp;
-              = ((i.to_f+1)/2).ceil
+              = [((i.to_f + 1) / 2).ceil, 10].min
             span.turn-number.col-md-4
               | Turn&nbsp;
               = i + 1
