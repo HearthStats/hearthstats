@@ -533,8 +533,8 @@ en:
         feat_6: Tracks number of rounds played and match duration
         feat_7: Add notes to your matches directly from the uploader
       help_and_support: Help and Support
-      known_issues: Known issues
-      project_source_on_github: Project source on Github
+      known_issues: known issues
+      project_source_on_github: project source on Github
     changelog:
       title: Changelog
       all_time_in_utc: All time in UTC

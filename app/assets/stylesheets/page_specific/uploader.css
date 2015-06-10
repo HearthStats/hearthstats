@@ -1,0 +1,19 @@
+.centered{
+	text-align: center;
+	margin: auto;
+}
+.sepLine{
+	margin: auto;
+	width: 50%;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.descripText{
+	padding: 20px;
+}
+.upTitle{
+	margin-top: 30px;
+}
+h4{
+	font-weight: bold;
+}

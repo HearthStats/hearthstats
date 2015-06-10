@@ -2,35 +2,52 @@
   :description => 'Official Uploader',
   :keywords => 'uploader, hearthstats, hearthstone, match, tracking, win, loss'
 - provide(:title, t('.title'))
-p
-  = t('.header_text')
-
-p
-  a href="#{@urls['windows']}" target="_blank" class="btn btn-large blue"
-    | #{t('.download_for')} Windows
-  |&nbsp;
-  a href="#{@urls['osx']}" target="_blank" class="btn btn-large green"
-    | #{t('.download_for')} OSX
-div.row
-  div.col-md-6
-    h3 #{t('.instructions')}
-    div
+.row
+  h1.upTitle.centered Track your Stats with our Desktop Companion App
+  hr.sepLine
+  .row
+    .col-sm-3.col-xs-2
+    .col-sm-6.centered.descripText.col-xs-8
+      p.centered
+        = t('.header_text')
+    .col-sm-3.col-xs-2
+  br
+  p.centered
+    a href="#{@urls['windows']}" target="_blank" class="btn btn-large blue" title="Scroll down for instructions"
+      | #{t('.download_for')} Windows
+    |&nbsp;
+    a href="#{@urls['osx']}" target="_blank" class="btn btn-large green" title="Scroll down for instructions"
+      | #{t('.download_for')} OSX
+br
+br
+br
+.row
+  .col-sm-4
+    h3.upTitle #{t('.instructions')}
+    hr.sepLine
+    div.centered
       b #{t('.please_have_installed')} <a href="http://java.com/en/download/manual.jsp">#{t('.download_java_here')}.</a>
       p Note that Java will <b>NOT</b> affect your Google Chrome.
-    b OSx
+    h4 Windows
+    ol
+      li #{t('.instructions_win.inst_win_1')}
+      li #{t('.instructions_win.inst_win_2')}
+      li #{t('.instructions_win.inst_win_3')}
+      li #{t('.instructions_win.inst_win_5')}
+    h4 OSX
     ol
       li #{t('.instructions_osx.inst_osx_1')}
       li #{t('.instructions_osx.inst_osx_2')}
       li #{t('.instructions_osx.inst_osx_3')}
       li #{t('.instructions_osx.inst_osx_4').html_safe}
       li #{t('.instructions_osx.inst_osx_6')}
-    b Windows
-    ol
-      li #{t('.instructions_win.inst_win_1')}
-      li #{t('.instructions_win.inst_win_2')}
-      li #{t('.instructions_win.inst_win_3')}
-      li #{t('.instructions_win.inst_win_5')}
-    h3 #{t('.features_title')}
+  .col-sm-4
+    h3.upTitle #{t('.tutorial_video')}
+    hr.sepLine
+    iframe width="100%" height="315" src="//www.youtube.com/embed/hog8dA9Up9o" frameborder="0" allowfullscreen
+  .col-sm-4
+    h3.upTitle #{t('.features_title')}
+    hr.sepLine
     ul
       li #{t('.features.feat_1')}
       li #{t('.features.feat_2')}
@@ -39,13 +56,10 @@ div.row
       li #{t('.features.feat_5')}
       li #{t('.features.feat_6')}
       li #{t('.features.feat_7')}
-  .col-md-6
-    h3 #{t('.tutorial_video')}
-    iframe width="100%" height="315" src="//www.youtube.com/embed/Q-alnKZ3pYY" frameborder="0" allowfullscreen
-
+    
+br
+br
+br
 h3= t('.help_and_support')
-ul
-  li
-    a[href="https://github.com/HearthStats/HearthStats.net-Uploader/issues"]= t('.known_issues')
-  li
-    a[href="https://github.com/HearthStats/HearthStats.net-Uploader"]= t('.project_source_on_github')
+hr.sepLine
+p.centered Check out our <a href="https://github.com/HearthStats/HearthStats.net-Uploader"> #{t('.project_source_on_github')}</a> as well as the <a href="https://github.com/HearthStats/HearthStats.net-Uploader/issues"> #{t('.known_issues')}</a>

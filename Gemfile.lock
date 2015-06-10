@@ -124,10 +124,7 @@ GEM
     commontator (4.10.5)
       jquery-rails
       rails (>= 3.1)
-<<<<<<< HEAD
     cookiejar (0.3.2)
-=======
->>>>>>> staging
     crass (1.0.1)
     curb (0.8.6)
     daemons (1.1.9)
@@ -281,10 +278,7 @@ GEM
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-<<<<<<< HEAD
     http_parser.rb (0.6.0)
-=======
->>>>>>> staging
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -350,13 +344,6 @@ GEM
     nokogumbo (1.2.0)
       nokogiri
     ntlm-http (0.1.1)
-<<<<<<< HEAD
-=======
-    opinio (0.6)
-      jquery-rails
-      kaminari
-      rails (~> 3)
->>>>>>> staging
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
@@ -572,10 +559,6 @@ DEPENDENCIES
   meta_request
   mysql2
   nokogiri
-<<<<<<< HEAD
-=======
-  opinio
->>>>>>> staging
   paperclip (~> 4.2)
   phashion
   pry
