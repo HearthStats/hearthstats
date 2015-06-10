@@ -72,6 +72,7 @@ namespace :cron do
     Rails.cache.delete('archetype_pop')
     arche = UniqueDeckType.get_type_popularity(2)
     Rails.cache.write('archetype_pop', arche)
+    ActionController::Base.new.expire_fragment('top_decks')
   end
 
 end
