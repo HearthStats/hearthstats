@@ -86,10 +86,10 @@ user-select: none;
 	float: left;
 }
 .maxed{
-	-webkit-filter:brightness(50%);
-    -moz-filter:brightness(50%);
+	-webkit-filter:brightness(60%);
+    -moz-filter:brightness(60%);
     filter: url(#brightness); /* required for FF */
-    filter:brightness(50%);
+    filter:brightness(60%);
     cursor: default !important;
 }
 .maxed:hover{

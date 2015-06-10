@@ -25,10 +25,10 @@ var DeckCard = React.createClass({
 		var deckImageStyle = {
 			height: '300px',
 			left: window.event.pageX + 40 + 'px',
-			top: (window.event.pageY-window.scrollY) + 'px',
+			top: (window.event.pageY-window.scrollY) - 100 + 'px',
 			position: 'fixed',
 			zIndex: '2000'};
-		if(window.event.pageY + 300 > window.scrollY + window.innerHeight){
+		if(window.event.pageY + 200 > window.scrollY + window.innerHeight){
 			deckImageStyle = {
 				height: '300px',
 				left: window.event.pageX + 40 + 'px',
