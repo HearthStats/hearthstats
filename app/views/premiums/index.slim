@@ -126,7 +126,7 @@
                   a.btn.yellow-crusta href="#"
                     |Coming Soon...
 
-- else
+- elsif current_user.subscription_id == 1
   h3 Thank you for being an early supporter!
   .row
     .col-md-6
@@ -134,9 +134,18 @@
         small Feel free to email <b>jeff@hearthstats.net</b> for ANY questions!
         div
           img src="http://img1.wikia.nocookie.net/__cb20130821093610/the-house-of-anubis/images/2/25/ThankYou.gif"
+    .col-md-6l
+      .center
+        p = link_to 'Cancel Subscription', cancel_premiums_path, class: "btn red", method: :post
+- elsif current_user.subscription_id == 2
+  h3 Sorry to see you go!
+  .row
     .col-md-6
-
-  .center
-    p 
-      b PLEASE NOTE: Cancelling your subscription will end right when you click cancel, it will not extend to the end of the month.
-    p = link_to 'Cancel Subscription', cancel_premiums_path, class: "btn red", method: :post
+      .center
+        small Feel free to email <b>jeff@hearthstats.net</b> for ANY questions!
+        div
+          img src="http://img1.wikia.nocookie.net/__cb20130821093610/the-house-of-anubis/images/2/25/ThankYou.gif"
+    .col-md-6
+      .center
+        p 
+          b Your subscription will contiue until the end of the billing period!

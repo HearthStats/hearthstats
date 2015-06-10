@@ -11,15 +11,6 @@ p
   |&nbsp;
   a href="#{@urls['osx']}" target="_blank" class="btn btn-large green"
     | #{t('.download_for')} OSX
-- if current_user
-  div.api-key
-    div.api-button
-      |#{t('.user_key')}
-      small &nbsp; (#{t('.do_not_share')})
-    div.key
-      div.well
-        a.reveal #{t('.click_to_reveal')}
-        .user-key = current_user.get_userkey
 div.row
   div.col-md-6
     h3 #{t('.instructions')}
@@ -32,14 +23,12 @@ div.row
       li #{t('.instructions_osx.inst_osx_2')}
       li #{t('.instructions_osx.inst_osx_3')}
       li #{t('.instructions_osx.inst_osx_4').html_safe}
-      li #{t('.instructions_osx.inst_osx_5')}
       li #{t('.instructions_osx.inst_osx_6')}
     b Windows
     ol
       li #{t('.instructions_win.inst_win_1')}
       li #{t('.instructions_win.inst_win_2')}
       li #{t('.instructions_win.inst_win_3')}
-      li #{t('.instructions_win.inst_win_4')}
       li #{t('.instructions_win.inst_win_5')}
     h3 #{t('.features_title')}
     ul

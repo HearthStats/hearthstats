@@ -13,6 +13,8 @@ Hearthstats::Application.routes.draw do
   resources :teams
   resources :premiums do
     post 'cancel', on: :collection
+    post 'stripe_cancel', on: :collection
+    post 'stripe_delete', on: :collection
     get 'report', on: :collection
     get 'gen_report', on: :collection
     get 'stats', on: :collection
@@ -63,7 +65,7 @@ Hearthstats::Application.routes.draw do
   match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
-  Date::MONTHNAMES.dup[1..2].each do |month|
+  Date::MONTHNAMES.dup[1..12].each do |month|
     name = month[0..2].downcase
     match "/#{name}", to: redirect("/reports/#{Time.now.year}/#{name}")
   end
@@ -262,6 +264,37 @@ Hearthstats::Application.routes.draw do
       post "matches/hdt_new"
       post "matches/hdt_after"
       post "matches/move"
+    end
+
+    namespace :v3 do
+      devise_for :users
+      resources :cards
+      resources :matches do
+        collection do
+          post "after_date"
+          post "move"
+          post "multi_create"
+          post "mult_destroy"
+          post "delete"
+        end
+      end
+      resources :decks do
+        collection do
+          get "find"
+          post "after_date"
+          post "mult_destroy"
+          post "create_version"
+          post "edit"
+          post "delete"
+        end
+      end
+      get "users/premium"
+
+      get "arena_runs/show"
+      post "arena_runs/new"
+      get "arena_runs/end"
+
+      post "deck_versions/hdt_after"
     end
   end
 end

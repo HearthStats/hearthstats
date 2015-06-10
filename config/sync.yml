@@ -1,40 +1,43 @@
 # Faye
 # development:
-#   server: "http://localhost:9292/faye"
-#   adapter_javascript_url: "http://localhost:9292/faye/faye.js" 
+#   server: "http://goat.hearthstats.net:9292/faye"
+#   adapter_javascript_url: "http://localhost:9292/faye/faye.js"
 #   auth_token: DEVELOPMENT_SECRET_TOKEN
 #   adapter: "Faye"
 #   async: true
 
 # Pusher
-
-defaults: &defaults
-  adapter_javascript_url: "http://js.pusher.com/2.0/pusher.min.js" 
-  app_id: "<%= ENV['PUSHER_APP_ID'] %>"
-  api_key: "<%= ENV['PUSHER_KEY'] %>"
-  auth_token: "<%= ENV['PUSHER_SECRET'] %>"
-  adapter: "Pusher"
-  async: true
-
 development:
-  <<: *defaults
-
-test:
-  <<: *defaults
-
-staging:
-  <<: *defaults
-
-staging:
-  adapter_javascript_url: "http://js.pusher.com/2.0/pusher.min.js" 
+  adapter_javascript_url: "http://js.pusher.com/2.2/pusher.min.js"
   app_id: <%= ENV['PUSHER_APP_ID'] %>
   api_key: <%= ENV['PUSHER_KEY'] %>
   auth_token: <%= ENV['PUSHER_SECRET'] %>
   adapter: "Pusher"
   async: true
 
-beta:
-  <<: *defaults
+# Disabled
+# development:
+#   adapter: false
+
+test:
+  adapter_javascript_url: "http://js.pusher.com/2.2/pusher.min.js"
+  app_id: <%= ENV['PUSHER_APP_ID'] %>
+  api_key: <%= ENV['PUSHER_KEY'] %>
+  auth_token: <%= ENV['PUSHER_SECRET'] %>
+  adapter: "Pusher"
+  async: true
 
 production:
-  <<: *defaults
+  adapter_javascript_url: "//js.pusher.com/2.2/pusher.min.js"
+  app_id: <%= ENV['PUSHER_APP_ID'] %>
+  api_key: <%= ENV['PUSHER_KEY'] %>
+  auth_token: <%= ENV['PUSHER_SECRET'] %>
+  adapter: "Pusher"
+  async: true
+staging:
+  adapter_javascript_url: "http://js.pusher.com/2.2/pusher.min.js"
+  app_id: <%= ENV['PUSHER_APP_ID'] %>
+  api_key: <%= ENV['PUSHER_KEY'] %>
+  auth_token: <%= ENV['PUSHER_SECRET'] %>
+  adapter: "Pusher"
+  async: true

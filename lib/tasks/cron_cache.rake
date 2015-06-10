@@ -2,7 +2,7 @@ namespace :cron do
   desc "Get new class graph data for homepage"
   # NEEDS TO BE OPTIMIZED
   task :welcome_cache => :environment do
-    matches = Match.where('created_at >= ?', 2.weeks.ago).all
+    matches = Match.where{(created_at >= 2.weeks.ago) & (created_at <= 1.day.ago)}.all
     con_matches = matches.select {|m| m.mode_id == 3}
     arena_matches = matches.select {|m| m.mode_id == 1}
     arena_top = []
@@ -72,7 +72,10 @@ namespace :cron do
     Rails.cache.delete('archetype_pop')
     arche = UniqueDeckType.get_type_popularity(2)
     Rails.cache.write('archetype_pop', arche)
+<<<<<<< HEAD
+=======
     ActionController::Base.new.expire_fragment('top_decks')
+>>>>>>> staging
   end
 
 end

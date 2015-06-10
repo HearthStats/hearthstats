@@ -26,6 +26,8 @@ class UniqueDeckType < ActiveRecord::Base
       end
     end
     arche.reject {|name, count| count < 10 || name == nil}
+    tot = arche.values.sum
+    arche.update(arche){|type, wins| wins.to_f/tot * 100 }
   end
 
   def self.find_type(klass_id, cardstring)
