@@ -4,6 +4,7 @@
 }
 .klassSelect{
 	margin: auto;
+	max-width: 600px;
 }
 .glowingKlass{
 	-moz-box-shadow: 0 0 5px #fff;
