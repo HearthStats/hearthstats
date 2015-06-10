@@ -32,6 +32,9 @@
 .filterParam{
 	min-width: 540px;
 }
+.deckBuilderWrapper{
+	width: 100%;
+}
 #filter{
 	min-width: 545px;
 	border-style: solid;
@@ -75,7 +78,6 @@ user-select: none;
 	text-align: center;
 }
 .deckbuilderCardsWrapper{
-	width: 300px;
 	height: 600px;
 	overflow: auto;
 }
