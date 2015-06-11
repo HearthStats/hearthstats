@@ -14,6 +14,10 @@
 .selected{
 	background-color: #d1d1d1 !important;
 }
+#search{
+	height: 35px !important;
+	width: 100%;
+}
 .kSelected{
 	background-color: #216ae1 !important;
 }
@@ -35,6 +39,9 @@
 .deckBuilderWrapper{
 	width: 100%;
 }
+#cardSelect{
+	padding: 5px;
+}
 #filter{
 	min-width: 545px;
 	border-style: solid;
@@ -45,6 +52,16 @@
 }
 .deckbuilderCards{
 	min-width: 545px;
+}
+.noArchtype{
+	padding: 3px;
+	cursor: pointer;
+}
+.marg{
+	margin-right: 5px !important;
+}
+#deckNotes{
+	width: 94%;
 }
 .card .name{
 	-webkit-user-select: none; /* Chrome/Safari */        
@@ -78,7 +95,7 @@ user-select: none;
 	text-align: center;
 }
 .deckbuilderCardsWrapper{
-	height: 600px;
+	height: 615px;
 	overflow: auto;
 }
 .textImport{

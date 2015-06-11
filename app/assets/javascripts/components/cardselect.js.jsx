@@ -80,7 +80,7 @@ var CardSelect = React.createClass({
 				 	<div className="col-sm-8 cardSelect">
 				 		<h2> Choose your cards! </h2>
 				 		<div id="filter"><div className="deckbuilderFilter filterParam">
-				 			<input type="text" id="search" name="search" placeholder=" Search" size="75" onChange={this.filterSearch} />
+				 			<input type="text" id="search" name="search" placeholder=" Search" onChange={this.filterSearch} />
 				 		</div>
 				 		<div className="manaFilters filterParam">
 				 			{btns}
