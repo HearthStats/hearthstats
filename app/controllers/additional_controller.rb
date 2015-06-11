@@ -23,6 +23,8 @@ class AdditionalController < ApplicationController
       urls["windows"] = win_git_response[0]["assets"][0]["browser_download_url"]
       urls
     end
+
+    render layout: "prem_dash"
   end
 
   def league
