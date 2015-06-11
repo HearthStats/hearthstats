@@ -67,6 +67,7 @@ gem 'feedjira', :require => false # Parse rss feeds
 gem 'lograge' # Minify log outputs
 gem 'httparty' # Make them http requests easily
 gem 'select2-rails'
+gem 'opinio' # Comment system
 gem 'commontator', '~> 4.10.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'unf'
@@ -83,8 +84,6 @@ gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
 gem 'rmagick'
 # gem 'rack-ssl-enforcer'
 gem "squeel"
-gem 'pusher'
-gem 'sync'
 
 # APIs
 gem 'cindy' # Sendy API

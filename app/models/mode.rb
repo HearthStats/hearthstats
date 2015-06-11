@@ -4,15 +4,13 @@ class Mode < ActiveRecord::Base
   ARENA = 1
   CASUAL = 2
   RANKED = 3
-  TOURNAMENT = 4
-  FRIENDLY = 5
+  FRIENDLY = 4
 
   LIST = {
     1 => 'Arena',
     2 => 'Casual',
     3 => 'Ranked',
-    4 => 'Tournament',
-    5 => 'Friendly',
+    4 => 'Tournament'
   }
   ### ASSOCIATIONS:
 

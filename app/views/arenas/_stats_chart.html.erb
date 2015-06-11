@@ -17,7 +17,7 @@
 $(document).ready(function () {
 
   function showTooltip(x, y, realx, realy) {
-      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realy + '<\/div><\/div>').css({
+      $('<div id="tooltip" class="chart-tooltip"><div class="label label-success">' + realx + '<\/div><\/div>').css({
           position: 'absolute',
           display: 'none',
           top: y - 50,
@@ -172,8 +172,8 @@ $(document).ready(function () {
               previousPoint = item.dataIndex;
 
               $("#tooltip").remove();
-              var x = item.datapoint[0].toFixed(),
-                  y = item.datapoint[1].toFixed();
+              var x = item.datapoint[0].toFixed(2),
+                  y = item.datapoint[1].toFixed(2);
 
               showTooltip(item.pageX, item.pageY, x, y);
           }

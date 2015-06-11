@@ -258,7 +258,6 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
-    @deck.deck_type_id = 1
     if current_user.guest?
       @deck.is_public = false
     end
@@ -464,9 +463,11 @@ class DecksController < ApplicationController
   end
 
   def sort_by
+    return 'num_users' unless params[:sort]
+
     sort = (Deck.column_names + UniqueDeck.column_names).include?(params[:sort]) ? params[:sort] : 'num_users'
 
-    sort =  %w(created_at name user_winrate).include?(sort) ? "decks.#{sort}" : "unique_decks.#{sort}"
+    sort =  %w(created_at name).include?(sort) ? "decks.#{sort}" : sort
   end
 
   def direction

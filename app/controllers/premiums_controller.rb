@@ -96,48 +96,16 @@ class PremiumsController < ApplicationController
     end
   end
 
-  def stripe_cancel
-    event_json = JSON.parse(request.body.read)
-    customer_id = event_json["data"]["object"]["customer"]
-    user = User.where(customer_id: customer_id).first
-    if user.nil?
-      render json: {status: 401, data: "User not found"} and return
-    end
-    if event_json["data"]["object"]["cancel_at_period_end"] == true
-      user.update_attribute(:subscription_id, 2)
-      response = user.email + "Cancelled"
-    else
-      response = user.email + "error in sub cancellation"
-    end
-    render json: {status: 200, data: response}
-  end
-
-  def stripe_delete
-    event_json = JSON.parse(request.body.read)
-    event_type = event_json["type"]
-    customer_id = event_json["data"]["object"]["customer"]
-    sub_status = event_json["data"]["object"]["status"]
-    user = User.where(customer_id: customer_id).first
-    if user.nil?
-      render json: {status: 401, data: "User not found"} and return
-    end
-    if event_type == "customer.subscription.deleted" && sub_status == "canceled"
-      user.update_attribute(:subscription_id, nil)
-      user.remove_role :early_sub
-      response = user.email + "Deleted"
-    else
-      response = user.email + "error in sub deletion"
-    end
-    render json: {status: 200, data: response}
-  end
-
   def cancel
     begin
       customer = Stripe::Customer.retrieve(current_user.customer_id)
       unless customer.nil? || customer.respond_to?("deleted")
         subscription = customer.subscriptions.data[0]
         if subscription.status == "active"
-          subscription.delete(:at_period_end => true)
+          customer.cancel_subscription
+          current_user.subscription_id = nil
+          current_user.remove_role :early_sub
+          current_user.save!
         end
       end
     rescue Stripe::CardError => e

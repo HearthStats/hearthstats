@@ -16,7 +16,7 @@ class BlindDraft < ActiveRecord::Base
   ### INSTANCE METHODS:
 
   def create_card_associations
-    card_pool = Card.where(collectible: true, klass_id: [nil,0])
+    card_pool = Card.where(collectible: true, klass_id: nil)
                     .sample(self.card_cap)
     cardstring = card_pool.map { |card| card.id }.join(",")
     self.update_attribute(:cardstring, cardstring)

@@ -24,6 +24,9 @@ class BlindDraftsController < ApplicationController
     respond_to do |format|
       if @blind_draft.player2_id || (@blind_draft.player2_id.nil? && @blind_draft.public == true)
         @blind_draft.save
+        @blind_draft.player2.notify("Blind Draft Challenge",
+        "You have been invited to a Blind Draft by #{@blind_draft.player2.name}",
+        @blind_draft)
         format.html { redirect_to draft_blind_draft_path(@blind_draft), 
                       notice: "Blind Draft Successfully created." }
       else
@@ -54,7 +57,7 @@ class BlindDraftsController < ApplicationController
     blind_card           = BlindDraftCard.find(params[:blind_draft_card])
     blind_draft          = BlindDraft.find(params[:id])
     blind_draft_card_ids = blind_draft.cards.map(&:id)
-    left_over_cards      = Card.where(klass_id: [0,nil], collectible: true).map(&:id) \
+    left_over_cards      = Card.where(klass_id: nil, collectible: true).map(&:id) \
       - blind_draft_card_ids
     blind_card.card_id = left_over_cards.sample
     respond_to do |format|
