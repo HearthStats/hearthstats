@@ -4,6 +4,8 @@ gem 'rails', '3.2.18'
 gem 'rake'
 gem 'puma'
 gem 'foreman'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development do
   gem 'better_errors', '>= 0.3.2'
@@ -72,7 +74,6 @@ gem 'select2-rails'
 gem 'commontator', '~> 4.10.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'unf'
-gem 'thin'
 gem 'sanitize'
 gem 'acts-as-taggable-on' # Tagging for decks
 gem 'gon' # Easy Rails to JS Vars

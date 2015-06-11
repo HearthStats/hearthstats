@@ -1,4 +1,7 @@
 class Match < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
 
@@ -338,3 +341,4 @@ class Match < ActiveRecord::Base
   end
 
 end
+Match.import
