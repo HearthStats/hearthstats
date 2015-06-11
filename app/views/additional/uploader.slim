@@ -25,22 +25,24 @@ br
   .col-sm-4
     h3.upTitle #{t('.instructions')}
     hr.sepLine
-    div.centered
-      b #{t('.please_have_installed')} <a href="http://java.com/en/download/manual.jsp">#{t('.download_java_here')}.</a>
-      p Note that Java will <b>NOT</b> affect your Google Chrome.
-    h4 Windows
-    ol
-      li #{t('.instructions_win.inst_win_1')}
-      li #{t('.instructions_win.inst_win_2')}
-      li #{t('.instructions_win.inst_win_3')}
-      li #{t('.instructions_win.inst_win_5')}
-    h4 OSX
-    ol
-      li #{t('.instructions_osx.inst_osx_1')}
-      li #{t('.instructions_osx.inst_osx_2')}
-      li #{t('.instructions_osx.inst_osx_3')}
-      li #{t('.instructions_osx.inst_osx_4').html_safe}
-      li #{t('.instructions_osx.inst_osx_6')}
+    div.row
+      .col-md-6.left
+        h4.centered Windows
+        br
+        ol
+          li #{t('.instructions_win.inst_win_1')}
+          li #{t('.instructions_win.inst_win_2')}
+          li #{t('.instructions_win.inst_win_3')}
+          li #{t('.instructions_win.inst_win_5')}
+      .col-md-6.left
+        h4.centered OSX
+        br
+        ol
+          li #{t('.instructions_osx.inst_osx_1')}
+          li #{t('.instructions_osx.inst_osx_2')}
+          li #{t('.instructions_osx.inst_osx_3')}
+          li #{t('.instructions_osx.inst_osx_4').html_safe}
+          li #{t('.instructions_osx.inst_osx_6')}
   .col-sm-4
     h3.upTitle #{t('.tutorial_video')}
     hr.sepLine
