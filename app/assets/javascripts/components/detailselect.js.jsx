@@ -35,7 +35,7 @@ var DetailSelect = React.createClass({
 								<input type="hidden" name="deck[klass_id]" type="hidden" value={this.state.klass} />
 								{this.deckDetailLoad()}
 								<input type="checkbox" name="deck[is_public]" value="false" type="hidden" />
-								<input type="checkbox" name="deck[is_public]" value="true">Make this deck public</input>
+								<input type="checkbox" className="marg" name="deck[is_public]" value="true">Make this deck public</input>
 								<div className="submitButtons">
 									<input className = "btn submitButton green" type="submit" value={action} />
 									{this.versionControl()}
@@ -61,7 +61,7 @@ var DetailSelect = React.createClass({
 			return(
 				<div>
 					<div className="row">
-						<div className="col-md-6">
+						<div className="col-md-6 col-xs-6">
 							<div><label for="deckName">Name:</label></div>
 							<input type="text" id="deckName" ref="deckname" name="deck[name]" defaultValue={this.props.deck.name} size="30"/>
 						</div>
@@ -69,7 +69,7 @@ var DetailSelect = React.createClass({
 					</div>
 					<div className="row">
 						<div><label className="notes">Notes:</label></div>
-						<textarea rows="10" cols="70" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck...">{this.props.deck.notes}</textarea><br/>
+						<textarea rows="10" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck...">{this.props.deck.notes}</textarea><br/>
 					</div>
 				</div>
 			);
@@ -77,15 +77,16 @@ var DetailSelect = React.createClass({
 			return(
 				<div>
 					<div className="row">
-						<div className="col-md-6">
+						<div className="col-md-6 col-xs-6">
 							<div><label for="deckName">Name:</label></div>
 							<input type="text" id="deckName" ref="deckname" name="deck[name]" placeholder="Your deck name..." size="30"/>
 						</div>
 						{this.displayArchtypes()}
 					</div>
+					<br/>
 					<div className="row">
 						<div><label className="notes">Notes:</label></div>
-						<textarea rows="10" cols="70" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
+						<textarea rows="10" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
 					</div>
 				</div>
 			);
@@ -119,13 +120,13 @@ var DetailSelect = React.createClass({
 				}
 			}.bind(this));
 			return(
-				<div>
-					<div><label>Archtype:</label></div>
+				<div className="col-md-6 col-xs-6">
+					<div><label>Archetype:</label></div>
 					<select ref="archtypes">
 						<option value="" name="unique_deck_type_id"> </option>
 						{archtypes}
 					</select>
-					<button onClick={this.setNoArchtype}>Archtype Not Here</button>
+					<a className="noArchtype" onClick={this.setNoArchtype}>Archetype Not Here</a>
 				</div>
 			);
 		}
