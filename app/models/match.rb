@@ -341,4 +341,3 @@ class Match < ActiveRecord::Base
   end
 
 end
-Match.import

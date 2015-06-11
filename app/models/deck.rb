@@ -294,4 +294,3 @@ class Deck < ActiveRecord::Base
     self.name = "[unnamed]" if name.blank?
   end
 end
-Match.import
