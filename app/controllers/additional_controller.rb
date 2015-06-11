@@ -19,10 +19,11 @@ class AdditionalController < ApplicationController
       urls = Hash.new
       win_git_response = HTTParty.get('https://api.github.com/repos/Epix37/Hearthstone-Deck-Tracker/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})
       osx_git_response = HTTParty.get('https://api.github.com/repos/HearthStats/HearthStats.net-Uploader/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})
-      urls['osx']
-      urls["windows"]
+      urls["osx"] = osx_git_response[0]["assets"][0]["browser_download_url"]
+      urls["windows"] = win_git_response[0]["assets"][0]["browser_download_url"]
       urls
     end
+    render layout: "prem_dash"
   end
 
   def league
