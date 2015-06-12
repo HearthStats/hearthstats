@@ -37,7 +37,7 @@
   <div class="row">
     <% @decks.each do |deck| %>
     <% unique_deck = deck.unique_deck %>
-    <% next if unique_deck_id.nil? %>
+    <% next if unique_deck.id.nil? %>
     <div class="col-md-6 col-sm-12 deck-section"> 
       <div class="public-deck-class">
         <img src="/assets/Icons/Classes/<%= deck.class_name %>_Icon.gif" alt="<%= deck.class_name %>" title="<%= deck.class_name %>"/>
