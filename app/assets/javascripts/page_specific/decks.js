@@ -11,6 +11,9 @@
 //= require 'plugins/jquery.dataTables.min.js'
 //= require 'page_specific/decklist.js'
 //= require 'plugins/jquery.lazyload.min.js'
+//= require react
+//= require react_ujs
+//= require components
 
 $(document).ready(function(){
   $('.deck-text-trigger').click( function(){

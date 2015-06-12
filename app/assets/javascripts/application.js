@@ -28,6 +28,3 @@
 //= require 'site_wide/ga.js'
 //= require 'site_wide/ad.js'
 //= require 'site_wide/wysiwyg.js'
-//= require react
-//= require react_ujs
-//= require components
