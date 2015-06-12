@@ -1,7 +1,24 @@
 h2 Most Recent
 - @reports.each do |year, monthes|
-  .report-year
+  .report-year.row
     h4 = year
     - monthes.reverse.each do |month|
-      = link_to "/reports/#{year}/#{month}" do
-        img.report-preview src="/reports/#{year}/pics/#{month}_bgx300.jpg"
+    	.monthly.col-md-4.col-sm-6
+    		<a href="/reports/#{year}/#{month}"><img class="report-preview" src="/reports/#{year}/pics/#{month}_bgx300.jpg"/></a>
+
+javascript:
+ 	$( document ).ready(function() {
+    $(".report-preview").hover(function() {
+    	//alert("hi");
+    	$(".report-year.row").find("img").css("opacity", "0.6");
+    	$(this).css("opacity", "1");
+    	//document.getElementsByClassName('report-preview').style.opacity = 0.6;
+    	//alert('hi');
+    });
+    $(".report-preview").mouseleave(function() {
+    	$(".report-year.row").find("img").css("opacity", "1");
+    	//document.getElementsByClassName('report-preview').style.opacity = 1;
+    	//alert("hi");
+    });
+	});
+

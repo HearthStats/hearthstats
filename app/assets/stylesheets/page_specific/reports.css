@@ -1,0 +1,26 @@
+/* reports.css */
+.report-year {
+		display: block;
+		text-align: center;
+}
+
+.monthly.col-md-4.col-sm-6 {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+.report-preview:hover {
+		transform: scale(1.1);
+		/*opacity: 0.6;*/
+}
+
+h {
+	float: left;
+	display: block;
+}
+
+h4 {
+	font-size: 22px !important;
+}
