@@ -5,7 +5,8 @@
 	overflow-x: hidden;
 }
 .uploader-container .row{
-	margin: 0px !important;
+	margin-left: 0px !important;
+	margin-right: 0px !important;
 }
 .centered{
 	text-align: center;
