@@ -9,16 +9,11 @@ h2 Most Recent
 javascript:
  	$( document ).ready(function() {
     $(".report-preview").hover(function() {
-    	//alert("hi");
     	$(".report-year.row").find("img").css("opacity", "0.6");
     	$(this).css("opacity", "1");
-    	//document.getElementsByClassName('report-preview').style.opacity = 0.6;
-    	//alert('hi');
     });
     $(".report-preview").mouseleave(function() {
     	$(".report-year.row").find("img").css("opacity", "1");
-    	//document.getElementsByClassName('report-preview').style.opacity = 1;
-    	//alert("hi");
     });
 	});
 
