@@ -17,6 +17,19 @@ var DetailSelect = React.createClass({
 			})
 		}
 	},
+	componentDidMount: function(){
+		$('#deckNotes').ckeditor({
+			ui: '#fff',
+			toolbar :
+				[
+					{ name: 'basicstyles', items : [ 'Bold','Italic','Underline' ] },
+					{ name: 'paragraph',   items : [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
+					{ name: 'links', 			 items : [ 'Link', 'Unlink' ] },
+					{ name: 'styles',      items : [ 'Format', 'FontSize' ] }
+				],
+			width: '94%',
+			marginLeft: '15px'});
+	},
 	render: function(){
 		if(this.props.type=="edit"){ 
 			var action = "Update Deck"
@@ -62,14 +75,14 @@ var DetailSelect = React.createClass({
 				<div>
 					<div className="row">
 						<div className="col-md-6 col-xs-6">
-							<div><label for="deckName">Name:</label></div>
+							<div><label>Name:</label></div>
 							<input type="text" id="deckName" ref="deckname" name="deck[name]" defaultValue={this.props.deck.name} size="30"/>
 						</div>
 						{this.displayArchtypes()}
 					</div>
 					<div className="row">
 						<div><label className="notes">Notes:</label></div>
-						<textarea rows="10" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck...">{this.props.deck.notes}</textarea><br/>
+						<textarea id="deckNotes" className="notes" name="deck[notes]" placeholder="Write about your deck..." defaultValue={this.props.deck.notes}></textarea>
 					</div>
 				</div>
 			);
@@ -78,7 +91,7 @@ var DetailSelect = React.createClass({
 				<div>
 					<div className="row">
 						<div className="col-md-6 col-xs-6">
-							<div><label for="deckName">Name:</label></div>
+							<div><label>Name:</label></div>
 							<input type="text" id="deckName" ref="deckname" name="deck[name]" placeholder="Your deck name..." size="30"/>
 						</div>
 						{this.displayArchtypes()}
@@ -86,7 +99,7 @@ var DetailSelect = React.createClass({
 					<br/>
 					<div className="row">
 						<div><label className="notes">Notes:</label></div>
-						<textarea rows="10" name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
+						<textarea name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
 					</div>
 				</div>
 			);

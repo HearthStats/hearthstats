@@ -90,6 +90,8 @@ gem 'pusher'
 gem 'sync'
 gem 'react-rails', '~> 1.0'
 
+gem 'ckeditor_rails'
+
 # APIs
 gem 'cindy' # Sendy API
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
