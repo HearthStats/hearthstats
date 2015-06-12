@@ -33,6 +33,9 @@
 	margin-top: 5px;
 	float: right;
 }
+.cke_top, .cke_bottom{
+	background: #fff !important;
+}
 .filterParam{
 	min-width: 540px;
 }
@@ -60,8 +63,9 @@
 .marg{
 	margin-right: 5px !important;
 }
-#deckNotes{
-	width: 94%;
+.cke{
+	width: 90%;
+	margin-left: 15px !important;
 }
 .card .name{
 	-webkit-user-select: none; /* Chrome/Safari */        

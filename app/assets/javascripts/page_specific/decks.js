@@ -14,6 +14,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require ckeditor-jquery
 
 $(document).ready(function(){
   $('.deck-text-trigger').click( function(){

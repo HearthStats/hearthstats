@@ -107,6 +107,8 @@ GEM
       faraday (~> 0.8.5)
       faraday_middleware (~> 0.9)
       hashie (~> 1.0)
+    ckeditor_rails (4.4.8)
+      railties (>= 3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.5)
@@ -528,6 +530,7 @@ DEPENDENCIES
   capybara-screenshot
   chartkick
   cindy
+  ckeditor_rails
   coffee-rails (~> 3.2.1)
   commontator (~> 4.10.0)
   daemons
