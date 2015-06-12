@@ -37,6 +37,8 @@ end
 
 group :production do
   gem 'mysql2'
+  gem 'pusher'
+  gem 'sync'
 end
 
 # authentication
@@ -86,8 +88,6 @@ gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
 gem 'rmagick'
 # gem 'rack-ssl-enforcer'
 gem "squeel"
-gem 'pusher'
-gem 'sync'
 
 # APIs
 gem 'cindy' # Sendy API
