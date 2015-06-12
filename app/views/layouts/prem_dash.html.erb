@@ -58,9 +58,6 @@
   <%= render 'layouts/header' %>
   <div class="clearfix"></div>
   <div class="page-container">
-    <% if signed_in? %>
-      <%= announce Announcement.newest, :hide_message => "Hide" %>
-    <% end %>
     <!-- BEGIN PAGE HEADER -->
     <!-- END PAGE HEADER -->
     <%= yield %>
