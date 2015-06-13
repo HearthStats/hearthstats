@@ -33,6 +33,10 @@
 	margin-top: 5px;
 	float: right;
 }
+.noteHints{
+	color: #ccc;
+	font-style: italic;
+}
 .cke_top, .cke_bottom{
 	background: #fff !important;
 }
