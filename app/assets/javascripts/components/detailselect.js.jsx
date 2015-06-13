@@ -5,6 +5,7 @@ var DetailSelect = React.createClass({
 			archtypes: this.props.archtype,
 			archtypeNotHere: false,
 			decklist: [],
+			cardQuant: 0,
 			deckArray: [],
 			version: ""
 		};
@@ -37,6 +38,11 @@ var DetailSelect = React.createClass({
 		else if(this.props.type=="new"){
 			var action= "Create Deck"
 		}
+		var publicButtons = [];
+		if(this.state.cardQuant == 30){ 
+			publicButtons.push(<div><input type="checkbox" id="publicCheck" className="marg" name="deck[is_public]">Make this deck private</input>
+								</div>)
+		}
 		return(
 			<div>
 				<div className="row">
@@ -47,8 +53,7 @@ var DetailSelect = React.createClass({
 								<input type="hidden" name="deck[cardstring]" type="hidden" value={this.props.cardstring} />
 								<input type="hidden" name="deck[klass_id]" type="hidden" value={this.state.klass} />
 								{this.deckDetailLoad()}
-								<input type="checkbox" name="deck[is_public]" value="false" type="hidden" />
-								<input type="checkbox" className="marg" name="deck[is_public]" value="true">Make this deck public</input>
+								{publicButtons}
 								<div className="submitButtons">
 									<input className = "btn submitButton green" type="submit" value={action} />
 									{this.versionControl()}
@@ -84,6 +89,7 @@ var DetailSelect = React.createClass({
 						<div><label className="notes">Notes:</label></div>
 						<textarea id="deckNotes" className="notes" name="deck[notes]" placeholder="Write about your deck..." defaultValue={this.props.deck.notes}></textarea>
 					</div>
+					<p className="noteHints">Talk about mulligans, matchups, tech cards, ...</p>
 				</div>
 			);
 		} else{
@@ -101,9 +107,13 @@ var DetailSelect = React.createClass({
 						<div><label className="notes">Notes:</label></div>
 						<textarea name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
 					</div>
+					<p className="noteHints">Talk about mulligans, matchups, tech cards, ...</p>
 				</div>
 			);
 		}
+	},
+	checkBox: function(event){
+
 	},
 	versionControl: function(){
 		if(this.props.type == "edit"){
@@ -193,11 +203,13 @@ var DetailSelect = React.createClass({
 		deckCards = this.props.cardstring.split(","); 
 		var newDecklistArray = [];
 		var newDeckArray = [];
+		var newQuant = 0;
 		deckCards.forEach(function(card){
 			id = parseInt(card.split("_")[0]);
 			quantity = parseInt(card.split("_")[1]);
 			newDecklistArray[id] = quantity;
 			newDeckArray.push(this.props.allCards[id-1]);
+			newQuant = newQuant + quantity;
 		}.bind(this));
 		newDeckArray.sort(function(cardA, cardB){ 
 			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
@@ -209,7 +221,8 @@ var DetailSelect = React.createClass({
 		});
 		this.setState({
 			deckArray: newDeckArray,
-			decklist: newDecklistArray
+			decklist: newDecklistArray,
+			cardQuant: newQuant
 		});
 	},
 	_drawCards:function(){
