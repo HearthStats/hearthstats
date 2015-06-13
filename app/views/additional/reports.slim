@@ -9,13 +9,13 @@ h2#most-recent Most Recent
     	  	img class="report-preview" src="/reports/#{year}/pics/#{month}_bgx300.jpg"
 
 javascript:
-	$( document ).ready(function() {
-		$(".report-preview").hover(function() {
-			$(".report-year.row").find("img").css("opacity", "0.75");
-			$(this).css("opacity", "1");
-		});
-		$(".report-preview").mouseleave(function() {
-			$(".report-year.row").find("img").css("opacity", "1");
-		});
-	});
+  $( document ).ready(function() {
+    $(".report-preview").hover(function() {
+      $(".report-year.row").find("img").css("opacity", "0.75");
+      $(this).css("opacity", "1");
+    });
+    $(".report-preview").mouseleave(function() {
+      $(".report-year.row").find("img").css("opacity", "1");
+    });
+  });
 
