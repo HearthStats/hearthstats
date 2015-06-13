@@ -1,15 +1,18 @@
-h2 Most Recent
+- set_meta_tags :title => 'Monthly Reports'
+- provide(:title, t('.title'))
+h2#most-recent Most Recent
 - @reports.each do |year, monthes|
   .report-year.row
-    h4 = year
+    h4#year-title = year
     - monthes.reverse.each do |month|
     	.monthly.col-md-4.col-sm-6
-    		<a href="/reports/#{year}/#{month}"><img class="report-preview" src="/reports/#{year}/pics/#{month}_bgx300.jpg"/></a>
+    	  a href="/reports/#{year}/#{month}"
+    	  	img class="report-preview" src="/reports/#{year}/pics/#{month}_bgx300.jpg"
 
 javascript:
  	$( document ).ready(function() {
     $(".report-preview").hover(function() {
-    	$(".report-year.row").find("img").css("opacity", "0.6");
+    	$(".report-year.row").find("img").css("opacity", "0.75");
     	$(this).css("opacity", "1");
     });
     $(".report-preview").mouseleave(function() {
