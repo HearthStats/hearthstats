@@ -126,8 +126,8 @@ GEM
     commontator (4.10.5)
       jquery-rails
       rails (>= 3.1)
-    cookiejar (0.3.2)
     connection_pool (2.2.0)
+    cookiejar (0.3.2)
     crass (1.0.1)
     curb (0.8.6)
     daemons (1.1.9)
