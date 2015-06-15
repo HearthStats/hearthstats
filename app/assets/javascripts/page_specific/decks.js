@@ -52,7 +52,4 @@ $(document).ready(function(){
     lineWidth: 3,
     barColor: App.getLayoutColorCode('green')
   });
-  $("img.lazy-load").lazyload({
-    theshold: 200
-  });
 });
