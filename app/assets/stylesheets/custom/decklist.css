@@ -105,37 +105,8 @@
 
 .inline-graph{
   display: inline-block;
-}  
-.deckbuilderWrapperWrapper{
-  position: relative;
-}
-.deckBuilderCardStyle{
-  ddisplay:none; 
-  position:absolute; 
-  z-index:2000;
-}
-.deckbuilder-img:hover{
-  transform:scale(1.2);
-  -ms-transform:scale(1.2); /* IE 9 */
-  -moz-transform:scale(1.2); /* Firefox */
-  -webkit-transform:scale(1.2); /* Safari and Chrome */
-  -o-transform:scale(1.2); /* Opera */
-}
-.deckbuilder-img{
-  cursor:pointer;
-}
-.deckbuilderCards{ 
-  height: 500px;
-  overflow: scroll;
-  overflow-x: hidden;
-}
-.deckbuilderFilter{
-  margin: 5px;
 }
 
-.manaFilters button{
-  width: 45px;
-}
 table.decklist td.class img {
   height:24px;
   width:24px;

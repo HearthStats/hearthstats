@@ -13,6 +13,10 @@
 	height: 35px !important;
 	width: 100%;
 }
+#deckName{
+	height: 25px !important;
+	padding: 5px;
+}
 .kSelected{
 	background-color: #216ae1 !important;
 }
@@ -116,4 +120,33 @@ user-select: none;
   -moz-transform:scale(1) !important; /* Firefox */
   -webkit-transform:scale(1) !important; /* Safari and Chrome */
   -o-transform:scale(1) !important; /* Opera */
+}
+.deckbuilderWrapperWrapper{
+  position: relative;
+}
+.deckBuilderCardStyle{
+  ddisplay:none; 
+  position:absolute; 
+  z-index:2000;
+}
+.deckbuilder-img:hover{
+  transform:scale(1.2);
+  -ms-transform:scale(1.2); /* IE 9 */
+  -moz-transform:scale(1.2); /* Firefox */
+  -webkit-transform:scale(1.2); /* Safari and Chrome */
+  -o-transform:scale(1.2); /* Opera */
+}
+.deckbuilder-img{
+  cursor:pointer;
+}
+.deckbuilderCards{ 
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.deckbuilderFilter{
+  margin: 5px;
+}
+.manaFilters button{
+  width: 45px;
 }
