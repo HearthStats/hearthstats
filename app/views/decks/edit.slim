@@ -6,12 +6,3 @@
 
 = react_component 'DeckBuild', {cards: @cards, deck: @deck, type: "edit", allCards: @all_cards, archtypes: @archtypes, currentVersion: @currentVersion}
 /= render 'form'
-
-javascript:
-	function init() {
-		var imgDefer = document.getElementsByTagName('img');
-		for (var i=0; i<imgDefer.length; i++) {
-		if(imgDefer[i].getAttribute('data-src')) {
-		imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
-		} } }
-	window.onload = init;
