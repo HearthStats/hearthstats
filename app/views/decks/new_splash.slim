@@ -10,3 +10,12 @@
 /         = image_tag "/assets/Icons/Classes/full/#{klass.name}_full.png", width: '150px', class: 'splash-class'
 
 = react_component 'DeckBuild', {cards: @cards, deck: @deck, type: "new", allCards: @all_cards, archtypes: @archtypes}
+
+javascript:
+	function init() {
+		var imgDefer = document.getElementsByTagName('img');
+		for (var i=0; i<imgDefer.length; i++) {
+		if(imgDefer[i].getAttribute('data-src')) {
+		imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+		} } }
+	window.onload = init;

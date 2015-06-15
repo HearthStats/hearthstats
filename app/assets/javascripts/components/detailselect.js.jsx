@@ -117,7 +117,7 @@ var DetailSelect = React.createClass({
 				<div>
 					<div className="row">
 						<div className="col-md-6 col-xs-6">
-							<div><label>Name:</label></div>
+							<div><h3 className="left">Name:</h3></div>
 							<input type="text" id="deckName" ref="deckname" name="deck[name]" placeholder="Your deck name..." size="30"/>
 						</div>
 						{this.displayArchtypes()}
@@ -138,16 +138,13 @@ var DetailSelect = React.createClass({
 			);
 		}
 	},
-	checkBox: function(event){
-
-	},
 	versionControl: function(){
 		if(this.props.type == "edit"){
 			var current_version = parseFloat(this.props.currentVersion.version);
 			return(
 				<div>
 					<input className="btn vButton yellow" onClick={this.setVersion("minor_version")} name="minor_version" value={"Save as v" + (current_version+0.1).toFixed(1)} type="submit" />
-					<input className="btn vButton green" onClick={this.setVersion("major_version")} name="major_version" value={"Save as v"+ (Math.floor(current_version)+1.0) } type="submit"/>
+					<input className="btn vButton green" onClick={this.setVersion("major_version")} name="major_version" value={"Save as v"+ (Math.floor(current_version)+1.0)+".0" } type="submit"/>
 				</div>
 			)
 		}
