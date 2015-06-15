@@ -33,7 +33,7 @@ var CardSelect = React.createClass({
 	},
 	// check if this is a create new or edit (so we can load previous cards)
 	componentWillMount: function(){
-		if(this.props.type == "edit"){
+		if(this.props.type == "edit" && this.props.editBack != true){
 			this.buildDeckArray(this.props.deck.cardstring);
 		} else if(this.props.cardstring != ""){ 
 			this.buildDeckArray(this.props.cardstring);

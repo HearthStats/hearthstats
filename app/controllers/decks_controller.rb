@@ -306,6 +306,7 @@ class DecksController < ApplicationController
   def update
     @deck = Deck.find(params[:id])
     params[:deck]["is_public"] = params[:deck]["is_public"] != "on"
+    @deck.notes = params[:notes].to_json
     expire_fragment(@deck)
     @deck.tag_list = params[:tags]
     respond_to do |format|
