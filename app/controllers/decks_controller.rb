@@ -245,10 +245,7 @@ class DecksController < ApplicationController
     slaves = Deck.find(params[:slaves])
 
     slaves.each do |deck|
-      deck.match_deck.each do |match_deck|
-        match_deck.update_attribute(:deck_id, master.id)
-      end
-      deck.update_user_stats!
+      deck.match_deck.update_all(deck_id: master.id)
       deck.destroy
     end
     master.update_user_stats!
