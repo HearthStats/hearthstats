@@ -2,6 +2,7 @@
 	background-color: #fafafa;
 	color: #000;
 	text-align: left;
+	padding-bottom: 30px;
 	overflow-x: hidden;
 }
 .uploader-container .row{
@@ -21,9 +22,12 @@
 .descripText{
 	padding: 20px;
 }
+.header-title{
+	color: white;
+	margin-top: 30px;
+}
 .upTitle{
 	margin-top: 30px;
-	color: #000;
 }
 h4{
 	font-weight: bold;
@@ -36,10 +40,42 @@ h4{
 }
 .upHeader{
 	width: 100%;
-	height: 500px;
+	height: 100vh;
+	display: block;
 	margin: 0px !important;
 }
-.headerContent{
+#video-container {
 	position: absolute;
-	top: 20%;
+}
+#video-container {
+	top:0%;
+	left:0%;
+	height:100%;
+	width:100%;
+	overflow: hidden;
+}
+video {
+	position:absolute;
+	z-index:0;
+}
+video.fillWidth {
+	width: 100%;
+}
+.vertical-center{
+	position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.headerContent{
+	color: white;
+}
+.video-overlay{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 200;
+	background:rgba(0,0,0,0.25);
+}
+.on-top{
+	z-index: 99999;
 }

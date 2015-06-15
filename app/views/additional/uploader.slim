@@ -4,26 +4,30 @@
 - provide(:title, t('.title'))
 
 .uploader-container
-  .upHeader
-    .row.headerContent
-      h1.upTitle.centered Track your Stats with our Desktop Companion App
-      hr.sepLine
-      .row
-        .col-sm-3.col-xs-1
-        .col-sm-6.centered.descripText.col-xs-10
-          p.centered
-            = t('.header_text')
-        .col-sm-3.col-xs-2
-      br
-      p.centered
-        a href="#{@urls['windows']}" target="_blank" class="btn btn-large blue" title="Scroll down for instructions"
-          | #{t('.download_for')} Windows
-        |&nbsp;
-        a href="#{@urls['osx']}" target="_blank" class="btn btn-large green" title="Scroll down for instructions"
-          | #{t('.download_for')} OSX
-  br
-  br
-  br
+  .row.upHeader
+    div id="video-container"
+      .video-overlay
+      video autoplay="" loop="" muted="" class="fillWidth"
+        source src="//s3-us-west-2.amazonaws.com/hearthstats/uploadershort2.webmhd.webm" type="video/webm"/
+        source src="//s3-us-west-2.amazonaws.com/hearthstats/uploadershort2.oggtheora.ogv" type="video/ogg"/
+        source src="//s3-us-west-2.amazonaws.com/hearthstats/uploadershort2.mp4" type="video/mp4"/
+        Your browser does not support the video tag. I suggest you upgrade your browser.
+    .col-md-12.vertical-center.on-top
+      .row.headerContent
+        h1.header-title.centered Track your Stats with our Desktop Companion App
+        hr.sepLine
+        .row
+          .col-sm-3.col-xs-1
+          .col-sm-6.centered.descripText.col-xs-10
+            p.centered
+              = t('.header_text')
+          .col-sm-3.col-xs-2
+        p.centered
+          a href="#{@urls['windows']}" target="_blank" class="btn btn-large blue" title="Scroll down for instructions"
+            | #{t('.download_for')} Windows
+          |&nbsp;
+          a href="#{@urls['osx']}" target="_blank" class="btn btn-large green" title="Scroll down for instructions"
+            | #{t('.download_for')} OSX
   .row.upContent
     .col-sm-1
     .col-sm-5
@@ -43,8 +47,6 @@
       h3.upTitle #{t('.tutorial_video')}
       hr.sepLine
       iframe width="100%" height="315" src="//www.youtube.com/embed/hog8dA9Up9o" frameborder="0" allowfullscreen
-  br
-  br
   .row.centered
     h3.upTitle #{t('.instructions')}
     hr.sepLine
@@ -68,11 +70,6 @@
           li #{t('.instructions_osx.inst_osx_4').html_safe}
           li #{t('.instructions_osx.inst_osx_6')}
       
-  br
-  br
-  br
   h3= t('.help_and_support')
   hr.sepLine
   p.centered Check out our <a href="https://github.com/HearthStats/HearthStats.net-Uploader"> #{t('.project_source_on_github').downcase}</a> as well as the <a href="https://github.com/HearthStats/HearthStats.net-Uploader/issues"> #{t('.known_issues').downcase}</a>
-  br
-  br
