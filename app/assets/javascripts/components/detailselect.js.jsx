@@ -25,6 +25,7 @@ var DetailSelect = React.createClass({
 				[
 					{ name: 'basicstyles', items : [ 'Bold','Italic','Underline' ] },
 					{ name: 'paragraph',   items : [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
+					{ name: 'insert' ,     items : [ 'Image' ] },
 					{ name: 'links', 			 items : [ 'Link', 'Unlink' ] },
 					{ name: 'styles',      items : [ 'Format', 'FontSize' ] }
 				],
@@ -179,7 +180,7 @@ var DetailSelect = React.createClass({
 		else{
 			return(
 				<div>
-					<div><h2>Archtype:</h2></div>
+					<div><h3 className="left">Archtype:</h3></div>
 					<input type="text" ref="archtypes" name="new_archtype" size="30" placeholder="Your deck's archtype...">Archtype</input>
 				</div>
 			);
