@@ -87,7 +87,10 @@ gem 'rmagick'
 # gem 'rack-ssl-enforcer'
 gem "squeel"
 gem 'pusher'
-gem 'sync'
+gem 'sync’
+gem 'react-rails', '~> 1.0'
+
+gem 'ckeditor_rails'
 
 # APIs
 gem 'cindy' # Sendy API

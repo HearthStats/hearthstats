@@ -107,6 +107,8 @@ GEM
       faraday (~> 0.8.5)
       faraday_middleware (~> 0.9)
       hashie (~> 1.0)
+    ckeditor_rails (4.4.8)
+      railties (>= 3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.5)
@@ -125,6 +127,7 @@ GEM
       jquery-rails
       rails (>= 3.1)
     cookiejar (0.3.2)
+    connection_pool (2.2.0)
     crass (1.0.1)
     curb (0.8.6)
     daemons (1.1.9)
@@ -419,6 +422,13 @@ GEM
     rb-fsevent (0.9.4)
     rdoc (3.12.2)
       json (~> 1.4)
+    react-rails (1.0.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.1)
+      react-source (~> 0.13)
+    react-source (0.13.3)
     request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -543,6 +553,7 @@ DEPENDENCIES
   capybara-screenshot
   chartkick
   cindy
+  ckeditor_rails
   coffee-rails (~> 3.2.1)
   commontator (~> 4.10.0)
   daemons
@@ -586,6 +597,7 @@ DEPENDENCIES
   rake
   ransack
   rb-fsevent
+  react-rails (~> 1.0)
   rmagick
   rolify
   rspec-rails (~> 2.12.2)

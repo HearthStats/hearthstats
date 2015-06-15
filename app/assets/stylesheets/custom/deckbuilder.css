@@ -1,0 +1,152 @@
+.splash-class{
+	width: 170px;
+	cursor: pointer;
+}
+.klassSelect{
+	margin: auto;
+	max-width: 600px;
+}
+.selected{
+	background-color: #d1d1d1 !important;
+}
+#search{
+	height: 35px !important;
+	width: 100%;
+}
+#deckName{
+	height: 25px !important;
+	padding: 5px;
+}
+.kSelected{
+	background-color: #216ae1 !important;
+}
+.deckbuilderFilter{ 
+	margin: 0px !important;
+	padding: 0;
+}
+.filterParam{
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+.nextButton{
+	margin-top: 5px;
+	float: right;
+}
+.cke_top, .cke_bottom{
+	background: #fff !important;
+}
+.filterParam{
+	min-width: 540px;
+}
+.deckBuilderWrapper{
+	width: 100%;
+}
+#cardSelect{
+	padding: 5px;
+}
+#filter{
+	min-width: 545px;
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom: 10px;
+	padding: 5px;
+	border-color: #d1d1d1;
+}
+.deckbuilderCards{
+	min-width: 545px;
+}
+.noArchtype{
+	padding: 3px;
+	cursor: pointer;
+}
+.marg{
+	margin-right: 5px !important;
+}
+.cke{
+	width: 90%;
+	margin-left: 15px !important;
+}
+.card .name{
+	-webkit-user-select: none; /* Chrome/Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
+}
+.vButton{
+	margin-top: 5px;
+	width: 50%;
+}
+.left{
+	text-align: left;
+}
+.submitButton{
+	width: 100%;
+	margin: 0px;
+	margin-top: 5px;
+}
+.deckDetails{
+	width: 800px;
+	margin: auto;
+}
+.card{
+	cursor: default;
+}
+.notes{
+	margin-left: 15px;
+}
+.centered{
+	text-align: center;
+}
+.deckbuilderCardsWrapper{
+	height: 615px;
+	overflow: auto;
+}
+.deckDetailCardShow{
+	height: 1200px;
+}
+.maxed{
+	-webkit-filter : brightness(60%);
+	-moz-filter : brightness(60%);
+	filter : url(#brightness); /* required for FF */
+	filter : brightness(60%);
+	cursor : default !important;
+}
+.maxed:hover{
+	  transform:scale(1) !important;
+  -ms-transform:scale(1) !important; /* IE 9 */
+  -moz-transform:scale(1) !important; /* Firefox */
+  -webkit-transform:scale(1) !important; /* Safari and Chrome */
+  -o-transform:scale(1) !important; /* Opera */
+}
+.deckbuilderWrapperWrapper{
+  position: relative;
+}
+.deckBuilderCardStyle{
+  ddisplay:none; 
+  position:absolute; 
+  z-index:2000;
+}
+.deckbuilder-img:hover{
+  transform:scale(1.2);
+  -ms-transform:scale(1.2); /* IE 9 */
+  -moz-transform:scale(1.2); /* Firefox */
+  -webkit-transform:scale(1.2); /* Safari and Chrome */
+  -o-transform:scale(1.2); /* Opera */
+}
+.deckbuilder-img{
+  cursor:pointer;
+}
+.deckbuilderCards{ 
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.deckbuilderFilter{
+  margin: 5px;
+}
+.manaFilters button{
+  width: 45px;
+}

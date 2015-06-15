@@ -10,6 +10,11 @@
 //= require 'plugins/jquery.mixitup.min.js'
 //= require 'plugins/jquery.dataTables.min.js'
 //= require 'page_specific/decklist.js'
+//= require 'plugins/jquery.lazyload.min.js'
+//= require react
+//= require react_ujs
+//= require components
+//= require ckeditor-jquery
 
 $(document).ready(function(){
   $('.deck-text-trigger').click( function(){
@@ -47,6 +52,4 @@ $(document).ready(function(){
     lineWidth: 3,
     barColor: App.getLayoutColorCode('green')
   });
-
-  $("#decklist").tablesorter();
 });

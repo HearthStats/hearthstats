@@ -1,5 +1,5 @@
 class Api::V2::DecksController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :create
   before_filter :get_req, except: [:show, :hdt_after]
 
   respond_to :json
@@ -18,6 +18,14 @@ class Api::V2::DecksController < ApplicationController
         data:   decks
       }
     end
+    render json: api_response
+  end
+
+  def new
+    api_response = {
+        status: "success",
+        data:   decks
+      }
     render json: api_response
   end
 

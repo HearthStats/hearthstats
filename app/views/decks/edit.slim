@@ -4,4 +4,4 @@
 - provide(:title, 'Edit Deck')
 - provide(:section, 'Decks')
 
-= render 'form'
+= react_component 'DeckBuild', {cards: @cards, deck: @deck, type: "edit", allCards: @all_cards, archtypes: @archtypes, currentVersion: @currentVersion}

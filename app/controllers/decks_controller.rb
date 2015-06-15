@@ -200,19 +200,25 @@ class DecksController < ApplicationController
   end
 
   def new_splash
+    @all_cards = Card.all
+    @cards = Card.where(collectible: true)
     @klasses = Klass.all
-
+    @archtypes = UniqueDeckType.where(verified: true)
+    @deck = Deck.new(params[:deck])
     respond_to do |format|
       format.html
     end
   end
 
   def new
-    if params[:klass].nil?
-      redirect_to new_splash_decks_path, alert: "Please select a class" and return
-    end
+    @all_cards = Card.all
+    @cards = Card.where(collectible: true)
+    # if params[:klass].nil?
+    #   redirect_to new_splash_decks_path, alert: "Please select a class" and return
+    # end
     gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
+    @archtypes = UniqueDeckType.where(verified: true)
     @deck.klass_id = params[:klass]
     @deck.is_public = true
     respond_to do |format|
@@ -230,7 +236,11 @@ class DecksController < ApplicationController
   end
 
   def edit
+    @all_cards = Card.all
+    @cards = Card.where(collectible: true)
     @deck = Deck.find(params[:id])
+    @archtypes = UniqueDeckType.where(verified: true)
+    @currentVersion = @deck.current_version
     gon.deck = @deck
     gon.cards = Card.all
     canedit(@deck)
@@ -255,10 +265,9 @@ class DecksController < ApplicationController
   def create
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
-    @deck.deck_type_id = 1
-    if current_user.guest?
-      @deck.is_public = false
-    end
+    @deck.is_public = !@deck.is_public
+    @deck.notes = params[:notes].to_json
+    params[:deck]["is_public"] = params[:deck]["is_public"] != "on"
     unless params[:deck_text].blank?
       text2deck = text_to_deck(params[:deck_text])
       if !text2deck.errors.empty?
@@ -288,6 +297,7 @@ class DecksController < ApplicationController
           unique_deck.save
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
+        format.json { render json: @deck }
       else
         format.html { render action: "new" }
       end
@@ -296,6 +306,8 @@ class DecksController < ApplicationController
 
   def update
     @deck = Deck.find(params[:id])
+    params[:deck]["is_public"] = params[:deck]["is_public"] != "on"
+    @deck.notes = params[:notes].to_json
     expire_fragment(@deck)
     @deck.tag_list = params[:tags]
     respond_to do |format|
@@ -317,6 +329,7 @@ class DecksController < ApplicationController
           version_deck(@deck, version_num)
         end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
+        format.json { render json: @deck }
       else
         format.html { render action: "edit" }
       end
