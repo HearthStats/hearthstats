@@ -6,11 +6,6 @@
 	margin: auto;
 	max-width: 600px;
 }
-.glowingKlass{
-	-moz-box-shadow: 0 0 5px #fff;
-	-webkit-box-shadow: 0 0 5px #fff;
-	box-shadow: 0px 0px 5px #fff;
-}
 .selected{
 	background-color: #d1d1d1 !important;
 }
@@ -32,10 +27,6 @@
 .nextButton{
 	margin-top: 5px;
 	float: right;
-}
-.noteHints{
-	color: #ccc;
-	font-style: italic;
 }
 .cke_top, .cke_bottom{
 	background: #fff !important;
@@ -84,6 +75,9 @@ user-select: none;
 	margin-top: 5px;
 	width: 50%;
 }
+.left{
+	text-align: left;
+}
 .submitButton{
 	width: 100%;
 	margin: 0px;
@@ -106,16 +100,15 @@ user-select: none;
 	height: 615px;
 	overflow: auto;
 }
-.textImport{
-	margin-top: 5px;
-	float: left;
+.deckDetailCardShow{
+	height: 1200px;
 }
 .maxed{
-	-webkit-filter:brightness(60%);
-    -moz-filter:brightness(60%);
-    filter: url(#brightness); /* required for FF */
-    filter:brightness(60%);
-    cursor: default !important;
+	-webkit-filter : brightness(60%);
+	-moz-filter : brightness(60%);
+	filter : url(#brightness); /* required for FF */
+	filter : brightness(60%);
+	cursor : default !important;
 }
 .maxed:hover{
 	  transform:scale(1) !important;

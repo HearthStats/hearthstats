@@ -19,7 +19,7 @@ var DetailSelect = React.createClass({
 		}
 	},
 	componentDidMount: function(){
-		$('#deckNotes').ckeditor({
+		$('.deckNotes').ckeditor({
 			ui: '#fff',
 			toolbar :
 				[
@@ -29,6 +29,7 @@ var DetailSelect = React.createClass({
 					{ name: 'styles',      items : [ 'Format', 'FontSize' ] }
 				],
 			width: '94%',
+			height: '100px',
 			marginLeft: '15px'});
 	},
 	render: function(){
@@ -63,7 +64,7 @@ var DetailSelect = React.createClass({
 						</div>
 						<div className="col-md-4">
 							<div className="deckbuilderWrapperWrapper">
-							 		<div className="deckbuilderWrapper deckbuilderCardsWrapper"> 
+							 		<div className="deckbuilderWrapper deckbuilderCardsWrapper deckDetailCardShow"> 
 							 			{this._drawCards()}
 							 		</div>
 							 	</div>
@@ -76,20 +77,39 @@ var DetailSelect = React.createClass({
 	},
 	deckDetailLoad: function(){
 		if(this.props.type == "edit"){
+			try{
+				var deck_notes = JSON.parse(this.props.deck.notes);
+				var general = deck_notes.general;
+				var mulligan = deck_notes.mulligan;
+				var strategy = deck_notes.strategy;
+				var matchups = deck_notes.matchups;
+			} catch(e){
+				var deck_notes = this.props.deck.notes;
+				var general = this.props.deck.notes;
+				var mulligan = undefined;
+				var strategy = undefined;
+				var matchups = undefined;
+			}
 			return(
 				<div>
 					<div className="row">
 						<div className="col-md-6 col-xs-6">
-							<div><label>Name:</label></div>
+							<div><h3 className="left">Name:</h3></div>
 							<input type="text" id="deckName" ref="deckname" name="deck[name]" defaultValue={this.props.deck.name} size="30"/>
 						</div>
 						{this.displayArchtypes()}
 					</div>
 					<div className="row">
-						<div><label className="notes">Notes:</label></div>
-						<textarea id="deckNotes" className="notes" name="deck[notes]" placeholder="Write about your deck..." defaultValue={this.props.deck.notes}></textarea>
+						<div><h3 className="notes">Notes</h3></div>
+						<h4 className="notes">General</h4>
+						<textarea className="deckNotes" name="notes[general]" defaultValue={general}></textarea>
+						<h4 className="notes">Mulligans</h4>
+						<textarea className="deckNotes" name="notes[mulligan]" defaultValue={mulligan}></textarea>
+						<h4 className="notes">Strategy</h4>
+						<textarea className="deckNotes" name="notes[strategy]" defaultValue={strategy}></textarea>
+						<h4 className="notes">Matchups</h4>
+						<textarea className="deckNotes" name="notes[matchups]" defaultValue={matchups}></textarea>						
 					</div>
-					<p className="noteHints">Talk about mulligans, matchups, tech cards, ...</p>
 				</div>
 			);
 		} else{
@@ -104,10 +124,16 @@ var DetailSelect = React.createClass({
 					</div>
 					<br/>
 					<div className="row">
-						<div><label className="notes">Notes:</label></div>
-						<textarea name="deck[notes]" className="notes" id="deckNotes" placeholder="Write about your deck..."></textarea><br/>
+						<div><h3 className="notes">Notes</h3></div>
+						<h4 className="notes">General</h4>
+						<textarea className="deckNotes" name="notes[general]"></textarea>
+						<h4 className="notes">Mulligans</h4>
+						<textarea className="deckNotes" name="notes[mulligan]"></textarea>
+						<h4 className="notes">Strategy</h4>
+						<textarea className="deckNotes" name="notes[strategy]"></textarea>
+						<h4 className="notes">Matchups</h4>
+						<textarea className="deckNotes" name="notes[matchups]"></textarea>						
 					</div>
-					<p className="noteHints">Talk about mulligans, matchups, tech cards, ...</p>
 				</div>
 			);
 		}
@@ -144,7 +170,7 @@ var DetailSelect = React.createClass({
 			}.bind(this));
 			return(
 				<div className="col-md-6 col-xs-6">
-					<div><label>Archetype:</label></div>
+					<div><h3 className="left">Archetype:</h3></div>
 					<select ref="archtypes">
 						<option value="" name="unique_deck_type_id"> </option>
 						{archtypes}
@@ -156,7 +182,7 @@ var DetailSelect = React.createClass({
 		else{
 			return(
 				<div>
-					<div><label>Archtype:</label></div>
+					<div><h2>Archtype:</h2></div>
 					<input type="text" ref="archtypes" name="new_archtype" size="30" placeholder="Your deck's archtype...">Archtype</input>
 				</div>
 			);

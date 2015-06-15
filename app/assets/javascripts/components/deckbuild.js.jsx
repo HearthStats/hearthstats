@@ -6,7 +6,8 @@ var DeckBuild = React.createClass({
 			chosenKlass: 0,
 			deck: this.props.deck,
 			klassSelected: this.props.deck != null && this.props.deck.klass_id != null,
-			moveOn: false 
+			moveOn: false,
+			editBack: false
 		};
 	},
 	componentWillMount: function(){
@@ -22,7 +23,7 @@ var DeckBuild = React.createClass({
   	if(this.state.klassSelected && !this.state.moveOn){ 
   		return(
 				<div>
-					<CardSelect submitBack={this.goBackKlass} cardstring={this.state.cardstring} allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
+					<CardSelect editBack={this.state.editBack} submitBack={this.goBackKlass} cardstring={this.state.cardstring} allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
 				</div>
   		);
   	}
@@ -67,7 +68,8 @@ var DeckBuild = React.createClass({
 	},
 	handleCardResubmit: function(){
 		this.setState({
-			moveOn: false
+			moveOn: false,
+			editBack: true
 		});
 	}
 });
