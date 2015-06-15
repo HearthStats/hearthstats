@@ -269,6 +269,7 @@ class DecksController < ApplicationController
     @deck = Deck.new(params[:deck])
     @deck.user_id = current_user.id
     @deck.is_public = !@deck.is_public
+    @deck.notes = params[:notes].to_json
     params[:deck]["is_public"] = params[:deck]["is_public"] != "on"
     unless params[:deck_text].blank?
       text2deck = text_to_deck(params[:deck_text])
