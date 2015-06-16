@@ -87,7 +87,7 @@ var CardSelect = React.createClass({
 			 		<div className="deckbuilderCards">
 			 			{allcards}
 			 		</div>
-			  	<button className="btn green nextButton" onClick={this.handleClick}> Next </button>)
+			  	<button className="btn green nextButton" onClick={this.handleClick}> Next </button>
 			 	</div>
 			 	<div className="dCards col-sm-3"> 
 			 		<h2> Your Deck </h2>
@@ -110,7 +110,7 @@ var CardSelect = React.createClass({
 	},
 	// build deck array if this is an edit so we can load previous cards
 	buildDeckArray: function(cardstring){
-		if(cardstring.length == 0) return; 
+		if(cardstring==null || cardstring.length == 0) return; 
 		deckCards = cardstring.split(","); 
 		var newDecklistArray = [];
 		var newDeckArray = [];
