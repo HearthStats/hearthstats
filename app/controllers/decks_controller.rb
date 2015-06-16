@@ -252,8 +252,9 @@ class DecksController < ApplicationController
   end
 
   def edit
-    @cards = Card.where(klass_id: [0,nil,params[:klass]], collectible: true)
     @deck = Deck.find(params[:id])
+    @cards = Card.where(klass_id: [0,nil,@deck.klass_id], collectible: true)
+    @klass = @deck.klass_id
     @archtypes = UniqueDeckType.where(verified: true)
     @currentVersion = @deck.current_version
     gon.deck = @deck
