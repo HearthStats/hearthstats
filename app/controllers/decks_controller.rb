@@ -57,10 +57,7 @@ class DecksController < ApplicationController
       @mulligan = @notes["mulligan"]
       @strategy = @notes["strategy"]
       @matchups = @notes["matchups"]
-    rescue JSON::ParserError => e  
-      @notes = @deck.notes
-      @general = @notes
-    rescue TypeError 
+    rescue TypeError, JSON::ParserError => e
       @notes = @deck.notes
       @general = @notes
     end 
@@ -159,10 +156,7 @@ class DecksController < ApplicationController
       @mulligan = @notes["mulligan"]
       @strategy = @notes["strategy"]
       @matchups = @notes["matchups"]
-    rescue JSON::ParserError => e  
-      @notes = @deck.notes
-      @general = @notes
-    rescue TypeError 
+    rescue TypeError, JSON::ParserError => e
       @notes = @deck.notes
       @general = @notes
     end 
