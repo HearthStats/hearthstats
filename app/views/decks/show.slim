@@ -143,20 +143,19 @@ div.row
         .inline-graph
           p = t('.win_rate_by_rank')
           div#rank-chart class="deckBuilderCurveChart"
-    - unless @deck.notes.blank?
+    - unless @notes.blank?
       #notes
-        - @notes = JSON.parse(@deck.notes)
-        - unless @notes["general"].blank?
-          = sanitize @notes["general"], tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
-        - unless @notes["mulligan"].blank?
+        - unless @general.blank?
+          = sanitize @general, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
+        - unless @mulligan.blank?
           h4 Mulligans
-          = sanitize @notes["mulligan"], tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
-        - unless @notes["strategy"].blank?
+          = sanitize @mulligan, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
+        - unless @strategy.blank?
           h4 Strategy
-          = sanitize @notes["strategy"], tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
-        - unless @notes["matchups"].blank?
+          = sanitize @strategy, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
+        - unless @matchups.blank?
           h4 Matchups
-          = sanitize @notes["matchups"], tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
+          = sanitize @matchups, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
     .comments
       = commontator_thread(@deck)
 = render 'decks/deck_js', enabled: false

@@ -51,6 +51,17 @@ class DecksController < ApplicationController
     impressionist(@deck)
     commontator_thread_show(@deck)
 
+    begin
+      @notes = JSON.parse(@deck.notes)
+      @general = @notes["general"]
+      @mulligan = @notes["mulligan"]
+      @strategy = @notes["strategy"]
+      @matchups = @notes["matchups"]
+    rescue JSON::ParserError => e  
+      @notes = @deck.notes
+      @general = @notes
+    end 
+
     all_versions = @deck.deck_versions
     if !params[:version].nil?
       deck_version = all_versions.find {|d| d.version == params[:version]}
@@ -138,6 +149,17 @@ class DecksController < ApplicationController
     if @deck.unique_deck.nil?
       redirect_to deck_path(@deck) and return
     end
+    
+    begin
+      @notes = JSON.parse(@deck.notes)
+      @general = @notes["general"]
+      @mulligan = @notes["mulligan"]
+      @strategy = @notes["strategy"]
+      @matchups = @notes["matchups"]
+    rescue JSON::ParserError => e  
+      @notes = @deck.notes
+      @general = @notes
+    end 
 
     @card_array = @deck.card_array_from_cardstring
     commontator_thread_show(@deck)
@@ -200,10 +222,7 @@ class DecksController < ApplicationController
   end
 
   def new_splash
-    @all_cards = Card.all
-    @cards = Card.where(collectible: true)
     @klasses = Klass.all
-    @archtypes = UniqueDeckType.where(verified: true)
     @deck = Deck.new(params[:deck])
     respond_to do |format|
       format.html
@@ -211,13 +230,10 @@ class DecksController < ApplicationController
   end
 
   def new
-    @all_cards = Card.all
-    @cards = Card.where(collectible: true)
-    # if params[:klass].nil?
-    #   redirect_to new_splash_decks_path, alert: "Please select a class" and return
-    # end
+    @cards = Card.where(klass_id: [0,nil,params[:klass]], collectible: true)
     gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
+    @klass = params[:klass]
     @archtypes = UniqueDeckType.where(verified: true)
     @deck.klass_id = params[:klass]
     @deck.is_public = true
@@ -236,9 +252,9 @@ class DecksController < ApplicationController
   end
 
   def edit
-    @all_cards = Card.all
-    @cards = Card.where(collectible: true)
     @deck = Deck.find(params[:id])
+    @cards = Card.where(klass_id: [0,nil,@deck.klass_id], collectible: true)
+    @klass = @deck.klass_id
     @archtypes = UniqueDeckType.where(verified: true)
     @currentVersion = @deck.current_version
     gon.deck = @deck
