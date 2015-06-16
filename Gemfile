@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.18'
 gem 'rake'
-gem 'puma'
-gem 'foreman'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
