@@ -1,4 +1,7 @@
 class UniqueDeck < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  
   attr_accessible :cardstring, :name, :user_id, :num_matches, :winrate, :num_users, :klass_id
 
   is_impressionable
