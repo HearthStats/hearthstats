@@ -228,11 +228,18 @@ var DetailSelect = React.createClass({
 		var newDecklistArray = [];
 		var newDeckArray = [];
 		var newQuant = 0;
+		function findCard(id, cards){
+			for(var i=0; i<cards.length; ++i){
+				if(cards[i].id == id){
+					return cards[i];
+				}
+			}
+		}
 		deckCards.forEach(function(card){
 			id = parseInt(card.split("_")[0]);
 			quantity = parseInt(card.split("_")[1]);
 			newDecklistArray[id] = quantity;
-			newDeckArray.push(this.props.allCards[id-1]);
+			newDeckArray.push(findCard(id, this.props.cards));
 			newQuant = newQuant + quantity;
 		}.bind(this));
 		newDeckArray.sort(function(cardA, cardB){ 

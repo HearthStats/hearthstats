@@ -3,7 +3,7 @@ var DeckBuild = React.createClass({
 	getInitialState: function(){
 		return{
 			cardstring: "",
-			chosenKlass: 0,
+			chosenKlass: this.props.klass,
 			deck: this.props.deck,
 			klassSelected: this.props.deck != null && this.props.deck.klass_id != null,
 			moveOn: false,
@@ -23,7 +23,7 @@ var DeckBuild = React.createClass({
   	if(this.state.klassSelected && !this.state.moveOn){ 
   		return(
 				<div>
-					<CardSelect editBack={this.state.editBack} submitBack={this.goBackKlass} cardstring={this.state.cardstring} allCards={this.props.allCards} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
+					<CardSelect editBack={this.state.editBack} submitBack={this.goBackKlass} cardstring={this.state.cardstring} klass={this.state.chosenKlass} cards={this.props.cards} submitClick={this.handleCardsSelect} deck={this.props.deck} type={this.props.type} />
 				</div>
   		);
   	}
@@ -44,7 +44,7 @@ var DeckBuild = React.createClass({
 			);
 		} else{ 
 			return(
-				<DetailSelect type={this.props.type} currentVersion={this.props.currentVersion} deck={this.props.deck} klass={this.state.chosenKlass} backButton={this.handleCardResubmit} archtype={this.props.archtypes} allCards={this.props.allCards} cardstring={this.state.cardstring} /> );
+				<DetailSelect type={this.props.type} currentVersion={this.props.currentVersion} deck={this.props.deck} klass={this.state.chosenKlass} backButton={this.handleCardResubmit} cards={this.props.cards} archtype={this.props.archtypes} cardstring={this.state.cardstring} /> );
 		}
 	},
 	goBackKlass: function(){
