@@ -60,6 +60,9 @@ class DecksController < ApplicationController
     rescue JSON::ParserError => e  
       @notes = @deck.notes
       @general = @notes
+    rescue TypeError 
+      @notes = @deck.notes
+      @general = @notes
     end 
 
     all_versions = @deck.deck_versions
@@ -157,6 +160,9 @@ class DecksController < ApplicationController
       @strategy = @notes["strategy"]
       @matchups = @notes["matchups"]
     rescue JSON::ParserError => e  
+      @notes = @deck.notes
+      @general = @notes
+    rescue TypeError 
       @notes = @deck.notes
       @general = @notes
     end 
