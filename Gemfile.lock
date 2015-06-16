@@ -279,8 +279,6 @@ GEM
     fog-xml (0.1.1)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    foreman (0.78.0)
-      thor (~> 0.19.1)
     formatador (0.2.5)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
@@ -379,8 +377,6 @@ GEM
     pry-byebug (3.0.1)
       byebug (~> 3.4)
       pry (~> 0.10)
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
     pusher (0.14.1)
       httpclient (~> 2.3)
       multi_json (~> 1.0)
@@ -571,7 +567,6 @@ DEPENDENCIES
   feedjira
   figaro
   fog
-  foreman
   friendly_id
   gon
   groupdate
@@ -590,7 +585,6 @@ DEPENDENCIES
   phashion
   pry
   pry-byebug
-  puma
   pusher
   quiet_assets (>= 1.0.1)
   rails (= 3.2.18)
