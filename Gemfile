@@ -87,6 +87,7 @@ gem "squeel"
 gem 'pusher'
 gem 'sync'
 gem 'react-rails', '~> 1.0'
+gem 'unicorn'
 
 gem 'ckeditor_rails'
 
