@@ -1,21 +1,20 @@
-h1 Reports
+h1 Monthly Reports
 h2#most-recent Most Recent
 - @reports.each do |year, monthes|
   .report-year.row
     h4#year-title = year
     - monthes.reverse.each do |month|
     	.monthly.col-md-4.col-sm-6
-    	  a href="/reports/#{year}/#{month}"
-          img class="report-preview" src="/reports/#{year}/pics/#{month}_bgx300.jpg"
+    	  <a href="/reports/#{year}/#{month}">
+          img.report-preview src="/reports/#{year}/pics/#{month}_bgx300.jpg"</a>
 
 javascript:
   $( document ).ready(function() {
-    $(".report-preview").hover(function() {
-      $(".report-year.row").find("img").css("opacity", "0.75");
-      $(this).css("opacity", "1");
+    $(".report-preview").mouseenter(function() {
+      $(".report-year.row").find("img").not(this).fadeTo(500, 0.6);
     });
     $(".report-preview").mouseleave(function() {
-      $(".report-year.row").find("img").css("opacity", "1");
-    });
+      $(".report-year.row").find("img").not(this).css("opacity", "1");
+   });
   });
 
