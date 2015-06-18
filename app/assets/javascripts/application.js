@@ -27,7 +27,3 @@
 //= require 'site_wide/ga.js'
 //= require 'site_wide/ad.js'
 //= require sync
-//= require react
-//= require react_ujs
-//= require components
-//= require ckeditor-jquery
