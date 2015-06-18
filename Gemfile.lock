@@ -607,7 +607,7 @@ DEPENDENCIES
   squeel
   stripe!
   sync
-  turbo-sprockets-rails3
+  turbo-sprockets-rails3 (~> 0.2)
   uglifier (>= 1.0.3)
   unf
   unicorn

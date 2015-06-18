@@ -28,7 +28,7 @@ group :assets do
 # in production environments by default.
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'turbo-sprockets-rails3'
+  gem 'turbo-sprockets-rails3', '~> 0.2'
   # gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end

@@ -4,4 +4,4 @@
 <%= provide(:title, t('decks.new.title'))  %>
 <%= provide(:section, t('.section')) %>
 
-<%= react_component 'DeckBuild', { cards: @cards, deck: @deck, type: "new", archtypes: @archtypes, klass: @klass}, {prerender: true} %>
+<%= react_component 'DeckBuild', { cards: @cards, deck: @deck, type: "new", archtypes: @archtypes, klass: @klass} %>
