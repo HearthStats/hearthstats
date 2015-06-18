@@ -18,7 +18,6 @@
 //= require jquery-ui/effect-fade
 //= require select2
 //= require social-share-button
-//= require bootstrap-wysihtml5
 //= require 'redesign/app.js'
 //= require 'plugins/jquery.slimscroll.min.js'
 //= require 'plugins/jquery.cookie.min.js'
@@ -27,8 +26,8 @@
 //= require 'plugins/bootstrap.min.js'
 //= require 'site_wide/ga.js'
 //= require 'site_wide/ad.js'
-//= require 'site_wide/wysiwyg.js'
 //= require sync
 //= require react
 //= require react_ujs
 //= require components
+//= require ckeditor-jquery

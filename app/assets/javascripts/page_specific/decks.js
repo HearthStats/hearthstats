@@ -4,17 +4,11 @@
 //= require 'plugins/jquery.selectBoxIt.js'
 //= require 'site_wide/app.js'
 //= require 'plugins/jquery.tagsinput.min.js'
-//= require 'plugins/list.min.js'
-//= require 'plugins/list.pagination.min.js'
 //= require 'plugins/jquery.tablesorter.min.js'
 //= require 'plugins/jquery.mixitup.min.js'
 //= require 'plugins/jquery.dataTables.min.js'
 //= require 'page_specific/decklist.js'
 //= require 'plugins/jquery.lazyload.min.js'
-//= require react
-//= require react_ujs
-//= require components
-//= require ckeditor-jquery
 
 $(document).ready(function(){
   $('.deck-text-trigger').click( function(){

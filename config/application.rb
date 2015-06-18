@@ -73,6 +73,7 @@ module Hearthstats
     config.assets.enabled = true
     config.assets.digest = true
     config.assets.initialize_on_precompile = false
+    config.assets.precompile += %w( page_specific/* plugins/* site_wide/* custom/* vendor/* jquery-ui/* )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
