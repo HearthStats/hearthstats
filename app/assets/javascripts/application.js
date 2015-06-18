@@ -27,3 +27,4 @@
 //= require 'site_wide/ga.js'
 //= require 'site_wide/ad.js'
 //= require sync
+//= require ckeditor-jquery
