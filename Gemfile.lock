@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/nerian/bootstrap-wysihtml5-rails.git
-  revision: e8ddba5529569ad04a567b6b48cfc082963e7fdf
-  specs:
-    bootstrap-wysihtml5-rails (0.3.3.7)
-      railties (>= 3.0)
-
-GIT
   remote: https://github.com/getsentry/raven-ruby.git
   revision: 9f482022a648ab662c22177ba24fd2e2b6794c34
   specs:
@@ -547,7 +540,6 @@ DEPENDENCIES
   aws-sdk (~> 1.5.7)
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
-  bootstrap-wysihtml5-rails!
   cancancan
   capistrano (~> 2.14.2)
   capistrano_rsync_with_remote_cache
