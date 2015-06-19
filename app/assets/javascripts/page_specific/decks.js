@@ -49,4 +49,5 @@ $(document).ready(function(){
     lineWidth: 3,
     barColor: App.getLayoutColorCode('green')
   });
+  $('#decklist').tablesorter();
 });

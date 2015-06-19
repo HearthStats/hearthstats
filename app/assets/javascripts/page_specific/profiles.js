@@ -2,6 +2,7 @@
 //= require 'plugins/flot/jquery.flot.time.min.js'
 //= require 'plugins/jquery.dataTables.min.js'
 //= require 'page_specific/decklist.js'
+//= require 'plugins/jquery.tablesorter.min.js'
 
 $(document).ready(function() {
   $('.reveal').click(function (){

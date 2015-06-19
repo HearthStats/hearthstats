@@ -17,6 +17,7 @@ table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#d
       tr
         td.name    = link_to deck.name, deck
         td.class
+          p.hidden = deck.class_name
           img[ src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif"
             alt = "#{deck.class_name}"]
         td.minions = deck.num_minions
@@ -25,8 +26,15 @@ table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#d
         td.matches = deck.matches.count
         td.wins    = deck.user_num_wins
         td.losses  = deck.user_num_losses
-        td.winrate = number_to_percentage(deck.user_winrate, precision: 1)
+        td.winrate data-sort-value="#{deck.user_winrate.round(1)}"
+          = number_to_percentage(deck.user_winrate, precision: 1)
         - if signed_in?
           td.tools
-            = link_to(" Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o')
-            = link_to(" Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' })
+            - if profile_owner?
+              = link_to(" Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o')
+              = link_to(" Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' })
+            - else 
+              = link_to("Copy to My Decks", copy_deck_path(deck), class: 'btn default btn-xs purple')
+
+javascript:
+  $("#decklist").tablesorter();
