@@ -234,11 +234,9 @@ class DecksController < ApplicationController
       redirect_to new_splash_decks_path, alert: "Please select a class" and return
     end
     @cards = Card.where(klass_id: [0,nil,params[:klass]], collectible: true)
-    gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
-    @klass = params[:klass]
-    @archtypes = UniqueDeckType.where(verified: true)
     @deck.klass_id = params[:klass]
+    @archtypes = UniqueDeckType.where(verified: true, klass_id: @deck.klass_id)
     @deck.is_public = true
     respond_to do |format|
       format.html # new.html.erb
@@ -257,11 +255,7 @@ class DecksController < ApplicationController
   def edit
     @deck = Deck.find(params[:id])
     @cards = Card.where(klass_id: [0,nil,@deck.klass_id], collectible: true)
-    @klass = @deck.klass_id
-    @archtypes = UniqueDeckType.where(verified: true)
-    @currentVersion = @deck.current_version
-    gon.deck = @deck
-    gon.cards = Card.all
+    @archtypes = UniqueDeckType.where(verified: true, klass_id: @deck.klass_id)
     canedit(@deck)
   end
 
