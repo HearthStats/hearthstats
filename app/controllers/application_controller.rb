@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
 
   def canedit(entry)
     if current_user.id != entry.user_id
-      redirect_to root_url, alert: 'You are not authorized to edit that.'
+      redirect_to dashboards_path, alert: 'You are not authorized to edit that.'
     end
   end
 
