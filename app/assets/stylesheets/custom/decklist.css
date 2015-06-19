@@ -1,14 +1,4 @@
 /* deck builder */
-.deckbuilderWrapper {
-}
-.deckbuilderWrapper .cardListHeader,
-.deckbuilderWrapper.enabled .deckBuilderTools {
-  display:block;
-}
-.deckbuilderWrapper .deckBuilderTools,
-.deckbuilderWrapper.enabled .cardListHeader {
-  display:none;
-}
 .deckbuilderWrapper .deckBuilderCardsWrapper {
   margin-bottom:1em;
 }
@@ -25,9 +15,6 @@
   font-weight:bold;
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   line-height:38px;
-}
-.deckbuilderWrapper.enabled .cardWrapper {
-  cursor:pointer;
 }
 .deckbuilderWrapper .cardWrapper .mana {
   font-size:16px;
@@ -174,21 +161,15 @@ table.decklist td.winrate {
   float: right;  
   text-align: center;
 }
-.win-rate{  
+.win-rate, .num-matches{  
   margin-right: 2%;
 }
-
-.num-matches{
-  margin-right: 2%;
-}
-
 .win-percent{
   font-size: 16px;
 }
 .last-updated{
   width: 180px;
 }
-
 .user-option-buttons{
   display: none;
   float: right;
@@ -291,7 +272,6 @@ table.decklist td.winrate {
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
-
 .deck-separator{
   margin: 20px 10%;
   width: 80%; 

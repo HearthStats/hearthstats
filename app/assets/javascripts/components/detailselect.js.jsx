@@ -257,7 +257,7 @@ var DetailSelect = React.createClass({
 		});
 	},
 	_drawCards:function(){
-		var _cs = this._makeCardstring();
+		var _cs = this.props.cardstring;
 		if(_cs.length === 0) { return; }
 		return(this.state.deckArray.map(function(card){
 			if(card == undefined){ return; }
@@ -268,15 +268,5 @@ var DetailSelect = React.createClass({
 			}
 			if(printCard == true){ return(<DeckCard card={card} qty={quant} type="show"/>); }
 		}.bind(this)));
-	},
-	_makeCardstring:function(){
-		var Cardstring = [];
-		for(i = 0; i<this.state.decklist.length; ++i){ 
-			if(this.state.decklist[i] != undefined){ 
-				Cardstring.push(i+"_"+this.state.decklist[i]);
-			}
-		}
-		Cardstring = Cardstring.join();
-		return(Cardstring);
 	}
 });
