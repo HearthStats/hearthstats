@@ -1,0 +1,23 @@
+#most-recent {
+  text-align: center;
+}
+
+.report-year {
+  display: block; 
+  text-align: center;
+}
+
+.monthly.col-md-4.col-sm-6 { 
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.report-preview:hover {
+  transform: scale(1.1);
+}
+
+#year-title {
+  font-size: 22px !important;
+}
