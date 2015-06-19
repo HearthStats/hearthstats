@@ -2,23 +2,14 @@ var CardSelect = React.createClass({
 	// props: allCards, cards, deck, type, cardstring
 	// return: cardstring
 	getInitialState: function(){
-		var sortedCards = this.props.cards.sort(function(cardA, cardB){ 
-			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
-			else{ 
-				if(cardA.name < cardB.name){ return -1; }
-				if(cardB.name < cardA.name){ return 1; }
-				else{ return 0; }
-			}
-		});
 		return {
-			cards: this.props.cards,
+			cards: this.sortCards(this.props.cards),
 			deck: this.props.deck, 
 			cardQuant: 0,
 			decklist: [],
 			deckArray: [],
 			selectedMana: -1,
 			selectedCardType: -1,
-			textImport: false,
 			// filterParams: array
 			// [0]: Search
 			// [1]: Mana
@@ -143,6 +134,16 @@ var CardSelect = React.createClass({
 			cardQuant: newQuant
 		});
 	},
+	sortCards: function(cards){
+		return cards.sort(function(cardA, cardB){ 
+			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
+			else{ 
+				if(cardA.name < cardB.name){ return -1; }
+				if(cardB.name < cardA.name){ return 1; }
+				else{ return 0; }
+			}
+		});
+	},
 	filterMana: function(btn){
 		var mana = parseInt(btn.target.value); 
 		var newFilterParams = this.state.filterParams.slice();
@@ -180,12 +181,7 @@ var CardSelect = React.createClass({
 		var mana = filterParams[1];
 		var klass = filterParams[2];
 		if(filterParams[0] == "" && filterParams[1] == -1 && filterParams[2] == -1){
-			return this.props.cards.sort(function(cardA, cardB){ 
-					if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
-					else{ 
-						if(cardA.name < cardB.name){ return -1; }
-						if(cardB.name < cardA.name){ return 1; }
-						else{ return 0; }}});
+			return this.sortCards(this.props.cards);
 		}
 		newCards = cards.filter(function(card){
 			return(
@@ -201,14 +197,7 @@ var CardSelect = React.createClass({
 					(klass==-1 && (card.klass_id == this.props.klass || card.klass_id == null || card.klass_id == 0)))
 			)
 		}.bind(this));
-		return newCards.sort(function(cardA, cardB){ 
-			if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
-			else{ 
-				if(cardA.name < cardB.name){ return -1; }
-				if(cardB.name < cardA.name){ return 1; }
-				else{ return 0; }
-			}
-		});
+		return this.sortCards(newCards);
 	},
 	updateButtons: function(){
 		return function(event){
@@ -286,14 +275,7 @@ var CardSelect = React.createClass({
 				//   of the quantity of cards)
 				newDeckArray.push(card);
 				// sort the deckArray
-				newDeckArray.sort(function(cardA, cardB){ 
-					if(cardA.mana != cardB.mana){ return cardA.mana - cardB.mana; }
-					else{ 
-						if(cardA.name < cardB.name){ return -1; }
-						if(cardB.name < cardA.name){ return 1; }
-						else{ return 0; }
-					}
-				});
+				newDeckArray = this.sortCards(newDeckArray);
 				// set new state
 				this.setState({ 
 					decklist:newDecklist,

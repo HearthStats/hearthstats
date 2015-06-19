@@ -230,6 +230,9 @@ class DecksController < ApplicationController
   end
 
   def new
+    if params[:klass].nil?
+      redirect_to new_splash_decks_path, alert: "Please select a class" and return
+    end
     @cards = Card.where(klass_id: [0,nil,params[:klass]], collectible: true)
     gon.cards = Card.where(collectible: true, klass_id: [nil, params[:klass]], type_name: Card::TYPES.values)
     @deck = Deck.new
