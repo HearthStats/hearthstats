@@ -12,18 +12,25 @@ class DashboardsController < ApplicationController
     if !current_user.guest? && current_user.profile.name.blank?
       redirect_to edit_profile_path(current_user), alert: 'Please add a username' and return
     end
-    
-    # Get all user's matches from this season
-    matches = Match.where(user_id: current_user.id, season_id: current_season).all
-    arena_matches = matches.select { |match| match.mode_id == 1 }
-    ranked_matches = matches.select { |match| match.mode_id == 3 }
-    @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
-    @conwins   = Match.winrate_per_day_cumulative(ranked_matches, 10)
-    @arena_wr = get_array_wr(arena_matches, true)
-    @con_wr = get_array_wr(ranked_matches, true)
-    gon.hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
-
-    @recent_entries = matches.sort_by{|m| m.created_at}.last(10).reverse
+    dash_cache = Rails.cache.fetch("dash_stats-#{current_user.id}", expires_in: 1.hour) do
+      # Get all user's matches from this season
+      matches = Match.where(user_id: current_user.id, season_id: current_season).all
+      arena_matches = matches.select { |match| match.mode_id == 1 }
+      ranked_matches = matches.select { |match| match.mode_id == 3 }
+      @arena_wr = get_array_wr(arena_matches, true)
+      @con_wr = get_array_wr(ranked_matches, true)
+      @recent_entries = matches.sort_by{|m| m.created_at}.last(10).reverse
+      @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
+      @conwins   = Match.winrate_per_day_cumulative(ranked_matches, 10)
+      hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
+      [@arena_wr, @con_wr, @arenawins, @conwins, @recent_entries, hourly_wr]
+    end
+    @arena_wr = dash_cache[0]
+    @con_wr = dash_cache[1]
+    @arenawins = dash_cache[2]
+    @conwins = dash_cache[3]
+    @recent_entries = dash_cache[4]
+    gon.hourly_wr = dash_cache[5]
     topdeck_id = Rails.cache.fetch("topdeck-#{current_user.id}", expires_in: 1.day) do
       deck = Deck.bestuserdeck(current_user.id)
       return deck.id if deck
@@ -41,6 +48,19 @@ class DashboardsController < ApplicationController
   end
 
   def premium
+    dash_cache = Rails.cache.fetch("prem_dash_stats-#{current_user.id}", expires_in: 1.hour) do
+      # Get all user's matches from this season
+      matches = Match.where(user_id: current_user.id, season_id: current_season).all
+      arena_matches = matches.select { |match| match.mode_id == 1 }
+      ranked_matches = matches.select { |match| match.mode_id == 3 }
+      @arena_wr = get_array_wr(arena_matches, true)
+      @con_wr = get_array_wr(ranked_matches, true)
+      hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
+      [@arena_wr, @con_wr, hourly_wr]
+    end
+    @arena_wr = dash_cache[0]
+    @con_wr = dash_cache[1]
+    gon.hourly_wr = dash_cache[3]
     render layout: "no_breadcrumbs"
   end
 
