@@ -9,7 +9,6 @@
   <meta name="MobileOptimized" content="320">
   <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag Sync.adapter_javascript_url %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "page_specific/#{params[:controller]}"  %>
   <%= csrf_meta_tags %>
@@ -48,10 +47,9 @@
     <% if signed_in? %>
       <%= render 'layouts/sidebar' %>
     <% end %>
-    <div class="page-content" id="no-margin-cont">
+    <div class="page-content">
       <%= announce Announcement.newest, :hide_message => "Hide" %>
       <%= yield %>
-      <%= render 'layouts/foot_ads' %>
     </div>
   </div>
   <%= render 'layouts/footer' %>

@@ -3,6 +3,7 @@
 //= require 'plugins/flot/jquery.flot.curved.js'
 //= require 'plugins/jquery.easy-pie-chart.js'
 //= require 'redesign/index.js'
+//= require 'plugins/masonry.js'
 
 $(document).ready(function(){
   $.plot($("#winrate-by-time"), [{
