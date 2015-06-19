@@ -79,11 +79,12 @@ class Api::V3::MatchesController < ApplicationController
       end
       match = parse_match(_req, klass_id)
       if match.save
+        binding.pry
         MatchDeck.create(match_id: match.id,
                          deck_id: deck.id,
-                         deck_version_id: _req["deck_version_id"].to_i
+                         deck_version_id: _req[:deck_version_id].to_i
                         )
-        MatchRank.create(match_id: match.id, rank_id: _req["ranklvl"].to_i)
+        MatchRank.create(match_id: match.id, rank_id: _req[:ranklvl].to_i)
         render json: {status: 200, data: match}
       else
         render json: {status: 400, message: match.errors.full_messages}

@@ -6,6 +6,9 @@ class DashboardsController < ApplicationController
   end
 
   def index
+    if current_user && !current_user.subscription_id.nil?
+      redirect_to premium_dashboards_path and return
+    end
     if !current_user.guest? && current_user.profile.name.blank?
       redirect_to edit_profile_path(current_user), alert: 'Please add a username' and return
     end
@@ -35,6 +38,10 @@ class DashboardsController < ApplicationController
       end
     end
     @toparena = Match.bestuserarena(current_user.id)
+  end
+
+  def premium
+    render layout: "no_breadcrumbs"
   end
 
   def fullstats
@@ -81,7 +88,6 @@ class DashboardsController < ApplicationController
   end
 
   def prem_dash
-
     render layout: "prem_dash"
   end
   private
