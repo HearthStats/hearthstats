@@ -1,7 +1,23 @@
-h2 Most Recent
+- set_meta_tags :title => "HearthStats Monthly Reports",
+  :description => "Detailed Hearthstone statistics generately monthly",
+  :keywords => "user, deck, statistics, hearthstats, hearthstone, report, monthly"
+- provide(:title, "Monthly Reports")
+- provide(:section, link_to("Reports", reports_path))
+h2#most-recent Most Recent
 - @reports.each do |year, monthes|
-  .report-year
-    h4 = year
+  .report-year.row
+    h4#year-title = year
     - monthes.reverse.each do |month|
-      = link_to "/reports/#{year}/#{month}" do
-        img.report-preview src="/reports/#{year}/pics/#{month}_bgx300.jpg"
+      .monthly.col-md-4.col-sm-6
+        <a href="/reports/#{year}/#{month}">
+          img.report-preview src="/reports/#{year}/pics/#{month}_bgx300.jpg"</a>
+
+javascript:
+  $( document ).ready(function() {
+    $(".report-preview").mouseenter(function() {
+      $(".report-year.row").find("img").not(this).fadeTo(500, 0.6);
+    });
+    $(".report-preview").mouseleave(function() {
+      $(".report-year.row").find("img").not(this).css("opacity", "1");
+   });
+  });
