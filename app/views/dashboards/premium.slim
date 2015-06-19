@@ -1,18 +1,3 @@
-.row
-  .col-md-12
-    .premium-dash-graphs
-      .graph-block
-        h4 Winrates For Last 1000 games
-        .class_wr-cont
-          = render "shared/graphs/live/class_wr"
-      .graph-block
-        h4 Percent class played in past day
-        = render "shared/graphs/percent_class_played"
-      .graph-block
-        h4 Number of turns class vs class
-        = render "shared/graphs/numturns_class_v_class"
-    javascript:
-      $('.premium-dash-graphs').isotope({
-        itemSelector : '.graph-block',
-        layoutMode: 'fitRows'
-      });
+.full-height
+  h1 Premium Dashboard (beta)
+  = render "shared/graphs/kibana_graph"
