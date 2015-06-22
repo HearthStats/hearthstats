@@ -4,14 +4,26 @@ var DeckCard = React.createClass({
 			hover: false
 		}
 	},
-	mouseOver: function(){
-		return function(){this.setState({
-			hover: true
-		});}.bind(this);
+	mouseOver: function(event){
+		var deckImageStyle = {
+			height: '300px',
+			left: event.clientX + 40 + 'px',
+			top: event.clientY + 20 +'px',
+			position: 'fixed',
+			zIndex: '2000'};
+		if(event.clientY + 500 > window.scrollY + window.innerHeight){
+			deckImageStyle = {
+				height: '300px',
+				left: event.clientX + 40 + 'px',
+				bottom: '5px',
+				position: 'fixed',
+				zIndex: '2000'};
+		}
+		this.setState({hover: true, deckImageStyle: deckImageStyle})
 	},
 	mouseOut: function(){
 		return function(){this.setState({
-			hover: false
+			hover: false, deckImageStyle: null
 		})}.bind(this);
 	},
 	render: function(){ 
@@ -21,35 +33,19 @@ var DeckCard = React.createClass({
 		if(this.props.qty == 2){ wrapperClass = "two"; }
 		else if(this.props.card.rarity_id == 5){ wrapperClass = "legendary"; }
 		cardClass = cardClass + wrapperClass;
-		var fullDeckImage;
-		var deckImageStyle = {
-			height: '300px',
-			left: window.event.pageX + 40 + 'px',
-			top: (window.event.pageY-window.scrollY) - 100 + 'px',
-			position: 'fixed',
-			zIndex: '2000'};
-		if(window.event.pageY - 100  < window.scrollY){
-			var deckImageStyle = {
-				height: '300px',
-				left: window.event.pageX + 40 + 'px',
-				top: (window.event.pageY-window.scrollY) - 60 + 'px',
-				position: 'fixed',
-				zIndex: '2000'};
-		}
-		if(window.event.pageY + 200 > window.scrollY + window.innerHeight){
-			deckImageStyle = {
-				height: '300px',
-				left: window.event.pageX + 40 + 'px',
-				bottom: '5px',
-				position: 'fixed',
-				zIndex: '2000'};
-		}
-		
+
+		var fullDeckImage = null;
 		if(this.state.hover){
-			fullDeckImage = (<img id="deckBuilderFullCardView" key={this.props.card.id} ref="fullDeckImage" src={"/assets/cards/"+cn+".png"} style={deckImageStyle} />);
+			fullDeckImage = <img 
+				id="deckBuilderFullCardView" 
+				key={this.props.card.id} 
+				ref="fullDeckImage" 
+				src={"/assets/cards/"+cn+".png"} 
+				style={this.state.deckImageStyle} />;
 		}
+
 		return (
-			<div onMouseOver={this.mouseOver()} onMouseOut={this.mouseOut()} >
+			<div onMouseOver={this.mouseOver} onMouseOut={this.mouseOut()}>
 				<div onClick={this.handleClick} key={cn} alt={cn} className={cardClass}>
 					<div className="mana">
 						{this.props.card.mana}

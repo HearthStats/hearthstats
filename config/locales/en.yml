@@ -183,7 +183,7 @@ en:
   dashboards:
     index:
       title: Dashboard
-      subtitle: ! ' statistics for the current season'
+      subtitle: ! 'Statistics for the current season'
       global_win_rates: Global Win Rates
       arena_win_rates: Arena Win Rates
       games_recorded: Games Recorded
@@ -219,7 +219,7 @@ en:
   blind_drafts:
     index:
       title: Blind Drafts
-      subtitle: ! ' start a new game'
+      subtitle: ! 'Start a new game'
       new_draft: New Blind Draft
       draft_id: Draft ID
       player1: Player 1 Name
@@ -231,10 +231,10 @@ en:
       join: Join
     draft:
       title: Drafting Blind Draft
-      subtitle: " draft your deck"
+      subtitle: "Draft your deck"
     show:
       title: Draft Details
-      subtitle: " drafted cards"
+      subtitle: "Drafted cards"
     new:
       player1-id: Player 1 ID
       opponent_identity: "Opponent HearthStats ID or Email. (Your ID: %{user_id})"
@@ -278,12 +278,12 @@ en:
       played_second: Played Second
     matches:
       title: Recent Matches
-      subtitle: ! ' recent matches games'
+      subtitle: ! 'Recent matches games'
       section: Arena
       recent_arena_matches: Recent Arena Matches
     stats:
       title: Statistics
-      subtitle: ! ' detailed arena game stats'
+      subtitle: ! 'Detailed arena game stats'
       section: Arena
       note: NOTE!
       page_being_designed: Page is still being designed
@@ -431,19 +431,19 @@ en:
       section: Deck
     public:
       title: Public Deck List
-      subtitle: ! ' all public constructed decks'
+      subtitle: ! 'All public constructed decks'
       new_deck: New Deck
       public_decks: Public Decks
     active_decks:
       title: Active Deck
-      subtitle: ! ' all active constructed decks'
+      subtitle: ! 'All active constructed decks'
       slot: Slot
       deleted_deck: Deleted Deck
       select_deck: Select Deck
       submit: Submit
     index:
       title: My Decks
-      subtitle: ! ' all of my constructed decks'
+      subtitle: ! 'All of my constructed decks'
       new_deck: New Deck
       enable_merge: Enable Merge Mode
       toggle_archived: Show Archived Decks
@@ -495,7 +495,7 @@ en:
       title: Conflicts
     news:
       title: Hearthstone News
-      subtitle: ! ' the latest in Hearthstone news'
+      subtitle: ! 'The latest in Hearthstone news'
       suggestions_for_news: Suggestions for news sources are welcome
       posted: Posted
       read_more: Read More
@@ -571,14 +571,14 @@ en:
   streams:
     index:
       title: Streams
-      subtitle: ! ' find all your favourite streams in one place'
+      subtitle: ! 'Find all your favourite streams in one place'
   profiles:
     activities:
       title: '%{user} Recent Activities'
   tournies:
     index:
       title: Recent Tournaments
-      subtitle: ! ' Check out recent tournament deck lists!'
+      subtitle: ! 'Check out recent tournament deck lists!'
       section: Tournaments
     show:
       decks: Decks

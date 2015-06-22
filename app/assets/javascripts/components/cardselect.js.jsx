@@ -32,20 +32,22 @@ var CardSelect = React.createClass({
 	},
 	render: function(){
 		// deck classs
-		var allcards = this.state.cards.map(function(card){
-			var cName = "";
-			if((this.state.decklist[card.id]==1 && card.rarity_id == 5) || 
-					this.state.decklist[card.id]==2){
-				cName= "maxed"
-			}
-			// only show cards that are neutral/class cards
-			if(card.type_name != "Hero"){
+		var allcards = this.state.cards
+			.filter(function(card) {
+				// only show cards that are neutral/class cards
+				return (card.type_name !== "Hero");
+			})
+			.map(function(card) {
+				var cName = "";
+				if((this.state.decklist[card.id]==1 && card.rarity_id == 5) || 
+						this.state.decklist[card.id]==2){
+					cName= "maxed"
+				}
 				return (
-					// render the card
 					<Card card={card} key={card.id} click={this._addCard(card)} cName={cName}/>
 				);
-			}
-		}.bind(this));
+			}.bind(this));
+
 		var btns = [];
 		for(var i=-1; i<11; i++){
 			bClassName = "btn grey"
@@ -217,16 +219,20 @@ var CardSelect = React.createClass({
 
 	_drawCards:function(){
 		var _cs = this._makeCardstring();
-		if(_cs.length === 0) { return; }
-		return(this.state.deckArray.map(function(card){
-			if(card == undefined){ return; }
-			printCard = false;
-			if(this.state.decklist[card.id]!=undefined){ 
-				quant = this.state.decklist[card.id];
-				printCard = true;
-			}
-			if(printCard == true){ return(<DeckCard card={card} qty={quant} type="edit" click={this._removeCard(card)} />); }
-		}.bind(this)));
+		if(_cs.length === 0) { return null; }
+		return this.state.deckArray
+			.filter(function(card) {
+				if(card === undefined) { return false; }
+				if(this.state.decklist[card.id] !== undefined){ 
+					return true
+				} else {
+					return false
+				}
+			}.bind(this))
+			.map(function(card){
+				var quant = this.state.decklist[card.id];
+				return(<DeckCard key={card.id} card={card} qty={quant} type="edit" click={this._removeCard(card)} />); 
+			}.bind(this));
 	},
 
 	_makeCardstring:function(){
@@ -242,7 +248,7 @@ var CardSelect = React.createClass({
 	_addCard:function(card){
 		return function(event){
 			// if there are already 30 cards
-			if(this.state.cardQuant == 30){ 
+			if(this.state.cardQuant >= 30){ 
 				toastr.error("There are already 30 cards in the deck!");
 				return; 
 			}
@@ -266,7 +272,7 @@ var CardSelect = React.createClass({
 			}
 
 			// if deck does not already have that card
-			else if(newDecklist[card.id] == undefined){ 
+			else if(newDecklist[card.id] === undefined){ 
 				// set the deck to have 1 of the card
 				newDecklist[card.id] = 1;
 				// copy the deckarray

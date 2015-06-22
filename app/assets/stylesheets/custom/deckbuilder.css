@@ -110,6 +110,8 @@
   -o-transform:scale(1); /* Opera */
 }
 .deckbuilder-img{
+  height: 250px;
+  width: 165px;
   cursor:pointer;
 }
 .maxed{
