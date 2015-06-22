@@ -8,10 +8,10 @@ var DeckCard = React.createClass({
 		var deckImageStyle = {
 			height: '300px',
 			left: event.clientX + 40 + 'px',
-			top: (event.screenY-window.scrollY) - 60 + 'px',
+			top: event.clientY + 20 +'px',
 			position: 'fixed',
 			zIndex: '2000'};
-		if(event.screenY + 210 > window.scrollY + window.innerHeight){
+		if(event.clientY + 500 > window.scrollY + window.innerHeight){
 			deckImageStyle = {
 				height: '300px',
 				left: event.clientX + 40 + 'px',
@@ -19,7 +19,6 @@ var DeckCard = React.createClass({
 				position: 'fixed',
 				zIndex: '2000'};
 		}
-
 		this.setState({hover: true, deckImageStyle: deckImageStyle})
 	},
 	mouseOut: function(){
