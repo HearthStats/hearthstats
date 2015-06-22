@@ -7,10 +7,11 @@ module Commontator
     validates_uniqueness_of :thread_id, :scope => [:subscriber_type, :subscriber_id]
 
     def self.comment_created(comment)
-      recipients = comment.thread.subscribers.reject{|s| s == comment.creator}
+      recipients = comment.thread.subscribers
       return if recipients.empty?
 
       if Rails.env.development?
+        p "Email sent to: " + recipients.inspect
         SubscriptionsMailer.comment_created(comment, recipients).deliver
       else
         SubscriptionsMailer.delay.comment_created(comment, recipients)
