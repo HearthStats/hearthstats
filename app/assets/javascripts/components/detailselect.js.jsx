@@ -102,7 +102,7 @@ var DetailSelect = React.createClass({
 					</div>
 					<div className="row">
 						<div><h3 className="notes">Notes</h3></div>
-						<h4 className="notes">General</h4>
+						<h4 className="notes">Description</h4>
 						<textarea className="deckNotes" name="notes[general]" defaultValue={general}></textarea>
 						<h4 className="notes">Mulligans</h4>
 						<textarea className="deckNotes" name="notes[mulligan]" defaultValue={mulligan}></textarea>
