@@ -44,16 +44,16 @@ Hearthstats::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
-  # config.action_mailer.smtp_settings = {
-  #   address:   "smtp.mandrillapp.com",
-  #   port:      587,
-  #   enable_starttls_auto:       true,
-  #   user_name: ENV['MANDRILL_EMAIL'],
-  #   password:  ENV['MANDRILL_KEY'],
-  #   authentication: 'login',
-  #   domain: 'hearthstats.net'
-  # }
+  # config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = {
+    address:   "smtp.mandrillapp.com",
+    port:      587,
+    enable_starttls_auto:       true,
+    user_name: ENV['MANDRILL_EMAIL'],
+    password:  ENV['MANDRILL_KEY'],
+    authentication: 'login',
+    domain: 'hearthstats.net'
+  }
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.paperclip_defaults = {
     storage: :s3,

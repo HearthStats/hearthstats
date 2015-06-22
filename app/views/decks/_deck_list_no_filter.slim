@@ -26,7 +26,7 @@ table.decklist.table.table-bordered.tabel-striped.table-condensed.flip-content#d
         td.matches = deck.matches.count
         td.wins    = deck.user_num_wins
         td.losses  = deck.user_num_losses
-        td.winrate data-sort-value="#{deck.user_winrate.round(1)}"
+        td.winrate data-sort-value="#{deck.user_winrate.try(:round,1)}"
           = number_to_percentage(deck.user_winrate, precision: 1)
         - if signed_in?
           td.tools
