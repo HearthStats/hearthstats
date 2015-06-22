@@ -79,7 +79,6 @@ class Api::V3::MatchesController < ApplicationController
       end
       match = parse_match(_req, klass_id)
       if match.save
-        binding.pry
         MatchDeck.create(match_id: match.id,
                          deck_id: deck.id,
                          deck_version_id: _req[:deck_version_id].to_i
