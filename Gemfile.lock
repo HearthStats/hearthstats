@@ -80,6 +80,8 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capistrano-local-precompile (0.0.5)
+      capistrano (~> 2, < 3)
     capistrano_rsync_with_remote_cache (2.4.0)
       capistrano (>= 2.1.0)
     capybara (2.4.4)
@@ -542,6 +544,7 @@ DEPENDENCIES
   binding_of_caller (>= 0.6.8)
   cancancan
   capistrano (~> 2.14.2)
+  capistrano-local-precompile
   capistrano_rsync_with_remote_cache
   capybara (>= 2.0.2)
   capybara-screenshot

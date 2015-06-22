@@ -11,6 +11,7 @@ group :development do
   gem 'sqlite3'
   gem 'capistrano', '~> 2.14.2'
   gem 'capistrano_rsync_with_remote_cache'
+  gem 'capistrano-local-precompile', require: false
   gem 'quiet_assets', '>= 1.0.1'
   gem 'rb-fsevent', :require => false
   gem 'pry'
