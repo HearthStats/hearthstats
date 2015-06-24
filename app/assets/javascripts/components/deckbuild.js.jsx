@@ -13,7 +13,8 @@ var DeckBuild = React.createClass({
 	componentWillMount: function(){
 		if(this.props.type == "edit"){
 			this.setState({
-				chosenKlass: this.props.deck.klass_id
+				chosenKlass: this.props.deck.klass_id,
+				cardstring: this.props.deck.cardstring
 			});
 		}
 	},
@@ -28,7 +29,15 @@ var DeckBuild = React.createClass({
   		);
   	} else{ 
 			return(
-				<DetailSelect type={this.props.type} currentVersion={this.props.currentVersion} deck={this.props.deck} klass={this.state.chosenKlass} backButton={this.handleCardResubmit} cards={this.props.cards} archtype={this.props.archtypes} cardstring={this.state.cardstring} /> );
+				<DetailSelect 
+					type = {this.props.type} 
+					currentVersion = {this.props.currentVersion} 
+					deck = {this.props.deck} 
+					klass = {this.state.chosenKlass} 
+					backButton = {this.handleCardResubmit} 
+					cards = {this.props.cards} 
+					archtype = {this.props.archtypes} 
+					cardstring = {this.state.cardstring}/> );
 		}
 	},
 	handleKlassSelect: function(klass_id){
@@ -39,11 +48,11 @@ var DeckBuild = React.createClass({
 			})
 		}.bind(this);
 	},
-	handleCardsSelect: function(new_cardstring){
+	handleCardsSelect: function(cardstringText){
 		this.setState({
-			cardstring: new_cardstring, 
-			moveOn: true
-		});
+      cardstring: cardstringText,
+      moveOn: true
+    })
 	},
 	handleCardResubmit: function(){
 		this.setState({

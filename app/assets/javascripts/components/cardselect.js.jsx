@@ -19,7 +19,8 @@ var CardSelect = React.createClass({
 			//		-1: All
 			//		 0: Class
 			//		 1: Neutral
-			filterParams: ["", -1, -1]
+			filterParams: ["", -1, -1],
+			textImport: false
 		}
 	},
 	// check if this is a create new or edit (so we can load previous cards)
@@ -64,22 +65,66 @@ var CardSelect = React.createClass({
 			if(this.state.selectedCardType == i){ bClassName += " kSelected" }
 			klassBtn.push(<button className={bClassName} name={i} value={i} onClick={this.filterKlass}>{cardTypes[i+1]}</button>);
 		}
+
+		if(this.state.textImport){
+			var selection = 
+				<div id="selection" className="row">
+					<textarea className="deck-text col-sm-8" 
+                    ref="decktext" 
+                    name="deck_text" 
+                    onChange={this._text2cardstring()}
+                    placeholder="Import your deck" />
+					<div id="deck-text-explanation" className="col-sm-3">
+						The format of the deck list is the same as Cockatrice list, you can see an example below:
+						<pre><p className="hidden">"</p>1 Big Game Hunter<br/>
+                  2 Perdition's Blade<br/>
+                  2 Deadly Poison<br/>
+                  1 Sprint<br/>
+                  2 Blade Flurry<br/>
+                  2 Azure Drake<br/>
+                  2 SI:7 Agent<br/>
+                  2 Sen'jin Shieldmasta<br/>
+                  2 Eviscerate<br/>
+                  1 Sap<br/>
+                  2 Loot Hoarder<br/>
+                  1 Assassin's Blade<br/>
+                  2 Backstab<br/>
+                  1 Bloodmage Thalnos<br/>
+                  2 Shadowstep<br/>
+                  2 Abusive Sergeant<br/>
+                  2 Bloodsail Raider<br/>
+                  1 Leeroy Jenkins<p className="hidden">"</p></pre>
+						To import a list like above, simply paste the list in and create the deck. This will override the deck list created by the deck builder.
+					</div>
+				</div>;
+		}
+		else if(!this.state.textImport){
+			var selection = <div id="selection">
+			 	<div id="filter"><div className="deckbuilderFilter filterParam">
+		 			<input 
+		 				type="text" 
+		 				id="search" 
+		 				name="search" 
+		 				placeholder=" Search" 
+		 				onChange={this.filterSearch} />
+		 		</div>
+		 		<div className="manaFilters filterParam">
+		 			{btns}
+		 		</div>
+		 		<div className="klassFilters filterParam">
+		 			{klassBtn}
+		 		</div></div>
+		 		<div className="deckbuilderCards">
+		 			{allcards}
+		 		</div>
+	 		</div>;
+		}
 		return(
 			<div className="row">
 			 	<div className="col-sm-8 cardSelect">
 			 		<h2> Choose your cards! </h2>
-			 		<div id="filter"><div className="deckbuilderFilter filterParam">
-			 			<input type="text" id="search" name="search" placeholder=" Search" onChange={this.filterSearch} />
-			 		</div>
-			 		<div className="manaFilters filterParam">
-			 			{btns}
-			 		</div>
-			 		<div className="klassFilters filterParam">
-			 			{klassBtn}
-			 		</div></div>
-			 		<div className="deckbuilderCards">
-			 			{allcards}
-			 		</div>
+			 		{selection}
+			 		<button className="btn grey textImportToggle" onClick={this.importToggle}>Toggle Text Import</button>
 			  	<button className="btn green nextButton" onClick={this.handleClick}> Next </button>
 			 	</div>
 			 	<div className="dCards col-sm-3"> 
@@ -101,6 +146,44 @@ var CardSelect = React.createClass({
 	handleClick: function(){
 		this.props.submitClick(this._makeCardstring());
 	},
+  _text2cardstring: function(){
+    return function(event){
+      decktext = this.refs.decktext.getDOMNode().value;
+      if(decktext.length===0){
+        this._clearCards();
+        return null;
+      }
+      text_array = decktext.split("\n");
+      var card_array = [];
+      var err = [];
+      function findCardID(card_name, cards){
+        for(var i=0; i<cards.length; ++i){
+          if(cards[i].name === card_name){
+            return cards[i].id;
+          }
+        }
+        return null;
+      }
+      text_array.forEach(function(line){
+        qty = line.substring(0,1);
+        cardname = line.substring(2);
+        card_id = findCardID(cardname, this.props.cards);
+        if(qty !== "2" && qty !== "1"){
+          toastr.error("There is a problem with the quantity "+qty+" on the line '"+line+"'. Quantity must be 1 or 2");
+          return null;
+        }
+        if(card_id == null){ 
+          toastr.error("Card with name '"+ cardname + "' was not found. Check if the spelling and class are correct.");
+          return null;
+        } else{
+          card_array.push(card_id + "_" + qty);
+        }
+      }.bind(this));
+      cardstring = card_array.join();
+      this.buildDeckArray(cardstring);
+      return(cardstring);
+    }.bind(this);
+  },
 	// build deck array if this is an edit so we can load previous cards
 	buildDeckArray: function(cardstring){
 		if(cardstring==null || cardstring.length == 0) return; 
@@ -234,7 +317,11 @@ var CardSelect = React.createClass({
 				return(<DeckCard key={card.id} card={card} qty={quant} type="edit" click={this._removeCard(card)} />); 
 			}.bind(this));
 	},
-
+	importToggle: function(){
+		this.setState({
+			textImport: !this.state.textImport
+		});
+	},
 	_makeCardstring:function(){
 		var Cardstring = [];
 		for(i = 0; i<this.state.decklist.length; ++i){ 

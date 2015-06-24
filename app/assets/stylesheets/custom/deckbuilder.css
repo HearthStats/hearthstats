@@ -5,6 +5,9 @@
 .kSelected{
 	background-color: #216ae1 !important;
 }
+.textImportToggle{
+	text-align: left;
+}
 
 #search{
 	height: 35px !important;
@@ -34,6 +37,15 @@
 }
 .deckBuilderWrapper{
 	width: 100%;
+}
+#selection{
+	height: 637px;
+}
+.deck-text{
+	height: 610px;
+	min-width: 520px;
+	padding: 15px;
+	margin: 10px 0px 10px 15px;
 }
 #cardSelect{
 	padding: 5px;
