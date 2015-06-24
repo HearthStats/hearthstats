@@ -11,7 +11,6 @@
 /db/*.sqlite3
 
 /config/database.yml
-/config/sync.yml
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
