@@ -14,11 +14,19 @@
   width: 100% !important;
 }
 #winrate-by-time{
-  width: 500px;
+  width: 90%;
   height: 200px;
+  margin: auto;
+}
+.global-stats{
+  margin-left: 0px;
 }
 .live-graph #class-wr{
   width: 100%;
   min-width: 600px;
-  background-color: white;
+  margin: auto;
+}
+.global-stats-title{
+  text-align: center;
+  margin-bottom: 10px;
 }

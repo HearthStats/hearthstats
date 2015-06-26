@@ -6,20 +6,18 @@ javascript:
   function load_page_data(){
     $.get('/api/stats/constructeds/class_wr',
       function(data){
-        console.log(data);
         drawChart(data);
         setTimeout(load_page_data, 5000);
       })
   }
   var options = {
-    legend: { position: 'none' },
+    backgroundColor: '#fafafa',
+    legend: { 
+      position: 'none' 
+    },
     animation:{
       duration: 1000,
       easing: 'in'
-    },
-    chart: {
-      title: 'Company Performance',
-      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
     }
   };
   var chart;

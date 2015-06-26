@@ -1,4 +1,27 @@
 .full-height
   h1 Premium Dashboard (beta)
   = render 'shared/block_stats'
+  .row class="portlet solid bordered light-grey global-stats"
+    div class="portlet-title"
+      div class="caption"
+        | Global Stats
+    .col-md-5
+      h5.global-stats-title Global Winrate
+      = render "shared/graphs/live/winrate"
+    .col-md-7
+      h5.global-stats-title Global Constructed Class Winrate
+      = render "shared/graphs/live/class_wr"
+  .row
+    .col-md-6.col-sm-6
+      .portlet.solid.bordered.light-grey
+        .portlet-title
+          = t('dashboards.index.personal_win_rate')
+        .portlet-body
+          = render 'dashboards/chart', height: 334
+    .col-md-6.col-sm-6
+      .portlet.solid.bordered.light-grey
+        .portlet-title
+          | Archetype Usage
+        .portlet-body
+          = render 'shared/archetype_popularity'
   = render "shared/graphs/kibana_graph"
