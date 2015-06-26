@@ -191,7 +191,7 @@ var DetailSelect = React.createClass({
 			archtypeNotHere: true
 		});
 	},
-	handleSubmit: function(version){
+	handleSubmit: function(event){
 		var formData = $(this.refs.form.getDOMNode()).serialize();
 		if(this.props.type=="new"){
 			event.preventDefault();
