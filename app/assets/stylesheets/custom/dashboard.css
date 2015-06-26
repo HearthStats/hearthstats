@@ -21,12 +21,10 @@
 .global-stats{
   margin-left: 0px;
 }
-.live-graph #class-wr{
-  width: 100%;
-  min-width: 600px;
-  margin: auto;
-}
 .global-stats-title{
   text-align: center;
   margin-bottom: 10px;
+}
+.portlet-title{
+  margin-top: 5px;
 }

@@ -1,16 +1,19 @@
 .full-height
   h1 Premium Dashboard (beta)
   = render 'shared/block_stats'
-  .row class="portlet solid bordered light-grey global-stats"
-    div class="portlet-title"
-      div class="caption"
-        | Global Stats
-    .col-md-5
-      h5.global-stats-title Global Winrate
-      = render "shared/graphs/live/winrate"
-    .col-md-7
-      h5.global-stats-title Global Constructed Class Winrate
-      = render "shared/graphs/live/class_wr"
+  .row 
+    .col-md-6.col-sm-
+      .portlet.solid.bordered.light-grey
+        div class="portlet-title"
+          | Global Winrate
+        .portlet-body
+          = render "shared/graphs/live/winrate"
+    .col-md-6.col-sm-6
+      .portlet.solid.bordered.light-grey
+        .portlet-title
+          | Global Constructed Class Winrate
+        .portlet-body
+          = render "shared/graphs/live/class_wr"
   .row
     .col-md-6.col-sm-6
       .portlet.solid.bordered.light-grey
