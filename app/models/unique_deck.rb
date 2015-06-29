@@ -22,7 +22,7 @@ class UniqueDeck < ActiveRecord::Base
   belongs_to :unique_deck_type
 
   ### CALLBACKS:
-  before_save :check_unique_deck_type
+  before_save :check_unique_deck_type, if: :cardstring_changed?
   after_create :create_cards_from_cardstring, if: :cardstring
 
   ### VALIDATIONS:

@@ -5,13 +5,14 @@ class Match < ActiveRecord::Base
   # Overwrite what is passed to ES
 
   def as_indexed_json(options={})
-    response = self.as_json
-    response[:klass_name] = Klass::LIST[self.klass_id]
-    response[:oppclass_name] = Klass::LIST[self.oppclass_id]
-    response[:result_name] = RESULTS_LIST[self.result_id]
-    response[:mode_name] = MODES_LIST[self.mode_id]
-    response[:rank_name] = self.rank.try(:name)
-    response[:deck_id] = self.deck.try(:id)
+    match = Match.find(self.id - 1)
+    response = match.as_json
+    response[:klass_name] = Klass::LIST[match.klass_id]
+    response[:oppclass_name] = Klass::LIST[match.oppclass_id]
+    response[:result_name] = RESULTS_LIST[match.result_id]
+    response[:mode_name] = MODES_LIST[match.mode_id]
+    response[:rank_name] = match.rank.try(:name)
+    response[:deck_id] = match.deck.try(:id)
 
     return response
   end
@@ -79,7 +80,7 @@ class Match < ActiveRecord::Base
   ### CALLBACKS:
 
   before_save :set_season_patch
-  after_save :update_user_stats_constructed
+  # after_save :update_user_stats_constructed
 
   ### CLASS METHODS:
 
@@ -345,7 +346,6 @@ class Match < ActiveRecord::Base
 
   def set_season_patch
     self.season_id ||= Season.last.try(:id)
-    self.patch_id  ||= Patch.last.try(:id)
   end
 
   def update_user_stats_constructed

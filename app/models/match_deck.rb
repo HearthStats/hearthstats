@@ -8,7 +8,7 @@ class MatchDeck < ActiveRecord::Base
 
   ### CALLBACKS:
 
-  before_save :set_unique_deck_and_version
+  # before_save :set_unique_deck_and_version
   after_create :update_deck_user_stats
 
   ### INSTANCE METHODS:

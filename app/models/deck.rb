@@ -161,9 +161,10 @@ class Deck < ActiveRecord::Base
   end
 
   def update_user_stats!
-    self.user_num_matches = matches.count
-    self.user_num_wins    = matches.where(result_id: 1).count
-    self.user_num_losses  = matches.where(result_id: 2).count
+    _all_matches = matches
+    self.user_num_matches = _all_matches.count
+    self.user_num_wins    = _all_matches.select{ |m| m.result_id == 1 }.count
+    self.user_num_losses  = _all_matches.select{ |m| m.result_id == 2 }.count
     self.user_winrate     = user_num_matches > 0 ? (user_num_wins.to_f / user_num_matches) * 100 : 0
 
     save
