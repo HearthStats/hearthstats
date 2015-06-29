@@ -79,11 +79,11 @@ class Api::V3::MatchesController < ApplicationController
       end
       match = parse_match(_req, klass_id)
       if match.save
+        MatchRank.create(match_id: match.id, rank_id: _req[:ranklvl].to_i)
         MatchDeck.create(match_id: match.id,
                          deck_id: deck.id,
                          deck_version_id: _req[:deck_version_id].to_i
                         )
-        MatchRank.create(match_id: match.id, rank_id: _req[:ranklvl].to_i)
         render json: {status: 200, data: match}
       else
         render json: {status: 400, message: match.errors.full_messages}
@@ -103,15 +103,15 @@ class Api::V3::MatchesController < ApplicationController
       match = parse_match(_match_params, deck.klass_id)
 
       if match.save
-        MatchDeck.create(match_id: match.id,
-                        deck_id: deck.id,
-                        deck_version_id: _match_params["deck_version_id"].to_i
-                        )
         if match.mode_id == 3
           MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
         elsif match.mode_id == 1
           submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["@class"]])
         end
+        MatchDeck.create(match_id: match.id,
+                        deck_id: deck.id,
+                        deck_version_id: _match_params["deck_version_id"].to_i
+                        )
         response << { status: 200, data: match }
       else
         response << { status: 400, data: match.errors.full_messages }

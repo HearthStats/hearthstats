@@ -1,21 +1,5 @@
 class Match < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-
   # Overwrite what is passed to ES
-
-  def as_indexed_json(options={})
-    match = Match.find(self.id - 1)
-    response = match.as_json
-    response[:klass_name] = Klass::LIST[match.klass_id]
-    response[:oppclass_name] = Klass::LIST[match.oppclass_id]
-    response[:result_name] = RESULTS_LIST[match.result_id]
-    response[:mode_name] = MODES_LIST[match.mode_id]
-    response[:rank_name] = match.rank.try(:name)
-    response[:deck_id] = match.deck.try(:id)
-
-    return response
-  end
 
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id
