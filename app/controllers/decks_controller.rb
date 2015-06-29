@@ -341,6 +341,20 @@ class DecksController < ApplicationController
           version_num = (@deck.current_version.try(:version).to_f + 0.1).round(1)
           version_deck(@deck, version_num)
         end
+        unique_deck = @deck.unique_deck
+        if unique_deck && params[:unique_deck_type_id].present?
+          unique_deck.unique_deck_type_id = params[:unique_deck_type_id].to_i
+          unique_deck.save
+        elsif unique_deck && params[:new_archtype].present?
+          found = UniqueDeckType.find_by_name(params[:new_archtype])
+          if found
+            unique_deck.unique_deck_type_id = found.id
+          else
+            archtype = UniqueDeckType.create(klass_id: @deck.klass_id, name: params[:new_archtype])
+            unique_deck.unique_deck_type_id = archtype.id
+          end
+          unique_deck.save
+        end
         format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
         format.json { render json: @deck }
       else

@@ -169,7 +169,7 @@ var DetailSelect = React.createClass({
 			return(
 				<div className="col-md-6 col-xs-6">
 					<div><h3 className="left">Archetype:</h3></div>
-					<select ref="archtypes">
+					<select ref="archtypes" name="unique_deck_type_id">
 						<option value="" name="unique_deck_type_id"> </option>
 						{archtypes}
 					</select>
