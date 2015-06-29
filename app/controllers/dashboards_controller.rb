@@ -55,6 +55,8 @@ class DashboardsController < ApplicationController
       ranked_matches = matches.select { |match| match.mode_id == 3 }
       @arena_wr = get_array_wr(arena_matches, true)
       @con_wr = get_array_wr(ranked_matches, true)
+      @arenawins = Match.winrate_per_day_cumulative(arena_matches, 10)
+      @conwins   = Match.winrate_per_day_cumulative(ranked_matches, 10)
       hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
       [@arena_wr, @con_wr, hourly_wr]
     end

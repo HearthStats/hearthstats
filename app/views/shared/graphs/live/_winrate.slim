@@ -1,11 +1,11 @@
-.live-graph#personal-wr
+.live-graph#winrate-by-time
 
 javascript:
   var personal_data = []
   $.get( "/api/stats/constructeds/global_wr", function(new_data){
     personal_data.push([0, new_data]);
   })
-  var wr_plot = $.plot("#personal-wr", personal_data)
+  var wr_plot = $.plot("#winrate-by-time", personal_data);
   var iter = 0;
   function update() {
     $.get( "/api/stats/constructeds/global_wr", function(new_data){
@@ -13,7 +13,7 @@ javascript:
         personal_data.shift();
       }
       personal_data.push([iter, new_data]);
-      $.plot("#personal-wr", [personal_data])
+      $.plot("#winrate-by-time", [personal_data])
       setTimeout(update, 5000);
       ++iter;
     })
