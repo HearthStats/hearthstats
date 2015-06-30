@@ -96,6 +96,7 @@ class ArenasController < ApplicationController
       respond_to do |format|
         if @arena.save
           MatchRun.new(arena_run_id: params[:arena_run_id], match_id: @arena.id).save!
+          @arena.__elasticsearch__.index_document
           @arenarun.notes = @arena.notes
           @arenarun.save!
           @runwins = @arenarun.matches.where(result_id: 1).count

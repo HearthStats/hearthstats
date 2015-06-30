@@ -92,6 +92,7 @@ class ConstructedsController < ApplicationController
     end
     respond_to do |format|
       if @constructed.save
+        @constructed.__elasticsearch__.index_document
         MatchDeck.create( deck_id: deck.id, match_id: @constructed.id )
         format.js
       else

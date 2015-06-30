@@ -113,6 +113,7 @@ class Api::V3::MatchesController < ApplicationController
                         deck_id: deck.id,
                         deck_version_id: _match_params["deck_version_id"].to_i
                         )
+        match.__elasticsearch__.index_document
         response << { status: 200, data: match }
       else
         response << { status: 400, data: match.errors.full_messages }
