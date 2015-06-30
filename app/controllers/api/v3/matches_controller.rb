@@ -84,6 +84,7 @@ class Api::V3::MatchesController < ApplicationController
                          deck_id: deck.id,
                          deck_version_id: _req[:deck_version_id].to_i
                         )
+        match.__elasticsearch__.index_document
         render json: {status: 200, data: match}
       else
         render json: {status: 400, message: match.errors.full_messages}
