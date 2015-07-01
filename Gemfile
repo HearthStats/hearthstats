@@ -49,6 +49,7 @@ gem 'fog'
 gem 'dalli' # Memcache store
 gem 'aws-sdk', '~> 1.5.7'
 gem 'paperclip', "~> 4.2"
+gem 'bulk_data_methods', '~> 1.1.2'
 
 # frontend
 gem 'slim-rails'

@@ -1,5 +1,6 @@
 class Match < ActiveRecord::Base
   include Elasticsearch::Model
+  extend BulkMethodsMixin
 
   # Overwrite what is passed to ES
 
