@@ -281,6 +281,7 @@ class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
     return response
   end
 
+<<<<<<< HEAD
   def parse_match(_params, klass_id)
     _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
     # Parse params to get variables
@@ -309,6 +310,8 @@ class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
     match
   end
   
+=======
+>>>>>>> moved multicreate to bg
   def max_run_time
     120 # seconds
   end
