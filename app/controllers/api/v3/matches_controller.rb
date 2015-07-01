@@ -99,28 +99,10 @@ class Api::V3::MatchesController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
-    response = []
-    _req[:matches].each do |_match_params|
-      match = parse_match(_match_params, deck.klass_id)
+    Delayed::Job.enqueue MultiMatchCreateJob.new(_req[:matches], deck)
 
-      if match.save
-        if match.mode_id == 3
-          MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
-        elsif match.mode_id == 1
-          submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["@class"]])
-        end
-        MatchDeck.create(match_id: match.id,
-                        deck_id: deck.id,
-                        deck_version_id: _match_params["deck_version_id"].to_i
-                        )
-        match.__elasticsearch__.index_document
-        response << { status: 200, data: match }
-      else
-        response << { status: 400, data: match.errors.full_messages }
-      end
-    end
 
-    render json: {status: 200,  data: response}
+    render json: {status: 200}
   end
 
   def after_date
@@ -259,5 +241,36 @@ class Api::V3::MatchesController < ApplicationController
     end
 
     match
+  end
+end
+
+class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
+  def perform
+    response = []
+    _matches_params.each do |_match_params|
+      match = parse_match(_match_params, deck.klass_id)
+
+      if match.save
+        if match.mode_id == 3
+          MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
+        elsif match.mode_id == 1
+          submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["@class"]])
+        end
+        MatchDeck.create(match_id: match.id,
+                        deck_id: deck.id,
+                        deck_version_id: _match_params["deck_version_id"].to_i
+                        )
+        match.__elasticsearch__.index_document
+        response << { status: 200, data: match }
+      else
+        response << { status: 400, data: match.errors.full_messages }
+      end
+    end
+
+    return response
+  end
+
+  def max_run_time
+    120 # seconds
   end
 end
