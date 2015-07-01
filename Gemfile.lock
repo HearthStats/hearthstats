@@ -68,6 +68,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
+    bulk_data_methods (1.1.2)
+      activerecord (>= 3.0.0)
+      pg
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -363,6 +366,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.18.2)
     phashion (1.1.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -549,6 +553,7 @@ DEPENDENCIES
   aws-sdk (~> 1.5.7)
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
+  bulk_data_methods (~> 1.1.2)
   cancancan
   capistrano (~> 2.14.2)
   capistrano-local-precompile
