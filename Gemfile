@@ -96,6 +96,7 @@ gem 'cindy' # Sendy API
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'newrelic_rpm'
+gem 'oink'
 
 # Background
 gem 'delayed_job_active_record'
