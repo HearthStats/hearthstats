@@ -229,6 +229,13 @@ class DecksController < ApplicationController
     end
   end
 
+  def tournament
+    @decks = current_user.decks.group(:unique_deck_id)
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def new
     if params[:klass].nil?
       redirect_to new_splash_decks_path, alert: "Please select a class" and return

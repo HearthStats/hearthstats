@@ -115,7 +115,9 @@ table.decklist td.losses,
 table.decklist th.num_users,
 table.decklist td.num_users,
 table.decklist th.winrate,
-table.decklist td.winrate {
+table.decklist td.winrate,
+table.decklist td.tools,
+table.decklist th.tools {
   text-align:center;
 }
 
