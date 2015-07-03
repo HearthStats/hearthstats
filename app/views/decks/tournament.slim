@@ -1,0 +1,57 @@
+- set_meta_tags :title => 'Tournament Deck Submission',
+  :description => 'Tournament Deck Submission',
+  :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss'
+= provide(:title, "Tournament Deck Submission")
+= provide(:section, link_to("Decks", decks_path))
+
+h3 Choose Your Tournament Decks
+p.centered Maximum 3 Decks
+form id="tournament-form"
+  table.decklist.table.table-bordered.table-condensed.flip-content#decklist data-single-select="true" data-click-to-select="true"
+    thead
+      tr
+        th.name = t('.name')
+        th.class = t('.class')
+        th.minions = t('.minions')
+        th.spells = t('.spells')
+        th.weapons = t('.weapons')
+        th.matches = t('.matches')
+        th.wins = t('.wins')
+        th.losses = t('.losses')
+        th.winrate = t('.win_rate')
+        th.tools Selected
+    tbody
+      - @decks.each do |deck| 
+        tr
+          td.name    = link_to deck.name, deck
+          td.class
+            img[ src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif" ]
+            p.name.hidden = deck.class_name
+          td.minions = deck.num_minions.nil? ? "-": deck.num_minions
+          td.spells  = deck.num_spells.nil? ? "-": deck.num_spells
+          td.weapons = deck.num_weapons.nil? ? "-": deck.num_weapons
+          td.matches = deck.matches.count.nil? ? "-": deck.matches.count
+          td.wins    = deck.user_num_wins.nil? ? "-": deck.user_num_wins
+          td.losses  = deck.user_num_losses.nil? ? "-": deck.user_num_losses
+          td.winrate data-sort-value="#{deck.user_winrate}"
+          td.tools
+            input type="checkbox" class="choose-deck" value=deck.id
+  button.btn.green type="submit" submit
+
+javascript:
+  var limit = 3;
+  $('input.choose-deck').on('change', function(event) {
+    if ($(".choose-deck:checked").length >= limit){
+      $.map($(".choose-deck:not(:checked)"), function (val, i){ val.disabled = "disabled"});
+      toastr.success("You have reached the deck limit for this tournament");
+    }else{
+      $.map($(".choose-deck"), function (val, i){ val.disabled = ""});
+    }
+  });
+
+  $('#tournament-form').on('submit', function(event){
+    event.preventDefault();
+    $.map($(".choose-deck:checked"), function(val, i){
+      console.log(val.value);
+    });
+  });
