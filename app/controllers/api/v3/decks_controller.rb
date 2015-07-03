@@ -1,4 +1,4 @@
-class Api::V3::DecksController < ApplicationController
+class Api::V3::DecksController < Api::BaseApiController
   before_filter :authenticate_user!
   before_filter :get_req, except: [:index, :show, :after]
 
