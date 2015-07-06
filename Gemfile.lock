@@ -287,7 +287,6 @@ GEM
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
-    hodel_3000_compliant_logger (0.1.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
@@ -358,9 +357,6 @@ GEM
     nokogumbo (1.2.0)
       nokogiri
     ntlm-http (0.1.1)
-    oink (0.10.1)
-      activerecord
-      hodel_3000_compliant_logger
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
@@ -588,7 +584,6 @@ DEPENDENCIES
   mysql2
   newrelic_rpm
   nokogiri
-  oink
   paperclip (~> 4.2)
   phashion
   pry

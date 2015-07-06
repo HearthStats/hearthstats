@@ -311,15 +311,15 @@
                 </thead>
                 <tbody>
                   <% @recentdecks.each do |deck| %>
-                    <% unique_deck = deck.unique_deck %>
+                    <% next if deck.unique_deck.nil? %>
                     <tr>
                       <td class="name"><%= deck.name %></td>
                       <td class="class"><%= deck.class_name %></td>
-                      <td class="minions"><%= unique_deck.num_minions %></td>
-                      <td class="spells"><%= unique_deck.num_spells %></td>
-                      <td class="weapons"><%= unique_deck.num_weapons %></td>
-                      <td class="matches"><%= unique_deck.num_matches %></td>
-                      <td class="winrate"><%= number_to_percentage(unique_deck.winrate, precision: 1) %></td>
+                      <td class="minions"><%= deck.unique_deck.num_minions %></td>
+                      <td class="spells"><%= deck.unique_deck.num_spells %></td>
+                      <td class="weapons"><%= deck.unique_deck.num_weapons %></td>
+                      <td class="matches"><%= deck.num_matches %></td>
+                      <td class="winrate"><%= number_to_percentage(deck.unique_deck.winrate, precision: 1) %></td>
                       <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
                         <td class="author">[anonymous]</td>
                       <% else %>
