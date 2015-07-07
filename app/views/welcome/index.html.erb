@@ -318,7 +318,7 @@
                       <td class="minions"><%= deck.unique_deck.num_minions %></td>
                       <td class="spells"><%= deck.unique_deck.num_spells %></td>
                       <td class="weapons"><%= deck.unique_deck.num_weapons %></td>
-                      <td class="matches"><%= deck.num_matches %></td>
+                      <td class="matches"><%= deck.user_num_matches || 0 %></td>
                       <td class="winrate"><%= number_to_percentage(deck.unique_deck.winrate, precision: 1) %></td>
                       <% if (deck.user.profile.nil? || deck.user.profile.name.nil?) %>
                         <td class="author">[anonymous]</td>

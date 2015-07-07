@@ -22,6 +22,7 @@ group :development do
   gem 'active_record_query_trace'
   gem "selenium-webdriver", "~> 2.44.0"
   gem 'mechanize', :require => false
+  gem "thin"
 end
 
 group :assets do

@@ -26,6 +26,9 @@ every 1.day do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake sig_pic:update"
   command "echo '--------------------------'"
   command "echo 'Sigs Update'"
+  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake update_season"
+  command "echo '--------------------------'"
+  command "echo 'Sigs Update'"
 end
 
 every 5.hours do

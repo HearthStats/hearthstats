@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
     @recentdecks = Rails.cache.fetch('recent_decks', expires_in: 2.hours) do
       Deck.where(is_public: true).
         includes(:unique_deck).
+        includes(:user).
         last(7)
     end
     @topdecks =

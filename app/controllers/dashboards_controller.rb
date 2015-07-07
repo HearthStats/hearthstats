@@ -110,6 +110,7 @@ class DashboardsController < ApplicationController
   end
 
   def prem_dash
+    authenticate_subs!
     render layout: "prem_dash"
   end
   private
