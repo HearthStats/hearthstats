@@ -123,6 +123,7 @@ Hearthstats::Application.routes.draw do
       get 'copy'
       get 'tags'
       get 'tournament'
+      post 'submit_tourn_decks'
     end
 
     member do
