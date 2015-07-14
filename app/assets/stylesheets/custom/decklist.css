@@ -115,7 +115,9 @@ table.decklist td.losses,
 table.decklist th.num_users,
 table.decklist td.num_users,
 table.decklist th.winrate,
-table.decklist td.winrate {
+table.decklist td.winrate,
+table.decklist td.tools,
+table.decklist th.tools {
   text-align:center;
 }
 
@@ -241,7 +243,9 @@ table.decklist td.winrate {
   right: 5%;
   margin-left: 2%; 
 }
-
+.highlight{
+  background-color: #baffb1;
+}
 @media(max-width: 991px){ 
   .featured-deck h4{
     font-size: 2vw;

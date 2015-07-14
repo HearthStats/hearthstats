@@ -15,7 +15,8 @@ class Deck < ActiveRecord::Base
   TYPES = {
     1 => 'Constructed',
     2 => 'Arena',
-    3 => 'Featured'
+    3 => 'Featured',
+    4 => 'Tournament'
   }
 
   ### ASSOCIATIONS:
