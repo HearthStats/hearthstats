@@ -4,9 +4,46 @@
 = provide(:title, "Tournament Deck Submission")
 = provide(:section, link_to("Decks", decks_path))
 
-h3 Choose Your Tournament Decks
-p.centered Maximum 3 Decks
-form id="tournament-form"
+- if @decks.count == {}
+  div style="padding-top: 50px; padding-bottom: 100px;"
+    h2.centered It looks like you don't have any decks
+    h4.centered 
+      = link_to "Click here to make a new deck!", new_splash_decks_path
+- elsif @decks.count != {} && (@tourney_decks.nil? || @tourney_decks.count == 0)
+  h3 Choose Your Tournament Decks
+  p.centered Maximum 3 Decks
+  = form_tag tournament_decks_path, method: :get
+    table.decklist.table.table-bordered.table-condensed.flip-content#decklist data-single-select="true" data-click-to-select="true"
+      thead
+        tr
+          th.name = t('.name')
+          th.class = t('.class')
+          th.minions = t('.minions')
+          th.spells = t('.spells')
+          th.weapons = t('.weapons')
+          th.matches = t('.matches')
+          th.wins = t('.wins')
+          th.losses = t('.losses')
+          th.winrate = t('.win_rate')
+          th.tools Selected
+      tbody
+        - @decks.each do |deck|
+          tr.deck-row
+            td.name    = link_to deck.name, deck
+            td.class
+              img[ src = "/assets/Icons/Classes/#{deck.class_name}_Icon.gif" ]
+              p.name.hidden = deck.class_name
+            td.minions = deck.num_minions.nil? ? "-": deck.num_minions
+            td.spells  = deck.num_spells.nil? ? "-": deck.num_spells
+            td.weapons = deck.num_weapons.nil? ? "-": deck.num_weapons
+            td.matches = deck.matches.count.nil? ? "-": deck.matches.count
+            td.wins    = deck.user_num_wins.nil? ? "-": deck.user_num_wins
+            td.losses  = deck.user_num_losses.nil? ? "-": deck.user_num_losses
+            td.winrate data-sort-value="#{deck.user_winrate}"
+            td.tools id="#{deck.id}" = check_box_tag "submit_decks[]", deck.id, false, class: 'choose-deck'
+    = submit_tag "Submit", confirm: 'Are you sure? You cannot change these decks after you submit!', class: 'btn green'
+- else
+  h3 Your Tournament Decks
   table.decklist.table.table-bordered.table-condensed.flip-content#decklist data-single-select="true" data-click-to-select="true"
     thead
       tr
@@ -19,9 +56,8 @@ form id="tournament-form"
         th.wins = t('.wins')
         th.losses = t('.losses')
         th.winrate = t('.win_rate')
-        th.tools Selected
     tbody
-      - @decks.each do |deck| 
+      - @tourney_decks.each do |deck|
         tr
           td.name    = link_to deck.name, deck
           td.class
@@ -34,13 +70,15 @@ form id="tournament-form"
           td.wins    = deck.user_num_wins.nil? ? "-": deck.user_num_wins
           td.losses  = deck.user_num_losses.nil? ? "-": deck.user_num_losses
           td.winrate data-sort-value="#{deck.user_winrate}"
-          td.tools
-            input type="checkbox" class="choose-deck" value=deck.id
-  button.btn.green type="submit" submit
-
 javascript:
   var limit = 3;
   $('input.choose-deck').on('change', function(event) {
+    var $this = $(this);
+    if ($this.is(":checked")) {
+      $this.closest("tr").addClass("highlight");
+    } else {
+      $this.closest("tr").removeClass("highlight");
+    }
     if ($(".choose-deck:checked").length >= limit){
       $.map($(".choose-deck:not(:checked)"), function (val, i){ val.disabled = "disabled"});
       toastr.success("You have reached the deck limit for this tournament");
@@ -48,10 +86,8 @@ javascript:
       $.map($(".choose-deck"), function (val, i){ val.disabled = ""});
     }
   });
-
-  $('#tournament-form').on('submit', function(event){
-    event.preventDefault();
-    $.map($(".choose-deck:checked"), function(val, i){
-      console.log(val.value);
-    });
+  $('.deck-row').click(function(event) {
+    if (event.target.type !== 'checkbox') {
+      $('input.choose-deck', this).trigger('click');
+    }
   });

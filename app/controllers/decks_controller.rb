@@ -231,9 +231,20 @@ class DecksController < ApplicationController
 
   def tournament
     @decks = current_user.decks.group(:unique_deck_id)
+    @tourney_decks = current_user.decks.where(deck_type_id: 4)
+    unless params[:submit_decks].nil?
+      params[:submit_decks].each do |deck_id|
+        deck = Deck.find(deck_id)
+        deck.deck_type_id = 4
+        deck.save
+      end
+    end
     respond_to do |format|
       format.html
     end
+  end
+
+  def submit_tourn_decks
   end
 
   def new
@@ -264,6 +275,15 @@ class DecksController < ApplicationController
     @cards = Card.where(klass_id: [0,nil,@deck.klass_id], collectible: true)
     @archtypes = UniqueDeckType.where(verified: true, klass_id: @deck.klass_id)
     canedit(@deck)
+  end
+
+  def canedit(entry)
+    if current_user.id != entry.user_id
+      redirect_to dashboards_path, alert: 'You are not authorized to edit that.'
+    end
+    if entry.deck_type_id == 4
+      redirect_to tournament_decks_path, alert: 'That is a tournament deck. You cannot edit it'
+    end
   end
 
   def merge

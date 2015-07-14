@@ -243,7 +243,9 @@ table.decklist th.tools {
   right: 5%;
   margin-left: 2%; 
 }
-
+.highlight{
+  background-color: #baffb1;
+}
 @media(max-width: 991px){ 
   .featured-deck h4{
     font-size: 2vw;
