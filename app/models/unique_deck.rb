@@ -78,7 +78,7 @@ class UniqueDeck < ActiveRecord::Base
   def get_mana_cost
     sum = 0
     self.cards.each do |card|
-      next if card.card_set == "Basic"
+      next if ["Basic", "Blackrock Mountain", "Curse of Naxxramas"].include? card.card_set
       cost = case card.rarity_id
       when 1
         0
