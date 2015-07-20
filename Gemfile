@@ -21,7 +21,6 @@ group :development do
   gem 'awesome_print', :require => false
   gem 'active_record_query_trace'
   gem "selenium-webdriver", "~> 2.44.0"
-  gem 'mechanize', :require => false
   gem "thin"
 end
 
@@ -91,6 +90,7 @@ gem 'react-rails', '~> 1.0'
 gem 'unicorn'
 
 gem 'ckeditor_rails'
+gem 'mechanize', :require => false
 
 # APIs
 gem 'cindy' # Sendy API

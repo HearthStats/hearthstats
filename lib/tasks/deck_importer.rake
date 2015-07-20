@@ -1,3 +1,4 @@
+require 'mechanize'
 namespace :deck_importer do
   task :hearthstonetopdecks => :environment do
     scraper = DeckScraper.new
