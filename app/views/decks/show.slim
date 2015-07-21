@@ -148,13 +148,16 @@ div.row
         - unless @general.blank?
           = sanitize @general, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
         - unless @mulligan.blank?
-          h4 Mulligans
+          h4 
+            b Mulligans
           = sanitize @mulligan, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
         - unless @strategy.blank?
-          h4 Strategy
+          h4 
+            b Strategy
           = sanitize @strategy, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
         - unless @matchups.blank?
-          h4 Matchups
+          h4 
+            b Matchups
           = sanitize @matchups, tags: %w(table strong tr td span b p em u pre i hr a r n img br href h1),attributes: %w(style src href)
     .comments
       = commontator_thread(@deck)
