@@ -88,6 +88,7 @@ gem 'pusher'
 gem 'sync'
 gem 'react-rails', '~> 1.0'
 gem 'unicorn'
+gem 'slick_rails'
 
 gem 'ckeditor_rails'
 gem 'mechanize', :require => false

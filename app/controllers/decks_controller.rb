@@ -40,6 +40,31 @@ class DecksController < ApplicationController
     end
   end
 
+  def marketplace
+    @topdecks = Deck.first(10)
+    @recentdecks = Rails.cache.fetch('recent_decks', expires_in: 2.hours) do
+      Deck.where(is_public: true).
+        includes(:unique_deck).
+        includes(:user).
+        last(6)
+    end
+
+    @ar1 = []
+    @ar2 = []
+    UniqueDeckType.find(6).unique_decks.each do |ud|
+      ud.decks.each do |deck|
+        @ar1 << deck
+      end
+    end
+    UniqueDeckType.find(7).unique_decks.each do |ud|
+      ud.decks.each do |deck|
+        @ar2 << deck
+      end
+    end
+
+    render layout: "no_breadcrumbs"
+  end
+
 
   def show
     begin

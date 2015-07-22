@@ -12,6 +12,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require slick
 
 $(document).ready(function(){
   $('.deck-text-trigger').click( function(){

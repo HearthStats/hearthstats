@@ -1,0 +1,70 @@
+- set_meta_tags :title => 'Marketplace',
+  :description => 'Deck Marketplace',
+  :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss'
+= provide(:title, "Deck Marketplace")
+
+h1.centered Deck Marketplace
+
+.row
+  .col-sm-8#top-decks
+    h3 Top Decks
+    .top-decks
+      - @topdecks.each do |deck|
+        div.top-deck
+          a href=public_show_deck_path(deck)
+            img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+            h4 = deck.name.truncate(40)
+            - if deck.user.profile.nil? || deck.user.profile.name.nil?
+              p by: [anonymous]
+            - else
+              p = "by " + deck.user.profile.name
+
+  .col-sm-4#new-decks
+    h3 Newest Decks
+    .new-decks
+      ul
+        - @recentdecks.each do |deck|
+          a.new-deck-link href=public_show_deck_path(deck)
+            li = deck.name.truncate(45)
+
+h3 Archetype Decks
+.row.archtype-decks
+  h4 Face Hunter
+  .archtype1
+    - @ar1.each do |deck|
+      div.new-deck
+        a href=public_show_deck_path(deck)
+          img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+          h4 = deck.name.truncate(40)
+          - if deck.user.profile.nil? || deck.user.profile.name.nil?
+            p by: [anonymous]
+          - else
+            p = "by " + deck.user.profile.name
+.row.archtype-decks
+  h4 Patron Warrior
+  .archtype2
+    - @ar2.each do |deck|
+      div.new-deck
+        a href=public_show_deck_path(deck)
+          img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+          h4 = deck.name.truncate(40)
+          - if deck.user.profile.nil? || deck.user.profile.name.nil?
+            p by: [anonymous]
+          - else
+            p = "by " + deck.user.profile.name
+
+javascript:
+  $('.top-decks').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    adaptiveHeight: true
+  });
+  $('.archtype1, .archtype2').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    adaptiveHeight: true
+  })
