@@ -124,6 +124,7 @@ Hearthstats::Application.routes.draw do
       get 'tags'
       get 'tournament'
       post 'submit_tourn_decks'
+      get 'marketplace'
     end
 
     member do
