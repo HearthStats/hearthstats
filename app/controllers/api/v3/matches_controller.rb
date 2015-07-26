@@ -281,6 +281,34 @@ class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
     return response
   end
 
+  def parse_match(_params, klass_id)
+    _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+    # Parse params to get variables
+    mode     = Mode::LIST.invert[_params[:mode]]
+    oppclass = Klass::LIST.invert[_params[:oppclass]]
+    result   = Match::RESULTS_LIST.invert[_params[:result]]
+    coin     = _params[:coin] == "true"
+
+    # Create new match
+    match             = Match.new
+    match.user_id     = current_user.id
+    match.mode_id     = mode
+    match.klass_id    = klass_id
+    match.result_id   = result
+    match.coin        = coin
+    match.oppclass_id = oppclass
+    match.oppname     = _params[:oppname]
+    match.numturns    = _params[:numturns]
+    match.duration    = _params[:duration]
+    match.notes       = _params[:notes]
+    match.appsubmit   = true
+    if _params[:created_at]
+      match.created_at  = _params[:created_at].to_time
+    end
+
+    match
+  end
+  
   def max_run_time
     120 # seconds
   end
