@@ -36,6 +36,7 @@ class BlindDraftsController < ApplicationController
     if @blind_draft.player2_id.nil?
       redirect_to blind_drafts_path, alert: "Waiting on a player to join the draft" and return
     end
+    render layout: "prem_dash"
   end
 
   def end_draft
