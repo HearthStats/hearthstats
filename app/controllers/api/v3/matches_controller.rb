@@ -100,8 +100,6 @@ class Api::V3::MatchesController < ApplicationController
       render json: {status: 400, message: e.message} and return
     end
     Delayed::Job.enqueue MultiMatchCreateJob.new(_req[:matches], deck)
-
-
     render json: {status: 200}
   end
 
@@ -257,6 +255,32 @@ end
 
 class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
   def perform
+    new_matches = []
+    response = []
+    _matches_params.each do |_match_params|
+      new_matches << parse_match_sql(_match_params, deck.klass_id)
+    end
+    sql_statement = "INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`) VALUES #{new_matches.join(",")}"
+    initial_id = Match.last.id
+    last_id =  ActiveRecord::Base.connection.insert sql_statement
+    match_deck_sql = []
+    match_rank_sql = []
+    current_time = Time.now.to_s(:db)
+    (initial_id..last_id).each_with_index do |match_id, i|
+      match_rank_sql << "(#{match_id}, #{deck.id},'#{current_time}', '#{current_time}')"
+      # MatchDeck.create(match_id: match_id, deck_id: deck.id)
+      if _matches_params[i][:mode] == "Ranked"
+        match_rank_sql << "(#{match_id}, #{_matches_params[i]["ranklvl"].to_i || 'NULL'}, '#{current_time}', '#{current_time}')"
+        # MatchRank.create(match_id: match_id, rank_id: _req[:match][i]["ranklvl"].to_i)
+      end
+    end
+    deck_statement = "INSERT INTO match_decks (`match_id`, `deck_id`, `created_at`,`updated_at`) VALUES #{match_deck_sql.join(",")}"
+    rank_statement = "INSERT INTO match_ranks (`match_id`, `rank_id`, `created_at`,`updated_at`) VALUES #{match_rank_sql.join(",")}"
+    ActiveRecord::Base.connection.insert deck_statement if !match_deck_sql.empty?
+    ActiveRecord::Base.connection.insert rank_statement if !match_rank_sql.empty?
+  end
+
+  def perform_old
     response = []
     _matches_params.each do |_match_params|
       match = parse_match(_match_params, deck.klass_id)
