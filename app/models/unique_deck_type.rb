@@ -32,44 +32,12 @@ class UniqueDeckType < ActiveRecord::Base
 
   def self.get_top_decks
     decks = {}
-    arch_pop = Rails.cache.read('archetype_pop').sort_by{|name, val| val}.reverse
+    arch_pop = Rails.cache.read('archetype_pop').sort_by{|name, val| val}.reverse.first(3)
 
-    ar1 = []
-    ar2 = []
-    ar3 = []
-
-    @ar1 = UniqueDeckType.where(name: arch_pop[0][0])[0].unique_decks.where("num_matches >= ?", "30").sort_by{|ud| ud.winrate ? ud.winrate : 0 }.reverse
-    @ar1.each do |ud|
-      x = ud.decks.where(is_public: true).where("user_num_matches >= ?", "30").sort_by{|ud| ud.user_winrate ? ud.user_winrate : 0 }
-      unless x.last(1)[0].nil?
-        ar1 << x.last(1)[0]
-      end
+    arch_pop.each do |arch|
+      ar = this.get_deck_info(arch[0])
+      decks[arch[0]] = ar
     end
-    ar1 = ar1.first(8)
-    ar1_name = arch_pop[0][0]
-    decks[ar1_name] = ar1
-
-    @ar2 = UniqueDeckType.where(name: arch_pop[1][0])[0].unique_decks.where("num_matches >= ?", "30").sort_by{|ud| ud.winrate ? ud.winrate : 0 }.reverse
-    @ar2.each do |ud|
-      x = ud.decks.where(is_public: true).where("user_num_matches >= ?", "30").sort_by{|ud| ud.user_winrate ? ud.user_winrate : 0 }
-      unless x.last(1)[0].nil?
-        ar2 << x.last(1)[0]
-      end
-    end
-    ar2 = ar2.first(8)
-    ar2_name = arch_pop[1][0]
-    decks[ar2_name] = ar2
-
-    @ar3 = UniqueDeckType.where(name: arch_pop[2][0])[0].unique_decks.where("num_matches >= ?", "30").sort_by{|ud| ud.winrate ? ud.winrate : 0 }.reverse
-    @ar3.each do |ud|
-      x = ud.decks.where(is_public: true).where("user_num_matches >= ?", "30").sort_by{|ud| ud.user_winrate ? ud.user_winrate : 0 }
-      unless x.last(1)[0].nil?
-        ar3 << x.last(1)[0]
-      end
-    end
-    ar3 = ar3.first(8)
-    ar3_name = arch_pop[2][0]
-    decks[ar3_name] = ar3
 
     decks
   end
@@ -115,5 +83,23 @@ class UniqueDeckType < ActiveRecord::Base
     opp_cardstring = card_array.join(",")
     self.find_type(args[:klass_id], opp_cardstring)
 
+  end
+
+  private
+
+  def get_deck_info(arch_name)
+    ar = []
+    @ar = UniqueDeckType.where(name: arch_name)[0].unique_decks.where("num_matches >= ?", "50").sort_by{|ud| ud.winrate ? ud.winrate : 0 }.reverse
+    @ar.each do |ud|
+      if ar.count >= 8 
+        break
+      end
+      x = ud.decks.where(is_public: true).where("user_num_matches >= ?", "30").sort_by{|ud| ud.user_winrate ? ud.user_winrate : 0 }
+      unless x.last(1)[0].nil?
+        ar << x.last(1)[0]
+      end
+    end
+
+    ar
   end
 end
