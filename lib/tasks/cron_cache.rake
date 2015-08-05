@@ -74,4 +74,10 @@ namespace :cron do
     Rails.cache.write('archetype_pop', arche)
   end
 
+  task :archetype_decks => :environment do
+    Rails.cache.delete('top_adecks')
+    decks = UniqueDeckType.get_top_decks
+    Rails.cache.write('top_adecks', decks)
+  end
+
 end
