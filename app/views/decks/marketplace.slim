@@ -3,13 +3,15 @@
   :keywords => 'new, entry, deck, hearthstats, hearthstone, match, tracking, win, loss'
 = provide(:title, "Deck Marketplace")
 
-h1.centered Deck Marketplace
-
-.row
-  .col-sm-8#top-decks
-    h3 Top Decks
+#marketplace
+  .hero
+    h1.hero-title.centered 
+      strong Deck Marketplace
+  .row#top-decks
+    h2.centered style="margin-bottom: 10px;" Pro Decks
+    hr.mpl-line
     .top-decks
-      - @topdecks.each do |deck|
+      - @prodecks.each do |deck|
         div.top-deck
           a href=public_show_deck_path(deck)
             img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
@@ -18,53 +20,145 @@ h1.centered Deck Marketplace
               p by: [anonymous]
             - else
               p = "by " + deck.user.profile.name
+    a#pro-deck-link style="float: right;" href="#pro-decks" See More...
+  hr.mpl-line
+  .second-row
+    h3 Top Archetypes
+    .archtype-container
+      ul.nav.nav-pills.nav-justified#archtype-nav
+        li.active
+          a.grey.archtype-nav data-toggle="pill" href="#archtype1" = @ar1_name
+        li
+          a.archtype-nav data-toggle="pill" href="#archtype2" = @ar2_name
+        li
+          a.archtype-nav data-toggle="pill" href="#archtype3" = @ar3_name
+      #archtype-content.tab-content
+        #archtype1.tab-pane.active.fade.in
+          .archtype
+            - @ar1.each do |deck|
+              div.archtype-deck.col-md-3.col-xs-6
+                a href=public_show_deck_path(deck)
+                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+                  h4 = deck.name.truncate(40)
+                  - if deck.user.profile.nil? || deck.user.profile.name.nil?
+                    p by: [anonymous]
+                  - else
+                    p = "by " + deck.user.profile.name
+        #archtype2.tab-pane.fade
+          .archtype
+            - @ar2.each do |deck|
+              div.archtype-deck.col-md-3.col-xs-6
+                a href=public_show_deck_path(deck)
+                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+                  h4 = deck.name.truncate(40)
+                  - if deck.user.profile.nil? || deck.user.profile.name.nil?
+                    p by: [anonymous]
+                  - else
+                    p = "by " + deck.user.profile.name
+        #archtype3.tab-pane.fade
+          .archtype
+            - @ar3.each do |deck|
+              div.archtype-deck.col-md-3.col-xs-6
+                a href=public_show_deck_path(deck)
+                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+                  h4 = deck.name.truncate(40)
+                  - if deck.user.profile.nil? || deck.user.profile.name.nil?
+                    p by: [anonymous]
+                  - else
+                    p = "by " + deck.user.profile.name
+  .row#deck-sidebar
+    .col-xs-6.deck-sidebar-panel 
+      .new-decks.top-sidebar-decks
+        h3.right Top Decks
+        ul
+          - @topdecks.each do |deck|
+            li
+              a.new-deck-link href=public_show_deck_path(deck) = deck.name.truncate(45)
+    .col-xs-6.deck-sidebar-panel
+      .new-decks
+        h3.new-decks Newest Decks
+        ul
+          - @recentdecks.each do |deck|
+            li
+              a.new-deck-link href=public_show_deck_path(deck) = deck.name.truncate(45)
+  hr.mpl-line
+  .row#pro-decks
+    h3 Recent Pro Decks
+    - @pro_decks.each do |deck|
+      .col-md-6.col-sm-12.deck-section
+        .public-deck-class
+          img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
+        .public-deck-ident.pro-deck-ident
+          .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
+          .public-deck-author
+            - if deck.user.profile.nil? || deck.user.profile.name.nil?
+              = "by: [anonymous]"
+            - else
+              = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
 
-  .col-sm-4#new-decks
-    h3 Newest Decks
-    .new-decks
-      ul
-        - @recentdecks.each do |deck|
-          a.new-deck-link href=public_show_deck_path(deck)
-            li = deck.name.truncate(45)
-
-h3 Archetype Decks
-.row.archtype-decks
-  h4 Face Hunter
-  .archtype1
-    - @ar1.each do |deck|
-      div.new-deck
-        a href=public_show_deck_path(deck)
-          img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
-          h4 = deck.name.truncate(40)
-          - if deck.user.profile.nil? || deck.user.profile.name.nil?
-            p by: [anonymous]
-          - else
-            p = "by " + deck.user.profile.name
-.row.archtype-decks
-  h4 Patron Warrior
-  .archtype2
-    - @ar2.each do |deck|
-      div.new-deck
-        a href=public_show_deck_path(deck)
-          img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
-          h4 = deck.name.truncate(40)
-          - if deck.user.profile.nil? || deck.user.profile.name.nil?
-            p by: [anonymous]
-          - else
-            p = "by " + deck.user.profile.name
 
 javascript:
-  $('.top-decks').slick({
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    adaptiveHeight: true
+  $(document).ready( function(){
+    $('.top-decks').slick({
+      infinite: true,
+      centerMode: true,
+      centerPadding: '40px',
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 780,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+    });
+    
+    if (window.innerWidth < 780) {
+      $('#archtype-nav').removeClass("nav-justified");
+    } 
+    if (window.innerWidth >= 780) {
+      $('#archtype-nav').addClass("nav-justified");
+    }
   });
-  $('.archtype1, .archtype2').slick({
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    adaptiveHeight: true
-  })
+  $(window).resize(function(){
+    if (window.innerWidth < 780) {
+      $('#archtype-nav').removeClass("nav-justified");
+    } 
+    if (window.innerWidth >= 780) {
+      $('#archtype-nav').addClass("nav-justified");
+    }
+  });
+  $('#pro-deck-link').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+           if (target.length) {
+             $('html,body').animate({
+                 scrollTop: target.offset().top - 40
+            }, 1000);
+            return false;
+        }
+    }
+  });
+  
