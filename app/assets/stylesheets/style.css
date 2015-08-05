@@ -975,6 +975,8 @@ Page title
   letter-spacing: 0px;
   font-weight: 300;
   color: #888;
+  margin-top: 5px;
+  display: block;
 }
 
 /***

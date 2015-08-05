@@ -141,8 +141,19 @@ table.decklist th.tools {
 }
 
 .public-deck-ident{   
-  max-width: 25%;
+  max-width: 40%;
 }
+@media (min-width: 1300px){
+  .public-deck-ident{
+    max-width: 25%;
+  }
+}
+@media (min-width: 1650px){
+  .public-deck-ident{
+    max-width: 40%;
+  }
+}
+
 .public-deck-ident,
 .public-deck-class{
   float: left; 
@@ -200,7 +211,7 @@ table.decklist th.tools {
   }
 }
 
-@media (max-width: 500px){  
+@media (max-width: 600px){  
   .last-updated{
     display: none;
   }
