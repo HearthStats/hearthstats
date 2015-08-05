@@ -41,26 +41,31 @@ class DecksController < ApplicationController
   end
 
   def marketplace
-    @topdecks = Deck.first(10)
+    @prodecks = Deck.where(deck_type_id: 4).last(15)
+    @topdecks = Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
+                group(:unique_deck_id).
+                joins(:unique_deck).
+                joins(:user).
+                where("unique_decks.num_matches >= ?", 30).
+                sort_by { |deck| deck.unique_deck.winrate || 0 }.
+                last(7).
+                reverse.
+                to_a
     @recentdecks = Rails.cache.fetch('recent_decks', expires_in: 2.hours) do
       Deck.where(is_public: true).
         includes(:unique_deck).
         includes(:user).
-        last(6)
+        last(8)
     end
-
-    @ar1 = []
-    @ar2 = []
-    UniqueDeckType.find(6).unique_decks.each do |ud|
-      ud.decks.each do |deck|
-        @ar1 << deck
-      end
-    end
-    UniqueDeckType.find(7).unique_decks.each do |ud|
-      ud.decks.each do |deck|
-        @ar2 << deck
-      end
-    end
+    @pro_decks = Deck.where(deck_type_id: 4).last(20)
+    
+    top_adecks = Rails.cache.read('top_adecks')
+    @ar1 = top_adecks.try(:values)[0]
+    @ar1_name = top_adecks.try(:keys)[0]
+    @ar2 = top_adecks.try(:values)[1]
+    @ar2_name = top_adecks.try(:keys)[1]
+    @ar3 = top_adecks.try(:values)[2]
+    @ar3_name = top_adecks.try(:keys)[2]
 
     render layout: "no_breadcrumbs"
   end
