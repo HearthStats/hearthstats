@@ -48,8 +48,31 @@ Deck.transaction do
       deck.save
     end
   end
+end
 
+UniqueDeck.transaction do
+  puts "Seeding unique deck and deck type data..."
+  # create unique decks
+  Deck.all.each { |deck| UniqueDeck.create_from_deck(deck) }
 
+  # create unique deck types
+  Deck.first(3 + rand(3)).each_with_index do |deck, i|
+    UniqueDeckType.create({
+      name: "Unique Deck Type #{i}",
+      match_string: deck.cardstring.split(',').take(2).join(','),
+      archtype_id: UniqueDeckType::ARCHTYPES.keys.sample,
+      klass_id: deck.klass_id
+    })
+  end
+end
+
+UniqueDeck.transaction do
+  # update unique decks to match new unique deck types
+  UniqueDeck.all.each do |unique_deck|
+    unique_deck.check_unique_deck_type
+    unique_deck.save
+  end
+end
 
 Match.transaction do
   puts "Seeding match data..."
