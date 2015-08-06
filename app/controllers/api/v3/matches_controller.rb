@@ -333,7 +333,6 @@ class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
     match
   end
 
-
   def max_run_time
     120 # seconds
   end
