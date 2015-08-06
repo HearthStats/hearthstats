@@ -89,12 +89,12 @@ class UniqueDeckType < ActiveRecord::Base
 
   def get_deck_info(arch_name)
     ar = []
-    @ar = UniqueDeckType.where(name: arch_name)[0].unique_decks.all.select{ |ud| ud.num_matches != nil && ud.num_matches > 50}.sort!{|ud1, ud2| ud1.winrate <=> ud2.winrate}.reverse
+    @ar = UniqueDeckType.where(name: arch_name)[0].unique_decks.all.select{ |ud| ud.num_matches != nil && ud.num_matches > 30}.sort!{|ud1, ud2| ud1.winrate <=> ud2.winrate}.reverse
     @ar.each do |ud|
       if ar.count >= 8 
         break
       end
-      x = ud.decks.all.select{ |deck| deck.is_public == true && deck.user_num_matches != nil}.sort! {|ud| ud.user_winrate ? ud.user_winrate : 0 }
+      x = ud.decks.all.select{ |deck| deck.is_public == true && deck.user_num_matches != nil && deck.user_num_matches >= 30 }.sort! {|ud| ud.user_winrate ? ud.user_winrate : 0 }
       unless x.last(1)[0].nil?
         ar << x.last(1)[0]
       end
