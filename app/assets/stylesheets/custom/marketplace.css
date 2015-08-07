@@ -2,6 +2,7 @@
   height: 40vh;
   margin: -25px -20px -20px -20px;
   background: url('../assets/marketplace-bg.jpg');
+  background-size: cover;
   z-index: -1;
 }
 .hero:before {
@@ -10,17 +11,23 @@
   top: 0;
   right: 0;
 }
+.mkt-section{
+  padding: 20px 10px; 
+  float: left;
+  width: 100%; 
+  height: 95px;
+  min-width: 400px;
+}
+.mkt-section:hover{
+  background-color: #fafafa;
+}
 .hero-title{
   color: white;
   font-size: 400% !important;
   position: relative;
   top: 50%;
   transform: translateY(-50%); 
-}/*
-#archtype-nav{
-  width: 95%;
-  margin: auto;
-}*/
+}
 .top-deck, .sidebar-deck{
   margin: auto;
   text-align: center;
@@ -39,8 +46,9 @@
   padding-right: 10px;
 }
 .archtype-deck img{
-  max-height: 100px;
+  max-height: 120px;
   width: 100%;
+  max-width: 300px;
 }
 .new-decks ul{
   padding: 0 !important;
@@ -69,17 +77,10 @@ div:focus { outline: none; }
     padding: 5px;
   }
 }
-#top-decks, .second-row, #deck-sidebar{
+#top-decks, .second-row{
   padding-top: 20px;
   width: 90%;
   margin: auto;
-}
-.top-sidebar-decks{
-  text-align: right !important;
-  border-right: thin solid;
-  border-color: #cecece;
-  margin-right: -15px;
-  padding-right: 15px;
 }
 .new-decks{
   text-align: left;
@@ -93,6 +94,11 @@ div:focus { outline: none; }
 .archtype-deck{
   margin: auto;
   text-align: center;
+  height: 180px;
+}
+#archtype-nav{
+  width: 90%;
+  margin: auto;
 }
 #archtype-content{
   padding: 0;
@@ -129,7 +135,7 @@ div:focus { outline: none; }
   margin-bottom: 20px;
 }
 .pro-deck-ident{
-  max-width: 90%;
+  max-width: 70%;
 }
 #pro-decks{
   width: 80%;
@@ -141,5 +147,8 @@ div:focus { outline: none; }
   }
   .pro-deck-ident{
     max-width: 60%;
+  }
+  .archtype-deck{
+    height : 180px;
   }
 }

@@ -126,9 +126,8 @@ table.decklist th.tools {
   padding: 20px 10px; 
   float: left;
   width: 50%;  
-  min-height: 90px;
-  max-height: 90px;  
-  min-width: 400;
+  height: 95px;
+  min-width: 400px;
 }
 .deck-section:hover{
   background-color: #fafafa;
