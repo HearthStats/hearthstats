@@ -42,22 +42,16 @@ class DecksController < ApplicationController
 
   def marketplace
     @prodecks = Deck.where(deck_type_id: 4).last(15)
-    @topdecks = Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
-                group(:unique_deck_id).
-                joins(:unique_deck).
-                joins(:user).
-                where("unique_decks.num_matches >= ?", 30).
-                sort_by { |deck| deck.unique_deck.winrate || 0 }.
-                last(7).
-                reverse.
-                to_a
-    @recentdecks = Rails.cache.fetch('recent_decks', expires_in: 2.hours) do
-      Deck.where(is_public: true).
-        includes(:unique_deck).
-        includes(:user).
-        last(8)
-    end
-    @pro_decks = Deck.where(deck_type_id: 4).last(20)
+    @pro_decks = Deck.where(deck_type_id: 4).last(10)
+    @top_decks = Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
+                 group(:unique_deck_id).
+                 joins(:unique_deck).
+                 joins(:user).
+                 #where("unique_decks.num_matches >= ?", 30).
+                 sort_by { |deck| deck.unique_deck.winrate || 0 }.
+                 last(20).
+                 reverse.
+                 to_a
     
     top_adecks = Rails.cache.read('top_adecks')
     @ar1 = top_adecks.try(:values)[0]

@@ -6,7 +6,7 @@
 #marketplace
   .hero
     h1.hero-title.centered 
-      strong Deck Marketplace
+      strong Deck Central
   .row#top-decks
     h2.centered style="margin-bottom: 10px;" Pro Decks
     hr.mpl-line
@@ -14,7 +14,7 @@
       - @prodecks.each do |deck|
         div.top-deck
           a href=public_show_deck_path(deck)
-            img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+            img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(8)+1}.gif" alt= deck.class_name class="featured-deck-img"
             h4 = deck.name.truncate(40)
             - if deck.user.profile.nil? || deck.user.profile.name.nil?
               p by: [anonymous]
@@ -22,7 +22,7 @@
               p = "by " + deck.user.profile.name
     a#pro-deck-link style="float: right;" href="#pro-decks" See More...
   hr.mpl-line
-  .second-row
+  .second-row.row
     h3 Top Archetypes
     .archtype-container
       ul.nav.nav-pills.nav-justified#archtype-nav
@@ -35,10 +35,10 @@
       #archtype-content.tab-content
         #archtype1.tab-pane.active.fade.in
           .archtype
-            - @ar1.each do |deck|
+            - @ar1.each_with_index do |deck, ind|
               div.archtype-deck.col-md-3.col-xs-6
                 a href=public_show_deck_path(deck)
-                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
                   h4 = deck.name.truncate(40)
                   - if deck.user.profile.nil? || deck.user.profile.name.nil?
                     p by: [anonymous]
@@ -46,10 +46,10 @@
                     p = "by " + deck.user.profile.name
         #archtype2.tab-pane.fade
           .archtype
-            - @ar2.each do |deck|
+            - @ar2.each_with_index do |deck, ind|
               div.archtype-deck.col-md-3.col-xs-6
                 a href=public_show_deck_path(deck)
-                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
                   h4 = deck.name.truncate(40)
                   - if deck.user.profile.nil? || deck.user.profile.name.nil?
                     p by: [anonymous]
@@ -57,44 +57,45 @@
                     p = "by " + deck.user.profile.name
         #archtype3.tab-pane.fade
           .archtype
-            - @ar3.each do |deck|
+            - @ar3.each_with_index do |deck, ind|
               div.archtype-deck.col-md-3.col-xs-6
                 a href=public_show_deck_path(deck)
-                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(3)+1}.gif" alt= deck.class_name class="featured-deck-img"
+                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
                   h4 = deck.name.truncate(40)
                   - if deck.user.profile.nil? || deck.user.profile.name.nil?
                     p by: [anonymous]
                   - else
                     p = "by " + deck.user.profile.name
-  .row#deck-sidebar
-    .col-xs-6.deck-sidebar-panel 
-      .new-decks.top-sidebar-decks
-        h3.right Top Decks
-        ul
-          - @topdecks.each do |deck|
-            li
-              a.new-deck-link href=public_show_deck_path(deck) = deck.name.truncate(45)
-    .col-xs-6.deck-sidebar-panel
-      .new-decks
-        h3.new-decks Newest Decks
-        ul
-          - @recentdecks.each do |deck|
-            li
-              a.new-deck-link href=public_show_deck_path(deck) = deck.name.truncate(45)
   hr.mpl-line
   .row#pro-decks
-    h3 Recent Pro Decks
-    - @pro_decks.each do |deck|
-      .col-md-6.col-sm-12.deck-section
-        .public-deck-class
-          img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
-        .public-deck-ident.pro-deck-ident
-          .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
-          .public-deck-author
-            - if deck.user.profile.nil? || deck.user.profile.name.nil?
-              = "by: [anonymous]"
-            - else
-              = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
+    .col-md-4
+      h3 Recent Pro Decks
+      - @pro_decks.each do |deck|
+        .col-xs-12
+          .mkt-section
+            .public-deck-class
+              img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
+            .public-deck-ident.pro-deck-ident
+              .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
+              .public-deck-author
+                - if deck.user.profile.nil? || deck.user.profile.name.nil?
+                  = "by: [anonymous]"
+                - else
+                  = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
+    .col-md-8
+      h3 Top Decks
+      - @top_decks.each do |deck|
+        .col-md-6.col-sm-12
+          .mkt-section
+            .public-deck-class
+              img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
+            .public-deck-ident.pro-deck-ident
+              .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
+              .public-deck-author
+                - if deck.user.profile.nil? || deck.user.profile.name.nil?
+                  = "by: [anonymous]"
+                - else
+                  = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
 
 
 javascript:
@@ -123,7 +124,7 @@ javascript:
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -131,21 +132,6 @@ javascript:
       }
     ]
     });
-    
-    if (window.innerWidth < 780) {
-      $('#archtype-nav').removeClass("nav-justified");
-    } 
-    if (window.innerWidth >= 780) {
-      $('#archtype-nav').addClass("nav-justified");
-    }
-  });
-  $(window).resize(function(){
-    if (window.innerWidth < 780) {
-      $('#archtype-nav').removeClass("nav-justified");
-    } 
-    if (window.innerWidth >= 780) {
-      $('#archtype-nav').addClass("nav-justified");
-    }
   });
   $('#pro-deck-link').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
