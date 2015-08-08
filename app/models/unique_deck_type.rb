@@ -11,23 +11,20 @@ class UniqueDeckType < ActiveRecord::Base
   ### ASSOCIATIONS:
 
   has_many :unique_decks
+  has_many :decks, through: :unique_decks
+  has_many :matches, through: :decks
 
   ### CLASS METHODS:
 
   def self.get_type_popularity(time_ago)
-    arche = {}
-    Match.where{created_at >= time_ago.hours.ago}.preload(:deck).preload(:unique_deck).find_each do |match|
-      next if match.try(:deck).try(:unique_deck).try(:unique_deck_type_id).nil?
-      match_arch = arche[match.try(:deck).try(:unique_deck).try(:unique_deck_type).try(:name)]
-      if match_arch.nil?
-        arche[match.try(:deck).try(:unique_deck).try(:unique_deck_type).try(:name)] = 1
-      else
-        arche[match.try(:deck).try(:unique_deck).try(:unique_deck_type).try(:name)] += 1
-      end
-    end
-    arche.reject! {|name, count| count < 10 || name == nil}
-    tot = arche.values.sum
-    arche.update(arche){|type, wins| wins.to_f/tot * 100 }
+    deck_type_count = UniqueDeckType.joins(:matches)
+      .where('unique_deck_types.name IS NOT NULL')
+      .where('matches.created_at >= ?', time_ago.hours.ago)
+      .having('count_all >= ?', 10)
+      .group('unique_deck_types.name').count
+
+    total_valid_matches = deck_type_count.values.sum
+    deck_type_count.update(deck_type_count) { |type, matches| matches.to_f/total_valid_matches * 100 }
   end
 
   def self.get_top_decks
