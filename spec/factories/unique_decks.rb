@@ -14,6 +14,11 @@ FactoryGirl.define do
         create_list(:unique_deck_card, count.to_i, card: card, unique_deck: unique_deck)
       end
     end
-  end
 
+    factory :unique_deck_with_unique_deck_type do
+      association :unique_deck_type
+      cardstring { unique_deck_type.match_string }
+      klass_id { unique_deck_type.klass_id }
+    end
+  end
 end

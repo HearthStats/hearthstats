@@ -1,20 +1,8 @@
 require 'spec_helper'
 
 describe UniqueDeckType do
-  subject(:unique_deck_type) do
-    create(:unique_deck_type,
-      match_string: "1_2,2_2",
-      name: "Test Warrior",
-      klass_id: 1
-    )
-  end
-  let(:unique_deck) do
-    create(:unique_deck,
-      cardstring: "1_2,2_2",
-      unique_deck_type_id: unique_deck_type.id,
-      klass_id: 1
-    ) 
-  end
+  subject(:unique_deck_type) { create(:unique_deck_type, name: "Test Warrior", klass_id: 1) }
+  let(:unique_deck) { create(:unique_deck_with_unique_deck_type, unique_deck_type: unique_deck_type) } 
 
   describe "class methods" do
     describe "::find_type" do 
@@ -46,20 +34,8 @@ describe UniqueDeckType do
       end
 
       context "with infrequently played deck types" do
-        let(:unpopular_deck_type) do
-          create(:unique_deck_type,
-            match_string: "100_2,101_2",
-            name: "Wisp Priest",
-            klass_id: 2 
-          )
-        end
-        let(:unpopular_unique_deck) do
-          create(:unique_deck,
-            cardstring: unpopular_deck_type.match_string,
-            unique_deck_type_id: unpopular_deck_type.id,
-            klass_id: unpopular_deck_type.klass_id
-          )
-        end
+        let(:unpopular_deck_type) { create(:unique_deck_type, name: "Wisp Priest", klass_id: 2) }
+        let(:unpopular_unique_deck) { create(:unique_deck_with_unique_deck_type, unique_deck_type: unpopular_deck_type) } 
         let(:unpopular_deck) { create(:deck_with_unique_deck, unique_deck: unpopular_unique_deck) } 
 
         before(:each) do
@@ -75,20 +51,8 @@ describe UniqueDeckType do
       end
 
       context "with unnamed deck types" do
-        let(:noname_deck_type) do
-          create(:unique_deck_type,
-            match_string: "100_2,101_2",
-            name: nil,
-            klass_id: 2 
-          )
-        end
-        let(:noname_unique_deck) do
-          create(:unique_deck,
-            cardstring: noname_deck_type.match_string,
-            unique_deck_type_id: noname_deck_type.id,
-            klass_id: noname_deck_type.klass_id
-          )
-        end
+        let(:noname_deck_type) { create(:unique_deck_type, name: nil, klass_id: 2) }
+        let(:noname_unique_deck) { create(:unique_deck_with_unique_deck_type, unique_deck_type: noname_deck_type) } 
         let(:noname_deck) { create(:deck_with_unique_deck, unique_deck: noname_unique_deck) } 
 
         before(:each) do
@@ -103,20 +67,8 @@ describe UniqueDeckType do
       end
 
       context "with old match data" do
-        let(:old_deck_type) do
-          create(:unique_deck_type,
-            match_string: "100_2,101_2",
-            name: "Miracle Rogue",
-            klass_id: 3 
-          )
-        end
-        let(:old_unique_deck) do
-          create(:unique_deck,
-            cardstring: old_deck_type.match_string,
-            unique_deck_type_id: old_deck_type.id,
-            klass_id: old_deck_type.klass_id
-          )
-        end
+        let(:old_deck_type) { create(:unique_deck_type, name: "Miracle Rogue", klass_id: 3) }
+        let(:old_unique_deck) { create(:unique_deck_with_unique_deck_type, unique_deck_type: old_deck_type) } 
         let(:old_deck) { create(:deck_with_unique_deck, unique_deck: old_unique_deck) } 
 
         before(:each) do
