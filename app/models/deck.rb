@@ -84,6 +84,18 @@ class Deck < ActiveRecord::Base
     ratings_array.sort_by! {|deck| deck[1]}.last[0]
   end
 
+  def self.get_top_decks(time_ago)
+    decks = Deck.where(is_public: true).where('decks.created_at >= ?', time_ago.week.ago).
+                group(:unique_deck_id).
+                joins(:unique_deck).
+                joins(:user).
+                where("user_num_matches >= ?", 30).
+                sort! { |a,b|  b.deck_score <=> a.deck_score }.
+                first(20)
+    decks
+  end
+
+
   # def self.playable_decks(user_id)
   #   Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
   # end
@@ -265,6 +277,22 @@ class Deck < ActiveRecord::Base
     end
 
     arr
+  end
+
+  def highest_rank
+    return self.rank_wr.map{|r| r[0].try(:id) || 0 }.max || 0
+  end
+
+  def deck_score
+    unless self.nil?
+      if (self.highest_rank == 0 || self.highest_rank.nil?)
+        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ((self.try(:user_num_matches) || 0) * 0.2)
+      else 
+        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ((self.try(:user_num_matches) || 0) * 0.1) + ((26 - self.highest_rank)*0.1)
+      end
+
+      deck_score
+    end
   end
 
   private
