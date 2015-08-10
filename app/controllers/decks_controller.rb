@@ -47,7 +47,7 @@ class DecksController < ApplicationController
                  group(:unique_deck_id).
                  joins(:unique_deck).
                  joins(:user).
-                 #where("unique_decks.num_matches >= ?", 30).
+                 where("unique_decks.num_matches >= ?", 30).
                  sort_by { |deck| deck.unique_deck.winrate || 0 }.
                  last(20).
                  reverse.
