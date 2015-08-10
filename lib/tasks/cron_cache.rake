@@ -99,7 +99,6 @@ namespace :cron do
 
     Rails.cache.write('wel#rank_class', rank_percent)
   end
-  
 
   task :market_top_decks => :environment do
     Rails.cache.delete('market_top_deck')
@@ -115,8 +114,14 @@ namespace :cron do
     Rails.cache.write('market_top_deck', decks)
   end
 
+  task :top_decks => :environment do 
+    Rails.cache.delete('top_decks')
+    decks = Deck.get_top_decks(1)
+    Rails.cache.write('top_decks', decks)
+  end
+
   def round_down(num, n)
     n < 1 ? num.to_i.to_f : (num - 0.5 / 10**n).round(n)
   end
-
+  
 end
