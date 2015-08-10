@@ -57,3 +57,9 @@ every 2.hours do
   command "echo '--------------------------'"
   command "echo 'Refreshing Archetype Decks'"
 end
+
+every 1.day do 
+  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:top_decks"
+  command "echo '--------------------------'"
+  command "echo 'Refreshing Top Decks"
+end
