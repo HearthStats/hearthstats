@@ -305,6 +305,18 @@ class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
     return response
   end
 
+  def parse_match_sql(_params, klass_id)
+    _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+    # Parse params to get variables
+    mode     = Mode::LIST.invert[_params[:mode]] || 'NULL'
+    oppclass = Klass::LIST.invert[_params[:oppclass]] || 'NULL'
+    result   = Match::RESULTS_LIST.invert[_params[:result]] || 'NULL'
+    coin     = _params[:coin] == "true"
+    match_str = "(#{current_user.id},#{mode},#{klass_id},#{result},#{coin},#{oppclass},'#{_params[:oppname] || 'NULL'}',#{_params[:numturns] || 'NULL'},#{_params[:duration] || 'NULL'},'#{_params[:notes] || 'NULL'}',true,'#{Time.now.to_s(:db)}','#{Time.now.to_s(:db)}')"
+
+    match_str
+  end
+
   def parse_match(_params, klass_id)
     _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
     # Parse params to get variables
