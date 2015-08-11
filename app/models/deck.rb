@@ -295,7 +295,7 @@ class Deck < ActiveRecord::Base
       if (self.highest_rank == 26)
         deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 300].min * 0.1)
       else 
-        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 300].min * 0.2) + ((26 - self.highest_rank) * 1.5)
+        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 200].min * 0.12) + (25 - self.highest_rank)
       end
 
       deck_score
