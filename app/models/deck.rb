@@ -280,15 +280,22 @@ class Deck < ActiveRecord::Base
   end
 
   def highest_rank
-    return self.rank_wr.map{|r| r[0].try(:id) || 0 }.max || 0
+    rank = self.rank_wr.map{|r| r[0].try(:id)}.compact
+    if rank.empty?
+      return 26
+    elsif rank.include?(26)
+      return 0
+    else 
+      return rank.min
+    end
   end
 
   def deck_score
     unless self.nil?
-      if (self.highest_rank == 0 || self.highest_rank.nil?)
-        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ((self.try(:user_num_matches) || 0) * 0.2)
+      if (self.highest_rank == 26)
+        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 300].min * 0.1)
       else 
-        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ((self.try(:user_num_matches) || 0) * 0.1) + ((26 - self.highest_rank)*0.1)
+        deck_score = ((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 300].min * 0.2) + ((26 - self.highest_rank) * 1.5)
       end
 
       deck_score
