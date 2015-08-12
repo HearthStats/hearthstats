@@ -430,10 +430,10 @@ en:
       title: New Deck Class Selection
       section: Deck
     public:
-      title: Public Deck List
+      title: Search Decks
       subtitle: ! 'All public constructed decks'
       new_deck: New Deck
-      public_decks: Public Decks
+      public_decks: Search Decks
     active_decks:
       title: Active Deck
       subtitle: ! 'All active constructed decks'
@@ -632,6 +632,7 @@ en:
       title: Deck
       public_deck_list: Public Deck List
       my_deck: My Decks
+      search: Search
       my_active_deck: My Active Deck
       new_deck: New Deck
       other_versions: View Other Versions
