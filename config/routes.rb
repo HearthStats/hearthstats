@@ -115,7 +115,7 @@ Hearthstats::Application.routes.draw do
   resources :decks do
     collection do
       get 'active_decks'
-      get 'public'
+      get 'public', to: 'decks#marketplace'
       get 'merge'
       post 'submit_merge'
       get 'new_splash'
