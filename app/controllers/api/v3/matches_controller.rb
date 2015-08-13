@@ -99,7 +99,7 @@ class Api::V3::MatchesController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
-    Delayed::Job.enqueue MultiMatchCreateJob.new(_req[:matches], deck, current_user)
+    Delayed::Job.enqueue MultiMatchCreateJob.new(_req[:matches], deck, current_user.id)
     render json: {status: 200}
   end
 
@@ -253,12 +253,13 @@ class Api::V3::MatchesController < ApplicationController
   end
 end
 
-class MultiMatchCreateJob < Struct.new(:_matches_params, :deck, :current_user)
+MultiMatchCreateJob = Struct.new(:_matches_params, :deck, :user_id) do
   def perform
     new_matches = []
     response = []
+    user_id = deck.user_id if user_id.nil?
     _matches_params.each do |_match_params|
-      new_matches << parse_match_sql(_match_params, deck.klass_id)
+      new_matches << parse_match_sql(_match_params, deck.klass_id, user_id)
     end
     sql_statement = "INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`) VALUES #{new_matches.join(",")}"
     initial_id = Match.last.id
@@ -280,72 +281,23 @@ class MultiMatchCreateJob < Struct.new(:_matches_params, :deck, :current_user)
     ActiveRecord::Base.connection.insert rank_statement if !match_rank_sql.empty?
   end
 
-  def perform_old
-    response = []
-    _matches_params.each do |_match_params|
-      match = parse_match(_match_params, deck.klass_id)
-
-      if match.save
-        if match.mode_id == 3
-          MatchRank.create(match_id: match.id, rank_id: _match_params["ranklvl"].to_i)
-        elsif match.mode_id == 1
-          submit_arena_match(current_user, match, Klass::LIST.invert[_match_params["@class"]])
-        end
-        MatchDeck.create(match_id: match.id,
-                        deck_id: deck.id,
-                        deck_version_id: _match_params["deck_version_id"].to_i
-                        )
-        match.__elasticsearch__.index_document
-        response << { status: 200, data: match }
-      else
-        response << { status: 400, data: match.errors.full_messages }
-      end
-    end
-
-    return response
-  end
-
-  def parse_match_sql(_params, klass_id)
+  def parse_match_sql(_params, klass_id, user_id)
     _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
     # Parse params to get variables
     mode     = Mode::LIST.invert[_params[:mode]] || 'NULL'
     oppclass = Klass::LIST.invert[_params[:oppclass]] || 'NULL'
     result   = Match::RESULTS_LIST.invert[_params[:result]] || 'NULL'
     coin     = _params[:coin] == "true"
-    match_str = "(#{current_user.id},#{mode},#{klass_id},#{result},#{coin},#{oppclass},'#{_params[:oppname] || 'NULL'}',#{_params[:numturns] || 'NULL'},#{_params[:duration] || 'NULL'},'#{_params[:notes] || 'NULL'}',true,'#{Time.now.to_s(:db)}','#{Time.now.to_s(:db)}')"
+    match_str = "(#{user_id},#{mode},#{klass_id},#{result},#{coin},#{oppclass},'#{_params[:oppname] || 'NULL'}',#{_params[:numturns] || 'NULL'},#{_params[:duration] || 'NULL'},'#{_params[:notes] || 'NULL'}',true,'#{Time.now.to_s(:db)}','#{Time.now.to_s(:db)}')"
 
     match_str
   end
 
-  def parse_match(_params, klass_id)
-    _params = _params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-    # Parse params to get variables
-    mode     = Mode::LIST.invert[_params[:mode]]
-    oppclass = Klass::LIST.invert[_params[:oppclass]]
-    result   = Match::RESULTS_LIST.invert[_params[:result]]
-    coin     = _params[:coin] == "true"
-
-    # Create new match
-    match             = Match.new
-    match.user_id     = current_user.id
-    match.mode_id     = mode
-    match.klass_id    = klass_id
-    match.result_id   = result
-    match.coin        = coin
-    match.oppclass_id = oppclass
-    match.oppname     = _params[:oppname]
-    match.numturns    = _params[:numturns]
-    match.duration    = _params[:duration]
-    match.notes       = _params[:notes]
-    match.appsubmit   = true
-    if _params[:created_at]
-      match.created_at  = _params[:created_at].to_time
-    end
-
-    match
-  end
-
   def max_run_time
     120 # seconds
+  end
+
+  def queue_name
+    'multcreate_queue'
   end
 end
