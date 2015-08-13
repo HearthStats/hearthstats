@@ -99,7 +99,7 @@ class Api::V3::MatchesController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
-    Delayed::Job.enqueue MultiMatchCreateJob.new(_req[:matches], deck)
+    Delayed::Job.enqueue MultiMatchCreateJob.new(_req[:matches], deck, current_user)
     render json: {status: 200}
   end
 
@@ -253,7 +253,7 @@ class Api::V3::MatchesController < ApplicationController
   end
 end
 
-class MultiMatchCreateJob < Struct.new(:_matches_params, :deck)
+class MultiMatchCreateJob < Struct.new(:_matches_params, :deck, :current_user)
   def perform
     new_matches = []
     response = []
