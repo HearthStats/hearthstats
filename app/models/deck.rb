@@ -293,14 +293,17 @@ class Deck < ActiveRecord::Base
                    0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
                    0.25, 0.25, 0.25, 0.25, 0.25, #rank 15-25
                    0.995] #legend
+
     rank = self.rank_wr_count
-    #rank_info = [rankID, winrate, #ofgames]
     total_games = self.user_num_matches
     score = 0
-    rank.each do |rank_info|
-      weight = rank_weight[rank_info[0]]
-      init_score = (weight * rank_info[1]) + (weight * rank_info[2] * 0.5)
-      score += (init_score * (rank_info[2].to_f/total_games))
+
+    unless total_games == 0
+      rank.each do |rank_info|
+        weight = rank_weight[rank_info[0]]
+        init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 25].min * 0.5)
+        score += (init_score * (rank_info[2].to_f/total_games))
+      end
     end
 
     score
