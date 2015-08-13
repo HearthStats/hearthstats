@@ -44,7 +44,7 @@ class Deck < ActiveRecord::Base
 
   ### CLASS METHODS:
 
-  # Featured Decks: 
+  # Featured Decks:
   def self.get_featured_decks
     Deck.where(deck_type_id: 3)
   end
@@ -84,8 +84,8 @@ class Deck < ActiveRecord::Base
     ratings_array.sort_by! {|deck| deck[1]}.last[0]
   end
 
-  def self.get_top_decks(weeks_ago)
-    decks = Deck.where(is_public: true).where('decks.created_at >= ?', time_ago.week.ago).
+  def self.get_top_decks
+    decks = Deck.where(is_public: true).where('decks.updated_at >= ?', Season.last.created_at).
                 group(:unique_deck_id).
                 joins(:unique_deck).
                 joins(:user).
@@ -279,27 +279,31 @@ class Deck < ActiveRecord::Base
     arr
   end
 
-  def highest_rank
-    rank = self.rank_wr.map{|r| r[0].try(:id)}.compact
-    if rank.empty?
-      return 26
-    elsif rank.include?(26)
-      return 0
-    else 
-      return rank.min
-    end
+  def rank_wr_count
+    grouped = self.matches.includes(:rank).group_by {|match| match.rank}
+    grouped.map {|rank| [rank[0].try(:id) || 0, calculate_winrate(rank[1]), rank[1].length]}
+    # unranked (nil) == 0; legend == 26
   end
 
   def deck_score
-    unless self.nil?
-      if (self.highest_rank == 26)
-        deck_score = [((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 300].min * 0.1)]/129
-      else 
-        deck_score = [((self.try(:user_winrate) || 0) * 0.8) + ([(self.try(:user_num_matches) || 0), 200].min * 0.12) + (25 - self.highest_rank)]/129
-      end
-
-      deck_score
+    rank_weight = [0.25, #0 = unranked/nil
+                   0.98, 0.98, 0.98, 0.98, #rank 1-4
+                   0.945, 0.945, 0.945, 0.945, 0.945, #rank 5-9
+                   0.85, 0.85, 0.85, 0.85, 0.85, #rank 10-14
+                   0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+                   0.25, 0.25, 0.25, 0.25, 0.25, #rank 15-25
+                   0.995] #legend
+    rank = self.rank_wr_count
+    #rank_info = [rankID, winrate, #ofgames]
+    total_games = self.user_num_matches
+    score = 0
+    rank.each do |rank_info|
+      weight = rank_weight[rank_info[0]]
+      init_score = (weight * rank_info[1]) + (weight * rank_info[2] * 0.5)
+      score += (init_score * (rank_info[2].to_f/total_games))
     end
+
+    score
   end
 
   private
