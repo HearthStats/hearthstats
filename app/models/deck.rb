@@ -301,7 +301,11 @@ class Deck < ActiveRecord::Base
     unless total_games == 0
       rank.each do |rank_info|
         weight = rank_weight[rank_info[0]]
-        init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 25].min * 0.5)
+        if rank_info[0] == 0
+          init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 15].min * 0.5)
+        else
+          init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 30].min * 0.5)
+        end
         score += (init_score * (rank_info[2].to_f/total_games))
       end
     end
