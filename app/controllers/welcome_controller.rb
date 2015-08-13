@@ -12,24 +12,17 @@ class WelcomeController < ApplicationController
         includes(:user).
         last(7)
     end
-    @topdecks =
-      # UniqueDeck.where('created_at >= ?', 1.year.ago)
-      #           .where("num_matches >= ?", "0")
-      #           .order(:winrate)
-      #           .last(7)
-      #           .map{|ud| ud.decks.first}
-      #           .compact
-      #           .reverse
-      #           .to_a
-      Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
-                group(:unique_deck_id).
-                joins(:unique_deck).
-                joins(:user).
-                where("unique_decks.num_matches >= ?", 30).
-                sort_by { |deck| deck.unique_deck.winrate || 0 }.
-                last(7).
-                reverse.
-                to_a
+    @topdecks = Rails.cache.fetch('wel#top_decks', expires_in: 2.hours) do
+      Deck.where(is_public: true).
+        where('decks.created_at >= ?', 1.week.ago).
+        group(:unique_deck_id).
+        joins(:unique_deck).
+        joins(:user).
+        where("unique_decks.num_matches >= ?", 30).
+        order('unique_decks.winrate DESC').
+        first(7).
+        to_a
+    end
     # Get Class Use % by Rank
 
     @rank_class = Rails.cache.fetch('rank_class', expires_in: 12.hours) do
