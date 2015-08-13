@@ -80,9 +80,9 @@ namespace :cron do
     Rails.cache.write('top_adecks', decks)
   end
 
-  task :top_decks => :environment do 
+  task :top_decks => :environment do
     Rails.cache.delete('top_decks')
-    decks = Deck.get_top_decks(1)
+    decks = Deck.get_top_decks
     Rails.cache.write('top_decks', decks)
   end
 
