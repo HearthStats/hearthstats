@@ -17,7 +17,6 @@ group :development do
   gem 'pry'
   gem 'pry-byebug'
   gem 'seed_dump'
-  gem 'meta_request'
   gem 'awesome_print', :require => false
   gem 'active_record_query_trace'
   gem "selenium-webdriver", "~> 2.44.0"
@@ -104,6 +103,8 @@ gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'daemons'
 gem 'whenever'
+
+gem 'meta_request'
 
 group :test do
   gem 'rspec-rails', '~> 2.12.2'
