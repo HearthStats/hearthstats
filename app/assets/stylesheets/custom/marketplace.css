@@ -12,18 +12,17 @@
   right: 0;
 }
 .mkt-section{
-  padding: 20px 10px; 
-  float: left;
-  width: 100%; 
+  padding-top: 10px;
   height: 95px;
-  min-width: 400px;
+  min-width: 300px;
+  margin: auto;
 }
 .hero-title{
   color: white;
   font-size: 400% !important;
   position: relative;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
 }
 .top-deck, .sidebar-deck{
   margin: auto;
@@ -57,7 +56,7 @@
 a.new-deck-link{
   color: #000 !important;
 }
-div:focus { outline: none; } 
+div:focus { outline: none; }
 .archtype-decks{
   width: 95%;
   margin: auto;
@@ -135,7 +134,7 @@ div:focus { outline: none; }
   max-width: 70%;
 }
 #pro-decks{
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 @media (max-width: 500px){
