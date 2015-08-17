@@ -262,7 +262,7 @@ MultiMatchCreateJob = Struct.new(:_matches_params, :deck, :user_id) do
       new_matches << parse_match_sql(_match_params, deck.klass_id, user_id)
     end
     sql_statement = "INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`) VALUES #{new_matches.join(",")}"
-    initial_id = Match.last.id
+    initial_id = Match.last ? Match.last.id : 1
     last_id =  ActiveRecord::Base.connection.insert sql_statement
     match_deck_sql = []
     match_rank_sql = []
