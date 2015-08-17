@@ -99,7 +99,9 @@ class Api::V3::MatchesController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
-    Delayed::Job.enqueue MatchJobs::CreateNewMatchesJob.new(_req[:matches], deck, current_user.id)
+
+    matches_params = _req[:matches].map(&:symbolize_keys)
+    Delayed::Job.enqueue MatchJobs::CreateNewMatchesJob.new(matches_params, deck, current_user.id)
     render json: {status: 200}
   end
 
