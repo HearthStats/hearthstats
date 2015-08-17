@@ -93,15 +93,13 @@ class Api::V3::MatchesController < ApplicationController
   end
 
   def multi_create
-    _req = @req
     begin
-      deck = Deck.find(_req[:deck_id])
+      deck = Deck.find(@req[:deck_id])
     rescue ActiveRecord::RecordNotFound => e
       render json: {status: 400, message: e.message} and return
     end
 
-    matches_params = _req[:matches].map(&:symbolize_keys)
-    Delayed::Job.enqueue MatchJobs::CreateNewMatchesJob.new(matches_params, deck, current_user.id)
+    Delayed::Job.enqueue MatchJobs::CreateNewMatchesJob.new(@req[:matches].map(&:symbolize_keys), deck, current_user.id)
     render json: {status: 200}
   end
 
