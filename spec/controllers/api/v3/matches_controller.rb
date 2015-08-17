@@ -63,5 +63,11 @@ JSON
 
       expect(first_match_deck.deck).to eq(deck)
     end
+
+    it 'only creates match_rank assoications for Ranked mode matches' do
+      first_match, second_match = Match.last(2)
+      expect(MatchRank.count).to eq(1)
+      expect(MatchRank.last.match).to eq(first_match)
+    end
   end
 end
