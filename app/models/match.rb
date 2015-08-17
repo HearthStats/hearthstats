@@ -311,7 +311,6 @@ class Match < ActiveRecord::Base
   def self.generate_mass_insert_sql(matches_params, klass_id, user_id)
     current_time = Time.now.to_s(:db)
     new_matches_sql = matches_params.map do |match_params|
-      match_params.symbolize_keys!
       self.generate_match_sql(match_params, klass_id, user_id, current_time)
     end
 

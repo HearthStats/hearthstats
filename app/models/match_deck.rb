@@ -11,6 +11,20 @@ class MatchDeck < ActiveRecord::Base
   # before_save :set_unique_deck_and_version
   after_create :update_deck_user_stats
 
+
+  def self.generate_mass_insert_sql(matches_params, deck_id)
+    current_time = Time.now.to_s(:db)
+    new_match_decks_sql = matches_params.map do |match_params|
+      self.sanitize_sql_array(['(?,?,?,?)',
+        match_params[:id], deck_id, current_time, current_time])
+    end
+
+    return <<-SQL
+INSERT INTO match_decks (`match_id`, `deck_id`, `created_at`, `updated_at`)
+VALUES #{new_match_decks_sql.join(",")}
+    SQL
+  end
+
   ### INSTANCE METHODS:
 
   def set_unique_deck_and_version
@@ -24,5 +38,5 @@ class MatchDeck < ActiveRecord::Base
     #update personal stats
     deck.update_user_stats!
   end
-  
+
 end
