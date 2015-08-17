@@ -270,7 +270,7 @@ MultiMatchCreateJob = Struct.new(:_matches_params, :deck, :user_id) do
     (initial_id..last_id).each_with_index do |match_id, i|
       match_deck_sql << "(#{match_id}, #{deck.id},'#{current_time}', '#{current_time}')"
       # MatchDeck.create(match_id: match_id, deck_id: deck.id)
-      if _matches_params[i][:mode] == "Ranked"
+      if _matches_params[i]['mode'] == "Ranked"
         match_rank_sql << "(#{match_id}, #{_matches_params[i]["ranklvl"].to_i || 'NULL'}, '#{current_time}', '#{current_time}')"
         # MatchRank.create(match_id: match_id, rank_id: _req[:match][i]["ranklvl"].to_i)
       end
