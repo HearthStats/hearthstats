@@ -53,5 +53,15 @@ JSON
       expect(second_match.result_id).to eq(1)
       expect(second_match.coin).to be(false)
     end
+
+    it 'creates a match_deck association object for each new match' do
+      first_match, second_match = Match.last(2)
+      first_match_deck, second_match_deck = MatchDeck.last(2)
+
+      expect(first_match.match_deck).to eq(first_match_deck)
+      expect(second_match.match_deck).to eq(second_match_deck)
+
+      expect(first_match_deck.deck).to eq(deck)
+    end
   end
 end
