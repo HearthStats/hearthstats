@@ -69,5 +69,55 @@ JSON
       expect(MatchRank.count).to eq(1)
       expect(MatchRank.last.match).to eq(first_match)
     end
+
+#    context 'performance' do
+#      let(:json_request) do
+#        matches = []
+#        200.times do
+#          matches << {
+#            mode: Match::MODES_LIST.values.sample,
+#            ranklvl: rand(25) + 1,
+#            oppclass: Klass::LIST.values.sample,
+#            result: Match::RESULTS_LIST.values.sample,
+#            coin: ["true", "false"].sample,
+#          }
+#        end
+
+#        matches.map! do |match|
+#          <<-JSON
+#{
+#  "mode": "#{match[:mode]}",
+#  "ranklvl": "#{match[:ranklvl]}",
+#  "oppclass": "#{match[:oppclass]}",
+#  "result": "#{match[:result]}",
+#  "coin": "#{match[:coin]}"
+#}
+#          JSON
+#        end
+
+#        <<-JSON
+#{
+#  "deck_id": "#{deck.id}",
+#  "matches": [#{matches.join(",")}]
+#}
+#        JSON
+#      end
+
+#      it 'is fast!' do
+#        Benchmark.bmbm do |bm|
+#          bm.report("api") do
+#            100.times do
+#              @request.env['RAW_POST_DATA'] = json_request
+#              post :multi_create
+#            end
+#          end
+#        end
+
+#        puts "Matches: #{Match.count}"
+#        puts "MatchDecks: #{MatchDeck.count}"
+#        puts "MatchRanks: #{MatchRank.count}"
+#      end
+
+#    end
   end
 end
