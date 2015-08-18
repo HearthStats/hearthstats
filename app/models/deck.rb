@@ -44,7 +44,7 @@ class Deck < ActiveRecord::Base
 
   ### CLASS METHODS:
 
-  # Featured Decks: 
+  # Featured Decks:
   def self.get_featured_decks
     Deck.where(deck_type_id: 3)
   end
@@ -83,6 +83,18 @@ class Deck < ActiveRecord::Base
     [] and return if ratings_array.empty?
     ratings_array.sort_by! {|deck| deck[1]}.last[0]
   end
+
+  def self.get_top_decks
+    decks = Deck.where(is_public: true).where('decks.updated_at >= ?', Season.last.created_at).
+                group(:unique_deck_id).
+                joins(:unique_deck).
+                joins(:user).
+                where("user_num_matches >= ?", 30).
+                sort! { |a,b|  b.deck_score <=> a.deck_score }.
+                first(20)
+    decks
+  end
+
 
   # def self.playable_decks(user_id)
   #   Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
@@ -265,6 +277,40 @@ class Deck < ActiveRecord::Base
     end
 
     arr
+  end
+
+  def rank_wr_count
+    grouped = self.matches.includes(:rank).group_by {|match| match.rank}
+    grouped.map {|rank| [rank[0].try(:id) || 0, calculate_winrate(rank[1]), rank[1].length]}
+    # unranked (nil) == 0; legend == 26
+  end
+
+  def deck_score
+    rank_weight = [0.25, #0 = unranked/nil
+                   0.98, 0.98, 0.98, 0.98, #rank 1-4
+                   0.945, 0.945, 0.945, 0.945, 0.945, #rank 5-9
+                   0.85, 0.85, 0.85, 0.85, 0.85, #rank 10-14
+                   0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+                   0.25, 0.25, 0.25, 0.25, 0.25, #rank 15-25
+                   0.995] #legend
+
+    rank = self.rank_wr_count
+    total_games = self.user_num_matches
+    score = 0
+
+    unless total_games == 0
+      rank.each do |rank_info|
+        weight = rank_weight[rank_info[0]]
+        if rank_info[0] == 0
+          init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 15].min * 0.5)
+        else
+          init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 30].min * 0.5)
+        end
+        score += (init_score * (rank_info[2].to_f/total_games))
+      end
+    end
+
+    score
   end
 
   private
