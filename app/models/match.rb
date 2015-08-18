@@ -120,7 +120,7 @@ class Match < ActiveRecord::Base
     klass_wr = Array.new
     match_count = Array.new
     Rank.all.each do |rank|
-      matches = rank.matches.where(klass_id: klass_id, 
+      matches = rank.matches.where(klass_id: klass_id,
                                    created_at: beginning..endday)
       id = rank.id
       if rank.id == 26
@@ -308,6 +308,19 @@ class Match < ActiveRecord::Base
     rank_klass
   end
 
+  def self.generate_mass_insert_sql(matches_params, klass_id, user_id)
+    current_time = Time.now.to_s(:db)
+    new_matches_sql = matches_params.map do |match_params|
+      self.generate_match_sql(match_params, klass_id, user_id, current_time)
+    end
+
+    return <<-SQL
+INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`)
+VALUES #{new_matches_sql.join(",")}
+    SQL
+  end
+
+
   ### INSTANCE METHODS:
 
   def archtype_id
@@ -350,6 +363,20 @@ class Match < ActiveRecord::Base
     unless deck.nil?
       deck.update_user_stats!
     end
+  end
+
+
+  protected
+  def self.generate_match_sql(params, klass_id, user_id, current_time)
+    mode_id = Mode::LIST.invert[params[:mode]]
+    oppclass_id = Klass::LIST.invert[params[:oppclass]]
+    result_id = Match::RESULTS_LIST.invert[params[:result]]
+    coin = params[:coin] == "true"
+
+    match_str = self.sanitize_sql_array(['(?,?,?,?,?,?,?,?,?,?,?,?,?)',
+      user_id, mode_id, klass_id, result_id, coin, oppclass_id, params[:oppname], params[:numturns], params[:duration], params[:notes], true, current_time, current_time
+    ])
+    match_str
   end
 
 end
