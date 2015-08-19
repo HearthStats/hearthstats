@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
     # Global Stats
     @arena_top = Rails.cache.read('wel#arena_top') || []
     @con_top = Rails.cache.read('wel#con_top') || []
+    @rank_class = Rails.cache.read('wel#rank_class') || []
 
     # Decklists
     @recentdecks = Rails.cache.fetch('recent_decks', expires_in: 2.hours) do
@@ -25,17 +26,6 @@ class WelcomeController < ApplicationController
     end
     # Get Class Use % by Rank
 
-    @rank_class = Rails.cache.fetch('rank_class', expires_in: 12.hours) do
-      rank_class = Match.rank_class(12).select {|rank, match| match.count == 9}
-      rank_percent = {}
-      rank_class.each do |rank, counts|
-        tot = counts.map{|w|w[1]}.reduce(:+)
-        percent = counts.map {|klass, count| [klass, round_down(count.to_f/tot*100, 2)]}
-        rank_percent[rank] = percent
-      end
-
-      rank_percent
-    end
 
     # Streams
     # @featured_streams = Stream.get_featured_streamers
