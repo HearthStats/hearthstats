@@ -80,7 +80,6 @@ namespace :cron do
     Rails.cache.write('top_adecks', decks)
   end
 
-
   task :top_decks => :environment do
     Rails.cache.delete('top_decks')
     decks = Deck.get_top_decks
@@ -123,5 +122,5 @@ namespace :cron do
   def round_down(num, n)
     n < 1 ? num.to_i.to_f : (num - 0.5 / 10**n).round(n)
   end
-  
+
 end
