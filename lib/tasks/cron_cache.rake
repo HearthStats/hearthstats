@@ -80,19 +80,6 @@ namespace :cron do
     Rails.cache.write('top_adecks', decks)
   end
 
-  task :rank_class => :environment do
-    Rails.cache.delete('wel#rank_class')
-    rank_class = Match.rank_class(12).select {|rank, match| match.count == 9}
-    rank_percent = {}
-    rank_class.each do |rank, counts|
-      tot = counts.map{|w|w[1]}.reduce(:+)
-      percent = counts.map {|klass, count| [klass, round_down(count.to_f/tot*100, 2)]}
-      rank_percent[rank] = percent
-    end
-
-    Rails.cache.write('wel#rank_class', rank_percent)
-  end
-  
   task :top_decks => :environment do 
     Rails.cache.delete('top_decks')
     decks = Deck.get_top_decks
