@@ -28,7 +28,10 @@ every 1.day do
   command "echo 'Sigs Update'"
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake update_season"
   command "echo '--------------------------'"
-  command "echo 'Sigs Update'"
+  command "echo 'Changed to new Season'"
+  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:rank_class"
+  command "echo '--------------------------'"
+  command "echo 'Rank Class Updated'"
 end
 
 every 5.hours do
