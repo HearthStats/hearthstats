@@ -98,6 +98,7 @@ namespace :cron do
 
     Rails.cache.write('wel#rank_class', rank_percent)
   end
+  
 
   task :market_top_decks => :environment do
     Rails.cache.delete('market_top_deck')
