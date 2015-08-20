@@ -32,10 +32,10 @@ class UniqueDeckType < ActiveRecord::Base
 
   def self.get_top_decks
     decks = {}
-    arch_pop = Rails.cache.read('archetype_pop').sort_by{|name, val| val}.reverse.first(3)
+    arch_pop = Rails.cache.read('archetype_pop').sort_by{|name, val| val}.last(3).reverse
 
     arch_pop.each do |arch|
-      ar = this.get_deck_info(arch[0])
+      ar = self.get_deck_info(arch[0])
       decks[arch[0]] = ar
     end
 
@@ -87,7 +87,7 @@ class UniqueDeckType < ActiveRecord::Base
 
   private
 
-  def get_deck_info(arch_name)
+  def self.get_deck_info(arch_name)
     ar = []
     @ar = UniqueDeckType.where(name: arch_name)[0].unique_decks.all.select{ |ud| ud.num_matches != nil && ud.num_matches > 30}.sort!{|ud1, ud2| ud1.winrate <=> ud2.winrate}.reverse
     @ar.each do |ud|
