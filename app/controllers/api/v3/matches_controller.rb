@@ -99,7 +99,7 @@ class Api::V3::MatchesController < ApplicationController
       render json: {status: 400, message: e.message} and return
     end
 
-    Delayed::Job.enqueue MatchJobs::CreateNewMatchesJob.new(@req[:matches].map(&:symbolize_keys), deck, current_user.id)
+    Delayed::Job.enqueue MatchJobs::CreateNewMatchesJob.new(@req[:matches].map(&:symbolize_keys), deck.id, deck.klass_id, current_user.id)
     render json: {status: 200}
   end
 
