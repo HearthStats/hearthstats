@@ -62,7 +62,8 @@ describe Match do
         let(:ranked_match) { double(:ranked_match) }
         let(:arena_match) { double(:arena_match) }
         let(:matches_params) { [ranked_match, arena_match] }
-        let(:deck) { double(:deck, id: 13, klass_id: 7) }
+        let(:deck_id) { 13 }
+        let(:deck_klass_id) { 7 }
         let(:user_id) { 5 }
         let(:last_match) { double(:last_match) }
 
@@ -81,7 +82,7 @@ describe Match do
             .and_return("INSERT luck INTO forsen")
           Match.connection.should_receive(:insert).with("INSERT luck INTO forsen")
 
-          Match.mass_import_new_matches(matches_params, deck, user_id)
+          Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
 
         it "adds the matches' ids to their param values" do
@@ -91,7 +92,7 @@ describe Match do
           ranked_match.should_receive(:[]=).with(:id, 4)
           arena_match.should_receive(:[]=).with(:id, 5)
 
-          Match.mass_import_new_matches(matches_params, deck, user_id)
+          Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
 
         it 'generates and executes a MatchDeck mass-insert sql command' do
@@ -99,7 +100,7 @@ describe Match do
             .with(matches_params, 13)
             .and_return("INSERT drboom INTO turn7")
           MatchDeck.connection.should_receive(:insert).with("INSERT drboom INTO turn7")
-          Match.mass_import_new_matches(matches_params, deck, user_id)
+          Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
 
         it 'generates and executes a MatchRank mass-insert sql command' do
@@ -110,7 +111,7 @@ describe Match do
             .with([ranked_match])
             .and_return("INSERT value INTO valuetown")
           MatchRank.connection.should_receive(:insert).with("INSERT value INTO valuetown")
-          Match.mass_import_new_matches(matches_params, deck, user_id)
+          Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
       end
 

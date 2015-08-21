@@ -308,13 +308,13 @@ class Match < ActiveRecord::Base
     rank_klass
   end
 
-  def self.mass_import_new_matches(matches_params, deck, user_id)
-    first_id = Match.connection.insert Match.generate_mass_insert_sql(matches_params, deck.klass_id, user_id)
+  def self.mass_import_new_matches(matches_params, deck_id, klass_id, user_id)
+    first_id = Match.connection.insert Match.generate_mass_insert_sql(matches_params, klass_id, user_id)
 
     matches_params.each_with_index do |match_params, i|
       match_params[:id] = first_id + i
     end
-    MatchDeck.connection.insert MatchDeck.generate_mass_insert_sql(matches_params, deck.id)
+    MatchDeck.connection.insert MatchDeck.generate_mass_insert_sql(matches_params, deck_id)
 
     ranked_params = matches_params.select do |match_params|
       match_params[:mode] == "Ranked" && match_params[:ranklvl]
