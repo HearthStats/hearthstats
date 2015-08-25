@@ -98,4 +98,8 @@ namespace :cron do
 
     Rails.cache.write('wel#rank_class', rank_percent)
   end
+
+  def round_down(num, n)
+    n < 1 ? num.to_i.to_f : (num - 0.5 / 10**n).round(n)
+  end
 end

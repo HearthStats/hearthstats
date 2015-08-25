@@ -235,7 +235,4 @@ class WelcomeController < ApplicationController
     top_streams
   end
 
-  def round_down(num, n)
-    n < 1 ? num.to_i.to_f : (num - 0.5 / 10**n).round(n)
-  end
 end

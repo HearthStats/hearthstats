@@ -50,9 +50,7 @@ every 2.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:archetype_pop"
   command "echo '--------------------------'"
   command "echo 'Refreshing Archetypes'"
-end
 
-every 2.hours do 
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:archetype_decks"
   command "echo '--------------------------'"
   command "echo 'Refreshing Archetype Decks'"
