@@ -202,7 +202,7 @@ class ConstructedsController < ApplicationController
     params[:q]     ||= {}
     params[:days]  ||= 'all'
 
-    @q       = Match.where(mode_id: [2,3]).ransack(params[:q])
+    @q       = Match.where(mode_id: [2,3], season_id: current_season).ransack(params[:q])
     @matches = @q.result
 
     unless params[:days] == "all"

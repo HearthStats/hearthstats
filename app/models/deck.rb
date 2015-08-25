@@ -316,9 +316,9 @@ class Deck < ActiveRecord::Base
   private
 
   def update_unique_deck_stats
-    if matches.count.modulo(5) == 0
+    if matches.count.modulo(10) == 0
       Rails.cache.delete('deck_stats' + self.id.to_s + self.current_version.try(:version).to_s)
-      UniqueDeck.delay(:queue => 'unique_deck_update').update_stats(unique_deck_id) if unique_deck_id
+      UniqueDeck.update_stats(unique_deck_id) if unique_deck_id
     end
   end
 
