@@ -5,13 +5,14 @@ class DeckScraper
   def initialize
     mechanize = Mechanize.new
     @page = mechanize.get('http://www.hearthstonetopdecks.com/deck-category/style/tournament/')
-    @decks = @page.links
+    @page2 = mechanize.get('http://www.hearthstonetopdecks.com/deck-category/style/ladder/')
+    @decks = @page.links.select {|link| link.href.include? "/decks/"} + @page2.links.select{|link| link.href.include? "/decks/"}
   end
 
   def get_decks
     output_decks = []
     @decks.each do |deck_page|
-      unless !deck_page.href.nil? && !(deck_page.href.include? "/decks/")
+      unless deck_page.href.nil?
         dp = deck_page.click
         x = dp.search("div#deck-master li a")
         @cardlist = Array.new
