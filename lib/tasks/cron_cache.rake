@@ -100,17 +100,17 @@ namespace :cron do
   end
 
   task :market_top_decks => :environment do
-    Rails.cache.fetch('market_top_deck', expires_in: 6.hours) do
-      Deck.where(is_public: [true, nil]).where('decks.created_at >= ?', 1.week.ago).
-        group(:unique_deck_id).
-        joins(:unique_deck).
-        joins(:user).
-        where("unique_decks.num_matches >= ?", 30).
-        sort_by { |deck| deck.unique_deck.winrate || 0 }.
-        last(20).
-        reverse.
-        to_a
-    end
+    Rails.cache.delete('market_top_deck')
+    decks = Deck.where(is_public: [true, nil]).where('decks.created_at >= ?', 1.week.ago).
+      group(:unique_deck_id).
+      joins(:unique_deck).
+      joins(:user).
+      where("unique_decks.num_matches >= ?", 30).
+      sort_by { |deck| deck.unique_deck.winrate || 0 }.
+      last(20).
+      reverse.
+      to_a
+    Rails.cache.write('market_top_deck', decks)
   end
 
   def round_down(num, n)

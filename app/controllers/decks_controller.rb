@@ -194,6 +194,7 @@ class DecksController < ApplicationController
         total[klass] = klass_matches.count
         wins[klass] = klass_matches.select {|m| m.result_id == 1}.count
       end
+      total = total.reject{|klass_id, tot| tot == nil}
       total = total.sort_by{|klass_id, tot| klass_id}
 
       total.each do |klass_id, tot|
