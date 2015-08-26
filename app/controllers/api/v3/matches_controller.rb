@@ -99,8 +99,8 @@ class Api::V3::MatchesController < ApplicationController
       render json: {status: 400, message: e.message} and return
     end
     # Match.delay(:queue => 'multicreate_queue').mass_import_new_matches(@req[:matches].map(&:symbolize_keys), deck.id, deck.klass_id, current_user.id)
-    Match.mass_import_new_matches(@req[:matches].map(&:symbolize_keys), deck.id, deck.klass_id, current_user.id)
-    render json: {status: 200}
+    response = Match.mass_import_new_matches(@req[:matches].map(&:symbolize_keys), deck.id, deck.klass_id, current_user.id)
+    render json: {status: 200, data: response}
   end
 
   def after_date

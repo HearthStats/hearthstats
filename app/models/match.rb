@@ -323,6 +323,14 @@ class Match < ActiveRecord::Base
     unless ranked_params.empty?
       MatchRank.connection.insert MatchRank.generate_mass_insert_sql(ranked_params)
     end
+
+    formated_response = matches_params.map{|match|
+      {
+        :status => 200,
+        :data => match
+      }
+    }
+    return formated_response
   end
 
   def self.generate_mass_insert_sql(matches_params, klass_id, user_id)
