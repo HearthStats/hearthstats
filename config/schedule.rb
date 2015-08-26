@@ -38,15 +38,17 @@ every 5.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:welcome_cache"
   command "echo '--------------------------'"
   command "echo 'Welcome Cache'"
+
+  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:market_top_decks"
+  command "echo '--------------------------'"
+  command "echo 'Market Top Decks'"
 end
 
 every 2.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_top_decks"
   command "echo '--------------------------'"
   command "echo 'Expire Top Decks'"
-end
 
-every 2.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:archetype_pop"
   command "echo '--------------------------'"
   command "echo 'Refreshing Archetypes'"
