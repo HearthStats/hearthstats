@@ -41,18 +41,12 @@ class DecksController < ApplicationController
   end
 
   def marketplace
-    @prodecks = Deck.where(deck_type_id: 4).last(15)
-    @pro_decks = Deck.where(deck_type_id: 4).last(10)
-    @top_decks = Deck.where(is_public: true).where('decks.created_at >= ?', 1.week.ago).
-                 group(:unique_deck_id).
-                 joins(:unique_deck).
-                 joins(:user).
-                 where("unique_decks.num_matches >= ?", 30).
-                 sort_by { |deck| deck.unique_deck.winrate || 0 }.
-                 last(20).
-                 reverse.
-                 to_a
-    
+    @prodecks = Deck.where(deck_type_id: 4).last(25)
+    @top_decks = []
+    Rails.cache.read('top_decks').each do |deck_id|
+      @top_decks << Deck.find(deck_id)
+    end
+
     top_adecks = Rails.cache.read('top_adecks')
     @ar1 = top_adecks.try(:values)[0]
     @ar1_name = top_adecks.try(:keys)[0]
@@ -84,7 +78,7 @@ class DecksController < ApplicationController
     rescue TypeError, JSON::ParserError => e
       @notes = @deck.notes
       @general = @notes
-    end 
+    end
 
     all_versions = @deck.deck_versions
     if !params[:version].nil?
@@ -173,7 +167,7 @@ class DecksController < ApplicationController
     if @deck.unique_deck.nil?
       redirect_to deck_path(@deck) and return
     end
-    
+
     begin
       @notes = JSON.parse(@deck.notes)
       @general = @notes["general"]
@@ -183,7 +177,7 @@ class DecksController < ApplicationController
     rescue TypeError, JSON::ParserError => e
       @notes = @deck.notes
       @general = @notes
-    end 
+    end
 
     @card_array = @deck.card_array_from_cardstring
     commontator_thread_show(@deck)

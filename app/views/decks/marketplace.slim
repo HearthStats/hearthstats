@@ -5,13 +5,13 @@
 
 #marketplace
   .hero
-    h1.hero-title.centered 
+    h1.hero-title.centered
       strong Deck Central
   .row#top-decks
     h2.centered style="margin-bottom: 10px;" Pro Decks
     hr.mpl-line
     .top-decks
-      - @prodecks.each do |deck|
+      - @prodecks.last(10).each do |deck|
         div.top-deck
           a href=public_show_deck_path(deck)
             img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(8)+1}.gif" alt= deck.class_name class="featured-deck-img"
@@ -70,7 +70,7 @@
   .row#pro-decks
     .col-md-4
       h3 Recent Pro Decks
-      - @pro_decks.each do |deck|
+      - @prodecks.first(15).each do |deck|
         .col-xs-12
           .mkt-section
             .public-deck-class
@@ -134,7 +134,7 @@ javascript:
     });
   });
   $('#pro-deck-link').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
         || location.hostname == this.hostname) {
 
         var target = $(this.hash);
@@ -147,4 +147,3 @@ javascript:
         }
     }
   });
-  
