@@ -41,9 +41,8 @@ class DecksController < ApplicationController
   end
 
   def marketplace
-    @prodecks = Deck.where(deck_type_id: 4).last(15)
-    @pro_decks = Deck.where(deck_type_id: 4).last(10)
-    @top_decks = Rails.cache.read('market_top_deck') || []
+    @prodecks = Deck.where(deck_type_id: 4).last(25)
+    @top_decks = Rails.cache.read('top_decks') #[name, author, slug, class_name]
     
     top_adecks = Rails.cache.read('top_adecks') || {}
     @ar1 = top_adecks.try(:values)[0] || []

@@ -99,26 +99,6 @@ namespace :cron do
     Rails.cache.write('wel#rank_class', rank_percent)
   end
 
-  task :market_top_decks => :environment do
-    Rails.cache.delete('market_top_deck')
-    decks = Deck.where(is_public: [true, nil]).where('decks.created_at >= ?', 1.week.ago).
-      group(:unique_deck_id).
-      joins(:unique_deck).
-      joins(:user).
-      where("unique_decks.num_matches >= ?", 30).
-      sort_by { |deck| deck.unique_deck.winrate || 0 }.
-      last(20).
-      reverse.
-      to_a
-    Rails.cache.write('market_top_deck', decks)
-  end
-
-  task :top_decks => :environment do 
-    Rails.cache.delete('top_decks')
-    decks = Deck.get_top_decks(1)
-    Rails.cache.write('top_decks', decks)
-  end
-
   def round_down(num, n)
     n < 1 ? num.to_i.to_f : (num - 0.5 / 10**n).round(n)
   end

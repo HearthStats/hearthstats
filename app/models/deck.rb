@@ -85,16 +85,16 @@ class Deck < ActiveRecord::Base
   end
 
   def self.get_top_decks
-    decks = Deck.where(is_public: true).where('decks.updated_at >= ?', Season.last.created_at).
+    decks = Deck.where(is_public: [true, nil]).where('decks.updated_at >= ?', 1.week.ago).
                 group(:unique_deck_id).
                 joins(:unique_deck).
                 joins(:user).
                 where("user_num_matches >= ?", 30).
                 sort! { |a,b|  b.deck_score <=> a.deck_score }.
-                first(20)
+                first(20).
+                map{|a| [a.name, a.user_id, a.slug, a.class_name]}
     decks
   end
-
 
   # def self.playable_decks(user_id)
   #   Deck.where(user_id: user_id, is_tourn_deck:[false, nil]).where("unique_deck_id IS NOT NULL")
