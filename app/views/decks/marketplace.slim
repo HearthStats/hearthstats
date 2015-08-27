@@ -5,13 +5,13 @@
 
 #marketplace
   .hero
-    h1.hero-title.centered 
+    h1.hero-title.centered
       strong Deck Central
   .row#top-decks
     h2.centered style="margin-bottom: 10px;" Pro Decks
     hr.mpl-line
     .top-decks
-      - @prodecks.each do |deck|
+      - @prodecks.last(10).each do |deck|
         div.top-deck
           a href=public_show_deck_path(deck)
             img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{rand(8)+1}.gif" alt= deck.class_name class="featured-deck-img"
@@ -70,7 +70,7 @@
   .row#pro-decks
     .col-md-4
       h3 Recent Pro Decks
-      - @pro_decks.each do |deck|
+      - @prodecks.first(15).each do |deck|
         .col-xs-12
           .mkt-section
             .public-deck-class
@@ -84,18 +84,15 @@
                   = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
     .col-md-8
       h3 Top Decks
-      - @top_decks.each do |deck|
+      - @top_decks.each do |deck| #[name, author, slug, classname]
         .col-md-6.col-sm-12
           .mkt-section
             .public-deck-class
-              img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
+              img src="/assets/Icons/Classes/#{deck[3]}_Icon.gif" alt="#{deck[3]}" title="#{deck[3]}"
             .public-deck-ident.pro-deck-ident
-              .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
+              .public-deck-name  = link_to(truncate(deck[0], length: 50), public_show_deck_path(deck[2]))
               .public-deck-author
-                - if deck.user.profile.nil? || deck.user.profile.name.nil?
-                  = "by: [anonymous]"
-                - else
-                  = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
+                  = link_to("by: " + User.find(deck[1]).name, profile_path(deck[1]))
 
 
 javascript:
@@ -134,7 +131,7 @@ javascript:
     });
   });
   $('#pro-deck-link').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
         || location.hostname == this.hostname) {
 
         var target = $(this.hash);
@@ -147,4 +144,3 @@ javascript:
         }
     }
   });
-  
