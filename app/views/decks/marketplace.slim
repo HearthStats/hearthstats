@@ -84,18 +84,15 @@
                   = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
     .col-md-8
       h3 Top Decks
-      - @top_decks.each do |deck|
+      - @top_decks.each do |deck| #[name, author, slug, classname]
         .col-md-6.col-sm-12
           .mkt-section
             .public-deck-class
-              img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
+              img src="/assets/Icons/Classes/#{deck[3]}_Icon.gif" alt="#{deck[3]}" title="#{deck[3]}"
             .public-deck-ident.pro-deck-ident
-              .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
+              .public-deck-name  = link_to(truncate(deck[0], length: 50), public_show_deck_path(deck[2]))
               .public-deck-author
-                - if deck.user.profile.nil? || deck.user.profile.name.nil?
-                  = "by: [anonymous]"
-                - else
-                  = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))
+                  = link_to("by: " + User.find(deck[1]).name, profile_path(deck[1]))
 
 
 javascript:
