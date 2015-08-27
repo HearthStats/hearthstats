@@ -91,7 +91,8 @@ class Deck < ActiveRecord::Base
                 joins(:user).
                 where("user_num_matches >= ?", 30).
                 sort! { |a,b|  b.deck_score <=> a.deck_score }.
-                first(20)
+                first(20).
+                map(&:id)
     decks
   end
 
