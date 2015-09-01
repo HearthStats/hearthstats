@@ -24,7 +24,8 @@ namespace :deck_importer do
       Text2Deck.new(card_array.join(','), err.join('<br>'))
     end
     decks.each do |d|
-      if Deck.where(name: d[:name]).count == 0
+      hs_deck = Deck.find_by_name(d[:name])
+      if hs_deck.nil?
         new_deck = Deck.new
         text2deck = text_to_deck(d[:cards])
         new_deck.name = d[:name]
@@ -53,6 +54,8 @@ namespace :deck_importer do
         if new_deck.unique_deck
           new_deck.unique_deck.update_stats!
         end
+      elsif hs_deck.deck_type_id != 4
+        hs_deck.update_attribute(:deck_type_id, 4)
       end
     end
   end

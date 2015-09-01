@@ -32,16 +32,16 @@ every 1.day do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:rank_class"
   command "echo '--------------------------'"
   command "echo 'Rank Class Updated'"
+  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake deck_importer:hearthstonetopdecks"
+  command "echo '--------------------------'"
+  command "echo 'Scrape Decks'"
+  
 end
 
 every 5.hours do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:welcome_cache"
   command "echo '--------------------------'"
   command "echo 'Welcome Cache'"
-
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:market_top_decks"
-  command "echo '--------------------------'"
-  command "echo 'Market Top Decks'"
 end
 
 every 2.hours do

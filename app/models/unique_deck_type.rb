@@ -99,7 +99,7 @@ SQL
       if ar.count >= 8
         break
       end
-      x = ud.decks.all.select{ |deck| deck.is_public == true && deck.user_num_matches != nil && deck.user_num_matches >= 30 }.sort! {|ud| ud.user_winrate ? ud.user_winrate : 0 }
+      x = ud.decks.all.select{ |deck| [nil, true].include?(deck.is_public) && deck.user_num_matches != nil && deck.user_num_matches >= 30 }.sort! {|ud| ud.user_winrate ? ud.user_winrate : 0 }
       unless x.last(1)[0].nil?
         ar << x.last(1)[0]
       end
