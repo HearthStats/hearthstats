@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :admin_user?
+  before_filter :admin_user?, :except => [:verify_archtypes]
 
   def index
   end
@@ -24,6 +24,7 @@ class AdminController < ApplicationController
   end
 
   def verify_archtypes
+    mod_user?
     @unverified = UniqueDeckType.where(verified: false)
   end
 

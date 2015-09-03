@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def mod_user?
+    if !current_user && (!current_user.is_admin? || !current_user.has_role?(:mod))
+      redirect_to root_path, alert: "Y U NO ADMIN"
+    end
+  end
+
   def default_url_options(options={})
     if current_user && !current_user.guest? && !current_user.profile.nil?
       { locale: current_user.profile.locale || I18n.default_locale }
