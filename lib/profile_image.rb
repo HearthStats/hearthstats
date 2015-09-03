@@ -33,7 +33,7 @@ class ProfileImage
 
   def add_username
     username = Draw.new
-    image.annotate(username, 0,0,110,44, user[:name] || "Anon") do
+    image.annotate(username || "Anon", 0,0,110,44, user[:name] || "Anon") do
       self.font = QUICKSAND_FONT
       self.gravity = Magick::NorthGravity
       self.align = Magick::LeftAlign

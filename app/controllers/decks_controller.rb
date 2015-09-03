@@ -13,7 +13,7 @@ class DecksController < ApplicationController
     end
   end
 
-  def public
+  def search
     params[:items] ||= 20
     params[:sort] ||= "winrate"
     params[:order] ||= "desc"
@@ -35,7 +35,7 @@ class DecksController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @decks }
     end
   end
