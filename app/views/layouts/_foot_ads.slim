@@ -1,5 +1,5 @@
 - if current_user.nil? || current_user.subscription_id.nil?
-  div.top-cont style="width: 728px; height: 90px; display:block; padding: 0px; margin: 40px auto 0 auto; background: url('#{public_url("assets/adblocked.png")}'); cursor: pointer;"
+  div.top-cont style="width:100%; max-width: 728px; height: 90px; display:block; padding: 0px; margin: 40px auto 0 auto; background: url('#{public_url("assets/adblocked.png")}'); cursor: pointer;"
     div.top-advvv
       = render "advertisement/ad728x90_bot"
       
