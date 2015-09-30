@@ -17,7 +17,7 @@ class Season < ActiveRecord::Base
   end
 
   def begin
-    SEASON_BEGINNING + id.months
+    created_at
   end
 
   def end

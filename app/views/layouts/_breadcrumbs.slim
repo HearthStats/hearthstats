@@ -8,9 +8,7 @@ div class="row"
     - if current_user.nil? || current_user.subscription_id.nil?
       div.top-cont style="width:100%; max-width: 728px; height: 90px; float:right; display:inline-block; padding: 0px; margin: 0px; background: url('#{public_url("assets/adblocked.png")}'); cursor: pointer;"
         div.top-advvv
-        / = render "advertisement/ad728x90_top"
-        a href="https://blazingboost.com/hearthstone"
-          img src="/ads/partnership_blazing.jpg" alt="Blazing Boost"/
+        = render "advertisement/ad728x90_top"
     div.cf
     ul class="page-breadcrumb breadcrumb"
       li
