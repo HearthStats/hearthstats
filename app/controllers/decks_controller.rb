@@ -42,7 +42,7 @@ class DecksController < ApplicationController
 
   def marketplace
     @prodecks = Deck.where(deck_type_id: 4).last(25)
-    @top_decks = Rails.cache.read('top_decks') #[name, author, slug, class_name]
+    @top_decks = Rails.cache.read('top_decks') ||  #[name, author, slug, class_name]
     top_adecks = Rails.cache.read('top_adecks') || {}
     @ar1 = top_adecks.try(:values)[0] || []
     @ar1_name = top_adecks.try(:keys)[0] || []
@@ -192,7 +192,7 @@ class DecksController < ApplicationController
         total[klass] = klass_matches.count
         wins[klass] = klass_matches.select {|m| m.result_id == 1}.count
       end
-      total = total.reject{|klass_id, tot| tot == nil}
+      total = total.reject{|klass_id, tot| tot == nil || klass_id == nil}
       total = total.sort_by{|klass_id, tot| klass_id}
 
       total.each do |klass_id, tot|
