@@ -35,7 +35,6 @@ end
 
 group :production do
   gem 'mysql2'
-  gem "skylight"
 end
 
 # authentication
@@ -95,7 +94,6 @@ gem 'mechanize', :require => false
 
 # APIs
 gem 'cindy' # Sendy API
-gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'newrelic_rpm'
 
@@ -106,6 +104,7 @@ gem 'daemons'
 gem 'whenever'
 
 gem 'meta_request'
+gem "skylight"
 
 group :test do
   gem 'rspec-rails', '~> 2.12.2'
