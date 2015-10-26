@@ -397,9 +397,10 @@ VALUES #{new_matches_sql.join(",")}
     oppclass_id = Klass::LIST.invert[params[:oppclass]]
     result_id = Match::RESULTS_LIST.invert[params[:result]]
     coin = params[:coin] == "true"
+    created_at = params[:created_at] || current_time
 
     match_str = self.sanitize_sql_array(['(?,?,?,?,?,?,?,?,?,?,?,?,?)',
-      user_id, mode_id, klass_id, result_id, coin, oppclass_id, params[:oppname], params[:numturns], params[:duration], params[:notes], true, current_time, current_time
+      user_id, mode_id, klass_id, result_id, coin, oppclass_id, params[:oppname], params[:numturns], params[:duration], params[:notes], true, created_at, created_at
     ])
     match_str
   end
