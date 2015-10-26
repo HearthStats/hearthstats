@@ -67,7 +67,7 @@ class UniqueDeckType < ActiveRecord::Base
     return if args[:log].nil?
     logfile = JSON.parse args[:log]
     if logfile["firstPlayerName"] == user
-      playerid = logfile["firstPlayer"] 
+      playerid = logfile["firstPlayer"]
     else
       playerid = logfile["secondPlayer"]
     end
@@ -88,7 +88,7 @@ class UniqueDeckType < ActiveRecord::Base
     ar = []
     @ar = UniqueDeckType.where(name: arch_name)[0].unique_decks.all.select{ |ud| ud.num_matches != nil && ud.num_matches > 30}.sort!{|ud1, ud2| ud1.winrate <=> ud2.winrate}.reverse
     @ar.each do |ud|
-      if ar.count >= 8 
+      if ar.count >= 8
         break
       end
       x = ud.decks.all.select{ |deck| deck.is_public == true && deck.user_num_matches != nil && deck.user_num_matches >= 30 }.sort! {|ud| ud.user_winrate ? ud.user_winrate : 0 }
