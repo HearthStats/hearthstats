@@ -14,9 +14,11 @@ class MatchDeck < ActiveRecord::Base
 
   def self.generate_mass_insert_sql(matches_params, deck_id)
     current_time = Time.now.to_s(:db)
+
     new_match_decks_sql = matches_params.map do |match_params|
+      created_at = match_params[:created_at] || current_time
       self.sanitize_sql_array(['(?,?,?,?)',
-        match_params[:id], deck_id, current_time, current_time])
+        match_params[:id], deck_id, created_at, created_at])
     end
 
     return <<-SQL

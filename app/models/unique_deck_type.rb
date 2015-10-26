@@ -8,18 +8,26 @@ class UniqueDeckType < ActiveRecord::Base
     4 => "Midrange",
     5 => "Other"
   }
+
   ### ASSOCIATIONS:
 
   has_many :unique_decks
   has_many :decks, through: :unique_decks
-  has_many :matches, through: :decks
+  has_many :match_decks, through: :decks
 
   ### CLASS METHODS:
 
   def self.get_type_popularity(time_ago)
-    deck_type_count = UniqueDeckType.joins(:matches)
+    deck_type_count = UniqueDeckType
       .where('unique_deck_types.name IS NOT NULL')
-      .where('matches.created_at >= ?', time_ago.hours.ago)
+      .joins(:decks)
+      .joins(<<-SQL
+LEFT JOIN
+  (#{MatchDeck.where('created_at >= ?', time_ago.hours.ago).to_sql}) as `match_decks`
+ON
+  `match_decks`.`deck_id` = `decks`.`id`
+SQL
+)
       .having('count_all >= ?', 10)
       .group('unique_deck_types.name').count
 
@@ -67,7 +75,7 @@ class UniqueDeckType < ActiveRecord::Base
     return if args[:log].nil?
     logfile = JSON.parse args[:log]
     if logfile["firstPlayerName"] == user
-      playerid = logfile["firstPlayer"] 
+      playerid = logfile["firstPlayer"]
     else
       playerid = logfile["secondPlayer"]
     end
@@ -88,7 +96,7 @@ class UniqueDeckType < ActiveRecord::Base
     ar = []
     @ar = UniqueDeckType.where(name: arch_name)[0].unique_decks.all.select{ |ud| ud.num_matches != nil && ud.num_matches > 30}.sort!{|ud1, ud2| ud1.winrate <=> ud2.winrate}.reverse
     @ar.each do |ud|
-      if ar.count >= 8 
+      if ar.count >= 8
         break
       end
       x = ud.decks.all.select{ |deck| deck.is_public == true && deck.user_num_matches != nil && deck.user_num_matches >= 30 }.sort! {|ud| ud.user_winrate ? ud.user_winrate : 0 }

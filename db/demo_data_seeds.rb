@@ -77,35 +77,33 @@ end
 Match.transaction do
   puts "Seeding match data..."
   User.all.each do |user|
-    # create matches
-    rand(100).times do |i|
-      result      = [1,2].sample
-      result      = 3 if i % 20 == 0
-      deck        = user.decks.sample
+    user.decks.each do |deck|
+      matches_params = []
 
-      match = Match.new(
-        result_id:   result,
-        mode_id:     [1,2,3].sample,
-        klass_id:    deck.klass_id,
-        created_at:  rand(100).days.ago
-      )
-      match.numturns = 4 + rand(15)
-      match.oppclass_id = klasses.sample.id
-      match.user_id = user.id
-      match.coin = [true, false].sample
-      match.save!
+      10000.times do |i|
+        params = {}
+        params[:mode] = Mode::LIST.keys.sample
+        params[:oppclass] = Klass::LIST.keys.sample
+        params[:result] = (i % 20 == 0 ? 'Draw' : ['Win', 'Loss'].sample)
+        params[:coin] = ['true', 'false'].sample
+        params[:oppname] = ('a'..'z').to_a.shuffle[0,8].join
+        params[:numturns] = 4 + rand(15)
+        params[:created_at] = rand(100).hours.ago
 
-      MatchDeck.create(deck_id: deck.id, match_id: match.id)
-
-      if match.mode_id == 1
-        arena_run = ArenaRun.create(
-          user_id:  user.id,
-          complete: [true, false].sample,
-          klass_id: deck.klass_id
-        )
-
-        MatchRun.create(match_id: match.id, arena_run_id: arena_run.id)
+        matches_params << params
       end
+
+      Match.mass_import_new_matches(matches_params, deck.id, deck.klass.id, user.id)
+
+      #if match.mode_id == 1
+        #arena_run = ArenaRun.create(
+          #user_id:  user.id,
+          #complete: [true, false].sample,
+          #klass_id: deck.klass_id
+        #)
+
+        #MatchRun.create(match_id: match.id, arena_run_id: arena_run.id)
+      #end
     end
   end
 end
