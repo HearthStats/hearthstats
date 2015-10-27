@@ -18,18 +18,29 @@ class UniqueDeckType < ActiveRecord::Base
   ### CLASS METHODS:
 
   def self.get_type_popularity(time_ago)
-    deck_type_count = UniqueDeckType
-      .where('unique_deck_types.name IS NOT NULL')
-      .joins(:decks)
-      .joins(<<-SQL
-LEFT JOIN
-  (#{MatchDeck.where('created_at >= ?', time_ago.hours.ago).to_sql}) as `match_decks`
-ON
-  `match_decks`.`deck_id` = `decks`.`id`
-SQL
-)
-      .having('count_all >= ?', 10)
-      .group('unique_deck_types.name').count
+    query = <<-SQL.strip_heredoc
+      SELECT
+        `unique_deck_types`.*,
+        COUNT(*) as `count_all`
+      FROM (
+        #{MatchDeck.where('created_at >= ?', time_ago.hours.ago).to_sql}
+      ) as `match_decks`
+      INNER JOIN `decks`
+        ON `decks`.`id` = `match_decks`.`deck_id`
+      INNER JOIN `unique_decks`
+        ON `unique_decks`.`id` = `decks`.`unique_deck_id`
+      INNER JOIN `unique_deck_types`
+        ON `unique_deck_types`.`id` = `unique_decks`.`unique_deck_type_id`
+      WHERE
+        `unique_deck_types`.`name` IS NOT NULL
+      GROUP BY
+        `unique_deck_types`.`id`
+      HAVING
+        `count_all` >= 10
+    SQL
+
+    recent_deck_types = UniqueDeckType.find_by_sql(query)
+    deck_type_count = Hash[recent_deck_types.map { |t| [t.name, t.count_all] }]
 
     total_valid_matches = deck_type_count.values.sum
     deck_type_count.update(deck_type_count) { |type, matches| matches.to_f/total_valid_matches * 100 }
