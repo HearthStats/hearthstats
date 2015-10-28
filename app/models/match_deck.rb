@@ -11,7 +11,7 @@ class MatchDeck < ActiveRecord::Base
   ### CALLBACKS:
 
   # before_save :set_unique_deck_and_version
-  # after_create :update_deck_user_stats
+  after_create :update_deck_user_stats
 
 
   def self.generate_mass_insert_sql(matches_params, deck_id)
@@ -40,7 +40,7 @@ VALUES #{new_match_decks_sql.join(",")}
 
   def update_deck_user_stats
     #update personal stats
-    deck.update_user_stats!
+    deck.update_user_stats!(self.match)
   end
 
 end

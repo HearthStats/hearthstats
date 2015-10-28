@@ -78,7 +78,7 @@ class Match < ActiveRecord::Base
   ### CALLBACKS:
 
   before_save :set_season_patch
-  after_save :update_user_stats_constructed
+  # after_save :update_user_stats_constructed
 
   ### CLASS METHODS:
 
