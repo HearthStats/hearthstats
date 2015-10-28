@@ -78,7 +78,7 @@ class Match < ActiveRecord::Base
   ### CALLBACKS:
 
   before_save :set_season_patch
-  # after_save :update_user_stats_constructed
+  after_save :update_user_stats_constructed
 
   ### CLASS METHODS:
 
@@ -386,7 +386,7 @@ VALUES #{new_matches_sql.join(",")}
 
   def update_user_stats_constructed
     unless deck.nil?
-      deck.update_user_stats!
+      deck.update_user_stats!(self)
     end
   end
 
