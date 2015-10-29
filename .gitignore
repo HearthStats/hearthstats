@@ -36,6 +36,8 @@ pickle-email-*.html
 
 # Deployment
 /config/deploy.rb
+/config/deploy/*
+/config/deploy_old.rb
 /.rsync_cache/
 
 # Ignore application configuration
