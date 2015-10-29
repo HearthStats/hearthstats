@@ -61,6 +61,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
+    bundler-unload (1.0.2)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -178,6 +179,7 @@ GEM
     eventmachine (1.0.7)
     excon (0.44.2)
     execjs (2.3.0)
+    executable-hooks (1.3.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -436,6 +438,9 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    rubygems-bundler (1.4.4)
+      bundler-unload (>= 1.0.2)
+      executable-hooks (>= 1.3.2)
     rubyzip (1.1.7)
     sanitize (3.1.1)
       crass (~> 1.0.1)
@@ -606,6 +611,7 @@ DEPENDENCIES
   rmagick
   rolify
   rspec-rails (~> 2.12.2)
+  rubygems-bundler
   sanitize
   sass-rails (~> 3.2.3)
   seed_dump

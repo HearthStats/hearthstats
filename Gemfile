@@ -41,6 +41,7 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'rubygems-bundler'
 # authentication
 gem 'devise'
 gem 'devise-token_authenticatable'
