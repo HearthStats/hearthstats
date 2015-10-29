@@ -5,6 +5,8 @@ class MatchDeck < ActiveRecord::Base
 
   belongs_to :deck
   belongs_to :match, dependent: :destroy
+  has_one :unique_deck, through: :deck
+  has_one :unique_deck_type, through: :unique_deck
 
   ### CALLBACKS:
 

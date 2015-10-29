@@ -20,16 +20,11 @@ class UniqueDeckType < ActiveRecord::Base
   def self.get_type_popularity(time_ago)
     deck_type_count = UniqueDeckType
       .where('unique_deck_types.name IS NOT NULL')
-      .joins(:decks)
-      .joins(<<-SQL
-LEFT JOIN
-  (#{MatchDeck.where('created_at >= ?', time_ago.hours.ago).to_sql}) as `match_decks`
-ON
-  `match_decks`.`deck_id` = `decks`.`id`
-SQL
-)
+      .joins(:match_decks)
+      .where('match_decks.created_at >= ?', time_ago.hours.ago)
+      .group('unique_deck_types.name')
       .having('count_all >= ?', 10)
-      .group('unique_deck_types.name').count
+      .count
 
     total_valid_matches = deck_type_count.values.sum
     deck_type_count.update(deck_type_count) { |type, matches| matches.to_f/total_valid_matches * 100 }
