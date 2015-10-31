@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151026050558) do
+ActiveRecord::Schema.define(:version => 20151031024916) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -269,10 +269,10 @@ ActiveRecord::Schema.define(:version => 20151026050558) do
     t.integer  "klass_id"
     t.string   "cardstring"
     t.integer  "unique_deck_id"
-    t.integer  "user_num_matches"
-    t.integer  "user_num_wins"
-    t.integer  "user_num_losses"
-    t.float    "user_winrate"
+    t.integer  "user_num_matches", :default => 0
+    t.integer  "user_num_wins",    :default => 0
+    t.integer  "user_num_losses",  :default => 0
+    t.float    "user_winrate",     :default => 0.0
     t.boolean  "is_public"
     t.boolean  "archived",         :default => false
     t.integer  "deck_type_id",     :default => 1
@@ -680,18 +680,18 @@ ActiveRecord::Schema.define(:version => 20151026050558) do
   create_table "unique_decks", :force => true do |t|
     t.string   "cardstring"
     t.integer  "klass_id"
-    t.integer  "num_matches"
-    t.integer  "num_wins"
-    t.integer  "num_losses"
-    t.integer  "num_minions"
-    t.integer  "num_spells"
-    t.integer  "num_weapons"
+    t.integer  "num_matches",         :default => 0
+    t.integer  "num_wins",            :default => 0
+    t.integer  "num_losses",          :default => 0
+    t.integer  "num_minions",         :default => 0
+    t.integer  "num_spells",          :default => 0
+    t.integer  "num_weapons",         :default => 0
     t.datetime "last_played"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.float    "winrate"
-    t.integer  "num_users"
-    t.integer  "mana_cost"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.float    "winrate",             :default => 0.0
+    t.integer  "num_users",           :default => 0
+    t.integer  "mana_cost",           :default => 0
     t.integer  "unique_deck_type_id"
   end
 
