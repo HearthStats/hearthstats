@@ -108,7 +108,6 @@ gem 'delayed_job_web'
 gem 'daemons'
 gem 'whenever'
 
-gem 'meta_request'
 gem "skylight"
 
 group :test do
