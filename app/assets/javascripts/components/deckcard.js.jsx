@@ -43,7 +43,7 @@ var DeckCard = React.createClass({
 				id="deckBuilderFullCardView" 
 				key={this.props.card.id} 
 				ref="fullDeckImage" 
-				src={"/assets/cards/"+cn+".png"} 
+				src={"//s3-us-west-2.amazonaws.com/hearthstats/cards/"+cn+".png"} 
 				style={this.state.deckImageStyle} />;
 		}
 
@@ -58,7 +58,7 @@ var DeckCard = React.createClass({
 					</div>
 					<div className="qty">{this.props.qty}
 					</div>
-					<img src={"/assets/deck_images/" + cn +".png"} className="image"/>
+					<img src={"//s3-us-west-2.amazonaws.com/hearthstats//deck_images/" + cn +".png"} className="image"/>
 					<div className="bg">
 					</div>
 				</div>
