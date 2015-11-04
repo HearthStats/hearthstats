@@ -1,0 +1,15 @@
+namespace :bundle do
+  desc "Delete .bundle/config file"
+  task :delete_config do
+    on roles(:app) do |role|
+      sudo "rm #{release_path}/.bundle/config"
+    end
+  end
+
+  desc "Bundle Install"
+  task :install do
+    on roles(:app) do |role|
+      execute "cd #{release_path} && RAILS_ENV=production bundle install"
+    end
+  end
+end
