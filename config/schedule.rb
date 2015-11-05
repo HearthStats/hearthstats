@@ -23,9 +23,9 @@ set :output, "/var/www/hearthstats/current/log/cron_log.log"
 env :PATH, ENV['PATH']
 
 every 1.day do
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake sig_pic:update"
-  command "echo '--------------------------'"
-  command "echo 'Sigs Update'"
+  # command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake sig_pic:update"
+  # command "echo '--------------------------'"
+  # command "echo 'Sigs Update'"
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake update_season"
   command "echo '--------------------------'"
   command "echo 'Changed to new Season'"
@@ -35,7 +35,9 @@ every 1.day do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake deck_importer:hearthstonetopdecks"
   command "echo '--------------------------'"
   command "echo 'Scrape Decks'"
-  
+  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:top_decks"
+  command "echo '--------------------------'"
+  command "echo 'Refreshing Top Decks"
 end
 
 every 5.hours do
@@ -53,13 +55,7 @@ every 2.hours do
   command "echo '--------------------------'"
   command "echo 'Refreshing Archetypes'"
 
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:archetype_decks"
-  command "echo '--------------------------'"
-  command "echo 'Refreshing Archetype Decks'"
-end
-
-every 1.day do 
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:top_decks"
-  command "echo '--------------------------'"
-  command "echo 'Refreshing Top Decks"
+  # command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:archetype_decks"
+  # command "echo '--------------------------'"
+  # command "echo 'Refreshing Archetype Decks'"
 end

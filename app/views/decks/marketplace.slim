@@ -24,48 +24,49 @@
   hr.mpl-line
   .second-row.row
     h3 Top Archetypes
-    .archtype-container
-      ul.nav.nav-pills.nav-justified#archtype-nav
-        li.active
-          a.grey.archtype-nav data-toggle="pill" href="#archtype1" = @ar1_name
-        li
-          a.archtype-nav data-toggle="pill" href="#archtype2" = @ar2_name
-        li
-          a.archtype-nav data-toggle="pill" href="#archtype3" = @ar3_name
-      #archtype-content.tab-content
-        #archtype1.tab-pane.active.fade.in
-          .archtype
-            - @ar1.each_with_index do |deck, ind|
-              div.archtype-deck.col-md-3.col-xs-6
-                a href=public_show_deck_path(deck)
-                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
-                  h4 = deck.name.truncate(40)
-                  - if deck.user.profile.nil? || deck.user.profile.name.nil?
-                    p by: [anonymous]
-                  - else
-                    p = "by " + deck.user.profile.name
-        #archtype2.tab-pane.fade
-          .archtype
-            - @ar2.each_with_index do |deck, ind|
-              div.archtype-deck.col-md-3.col-xs-6
-                a href=public_show_deck_path(deck)
-                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
-                  h4 = deck.name.truncate(40)
-                  - if deck.user.profile.nil? || deck.user.profile.name.nil?
-                    p by: [anonymous]
-                  - else
-                    p = "by " + deck.user.profile.name
-        #archtype3.tab-pane.fade
-          .archtype
-            - @ar3.each_with_index do |deck, ind|
-              div.archtype-deck.col-md-3.col-xs-6
-                a href=public_show_deck_path(deck)
-                  img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
-                  h4 = deck.name.truncate(40)
-                  - if deck.user.profile.nil? || deck.user.profile.name.nil?
-                    p by: [anonymous]
-                  - else
-                    p = "by " + deck.user.profile.name
+    .archtype-container.center
+      b Down until further notice
+      / ul.nav.nav-pills.nav-justified#archtype-nav
+      /   li.active
+      /     a.grey.archtype-nav data-toggle="pill" href="#archtype1" = @ar1_name
+      /   li
+      /     a.archtype-nav data-toggle="pill" href="#archtype2" = @ar2_name
+      /   li
+      /     a.archtype-nav data-toggle="pill" href="#archtype3" = @ar3_name
+      / #archtype-content.tab-content
+      /   #archtype1.tab-pane.active.fade.in
+      /     .archtype
+      /       - @ar1.each_with_index do |deck, ind|
+      /         div.archtype-deck.col-md-3.col-xs-6
+      /           a href=public_show_deck_path(deck)
+      /             img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
+      /             h4 = deck.name.truncate(40)
+      /             - if deck.user.profile.nil? || deck.user.profile.name.nil?
+      /               p by: [anonymous]
+      /             - else
+      /               p = "by " + deck.user.profile.name
+      /   #archtype2.tab-pane.fade
+      /     .archtype
+      /       - @ar2.each_with_index do |deck, ind|
+      /         div.archtype-deck.col-md-3.col-xs-6
+      /           a href=public_show_deck_path(deck)
+      /             img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
+      /             h4 = deck.name.truncate(40)
+      /             - if deck.user.profile.nil? || deck.user.profile.name.nil?
+      /               p by: [anonymous]
+      /             - else
+      /               p = "by " + deck.user.profile.name
+      /   #archtype3.tab-pane.fade
+      /     .archtype
+      /       - @ar3.each_with_index do |deck, ind|
+      /         div.archtype-deck.col-md-3.col-xs-6
+      /           a href=public_show_deck_path(deck)
+      /             img src="/assets/Icons/Classes/#{deck.class_name}_full_icon_#{ind + 1}.gif" alt= deck.class_name class="featured-deck-img"
+      /             h4 = deck.name.truncate(40)
+      /             - if deck.user.profile.nil? || deck.user.profile.name.nil?
+      /               p by: [anonymous]
+      /             - else
+      /               p = "by " + deck.user.profile.name
   hr.mpl-line
   .row#pro-decks
     .col-md-4
