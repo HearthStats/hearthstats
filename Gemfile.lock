@@ -620,7 +620,7 @@ DEPENDENCIES
   stripe!
   sync
   thin
-  turbo-sprockets-rails3 (~> 0.2)
+  turbo-sprockets-rails3
   uglifier (>= 1.0.3)
   unf
   unicorn

@@ -16,6 +16,7 @@ group :development do
   gem 'capistrano-bundler'
   # gem 'capistrano_rsync_with_remote_cache'
   # gem 'capistrano-local-precompile', require: false
+  gem 'turbo-sprockets-rails3'
   gem 'quiet_assets', '>= 1.0.1'
   gem 'rb-fsevent', :require => false
   gem 'pry'
@@ -32,7 +33,6 @@ group :assets do
 # in production environments by default.
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'turbo-sprockets-rails3', '~> 0.2'
   # gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end
