@@ -1,5 +1,5 @@
 # Change to match your CPU core count
-workers 2
+workers 4
 
 # Min and Max threads per worker
 threads 6, 16

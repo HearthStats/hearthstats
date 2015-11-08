@@ -96,10 +96,6 @@ GEM
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
-    cindy (0.1.1)
-      faraday (~> 0.8.5)
-      faraday_middleware (~> 0.9)
-      hashie (~> 1.0)
     ckeditor_rails (4.4.8)
       railties (>= 3.0)
     climate_control (0.0.3)
@@ -188,8 +184,6 @@ GEM
       i18n (~> 0.5)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
-    faraday_middleware (0.9.1)
-      faraday (>= 0.7.4, < 0.10)
     feedjira (1.6.0)
       curb (~> 0.8)
       loofah (~> 2.0)
@@ -306,7 +300,6 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (1.8.2)
-    kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
     lograge (0.3.1)
@@ -365,6 +358,8 @@ GEM
     pry-byebug (3.0.1)
       byebug (~> 3.4)
       pry (~> 0.10)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
     pusher (0.14.1)
       httpclient (~> 2.3)
       multi_json (~> 1.0)
@@ -395,7 +390,6 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    raindrops (0.13.0)
     rake (10.4.2)
     ransack (1.2.0)
       actionpack (>= 3.0)
@@ -518,10 +512,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.6)
-    unicorn (4.9.0)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
@@ -556,7 +546,6 @@ DEPENDENCIES
   capybara (>= 2.0.2)
   capybara-screenshot
   chartkick
-  cindy
   ckeditor_rails
   coffee-rails (~> 3.2.1)
   commontator (~> 4.10.0)
@@ -593,6 +582,7 @@ DEPENDENCIES
   phashion
   pry
   pry-byebug
+  puma
   pusher
   quiet_assets (>= 1.0.1)
   rails (= 3.2.18)
@@ -623,7 +613,6 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
   unf
-  unicorn
   whenever
   will_paginate (~> 3.0)
   will_paginate-bootstrap

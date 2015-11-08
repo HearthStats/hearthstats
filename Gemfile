@@ -91,14 +91,14 @@ gem "squeel"
 gem 'pusher'
 gem 'sync'
 gem 'react-rails', '~> 1.0'
-gem 'unicorn'
+# gem 'unicorn'
 gem 'slick_rails'
 
 gem 'ckeditor_rails'
 gem 'mechanize', :require => false
 
 # APIs
-gem 'cindy' # Sendy API
+# gem 'cindy' # Sendy API
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'newrelic_rpm'
 
@@ -109,6 +109,7 @@ gem 'daemons'
 gem 'whenever'
 
 gem "skylight"
+gem "puma"
 
 group :test do
   gem 'rspec-rails', '~> 2.12.2'
