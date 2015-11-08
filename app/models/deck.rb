@@ -272,7 +272,7 @@ class Deck < ActiveRecord::Base
     cardstring_array = cardstring_as_array
 
     arr = []
-    cards = Card.find(cardstring_array.map {|e| e[0]}).sort_by{ |card| [ card.mana, card.name] }
+    cards = Card.where(id: cardstring_array.map {|e| e[0]}).sort_by{ |card| [ card.mana, card.name] }
     cards.each do |card|
       quantity = cardstring_array.detect {|c| c[0].to_i == card.id }[1]
       arr << [card, quantity]
