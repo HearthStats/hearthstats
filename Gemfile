@@ -14,6 +14,7 @@ group :development do
   # gem 'capistrano-rvm'
   gem 'capistrano-chruby'
   gem 'capistrano-rails'
+  gem 'capistrano-faster-assets', '~> 1.0'
   gem 'capistrano-bundler'
   # gem 'capistrano_rsync_with_remote_cache'
   # gem 'capistrano-local-precompile', require: false
@@ -109,8 +110,11 @@ gem 'delayed_job_web'
 gem 'daemons'
 gem 'whenever'
 
-gem "skylight"
 gem "puma"
+
+platforms :mri do
+  gem "skylight"
+end
 
 group :test do
   gem 'rspec-rails', '~> 2.12.2'
