@@ -24,7 +24,6 @@ group :development do
   gem 'seed_dump', :require => false
   gem 'awesome_print', :require => false
   gem 'active_record_query_trace'
-  gem 'dotenv-rails'
   gem "thin"
 end
 
@@ -109,7 +108,8 @@ gem 'daemons'
 gem 'whenever'
 
 gem "puma"
-
+gem 'dotenv-rails'
+  
 platforms :mri do
   gem "skylight"
 end
