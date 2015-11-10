@@ -62,10 +62,6 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
     bundler-unload (1.0.2)
-    byebug (3.5.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
     cancancan (1.10.1)
     capistrano (3.4.0)
       i18n
@@ -79,8 +75,6 @@ GEM
       sshkit (~> 1.3)
     capistrano-faster-assets (1.0.2)
       capistrano (>= 3.1)
-    capistrano-passenger (0.1.1)
-      capistrano (~> 3.0)
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
       capistrano-bundler (>= 1.0.0)
@@ -95,8 +89,6 @@ GEM
       colored
       launchy
     chartkick (1.3.2)
-    childprocess (0.5.5)
-      ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
     ckeditor_rails (4.4.8)
       railties (>= 3.0)
@@ -114,7 +106,6 @@ GEM
     coffee-script-source (1.9.0)
     colored (1.2)
     colorize (0.7.7)
-    columnize (0.9.0)
     commontator (4.10.5)
       jquery-rails
       rails (>= 3.1)
@@ -126,7 +117,6 @@ GEM
     dalli (2.7.2)
     database_cleaner (1.4.0)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.0.3)
@@ -148,6 +138,9 @@ GEM
     diff-lcs (1.1.3)
     domain_name (0.5.20)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     elasticsearch (1.0.12)
       elasticsearch-api (= 1.0.12)
       elasticsearch-transport (= 1.0.12)
@@ -190,7 +183,6 @@ GEM
       curb (~> 0.8)
       loofah (~> 2.0)
       sax-machine (~> 1.0)
-    ffi (1.9.6)
     figaro (1.1.0)
       thor (~> 0.14)
     fission (0.5.0)
@@ -324,7 +316,6 @@ GEM
       webrobots (>= 0.0.9, < 0.2)
     meta-tags (2.0.0)
       actionpack (>= 3.0.0)
-    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.2)
     multi_json (1.11.2)
@@ -353,13 +344,6 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.5)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    pry-byebug (3.0.1)
-      byebug (~> 3.4)
-      pry (~> 0.10)
     puma (2.11.3)
       rack (>= 1.1, < 2.0)
     pusher (0.14.1)
@@ -430,7 +414,6 @@ GEM
     rubygems-bundler (1.4.4)
       bundler-unload (>= 1.0.2)
       executable-hooks (>= 1.3.2)
-    rubyzip (1.1.7)
     sanitize (3.1.1)
       crass (~> 1.0.1)
       nokogiri (>= 1.4.4)
@@ -446,11 +429,6 @@ GEM
       activesupport
     select2-rails (3.5.9.2)
       thor (~> 0.14)
-    selenium-webdriver (2.44.0)
-      childprocess (~> 0.5)
-      multi_json (~> 1.0)
-      rubyzip (~> 1.0)
-      websocket (~> 1.0)
     shortener (0.3.1)
       rails (>= 3.0.7)
     signature (0.1.7)
@@ -473,7 +451,6 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
-    slop (3.6.0)
     social-share-button (0.1.8)
       coffee-rails
       sass-rails
@@ -518,7 +495,6 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     webrobots (0.1.1)
-    websocket (1.2.1)
     whenever (0.9.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.7)
@@ -544,7 +520,6 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-chruby
   capistrano-faster-assets (~> 1.0)
-  capistrano-passenger
   capistrano-rails
   capybara (>= 2.0.2)
   capybara-screenshot
@@ -559,6 +534,7 @@ DEPENDENCIES
   delayed_job_web
   devise
   devise-token_authenticatable
+  dotenv-rails
   elasticsearch-model
   elasticsearch-rails
   email_spec (>= 1.4.0)
@@ -583,8 +559,6 @@ DEPENDENCIES
   nokogiri
   paperclip (~> 4.2)
   phashion
-  pry
-  pry-byebug
   puma
   pusher
   quiet_assets (>= 1.0.1)
@@ -601,7 +575,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   seed_dump
   select2-rails
-  selenium-webdriver (~> 2.44.0)
   shortener
   sitemap_generator
   skylight

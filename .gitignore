@@ -85,3 +85,4 @@ zeus.json
 
 tags
 /bin
+.env*

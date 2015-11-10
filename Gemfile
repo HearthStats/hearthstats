@@ -10,7 +10,7 @@ group :development do
   gem 'binding_of_caller', '>= 0.6.8'
   gem 'sqlite3'
   gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-passenger'
+  # gem 'capistrano-passenger'
   # gem 'capistrano-rvm'
   gem 'capistrano-chruby'
   gem 'capistrano-rails'
@@ -21,12 +21,10 @@ group :development do
   gem 'turbo-sprockets-rails3'
   gem 'quiet_assets', '>= 1.0.1'
   gem 'rb-fsevent', :require => false
-  gem 'pry'
-  gem 'pry-byebug'
-  gem 'seed_dump'
+  gem 'seed_dump', :require => false
   gem 'awesome_print', :require => false
   gem 'active_record_query_trace'
-  gem "selenium-webdriver", "~> 2.44.0"
+  gem 'dotenv-rails'
   gem "thin"
 end
 
