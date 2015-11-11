@@ -105,7 +105,7 @@ div.row
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.user_num_matches - (@deck.user_num_wins + @deck.user_num_losses)
+              span = @deck.user_num_matches.to_i - (@deck.user_num_wins.to_i + @deck.user_num_losses.to_i)
             span class="title" href="#" = t 'decks.show.draws'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"

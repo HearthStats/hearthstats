@@ -480,18 +480,21 @@ class DecksController < ApplicationController
   def calculate_diff(original, version)
     diff_arr = []
     original.each do |card_id, count|
+      return if original == version
       card = @card_array.select { |card_arr| card_arr[0].id == card_id }
+      card = [[Card.find(card_id)]] if card.blank?
       count_in_version = version[card_id]
       count_diff = count.to_i - count_in_version.to_i
       if count_diff > 0
-        diff_arr << "-#{count_diff} #{card[0].name}"
+        diff_arr << "-#{count_diff} #{card[0][0].name}"
       elsif count_diff < 0
-        diff_arr << "+#{count_diff.abs} #{card[0].name}"
+        diff_arr << "+#{count_diff.abs} #{card[0][0].name}"
       end
       version.delete(card_id)
     end
     version.each do |card_id, count|
       card = @card_array.select { |card_arr| card_arr[0].id == card_id }
+      card = [[Card.find(card_id)]] if card.blank?
       diff_arr << "+#{count} #{card[0][0].name}"
     end
 
