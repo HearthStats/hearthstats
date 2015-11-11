@@ -87,37 +87,34 @@ class DecksController < ApplicationController
 
     deck_cache_stats = Rails.cache.fetch("deck_stats" + @deck.id.to_s + params[:version].to_s, expires_in: 4.hours)
     if deck_cache_stats.nil?
-      matches = @deck.matches
+      matches = @deck.matches.all
       if deck_version
         newer_version = deck_version.newer_version
         if newer_version == deck_version
           matches = @deck.matches.
-            where{created_at >= deck_version.created_at}
+            select{|m| m.created_at >= deck_version.created_at}
         else
           matches = @deck.matches.
-            where(created_at: deck_version.created_at..newer_version.created_at)
+            select{|m| m.created_at > deck_version.created_at && m.created_at <= newer_version.created_at}
         end
 
       end
 
       # Win rates vs each class
       @deckrate = []
-      scope = matches.group(:oppclass_id)
-      total = scope.count
-      total = total.sort_by{|klass_id, tot| klass_id}
-      wins = scope.where(result_id: 1).count
+      klass_matches = matches.group_by {|m| m.oppclass_id}
+      klass_matches.each do |klass_id, klass_m|
+        wins = klass_m.select {|m| m.result_id == 1}.count
+        tot = klass_m.count
 
-      total.each do |klass_id, tot|
-        klass_name = Klass::LIST[klass_id]
-        if tot== 0
-          @deckrate << [0,"#{klass_name}<br/>0 Games", klass_id]
-        else
-          @deckrate << [((wins[klass_id].to_f / tot )*100).round(2), "#{klass_name}<br/>#{tot} Games", klass_id]
-        end
+        wr = (wins.to_f/tot * 100 ).round(2)
+
+        @deckrate << [wr, "#{Klass::LIST[klass_id]}<br/>#{tot} Games", klass_id]
       end
+
       # Going first vs 2nd
-      @firstrate = get_win_rate(matches.where(coin: false), true)
-      @secrate = get_win_rate(matches.where(coin: true), true)
+      @firstrate = get_array_wr(matches.select{|m| m.coin == false}, true)
+      @secrate = get_array_wr(matches.select{|m| m.coin == true}, true)
 
       # Win rate by rank
 
@@ -126,7 +123,7 @@ class DecksController < ApplicationController
         select {|rank| !rank[0].nil?}.
         map { |rank, wr| [rank.id, wr]}
       #calculate deck winrate
-      @winrate = matches.count > 0 ? get_win_rate(matches) : 0
+      @winrate = matches.count > 0 ? get_array_wr(matches) : 0
       Rails.cache.write("deck_stats" + @deck.id.to_s + params[:version].to_s,
                         [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
                         expires_in: 1.days)
@@ -140,12 +137,16 @@ class DecksController < ApplicationController
 
     # Diff between versions
     @diff_hash = {}
-    all_versions.each do |version|
-      next if version.cardstring.blank?
-      version_array = cardstring_to_array(version.cardstring)
-      original_array = cardstring_to_array(@deck.cardstring)
-      diff_string = calculate_diff(original_array, version_array)
-      @diff_hash[version.id] = diff_string
+    if all_versions.count > 1
+      all_versions.each do |version|
+        next if version.cardstring.blank?
+        version_array = cardstring_to_array(version.cardstring)
+        original_array = cardstring_to_array(@deck.cardstring)
+        diff_string = calculate_diff(original_array, version_array)
+        @diff_hash[version.id] = diff_string
+      end
+    else
+      @diff_hash[all_versions[0]] = []
     end
     gon.cardstring = @deck.cardstring
     gon.rank_wr = @rank_wr
@@ -157,7 +158,7 @@ class DecksController < ApplicationController
 
   def public_show
     begin
-      @deck = Deck.find(params[:id])
+      @deck = Deck.includes(:unique_deck, :match_decks, :matches).find(params[:id])
     rescue ActiveRecord::RecordNotFound
       redirect_to public_decks_path, alert: "Deck cannot be found" and return
     end
@@ -479,19 +480,19 @@ class DecksController < ApplicationController
   def calculate_diff(original, version)
     diff_arr = []
     original.each do |card_id, count|
-      card = Card.find(card_id)
+      card = @card_array.select { |card_arr| card_arr[0].id == card_id }
       count_in_version = version[card_id]
       count_diff = count.to_i - count_in_version.to_i
       if count_diff > 0
-        diff_arr << "-#{count_diff} #{card.name}"
+        diff_arr << "-#{count_diff} #{card[0].name}"
       elsif count_diff < 0
-        diff_arr << "+#{count_diff.abs} #{card.name}"
+        diff_arr << "+#{count_diff.abs} #{card[0].name}"
       end
       version.delete(card_id)
     end
     version.each do |card_id, count|
-      card = Card.find(card_id)
-      diff_arr << "+#{count} #{card.name}"
+      card = @card_array.select { |card_arr| card_arr[0].id == card_id }
+      diff_arr << "+#{count} #{card[0][0].name}"
     end
 
     diff_arr.join("<br/>")

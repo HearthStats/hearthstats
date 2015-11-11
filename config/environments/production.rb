@@ -8,7 +8,7 @@ Hearthstats::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.cache_store = :dalli_store, 'prodution.qp0gue.cfg.usw2.cache.amazonaws.com:11211', { :namespace => "production" }
+  config.cache_store = :dalli_store, '45.79.72.170:11211', { :namespace => "production" }
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false

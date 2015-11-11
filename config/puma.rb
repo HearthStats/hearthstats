@@ -1,6 +1,6 @@
 # Change to match your CPU core count
 workers 4
-
+daemonize
 # Min and Max threads per worker
 threads 6, 16
 

@@ -95,17 +95,17 @@ div.row
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.matches.where(result_id: 1).count
+              span = @deck.user_num_wins
             span class="title" href="#" = t 'decks.show.wins'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.matches.where(result_id: 2).count
+              span = @deck.user_num_losses
             span class="title" href="#" = t 'decks.show.losses'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span = @deck.matches.where(result_id: 3).count
+              span = @deck.user_num_matches - (@deck.user_num_wins + @deck.user_num_losses)
             span class="title" href="#" = t 'decks.show.draws'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
