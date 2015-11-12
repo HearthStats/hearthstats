@@ -11,7 +11,7 @@ class CardImporter
 
   def import_set(set_name)
     @all_cards[set_name].each do |card|
-      next if !["Spell", "Minion", "Weapon"].include? card["type"]
+      next if !(["Spell", "Minion", "Weapon"].include? card["type"])
       next if card["collectible"] != true
       db_card = Card.find_by_name(card["name"])
       returned_card = db_card
@@ -87,7 +87,7 @@ class CardImporter
     Card.where(card_set: set).each do |card|
       begin
         link = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/#{card.blizz_id}.png"
-        agent.get(link).save_as "/Users/trigun0x2/Dropbox/Projects/hearthstats/app/assets/images/cards/#{card.name.parameterize}.png"
+        agent.get(link).save_as "/Users/trigun0x2/Dropbox/Projects/newcards/#{card.name.parameterize}.png"
       rescue
         puts card.name
       end
