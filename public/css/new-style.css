@@ -201,6 +201,7 @@ form{
   margin-top: 0px !important;
   background-color: #30353b;
   font-weight: 700;
+  z-index: 20;
 
 }
 .top-nav {
@@ -922,4 +923,21 @@ background-color:#FFFFFF;
 /*MISC*/
 .top-banner{
   width: 100%;
+}
+
+.france{
+  display: inline;
+  position: fixed;
+  height: 100%;
+  margin-top: 105px;
+}
+.france1{
+  background-color: #0000ff;
+  left: 0;
+  width: 50%;
+}
+.france2{
+  background-color: #ff0000;
+  right: 0;
+  width: 50%;
 }
