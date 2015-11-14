@@ -924,12 +924,14 @@ background-color:#FFFFFF;
 .top-banner{
   width: 100%;
 }
-
+body{
+  background-color: transparent;
+}
 .france{
   display: inline;
   position: fixed;
   height: 100%;
-  margin-top: 105px;
+  z-index: -2;
 }
 .france1{
   background-color: #0000ff;
