@@ -88,6 +88,7 @@ namespace :cron do
 
   task :rank_class => :environment do
     Rails.cache.delete('wel#rank_class')
+    # Check if the rank has matches vs all 9 klasses
     rank_class = Match.rank_class(12).select {|rank, match| match.count == 9}
     rank_percent = {}
     rank_class.each do |rank, counts|
