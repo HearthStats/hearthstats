@@ -63,7 +63,7 @@ class Api::V1::DecksController < ApplicationController
     #   html << "</div>"
     #   html << "<div class='qty'>"
     #   html << "</div>"
-    #   html << "<img src='https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{}.png'>"
+    #   html << "<img src='//s3.amazonaws.com/hearthstatsprod/full_card/#{}.png'>"
     #   html << "<div class='frame'>"
     #   html << "</div>"
     #   html << "</div>"

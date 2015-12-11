@@ -7,7 +7,7 @@ div class="facedown-card" id="#{blind_draft_card.card.id}" data-name="#{blind_dr
       = link_to new_card_blind_draft_path(blind_draft_card: blind_draft_card.id),
         remote: true, method: :put do
         span.fa.fa-refresh.blind_draft-new_card
-    img class="blind-card-image" src="https://s3-us-west-2.amazonaws.com/hearthstats/cards/#{blind_draft_card.card.name.parameterize}.png"
+    img class="blind-card-image" src="//s3.amazonaws.com/hearthstatsprod/full_card/#{blind_draft_card.card.name.parameterize}.png"
   - else
     = link_to reveal_card_blind_draft_path(blind_draft_card: blind_draft_card.id),
       remote: true, method: :put do

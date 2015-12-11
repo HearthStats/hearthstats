@@ -42,6 +42,6 @@ class Card < ActiveRecord::Base
   end
 
   def getImageUrl
-    return "https://s3-us-west-2.amazonaws.com/hearthstats/cards/" + name.parameterize + ".png"
+    return "//s3.amazonaws.com/hearthstatsprod/full_card/" + name.parameterize + ".png"
   end
 end

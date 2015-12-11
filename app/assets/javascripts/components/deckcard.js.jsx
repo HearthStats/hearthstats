@@ -43,7 +43,7 @@ var DeckCard = React.createClass({
 				id="deckBuilderFullCardView" 
 				key={this.props.card.id} 
 				ref="fullDeckImage" 
-				src={"//s3-us-west-2.amazonaws.com/hearthstats/cards/"+cn+".png"} 
+				src={"//s3.amazonaws.com/hearthstatsprod/full_card/"+cn+".png"} 
 				style={this.state.deckImageStyle} />;
 		}
 

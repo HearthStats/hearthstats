@@ -372,7 +372,7 @@
 
       $('.card').mouseover(function(e) {
         $this = $(this);
-        img_url = "//s3-us-west-2.amazonaws.com/hearthstats/cards/" + $this.find(".name").text().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + ".png";
+        img_url = "//s3.amazonaws.com/hearthstatsprod/full_card/" + $this.find(".name").text().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + ".png";
         $('.card').fadeTo(0, .8);
         $this.fadeTo(0, 1);
         fullCardImage.attr('src', img_url);

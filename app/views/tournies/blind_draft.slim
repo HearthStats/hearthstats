@@ -34,7 +34,7 @@ javascript:
   var cardsLeft = 54;
   $(".facedown-card").one('click', function() {
     cardName = $(this).data("name");
-    $(this).find("img").attr('src',"https://s3-us-west-2.amazonaws.com/hearthstats/cards/" + cardName + ".png")
+    $(this).find("img").attr('src',"//s3.amazonaws.com/hearthstatsprod/full_card/" + cardName + ".png")
     $(this).find('.user-select').fadeIn();
   });
 

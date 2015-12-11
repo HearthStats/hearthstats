@@ -6,7 +6,7 @@ var Card = React.createClass({
 		}
 		return{
 			hasLoaded: false,
-			imgSrc: "//s3-us-west-2.amazonaws.com/hearthstats/cards/" + cn +".png"
+			imgSrc: "//s3.amazonaws.com/hearthstatsprod/full_card/" + cn +".png"
 		}
 	},
 	componentDidMount: function(){
