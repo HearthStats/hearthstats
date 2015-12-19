@@ -64,6 +64,9 @@ local.properties
 database.yml
 console
 
+# jetbrains specific git ignore
+.idea/*
+
 # Ignore application configuration
 /config/application.yml
 
