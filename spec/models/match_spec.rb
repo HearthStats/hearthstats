@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Match do
-  describe "class methods" do
   describe 'custom validations' do
     it 'should not allow creation of duplicate matches' do
       match_params = {klass_id: 1, result_id: 2, mode_id: 3, user_id: 4 }
@@ -12,6 +11,8 @@ describe Match do
       expect(duplicate_match).to_not be_valid
     end
   end
+
+  describe 'class methods' do
     describe '::bestuserarena' do
       let(:user) { build :user }
 
@@ -21,7 +22,7 @@ describe Match do
         create :match, klass_id: 2, result_id: 1, mode_id: 1, user: user
         create :match, klass_id: 1, result_id: 2, mode_id: 1, user_id: 666
 
-        Match.bestuserarena(user.id).should == ["Druid", 100]
+        Match.bestuserarena(user.id).should == ['Druid', 100]
       end
     end
 
@@ -41,14 +42,14 @@ describe Match do
 
     describe '::matches_per_class' do
       it 'inits all classes to 0' do
-        Match.matches_per_class.should == { "Druid"=>0, "Hunter"=>0, "Mage"=>0, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0 }
+        Match.matches_per_class.should == { 'Druid'=>0, 'Hunter'=>0, 'Mage'=>0, 'Paladin'=>0, 'Priest'=>0, 'Rogue'=>0, 'Shaman'=>0, 'Warlock'=>0, 'Warrior'=>0 }
       end
 
       it 'returns the number of played matches per class' do
         create :match, klass_id: 1
         create :match, klass_id: 3
 
-        Match.matches_per_class.should == { "Druid"=>1, "Hunter"=>0, "Mage"=>1, "Paladin"=>0, "Priest"=>0, "Rogue"=>0, "Shaman"=>0, "Warlock"=>0, "Warrior"=>0 }
+        Match.matches_per_class.should == { 'Druid'=>1, 'Hunter'=>0, 'Mage'=>1, 'Paladin'=>0, 'Priest'=>0, 'Rogue'=>0, 'Shaman'=>0, 'Warlock'=>0, 'Warrior'=>0 }
       end
     end
 
@@ -62,7 +63,7 @@ describe Match do
         win   = create :match, klass: klass, result_id: 1
         loss  = create :match, klass: klass, result_id: 0
 
-        Match.top_winrates_with_class.should == [["Druid", 50.0], 0, 0, 0, 0, 0, 0, 0, 0]
+        Match.top_winrates_with_class.should == [['Druid', 50.0], 0, 0, 0, 0, 0, 0, 0, 0]
       end
     end
 
@@ -89,8 +90,8 @@ describe Match do
         it 'generates and executes a match mass-insert sql command' do
           Match.should_receive(:generate_mass_insert_sql)
             .with(matches_params, 7, 5)
-            .and_return("INSERT luck INTO forsen")
-          Match.connection.should_receive(:insert).with("INSERT luck INTO forsen")
+            .and_return('INSERT luck INTO forsen')
+          Match.connection.should_receive(:insert).with('INSERT luck INTO forsen')
 
           Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
@@ -108,19 +109,19 @@ describe Match do
         it 'generates and executes a MatchDeck mass-insert sql command' do
           MatchDeck.should_receive(:generate_mass_insert_sql)
             .with(matches_params, 13)
-            .and_return("INSERT drboom INTO turn7")
-          MatchDeck.connection.should_receive(:insert).with("INSERT drboom INTO turn7")
+            .and_return('INSERT drboom INTO turn7')
+          MatchDeck.connection.should_receive(:insert).with('INSERT drboom INTO turn7')
           Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
 
         it 'generates and executes a MatchRank mass-insert sql command' do
-          ranked_match.should_receive(:[]).with(:mode).and_return("Ranked")
-          ranked_match.should_receive(:[]).with(:ranklvl).and_return("1")
+          ranked_match.should_receive(:[]).with(:mode).and_return('Ranked')
+          ranked_match.should_receive(:[]).with(:ranklvl).and_return('1')
 
           MatchRank.should_receive(:generate_mass_insert_sql)
             .with([ranked_match])
-            .and_return("INSERT value INTO valuetown")
-          MatchRank.connection.should_receive(:insert).with("INSERT value INTO valuetown")
+            .and_return('INSERT value INTO valuetown')
+          MatchRank.connection.should_receive(:insert).with('INSERT value INTO valuetown')
           Match.mass_import_new_matches(matches_params, deck_id, deck_klass_id, user_id)
         end
       end
@@ -128,15 +129,15 @@ describe Match do
       describe '::generate_mass_insert_sql' do
         let(:matches_params) do
           [{
-            mode: "Ranked",
-            oppclass: "Priest",
-            result: "Win",
-            coin: "false"
+            mode: 'Ranked',
+            oppclass: 'Priest',
+            result: 'Win',
+            coin: 'false'
           }, {
-            mode: "Arena",
-            oppclass: "Warlock",
-            result: "Loss",
-            coin: "true"
+            mode: 'Arena',
+            oppclass: 'Warlock',
+            result: 'Loss',
+            coin: 'true'
           }]
         end
 
@@ -160,10 +161,10 @@ VALUES (1,3,3,1,0,5,NULL,NULL,NULL,NULL,1,'#{db_time}','#{db_time}'),(1,1,3,2,1,
         context 'when fending off sneaky pranksters' do
           let(:matches_params) do
             [{
-              mode: "Ranked",
-              oppclass: "Priest",
-              result: "Win",
-              coin: "false",
+              mode: 'Ranked',
+              oppclass: 'Priest',
+              result: 'Win',
+              coin: 'false',
               notes: "ripperino trumpW',NULL,NULL);DROP TABLE users"
             }]
           end
