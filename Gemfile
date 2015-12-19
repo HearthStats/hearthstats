@@ -24,7 +24,7 @@ group :development do
   gem 'seed_dump', :require => false
   gem 'awesome_print', :require => false
   gem 'active_record_query_trace'
-  gem "thin"
+  gem 'thin'
 end
 
 group :assets do
@@ -86,7 +86,7 @@ gem 'groupdate'
 gem 'announcements'
 gem 'rmagick'
 # gem 'rack-ssl-enforcer'
-gem "squeel"
+gem 'squeel'
 gem 'pusher'
 gem 'sync'
 gem 'react-rails', '~> 1.0'
@@ -107,11 +107,11 @@ gem 'delayed_job_web'
 gem 'daemons'
 gem 'whenever'
 
-gem "puma"
+gem 'puma'
 gem 'dotenv-rails'
   
 platforms :mri do
-  gem "skylight"
+  gem 'skylight'
 end
 
 group :test do
