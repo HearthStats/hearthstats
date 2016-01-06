@@ -75,6 +75,8 @@ class Match < ActiveRecord::Base
   validates_presence_of :oppclass_id
   validates_presence_of :klass_id
 
+  validate :no_duplicate_matches
+
   ### CALLBACKS:
 
   before_save :set_season_patch
@@ -388,6 +390,17 @@ VALUES #{new_matches_sql.join(",")}
     unless deck.nil?
       deck.update_user_stats!(self)
     end
+  end
+
+  def ==(match)
+    match && self.oppname == match.oppname && self.duration == match.duration
+  end
+
+  ### VALIDATION METHODS:
+
+  def no_duplicate_matches
+    last_user_match = Match.where(user_id: self.user_id).last
+    errors.add(:match, 'This is a duplicate of the last match') unless self != last_user_match
   end
 
 
