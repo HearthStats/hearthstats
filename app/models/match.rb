@@ -393,16 +393,14 @@ VALUES #{new_matches_sql.join(",")}
   end
 
   def ==(match)
-    self.oppname == match.oppname && self.duration == match.duration
+    match && self.oppname == match.oppname && self.duration == match.duration
   end
 
   ### VALIDATION METHODS:
 
   def no_duplicate_matches
-    user = User.find(self.user_id)
-    unless user.matches.last != self
-      errors.add(:match, 'This is a duplicate of the last match')
-    end
+    last_user_match = Match.where(user_id: self.user_id).last
+    errors.add(:match, 'This is a duplicate of the last match') unless self != last_user_match
   end
 
 
