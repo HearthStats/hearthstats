@@ -75,7 +75,7 @@ class Match < ActiveRecord::Base
   validates_presence_of :oppclass_id
   validates_presence_of :klass_id
 
-  validate :no_duplicate_matches
+  validate :no_duplicate_matches, :if => :app_submitted?
 
   ### CALLBACKS:
 
@@ -303,6 +303,7 @@ class Match < ActiveRecord::Base
     rank_grouped.each do |rank, rank_matches|
       grouped = rank_matches.group_by{|match| match.klass_id}
       klass_count = grouped.map{|klass, klass_matches| [klass, klass_matches.count]}
+        .select{|klass, count| !klass.nil? && !count.nil?}
         .sort_by{|klass, count| klass}
       rank_klass[rank.id] = klass_count
     end
@@ -400,7 +401,11 @@ VALUES #{new_matches_sql.join(",")}
 
   def no_duplicate_matches
     last_user_match = Match.where(user_id: self.user_id).last
-    errors.add(:match, 'This is a duplicate of the last match') unless self != last_user_match
+    errors.add(:match, 'This is a duplicate of the last match') if self == last_user_match
+  end
+
+  def app_submitted?
+    self.appsubmit
   end
 
 
