@@ -2,14 +2,25 @@ require 'spec_helper'
 
 describe Match do
   describe 'custom validations' do
-    it 'should not allow creation of duplicate matches' do
-      match_params = {klass_id: 1, result_id: 2, mode_id: 3, user_id: 4 }
+    let(:user) { build :user }
+
+    it "doesn't allow creation of duplicate matches" do
+      match_params = { klass_id: 1, result_id: 2, mode_id: 1, user: user, appsubmit: true }
       match = Match.create(match_params)
       expect(match).to be_valid
 
       duplicate_match = Match.new(match_params)
       expect(duplicate_match).to_not be_valid
     end
+
+    it 'allows creation for non duplicate matches' do
+      match_params = { klass_id: 1, result_id: 2, mode_id: 1, user: user, appsubmit: true }
+      match = Match.create(match_params)
+      expect(match).to be_valid
+
+      different_match_params = { klass_id: 2, result_id: 2, mode_id: 1, user: user, appsubmit: true }
+      duplicate_match = Match.new(different_match_params)
+      expect(duplicate_match).to_not be_valid
   end
 
   describe 'class methods' do
