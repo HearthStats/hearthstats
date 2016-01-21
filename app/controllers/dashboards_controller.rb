@@ -9,9 +9,9 @@ class DashboardsController < ApplicationController
     if !current_user.guest? && current_user.profile.name.blank?
       redirect_to edit_profile_path(current_user), alert: 'Please add a username' and return
     end
-    if current_user && !current_user.subscription_id.nil?
-      redirect_to premium_dashboards_path and return
-    end
+    # if current_user && !current_user.subscription_id.nil?
+    #   redirect_to premium_dashboards_path and return
+    # end
     dash_cache = Rails.cache.fetch("dash_stats-#{current_user.id}", expires_in: 1.hour) do
       # Get all user's matches from this season
       matches = Match.where(user_id: current_user.id, season_id: current_season).all
