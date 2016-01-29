@@ -393,8 +393,8 @@ VALUES #{new_matches_sql.join(",")}
     end
   end
 
-  def ==(match)
-    match && self.oppname == match.oppname && self.duration == match.duration
+  def ==(other)
+    other && self.klass_id == other.klass_id && self.duration == other.duration && self.result_id == other.result_id
   end
 
   ### VALIDATION METHODS:
