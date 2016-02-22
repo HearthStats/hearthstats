@@ -90,7 +90,6 @@ class User < ActiveRecord::Base
   end
 
   def gen_sig_pic
-    p self.id
     badges = []
     badges = ["badge_1"] if self.subscribed?
     if self.profile.nil?
@@ -102,7 +101,6 @@ class User < ActiveRecord::Base
     con_wr = con_wr(matches)
     arena_wr = arena_wr(matches)
     rank = get_rank(matches)
-    p rank
     name = self.profile.name.blank? ? "N/A" : self.profile.name
     pic_info = { name: name,
                 const_win_rate: con_wr,
