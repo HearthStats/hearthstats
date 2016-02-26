@@ -66,9 +66,8 @@ div.row
         div class="col-md-4 col-sm-4 col-xs-4"
           div class="easy-pie-chart"
             div.win-count
-              span 
-                img
-                src="/assets/Icons/Classes/#{Klass::LIST[@deck.klass_id]}_Icon.gif" alt="#{ deck.class_name }" width="24px"
+              span
+                img src="/assets/Icons/Classes/#{Klass::LIST[@deck.klass_id]}_Icon.gif" alt="#{ @deck.class_name }" width="24px"
             span class="title" href="#"
               - if !@deck.klass.nil?
                 = Klass::LIST[@deck.klass_id]
