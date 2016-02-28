@@ -109,8 +109,8 @@ div.row
             span class="title" href="#" = t 'decks.show.draws'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"
-            div class="win_rate overall" data-percent="#{number_to_percentage(@winrate, precision: 2)}" 
-              span = number_to_percentage(@winrate, precision: 1)
+            div class="win_rate overall" data-percent="#{number_to_percentage(@deck.user_winrate, precision: 2)}" 
+              span = number_to_percentage(@deck.user_winrate, precision: 1)
             span class="title" href="#" = t 'decks.show.overall_win_rate'
         div class="col-md-2 col-sm-2 col-xs-4"
           div class="easy-pie-chart"

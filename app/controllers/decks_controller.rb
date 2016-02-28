@@ -122,17 +122,14 @@ class DecksController < ApplicationController
         rank_wr.
         select {|rank| !rank[0].nil?}.
         map { |rank, wr| [rank.id, wr]}
-      #calculate deck winrate
-      @winrate = matches.count > 0 ? get_array_wr(matches) : 0
       Rails.cache.write("deck_stats" + @deck.id.to_s + params[:version].to_s,
-                        [@deckrate,@firstrate,@secrate,@winrate,@rank_wr],
+                        [@deckrate,@firstrate,@secrate,@rank_wr],
                         expires_in: 1.days)
     else
       @deckrate = deck_cache_stats[0]
       @firstrate = deck_cache_stats[1]
       @secrate = deck_cache_stats[2]
-      @winrate = deck_cache_stats[3]
-      @rank_wr = deck_cache_stats[4]
+      @rank_wr = deck_cache_stats[3]
     end
 
     # Diff between versions

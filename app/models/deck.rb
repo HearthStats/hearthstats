@@ -174,11 +174,17 @@ class Deck < ActiveRecord::Base
   end
 
   def update_user_stats!(match)
-    self.user_num_matches = self.user_num_matches.to_i + 1
-    if match.result_id == 1
-      self.user_num_wins = user_num_wins.to_i + 1
-    elsif match.result_id == 2
-      self.user_num_losses = user_num_losses.to_i + 1
+    if self.user_num_matches % 15 == 0
+      self.user_num_wins = self.wins
+      self.user_num_losses = self.losses
+      self.user_num_matches = self.matches.count
+    else
+      self.user_num_matches = self.user_num_matches.to_i + 1
+      if match.result_id == 1
+        self.user_num_wins = user_num_wins.to_i + 1
+      elsif match.result_id == 2
+        self.user_num_losses = user_num_losses.to_i + 1
+      end
     end
     self.user_winrate     = user_num_matches > 0 ? (user_num_wins.to_f / user_num_matches) * 100 : 0
 
