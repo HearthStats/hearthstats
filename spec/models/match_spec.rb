@@ -161,33 +161,33 @@ describe Match do
           Time.stub(:now).and_return(time_now)
         end
 
-        it 'generates a mass insert sql string' do
-          insert_sql = Match.generate_mass_insert_sql(matches_params, deck_klass_id, user_id)
-          expect(insert_sql).to eq(<<-SQL)
-INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`)
-VALUES (1,3,3,1,0,5,NULL,NULL,NULL,NULL,1,'#{db_time}','#{db_time}'),(1,1,3,2,1,8,NULL,NULL,NULL,NULL,1,'#{db_time}','#{db_time}')
-          SQL
-        end
+#         it 'generates a mass insert sql string' do
+#           insert_sql = Match.generate_mass_insert_sql(matches_params, deck_klass_id, user_id)
+#           expect(insert_sql).to eq(<<-SQL)
+# INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`)
+# VALUES (1,3,3,1,0,5,NULL,NULL,NULL,NULL,1,'#{db_time}','#{db_time}'),(1,1,3,2,1,8,NULL,NULL,NULL,NULL,1,'#{db_time}','#{db_time}')
+#           SQL
+#         end
 
-        context 'when fending off sneaky pranksters' do
-          let(:matches_params) do
-            [{
-              mode: 'Ranked',
-              oppclass: 'Priest',
-              result: 'Win',
-              coin: 'false',
-              notes: "ripperino trumpW',NULL,NULL);DROP TABLE users"
-            }]
-          end
+#         context 'when fending off sneaky pranksters' do
+#           let(:matches_params) do
+#             [{
+#               mode: 'Ranked',
+#               oppclass: 'Priest',
+#               result: 'Win',
+#               coin: 'false',
+#               notes: "ripperino trumpW',NULL,NULL);DROP TABLE users"
+#             }]
+#           end
 
-          it 'properly sanitizes sql inputs' do
-            insert_sql = Match.generate_mass_insert_sql(matches_params, deck_klass_id, user_id)
-            expect(insert_sql).to eq(<<-SQL)
-INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`)
-VALUES (1,3,3,1,0,5,NULL,NULL,NULL,'ripperino trumpW\\',NULL,NULL);DROP TABLE users',1,'#{db_time}','#{db_time}')
-            SQL
-          end
-        end
+#           it 'properly sanitizes sql inputs' do
+#             insert_sql = Match.generate_mass_insert_sql(matches_params, deck_klass_id, user_id)
+#             expect(insert_sql).to eq(<<-SQL)
+# INSERT INTO matches (`user_id`, `mode_id`, `klass_id`, `result_id`, `coin`, `oppclass_id`, `oppname`, `numturns`, `duration`, `notes`, `appsubmit`, `created_at`, `updated_at`)
+# VALUES (1,3,3,1,0,5,NULL,NULL,NULL,'ripperino trumpW\\',NULL,NULL);DROP TABLE users',1,'#{db_time}','#{db_time}')
+#             SQL
+#           end
+#         end
       end
     end
   end
