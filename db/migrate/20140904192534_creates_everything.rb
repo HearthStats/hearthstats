@@ -1,11 +1,5 @@
 class CreatesEverything < ActiveRecord::Migration
   def up
-    create_table "annoucements", :force => true do |t|
-      t.string   "description"
-      t.datetime "created_at",  :null => false
-      t.datetime "updated_at",  :null => false
-    end
-
     create_table "arena_run_cards", :force => true do |t|
       t.integer  "arena_run_id"
       t.integer  "card_id"
@@ -80,25 +74,6 @@ class CreatesEverything < ActiveRecord::Migration
       t.datetime "updated_at",       :null => false
     end
 
-    create_table "constructeds", :force => true do |t|
-      t.datetime "created_at",                        :null => false
-      t.datetime "updated_at",                        :null => false
-      t.integer  "user_id"
-      t.string   "deckname"
-      t.string   "oppclass",   :default => "N/A"
-      t.boolean  "win",        :default => false
-      t.boolean  "gofirst",    :default => true
-      t.integer  "deck_id"
-      t.text     "notes"
-      t.string   "rank",       :default => "Casual"
-      t.string   "patch",      :default => "current"
-      t.string   "oppname"
-      t.integer  "ranklvl"
-      t.integer  "legendary"
-    end
-
-    add_index "constructeds", ["deck_id"], :name => "index_constructeds_on_deck_id"
-    add_index "constructeds", ["user_id"], :name => "index_constructeds_on_user_id"
 
     create_table "conversations", :force => true do |t|
       t.string   "subject",    :default => ""
@@ -386,21 +361,6 @@ class CreatesEverything < ActiveRecord::Migration
       t.text     "description"
       t.datetime "created_at",  :null => false
       t.datetime "updated_at",  :null => false
-    end
-
-    create_table "tournies", :force => true do |t|
-      t.integer  "challonge_id"
-      t.integer  "status",        :default => 0
-      t.integer  "winner_id"
-      t.string   "prize"
-      t.datetime "created_at",                       :null => false
-      t.datetime "updated_at",                       :null => false
-      t.boolean  "complete",      :default => false
-      t.integer  "user_decks_id"
-      t.string   "title"
-      t.string   "desc"
-      t.datetime "date"
-      t.string   "pic_link"
     end
 
     create_table "types", :force => true do |t|
