@@ -173,8 +173,8 @@ class Deck < ActiveRecord::Base
     self.unique_deck = UniqueDeck.create_from_deck(self) if num_cards == 30
   end
 
-  def update_user_stats!(match)
-    if self.user_num_matches % 15 == 0
+  def update_user_stats!(match=nil)
+    if match.nil? || self.user_num_matches % 15 == 0
       self.user_num_wins = self.wins
       self.user_num_losses = self.losses
       self.user_num_matches = self.matches.count

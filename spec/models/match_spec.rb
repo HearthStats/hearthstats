@@ -5,7 +5,7 @@ describe Match do
     let(:user) { build :user }
 
     it "doesn't allow creation of duplicate matches" do
-      match_params = { klass_id: 1, result_id: 2, mode_id: 1, user: user, appsubmit: true }
+      match_params = { klass_id: 1, result_id: 2, mode_id: 1, user_id: user.id, appsubmit: true }
       match = Match.create(match_params)
       expect(match).to be_valid
 
@@ -14,11 +14,11 @@ describe Match do
     end
 
     it 'allows creation for non duplicate matches' do
-      match_params = { klass_id: 1, result_id: 2, mode_id: 1, user: user, appsubmit: true }
+      match_params = { klass_id: 1, result_id: 2, mode_id: 1, user_id: user.id, appsubmit: true }
       match = Match.create(match_params)
       expect(match).to be_valid
 
-      different_match_params = { klass_id: 2, result_id: 2, mode_id: 1, user: user, appsubmit: true }
+      different_match_params = { klass_id: 2, result_id: 2, mode_id: 1, user_id: user.id, appsubmit: true }
       duplicate_match = Match.new(different_match_params)
       expect(duplicate_match).to_not be_valid
   end
