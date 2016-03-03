@@ -63,9 +63,6 @@ class DecksController < ApplicationController
       redirect_to public_decks_path, alert: "Deck cannot be found" and return
     end
 
-    impressionist(@deck)
-    commontator_thread_show(@deck)
-
     begin
       @notes = JSON.parse(@deck.notes)
       @general = @notes["general"]
@@ -175,7 +172,6 @@ class DecksController < ApplicationController
     end 
 
     @card_array = @deck.card_array_from_cardstring
-    commontator_thread_show(@deck)
 
     deck_cache_stats = Rails.cache.fetch("public_deck_stats" + @deck.id.to_s)
     if deck_cache_stats.nil?

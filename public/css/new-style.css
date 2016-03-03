@@ -927,19 +927,7 @@ background-color:#FFFFFF;
 body{
   background-color: transparent;
 }
-.france{
-  display: inline;
-  position: fixed;
-  height: 100%;
-  z-index: -2;
-}
-.france1{
-  background-color: #0000ff;
-  left: 0;
-  width: 50%;
-}
-.france2{
-  background-color: #ff0000;
-  right: 0;
-  width: 50%;
+.subtitle{
+  font-size: 14px;
+  padding-bottom: 5px;
 }

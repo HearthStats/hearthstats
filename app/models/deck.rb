@@ -85,7 +85,7 @@ class Deck < ActiveRecord::Base
   end
 
   def self.get_top_decks
-    decks = Deck.where(is_public: [true, nil]).where('decks.updated_at >= ?', 1.week.ago).
+    decks = Deck.where(is_public: [true, nil]).where('decks.updated_at >= ?', 4.days.ago).
                 group(:unique_deck_id).
                 joins(:unique_deck).
                 joins(:user).
