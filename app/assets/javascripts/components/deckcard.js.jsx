@@ -58,7 +58,7 @@ var DeckCard = React.createClass({
 					</div>
 					<div className="qty">{this.props.qty}
 					</div>
-					<img src={"//s3-us-west-2.amazonaws.com/hearthstats//deck_images/" + cn +".png"} className="image"/>
+					<img src={"//s3.amazonaws.com/hearthstatsprod/deck_images/" + cn +".png"} className="image"/>
 					<div className="bg">
 					</div>
 				</div>
