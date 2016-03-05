@@ -44,10 +44,10 @@ class AdditionalController < ApplicationController
 
   def news
     require 'feedjira'
+    # This should be stored in the DB
     @items = Rails.cache.fetch("news", expires_in: 2.hours) do
       feeds_urls = [
         "http://www.hearthpwn.com/news.rss",
-        "http://www.hearthbreak.com/news/feed",
         "http://www.legendoftheinnkeeper.com/feed/podcast/",
         "http://us.battle.net/hearthstone/en/feed/news",
         "http://www.liquidhearth.com/rss/news.xml"

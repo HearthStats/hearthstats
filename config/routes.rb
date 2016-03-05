@@ -65,12 +65,11 @@ Hearthstats::Application.routes.draw do
   match "/uploader/download/osx", to: "additional#uploader_download_osx"
 
   # Monthly Reports
-  Date::MONTHNAMES.dup[1..12].each do |month|
-    name = month[0..2].downcase
-    match "/#{name}", to: redirect("/reports/#{Time.now.year}/#{name}")
-  end
-
-  match '/reports/*path', to: redirect("/reports")
+  # Date::MONTHNAMES.dup[1..12].each do |month|
+  #   name = month[0..2].downcase
+  #   match "/#{name}", to: redirect("/reports/#{}/#{name}")
+  # end
+  #
   get "welcome/ranked_test"
   get "welcome/select_klass"
 
@@ -198,11 +197,7 @@ Hearthstats::Application.routes.draw do
     get :replay, on: :member
   end
 
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match 'reports/:action' => 'reports#:action'
 
   # HearthStats API
   namespace :api, defaults:{format: 'json'} do
