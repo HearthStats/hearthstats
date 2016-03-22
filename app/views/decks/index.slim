@@ -52,5 +52,7 @@
                   = number_to_percentage(deck.user_winrate, precision: 1)
                 - if signed_in?
                   td.tools
-                    = link_to(" Edit", edit_deck_path(deck), class: 'btn default btn-xs purple fa fa-pencil-square-o')
-                    = link_to(" Delete", deck, class: "btn default btn-xs red fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' })
+                    = link_to(edit_deck_path(deck), class: 'btn default btn-xs purple')
+                      |<i class=" fa fa-pencil-square-o"></i> Edit
+                    = link_to(deck, class: "btn default btn-xs red", method: :delete, data: { confirm: 'Are you sure? This will delete the associated Constructed Matches as well.' })
+                      |<i class=" fa fa-trash-o"></i> Delete

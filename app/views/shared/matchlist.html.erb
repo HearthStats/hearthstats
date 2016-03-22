@@ -54,12 +54,24 @@
         <% end %>
         <td class="cl-effect-3">
           <% if type == "Arena" %>
-            <%= link_to(t('shared.edit'), edit_arena_path(match), class: 'options-button btn default btn-xs purple fa fa-pencil-square-o') %>
+            <%= link_to(edit_arena_path(match), class: 'options-button btn default btn-xs purple') do %>
+              <i class="fa fa-pencil-square-o"></i>
+              <%= t('shared.edit') %>
+            <% end %>
           <% else %>
-            <%= link_to(t('shared.edit'), edit_constructed_path(match), class: 'options-button btn default btn-xs purple fa fa-pencil-square-o') %>
+            <%= link_to(edit_constructed_path(match), class: 'options-button btn default btn-xs purple') do %>
+              <i class="fa fa-pencil-square-o"></i>
+              <%= t('shared.edit') %>
+            <% end %>
           <% end %>
-          <%= link_to(t('shared.delete'), match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'options-button btn default btn-xs red fa fa-trash-o') %>
-          <%= link_to(t('shared.view'), match, class: 'options-button btn default btn-xs blue fa fa-trash-o') %>
+          <%= link_to(match, method: :delete, data: { confirm: 'Are you sure?' }, class: 'options-button btn default btn-xs red') do %>
+              <i class="fa fa-trash-o"></i>
+              <%= t('shared.delete') %>
+            <% end %>
+          <%= link_to(match, class: 'options-button btn default btn-xs blue') do %>
+              <i class="fa fa-external-link"></i>
+              <%= t('shared.view') %>
+            <% end %>
           <% if !match.notes.blank? %>
             <%= link_to(t('shared.notes'), match, class: 'options-button btn default btn-xs green fa fa-comment-o') %>
           <% end %>
