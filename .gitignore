@@ -89,3 +89,4 @@ zeus.json
 tags
 /bin
 .env*
+.ruby-version
