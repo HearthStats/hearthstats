@@ -79,7 +79,7 @@
             .public-deck-ident.pro-deck-ident
               .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
               .public-deck-author
-                - if deck.user.profile.nil? || deck.user.profile.name.nil?
+                - if deck.user.profile.nil? || deck.user.profile.name.blank?
                   = "by: [anonymous]"
                 - else
                   = link_to("by: " + deck.user.profile.name, profile_path(deck.user_id))

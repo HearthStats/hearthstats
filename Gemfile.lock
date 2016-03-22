@@ -110,7 +110,6 @@ GEM
       jquery-rails
       rails (>= 3.1)
     connection_pool (2.2.0)
-    cookiejar (0.3.2)
     crass (1.0.1)
     curb (0.8.6)
     daemons (1.1.9)
@@ -154,14 +153,6 @@ GEM
     elasticsearch-transport (1.0.12)
       faraday
       multi_json
-    em-http-request (1.1.2)
-      addressable (>= 2.3.4)
-      cookiejar
-      em-socksify (>= 0.3)
-      eventmachine (>= 1.0.3)
-      http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.0)
-      eventmachine (>= 1.0.0.beta.4)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -276,7 +267,6 @@ GEM
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    http_parser.rb (0.6.0)
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -346,10 +336,6 @@ GEM
     polyglot (0.3.5)
     puma (2.11.3)
       rack (>= 1.1, < 2.0)
-    pusher (0.14.1)
-      httpclient (~> 2.3)
-      multi_json (~> 1.0)
-      signature (~> 0.1.6)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -392,6 +378,7 @@ GEM
       rails (>= 3.1)
       react-source (~> 0.13)
     react-source (0.13.3)
+    redis (3.2.1)
     request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -431,7 +418,6 @@ GEM
       thor (~> 0.14)
     shortener (0.3.1)
       rails (>= 3.0.7)
-    signature (0.1.7)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -468,8 +454,6 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    sync (0.3.5)
-      em-http-request
     temple (0.7.5)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
@@ -560,13 +544,13 @@ DEPENDENCIES
   paperclip (~> 4.2)
   phashion
   puma
-  pusher
   quiet_assets (>= 1.0.1)
   rails (= 3.2.18)
   rake
   ransack
   rb-fsevent
   react-rails (~> 1.0)
+  redis (~> 3.2)
   rmagick
   rolify
   rspec-rails (~> 2.12.2)
@@ -584,7 +568,6 @@ DEPENDENCIES
   sqlite3
   squeel
   stripe!
-  sync
   thin
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)

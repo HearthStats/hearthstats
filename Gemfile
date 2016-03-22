@@ -87,11 +87,10 @@ gem 'announcements'
 gem 'rmagick'
 # gem 'rack-ssl-enforcer'
 gem 'squeel'
-gem 'pusher'
-gem 'sync'
 gem 'react-rails', '~> 1.0'
 # gem 'unicorn'
 gem 'slick_rails'
+gem 'redis', '~>3.2'
 
 gem 'ckeditor_rails'
 gem 'mechanize', :require => false

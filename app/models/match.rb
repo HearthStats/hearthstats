@@ -82,6 +82,7 @@ class Match < ActiveRecord::Base
 
   before_save :set_season_patch
   # after_save :update_user_stats_constructed
+  after_save :update_redis
 
   ### CLASS METHODS:
 
@@ -409,6 +410,19 @@ VALUES #{new_matches_sql.join(",")}
     self.appsubmit
   end
 
+  def update_redis
+    begin
+      date = Time.now.strftime("%d_%m_%Y")
+      expire_at = 10.days.from_now.end_of_day.to_i
+      key = "#{mode_id}_#{date}"
+      field = "#{klass_id}_#{result_id}"
+      logger.info "#{key} *** #{field}"
+      $redis.hincrby(key, field, 1)
+      $redis.expireat(key, expire_at)
+    rescue => e
+      logger.warn "Update redis failed and ignored: #{e}"
+    end
+  end
 
   protected
   def self.generate_match_sql(params, klass_id, user_id, current_time)
