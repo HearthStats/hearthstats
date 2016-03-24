@@ -1,6 +1,4 @@
 class Deck < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
   attr_accessible :loses, :name, :wins, :notes, :cardstring,
                   :klass_id, :is_public, :user_id, :is_tourn_deck,
                   :deck_type_id, :archived

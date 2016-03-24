@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.18'
 gem 'rake'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
 
 group :development do
   gem 'better_errors', '>= 0.3.2'
@@ -31,7 +29,6 @@ group :assets do
 # Gems used only for assets and not required
 # in production environments by default.
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
   # gem 'asset_sync'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -108,10 +105,6 @@ gem 'whenever'
 
 gem 'puma'
 gem 'dotenv-rails'
-  
-platforms :mri do
-  gem 'skylight'
-end
 
 group :test do
   gem 'rspec-rails', '~> 2.12.2'

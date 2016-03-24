@@ -1,20 +1,4 @@
 class Match < ActiveRecord::Base
-  include Elasticsearch::Model
-
-  # Overwrite what is passed to ES
-
-  def as_indexed_json(options={})
-    response = self.as_json
-    response[:klass_name] = Klass::LIST[self.klass_id]
-    response[:oppclass_name] = Klass::LIST[self.oppclass_id]
-    response[:result_name] = RESULTS_LIST[self.result_id]
-    response[:mode_name] = MODES_LIST[self.mode_id]
-    response[:rank_name] = self.rank.try(:name)
-    response[:deck_id] = self.deck.try(:id)
-
-    return response
-  end
-
   attr_accessible :created_at, :updated_at, :user_id, :klass_id,
                   :oppclass_id, :oppname, :mode_id, :result_id, :notes, :coin, :arena_run_id,
                   :appsubmit
@@ -416,7 +400,6 @@ VALUES #{new_matches_sql.join(",")}
       expire_at = 10.days.from_now.end_of_day.to_i
       key = "#{mode_id}_#{date}"
       field = "#{klass_id}_#{result_id}"
-      logger.info "#{key} *** #{field}"
       $redis.hincrby(key, field, 1)
       $redis.expireat(key, expire_at)
     rescue => e
