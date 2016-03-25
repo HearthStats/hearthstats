@@ -5,7 +5,7 @@ class ReportGenerator
   def full_report(begin_date, end_date)
     @matches = Match.where(created_at: begin_date.beginning_of_day..end_date.end_of_day)
       .preload(:match_rank)
-    p "#{@matches.count} matches retrieved"
+    p "#{@matches.size} matches retrieved"
   end
 
   def winrate_by_rank
@@ -17,8 +17,8 @@ class ReportGenerator
       ranked_wr = {}
       rank_grouped_matches = klass_matches.group_by(&:match_rank)
       rank_grouped_matches.each do |rank, rank_matches|
-        wins = rank_matches.select {|match| match.result_id == 1}.count
-        ranked_wr[rank.rank_id] = wins.to_f / rank_matches.count
+        wins = rank_matches.select {|match| match.result_id == 1}.size
+        ranked_wr[rank.rank_id] = wins.to_f / rank_matches.size
       end
       ranked_wr[klass_id] = ranked_wr
     end
@@ -35,8 +35,8 @@ class ReportGenerator
       classvclass_wr = {}
       oppclass_grouped_matches = klass_matches.group_by(&:oppclass_id)
       oppclass_grouped_matches.each do |oppclass_id, opp_matches|
-        wins = opp_matches.select {|match| match.result_id == 1}.count
-        classvclass_wr[oppclass_id] = wins.to_f / opp_matches.count
+        wins = opp_matches.select {|match| match.result_id == 1}.size
+        classvclass_wr[oppclass_id] = wins.to_f / opp_matches.size
       end
       winrate_matrix[klass_id] = classvclass_wr
     end
@@ -51,7 +51,7 @@ class ReportGenerator
     klass_grouped_matches = mode_matches.group_by(&:klass_id)
     klass_grouped_matches.each do |klass_id, klass_matches|
       wins = klass_matches.select {|match| match.result_id == 1}
-      klass_winrates[klass_id] = wins.to_f / klass_matches.count
+      klass_winrates[klass_id] = wins.to_f / klass_matches.size
     end
   end
 end

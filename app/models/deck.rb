@@ -298,7 +298,7 @@ class Deck < ActiveRecord::Base
     # Maybe every 10 matches or something?
     # Also work with a pro to get a better algorithm
 
-    rank_weight = [0.995, #0 = unranked/nil
+    rank_weight = [0.995, #0 = legend
                    0.98, 0.98, 0.98, 0.98, #rank 1-4
                    0.945, 0.945, 0.945, 0.945, 0.945, #rank 5-9
                    0.85, 0.85, 0.85, 0.85, 0.85, #rank 10-14

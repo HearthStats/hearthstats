@@ -14,7 +14,7 @@ namespace :cron do
       con_day_matches = klass_con_matches.group_by {|m| m.created_at.beginning_of_day}
       con_day_matches.each do |date, day_matches|
         win_count = day_matches.select {|m| m.result_id == 1}.count
-        tot_games = day_matches.count
+        tot_games = day_matches.size
         klass_wr[date] = (win_count.to_f/tot_games * 100).round(2)
       end
       Rails.cache.delete("con#wr_rate-#{klass_id}")
@@ -23,14 +23,14 @@ namespace :cron do
 
       # Calculate arena top wrs
       klass_arena_matches = arena_matches.select {|m| m.klass_id == klass_id}
-      wins = klass_arena_matches.select{|m| m.result_id == 1}.count
-      total = klass_arena_matches.count
+      wins = klass_arena_matches.select{|m| m.result_id == 1}.size
+      total = klass_arena_matches.size
       arena_top[klass_id - 1] = [class_name, (wins.to_f/total* 100).round(2)]
 
       # Calculate constructed top wrs
       klass_con_matches = con_matches.select {|m| m.klass_id == klass_id}
-      wins = klass_con_matches.select{|m| m.result_id == 1}.count
-      total = klass_con_matches.count
+      wins = klass_con_matches.select{|m| m.result_id == 1}.size
+      total = klass_con_matches.size
       con_top[klass_id - 1] = [class_name, (wins.to_f/total* 100).round(2)]
     end
     Rails.cache.delete('wel#arena_top')
@@ -89,7 +89,7 @@ namespace :cron do
   task :rank_class => :environment do
     Rails.cache.delete('wel#rank_class')
     # Check if the rank has matches vs all 9 klasses
-    rank_class = Match.rank_class(12).select {|rank, match| match.count == 9}
+    rank_class = Match.rank_class(12).select {|rank, match| match.size == 9}
     rank_percent = {}
     rank_class.each do |rank, counts|
       tot = counts.map{|w|w[1]}.reduce(:+)
