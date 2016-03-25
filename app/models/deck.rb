@@ -84,13 +84,15 @@ class Deck < ActiveRecord::Base
 
   def self.get_top_decks
     decks = Deck.where(is_public: [true, nil]).where('decks.updated_at >= ?', 4.days.ago).
-                group(:unique_deck_id).
-                joins(:unique_deck).
-                joins(:user).
-                where("user_num_matches >= ?", 30).
-                sort! { |a,b|  b.deck_score <=> a.deck_score }.
-                first(20).
-                map{|a| [a.name, a.user_id, a.slug, a.class_name]}
+      preload(:matches).
+      preload(:rank).
+      group(:unique_deck_id).
+      joins(:unique_deck).
+      joins(:user).
+      where("user_num_matches >= ?", 30).
+      sort! { |a,b|  b.deck_score <=> a.deck_score }.
+      first(20).
+      map{|a| [a.name, a.user_id, a.slug, a.class_name]}
     decks
   end
 
@@ -286,13 +288,17 @@ class Deck < ActiveRecord::Base
   end
 
   def rank_wr_count
-    grouped = self.matches.includes(:rank).group_by {|match| match.rank}
-    grouped.map {|rank| [rank[0].try(:id) || 0, calculate_winrate(rank[1]), rank[1].length]}
+    grouped = self.matches.includes(:match_rank).group_by(&:match_rank)
+    grouped.map {|rank, matches| [rank.rank_id || 0, calculate_winrate(matches), matches.length]}
     # unranked (nil) == 0; legend == 26
   end
 
   def deck_score
-    rank_weight = [0.25, #0 = unranked/nil
+    # Would be cool to update this and cache it
+    # Maybe every 10 matches or something?
+    # Also work with a pro to get a better algorithm
+
+    rank_weight = [0.995, #0 = unranked/nil
                    0.98, 0.98, 0.98, 0.98, #rank 1-4
                    0.945, 0.945, 0.945, 0.945, 0.945, #rank 5-9
                    0.85, 0.85, 0.85, 0.85, 0.85, #rank 10-14
@@ -305,14 +311,14 @@ class Deck < ActiveRecord::Base
     score = 0
 
     unless total_games == 0
-      rank.each do |rank_info|
-        weight = rank_weight[rank_info[0]]
-        if rank_info[0] == 0
-          init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 15].min * 0.5)
+      rank.each do |rank_num, winrate, num_matches|
+        weight = rank_weight[rank_num]
+        if rank_num == 0
+          init_score = (weight * winrate) + (weight * [num_matches, 15].min * 0.5)
         else
-          init_score = (weight * rank_info[1]) + (weight * [rank_info[2], 30].min * 0.5)
+          init_score = (weight * winrate) + (weight * [num_matches, 30].min * 0.5)
         end
-        score += (init_score * (rank_info[2].to_f/total_games))
+        score += (init_score * (num_matches.to_f/total_games))
       end
     end
 

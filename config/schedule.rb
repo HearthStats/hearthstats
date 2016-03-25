@@ -23,6 +23,8 @@ set :output, "/var/www/hearthstats/current/log/cron_log.log"
 env :PATH, ENV['PATH']
 
 every 1.day do
+  command 'echo "Daily refesh"'
+  command 'echo "Run at $(date)"'
   # command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake sig_pic:update"
   # command "echo '--------------------------'"
   # command "echo 'Sigs Update'"
@@ -41,12 +43,16 @@ every 1.day do
 end
 
 every 5.hours do
+  command "echo 'Welcome Cache Start'"
+  command 'echo "Run at $(date)"'
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:welcome_cache"
   command "echo '--------------------------'"
   command "echo 'Welcome Cache'"
 end
 
 every 2.hours do
+  command "echo 'Top deck and archetypes'"
+  command 'echo "Run at $(date)"'
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_top_decks"
   command "echo '--------------------------'"
   command "echo 'Expire Top Decks'"

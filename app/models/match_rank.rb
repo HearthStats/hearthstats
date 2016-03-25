@@ -5,6 +5,7 @@ class MatchRank < ActiveRecord::Base
 
   belongs_to :rank
   belongs_to :match
+  # NOTE: Legendary is rank_lvl 0
 
 
   def self.generate_mass_insert_sql(matches_params)
