@@ -397,11 +397,11 @@ VALUES #{new_matches_sql.join(",")}
   def update_redis
     begin
       date = Time.now.strftime("%d_%m_%Y")
-      expire_at = 10.days.from_now.end_of_day.to_i
+      # expire_at = 10.days.from_now.end_of_day.to_i
       key = "#{mode_id}_#{date}"
       field = "#{klass_id}_#{result_id}"
       $redis.hincrby(key, field, 1)
-      $redis.expireat(key, expire_at)
+      # $redis.expireat(key, expire_at)
     rescue => e
       logger.warn "Update redis failed and ignored: #{e}"
     end
