@@ -202,12 +202,12 @@
                 <thead>
                 </thead>
                 <tbody>
-                  <% @arena_top.each_with_index do |c,i| %>
+                  <% @arena_top.each_with_index do |(klass_id, wr), i| %>
                     <tr>
                       <td class="wr-change"></td>
                       <td class="wr-rank"><%= i + 1 %>.</td>
-                      <td class="wr-class"><%= c[0] %></td>
-                      <td class="wr-wr"><%= c[1] %>%</td>
+                      <td class="wr-class"><%= Klass::LIST[klass_id] %></td>
+                      <td class="wr-wr"><%= wr %>%</td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -219,17 +219,18 @@
                 <thead>
                 </thead>
                 <tbody>
-                  <% @con_top.each_with_index do |c,i| %>
+                  <% @con_top.each_with_index do |(klass_id, wr), i| %>
                     <tr>
                       <td class="wr-change"></td>
                       <td class="wr-rank"><%= i + 1 %>.</td>
-                      <td class="wr-class"><%= c[0] %></td>
-                      <td class="wr-wr"><%= c[1] %>%</td>
+                      <td class="wr-class"><%= Klass::LIST[klass_id] %></td>
+                      <td class="wr-wr"><%= wr %>%</td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
             </div>
+            <div class="twelve center">Top winrates are for the day and updates live</div>
           </div>
         </div>
       </div>

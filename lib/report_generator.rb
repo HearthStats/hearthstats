@@ -11,7 +11,7 @@ class ReportGenerator
   def winrate_by_rank
     ranked_wr = {}
     ranked_matches = @matches
-      .select {|match| match.mode_id == 3 && match.appsumbit == true}
+      .select {|match| match.mode_id == 3 && match.appsubmit == true}
     klass_grouped_matches = ranked_matches.group_by(&:klass_id)
     klass_grouped_matches.each do |klass_id, klass_matches|
       ranked_wr = {}
@@ -50,7 +50,7 @@ class ReportGenerator
       .select {|match| match.mode_id == mode_id}
     klass_grouped_matches = mode_matches.group_by(&:klass_id)
     klass_grouped_matches.each do |klass_id, klass_matches|
-      wins = klass_matches.select {|match| match.result_id == 1}
+      wins = klass_matches.select {|match| match.result_id == 1}.size
       klass_winrates[klass_id] = wins.to_f / klass_matches.size
     end
   end

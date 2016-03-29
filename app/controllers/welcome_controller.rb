@@ -1,9 +1,11 @@
 class WelcomeController < ApplicationController
   def index
+    require './lib/redis_calculator.rb'
+    redis_calc = RedisCalc.new
 
     # Global Stats
-    @arena_top = Rails.cache.read('wel#arena_top') || []
-    @con_top = Rails.cache.read('wel#con_top') || []
+    @arena_top = redis_calc.get_wr_all_klass_daysback(1,0,true, true).values[0].first(5)
+    @con_top = redis_calc.get_wr_all_klass_daysback(3,0,true, true).values[0].first(5)
     @rank_class = Rails.cache.read('wel#rank_class') || []
 
     # Decklists
