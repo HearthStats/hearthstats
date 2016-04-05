@@ -4,9 +4,6 @@ namespace :cron do
   task :welcome_cache => :environment do
     matches = Match.where{(created_at >= 3.days.ago) & (created_at <= 1.day.ago)}.all
     con_matches = matches.select {|m| m.mode_id == 3}
-    arena_matches = matches.select {|m| m.mode_id == 1}
-    arena_top = []
-    con_top = []
     Klass::LIST.each do |klass_id, class_name|
       # Calculate klass_wr per day
       klass_wr = {}
@@ -20,30 +17,7 @@ namespace :cron do
       Rails.cache.delete("con#wr_rate-#{klass_id}")
       Rails.cache.write("con#wr_rate-#{klass_id}", klass_wr)
       p "Finished con#wr " + class_name + " cache preheating"
-
-      # Calculate arena top wrs
-      klass_arena_matches = arena_matches.select {|m| m.klass_id == klass_id}
-      wins = klass_arena_matches.select{|m| m.result_id == 1}.size
-      total = klass_arena_matches.size
-      arena_top[klass_id - 1] = [class_name, (wins.to_f/total* 100).round(2)]
-
-      # Calculate constructed top wrs
-      klass_con_matches = con_matches.select {|m| m.klass_id == klass_id}
-      wins = klass_con_matches.select{|m| m.result_id == 1}.size
-      total = klass_con_matches.size
-      con_top[klass_id - 1] = [class_name, (wins.to_f/total* 100).round(2)]
     end
-    Rails.cache.delete('wel#arena_top')
-    p arena_top.inspect
-    sorted_arena = arena_top.sort_by {|name, wr| wr.nan? ? 0 : wr}.reverse.shift(5)
-    Rails.cache.write('wel#arena_top', sorted_arena)
-    p "Arena top classes preheated"
-
-    p con_top.inspect
-    Rails.cache.delete('wel#con_top')
-    sorted_con = con_top.sort_by {|name, wr| wr.nan? ? 0 : wr}.reverse.shift(5)
-    Rails.cache.write('wel#con_top', sorted_con)
-    p "Con top classes preheated"
   end
 
   task :expire_top_decks => :environment do

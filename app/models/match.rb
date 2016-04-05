@@ -386,7 +386,7 @@ VALUES #{new_matches_sql.join(",")}
   ### VALIDATION METHODS:
 
   def no_duplicate_matches
-    last_user_match = Match.where(user_id: self.user_id).last
+    last_user_match = Match.where(user_id: self.user_id, mode_id: 3).last
     errors.add(:match, 'This is a duplicate of the last match') if self == last_user_match
   end
 

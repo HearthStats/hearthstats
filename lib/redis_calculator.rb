@@ -20,6 +20,7 @@ class RedisCalc
         winrate = (wins.to_f/total * 100).round(2)
         klass_wr[klass_id] = winrate
       end
+      klass_wr.reject! { |klass, wr| wr.is_a?(Float) && wr.nan? }
       if sort_by_wr
         date_wrs[date_key] = klass_wr.sort_by {|klass, wr| wr}.reverse.to_h
       else

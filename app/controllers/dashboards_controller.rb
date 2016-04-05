@@ -25,6 +25,8 @@ class DashboardsController < ApplicationController
       hourly_wr = Match.winrate_by_time(current_user.matches, current_user.profile.time_zone)
       [@arena_wr, @con_wr, @arenawins, @conwins, @recent_entries, hourly_wr]
     end
+    @arena_top = redis_calc.get_wr_all_klass_daysback(1,0,true, true).values[0].first(5)
+    @con_top = redis_calc.get_wr_all_klass_daysback(3,0,true, true).values[0].first(5)
     @arena_wr = dash_cache[0]
     @con_wr = dash_cache[1]
     @arenawins = dash_cache[2]

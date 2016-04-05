@@ -3,7 +3,7 @@ class ReportGenerator
   end
 
   def full_report(begin_date, end_date)
-    @matches = Match.where(created_at: begin_date.beginning_of_day..end_date.end_of_day)
+    @matches = Match.last(1000000)
       .preload(:match_rank)
     p "#{@matches.size} matches retrieved"
   end
@@ -17,6 +17,7 @@ class ReportGenerator
       ranked_wr = {}
       rank_grouped_matches = klass_matches.group_by(&:match_rank)
       rank_grouped_matches.each do |rank, rank_matches|
+        next if rank == nil
         wins = rank_matches.select {|match| match.result_id == 1}.size
         ranked_wr[rank.rank_id] = wins.to_f / rank_matches.size
       end
@@ -53,5 +54,7 @@ class ReportGenerator
       wins = klass_matches.select {|match| match.result_id == 1}.size
       klass_winrates[klass_id] = wins.to_f / klass_matches.size
     end
+
+    klass_winrates
   end
 end

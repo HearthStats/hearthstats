@@ -16,23 +16,21 @@ div.row
       div.portlet-body
         h3 Constructed
         table.table
-          - con_top = Rails.cache.read('wel#con_top') || []
-          - con_top.each_with_index do |c,i|
+          - @con_top.each_with_index do |(klass_id, wr),i|
             tr
               td class="wr-rank" = i + 1 
-              td class="wr-class" = c[0]
+              td class="wr-class" = Klass::LIST[klass_id]
               td class="wr-wr" 
-                = c[1]
+                = wr
                 |%
         h3 Arena
         table.table
-          - arena_top = Rails.cache.read('wel#arena_top') || []
-          - arena_top.each_with_index do |c,i|
+          - @arena_top.each_with_index do |(klass_id, wr),i|
             tr
               td class="wr-rank" = i + 1 
-              td class="wr-class" = c[0]
+              td class="wr-class" = Klass::LIST[klass_id]
               td class="wr-wr" 
-                = c[1]
+                = wr
                 |%
   div.col-md-6.col-sm-6
     div.portlet.box.blue

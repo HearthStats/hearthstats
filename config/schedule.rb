@@ -37,9 +37,9 @@ every 1.day do
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake deck_importer:hearthstonetopdecks"
   command "echo '--------------------------'"
   command "echo 'Scrape Decks'"
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:top_decks"
-  command "echo '--------------------------'"
-  command "echo 'Refreshing Top Decks"
+  # command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:top_decks"
+  # command "echo '--------------------------'"
+  # command "echo 'Refreshing Top Decks"
 end
 
 every 5.hours do
@@ -53,9 +53,9 @@ end
 every 2.hours do
   command "echo 'Top deck and archetypes'"
   command 'echo "Run at $(date)"'
-  command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_top_decks"
-  command "echo '--------------------------'"
-  command "echo 'Expire Top Decks'"
+  # command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:expire_top_decks"
+  # command "echo '--------------------------'"
+  # command "echo 'Expire Top Decks'"
 
   command "cd /var/www/hearthstats/current/ && RAILS_ENV=production bundle exec rake cron:archetype_pop"
   command "echo '--------------------------'"
