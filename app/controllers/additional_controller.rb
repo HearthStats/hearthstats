@@ -2,6 +2,7 @@ class AdditionalController < ApplicationController
 
   def reports
     @reports = {
+      "2016" => ["mar"],
       "2015" => ["jan", "feb", "may"],
       "2014" => ["jan", "apr", "may", "mar", "jul", "jun","aug", "sept", "oct"]
     }

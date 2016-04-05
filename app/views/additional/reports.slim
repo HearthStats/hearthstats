@@ -3,7 +3,6 @@
   :keywords => "user, deck, statistics, hearthstats, hearthstone, report, monthly"
 - provide(:title, "Monthly Reports")
 - provide(:section, link_to("Reports", reports_path))
-h2#most-recent Most Recent
 - @reports.each do |year, monthes|
   .report-year.row
     h4#year-title = year
