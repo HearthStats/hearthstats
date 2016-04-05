@@ -230,10 +230,10 @@ class ConstructedsController < ApplicationController
   end
 
   def win_rates
-    require './lib/redis_calculator.rb'
-    redis_calc = RedisCalc.new
-    # win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}")
-    win_rate = redis_calc.get_wr_all_klass_daysback(3, 1)
+    # require './lib/redis_calculator.rb'
+    # redis_calc = RedisCalc.new
+    # win_rate = redis_calc.get_wr_all_klass_daysback(3, 1)
+    win_rate = Rails.cache.read("con#wr_rate-#{params[:klass_id]}")
     render json: win_rate
   end
 

@@ -60,7 +60,7 @@ class Match < ActiveRecord::Base
   validates_presence_of :oppclass_id
   validates_presence_of :klass_id
 
-  validate :no_duplicate_matches, :if => :app_submitted?
+  # validate :no_duplicate_matches, :if => :app_submitted?
 
   ### CALLBACKS:
 

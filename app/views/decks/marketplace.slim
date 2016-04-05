@@ -89,11 +89,12 @@
         .col-md-6.col-sm-12
           .mkt-section
             .public-deck-class
-              img src="/assets/Icons/Classes/#{deck[3]}_Icon.gif" alt="#{deck[3]}" title="#{deck[3]}"
+              img src="/assets/Icons/Classes/#{deck.klass_id}_Icon.gif" alt="#{deck.name}" title="#{deck.name}"
             .public-deck-ident.pro-deck-ident
-              .public-deck-name  = link_to(truncate(deck[0], length: 50), public_show_deck_path(deck[2]))
+              .public-deck-name
+                = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck.id))
               .public-deck-author
-                  = link_to("by: " + User.find(deck[1]).name, profile_path(deck[1]))
+                = link_to("by: " + deck.user.name, profile_path(deck.user.id))
 
 
 javascript:

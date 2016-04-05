@@ -6,6 +6,8 @@ class DashboardsController < ApplicationController
   end
 
   def index
+    require './lib/redis_calculator.rb'
+    redis_calc = RedisCalc.new
     if !current_user.guest? && current_user.profile.name.blank?
       redirect_to edit_profile_path(current_user), alert: 'Please add a username' and return
     end
