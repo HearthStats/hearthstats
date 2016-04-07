@@ -77,7 +77,7 @@
             .public-deck-class
               img src="/assets/Icons/Classes/#{deck.class_name}_Icon.gif" alt="#{deck.class_name}" title="#{deck.class_name}"
             .public-deck-ident.pro-deck-ident
-              .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck))
+              .public-deck-name  = link_to(truncate(deck.name, length: 50), public_show_deck_path(deck.id))
               .public-deck-author
                 - if deck.user.profile.nil? || deck.user.profile.name.blank?
                   = "by: [anonymous]"
