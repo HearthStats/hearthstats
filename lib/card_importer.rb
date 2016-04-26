@@ -6,11 +6,12 @@ class CardImporter
   GOOD_TYPES = ["Minion", "Spell", "Weapon"]
 
   def initialize()
-    @all_cards = HTTParty.get("http://hearthstonejson.com/json/AllSets.json")
+    @all_cards = HTTParty.get("https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json")
   end
 
   def import_set(set_name)
-    @all_cards[set_name].each do |card|
+    @all_cards.each do |card|
+      next if card["set"] != set_name
       next if !(["Spell", "Minion", "Weapon"].include? card["type"])
       next if card["collectible"] != true
       db_card = Card.find_by_name(card["name"])

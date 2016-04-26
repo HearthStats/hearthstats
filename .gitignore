@@ -90,3 +90,5 @@ tags
 /bin
 .env*
 .ruby-version
+hs-dev
+hs-test

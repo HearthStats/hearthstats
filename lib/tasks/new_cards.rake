@@ -3,7 +3,7 @@ include ApplicationHelper
 
 task :reset_from_json => :environment do
   require 'json'
-  sets = ["classic", "gvg", "basic", "naxx"]
+  sets = ["classic", "gvg", "basic", "naxx", "League of Explorers"]
   sets.each do |set|
     file = File.read(Rails.root.join('public', "#{set}.json"))
     json = JSON.parse(file)
