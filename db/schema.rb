@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20151107190409) do
 
-  create_table "announcements", :force => true do |t|
-    t.text     "body"
-    t.text     "heading"
-    t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "arena_run_cards", :force => true do |t|
     t.integer  "arena_run_id"
     t.integer  "card_id"
@@ -112,6 +104,21 @@ ActiveRecord::Schema.define(:version => 20151107190409) do
 
   add_index "cards", ["blizz_id"], :name => "index_cards_on_blizz_id"
   add_index "cards", ["name"], :name => "index_cards_on_name"
+
+  create_table "chat_messages", :force => true do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "chat_messages", ["chat_id"], :name => "index_chat_messages_on_chat_id"
+  add_index "chat_messages", ["user_id"], :name => "index_chat_messages_on_user_id"
+
+  create_table "chats", :force => true do |t|
+    t.string "title"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",         :null => false
@@ -246,7 +253,7 @@ ActiveRecord::Schema.define(:version => 20151107190409) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
-  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "klasses", :force => true do |t|
@@ -562,8 +569,10 @@ ActiveRecord::Schema.define(:version => 20151107190409) do
     t.integer  "tourny_id"
     t.boolean  "guest"
     t.string   "userkey"
-    t.integer  "subscription_id"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "subscription_id"
     t.string   "customer_id"
     t.boolean  "no_email",               :default => false
     t.string   "confirmation_token"

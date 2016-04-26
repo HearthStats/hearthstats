@@ -3,7 +3,7 @@ class CardImporter
 
   attr_reader :all_cards
 
-  GOOD_TYPES = ["Minion", "Spell", "Weapon"]
+  GOOD_TYPES = ["minion", "spell", "weapon"]
 
   def initialize()
     @all_cards = HTTParty.get("https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json")
@@ -12,7 +12,7 @@ class CardImporter
   def import_set(set_name)
     @all_cards.each do |card|
       next if card["set"] != set_name
-      next if !(["Spell", "Minion", "Weapon"].include? card["type"])
+      next if !(GOOD_TYPES.include? card["type"].downcase)
       next if card["collectible"] != true
       db_card = Card.find_by_name(card["name"])
       returned_card = db_card
@@ -28,27 +28,23 @@ class CardImporter
   end
 
   def import_all
-    @all_cards.each do |set|
-      p "Parsing #{set[0]}"
-      count = set[1].count
-      set[1].each_with_index do |card, i|
-        next if !["Spell", "Minion", "Weapon"].include? card["type"]
-        next if card["collectible"] != true
-        db_card = Card.find_by_name(card["name"])
-        returned_card = db_card
-        if db_card.nil?
-          returned_card = create_card(card)
-        elsif db_card.blizz_id.length > card["id"].length
-          returned_card = update_card(card, db_card)
-        else
-          returned_card = update_specs(card, db_card)
-        end
-        returned_card.update_attribute(:card_set, set[0])
-        percent = i.to_f/count*100
-        p percent.to_s + " %\r"
-        $stdout.flush
+    p @all_cards.size
+    @all_cards.each do |card|
+      next if !GOOD_TYPES.include? card["type"].downcase
+      next if card["collectible"] != true
+      db_card = Card.find_by_name(card["name"])
+      returned_card = db_card
+      if db_card.nil?
+        returned_card = create_card(card)
+      elsif db_card.blizz_id.length > card["id"].length
+        returned_card = update_card(card, db_card)
+      else
+        returned_card = update_specs(card, db_card)
       end
+      returned_card.update_attribute(:card_set, card["set"])
     end
+
+    p "All Done"
   end
 
   def fix_missing_info
@@ -88,7 +84,7 @@ class CardImporter
     Card.where(card_set: set).each do |card|
       begin
         link = "http://wow.zamimg.com/images/hearthstone/cards/enus/original/#{card.blizz_id}.png"
-        agent.get(link).save_as "/Users/trigun0x2/Dropbox/Projects/newcards/#{card.name.parameterize}.png"
+        agent.get(link).save_as "/Users/trigun0x2/Dropbox/Projects/newcards/#{set}/#{card.name.parameterize}.png"
       rescue
         puts card.name
       end

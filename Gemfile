@@ -6,7 +6,6 @@ gem 'rake'
 group :development do
   gem 'better_errors', '>= 0.3.2'
   gem 'binding_of_caller', '>= 0.6.8'
-  gem 'sqlite3'
   gem 'capistrano', '~> 3.4.0'
   # gem 'capistrano-passenger'
   # gem 'capistrano-rvm'
@@ -34,8 +33,8 @@ group :assets do
 end
 
 group :production do
-  gem 'mysql2'
 end
+gem 'mysql2', '~> 0.3.10'
 
 gem 'rubygems-bundler'
 # authentication
