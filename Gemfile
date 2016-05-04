@@ -35,6 +35,7 @@ end
 group :production do
 end
 gem 'mysql2', '~> 0.3.10'
+gem 'ar-octopus'
 
 gem 'rubygems-bundler'
 # authentication
