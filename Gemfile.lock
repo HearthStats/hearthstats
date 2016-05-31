@@ -273,6 +273,7 @@ GEM
     json (1.8.2)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libv8 (3.16.14.15)
     lograge (0.3.1)
       actionpack (>= 3)
       activesupport (>= 3)
@@ -365,6 +366,7 @@ GEM
       react-source (~> 0.13)
     react-source (0.13.3)
     redis (3.2.1)
+    ref (2.0.0)
     request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -438,6 +440,9 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.5)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -547,6 +552,7 @@ DEPENDENCIES
   social-share-button
   squeel
   stripe!
+  therubyracer
   thin
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
