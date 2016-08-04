@@ -18,7 +18,7 @@ class AdditionalController < ApplicationController
     @urls = Rails.cache.fetch('uploader_url', expires_in: 2.days) do
       urls = Hash.new
       win_git_response = HTTParty.get('https://api.github.com/repos/Epix37/Hearthstone-Deck-Tracker/releases?per_page=1', headers: { "User-Agent" => "HearthStats"})
-      osx_page = Nokogiri::XML(open('https://rink.hockeyapp.net/api/2/apps/f38b1192f0dac671153a94036ced974e'))
+      osx_page = Nokogiri::XML(open('https://rink.hockeyapp.net/api/2/apps/f38b1192f0dac671153a94036ced974e', {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}))
       urls["osx"] = osx_page.at('item').at('enclosure')["url"]
       urls["windows"] = win_git_response[0]["assets"][0]["browser_download_url"]
       urls
