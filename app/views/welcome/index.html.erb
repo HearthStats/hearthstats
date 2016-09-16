@@ -51,33 +51,20 @@
   <!-- Google Webfont -->
   <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800' rel='stylesheet' type='text/css'>
   <link href='//fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
-  <script type='text/javascript'>
+
+  <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+  <script>
     var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
-      (function() {
-        var gads = document.createElement("script");
-        gads.async = true;
-        gads.type = "text/javascript";
-       var useSSL = "https:" == document.location.protocol;
-       gads.src = (useSSL ? "https:" : "http:") +
-       "//www.googletagservices.com/tag/js/gpt.js";
-       var node = document.getElementsByTagName("script")[0];
-       node.parentNode.insertBefore(gads, node);
-     })();
-     
+    googletag.cmd = googletag.cmd || [];
   </script>
 
-  <script type='text/javascript'>
+  <script>
     googletag.cmd.push(function() {
-      side_ad_1 = googletag.defineSlot('/42580283/300x250', [300, 250], 'div-gpt-ad-1431442997149-0').addService(googletag.pubads());
-      side_ad_2 = googletag.defineSlot('/42580283/300x250', [300, 250], 'div-gpt-ad-1431442732918-0').addService(googletag.pubads());
-      googletag.defineOutOfPageSlot('/42580283/homepage_first_look', 'div-gpt-ad-1431544843617-0').addService(googletag.pubads());
+      googletag.defineSlot('/117766437/hearthstats-frontpage-rectangle-top', [300, 250], 'div-gpt-ad-1473984902286-0').addService(googletag.pubads());
+      googletag.defineSlot('/117766437/hearthstats-frontpage-rectangle-bottom', [300, 250], 'div-gpt-ad-1473984904304-0').addService(googletag.pubads());
       googletag.pubads().enableSingleRequest();
       googletag.enableServices();
     });
-    window.setInterval(function() {
-      googletag.pubads().refresh([side_ad_1, side_ad_2]);
-    },30000);
   </script>
 </head>
 <body>

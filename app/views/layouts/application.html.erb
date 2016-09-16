@@ -34,25 +34,18 @@
   <meta property="og:image" content="http://www.hearthstats.net/assets/logo_v2/orange_inline.png" />
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <link href='//fonts.googleapis.com/css?family=Fenix|Lato:100,300,400' rel='stylesheet' type='text/css'>
-  <script type="text/javascript">
-      var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
-      (function() {
-        var gads = document.createElement("script");
-        gads.async = true;
-        gads.type = "text/javascript";
-       var useSSL = "https:" == document.location.protocol;
-       gads.src = (useSSL ? "https:" : "http:") +
-       "//www.googletagservices.com/tag/js/gpt.js";
-       var node = document.getElementsByTagName("script")[0];
-       node.parentNode.insertBefore(gads, node);
-     })();
+  
+  <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+  <script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
   </script>
 
-  <script type='text/javascript'>
+  <script>
     googletag.cmd.push(function() {
-      foot_ad = googletag.defineSlot('/42580283/728x90_first_look', [728, 90], 'div-gpt-ad-1434401765472-0').addService(googletag.pubads());
-      top_ad = googletag.defineSlot('/42580283/728x90', [728, 90], 'div-gpt-ad-1432041481704-0').addService(googletag.pubads());
+      googletag.defineSlot('/117766437/hearthstats-header', [728, 90], 'div-gpt-ad-1473822837302-0').addService(googletag.pubads());
+      googletag.defineSlot('/117766437/hearthstats-footer', [728, 90], 'div-gpt-ad-1473822911969-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
       googletag.enableServices();
     });
   </script>
